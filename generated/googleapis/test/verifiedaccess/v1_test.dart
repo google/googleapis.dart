@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -111,8 +111,8 @@ api.SignedData buildSignedData() {
   var o = api.SignedData();
   buildCounterSignedData++;
   if (buildCounterSignedData < 3) {
-    o.data = "foo";
-    o.signature = "foo";
+    o.data = 'foo';
+    o.signature = 'foo';
   }
   buildCounterSignedData--;
   return o;
@@ -133,7 +133,7 @@ api.VerifyChallengeResponseRequest buildVerifyChallengeResponseRequest() {
   buildCounterVerifyChallengeResponseRequest++;
   if (buildCounterVerifyChallengeResponseRequest < 3) {
     o.challengeResponse = buildSignedData();
-    o.expectedIdentity = "foo";
+    o.expectedIdentity = 'foo';
   }
   buildCounterVerifyChallengeResponseRequest--;
   return o;
@@ -153,10 +153,10 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
   var o = api.VerifyChallengeResponseResult();
   buildCounterVerifyChallengeResponseResult++;
   if (buildCounterVerifyChallengeResponseResult < 3) {
-    o.deviceEnrollmentId = "foo";
-    o.devicePermanentId = "foo";
-    o.signedPublicKeyAndChallenge = "foo";
-    o.verificationOutput = "foo";
+    o.deviceEnrollmentId = 'foo';
+    o.devicePermanentId = 'foo';
+    o.signedPublicKeyAndChallenge = 'foo';
+    o.verificationOutput = 'foo';
   }
   buildCounterVerifyChallengeResponseResult--;
   return o;
@@ -174,52 +174,52 @@ void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Challenge", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Challenge', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChallenge();
       var od = api.Challenge.fromJson(o.toJson());
       checkChallenge(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-SignedData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SignedData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSignedData();
       var od = api.SignedData.fromJson(o.toJson());
       checkSignedData(od);
     });
   });
 
-  unittest.group("obj-schema-VerifyChallengeResponseRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-VerifyChallengeResponseRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVerifyChallengeResponseRequest();
       var od = api.VerifyChallengeResponseRequest.fromJson(o.toJson());
       checkVerifyChallengeResponseRequest(od);
     });
   });
 
-  unittest.group("obj-schema-VerifyChallengeResponseResult", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-VerifyChallengeResponseResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVerifyChallengeResponseResult();
       var od = api.VerifyChallengeResponseResult.fromJson(o.toJson());
       checkVerifyChallengeResponseResult(od);
     });
   });
 
-  unittest.group("resource-ChallengeResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ChallengeResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ChallengeResourceApi res = api.VerifiedaccessApi(mock).challenge;
       var arg_request = buildEmpty();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Empty.fromJson(json);
         checkEmpty(obj);
@@ -241,8 +241,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -252,7 +252,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChallenge());
         return async.Future.value(stringResponse(200, h, resp));
@@ -264,11 +264,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--verify", () {
+    unittest.test('method--verify', () {
       var mock = HttpServerMock();
       api.ChallengeResourceApi res = api.VerifiedaccessApi(mock).challenge;
       var arg_request = buildVerifyChallengeResponseRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.VerifyChallengeResponseRequest.fromJson(json);
         checkVerifyChallengeResponseRequest(obj);
@@ -290,8 +290,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -301,7 +301,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVerifyChallengeResponseResult());
         return async.Future.value(stringResponse(200, h, resp));

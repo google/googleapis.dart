@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -43,8 +42,8 @@ class AbusiveexperiencereportApi {
       ViolatingSitesResourceApi(_requester);
 
   AbusiveexperiencereportApi(http.Client client,
-      {core.String rootUrl = "https://abusiveexperiencereport.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://abusiveexperiencereport.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -84,17 +83,17 @@ class SitesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -135,14 +134,14 @@ class ViolatingSitesResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/violatingSites';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -196,26 +195,26 @@ class SiteSummaryResponse {
   SiteSummaryResponse();
 
   SiteSummaryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("abusiveStatus")) {
-      abusiveStatus = _json["abusiveStatus"];
+    if (_json.containsKey('abusiveStatus')) {
+      abusiveStatus = _json['abusiveStatus'];
     }
-    if (_json.containsKey("enforcementTime")) {
-      enforcementTime = _json["enforcementTime"];
+    if (_json.containsKey('enforcementTime')) {
+      enforcementTime = _json['enforcementTime'];
     }
-    if (_json.containsKey("filterStatus")) {
-      filterStatus = _json["filterStatus"];
+    if (_json.containsKey('filterStatus')) {
+      filterStatus = _json['filterStatus'];
     }
-    if (_json.containsKey("lastChangeTime")) {
-      lastChangeTime = _json["lastChangeTime"];
+    if (_json.containsKey('lastChangeTime')) {
+      lastChangeTime = _json['lastChangeTime'];
     }
-    if (_json.containsKey("reportUrl")) {
-      reportUrl = _json["reportUrl"];
+    if (_json.containsKey('reportUrl')) {
+      reportUrl = _json['reportUrl'];
     }
-    if (_json.containsKey("reviewedSite")) {
-      reviewedSite = _json["reviewedSite"];
+    if (_json.containsKey('reviewedSite')) {
+      reviewedSite = _json['reviewedSite'];
     }
-    if (_json.containsKey("underReview")) {
-      underReview = _json["underReview"];
+    if (_json.containsKey('underReview')) {
+      underReview = _json['underReview'];
     }
   }
 
@@ -223,25 +222,25 @@ class SiteSummaryResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (abusiveStatus != null) {
-      _json["abusiveStatus"] = abusiveStatus;
+      _json['abusiveStatus'] = abusiveStatus;
     }
     if (enforcementTime != null) {
-      _json["enforcementTime"] = enforcementTime;
+      _json['enforcementTime'] = enforcementTime;
     }
     if (filterStatus != null) {
-      _json["filterStatus"] = filterStatus;
+      _json['filterStatus'] = filterStatus;
     }
     if (lastChangeTime != null) {
-      _json["lastChangeTime"] = lastChangeTime;
+      _json['lastChangeTime'] = lastChangeTime;
     }
     if (reportUrl != null) {
-      _json["reportUrl"] = reportUrl;
+      _json['reportUrl'] = reportUrl;
     }
     if (reviewedSite != null) {
-      _json["reviewedSite"] = reviewedSite;
+      _json['reviewedSite'] = reviewedSite;
     }
     if (underReview != null) {
-      _json["underReview"] = underReview;
+      _json['underReview'] = underReview;
     }
     return _json;
   }
@@ -255,8 +254,8 @@ class ViolatingSitesResponse {
   ViolatingSitesResponse();
 
   ViolatingSitesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("violatingSites")) {
-      violatingSites = (_json["violatingSites"] as core.List)
+    if (_json.containsKey('violatingSites')) {
+      violatingSites = (_json['violatingSites'] as core.List)
           .map<SiteSummaryResponse>(
               (value) => SiteSummaryResponse.fromJson(value))
           .toList();
@@ -267,7 +266,7 @@ class ViolatingSitesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (violatingSites != null) {
-      _json["violatingSites"] =
+      _json['violatingSites'] =
           violatingSites.map((value) => value.toJson()).toList();
     }
     return _json;

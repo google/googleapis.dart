@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,8 +75,8 @@ api.Groups buildGroups() {
   var o = api.Groups();
   buildCounterGroups++;
   if (buildCounterGroups < 3) {
-    o.kind = "foo";
-    o.responseCode = "foo";
+    o.kind = 'foo';
+    o.responseCode = 'foo';
   }
   buildCounterGroups--;
   return o;
@@ -92,23 +92,23 @@ void checkGroups(api.Groups o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Groups", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Groups', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGroups();
       var od = api.Groups.fromJson(o.toJson());
       checkGroups(od);
     });
   });
 
-  unittest.group("resource-ArchiveResourceApi", () {
-    unittest.test("method--insert", () {
+  unittest.group('resource-ArchiveResourceApi', () {
+    unittest.test('method--insert', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.ArchiveResourceApi res = api.GroupsmigrationApi(mock).archive;
-      var arg_groupId = "foo";
-      var arg_$fields = "foo";
+      var arg_groupId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -120,12 +120,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 17),
             unittest.equals("groups/v1/groups/"));
         pathOffset += 17;
-        index = path.indexOf("/archive", pathOffset);
+        index = path.indexOf('/archive', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_groupId"));
+        unittest.expect(subPart, unittest.equals('$arg_groupId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/archive"));
         pathOffset += 8;
@@ -136,8 +136,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -147,7 +147,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGroups());
         return async.Future.value(stringResponse(200, h, resp));

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,8 +75,8 @@ api.Accelerator buildAccelerator() {
   var o = api.Accelerator();
   buildCounterAccelerator++;
   if (buildCounterAccelerator < 3) {
-    o.count = "foo";
-    o.type = "foo";
+    o.count = 'foo';
+    o.type = 'foo';
   }
   buildCounterAccelerator--;
   return o;
@@ -93,8 +93,8 @@ void checkAccelerator(api.Accelerator o) {
 
 core.List<core.String> buildUnnamed6850() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -106,28 +106,28 @@ void checkUnnamed6850(core.List<core.String> o) {
 
 core.Map<core.String, core.String> buildUnnamed6851() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed6851(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.String> buildUnnamed6852() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed6852(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<api.Mount> buildUnnamed6853() {
@@ -145,15 +145,15 @@ void checkUnnamed6853(core.List<api.Mount> o) {
 
 core.Map<core.String, core.int> buildUnnamed6854() {
   var o = <core.String, core.int>{};
-  o["x"] = 42;
-  o["y"] = 42;
+  o['x'] = 42;
+  o['y'] = 42;
   return o;
 }
 
 void checkUnnamed6854(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals(42));
-  unittest.expect(o["y"], unittest.equals(42));
+  unittest.expect(o['x'], unittest.equals(42));
+  unittest.expect(o['y'], unittest.equals(42));
 }
 
 core.int buildCounterAction = 0;
@@ -163,22 +163,22 @@ api.Action buildAction() {
   if (buildCounterAction < 3) {
     o.alwaysRun = true;
     o.commands = buildUnnamed6850();
-    o.containerName = "foo";
+    o.containerName = 'foo';
     o.credentials = buildSecret();
     o.disableImagePrefetch = true;
     o.disableStandardErrorCapture = true;
     o.enableFuse = true;
-    o.entrypoint = "foo";
+    o.entrypoint = 'foo';
     o.environment = buildUnnamed6851();
     o.ignoreExitStatus = true;
-    o.imageUri = "foo";
+    o.imageUri = 'foo';
     o.labels = buildUnnamed6852();
     o.mounts = buildUnnamed6853();
-    o.pidNamespace = "foo";
+    o.pidNamespace = 'foo';
     o.portMappings = buildUnnamed6854();
     o.publishExposedPorts = true;
     o.runInBackground = true;
-    o.timeout = "foo";
+    o.timeout = 'foo';
   }
   buildCounterAction--;
   return o;
@@ -245,15 +245,15 @@ void checkContainerKilledEvent(api.ContainerKilledEvent o) {
 
 core.Map<core.String, core.int> buildUnnamed6855() {
   var o = <core.String, core.int>{};
-  o["x"] = 42;
-  o["y"] = 42;
+  o['x'] = 42;
+  o['y'] = 42;
   return o;
 }
 
 void checkUnnamed6855(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals(42));
-  unittest.expect(o["y"], unittest.equals(42));
+  unittest.expect(o['x'], unittest.equals(42));
+  unittest.expect(o['y'], unittest.equals(42));
 }
 
 core.int buildCounterContainerStartedEvent = 0;
@@ -262,7 +262,7 @@ api.ContainerStartedEvent buildContainerStartedEvent() {
   buildCounterContainerStartedEvent++;
   if (buildCounterContainerStartedEvent < 3) {
     o.actionId = 42;
-    o.ipAddress = "foo";
+    o.ipAddress = 'foo';
     o.portMappings = buildUnnamed6855();
   }
   buildCounterContainerStartedEvent--;
@@ -286,7 +286,7 @@ api.ContainerStoppedEvent buildContainerStoppedEvent() {
   if (buildCounterContainerStoppedEvent < 3) {
     o.actionId = 42;
     o.exitStatus = 42;
-    o.stderr = "foo";
+    o.stderr = 'foo';
   }
   buildCounterContainerStoppedEvent--;
   return o;
@@ -304,8 +304,8 @@ void checkContainerStoppedEvent(api.ContainerStoppedEvent o) {
 
 core.List<core.String> buildUnnamed6856() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -320,7 +320,7 @@ api.DelayedEvent buildDelayedEvent() {
   var o = api.DelayedEvent();
   buildCounterDelayedEvent++;
   if (buildCounterDelayedEvent < 3) {
-    o.cause = "foo";
+    o.cause = 'foo';
     o.metrics = buildUnnamed6856();
   }
   buildCounterDelayedEvent--;
@@ -341,10 +341,10 @@ api.Disk buildDisk() {
   var o = api.Disk();
   buildCounterDisk++;
   if (buildCounterDisk < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.sizeGb = 42;
-    o.sourceImage = "foo";
-    o.type = "foo";
+    o.sourceImage = 'foo';
+    o.type = 'foo';
   }
   buildCounterDisk--;
   return o;
@@ -385,11 +385,11 @@ api.Event buildEvent() {
     o.containerStarted = buildContainerStartedEvent();
     o.containerStopped = buildContainerStoppedEvent();
     o.delayed = buildDelayedEvent();
-    o.description = "foo";
+    o.description = 'foo';
     o.failed = buildFailedEvent();
     o.pullStarted = buildPullStartedEvent();
     o.pullStopped = buildPullStoppedEvent();
-    o.timestamp = "foo";
+    o.timestamp = 'foo';
     o.unexpectedExitStatus = buildUnexpectedExitStatusEvent();
     o.workerAssigned = buildWorkerAssignedEvent();
     o.workerReleased = buildWorkerReleasedEvent();
@@ -422,8 +422,8 @@ api.FailedEvent buildFailedEvent() {
   var o = api.FailedEvent();
   buildCounterFailedEvent++;
   if (buildCounterFailedEvent < 3) {
-    o.cause = "foo";
-    o.code = "foo";
+    o.cause = 'foo';
+    o.code = 'foo';
   }
   buildCounterFailedEvent--;
   return o;
@@ -457,7 +457,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
     o.locations = buildUnnamed6857();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
   return o;
@@ -490,7 +490,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   var o = api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed6858();
   }
   buildCounterListOperationsResponse--;
@@ -508,25 +508,25 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed6859() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed6859(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed6860() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -536,16 +536,16 @@ core.Map<core.String, core.Object> buildUnnamed6860() {
 
 void checkUnnamed6860(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterLocation = 0;
@@ -553,11 +553,11 @@ api.Location buildLocation() {
   var o = api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.labels = buildUnnamed6859();
-    o.locationId = "foo";
+    o.locationId = 'foo';
     o.metadata = buildUnnamed6860();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterLocation--;
   return o;
@@ -590,15 +590,15 @@ void checkUnnamed6861(core.List<api.Event> o) {
 
 core.Map<core.String, core.String> buildUnnamed6862() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed6862(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterMetadata = 0;
@@ -606,12 +606,12 @@ api.Metadata buildMetadata() {
   var o = api.Metadata();
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    o.createTime = "foo";
-    o.endTime = "foo";
+    o.createTime = 'foo';
+    o.endTime = 'foo';
     o.events = buildUnnamed6861();
     o.labels = buildUnnamed6862();
     o.pipeline = buildPipeline();
-    o.startTime = "foo";
+    o.startTime = 'foo';
   }
   buildCounterMetadata--;
   return o;
@@ -635,8 +635,8 @@ api.Mount buildMount() {
   var o = api.Mount();
   buildCounterMount++;
   if (buildCounterMount < 3) {
-    o.disk = "foo";
-    o.path = "foo";
+    o.disk = 'foo';
+    o.path = 'foo';
     o.readOnly = true;
   }
   buildCounterMount--;
@@ -658,8 +658,8 @@ api.Network buildNetwork() {
   var o = api.Network();
   buildCounterNetwork++;
   if (buildCounterNetwork < 3) {
-    o.network = "foo";
-    o.subnetwork = "foo";
+    o.network = 'foo';
+    o.subnetwork = 'foo';
     o.usePrivateAddress = true;
   }
   buildCounterNetwork--;
@@ -678,12 +678,12 @@ void checkNetwork(api.Network o) {
 
 core.Map<core.String, core.Object> buildUnnamed6863() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -693,26 +693,26 @@ core.Map<core.String, core.Object> buildUnnamed6863() {
 
 void checkUnnamed6863(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed6864() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -722,16 +722,16 @@ core.Map<core.String, core.Object> buildUnnamed6864() {
 
 void checkUnnamed6864(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterOperation = 0;
@@ -742,7 +742,7 @@ api.Operation buildOperation() {
     o.done = true;
     o.error = buildStatus();
     o.metadata = buildUnnamed6863();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed6864();
   }
   buildCounterOperation--;
@@ -776,15 +776,15 @@ void checkUnnamed6865(core.List<api.Action> o) {
 
 core.Map<core.String, core.String> buildUnnamed6866() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed6866(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterPipeline = 0;
@@ -795,7 +795,7 @@ api.Pipeline buildPipeline() {
     o.actions = buildUnnamed6865();
     o.environment = buildUnnamed6866();
     o.resources = buildResources();
-    o.timeout = "foo";
+    o.timeout = 'foo';
   }
   buildCounterPipeline--;
   return o;
@@ -817,7 +817,7 @@ api.PullStartedEvent buildPullStartedEvent() {
   var o = api.PullStartedEvent();
   buildCounterPullStartedEvent++;
   if (buildCounterPullStartedEvent < 3) {
-    o.imageUri = "foo";
+    o.imageUri = 'foo';
   }
   buildCounterPullStartedEvent--;
   return o;
@@ -836,7 +836,7 @@ api.PullStoppedEvent buildPullStoppedEvent() {
   var o = api.PullStoppedEvent();
   buildCounterPullStoppedEvent++;
   if (buildCounterPullStoppedEvent < 3) {
-    o.imageUri = "foo";
+    o.imageUri = 'foo';
   }
   buildCounterPullStoppedEvent--;
   return o;
@@ -852,8 +852,8 @@ void checkPullStoppedEvent(api.PullStoppedEvent o) {
 
 core.List<core.String> buildUnnamed6867() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -865,8 +865,8 @@ void checkUnnamed6867(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed6868() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -901,15 +901,15 @@ void checkResources(api.Resources o) {
 
 core.Map<core.String, core.String> buildUnnamed6869() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed6869(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterRunPipelineRequest = 0;
@@ -953,8 +953,8 @@ api.Secret buildSecret() {
   var o = api.Secret();
   buildCounterSecret++;
   if (buildCounterSecret < 3) {
-    o.cipherText = "foo";
-    o.keyName = "foo";
+    o.cipherText = 'foo';
+    o.keyName = 'foo';
   }
   buildCounterSecret--;
   return o;
@@ -971,8 +971,8 @@ void checkSecret(api.Secret o) {
 
 core.List<core.String> buildUnnamed6870() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -987,7 +987,7 @@ api.ServiceAccount buildServiceAccount() {
   var o = api.ServiceAccount();
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
-    o.email = "foo";
+    o.email = 'foo';
     o.scopes = buildUnnamed6870();
   }
   buildCounterServiceAccount--;
@@ -1005,12 +1005,12 @@ void checkServiceAccount(api.ServiceAccount o) {
 
 core.Map<core.String, core.Object> buildUnnamed6871() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1020,16 +1020,16 @@ core.Map<core.String, core.Object> buildUnnamed6871() {
 
 void checkUnnamed6871(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o["x"]) as core.Map;
+  var casted7 = (o['x']) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
-  var casted8 = (o["y"]) as core.Map;
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
+  var casted8 = (o['y']) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8["bool"], unittest.equals(true));
-  unittest.expect(casted8["string"], unittest.equals('foo'));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed6872() {
@@ -1052,7 +1052,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed6872();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -1117,8 +1117,8 @@ void checkUnnamed6874(core.List<api.Disk> o) {
 
 core.List<core.String> buildUnnamed6875() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1130,15 +1130,15 @@ void checkUnnamed6875(core.List<core.String> o) {
 
 core.Map<core.String, core.String> buildUnnamed6876() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed6876(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterVirtualMachine = 0;
@@ -1148,15 +1148,15 @@ api.VirtualMachine buildVirtualMachine() {
   if (buildCounterVirtualMachine < 3) {
     o.accelerators = buildUnnamed6873();
     o.bootDiskSizeGb = 42;
-    o.bootImage = "foo";
-    o.cpuPlatform = "foo";
+    o.bootImage = 'foo';
+    o.cpuPlatform = 'foo';
     o.disks = buildUnnamed6874();
     o.dockerCacheImages = buildUnnamed6875();
     o.enableStackdriverMonitoring = true;
     o.labels = buildUnnamed6876();
-    o.machineType = "foo";
+    o.machineType = 'foo';
     o.network = buildNetwork();
-    o.nvidiaDriverVersion = "foo";
+    o.nvidiaDriverVersion = 'foo';
     o.preemptible = true;
     o.serviceAccount = buildServiceAccount();
   }
@@ -1189,9 +1189,9 @@ api.WorkerAssignedEvent buildWorkerAssignedEvent() {
   var o = api.WorkerAssignedEvent();
   buildCounterWorkerAssignedEvent++;
   if (buildCounterWorkerAssignedEvent < 3) {
-    o.instance = "foo";
-    o.machineType = "foo";
-    o.zone = "foo";
+    o.instance = 'foo';
+    o.machineType = 'foo';
+    o.zone = 'foo';
   }
   buildCounterWorkerAssignedEvent--;
   return o;
@@ -1212,8 +1212,8 @@ api.WorkerReleasedEvent buildWorkerReleasedEvent() {
   var o = api.WorkerReleasedEvent();
   buildCounterWorkerReleasedEvent++;
   if (buildCounterWorkerReleasedEvent < 3) {
-    o.instance = "foo";
-    o.zone = "foo";
+    o.instance = 'foo';
+    o.zone = 'foo';
   }
   buildCounterWorkerReleasedEvent--;
   return o;
@@ -1229,261 +1229,261 @@ void checkWorkerReleasedEvent(api.WorkerReleasedEvent o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Accelerator", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Accelerator', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccelerator();
       var od = api.Accelerator.fromJson(o.toJson());
       checkAccelerator(od);
     });
   });
 
-  unittest.group("obj-schema-Action", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Action', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAction();
       var od = api.Action.fromJson(o.toJson());
       checkAction(od);
     });
   });
 
-  unittest.group("obj-schema-CancelOperationRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CancelOperationRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ContainerKilledEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContainerKilledEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainerKilledEvent();
       var od = api.ContainerKilledEvent.fromJson(o.toJson());
       checkContainerKilledEvent(od);
     });
   });
 
-  unittest.group("obj-schema-ContainerStartedEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContainerStartedEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainerStartedEvent();
       var od = api.ContainerStartedEvent.fromJson(o.toJson());
       checkContainerStartedEvent(od);
     });
   });
 
-  unittest.group("obj-schema-ContainerStoppedEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContainerStoppedEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainerStoppedEvent();
       var od = api.ContainerStoppedEvent.fromJson(o.toJson());
       checkContainerStoppedEvent(od);
     });
   });
 
-  unittest.group("obj-schema-DelayedEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DelayedEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDelayedEvent();
       var od = api.DelayedEvent.fromJson(o.toJson());
       checkDelayedEvent(od);
     });
   });
 
-  unittest.group("obj-schema-Disk", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Disk', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDisk();
       var od = api.Disk.fromJson(o.toJson());
       checkDisk(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-Event", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Event', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEvent();
       var od = api.Event.fromJson(o.toJson());
       checkEvent(od);
     });
   });
 
-  unittest.group("obj-schema-FailedEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FailedEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFailedEvent();
       var od = api.FailedEvent.fromJson(o.toJson());
       checkFailedEvent(od);
     });
   });
 
-  unittest.group("obj-schema-ListLocationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListLocationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListOperationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListOperationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Location", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Location', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od);
     });
   });
 
-  unittest.group("obj-schema-Metadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Metadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMetadata();
       var od = api.Metadata.fromJson(o.toJson());
       checkMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-Mount", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Mount', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMount();
       var od = api.Mount.fromJson(o.toJson());
       checkMount(od);
     });
   });
 
-  unittest.group("obj-schema-Network", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Network', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNetwork();
       var od = api.Network.fromJson(o.toJson());
       checkNetwork(od);
     });
   });
 
-  unittest.group("obj-schema-Operation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Operation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
 
-  unittest.group("obj-schema-Pipeline", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Pipeline', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPipeline();
       var od = api.Pipeline.fromJson(o.toJson());
       checkPipeline(od);
     });
   });
 
-  unittest.group("obj-schema-PullStartedEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PullStartedEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPullStartedEvent();
       var od = api.PullStartedEvent.fromJson(o.toJson());
       checkPullStartedEvent(od);
     });
   });
 
-  unittest.group("obj-schema-PullStoppedEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PullStoppedEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPullStoppedEvent();
       var od = api.PullStoppedEvent.fromJson(o.toJson());
       checkPullStoppedEvent(od);
     });
   });
 
-  unittest.group("obj-schema-Resources", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Resources', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResources();
       var od = api.Resources.fromJson(o.toJson());
       checkResources(od);
     });
   });
 
-  unittest.group("obj-schema-RunPipelineRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RunPipelineRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRunPipelineRequest();
       var od = api.RunPipelineRequest.fromJson(o.toJson());
       checkRunPipelineRequest(od);
     });
   });
 
-  unittest.group("obj-schema-RunPipelineResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RunPipelineResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRunPipelineResponse();
       var od = api.RunPipelineResponse.fromJson(o.toJson());
       checkRunPipelineResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Secret", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Secret', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSecret();
       var od = api.Secret.fromJson(o.toJson());
       checkSecret(od);
     });
   });
 
-  unittest.group("obj-schema-ServiceAccount", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ServiceAccount', () {
+    unittest.test('to-json--from-json', () {
       var o = buildServiceAccount();
       var od = api.ServiceAccount.fromJson(o.toJson());
       checkServiceAccount(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-UnexpectedExitStatusEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UnexpectedExitStatusEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUnexpectedExitStatusEvent();
       var od = api.UnexpectedExitStatusEvent.fromJson(o.toJson());
       checkUnexpectedExitStatusEvent(od);
     });
   });
 
-  unittest.group("obj-schema-VirtualMachine", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-VirtualMachine', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVirtualMachine();
       var od = api.VirtualMachine.fromJson(o.toJson());
       checkVirtualMachine(od);
     });
   });
 
-  unittest.group("obj-schema-WorkerAssignedEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WorkerAssignedEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWorkerAssignedEvent();
       var od = api.WorkerAssignedEvent.fromJson(o.toJson());
       checkWorkerAssignedEvent(od);
     });
   });
 
-  unittest.group("obj-schema-WorkerReleasedEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WorkerReleasedEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWorkerReleasedEvent();
       var od = api.WorkerReleasedEvent.fromJson(o.toJson());
       checkWorkerReleasedEvent(od);
     });
   });
 
-  unittest.group("resource-ProjectsLocationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsLocationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
           api.LifesciencesApi(mock).projects.locations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1503,8 +1503,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1514,7 +1514,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1526,15 +1526,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
           api.LifesciencesApi(mock).projects.locations;
-      var arg_name = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1554,8 +1554,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1570,7 +1570,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1587,14 +1587,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsOperationsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
           api.LifesciencesApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CancelOperationRequest.fromJson(json);
         checkCancelOperationRequest(obj);
@@ -1617,8 +1617,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1628,7 +1628,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1640,12 +1640,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
           api.LifesciencesApi(mock).projects.locations.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1665,8 +1665,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1676,7 +1676,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1688,15 +1688,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
           api.LifesciencesApi(mock).projects.locations.operations;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1716,8 +1716,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1732,7 +1732,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1749,14 +1749,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsPipelinesResourceApi", () {
-    unittest.test("method--run", () {
+  unittest.group('resource-ProjectsLocationsPipelinesResourceApi', () {
+    unittest.test('method--run', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsPipelinesResourceApi res =
           api.LifesciencesApi(mock).projects.locations.pipelines;
       var arg_request = buildRunPipelineRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RunPipelineRequest.fromJson(json);
         checkRunPipelineRequest(obj);
@@ -1779,8 +1779,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1790,7 +1790,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -48,11 +47,11 @@ class YoutubereportingApi {
   /// View monetary and non-monetary YouTube Analytics reports for your YouTube
   /// content
   static const YtAnalyticsMonetaryReadonlyScope =
-      "https://www.googleapis.com/auth/yt-analytics-monetary.readonly";
+      'https://www.googleapis.com/auth/yt-analytics-monetary.readonly';
 
   /// View YouTube Analytics reports for your YouTube content
   static const YtAnalyticsReadonlyScope =
-      "https://www.googleapis.com/auth/yt-analytics.readonly";
+      'https://www.googleapis.com/auth/yt-analytics.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -61,8 +60,8 @@ class YoutubereportingApi {
   ReportTypesResourceApi get reportTypes => ReportTypesResourceApi(_requester);
 
   YoutubereportingApi(http.Client client,
-      {core.String rootUrl = "https://youtubereporting.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://youtubereporting.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -110,17 +109,17 @@ class JobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/jobs';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -163,20 +162,20 @@ class JobsResourceApi {
     core.String _body;
 
     if (jobId == null) {
-      throw core.ArgumentError("Parameter jobId is required.");
+      throw core.ArgumentError('Parameter jobId is required.');
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -219,20 +218,20 @@ class JobsResourceApi {
     core.String _body;
 
     if (jobId == null) {
-      throw core.ArgumentError("Parameter jobId is required.");
+      throw core.ArgumentError('Parameter jobId is required.');
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -287,26 +286,26 @@ class JobsResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (includeSystemManaged != null) {
-      _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
+      _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/jobs';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -358,16 +357,16 @@ class JobsReportsResourceApi {
     core.String _body;
 
     if (jobId == null) {
-      throw core.ArgumentError("Parameter jobId is required.");
+      throw core.ArgumentError('Parameter jobId is required.');
     }
     if (reportId == null) {
-      throw core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError('Parameter reportId is required.');
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/jobs/' +
@@ -377,7 +376,7 @@ class JobsReportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -443,35 +442,35 @@ class JobsReportsResourceApi {
     core.String _body;
 
     if (jobId == null) {
-      throw core.ArgumentError("Parameter jobId is required.");
+      throw core.ArgumentError('Parameter jobId is required.');
     }
     if (startTimeAtOrAfter != null) {
-      _queryParams["startTimeAtOrAfter"] = [startTimeAtOrAfter];
+      _queryParams['startTimeAtOrAfter'] = [startTimeAtOrAfter];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (createdAfter != null) {
-      _queryParams["createdAfter"] = [createdAfter];
+      _queryParams['createdAfter'] = [createdAfter];
     }
     if (startTimeBefore != null) {
-      _queryParams["startTimeBefore"] = [startTimeBefore];
+      _queryParams['startTimeBefore'] = [startTimeBefore];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -526,10 +525,10 @@ class MediaResourceApi {
     core.String _body;
 
     if (resourceName == null) {
-      throw core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError('Parameter resourceName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -538,7 +537,7 @@ class MediaResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -604,26 +603,26 @@ class ReportTypesResourceApi {
     core.String _body;
 
     if (includeSystemManaged != null) {
-      _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
+      _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/reportTypes';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -666,7 +665,7 @@ class GdataBlobstore2Info {
 
   set downloadReadHandleAsBytes(core.List<core.int> _bytes) {
     downloadReadHandle =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -679,26 +678,26 @@ class GdataBlobstore2Info {
 
   set uploadMetadataContainerAsBytes(core.List<core.int> _bytes) {
     uploadMetadataContainer =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   GdataBlobstore2Info();
 
   GdataBlobstore2Info.fromJson(core.Map _json) {
-    if (_json.containsKey("blobGeneration")) {
-      blobGeneration = _json["blobGeneration"];
+    if (_json.containsKey('blobGeneration')) {
+      blobGeneration = _json['blobGeneration'];
     }
-    if (_json.containsKey("blobId")) {
-      blobId = _json["blobId"];
+    if (_json.containsKey('blobId')) {
+      blobId = _json['blobId'];
     }
-    if (_json.containsKey("downloadReadHandle")) {
-      downloadReadHandle = _json["downloadReadHandle"];
+    if (_json.containsKey('downloadReadHandle')) {
+      downloadReadHandle = _json['downloadReadHandle'];
     }
-    if (_json.containsKey("readToken")) {
-      readToken = _json["readToken"];
+    if (_json.containsKey('readToken')) {
+      readToken = _json['readToken'];
     }
-    if (_json.containsKey("uploadMetadataContainer")) {
-      uploadMetadataContainer = _json["uploadMetadataContainer"];
+    if (_json.containsKey('uploadMetadataContainer')) {
+      uploadMetadataContainer = _json['uploadMetadataContainer'];
     }
   }
 
@@ -706,19 +705,19 @@ class GdataBlobstore2Info {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blobGeneration != null) {
-      _json["blobGeneration"] = blobGeneration;
+      _json['blobGeneration'] = blobGeneration;
     }
     if (blobId != null) {
-      _json["blobId"] = blobId;
+      _json['blobId'] = blobId;
     }
     if (downloadReadHandle != null) {
-      _json["downloadReadHandle"] = downloadReadHandle;
+      _json['downloadReadHandle'] = downloadReadHandle;
     }
     if (readToken != null) {
-      _json["readToken"] = readToken;
+      _json['readToken'] = readToken;
     }
     if (uploadMetadataContainer != null) {
-      _json["uploadMetadataContainer"] = uploadMetadataContainer;
+      _json['uploadMetadataContainer'] = uploadMetadataContainer;
     }
     return _json;
   }
@@ -732,7 +731,7 @@ class GdataCompositeMedia {
 
   set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -745,7 +744,7 @@ class GdataCompositeMedia {
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -757,7 +756,7 @@ class GdataCompositeMedia {
 
   set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -769,7 +768,7 @@ class GdataCompositeMedia {
 
   set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -793,44 +792,44 @@ class GdataCompositeMedia {
 
   set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   GdataCompositeMedia();
 
   GdataCompositeMedia.fromJson(core.Map _json) {
-    if (_json.containsKey("blobRef")) {
-      blobRef = _json["blobRef"];
+    if (_json.containsKey('blobRef')) {
+      blobRef = _json['blobRef'];
     }
-    if (_json.containsKey("blobstore2Info")) {
-      blobstore2Info = GdataBlobstore2Info.fromJson(_json["blobstore2Info"]);
+    if (_json.containsKey('blobstore2Info')) {
+      blobstore2Info = GdataBlobstore2Info.fromJson(_json['blobstore2Info']);
     }
-    if (_json.containsKey("cosmoBinaryReference")) {
-      cosmoBinaryReference = _json["cosmoBinaryReference"];
+    if (_json.containsKey('cosmoBinaryReference')) {
+      cosmoBinaryReference = _json['cosmoBinaryReference'];
     }
-    if (_json.containsKey("crc32cHash")) {
-      crc32cHash = _json["crc32cHash"];
+    if (_json.containsKey('crc32cHash')) {
+      crc32cHash = _json['crc32cHash'];
     }
-    if (_json.containsKey("inline")) {
-      inline = _json["inline"];
+    if (_json.containsKey('inline')) {
+      inline = _json['inline'];
     }
-    if (_json.containsKey("length")) {
-      length = _json["length"];
+    if (_json.containsKey('length')) {
+      length = _json['length'];
     }
-    if (_json.containsKey("md5Hash")) {
-      md5Hash = _json["md5Hash"];
+    if (_json.containsKey('md5Hash')) {
+      md5Hash = _json['md5Hash'];
     }
-    if (_json.containsKey("objectId")) {
-      objectId = GdataObjectId.fromJson(_json["objectId"]);
+    if (_json.containsKey('objectId')) {
+      objectId = GdataObjectId.fromJson(_json['objectId']);
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("referenceType")) {
-      referenceType = _json["referenceType"];
+    if (_json.containsKey('referenceType')) {
+      referenceType = _json['referenceType'];
     }
-    if (_json.containsKey("sha1Hash")) {
-      sha1Hash = _json["sha1Hash"];
+    if (_json.containsKey('sha1Hash')) {
+      sha1Hash = _json['sha1Hash'];
     }
   }
 
@@ -838,37 +837,37 @@ class GdataCompositeMedia {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blobRef != null) {
-      _json["blobRef"] = blobRef;
+      _json['blobRef'] = blobRef;
     }
     if (blobstore2Info != null) {
-      _json["blobstore2Info"] = blobstore2Info.toJson();
+      _json['blobstore2Info'] = blobstore2Info.toJson();
     }
     if (cosmoBinaryReference != null) {
-      _json["cosmoBinaryReference"] = cosmoBinaryReference;
+      _json['cosmoBinaryReference'] = cosmoBinaryReference;
     }
     if (crc32cHash != null) {
-      _json["crc32cHash"] = crc32cHash;
+      _json['crc32cHash'] = crc32cHash;
     }
     if (inline != null) {
-      _json["inline"] = inline;
+      _json['inline'] = inline;
     }
     if (length != null) {
-      _json["length"] = length;
+      _json['length'] = length;
     }
     if (md5Hash != null) {
-      _json["md5Hash"] = md5Hash;
+      _json['md5Hash'] = md5Hash;
     }
     if (objectId != null) {
-      _json["objectId"] = objectId.toJson();
+      _json['objectId'] = objectId.toJson();
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (referenceType != null) {
-      _json["referenceType"] = referenceType;
+      _json['referenceType'] = referenceType;
     }
     if (sha1Hash != null) {
-      _json["sha1Hash"] = sha1Hash;
+      _json['sha1Hash'] = sha1Hash;
     }
     return _json;
   }
@@ -894,20 +893,20 @@ class GdataContentTypeInfo {
   GdataContentTypeInfo();
 
   GdataContentTypeInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("bestGuess")) {
-      bestGuess = _json["bestGuess"];
+    if (_json.containsKey('bestGuess')) {
+      bestGuess = _json['bestGuess'];
     }
-    if (_json.containsKey("fromBytes")) {
-      fromBytes = _json["fromBytes"];
+    if (_json.containsKey('fromBytes')) {
+      fromBytes = _json['fromBytes'];
     }
-    if (_json.containsKey("fromFileName")) {
-      fromFileName = _json["fromFileName"];
+    if (_json.containsKey('fromFileName')) {
+      fromFileName = _json['fromFileName'];
     }
-    if (_json.containsKey("fromHeader")) {
-      fromHeader = _json["fromHeader"];
+    if (_json.containsKey('fromHeader')) {
+      fromHeader = _json['fromHeader'];
     }
-    if (_json.containsKey("fromUrlPath")) {
-      fromUrlPath = _json["fromUrlPath"];
+    if (_json.containsKey('fromUrlPath')) {
+      fromUrlPath = _json['fromUrlPath'];
     }
   }
 
@@ -915,19 +914,19 @@ class GdataContentTypeInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bestGuess != null) {
-      _json["bestGuess"] = bestGuess;
+      _json['bestGuess'] = bestGuess;
     }
     if (fromBytes != null) {
-      _json["fromBytes"] = fromBytes;
+      _json['fromBytes'] = fromBytes;
     }
     if (fromFileName != null) {
-      _json["fromFileName"] = fromFileName;
+      _json['fromFileName'] = fromFileName;
     }
     if (fromHeader != null) {
-      _json["fromHeader"] = fromHeader;
+      _json['fromHeader'] = fromHeader;
     }
     if (fromUrlPath != null) {
-      _json["fromUrlPath"] = fromUrlPath;
+      _json['fromUrlPath'] = fromUrlPath;
     }
     return _json;
   }
@@ -953,21 +952,21 @@ class GdataDiffChecksumsResponse {
   GdataDiffChecksumsResponse();
 
   GdataDiffChecksumsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("checksumsLocation")) {
+    if (_json.containsKey('checksumsLocation')) {
       checksumsLocation =
-          GdataCompositeMedia.fromJson(_json["checksumsLocation"]);
+          GdataCompositeMedia.fromJson(_json['checksumsLocation']);
     }
-    if (_json.containsKey("chunkSizeBytes")) {
-      chunkSizeBytes = _json["chunkSizeBytes"];
+    if (_json.containsKey('chunkSizeBytes')) {
+      chunkSizeBytes = _json['chunkSizeBytes'];
     }
-    if (_json.containsKey("objectLocation")) {
-      objectLocation = GdataCompositeMedia.fromJson(_json["objectLocation"]);
+    if (_json.containsKey('objectLocation')) {
+      objectLocation = GdataCompositeMedia.fromJson(_json['objectLocation']);
     }
-    if (_json.containsKey("objectSizeBytes")) {
-      objectSizeBytes = _json["objectSizeBytes"];
+    if (_json.containsKey('objectSizeBytes')) {
+      objectSizeBytes = _json['objectSizeBytes'];
     }
-    if (_json.containsKey("objectVersion")) {
-      objectVersion = _json["objectVersion"];
+    if (_json.containsKey('objectVersion')) {
+      objectVersion = _json['objectVersion'];
     }
   }
 
@@ -975,19 +974,19 @@ class GdataDiffChecksumsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (checksumsLocation != null) {
-      _json["checksumsLocation"] = checksumsLocation.toJson();
+      _json['checksumsLocation'] = checksumsLocation.toJson();
     }
     if (chunkSizeBytes != null) {
-      _json["chunkSizeBytes"] = chunkSizeBytes;
+      _json['chunkSizeBytes'] = chunkSizeBytes;
     }
     if (objectLocation != null) {
-      _json["objectLocation"] = objectLocation.toJson();
+      _json['objectLocation'] = objectLocation.toJson();
     }
     if (objectSizeBytes != null) {
-      _json["objectSizeBytes"] = objectSizeBytes;
+      _json['objectSizeBytes'] = objectSizeBytes;
     }
     if (objectVersion != null) {
-      _json["objectVersion"] = objectVersion;
+      _json['objectVersion'] = objectVersion;
     }
     return _json;
   }
@@ -1001,8 +1000,8 @@ class GdataDiffDownloadResponse {
   GdataDiffDownloadResponse();
 
   GdataDiffDownloadResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("objectLocation")) {
-      objectLocation = GdataCompositeMedia.fromJson(_json["objectLocation"]);
+    if (_json.containsKey('objectLocation')) {
+      objectLocation = GdataCompositeMedia.fromJson(_json['objectLocation']);
     }
   }
 
@@ -1010,7 +1009,7 @@ class GdataDiffDownloadResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (objectLocation != null) {
-      _json["objectLocation"] = objectLocation.toJson();
+      _json['objectLocation'] = objectLocation.toJson();
     }
     return _json;
   }
@@ -1030,14 +1029,14 @@ class GdataDiffUploadRequest {
   GdataDiffUploadRequest();
 
   GdataDiffUploadRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("checksumsInfo")) {
-      checksumsInfo = GdataCompositeMedia.fromJson(_json["checksumsInfo"]);
+    if (_json.containsKey('checksumsInfo')) {
+      checksumsInfo = GdataCompositeMedia.fromJson(_json['checksumsInfo']);
     }
-    if (_json.containsKey("objectInfo")) {
-      objectInfo = GdataCompositeMedia.fromJson(_json["objectInfo"]);
+    if (_json.containsKey('objectInfo')) {
+      objectInfo = GdataCompositeMedia.fromJson(_json['objectInfo']);
     }
-    if (_json.containsKey("objectVersion")) {
-      objectVersion = _json["objectVersion"];
+    if (_json.containsKey('objectVersion')) {
+      objectVersion = _json['objectVersion'];
     }
   }
 
@@ -1045,13 +1044,13 @@ class GdataDiffUploadRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (checksumsInfo != null) {
-      _json["checksumsInfo"] = checksumsInfo.toJson();
+      _json['checksumsInfo'] = checksumsInfo.toJson();
     }
     if (objectInfo != null) {
-      _json["objectInfo"] = objectInfo.toJson();
+      _json['objectInfo'] = objectInfo.toJson();
     }
     if (objectVersion != null) {
-      _json["objectVersion"] = objectVersion;
+      _json['objectVersion'] = objectVersion;
     }
     return _json;
   }
@@ -1068,11 +1067,11 @@ class GdataDiffUploadResponse {
   GdataDiffUploadResponse();
 
   GdataDiffUploadResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("objectVersion")) {
-      objectVersion = _json["objectVersion"];
+    if (_json.containsKey('objectVersion')) {
+      objectVersion = _json['objectVersion'];
     }
-    if (_json.containsKey("originalObject")) {
-      originalObject = GdataCompositeMedia.fromJson(_json["originalObject"]);
+    if (_json.containsKey('originalObject')) {
+      originalObject = GdataCompositeMedia.fromJson(_json['originalObject']);
     }
   }
 
@@ -1080,10 +1079,10 @@ class GdataDiffUploadResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (objectVersion != null) {
-      _json["objectVersion"] = objectVersion;
+      _json['objectVersion'] = objectVersion;
     }
     if (originalObject != null) {
-      _json["originalObject"] = originalObject.toJson();
+      _json['originalObject'] = originalObject.toJson();
     }
     return _json;
   }
@@ -1100,11 +1099,11 @@ class GdataDiffVersionResponse {
   GdataDiffVersionResponse();
 
   GdataDiffVersionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("objectSizeBytes")) {
-      objectSizeBytes = _json["objectSizeBytes"];
+    if (_json.containsKey('objectSizeBytes')) {
+      objectSizeBytes = _json['objectSizeBytes'];
     }
-    if (_json.containsKey("objectVersion")) {
-      objectVersion = _json["objectVersion"];
+    if (_json.containsKey('objectVersion')) {
+      objectVersion = _json['objectVersion'];
     }
   }
 
@@ -1112,10 +1111,10 @@ class GdataDiffVersionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (objectSizeBytes != null) {
-      _json["objectSizeBytes"] = objectSizeBytes;
+      _json['objectSizeBytes'] = objectSizeBytes;
     }
     if (objectVersion != null) {
-      _json["objectVersion"] = objectVersion;
+      _json['objectVersion'] = objectVersion;
     }
     return _json;
   }
@@ -1132,11 +1131,11 @@ class GdataDownloadParameters {
   GdataDownloadParameters();
 
   GdataDownloadParameters.fromJson(core.Map _json) {
-    if (_json.containsKey("allowGzipCompression")) {
-      allowGzipCompression = _json["allowGzipCompression"];
+    if (_json.containsKey('allowGzipCompression')) {
+      allowGzipCompression = _json['allowGzipCompression'];
     }
-    if (_json.containsKey("ignoreRange")) {
-      ignoreRange = _json["ignoreRange"];
+    if (_json.containsKey('ignoreRange')) {
+      ignoreRange = _json['ignoreRange'];
     }
   }
 
@@ -1144,10 +1143,10 @@ class GdataDownloadParameters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowGzipCompression != null) {
-      _json["allowGzipCompression"] = allowGzipCompression;
+      _json['allowGzipCompression'] = allowGzipCompression;
     }
     if (ignoreRange != null) {
-      _json["ignoreRange"] = ignoreRange;
+      _json['ignoreRange'] = ignoreRange;
     }
     return _json;
   }
@@ -1165,7 +1164,7 @@ class GdataMedia {
 
   set bigstoreObjectRefAsBytes(core.List<core.int> _bytes) {
     bigstoreObjectRef =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -1174,7 +1173,7 @@ class GdataMedia {
 
   set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -1196,7 +1195,7 @@ class GdataMedia {
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -1235,7 +1234,7 @@ class GdataMedia {
 
   set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -1250,7 +1249,7 @@ class GdataMedia {
 
   set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -1259,7 +1258,7 @@ class GdataMedia {
 
   set mediaIdAsBytes(core.List<core.int> _bytes) {
     mediaId =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -1291,7 +1290,7 @@ class GdataMedia {
 
   set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -1301,7 +1300,7 @@ class GdataMedia {
 
   set sha256HashAsBytes(core.List<core.int> _bytes) {
     sha256Hash =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// gdata
@@ -1313,104 +1312,104 @@ class GdataMedia {
   GdataMedia();
 
   GdataMedia.fromJson(core.Map _json) {
-    if (_json.containsKey("algorithm")) {
-      algorithm = _json["algorithm"];
+    if (_json.containsKey('algorithm')) {
+      algorithm = _json['algorithm'];
     }
-    if (_json.containsKey("bigstoreObjectRef")) {
-      bigstoreObjectRef = _json["bigstoreObjectRef"];
+    if (_json.containsKey('bigstoreObjectRef')) {
+      bigstoreObjectRef = _json['bigstoreObjectRef'];
     }
-    if (_json.containsKey("blobRef")) {
-      blobRef = _json["blobRef"];
+    if (_json.containsKey('blobRef')) {
+      blobRef = _json['blobRef'];
     }
-    if (_json.containsKey("blobstore2Info")) {
-      blobstore2Info = GdataBlobstore2Info.fromJson(_json["blobstore2Info"]);
+    if (_json.containsKey('blobstore2Info')) {
+      blobstore2Info = GdataBlobstore2Info.fromJson(_json['blobstore2Info']);
     }
-    if (_json.containsKey("compositeMedia")) {
-      compositeMedia = (_json["compositeMedia"] as core.List)
+    if (_json.containsKey('compositeMedia')) {
+      compositeMedia = (_json['compositeMedia'] as core.List)
           .map<GdataCompositeMedia>(
               (value) => GdataCompositeMedia.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("contentType")) {
-      contentType = _json["contentType"];
+    if (_json.containsKey('contentType')) {
+      contentType = _json['contentType'];
     }
-    if (_json.containsKey("contentTypeInfo")) {
-      contentTypeInfo = GdataContentTypeInfo.fromJson(_json["contentTypeInfo"]);
+    if (_json.containsKey('contentTypeInfo')) {
+      contentTypeInfo = GdataContentTypeInfo.fromJson(_json['contentTypeInfo']);
     }
-    if (_json.containsKey("cosmoBinaryReference")) {
-      cosmoBinaryReference = _json["cosmoBinaryReference"];
+    if (_json.containsKey('cosmoBinaryReference')) {
+      cosmoBinaryReference = _json['cosmoBinaryReference'];
     }
-    if (_json.containsKey("crc32cHash")) {
-      crc32cHash = _json["crc32cHash"];
+    if (_json.containsKey('crc32cHash')) {
+      crc32cHash = _json['crc32cHash'];
     }
-    if (_json.containsKey("diffChecksumsResponse")) {
+    if (_json.containsKey('diffChecksumsResponse')) {
       diffChecksumsResponse =
-          GdataDiffChecksumsResponse.fromJson(_json["diffChecksumsResponse"]);
+          GdataDiffChecksumsResponse.fromJson(_json['diffChecksumsResponse']);
     }
-    if (_json.containsKey("diffDownloadResponse")) {
+    if (_json.containsKey('diffDownloadResponse')) {
       diffDownloadResponse =
-          GdataDiffDownloadResponse.fromJson(_json["diffDownloadResponse"]);
+          GdataDiffDownloadResponse.fromJson(_json['diffDownloadResponse']);
     }
-    if (_json.containsKey("diffUploadRequest")) {
+    if (_json.containsKey('diffUploadRequest')) {
       diffUploadRequest =
-          GdataDiffUploadRequest.fromJson(_json["diffUploadRequest"]);
+          GdataDiffUploadRequest.fromJson(_json['diffUploadRequest']);
     }
-    if (_json.containsKey("diffUploadResponse")) {
+    if (_json.containsKey('diffUploadResponse')) {
       diffUploadResponse =
-          GdataDiffUploadResponse.fromJson(_json["diffUploadResponse"]);
+          GdataDiffUploadResponse.fromJson(_json['diffUploadResponse']);
     }
-    if (_json.containsKey("diffVersionResponse")) {
+    if (_json.containsKey('diffVersionResponse')) {
       diffVersionResponse =
-          GdataDiffVersionResponse.fromJson(_json["diffVersionResponse"]);
+          GdataDiffVersionResponse.fromJson(_json['diffVersionResponse']);
     }
-    if (_json.containsKey("downloadParameters")) {
+    if (_json.containsKey('downloadParameters')) {
       downloadParameters =
-          GdataDownloadParameters.fromJson(_json["downloadParameters"]);
+          GdataDownloadParameters.fromJson(_json['downloadParameters']);
     }
-    if (_json.containsKey("filename")) {
-      filename = _json["filename"];
+    if (_json.containsKey('filename')) {
+      filename = _json['filename'];
     }
-    if (_json.containsKey("hash")) {
-      hash = _json["hash"];
+    if (_json.containsKey('hash')) {
+      hash = _json['hash'];
     }
-    if (_json.containsKey("hashVerified")) {
-      hashVerified = _json["hashVerified"];
+    if (_json.containsKey('hashVerified')) {
+      hashVerified = _json['hashVerified'];
     }
-    if (_json.containsKey("inline")) {
-      inline = _json["inline"];
+    if (_json.containsKey('inline')) {
+      inline = _json['inline'];
     }
-    if (_json.containsKey("isPotentialRetry")) {
-      isPotentialRetry = _json["isPotentialRetry"];
+    if (_json.containsKey('isPotentialRetry')) {
+      isPotentialRetry = _json['isPotentialRetry'];
     }
-    if (_json.containsKey("length")) {
-      length = _json["length"];
+    if (_json.containsKey('length')) {
+      length = _json['length'];
     }
-    if (_json.containsKey("md5Hash")) {
-      md5Hash = _json["md5Hash"];
+    if (_json.containsKey('md5Hash')) {
+      md5Hash = _json['md5Hash'];
     }
-    if (_json.containsKey("mediaId")) {
-      mediaId = _json["mediaId"];
+    if (_json.containsKey('mediaId')) {
+      mediaId = _json['mediaId'];
     }
-    if (_json.containsKey("objectId")) {
-      objectId = GdataObjectId.fromJson(_json["objectId"]);
+    if (_json.containsKey('objectId')) {
+      objectId = GdataObjectId.fromJson(_json['objectId']);
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("referenceType")) {
-      referenceType = _json["referenceType"];
+    if (_json.containsKey('referenceType')) {
+      referenceType = _json['referenceType'];
     }
-    if (_json.containsKey("sha1Hash")) {
-      sha1Hash = _json["sha1Hash"];
+    if (_json.containsKey('sha1Hash')) {
+      sha1Hash = _json['sha1Hash'];
     }
-    if (_json.containsKey("sha256Hash")) {
-      sha256Hash = _json["sha256Hash"];
+    if (_json.containsKey('sha256Hash')) {
+      sha256Hash = _json['sha256Hash'];
     }
-    if (_json.containsKey("timestamp")) {
-      timestamp = _json["timestamp"];
+    if (_json.containsKey('timestamp')) {
+      timestamp = _json['timestamp'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
   }
 
@@ -1418,95 +1417,95 @@ class GdataMedia {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (algorithm != null) {
-      _json["algorithm"] = algorithm;
+      _json['algorithm'] = algorithm;
     }
     if (bigstoreObjectRef != null) {
-      _json["bigstoreObjectRef"] = bigstoreObjectRef;
+      _json['bigstoreObjectRef'] = bigstoreObjectRef;
     }
     if (blobRef != null) {
-      _json["blobRef"] = blobRef;
+      _json['blobRef'] = blobRef;
     }
     if (blobstore2Info != null) {
-      _json["blobstore2Info"] = blobstore2Info.toJson();
+      _json['blobstore2Info'] = blobstore2Info.toJson();
     }
     if (compositeMedia != null) {
-      _json["compositeMedia"] =
+      _json['compositeMedia'] =
           compositeMedia.map((value) => value.toJson()).toList();
     }
     if (contentType != null) {
-      _json["contentType"] = contentType;
+      _json['contentType'] = contentType;
     }
     if (contentTypeInfo != null) {
-      _json["contentTypeInfo"] = contentTypeInfo.toJson();
+      _json['contentTypeInfo'] = contentTypeInfo.toJson();
     }
     if (cosmoBinaryReference != null) {
-      _json["cosmoBinaryReference"] = cosmoBinaryReference;
+      _json['cosmoBinaryReference'] = cosmoBinaryReference;
     }
     if (crc32cHash != null) {
-      _json["crc32cHash"] = crc32cHash;
+      _json['crc32cHash'] = crc32cHash;
     }
     if (diffChecksumsResponse != null) {
-      _json["diffChecksumsResponse"] = diffChecksumsResponse.toJson();
+      _json['diffChecksumsResponse'] = diffChecksumsResponse.toJson();
     }
     if (diffDownloadResponse != null) {
-      _json["diffDownloadResponse"] = diffDownloadResponse.toJson();
+      _json['diffDownloadResponse'] = diffDownloadResponse.toJson();
     }
     if (diffUploadRequest != null) {
-      _json["diffUploadRequest"] = diffUploadRequest.toJson();
+      _json['diffUploadRequest'] = diffUploadRequest.toJson();
     }
     if (diffUploadResponse != null) {
-      _json["diffUploadResponse"] = diffUploadResponse.toJson();
+      _json['diffUploadResponse'] = diffUploadResponse.toJson();
     }
     if (diffVersionResponse != null) {
-      _json["diffVersionResponse"] = diffVersionResponse.toJson();
+      _json['diffVersionResponse'] = diffVersionResponse.toJson();
     }
     if (downloadParameters != null) {
-      _json["downloadParameters"] = downloadParameters.toJson();
+      _json['downloadParameters'] = downloadParameters.toJson();
     }
     if (filename != null) {
-      _json["filename"] = filename;
+      _json['filename'] = filename;
     }
     if (hash != null) {
-      _json["hash"] = hash;
+      _json['hash'] = hash;
     }
     if (hashVerified != null) {
-      _json["hashVerified"] = hashVerified;
+      _json['hashVerified'] = hashVerified;
     }
     if (inline != null) {
-      _json["inline"] = inline;
+      _json['inline'] = inline;
     }
     if (isPotentialRetry != null) {
-      _json["isPotentialRetry"] = isPotentialRetry;
+      _json['isPotentialRetry'] = isPotentialRetry;
     }
     if (length != null) {
-      _json["length"] = length;
+      _json['length'] = length;
     }
     if (md5Hash != null) {
-      _json["md5Hash"] = md5Hash;
+      _json['md5Hash'] = md5Hash;
     }
     if (mediaId != null) {
-      _json["mediaId"] = mediaId;
+      _json['mediaId'] = mediaId;
     }
     if (objectId != null) {
-      _json["objectId"] = objectId.toJson();
+      _json['objectId'] = objectId.toJson();
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (referenceType != null) {
-      _json["referenceType"] = referenceType;
+      _json['referenceType'] = referenceType;
     }
     if (sha1Hash != null) {
-      _json["sha1Hash"] = sha1Hash;
+      _json['sha1Hash'] = sha1Hash;
     }
     if (sha256Hash != null) {
-      _json["sha256Hash"] = sha256Hash;
+      _json['sha256Hash'] = sha256Hash;
     }
     if (timestamp != null) {
-      _json["timestamp"] = timestamp;
+      _json['timestamp'] = timestamp;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     return _json;
   }
@@ -1526,14 +1525,14 @@ class GdataObjectId {
   GdataObjectId();
 
   GdataObjectId.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketName")) {
-      bucketName = _json["bucketName"];
+    if (_json.containsKey('bucketName')) {
+      bucketName = _json['bucketName'];
     }
-    if (_json.containsKey("generation")) {
-      generation = _json["generation"];
+    if (_json.containsKey('generation')) {
+      generation = _json['generation'];
     }
-    if (_json.containsKey("objectName")) {
-      objectName = _json["objectName"];
+    if (_json.containsKey('objectName')) {
+      objectName = _json['objectName'];
     }
   }
 
@@ -1541,13 +1540,13 @@ class GdataObjectId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketName != null) {
-      _json["bucketName"] = bucketName;
+      _json['bucketName'] = bucketName;
     }
     if (generation != null) {
-      _json["generation"] = generation;
+      _json['generation'] = generation;
     }
     if (objectName != null) {
-      _json["objectName"] = objectName;
+      _json['objectName'] = objectName;
     }
     return _json;
   }
@@ -1579,23 +1578,23 @@ class Job {
   Job();
 
   Job.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("expireTime")) {
-      expireTime = _json["expireTime"];
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("reportTypeId")) {
-      reportTypeId = _json["reportTypeId"];
+    if (_json.containsKey('reportTypeId')) {
+      reportTypeId = _json['reportTypeId'];
     }
-    if (_json.containsKey("systemManaged")) {
-      systemManaged = _json["systemManaged"];
+    if (_json.containsKey('systemManaged')) {
+      systemManaged = _json['systemManaged'];
     }
   }
 
@@ -1603,22 +1602,22 @@ class Job {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (expireTime != null) {
-      _json["expireTime"] = expireTime;
+      _json['expireTime'] = expireTime;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (reportTypeId != null) {
-      _json["reportTypeId"] = reportTypeId;
+      _json['reportTypeId'] = reportTypeId;
     }
     if (systemManaged != null) {
-      _json["systemManaged"] = systemManaged;
+      _json['systemManaged'] = systemManaged;
     }
     return _json;
   }
@@ -1637,13 +1636,13 @@ class ListJobsResponse {
   ListJobsResponse();
 
   ListJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobs")) {
-      jobs = (_json["jobs"] as core.List)
+    if (_json.containsKey('jobs')) {
+      jobs = (_json['jobs'] as core.List)
           .map<Job>((value) => Job.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1651,10 +1650,10 @@ class ListJobsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (jobs != null) {
-      _json["jobs"] = jobs.map((value) => value.toJson()).toList();
+      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1673,11 +1672,11 @@ class ListReportTypesResponse {
   ListReportTypesResponse();
 
   ListReportTypesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("reportTypes")) {
-      reportTypes = (_json["reportTypes"] as core.List)
+    if (_json.containsKey('reportTypes')) {
+      reportTypes = (_json['reportTypes'] as core.List)
           .map<ReportType>((value) => ReportType.fromJson(value))
           .toList();
     }
@@ -1687,10 +1686,10 @@ class ListReportTypesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (reportTypes != null) {
-      _json["reportTypes"] =
+      _json['reportTypes'] =
           reportTypes.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -1710,11 +1709,11 @@ class ListReportsResponse {
   ListReportsResponse();
 
   ListReportsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("reports")) {
-      reports = (_json["reports"] as core.List)
+    if (_json.containsKey('reports')) {
+      reports = (_json['reports'] as core.List)
           .map<Report>((value) => Report.fromJson(value))
           .toList();
     }
@@ -1724,10 +1723,10 @@ class ListReportsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (reports != null) {
-      _json["reports"] = reports.map((value) => value.toJson()).toList();
+      _json['reports'] = reports.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1762,26 +1761,26 @@ class Report {
   Report();
 
   Report.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("downloadUrl")) {
-      downloadUrl = _json["downloadUrl"];
+    if (_json.containsKey('downloadUrl')) {
+      downloadUrl = _json['downloadUrl'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("jobExpireTime")) {
-      jobExpireTime = _json["jobExpireTime"];
+    if (_json.containsKey('jobExpireTime')) {
+      jobExpireTime = _json['jobExpireTime'];
     }
-    if (_json.containsKey("jobId")) {
-      jobId = _json["jobId"];
+    if (_json.containsKey('jobId')) {
+      jobId = _json['jobId'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -1789,25 +1788,25 @@ class Report {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (downloadUrl != null) {
-      _json["downloadUrl"] = downloadUrl;
+      _json['downloadUrl'] = downloadUrl;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (jobExpireTime != null) {
-      _json["jobExpireTime"] = jobExpireTime;
+      _json['jobExpireTime'] = jobExpireTime;
     }
     if (jobId != null) {
-      _json["jobId"] = jobId;
+      _json['jobId'] = jobId;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -1832,17 +1831,17 @@ class ReportType {
   ReportType();
 
   ReportType.fromJson(core.Map _json) {
-    if (_json.containsKey("deprecateTime")) {
-      deprecateTime = _json["deprecateTime"];
+    if (_json.containsKey('deprecateTime')) {
+      deprecateTime = _json['deprecateTime'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("systemManaged")) {
-      systemManaged = _json["systemManaged"];
+    if (_json.containsKey('systemManaged')) {
+      systemManaged = _json['systemManaged'];
     }
   }
 
@@ -1850,16 +1849,16 @@ class ReportType {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deprecateTime != null) {
-      _json["deprecateTime"] = deprecateTime;
+      _json['deprecateTime'] = deprecateTime;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (systemManaged != null) {
-      _json["systemManaged"] = systemManaged;
+      _json['systemManaged'] = systemManaged;
     }
     return _json;
   }

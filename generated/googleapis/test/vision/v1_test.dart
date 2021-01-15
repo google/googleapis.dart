@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,7 +75,7 @@ api.AddProductToProductSetRequest buildAddProductToProductSetRequest() {
   var o = api.AddProductToProductSetRequest();
   buildCounterAddProductToProductSetRequest++;
   if (buildCounterAddProductToProductSetRequest < 3) {
-    o.product = "foo";
+    o.product = 'foo';
   }
   buildCounterAddProductToProductSetRequest--;
   return o;
@@ -412,7 +412,7 @@ api.AsyncBatchAnnotateFilesRequest buildAsyncBatchAnnotateFilesRequest() {
   var o = api.AsyncBatchAnnotateFilesRequest();
   buildCounterAsyncBatchAnnotateFilesRequest++;
   if (buildCounterAsyncBatchAnnotateFilesRequest < 3) {
-    o.parent = "foo";
+    o.parent = 'foo';
     o.requests = buildUnnamed2981();
   }
   buildCounterAsyncBatchAnnotateFilesRequest--;
@@ -480,7 +480,7 @@ api.AsyncBatchAnnotateImagesRequest buildAsyncBatchAnnotateImagesRequest() {
   buildCounterAsyncBatchAnnotateImagesRequest++;
   if (buildCounterAsyncBatchAnnotateImagesRequest < 3) {
     o.outputConfig = buildOutputConfig();
-    o.parent = "foo";
+    o.parent = 'foo';
     o.requests = buildUnnamed2983();
   }
   buildCounterAsyncBatchAnnotateImagesRequest--;
@@ -536,7 +536,7 @@ api.BatchAnnotateFilesRequest buildBatchAnnotateFilesRequest() {
   var o = api.BatchAnnotateFilesRequest();
   buildCounterBatchAnnotateFilesRequest++;
   if (buildCounterBatchAnnotateFilesRequest < 3) {
-    o.parent = "foo";
+    o.parent = 'foo';
     o.requests = buildUnnamed2984();
   }
   buildCounterBatchAnnotateFilesRequest--;
@@ -602,7 +602,7 @@ api.BatchAnnotateImagesRequest buildBatchAnnotateImagesRequest() {
   var o = api.BatchAnnotateImagesRequest();
   buildCounterBatchAnnotateImagesRequest++;
   if (buildCounterBatchAnnotateImagesRequest < 3) {
-    o.parent = "foo";
+    o.parent = 'foo';
     o.requests = buildUnnamed2986();
   }
   buildCounterBatchAnnotateImagesRequest--;
@@ -655,9 +655,9 @@ api.BatchOperationMetadata buildBatchOperationMetadata() {
   var o = api.BatchOperationMetadata();
   buildCounterBatchOperationMetadata++;
   if (buildCounterBatchOperationMetadata < 3) {
-    o.endTime = "foo";
-    o.state = "foo";
-    o.submitTime = "foo";
+    o.endTime = 'foo';
+    o.state = 'foo';
+    o.submitTime = 'foo';
   }
   buildCounterBatchOperationMetadata--;
   return o;
@@ -691,7 +691,7 @@ api.Block buildBlock() {
   var o = api.Block();
   buildCounterBlock++;
   if (buildCounterBlock < 3) {
-    o.blockType = "foo";
+    o.blockType = 'foo';
     o.boundingBox = buildBoundingPoly();
     o.confidence = 42.0;
     o.paragraphs = buildUnnamed2988();
@@ -916,7 +916,7 @@ api.DetectedBreak buildDetectedBreak() {
   buildCounterDetectedBreak++;
   if (buildCounterDetectedBreak < 3) {
     o.isPrefix = true;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterDetectedBreak--;
   return o;
@@ -937,7 +937,7 @@ api.DetectedLanguage buildDetectedLanguage() {
   buildCounterDetectedLanguage++;
   if (buildCounterDetectedLanguage < 3) {
     o.confidence = 42.0;
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
   }
   buildCounterDetectedLanguage--;
   return o;
@@ -1032,10 +1032,10 @@ api.EntityAnnotation buildEntityAnnotation() {
   if (buildCounterEntityAnnotation < 3) {
     o.boundingPoly = buildBoundingPoly();
     o.confidence = 42.0;
-    o.description = "foo";
-    o.locale = "foo";
+    o.description = 'foo';
+    o.locale = 'foo';
     o.locations = buildUnnamed2994();
-    o.mid = "foo";
+    o.mid = 'foo';
     o.properties = buildUnnamed2995();
     o.score = 42.0;
     o.topicality = 42.0;
@@ -1078,21 +1078,21 @@ api.FaceAnnotation buildFaceAnnotation() {
   var o = api.FaceAnnotation();
   buildCounterFaceAnnotation++;
   if (buildCounterFaceAnnotation < 3) {
-    o.angerLikelihood = "foo";
-    o.blurredLikelihood = "foo";
+    o.angerLikelihood = 'foo';
+    o.blurredLikelihood = 'foo';
     o.boundingPoly = buildBoundingPoly();
     o.detectionConfidence = 42.0;
     o.fdBoundingPoly = buildBoundingPoly();
-    o.headwearLikelihood = "foo";
-    o.joyLikelihood = "foo";
+    o.headwearLikelihood = 'foo';
+    o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
     o.landmarks = buildUnnamed2996();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
-    o.sorrowLikelihood = "foo";
-    o.surpriseLikelihood = "foo";
+    o.sorrowLikelihood = 'foo';
+    o.surpriseLikelihood = 'foo';
     o.tiltAngle = 42.0;
-    o.underExposedLikelihood = "foo";
+    o.underExposedLikelihood = 'foo';
   }
   buildCounterFaceAnnotation--;
   return o;
@@ -1126,8 +1126,8 @@ api.Feature buildFeature() {
   buildCounterFeature++;
   if (buildCounterFeature < 3) {
     o.maxResults = 42;
-    o.model = "foo";
-    o.type = "foo";
+    o.model = 'foo';
+    o.type = 'foo';
   }
   buildCounterFeature--;
   return o;
@@ -1148,7 +1148,7 @@ api.GcsDestination buildGcsDestination() {
   var o = api.GcsDestination();
   buildCounterGcsDestination++;
   if (buildCounterGcsDestination < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGcsDestination--;
   return o;
@@ -1167,7 +1167,7 @@ api.GcsSource buildGcsSource() {
   var o = api.GcsSource();
   buildCounterGcsSource++;
   if (buildCounterGcsSource < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGcsSource--;
   return o;
@@ -1437,7 +1437,7 @@ api.GoogleCloudVisionV1p1beta1Block buildGoogleCloudVisionV1p1beta1Block() {
   var o = api.GoogleCloudVisionV1p1beta1Block();
   buildCounterGoogleCloudVisionV1p1beta1Block++;
   if (buildCounterGoogleCloudVisionV1p1beta1Block < 3) {
-    o.blockType = "foo";
+    o.blockType = 'foo';
     o.boundingBox = buildGoogleCloudVisionV1p1beta1BoundingPoly();
     o.confidence = 42.0;
     o.paragraphs = buildUnnamed3005();
@@ -1662,10 +1662,10 @@ api.GoogleCloudVisionV1p1beta1EntityAnnotation
   if (buildCounterGoogleCloudVisionV1p1beta1EntityAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p1beta1BoundingPoly();
     o.confidence = 42.0;
-    o.description = "foo";
-    o.locale = "foo";
+    o.description = 'foo';
+    o.locale = 'foo';
     o.locations = buildUnnamed3010();
-    o.mid = "foo";
+    o.mid = 'foo';
     o.properties = buildUnnamed3011();
     o.score = 42.0;
     o.topicality = 42.0;
@@ -1712,21 +1712,21 @@ api.GoogleCloudVisionV1p1beta1FaceAnnotation
   var o = api.GoogleCloudVisionV1p1beta1FaceAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1FaceAnnotation < 3) {
-    o.angerLikelihood = "foo";
-    o.blurredLikelihood = "foo";
+    o.angerLikelihood = 'foo';
+    o.blurredLikelihood = 'foo';
     o.boundingPoly = buildGoogleCloudVisionV1p1beta1BoundingPoly();
     o.detectionConfidence = 42.0;
     o.fdBoundingPoly = buildGoogleCloudVisionV1p1beta1BoundingPoly();
-    o.headwearLikelihood = "foo";
-    o.joyLikelihood = "foo";
+    o.headwearLikelihood = 'foo';
+    o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
     o.landmarks = buildUnnamed3012();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
-    o.sorrowLikelihood = "foo";
-    o.surpriseLikelihood = "foo";
+    o.sorrowLikelihood = 'foo';
+    o.surpriseLikelihood = 'foo';
     o.tiltAngle = 42.0;
-    o.underExposedLikelihood = "foo";
+    o.underExposedLikelihood = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1FaceAnnotation--;
   return o;
@@ -1762,7 +1762,7 @@ api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark
   buildCounterGoogleCloudVisionV1p1beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p1beta1FaceAnnotationLandmark < 3) {
     o.position = buildGoogleCloudVisionV1p1beta1Position();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1FaceAnnotationLandmark--;
   return o;
@@ -1784,7 +1784,7 @@ api.GoogleCloudVisionV1p1beta1GcsDestination
   var o = api.GoogleCloudVisionV1p1beta1GcsDestination();
   buildCounterGoogleCloudVisionV1p1beta1GcsDestination++;
   if (buildCounterGoogleCloudVisionV1p1beta1GcsDestination < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1GcsDestination--;
   return o;
@@ -1805,7 +1805,7 @@ api.GoogleCloudVisionV1p1beta1GcsSource
   var o = api.GoogleCloudVisionV1p1beta1GcsSource();
   buildCounterGoogleCloudVisionV1p1beta1GcsSource++;
   if (buildCounterGoogleCloudVisionV1p1beta1GcsSource < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1GcsSource--;
   return o;
@@ -1827,7 +1827,7 @@ api.GoogleCloudVisionV1p1beta1ImageAnnotationContext
   buildCounterGoogleCloudVisionV1p1beta1ImageAnnotationContext++;
   if (buildCounterGoogleCloudVisionV1p1beta1ImageAnnotationContext < 3) {
     o.pageNumber = 42;
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1ImageAnnotationContext--;
   return o;
@@ -1871,9 +1871,9 @@ api.GoogleCloudVisionV1p1beta1InputConfig
   var o = api.GoogleCloudVisionV1p1beta1InputConfig();
   buildCounterGoogleCloudVisionV1p1beta1InputConfig++;
   if (buildCounterGoogleCloudVisionV1p1beta1InputConfig < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.gcsSource = buildGoogleCloudVisionV1p1beta1GcsSource();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1InputConfig--;
   return o;
@@ -1897,9 +1897,9 @@ api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation
   buildCounterGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p1beta1BoundingPoly();
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation--;
@@ -1969,9 +1969,9 @@ api.GoogleCloudVisionV1p1beta1OperationMetadata
   var o = api.GoogleCloudVisionV1p1beta1OperationMetadata();
   buildCounterGoogleCloudVisionV1p1beta1OperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p1beta1OperationMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1OperationMetadata--;
   return o;
@@ -2135,10 +2135,10 @@ api.GoogleCloudVisionV1p1beta1Product buildGoogleCloudVisionV1p1beta1Product() {
   var o = api.GoogleCloudVisionV1p1beta1Product();
   buildCounterGoogleCloudVisionV1p1beta1Product++;
   if (buildCounterGoogleCloudVisionV1p1beta1Product < 3) {
-    o.description = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
-    o.productCategory = "foo";
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
+    o.productCategory = 'foo';
     o.productLabels = buildUnnamed3015();
   }
   buildCounterGoogleCloudVisionV1p1beta1Product--;
@@ -2164,8 +2164,8 @@ api.GoogleCloudVisionV1p1beta1ProductKeyValue
   var o = api.GoogleCloudVisionV1p1beta1ProductKeyValue();
   buildCounterGoogleCloudVisionV1p1beta1ProductKeyValue++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductKeyValue < 3) {
-    o.key = "foo";
-    o.value = "foo";
+    o.key = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1ProductKeyValue--;
   return o;
@@ -2218,7 +2218,7 @@ api.GoogleCloudVisionV1p1beta1ProductSearchResults
   var o = api.GoogleCloudVisionV1p1beta1ProductSearchResults();
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResults < 3) {
-    o.indexTime = "foo";
+    o.indexTime = 'foo';
     o.productGroupedResults = buildUnnamed3016();
     o.results = buildUnnamed3017();
   }
@@ -2307,9 +2307,9 @@ api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation <
       3) {
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation--;
@@ -2335,7 +2335,7 @@ api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult
   var o = api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult();
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsResult++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsResult < 3) {
-    o.image = "foo";
+    o.image = 'foo';
     o.product = buildGoogleCloudVisionV1p1beta1Product();
     o.score = 42.0;
   }
@@ -2360,9 +2360,9 @@ api.GoogleCloudVisionV1p1beta1Property
   var o = api.GoogleCloudVisionV1p1beta1Property();
   buildCounterGoogleCloudVisionV1p1beta1Property++;
   if (buildCounterGoogleCloudVisionV1p1beta1Property < 3) {
-    o.name = "foo";
-    o.uint64Value = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.uint64Value = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1Property--;
   return o;
@@ -2385,11 +2385,11 @@ api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation
   var o = api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1SafeSearchAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1SafeSearchAnnotation < 3) {
-    o.adult = "foo";
-    o.medical = "foo";
-    o.racy = "foo";
-    o.spoof = "foo";
-    o.violence = "foo";
+    o.adult = 'foo';
+    o.medical = 'foo';
+    o.racy = 'foo';
+    o.spoof = 'foo';
+    o.violence = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1SafeSearchAnnotation--;
   return o;
@@ -2416,7 +2416,7 @@ api.GoogleCloudVisionV1p1beta1Symbol buildGoogleCloudVisionV1p1beta1Symbol() {
     o.boundingBox = buildGoogleCloudVisionV1p1beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1Symbol--;
   return o;
@@ -2454,7 +2454,7 @@ api.GoogleCloudVisionV1p1beta1TextAnnotation
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotation < 3) {
     o.pages = buildUnnamed3020();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotation--;
   return o;
@@ -2477,7 +2477,7 @@ api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak++;
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak < 3) {
     o.isPrefix = true;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak--;
   return o;
@@ -2502,7 +2502,7 @@ api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage <
       3) {
     o.confidence = 42.0;
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage--;
   return o;
@@ -2707,8 +2707,8 @@ api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity
   var o = api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity();
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebEntity++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebEntity < 3) {
-    o.description = "foo";
-    o.entityId = "foo";
+    o.description = 'foo';
+    o.entityId = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebEntity--;
@@ -2733,7 +2733,7 @@ api.GoogleCloudVisionV1p1beta1WebDetectionWebImage
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebImage++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebImage < 3) {
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebImage--;
   return o;
@@ -2755,8 +2755,8 @@ api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel
   var o = api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel();
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebLabel++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebLabel < 3) {
-    o.label = "foo";
-    o.languageCode = "foo";
+    o.label = 'foo';
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebLabel--;
   return o;
@@ -2809,10 +2809,10 @@ api.GoogleCloudVisionV1p1beta1WebDetectionWebPage
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage < 3) {
     o.fullMatchingImages = buildUnnamed3028();
-    o.pageTitle = "foo";
+    o.pageTitle = 'foo';
     o.partialMatchingImages = buildUnnamed3029();
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage--;
   return o;
@@ -3125,7 +3125,7 @@ api.GoogleCloudVisionV1p2beta1Block buildGoogleCloudVisionV1p2beta1Block() {
   var o = api.GoogleCloudVisionV1p2beta1Block();
   buildCounterGoogleCloudVisionV1p2beta1Block++;
   if (buildCounterGoogleCloudVisionV1p2beta1Block < 3) {
-    o.blockType = "foo";
+    o.blockType = 'foo';
     o.boundingBox = buildGoogleCloudVisionV1p2beta1BoundingPoly();
     o.confidence = 42.0;
     o.paragraphs = buildUnnamed3039();
@@ -3350,10 +3350,10 @@ api.GoogleCloudVisionV1p2beta1EntityAnnotation
   if (buildCounterGoogleCloudVisionV1p2beta1EntityAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p2beta1BoundingPoly();
     o.confidence = 42.0;
-    o.description = "foo";
-    o.locale = "foo";
+    o.description = 'foo';
+    o.locale = 'foo';
     o.locations = buildUnnamed3044();
-    o.mid = "foo";
+    o.mid = 'foo';
     o.properties = buildUnnamed3045();
     o.score = 42.0;
     o.topicality = 42.0;
@@ -3400,21 +3400,21 @@ api.GoogleCloudVisionV1p2beta1FaceAnnotation
   var o = api.GoogleCloudVisionV1p2beta1FaceAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1FaceAnnotation < 3) {
-    o.angerLikelihood = "foo";
-    o.blurredLikelihood = "foo";
+    o.angerLikelihood = 'foo';
+    o.blurredLikelihood = 'foo';
     o.boundingPoly = buildGoogleCloudVisionV1p2beta1BoundingPoly();
     o.detectionConfidence = 42.0;
     o.fdBoundingPoly = buildGoogleCloudVisionV1p2beta1BoundingPoly();
-    o.headwearLikelihood = "foo";
-    o.joyLikelihood = "foo";
+    o.headwearLikelihood = 'foo';
+    o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
     o.landmarks = buildUnnamed3046();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
-    o.sorrowLikelihood = "foo";
-    o.surpriseLikelihood = "foo";
+    o.sorrowLikelihood = 'foo';
+    o.surpriseLikelihood = 'foo';
     o.tiltAngle = 42.0;
-    o.underExposedLikelihood = "foo";
+    o.underExposedLikelihood = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1FaceAnnotation--;
   return o;
@@ -3450,7 +3450,7 @@ api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark
   buildCounterGoogleCloudVisionV1p2beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p2beta1FaceAnnotationLandmark < 3) {
     o.position = buildGoogleCloudVisionV1p2beta1Position();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1FaceAnnotationLandmark--;
   return o;
@@ -3472,7 +3472,7 @@ api.GoogleCloudVisionV1p2beta1GcsDestination
   var o = api.GoogleCloudVisionV1p2beta1GcsDestination();
   buildCounterGoogleCloudVisionV1p2beta1GcsDestination++;
   if (buildCounterGoogleCloudVisionV1p2beta1GcsDestination < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1GcsDestination--;
   return o;
@@ -3493,7 +3493,7 @@ api.GoogleCloudVisionV1p2beta1GcsSource
   var o = api.GoogleCloudVisionV1p2beta1GcsSource();
   buildCounterGoogleCloudVisionV1p2beta1GcsSource++;
   if (buildCounterGoogleCloudVisionV1p2beta1GcsSource < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1GcsSource--;
   return o;
@@ -3515,7 +3515,7 @@ api.GoogleCloudVisionV1p2beta1ImageAnnotationContext
   buildCounterGoogleCloudVisionV1p2beta1ImageAnnotationContext++;
   if (buildCounterGoogleCloudVisionV1p2beta1ImageAnnotationContext < 3) {
     o.pageNumber = 42;
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1ImageAnnotationContext--;
   return o;
@@ -3559,9 +3559,9 @@ api.GoogleCloudVisionV1p2beta1InputConfig
   var o = api.GoogleCloudVisionV1p2beta1InputConfig();
   buildCounterGoogleCloudVisionV1p2beta1InputConfig++;
   if (buildCounterGoogleCloudVisionV1p2beta1InputConfig < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.gcsSource = buildGoogleCloudVisionV1p2beta1GcsSource();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1InputConfig--;
   return o;
@@ -3585,9 +3585,9 @@ api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation
   buildCounterGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p2beta1BoundingPoly();
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation--;
@@ -3657,9 +3657,9 @@ api.GoogleCloudVisionV1p2beta1OperationMetadata
   var o = api.GoogleCloudVisionV1p2beta1OperationMetadata();
   buildCounterGoogleCloudVisionV1p2beta1OperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p2beta1OperationMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1OperationMetadata--;
   return o;
@@ -3823,10 +3823,10 @@ api.GoogleCloudVisionV1p2beta1Product buildGoogleCloudVisionV1p2beta1Product() {
   var o = api.GoogleCloudVisionV1p2beta1Product();
   buildCounterGoogleCloudVisionV1p2beta1Product++;
   if (buildCounterGoogleCloudVisionV1p2beta1Product < 3) {
-    o.description = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
-    o.productCategory = "foo";
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
+    o.productCategory = 'foo';
     o.productLabels = buildUnnamed3049();
   }
   buildCounterGoogleCloudVisionV1p2beta1Product--;
@@ -3852,8 +3852,8 @@ api.GoogleCloudVisionV1p2beta1ProductKeyValue
   var o = api.GoogleCloudVisionV1p2beta1ProductKeyValue();
   buildCounterGoogleCloudVisionV1p2beta1ProductKeyValue++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductKeyValue < 3) {
-    o.key = "foo";
-    o.value = "foo";
+    o.key = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1ProductKeyValue--;
   return o;
@@ -3906,7 +3906,7 @@ api.GoogleCloudVisionV1p2beta1ProductSearchResults
   var o = api.GoogleCloudVisionV1p2beta1ProductSearchResults();
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResults < 3) {
-    o.indexTime = "foo";
+    o.indexTime = 'foo';
     o.productGroupedResults = buildUnnamed3050();
     o.results = buildUnnamed3051();
   }
@@ -3995,9 +3995,9 @@ api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation <
       3) {
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation--;
@@ -4023,7 +4023,7 @@ api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult
   var o = api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult();
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsResult++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsResult < 3) {
-    o.image = "foo";
+    o.image = 'foo';
     o.product = buildGoogleCloudVisionV1p2beta1Product();
     o.score = 42.0;
   }
@@ -4048,9 +4048,9 @@ api.GoogleCloudVisionV1p2beta1Property
   var o = api.GoogleCloudVisionV1p2beta1Property();
   buildCounterGoogleCloudVisionV1p2beta1Property++;
   if (buildCounterGoogleCloudVisionV1p2beta1Property < 3) {
-    o.name = "foo";
-    o.uint64Value = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.uint64Value = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1Property--;
   return o;
@@ -4073,11 +4073,11 @@ api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation
   var o = api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1SafeSearchAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1SafeSearchAnnotation < 3) {
-    o.adult = "foo";
-    o.medical = "foo";
-    o.racy = "foo";
-    o.spoof = "foo";
-    o.violence = "foo";
+    o.adult = 'foo';
+    o.medical = 'foo';
+    o.racy = 'foo';
+    o.spoof = 'foo';
+    o.violence = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1SafeSearchAnnotation--;
   return o;
@@ -4104,7 +4104,7 @@ api.GoogleCloudVisionV1p2beta1Symbol buildGoogleCloudVisionV1p2beta1Symbol() {
     o.boundingBox = buildGoogleCloudVisionV1p2beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1Symbol--;
   return o;
@@ -4142,7 +4142,7 @@ api.GoogleCloudVisionV1p2beta1TextAnnotation
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotation < 3) {
     o.pages = buildUnnamed3054();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotation--;
   return o;
@@ -4165,7 +4165,7 @@ api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak++;
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak < 3) {
     o.isPrefix = true;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak--;
   return o;
@@ -4190,7 +4190,7 @@ api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage <
       3) {
     o.confidence = 42.0;
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage--;
   return o;
@@ -4395,8 +4395,8 @@ api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity
   var o = api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity();
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebEntity++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebEntity < 3) {
-    o.description = "foo";
-    o.entityId = "foo";
+    o.description = 'foo';
+    o.entityId = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebEntity--;
@@ -4421,7 +4421,7 @@ api.GoogleCloudVisionV1p2beta1WebDetectionWebImage
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebImage++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebImage < 3) {
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebImage--;
   return o;
@@ -4443,8 +4443,8 @@ api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel
   var o = api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel();
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebLabel++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebLabel < 3) {
-    o.label = "foo";
-    o.languageCode = "foo";
+    o.label = 'foo';
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebLabel--;
   return o;
@@ -4497,10 +4497,10 @@ api.GoogleCloudVisionV1p2beta1WebDetectionWebPage
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage < 3) {
     o.fullMatchingImages = buildUnnamed3062();
-    o.pageTitle = "foo";
+    o.pageTitle = 'foo';
     o.partialMatchingImages = buildUnnamed3063();
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage--;
   return o;
@@ -4801,9 +4801,9 @@ api.GoogleCloudVisionV1p3beta1BatchOperationMetadata
   var o = api.GoogleCloudVisionV1p3beta1BatchOperationMetadata();
   buildCounterGoogleCloudVisionV1p3beta1BatchOperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p3beta1BatchOperationMetadata < 3) {
-    o.endTime = "foo";
-    o.state = "foo";
-    o.submitTime = "foo";
+    o.endTime = 'foo';
+    o.state = 'foo';
+    o.submitTime = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1BatchOperationMetadata--;
   return o;
@@ -4838,7 +4838,7 @@ api.GoogleCloudVisionV1p3beta1Block buildGoogleCloudVisionV1p3beta1Block() {
   var o = api.GoogleCloudVisionV1p3beta1Block();
   buildCounterGoogleCloudVisionV1p3beta1Block++;
   if (buildCounterGoogleCloudVisionV1p3beta1Block < 3) {
-    o.blockType = "foo";
+    o.blockType = 'foo';
     o.boundingBox = buildGoogleCloudVisionV1p3beta1BoundingPoly();
     o.confidence = 42.0;
     o.paragraphs = buildUnnamed3073();
@@ -5063,10 +5063,10 @@ api.GoogleCloudVisionV1p3beta1EntityAnnotation
   if (buildCounterGoogleCloudVisionV1p3beta1EntityAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p3beta1BoundingPoly();
     o.confidence = 42.0;
-    o.description = "foo";
-    o.locale = "foo";
+    o.description = 'foo';
+    o.locale = 'foo';
     o.locations = buildUnnamed3078();
-    o.mid = "foo";
+    o.mid = 'foo';
     o.properties = buildUnnamed3079();
     o.score = 42.0;
     o.topicality = 42.0;
@@ -5113,21 +5113,21 @@ api.GoogleCloudVisionV1p3beta1FaceAnnotation
   var o = api.GoogleCloudVisionV1p3beta1FaceAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1FaceAnnotation < 3) {
-    o.angerLikelihood = "foo";
-    o.blurredLikelihood = "foo";
+    o.angerLikelihood = 'foo';
+    o.blurredLikelihood = 'foo';
     o.boundingPoly = buildGoogleCloudVisionV1p3beta1BoundingPoly();
     o.detectionConfidence = 42.0;
     o.fdBoundingPoly = buildGoogleCloudVisionV1p3beta1BoundingPoly();
-    o.headwearLikelihood = "foo";
-    o.joyLikelihood = "foo";
+    o.headwearLikelihood = 'foo';
+    o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
     o.landmarks = buildUnnamed3080();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
-    o.sorrowLikelihood = "foo";
-    o.surpriseLikelihood = "foo";
+    o.sorrowLikelihood = 'foo';
+    o.surpriseLikelihood = 'foo';
     o.tiltAngle = 42.0;
-    o.underExposedLikelihood = "foo";
+    o.underExposedLikelihood = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1FaceAnnotation--;
   return o;
@@ -5163,7 +5163,7 @@ api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark
   buildCounterGoogleCloudVisionV1p3beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p3beta1FaceAnnotationLandmark < 3) {
     o.position = buildGoogleCloudVisionV1p3beta1Position();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1FaceAnnotationLandmark--;
   return o;
@@ -5185,7 +5185,7 @@ api.GoogleCloudVisionV1p3beta1GcsDestination
   var o = api.GoogleCloudVisionV1p3beta1GcsDestination();
   buildCounterGoogleCloudVisionV1p3beta1GcsDestination++;
   if (buildCounterGoogleCloudVisionV1p3beta1GcsDestination < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1GcsDestination--;
   return o;
@@ -5206,7 +5206,7 @@ api.GoogleCloudVisionV1p3beta1GcsSource
   var o = api.GoogleCloudVisionV1p3beta1GcsSource();
   buildCounterGoogleCloudVisionV1p3beta1GcsSource++;
   if (buildCounterGoogleCloudVisionV1p3beta1GcsSource < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1GcsSource--;
   return o;
@@ -5228,7 +5228,7 @@ api.GoogleCloudVisionV1p3beta1ImageAnnotationContext
   buildCounterGoogleCloudVisionV1p3beta1ImageAnnotationContext++;
   if (buildCounterGoogleCloudVisionV1p3beta1ImageAnnotationContext < 3) {
     o.pageNumber = 42;
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1ImageAnnotationContext--;
   return o;
@@ -5322,9 +5322,9 @@ api.GoogleCloudVisionV1p3beta1InputConfig
   var o = api.GoogleCloudVisionV1p3beta1InputConfig();
   buildCounterGoogleCloudVisionV1p3beta1InputConfig++;
   if (buildCounterGoogleCloudVisionV1p3beta1InputConfig < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.gcsSource = buildGoogleCloudVisionV1p3beta1GcsSource();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1InputConfig--;
   return o;
@@ -5348,9 +5348,9 @@ api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation
   buildCounterGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p3beta1BoundingPoly();
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation--;
@@ -5420,9 +5420,9 @@ api.GoogleCloudVisionV1p3beta1OperationMetadata
   var o = api.GoogleCloudVisionV1p3beta1OperationMetadata();
   buildCounterGoogleCloudVisionV1p3beta1OperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p3beta1OperationMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1OperationMetadata--;
   return o;
@@ -5586,10 +5586,10 @@ api.GoogleCloudVisionV1p3beta1Product buildGoogleCloudVisionV1p3beta1Product() {
   var o = api.GoogleCloudVisionV1p3beta1Product();
   buildCounterGoogleCloudVisionV1p3beta1Product++;
   if (buildCounterGoogleCloudVisionV1p3beta1Product < 3) {
-    o.description = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
-    o.productCategory = "foo";
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
+    o.productCategory = 'foo';
     o.productLabels = buildUnnamed3085();
   }
   buildCounterGoogleCloudVisionV1p3beta1Product--;
@@ -5615,8 +5615,8 @@ api.GoogleCloudVisionV1p3beta1ProductKeyValue
   var o = api.GoogleCloudVisionV1p3beta1ProductKeyValue();
   buildCounterGoogleCloudVisionV1p3beta1ProductKeyValue++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductKeyValue < 3) {
-    o.key = "foo";
-    o.value = "foo";
+    o.key = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1ProductKeyValue--;
   return o;
@@ -5669,7 +5669,7 @@ api.GoogleCloudVisionV1p3beta1ProductSearchResults
   var o = api.GoogleCloudVisionV1p3beta1ProductSearchResults();
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResults < 3) {
-    o.indexTime = "foo";
+    o.indexTime = 'foo';
     o.productGroupedResults = buildUnnamed3086();
     o.results = buildUnnamed3087();
   }
@@ -5758,9 +5758,9 @@ api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation <
       3) {
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation--;
@@ -5786,7 +5786,7 @@ api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult
   var o = api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult();
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsResult++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsResult < 3) {
-    o.image = "foo";
+    o.image = 'foo';
     o.product = buildGoogleCloudVisionV1p3beta1Product();
     o.score = 42.0;
   }
@@ -5811,9 +5811,9 @@ api.GoogleCloudVisionV1p3beta1Property
   var o = api.GoogleCloudVisionV1p3beta1Property();
   buildCounterGoogleCloudVisionV1p3beta1Property++;
   if (buildCounterGoogleCloudVisionV1p3beta1Property < 3) {
-    o.name = "foo";
-    o.uint64Value = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.uint64Value = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1Property--;
   return o;
@@ -5850,8 +5850,8 @@ api.GoogleCloudVisionV1p3beta1ReferenceImage
   buildCounterGoogleCloudVisionV1p3beta1ReferenceImage++;
   if (buildCounterGoogleCloudVisionV1p3beta1ReferenceImage < 3) {
     o.boundingPolys = buildUnnamed3090();
-    o.name = "foo";
-    o.uri = "foo";
+    o.name = 'foo';
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1ReferenceImage--;
   return o;
@@ -5874,11 +5874,11 @@ api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation
   var o = api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1SafeSearchAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1SafeSearchAnnotation < 3) {
-    o.adult = "foo";
-    o.medical = "foo";
-    o.racy = "foo";
-    o.spoof = "foo";
-    o.violence = "foo";
+    o.adult = 'foo';
+    o.medical = 'foo';
+    o.racy = 'foo';
+    o.spoof = 'foo';
+    o.violence = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1SafeSearchAnnotation--;
   return o;
@@ -5905,7 +5905,7 @@ api.GoogleCloudVisionV1p3beta1Symbol buildGoogleCloudVisionV1p3beta1Symbol() {
     o.boundingBox = buildGoogleCloudVisionV1p3beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1Symbol--;
   return o;
@@ -5943,7 +5943,7 @@ api.GoogleCloudVisionV1p3beta1TextAnnotation
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotation < 3) {
     o.pages = buildUnnamed3091();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotation--;
   return o;
@@ -5966,7 +5966,7 @@ api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak++;
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak < 3) {
     o.isPrefix = true;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak--;
   return o;
@@ -5991,7 +5991,7 @@ api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage <
       3) {
     o.confidence = 42.0;
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage--;
   return o;
@@ -6196,8 +6196,8 @@ api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity
   var o = api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity();
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebEntity++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebEntity < 3) {
-    o.description = "foo";
-    o.entityId = "foo";
+    o.description = 'foo';
+    o.entityId = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebEntity--;
@@ -6222,7 +6222,7 @@ api.GoogleCloudVisionV1p3beta1WebDetectionWebImage
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebImage++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebImage < 3) {
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebImage--;
   return o;
@@ -6244,8 +6244,8 @@ api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel
   var o = api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel();
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebLabel++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebLabel < 3) {
-    o.label = "foo";
-    o.languageCode = "foo";
+    o.label = 'foo';
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebLabel--;
   return o;
@@ -6298,10 +6298,10 @@ api.GoogleCloudVisionV1p3beta1WebDetectionWebPage
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage < 3) {
     o.fullMatchingImages = buildUnnamed3099();
-    o.pageTitle = "foo";
+    o.pageTitle = 'foo';
     o.partialMatchingImages = buildUnnamed3100();
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage--;
   return o;
@@ -6662,9 +6662,9 @@ api.GoogleCloudVisionV1p4beta1BatchOperationMetadata
   var o = api.GoogleCloudVisionV1p4beta1BatchOperationMetadata();
   buildCounterGoogleCloudVisionV1p4beta1BatchOperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p4beta1BatchOperationMetadata < 3) {
-    o.endTime = "foo";
-    o.state = "foo";
-    o.submitTime = "foo";
+    o.endTime = 'foo';
+    o.state = 'foo';
+    o.submitTime = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1BatchOperationMetadata--;
   return o;
@@ -6699,7 +6699,7 @@ api.GoogleCloudVisionV1p4beta1Block buildGoogleCloudVisionV1p4beta1Block() {
   var o = api.GoogleCloudVisionV1p4beta1Block();
   buildCounterGoogleCloudVisionV1p4beta1Block++;
   if (buildCounterGoogleCloudVisionV1p4beta1Block < 3) {
-    o.blockType = "foo";
+    o.blockType = 'foo';
     o.boundingBox = buildGoogleCloudVisionV1p4beta1BoundingPoly();
     o.confidence = 42.0;
     o.paragraphs = buildUnnamed3111();
@@ -6778,9 +6778,9 @@ api.GoogleCloudVisionV1p4beta1Celebrity
   var o = api.GoogleCloudVisionV1p4beta1Celebrity();
   buildCounterGoogleCloudVisionV1p4beta1Celebrity++;
   if (buildCounterGoogleCloudVisionV1p4beta1Celebrity < 3) {
-    o.description = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1Celebrity--;
   return o;
@@ -6949,10 +6949,10 @@ api.GoogleCloudVisionV1p4beta1EntityAnnotation
   if (buildCounterGoogleCloudVisionV1p4beta1EntityAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p4beta1BoundingPoly();
     o.confidence = 42.0;
-    o.description = "foo";
-    o.locale = "foo";
+    o.description = 'foo';
+    o.locale = 'foo';
     o.locations = buildUnnamed3116();
-    o.mid = "foo";
+    o.mid = 'foo';
     o.properties = buildUnnamed3117();
     o.score = 42.0;
     o.topicality = 42.0;
@@ -7014,22 +7014,22 @@ api.GoogleCloudVisionV1p4beta1FaceAnnotation
   var o = api.GoogleCloudVisionV1p4beta1FaceAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1FaceAnnotation < 3) {
-    o.angerLikelihood = "foo";
-    o.blurredLikelihood = "foo";
+    o.angerLikelihood = 'foo';
+    o.blurredLikelihood = 'foo';
     o.boundingPoly = buildGoogleCloudVisionV1p4beta1BoundingPoly();
     o.detectionConfidence = 42.0;
     o.fdBoundingPoly = buildGoogleCloudVisionV1p4beta1BoundingPoly();
-    o.headwearLikelihood = "foo";
-    o.joyLikelihood = "foo";
+    o.headwearLikelihood = 'foo';
+    o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
     o.landmarks = buildUnnamed3118();
     o.panAngle = 42.0;
     o.recognitionResult = buildUnnamed3119();
     o.rollAngle = 42.0;
-    o.sorrowLikelihood = "foo";
-    o.surpriseLikelihood = "foo";
+    o.sorrowLikelihood = 'foo';
+    o.surpriseLikelihood = 'foo';
     o.tiltAngle = 42.0;
-    o.underExposedLikelihood = "foo";
+    o.underExposedLikelihood = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1FaceAnnotation--;
   return o;
@@ -7066,7 +7066,7 @@ api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark
   buildCounterGoogleCloudVisionV1p4beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p4beta1FaceAnnotationLandmark < 3) {
     o.position = buildGoogleCloudVisionV1p4beta1Position();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1FaceAnnotationLandmark--;
   return o;
@@ -7111,7 +7111,7 @@ api.GoogleCloudVisionV1p4beta1GcsDestination
   var o = api.GoogleCloudVisionV1p4beta1GcsDestination();
   buildCounterGoogleCloudVisionV1p4beta1GcsDestination++;
   if (buildCounterGoogleCloudVisionV1p4beta1GcsDestination < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1GcsDestination--;
   return o;
@@ -7132,7 +7132,7 @@ api.GoogleCloudVisionV1p4beta1GcsSource
   var o = api.GoogleCloudVisionV1p4beta1GcsSource();
   buildCounterGoogleCloudVisionV1p4beta1GcsSource++;
   if (buildCounterGoogleCloudVisionV1p4beta1GcsSource < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1GcsSource--;
   return o;
@@ -7154,7 +7154,7 @@ api.GoogleCloudVisionV1p4beta1ImageAnnotationContext
   buildCounterGoogleCloudVisionV1p4beta1ImageAnnotationContext++;
   if (buildCounterGoogleCloudVisionV1p4beta1ImageAnnotationContext < 3) {
     o.pageNumber = 42;
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1ImageAnnotationContext--;
   return o;
@@ -7248,9 +7248,9 @@ api.GoogleCloudVisionV1p4beta1InputConfig
   var o = api.GoogleCloudVisionV1p4beta1InputConfig();
   buildCounterGoogleCloudVisionV1p4beta1InputConfig++;
   if (buildCounterGoogleCloudVisionV1p4beta1InputConfig < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.gcsSource = buildGoogleCloudVisionV1p4beta1GcsSource();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1InputConfig--;
   return o;
@@ -7274,9 +7274,9 @@ api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation
   buildCounterGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p4beta1BoundingPoly();
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation--;
@@ -7346,9 +7346,9 @@ api.GoogleCloudVisionV1p4beta1OperationMetadata
   var o = api.GoogleCloudVisionV1p4beta1OperationMetadata();
   buildCounterGoogleCloudVisionV1p4beta1OperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p4beta1OperationMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1OperationMetadata--;
   return o;
@@ -7512,10 +7512,10 @@ api.GoogleCloudVisionV1p4beta1Product buildGoogleCloudVisionV1p4beta1Product() {
   var o = api.GoogleCloudVisionV1p4beta1Product();
   buildCounterGoogleCloudVisionV1p4beta1Product++;
   if (buildCounterGoogleCloudVisionV1p4beta1Product < 3) {
-    o.description = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
-    o.productCategory = "foo";
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
+    o.productCategory = 'foo';
     o.productLabels = buildUnnamed3124();
   }
   buildCounterGoogleCloudVisionV1p4beta1Product--;
@@ -7541,8 +7541,8 @@ api.GoogleCloudVisionV1p4beta1ProductKeyValue
   var o = api.GoogleCloudVisionV1p4beta1ProductKeyValue();
   buildCounterGoogleCloudVisionV1p4beta1ProductKeyValue++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductKeyValue < 3) {
-    o.key = "foo";
-    o.value = "foo";
+    o.key = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1ProductKeyValue--;
   return o;
@@ -7595,7 +7595,7 @@ api.GoogleCloudVisionV1p4beta1ProductSearchResults
   var o = api.GoogleCloudVisionV1p4beta1ProductSearchResults();
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResults < 3) {
-    o.indexTime = "foo";
+    o.indexTime = 'foo';
     o.productGroupedResults = buildUnnamed3125();
     o.results = buildUnnamed3126();
   }
@@ -7684,9 +7684,9 @@ api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation <
       3) {
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation--;
@@ -7712,7 +7712,7 @@ api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult
   var o = api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult();
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsResult++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsResult < 3) {
-    o.image = "foo";
+    o.image = 'foo';
     o.product = buildGoogleCloudVisionV1p4beta1Product();
     o.score = 42.0;
   }
@@ -7737,9 +7737,9 @@ api.GoogleCloudVisionV1p4beta1Property
   var o = api.GoogleCloudVisionV1p4beta1Property();
   buildCounterGoogleCloudVisionV1p4beta1Property++;
   if (buildCounterGoogleCloudVisionV1p4beta1Property < 3) {
-    o.name = "foo";
-    o.uint64Value = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.uint64Value = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1Property--;
   return o;
@@ -7776,8 +7776,8 @@ api.GoogleCloudVisionV1p4beta1ReferenceImage
   buildCounterGoogleCloudVisionV1p4beta1ReferenceImage++;
   if (buildCounterGoogleCloudVisionV1p4beta1ReferenceImage < 3) {
     o.boundingPolys = buildUnnamed3129();
-    o.name = "foo";
-    o.uri = "foo";
+    o.name = 'foo';
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1ReferenceImage--;
   return o;
@@ -7800,11 +7800,11 @@ api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation
   var o = api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1SafeSearchAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1SafeSearchAnnotation < 3) {
-    o.adult = "foo";
-    o.medical = "foo";
-    o.racy = "foo";
-    o.spoof = "foo";
-    o.violence = "foo";
+    o.adult = 'foo';
+    o.medical = 'foo';
+    o.racy = 'foo';
+    o.spoof = 'foo';
+    o.violence = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1SafeSearchAnnotation--;
   return o;
@@ -7831,7 +7831,7 @@ api.GoogleCloudVisionV1p4beta1Symbol buildGoogleCloudVisionV1p4beta1Symbol() {
     o.boundingBox = buildGoogleCloudVisionV1p4beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1Symbol--;
   return o;
@@ -7869,7 +7869,7 @@ api.GoogleCloudVisionV1p4beta1TextAnnotation
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotation < 3) {
     o.pages = buildUnnamed3130();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotation--;
   return o;
@@ -7892,7 +7892,7 @@ api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak++;
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak < 3) {
     o.isPrefix = true;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak--;
   return o;
@@ -7917,7 +7917,7 @@ api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage <
       3) {
     o.confidence = 42.0;
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage--;
   return o;
@@ -8122,8 +8122,8 @@ api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity
   var o = api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity();
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebEntity++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebEntity < 3) {
-    o.description = "foo";
-    o.entityId = "foo";
+    o.description = 'foo';
+    o.entityId = 'foo';
     o.score = 42.0;
   }
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebEntity--;
@@ -8148,7 +8148,7 @@ api.GoogleCloudVisionV1p4beta1WebDetectionWebImage
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebImage++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebImage < 3) {
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebImage--;
   return o;
@@ -8170,8 +8170,8 @@ api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel
   var o = api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel();
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebLabel++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebLabel < 3) {
-    o.label = "foo";
-    o.languageCode = "foo";
+    o.label = 'foo';
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebLabel--;
   return o;
@@ -8224,10 +8224,10 @@ api.GoogleCloudVisionV1p4beta1WebDetectionWebPage
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage < 3) {
     o.fullMatchingImages = buildUnnamed3138();
-    o.pageTitle = "foo";
+    o.pageTitle = 'foo';
     o.partialMatchingImages = buildUnnamed3139();
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage--;
   return o;
@@ -8338,7 +8338,7 @@ api.Image buildImage() {
   var o = api.Image();
   buildCounterImage++;
   if (buildCounterImage < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.source = buildImageSource();
   }
   buildCounterImage--;
@@ -8360,7 +8360,7 @@ api.ImageAnnotationContext buildImageAnnotationContext() {
   buildCounterImageAnnotationContext++;
   if (buildCounterImageAnnotationContext < 3) {
     o.pageNumber = 42;
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterImageAnnotationContext--;
   return o;
@@ -8377,8 +8377,8 @@ void checkImageAnnotationContext(api.ImageAnnotationContext o) {
 
 core.List<core.String> buildUnnamed3143() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -8439,8 +8439,8 @@ api.ImageSource buildImageSource() {
   var o = api.ImageSource();
   buildCounterImageSource++;
   if (buildCounterImageSource < 3) {
-    o.gcsImageUri = "foo";
-    o.imageUri = "foo";
+    o.gcsImageUri = 'foo';
+    o.imageUri = 'foo';
   }
   buildCounterImageSource--;
   return o;
@@ -8460,7 +8460,7 @@ api.ImportProductSetsGcsSource buildImportProductSetsGcsSource() {
   var o = api.ImportProductSetsGcsSource();
   buildCounterImportProductSetsGcsSource++;
   if (buildCounterImportProductSetsGcsSource < 3) {
-    o.csvFileUri = "foo";
+    o.csvFileUri = 'foo';
   }
   buildCounterImportProductSetsGcsSource--;
   return o;
@@ -8564,9 +8564,9 @@ api.InputConfig buildInputConfig() {
   var o = api.InputConfig();
   buildCounterInputConfig++;
   if (buildCounterInputConfig < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.gcsSource = buildGcsSource();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
   }
   buildCounterInputConfig--;
   return o;
@@ -8587,8 +8587,8 @@ api.KeyValue buildKeyValue() {
   var o = api.KeyValue();
   buildCounterKeyValue++;
   if (buildCounterKeyValue < 3) {
-    o.key = "foo";
-    o.value = "foo";
+    o.key = 'foo';
+    o.value = 'foo';
   }
   buildCounterKeyValue--;
   return o;
@@ -8609,7 +8609,7 @@ api.Landmark buildLandmark() {
   buildCounterLandmark++;
   if (buildCounterLandmark < 3) {
     o.position = buildPosition();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterLandmark--;
   return o;
@@ -8684,7 +8684,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   var o = api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed3146();
   }
   buildCounterListOperationsResponse--;
@@ -8718,7 +8718,7 @@ api.ListProductSetsResponse buildListProductSetsResponse() {
   var o = api.ListProductSetsResponse();
   buildCounterListProductSetsResponse++;
   if (buildCounterListProductSetsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.productSets = buildUnnamed3147();
   }
   buildCounterListProductSetsResponse--;
@@ -8752,7 +8752,7 @@ api.ListProductsInProductSetResponse buildListProductsInProductSetResponse() {
   var o = api.ListProductsInProductSetResponse();
   buildCounterListProductsInProductSetResponse++;
   if (buildCounterListProductsInProductSetResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.products = buildUnnamed3148();
   }
   buildCounterListProductsInProductSetResponse--;
@@ -8787,7 +8787,7 @@ api.ListProductsResponse buildListProductsResponse() {
   var o = api.ListProductsResponse();
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.products = buildUnnamed3149();
   }
   buildCounterListProductsResponse--;
@@ -8821,7 +8821,7 @@ api.ListReferenceImagesResponse buildListReferenceImagesResponse() {
   var o = api.ListReferenceImagesResponse();
   buildCounterListReferenceImagesResponse++;
   if (buildCounterListReferenceImagesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.pageSize = 42;
     o.referenceImages = buildUnnamed3150();
   }
@@ -8845,9 +8845,9 @@ api.LocalizedObjectAnnotation buildLocalizedObjectAnnotation() {
   buildCounterLocalizedObjectAnnotation++;
   if (buildCounterLocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildBoundingPoly();
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterLocalizedObjectAnnotation--;
@@ -8911,9 +8911,9 @@ api.ObjectAnnotation buildObjectAnnotation() {
   var o = api.ObjectAnnotation();
   buildCounterObjectAnnotation++;
   if (buildCounterObjectAnnotation < 3) {
-    o.languageCode = "foo";
-    o.mid = "foo";
-    o.name = "foo";
+    o.languageCode = 'foo';
+    o.mid = 'foo';
+    o.name = 'foo';
     o.score = 42.0;
   }
   buildCounterObjectAnnotation--;
@@ -8933,12 +8933,12 @@ void checkObjectAnnotation(api.ObjectAnnotation o) {
 
 core.Map<core.String, core.Object> buildUnnamed3151() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -8948,26 +8948,26 @@ core.Map<core.String, core.Object> buildUnnamed3151() {
 
 void checkUnnamed3151(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed3152() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -8977,16 +8977,16 @@ core.Map<core.String, core.Object> buildUnnamed3152() {
 
 void checkUnnamed3152(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterOperation = 0;
@@ -8997,7 +8997,7 @@ api.Operation buildOperation() {
     o.done = true;
     o.error = buildStatus();
     o.metadata = buildUnnamed3151();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed3152();
   }
   buildCounterOperation--;
@@ -9021,9 +9021,9 @@ api.OperationMetadata buildOperationMetadata() {
   var o = api.OperationMetadata();
   buildCounterOperationMetadata++;
   if (buildCounterOperationMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterOperationMetadata--;
   return o;
@@ -9179,10 +9179,10 @@ api.Product buildProduct() {
   var o = api.Product();
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    o.description = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
-    o.productCategory = "foo";
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
+    o.productCategory = 'foo';
     o.productLabels = buildUnnamed3155();
   }
   buildCounterProduct--;
@@ -9203,8 +9203,8 @@ void checkProduct(api.Product o) {
 
 core.List<core.String> buildUnnamed3156() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -9220,9 +9220,9 @@ api.ProductSearchParams buildProductSearchParams() {
   buildCounterProductSearchParams++;
   if (buildCounterProductSearchParams < 3) {
     o.boundingPoly = buildBoundingPoly();
-    o.filter = "foo";
+    o.filter = 'foo';
     o.productCategories = buildUnnamed3156();
-    o.productSet = "foo";
+    o.productSet = 'foo';
   }
   buildCounterProductSearchParams--;
   return o;
@@ -9270,7 +9270,7 @@ api.ProductSearchResults buildProductSearchResults() {
   var o = api.ProductSearchResults();
   buildCounterProductSearchResults++;
   if (buildCounterProductSearchResults < 3) {
-    o.indexTime = "foo";
+    o.indexTime = 'foo';
     o.productGroupedResults = buildUnnamed3157();
     o.results = buildUnnamed3158();
   }
@@ -9293,10 +9293,10 @@ api.ProductSet buildProductSet() {
   var o = api.ProductSet();
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.indexError = buildStatus();
-    o.indexTime = "foo";
-    o.name = "foo";
+    o.indexTime = 'foo';
+    o.name = 'foo';
   }
   buildCounterProductSet--;
   return o;
@@ -9318,7 +9318,7 @@ api.ProductSetPurgeConfig buildProductSetPurgeConfig() {
   var o = api.ProductSetPurgeConfig();
   buildCounterProductSetPurgeConfig++;
   if (buildCounterProductSetPurgeConfig < 3) {
-    o.productSetId = "foo";
+    o.productSetId = 'foo';
   }
   buildCounterProductSetPurgeConfig--;
   return o;
@@ -9337,9 +9337,9 @@ api.Property buildProperty() {
   var o = api.Property();
   buildCounterProperty++;
   if (buildCounterProperty < 3) {
-    o.name = "foo";
-    o.uint64Value = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.uint64Value = 'foo';
+    o.value = 'foo';
   }
   buildCounterProperty--;
   return o;
@@ -9397,8 +9397,8 @@ api.ReferenceImage buildReferenceImage() {
   buildCounterReferenceImage++;
   if (buildCounterReferenceImage < 3) {
     o.boundingPolys = buildUnnamed3159();
-    o.name = "foo";
-    o.uri = "foo";
+    o.name = 'foo';
+    o.uri = 'foo';
   }
   buildCounterReferenceImage--;
   return o;
@@ -9420,7 +9420,7 @@ api.RemoveProductFromProductSetRequest
   var o = api.RemoveProductFromProductSetRequest();
   buildCounterRemoveProductFromProductSetRequest++;
   if (buildCounterRemoveProductFromProductSetRequest < 3) {
-    o.product = "foo";
+    o.product = 'foo';
   }
   buildCounterRemoveProductFromProductSetRequest--;
   return o;
@@ -9440,7 +9440,7 @@ api.Result buildResult() {
   var o = api.Result();
   buildCounterResult++;
   if (buildCounterResult < 3) {
-    o.image = "foo";
+    o.image = 'foo';
     o.product = buildProduct();
     o.score = 42.0;
   }
@@ -9463,11 +9463,11 @@ api.SafeSearchAnnotation buildSafeSearchAnnotation() {
   var o = api.SafeSearchAnnotation();
   buildCounterSafeSearchAnnotation++;
   if (buildCounterSafeSearchAnnotation < 3) {
-    o.adult = "foo";
-    o.medical = "foo";
-    o.racy = "foo";
-    o.spoof = "foo";
-    o.violence = "foo";
+    o.adult = 'foo';
+    o.medical = 'foo';
+    o.racy = 'foo';
+    o.spoof = 'foo';
+    o.violence = 'foo';
   }
   buildCounterSafeSearchAnnotation--;
   return o;
@@ -9487,12 +9487,12 @@ void checkSafeSearchAnnotation(api.SafeSearchAnnotation o) {
 
 core.Map<core.String, core.Object> buildUnnamed3160() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -9502,16 +9502,16 @@ core.Map<core.String, core.Object> buildUnnamed3160() {
 
 void checkUnnamed3160(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed3161() {
@@ -9534,7 +9534,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed3161();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -9558,7 +9558,7 @@ api.Symbol buildSymbol() {
     o.boundingBox = buildBoundingPoly();
     o.confidence = 42.0;
     o.property = buildTextProperty();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterSymbol--;
   return o;
@@ -9594,7 +9594,7 @@ api.TextAnnotation buildTextAnnotation() {
   buildCounterTextAnnotation++;
   if (buildCounterTextAnnotation < 3) {
     o.pages = buildUnnamed3162();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterTextAnnotation--;
   return o;
@@ -9795,8 +9795,8 @@ api.WebEntity buildWebEntity() {
   var o = api.WebEntity();
   buildCounterWebEntity++;
   if (buildCounterWebEntity < 3) {
-    o.description = "foo";
-    o.entityId = "foo";
+    o.description = 'foo';
+    o.entityId = 'foo';
     o.score = 42.0;
   }
   buildCounterWebEntity--;
@@ -9819,7 +9819,7 @@ api.WebImage buildWebImage() {
   buildCounterWebImage++;
   if (buildCounterWebImage < 3) {
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterWebImage--;
   return o;
@@ -9839,8 +9839,8 @@ api.WebLabel buildWebLabel() {
   var o = api.WebLabel();
   buildCounterWebLabel++;
   if (buildCounterWebLabel < 3) {
-    o.label = "foo";
-    o.languageCode = "foo";
+    o.label = 'foo';
+    o.languageCode = 'foo';
   }
   buildCounterWebLabel--;
   return o;
@@ -9887,10 +9887,10 @@ api.WebPage buildWebPage() {
   buildCounterWebPage++;
   if (buildCounterWebPage < 3) {
     o.fullMatchingImages = buildUnnamed3170();
-    o.pageTitle = "foo";
+    o.pageTitle = 'foo';
     o.partialMatchingImages = buildUnnamed3171();
     o.score = 42.0;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterWebPage--;
   return o;
@@ -9947,273 +9947,273 @@ void checkWord(api.Word o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AddProductToProductSetRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AddProductToProductSetRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAddProductToProductSetRequest();
       var od = api.AddProductToProductSetRequest.fromJson(o.toJson());
       checkAddProductToProductSetRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AnnotateFileRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AnnotateFileRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAnnotateFileRequest();
       var od = api.AnnotateFileRequest.fromJson(o.toJson());
       checkAnnotateFileRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AnnotateFileResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AnnotateFileResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAnnotateFileResponse();
       var od = api.AnnotateFileResponse.fromJson(o.toJson());
       checkAnnotateFileResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AnnotateImageRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AnnotateImageRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAnnotateImageRequest();
       var od = api.AnnotateImageRequest.fromJson(o.toJson());
       checkAnnotateImageRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AnnotateImageResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AnnotateImageResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAnnotateImageResponse();
       var od = api.AnnotateImageResponse.fromJson(o.toJson());
       checkAnnotateImageResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AsyncAnnotateFileRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsyncAnnotateFileRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsyncAnnotateFileRequest();
       var od = api.AsyncAnnotateFileRequest.fromJson(o.toJson());
       checkAsyncAnnotateFileRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AsyncAnnotateFileResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsyncAnnotateFileResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsyncAnnotateFileResponse();
       var od = api.AsyncAnnotateFileResponse.fromJson(o.toJson());
       checkAsyncAnnotateFileResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AsyncBatchAnnotateFilesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsyncBatchAnnotateFilesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsyncBatchAnnotateFilesRequest();
       var od = api.AsyncBatchAnnotateFilesRequest.fromJson(o.toJson());
       checkAsyncBatchAnnotateFilesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AsyncBatchAnnotateFilesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsyncBatchAnnotateFilesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsyncBatchAnnotateFilesResponse();
       var od = api.AsyncBatchAnnotateFilesResponse.fromJson(o.toJson());
       checkAsyncBatchAnnotateFilesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AsyncBatchAnnotateImagesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsyncBatchAnnotateImagesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsyncBatchAnnotateImagesRequest();
       var od = api.AsyncBatchAnnotateImagesRequest.fromJson(o.toJson());
       checkAsyncBatchAnnotateImagesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AsyncBatchAnnotateImagesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsyncBatchAnnotateImagesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsyncBatchAnnotateImagesResponse();
       var od = api.AsyncBatchAnnotateImagesResponse.fromJson(o.toJson());
       checkAsyncBatchAnnotateImagesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-BatchAnnotateFilesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchAnnotateFilesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchAnnotateFilesRequest();
       var od = api.BatchAnnotateFilesRequest.fromJson(o.toJson());
       checkBatchAnnotateFilesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BatchAnnotateFilesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchAnnotateFilesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchAnnotateFilesResponse();
       var od = api.BatchAnnotateFilesResponse.fromJson(o.toJson());
       checkBatchAnnotateFilesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-BatchAnnotateImagesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchAnnotateImagesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchAnnotateImagesRequest();
       var od = api.BatchAnnotateImagesRequest.fromJson(o.toJson());
       checkBatchAnnotateImagesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BatchAnnotateImagesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchAnnotateImagesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchAnnotateImagesResponse();
       var od = api.BatchAnnotateImagesResponse.fromJson(o.toJson());
       checkBatchAnnotateImagesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-BatchOperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchOperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchOperationMetadata();
       var od = api.BatchOperationMetadata.fromJson(o.toJson());
       checkBatchOperationMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-Block", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Block', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBlock();
       var od = api.Block.fromJson(o.toJson());
       checkBlock(od);
     });
   });
 
-  unittest.group("obj-schema-BoundingPoly", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BoundingPoly', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBoundingPoly();
       var od = api.BoundingPoly.fromJson(o.toJson());
       checkBoundingPoly(od);
     });
   });
 
-  unittest.group("obj-schema-CancelOperationRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CancelOperationRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Color", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Color', () {
+    unittest.test('to-json--from-json', () {
       var o = buildColor();
       var od = api.Color.fromJson(o.toJson());
       checkColor(od);
     });
   });
 
-  unittest.group("obj-schema-ColorInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ColorInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildColorInfo();
       var od = api.ColorInfo.fromJson(o.toJson());
       checkColorInfo(od);
     });
   });
 
-  unittest.group("obj-schema-CropHint", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CropHint', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCropHint();
       var od = api.CropHint.fromJson(o.toJson());
       checkCropHint(od);
     });
   });
 
-  unittest.group("obj-schema-CropHintsAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CropHintsAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCropHintsAnnotation();
       var od = api.CropHintsAnnotation.fromJson(o.toJson());
       checkCropHintsAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-CropHintsParams", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CropHintsParams', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCropHintsParams();
       var od = api.CropHintsParams.fromJson(o.toJson());
       checkCropHintsParams(od);
     });
   });
 
-  unittest.group("obj-schema-DetectedBreak", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DetectedBreak', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDetectedBreak();
       var od = api.DetectedBreak.fromJson(o.toJson());
       checkDetectedBreak(od);
     });
   });
 
-  unittest.group("obj-schema-DetectedLanguage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DetectedLanguage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDetectedLanguage();
       var od = api.DetectedLanguage.fromJson(o.toJson());
       checkDetectedLanguage(od);
     });
   });
 
-  unittest.group("obj-schema-DominantColorsAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DominantColorsAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDominantColorsAnnotation();
       var od = api.DominantColorsAnnotation.fromJson(o.toJson());
       checkDominantColorsAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-EntityAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EntityAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEntityAnnotation();
       var od = api.EntityAnnotation.fromJson(o.toJson());
       checkEntityAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-FaceAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FaceAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFaceAnnotation();
       var od = api.FaceAnnotation.fromJson(o.toJson());
       checkFaceAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-Feature", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Feature', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFeature();
       var od = api.Feature.fromJson(o.toJson());
       checkFeature(od);
     });
   });
 
-  unittest.group("obj-schema-GcsDestination", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GcsDestination', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGcsDestination();
       var od = api.GcsDestination.fromJson(o.toJson());
       checkGcsDestination(od);
     });
   });
 
-  unittest.group("obj-schema-GcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGcsSource();
       var od = api.GcsSource.fromJson(o.toJson());
       checkGcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1AnnotateFileResponse",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1AnnotateFileResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1AnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p1beta1AnnotateFileResponse.fromJson(
           o.toJson());
@@ -10221,9 +10221,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1AnnotateImageResponse",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1AnnotateImageResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1AnnotateImageResponse();
       var od = api.GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(
           o.toJson());
@@ -10232,8 +10232,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(
           o.toJson());
@@ -10242,9 +10242,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse",
+      'obj-schema-GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse();
       var od = api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse
           .fromJson(o.toJson());
@@ -10252,41 +10252,41 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1Block", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Block', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1Block();
       var od = api.GoogleCloudVisionV1p1beta1Block.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Block(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1BoundingPoly", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1BoundingPoly', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1BoundingPoly();
       var od = api.GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1BoundingPoly(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1ColorInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ColorInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1ColorInfo();
       var od = api.GoogleCloudVisionV1p1beta1ColorInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1ColorInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1CropHint", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1CropHint', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1CropHint();
       var od = api.GoogleCloudVisionV1p1beta1CropHint.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1CropHint(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1CropHintsAnnotation",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1CropHintsAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1CropHintsAnnotation();
       var od = api.GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(
           o.toJson());
@@ -10295,8 +10295,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1DominantColorsAnnotation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p1beta1DominantColorsAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1DominantColorsAnnotation();
       var od = api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(
           o.toJson());
@@ -10304,8 +10304,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1EntityAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1EntityAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1EntityAnnotation();
       var od =
           api.GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(o.toJson());
@@ -10313,8 +10313,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1FaceAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1FaceAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1FaceAnnotation();
       var od =
           api.GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(o.toJson());
@@ -10322,9 +10322,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1FaceAnnotationLandmark",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1FaceAnnotationLandmark',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark();
       var od = api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(
           o.toJson());
@@ -10332,8 +10332,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1GcsDestination", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1GcsDestination', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1GcsDestination();
       var od =
           api.GoogleCloudVisionV1p1beta1GcsDestination.fromJson(o.toJson());
@@ -10341,17 +10341,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1GcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1GcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1GcsSource();
       var od = api.GoogleCloudVisionV1p1beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1GcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1ImageAnnotationContext",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ImageAnnotationContext',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1ImageAnnotationContext();
       var od = api.GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(
           o.toJson());
@@ -10359,8 +10359,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1ImageProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ImageProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1ImageProperties();
       var od =
           api.GoogleCloudVisionV1p1beta1ImageProperties.fromJson(o.toJson());
@@ -10368,8 +10368,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1InputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1InputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1InputConfig();
       var od = api.GoogleCloudVisionV1p1beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1InputConfig(od);
@@ -10377,8 +10377,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
       var od = api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
           o.toJson());
@@ -10386,16 +10386,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1LocationInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1LocationInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1LocationInfo();
       var od = api.GoogleCloudVisionV1p1beta1LocationInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1LocationInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1NormalizedVertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1NormalizedVertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1NormalizedVertex();
       var od =
           api.GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(o.toJson());
@@ -10403,8 +10403,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1OperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1OperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1OperationMetadata();
       var od =
           api.GoogleCloudVisionV1p1beta1OperationMetadata.fromJson(o.toJson());
@@ -10412,48 +10412,48 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1OutputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1OutputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1OutputConfig();
       var od = api.GoogleCloudVisionV1p1beta1OutputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1OutputConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1Page", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Page', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1Page();
       var od = api.GoogleCloudVisionV1p1beta1Page.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Page(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1Paragraph", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Paragraph', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1Paragraph();
       var od = api.GoogleCloudVisionV1p1beta1Paragraph.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Paragraph(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1Position", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Position', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1Position();
       var od = api.GoogleCloudVisionV1p1beta1Position.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Position(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1Product", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Product', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1Product();
       var od = api.GoogleCloudVisionV1p1beta1Product.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Product(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1ProductKeyValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ProductKeyValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1ProductKeyValue();
       var od =
           api.GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(o.toJson());
@@ -10461,9 +10461,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResults",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResults',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1ProductSearchResults();
       var od = api.GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
           o.toJson());
@@ -10472,9 +10472,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult",
+      'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult();
       var od = api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
@@ -10484,9 +10484,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation",
+      'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation();
       var od =
@@ -10497,8 +10497,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsResult", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult();
       var od =
           api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
@@ -10507,17 +10507,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1Property", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Property', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1Property();
       var od = api.GoogleCloudVisionV1p1beta1Property.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Property(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1SafeSearchAnnotation",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1SafeSearchAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1SafeSearchAnnotation();
       var od = api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(
           o.toJson());
@@ -10525,16 +10525,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1Symbol", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Symbol', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1Symbol();
       var od = api.GoogleCloudVisionV1p1beta1Symbol.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Symbol(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1TextAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1TextAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotation();
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(o.toJson());
@@ -10543,8 +10543,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak();
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak.fromJson(
@@ -10554,9 +10554,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage",
+      'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage();
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage.fromJson(
@@ -10566,8 +10566,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationTextProperty", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationTextProperty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
@@ -10576,25 +10576,25 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1Vertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Vertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1Vertex();
       var od = api.GoogleCloudVisionV1p1beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Vertex(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1WebDetection", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetection', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1WebDetection();
       var od = api.GoogleCloudVisionV1p1beta1WebDetection.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1WebDetection(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebEntity",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebEntity',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity();
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(
           o.toJson());
@@ -10602,9 +10602,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebImage",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebImage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebImage();
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
           o.toJson());
@@ -10612,9 +10612,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebLabel",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebLabel',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel();
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(
           o.toJson());
@@ -10622,9 +10622,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebPage",
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebPage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebPage();
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(
           o.toJson());
@@ -10632,17 +10632,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p1beta1Word", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Word', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p1beta1Word();
       var od = api.GoogleCloudVisionV1p1beta1Word.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Word(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1AnnotateFileResponse",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1AnnotateFileResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1AnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p2beta1AnnotateFileResponse.fromJson(
           o.toJson());
@@ -10650,9 +10650,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1AnnotateImageResponse",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1AnnotateImageResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1AnnotateImageResponse();
       var od = api.GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(
           o.toJson());
@@ -10661,8 +10661,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(
           o.toJson());
@@ -10671,9 +10671,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse",
+      'obj-schema-GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse();
       var od = api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
           .fromJson(o.toJson());
@@ -10681,41 +10681,41 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1Block", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Block', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1Block();
       var od = api.GoogleCloudVisionV1p2beta1Block.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Block(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1BoundingPoly", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1BoundingPoly', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1BoundingPoly();
       var od = api.GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1BoundingPoly(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1ColorInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ColorInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1ColorInfo();
       var od = api.GoogleCloudVisionV1p2beta1ColorInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1ColorInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1CropHint", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1CropHint', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1CropHint();
       var od = api.GoogleCloudVisionV1p2beta1CropHint.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1CropHint(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1CropHintsAnnotation",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1CropHintsAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1CropHintsAnnotation();
       var od = api.GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(
           o.toJson());
@@ -10724,8 +10724,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1DominantColorsAnnotation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p2beta1DominantColorsAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1DominantColorsAnnotation();
       var od = api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(
           o.toJson());
@@ -10733,8 +10733,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1EntityAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1EntityAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1EntityAnnotation();
       var od =
           api.GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(o.toJson());
@@ -10742,8 +10742,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1FaceAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1FaceAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1FaceAnnotation();
       var od =
           api.GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(o.toJson());
@@ -10751,9 +10751,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1FaceAnnotationLandmark",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1FaceAnnotationLandmark',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark();
       var od = api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(
           o.toJson());
@@ -10761,8 +10761,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1GcsDestination", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1GcsDestination', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1GcsDestination();
       var od =
           api.GoogleCloudVisionV1p2beta1GcsDestination.fromJson(o.toJson());
@@ -10770,17 +10770,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1GcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1GcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1GcsSource();
       var od = api.GoogleCloudVisionV1p2beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1GcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1ImageAnnotationContext",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ImageAnnotationContext',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1ImageAnnotationContext();
       var od = api.GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(
           o.toJson());
@@ -10788,8 +10788,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1ImageProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ImageProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1ImageProperties();
       var od =
           api.GoogleCloudVisionV1p2beta1ImageProperties.fromJson(o.toJson());
@@ -10797,8 +10797,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1InputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1InputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1InputConfig();
       var od = api.GoogleCloudVisionV1p2beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1InputConfig(od);
@@ -10806,8 +10806,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
       var od = api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
           o.toJson());
@@ -10815,16 +10815,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1LocationInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1LocationInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1LocationInfo();
       var od = api.GoogleCloudVisionV1p2beta1LocationInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1LocationInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1NormalizedVertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1NormalizedVertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1NormalizedVertex();
       var od =
           api.GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(o.toJson());
@@ -10832,8 +10832,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1OperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1OperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1OperationMetadata();
       var od =
           api.GoogleCloudVisionV1p2beta1OperationMetadata.fromJson(o.toJson());
@@ -10841,48 +10841,48 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1OutputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1OutputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1OutputConfig();
       var od = api.GoogleCloudVisionV1p2beta1OutputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1OutputConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1Page", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Page', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1Page();
       var od = api.GoogleCloudVisionV1p2beta1Page.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Page(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1Paragraph", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Paragraph', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1Paragraph();
       var od = api.GoogleCloudVisionV1p2beta1Paragraph.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Paragraph(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1Position", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Position', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1Position();
       var od = api.GoogleCloudVisionV1p2beta1Position.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Position(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1Product", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Product', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1Product();
       var od = api.GoogleCloudVisionV1p2beta1Product.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Product(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1ProductKeyValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ProductKeyValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1ProductKeyValue();
       var od =
           api.GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(o.toJson());
@@ -10890,9 +10890,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResults",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResults',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1ProductSearchResults();
       var od = api.GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
           o.toJson());
@@ -10901,9 +10901,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult",
+      'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult();
       var od = api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
@@ -10913,9 +10913,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation",
+      'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation();
       var od =
@@ -10926,8 +10926,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsResult", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult();
       var od =
           api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
@@ -10936,17 +10936,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1Property", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Property', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1Property();
       var od = api.GoogleCloudVisionV1p2beta1Property.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Property(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1SafeSearchAnnotation",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1SafeSearchAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1SafeSearchAnnotation();
       var od = api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(
           o.toJson());
@@ -10954,16 +10954,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1Symbol", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Symbol', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1Symbol();
       var od = api.GoogleCloudVisionV1p2beta1Symbol.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Symbol(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1TextAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1TextAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotation();
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(o.toJson());
@@ -10972,8 +10972,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak();
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak.fromJson(
@@ -10983,9 +10983,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage",
+      'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage();
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage.fromJson(
@@ -10995,8 +10995,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationTextProperty", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationTextProperty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
@@ -11005,25 +11005,25 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1Vertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Vertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1Vertex();
       var od = api.GoogleCloudVisionV1p2beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Vertex(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1WebDetection", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetection', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1WebDetection();
       var od = api.GoogleCloudVisionV1p2beta1WebDetection.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1WebDetection(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebEntity",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebEntity',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity();
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(
           o.toJson());
@@ -11031,9 +11031,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebImage",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebImage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebImage();
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
           o.toJson());
@@ -11041,9 +11041,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebLabel",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebLabel',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel();
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(
           o.toJson());
@@ -11051,9 +11051,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebPage",
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebPage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebPage();
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(
           o.toJson());
@@ -11061,17 +11061,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p2beta1Word", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Word', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p2beta1Word();
       var od = api.GoogleCloudVisionV1p2beta1Word.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Word(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1AnnotateFileResponse",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1AnnotateFileResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1AnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p3beta1AnnotateFileResponse.fromJson(
           o.toJson());
@@ -11079,9 +11079,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1AnnotateImageResponse",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1AnnotateImageResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1AnnotateImageResponse();
       var od = api.GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(
           o.toJson());
@@ -11090,8 +11090,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(
           o.toJson());
@@ -11100,9 +11100,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse",
+      'obj-schema-GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse();
       var od = api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse
           .fromJson(o.toJson());
@@ -11110,9 +11110,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1BatchOperationMetadata",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1BatchOperationMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1BatchOperationMetadata();
       var od = api.GoogleCloudVisionV1p3beta1BatchOperationMetadata.fromJson(
           o.toJson());
@@ -11120,41 +11120,41 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1Block", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Block', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1Block();
       var od = api.GoogleCloudVisionV1p3beta1Block.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Block(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1BoundingPoly", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1BoundingPoly', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1BoundingPoly();
       var od = api.GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1BoundingPoly(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1ColorInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ColorInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1ColorInfo();
       var od = api.GoogleCloudVisionV1p3beta1ColorInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1ColorInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1CropHint", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1CropHint', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1CropHint();
       var od = api.GoogleCloudVisionV1p3beta1CropHint.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1CropHint(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1CropHintsAnnotation",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1CropHintsAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1CropHintsAnnotation();
       var od = api.GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(
           o.toJson());
@@ -11163,8 +11163,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1DominantColorsAnnotation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p3beta1DominantColorsAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1DominantColorsAnnotation();
       var od = api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(
           o.toJson());
@@ -11172,8 +11172,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1EntityAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1EntityAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1EntityAnnotation();
       var od =
           api.GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(o.toJson());
@@ -11181,8 +11181,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1FaceAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1FaceAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1FaceAnnotation();
       var od =
           api.GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(o.toJson());
@@ -11190,9 +11190,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1FaceAnnotationLandmark",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1FaceAnnotationLandmark',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark();
       var od = api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(
           o.toJson());
@@ -11200,8 +11200,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1GcsDestination", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1GcsDestination', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1GcsDestination();
       var od =
           api.GoogleCloudVisionV1p3beta1GcsDestination.fromJson(o.toJson());
@@ -11209,17 +11209,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1GcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1GcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1GcsSource();
       var od = api.GoogleCloudVisionV1p3beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1GcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1ImageAnnotationContext",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ImageAnnotationContext',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1ImageAnnotationContext();
       var od = api.GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(
           o.toJson());
@@ -11227,8 +11227,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1ImageProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ImageProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1ImageProperties();
       var od =
           api.GoogleCloudVisionV1p3beta1ImageProperties.fromJson(o.toJson());
@@ -11237,8 +11237,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1ImportProductSetsResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p3beta1ImportProductSetsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1ImportProductSetsResponse();
       var od = api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse.fromJson(
           o.toJson());
@@ -11246,8 +11246,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1InputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1InputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1InputConfig();
       var od = api.GoogleCloudVisionV1p3beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1InputConfig(od);
@@ -11255,8 +11255,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation();
       var od = api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(
           o.toJson());
@@ -11264,16 +11264,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1LocationInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1LocationInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1LocationInfo();
       var od = api.GoogleCloudVisionV1p3beta1LocationInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1LocationInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1NormalizedVertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1NormalizedVertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1NormalizedVertex();
       var od =
           api.GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(o.toJson());
@@ -11281,8 +11281,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1OperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1OperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1OperationMetadata();
       var od =
           api.GoogleCloudVisionV1p3beta1OperationMetadata.fromJson(o.toJson());
@@ -11290,48 +11290,48 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1OutputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1OutputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1OutputConfig();
       var od = api.GoogleCloudVisionV1p3beta1OutputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1OutputConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1Page", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Page', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1Page();
       var od = api.GoogleCloudVisionV1p3beta1Page.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Page(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1Paragraph", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Paragraph', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1Paragraph();
       var od = api.GoogleCloudVisionV1p3beta1Paragraph.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Paragraph(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1Position", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Position', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1Position();
       var od = api.GoogleCloudVisionV1p3beta1Position.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Position(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1Product", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Product', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1Product();
       var od = api.GoogleCloudVisionV1p3beta1Product.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Product(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1ProductKeyValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ProductKeyValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1ProductKeyValue();
       var od =
           api.GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(o.toJson());
@@ -11339,9 +11339,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResults",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResults',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1ProductSearchResults();
       var od = api.GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(
           o.toJson());
@@ -11350,9 +11350,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult",
+      'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult();
       var od = api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
@@ -11362,9 +11362,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation",
+      'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation();
       var od =
@@ -11375,8 +11375,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsResult", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult();
       var od =
           api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
@@ -11385,16 +11385,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1Property", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Property', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1Property();
       var od = api.GoogleCloudVisionV1p3beta1Property.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Property(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1ReferenceImage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ReferenceImage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1ReferenceImage();
       var od =
           api.GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(o.toJson());
@@ -11402,9 +11402,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1SafeSearchAnnotation",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1SafeSearchAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1SafeSearchAnnotation();
       var od = api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(
           o.toJson());
@@ -11412,16 +11412,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1Symbol", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Symbol', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1Symbol();
       var od = api.GoogleCloudVisionV1p3beta1Symbol.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Symbol(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1TextAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1TextAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotation();
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(o.toJson());
@@ -11430,8 +11430,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak();
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak.fromJson(
@@ -11441,9 +11441,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage",
+      'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage();
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage.fromJson(
@@ -11453,8 +11453,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationTextProperty", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationTextProperty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
@@ -11463,25 +11463,25 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1Vertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Vertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1Vertex();
       var od = api.GoogleCloudVisionV1p3beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Vertex(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1WebDetection", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetection', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1WebDetection();
       var od = api.GoogleCloudVisionV1p3beta1WebDetection.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1WebDetection(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebEntity",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebEntity',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity();
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(
           o.toJson());
@@ -11489,9 +11489,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebImage",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebImage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebImage();
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
           o.toJson());
@@ -11499,9 +11499,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebLabel",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebLabel',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel();
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(
           o.toJson());
@@ -11509,9 +11509,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebPage",
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebPage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebPage();
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(
           o.toJson());
@@ -11519,17 +11519,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p3beta1Word", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Word', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p3beta1Word();
       var od = api.GoogleCloudVisionV1p3beta1Word.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Word(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1AnnotateFileResponse",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1AnnotateFileResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1AnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(
           o.toJson());
@@ -11537,9 +11537,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1AnnotateImageResponse",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1AnnotateImageResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1AnnotateImageResponse();
       var od = api.GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(
           o.toJson());
@@ -11548,8 +11548,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(
           o.toJson());
@@ -11558,9 +11558,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse",
+      'obj-schema-GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse();
       var od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse
           .fromJson(o.toJson());
@@ -11569,9 +11569,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse",
+      'obj-schema-GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse();
       var od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse
           .fromJson(o.toJson());
@@ -11580,8 +11580,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse();
       var od =
           api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse.fromJson(
@@ -11590,9 +11590,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1BatchOperationMetadata",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1BatchOperationMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1BatchOperationMetadata();
       var od = api.GoogleCloudVisionV1p4beta1BatchOperationMetadata.fromJson(
           o.toJson());
@@ -11600,49 +11600,49 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Block", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Block', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Block();
       var od = api.GoogleCloudVisionV1p4beta1Block.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Block(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1BoundingPoly", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1BoundingPoly', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1BoundingPoly();
       var od = api.GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1BoundingPoly(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Celebrity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Celebrity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Celebrity();
       var od = api.GoogleCloudVisionV1p4beta1Celebrity.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Celebrity(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1ColorInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ColorInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1ColorInfo();
       var od = api.GoogleCloudVisionV1p4beta1ColorInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1ColorInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1CropHint", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1CropHint', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1CropHint();
       var od = api.GoogleCloudVisionV1p4beta1CropHint.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1CropHint(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1CropHintsAnnotation",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1CropHintsAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1CropHintsAnnotation();
       var od = api.GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(
           o.toJson());
@@ -11651,8 +11651,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1DominantColorsAnnotation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p4beta1DominantColorsAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1DominantColorsAnnotation();
       var od = api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(
           o.toJson());
@@ -11660,8 +11660,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1EntityAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1EntityAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1EntityAnnotation();
       var od =
           api.GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(o.toJson());
@@ -11669,8 +11669,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1FaceAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1FaceAnnotation();
       var od =
           api.GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(o.toJson());
@@ -11678,9 +11678,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1FaceAnnotationLandmark",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceAnnotationLandmark',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark();
       var od = api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(
           o.toJson());
@@ -11688,9 +11688,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1FaceRecognitionResult",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceRecognitionResult',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1FaceRecognitionResult();
       var od = api.GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(
           o.toJson());
@@ -11698,8 +11698,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1GcsDestination", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1GcsDestination', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1GcsDestination();
       var od =
           api.GoogleCloudVisionV1p4beta1GcsDestination.fromJson(o.toJson());
@@ -11707,17 +11707,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1GcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1GcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1GcsSource();
       var od = api.GoogleCloudVisionV1p4beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1GcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1ImageAnnotationContext",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ImageAnnotationContext',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1ImageAnnotationContext();
       var od = api.GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(
           o.toJson());
@@ -11725,8 +11725,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1ImageProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ImageProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1ImageProperties();
       var od =
           api.GoogleCloudVisionV1p4beta1ImageProperties.fromJson(o.toJson());
@@ -11735,8 +11735,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1ImportProductSetsResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p4beta1ImportProductSetsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1ImportProductSetsResponse();
       var od = api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse.fromJson(
           o.toJson());
@@ -11744,8 +11744,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1InputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1InputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1InputConfig();
       var od = api.GoogleCloudVisionV1p4beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1InputConfig(od);
@@ -11753,8 +11753,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation();
       var od = api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(
           o.toJson());
@@ -11762,16 +11762,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1LocationInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1LocationInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1LocationInfo();
       var od = api.GoogleCloudVisionV1p4beta1LocationInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1LocationInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1NormalizedVertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1NormalizedVertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1NormalizedVertex();
       var od =
           api.GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(o.toJson());
@@ -11779,8 +11779,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1OperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1OperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1OperationMetadata();
       var od =
           api.GoogleCloudVisionV1p4beta1OperationMetadata.fromJson(o.toJson());
@@ -11788,48 +11788,48 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1OutputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1OutputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1OutputConfig();
       var od = api.GoogleCloudVisionV1p4beta1OutputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1OutputConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Page", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Page', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Page();
       var od = api.GoogleCloudVisionV1p4beta1Page.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Page(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Paragraph", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Paragraph', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Paragraph();
       var od = api.GoogleCloudVisionV1p4beta1Paragraph.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Paragraph(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Position", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Position', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Position();
       var od = api.GoogleCloudVisionV1p4beta1Position.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Position(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Product", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Product', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Product();
       var od = api.GoogleCloudVisionV1p4beta1Product.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Product(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1ProductKeyValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ProductKeyValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1ProductKeyValue();
       var od =
           api.GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(o.toJson());
@@ -11837,9 +11837,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResults",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResults',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1ProductSearchResults();
       var od = api.GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(
           o.toJson());
@@ -11848,9 +11848,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult",
+      'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult();
       var od = api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
@@ -11860,9 +11860,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation",
+      'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation();
       var od =
@@ -11873,8 +11873,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsResult", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult();
       var od =
           api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
@@ -11883,16 +11883,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Property", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Property', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Property();
       var od = api.GoogleCloudVisionV1p4beta1Property.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Property(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1ReferenceImage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ReferenceImage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1ReferenceImage();
       var od =
           api.GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(o.toJson());
@@ -11900,9 +11900,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1SafeSearchAnnotation",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1SafeSearchAnnotation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1SafeSearchAnnotation();
       var od = api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(
           o.toJson());
@@ -11910,16 +11910,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Symbol", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Symbol', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Symbol();
       var od = api.GoogleCloudVisionV1p4beta1Symbol.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Symbol(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1TextAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1TextAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotation();
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(o.toJson());
@@ -11928,8 +11928,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak();
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak.fromJson(
@@ -11939,9 +11939,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage",
+      'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage();
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage.fromJson(
@@ -11951,8 +11951,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationTextProperty", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationTextProperty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
@@ -11961,25 +11961,25 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Vertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Vertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Vertex();
       var od = api.GoogleCloudVisionV1p4beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Vertex(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1WebDetection", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetection', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1WebDetection();
       var od = api.GoogleCloudVisionV1p4beta1WebDetection.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1WebDetection(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebEntity",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebEntity',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity();
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(
           o.toJson());
@@ -11987,9 +11987,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebImage",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebImage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebImage();
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
           o.toJson());
@@ -11997,9 +11997,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebLabel",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebLabel',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel();
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(
           o.toJson());
@@ -12007,9 +12007,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebPage",
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebPage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebPage();
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(
           o.toJson());
@@ -12017,444 +12017,444 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudVisionV1p4beta1Word", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Word', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudVisionV1p4beta1Word();
       var od = api.GoogleCloudVisionV1p4beta1Word.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Word(od);
     });
   });
 
-  unittest.group("obj-schema-GroupedResult", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GroupedResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGroupedResult();
       var od = api.GroupedResult.fromJson(o.toJson());
       checkGroupedResult(od);
     });
   });
 
-  unittest.group("obj-schema-Image", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Image', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od);
     });
   });
 
-  unittest.group("obj-schema-ImageAnnotationContext", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImageAnnotationContext', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImageAnnotationContext();
       var od = api.ImageAnnotationContext.fromJson(o.toJson());
       checkImageAnnotationContext(od);
     });
   });
 
-  unittest.group("obj-schema-ImageContext", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImageContext', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImageContext();
       var od = api.ImageContext.fromJson(o.toJson());
       checkImageContext(od);
     });
   });
 
-  unittest.group("obj-schema-ImageProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImageProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImageProperties();
       var od = api.ImageProperties.fromJson(o.toJson());
       checkImageProperties(od);
     });
   });
 
-  unittest.group("obj-schema-ImageSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImageSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImageSource();
       var od = api.ImageSource.fromJson(o.toJson());
       checkImageSource(od);
     });
   });
 
-  unittest.group("obj-schema-ImportProductSetsGcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportProductSetsGcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportProductSetsGcsSource();
       var od = api.ImportProductSetsGcsSource.fromJson(o.toJson());
       checkImportProductSetsGcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-ImportProductSetsInputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportProductSetsInputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportProductSetsInputConfig();
       var od = api.ImportProductSetsInputConfig.fromJson(o.toJson());
       checkImportProductSetsInputConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ImportProductSetsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportProductSetsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportProductSetsRequest();
       var od = api.ImportProductSetsRequest.fromJson(o.toJson());
       checkImportProductSetsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ImportProductSetsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportProductSetsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportProductSetsResponse();
       var od = api.ImportProductSetsResponse.fromJson(o.toJson());
       checkImportProductSetsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-InputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInputConfig();
       var od = api.InputConfig.fromJson(o.toJson());
       checkInputConfig(od);
     });
   });
 
-  unittest.group("obj-schema-KeyValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-KeyValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildKeyValue();
       var od = api.KeyValue.fromJson(o.toJson());
       checkKeyValue(od);
     });
   });
 
-  unittest.group("obj-schema-Landmark", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Landmark', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLandmark();
       var od = api.Landmark.fromJson(o.toJson());
       checkLandmark(od);
     });
   });
 
-  unittest.group("obj-schema-LatLng", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LatLng', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
       checkLatLng(od);
     });
   });
 
-  unittest.group("obj-schema-LatLongRect", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LatLongRect', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLatLongRect();
       var od = api.LatLongRect.fromJson(o.toJson());
       checkLatLongRect(od);
     });
   });
 
-  unittest.group("obj-schema-ListOperationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListOperationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListProductSetsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListProductSetsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListProductSetsResponse();
       var od = api.ListProductSetsResponse.fromJson(o.toJson());
       checkListProductSetsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListProductsInProductSetResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListProductsInProductSetResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListProductsInProductSetResponse();
       var od = api.ListProductsInProductSetResponse.fromJson(o.toJson());
       checkListProductsInProductSetResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListProductsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListProductsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListProductsResponse();
       var od = api.ListProductsResponse.fromJson(o.toJson());
       checkListProductsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListReferenceImagesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListReferenceImagesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListReferenceImagesResponse();
       var od = api.ListReferenceImagesResponse.fromJson(o.toJson());
       checkListReferenceImagesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-LocalizedObjectAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LocalizedObjectAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocalizedObjectAnnotation();
       var od = api.LocalizedObjectAnnotation.fromJson(o.toJson());
       checkLocalizedObjectAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-LocationInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LocationInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocationInfo();
       var od = api.LocationInfo.fromJson(o.toJson());
       checkLocationInfo(od);
     });
   });
 
-  unittest.group("obj-schema-NormalizedVertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NormalizedVertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNormalizedVertex();
       var od = api.NormalizedVertex.fromJson(o.toJson());
       checkNormalizedVertex(od);
     });
   });
 
-  unittest.group("obj-schema-ObjectAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ObjectAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildObjectAnnotation();
       var od = api.ObjectAnnotation.fromJson(o.toJson());
       checkObjectAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-Operation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Operation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
 
-  unittest.group("obj-schema-OperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-OutputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OutputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOutputConfig();
       var od = api.OutputConfig.fromJson(o.toJson());
       checkOutputConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Page", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Page', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPage();
       var od = api.Page.fromJson(o.toJson());
       checkPage(od);
     });
   });
 
-  unittest.group("obj-schema-Paragraph", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Paragraph', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParagraph();
       var od = api.Paragraph.fromJson(o.toJson());
       checkParagraph(od);
     });
   });
 
-  unittest.group("obj-schema-Position", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Position', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPosition();
       var od = api.Position.fromJson(o.toJson());
       checkPosition(od);
     });
   });
 
-  unittest.group("obj-schema-Product", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Product', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProduct();
       var od = api.Product.fromJson(o.toJson());
       checkProduct(od);
     });
   });
 
-  unittest.group("obj-schema-ProductSearchParams", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ProductSearchParams', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProductSearchParams();
       var od = api.ProductSearchParams.fromJson(o.toJson());
       checkProductSearchParams(od);
     });
   });
 
-  unittest.group("obj-schema-ProductSearchResults", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ProductSearchResults', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProductSearchResults();
       var od = api.ProductSearchResults.fromJson(o.toJson());
       checkProductSearchResults(od);
     });
   });
 
-  unittest.group("obj-schema-ProductSet", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ProductSet', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProductSet();
       var od = api.ProductSet.fromJson(o.toJson());
       checkProductSet(od);
     });
   });
 
-  unittest.group("obj-schema-ProductSetPurgeConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ProductSetPurgeConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProductSetPurgeConfig();
       var od = api.ProductSetPurgeConfig.fromJson(o.toJson());
       checkProductSetPurgeConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Property", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Property', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProperty();
       var od = api.Property.fromJson(o.toJson());
       checkProperty(od);
     });
   });
 
-  unittest.group("obj-schema-PurgeProductsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PurgeProductsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPurgeProductsRequest();
       var od = api.PurgeProductsRequest.fromJson(o.toJson());
       checkPurgeProductsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ReferenceImage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReferenceImage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReferenceImage();
       var od = api.ReferenceImage.fromJson(o.toJson());
       checkReferenceImage(od);
     });
   });
 
-  unittest.group("obj-schema-RemoveProductFromProductSetRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RemoveProductFromProductSetRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRemoveProductFromProductSetRequest();
       var od = api.RemoveProductFromProductSetRequest.fromJson(o.toJson());
       checkRemoveProductFromProductSetRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Result", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Result', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResult();
       var od = api.Result.fromJson(o.toJson());
       checkResult(od);
     });
   });
 
-  unittest.group("obj-schema-SafeSearchAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SafeSearchAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSafeSearchAnnotation();
       var od = api.SafeSearchAnnotation.fromJson(o.toJson());
       checkSafeSearchAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-Symbol", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Symbol', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSymbol();
       var od = api.Symbol.fromJson(o.toJson());
       checkSymbol(od);
     });
   });
 
-  unittest.group("obj-schema-TextAnnotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TextAnnotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTextAnnotation();
       var od = api.TextAnnotation.fromJson(o.toJson());
       checkTextAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-TextProperty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TextProperty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTextProperty();
       var od = api.TextProperty.fromJson(o.toJson());
       checkTextProperty(od);
     });
   });
 
-  unittest.group("obj-schema-Vertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Vertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVertex();
       var od = api.Vertex.fromJson(o.toJson());
       checkVertex(od);
     });
   });
 
-  unittest.group("obj-schema-WebDetection", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WebDetection', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWebDetection();
       var od = api.WebDetection.fromJson(o.toJson());
       checkWebDetection(od);
     });
   });
 
-  unittest.group("obj-schema-WebDetectionParams", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WebDetectionParams', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWebDetectionParams();
       var od = api.WebDetectionParams.fromJson(o.toJson());
       checkWebDetectionParams(od);
     });
   });
 
-  unittest.group("obj-schema-WebEntity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WebEntity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWebEntity();
       var od = api.WebEntity.fromJson(o.toJson());
       checkWebEntity(od);
     });
   });
 
-  unittest.group("obj-schema-WebImage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WebImage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWebImage();
       var od = api.WebImage.fromJson(o.toJson());
       checkWebImage(od);
     });
   });
 
-  unittest.group("obj-schema-WebLabel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WebLabel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWebLabel();
       var od = api.WebLabel.fromJson(o.toJson());
       checkWebLabel(od);
     });
   });
 
-  unittest.group("obj-schema-WebPage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WebPage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWebPage();
       var od = api.WebPage.fromJson(o.toJson());
       checkWebPage(od);
     });
   });
 
-  unittest.group("obj-schema-Word", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Word', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWord();
       var od = api.Word.fromJson(o.toJson());
       checkWord(od);
     });
   });
 
-  unittest.group("resource-FilesResourceApi", () {
-    unittest.test("method--annotate", () {
+  unittest.group('resource-FilesResourceApi', () {
+    unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.VisionApi(mock).files;
       var arg_request = buildBatchAnnotateFilesRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchAnnotateFilesRequest.fromJson(json);
         checkBatchAnnotateFilesRequest(obj);
@@ -12476,8 +12476,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12487,7 +12487,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchAnnotateFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12499,11 +12499,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--asyncBatchAnnotate", () {
+    unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.VisionApi(mock).files;
       var arg_request = buildAsyncBatchAnnotateFilesRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AsyncBatchAnnotateFilesRequest.fromJson(json);
         checkAsyncBatchAnnotateFilesRequest(obj);
@@ -12525,8 +12525,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12536,7 +12536,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12549,12 +12549,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-ImagesResourceApi", () {
-    unittest.test("method--annotate", () {
+  unittest.group('resource-ImagesResourceApi', () {
+    unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       api.ImagesResourceApi res = api.VisionApi(mock).images;
       var arg_request = buildBatchAnnotateImagesRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchAnnotateImagesRequest.fromJson(json);
         checkBatchAnnotateImagesRequest(obj);
@@ -12576,8 +12576,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12587,7 +12587,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchAnnotateImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12599,11 +12599,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--asyncBatchAnnotate", () {
+    unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
       api.ImagesResourceApi res = api.VisionApi(mock).images;
       var arg_request = buildAsyncBatchAnnotateImagesRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AsyncBatchAnnotateImagesRequest.fromJson(json);
         checkAsyncBatchAnnotateImagesRequest(obj);
@@ -12625,8 +12625,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12636,7 +12636,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12649,13 +12649,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-LocationsOperationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-LocationsOperationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.LocationsOperationsResourceApi res =
           api.VisionApi(mock).locations.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12675,8 +12675,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12686,7 +12686,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12699,13 +12699,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OperationsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-OperationsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.OperationsResourceApi res = api.VisionApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CancelOperationRequest.fromJson(json);
         checkCancelOperationRequest(obj);
@@ -12728,8 +12728,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12739,7 +12739,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12751,11 +12751,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OperationsResourceApi res = api.VisionApi(mock).operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12775,8 +12775,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12786,7 +12786,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12798,11 +12798,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OperationsResourceApi res = api.VisionApi(mock).operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12822,8 +12822,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12833,7 +12833,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12845,14 +12845,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OperationsResourceApi res = api.VisionApi(mock).operations;
-      var arg_name = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12872,8 +12872,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12888,7 +12888,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12905,13 +12905,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsFilesResourceApi", () {
-    unittest.test("method--annotate", () {
+  unittest.group('resource-ProjectsFilesResourceApi', () {
+    unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       api.ProjectsFilesResourceApi res = api.VisionApi(mock).projects.files;
       var arg_request = buildBatchAnnotateFilesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchAnnotateFilesRequest.fromJson(json);
         checkBatchAnnotateFilesRequest(obj);
@@ -12934,8 +12934,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12945,7 +12945,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchAnnotateFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12957,12 +12957,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--asyncBatchAnnotate", () {
+    unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
       api.ProjectsFilesResourceApi res = api.VisionApi(mock).projects.files;
       var arg_request = buildAsyncBatchAnnotateFilesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AsyncBatchAnnotateFilesRequest.fromJson(json);
         checkAsyncBatchAnnotateFilesRequest(obj);
@@ -12985,8 +12985,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12996,7 +12996,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13009,13 +13009,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsImagesResourceApi", () {
-    unittest.test("method--annotate", () {
+  unittest.group('resource-ProjectsImagesResourceApi', () {
+    unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       api.ProjectsImagesResourceApi res = api.VisionApi(mock).projects.images;
       var arg_request = buildBatchAnnotateImagesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchAnnotateImagesRequest.fromJson(json);
         checkBatchAnnotateImagesRequest(obj);
@@ -13038,8 +13038,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13049,7 +13049,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchAnnotateImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13061,12 +13061,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--asyncBatchAnnotate", () {
+    unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
       api.ProjectsImagesResourceApi res = api.VisionApi(mock).projects.images;
       var arg_request = buildAsyncBatchAnnotateImagesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AsyncBatchAnnotateImagesRequest.fromJson(json);
         checkAsyncBatchAnnotateImagesRequest(obj);
@@ -13089,8 +13089,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13100,7 +13100,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13113,14 +13113,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsFilesResourceApi", () {
-    unittest.test("method--annotate", () {
+  unittest.group('resource-ProjectsLocationsFilesResourceApi', () {
+    unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsFilesResourceApi res =
           api.VisionApi(mock).projects.locations.files;
       var arg_request = buildBatchAnnotateFilesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchAnnotateFilesRequest.fromJson(json);
         checkBatchAnnotateFilesRequest(obj);
@@ -13143,8 +13143,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13154,7 +13154,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchAnnotateFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13166,13 +13166,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--asyncBatchAnnotate", () {
+    unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsFilesResourceApi res =
           api.VisionApi(mock).projects.locations.files;
       var arg_request = buildAsyncBatchAnnotateFilesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AsyncBatchAnnotateFilesRequest.fromJson(json);
         checkAsyncBatchAnnotateFilesRequest(obj);
@@ -13195,8 +13195,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13206,7 +13206,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13219,14 +13219,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsImagesResourceApi", () {
-    unittest.test("method--annotate", () {
+  unittest.group('resource-ProjectsLocationsImagesResourceApi', () {
+    unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsImagesResourceApi res =
           api.VisionApi(mock).projects.locations.images;
       var arg_request = buildBatchAnnotateImagesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchAnnotateImagesRequest.fromJson(json);
         checkBatchAnnotateImagesRequest(obj);
@@ -13249,8 +13249,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13260,7 +13260,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchAnnotateImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13272,13 +13272,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--asyncBatchAnnotate", () {
+    unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsImagesResourceApi res =
           api.VisionApi(mock).projects.locations.images;
       var arg_request = buildAsyncBatchAnnotateImagesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AsyncBatchAnnotateImagesRequest.fromJson(json);
         checkAsyncBatchAnnotateImagesRequest(obj);
@@ -13301,8 +13301,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13312,7 +13312,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13325,13 +13325,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsOperationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
           api.VisionApi(mock).projects.locations.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13351,8 +13351,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13362,7 +13362,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13375,14 +13375,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsProductSetsResourceApi", () {
-    unittest.test("method--addProduct", () {
+  unittest.group('resource-ProjectsLocationsProductSetsResourceApi', () {
+    unittest.test('method--addProduct', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductSetsResourceApi res =
           api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildAddProductToProductSetRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AddProductToProductSetRequest.fromJson(json);
         checkAddProductToProductSetRequest(obj);
@@ -13405,8 +13405,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13416,7 +13416,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13428,14 +13428,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductSetsResourceApi res =
           api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildProductSet();
-      var arg_parent = "foo";
-      var arg_productSetId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_productSetId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ProductSet.fromJson(json);
         checkProductSet(obj);
@@ -13458,8 +13458,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13471,7 +13471,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13484,12 +13484,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductSetsResourceApi res =
           api.VisionApi(mock).projects.locations.productSets;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13509,8 +13509,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13520,7 +13520,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13532,12 +13532,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductSetsResourceApi res =
           api.VisionApi(mock).projects.locations.productSets;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13557,8 +13557,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13568,7 +13568,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13580,13 +13580,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--import", () {
+    unittest.test('method--import', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductSetsResourceApi res =
           api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildImportProductSetsRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ImportProductSetsRequest.fromJson(json);
         checkImportProductSetsRequest(obj);
@@ -13609,8 +13609,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13620,7 +13620,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13632,14 +13632,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductSetsResourceApi res =
           api.VisionApi(mock).projects.locations.productSets;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13659,8 +13659,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13674,7 +13674,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListProductSetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13689,14 +13689,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductSetsResourceApi res =
           api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildProductSet();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ProductSet.fromJson(json);
         checkProductSet(obj);
@@ -13719,8 +13719,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13732,7 +13732,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13745,13 +13745,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--removeProduct", () {
+    unittest.test('method--removeProduct', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductSetsResourceApi res =
           api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildRemoveProductFromProductSetRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RemoveProductFromProductSetRequest.fromJson(json);
         checkRemoveProductFromProductSetRequest(obj);
@@ -13774,8 +13774,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13785,7 +13785,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13798,16 +13798,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsProductSetsProductsResourceApi",
+  unittest.group('resource-ProjectsLocationsProductSetsProductsResourceApi',
       () {
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductSetsProductsResourceApi res =
           api.VisionApi(mock).projects.locations.productSets.products;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13827,8 +13827,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13842,7 +13842,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListProductsInProductSetResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13858,15 +13858,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsProductsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsLocationsProductsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsResourceApi res =
           api.VisionApi(mock).projects.locations.products;
       var arg_request = buildProduct();
-      var arg_parent = "foo";
-      var arg_productId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_productId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Product.fromJson(json);
         checkProduct(obj);
@@ -13889,8 +13889,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13902,7 +13902,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13915,12 +13915,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsResourceApi res =
           api.VisionApi(mock).projects.locations.products;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13940,8 +13940,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13951,7 +13951,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13963,12 +13963,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsResourceApi res =
           api.VisionApi(mock).projects.locations.products;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13988,8 +13988,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13999,7 +13999,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14011,14 +14011,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsResourceApi res =
           api.VisionApi(mock).projects.locations.products;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14038,8 +14038,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14053,7 +14053,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListProductsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14068,14 +14068,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsResourceApi res =
           api.VisionApi(mock).projects.locations.products;
       var arg_request = buildProduct();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Product.fromJson(json);
         checkProduct(obj);
@@ -14098,8 +14098,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14111,7 +14111,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14124,13 +14124,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--purge", () {
+    unittest.test('method--purge', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsResourceApi res =
           api.VisionApi(mock).projects.locations.products;
       var arg_request = buildPurgeProductsRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PurgeProductsRequest.fromJson(json);
         checkPurgeProductsRequest(obj);
@@ -14153,8 +14153,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14164,7 +14164,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14177,16 +14177,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsProductsReferenceImagesResourceApi",
+  unittest.group('resource-ProjectsLocationsProductsReferenceImagesResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsReferenceImagesResourceApi res =
           api.VisionApi(mock).projects.locations.products.referenceImages;
       var arg_request = buildReferenceImage();
-      var arg_parent = "foo";
-      var arg_referenceImageId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_referenceImageId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ReferenceImage.fromJson(json);
         checkReferenceImage(obj);
@@ -14209,8 +14209,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14222,7 +14222,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildReferenceImage());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14235,12 +14235,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsReferenceImagesResourceApi res =
           api.VisionApi(mock).projects.locations.products.referenceImages;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14260,8 +14260,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14271,7 +14271,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14283,12 +14283,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsReferenceImagesResourceApi res =
           api.VisionApi(mock).projects.locations.products.referenceImages;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14308,8 +14308,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14319,7 +14319,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildReferenceImage());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14331,14 +14331,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsProductsReferenceImagesResourceApi res =
           api.VisionApi(mock).projects.locations.products.referenceImages;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14358,8 +14358,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14373,7 +14373,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListReferenceImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14389,13 +14389,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsOperationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsOperationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.VisionApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14415,8 +14415,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14426,7 +14426,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));

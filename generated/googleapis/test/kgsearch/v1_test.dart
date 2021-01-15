@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -89,14 +89,14 @@ void checkUnnamed79(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o[1]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterSearchResponse = 0;
@@ -125,14 +125,14 @@ void checkSearchResponse(api.SearchResponse o) {
   if (buildCounterSearchResponse < 3) {
     var casted3 = (o.P_context) as core.Map;
     unittest.expect(casted3, unittest.hasLength(3));
-    unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-    unittest.expect(casted3["bool"], unittest.equals(true));
-    unittest.expect(casted3["string"], unittest.equals('foo'));
+    unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted3['bool'], unittest.equals(true));
+    unittest.expect(casted3['string'], unittest.equals('foo'));
     var casted4 = (o.P_type) as core.Map;
     unittest.expect(casted4, unittest.hasLength(3));
-    unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-    unittest.expect(casted4["bool"], unittest.equals(true));
-    unittest.expect(casted4["string"], unittest.equals('foo'));
+    unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted4['bool'], unittest.equals(true));
+    unittest.expect(casted4['string'], unittest.equals('foo'));
     checkUnnamed79(o.itemListElement);
   }
   buildCounterSearchResponse--;
@@ -140,8 +140,8 @@ void checkSearchResponse(api.SearchResponse o) {
 
 core.List<core.String> buildUnnamed80() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -153,8 +153,8 @@ void checkUnnamed80(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed81() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -166,8 +166,8 @@ void checkUnnamed81(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed82() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -178,26 +178,26 @@ void checkUnnamed82(core.List<core.String> o) {
 }
 
 void main() {
-  unittest.group("obj-schema-SearchResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchResponse();
       var od = api.SearchResponse.fromJson(o.toJson());
       checkSearchResponse(od);
     });
   });
 
-  unittest.group("resource-EntitiesResourceApi", () {
-    unittest.test("method--search", () {
+  unittest.group('resource-EntitiesResourceApi', () {
+    unittest.test('method--search', () {
       var mock = HttpServerMock();
       api.EntitiesResourceApi res = api.KgsearchApi(mock).entities;
       var arg_ids = buildUnnamed80();
       var arg_types = buildUnnamed81();
-      var arg_query = "foo";
+      var arg_query = 'foo';
       var arg_prefix = true;
       var arg_indent = true;
       var arg_limit = 42;
       var arg_languages = buildUnnamed82();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -216,8 +216,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -237,7 +237,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));

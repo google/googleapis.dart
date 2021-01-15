@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -88,13 +88,13 @@ api.Account buildAccount() {
   var o = api.Account();
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    o.creationTime = "foo";
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
+    o.creationTime = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
     o.premium = true;
     o.subAccounts = buildUnnamed3638();
-    o.timezone = "foo";
+    o.timezone = 'foo';
   }
   buildCounterAccount--;
   return o;
@@ -132,10 +132,10 @@ api.Accounts buildAccounts() {
   var o = api.Accounts();
   buildCounterAccounts++;
   if (buildCounterAccounts < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed3639();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterAccounts--;
   return o;
@@ -158,9 +158,9 @@ api.AdClient buildAdClient() {
   buildCounterAdClient++;
   if (buildCounterAdClient < 3) {
     o.arcOptIn = true;
-    o.id = "foo";
-    o.kind = "foo";
-    o.productCode = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.productCode = 'foo';
     o.supportsReporting = true;
   }
   buildCounterAdClient--;
@@ -197,10 +197,10 @@ api.AdClients buildAdClients() {
   var o = api.AdClients();
   buildCounterAdClients++;
   if (buildCounterAdClients < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed3640();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterAdClients--;
   return o;
@@ -222,10 +222,10 @@ api.AdCode buildAdCode() {
   var o = api.AdCode();
   buildCounterAdCode++;
   if (buildCounterAdCode < 3) {
-    o.adCode = "foo";
-    o.ampBody = "foo";
-    o.ampHead = "foo";
-    o.kind = "foo";
+    o.adCode = 'foo';
+    o.ampBody = 'foo';
+    o.ampHead = 'foo';
+    o.kind = 'foo';
   }
   buildCounterAdCode--;
   return o;
@@ -247,11 +247,11 @@ api.AdStyleColors buildAdStyleColors() {
   var o = api.AdStyleColors();
   buildCounterAdStyleColors++;
   if (buildCounterAdStyleColors < 3) {
-    o.background = "foo";
-    o.border = "foo";
-    o.text = "foo";
-    o.title = "foo";
-    o.url = "foo";
+    o.background = 'foo';
+    o.border = 'foo';
+    o.text = 'foo';
+    o.title = 'foo';
+    o.url = 'foo';
   }
   buildCounterAdStyleColors--;
   return o;
@@ -274,8 +274,8 @@ api.AdStyleFont buildAdStyleFont() {
   var o = api.AdStyleFont();
   buildCounterAdStyleFont++;
   if (buildCounterAdStyleFont < 3) {
-    o.family = "foo";
-    o.size = "foo";
+    o.family = 'foo';
+    o.size = 'foo';
   }
   buildCounterAdStyleFont--;
   return o;
@@ -296,9 +296,9 @@ api.AdStyle buildAdStyle() {
   buildCounterAdStyle++;
   if (buildCounterAdStyle < 3) {
     o.colors = buildAdStyleColors();
-    o.corners = "foo";
+    o.corners = 'foo';
     o.font = buildAdStyleFont();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterAdStyle--;
   return o;
@@ -321,9 +321,9 @@ api.AdUnitContentAdsSettingsBackupOption
   var o = api.AdUnitContentAdsSettingsBackupOption();
   buildCounterAdUnitContentAdsSettingsBackupOption++;
   if (buildCounterAdUnitContentAdsSettingsBackupOption < 3) {
-    o.color = "foo";
-    o.type = "foo";
-    o.url = "foo";
+    o.color = 'foo';
+    o.type = 'foo';
+    o.url = 'foo';
   }
   buildCounterAdUnitContentAdsSettingsBackupOption--;
   return o;
@@ -346,8 +346,8 @@ api.AdUnitContentAdsSettings buildAdUnitContentAdsSettings() {
   buildCounterAdUnitContentAdsSettings++;
   if (buildCounterAdUnitContentAdsSettings < 3) {
     o.backupOption = buildAdUnitContentAdsSettingsBackupOption();
-    o.size = "foo";
-    o.type = "foo";
+    o.size = 'foo';
+    o.type = 'foo';
   }
   buildCounterAdUnitContentAdsSettings--;
   return o;
@@ -368,10 +368,10 @@ api.AdUnitFeedAdsSettings buildAdUnitFeedAdsSettings() {
   var o = api.AdUnitFeedAdsSettings();
   buildCounterAdUnitFeedAdsSettings++;
   if (buildCounterAdUnitFeedAdsSettings < 3) {
-    o.adPosition = "foo";
+    o.adPosition = 'foo';
     o.frequency = 42;
     o.minimumWordCount = 42;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterAdUnitFeedAdsSettings--;
   return o;
@@ -393,10 +393,10 @@ api.AdUnitMobileContentAdsSettings buildAdUnitMobileContentAdsSettings() {
   var o = api.AdUnitMobileContentAdsSettings();
   buildCounterAdUnitMobileContentAdsSettings++;
   if (buildCounterAdUnitMobileContentAdsSettings < 3) {
-    o.markupLanguage = "foo";
-    o.scriptingLanguage = "foo";
-    o.size = "foo";
-    o.type = "foo";
+    o.markupLanguage = 'foo';
+    o.scriptingLanguage = 'foo';
+    o.size = 'foo';
+    o.type = 'foo';
   }
   buildCounterAdUnitMobileContentAdsSettings--;
   return o;
@@ -418,16 +418,16 @@ api.AdUnit buildAdUnit() {
   var o = api.AdUnit();
   buildCounterAdUnit++;
   if (buildCounterAdUnit < 3) {
-    o.code = "foo";
+    o.code = 'foo';
     o.contentAdsSettings = buildAdUnitContentAdsSettings();
     o.customStyle = buildAdStyle();
     o.feedAdsSettings = buildAdUnitFeedAdsSettings();
-    o.id = "foo";
-    o.kind = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
     o.mobileContentAdsSettings = buildAdUnitMobileContentAdsSettings();
-    o.name = "foo";
-    o.savedStyleId = "foo";
-    o.status = "foo";
+    o.name = 'foo';
+    o.savedStyleId = 'foo';
+    o.status = 'foo';
   }
   buildCounterAdUnit--;
   return o;
@@ -468,10 +468,10 @@ api.AdUnits buildAdUnits() {
   var o = api.AdUnits();
   buildCounterAdUnits++;
   if (buildCounterAdUnits < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed3641();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterAdUnits--;
   return o;
@@ -490,8 +490,8 @@ void checkAdUnits(api.AdUnits o) {
 
 core.List<core.String> buildUnnamed3642() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -507,9 +507,9 @@ api.AdsenseReportsGenerateResponseHeaders
   var o = api.AdsenseReportsGenerateResponseHeaders();
   buildCounterAdsenseReportsGenerateResponseHeaders++;
   if (buildCounterAdsenseReportsGenerateResponseHeaders < 3) {
-    o.currency = "foo";
-    o.name = "foo";
-    o.type = "foo";
+    o.currency = 'foo';
+    o.name = 'foo';
+    o.type = 'foo';
   }
   buildCounterAdsenseReportsGenerateResponseHeaders--;
   return o;
@@ -541,8 +541,8 @@ void checkUnnamed3643(core.List<api.AdsenseReportsGenerateResponseHeaders> o) {
 
 core.List<core.String> buildUnnamed3644() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -567,8 +567,8 @@ void checkUnnamed3645(core.List<core.List<core.String>> o) {
 
 core.List<core.String> buildUnnamed3646() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -580,8 +580,8 @@ void checkUnnamed3646(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3647() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -597,12 +597,12 @@ api.AdsenseReportsGenerateResponse buildAdsenseReportsGenerateResponse() {
   buildCounterAdsenseReportsGenerateResponse++;
   if (buildCounterAdsenseReportsGenerateResponse < 3) {
     o.averages = buildUnnamed3642();
-    o.endDate = "foo";
+    o.endDate = 'foo';
     o.headers = buildUnnamed3643();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.rows = buildUnnamed3645();
-    o.startDate = "foo";
-    o.totalMatchedRows = "foo";
+    o.startDate = 'foo';
+    o.totalMatchedRows = 'foo';
     o.totals = buildUnnamed3646();
     o.warnings = buildUnnamed3647();
   }
@@ -631,12 +631,12 @@ api.Alert buildAlert() {
   var o = api.Alert();
   buildCounterAlert++;
   if (buildCounterAlert < 3) {
-    o.id = "foo";
+    o.id = 'foo';
     o.isDismissible = true;
-    o.kind = "foo";
-    o.message = "foo";
-    o.severity = "foo";
-    o.type = "foo";
+    o.kind = 'foo';
+    o.message = 'foo';
+    o.severity = 'foo';
+    o.type = 'foo';
   }
   buildCounterAlert--;
   return o;
@@ -674,7 +674,7 @@ api.Alerts buildAlerts() {
   buildCounterAlerts++;
   if (buildCounterAlerts < 3) {
     o.items = buildUnnamed3648();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterAlerts--;
   return o;
@@ -694,10 +694,10 @@ api.CustomChannelTargetingInfo buildCustomChannelTargetingInfo() {
   var o = api.CustomChannelTargetingInfo();
   buildCounterCustomChannelTargetingInfo++;
   if (buildCounterCustomChannelTargetingInfo < 3) {
-    o.adsAppearOn = "foo";
-    o.description = "foo";
-    o.location = "foo";
-    o.siteLanguage = "foo";
+    o.adsAppearOn = 'foo';
+    o.description = 'foo';
+    o.location = 'foo';
+    o.siteLanguage = 'foo';
   }
   buildCounterCustomChannelTargetingInfo--;
   return o;
@@ -719,10 +719,10 @@ api.CustomChannel buildCustomChannel() {
   var o = api.CustomChannel();
   buildCounterCustomChannel++;
   if (buildCounterCustomChannel < 3) {
-    o.code = "foo";
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
+    o.code = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
     o.targetingInfo = buildCustomChannelTargetingInfo();
   }
   buildCounterCustomChannel--;
@@ -759,10 +759,10 @@ api.CustomChannels buildCustomChannels() {
   var o = api.CustomChannels();
   buildCounterCustomChannels++;
   if (buildCounterCustomChannels < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed3649();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterCustomChannels--;
   return o;
@@ -798,7 +798,7 @@ api.Metadata buildMetadata() {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
     o.items = buildUnnamed3650();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterMetadata--;
   return o;
@@ -818,11 +818,11 @@ api.Payment buildPayment() {
   var o = api.Payment();
   buildCounterPayment++;
   if (buildCounterPayment < 3) {
-    o.id = "foo";
-    o.kind = "foo";
-    o.paymentAmount = "foo";
-    o.paymentAmountCurrencyCode = "foo";
-    o.paymentDate = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.paymentAmount = 'foo';
+    o.paymentAmountCurrencyCode = 'foo';
+    o.paymentDate = 'foo';
   }
   buildCounterPayment--;
   return o;
@@ -859,7 +859,7 @@ api.Payments buildPayments() {
   buildCounterPayments++;
   if (buildCounterPayments < 3) {
     o.items = buildUnnamed3651();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterPayments--;
   return o;
@@ -876,8 +876,8 @@ void checkPayments(api.Payments o) {
 
 core.List<core.String> buildUnnamed3652() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -889,8 +889,8 @@ void checkUnnamed3652(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3653() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -902,8 +902,8 @@ void checkUnnamed3653(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3654() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -915,8 +915,8 @@ void checkUnnamed3654(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3655() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -928,8 +928,8 @@ void checkUnnamed3655(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3656() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -946,8 +946,8 @@ api.ReportingMetadataEntry buildReportingMetadataEntry() {
   if (buildCounterReportingMetadataEntry < 3) {
     o.compatibleDimensions = buildUnnamed3652();
     o.compatibleMetrics = buildUnnamed3653();
-    o.id = "foo";
-    o.kind = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
     o.requiredDimensions = buildUnnamed3654();
     o.requiredMetrics = buildUnnamed3655();
     o.supportedProducts = buildUnnamed3656();
@@ -976,9 +976,9 @@ api.SavedAdStyle buildSavedAdStyle() {
   buildCounterSavedAdStyle++;
   if (buildCounterSavedAdStyle < 3) {
     o.adStyle = buildAdStyle();
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
   }
   buildCounterSavedAdStyle--;
   return o;
@@ -1013,10 +1013,10 @@ api.SavedAdStyles buildSavedAdStyles() {
   var o = api.SavedAdStyles();
   buildCounterSavedAdStyles++;
   if (buildCounterSavedAdStyles < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed3657();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterSavedAdStyles--;
   return o;
@@ -1038,9 +1038,9 @@ api.SavedReport buildSavedReport() {
   var o = api.SavedReport();
   buildCounterSavedReport++;
   if (buildCounterSavedReport < 3) {
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
   }
   buildCounterSavedReport--;
   return o;
@@ -1074,10 +1074,10 @@ api.SavedReports buildSavedReports() {
   var o = api.SavedReports();
   buildCounterSavedReports++;
   if (buildCounterSavedReports < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed3658();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterSavedReports--;
   return o;
@@ -1099,9 +1099,9 @@ api.UrlChannel buildUrlChannel() {
   var o = api.UrlChannel();
   buildCounterUrlChannel++;
   if (buildCounterUrlChannel < 3) {
-    o.id = "foo";
-    o.kind = "foo";
-    o.urlPattern = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.urlPattern = 'foo';
   }
   buildCounterUrlChannel--;
   return o;
@@ -1135,10 +1135,10 @@ api.UrlChannels buildUrlChannels() {
   var o = api.UrlChannels();
   buildCounterUrlChannels++;
   if (buildCounterUrlChannels < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed3659();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterUrlChannels--;
   return o;
@@ -1157,8 +1157,8 @@ void checkUrlChannels(api.UrlChannels o) {
 
 core.List<core.String> buildUnnamed3660() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1170,8 +1170,8 @@ void checkUnnamed3660(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3661() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1183,8 +1183,8 @@ void checkUnnamed3661(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3662() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1196,8 +1196,8 @@ void checkUnnamed3662(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3663() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1209,8 +1209,8 @@ void checkUnnamed3663(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3664() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1222,8 +1222,8 @@ void checkUnnamed3664(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3665() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1235,8 +1235,8 @@ void checkUnnamed3665(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3666() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1248,8 +1248,8 @@ void checkUnnamed3666(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3667() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1261,8 +1261,8 @@ void checkUnnamed3667(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3668() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1273,261 +1273,261 @@ void checkUnnamed3668(core.List<core.String> o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Account", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Account', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od);
     });
   });
 
-  unittest.group("obj-schema-Accounts", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Accounts', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccounts();
       var od = api.Accounts.fromJson(o.toJson());
       checkAccounts(od);
     });
   });
 
-  unittest.group("obj-schema-AdClient", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdClient', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdClient();
       var od = api.AdClient.fromJson(o.toJson());
       checkAdClient(od);
     });
   });
 
-  unittest.group("obj-schema-AdClients", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdClients', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdClients();
       var od = api.AdClients.fromJson(o.toJson());
       checkAdClients(od);
     });
   });
 
-  unittest.group("obj-schema-AdCode", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdCode', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdCode();
       var od = api.AdCode.fromJson(o.toJson());
       checkAdCode(od);
     });
   });
 
-  unittest.group("obj-schema-AdStyleColors", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdStyleColors', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdStyleColors();
       var od = api.AdStyleColors.fromJson(o.toJson());
       checkAdStyleColors(od);
     });
   });
 
-  unittest.group("obj-schema-AdStyleFont", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdStyleFont', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdStyleFont();
       var od = api.AdStyleFont.fromJson(o.toJson());
       checkAdStyleFont(od);
     });
   });
 
-  unittest.group("obj-schema-AdStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdStyle();
       var od = api.AdStyle.fromJson(o.toJson());
       checkAdStyle(od);
     });
   });
 
-  unittest.group("obj-schema-AdUnitContentAdsSettingsBackupOption", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdUnitContentAdsSettingsBackupOption', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdUnitContentAdsSettingsBackupOption();
       var od = api.AdUnitContentAdsSettingsBackupOption.fromJson(o.toJson());
       checkAdUnitContentAdsSettingsBackupOption(od);
     });
   });
 
-  unittest.group("obj-schema-AdUnitContentAdsSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdUnitContentAdsSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdUnitContentAdsSettings();
       var od = api.AdUnitContentAdsSettings.fromJson(o.toJson());
       checkAdUnitContentAdsSettings(od);
     });
   });
 
-  unittest.group("obj-schema-AdUnitFeedAdsSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdUnitFeedAdsSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdUnitFeedAdsSettings();
       var od = api.AdUnitFeedAdsSettings.fromJson(o.toJson());
       checkAdUnitFeedAdsSettings(od);
     });
   });
 
-  unittest.group("obj-schema-AdUnitMobileContentAdsSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdUnitMobileContentAdsSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdUnitMobileContentAdsSettings();
       var od = api.AdUnitMobileContentAdsSettings.fromJson(o.toJson());
       checkAdUnitMobileContentAdsSettings(od);
     });
   });
 
-  unittest.group("obj-schema-AdUnit", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdUnit', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdUnit();
       var od = api.AdUnit.fromJson(o.toJson());
       checkAdUnit(od);
     });
   });
 
-  unittest.group("obj-schema-AdUnits", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdUnits', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdUnits();
       var od = api.AdUnits.fromJson(o.toJson());
       checkAdUnits(od);
     });
   });
 
-  unittest.group("obj-schema-AdsenseReportsGenerateResponseHeaders", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdsenseReportsGenerateResponseHeaders', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdsenseReportsGenerateResponseHeaders();
       var od = api.AdsenseReportsGenerateResponseHeaders.fromJson(o.toJson());
       checkAdsenseReportsGenerateResponseHeaders(od);
     });
   });
 
-  unittest.group("obj-schema-AdsenseReportsGenerateResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdsenseReportsGenerateResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdsenseReportsGenerateResponse();
       var od = api.AdsenseReportsGenerateResponse.fromJson(o.toJson());
       checkAdsenseReportsGenerateResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Alert", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Alert', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAlert();
       var od = api.Alert.fromJson(o.toJson());
       checkAlert(od);
     });
   });
 
-  unittest.group("obj-schema-Alerts", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Alerts', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAlerts();
       var od = api.Alerts.fromJson(o.toJson());
       checkAlerts(od);
     });
   });
 
-  unittest.group("obj-schema-CustomChannelTargetingInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomChannelTargetingInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomChannelTargetingInfo();
       var od = api.CustomChannelTargetingInfo.fromJson(o.toJson());
       checkCustomChannelTargetingInfo(od);
     });
   });
 
-  unittest.group("obj-schema-CustomChannel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomChannel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomChannel();
       var od = api.CustomChannel.fromJson(o.toJson());
       checkCustomChannel(od);
     });
   });
 
-  unittest.group("obj-schema-CustomChannels", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomChannels', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomChannels();
       var od = api.CustomChannels.fromJson(o.toJson());
       checkCustomChannels(od);
     });
   });
 
-  unittest.group("obj-schema-Metadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Metadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMetadata();
       var od = api.Metadata.fromJson(o.toJson());
       checkMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-Payment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Payment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPayment();
       var od = api.Payment.fromJson(o.toJson());
       checkPayment(od);
     });
   });
 
-  unittest.group("obj-schema-Payments", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Payments', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPayments();
       var od = api.Payments.fromJson(o.toJson());
       checkPayments(od);
     });
   });
 
-  unittest.group("obj-schema-ReportingMetadataEntry", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportingMetadataEntry', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportingMetadataEntry();
       var od = api.ReportingMetadataEntry.fromJson(o.toJson());
       checkReportingMetadataEntry(od);
     });
   });
 
-  unittest.group("obj-schema-SavedAdStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SavedAdStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSavedAdStyle();
       var od = api.SavedAdStyle.fromJson(o.toJson());
       checkSavedAdStyle(od);
     });
   });
 
-  unittest.group("obj-schema-SavedAdStyles", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SavedAdStyles', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSavedAdStyles();
       var od = api.SavedAdStyles.fromJson(o.toJson());
       checkSavedAdStyles(od);
     });
   });
 
-  unittest.group("obj-schema-SavedReport", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SavedReport', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSavedReport();
       var od = api.SavedReport.fromJson(o.toJson());
       checkSavedReport(od);
     });
   });
 
-  unittest.group("obj-schema-SavedReports", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SavedReports', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSavedReports();
       var od = api.SavedReports.fromJson(o.toJson());
       checkSavedReports(od);
     });
   });
 
-  unittest.group("obj-schema-UrlChannel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UrlChannel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUrlChannel();
       var od = api.UrlChannel.fromJson(o.toJson());
       checkUrlChannel(od);
     });
   });
 
-  unittest.group("obj-schema-UrlChannels", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UrlChannels', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUrlChannels();
       var od = api.UrlChannels.fromJson(o.toJson());
       checkUrlChannels(od);
     });
   });
 
-  unittest.group("resource-AccountsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AccountsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.AdsenseApi(mock).accounts;
-      var arg_accountId = "foo";
+      var arg_accountId = 'foo';
       var arg_tree = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1544,7 +1544,7 @@ void main() {
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1552,8 +1552,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1564,7 +1564,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1576,12 +1576,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.AdsenseApi(mock).accounts;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1603,8 +1603,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1618,7 +1618,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccounts());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1634,15 +1634,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsAdclientsResourceApi", () {
-    unittest.test("method--getAdCode", () {
+  unittest.group('resource-AccountsAdclientsResourceApi', () {
+    unittest.test('method--getAdCode', () {
       var mock = HttpServerMock();
       api.AccountsAdclientsResourceApi res =
           api.AdsenseApi(mock).accounts.adclients;
-      var arg_accountId = "foo";
-      var arg_adClientId = "foo";
-      var arg_tagPartner = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_adClientId = 'foo';
+      var arg_tagPartner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1657,21 +1657,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients/", pathOffset);
+        index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/adclients/"));
         pathOffset += 11;
-        index = path.indexOf("/adcode", pathOffset);
+        index = path.indexOf('/adcode', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/adcode"));
         pathOffset += 7;
@@ -1682,8 +1682,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1695,7 +1695,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdCode());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1708,14 +1708,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsAdclientsResourceApi res =
           api.AdsenseApi(mock).accounts.adclients;
-      var arg_accountId = "foo";
+      var arg_accountId = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1730,12 +1730,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients", pathOffset);
+        index = path.indexOf('/adclients', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/adclients"));
         pathOffset += 10;
@@ -1746,8 +1746,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1761,7 +1761,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdClients());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1777,15 +1777,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsAdunitsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AccountsAdunitsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsAdunitsResourceApi res =
           api.AdsenseApi(mock).accounts.adunits;
-      var arg_accountId = "foo";
-      var arg_adClientId = "foo";
-      var arg_adUnitId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_adClientId = 'foo';
+      var arg_adUnitId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1800,27 +1800,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients/", pathOffset);
+        index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/adclients/"));
         pathOffset += 11;
-        index = path.indexOf("/adunits/", pathOffset);
+        index = path.indexOf('/adunits/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/adunits/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_adUnitId"));
+        unittest.expect(subPart, unittest.equals('$arg_adUnitId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1828,8 +1828,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1839,7 +1839,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdUnit());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1852,14 +1852,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--getAdCode", () {
+    unittest.test('method--getAdCode', () {
       var mock = HttpServerMock();
       api.AccountsAdunitsResourceApi res =
           api.AdsenseApi(mock).accounts.adunits;
-      var arg_accountId = "foo";
-      var arg_adClientId = "foo";
-      var arg_adUnitId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_adClientId = 'foo';
+      var arg_adUnitId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1874,30 +1874,30 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients/", pathOffset);
+        index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/adclients/"));
         pathOffset += 11;
-        index = path.indexOf("/adunits/", pathOffset);
+        index = path.indexOf('/adunits/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/adunits/"));
         pathOffset += 9;
-        index = path.indexOf("/adcode", pathOffset);
+        index = path.indexOf('/adcode', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adUnitId"));
+        unittest.expect(subPart, unittest.equals('$arg_adUnitId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/adcode"));
         pathOffset += 7;
@@ -1908,8 +1908,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1919,7 +1919,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdCode());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1932,16 +1932,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsAdunitsResourceApi res =
           api.AdsenseApi(mock).accounts.adunits;
-      var arg_accountId = "foo";
-      var arg_adClientId = "foo";
+      var arg_accountId = 'foo';
+      var arg_adClientId = 'foo';
       var arg_includeInactive = true;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1956,21 +1956,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients/", pathOffset);
+        index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/adclients/"));
         pathOffset += 11;
-        index = path.indexOf("/adunits", pathOffset);
+        index = path.indexOf('/adunits', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/adunits"));
         pathOffset += 8;
@@ -1981,8 +1981,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1998,7 +1998,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdUnits());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2015,17 +2015,17 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsAdunitsCustomchannelsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-AccountsAdunitsCustomchannelsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsAdunitsCustomchannelsResourceApi res =
           api.AdsenseApi(mock).accounts.adunits.customchannels;
-      var arg_accountId = "foo";
-      var arg_adClientId = "foo";
-      var arg_adUnitId = "foo";
+      var arg_accountId = 'foo';
+      var arg_adClientId = 'foo';
+      var arg_adUnitId = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2040,30 +2040,30 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients/", pathOffset);
+        index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/adclients/"));
         pathOffset += 11;
-        index = path.indexOf("/adunits/", pathOffset);
+        index = path.indexOf('/adunits/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/adunits/"));
         pathOffset += 9;
-        index = path.indexOf("/customchannels", pathOffset);
+        index = path.indexOf('/customchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adUnitId"));
+        unittest.expect(subPart, unittest.equals('$arg_adUnitId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/customchannels"));
         pathOffset += 15;
@@ -2074,8 +2074,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2089,7 +2089,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomChannels());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2105,13 +2105,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsAlertsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-AccountsAlertsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsAlertsResourceApi res = api.AdsenseApi(mock).accounts.alerts;
-      var arg_accountId = "foo";
-      var arg_alertId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_alertId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2126,18 +2126,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/alerts/", pathOffset);
+        index = path.indexOf('/alerts/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/alerts/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_alertId"));
+        unittest.expect(subPart, unittest.equals('$arg_alertId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2145,8 +2145,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2156,9 +2156,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2166,12 +2166,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsAlertsResourceApi res = api.AdsenseApi(mock).accounts.alerts;
-      var arg_accountId = "foo";
-      var arg_locale = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_locale = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2186,12 +2186,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/alerts", pathOffset);
+        index = path.indexOf('/alerts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/alerts"));
         pathOffset += 7;
@@ -2202,8 +2202,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2214,7 +2214,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAlerts());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2227,15 +2227,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsCustomchannelsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AccountsCustomchannelsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsCustomchannelsResourceApi res =
           api.AdsenseApi(mock).accounts.customchannels;
-      var arg_accountId = "foo";
-      var arg_adClientId = "foo";
-      var arg_customChannelId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_adClientId = 'foo';
+      var arg_customChannelId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2250,27 +2250,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients/", pathOffset);
+        index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/adclients/"));
         pathOffset += 11;
-        index = path.indexOf("/customchannels/", pathOffset);
+        index = path.indexOf('/customchannels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("/customchannels/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_customChannelId"));
+        unittest.expect(subPart, unittest.equals('$arg_customChannelId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2278,8 +2278,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2289,7 +2289,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2302,15 +2302,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsCustomchannelsResourceApi res =
           api.AdsenseApi(mock).accounts.customchannels;
-      var arg_accountId = "foo";
-      var arg_adClientId = "foo";
+      var arg_accountId = 'foo';
+      var arg_adClientId = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2325,21 +2325,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients/", pathOffset);
+        index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/adclients/"));
         pathOffset += 11;
-        index = path.indexOf("/customchannels", pathOffset);
+        index = path.indexOf('/customchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/customchannels"));
         pathOffset += 15;
@@ -2350,8 +2350,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2365,7 +2365,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomChannels());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2381,18 +2381,18 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsCustomchannelsAdunitsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-AccountsCustomchannelsAdunitsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsCustomchannelsAdunitsResourceApi res =
           api.AdsenseApi(mock).accounts.customchannels.adunits;
-      var arg_accountId = "foo";
-      var arg_adClientId = "foo";
-      var arg_customChannelId = "foo";
+      var arg_accountId = 'foo';
+      var arg_adClientId = 'foo';
+      var arg_customChannelId = 'foo';
       var arg_includeInactive = true;
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2407,30 +2407,30 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients/", pathOffset);
+        index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/adclients/"));
         pathOffset += 11;
-        index = path.indexOf("/customchannels/", pathOffset);
+        index = path.indexOf('/customchannels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("/customchannels/"));
         pathOffset += 16;
-        index = path.indexOf("/adunits", pathOffset);
+        index = path.indexOf('/adunits', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customChannelId"));
+        unittest.expect(subPart, unittest.equals('$arg_customChannelId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/adunits"));
         pathOffset += 8;
@@ -2441,8 +2441,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2458,7 +2458,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdUnits());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2475,13 +2475,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsPaymentsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-AccountsPaymentsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsPaymentsResourceApi res =
           api.AdsenseApi(mock).accounts.payments;
-      var arg_accountId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2496,12 +2496,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/payments", pathOffset);
+        index = path.indexOf('/payments', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/payments"));
         pathOffset += 9;
@@ -2512,8 +2512,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2523,7 +2523,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPayments());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2536,27 +2536,27 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsReportsResourceApi", () {
-    unittest.test("method--generate", () {
+  unittest.group('resource-AccountsReportsResourceApi', () {
+    unittest.test('method--generate', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.AccountsReportsResourceApi res =
           api.AdsenseApi(mock).accounts.reports;
-      var arg_accountId = "foo";
-      var arg_startDate = "foo";
-      var arg_endDate = "foo";
+      var arg_accountId = 'foo';
+      var arg_startDate = 'foo';
+      var arg_endDate = 'foo';
       var arg_useTimezoneReporting = true;
-      var arg_locale = "foo";
-      var arg_currency = "foo";
+      var arg_locale = 'foo';
+      var arg_currency = 'foo';
       var arg_filter = buildUnnamed3660();
       var arg_maxResults = 42;
       var arg_sort = buildUnnamed3661();
       var arg_dimension = buildUnnamed3662();
       var arg_metric = buildUnnamed3663();
       var arg_startIndex = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2571,12 +2571,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/reports", pathOffset);
+        index = path.indexOf('/reports', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/reports"));
         pathOffset += 8;
@@ -2587,8 +2587,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2615,7 +2615,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdsenseReportsGenerateResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2638,17 +2638,17 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsReportsSavedResourceApi", () {
-    unittest.test("method--generate", () {
+  unittest.group('resource-AccountsReportsSavedResourceApi', () {
+    unittest.test('method--generate', () {
       var mock = HttpServerMock();
       api.AccountsReportsSavedResourceApi res =
           api.AdsenseApi(mock).accounts.reports.saved;
-      var arg_accountId = "foo";
-      var arg_savedReportId = "foo";
+      var arg_accountId = 'foo';
+      var arg_savedReportId = 'foo';
       var arg_startIndex = 42;
-      var arg_locale = "foo";
+      var arg_locale = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2663,18 +2663,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/reports/", pathOffset);
+        index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/reports/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_savedReportId"));
+        unittest.expect(subPart, unittest.equals('$arg_savedReportId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2682,8 +2682,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2698,7 +2698,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdsenseReportsGenerateResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2714,14 +2714,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsReportsSavedResourceApi res =
           api.AdsenseApi(mock).accounts.reports.saved;
-      var arg_accountId = "foo";
-      var arg_pageToken = "foo";
+      var arg_accountId = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2736,12 +2736,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/reports/saved", pathOffset);
+        index = path.indexOf('/reports/saved', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/reports/saved"));
         pathOffset += 14;
@@ -2752,8 +2752,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2767,7 +2767,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSavedReports());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2783,14 +2783,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsSavedadstylesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AccountsSavedadstylesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsSavedadstylesResourceApi res =
           api.AdsenseApi(mock).accounts.savedadstyles;
-      var arg_accountId = "foo";
-      var arg_savedAdStyleId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_savedAdStyleId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2805,18 +2805,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/savedadstyles/", pathOffset);
+        index = path.indexOf('/savedadstyles/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/savedadstyles/"));
         pathOffset += 15;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_savedAdStyleId"));
+        unittest.expect(subPart, unittest.equals('$arg_savedAdStyleId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2824,8 +2824,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2835,7 +2835,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSavedAdStyle());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2847,14 +2847,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsSavedadstylesResourceApi res =
           api.AdsenseApi(mock).accounts.savedadstyles;
-      var arg_accountId = "foo";
+      var arg_accountId = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2869,12 +2869,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/savedadstyles", pathOffset);
+        index = path.indexOf('/savedadstyles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/savedadstyles"));
         pathOffset += 14;
@@ -2885,8 +2885,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2900,7 +2900,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSavedAdStyles());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2916,16 +2916,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsUrlchannelsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-AccountsUrlchannelsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsUrlchannelsResourceApi res =
           api.AdsenseApi(mock).accounts.urlchannels;
-      var arg_accountId = "foo";
-      var arg_adClientId = "foo";
+      var arg_accountId = 'foo';
+      var arg_adClientId = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2940,21 +2940,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("accounts/"));
         pathOffset += 9;
-        index = path.indexOf("/adclients/", pathOffset);
+        index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/adclients/"));
         pathOffset += 11;
-        index = path.indexOf("/urlchannels", pathOffset);
+        index = path.indexOf('/urlchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/urlchannels"));
         pathOffset += 12;
@@ -2965,8 +2965,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2980,7 +2980,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUrlChannels());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2996,13 +2996,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdclientsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-AdclientsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdclientsResourceApi res = api.AdsenseApi(mock).adclients;
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3024,8 +3024,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3039,7 +3039,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdClients());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3055,13 +3055,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdunitsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AdunitsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdunitsResourceApi res = api.AdsenseApi(mock).adunits;
-      var arg_adClientId = "foo";
-      var arg_adUnitId = "foo";
-      var arg_$fields = "foo";
+      var arg_adClientId = 'foo';
+      var arg_adUnitId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3076,18 +3076,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("adclients/"));
         pathOffset += 10;
-        index = path.indexOf("/adunits/", pathOffset);
+        index = path.indexOf('/adunits/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/adunits/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_adUnitId"));
+        unittest.expect(subPart, unittest.equals('$arg_adUnitId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3095,8 +3095,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3106,7 +3106,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdUnit());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3118,12 +3118,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getAdCode", () {
+    unittest.test('method--getAdCode', () {
       var mock = HttpServerMock();
       api.AdunitsResourceApi res = api.AdsenseApi(mock).adunits;
-      var arg_adClientId = "foo";
-      var arg_adUnitId = "foo";
-      var arg_$fields = "foo";
+      var arg_adClientId = 'foo';
+      var arg_adUnitId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3138,21 +3138,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("adclients/"));
         pathOffset += 10;
-        index = path.indexOf("/adunits/", pathOffset);
+        index = path.indexOf('/adunits/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/adunits/"));
         pathOffset += 9;
-        index = path.indexOf("/adcode", pathOffset);
+        index = path.indexOf('/adcode', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adUnitId"));
+        unittest.expect(subPart, unittest.equals('$arg_adUnitId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/adcode"));
         pathOffset += 7;
@@ -3163,8 +3163,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3174,7 +3174,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdCode());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3186,14 +3186,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdunitsResourceApi res = api.AdsenseApi(mock).adunits;
-      var arg_adClientId = "foo";
+      var arg_adClientId = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_includeInactive = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3208,12 +3208,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("adclients/"));
         pathOffset += 10;
-        index = path.indexOf("/adunits", pathOffset);
+        index = path.indexOf('/adunits', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/adunits"));
         pathOffset += 8;
@@ -3224,8 +3224,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3241,7 +3241,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdUnits());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3258,16 +3258,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdunitsCustomchannelsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-AdunitsCustomchannelsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdunitsCustomchannelsResourceApi res =
           api.AdsenseApi(mock).adunits.customchannels;
-      var arg_adClientId = "foo";
-      var arg_adUnitId = "foo";
-      var arg_pageToken = "foo";
+      var arg_adClientId = 'foo';
+      var arg_adUnitId = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3282,21 +3282,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("adclients/"));
         pathOffset += 10;
-        index = path.indexOf("/adunits/", pathOffset);
+        index = path.indexOf('/adunits/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/adunits/"));
         pathOffset += 9;
-        index = path.indexOf("/customchannels", pathOffset);
+        index = path.indexOf('/customchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adUnitId"));
+        unittest.expect(subPart, unittest.equals('$arg_adUnitId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/customchannels"));
         pathOffset += 15;
@@ -3307,8 +3307,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3322,7 +3322,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomChannels());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3338,12 +3338,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-AlertsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-AlertsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AlertsResourceApi res = api.AdsenseApi(mock).alerts;
-      var arg_alertId = "foo";
-      var arg_$fields = "foo";
+      var arg_alertId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3360,7 +3360,7 @@ void main() {
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_alertId"));
+        unittest.expect(subPart, unittest.equals('$arg_alertId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3368,8 +3368,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3379,9 +3379,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3389,11 +3389,11 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AlertsResourceApi res = api.AdsenseApi(mock).alerts;
-      var arg_locale = "foo";
-      var arg_$fields = "foo";
+      var arg_locale = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3415,8 +3415,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3427,7 +3427,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAlerts());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3440,13 +3440,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-CustomchannelsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-CustomchannelsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.CustomchannelsResourceApi res = api.AdsenseApi(mock).customchannels;
-      var arg_adClientId = "foo";
-      var arg_customChannelId = "foo";
-      var arg_$fields = "foo";
+      var arg_adClientId = 'foo';
+      var arg_customChannelId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3461,18 +3461,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("adclients/"));
         pathOffset += 10;
-        index = path.indexOf("/customchannels/", pathOffset);
+        index = path.indexOf('/customchannels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("/customchannels/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_customChannelId"));
+        unittest.expect(subPart, unittest.equals('$arg_customChannelId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3480,8 +3480,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3491,7 +3491,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3503,13 +3503,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CustomchannelsResourceApi res = api.AdsenseApi(mock).customchannels;
-      var arg_adClientId = "foo";
-      var arg_pageToken = "foo";
+      var arg_adClientId = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3524,12 +3524,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("adclients/"));
         pathOffset += 10;
-        index = path.indexOf("/customchannels", pathOffset);
+        index = path.indexOf('/customchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/customchannels"));
         pathOffset += 15;
@@ -3540,8 +3540,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3555,7 +3555,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomChannels());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3571,17 +3571,17 @@ void main() {
     });
   });
 
-  unittest.group("resource-CustomchannelsAdunitsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-CustomchannelsAdunitsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CustomchannelsAdunitsResourceApi res =
           api.AdsenseApi(mock).customchannels.adunits;
-      var arg_adClientId = "foo";
-      var arg_customChannelId = "foo";
-      var arg_pageToken = "foo";
+      var arg_adClientId = 'foo';
+      var arg_customChannelId = 'foo';
+      var arg_pageToken = 'foo';
       var arg_includeInactive = true;
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3596,21 +3596,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("adclients/"));
         pathOffset += 10;
-        index = path.indexOf("/customchannels/", pathOffset);
+        index = path.indexOf('/customchannels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("/customchannels/"));
         pathOffset += 16;
-        index = path.indexOf("/adunits", pathOffset);
+        index = path.indexOf('/adunits', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customChannelId"));
+        unittest.expect(subPart, unittest.equals('$arg_customChannelId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/adunits"));
         pathOffset += 8;
@@ -3621,8 +3621,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3638,7 +3638,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdUnits());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3655,12 +3655,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-MetadataDimensionsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-MetadataDimensionsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.MetadataDimensionsResourceApi res =
           api.AdsenseApi(mock).metadata.dimensions;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3682,8 +3682,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3693,7 +3693,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMetadata());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3704,12 +3704,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-MetadataMetricsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-MetadataMetricsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.MetadataMetricsResourceApi res =
           api.AdsenseApi(mock).metadata.metrics;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3731,8 +3731,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3742,7 +3742,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMetadata());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3753,11 +3753,11 @@ void main() {
     });
   });
 
-  unittest.group("resource-PaymentsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-PaymentsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PaymentsResourceApi res = api.AdsenseApi(mock).payments;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3779,8 +3779,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3790,7 +3790,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPayments());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3801,26 +3801,26 @@ void main() {
     });
   });
 
-  unittest.group("resource-ReportsResourceApi", () {
-    unittest.test("method--generate", () {
+  unittest.group('resource-ReportsResourceApi', () {
+    unittest.test('method--generate', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.ReportsResourceApi res = api.AdsenseApi(mock).reports;
-      var arg_startDate = "foo";
-      var arg_endDate = "foo";
+      var arg_startDate = 'foo';
+      var arg_endDate = 'foo';
       var arg_metric = buildUnnamed3664();
       var arg_accountId = buildUnnamed3665();
-      var arg_currency = "foo";
-      var arg_locale = "foo";
+      var arg_currency = 'foo';
+      var arg_locale = 'foo';
       var arg_useTimezoneReporting = true;
       var arg_startIndex = 42;
       var arg_maxResults = 42;
       var arg_sort = buildUnnamed3666();
       var arg_dimension = buildUnnamed3667();
       var arg_filter = buildUnnamed3668();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3842,8 +3842,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3871,7 +3871,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdsenseReportsGenerateResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3895,15 +3895,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ReportsSavedResourceApi", () {
-    unittest.test("method--generate", () {
+  unittest.group('resource-ReportsSavedResourceApi', () {
+    unittest.test('method--generate', () {
       var mock = HttpServerMock();
       api.ReportsSavedResourceApi res = api.AdsenseApi(mock).reports.saved;
-      var arg_savedReportId = "foo";
+      var arg_savedReportId = 'foo';
       var arg_startIndex = 42;
       var arg_maxResults = 42;
-      var arg_locale = "foo";
-      var arg_$fields = "foo";
+      var arg_locale = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3920,7 +3920,7 @@ void main() {
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_savedReportId"));
+        unittest.expect(subPart, unittest.equals('$arg_savedReportId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3928,8 +3928,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3944,7 +3944,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdsenseReportsGenerateResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3960,12 +3960,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ReportsSavedResourceApi res = api.AdsenseApi(mock).reports.saved;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3987,8 +3987,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4002,7 +4002,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSavedReports());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4018,12 +4018,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-SavedadstylesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-SavedadstylesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SavedadstylesResourceApi res = api.AdsenseApi(mock).savedadstyles;
-      var arg_savedAdStyleId = "foo";
-      var arg_$fields = "foo";
+      var arg_savedAdStyleId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4040,7 +4040,7 @@ void main() {
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_savedAdStyleId"));
+        unittest.expect(subPart, unittest.equals('$arg_savedAdStyleId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4048,8 +4048,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4059,7 +4059,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSavedAdStyle());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4071,12 +4071,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SavedadstylesResourceApi res = api.AdsenseApi(mock).savedadstyles;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4098,8 +4098,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4113,7 +4113,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSavedAdStyles());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4129,14 +4129,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-UrlchannelsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-UrlchannelsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.UrlchannelsResourceApi res = api.AdsenseApi(mock).urlchannels;
-      var arg_adClientId = "foo";
-      var arg_pageToken = "foo";
+      var arg_adClientId = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4151,12 +4151,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("adclients/"));
         pathOffset += 10;
-        index = path.indexOf("/urlchannels", pathOffset);
+        index = path.indexOf('/urlchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_adClientId"));
+        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/urlchannels"));
         pathOffset += 12;
@@ -4167,8 +4167,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4182,7 +4182,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUrlChannels());
         return async.Future.value(stringResponse(200, h, resp));

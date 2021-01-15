@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,8 +72,8 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.List<core.String> buildUnnamed3627() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -88,8 +88,8 @@ api.AdmissionRule buildAdmissionRule() {
   var o = api.AdmissionRule();
   buildCounterAdmissionRule++;
   if (buildCounterAdmissionRule < 3) {
-    o.enforcementMode = "foo";
-    o.evaluationMode = "foo";
+    o.enforcementMode = 'foo';
+    o.evaluationMode = 'foo';
     o.requireAttestationsBy = buildUnnamed3627();
   }
   buildCounterAdmissionRule--;
@@ -111,7 +111,7 @@ api.AdmissionWhitelistPattern buildAdmissionWhitelistPattern() {
   var o = api.AdmissionWhitelistPattern();
   buildCounterAdmissionWhitelistPattern++;
   if (buildCounterAdmissionWhitelistPattern < 3) {
-    o.namePattern = "foo";
+    o.namePattern = 'foo';
   }
   buildCounterAdmissionWhitelistPattern--;
   return o;
@@ -157,7 +157,7 @@ api.AttestationOccurrence buildAttestationOccurrence() {
   buildCounterAttestationOccurrence++;
   if (buildCounterAttestationOccurrence < 3) {
     o.jwts = buildUnnamed3628();
-    o.serializedPayload = "foo";
+    o.serializedPayload = 'foo';
     o.signatures = buildUnnamed3629();
   }
   buildCounterAttestationOccurrence--;
@@ -179,9 +179,9 @@ api.Attestor buildAttestor() {
   var o = api.Attestor();
   buildCounterAttestor++;
   if (buildCounterAttestor < 3) {
-    o.description = "foo";
-    o.name = "foo";
-    o.updateTime = "foo";
+    o.description = 'foo';
+    o.name = 'foo';
+    o.updateTime = 'foo';
     o.userOwnedGrafeasNote = buildUserOwnedGrafeasNote();
   }
   buildCounterAttestor--;
@@ -204,9 +204,9 @@ api.AttestorPublicKey buildAttestorPublicKey() {
   var o = api.AttestorPublicKey();
   buildCounterAttestorPublicKey++;
   if (buildCounterAttestorPublicKey < 3) {
-    o.asciiArmoredPgpPublicKey = "foo";
-    o.comment = "foo";
-    o.id = "foo";
+    o.asciiArmoredPgpPublicKey = 'foo';
+    o.comment = 'foo';
+    o.id = 'foo';
     o.pkixPublicKey = buildPkixPublicKey();
   }
   buildCounterAttestorPublicKey--;
@@ -226,8 +226,8 @@ void checkAttestorPublicKey(api.AttestorPublicKey o) {
 
 core.List<core.String> buildUnnamed3630() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -242,10 +242,10 @@ api.Binding buildBinding() {
   var o = api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.bindingId = "foo";
+    o.bindingId = 'foo';
     o.condition = buildExpr();
     o.members = buildUnnamed3630();
-    o.role = "foo";
+    o.role = 'foo';
   }
   buildCounterBinding--;
   return o;
@@ -282,10 +282,10 @@ api.Expr buildExpr() {
   var o = api.Expr();
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    o.description = "foo";
-    o.expression = "foo";
-    o.location = "foo";
-    o.title = "foo";
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
   }
   buildCounterExpr--;
   return o;
@@ -321,7 +321,7 @@ api.IamPolicy buildIamPolicy() {
   buildCounterIamPolicy++;
   if (buildCounterIamPolicy < 3) {
     o.bindings = buildUnnamed3631();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.version = 42;
   }
   buildCounterIamPolicy--;
@@ -343,7 +343,7 @@ api.Jwt buildJwt() {
   var o = api.Jwt();
   buildCounterJwt++;
   if (buildCounterJwt < 3) {
-    o.compactJwt = "foo";
+    o.compactJwt = 'foo';
   }
   buildCounterJwt--;
   return o;
@@ -376,7 +376,7 @@ api.ListAttestorsResponse buildListAttestorsResponse() {
   buildCounterListAttestorsResponse++;
   if (buildCounterListAttestorsResponse < 3) {
     o.attestors = buildUnnamed3632();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListAttestorsResponse--;
   return o;
@@ -396,8 +396,8 @@ api.PkixPublicKey buildPkixPublicKey() {
   var o = api.PkixPublicKey();
   buildCounterPkixPublicKey++;
   if (buildCounterPkixPublicKey < 3) {
-    o.publicKeyPem = "foo";
-    o.signatureAlgorithm = "foo";
+    o.publicKeyPem = 'foo';
+    o.signatureAlgorithm = 'foo';
   }
   buildCounterPkixPublicKey--;
   return o;
@@ -427,15 +427,15 @@ void checkUnnamed3633(core.List<api.AdmissionWhitelistPattern> o) {
 
 core.Map<core.String, api.AdmissionRule> buildUnnamed3634() {
   var o = <core.String, api.AdmissionRule>{};
-  o["x"] = buildAdmissionRule();
-  o["y"] = buildAdmissionRule();
+  o['x'] = buildAdmissionRule();
+  o['y'] = buildAdmissionRule();
   return o;
 }
 
 void checkUnnamed3634(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdmissionRule(o["x"]);
-  checkAdmissionRule(o["y"]);
+  checkAdmissionRule(o['x']);
+  checkAdmissionRule(o['y']);
 }
 
 core.int buildCounterPolicy = 0;
@@ -446,10 +446,10 @@ api.Policy buildPolicy() {
     o.admissionWhitelistPatterns = buildUnnamed3633();
     o.clusterAdmissionRules = buildUnnamed3634();
     o.defaultAdmissionRule = buildAdmissionRule();
-    o.description = "foo";
-    o.globalPolicyEvaluationMode = "foo";
-    o.name = "foo";
-    o.updateTime = "foo";
+    o.description = 'foo';
+    o.globalPolicyEvaluationMode = 'foo';
+    o.name = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterPolicy--;
   return o;
@@ -493,8 +493,8 @@ api.Signature buildSignature() {
   var o = api.Signature();
   buildCounterSignature++;
   if (buildCounterSignature < 3) {
-    o.publicKeyId = "foo";
-    o.signature = "foo";
+    o.publicKeyId = 'foo';
+    o.signature = 'foo';
   }
   buildCounterSignature--;
   return o;
@@ -511,8 +511,8 @@ void checkSignature(api.Signature o) {
 
 core.List<core.String> buildUnnamed3635() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -543,8 +543,8 @@ void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
 
 core.List<core.String> buildUnnamed3636() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -591,8 +591,8 @@ api.UserOwnedGrafeasNote buildUserOwnedGrafeasNote() {
   var o = api.UserOwnedGrafeasNote();
   buildCounterUserOwnedGrafeasNote++;
   if (buildCounterUserOwnedGrafeasNote < 3) {
-    o.delegationServiceAccountEmail = "foo";
-    o.noteReference = "foo";
+    o.delegationServiceAccountEmail = 'foo';
+    o.noteReference = 'foo';
     o.publicKeys = buildUnnamed3637();
   }
   buildCounterUserOwnedGrafeasNote--;
@@ -616,8 +616,8 @@ api.ValidateAttestationOccurrenceRequest
   buildCounterValidateAttestationOccurrenceRequest++;
   if (buildCounterValidateAttestationOccurrenceRequest < 3) {
     o.attestation = buildAttestationOccurrence();
-    o.occurrenceNote = "foo";
-    o.occurrenceResourceUri = "foo";
+    o.occurrenceNote = 'foo';
+    o.occurrenceResourceUri = 'foo';
   }
   buildCounterValidateAttestationOccurrenceRequest--;
   return o;
@@ -640,8 +640,8 @@ api.ValidateAttestationOccurrenceResponse
   var o = api.ValidateAttestationOccurrenceResponse();
   buildCounterValidateAttestationOccurrenceResponse++;
   if (buildCounterValidateAttestationOccurrenceResponse < 3) {
-    o.denialReason = "foo";
-    o.result = "foo";
+    o.denialReason = 'foo';
+    o.result = 'foo';
   }
   buildCounterValidateAttestationOccurrenceResponse--;
   return o;
@@ -658,172 +658,172 @@ void checkValidateAttestationOccurrenceResponse(
 }
 
 void main() {
-  unittest.group("obj-schema-AdmissionRule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdmissionRule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdmissionRule();
       var od = api.AdmissionRule.fromJson(o.toJson());
       checkAdmissionRule(od);
     });
   });
 
-  unittest.group("obj-schema-AdmissionWhitelistPattern", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdmissionWhitelistPattern', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdmissionWhitelistPattern();
       var od = api.AdmissionWhitelistPattern.fromJson(o.toJson());
       checkAdmissionWhitelistPattern(od);
     });
   });
 
-  unittest.group("obj-schema-AttestationOccurrence", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AttestationOccurrence', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAttestationOccurrence();
       var od = api.AttestationOccurrence.fromJson(o.toJson());
       checkAttestationOccurrence(od);
     });
   });
 
-  unittest.group("obj-schema-Attestor", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Attestor', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAttestor();
       var od = api.Attestor.fromJson(o.toJson());
       checkAttestor(od);
     });
   });
 
-  unittest.group("obj-schema-AttestorPublicKey", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AttestorPublicKey', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAttestorPublicKey();
       var od = api.AttestorPublicKey.fromJson(o.toJson());
       checkAttestorPublicKey(od);
     });
   });
 
-  unittest.group("obj-schema-Binding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Binding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-Expr", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Expr', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od);
     });
   });
 
-  unittest.group("obj-schema-IamPolicy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IamPolicy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIamPolicy();
       var od = api.IamPolicy.fromJson(o.toJson());
       checkIamPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-Jwt", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Jwt', () {
+    unittest.test('to-json--from-json', () {
       var o = buildJwt();
       var od = api.Jwt.fromJson(o.toJson());
       checkJwt(od);
     });
   });
 
-  unittest.group("obj-schema-ListAttestorsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAttestorsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAttestorsResponse();
       var od = api.ListAttestorsResponse.fromJson(o.toJson());
       checkListAttestorsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PkixPublicKey", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PkixPublicKey', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPkixPublicKey();
       var od = api.PkixPublicKey.fromJson(o.toJson());
       checkPkixPublicKey(od);
     });
   });
 
-  unittest.group("obj-schema-Policy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Policy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-SetIamPolicyRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SetIamPolicyRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Signature", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Signature', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSignature();
       var od = api.Signature.fromJson(o.toJson());
       checkSignature(od);
     });
   });
 
-  unittest.group("obj-schema-TestIamPermissionsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestIamPermissionsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-TestIamPermissionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestIamPermissionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-UserOwnedGrafeasNote", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UserOwnedGrafeasNote', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserOwnedGrafeasNote();
       var od = api.UserOwnedGrafeasNote.fromJson(o.toJson());
       checkUserOwnedGrafeasNote(od);
     });
   });
 
-  unittest.group("obj-schema-ValidateAttestationOccurrenceRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ValidateAttestationOccurrenceRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildValidateAttestationOccurrenceRequest();
       var od = api.ValidateAttestationOccurrenceRequest.fromJson(o.toJson());
       checkValidateAttestationOccurrenceRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ValidateAttestationOccurrenceResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ValidateAttestationOccurrenceResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildValidateAttestationOccurrenceResponse();
       var od = api.ValidateAttestationOccurrenceResponse.fromJson(o.toJson());
       checkValidateAttestationOccurrenceResponse(od);
     });
   });
 
-  unittest.group("resource-ProjectsResourceApi", () {
-    unittest.test("method--getPolicy", () {
+  unittest.group('resource-ProjectsResourceApi', () {
+    unittest.test('method--getPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.BinaryauthorizationApi(mock).projects;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -843,8 +843,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -854,7 +854,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -866,12 +866,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--updatePolicy", () {
+    unittest.test('method--updatePolicy', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.BinaryauthorizationApi(mock).projects;
       var arg_request = buildPolicy();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Policy.fromJson(json);
         checkPolicy(obj);
@@ -894,8 +894,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -905,7 +905,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -918,15 +918,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsAttestorsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsAttestorsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsAttestorsResourceApi res =
           api.BinaryauthorizationApi(mock).projects.attestors;
       var arg_request = buildAttestor();
-      var arg_parent = "foo";
-      var arg_attestorId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_attestorId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Attestor.fromJson(json);
         checkAttestor(obj);
@@ -949,8 +949,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -962,7 +962,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAttestor());
         return async.Future.value(stringResponse(200, h, resp));
@@ -975,12 +975,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsAttestorsResourceApi res =
           api.BinaryauthorizationApi(mock).projects.attestors;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1000,8 +1000,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1011,7 +1011,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1023,12 +1023,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsAttestorsResourceApi res =
           api.BinaryauthorizationApi(mock).projects.attestors;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1048,8 +1048,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1059,7 +1059,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAttestor());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1071,13 +1071,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsAttestorsResourceApi res =
           api.BinaryauthorizationApi(mock).projects.attestors;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1097,8 +1097,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1111,7 +1111,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildIamPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1126,14 +1126,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsAttestorsResourceApi res =
           api.BinaryauthorizationApi(mock).projects.attestors;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1153,8 +1153,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1168,7 +1168,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListAttestorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1183,13 +1183,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsAttestorsResourceApi res =
           api.BinaryauthorizationApi(mock).projects.attestors;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -1212,8 +1212,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1223,7 +1223,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildIamPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1235,13 +1235,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsAttestorsResourceApi res =
           api.BinaryauthorizationApi(mock).projects.attestors;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -1264,8 +1264,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1275,7 +1275,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1287,13 +1287,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.ProjectsAttestorsResourceApi res =
           api.BinaryauthorizationApi(mock).projects.attestors;
       var arg_request = buildAttestor();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Attestor.fromJson(json);
         checkAttestor(obj);
@@ -1316,8 +1316,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1327,7 +1327,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAttestor());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1339,13 +1339,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--validateAttestationOccurrence", () {
+    unittest.test('method--validateAttestationOccurrence', () {
       var mock = HttpServerMock();
       api.ProjectsAttestorsResourceApi res =
           api.BinaryauthorizationApi(mock).projects.attestors;
       var arg_request = buildValidateAttestationOccurrenceRequest();
-      var arg_attestor = "foo";
-      var arg_$fields = "foo";
+      var arg_attestor = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ValidateAttestationOccurrenceRequest.fromJson(json);
         checkValidateAttestationOccurrenceRequest(obj);
@@ -1368,8 +1368,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1379,7 +1379,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildValidateAttestationOccurrenceResponse());
@@ -1394,14 +1394,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsPolicyResourceApi", () {
-    unittest.test("method--getIamPolicy", () {
+  unittest.group('resource-ProjectsPolicyResourceApi', () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsPolicyResourceApi res =
           api.BinaryauthorizationApi(mock).projects.policy;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1421,8 +1421,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1435,7 +1435,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildIamPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1450,13 +1450,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsPolicyResourceApi res =
           api.BinaryauthorizationApi(mock).projects.policy;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -1479,8 +1479,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1490,7 +1490,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildIamPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1502,13 +1502,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsPolicyResourceApi res =
           api.BinaryauthorizationApi(mock).projects.policy;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -1531,8 +1531,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1542,7 +1542,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));

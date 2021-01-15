@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,7 +39,7 @@ const core.String USER_AGENT = 'dart-api-client streetviewpublish/v1';
 class StreetviewpublishApi {
   /// Publish and manage your 360 photos on Google Street View
   static const StreetviewpublishScope =
-      "https://www.googleapis.com/auth/streetviewpublish";
+      'https://www.googleapis.com/auth/streetviewpublish';
 
   final commons.ApiRequester _requester;
 
@@ -48,8 +47,8 @@ class StreetviewpublishApi {
   PhotosResourceApi get photos => PhotosResourceApi(_requester);
 
   StreetviewpublishApi(http.Client client,
-      {core.String rootUrl = "https://streetviewpublish.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://streetviewpublish.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -101,14 +100,14 @@ class PhotoResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/photo';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -149,17 +148,17 @@ class PhotoResourceApi {
     core.String _body;
 
     if (photoId == null) {
-      throw core.ArgumentError("Parameter photoId is required.");
+      throw core.ArgumentError('Parameter photoId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -217,23 +216,23 @@ class PhotoResourceApi {
     core.String _body;
 
     if (photoId == null) {
-      throw core.ArgumentError("Parameter photoId is required.");
+      throw core.ArgumentError('Parameter photoId is required.');
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+      _queryParams['languageCode'] = [languageCode];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -286,14 +285,14 @@ class PhotoResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/photo:startUpload';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -358,20 +357,20 @@ class PhotoResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -423,14 +422,14 @@ class PhotosResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/photos:batchDelete';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -490,23 +489,23 @@ class PhotosResourceApi {
     core.String _body;
 
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+      _queryParams['languageCode'] = [languageCode];
     }
     if (photoIds != null) {
-      _queryParams["photoIds"] = photoIds;
+      _queryParams['photoIds'] = photoIds;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/photos:batchGet';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -559,14 +558,14 @@ class PhotosResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/photos:batchUpdate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -634,29 +633,29 @@ class PhotosResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+      _queryParams['languageCode'] = [languageCode];
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/photos';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -676,8 +675,8 @@ class BatchDeletePhotosRequest {
   BatchDeletePhotosRequest();
 
   BatchDeletePhotosRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("photoIds")) {
-      photoIds = (_json["photoIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('photoIds')) {
+      photoIds = (_json['photoIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -685,7 +684,7 @@ class BatchDeletePhotosRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (photoIds != null) {
-      _json["photoIds"] = photoIds;
+      _json['photoIds'] = photoIds;
     }
     return _json;
   }
@@ -700,8 +699,8 @@ class BatchDeletePhotosResponse {
   BatchDeletePhotosResponse();
 
   BatchDeletePhotosResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("status")) {
-      status = (_json["status"] as core.List)
+    if (_json.containsKey('status')) {
+      status = (_json['status'] as core.List)
           .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
@@ -711,7 +710,7 @@ class BatchDeletePhotosResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (status != null) {
-      _json["status"] = status.map((value) => value.toJson()).toList();
+      _json['status'] = status.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -726,8 +725,8 @@ class BatchGetPhotosResponse {
   BatchGetPhotosResponse();
 
   BatchGetPhotosResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<PhotoResponse>((value) => PhotoResponse.fromJson(value))
           .toList();
     }
@@ -737,7 +736,7 @@ class BatchGetPhotosResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -752,8 +751,8 @@ class BatchUpdatePhotosRequest {
   BatchUpdatePhotosRequest();
 
   BatchUpdatePhotosRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("updatePhotoRequests")) {
-      updatePhotoRequests = (_json["updatePhotoRequests"] as core.List)
+    if (_json.containsKey('updatePhotoRequests')) {
+      updatePhotoRequests = (_json['updatePhotoRequests'] as core.List)
           .map<UpdatePhotoRequest>(
               (value) => UpdatePhotoRequest.fromJson(value))
           .toList();
@@ -764,7 +763,7 @@ class BatchUpdatePhotosRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (updatePhotoRequests != null) {
-      _json["updatePhotoRequests"] =
+      _json['updatePhotoRequests'] =
           updatePhotoRequests.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -780,8 +779,8 @@ class BatchUpdatePhotosResponse {
   BatchUpdatePhotosResponse();
 
   BatchUpdatePhotosResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<PhotoResponse>((value) => PhotoResponse.fromJson(value))
           .toList();
     }
@@ -791,7 +790,7 @@ class BatchUpdatePhotosResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -806,8 +805,8 @@ class Connection {
   Connection();
 
   Connection.fromJson(core.Map _json) {
-    if (_json.containsKey("target")) {
-      target = PhotoId.fromJson(_json["target"]);
+    if (_json.containsKey('target')) {
+      target = PhotoId.fromJson(_json['target']);
     }
   }
 
@@ -815,7 +814,7 @@ class Connection {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (target != null) {
-      _json["target"] = target.toJson();
+      _json['target'] = target.toJson();
     }
     return _json;
   }
@@ -852,11 +851,11 @@ class LatLng {
   LatLng();
 
   LatLng.fromJson(core.Map _json) {
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
   }
 
@@ -864,10 +863,10 @@ class LatLng {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     return _json;
   }
@@ -888,11 +887,11 @@ class Level {
   Level();
 
   Level.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("number")) {
-      number = _json["number"].toDouble();
+    if (_json.containsKey('number')) {
+      number = _json['number'].toDouble();
     }
   }
 
@@ -900,10 +899,10 @@ class Level {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (number != null) {
-      _json["number"] = number;
+      _json['number'] = number;
     }
     return _json;
   }
@@ -922,11 +921,11 @@ class ListPhotosResponse {
   ListPhotosResponse();
 
   ListPhotosResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("photos")) {
-      photos = (_json["photos"] as core.List)
+    if (_json.containsKey('photos')) {
+      photos = (_json['photos'] as core.List)
           .map<Photo>((value) => Photo.fromJson(value))
           .toList();
     }
@@ -936,10 +935,10 @@ class ListPhotosResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (photos != null) {
-      _json["photos"] = photos.map((value) => value.toJson()).toList();
+      _json['photos'] = photos.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -985,22 +984,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -1008,19 +1007,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -1090,45 +1089,45 @@ class Photo {
   Photo();
 
   Photo.fromJson(core.Map _json) {
-    if (_json.containsKey("captureTime")) {
-      captureTime = _json["captureTime"];
+    if (_json.containsKey('captureTime')) {
+      captureTime = _json['captureTime'];
     }
-    if (_json.containsKey("connections")) {
-      connections = (_json["connections"] as core.List)
+    if (_json.containsKey('connections')) {
+      connections = (_json['connections'] as core.List)
           .map<Connection>((value) => Connection.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("downloadUrl")) {
-      downloadUrl = _json["downloadUrl"];
+    if (_json.containsKey('downloadUrl')) {
+      downloadUrl = _json['downloadUrl'];
     }
-    if (_json.containsKey("mapsPublishStatus")) {
-      mapsPublishStatus = _json["mapsPublishStatus"];
+    if (_json.containsKey('mapsPublishStatus')) {
+      mapsPublishStatus = _json['mapsPublishStatus'];
     }
-    if (_json.containsKey("photoId")) {
-      photoId = PhotoId.fromJson(_json["photoId"]);
+    if (_json.containsKey('photoId')) {
+      photoId = PhotoId.fromJson(_json['photoId']);
     }
-    if (_json.containsKey("places")) {
-      places = (_json["places"] as core.List)
+    if (_json.containsKey('places')) {
+      places = (_json['places'] as core.List)
           .map<Place>((value) => Place.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pose")) {
-      pose = Pose.fromJson(_json["pose"]);
+    if (_json.containsKey('pose')) {
+      pose = Pose.fromJson(_json['pose']);
     }
-    if (_json.containsKey("shareLink")) {
-      shareLink = _json["shareLink"];
+    if (_json.containsKey('shareLink')) {
+      shareLink = _json['shareLink'];
     }
-    if (_json.containsKey("thumbnailUrl")) {
-      thumbnailUrl = _json["thumbnailUrl"];
+    if (_json.containsKey('thumbnailUrl')) {
+      thumbnailUrl = _json['thumbnailUrl'];
     }
-    if (_json.containsKey("transferStatus")) {
-      transferStatus = _json["transferStatus"];
+    if (_json.containsKey('transferStatus')) {
+      transferStatus = _json['transferStatus'];
     }
-    if (_json.containsKey("uploadReference")) {
-      uploadReference = UploadRef.fromJson(_json["uploadReference"]);
+    if (_json.containsKey('uploadReference')) {
+      uploadReference = UploadRef.fromJson(_json['uploadReference']);
     }
-    if (_json.containsKey("viewCount")) {
-      viewCount = _json["viewCount"];
+    if (_json.containsKey('viewCount')) {
+      viewCount = _json['viewCount'];
     }
   }
 
@@ -1136,41 +1135,41 @@ class Photo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (captureTime != null) {
-      _json["captureTime"] = captureTime;
+      _json['captureTime'] = captureTime;
     }
     if (connections != null) {
-      _json["connections"] =
+      _json['connections'] =
           connections.map((value) => value.toJson()).toList();
     }
     if (downloadUrl != null) {
-      _json["downloadUrl"] = downloadUrl;
+      _json['downloadUrl'] = downloadUrl;
     }
     if (mapsPublishStatus != null) {
-      _json["mapsPublishStatus"] = mapsPublishStatus;
+      _json['mapsPublishStatus'] = mapsPublishStatus;
     }
     if (photoId != null) {
-      _json["photoId"] = photoId.toJson();
+      _json['photoId'] = photoId.toJson();
     }
     if (places != null) {
-      _json["places"] = places.map((value) => value.toJson()).toList();
+      _json['places'] = places.map((value) => value.toJson()).toList();
     }
     if (pose != null) {
-      _json["pose"] = pose.toJson();
+      _json['pose'] = pose.toJson();
     }
     if (shareLink != null) {
-      _json["shareLink"] = shareLink;
+      _json['shareLink'] = shareLink;
     }
     if (thumbnailUrl != null) {
-      _json["thumbnailUrl"] = thumbnailUrl;
+      _json['thumbnailUrl'] = thumbnailUrl;
     }
     if (transferStatus != null) {
-      _json["transferStatus"] = transferStatus;
+      _json['transferStatus'] = transferStatus;
     }
     if (uploadReference != null) {
-      _json["uploadReference"] = uploadReference.toJson();
+      _json['uploadReference'] = uploadReference.toJson();
     }
     if (viewCount != null) {
-      _json["viewCount"] = viewCount;
+      _json['viewCount'] = viewCount;
     }
     return _json;
   }
@@ -1184,8 +1183,8 @@ class PhotoId {
   PhotoId();
 
   PhotoId.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -1193,7 +1192,7 @@ class PhotoId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -1212,11 +1211,11 @@ class PhotoResponse {
   PhotoResponse();
 
   PhotoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("photo")) {
-      photo = Photo.fromJson(_json["photo"]);
+    if (_json.containsKey('photo')) {
+      photo = Photo.fromJson(_json['photo']);
     }
-    if (_json.containsKey("status")) {
-      status = Status.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = Status.fromJson(_json['status']);
     }
   }
 
@@ -1224,10 +1223,10 @@ class PhotoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (photo != null) {
-      _json["photo"] = photo.toJson();
+      _json['photo'] = photo.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     return _json;
   }
@@ -1250,14 +1249,14 @@ class Place {
   Place();
 
   Place.fromJson(core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("placeId")) {
-      placeId = _json["placeId"];
+    if (_json.containsKey('placeId')) {
+      placeId = _json['placeId'];
     }
   }
 
@@ -1265,13 +1264,13 @@ class Place {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (placeId != null) {
-      _json["placeId"] = placeId;
+      _json['placeId'] = placeId;
     }
     return _json;
   }
@@ -1319,26 +1318,26 @@ class Pose {
   Pose();
 
   Pose.fromJson(core.Map _json) {
-    if (_json.containsKey("accuracyMeters")) {
-      accuracyMeters = _json["accuracyMeters"].toDouble();
+    if (_json.containsKey('accuracyMeters')) {
+      accuracyMeters = _json['accuracyMeters'].toDouble();
     }
-    if (_json.containsKey("altitude")) {
-      altitude = _json["altitude"].toDouble();
+    if (_json.containsKey('altitude')) {
+      altitude = _json['altitude'].toDouble();
     }
-    if (_json.containsKey("heading")) {
-      heading = _json["heading"].toDouble();
+    if (_json.containsKey('heading')) {
+      heading = _json['heading'].toDouble();
     }
-    if (_json.containsKey("latLngPair")) {
-      latLngPair = LatLng.fromJson(_json["latLngPair"]);
+    if (_json.containsKey('latLngPair')) {
+      latLngPair = LatLng.fromJson(_json['latLngPair']);
     }
-    if (_json.containsKey("level")) {
-      level = Level.fromJson(_json["level"]);
+    if (_json.containsKey('level')) {
+      level = Level.fromJson(_json['level']);
     }
-    if (_json.containsKey("pitch")) {
-      pitch = _json["pitch"].toDouble();
+    if (_json.containsKey('pitch')) {
+      pitch = _json['pitch'].toDouble();
     }
-    if (_json.containsKey("roll")) {
-      roll = _json["roll"].toDouble();
+    if (_json.containsKey('roll')) {
+      roll = _json['roll'].toDouble();
     }
   }
 
@@ -1346,25 +1345,25 @@ class Pose {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accuracyMeters != null) {
-      _json["accuracyMeters"] = accuracyMeters;
+      _json['accuracyMeters'] = accuracyMeters;
     }
     if (altitude != null) {
-      _json["altitude"] = altitude;
+      _json['altitude'] = altitude;
     }
     if (heading != null) {
-      _json["heading"] = heading;
+      _json['heading'] = heading;
     }
     if (latLngPair != null) {
-      _json["latLngPair"] = latLngPair.toJson();
+      _json['latLngPair'] = latLngPair.toJson();
     }
     if (level != null) {
-      _json["level"] = level.toJson();
+      _json['level'] = level.toJson();
     }
     if (pitch != null) {
-      _json["pitch"] = pitch;
+      _json['pitch'] = pitch;
     }
     if (roll != null) {
-      _json["roll"] = roll;
+      _json['roll'] = roll;
     }
     return _json;
   }
@@ -1395,17 +1394,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -1413,13 +1412,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -1447,11 +1446,11 @@ class UpdatePhotoRequest {
   UpdatePhotoRequest();
 
   UpdatePhotoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("photo")) {
-      photo = Photo.fromJson(_json["photo"]);
+    if (_json.containsKey('photo')) {
+      photo = Photo.fromJson(_json['photo']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -1459,10 +1458,10 @@ class UpdatePhotoRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (photo != null) {
-      _json["photo"] = photo.toJson();
+      _json['photo'] = photo.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -1478,8 +1477,8 @@ class UploadRef {
   UploadRef();
 
   UploadRef.fromJson(core.Map _json) {
-    if (_json.containsKey("uploadUrl")) {
-      uploadUrl = _json["uploadUrl"];
+    if (_json.containsKey('uploadUrl')) {
+      uploadUrl = _json['uploadUrl'];
     }
   }
 
@@ -1487,7 +1486,7 @@ class UploadRef {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uploadUrl != null) {
-      _json["uploadUrl"] = uploadUrl;
+      _json['uploadUrl'] = uploadUrl;
     }
     return _json;
   }

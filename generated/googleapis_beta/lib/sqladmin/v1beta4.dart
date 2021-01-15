@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,11 +37,11 @@ const core.String USER_AGENT = 'dart-api-client sqladmin/v1beta4';
 class SqladminApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// Manage your Google SQL Service instances
   static const SqlserviceAdminScope =
-      "https://www.googleapis.com/auth/sqlservice.admin";
+      'https://www.googleapis.com/auth/sqlservice.admin';
 
   final commons.ApiRequester _requester;
 
@@ -57,8 +56,8 @@ class SqladminApi {
   UsersResourceApi get users => UsersResourceApi(_requester);
 
   SqladminApi(http.Client client,
-      {core.String rootUrl = "https://sqladmin.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://sqladmin.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -103,16 +102,16 @@ class BackupRunsResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -124,7 +123,7 @@ class BackupRunsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -168,16 +167,16 @@ class BackupRunsResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -189,7 +188,7 @@ class BackupRunsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -237,13 +236,13 @@ class BackupRunsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -254,7 +253,7 @@ class BackupRunsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -303,19 +302,19 @@ class BackupRunsResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -326,7 +325,7 @@ class BackupRunsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -376,16 +375,16 @@ class DatabasesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -397,7 +396,7 @@ class DatabasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -442,16 +441,16 @@ class DatabasesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -463,7 +462,7 @@ class DatabasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -511,13 +510,13 @@ class DatabasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -528,7 +527,7 @@ class DatabasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -569,13 +568,13 @@ class DatabasesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -586,7 +585,7 @@ class DatabasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -637,16 +636,16 @@ class DatabasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -658,7 +657,7 @@ class DatabasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -709,16 +708,16 @@ class DatabasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -730,7 +729,7 @@ class DatabasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -776,17 +775,17 @@ class FlagsResourceApi {
     core.String _body;
 
     if (databaseVersion != null) {
-      _queryParams["databaseVersion"] = [databaseVersion];
+      _queryParams['databaseVersion'] = [databaseVersion];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/flags';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -837,13 +836,13 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -854,7 +853,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -904,13 +903,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -921,7 +920,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -963,13 +962,13 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -979,7 +978,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1027,13 +1026,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1044,7 +1043,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1093,13 +1092,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1110,7 +1109,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1158,13 +1157,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1175,7 +1174,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1216,13 +1215,13 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1232,7 +1231,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1280,13 +1279,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1297,7 +1296,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1342,10 +1341,10 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1354,7 +1353,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1409,19 +1408,19 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1430,7 +1429,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1475,13 +1474,13 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1492,7 +1491,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1541,13 +1540,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1557,7 +1556,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1599,13 +1598,13 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1616,7 +1615,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1658,13 +1657,13 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1675,7 +1674,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1717,13 +1716,13 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1734,7 +1733,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1782,13 +1781,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1799,7 +1798,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1847,13 +1846,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1864,7 +1863,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1905,13 +1904,13 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1922,7 +1921,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1963,13 +1962,13 @@ class InstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -1980,7 +1979,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2027,13 +2026,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2044,7 +2043,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2092,13 +2091,13 @@ class InstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2108,7 +2107,7 @@ class InstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2155,13 +2154,13 @@ class OperationsResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (operation == null) {
-      throw core.ArgumentError("Parameter operation is required.");
+      throw core.ArgumentError('Parameter operation is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2171,7 +2170,7 @@ class OperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2220,19 +2219,19 @@ class OperationsResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance != null) {
-      _queryParams["instance"] = [instance];
+      _queryParams['instance'] = [instance];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2241,7 +2240,7 @@ class OperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2304,13 +2303,13 @@ class ProjectsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2321,7 +2320,7 @@ class ProjectsInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2372,16 +2371,16 @@ class ProjectsInstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (syncMode != null) {
-      _queryParams["syncMode"] = [syncMode];
+      _queryParams['syncMode'] = [syncMode];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2392,7 +2391,7 @@ class ProjectsInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2447,19 +2446,19 @@ class ProjectsInstancesResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (syncMode != null) {
-      _queryParams["syncMode"] = [syncMode];
+      _queryParams['syncMode'] = [syncMode];
     }
     if (verifyConnectionOnly != null) {
-      _queryParams["verifyConnectionOnly"] = ["${verifyConnectionOnly}"];
+      _queryParams['verifyConnectionOnly'] = ['${verifyConnectionOnly}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2470,7 +2469,7 @@ class ProjectsInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2527,13 +2526,13 @@ class SslCertsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2544,7 +2543,7 @@ class SslCertsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2589,16 +2588,16 @@ class SslCertsResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (sha1Fingerprint == null) {
-      throw core.ArgumentError("Parameter sha1Fingerprint is required.");
+      throw core.ArgumentError('Parameter sha1Fingerprint is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2610,7 +2609,7 @@ class SslCertsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2656,16 +2655,16 @@ class SslCertsResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (sha1Fingerprint == null) {
-      throw core.ArgumentError("Parameter sha1Fingerprint is required.");
+      throw core.ArgumentError('Parameter sha1Fingerprint is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2677,7 +2676,7 @@ class SslCertsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2726,13 +2725,13 @@ class SslCertsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2743,7 +2742,7 @@ class SslCertsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2784,13 +2783,13 @@ class SslCertsResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2801,7 +2800,7 @@ class SslCertsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2846,10 +2845,10 @@ class TiersResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2858,7 +2857,7 @@ class TiersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2911,19 +2910,19 @@ class UsersResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (host != null) {
-      _queryParams["host"] = [host];
+      _queryParams['host'] = [host];
     }
     if (name != null) {
-      _queryParams["name"] = [name];
+      _queryParams['name'] = [name];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2934,7 +2933,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2981,13 +2980,13 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -2998,7 +2997,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3039,13 +3038,13 @@ class UsersResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -3056,7 +3055,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3109,19 +3108,19 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
     if (instance == null) {
-      throw core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError('Parameter instance is required.');
     }
     if (host != null) {
-      _queryParams["host"] = [host];
+      _queryParams['host'] = [host];
     }
     if (name != null) {
-      _queryParams["name"] = [name];
+      _queryParams['name'] = [name];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sql/v1beta4/projects/' +
@@ -3132,7 +3131,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3161,17 +3160,17 @@ class AclEntry {
   AclEntry();
 
   AclEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("expirationTime")) {
-      expirationTime = _json["expirationTime"];
+    if (_json.containsKey('expirationTime')) {
+      expirationTime = _json['expirationTime'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -3179,16 +3178,16 @@ class AclEntry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expirationTime != null) {
-      _json["expirationTime"] = expirationTime;
+      _json['expirationTime'] = expirationTime;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -3210,11 +3209,11 @@ class ApiWarning {
   ApiWarning();
 
   ApiWarning.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -3222,10 +3221,10 @@ class ApiWarning {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -3266,33 +3265,33 @@ class BackupConfiguration {
   BackupConfiguration();
 
   BackupConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("backupRetentionSettings")) {
+    if (_json.containsKey('backupRetentionSettings')) {
       backupRetentionSettings =
-          BackupRetentionSettings.fromJson(_json["backupRetentionSettings"]);
+          BackupRetentionSettings.fromJson(_json['backupRetentionSettings']);
     }
-    if (_json.containsKey("binaryLogEnabled")) {
-      binaryLogEnabled = _json["binaryLogEnabled"];
+    if (_json.containsKey('binaryLogEnabled')) {
+      binaryLogEnabled = _json['binaryLogEnabled'];
     }
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("pointInTimeRecoveryEnabled")) {
-      pointInTimeRecoveryEnabled = _json["pointInTimeRecoveryEnabled"];
+    if (_json.containsKey('pointInTimeRecoveryEnabled')) {
+      pointInTimeRecoveryEnabled = _json['pointInTimeRecoveryEnabled'];
     }
-    if (_json.containsKey("replicationLogArchivingEnabled")) {
-      replicationLogArchivingEnabled = _json["replicationLogArchivingEnabled"];
+    if (_json.containsKey('replicationLogArchivingEnabled')) {
+      replicationLogArchivingEnabled = _json['replicationLogArchivingEnabled'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("transactionLogRetentionDays")) {
-      transactionLogRetentionDays = _json["transactionLogRetentionDays"];
+    if (_json.containsKey('transactionLogRetentionDays')) {
+      transactionLogRetentionDays = _json['transactionLogRetentionDays'];
     }
   }
 
@@ -3300,31 +3299,31 @@ class BackupConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backupRetentionSettings != null) {
-      _json["backupRetentionSettings"] = backupRetentionSettings.toJson();
+      _json['backupRetentionSettings'] = backupRetentionSettings.toJson();
     }
     if (binaryLogEnabled != null) {
-      _json["binaryLogEnabled"] = binaryLogEnabled;
+      _json['binaryLogEnabled'] = binaryLogEnabled;
     }
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (pointInTimeRecoveryEnabled != null) {
-      _json["pointInTimeRecoveryEnabled"] = pointInTimeRecoveryEnabled;
+      _json['pointInTimeRecoveryEnabled'] = pointInTimeRecoveryEnabled;
     }
     if (replicationLogArchivingEnabled != null) {
-      _json["replicationLogArchivingEnabled"] = replicationLogArchivingEnabled;
+      _json['replicationLogArchivingEnabled'] = replicationLogArchivingEnabled;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (transactionLogRetentionDays != null) {
-      _json["transactionLogRetentionDays"] = transactionLogRetentionDays;
+      _json['transactionLogRetentionDays'] = transactionLogRetentionDays;
     }
     return _json;
   }
@@ -3349,11 +3348,11 @@ class BackupRetentionSettings {
   BackupRetentionSettings();
 
   BackupRetentionSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("retainedBackups")) {
-      retainedBackups = _json["retainedBackups"];
+    if (_json.containsKey('retainedBackups')) {
+      retainedBackups = _json['retainedBackups'];
     }
-    if (_json.containsKey("retentionUnit")) {
-      retentionUnit = _json["retentionUnit"];
+    if (_json.containsKey('retentionUnit')) {
+      retentionUnit = _json['retentionUnit'];
     }
   }
 
@@ -3361,10 +3360,10 @@ class BackupRetentionSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (retainedBackups != null) {
-      _json["retainedBackups"] = retainedBackups;
+      _json['retainedBackups'] = retainedBackups;
     }
     if (retentionUnit != null) {
-      _json["retentionUnit"] = retentionUnit;
+      _json['retentionUnit'] = retentionUnit;
     }
     return _json;
   }
@@ -3453,55 +3452,55 @@ class BackupRun {
   BackupRun();
 
   BackupRun.fromJson(core.Map _json) {
-    if (_json.containsKey("backupKind")) {
-      backupKind = _json["backupKind"];
+    if (_json.containsKey('backupKind')) {
+      backupKind = _json['backupKind'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("diskEncryptionConfiguration")) {
+    if (_json.containsKey('diskEncryptionConfiguration')) {
       diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
-          _json["diskEncryptionConfiguration"]);
+          _json['diskEncryptionConfiguration']);
     }
-    if (_json.containsKey("diskEncryptionStatus")) {
+    if (_json.containsKey('diskEncryptionStatus')) {
       diskEncryptionStatus =
-          DiskEncryptionStatus.fromJson(_json["diskEncryptionStatus"]);
+          DiskEncryptionStatus.fromJson(_json['diskEncryptionStatus']);
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("enqueuedTime")) {
-      enqueuedTime = _json["enqueuedTime"];
+    if (_json.containsKey('enqueuedTime')) {
+      enqueuedTime = _json['enqueuedTime'];
     }
-    if (_json.containsKey("error")) {
-      error = OperationError.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = OperationError.fromJson(_json['error']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("instance")) {
-      instance = _json["instance"];
+    if (_json.containsKey('instance')) {
+      instance = _json['instance'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("windowStartTime")) {
-      windowStartTime = _json["windowStartTime"];
+    if (_json.containsKey('windowStartTime')) {
+      windowStartTime = _json['windowStartTime'];
     }
   }
 
@@ -3509,53 +3508,53 @@ class BackupRun {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backupKind != null) {
-      _json["backupKind"] = backupKind;
+      _json['backupKind'] = backupKind;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (diskEncryptionConfiguration != null) {
-      _json["diskEncryptionConfiguration"] =
+      _json['diskEncryptionConfiguration'] =
           diskEncryptionConfiguration.toJson();
     }
     if (diskEncryptionStatus != null) {
-      _json["diskEncryptionStatus"] = diskEncryptionStatus.toJson();
+      _json['diskEncryptionStatus'] = diskEncryptionStatus.toJson();
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (enqueuedTime != null) {
-      _json["enqueuedTime"] = enqueuedTime;
+      _json['enqueuedTime'] = enqueuedTime;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (instance != null) {
-      _json["instance"] = instance;
+      _json['instance'] = instance;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (windowStartTime != null) {
-      _json["windowStartTime"] = windowStartTime;
+      _json['windowStartTime'] = windowStartTime;
     }
     return _json;
   }
@@ -3576,16 +3575,16 @@ class BackupRunsListResponse {
   BackupRunsListResponse();
 
   BackupRunsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<BackupRun>((value) => BackupRun.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -3593,13 +3592,13 @@ class BackupRunsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -3619,14 +3618,14 @@ class BinLogCoordinates {
   BinLogCoordinates();
 
   BinLogCoordinates.fromJson(core.Map _json) {
-    if (_json.containsKey("binLogFileName")) {
-      binLogFileName = _json["binLogFileName"];
+    if (_json.containsKey('binLogFileName')) {
+      binLogFileName = _json['binLogFileName'];
     }
-    if (_json.containsKey("binLogPosition")) {
-      binLogPosition = _json["binLogPosition"];
+    if (_json.containsKey('binLogPosition')) {
+      binLogPosition = _json['binLogPosition'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -3634,13 +3633,13 @@ class BinLogCoordinates {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (binLogFileName != null) {
-      _json["binLogFileName"] = binLogFileName;
+      _json['binLogFileName'] = binLogFileName;
     }
     if (binLogPosition != null) {
-      _json["binLogPosition"] = binLogPosition;
+      _json['binLogPosition'] = binLogPosition;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -3668,21 +3667,21 @@ class CloneContext {
   CloneContext();
 
   CloneContext.fromJson(core.Map _json) {
-    if (_json.containsKey("binLogCoordinates")) {
+    if (_json.containsKey('binLogCoordinates')) {
       binLogCoordinates =
-          BinLogCoordinates.fromJson(_json["binLogCoordinates"]);
+          BinLogCoordinates.fromJson(_json['binLogCoordinates']);
     }
-    if (_json.containsKey("destinationInstanceName")) {
-      destinationInstanceName = _json["destinationInstanceName"];
+    if (_json.containsKey('destinationInstanceName')) {
+      destinationInstanceName = _json['destinationInstanceName'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("pitrTimestampMs")) {
-      pitrTimestampMs = _json["pitrTimestampMs"];
+    if (_json.containsKey('pitrTimestampMs')) {
+      pitrTimestampMs = _json['pitrTimestampMs'];
     }
-    if (_json.containsKey("pointInTime")) {
-      pointInTime = _json["pointInTime"];
+    if (_json.containsKey('pointInTime')) {
+      pointInTime = _json['pointInTime'];
     }
   }
 
@@ -3690,19 +3689,19 @@ class CloneContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (binLogCoordinates != null) {
-      _json["binLogCoordinates"] = binLogCoordinates.toJson();
+      _json['binLogCoordinates'] = binLogCoordinates.toJson();
     }
     if (destinationInstanceName != null) {
-      _json["destinationInstanceName"] = destinationInstanceName;
+      _json['destinationInstanceName'] = destinationInstanceName;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (pitrTimestampMs != null) {
-      _json["pitrTimestampMs"] = pitrTimestampMs;
+      _json['pitrTimestampMs'] = pitrTimestampMs;
     }
     if (pointInTime != null) {
-      _json["pointInTime"] = pointInTime;
+      _json['pointInTime'] = pointInTime;
     }
     return _json;
   }
@@ -3741,33 +3740,33 @@ class Database {
   Database();
 
   Database.fromJson(core.Map _json) {
-    if (_json.containsKey("charset")) {
-      charset = _json["charset"];
+    if (_json.containsKey('charset')) {
+      charset = _json['charset'];
     }
-    if (_json.containsKey("collation")) {
-      collation = _json["collation"];
+    if (_json.containsKey('collation')) {
+      collation = _json['collation'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("instance")) {
-      instance = _json["instance"];
+    if (_json.containsKey('instance')) {
+      instance = _json['instance'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("project")) {
-      project = _json["project"];
+    if (_json.containsKey('project')) {
+      project = _json['project'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("sqlserverDatabaseDetails")) {
+    if (_json.containsKey('sqlserverDatabaseDetails')) {
       sqlserverDatabaseDetails =
-          SqlServerDatabaseDetails.fromJson(_json["sqlserverDatabaseDetails"]);
+          SqlServerDatabaseDetails.fromJson(_json['sqlserverDatabaseDetails']);
     }
   }
 
@@ -3775,31 +3774,31 @@ class Database {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (charset != null) {
-      _json["charset"] = charset;
+      _json['charset'] = charset;
     }
     if (collation != null) {
-      _json["collation"] = collation;
+      _json['collation'] = collation;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (instance != null) {
-      _json["instance"] = instance;
+      _json['instance'] = instance;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (project != null) {
-      _json["project"] = project;
+      _json['project'] = project;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (sqlserverDatabaseDetails != null) {
-      _json["sqlserverDatabaseDetails"] = sqlserverDatabaseDetails.toJson();
+      _json['sqlserverDatabaseDetails'] = sqlserverDatabaseDetails.toJson();
     }
     return _json;
   }
@@ -3820,11 +3819,11 @@ class DatabaseFlags {
   DatabaseFlags();
 
   DatabaseFlags.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -3832,10 +3831,10 @@ class DatabaseFlags {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -3858,11 +3857,11 @@ class DatabaseInstanceFailoverReplica {
   DatabaseInstanceFailoverReplica();
 
   DatabaseInstanceFailoverReplica.fromJson(core.Map _json) {
-    if (_json.containsKey("available")) {
-      available = _json["available"];
+    if (_json.containsKey('available')) {
+      available = _json['available'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -3870,10 +3869,10 @@ class DatabaseInstanceFailoverReplica {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (available != null) {
-      _json["available"] = available;
+      _json['available'] = available;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4052,101 +4051,101 @@ class DatabaseInstance {
   DatabaseInstance();
 
   DatabaseInstance.fromJson(core.Map _json) {
-    if (_json.containsKey("backendType")) {
-      backendType = _json["backendType"];
+    if (_json.containsKey('backendType')) {
+      backendType = _json['backendType'];
     }
-    if (_json.containsKey("connectionName")) {
-      connectionName = _json["connectionName"];
+    if (_json.containsKey('connectionName')) {
+      connectionName = _json['connectionName'];
     }
-    if (_json.containsKey("currentDiskSize")) {
-      currentDiskSize = _json["currentDiskSize"];
+    if (_json.containsKey('currentDiskSize')) {
+      currentDiskSize = _json['currentDiskSize'];
     }
-    if (_json.containsKey("databaseVersion")) {
-      databaseVersion = _json["databaseVersion"];
+    if (_json.containsKey('databaseVersion')) {
+      databaseVersion = _json['databaseVersion'];
     }
-    if (_json.containsKey("diskEncryptionConfiguration")) {
+    if (_json.containsKey('diskEncryptionConfiguration')) {
       diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
-          _json["diskEncryptionConfiguration"]);
+          _json['diskEncryptionConfiguration']);
     }
-    if (_json.containsKey("diskEncryptionStatus")) {
+    if (_json.containsKey('diskEncryptionStatus')) {
       diskEncryptionStatus =
-          DiskEncryptionStatus.fromJson(_json["diskEncryptionStatus"]);
+          DiskEncryptionStatus.fromJson(_json['diskEncryptionStatus']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("failoverReplica")) {
+    if (_json.containsKey('failoverReplica')) {
       failoverReplica =
-          DatabaseInstanceFailoverReplica.fromJson(_json["failoverReplica"]);
+          DatabaseInstanceFailoverReplica.fromJson(_json['failoverReplica']);
     }
-    if (_json.containsKey("gceZone")) {
-      gceZone = _json["gceZone"];
+    if (_json.containsKey('gceZone')) {
+      gceZone = _json['gceZone'];
     }
-    if (_json.containsKey("instanceType")) {
-      instanceType = _json["instanceType"];
+    if (_json.containsKey('instanceType')) {
+      instanceType = _json['instanceType'];
     }
-    if (_json.containsKey("ipAddresses")) {
-      ipAddresses = (_json["ipAddresses"] as core.List)
+    if (_json.containsKey('ipAddresses')) {
+      ipAddresses = (_json['ipAddresses'] as core.List)
           .map<IpMapping>((value) => IpMapping.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("ipv6Address")) {
-      ipv6Address = _json["ipv6Address"];
+    if (_json.containsKey('ipv6Address')) {
+      ipv6Address = _json['ipv6Address'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("masterInstanceName")) {
-      masterInstanceName = _json["masterInstanceName"];
+    if (_json.containsKey('masterInstanceName')) {
+      masterInstanceName = _json['masterInstanceName'];
     }
-    if (_json.containsKey("maxDiskSize")) {
-      maxDiskSize = _json["maxDiskSize"];
+    if (_json.containsKey('maxDiskSize')) {
+      maxDiskSize = _json['maxDiskSize'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("onPremisesConfiguration")) {
+    if (_json.containsKey('onPremisesConfiguration')) {
       onPremisesConfiguration =
-          OnPremisesConfiguration.fromJson(_json["onPremisesConfiguration"]);
+          OnPremisesConfiguration.fromJson(_json['onPremisesConfiguration']);
     }
-    if (_json.containsKey("project")) {
-      project = _json["project"];
+    if (_json.containsKey('project')) {
+      project = _json['project'];
     }
-    if (_json.containsKey("region")) {
-      region = _json["region"];
+    if (_json.containsKey('region')) {
+      region = _json['region'];
     }
-    if (_json.containsKey("replicaConfiguration")) {
+    if (_json.containsKey('replicaConfiguration')) {
       replicaConfiguration =
-          ReplicaConfiguration.fromJson(_json["replicaConfiguration"]);
+          ReplicaConfiguration.fromJson(_json['replicaConfiguration']);
     }
-    if (_json.containsKey("replicaNames")) {
-      replicaNames = (_json["replicaNames"] as core.List).cast<core.String>();
+    if (_json.containsKey('replicaNames')) {
+      replicaNames = (_json['replicaNames'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("rootPassword")) {
-      rootPassword = _json["rootPassword"];
+    if (_json.containsKey('rootPassword')) {
+      rootPassword = _json['rootPassword'];
     }
-    if (_json.containsKey("scheduledMaintenance")) {
+    if (_json.containsKey('scheduledMaintenance')) {
       scheduledMaintenance =
-          SqlScheduledMaintenance.fromJson(_json["scheduledMaintenance"]);
+          SqlScheduledMaintenance.fromJson(_json['scheduledMaintenance']);
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("serverCaCert")) {
-      serverCaCert = SslCert.fromJson(_json["serverCaCert"]);
+    if (_json.containsKey('serverCaCert')) {
+      serverCaCert = SslCert.fromJson(_json['serverCaCert']);
     }
-    if (_json.containsKey("serviceAccountEmailAddress")) {
-      serviceAccountEmailAddress = _json["serviceAccountEmailAddress"];
+    if (_json.containsKey('serviceAccountEmailAddress')) {
+      serviceAccountEmailAddress = _json['serviceAccountEmailAddress'];
     }
-    if (_json.containsKey("settings")) {
-      settings = Settings.fromJson(_json["settings"]);
+    if (_json.containsKey('settings')) {
+      settings = Settings.fromJson(_json['settings']);
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("suspensionReason")) {
+    if (_json.containsKey('suspensionReason')) {
       suspensionReason =
-          (_json["suspensionReason"] as core.List).cast<core.String>();
+          (_json['suspensionReason'] as core.List).cast<core.String>();
     }
   }
 
@@ -4154,93 +4153,93 @@ class DatabaseInstance {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backendType != null) {
-      _json["backendType"] = backendType;
+      _json['backendType'] = backendType;
     }
     if (connectionName != null) {
-      _json["connectionName"] = connectionName;
+      _json['connectionName'] = connectionName;
     }
     if (currentDiskSize != null) {
-      _json["currentDiskSize"] = currentDiskSize;
+      _json['currentDiskSize'] = currentDiskSize;
     }
     if (databaseVersion != null) {
-      _json["databaseVersion"] = databaseVersion;
+      _json['databaseVersion'] = databaseVersion;
     }
     if (diskEncryptionConfiguration != null) {
-      _json["diskEncryptionConfiguration"] =
+      _json['diskEncryptionConfiguration'] =
           diskEncryptionConfiguration.toJson();
     }
     if (diskEncryptionStatus != null) {
-      _json["diskEncryptionStatus"] = diskEncryptionStatus.toJson();
+      _json['diskEncryptionStatus'] = diskEncryptionStatus.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (failoverReplica != null) {
-      _json["failoverReplica"] = failoverReplica.toJson();
+      _json['failoverReplica'] = failoverReplica.toJson();
     }
     if (gceZone != null) {
-      _json["gceZone"] = gceZone;
+      _json['gceZone'] = gceZone;
     }
     if (instanceType != null) {
-      _json["instanceType"] = instanceType;
+      _json['instanceType'] = instanceType;
     }
     if (ipAddresses != null) {
-      _json["ipAddresses"] =
+      _json['ipAddresses'] =
           ipAddresses.map((value) => value.toJson()).toList();
     }
     if (ipv6Address != null) {
-      _json["ipv6Address"] = ipv6Address;
+      _json['ipv6Address'] = ipv6Address;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (masterInstanceName != null) {
-      _json["masterInstanceName"] = masterInstanceName;
+      _json['masterInstanceName'] = masterInstanceName;
     }
     if (maxDiskSize != null) {
-      _json["maxDiskSize"] = maxDiskSize;
+      _json['maxDiskSize'] = maxDiskSize;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (onPremisesConfiguration != null) {
-      _json["onPremisesConfiguration"] = onPremisesConfiguration.toJson();
+      _json['onPremisesConfiguration'] = onPremisesConfiguration.toJson();
     }
     if (project != null) {
-      _json["project"] = project;
+      _json['project'] = project;
     }
     if (region != null) {
-      _json["region"] = region;
+      _json['region'] = region;
     }
     if (replicaConfiguration != null) {
-      _json["replicaConfiguration"] = replicaConfiguration.toJson();
+      _json['replicaConfiguration'] = replicaConfiguration.toJson();
     }
     if (replicaNames != null) {
-      _json["replicaNames"] = replicaNames;
+      _json['replicaNames'] = replicaNames;
     }
     if (rootPassword != null) {
-      _json["rootPassword"] = rootPassword;
+      _json['rootPassword'] = rootPassword;
     }
     if (scheduledMaintenance != null) {
-      _json["scheduledMaintenance"] = scheduledMaintenance.toJson();
+      _json['scheduledMaintenance'] = scheduledMaintenance.toJson();
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (serverCaCert != null) {
-      _json["serverCaCert"] = serverCaCert.toJson();
+      _json['serverCaCert'] = serverCaCert.toJson();
     }
     if (serviceAccountEmailAddress != null) {
-      _json["serviceAccountEmailAddress"] = serviceAccountEmailAddress;
+      _json['serviceAccountEmailAddress'] = serviceAccountEmailAddress;
     }
     if (settings != null) {
-      _json["settings"] = settings.toJson();
+      _json['settings'] = settings.toJson();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (suspensionReason != null) {
-      _json["suspensionReason"] = suspensionReason;
+      _json['suspensionReason'] = suspensionReason;
     }
     return _json;
   }
@@ -4257,13 +4256,13 @@ class DatabasesListResponse {
   DatabasesListResponse();
 
   DatabasesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Database>((value) => Database.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -4271,10 +4270,10 @@ class DatabasesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -4297,13 +4296,13 @@ class DemoteMasterConfiguration {
   DemoteMasterConfiguration();
 
   DemoteMasterConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("mysqlReplicaConfiguration")) {
+    if (_json.containsKey('mysqlReplicaConfiguration')) {
       mysqlReplicaConfiguration =
           DemoteMasterMySqlReplicaConfiguration.fromJson(
-              _json["mysqlReplicaConfiguration"]);
+              _json['mysqlReplicaConfiguration']);
     }
   }
 
@@ -4311,10 +4310,10 @@ class DemoteMasterConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (mysqlReplicaConfiguration != null) {
-      _json["mysqlReplicaConfiguration"] = mysqlReplicaConfiguration.toJson();
+      _json['mysqlReplicaConfiguration'] = mysqlReplicaConfiguration.toJson();
     }
     return _json;
   }
@@ -4345,18 +4344,18 @@ class DemoteMasterContext {
   DemoteMasterContext();
 
   DemoteMasterContext.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("masterInstanceName")) {
-      masterInstanceName = _json["masterInstanceName"];
+    if (_json.containsKey('masterInstanceName')) {
+      masterInstanceName = _json['masterInstanceName'];
     }
-    if (_json.containsKey("replicaConfiguration")) {
+    if (_json.containsKey('replicaConfiguration')) {
       replicaConfiguration =
-          DemoteMasterConfiguration.fromJson(_json["replicaConfiguration"]);
+          DemoteMasterConfiguration.fromJson(_json['replicaConfiguration']);
     }
-    if (_json.containsKey("verifyGtidConsistency")) {
-      verifyGtidConsistency = _json["verifyGtidConsistency"];
+    if (_json.containsKey('verifyGtidConsistency')) {
+      verifyGtidConsistency = _json['verifyGtidConsistency'];
     }
   }
 
@@ -4364,16 +4363,16 @@ class DemoteMasterContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (masterInstanceName != null) {
-      _json["masterInstanceName"] = masterInstanceName;
+      _json['masterInstanceName'] = masterInstanceName;
     }
     if (replicaConfiguration != null) {
-      _json["replicaConfiguration"] = replicaConfiguration.toJson();
+      _json['replicaConfiguration'] = replicaConfiguration.toJson();
     }
     if (verifyGtidConsistency != null) {
-      _json["verifyGtidConsistency"] = verifyGtidConsistency;
+      _json['verifyGtidConsistency'] = verifyGtidConsistency;
     }
     return _json;
   }
@@ -4404,23 +4403,23 @@ class DemoteMasterMySqlReplicaConfiguration {
   DemoteMasterMySqlReplicaConfiguration();
 
   DemoteMasterMySqlReplicaConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("caCertificate")) {
-      caCertificate = _json["caCertificate"];
+    if (_json.containsKey('caCertificate')) {
+      caCertificate = _json['caCertificate'];
     }
-    if (_json.containsKey("clientCertificate")) {
-      clientCertificate = _json["clientCertificate"];
+    if (_json.containsKey('clientCertificate')) {
+      clientCertificate = _json['clientCertificate'];
     }
-    if (_json.containsKey("clientKey")) {
-      clientKey = _json["clientKey"];
+    if (_json.containsKey('clientKey')) {
+      clientKey = _json['clientKey'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("username")) {
-      username = _json["username"];
+    if (_json.containsKey('username')) {
+      username = _json['username'];
     }
   }
 
@@ -4428,22 +4427,22 @@ class DemoteMasterMySqlReplicaConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (caCertificate != null) {
-      _json["caCertificate"] = caCertificate;
+      _json['caCertificate'] = caCertificate;
     }
     if (clientCertificate != null) {
-      _json["clientCertificate"] = clientCertificate;
+      _json['clientCertificate'] = clientCertificate;
     }
     if (clientKey != null) {
-      _json["clientKey"] = clientKey;
+      _json['clientKey'] = clientKey;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (username != null) {
-      _json["username"] = username;
+      _json['username'] = username;
     }
     return _json;
   }
@@ -4471,14 +4470,14 @@ class DenyMaintenancePeriod {
   DenyMaintenancePeriod();
 
   DenyMaintenancePeriod.fromJson(core.Map _json) {
-    if (_json.containsKey("endDate")) {
-      endDate = _json["endDate"];
+    if (_json.containsKey('endDate')) {
+      endDate = _json['endDate'];
     }
-    if (_json.containsKey("startDate")) {
-      startDate = _json["startDate"];
+    if (_json.containsKey('startDate')) {
+      startDate = _json['startDate'];
     }
-    if (_json.containsKey("time")) {
-      time = _json["time"];
+    if (_json.containsKey('time')) {
+      time = _json['time'];
     }
   }
 
@@ -4486,13 +4485,13 @@ class DenyMaintenancePeriod {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endDate != null) {
-      _json["endDate"] = endDate;
+      _json['endDate'] = endDate;
     }
     if (startDate != null) {
-      _json["startDate"] = startDate;
+      _json['startDate'] = startDate;
     }
     if (time != null) {
-      _json["time"] = time;
+      _json['time'] = time;
     }
     return _json;
   }
@@ -4509,11 +4508,11 @@ class DiskEncryptionConfiguration {
   DiskEncryptionConfiguration();
 
   DiskEncryptionConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("kmsKeyName")) {
-      kmsKeyName = _json["kmsKeyName"];
+    if (_json.containsKey('kmsKeyName')) {
+      kmsKeyName = _json['kmsKeyName'];
     }
   }
 
@@ -4521,10 +4520,10 @@ class DiskEncryptionConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (kmsKeyName != null) {
-      _json["kmsKeyName"] = kmsKeyName;
+      _json['kmsKeyName'] = kmsKeyName;
     }
     return _json;
   }
@@ -4541,11 +4540,11 @@ class DiskEncryptionStatus {
   DiskEncryptionStatus();
 
   DiskEncryptionStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("kmsKeyVersionName")) {
-      kmsKeyVersionName = _json["kmsKeyVersionName"];
+    if (_json.containsKey('kmsKeyVersionName')) {
+      kmsKeyVersionName = _json['kmsKeyVersionName'];
     }
   }
 
@@ -4553,10 +4552,10 @@ class DiskEncryptionStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (kmsKeyVersionName != null) {
-      _json["kmsKeyVersionName"] = kmsKeyVersionName;
+      _json['kmsKeyVersionName'] = kmsKeyVersionName;
     }
     return _json;
   }
@@ -4570,8 +4569,8 @@ class ExportContextCsvExportOptions {
   ExportContextCsvExportOptions();
 
   ExportContextCsvExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("selectQuery")) {
-      selectQuery = _json["selectQuery"];
+    if (_json.containsKey('selectQuery')) {
+      selectQuery = _json['selectQuery'];
     }
   }
 
@@ -4579,7 +4578,7 @@ class ExportContextCsvExportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (selectQuery != null) {
-      _json["selectQuery"] = selectQuery;
+      _json['selectQuery'] = selectQuery;
     }
     return _json;
   }
@@ -4596,8 +4595,8 @@ class ExportContextSqlExportOptionsMysqlExportOptions {
   ExportContextSqlExportOptionsMysqlExportOptions();
 
   ExportContextSqlExportOptionsMysqlExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("masterData")) {
-      masterData = _json["masterData"];
+    if (_json.containsKey('masterData')) {
+      masterData = _json['masterData'];
     }
   }
 
@@ -4605,7 +4604,7 @@ class ExportContextSqlExportOptionsMysqlExportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (masterData != null) {
-      _json["masterData"] = masterData;
+      _json['masterData'] = masterData;
     }
     return _json;
   }
@@ -4627,16 +4626,16 @@ class ExportContextSqlExportOptions {
   ExportContextSqlExportOptions();
 
   ExportContextSqlExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("mysqlExportOptions")) {
+    if (_json.containsKey('mysqlExportOptions')) {
       mysqlExportOptions =
           ExportContextSqlExportOptionsMysqlExportOptions.fromJson(
-              _json["mysqlExportOptions"]);
+              _json['mysqlExportOptions']);
     }
-    if (_json.containsKey("schemaOnly")) {
-      schemaOnly = _json["schemaOnly"];
+    if (_json.containsKey('schemaOnly')) {
+      schemaOnly = _json['schemaOnly'];
     }
-    if (_json.containsKey("tables")) {
-      tables = (_json["tables"] as core.List).cast<core.String>();
+    if (_json.containsKey('tables')) {
+      tables = (_json['tables'] as core.List).cast<core.String>();
     }
   }
 
@@ -4644,13 +4643,13 @@ class ExportContextSqlExportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mysqlExportOptions != null) {
-      _json["mysqlExportOptions"] = mysqlExportOptions.toJson();
+      _json['mysqlExportOptions'] = mysqlExportOptions.toJson();
     }
     if (schemaOnly != null) {
-      _json["schemaOnly"] = schemaOnly;
+      _json['schemaOnly'] = schemaOnly;
     }
     if (tables != null) {
-      _json["tables"] = tables;
+      _json['tables'] = tables;
     }
     return _json;
   }
@@ -4699,28 +4698,28 @@ class ExportContext {
   ExportContext();
 
   ExportContext.fromJson(core.Map _json) {
-    if (_json.containsKey("csvExportOptions")) {
+    if (_json.containsKey('csvExportOptions')) {
       csvExportOptions =
-          ExportContextCsvExportOptions.fromJson(_json["csvExportOptions"]);
+          ExportContextCsvExportOptions.fromJson(_json['csvExportOptions']);
     }
-    if (_json.containsKey("databases")) {
-      databases = (_json["databases"] as core.List).cast<core.String>();
+    if (_json.containsKey('databases')) {
+      databases = (_json['databases'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("fileType")) {
-      fileType = _json["fileType"];
+    if (_json.containsKey('fileType')) {
+      fileType = _json['fileType'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("offload")) {
-      offload = _json["offload"];
+    if (_json.containsKey('offload')) {
+      offload = _json['offload'];
     }
-    if (_json.containsKey("sqlExportOptions")) {
+    if (_json.containsKey('sqlExportOptions')) {
       sqlExportOptions =
-          ExportContextSqlExportOptions.fromJson(_json["sqlExportOptions"]);
+          ExportContextSqlExportOptions.fromJson(_json['sqlExportOptions']);
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -4728,25 +4727,25 @@ class ExportContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (csvExportOptions != null) {
-      _json["csvExportOptions"] = csvExportOptions.toJson();
+      _json['csvExportOptions'] = csvExportOptions.toJson();
     }
     if (databases != null) {
-      _json["databases"] = databases;
+      _json['databases'] = databases;
     }
     if (fileType != null) {
-      _json["fileType"] = fileType;
+      _json['fileType'] = fileType;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (offload != null) {
-      _json["offload"] = offload;
+      _json['offload'] = offload;
     }
     if (sqlExportOptions != null) {
-      _json["sqlExportOptions"] = sqlExportOptions.toJson();
+      _json['sqlExportOptions'] = sqlExportOptions.toJson();
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -4764,11 +4763,11 @@ class FailoverContext {
   FailoverContext();
 
   FailoverContext.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("settingsVersion")) {
-      settingsVersion = _json["settingsVersion"];
+    if (_json.containsKey('settingsVersion')) {
+      settingsVersion = _json['settingsVersion'];
     }
   }
 
@@ -4776,10 +4775,10 @@ class FailoverContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (settingsVersion != null) {
-      _json["settingsVersion"] = settingsVersion;
+      _json['settingsVersion'] = settingsVersion;
     }
     return _json;
   }
@@ -4837,37 +4836,37 @@ class Flag {
   Flag();
 
   Flag.fromJson(core.Map _json) {
-    if (_json.containsKey("allowedIntValues")) {
+    if (_json.containsKey('allowedIntValues')) {
       allowedIntValues =
-          (_json["allowedIntValues"] as core.List).cast<core.String>();
+          (_json['allowedIntValues'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("allowedStringValues")) {
+    if (_json.containsKey('allowedStringValues')) {
       allowedStringValues =
-          (_json["allowedStringValues"] as core.List).cast<core.String>();
+          (_json['allowedStringValues'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("appliesTo")) {
-      appliesTo = (_json["appliesTo"] as core.List).cast<core.String>();
+    if (_json.containsKey('appliesTo')) {
+      appliesTo = (_json['appliesTo'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("inBeta")) {
-      inBeta = _json["inBeta"];
+    if (_json.containsKey('inBeta')) {
+      inBeta = _json['inBeta'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("maxValue")) {
-      maxValue = _json["maxValue"];
+    if (_json.containsKey('maxValue')) {
+      maxValue = _json['maxValue'];
     }
-    if (_json.containsKey("minValue")) {
-      minValue = _json["minValue"];
+    if (_json.containsKey('minValue')) {
+      minValue = _json['minValue'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("requiresRestart")) {
-      requiresRestart = _json["requiresRestart"];
+    if (_json.containsKey('requiresRestart')) {
+      requiresRestart = _json['requiresRestart'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4875,34 +4874,34 @@ class Flag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowedIntValues != null) {
-      _json["allowedIntValues"] = allowedIntValues;
+      _json['allowedIntValues'] = allowedIntValues;
     }
     if (allowedStringValues != null) {
-      _json["allowedStringValues"] = allowedStringValues;
+      _json['allowedStringValues'] = allowedStringValues;
     }
     if (appliesTo != null) {
-      _json["appliesTo"] = appliesTo;
+      _json['appliesTo'] = appliesTo;
     }
     if (inBeta != null) {
-      _json["inBeta"] = inBeta;
+      _json['inBeta'] = inBeta;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (maxValue != null) {
-      _json["maxValue"] = maxValue;
+      _json['maxValue'] = maxValue;
     }
     if (minValue != null) {
-      _json["minValue"] = minValue;
+      _json['minValue'] = minValue;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (requiresRestart != null) {
-      _json["requiresRestart"] = requiresRestart;
+      _json['requiresRestart'] = requiresRestart;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4919,13 +4918,13 @@ class FlagsListResponse {
   FlagsListResponse();
 
   FlagsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Flag>((value) => Flag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -4933,10 +4932,10 @@ class FlagsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -4959,14 +4958,14 @@ class ImportContextBakImportOptionsEncryptionOptions {
   ImportContextBakImportOptionsEncryptionOptions();
 
   ImportContextBakImportOptionsEncryptionOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("certPath")) {
-      certPath = _json["certPath"];
+    if (_json.containsKey('certPath')) {
+      certPath = _json['certPath'];
     }
-    if (_json.containsKey("pvkPassword")) {
-      pvkPassword = _json["pvkPassword"];
+    if (_json.containsKey('pvkPassword')) {
+      pvkPassword = _json['pvkPassword'];
     }
-    if (_json.containsKey("pvkPath")) {
-      pvkPath = _json["pvkPath"];
+    if (_json.containsKey('pvkPath')) {
+      pvkPath = _json['pvkPath'];
     }
   }
 
@@ -4974,13 +4973,13 @@ class ImportContextBakImportOptionsEncryptionOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (certPath != null) {
-      _json["certPath"] = certPath;
+      _json['certPath'] = certPath;
     }
     if (pvkPassword != null) {
-      _json["pvkPassword"] = pvkPassword;
+      _json['pvkPassword'] = pvkPassword;
     }
     if (pvkPath != null) {
-      _json["pvkPath"] = pvkPath;
+      _json['pvkPath'] = pvkPath;
     }
     return _json;
   }
@@ -4993,10 +4992,10 @@ class ImportContextBakImportOptions {
   ImportContextBakImportOptions();
 
   ImportContextBakImportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("encryptionOptions")) {
+    if (_json.containsKey('encryptionOptions')) {
       encryptionOptions =
           ImportContextBakImportOptionsEncryptionOptions.fromJson(
-              _json["encryptionOptions"]);
+              _json['encryptionOptions']);
     }
   }
 
@@ -5004,7 +5003,7 @@ class ImportContextBakImportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (encryptionOptions != null) {
-      _json["encryptionOptions"] = encryptionOptions.toJson();
+      _json['encryptionOptions'] = encryptionOptions.toJson();
     }
     return _json;
   }
@@ -5022,11 +5021,11 @@ class ImportContextCsvImportOptions {
   ImportContextCsvImportOptions();
 
   ImportContextCsvImportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("columns")) {
-      columns = (_json["columns"] as core.List).cast<core.String>();
+    if (_json.containsKey('columns')) {
+      columns = (_json['columns'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("table")) {
-      table = _json["table"];
+    if (_json.containsKey('table')) {
+      table = _json['table'];
     }
   }
 
@@ -5034,10 +5033,10 @@ class ImportContextCsvImportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (columns != null) {
-      _json["columns"] = columns;
+      _json['columns'] = columns;
     }
     if (table != null) {
-      _json["table"] = table;
+      _json['table'] = table;
     }
     return _json;
   }
@@ -5081,28 +5080,28 @@ class ImportContext {
   ImportContext();
 
   ImportContext.fromJson(core.Map _json) {
-    if (_json.containsKey("bakImportOptions")) {
+    if (_json.containsKey('bakImportOptions')) {
       bakImportOptions =
-          ImportContextBakImportOptions.fromJson(_json["bakImportOptions"]);
+          ImportContextBakImportOptions.fromJson(_json['bakImportOptions']);
     }
-    if (_json.containsKey("csvImportOptions")) {
+    if (_json.containsKey('csvImportOptions')) {
       csvImportOptions =
-          ImportContextCsvImportOptions.fromJson(_json["csvImportOptions"]);
+          ImportContextCsvImportOptions.fromJson(_json['csvImportOptions']);
     }
-    if (_json.containsKey("database")) {
-      database = _json["database"];
+    if (_json.containsKey('database')) {
+      database = _json['database'];
     }
-    if (_json.containsKey("fileType")) {
-      fileType = _json["fileType"];
+    if (_json.containsKey('fileType')) {
+      fileType = _json['fileType'];
     }
-    if (_json.containsKey("importUser")) {
-      importUser = _json["importUser"];
+    if (_json.containsKey('importUser')) {
+      importUser = _json['importUser'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -5110,25 +5109,25 @@ class ImportContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bakImportOptions != null) {
-      _json["bakImportOptions"] = bakImportOptions.toJson();
+      _json['bakImportOptions'] = bakImportOptions.toJson();
     }
     if (csvImportOptions != null) {
-      _json["csvImportOptions"] = csvImportOptions.toJson();
+      _json['csvImportOptions'] = csvImportOptions.toJson();
     }
     if (database != null) {
-      _json["database"] = database;
+      _json['database'] = database;
     }
     if (fileType != null) {
-      _json["fileType"] = fileType;
+      _json['fileType'] = fileType;
     }
     if (importUser != null) {
-      _json["importUser"] = importUser;
+      _json['importUser'] = importUser;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -5142,8 +5141,8 @@ class InstancesCloneRequest {
   InstancesCloneRequest();
 
   InstancesCloneRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("cloneContext")) {
-      cloneContext = CloneContext.fromJson(_json["cloneContext"]);
+    if (_json.containsKey('cloneContext')) {
+      cloneContext = CloneContext.fromJson(_json['cloneContext']);
     }
   }
 
@@ -5151,7 +5150,7 @@ class InstancesCloneRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cloneContext != null) {
-      _json["cloneContext"] = cloneContext.toJson();
+      _json['cloneContext'] = cloneContext.toJson();
     }
     return _json;
   }
@@ -5165,9 +5164,9 @@ class InstancesDemoteMasterRequest {
   InstancesDemoteMasterRequest();
 
   InstancesDemoteMasterRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("demoteMasterContext")) {
+    if (_json.containsKey('demoteMasterContext')) {
       demoteMasterContext =
-          DemoteMasterContext.fromJson(_json["demoteMasterContext"]);
+          DemoteMasterContext.fromJson(_json['demoteMasterContext']);
     }
   }
 
@@ -5175,7 +5174,7 @@ class InstancesDemoteMasterRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (demoteMasterContext != null) {
-      _json["demoteMasterContext"] = demoteMasterContext.toJson();
+      _json['demoteMasterContext'] = demoteMasterContext.toJson();
     }
     return _json;
   }
@@ -5189,8 +5188,8 @@ class InstancesExportRequest {
   InstancesExportRequest();
 
   InstancesExportRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("exportContext")) {
-      exportContext = ExportContext.fromJson(_json["exportContext"]);
+    if (_json.containsKey('exportContext')) {
+      exportContext = ExportContext.fromJson(_json['exportContext']);
     }
   }
 
@@ -5198,7 +5197,7 @@ class InstancesExportRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exportContext != null) {
-      _json["exportContext"] = exportContext.toJson();
+      _json['exportContext'] = exportContext.toJson();
     }
     return _json;
   }
@@ -5212,8 +5211,8 @@ class InstancesFailoverRequest {
   InstancesFailoverRequest();
 
   InstancesFailoverRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("failoverContext")) {
-      failoverContext = FailoverContext.fromJson(_json["failoverContext"]);
+    if (_json.containsKey('failoverContext')) {
+      failoverContext = FailoverContext.fromJson(_json['failoverContext']);
     }
   }
 
@@ -5221,7 +5220,7 @@ class InstancesFailoverRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (failoverContext != null) {
-      _json["failoverContext"] = failoverContext.toJson();
+      _json['failoverContext'] = failoverContext.toJson();
     }
     return _json;
   }
@@ -5235,8 +5234,8 @@ class InstancesImportRequest {
   InstancesImportRequest();
 
   InstancesImportRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("importContext")) {
-      importContext = ImportContext.fromJson(_json["importContext"]);
+    if (_json.containsKey('importContext')) {
+      importContext = ImportContext.fromJson(_json['importContext']);
     }
   }
 
@@ -5244,7 +5243,7 @@ class InstancesImportRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (importContext != null) {
-      _json["importContext"] = importContext.toJson();
+      _json['importContext'] = importContext.toJson();
     }
     return _json;
   }
@@ -5268,19 +5267,19 @@ class InstancesListResponse {
   InstancesListResponse();
 
   InstancesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<DatabaseInstance>((value) => DatabaseInstance.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("warnings")) {
-      warnings = (_json["warnings"] as core.List)
+    if (_json.containsKey('warnings')) {
+      warnings = (_json['warnings'] as core.List)
           .map<ApiWarning>((value) => ApiWarning.fromJson(value))
           .toList();
     }
@@ -5290,16 +5289,16 @@ class InstancesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (warnings != null) {
-      _json["warnings"] = warnings.map((value) => value.toJson()).toList();
+      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5318,16 +5317,16 @@ class InstancesListServerCasResponse {
   InstancesListServerCasResponse();
 
   InstancesListServerCasResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("activeVersion")) {
-      activeVersion = _json["activeVersion"];
+    if (_json.containsKey('activeVersion')) {
+      activeVersion = _json['activeVersion'];
     }
-    if (_json.containsKey("certs")) {
-      certs = (_json["certs"] as core.List)
+    if (_json.containsKey('certs')) {
+      certs = (_json['certs'] as core.List)
           .map<SslCert>((value) => SslCert.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -5335,13 +5334,13 @@ class InstancesListServerCasResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activeVersion != null) {
-      _json["activeVersion"] = activeVersion;
+      _json['activeVersion'] = activeVersion;
     }
     if (certs != null) {
-      _json["certs"] = certs.map((value) => value.toJson()).toList();
+      _json['certs'] = certs.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -5355,9 +5354,9 @@ class InstancesRestoreBackupRequest {
   InstancesRestoreBackupRequest();
 
   InstancesRestoreBackupRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("restoreBackupContext")) {
+    if (_json.containsKey('restoreBackupContext')) {
       restoreBackupContext =
-          RestoreBackupContext.fromJson(_json["restoreBackupContext"]);
+          RestoreBackupContext.fromJson(_json['restoreBackupContext']);
     }
   }
 
@@ -5365,7 +5364,7 @@ class InstancesRestoreBackupRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (restoreBackupContext != null) {
-      _json["restoreBackupContext"] = restoreBackupContext.toJson();
+      _json['restoreBackupContext'] = restoreBackupContext.toJson();
     }
     return _json;
   }
@@ -5379,9 +5378,9 @@ class InstancesRotateServerCaRequest {
   InstancesRotateServerCaRequest();
 
   InstancesRotateServerCaRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("rotateServerCaContext")) {
+    if (_json.containsKey('rotateServerCaContext')) {
       rotateServerCaContext =
-          RotateServerCaContext.fromJson(_json["rotateServerCaContext"]);
+          RotateServerCaContext.fromJson(_json['rotateServerCaContext']);
     }
   }
 
@@ -5389,7 +5388,7 @@ class InstancesRotateServerCaRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rotateServerCaContext != null) {
-      _json["rotateServerCaContext"] = rotateServerCaContext.toJson();
+      _json['rotateServerCaContext'] = rotateServerCaContext.toJson();
     }
     return _json;
   }
@@ -5403,9 +5402,9 @@ class InstancesTruncateLogRequest {
   InstancesTruncateLogRequest();
 
   InstancesTruncateLogRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("truncateLogContext")) {
+    if (_json.containsKey('truncateLogContext')) {
       truncateLogContext =
-          TruncateLogContext.fromJson(_json["truncateLogContext"]);
+          TruncateLogContext.fromJson(_json['truncateLogContext']);
     }
   }
 
@@ -5413,7 +5412,7 @@ class InstancesTruncateLogRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (truncateLogContext != null) {
-      _json["truncateLogContext"] = truncateLogContext.toJson();
+      _json['truncateLogContext'] = truncateLogContext.toJson();
     }
     return _json;
   }
@@ -5441,19 +5440,19 @@ class IpConfiguration {
   IpConfiguration();
 
   IpConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("authorizedNetworks")) {
-      authorizedNetworks = (_json["authorizedNetworks"] as core.List)
+    if (_json.containsKey('authorizedNetworks')) {
+      authorizedNetworks = (_json['authorizedNetworks'] as core.List)
           .map<AclEntry>((value) => AclEntry.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("ipv4Enabled")) {
-      ipv4Enabled = _json["ipv4Enabled"];
+    if (_json.containsKey('ipv4Enabled')) {
+      ipv4Enabled = _json['ipv4Enabled'];
     }
-    if (_json.containsKey("privateNetwork")) {
-      privateNetwork = _json["privateNetwork"];
+    if (_json.containsKey('privateNetwork')) {
+      privateNetwork = _json['privateNetwork'];
     }
-    if (_json.containsKey("requireSsl")) {
-      requireSsl = _json["requireSsl"];
+    if (_json.containsKey('requireSsl')) {
+      requireSsl = _json['requireSsl'];
     }
   }
 
@@ -5461,17 +5460,17 @@ class IpConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (authorizedNetworks != null) {
-      _json["authorizedNetworks"] =
+      _json['authorizedNetworks'] =
           authorizedNetworks.map((value) => value.toJson()).toList();
     }
     if (ipv4Enabled != null) {
-      _json["ipv4Enabled"] = ipv4Enabled;
+      _json['ipv4Enabled'] = ipv4Enabled;
     }
     if (privateNetwork != null) {
-      _json["privateNetwork"] = privateNetwork;
+      _json['privateNetwork'] = privateNetwork;
     }
     if (requireSsl != null) {
-      _json["requireSsl"] = requireSsl;
+      _json['requireSsl'] = requireSsl;
     }
     return _json;
   }
@@ -5508,14 +5507,14 @@ class IpMapping {
   IpMapping();
 
   IpMapping.fromJson(core.Map _json) {
-    if (_json.containsKey("ipAddress")) {
-      ipAddress = _json["ipAddress"];
+    if (_json.containsKey('ipAddress')) {
+      ipAddress = _json['ipAddress'];
     }
-    if (_json.containsKey("timeToRetire")) {
-      timeToRetire = _json["timeToRetire"];
+    if (_json.containsKey('timeToRetire')) {
+      timeToRetire = _json['timeToRetire'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -5523,13 +5522,13 @@ class IpMapping {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ipAddress != null) {
-      _json["ipAddress"] = ipAddress;
+      _json['ipAddress'] = ipAddress;
     }
     if (timeToRetire != null) {
-      _json["timeToRetire"] = timeToRetire;
+      _json['timeToRetire'] = timeToRetire;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -5555,14 +5554,14 @@ class LocationPreference {
   LocationPreference();
 
   LocationPreference.fromJson(core.Map _json) {
-    if (_json.containsKey("followGaeApplication")) {
-      followGaeApplication = _json["followGaeApplication"];
+    if (_json.containsKey('followGaeApplication')) {
+      followGaeApplication = _json['followGaeApplication'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("zone")) {
-      zone = _json["zone"];
+    if (_json.containsKey('zone')) {
+      zone = _json['zone'];
     }
   }
 
@@ -5570,13 +5569,13 @@ class LocationPreference {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (followGaeApplication != null) {
-      _json["followGaeApplication"] = followGaeApplication;
+      _json['followGaeApplication'] = followGaeApplication;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (zone != null) {
-      _json["zone"] = zone;
+      _json['zone'] = zone;
     }
     return _json;
   }
@@ -5610,17 +5609,17 @@ class MaintenanceWindow {
   MaintenanceWindow();
 
   MaintenanceWindow.fromJson(core.Map _json) {
-    if (_json.containsKey("day")) {
-      day = _json["day"];
+    if (_json.containsKey('day')) {
+      day = _json['day'];
     }
-    if (_json.containsKey("hour")) {
-      hour = _json["hour"];
+    if (_json.containsKey('hour')) {
+      hour = _json['hour'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("updateTrack")) {
-      updateTrack = _json["updateTrack"];
+    if (_json.containsKey('updateTrack')) {
+      updateTrack = _json['updateTrack'];
     }
   }
 
@@ -5628,16 +5627,16 @@ class MaintenanceWindow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (day != null) {
-      _json["day"] = day;
+      _json['day'] = day;
     }
     if (hour != null) {
-      _json["hour"] = hour;
+      _json['hour'] = hour;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (updateTrack != null) {
-      _json["updateTrack"] = updateTrack;
+      _json['updateTrack'] = updateTrack;
     }
     return _json;
   }
@@ -5687,38 +5686,38 @@ class MySqlReplicaConfiguration {
   MySqlReplicaConfiguration();
 
   MySqlReplicaConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("caCertificate")) {
-      caCertificate = _json["caCertificate"];
+    if (_json.containsKey('caCertificate')) {
+      caCertificate = _json['caCertificate'];
     }
-    if (_json.containsKey("clientCertificate")) {
-      clientCertificate = _json["clientCertificate"];
+    if (_json.containsKey('clientCertificate')) {
+      clientCertificate = _json['clientCertificate'];
     }
-    if (_json.containsKey("clientKey")) {
-      clientKey = _json["clientKey"];
+    if (_json.containsKey('clientKey')) {
+      clientKey = _json['clientKey'];
     }
-    if (_json.containsKey("connectRetryInterval")) {
-      connectRetryInterval = _json["connectRetryInterval"];
+    if (_json.containsKey('connectRetryInterval')) {
+      connectRetryInterval = _json['connectRetryInterval'];
     }
-    if (_json.containsKey("dumpFilePath")) {
-      dumpFilePath = _json["dumpFilePath"];
+    if (_json.containsKey('dumpFilePath')) {
+      dumpFilePath = _json['dumpFilePath'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("masterHeartbeatPeriod")) {
-      masterHeartbeatPeriod = _json["masterHeartbeatPeriod"];
+    if (_json.containsKey('masterHeartbeatPeriod')) {
+      masterHeartbeatPeriod = _json['masterHeartbeatPeriod'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("sslCipher")) {
-      sslCipher = _json["sslCipher"];
+    if (_json.containsKey('sslCipher')) {
+      sslCipher = _json['sslCipher'];
     }
-    if (_json.containsKey("username")) {
-      username = _json["username"];
+    if (_json.containsKey('username')) {
+      username = _json['username'];
     }
-    if (_json.containsKey("verifyServerCertificate")) {
-      verifyServerCertificate = _json["verifyServerCertificate"];
+    if (_json.containsKey('verifyServerCertificate')) {
+      verifyServerCertificate = _json['verifyServerCertificate'];
     }
   }
 
@@ -5726,37 +5725,37 @@ class MySqlReplicaConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (caCertificate != null) {
-      _json["caCertificate"] = caCertificate;
+      _json['caCertificate'] = caCertificate;
     }
     if (clientCertificate != null) {
-      _json["clientCertificate"] = clientCertificate;
+      _json['clientCertificate'] = clientCertificate;
     }
     if (clientKey != null) {
-      _json["clientKey"] = clientKey;
+      _json['clientKey'] = clientKey;
     }
     if (connectRetryInterval != null) {
-      _json["connectRetryInterval"] = connectRetryInterval;
+      _json['connectRetryInterval'] = connectRetryInterval;
     }
     if (dumpFilePath != null) {
-      _json["dumpFilePath"] = dumpFilePath;
+      _json['dumpFilePath'] = dumpFilePath;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (masterHeartbeatPeriod != null) {
-      _json["masterHeartbeatPeriod"] = masterHeartbeatPeriod;
+      _json['masterHeartbeatPeriod'] = masterHeartbeatPeriod;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (sslCipher != null) {
-      _json["sslCipher"] = sslCipher;
+      _json['sslCipher'] = sslCipher;
     }
     if (username != null) {
-      _json["username"] = username;
+      _json['username'] = username;
     }
     if (verifyServerCertificate != null) {
-      _json["verifyServerCertificate"] = verifyServerCertificate;
+      _json['verifyServerCertificate'] = verifyServerCertificate;
     }
     return _json;
   }
@@ -5792,29 +5791,29 @@ class OnPremisesConfiguration {
   OnPremisesConfiguration();
 
   OnPremisesConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("caCertificate")) {
-      caCertificate = _json["caCertificate"];
+    if (_json.containsKey('caCertificate')) {
+      caCertificate = _json['caCertificate'];
     }
-    if (_json.containsKey("clientCertificate")) {
-      clientCertificate = _json["clientCertificate"];
+    if (_json.containsKey('clientCertificate')) {
+      clientCertificate = _json['clientCertificate'];
     }
-    if (_json.containsKey("clientKey")) {
-      clientKey = _json["clientKey"];
+    if (_json.containsKey('clientKey')) {
+      clientKey = _json['clientKey'];
     }
-    if (_json.containsKey("dumpFilePath")) {
-      dumpFilePath = _json["dumpFilePath"];
+    if (_json.containsKey('dumpFilePath')) {
+      dumpFilePath = _json['dumpFilePath'];
     }
-    if (_json.containsKey("hostPort")) {
-      hostPort = _json["hostPort"];
+    if (_json.containsKey('hostPort')) {
+      hostPort = _json['hostPort'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("username")) {
-      username = _json["username"];
+    if (_json.containsKey('username')) {
+      username = _json['username'];
     }
   }
 
@@ -5822,28 +5821,28 @@ class OnPremisesConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (caCertificate != null) {
-      _json["caCertificate"] = caCertificate;
+      _json['caCertificate'] = caCertificate;
     }
     if (clientCertificate != null) {
-      _json["clientCertificate"] = clientCertificate;
+      _json['clientCertificate'] = clientCertificate;
     }
     if (clientKey != null) {
-      _json["clientKey"] = clientKey;
+      _json['clientKey'] = clientKey;
     }
     if (dumpFilePath != null) {
-      _json["dumpFilePath"] = dumpFilePath;
+      _json['dumpFilePath'] = dumpFilePath;
     }
     if (hostPort != null) {
-      _json["hostPort"] = hostPort;
+      _json['hostPort'] = hostPort;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (username != null) {
-      _json["username"] = username;
+      _json['username'] = username;
     }
     return _json;
   }
@@ -5958,50 +5957,50 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("error")) {
-      error = OperationErrors.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = OperationErrors.fromJson(_json['error']);
     }
-    if (_json.containsKey("exportContext")) {
-      exportContext = ExportContext.fromJson(_json["exportContext"]);
+    if (_json.containsKey('exportContext')) {
+      exportContext = ExportContext.fromJson(_json['exportContext']);
     }
-    if (_json.containsKey("importContext")) {
-      importContext = ImportContext.fromJson(_json["importContext"]);
+    if (_json.containsKey('importContext')) {
+      importContext = ImportContext.fromJson(_json['importContext']);
     }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
+    if (_json.containsKey('insertTime')) {
+      insertTime = _json['insertTime'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("operationType")) {
-      operationType = _json["operationType"];
+    if (_json.containsKey('operationType')) {
+      operationType = _json['operationType'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("targetId")) {
-      targetId = _json["targetId"];
+    if (_json.containsKey('targetId')) {
+      targetId = _json['targetId'];
     }
-    if (_json.containsKey("targetLink")) {
-      targetLink = _json["targetLink"];
+    if (_json.containsKey('targetLink')) {
+      targetLink = _json['targetLink'];
     }
-    if (_json.containsKey("targetProject")) {
-      targetProject = _json["targetProject"];
+    if (_json.containsKey('targetProject')) {
+      targetProject = _json['targetProject'];
     }
-    if (_json.containsKey("user")) {
-      user = _json["user"];
+    if (_json.containsKey('user')) {
+      user = _json['user'];
     }
   }
 
@@ -6009,49 +6008,49 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (exportContext != null) {
-      _json["exportContext"] = exportContext.toJson();
+      _json['exportContext'] = exportContext.toJson();
     }
     if (importContext != null) {
-      _json["importContext"] = importContext.toJson();
+      _json['importContext'] = importContext.toJson();
     }
     if (insertTime != null) {
-      _json["insertTime"] = insertTime;
+      _json['insertTime'] = insertTime;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (operationType != null) {
-      _json["operationType"] = operationType;
+      _json['operationType'] = operationType;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (targetId != null) {
-      _json["targetId"] = targetId;
+      _json['targetId'] = targetId;
     }
     if (targetLink != null) {
-      _json["targetLink"] = targetLink;
+      _json['targetLink'] = targetLink;
     }
     if (targetProject != null) {
-      _json["targetProject"] = targetProject;
+      _json['targetProject'] = targetProject;
     }
     if (user != null) {
-      _json["user"] = user;
+      _json['user'] = user;
     }
     return _json;
   }
@@ -6071,14 +6070,14 @@ class OperationError {
   OperationError();
 
   OperationError.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -6086,13 +6085,13 @@ class OperationError {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -6109,13 +6108,13 @@ class OperationErrors {
   OperationErrors();
 
   OperationErrors.fromJson(core.Map _json) {
-    if (_json.containsKey("errors")) {
-      errors = (_json["errors"] as core.List)
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
           .map<OperationError>((value) => OperationError.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -6123,10 +6122,10 @@ class OperationErrors {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = errors.map((value) => value.toJson()).toList();
+      _json['errors'] = errors.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -6147,16 +6146,16 @@ class OperationsListResponse {
   OperationsListResponse();
 
   OperationsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6164,13 +6163,13 @@ class OperationsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6199,15 +6198,15 @@ class ReplicaConfiguration {
   ReplicaConfiguration();
 
   ReplicaConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("failoverTarget")) {
-      failoverTarget = _json["failoverTarget"];
+    if (_json.containsKey('failoverTarget')) {
+      failoverTarget = _json['failoverTarget'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("mysqlReplicaConfiguration")) {
+    if (_json.containsKey('mysqlReplicaConfiguration')) {
       mysqlReplicaConfiguration = MySqlReplicaConfiguration.fromJson(
-          _json["mysqlReplicaConfiguration"]);
+          _json['mysqlReplicaConfiguration']);
     }
   }
 
@@ -6215,13 +6214,13 @@ class ReplicaConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (failoverTarget != null) {
-      _json["failoverTarget"] = failoverTarget;
+      _json['failoverTarget'] = failoverTarget;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (mysqlReplicaConfiguration != null) {
-      _json["mysqlReplicaConfiguration"] = mysqlReplicaConfiguration.toJson();
+      _json['mysqlReplicaConfiguration'] = mysqlReplicaConfiguration.toJson();
     }
     return _json;
   }
@@ -6247,11 +6246,11 @@ class Reschedule {
   Reschedule();
 
   Reschedule.fromJson(core.Map _json) {
-    if (_json.containsKey("rescheduleType")) {
-      rescheduleType = _json["rescheduleType"];
+    if (_json.containsKey('rescheduleType')) {
+      rescheduleType = _json['rescheduleType'];
     }
-    if (_json.containsKey("scheduleTime")) {
-      scheduleTime = _json["scheduleTime"];
+    if (_json.containsKey('scheduleTime')) {
+      scheduleTime = _json['scheduleTime'];
     }
   }
 
@@ -6259,10 +6258,10 @@ class Reschedule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rescheduleType != null) {
-      _json["rescheduleType"] = rescheduleType;
+      _json['rescheduleType'] = rescheduleType;
     }
     if (scheduleTime != null) {
-      _json["scheduleTime"] = scheduleTime;
+      _json['scheduleTime'] = scheduleTime;
     }
     return _json;
   }
@@ -6286,17 +6285,17 @@ class RestoreBackupContext {
   RestoreBackupContext();
 
   RestoreBackupContext.fromJson(core.Map _json) {
-    if (_json.containsKey("backupRunId")) {
-      backupRunId = _json["backupRunId"];
+    if (_json.containsKey('backupRunId')) {
+      backupRunId = _json['backupRunId'];
     }
-    if (_json.containsKey("instanceId")) {
-      instanceId = _json["instanceId"];
+    if (_json.containsKey('instanceId')) {
+      instanceId = _json['instanceId'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("project")) {
-      project = _json["project"];
+    if (_json.containsKey('project')) {
+      project = _json['project'];
     }
   }
 
@@ -6304,16 +6303,16 @@ class RestoreBackupContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backupRunId != null) {
-      _json["backupRunId"] = backupRunId;
+      _json['backupRunId'] = backupRunId;
     }
     if (instanceId != null) {
-      _json["instanceId"] = instanceId;
+      _json['instanceId'] = instanceId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (project != null) {
-      _json["project"] = project;
+      _json['project'] = project;
     }
     return _json;
   }
@@ -6331,11 +6330,11 @@ class RotateServerCaContext {
   RotateServerCaContext();
 
   RotateServerCaContext.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextVersion")) {
-      nextVersion = _json["nextVersion"];
+    if (_json.containsKey('nextVersion')) {
+      nextVersion = _json['nextVersion'];
     }
   }
 
@@ -6343,10 +6342,10 @@ class RotateServerCaContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextVersion != null) {
-      _json["nextVersion"] = nextVersion;
+      _json['nextVersion'] = nextVersion;
     }
     return _json;
   }
@@ -6487,85 +6486,85 @@ class Settings {
   Settings();
 
   Settings.fromJson(core.Map _json) {
-    if (_json.containsKey("activationPolicy")) {
-      activationPolicy = _json["activationPolicy"];
+    if (_json.containsKey('activationPolicy')) {
+      activationPolicy = _json['activationPolicy'];
     }
-    if (_json.containsKey("activeDirectoryConfig")) {
+    if (_json.containsKey('activeDirectoryConfig')) {
       activeDirectoryConfig =
-          SqlActiveDirectoryConfig.fromJson(_json["activeDirectoryConfig"]);
+          SqlActiveDirectoryConfig.fromJson(_json['activeDirectoryConfig']);
     }
-    if (_json.containsKey("authorizedGaeApplications")) {
+    if (_json.containsKey('authorizedGaeApplications')) {
       authorizedGaeApplications =
-          (_json["authorizedGaeApplications"] as core.List).cast<core.String>();
+          (_json['authorizedGaeApplications'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("availabilityType")) {
-      availabilityType = _json["availabilityType"];
+    if (_json.containsKey('availabilityType')) {
+      availabilityType = _json['availabilityType'];
     }
-    if (_json.containsKey("backupConfiguration")) {
+    if (_json.containsKey('backupConfiguration')) {
       backupConfiguration =
-          BackupConfiguration.fromJson(_json["backupConfiguration"]);
+          BackupConfiguration.fromJson(_json['backupConfiguration']);
     }
-    if (_json.containsKey("collation")) {
-      collation = _json["collation"];
+    if (_json.containsKey('collation')) {
+      collation = _json['collation'];
     }
-    if (_json.containsKey("crashSafeReplicationEnabled")) {
-      crashSafeReplicationEnabled = _json["crashSafeReplicationEnabled"];
+    if (_json.containsKey('crashSafeReplicationEnabled')) {
+      crashSafeReplicationEnabled = _json['crashSafeReplicationEnabled'];
     }
-    if (_json.containsKey("dataDiskSizeGb")) {
-      dataDiskSizeGb = _json["dataDiskSizeGb"];
+    if (_json.containsKey('dataDiskSizeGb')) {
+      dataDiskSizeGb = _json['dataDiskSizeGb'];
     }
-    if (_json.containsKey("dataDiskType")) {
-      dataDiskType = _json["dataDiskType"];
+    if (_json.containsKey('dataDiskType')) {
+      dataDiskType = _json['dataDiskType'];
     }
-    if (_json.containsKey("databaseFlags")) {
-      databaseFlags = (_json["databaseFlags"] as core.List)
+    if (_json.containsKey('databaseFlags')) {
+      databaseFlags = (_json['databaseFlags'] as core.List)
           .map<DatabaseFlags>((value) => DatabaseFlags.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("databaseReplicationEnabled")) {
-      databaseReplicationEnabled = _json["databaseReplicationEnabled"];
+    if (_json.containsKey('databaseReplicationEnabled')) {
+      databaseReplicationEnabled = _json['databaseReplicationEnabled'];
     }
-    if (_json.containsKey("denyMaintenancePeriods")) {
-      denyMaintenancePeriods = (_json["denyMaintenancePeriods"] as core.List)
+    if (_json.containsKey('denyMaintenancePeriods')) {
+      denyMaintenancePeriods = (_json['denyMaintenancePeriods'] as core.List)
           .map<DenyMaintenancePeriod>(
               (value) => DenyMaintenancePeriod.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("ipConfiguration")) {
-      ipConfiguration = IpConfiguration.fromJson(_json["ipConfiguration"]);
+    if (_json.containsKey('ipConfiguration')) {
+      ipConfiguration = IpConfiguration.fromJson(_json['ipConfiguration']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("locationPreference")) {
+    if (_json.containsKey('locationPreference')) {
       locationPreference =
-          LocationPreference.fromJson(_json["locationPreference"]);
+          LocationPreference.fromJson(_json['locationPreference']);
     }
-    if (_json.containsKey("maintenanceWindow")) {
+    if (_json.containsKey('maintenanceWindow')) {
       maintenanceWindow =
-          MaintenanceWindow.fromJson(_json["maintenanceWindow"]);
+          MaintenanceWindow.fromJson(_json['maintenanceWindow']);
     }
-    if (_json.containsKey("pricingPlan")) {
-      pricingPlan = _json["pricingPlan"];
+    if (_json.containsKey('pricingPlan')) {
+      pricingPlan = _json['pricingPlan'];
     }
-    if (_json.containsKey("replicationType")) {
-      replicationType = _json["replicationType"];
+    if (_json.containsKey('replicationType')) {
+      replicationType = _json['replicationType'];
     }
-    if (_json.containsKey("settingsVersion")) {
-      settingsVersion = _json["settingsVersion"];
+    if (_json.containsKey('settingsVersion')) {
+      settingsVersion = _json['settingsVersion'];
     }
-    if (_json.containsKey("storageAutoResize")) {
-      storageAutoResize = _json["storageAutoResize"];
+    if (_json.containsKey('storageAutoResize')) {
+      storageAutoResize = _json['storageAutoResize'];
     }
-    if (_json.containsKey("storageAutoResizeLimit")) {
-      storageAutoResizeLimit = _json["storageAutoResizeLimit"];
+    if (_json.containsKey('storageAutoResizeLimit')) {
+      storageAutoResizeLimit = _json['storageAutoResizeLimit'];
     }
-    if (_json.containsKey("tier")) {
-      tier = _json["tier"];
+    if (_json.containsKey('tier')) {
+      tier = _json['tier'];
     }
-    if (_json.containsKey("userLabels")) {
+    if (_json.containsKey('userLabels')) {
       userLabels =
-          (_json["userLabels"] as core.Map).cast<core.String, core.String>();
+          (_json['userLabels'] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -6573,75 +6572,75 @@ class Settings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activationPolicy != null) {
-      _json["activationPolicy"] = activationPolicy;
+      _json['activationPolicy'] = activationPolicy;
     }
     if (activeDirectoryConfig != null) {
-      _json["activeDirectoryConfig"] = activeDirectoryConfig.toJson();
+      _json['activeDirectoryConfig'] = activeDirectoryConfig.toJson();
     }
     if (authorizedGaeApplications != null) {
-      _json["authorizedGaeApplications"] = authorizedGaeApplications;
+      _json['authorizedGaeApplications'] = authorizedGaeApplications;
     }
     if (availabilityType != null) {
-      _json["availabilityType"] = availabilityType;
+      _json['availabilityType'] = availabilityType;
     }
     if (backupConfiguration != null) {
-      _json["backupConfiguration"] = backupConfiguration.toJson();
+      _json['backupConfiguration'] = backupConfiguration.toJson();
     }
     if (collation != null) {
-      _json["collation"] = collation;
+      _json['collation'] = collation;
     }
     if (crashSafeReplicationEnabled != null) {
-      _json["crashSafeReplicationEnabled"] = crashSafeReplicationEnabled;
+      _json['crashSafeReplicationEnabled'] = crashSafeReplicationEnabled;
     }
     if (dataDiskSizeGb != null) {
-      _json["dataDiskSizeGb"] = dataDiskSizeGb;
+      _json['dataDiskSizeGb'] = dataDiskSizeGb;
     }
     if (dataDiskType != null) {
-      _json["dataDiskType"] = dataDiskType;
+      _json['dataDiskType'] = dataDiskType;
     }
     if (databaseFlags != null) {
-      _json["databaseFlags"] =
+      _json['databaseFlags'] =
           databaseFlags.map((value) => value.toJson()).toList();
     }
     if (databaseReplicationEnabled != null) {
-      _json["databaseReplicationEnabled"] = databaseReplicationEnabled;
+      _json['databaseReplicationEnabled'] = databaseReplicationEnabled;
     }
     if (denyMaintenancePeriods != null) {
-      _json["denyMaintenancePeriods"] =
+      _json['denyMaintenancePeriods'] =
           denyMaintenancePeriods.map((value) => value.toJson()).toList();
     }
     if (ipConfiguration != null) {
-      _json["ipConfiguration"] = ipConfiguration.toJson();
+      _json['ipConfiguration'] = ipConfiguration.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (locationPreference != null) {
-      _json["locationPreference"] = locationPreference.toJson();
+      _json['locationPreference'] = locationPreference.toJson();
     }
     if (maintenanceWindow != null) {
-      _json["maintenanceWindow"] = maintenanceWindow.toJson();
+      _json['maintenanceWindow'] = maintenanceWindow.toJson();
     }
     if (pricingPlan != null) {
-      _json["pricingPlan"] = pricingPlan;
+      _json['pricingPlan'] = pricingPlan;
     }
     if (replicationType != null) {
-      _json["replicationType"] = replicationType;
+      _json['replicationType'] = replicationType;
     }
     if (settingsVersion != null) {
-      _json["settingsVersion"] = settingsVersion;
+      _json['settingsVersion'] = settingsVersion;
     }
     if (storageAutoResize != null) {
-      _json["storageAutoResize"] = storageAutoResize;
+      _json['storageAutoResize'] = storageAutoResize;
     }
     if (storageAutoResizeLimit != null) {
-      _json["storageAutoResizeLimit"] = storageAutoResizeLimit;
+      _json['storageAutoResizeLimit'] = storageAutoResizeLimit;
     }
     if (tier != null) {
-      _json["tier"] = tier;
+      _json['tier'] = tier;
     }
     if (userLabels != null) {
-      _json["userLabels"] = userLabels;
+      _json['userLabels'] = userLabels;
     }
     return _json;
   }
@@ -6658,11 +6657,11 @@ class SqlActiveDirectoryConfig {
   SqlActiveDirectoryConfig();
 
   SqlActiveDirectoryConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("domain")) {
-      domain = _json["domain"];
+    if (_json.containsKey('domain')) {
+      domain = _json['domain'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -6670,10 +6669,10 @@ class SqlActiveDirectoryConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (domain != null) {
-      _json["domain"] = domain;
+      _json['domain'] = domain;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -6726,14 +6725,14 @@ class SqlExternalSyncSettingError {
   SqlExternalSyncSettingError();
 
   SqlExternalSyncSettingError.fromJson(core.Map _json) {
-    if (_json.containsKey("detail")) {
-      detail = _json["detail"];
+    if (_json.containsKey('detail')) {
+      detail = _json['detail'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -6741,13 +6740,13 @@ class SqlExternalSyncSettingError {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detail != null) {
-      _json["detail"] = detail;
+      _json['detail'] = detail;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -6761,8 +6760,8 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
   SqlInstancesRescheduleMaintenanceRequestBody();
 
   SqlInstancesRescheduleMaintenanceRequestBody.fromJson(core.Map _json) {
-    if (_json.containsKey("reschedule")) {
-      reschedule = Reschedule.fromJson(_json["reschedule"]);
+    if (_json.containsKey('reschedule')) {
+      reschedule = Reschedule.fromJson(_json['reschedule']);
     }
   }
 
@@ -6770,7 +6769,7 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (reschedule != null) {
-      _json["reschedule"] = reschedule.toJson();
+      _json['reschedule'] = reschedule.toJson();
     }
     return _json;
   }
@@ -6787,14 +6786,14 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
   SqlInstancesVerifyExternalSyncSettingsResponse();
 
   SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("errors")) {
-      errors = (_json["errors"] as core.List)
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
           .map<SqlExternalSyncSettingError>(
               (value) => SqlExternalSyncSettingError.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -6802,10 +6801,10 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = errors.map((value) => value.toJson()).toList();
+      _json['errors'] = errors.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -6824,14 +6823,14 @@ class SqlScheduledMaintenance {
   SqlScheduledMaintenance();
 
   SqlScheduledMaintenance.fromJson(core.Map _json) {
-    if (_json.containsKey("canDefer")) {
-      canDefer = _json["canDefer"];
+    if (_json.containsKey('canDefer')) {
+      canDefer = _json['canDefer'];
     }
-    if (_json.containsKey("canReschedule")) {
-      canReschedule = _json["canReschedule"];
+    if (_json.containsKey('canReschedule')) {
+      canReschedule = _json['canReschedule'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -6839,13 +6838,13 @@ class SqlScheduledMaintenance {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (canDefer != null) {
-      _json["canDefer"] = canDefer;
+      _json['canDefer'] = canDefer;
     }
     if (canReschedule != null) {
-      _json["canReschedule"] = canReschedule;
+      _json['canReschedule'] = canReschedule;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -6862,11 +6861,11 @@ class SqlServerDatabaseDetails {
   SqlServerDatabaseDetails();
 
   SqlServerDatabaseDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("compatibilityLevel")) {
-      compatibilityLevel = _json["compatibilityLevel"];
+    if (_json.containsKey('compatibilityLevel')) {
+      compatibilityLevel = _json['compatibilityLevel'];
     }
-    if (_json.containsKey("recoveryModel")) {
-      recoveryModel = _json["recoveryModel"];
+    if (_json.containsKey('recoveryModel')) {
+      recoveryModel = _json['recoveryModel'];
     }
   }
 
@@ -6874,10 +6873,10 @@ class SqlServerDatabaseDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (compatibilityLevel != null) {
-      _json["compatibilityLevel"] = compatibilityLevel;
+      _json['compatibilityLevel'] = compatibilityLevel;
     }
     if (recoveryModel != null) {
-      _json["recoveryModel"] = recoveryModel;
+      _json['recoveryModel'] = recoveryModel;
     }
     return _json;
   }
@@ -6894,11 +6893,11 @@ class SqlServerUserDetails {
   SqlServerUserDetails();
 
   SqlServerUserDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("disabled")) {
-      disabled = _json["disabled"];
+    if (_json.containsKey('disabled')) {
+      disabled = _json['disabled'];
     }
-    if (_json.containsKey("serverRoles")) {
-      serverRoles = (_json["serverRoles"] as core.List).cast<core.String>();
+    if (_json.containsKey('serverRoles')) {
+      serverRoles = (_json['serverRoles'] as core.List).cast<core.String>();
     }
   }
 
@@ -6906,10 +6905,10 @@ class SqlServerUserDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (disabled != null) {
-      _json["disabled"] = disabled;
+      _json['disabled'] = disabled;
     }
     if (serverRoles != null) {
-      _json["serverRoles"] = serverRoles;
+      _json['serverRoles'] = serverRoles;
     }
     return _json;
   }
@@ -6949,32 +6948,32 @@ class SslCert {
   SslCert();
 
   SslCert.fromJson(core.Map _json) {
-    if (_json.containsKey("cert")) {
-      cert = _json["cert"];
+    if (_json.containsKey('cert')) {
+      cert = _json['cert'];
     }
-    if (_json.containsKey("certSerialNumber")) {
-      certSerialNumber = _json["certSerialNumber"];
+    if (_json.containsKey('certSerialNumber')) {
+      certSerialNumber = _json['certSerialNumber'];
     }
-    if (_json.containsKey("commonName")) {
-      commonName = _json["commonName"];
+    if (_json.containsKey('commonName')) {
+      commonName = _json['commonName'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("expirationTime")) {
-      expirationTime = _json["expirationTime"];
+    if (_json.containsKey('expirationTime')) {
+      expirationTime = _json['expirationTime'];
     }
-    if (_json.containsKey("instance")) {
-      instance = _json["instance"];
+    if (_json.containsKey('instance')) {
+      instance = _json['instance'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("sha1Fingerprint")) {
-      sha1Fingerprint = _json["sha1Fingerprint"];
+    if (_json.containsKey('sha1Fingerprint')) {
+      sha1Fingerprint = _json['sha1Fingerprint'];
     }
   }
 
@@ -6982,31 +6981,31 @@ class SslCert {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cert != null) {
-      _json["cert"] = cert;
+      _json['cert'] = cert;
     }
     if (certSerialNumber != null) {
-      _json["certSerialNumber"] = certSerialNumber;
+      _json['certSerialNumber'] = certSerialNumber;
     }
     if (commonName != null) {
-      _json["commonName"] = commonName;
+      _json['commonName'] = commonName;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (expirationTime != null) {
-      _json["expirationTime"] = expirationTime;
+      _json['expirationTime'] = expirationTime;
     }
     if (instance != null) {
-      _json["instance"] = instance;
+      _json['instance'] = instance;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (sha1Fingerprint != null) {
-      _json["sha1Fingerprint"] = sha1Fingerprint;
+      _json['sha1Fingerprint'] = sha1Fingerprint;
     }
     return _json;
   }
@@ -7024,11 +7023,11 @@ class SslCertDetail {
   SslCertDetail();
 
   SslCertDetail.fromJson(core.Map _json) {
-    if (_json.containsKey("certInfo")) {
-      certInfo = SslCert.fromJson(_json["certInfo"]);
+    if (_json.containsKey('certInfo')) {
+      certInfo = SslCert.fromJson(_json['certInfo']);
     }
-    if (_json.containsKey("certPrivateKey")) {
-      certPrivateKey = _json["certPrivateKey"];
+    if (_json.containsKey('certPrivateKey')) {
+      certPrivateKey = _json['certPrivateKey'];
     }
   }
 
@@ -7036,10 +7035,10 @@ class SslCertDetail {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (certInfo != null) {
-      _json["certInfo"] = certInfo.toJson();
+      _json['certInfo'] = certInfo.toJson();
     }
     if (certPrivateKey != null) {
-      _json["certPrivateKey"] = certPrivateKey;
+      _json['certPrivateKey'] = certPrivateKey;
     }
     return _json;
   }
@@ -7053,8 +7052,8 @@ class SslCertsCreateEphemeralRequest {
   SslCertsCreateEphemeralRequest();
 
   SslCertsCreateEphemeralRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("public_key")) {
-      publicKey = _json["public_key"];
+    if (_json.containsKey('public_key')) {
+      publicKey = _json['public_key'];
     }
   }
 
@@ -7062,7 +7061,7 @@ class SslCertsCreateEphemeralRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (publicKey != null) {
-      _json["public_key"] = publicKey;
+      _json['public_key'] = publicKey;
     }
     return _json;
   }
@@ -7077,8 +7076,8 @@ class SslCertsInsertRequest {
   SslCertsInsertRequest();
 
   SslCertsInsertRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("commonName")) {
-      commonName = _json["commonName"];
+    if (_json.containsKey('commonName')) {
+      commonName = _json['commonName'];
     }
   }
 
@@ -7086,7 +7085,7 @@ class SslCertsInsertRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (commonName != null) {
-      _json["commonName"] = commonName;
+      _json['commonName'] = commonName;
     }
     return _json;
   }
@@ -7111,17 +7110,17 @@ class SslCertsInsertResponse {
   SslCertsInsertResponse();
 
   SslCertsInsertResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("clientCert")) {
-      clientCert = SslCertDetail.fromJson(_json["clientCert"]);
+    if (_json.containsKey('clientCert')) {
+      clientCert = SslCertDetail.fromJson(_json['clientCert']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("operation")) {
-      operation = Operation.fromJson(_json["operation"]);
+    if (_json.containsKey('operation')) {
+      operation = Operation.fromJson(_json['operation']);
     }
-    if (_json.containsKey("serverCaCert")) {
-      serverCaCert = SslCert.fromJson(_json["serverCaCert"]);
+    if (_json.containsKey('serverCaCert')) {
+      serverCaCert = SslCert.fromJson(_json['serverCaCert']);
     }
   }
 
@@ -7129,16 +7128,16 @@ class SslCertsInsertResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientCert != null) {
-      _json["clientCert"] = clientCert.toJson();
+      _json['clientCert'] = clientCert.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (operation != null) {
-      _json["operation"] = operation.toJson();
+      _json['operation'] = operation.toJson();
     }
     if (serverCaCert != null) {
-      _json["serverCaCert"] = serverCaCert.toJson();
+      _json['serverCaCert'] = serverCaCert.toJson();
     }
     return _json;
   }
@@ -7155,13 +7154,13 @@ class SslCertsListResponse {
   SslCertsListResponse();
 
   SslCertsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<SslCert>((value) => SslCert.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -7169,10 +7168,10 @@ class SslCertsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -7199,20 +7198,20 @@ class Tier {
   Tier();
 
   Tier.fromJson(core.Map _json) {
-    if (_json.containsKey("DiskQuota")) {
-      DiskQuota = _json["DiskQuota"];
+    if (_json.containsKey('DiskQuota')) {
+      DiskQuota = _json['DiskQuota'];
     }
-    if (_json.containsKey("RAM")) {
-      RAM = _json["RAM"];
+    if (_json.containsKey('RAM')) {
+      RAM = _json['RAM'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("region")) {
-      region = (_json["region"] as core.List).cast<core.String>();
+    if (_json.containsKey('region')) {
+      region = (_json['region'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("tier")) {
-      tier = _json["tier"];
+    if (_json.containsKey('tier')) {
+      tier = _json['tier'];
     }
   }
 
@@ -7220,19 +7219,19 @@ class Tier {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (DiskQuota != null) {
-      _json["DiskQuota"] = DiskQuota;
+      _json['DiskQuota'] = DiskQuota;
     }
     if (RAM != null) {
-      _json["RAM"] = RAM;
+      _json['RAM'] = RAM;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (region != null) {
-      _json["region"] = region;
+      _json['region'] = region;
     }
     if (tier != null) {
-      _json["tier"] = tier;
+      _json['tier'] = tier;
     }
     return _json;
   }
@@ -7249,13 +7248,13 @@ class TiersListResponse {
   TiersListResponse();
 
   TiersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Tier>((value) => Tier.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -7263,10 +7262,10 @@ class TiersListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -7284,11 +7283,11 @@ class TruncateLogContext {
   TruncateLogContext();
 
   TruncateLogContext.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
+    if (_json.containsKey('logType')) {
+      logType = _json['logType'];
     }
   }
 
@@ -7296,10 +7295,10 @@ class TruncateLogContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (logType != null) {
-      _json["logType"] = logType;
+      _json['logType'] = logType;
     }
     return _json;
   }
@@ -7348,33 +7347,33 @@ class User {
   User();
 
   User.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("host")) {
-      host = _json["host"];
+    if (_json.containsKey('host')) {
+      host = _json['host'];
     }
-    if (_json.containsKey("instance")) {
-      instance = _json["instance"];
+    if (_json.containsKey('instance')) {
+      instance = _json['instance'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("project")) {
-      project = _json["project"];
+    if (_json.containsKey('project')) {
+      project = _json['project'];
     }
-    if (_json.containsKey("sqlserverUserDetails")) {
+    if (_json.containsKey('sqlserverUserDetails')) {
       sqlserverUserDetails =
-          SqlServerUserDetails.fromJson(_json["sqlserverUserDetails"]);
+          SqlServerUserDetails.fromJson(_json['sqlserverUserDetails']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -7382,31 +7381,31 @@ class User {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (host != null) {
-      _json["host"] = host;
+      _json['host'] = host;
     }
     if (instance != null) {
-      _json["instance"] = instance;
+      _json['instance'] = instance;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (project != null) {
-      _json["project"] = project;
+      _json['project'] = project;
     }
     if (sqlserverUserDetails != null) {
-      _json["sqlserverUserDetails"] = sqlserverUserDetails.toJson();
+      _json['sqlserverUserDetails'] = sqlserverUserDetails.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -7428,16 +7427,16 @@ class UsersListResponse {
   UsersListResponse();
 
   UsersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<User>((value) => User.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7445,13 +7444,13 @@ class UsersListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }

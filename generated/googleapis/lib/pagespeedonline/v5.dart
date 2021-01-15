@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,7 +38,7 @@ const core.String USER_AGENT = 'dart-api-client pagespeedonline/v5';
 /// your development tools and workflow.
 class PagespeedonlineApi {
   /// Associate you with your personal info on Google
-  static const OpenidScope = "openid";
+  static const OpenidScope = 'openid';
 
   final commons.ApiRequester _requester;
 
@@ -47,8 +46,8 @@ class PagespeedonlineApi {
       PagespeedapiResourceApi(_requester);
 
   PagespeedonlineApi(http.Client client,
-      {core.String rootUrl = "https://pagespeedonline.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://pagespeedonline.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -112,35 +111,35 @@ class PagespeedapiResourceApi {
     core.String _body;
 
     if (strategy != null) {
-      _queryParams["strategy"] = [strategy];
+      _queryParams['strategy'] = [strategy];
     }
     if (utmCampaign != null) {
-      _queryParams["utm_campaign"] = [utmCampaign];
+      _queryParams['utm_campaign'] = [utmCampaign];
     }
     if (category != null) {
-      _queryParams["category"] = category;
+      _queryParams['category'] = category;
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (url != null) {
-      _queryParams["url"] = [url];
+      _queryParams['url'] = [url];
     }
     if (utmSource != null) {
-      _queryParams["utm_source"] = [utmSource];
+      _queryParams['utm_source'] = [utmSource];
     }
     if (captchaToken != null) {
-      _queryParams["captchaToken"] = [captchaToken];
+      _queryParams['captchaToken'] = [captchaToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'pagespeedonline/v5/runPagespeed';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -167,14 +166,14 @@ class AuditRefs {
   AuditRefs();
 
   AuditRefs.fromJson(core.Map _json) {
-    if (_json.containsKey("group")) {
-      group = _json["group"];
+    if (_json.containsKey('group')) {
+      group = _json['group'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("weight")) {
-      weight = _json["weight"].toDouble();
+    if (_json.containsKey('weight')) {
+      weight = _json['weight'].toDouble();
     }
   }
 
@@ -182,13 +181,13 @@ class AuditRefs {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (group != null) {
-      _json["group"] = group;
+      _json['group'] = group;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (weight != null) {
-      _json["weight"] = weight;
+      _json['weight'] = weight;
     }
     return _json;
   }
@@ -210,14 +209,14 @@ class Bucket {
   Bucket();
 
   Bucket.fromJson(core.Map _json) {
-    if (_json.containsKey("max")) {
-      max = _json["max"];
+    if (_json.containsKey('max')) {
+      max = _json['max'];
     }
-    if (_json.containsKey("min")) {
-      min = _json["min"];
+    if (_json.containsKey('min')) {
+      min = _json['min'];
     }
-    if (_json.containsKey("proportion")) {
-      proportion = _json["proportion"].toDouble();
+    if (_json.containsKey('proportion')) {
+      proportion = _json['proportion'].toDouble();
     }
   }
 
@@ -225,13 +224,13 @@ class Bucket {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (max != null) {
-      _json["max"] = max;
+      _json['max'] = max;
     }
     if (min != null) {
-      _json["min"] = min;
+      _json['min'] = min;
     }
     if (proportion != null) {
-      _json["proportion"] = proportion;
+      _json['proportion'] = proportion;
     }
     return _json;
   }
@@ -258,20 +257,20 @@ class Categories {
   Categories();
 
   Categories.fromJson(core.Map _json) {
-    if (_json.containsKey("accessibility")) {
-      accessibility = LighthouseCategoryV5.fromJson(_json["accessibility"]);
+    if (_json.containsKey('accessibility')) {
+      accessibility = LighthouseCategoryV5.fromJson(_json['accessibility']);
     }
-    if (_json.containsKey("best-practices")) {
-      best_practices = LighthouseCategoryV5.fromJson(_json["best-practices"]);
+    if (_json.containsKey('best-practices')) {
+      best_practices = LighthouseCategoryV5.fromJson(_json['best-practices']);
     }
-    if (_json.containsKey("performance")) {
-      performance = LighthouseCategoryV5.fromJson(_json["performance"]);
+    if (_json.containsKey('performance')) {
+      performance = LighthouseCategoryV5.fromJson(_json['performance']);
     }
-    if (_json.containsKey("pwa")) {
-      pwa = LighthouseCategoryV5.fromJson(_json["pwa"]);
+    if (_json.containsKey('pwa')) {
+      pwa = LighthouseCategoryV5.fromJson(_json['pwa']);
     }
-    if (_json.containsKey("seo")) {
-      seo = LighthouseCategoryV5.fromJson(_json["seo"]);
+    if (_json.containsKey('seo')) {
+      seo = LighthouseCategoryV5.fromJson(_json['seo']);
     }
   }
 
@@ -279,19 +278,19 @@ class Categories {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessibility != null) {
-      _json["accessibility"] = accessibility.toJson();
+      _json['accessibility'] = accessibility.toJson();
     }
     if (best_practices != null) {
-      _json["best-practices"] = best_practices.toJson();
+      _json['best-practices'] = best_practices.toJson();
     }
     if (performance != null) {
-      _json["performance"] = performance.toJson();
+      _json['performance'] = performance.toJson();
     }
     if (pwa != null) {
-      _json["pwa"] = pwa.toJson();
+      _json['pwa'] = pwa.toJson();
     }
     if (seo != null) {
-      _json["seo"] = seo.toJson();
+      _json['seo'] = seo.toJson();
     }
     return _json;
   }
@@ -308,11 +307,11 @@ class CategoryGroupV5 {
   CategoryGroupV5();
 
   CategoryGroupV5.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -320,10 +319,10 @@ class CategoryGroupV5 {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -350,17 +349,17 @@ class ConfigSettings {
   ConfigSettings();
 
   ConfigSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("channel")) {
-      channel = _json["channel"];
+    if (_json.containsKey('channel')) {
+      channel = _json['channel'];
     }
-    if (_json.containsKey("emulatedFormFactor")) {
-      emulatedFormFactor = _json["emulatedFormFactor"];
+    if (_json.containsKey('emulatedFormFactor')) {
+      emulatedFormFactor = _json['emulatedFormFactor'];
     }
-    if (_json.containsKey("locale")) {
-      locale = _json["locale"];
+    if (_json.containsKey('locale')) {
+      locale = _json['locale'];
     }
-    if (_json.containsKey("onlyCategories")) {
-      onlyCategories = _json["onlyCategories"];
+    if (_json.containsKey('onlyCategories')) {
+      onlyCategories = _json['onlyCategories'];
     }
   }
 
@@ -368,16 +367,16 @@ class ConfigSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channel != null) {
-      _json["channel"] = channel;
+      _json['channel'] = channel;
     }
     if (emulatedFormFactor != null) {
-      _json["emulatedFormFactor"] = emulatedFormFactor;
+      _json['emulatedFormFactor'] = emulatedFormFactor;
     }
     if (locale != null) {
-      _json["locale"] = locale;
+      _json['locale'] = locale;
     }
     if (onlyCategories != null) {
-      _json["onlyCategories"] = onlyCategories;
+      _json['onlyCategories'] = onlyCategories;
     }
     return _json;
   }
@@ -397,14 +396,14 @@ class Environment {
   Environment();
 
   Environment.fromJson(core.Map _json) {
-    if (_json.containsKey("benchmarkIndex")) {
-      benchmarkIndex = _json["benchmarkIndex"].toDouble();
+    if (_json.containsKey('benchmarkIndex')) {
+      benchmarkIndex = _json['benchmarkIndex'].toDouble();
     }
-    if (_json.containsKey("hostUserAgent")) {
-      hostUserAgent = _json["hostUserAgent"];
+    if (_json.containsKey('hostUserAgent')) {
+      hostUserAgent = _json['hostUserAgent'];
     }
-    if (_json.containsKey("networkUserAgent")) {
-      networkUserAgent = _json["networkUserAgent"];
+    if (_json.containsKey('networkUserAgent')) {
+      networkUserAgent = _json['networkUserAgent'];
     }
   }
 
@@ -412,13 +411,13 @@ class Environment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (benchmarkIndex != null) {
-      _json["benchmarkIndex"] = benchmarkIndex;
+      _json['benchmarkIndex'] = benchmarkIndex;
     }
     if (hostUserAgent != null) {
-      _json["hostUserAgent"] = hostUserAgent;
+      _json['hostUserAgent'] = hostUserAgent;
     }
     if (networkUserAgent != null) {
-      _json["networkUserAgent"] = networkUserAgent;
+      _json['networkUserAgent'] = networkUserAgent;
     }
     return _json;
   }
@@ -433,9 +432,9 @@ class I18n {
   I18n();
 
   I18n.fromJson(core.Map _json) {
-    if (_json.containsKey("rendererFormattedStrings")) {
+    if (_json.containsKey('rendererFormattedStrings')) {
       rendererFormattedStrings =
-          RendererFormattedStrings.fromJson(_json["rendererFormattedStrings"]);
+          RendererFormattedStrings.fromJson(_json['rendererFormattedStrings']);
     }
   }
 
@@ -443,7 +442,7 @@ class I18n {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rendererFormattedStrings != null) {
-      _json["rendererFormattedStrings"] = rendererFormattedStrings.toJson();
+      _json['rendererFormattedStrings'] = rendererFormattedStrings.toJson();
     }
     return _json;
   }
@@ -498,38 +497,38 @@ class LighthouseAuditResultV5 {
   LighthouseAuditResultV5();
 
   LighthouseAuditResultV5.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.Map).cast<core.String, core.Object>();
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("displayValue")) {
-      displayValue = _json["displayValue"];
+    if (_json.containsKey('displayValue')) {
+      displayValue = _json['displayValue'];
     }
-    if (_json.containsKey("errorMessage")) {
-      errorMessage = _json["errorMessage"];
+    if (_json.containsKey('errorMessage')) {
+      errorMessage = _json['errorMessage'];
     }
-    if (_json.containsKey("explanation")) {
-      explanation = _json["explanation"];
+    if (_json.containsKey('explanation')) {
+      explanation = _json['explanation'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("numericValue")) {
-      numericValue = _json["numericValue"].toDouble();
+    if (_json.containsKey('numericValue')) {
+      numericValue = _json['numericValue'].toDouble();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"];
+    if (_json.containsKey('score')) {
+      score = _json['score'];
     }
-    if (_json.containsKey("scoreDisplayMode")) {
-      scoreDisplayMode = _json["scoreDisplayMode"];
+    if (_json.containsKey('scoreDisplayMode')) {
+      scoreDisplayMode = _json['scoreDisplayMode'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"];
+    if (_json.containsKey('warnings')) {
+      warnings = _json['warnings'];
     }
   }
 
@@ -537,37 +536,37 @@ class LighthouseAuditResultV5 {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (displayValue != null) {
-      _json["displayValue"] = displayValue;
+      _json['displayValue'] = displayValue;
     }
     if (errorMessage != null) {
-      _json["errorMessage"] = errorMessage;
+      _json['errorMessage'] = errorMessage;
     }
     if (explanation != null) {
-      _json["explanation"] = explanation;
+      _json['explanation'] = explanation;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (numericValue != null) {
-      _json["numericValue"] = numericValue;
+      _json['numericValue'] = numericValue;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (scoreDisplayMode != null) {
-      _json["scoreDisplayMode"] = scoreDisplayMode;
+      _json['scoreDisplayMode'] = scoreDisplayMode;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (warnings != null) {
-      _json["warnings"] = warnings;
+      _json['warnings'] = warnings;
     }
     return _json;
   }
@@ -600,25 +599,25 @@ class LighthouseCategoryV5 {
   LighthouseCategoryV5();
 
   LighthouseCategoryV5.fromJson(core.Map _json) {
-    if (_json.containsKey("auditRefs")) {
-      auditRefs = (_json["auditRefs"] as core.List)
+    if (_json.containsKey('auditRefs')) {
+      auditRefs = (_json['auditRefs'] as core.List)
           .map<AuditRefs>((value) => AuditRefs.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("manualDescription")) {
-      manualDescription = _json["manualDescription"];
+    if (_json.containsKey('manualDescription')) {
+      manualDescription = _json['manualDescription'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"];
+    if (_json.containsKey('score')) {
+      score = _json['score'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -626,22 +625,22 @@ class LighthouseCategoryV5 {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditRefs != null) {
-      _json["auditRefs"] = auditRefs.map((value) => value.toJson()).toList();
+      _json['auditRefs'] = auditRefs.map((value) => value.toJson()).toList();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (manualDescription != null) {
-      _json["manualDescription"] = manualDescription;
+      _json['manualDescription'] = manualDescription;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -701,56 +700,56 @@ class LighthouseResultV5 {
   LighthouseResultV5();
 
   LighthouseResultV5.fromJson(core.Map _json) {
-    if (_json.containsKey("audits")) {
+    if (_json.containsKey('audits')) {
       audits = commons.mapMap<core.Map, LighthouseAuditResultV5>(
-          _json["audits"].cast<core.String, core.Map>(),
+          _json['audits'].cast<core.String, core.Map>(),
           (core.Map item) => LighthouseAuditResultV5.fromJson(item));
     }
-    if (_json.containsKey("categories")) {
-      categories = Categories.fromJson(_json["categories"]);
+    if (_json.containsKey('categories')) {
+      categories = Categories.fromJson(_json['categories']);
     }
-    if (_json.containsKey("categoryGroups")) {
+    if (_json.containsKey('categoryGroups')) {
       categoryGroups = commons.mapMap<core.Map, CategoryGroupV5>(
-          _json["categoryGroups"].cast<core.String, core.Map>(),
+          _json['categoryGroups'].cast<core.String, core.Map>(),
           (core.Map item) => CategoryGroupV5.fromJson(item));
     }
-    if (_json.containsKey("configSettings")) {
-      configSettings = ConfigSettings.fromJson(_json["configSettings"]);
+    if (_json.containsKey('configSettings')) {
+      configSettings = ConfigSettings.fromJson(_json['configSettings']);
     }
-    if (_json.containsKey("environment")) {
-      environment = Environment.fromJson(_json["environment"]);
+    if (_json.containsKey('environment')) {
+      environment = Environment.fromJson(_json['environment']);
     }
-    if (_json.containsKey("fetchTime")) {
-      fetchTime = _json["fetchTime"];
+    if (_json.containsKey('fetchTime')) {
+      fetchTime = _json['fetchTime'];
     }
-    if (_json.containsKey("finalUrl")) {
-      finalUrl = _json["finalUrl"];
+    if (_json.containsKey('finalUrl')) {
+      finalUrl = _json['finalUrl'];
     }
-    if (_json.containsKey("i18n")) {
-      i18n = I18n.fromJson(_json["i18n"]);
+    if (_json.containsKey('i18n')) {
+      i18n = I18n.fromJson(_json['i18n']);
     }
-    if (_json.containsKey("lighthouseVersion")) {
-      lighthouseVersion = _json["lighthouseVersion"];
+    if (_json.containsKey('lighthouseVersion')) {
+      lighthouseVersion = _json['lighthouseVersion'];
     }
-    if (_json.containsKey("requestedUrl")) {
-      requestedUrl = _json["requestedUrl"];
+    if (_json.containsKey('requestedUrl')) {
+      requestedUrl = _json['requestedUrl'];
     }
-    if (_json.containsKey("runWarnings")) {
-      runWarnings = (_json["runWarnings"] as core.List).cast<core.Object>();
+    if (_json.containsKey('runWarnings')) {
+      runWarnings = (_json['runWarnings'] as core.List).cast<core.Object>();
     }
-    if (_json.containsKey("runtimeError")) {
-      runtimeError = RuntimeError.fromJson(_json["runtimeError"]);
+    if (_json.containsKey('runtimeError')) {
+      runtimeError = RuntimeError.fromJson(_json['runtimeError']);
     }
-    if (_json.containsKey("stackPacks")) {
-      stackPacks = (_json["stackPacks"] as core.List)
+    if (_json.containsKey('stackPacks')) {
+      stackPacks = (_json['stackPacks'] as core.List)
           .map<StackPack>((value) => StackPack.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("timing")) {
-      timing = Timing.fromJson(_json["timing"]);
+    if (_json.containsKey('timing')) {
+      timing = Timing.fromJson(_json['timing']);
     }
-    if (_json.containsKey("userAgent")) {
-      userAgent = _json["userAgent"];
+    if (_json.containsKey('userAgent')) {
+      userAgent = _json['userAgent'];
     }
   }
 
@@ -758,53 +757,53 @@ class LighthouseResultV5 {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audits != null) {
-      _json["audits"] = commons
+      _json['audits'] = commons
           .mapMap<LighthouseAuditResultV5, core.Map<core.String, core.Object>>(
               audits, (LighthouseAuditResultV5 item) => item.toJson());
     }
     if (categories != null) {
-      _json["categories"] = categories.toJson();
+      _json['categories'] = categories.toJson();
     }
     if (categoryGroups != null) {
-      _json["categoryGroups"] =
+      _json['categoryGroups'] =
           commons.mapMap<CategoryGroupV5, core.Map<core.String, core.Object>>(
               categoryGroups, (CategoryGroupV5 item) => item.toJson());
     }
     if (configSettings != null) {
-      _json["configSettings"] = configSettings.toJson();
+      _json['configSettings'] = configSettings.toJson();
     }
     if (environment != null) {
-      _json["environment"] = environment.toJson();
+      _json['environment'] = environment.toJson();
     }
     if (fetchTime != null) {
-      _json["fetchTime"] = fetchTime;
+      _json['fetchTime'] = fetchTime;
     }
     if (finalUrl != null) {
-      _json["finalUrl"] = finalUrl;
+      _json['finalUrl'] = finalUrl;
     }
     if (i18n != null) {
-      _json["i18n"] = i18n.toJson();
+      _json['i18n'] = i18n.toJson();
     }
     if (lighthouseVersion != null) {
-      _json["lighthouseVersion"] = lighthouseVersion;
+      _json['lighthouseVersion'] = lighthouseVersion;
     }
     if (requestedUrl != null) {
-      _json["requestedUrl"] = requestedUrl;
+      _json['requestedUrl'] = requestedUrl;
     }
     if (runWarnings != null) {
-      _json["runWarnings"] = runWarnings;
+      _json['runWarnings'] = runWarnings;
     }
     if (runtimeError != null) {
-      _json["runtimeError"] = runtimeError.toJson();
+      _json['runtimeError'] = runtimeError.toJson();
     }
     if (stackPacks != null) {
-      _json["stackPacks"] = stackPacks.map((value) => value.toJson()).toList();
+      _json['stackPacks'] = stackPacks.map((value) => value.toJson()).toList();
     }
     if (timing != null) {
-      _json["timing"] = timing.toJson();
+      _json['timing'] = timing.toJson();
     }
     if (userAgent != null) {
-      _json["userAgent"] = userAgent;
+      _json['userAgent'] = userAgent;
     }
     return _json;
   }
@@ -830,22 +829,22 @@ class PagespeedApiLoadingExperienceV5 {
   PagespeedApiLoadingExperienceV5();
 
   PagespeedApiLoadingExperienceV5.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("initial_url")) {
-      initialUrl = _json["initial_url"];
+    if (_json.containsKey('initial_url')) {
+      initialUrl = _json['initial_url'];
     }
-    if (_json.containsKey("metrics")) {
+    if (_json.containsKey('metrics')) {
       metrics = commons.mapMap<core.Map, UserPageLoadMetricV5>(
-          _json["metrics"].cast<core.String, core.Map>(),
+          _json['metrics'].cast<core.String, core.Map>(),
           (core.Map item) => UserPageLoadMetricV5.fromJson(item));
     }
-    if (_json.containsKey("origin_fallback")) {
-      originFallback = _json["origin_fallback"];
+    if (_json.containsKey('origin_fallback')) {
+      originFallback = _json['origin_fallback'];
     }
-    if (_json.containsKey("overall_category")) {
-      overallCategory = _json["overall_category"];
+    if (_json.containsKey('overall_category')) {
+      overallCategory = _json['overall_category'];
     }
   }
 
@@ -853,21 +852,21 @@ class PagespeedApiLoadingExperienceV5 {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (initialUrl != null) {
-      _json["initial_url"] = initialUrl;
+      _json['initial_url'] = initialUrl;
     }
     if (metrics != null) {
-      _json["metrics"] = commons
+      _json['metrics'] = commons
           .mapMap<UserPageLoadMetricV5, core.Map<core.String, core.Object>>(
               metrics, (UserPageLoadMetricV5 item) => item.toJson());
     }
     if (originFallback != null) {
-      _json["origin_fallback"] = originFallback;
+      _json['origin_fallback'] = originFallback;
     }
     if (overallCategory != null) {
-      _json["overall_category"] = overallCategory;
+      _json['overall_category'] = overallCategory;
     }
     return _json;
   }
@@ -903,31 +902,31 @@ class PagespeedApiPagespeedResponseV5 {
   PagespeedApiPagespeedResponseV5();
 
   PagespeedApiPagespeedResponseV5.fromJson(core.Map _json) {
-    if (_json.containsKey("analysisUTCTimestamp")) {
-      analysisUTCTimestamp = _json["analysisUTCTimestamp"];
+    if (_json.containsKey('analysisUTCTimestamp')) {
+      analysisUTCTimestamp = _json['analysisUTCTimestamp'];
     }
-    if (_json.containsKey("captchaResult")) {
-      captchaResult = _json["captchaResult"];
+    if (_json.containsKey('captchaResult')) {
+      captchaResult = _json['captchaResult'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lighthouseResult")) {
-      lighthouseResult = LighthouseResultV5.fromJson(_json["lighthouseResult"]);
+    if (_json.containsKey('lighthouseResult')) {
+      lighthouseResult = LighthouseResultV5.fromJson(_json['lighthouseResult']);
     }
-    if (_json.containsKey("loadingExperience")) {
+    if (_json.containsKey('loadingExperience')) {
       loadingExperience =
-          PagespeedApiLoadingExperienceV5.fromJson(_json["loadingExperience"]);
+          PagespeedApiLoadingExperienceV5.fromJson(_json['loadingExperience']);
     }
-    if (_json.containsKey("originLoadingExperience")) {
+    if (_json.containsKey('originLoadingExperience')) {
       originLoadingExperience = PagespeedApiLoadingExperienceV5.fromJson(
-          _json["originLoadingExperience"]);
+          _json['originLoadingExperience']);
     }
-    if (_json.containsKey("version")) {
-      version = PagespeedVersion.fromJson(_json["version"]);
+    if (_json.containsKey('version')) {
+      version = PagespeedVersion.fromJson(_json['version']);
     }
   }
 
@@ -935,28 +934,28 @@ class PagespeedApiPagespeedResponseV5 {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (analysisUTCTimestamp != null) {
-      _json["analysisUTCTimestamp"] = analysisUTCTimestamp;
+      _json['analysisUTCTimestamp'] = analysisUTCTimestamp;
     }
     if (captchaResult != null) {
-      _json["captchaResult"] = captchaResult;
+      _json['captchaResult'] = captchaResult;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lighthouseResult != null) {
-      _json["lighthouseResult"] = lighthouseResult.toJson();
+      _json['lighthouseResult'] = lighthouseResult.toJson();
     }
     if (loadingExperience != null) {
-      _json["loadingExperience"] = loadingExperience.toJson();
+      _json['loadingExperience'] = loadingExperience.toJson();
     }
     if (originLoadingExperience != null) {
-      _json["originLoadingExperience"] = originLoadingExperience.toJson();
+      _json['originLoadingExperience'] = originLoadingExperience.toJson();
     }
     if (version != null) {
-      _json["version"] = version.toJson();
+      _json['version'] = version.toJson();
     }
     return _json;
   }
@@ -973,11 +972,11 @@ class PagespeedVersion {
   PagespeedVersion();
 
   PagespeedVersion.fromJson(core.Map _json) {
-    if (_json.containsKey("major")) {
-      major = _json["major"];
+    if (_json.containsKey('major')) {
+      major = _json['major'];
     }
-    if (_json.containsKey("minor")) {
-      minor = _json["minor"];
+    if (_json.containsKey('minor')) {
+      minor = _json['minor'];
     }
   }
 
@@ -985,10 +984,10 @@ class PagespeedVersion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (major != null) {
-      _json["major"] = major;
+      _json['major'] = major;
     }
     if (minor != null) {
-      _json["minor"] = minor;
+      _json['minor'] = minor;
     }
     return _json;
   }
@@ -1050,54 +1049,54 @@ class RendererFormattedStrings {
   RendererFormattedStrings();
 
   RendererFormattedStrings.fromJson(core.Map _json) {
-    if (_json.containsKey("auditGroupExpandTooltip")) {
-      auditGroupExpandTooltip = _json["auditGroupExpandTooltip"];
+    if (_json.containsKey('auditGroupExpandTooltip')) {
+      auditGroupExpandTooltip = _json['auditGroupExpandTooltip'];
     }
-    if (_json.containsKey("crcInitialNavigation")) {
-      crcInitialNavigation = _json["crcInitialNavigation"];
+    if (_json.containsKey('crcInitialNavigation')) {
+      crcInitialNavigation = _json['crcInitialNavigation'];
     }
-    if (_json.containsKey("crcLongestDurationLabel")) {
-      crcLongestDurationLabel = _json["crcLongestDurationLabel"];
+    if (_json.containsKey('crcLongestDurationLabel')) {
+      crcLongestDurationLabel = _json['crcLongestDurationLabel'];
     }
-    if (_json.containsKey("errorLabel")) {
-      errorLabel = _json["errorLabel"];
+    if (_json.containsKey('errorLabel')) {
+      errorLabel = _json['errorLabel'];
     }
-    if (_json.containsKey("errorMissingAuditInfo")) {
-      errorMissingAuditInfo = _json["errorMissingAuditInfo"];
+    if (_json.containsKey('errorMissingAuditInfo')) {
+      errorMissingAuditInfo = _json['errorMissingAuditInfo'];
     }
-    if (_json.containsKey("labDataTitle")) {
-      labDataTitle = _json["labDataTitle"];
+    if (_json.containsKey('labDataTitle')) {
+      labDataTitle = _json['labDataTitle'];
     }
-    if (_json.containsKey("lsPerformanceCategoryDescription")) {
+    if (_json.containsKey('lsPerformanceCategoryDescription')) {
       lsPerformanceCategoryDescription =
-          _json["lsPerformanceCategoryDescription"];
+          _json['lsPerformanceCategoryDescription'];
     }
-    if (_json.containsKey("manualAuditsGroupTitle")) {
-      manualAuditsGroupTitle = _json["manualAuditsGroupTitle"];
+    if (_json.containsKey('manualAuditsGroupTitle')) {
+      manualAuditsGroupTitle = _json['manualAuditsGroupTitle'];
     }
-    if (_json.containsKey("notApplicableAuditsGroupTitle")) {
-      notApplicableAuditsGroupTitle = _json["notApplicableAuditsGroupTitle"];
+    if (_json.containsKey('notApplicableAuditsGroupTitle')) {
+      notApplicableAuditsGroupTitle = _json['notApplicableAuditsGroupTitle'];
     }
-    if (_json.containsKey("opportunityResourceColumnLabel")) {
-      opportunityResourceColumnLabel = _json["opportunityResourceColumnLabel"];
+    if (_json.containsKey('opportunityResourceColumnLabel')) {
+      opportunityResourceColumnLabel = _json['opportunityResourceColumnLabel'];
     }
-    if (_json.containsKey("opportunitySavingsColumnLabel")) {
-      opportunitySavingsColumnLabel = _json["opportunitySavingsColumnLabel"];
+    if (_json.containsKey('opportunitySavingsColumnLabel')) {
+      opportunitySavingsColumnLabel = _json['opportunitySavingsColumnLabel'];
     }
-    if (_json.containsKey("passedAuditsGroupTitle")) {
-      passedAuditsGroupTitle = _json["passedAuditsGroupTitle"];
+    if (_json.containsKey('passedAuditsGroupTitle')) {
+      passedAuditsGroupTitle = _json['passedAuditsGroupTitle'];
     }
-    if (_json.containsKey("scorescaleLabel")) {
-      scorescaleLabel = _json["scorescaleLabel"];
+    if (_json.containsKey('scorescaleLabel')) {
+      scorescaleLabel = _json['scorescaleLabel'];
     }
-    if (_json.containsKey("toplevelWarningsMessage")) {
-      toplevelWarningsMessage = _json["toplevelWarningsMessage"];
+    if (_json.containsKey('toplevelWarningsMessage')) {
+      toplevelWarningsMessage = _json['toplevelWarningsMessage'];
     }
-    if (_json.containsKey("varianceDisclaimer")) {
-      varianceDisclaimer = _json["varianceDisclaimer"];
+    if (_json.containsKey('varianceDisclaimer')) {
+      varianceDisclaimer = _json['varianceDisclaimer'];
     }
-    if (_json.containsKey("warningHeader")) {
-      warningHeader = _json["warningHeader"];
+    if (_json.containsKey('warningHeader')) {
+      warningHeader = _json['warningHeader'];
     }
   }
 
@@ -1105,53 +1104,53 @@ class RendererFormattedStrings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditGroupExpandTooltip != null) {
-      _json["auditGroupExpandTooltip"] = auditGroupExpandTooltip;
+      _json['auditGroupExpandTooltip'] = auditGroupExpandTooltip;
     }
     if (crcInitialNavigation != null) {
-      _json["crcInitialNavigation"] = crcInitialNavigation;
+      _json['crcInitialNavigation'] = crcInitialNavigation;
     }
     if (crcLongestDurationLabel != null) {
-      _json["crcLongestDurationLabel"] = crcLongestDurationLabel;
+      _json['crcLongestDurationLabel'] = crcLongestDurationLabel;
     }
     if (errorLabel != null) {
-      _json["errorLabel"] = errorLabel;
+      _json['errorLabel'] = errorLabel;
     }
     if (errorMissingAuditInfo != null) {
-      _json["errorMissingAuditInfo"] = errorMissingAuditInfo;
+      _json['errorMissingAuditInfo'] = errorMissingAuditInfo;
     }
     if (labDataTitle != null) {
-      _json["labDataTitle"] = labDataTitle;
+      _json['labDataTitle'] = labDataTitle;
     }
     if (lsPerformanceCategoryDescription != null) {
-      _json["lsPerformanceCategoryDescription"] =
+      _json['lsPerformanceCategoryDescription'] =
           lsPerformanceCategoryDescription;
     }
     if (manualAuditsGroupTitle != null) {
-      _json["manualAuditsGroupTitle"] = manualAuditsGroupTitle;
+      _json['manualAuditsGroupTitle'] = manualAuditsGroupTitle;
     }
     if (notApplicableAuditsGroupTitle != null) {
-      _json["notApplicableAuditsGroupTitle"] = notApplicableAuditsGroupTitle;
+      _json['notApplicableAuditsGroupTitle'] = notApplicableAuditsGroupTitle;
     }
     if (opportunityResourceColumnLabel != null) {
-      _json["opportunityResourceColumnLabel"] = opportunityResourceColumnLabel;
+      _json['opportunityResourceColumnLabel'] = opportunityResourceColumnLabel;
     }
     if (opportunitySavingsColumnLabel != null) {
-      _json["opportunitySavingsColumnLabel"] = opportunitySavingsColumnLabel;
+      _json['opportunitySavingsColumnLabel'] = opportunitySavingsColumnLabel;
     }
     if (passedAuditsGroupTitle != null) {
-      _json["passedAuditsGroupTitle"] = passedAuditsGroupTitle;
+      _json['passedAuditsGroupTitle'] = passedAuditsGroupTitle;
     }
     if (scorescaleLabel != null) {
-      _json["scorescaleLabel"] = scorescaleLabel;
+      _json['scorescaleLabel'] = scorescaleLabel;
     }
     if (toplevelWarningsMessage != null) {
-      _json["toplevelWarningsMessage"] = toplevelWarningsMessage;
+      _json['toplevelWarningsMessage'] = toplevelWarningsMessage;
     }
     if (varianceDisclaimer != null) {
-      _json["varianceDisclaimer"] = varianceDisclaimer;
+      _json['varianceDisclaimer'] = varianceDisclaimer;
     }
     if (warningHeader != null) {
-      _json["warningHeader"] = warningHeader;
+      _json['warningHeader'] = warningHeader;
     }
     return _json;
   }
@@ -1168,11 +1167,11 @@ class RuntimeError {
   RuntimeError();
 
   RuntimeError.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -1180,10 +1179,10 @@ class RuntimeError {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -1206,18 +1205,18 @@ class StackPack {
   StackPack();
 
   StackPack.fromJson(core.Map _json) {
-    if (_json.containsKey("descriptions")) {
+    if (_json.containsKey('descriptions')) {
       descriptions =
-          (_json["descriptions"] as core.Map).cast<core.String, core.String>();
+          (_json['descriptions'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("iconDataURL")) {
-      iconDataURL = _json["iconDataURL"];
+    if (_json.containsKey('iconDataURL')) {
+      iconDataURL = _json['iconDataURL'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1225,16 +1224,16 @@ class StackPack {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (descriptions != null) {
-      _json["descriptions"] = descriptions;
+      _json['descriptions'] = descriptions;
     }
     if (iconDataURL != null) {
-      _json["iconDataURL"] = iconDataURL;
+      _json['iconDataURL'] = iconDataURL;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1248,8 +1247,8 @@ class Timing {
   Timing();
 
   Timing.fromJson(core.Map _json) {
-    if (_json.containsKey("total")) {
-      total = _json["total"].toDouble();
+    if (_json.containsKey('total')) {
+      total = _json['total'].toDouble();
     }
   }
 
@@ -1257,7 +1256,7 @@ class Timing {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (total != null) {
-      _json["total"] = total;
+      _json['total'] = total;
     }
     return _json;
   }
@@ -1287,25 +1286,25 @@ class UserPageLoadMetricV5 {
   UserPageLoadMetricV5();
 
   UserPageLoadMetricV5.fromJson(core.Map _json) {
-    if (_json.containsKey("category")) {
-      category = _json["category"];
+    if (_json.containsKey('category')) {
+      category = _json['category'];
     }
-    if (_json.containsKey("distributions")) {
-      distributions = (_json["distributions"] as core.List)
+    if (_json.containsKey('distributions')) {
+      distributions = (_json['distributions'] as core.List)
           .map<Bucket>((value) => Bucket.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("formFactor")) {
-      formFactor = _json["formFactor"];
+    if (_json.containsKey('formFactor')) {
+      formFactor = _json['formFactor'];
     }
-    if (_json.containsKey("median")) {
-      median = _json["median"];
+    if (_json.containsKey('median')) {
+      median = _json['median'];
     }
-    if (_json.containsKey("metricId")) {
-      metricId = _json["metricId"];
+    if (_json.containsKey('metricId')) {
+      metricId = _json['metricId'];
     }
-    if (_json.containsKey("percentile")) {
-      percentile = _json["percentile"];
+    if (_json.containsKey('percentile')) {
+      percentile = _json['percentile'];
     }
   }
 
@@ -1313,23 +1312,23 @@ class UserPageLoadMetricV5 {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (category != null) {
-      _json["category"] = category;
+      _json['category'] = category;
     }
     if (distributions != null) {
-      _json["distributions"] =
+      _json['distributions'] =
           distributions.map((value) => value.toJson()).toList();
     }
     if (formFactor != null) {
-      _json["formFactor"] = formFactor;
+      _json['formFactor'] = formFactor;
     }
     if (median != null) {
-      _json["median"] = median;
+      _json['median'] = median;
     }
     if (metricId != null) {
-      _json["metricId"] = metricId;
+      _json['metricId'] = metricId;
     }
     if (percentile != null) {
-      _json["percentile"] = percentile;
+      _json['percentile'] = percentile;
     }
     return _json;
   }

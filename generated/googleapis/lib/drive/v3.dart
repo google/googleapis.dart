@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -46,35 +45,35 @@ const core.String USER_AGENT = 'dart-api-client drive/v3';
 /// detecting changes, and updating sharing permissions.
 class DriveApi {
   /// See, edit, create, and delete all of your Google Drive files
-  static const DriveScope = "https://www.googleapis.com/auth/drive";
+  static const DriveScope = 'https://www.googleapis.com/auth/drive';
 
   /// View and manage its own configuration data in your Google Drive
   static const DriveAppdataScope =
-      "https://www.googleapis.com/auth/drive.appdata";
+      'https://www.googleapis.com/auth/drive.appdata';
 
   /// View and manage Google Drive files and folders that you have opened or
   /// created with this app
-  static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
+  static const DriveFileScope = 'https://www.googleapis.com/auth/drive.file';
 
   /// View and manage metadata of files in your Google Drive
   static const DriveMetadataScope =
-      "https://www.googleapis.com/auth/drive.metadata";
+      'https://www.googleapis.com/auth/drive.metadata';
 
   /// View metadata for files in your Google Drive
   static const DriveMetadataReadonlyScope =
-      "https://www.googleapis.com/auth/drive.metadata.readonly";
+      'https://www.googleapis.com/auth/drive.metadata.readonly';
 
   /// View the photos, videos and albums in your Google Photos
   static const DrivePhotosReadonlyScope =
-      "https://www.googleapis.com/auth/drive.photos.readonly";
+      'https://www.googleapis.com/auth/drive.photos.readonly';
 
   /// See and download all your Google Drive files
   static const DriveReadonlyScope =
-      "https://www.googleapis.com/auth/drive.readonly";
+      'https://www.googleapis.com/auth/drive.readonly';
 
   /// Modify your Google Apps Script scripts' behavior
   static const DriveScriptsScope =
-      "https://www.googleapis.com/auth/drive.scripts";
+      'https://www.googleapis.com/auth/drive.scripts';
 
   final commons.ApiRequester _requester;
 
@@ -90,8 +89,8 @@ class DriveApi {
   TeamdrivesResourceApi get teamdrives => TeamdrivesResourceApi(_requester);
 
   DriveApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "drive/v3/"})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = 'drive/v3/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -127,14 +126,14 @@ class AboutResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'about';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -189,26 +188,26 @@ class ChangesResourceApi {
     core.String _body;
 
     if (driveId != null) {
-      _queryParams["driveId"] = [driveId];
+      _queryParams['driveId'] = [driveId];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (teamDriveId != null) {
-      _queryParams["teamDriveId"] = [teamDriveId];
+      _queryParams['teamDriveId'] = [teamDriveId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'changes/startPageToken';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -300,56 +299,56 @@ class ChangesResourceApi {
     core.String _body;
 
     if (pageToken == null) {
-      throw core.ArgumentError("Parameter pageToken is required.");
+      throw core.ArgumentError('Parameter pageToken is required.');
     }
-    _queryParams["pageToken"] = [pageToken];
+    _queryParams['pageToken'] = [pageToken];
     if (driveId != null) {
-      _queryParams["driveId"] = [driveId];
+      _queryParams['driveId'] = [driveId];
     }
     if (includeCorpusRemovals != null) {
-      _queryParams["includeCorpusRemovals"] = ["${includeCorpusRemovals}"];
+      _queryParams['includeCorpusRemovals'] = ['${includeCorpusRemovals}'];
     }
     if (includeItemsFromAllDrives != null) {
-      _queryParams["includeItemsFromAllDrives"] = [
-        "${includeItemsFromAllDrives}"
+      _queryParams['includeItemsFromAllDrives'] = [
+        '${includeItemsFromAllDrives}'
       ];
     }
     if (includePermissionsForView != null) {
-      _queryParams["includePermissionsForView"] = [includePermissionsForView];
+      _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
     if (includeRemoved != null) {
-      _queryParams["includeRemoved"] = ["${includeRemoved}"];
+      _queryParams['includeRemoved'] = ['${includeRemoved}'];
     }
     if (includeTeamDriveItems != null) {
-      _queryParams["includeTeamDriveItems"] = ["${includeTeamDriveItems}"];
+      _queryParams['includeTeamDriveItems'] = ['${includeTeamDriveItems}'];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (restrictToMyDrive != null) {
-      _queryParams["restrictToMyDrive"] = ["${restrictToMyDrive}"];
+      _queryParams['restrictToMyDrive'] = ['${restrictToMyDrive}'];
     }
     if (spaces != null) {
-      _queryParams["spaces"] = [spaces];
+      _queryParams['spaces'] = [spaces];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (teamDriveId != null) {
-      _queryParams["teamDriveId"] = [teamDriveId];
+      _queryParams['teamDriveId'] = [teamDriveId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'changes';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -447,56 +446,56 @@ class ChangesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (pageToken == null) {
-      throw core.ArgumentError("Parameter pageToken is required.");
+      throw core.ArgumentError('Parameter pageToken is required.');
     }
-    _queryParams["pageToken"] = [pageToken];
+    _queryParams['pageToken'] = [pageToken];
     if (driveId != null) {
-      _queryParams["driveId"] = [driveId];
+      _queryParams['driveId'] = [driveId];
     }
     if (includeCorpusRemovals != null) {
-      _queryParams["includeCorpusRemovals"] = ["${includeCorpusRemovals}"];
+      _queryParams['includeCorpusRemovals'] = ['${includeCorpusRemovals}'];
     }
     if (includeItemsFromAllDrives != null) {
-      _queryParams["includeItemsFromAllDrives"] = [
-        "${includeItemsFromAllDrives}"
+      _queryParams['includeItemsFromAllDrives'] = [
+        '${includeItemsFromAllDrives}'
       ];
     }
     if (includePermissionsForView != null) {
-      _queryParams["includePermissionsForView"] = [includePermissionsForView];
+      _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
     if (includeRemoved != null) {
-      _queryParams["includeRemoved"] = ["${includeRemoved}"];
+      _queryParams['includeRemoved'] = ['${includeRemoved}'];
     }
     if (includeTeamDriveItems != null) {
-      _queryParams["includeTeamDriveItems"] = ["${includeTeamDriveItems}"];
+      _queryParams['includeTeamDriveItems'] = ['${includeTeamDriveItems}'];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (restrictToMyDrive != null) {
-      _queryParams["restrictToMyDrive"] = ["${restrictToMyDrive}"];
+      _queryParams['restrictToMyDrive'] = ['${restrictToMyDrive}'];
     }
     if (spaces != null) {
-      _queryParams["spaces"] = [spaces];
+      _queryParams['spaces'] = [spaces];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (teamDriveId != null) {
-      _queryParams["teamDriveId"] = [teamDriveId];
+      _queryParams['teamDriveId'] = [teamDriveId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'changes/watch';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -541,7 +540,7 @@ class ChannelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -550,7 +549,7 @@ class ChannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -600,17 +599,17 @@ class CommentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -649,13 +648,13 @@ class CommentsResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -667,7 +666,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -712,16 +711,16 @@ class CommentsResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
+      _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' +
@@ -731,7 +730,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -786,29 +785,29 @@ class CommentsResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
+      _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (startModifiedTime != null) {
-      _queryParams["startModifiedTime"] = [startModifiedTime];
+      _queryParams['startModifiedTime'] = [startModifiedTime];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -855,13 +854,13 @@ class CommentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' +
@@ -871,7 +870,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -925,18 +924,18 @@ class DrivesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (requestId == null) {
-      throw core.ArgumentError("Parameter requestId is required.");
+      throw core.ArgumentError('Parameter requestId is required.');
     }
-    _queryParams["requestId"] = [requestId];
+    _queryParams['requestId'] = [requestId];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'drives';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -973,10 +972,10 @@ class DrivesResourceApi {
     core.String _body;
 
     if (driveId == null) {
-      throw core.ArgumentError("Parameter driveId is required.");
+      throw core.ArgumentError('Parameter driveId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -985,7 +984,7 @@ class DrivesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1028,20 +1027,20 @@ class DrivesResourceApi {
     core.String _body;
 
     if (driveId == null) {
-      throw core.ArgumentError("Parameter driveId is required.");
+      throw core.ArgumentError('Parameter driveId is required.');
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1079,17 +1078,17 @@ class DrivesResourceApi {
     core.String _body;
 
     if (driveId == null) {
-      throw core.ArgumentError("Parameter driveId is required.");
+      throw core.ArgumentError('Parameter driveId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/hide';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1139,26 +1138,26 @@ class DrivesResourceApi {
     core.String _body;
 
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'drives';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1196,17 +1195,17 @@ class DrivesResourceApi {
     core.String _body;
 
     if (driveId == null) {
-      throw core.ArgumentError("Parameter driveId is required.");
+      throw core.ArgumentError('Parameter driveId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/unhide';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1255,20 +1254,20 @@ class DrivesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (driveId == null) {
-      throw core.ArgumentError("Parameter driveId is required.");
+      throw core.ArgumentError('Parameter driveId is required.');
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1353,38 +1352,38 @@ class FilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (enforceSingleParent != null) {
-      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
     if (ignoreDefaultVisibility != null) {
-      _queryParams["ignoreDefaultVisibility"] = ["${ignoreDefaultVisibility}"];
+      _queryParams['ignoreDefaultVisibility'] = ['${ignoreDefaultVisibility}'];
     }
     if (includePermissionsForView != null) {
-      _queryParams["includePermissionsForView"] = [includePermissionsForView];
+      _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
     if (keepRevisionForever != null) {
-      _queryParams["keepRevisionForever"] = ["${keepRevisionForever}"];
+      _queryParams['keepRevisionForever'] = ['${keepRevisionForever}'];
     }
     if (ocrLanguage != null) {
-      _queryParams["ocrLanguage"] = [ocrLanguage];
+      _queryParams['ocrLanguage'] = [ocrLanguage];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1471,33 +1470,33 @@ class FilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enforceSingleParent != null) {
-      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
     if (ignoreDefaultVisibility != null) {
-      _queryParams["ignoreDefaultVisibility"] = ["${ignoreDefaultVisibility}"];
+      _queryParams['ignoreDefaultVisibility'] = ['${ignoreDefaultVisibility}'];
     }
     if (includePermissionsForView != null) {
-      _queryParams["includePermissionsForView"] = [includePermissionsForView];
+      _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
     if (keepRevisionForever != null) {
-      _queryParams["keepRevisionForever"] = ["${keepRevisionForever}"];
+      _queryParams['keepRevisionForever'] = ['${keepRevisionForever}'];
     }
     if (ocrLanguage != null) {
-      _queryParams["ocrLanguage"] = [ocrLanguage];
+      _queryParams['ocrLanguage'] = [ocrLanguage];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (useContentAsIndexableText != null) {
-      _queryParams["useContentAsIndexableText"] = [
-        "${useContentAsIndexableText}"
+      _queryParams['useContentAsIndexableText'] = [
+        '${useContentAsIndexableText}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1513,7 +1512,7 @@ class FilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1566,19 +1565,19 @@ class FilesResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (enforceSingleParent != null) {
-      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1587,7 +1586,7 @@ class FilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1627,10 +1626,10 @@ class FilesResourceApi {
     core.String _body;
 
     if (enforceSingleParent != null) {
-      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1639,7 +1638,7 @@ class FilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1684,14 +1683,14 @@ class FilesResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (mimeType == null) {
-      throw core.ArgumentError("Parameter mimeType is required.");
+      throw core.ArgumentError('Parameter mimeType is required.');
     }
-    _queryParams["mimeType"] = [mimeType];
+    _queryParams['mimeType'] = [mimeType];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -1700,7 +1699,7 @@ class FilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1749,20 +1748,20 @@ class FilesResourceApi {
     core.String _body;
 
     if (count != null) {
-      _queryParams["count"] = ["${count}"];
+      _queryParams['count'] = ['${count}'];
     }
     if (space != null) {
-      _queryParams["space"] = [space];
+      _queryParams['space'] = [space];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/generateIds';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1825,22 +1824,22 @@ class FilesResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (acknowledgeAbuse != null) {
-      _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+      _queryParams['acknowledgeAbuse'] = ['${acknowledgeAbuse}'];
     }
     if (includePermissionsForView != null) {
-      _queryParams["includePermissionsForView"] = [includePermissionsForView];
+      _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -1849,7 +1848,7 @@ class FilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1960,58 +1959,58 @@ class FilesResourceApi {
     core.String _body;
 
     if (corpora != null) {
-      _queryParams["corpora"] = [corpora];
+      _queryParams['corpora'] = [corpora];
     }
     if (corpus != null) {
-      _queryParams["corpus"] = [corpus];
+      _queryParams['corpus'] = [corpus];
     }
     if (driveId != null) {
-      _queryParams["driveId"] = [driveId];
+      _queryParams['driveId'] = [driveId];
     }
     if (includeItemsFromAllDrives != null) {
-      _queryParams["includeItemsFromAllDrives"] = [
-        "${includeItemsFromAllDrives}"
+      _queryParams['includeItemsFromAllDrives'] = [
+        '${includeItemsFromAllDrives}'
       ];
     }
     if (includePermissionsForView != null) {
-      _queryParams["includePermissionsForView"] = [includePermissionsForView];
+      _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
     if (includeTeamDriveItems != null) {
-      _queryParams["includeTeamDriveItems"] = ["${includeTeamDriveItems}"];
+      _queryParams['includeTeamDriveItems'] = ['${includeTeamDriveItems}'];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (spaces != null) {
-      _queryParams["spaces"] = [spaces];
+      _queryParams['spaces'] = [spaces];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (teamDriveId != null) {
-      _queryParams["teamDriveId"] = [teamDriveId];
+      _queryParams['teamDriveId'] = [teamDriveId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2104,39 +2103,39 @@ class FilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (addParents != null) {
-      _queryParams["addParents"] = [addParents];
+      _queryParams['addParents'] = [addParents];
     }
     if (enforceSingleParent != null) {
-      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
     if (includePermissionsForView != null) {
-      _queryParams["includePermissionsForView"] = [includePermissionsForView];
+      _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
     if (keepRevisionForever != null) {
-      _queryParams["keepRevisionForever"] = ["${keepRevisionForever}"];
+      _queryParams['keepRevisionForever'] = ['${keepRevisionForever}'];
     }
     if (ocrLanguage != null) {
-      _queryParams["ocrLanguage"] = [ocrLanguage];
+      _queryParams['ocrLanguage'] = [ocrLanguage];
     }
     if (removeParents != null) {
-      _queryParams["removeParents"] = [removeParents];
+      _queryParams['removeParents'] = [removeParents];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (useContentAsIndexableText != null) {
-      _queryParams["useContentAsIndexableText"] = [
-        "${useContentAsIndexableText}"
+      _queryParams['useContentAsIndexableText'] = [
+        '${useContentAsIndexableText}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -2154,7 +2153,7 @@ class FilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2223,22 +2222,22 @@ class FilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (acknowledgeAbuse != null) {
-      _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+      _queryParams['acknowledgeAbuse'] = ['${acknowledgeAbuse}'];
     }
     if (includePermissionsForView != null) {
-      _queryParams["includePermissionsForView"] = [includePermissionsForView];
+      _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -2247,7 +2246,7 @@ class FilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2345,41 +2344,41 @@ class PermissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (emailMessage != null) {
-      _queryParams["emailMessage"] = [emailMessage];
+      _queryParams['emailMessage'] = [emailMessage];
     }
     if (enforceSingleParent != null) {
-      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
     if (moveToNewOwnersRoot != null) {
-      _queryParams["moveToNewOwnersRoot"] = ["${moveToNewOwnersRoot}"];
+      _queryParams['moveToNewOwnersRoot'] = ['${moveToNewOwnersRoot}'];
     }
     if (sendNotificationEmail != null) {
-      _queryParams["sendNotificationEmail"] = ["${sendNotificationEmail}"];
+      _queryParams['sendNotificationEmail'] = ['${sendNotificationEmail}'];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (transferOwnership != null) {
-      _queryParams["transferOwnership"] = ["${transferOwnership}"];
+      _queryParams['transferOwnership'] = ['${transferOwnership}'];
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2431,22 +2430,22 @@ class PermissionsResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (permissionId == null) {
-      throw core.ArgumentError("Parameter permissionId is required.");
+      throw core.ArgumentError('Parameter permissionId is required.');
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2458,7 +2457,7 @@ class PermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2512,22 +2511,22 @@ class PermissionsResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (permissionId == null) {
-      throw core.ArgumentError("Parameter permissionId is required.");
+      throw core.ArgumentError('Parameter permissionId is required.');
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' +
@@ -2537,7 +2536,7 @@ class PermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2604,35 +2603,35 @@ class PermissionsResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (includePermissionsForView != null) {
-      _queryParams["includePermissionsForView"] = [includePermissionsForView];
+      _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2700,28 +2699,28 @@ class PermissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (permissionId == null) {
-      throw core.ArgumentError("Parameter permissionId is required.");
+      throw core.ArgumentError('Parameter permissionId is required.');
     }
     if (removeExpiration != null) {
-      _queryParams["removeExpiration"] = ["${removeExpiration}"];
+      _queryParams['removeExpiration'] = ['${removeExpiration}'];
     }
     if (supportsAllDrives != null) {
-      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
     if (supportsTeamDrives != null) {
-      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
     }
     if (transferOwnership != null) {
-      _queryParams["transferOwnership"] = ["${transferOwnership}"];
+      _queryParams['transferOwnership'] = ['${transferOwnership}'];
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' +
@@ -2731,7 +2730,7 @@ class PermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2784,13 +2783,13 @@ class RepliesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' +
@@ -2801,7 +2800,7 @@ class RepliesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2843,16 +2842,16 @@ class RepliesResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if (replyId == null) {
-      throw core.ArgumentError("Parameter replyId is required.");
+      throw core.ArgumentError('Parameter replyId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2866,7 +2865,7 @@ class RepliesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2914,19 +2913,19 @@ class RepliesResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if (replyId == null) {
-      throw core.ArgumentError("Parameter replyId is required.");
+      throw core.ArgumentError('Parameter replyId is required.');
     }
     if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
+      _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' +
@@ -2938,7 +2937,7 @@ class RepliesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2992,22 +2991,22 @@ class RepliesResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
+      _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' +
@@ -3018,7 +3017,7 @@ class RepliesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3068,16 +3067,16 @@ class RepliesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if (replyId == null) {
-      throw core.ArgumentError("Parameter replyId is required.");
+      throw core.ArgumentError('Parameter replyId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' +
@@ -3089,7 +3088,7 @@ class RepliesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3137,13 +3136,13 @@ class RevisionsResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (revisionId == null) {
-      throw core.ArgumentError("Parameter revisionId is required.");
+      throw core.ArgumentError('Parameter revisionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3155,7 +3154,7 @@ class RevisionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3210,16 +3209,16 @@ class RevisionsResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (revisionId == null) {
-      throw core.ArgumentError("Parameter revisionId is required.");
+      throw core.ArgumentError('Parameter revisionId is required.');
     }
     if (acknowledgeAbuse != null) {
-      _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+      _queryParams['acknowledgeAbuse'] = ['${acknowledgeAbuse}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -3231,7 +3230,7 @@ class RevisionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3283,23 +3282,23 @@ class RevisionsResourceApi {
     core.String _body;
 
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3346,13 +3345,13 @@ class RevisionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (fileId == null) {
-      throw core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError('Parameter fileId is required.');
     }
     if (revisionId == null) {
-      throw core.ArgumentError("Parameter revisionId is required.");
+      throw core.ArgumentError('Parameter revisionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'files/' +
@@ -3362,7 +3361,7 @@ class RevisionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3416,18 +3415,18 @@ class TeamdrivesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (requestId == null) {
-      throw core.ArgumentError("Parameter requestId is required.");
+      throw core.ArgumentError('Parameter requestId is required.');
     }
-    _queryParams["requestId"] = [requestId];
+    _queryParams['requestId'] = [requestId];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'teamdrives';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3463,10 +3462,10 @@ class TeamdrivesResourceApi {
     core.String _body;
 
     if (teamDriveId == null) {
-      throw core.ArgumentError("Parameter teamDriveId is required.");
+      throw core.ArgumentError('Parameter teamDriveId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3475,7 +3474,7 @@ class TeamdrivesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3518,20 +3517,20 @@ class TeamdrivesResourceApi {
     core.String _body;
 
     if (teamDriveId == null) {
-      throw core.ArgumentError("Parameter teamDriveId is required.");
+      throw core.ArgumentError('Parameter teamDriveId is required.');
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3581,26 +3580,26 @@ class TeamdrivesResourceApi {
     core.String _body;
 
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'teamdrives';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3649,20 +3648,20 @@ class TeamdrivesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (teamDriveId == null) {
-      throw core.ArgumentError("Parameter teamDriveId is required.");
+      throw core.ArgumentError('Parameter teamDriveId is required.');
     }
     if (useDomainAdminAccess != null) {
-      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3686,14 +3685,14 @@ class AboutDriveThemes {
   AboutDriveThemes();
 
   AboutDriveThemes.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundImageLink")) {
-      backgroundImageLink = _json["backgroundImageLink"];
+    if (_json.containsKey('backgroundImageLink')) {
+      backgroundImageLink = _json['backgroundImageLink'];
     }
-    if (_json.containsKey("colorRgb")) {
-      colorRgb = _json["colorRgb"];
+    if (_json.containsKey('colorRgb')) {
+      colorRgb = _json['colorRgb'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -3701,13 +3700,13 @@ class AboutDriveThemes {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundImageLink != null) {
-      _json["backgroundImageLink"] = backgroundImageLink;
+      _json['backgroundImageLink'] = backgroundImageLink;
     }
     if (colorRgb != null) {
-      _json["colorRgb"] = colorRgb;
+      _json['colorRgb'] = colorRgb;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -3731,17 +3730,17 @@ class AboutStorageQuota {
   AboutStorageQuota();
 
   AboutStorageQuota.fromJson(core.Map _json) {
-    if (_json.containsKey("limit")) {
-      limit = _json["limit"];
+    if (_json.containsKey('limit')) {
+      limit = _json['limit'];
     }
-    if (_json.containsKey("usage")) {
-      usage = _json["usage"];
+    if (_json.containsKey('usage')) {
+      usage = _json['usage'];
     }
-    if (_json.containsKey("usageInDrive")) {
-      usageInDrive = _json["usageInDrive"];
+    if (_json.containsKey('usageInDrive')) {
+      usageInDrive = _json['usageInDrive'];
     }
-    if (_json.containsKey("usageInDriveTrash")) {
-      usageInDriveTrash = _json["usageInDriveTrash"];
+    if (_json.containsKey('usageInDriveTrash')) {
+      usageInDriveTrash = _json['usageInDriveTrash'];
     }
   }
 
@@ -3749,16 +3748,16 @@ class AboutStorageQuota {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (limit != null) {
-      _json["limit"] = limit;
+      _json['limit'] = limit;
     }
     if (usage != null) {
-      _json["usage"] = usage;
+      _json['usage'] = usage;
     }
     if (usageInDrive != null) {
-      _json["usageInDrive"] = usageInDrive;
+      _json['usageInDrive'] = usageInDrive;
     }
     if (usageInDriveTrash != null) {
-      _json["usageInDriveTrash"] = usageInDriveTrash;
+      _json['usageInDriveTrash'] = usageInDriveTrash;
     }
     return _json;
   }
@@ -3777,14 +3776,14 @@ class AboutTeamDriveThemes {
   AboutTeamDriveThemes();
 
   AboutTeamDriveThemes.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundImageLink")) {
-      backgroundImageLink = _json["backgroundImageLink"];
+    if (_json.containsKey('backgroundImageLink')) {
+      backgroundImageLink = _json['backgroundImageLink'];
     }
-    if (_json.containsKey("colorRgb")) {
-      colorRgb = _json["colorRgb"];
+    if (_json.containsKey('colorRgb')) {
+      colorRgb = _json['colorRgb'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -3792,13 +3791,13 @@ class AboutTeamDriveThemes {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundImageLink != null) {
-      _json["backgroundImageLink"] = backgroundImageLink;
+      _json['backgroundImageLink'] = backgroundImageLink;
     }
     if (colorRgb != null) {
-      _json["colorRgb"] = colorRgb;
+      _json['colorRgb'] = colorRgb;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -3850,55 +3849,55 @@ class About {
   About();
 
   About.fromJson(core.Map _json) {
-    if (_json.containsKey("appInstalled")) {
-      appInstalled = _json["appInstalled"];
+    if (_json.containsKey('appInstalled')) {
+      appInstalled = _json['appInstalled'];
     }
-    if (_json.containsKey("canCreateDrives")) {
-      canCreateDrives = _json["canCreateDrives"];
+    if (_json.containsKey('canCreateDrives')) {
+      canCreateDrives = _json['canCreateDrives'];
     }
-    if (_json.containsKey("canCreateTeamDrives")) {
-      canCreateTeamDrives = _json["canCreateTeamDrives"];
+    if (_json.containsKey('canCreateTeamDrives')) {
+      canCreateTeamDrives = _json['canCreateTeamDrives'];
     }
-    if (_json.containsKey("driveThemes")) {
-      driveThemes = (_json["driveThemes"] as core.List)
+    if (_json.containsKey('driveThemes')) {
+      driveThemes = (_json['driveThemes'] as core.List)
           .map<AboutDriveThemes>((value) => AboutDriveThemes.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("exportFormats")) {
+    if (_json.containsKey('exportFormats')) {
       exportFormats = commons.mapMap<core.List, core.List<core.String>>(
-          _json["exportFormats"].cast<core.String, core.List>(),
+          _json['exportFormats'].cast<core.String, core.List>(),
           (core.List item) => (item as core.List).cast<core.String>());
     }
-    if (_json.containsKey("folderColorPalette")) {
+    if (_json.containsKey('folderColorPalette')) {
       folderColorPalette =
-          (_json["folderColorPalette"] as core.List).cast<core.String>();
+          (_json['folderColorPalette'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("importFormats")) {
+    if (_json.containsKey('importFormats')) {
       importFormats = commons.mapMap<core.List, core.List<core.String>>(
-          _json["importFormats"].cast<core.String, core.List>(),
+          _json['importFormats'].cast<core.String, core.List>(),
           (core.List item) => (item as core.List).cast<core.String>());
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("maxImportSizes")) {
-      maxImportSizes = (_json["maxImportSizes"] as core.Map)
+    if (_json.containsKey('maxImportSizes')) {
+      maxImportSizes = (_json['maxImportSizes'] as core.Map)
           .cast<core.String, core.String>();
     }
-    if (_json.containsKey("maxUploadSize")) {
-      maxUploadSize = _json["maxUploadSize"];
+    if (_json.containsKey('maxUploadSize')) {
+      maxUploadSize = _json['maxUploadSize'];
     }
-    if (_json.containsKey("storageQuota")) {
-      storageQuota = AboutStorageQuota.fromJson(_json["storageQuota"]);
+    if (_json.containsKey('storageQuota')) {
+      storageQuota = AboutStorageQuota.fromJson(_json['storageQuota']);
     }
-    if (_json.containsKey("teamDriveThemes")) {
-      teamDriveThemes = (_json["teamDriveThemes"] as core.List)
+    if (_json.containsKey('teamDriveThemes')) {
+      teamDriveThemes = (_json['teamDriveThemes'] as core.List)
           .map<AboutTeamDriveThemes>(
               (value) => AboutTeamDriveThemes.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("user")) {
-      user = User.fromJson(_json["user"]);
+    if (_json.containsKey('user')) {
+      user = User.fromJson(_json['user']);
     }
   }
 
@@ -3906,45 +3905,45 @@ class About {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appInstalled != null) {
-      _json["appInstalled"] = appInstalled;
+      _json['appInstalled'] = appInstalled;
     }
     if (canCreateDrives != null) {
-      _json["canCreateDrives"] = canCreateDrives;
+      _json['canCreateDrives'] = canCreateDrives;
     }
     if (canCreateTeamDrives != null) {
-      _json["canCreateTeamDrives"] = canCreateTeamDrives;
+      _json['canCreateTeamDrives'] = canCreateTeamDrives;
     }
     if (driveThemes != null) {
-      _json["driveThemes"] =
+      _json['driveThemes'] =
           driveThemes.map((value) => value.toJson()).toList();
     }
     if (exportFormats != null) {
-      _json["exportFormats"] = exportFormats;
+      _json['exportFormats'] = exportFormats;
     }
     if (folderColorPalette != null) {
-      _json["folderColorPalette"] = folderColorPalette;
+      _json['folderColorPalette'] = folderColorPalette;
     }
     if (importFormats != null) {
-      _json["importFormats"] = importFormats;
+      _json['importFormats'] = importFormats;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (maxImportSizes != null) {
-      _json["maxImportSizes"] = maxImportSizes;
+      _json['maxImportSizes'] = maxImportSizes;
     }
     if (maxUploadSize != null) {
-      _json["maxUploadSize"] = maxUploadSize;
+      _json['maxUploadSize'] = maxUploadSize;
     }
     if (storageQuota != null) {
-      _json["storageQuota"] = storageQuota.toJson();
+      _json['storageQuota'] = storageQuota.toJson();
     }
     if (teamDriveThemes != null) {
-      _json["teamDriveThemes"] =
+      _json['teamDriveThemes'] =
           teamDriveThemes.map((value) => value.toJson()).toList();
     }
     if (user != null) {
-      _json["user"] = user.toJson();
+      _json['user'] = user.toJson();
     }
     return _json;
   }
@@ -3993,38 +3992,38 @@ class Change {
   Change();
 
   Change.fromJson(core.Map _json) {
-    if (_json.containsKey("changeType")) {
-      changeType = _json["changeType"];
+    if (_json.containsKey('changeType')) {
+      changeType = _json['changeType'];
     }
-    if (_json.containsKey("drive")) {
-      drive = Drive.fromJson(_json["drive"]);
+    if (_json.containsKey('drive')) {
+      drive = Drive.fromJson(_json['drive']);
     }
-    if (_json.containsKey("driveId")) {
-      driveId = _json["driveId"];
+    if (_json.containsKey('driveId')) {
+      driveId = _json['driveId'];
     }
-    if (_json.containsKey("file")) {
-      file = File.fromJson(_json["file"]);
+    if (_json.containsKey('file')) {
+      file = File.fromJson(_json['file']);
     }
-    if (_json.containsKey("fileId")) {
-      fileId = _json["fileId"];
+    if (_json.containsKey('fileId')) {
+      fileId = _json['fileId'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("removed")) {
-      removed = _json["removed"];
+    if (_json.containsKey('removed')) {
+      removed = _json['removed'];
     }
-    if (_json.containsKey("teamDrive")) {
-      teamDrive = TeamDrive.fromJson(_json["teamDrive"]);
+    if (_json.containsKey('teamDrive')) {
+      teamDrive = TeamDrive.fromJson(_json['teamDrive']);
     }
-    if (_json.containsKey("teamDriveId")) {
-      teamDriveId = _json["teamDriveId"];
+    if (_json.containsKey('teamDriveId')) {
+      teamDriveId = _json['teamDriveId'];
     }
-    if (_json.containsKey("time")) {
-      time = core.DateTime.parse(_json["time"]);
+    if (_json.containsKey('time')) {
+      time = core.DateTime.parse(_json['time']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4032,37 +4031,37 @@ class Change {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (changeType != null) {
-      _json["changeType"] = changeType;
+      _json['changeType'] = changeType;
     }
     if (drive != null) {
-      _json["drive"] = drive.toJson();
+      _json['drive'] = drive.toJson();
     }
     if (driveId != null) {
-      _json["driveId"] = driveId;
+      _json['driveId'] = driveId;
     }
     if (file != null) {
-      _json["file"] = file.toJson();
+      _json['file'] = file.toJson();
     }
     if (fileId != null) {
-      _json["fileId"] = fileId;
+      _json['fileId'] = fileId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (removed != null) {
-      _json["removed"] = removed;
+      _json['removed'] = removed;
     }
     if (teamDrive != null) {
-      _json["teamDrive"] = teamDrive.toJson();
+      _json['teamDrive'] = teamDrive.toJson();
     }
     if (teamDriveId != null) {
-      _json["teamDriveId"] = teamDriveId;
+      _json['teamDriveId'] = teamDriveId;
     }
     if (time != null) {
-      _json["time"] = (time).toIso8601String();
+      _json['time'] = (time).toIso8601String();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4091,19 +4090,19 @@ class ChangeList {
   ChangeList();
 
   ChangeList.fromJson(core.Map _json) {
-    if (_json.containsKey("changes")) {
-      changes = (_json["changes"] as core.List)
+    if (_json.containsKey('changes')) {
+      changes = (_json['changes'] as core.List)
           .map<Change>((value) => Change.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("newStartPageToken")) {
-      newStartPageToken = _json["newStartPageToken"];
+    if (_json.containsKey('newStartPageToken')) {
+      newStartPageToken = _json['newStartPageToken'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4111,16 +4110,16 @@ class ChangeList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (changes != null) {
-      _json["changes"] = changes.map((value) => value.toJson()).toList();
+      _json['changes'] = changes.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (newStartPageToken != null) {
-      _json["newStartPageToken"] = newStartPageToken;
+      _json['newStartPageToken'] = newStartPageToken;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4165,35 +4164,35 @@ class Channel {
   Channel();
 
   Channel.fromJson(core.Map _json) {
-    if (_json.containsKey("address")) {
-      address = _json["address"];
+    if (_json.containsKey('address')) {
+      address = _json['address'];
     }
-    if (_json.containsKey("expiration")) {
-      expiration = _json["expiration"];
+    if (_json.containsKey('expiration')) {
+      expiration = _json['expiration'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("params")) {
-      params = (_json["params"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('params')) {
+      params = (_json['params'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("payload")) {
-      payload = _json["payload"];
+    if (_json.containsKey('payload')) {
+      payload = _json['payload'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = _json["resourceId"];
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'];
     }
-    if (_json.containsKey("resourceUri")) {
-      resourceUri = _json["resourceUri"];
+    if (_json.containsKey('resourceUri')) {
+      resourceUri = _json['resourceUri'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4201,34 +4200,34 @@ class Channel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (address != null) {
-      _json["address"] = address;
+      _json['address'] = address;
     }
     if (expiration != null) {
-      _json["expiration"] = expiration;
+      _json['expiration'] = expiration;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (params != null) {
-      _json["params"] = params;
+      _json['params'] = params;
     }
     if (payload != null) {
-      _json["payload"] = payload;
+      _json['payload'] = payload;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId;
+      _json['resourceId'] = resourceId;
     }
     if (resourceUri != null) {
-      _json["resourceUri"] = resourceUri;
+      _json['resourceUri'] = resourceUri;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4248,11 +4247,11 @@ class CommentQuotedFileContent {
   CommentQuotedFileContent();
 
   CommentQuotedFileContent.fromJson(core.Map _json) {
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -4260,10 +4259,10 @@ class CommentQuotedFileContent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -4318,44 +4317,44 @@ class Comment {
   Comment();
 
   Comment.fromJson(core.Map _json) {
-    if (_json.containsKey("anchor")) {
-      anchor = _json["anchor"];
+    if (_json.containsKey('anchor')) {
+      anchor = _json['anchor'];
     }
-    if (_json.containsKey("author")) {
-      author = User.fromJson(_json["author"]);
+    if (_json.containsKey('author')) {
+      author = User.fromJson(_json['author']);
     }
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("createdTime")) {
-      createdTime = core.DateTime.parse(_json["createdTime"]);
+    if (_json.containsKey('createdTime')) {
+      createdTime = core.DateTime.parse(_json['createdTime']);
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("htmlContent")) {
-      htmlContent = _json["htmlContent"];
+    if (_json.containsKey('htmlContent')) {
+      htmlContent = _json['htmlContent'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("modifiedTime")) {
-      modifiedTime = core.DateTime.parse(_json["modifiedTime"]);
+    if (_json.containsKey('modifiedTime')) {
+      modifiedTime = core.DateTime.parse(_json['modifiedTime']);
     }
-    if (_json.containsKey("quotedFileContent")) {
+    if (_json.containsKey('quotedFileContent')) {
       quotedFileContent =
-          CommentQuotedFileContent.fromJson(_json["quotedFileContent"]);
+          CommentQuotedFileContent.fromJson(_json['quotedFileContent']);
     }
-    if (_json.containsKey("replies")) {
-      replies = (_json["replies"] as core.List)
+    if (_json.containsKey('replies')) {
+      replies = (_json['replies'] as core.List)
           .map<Reply>((value) => Reply.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("resolved")) {
-      resolved = _json["resolved"];
+    if (_json.containsKey('resolved')) {
+      resolved = _json['resolved'];
     }
   }
 
@@ -4363,40 +4362,40 @@ class Comment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (anchor != null) {
-      _json["anchor"] = anchor;
+      _json['anchor'] = anchor;
     }
     if (author != null) {
-      _json["author"] = author.toJson();
+      _json['author'] = author.toJson();
     }
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (createdTime != null) {
-      _json["createdTime"] = (createdTime).toIso8601String();
+      _json['createdTime'] = (createdTime).toIso8601String();
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (htmlContent != null) {
-      _json["htmlContent"] = htmlContent;
+      _json['htmlContent'] = htmlContent;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (modifiedTime != null) {
-      _json["modifiedTime"] = (modifiedTime).toIso8601String();
+      _json['modifiedTime'] = (modifiedTime).toIso8601String();
     }
     if (quotedFileContent != null) {
-      _json["quotedFileContent"] = quotedFileContent.toJson();
+      _json['quotedFileContent'] = quotedFileContent.toJson();
     }
     if (replies != null) {
-      _json["replies"] = replies.map((value) => value.toJson()).toList();
+      _json['replies'] = replies.map((value) => value.toJson()).toList();
     }
     if (resolved != null) {
-      _json["resolved"] = resolved;
+      _json['resolved'] = resolved;
     }
     return _json;
   }
@@ -4421,16 +4420,16 @@ class CommentList {
   CommentList();
 
   CommentList.fromJson(core.Map _json) {
-    if (_json.containsKey("comments")) {
-      comments = (_json["comments"] as core.List)
+    if (_json.containsKey('comments')) {
+      comments = (_json['comments'] as core.List)
           .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4438,13 +4437,13 @@ class CommentList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (comments != null) {
-      _json["comments"] = comments.map((value) => value.toJson()).toList();
+      _json['comments'] = comments.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4476,20 +4475,20 @@ class ContentRestriction {
   ContentRestriction();
 
   ContentRestriction.fromJson(core.Map _json) {
-    if (_json.containsKey("readOnly")) {
-      readOnly = _json["readOnly"];
+    if (_json.containsKey('readOnly')) {
+      readOnly = _json['readOnly'];
     }
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
-    if (_json.containsKey("restrictingUser")) {
-      restrictingUser = User.fromJson(_json["restrictingUser"]);
+    if (_json.containsKey('restrictingUser')) {
+      restrictingUser = User.fromJson(_json['restrictingUser']);
     }
-    if (_json.containsKey("restrictionTime")) {
-      restrictionTime = core.DateTime.parse(_json["restrictionTime"]);
+    if (_json.containsKey('restrictionTime')) {
+      restrictionTime = core.DateTime.parse(_json['restrictionTime']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4497,19 +4496,19 @@ class ContentRestriction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (readOnly != null) {
-      _json["readOnly"] = readOnly;
+      _json['readOnly'] = readOnly;
     }
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     if (restrictingUser != null) {
-      _json["restrictingUser"] = restrictingUser.toJson();
+      _json['restrictingUser'] = restrictingUser.toJson();
     }
     if (restrictionTime != null) {
-      _json["restrictionTime"] = (restrictionTime).toIso8601String();
+      _json['restrictionTime'] = (restrictionTime).toIso8601String();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4547,17 +4546,17 @@ class DriveBackgroundImageFile {
   DriveBackgroundImageFile();
 
   DriveBackgroundImageFile.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"].toDouble();
+    if (_json.containsKey('width')) {
+      width = _json['width'].toDouble();
     }
-    if (_json.containsKey("xCoordinate")) {
-      xCoordinate = _json["xCoordinate"].toDouble();
+    if (_json.containsKey('xCoordinate')) {
+      xCoordinate = _json['xCoordinate'].toDouble();
     }
-    if (_json.containsKey("yCoordinate")) {
-      yCoordinate = _json["yCoordinate"].toDouble();
+    if (_json.containsKey('yCoordinate')) {
+      yCoordinate = _json['yCoordinate'].toDouble();
     }
   }
 
@@ -4565,16 +4564,16 @@ class DriveBackgroundImageFile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     if (xCoordinate != null) {
-      _json["xCoordinate"] = xCoordinate;
+      _json['xCoordinate'] = xCoordinate;
     }
     if (yCoordinate != null) {
-      _json["yCoordinate"] = yCoordinate;
+      _json['yCoordinate'] = yCoordinate;
     }
     return _json;
   }
@@ -4649,62 +4648,62 @@ class DriveCapabilities {
   DriveCapabilities();
 
   DriveCapabilities.fromJson(core.Map _json) {
-    if (_json.containsKey("canAddChildren")) {
-      canAddChildren = _json["canAddChildren"];
+    if (_json.containsKey('canAddChildren')) {
+      canAddChildren = _json['canAddChildren'];
     }
-    if (_json.containsKey("canChangeCopyRequiresWriterPermissionRestriction")) {
+    if (_json.containsKey('canChangeCopyRequiresWriterPermissionRestriction')) {
       canChangeCopyRequiresWriterPermissionRestriction =
-          _json["canChangeCopyRequiresWriterPermissionRestriction"];
+          _json['canChangeCopyRequiresWriterPermissionRestriction'];
     }
-    if (_json.containsKey("canChangeDomainUsersOnlyRestriction")) {
+    if (_json.containsKey('canChangeDomainUsersOnlyRestriction')) {
       canChangeDomainUsersOnlyRestriction =
-          _json["canChangeDomainUsersOnlyRestriction"];
+          _json['canChangeDomainUsersOnlyRestriction'];
     }
-    if (_json.containsKey("canChangeDriveBackground")) {
-      canChangeDriveBackground = _json["canChangeDriveBackground"];
+    if (_json.containsKey('canChangeDriveBackground')) {
+      canChangeDriveBackground = _json['canChangeDriveBackground'];
     }
-    if (_json.containsKey("canChangeDriveMembersOnlyRestriction")) {
+    if (_json.containsKey('canChangeDriveMembersOnlyRestriction')) {
       canChangeDriveMembersOnlyRestriction =
-          _json["canChangeDriveMembersOnlyRestriction"];
+          _json['canChangeDriveMembersOnlyRestriction'];
     }
-    if (_json.containsKey("canComment")) {
-      canComment = _json["canComment"];
+    if (_json.containsKey('canComment')) {
+      canComment = _json['canComment'];
     }
-    if (_json.containsKey("canCopy")) {
-      canCopy = _json["canCopy"];
+    if (_json.containsKey('canCopy')) {
+      canCopy = _json['canCopy'];
     }
-    if (_json.containsKey("canDeleteChildren")) {
-      canDeleteChildren = _json["canDeleteChildren"];
+    if (_json.containsKey('canDeleteChildren')) {
+      canDeleteChildren = _json['canDeleteChildren'];
     }
-    if (_json.containsKey("canDeleteDrive")) {
-      canDeleteDrive = _json["canDeleteDrive"];
+    if (_json.containsKey('canDeleteDrive')) {
+      canDeleteDrive = _json['canDeleteDrive'];
     }
-    if (_json.containsKey("canDownload")) {
-      canDownload = _json["canDownload"];
+    if (_json.containsKey('canDownload')) {
+      canDownload = _json['canDownload'];
     }
-    if (_json.containsKey("canEdit")) {
-      canEdit = _json["canEdit"];
+    if (_json.containsKey('canEdit')) {
+      canEdit = _json['canEdit'];
     }
-    if (_json.containsKey("canListChildren")) {
-      canListChildren = _json["canListChildren"];
+    if (_json.containsKey('canListChildren')) {
+      canListChildren = _json['canListChildren'];
     }
-    if (_json.containsKey("canManageMembers")) {
-      canManageMembers = _json["canManageMembers"];
+    if (_json.containsKey('canManageMembers')) {
+      canManageMembers = _json['canManageMembers'];
     }
-    if (_json.containsKey("canReadRevisions")) {
-      canReadRevisions = _json["canReadRevisions"];
+    if (_json.containsKey('canReadRevisions')) {
+      canReadRevisions = _json['canReadRevisions'];
     }
-    if (_json.containsKey("canRename")) {
-      canRename = _json["canRename"];
+    if (_json.containsKey('canRename')) {
+      canRename = _json['canRename'];
     }
-    if (_json.containsKey("canRenameDrive")) {
-      canRenameDrive = _json["canRenameDrive"];
+    if (_json.containsKey('canRenameDrive')) {
+      canRenameDrive = _json['canRenameDrive'];
     }
-    if (_json.containsKey("canShare")) {
-      canShare = _json["canShare"];
+    if (_json.containsKey('canShare')) {
+      canShare = _json['canShare'];
     }
-    if (_json.containsKey("canTrashChildren")) {
-      canTrashChildren = _json["canTrashChildren"];
+    if (_json.containsKey('canTrashChildren')) {
+      canTrashChildren = _json['canTrashChildren'];
     }
   }
 
@@ -4712,61 +4711,61 @@ class DriveCapabilities {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (canAddChildren != null) {
-      _json["canAddChildren"] = canAddChildren;
+      _json['canAddChildren'] = canAddChildren;
     }
     if (canChangeCopyRequiresWriterPermissionRestriction != null) {
-      _json["canChangeCopyRequiresWriterPermissionRestriction"] =
+      _json['canChangeCopyRequiresWriterPermissionRestriction'] =
           canChangeCopyRequiresWriterPermissionRestriction;
     }
     if (canChangeDomainUsersOnlyRestriction != null) {
-      _json["canChangeDomainUsersOnlyRestriction"] =
+      _json['canChangeDomainUsersOnlyRestriction'] =
           canChangeDomainUsersOnlyRestriction;
     }
     if (canChangeDriveBackground != null) {
-      _json["canChangeDriveBackground"] = canChangeDriveBackground;
+      _json['canChangeDriveBackground'] = canChangeDriveBackground;
     }
     if (canChangeDriveMembersOnlyRestriction != null) {
-      _json["canChangeDriveMembersOnlyRestriction"] =
+      _json['canChangeDriveMembersOnlyRestriction'] =
           canChangeDriveMembersOnlyRestriction;
     }
     if (canComment != null) {
-      _json["canComment"] = canComment;
+      _json['canComment'] = canComment;
     }
     if (canCopy != null) {
-      _json["canCopy"] = canCopy;
+      _json['canCopy'] = canCopy;
     }
     if (canDeleteChildren != null) {
-      _json["canDeleteChildren"] = canDeleteChildren;
+      _json['canDeleteChildren'] = canDeleteChildren;
     }
     if (canDeleteDrive != null) {
-      _json["canDeleteDrive"] = canDeleteDrive;
+      _json['canDeleteDrive'] = canDeleteDrive;
     }
     if (canDownload != null) {
-      _json["canDownload"] = canDownload;
+      _json['canDownload'] = canDownload;
     }
     if (canEdit != null) {
-      _json["canEdit"] = canEdit;
+      _json['canEdit'] = canEdit;
     }
     if (canListChildren != null) {
-      _json["canListChildren"] = canListChildren;
+      _json['canListChildren'] = canListChildren;
     }
     if (canManageMembers != null) {
-      _json["canManageMembers"] = canManageMembers;
+      _json['canManageMembers'] = canManageMembers;
     }
     if (canReadRevisions != null) {
-      _json["canReadRevisions"] = canReadRevisions;
+      _json['canReadRevisions'] = canReadRevisions;
     }
     if (canRename != null) {
-      _json["canRename"] = canRename;
+      _json['canRename'] = canRename;
     }
     if (canRenameDrive != null) {
-      _json["canRenameDrive"] = canRenameDrive;
+      _json['canRenameDrive'] = canRenameDrive;
     }
     if (canShare != null) {
-      _json["canShare"] = canShare;
+      _json['canShare'] = canShare;
     }
     if (canTrashChildren != null) {
-      _json["canTrashChildren"] = canTrashChildren;
+      _json['canTrashChildren'] = canTrashChildren;
     }
     return _json;
   }
@@ -4798,17 +4797,17 @@ class DriveRestrictions {
   DriveRestrictions();
 
   DriveRestrictions.fromJson(core.Map _json) {
-    if (_json.containsKey("adminManagedRestrictions")) {
-      adminManagedRestrictions = _json["adminManagedRestrictions"];
+    if (_json.containsKey('adminManagedRestrictions')) {
+      adminManagedRestrictions = _json['adminManagedRestrictions'];
     }
-    if (_json.containsKey("copyRequiresWriterPermission")) {
-      copyRequiresWriterPermission = _json["copyRequiresWriterPermission"];
+    if (_json.containsKey('copyRequiresWriterPermission')) {
+      copyRequiresWriterPermission = _json['copyRequiresWriterPermission'];
     }
-    if (_json.containsKey("domainUsersOnly")) {
-      domainUsersOnly = _json["domainUsersOnly"];
+    if (_json.containsKey('domainUsersOnly')) {
+      domainUsersOnly = _json['domainUsersOnly'];
     }
-    if (_json.containsKey("driveMembersOnly")) {
-      driveMembersOnly = _json["driveMembersOnly"];
+    if (_json.containsKey('driveMembersOnly')) {
+      driveMembersOnly = _json['driveMembersOnly'];
     }
   }
 
@@ -4816,16 +4815,16 @@ class DriveRestrictions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adminManagedRestrictions != null) {
-      _json["adminManagedRestrictions"] = adminManagedRestrictions;
+      _json['adminManagedRestrictions'] = adminManagedRestrictions;
     }
     if (copyRequiresWriterPermission != null) {
-      _json["copyRequiresWriterPermission"] = copyRequiresWriterPermission;
+      _json['copyRequiresWriterPermission'] = copyRequiresWriterPermission;
     }
     if (domainUsersOnly != null) {
-      _json["domainUsersOnly"] = domainUsersOnly;
+      _json['domainUsersOnly'] = domainUsersOnly;
     }
     if (driveMembersOnly != null) {
-      _json["driveMembersOnly"] = driveMembersOnly;
+      _json['driveMembersOnly'] = driveMembersOnly;
     }
     return _json;
   }
@@ -4881,39 +4880,39 @@ class Drive {
   Drive();
 
   Drive.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundImageFile")) {
+    if (_json.containsKey('backgroundImageFile')) {
       backgroundImageFile =
-          DriveBackgroundImageFile.fromJson(_json["backgroundImageFile"]);
+          DriveBackgroundImageFile.fromJson(_json['backgroundImageFile']);
     }
-    if (_json.containsKey("backgroundImageLink")) {
-      backgroundImageLink = _json["backgroundImageLink"];
+    if (_json.containsKey('backgroundImageLink')) {
+      backgroundImageLink = _json['backgroundImageLink'];
     }
-    if (_json.containsKey("capabilities")) {
-      capabilities = DriveCapabilities.fromJson(_json["capabilities"]);
+    if (_json.containsKey('capabilities')) {
+      capabilities = DriveCapabilities.fromJson(_json['capabilities']);
     }
-    if (_json.containsKey("colorRgb")) {
-      colorRgb = _json["colorRgb"];
+    if (_json.containsKey('colorRgb')) {
+      colorRgb = _json['colorRgb'];
     }
-    if (_json.containsKey("createdTime")) {
-      createdTime = core.DateTime.parse(_json["createdTime"]);
+    if (_json.containsKey('createdTime')) {
+      createdTime = core.DateTime.parse(_json['createdTime']);
     }
-    if (_json.containsKey("hidden")) {
-      hidden = _json["hidden"];
+    if (_json.containsKey('hidden')) {
+      hidden = _json['hidden'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("restrictions")) {
-      restrictions = DriveRestrictions.fromJson(_json["restrictions"]);
+    if (_json.containsKey('restrictions')) {
+      restrictions = DriveRestrictions.fromJson(_json['restrictions']);
     }
-    if (_json.containsKey("themeId")) {
-      themeId = _json["themeId"];
+    if (_json.containsKey('themeId')) {
+      themeId = _json['themeId'];
     }
   }
 
@@ -4921,37 +4920,37 @@ class Drive {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundImageFile != null) {
-      _json["backgroundImageFile"] = backgroundImageFile.toJson();
+      _json['backgroundImageFile'] = backgroundImageFile.toJson();
     }
     if (backgroundImageLink != null) {
-      _json["backgroundImageLink"] = backgroundImageLink;
+      _json['backgroundImageLink'] = backgroundImageLink;
     }
     if (capabilities != null) {
-      _json["capabilities"] = capabilities.toJson();
+      _json['capabilities'] = capabilities.toJson();
     }
     if (colorRgb != null) {
-      _json["colorRgb"] = colorRgb;
+      _json['colorRgb'] = colorRgb;
     }
     if (createdTime != null) {
-      _json["createdTime"] = (createdTime).toIso8601String();
+      _json['createdTime'] = (createdTime).toIso8601String();
     }
     if (hidden != null) {
-      _json["hidden"] = hidden;
+      _json['hidden'] = hidden;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (restrictions != null) {
-      _json["restrictions"] = restrictions.toJson();
+      _json['restrictions'] = restrictions.toJson();
     }
     if (themeId != null) {
-      _json["themeId"] = themeId;
+      _json['themeId'] = themeId;
     }
     return _json;
   }
@@ -4976,16 +4975,16 @@ class DriveList {
   DriveList();
 
   DriveList.fromJson(core.Map _json) {
-    if (_json.containsKey("drives")) {
-      drives = (_json["drives"] as core.List)
+    if (_json.containsKey('drives')) {
+      drives = (_json['drives'] as core.List)
           .map<Drive>((value) => Drive.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4993,13 +4992,13 @@ class DriveList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (drives != null) {
-      _json["drives"] = drives.map((value) => value.toJson()).toList();
+      _json['drives'] = drives.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -5140,108 +5139,108 @@ class FileCapabilities {
   FileCapabilities();
 
   FileCapabilities.fromJson(core.Map _json) {
-    if (_json.containsKey("canAddChildren")) {
-      canAddChildren = _json["canAddChildren"];
+    if (_json.containsKey('canAddChildren')) {
+      canAddChildren = _json['canAddChildren'];
     }
-    if (_json.containsKey("canAddFolderFromAnotherDrive")) {
-      canAddFolderFromAnotherDrive = _json["canAddFolderFromAnotherDrive"];
+    if (_json.containsKey('canAddFolderFromAnotherDrive')) {
+      canAddFolderFromAnotherDrive = _json['canAddFolderFromAnotherDrive'];
     }
-    if (_json.containsKey("canAddMyDriveParent")) {
-      canAddMyDriveParent = _json["canAddMyDriveParent"];
+    if (_json.containsKey('canAddMyDriveParent')) {
+      canAddMyDriveParent = _json['canAddMyDriveParent'];
     }
-    if (_json.containsKey("canChangeCopyRequiresWriterPermission")) {
+    if (_json.containsKey('canChangeCopyRequiresWriterPermission')) {
       canChangeCopyRequiresWriterPermission =
-          _json["canChangeCopyRequiresWriterPermission"];
+          _json['canChangeCopyRequiresWriterPermission'];
     }
-    if (_json.containsKey("canChangeViewersCanCopyContent")) {
-      canChangeViewersCanCopyContent = _json["canChangeViewersCanCopyContent"];
+    if (_json.containsKey('canChangeViewersCanCopyContent')) {
+      canChangeViewersCanCopyContent = _json['canChangeViewersCanCopyContent'];
     }
-    if (_json.containsKey("canComment")) {
-      canComment = _json["canComment"];
+    if (_json.containsKey('canComment')) {
+      canComment = _json['canComment'];
     }
-    if (_json.containsKey("canCopy")) {
-      canCopy = _json["canCopy"];
+    if (_json.containsKey('canCopy')) {
+      canCopy = _json['canCopy'];
     }
-    if (_json.containsKey("canDelete")) {
-      canDelete = _json["canDelete"];
+    if (_json.containsKey('canDelete')) {
+      canDelete = _json['canDelete'];
     }
-    if (_json.containsKey("canDeleteChildren")) {
-      canDeleteChildren = _json["canDeleteChildren"];
+    if (_json.containsKey('canDeleteChildren')) {
+      canDeleteChildren = _json['canDeleteChildren'];
     }
-    if (_json.containsKey("canDownload")) {
-      canDownload = _json["canDownload"];
+    if (_json.containsKey('canDownload')) {
+      canDownload = _json['canDownload'];
     }
-    if (_json.containsKey("canEdit")) {
-      canEdit = _json["canEdit"];
+    if (_json.containsKey('canEdit')) {
+      canEdit = _json['canEdit'];
     }
-    if (_json.containsKey("canListChildren")) {
-      canListChildren = _json["canListChildren"];
+    if (_json.containsKey('canListChildren')) {
+      canListChildren = _json['canListChildren'];
     }
-    if (_json.containsKey("canModifyContent")) {
-      canModifyContent = _json["canModifyContent"];
+    if (_json.containsKey('canModifyContent')) {
+      canModifyContent = _json['canModifyContent'];
     }
-    if (_json.containsKey("canModifyContentRestriction")) {
-      canModifyContentRestriction = _json["canModifyContentRestriction"];
+    if (_json.containsKey('canModifyContentRestriction')) {
+      canModifyContentRestriction = _json['canModifyContentRestriction'];
     }
-    if (_json.containsKey("canMoveChildrenOutOfDrive")) {
-      canMoveChildrenOutOfDrive = _json["canMoveChildrenOutOfDrive"];
+    if (_json.containsKey('canMoveChildrenOutOfDrive')) {
+      canMoveChildrenOutOfDrive = _json['canMoveChildrenOutOfDrive'];
     }
-    if (_json.containsKey("canMoveChildrenOutOfTeamDrive")) {
-      canMoveChildrenOutOfTeamDrive = _json["canMoveChildrenOutOfTeamDrive"];
+    if (_json.containsKey('canMoveChildrenOutOfTeamDrive')) {
+      canMoveChildrenOutOfTeamDrive = _json['canMoveChildrenOutOfTeamDrive'];
     }
-    if (_json.containsKey("canMoveChildrenWithinDrive")) {
-      canMoveChildrenWithinDrive = _json["canMoveChildrenWithinDrive"];
+    if (_json.containsKey('canMoveChildrenWithinDrive')) {
+      canMoveChildrenWithinDrive = _json['canMoveChildrenWithinDrive'];
     }
-    if (_json.containsKey("canMoveChildrenWithinTeamDrive")) {
-      canMoveChildrenWithinTeamDrive = _json["canMoveChildrenWithinTeamDrive"];
+    if (_json.containsKey('canMoveChildrenWithinTeamDrive')) {
+      canMoveChildrenWithinTeamDrive = _json['canMoveChildrenWithinTeamDrive'];
     }
-    if (_json.containsKey("canMoveItemIntoTeamDrive")) {
-      canMoveItemIntoTeamDrive = _json["canMoveItemIntoTeamDrive"];
+    if (_json.containsKey('canMoveItemIntoTeamDrive')) {
+      canMoveItemIntoTeamDrive = _json['canMoveItemIntoTeamDrive'];
     }
-    if (_json.containsKey("canMoveItemOutOfDrive")) {
-      canMoveItemOutOfDrive = _json["canMoveItemOutOfDrive"];
+    if (_json.containsKey('canMoveItemOutOfDrive')) {
+      canMoveItemOutOfDrive = _json['canMoveItemOutOfDrive'];
     }
-    if (_json.containsKey("canMoveItemOutOfTeamDrive")) {
-      canMoveItemOutOfTeamDrive = _json["canMoveItemOutOfTeamDrive"];
+    if (_json.containsKey('canMoveItemOutOfTeamDrive')) {
+      canMoveItemOutOfTeamDrive = _json['canMoveItemOutOfTeamDrive'];
     }
-    if (_json.containsKey("canMoveItemWithinDrive")) {
-      canMoveItemWithinDrive = _json["canMoveItemWithinDrive"];
+    if (_json.containsKey('canMoveItemWithinDrive')) {
+      canMoveItemWithinDrive = _json['canMoveItemWithinDrive'];
     }
-    if (_json.containsKey("canMoveItemWithinTeamDrive")) {
-      canMoveItemWithinTeamDrive = _json["canMoveItemWithinTeamDrive"];
+    if (_json.containsKey('canMoveItemWithinTeamDrive')) {
+      canMoveItemWithinTeamDrive = _json['canMoveItemWithinTeamDrive'];
     }
-    if (_json.containsKey("canMoveTeamDriveItem")) {
-      canMoveTeamDriveItem = _json["canMoveTeamDriveItem"];
+    if (_json.containsKey('canMoveTeamDriveItem')) {
+      canMoveTeamDriveItem = _json['canMoveTeamDriveItem'];
     }
-    if (_json.containsKey("canReadDrive")) {
-      canReadDrive = _json["canReadDrive"];
+    if (_json.containsKey('canReadDrive')) {
+      canReadDrive = _json['canReadDrive'];
     }
-    if (_json.containsKey("canReadRevisions")) {
-      canReadRevisions = _json["canReadRevisions"];
+    if (_json.containsKey('canReadRevisions')) {
+      canReadRevisions = _json['canReadRevisions'];
     }
-    if (_json.containsKey("canReadTeamDrive")) {
-      canReadTeamDrive = _json["canReadTeamDrive"];
+    if (_json.containsKey('canReadTeamDrive')) {
+      canReadTeamDrive = _json['canReadTeamDrive'];
     }
-    if (_json.containsKey("canRemoveChildren")) {
-      canRemoveChildren = _json["canRemoveChildren"];
+    if (_json.containsKey('canRemoveChildren')) {
+      canRemoveChildren = _json['canRemoveChildren'];
     }
-    if (_json.containsKey("canRemoveMyDriveParent")) {
-      canRemoveMyDriveParent = _json["canRemoveMyDriveParent"];
+    if (_json.containsKey('canRemoveMyDriveParent')) {
+      canRemoveMyDriveParent = _json['canRemoveMyDriveParent'];
     }
-    if (_json.containsKey("canRename")) {
-      canRename = _json["canRename"];
+    if (_json.containsKey('canRename')) {
+      canRename = _json['canRename'];
     }
-    if (_json.containsKey("canShare")) {
-      canShare = _json["canShare"];
+    if (_json.containsKey('canShare')) {
+      canShare = _json['canShare'];
     }
-    if (_json.containsKey("canTrash")) {
-      canTrash = _json["canTrash"];
+    if (_json.containsKey('canTrash')) {
+      canTrash = _json['canTrash'];
     }
-    if (_json.containsKey("canTrashChildren")) {
-      canTrashChildren = _json["canTrashChildren"];
+    if (_json.containsKey('canTrashChildren')) {
+      canTrashChildren = _json['canTrashChildren'];
     }
-    if (_json.containsKey("canUntrash")) {
-      canUntrash = _json["canUntrash"];
+    if (_json.containsKey('canUntrash')) {
+      canUntrash = _json['canUntrash'];
     }
   }
 
@@ -5249,107 +5248,107 @@ class FileCapabilities {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (canAddChildren != null) {
-      _json["canAddChildren"] = canAddChildren;
+      _json['canAddChildren'] = canAddChildren;
     }
     if (canAddFolderFromAnotherDrive != null) {
-      _json["canAddFolderFromAnotherDrive"] = canAddFolderFromAnotherDrive;
+      _json['canAddFolderFromAnotherDrive'] = canAddFolderFromAnotherDrive;
     }
     if (canAddMyDriveParent != null) {
-      _json["canAddMyDriveParent"] = canAddMyDriveParent;
+      _json['canAddMyDriveParent'] = canAddMyDriveParent;
     }
     if (canChangeCopyRequiresWriterPermission != null) {
-      _json["canChangeCopyRequiresWriterPermission"] =
+      _json['canChangeCopyRequiresWriterPermission'] =
           canChangeCopyRequiresWriterPermission;
     }
     if (canChangeViewersCanCopyContent != null) {
-      _json["canChangeViewersCanCopyContent"] = canChangeViewersCanCopyContent;
+      _json['canChangeViewersCanCopyContent'] = canChangeViewersCanCopyContent;
     }
     if (canComment != null) {
-      _json["canComment"] = canComment;
+      _json['canComment'] = canComment;
     }
     if (canCopy != null) {
-      _json["canCopy"] = canCopy;
+      _json['canCopy'] = canCopy;
     }
     if (canDelete != null) {
-      _json["canDelete"] = canDelete;
+      _json['canDelete'] = canDelete;
     }
     if (canDeleteChildren != null) {
-      _json["canDeleteChildren"] = canDeleteChildren;
+      _json['canDeleteChildren'] = canDeleteChildren;
     }
     if (canDownload != null) {
-      _json["canDownload"] = canDownload;
+      _json['canDownload'] = canDownload;
     }
     if (canEdit != null) {
-      _json["canEdit"] = canEdit;
+      _json['canEdit'] = canEdit;
     }
     if (canListChildren != null) {
-      _json["canListChildren"] = canListChildren;
+      _json['canListChildren'] = canListChildren;
     }
     if (canModifyContent != null) {
-      _json["canModifyContent"] = canModifyContent;
+      _json['canModifyContent'] = canModifyContent;
     }
     if (canModifyContentRestriction != null) {
-      _json["canModifyContentRestriction"] = canModifyContentRestriction;
+      _json['canModifyContentRestriction'] = canModifyContentRestriction;
     }
     if (canMoveChildrenOutOfDrive != null) {
-      _json["canMoveChildrenOutOfDrive"] = canMoveChildrenOutOfDrive;
+      _json['canMoveChildrenOutOfDrive'] = canMoveChildrenOutOfDrive;
     }
     if (canMoveChildrenOutOfTeamDrive != null) {
-      _json["canMoveChildrenOutOfTeamDrive"] = canMoveChildrenOutOfTeamDrive;
+      _json['canMoveChildrenOutOfTeamDrive'] = canMoveChildrenOutOfTeamDrive;
     }
     if (canMoveChildrenWithinDrive != null) {
-      _json["canMoveChildrenWithinDrive"] = canMoveChildrenWithinDrive;
+      _json['canMoveChildrenWithinDrive'] = canMoveChildrenWithinDrive;
     }
     if (canMoveChildrenWithinTeamDrive != null) {
-      _json["canMoveChildrenWithinTeamDrive"] = canMoveChildrenWithinTeamDrive;
+      _json['canMoveChildrenWithinTeamDrive'] = canMoveChildrenWithinTeamDrive;
     }
     if (canMoveItemIntoTeamDrive != null) {
-      _json["canMoveItemIntoTeamDrive"] = canMoveItemIntoTeamDrive;
+      _json['canMoveItemIntoTeamDrive'] = canMoveItemIntoTeamDrive;
     }
     if (canMoveItemOutOfDrive != null) {
-      _json["canMoveItemOutOfDrive"] = canMoveItemOutOfDrive;
+      _json['canMoveItemOutOfDrive'] = canMoveItemOutOfDrive;
     }
     if (canMoveItemOutOfTeamDrive != null) {
-      _json["canMoveItemOutOfTeamDrive"] = canMoveItemOutOfTeamDrive;
+      _json['canMoveItemOutOfTeamDrive'] = canMoveItemOutOfTeamDrive;
     }
     if (canMoveItemWithinDrive != null) {
-      _json["canMoveItemWithinDrive"] = canMoveItemWithinDrive;
+      _json['canMoveItemWithinDrive'] = canMoveItemWithinDrive;
     }
     if (canMoveItemWithinTeamDrive != null) {
-      _json["canMoveItemWithinTeamDrive"] = canMoveItemWithinTeamDrive;
+      _json['canMoveItemWithinTeamDrive'] = canMoveItemWithinTeamDrive;
     }
     if (canMoveTeamDriveItem != null) {
-      _json["canMoveTeamDriveItem"] = canMoveTeamDriveItem;
+      _json['canMoveTeamDriveItem'] = canMoveTeamDriveItem;
     }
     if (canReadDrive != null) {
-      _json["canReadDrive"] = canReadDrive;
+      _json['canReadDrive'] = canReadDrive;
     }
     if (canReadRevisions != null) {
-      _json["canReadRevisions"] = canReadRevisions;
+      _json['canReadRevisions'] = canReadRevisions;
     }
     if (canReadTeamDrive != null) {
-      _json["canReadTeamDrive"] = canReadTeamDrive;
+      _json['canReadTeamDrive'] = canReadTeamDrive;
     }
     if (canRemoveChildren != null) {
-      _json["canRemoveChildren"] = canRemoveChildren;
+      _json['canRemoveChildren'] = canRemoveChildren;
     }
     if (canRemoveMyDriveParent != null) {
-      _json["canRemoveMyDriveParent"] = canRemoveMyDriveParent;
+      _json['canRemoveMyDriveParent'] = canRemoveMyDriveParent;
     }
     if (canRename != null) {
-      _json["canRename"] = canRename;
+      _json['canRename'] = canRename;
     }
     if (canShare != null) {
-      _json["canShare"] = canShare;
+      _json['canShare'] = canShare;
     }
     if (canTrash != null) {
-      _json["canTrash"] = canTrash;
+      _json['canTrash'] = canTrash;
     }
     if (canTrashChildren != null) {
-      _json["canTrashChildren"] = canTrashChildren;
+      _json['canTrashChildren'] = canTrashChildren;
     }
     if (canUntrash != null) {
-      _json["canUntrash"] = canUntrash;
+      _json['canUntrash'] = canUntrash;
     }
     return _json;
   }
@@ -5364,7 +5363,7 @@ class FileContentHintsThumbnail {
 
   set imageAsBytes(core.List<core.int> _bytes) {
     image =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The MIME type of the thumbnail.
@@ -5373,11 +5372,11 @@ class FileContentHintsThumbnail {
   FileContentHintsThumbnail();
 
   FileContentHintsThumbnail.fromJson(core.Map _json) {
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
   }
 
@@ -5385,10 +5384,10 @@ class FileContentHintsThumbnail {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     return _json;
   }
@@ -5408,11 +5407,11 @@ class FileContentHints {
   FileContentHints();
 
   FileContentHints.fromJson(core.Map _json) {
-    if (_json.containsKey("indexableText")) {
-      indexableText = _json["indexableText"];
+    if (_json.containsKey('indexableText')) {
+      indexableText = _json['indexableText'];
     }
-    if (_json.containsKey("thumbnail")) {
-      thumbnail = FileContentHintsThumbnail.fromJson(_json["thumbnail"]);
+    if (_json.containsKey('thumbnail')) {
+      thumbnail = FileContentHintsThumbnail.fromJson(_json['thumbnail']);
     }
   }
 
@@ -5420,10 +5419,10 @@ class FileContentHints {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indexableText != null) {
-      _json["indexableText"] = indexableText;
+      _json['indexableText'] = indexableText;
     }
     if (thumbnail != null) {
-      _json["thumbnail"] = thumbnail.toJson();
+      _json['thumbnail'] = thumbnail.toJson();
     }
     return _json;
   }
@@ -5443,14 +5442,14 @@ class FileImageMediaMetadataLocation {
   FileImageMediaMetadataLocation();
 
   FileImageMediaMetadataLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("altitude")) {
-      altitude = _json["altitude"].toDouble();
+    if (_json.containsKey('altitude')) {
+      altitude = _json['altitude'].toDouble();
     }
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
   }
 
@@ -5458,13 +5457,13 @@ class FileImageMediaMetadataLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (altitude != null) {
-      _json["altitude"] = altitude;
+      _json['altitude'] = altitude;
     }
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     return _json;
   }
@@ -5540,68 +5539,68 @@ class FileImageMediaMetadata {
   FileImageMediaMetadata();
 
   FileImageMediaMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("aperture")) {
-      aperture = _json["aperture"].toDouble();
+    if (_json.containsKey('aperture')) {
+      aperture = _json['aperture'].toDouble();
     }
-    if (_json.containsKey("cameraMake")) {
-      cameraMake = _json["cameraMake"];
+    if (_json.containsKey('cameraMake')) {
+      cameraMake = _json['cameraMake'];
     }
-    if (_json.containsKey("cameraModel")) {
-      cameraModel = _json["cameraModel"];
+    if (_json.containsKey('cameraModel')) {
+      cameraModel = _json['cameraModel'];
     }
-    if (_json.containsKey("colorSpace")) {
-      colorSpace = _json["colorSpace"];
+    if (_json.containsKey('colorSpace')) {
+      colorSpace = _json['colorSpace'];
     }
-    if (_json.containsKey("exposureBias")) {
-      exposureBias = _json["exposureBias"].toDouble();
+    if (_json.containsKey('exposureBias')) {
+      exposureBias = _json['exposureBias'].toDouble();
     }
-    if (_json.containsKey("exposureMode")) {
-      exposureMode = _json["exposureMode"];
+    if (_json.containsKey('exposureMode')) {
+      exposureMode = _json['exposureMode'];
     }
-    if (_json.containsKey("exposureTime")) {
-      exposureTime = _json["exposureTime"].toDouble();
+    if (_json.containsKey('exposureTime')) {
+      exposureTime = _json['exposureTime'].toDouble();
     }
-    if (_json.containsKey("flashUsed")) {
-      flashUsed = _json["flashUsed"];
+    if (_json.containsKey('flashUsed')) {
+      flashUsed = _json['flashUsed'];
     }
-    if (_json.containsKey("focalLength")) {
-      focalLength = _json["focalLength"].toDouble();
+    if (_json.containsKey('focalLength')) {
+      focalLength = _json['focalLength'].toDouble();
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("isoSpeed")) {
-      isoSpeed = _json["isoSpeed"];
+    if (_json.containsKey('isoSpeed')) {
+      isoSpeed = _json['isoSpeed'];
     }
-    if (_json.containsKey("lens")) {
-      lens = _json["lens"];
+    if (_json.containsKey('lens')) {
+      lens = _json['lens'];
     }
-    if (_json.containsKey("location")) {
-      location = FileImageMediaMetadataLocation.fromJson(_json["location"]);
+    if (_json.containsKey('location')) {
+      location = FileImageMediaMetadataLocation.fromJson(_json['location']);
     }
-    if (_json.containsKey("maxApertureValue")) {
-      maxApertureValue = _json["maxApertureValue"].toDouble();
+    if (_json.containsKey('maxApertureValue')) {
+      maxApertureValue = _json['maxApertureValue'].toDouble();
     }
-    if (_json.containsKey("meteringMode")) {
-      meteringMode = _json["meteringMode"];
+    if (_json.containsKey('meteringMode')) {
+      meteringMode = _json['meteringMode'];
     }
-    if (_json.containsKey("rotation")) {
-      rotation = _json["rotation"];
+    if (_json.containsKey('rotation')) {
+      rotation = _json['rotation'];
     }
-    if (_json.containsKey("sensor")) {
-      sensor = _json["sensor"];
+    if (_json.containsKey('sensor')) {
+      sensor = _json['sensor'];
     }
-    if (_json.containsKey("subjectDistance")) {
-      subjectDistance = _json["subjectDistance"];
+    if (_json.containsKey('subjectDistance')) {
+      subjectDistance = _json['subjectDistance'];
     }
-    if (_json.containsKey("time")) {
-      time = _json["time"];
+    if (_json.containsKey('time')) {
+      time = _json['time'];
     }
-    if (_json.containsKey("whiteBalance")) {
-      whiteBalance = _json["whiteBalance"];
+    if (_json.containsKey('whiteBalance')) {
+      whiteBalance = _json['whiteBalance'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -5609,67 +5608,67 @@ class FileImageMediaMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (aperture != null) {
-      _json["aperture"] = aperture;
+      _json['aperture'] = aperture;
     }
     if (cameraMake != null) {
-      _json["cameraMake"] = cameraMake;
+      _json['cameraMake'] = cameraMake;
     }
     if (cameraModel != null) {
-      _json["cameraModel"] = cameraModel;
+      _json['cameraModel'] = cameraModel;
     }
     if (colorSpace != null) {
-      _json["colorSpace"] = colorSpace;
+      _json['colorSpace'] = colorSpace;
     }
     if (exposureBias != null) {
-      _json["exposureBias"] = exposureBias;
+      _json['exposureBias'] = exposureBias;
     }
     if (exposureMode != null) {
-      _json["exposureMode"] = exposureMode;
+      _json['exposureMode'] = exposureMode;
     }
     if (exposureTime != null) {
-      _json["exposureTime"] = exposureTime;
+      _json['exposureTime'] = exposureTime;
     }
     if (flashUsed != null) {
-      _json["flashUsed"] = flashUsed;
+      _json['flashUsed'] = flashUsed;
     }
     if (focalLength != null) {
-      _json["focalLength"] = focalLength;
+      _json['focalLength'] = focalLength;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (isoSpeed != null) {
-      _json["isoSpeed"] = isoSpeed;
+      _json['isoSpeed'] = isoSpeed;
     }
     if (lens != null) {
-      _json["lens"] = lens;
+      _json['lens'] = lens;
     }
     if (location != null) {
-      _json["location"] = location.toJson();
+      _json['location'] = location.toJson();
     }
     if (maxApertureValue != null) {
-      _json["maxApertureValue"] = maxApertureValue;
+      _json['maxApertureValue'] = maxApertureValue;
     }
     if (meteringMode != null) {
-      _json["meteringMode"] = meteringMode;
+      _json['meteringMode'] = meteringMode;
     }
     if (rotation != null) {
-      _json["rotation"] = rotation;
+      _json['rotation'] = rotation;
     }
     if (sensor != null) {
-      _json["sensor"] = sensor;
+      _json['sensor'] = sensor;
     }
     if (subjectDistance != null) {
-      _json["subjectDistance"] = subjectDistance;
+      _json['subjectDistance'] = subjectDistance;
     }
     if (time != null) {
-      _json["time"] = time;
+      _json['time'] = time;
     }
     if (whiteBalance != null) {
-      _json["whiteBalance"] = whiteBalance;
+      _json['whiteBalance'] = whiteBalance;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -5689,11 +5688,11 @@ class FileShortcutDetails {
   FileShortcutDetails();
 
   FileShortcutDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("targetId")) {
-      targetId = _json["targetId"];
+    if (_json.containsKey('targetId')) {
+      targetId = _json['targetId'];
     }
-    if (_json.containsKey("targetMimeType")) {
-      targetMimeType = _json["targetMimeType"];
+    if (_json.containsKey('targetMimeType')) {
+      targetMimeType = _json['targetMimeType'];
     }
   }
 
@@ -5701,10 +5700,10 @@ class FileShortcutDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (targetId != null) {
-      _json["targetId"] = targetId;
+      _json['targetId'] = targetId;
     }
     if (targetMimeType != null) {
-      _json["targetMimeType"] = targetMimeType;
+      _json['targetMimeType'] = targetMimeType;
     }
     return _json;
   }
@@ -5725,14 +5724,14 @@ class FileVideoMediaMetadata {
   FileVideoMediaMetadata();
 
   FileVideoMediaMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("durationMillis")) {
-      durationMillis = _json["durationMillis"];
+    if (_json.containsKey('durationMillis')) {
+      durationMillis = _json['durationMillis'];
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -5740,13 +5739,13 @@ class FileVideoMediaMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (durationMillis != null) {
-      _json["durationMillis"] = durationMillis;
+      _json['durationMillis'] = durationMillis;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -5992,188 +5991,188 @@ class File {
   File();
 
   File.fromJson(core.Map _json) {
-    if (_json.containsKey("appProperties")) {
+    if (_json.containsKey('appProperties')) {
       appProperties =
-          (_json["appProperties"] as core.Map).cast<core.String, core.String>();
+          (_json['appProperties'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("capabilities")) {
-      capabilities = FileCapabilities.fromJson(_json["capabilities"]);
+    if (_json.containsKey('capabilities')) {
+      capabilities = FileCapabilities.fromJson(_json['capabilities']);
     }
-    if (_json.containsKey("contentHints")) {
-      contentHints = FileContentHints.fromJson(_json["contentHints"]);
+    if (_json.containsKey('contentHints')) {
+      contentHints = FileContentHints.fromJson(_json['contentHints']);
     }
-    if (_json.containsKey("contentRestrictions")) {
-      contentRestrictions = (_json["contentRestrictions"] as core.List)
+    if (_json.containsKey('contentRestrictions')) {
+      contentRestrictions = (_json['contentRestrictions'] as core.List)
           .map<ContentRestriction>(
               (value) => ContentRestriction.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("copyRequiresWriterPermission")) {
-      copyRequiresWriterPermission = _json["copyRequiresWriterPermission"];
+    if (_json.containsKey('copyRequiresWriterPermission')) {
+      copyRequiresWriterPermission = _json['copyRequiresWriterPermission'];
     }
-    if (_json.containsKey("createdTime")) {
-      createdTime = core.DateTime.parse(_json["createdTime"]);
+    if (_json.containsKey('createdTime')) {
+      createdTime = core.DateTime.parse(_json['createdTime']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("driveId")) {
-      driveId = _json["driveId"];
+    if (_json.containsKey('driveId')) {
+      driveId = _json['driveId'];
     }
-    if (_json.containsKey("explicitlyTrashed")) {
-      explicitlyTrashed = _json["explicitlyTrashed"];
+    if (_json.containsKey('explicitlyTrashed')) {
+      explicitlyTrashed = _json['explicitlyTrashed'];
     }
-    if (_json.containsKey("exportLinks")) {
+    if (_json.containsKey('exportLinks')) {
       exportLinks =
-          (_json["exportLinks"] as core.Map).cast<core.String, core.String>();
+          (_json['exportLinks'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("fileExtension")) {
-      fileExtension = _json["fileExtension"];
+    if (_json.containsKey('fileExtension')) {
+      fileExtension = _json['fileExtension'];
     }
-    if (_json.containsKey("folderColorRgb")) {
-      folderColorRgb = _json["folderColorRgb"];
+    if (_json.containsKey('folderColorRgb')) {
+      folderColorRgb = _json['folderColorRgb'];
     }
-    if (_json.containsKey("fullFileExtension")) {
-      fullFileExtension = _json["fullFileExtension"];
+    if (_json.containsKey('fullFileExtension')) {
+      fullFileExtension = _json['fullFileExtension'];
     }
-    if (_json.containsKey("hasAugmentedPermissions")) {
-      hasAugmentedPermissions = _json["hasAugmentedPermissions"];
+    if (_json.containsKey('hasAugmentedPermissions')) {
+      hasAugmentedPermissions = _json['hasAugmentedPermissions'];
     }
-    if (_json.containsKey("hasThumbnail")) {
-      hasThumbnail = _json["hasThumbnail"];
+    if (_json.containsKey('hasThumbnail')) {
+      hasThumbnail = _json['hasThumbnail'];
     }
-    if (_json.containsKey("headRevisionId")) {
-      headRevisionId = _json["headRevisionId"];
+    if (_json.containsKey('headRevisionId')) {
+      headRevisionId = _json['headRevisionId'];
     }
-    if (_json.containsKey("iconLink")) {
-      iconLink = _json["iconLink"];
+    if (_json.containsKey('iconLink')) {
+      iconLink = _json['iconLink'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("imageMediaMetadata")) {
+    if (_json.containsKey('imageMediaMetadata')) {
       imageMediaMetadata =
-          FileImageMediaMetadata.fromJson(_json["imageMediaMetadata"]);
+          FileImageMediaMetadata.fromJson(_json['imageMediaMetadata']);
     }
-    if (_json.containsKey("isAppAuthorized")) {
-      isAppAuthorized = _json["isAppAuthorized"];
+    if (_json.containsKey('isAppAuthorized')) {
+      isAppAuthorized = _json['isAppAuthorized'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastModifyingUser")) {
-      lastModifyingUser = User.fromJson(_json["lastModifyingUser"]);
+    if (_json.containsKey('lastModifyingUser')) {
+      lastModifyingUser = User.fromJson(_json['lastModifyingUser']);
     }
-    if (_json.containsKey("md5Checksum")) {
-      md5Checksum = _json["md5Checksum"];
+    if (_json.containsKey('md5Checksum')) {
+      md5Checksum = _json['md5Checksum'];
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("modifiedByMe")) {
-      modifiedByMe = _json["modifiedByMe"];
+    if (_json.containsKey('modifiedByMe')) {
+      modifiedByMe = _json['modifiedByMe'];
     }
-    if (_json.containsKey("modifiedByMeTime")) {
-      modifiedByMeTime = core.DateTime.parse(_json["modifiedByMeTime"]);
+    if (_json.containsKey('modifiedByMeTime')) {
+      modifiedByMeTime = core.DateTime.parse(_json['modifiedByMeTime']);
     }
-    if (_json.containsKey("modifiedTime")) {
-      modifiedTime = core.DateTime.parse(_json["modifiedTime"]);
+    if (_json.containsKey('modifiedTime')) {
+      modifiedTime = core.DateTime.parse(_json['modifiedTime']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("originalFilename")) {
-      originalFilename = _json["originalFilename"];
+    if (_json.containsKey('originalFilename')) {
+      originalFilename = _json['originalFilename'];
     }
-    if (_json.containsKey("ownedByMe")) {
-      ownedByMe = _json["ownedByMe"];
+    if (_json.containsKey('ownedByMe')) {
+      ownedByMe = _json['ownedByMe'];
     }
-    if (_json.containsKey("owners")) {
-      owners = (_json["owners"] as core.List)
+    if (_json.containsKey('owners')) {
+      owners = (_json['owners'] as core.List)
           .map<User>((value) => User.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parents")) {
-      parents = (_json["parents"] as core.List).cast<core.String>();
+    if (_json.containsKey('parents')) {
+      parents = (_json['parents'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("permissionIds")) {
-      permissionIds = (_json["permissionIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissionIds')) {
+      permissionIds = (_json['permissionIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List)
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List)
           .map<Permission>((value) => Permission.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("properties")) {
+    if (_json.containsKey('properties')) {
       properties =
-          (_json["properties"] as core.Map).cast<core.String, core.String>();
+          (_json['properties'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("quotaBytesUsed")) {
-      quotaBytesUsed = _json["quotaBytesUsed"];
+    if (_json.containsKey('quotaBytesUsed')) {
+      quotaBytesUsed = _json['quotaBytesUsed'];
     }
-    if (_json.containsKey("shared")) {
-      shared = _json["shared"];
+    if (_json.containsKey('shared')) {
+      shared = _json['shared'];
     }
-    if (_json.containsKey("sharedWithMeTime")) {
-      sharedWithMeTime = core.DateTime.parse(_json["sharedWithMeTime"]);
+    if (_json.containsKey('sharedWithMeTime')) {
+      sharedWithMeTime = core.DateTime.parse(_json['sharedWithMeTime']);
     }
-    if (_json.containsKey("sharingUser")) {
-      sharingUser = User.fromJson(_json["sharingUser"]);
+    if (_json.containsKey('sharingUser')) {
+      sharingUser = User.fromJson(_json['sharingUser']);
     }
-    if (_json.containsKey("shortcutDetails")) {
-      shortcutDetails = FileShortcutDetails.fromJson(_json["shortcutDetails"]);
+    if (_json.containsKey('shortcutDetails')) {
+      shortcutDetails = FileShortcutDetails.fromJson(_json['shortcutDetails']);
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
-    if (_json.containsKey("spaces")) {
-      spaces = (_json["spaces"] as core.List).cast<core.String>();
+    if (_json.containsKey('spaces')) {
+      spaces = (_json['spaces'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("starred")) {
-      starred = _json["starred"];
+    if (_json.containsKey('starred')) {
+      starred = _json['starred'];
     }
-    if (_json.containsKey("teamDriveId")) {
-      teamDriveId = _json["teamDriveId"];
+    if (_json.containsKey('teamDriveId')) {
+      teamDriveId = _json['teamDriveId'];
     }
-    if (_json.containsKey("thumbnailLink")) {
-      thumbnailLink = _json["thumbnailLink"];
+    if (_json.containsKey('thumbnailLink')) {
+      thumbnailLink = _json['thumbnailLink'];
     }
-    if (_json.containsKey("thumbnailVersion")) {
-      thumbnailVersion = _json["thumbnailVersion"];
+    if (_json.containsKey('thumbnailVersion')) {
+      thumbnailVersion = _json['thumbnailVersion'];
     }
-    if (_json.containsKey("trashed")) {
-      trashed = _json["trashed"];
+    if (_json.containsKey('trashed')) {
+      trashed = _json['trashed'];
     }
-    if (_json.containsKey("trashedTime")) {
-      trashedTime = core.DateTime.parse(_json["trashedTime"]);
+    if (_json.containsKey('trashedTime')) {
+      trashedTime = core.DateTime.parse(_json['trashedTime']);
     }
-    if (_json.containsKey("trashingUser")) {
-      trashingUser = User.fromJson(_json["trashingUser"]);
+    if (_json.containsKey('trashingUser')) {
+      trashingUser = User.fromJson(_json['trashingUser']);
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
-    if (_json.containsKey("videoMediaMetadata")) {
+    if (_json.containsKey('videoMediaMetadata')) {
       videoMediaMetadata =
-          FileVideoMediaMetadata.fromJson(_json["videoMediaMetadata"]);
+          FileVideoMediaMetadata.fromJson(_json['videoMediaMetadata']);
     }
-    if (_json.containsKey("viewedByMe")) {
-      viewedByMe = _json["viewedByMe"];
+    if (_json.containsKey('viewedByMe')) {
+      viewedByMe = _json['viewedByMe'];
     }
-    if (_json.containsKey("viewedByMeTime")) {
-      viewedByMeTime = core.DateTime.parse(_json["viewedByMeTime"]);
+    if (_json.containsKey('viewedByMeTime')) {
+      viewedByMeTime = core.DateTime.parse(_json['viewedByMeTime']);
     }
-    if (_json.containsKey("viewersCanCopyContent")) {
-      viewersCanCopyContent = _json["viewersCanCopyContent"];
+    if (_json.containsKey('viewersCanCopyContent')) {
+      viewersCanCopyContent = _json['viewersCanCopyContent'];
     }
-    if (_json.containsKey("webContentLink")) {
-      webContentLink = _json["webContentLink"];
+    if (_json.containsKey('webContentLink')) {
+      webContentLink = _json['webContentLink'];
     }
-    if (_json.containsKey("webViewLink")) {
-      webViewLink = _json["webViewLink"];
+    if (_json.containsKey('webViewLink')) {
+      webViewLink = _json['webViewLink'];
     }
-    if (_json.containsKey("writersCanShare")) {
-      writersCanShare = _json["writersCanShare"];
+    if (_json.containsKey('writersCanShare')) {
+      writersCanShare = _json['writersCanShare'];
     }
   }
 
@@ -6181,177 +6180,177 @@ class File {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appProperties != null) {
-      _json["appProperties"] = appProperties;
+      _json['appProperties'] = appProperties;
     }
     if (capabilities != null) {
-      _json["capabilities"] = capabilities.toJson();
+      _json['capabilities'] = capabilities.toJson();
     }
     if (contentHints != null) {
-      _json["contentHints"] = contentHints.toJson();
+      _json['contentHints'] = contentHints.toJson();
     }
     if (contentRestrictions != null) {
-      _json["contentRestrictions"] =
+      _json['contentRestrictions'] =
           contentRestrictions.map((value) => value.toJson()).toList();
     }
     if (copyRequiresWriterPermission != null) {
-      _json["copyRequiresWriterPermission"] = copyRequiresWriterPermission;
+      _json['copyRequiresWriterPermission'] = copyRequiresWriterPermission;
     }
     if (createdTime != null) {
-      _json["createdTime"] = (createdTime).toIso8601String();
+      _json['createdTime'] = (createdTime).toIso8601String();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (driveId != null) {
-      _json["driveId"] = driveId;
+      _json['driveId'] = driveId;
     }
     if (explicitlyTrashed != null) {
-      _json["explicitlyTrashed"] = explicitlyTrashed;
+      _json['explicitlyTrashed'] = explicitlyTrashed;
     }
     if (exportLinks != null) {
-      _json["exportLinks"] = exportLinks;
+      _json['exportLinks'] = exportLinks;
     }
     if (fileExtension != null) {
-      _json["fileExtension"] = fileExtension;
+      _json['fileExtension'] = fileExtension;
     }
     if (folderColorRgb != null) {
-      _json["folderColorRgb"] = folderColorRgb;
+      _json['folderColorRgb'] = folderColorRgb;
     }
     if (fullFileExtension != null) {
-      _json["fullFileExtension"] = fullFileExtension;
+      _json['fullFileExtension'] = fullFileExtension;
     }
     if (hasAugmentedPermissions != null) {
-      _json["hasAugmentedPermissions"] = hasAugmentedPermissions;
+      _json['hasAugmentedPermissions'] = hasAugmentedPermissions;
     }
     if (hasThumbnail != null) {
-      _json["hasThumbnail"] = hasThumbnail;
+      _json['hasThumbnail'] = hasThumbnail;
     }
     if (headRevisionId != null) {
-      _json["headRevisionId"] = headRevisionId;
+      _json['headRevisionId'] = headRevisionId;
     }
     if (iconLink != null) {
-      _json["iconLink"] = iconLink;
+      _json['iconLink'] = iconLink;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (imageMediaMetadata != null) {
-      _json["imageMediaMetadata"] = imageMediaMetadata.toJson();
+      _json['imageMediaMetadata'] = imageMediaMetadata.toJson();
     }
     if (isAppAuthorized != null) {
-      _json["isAppAuthorized"] = isAppAuthorized;
+      _json['isAppAuthorized'] = isAppAuthorized;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastModifyingUser != null) {
-      _json["lastModifyingUser"] = lastModifyingUser.toJson();
+      _json['lastModifyingUser'] = lastModifyingUser.toJson();
     }
     if (md5Checksum != null) {
-      _json["md5Checksum"] = md5Checksum;
+      _json['md5Checksum'] = md5Checksum;
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (modifiedByMe != null) {
-      _json["modifiedByMe"] = modifiedByMe;
+      _json['modifiedByMe'] = modifiedByMe;
     }
     if (modifiedByMeTime != null) {
-      _json["modifiedByMeTime"] = (modifiedByMeTime).toIso8601String();
+      _json['modifiedByMeTime'] = (modifiedByMeTime).toIso8601String();
     }
     if (modifiedTime != null) {
-      _json["modifiedTime"] = (modifiedTime).toIso8601String();
+      _json['modifiedTime'] = (modifiedTime).toIso8601String();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (originalFilename != null) {
-      _json["originalFilename"] = originalFilename;
+      _json['originalFilename'] = originalFilename;
     }
     if (ownedByMe != null) {
-      _json["ownedByMe"] = ownedByMe;
+      _json['ownedByMe'] = ownedByMe;
     }
     if (owners != null) {
-      _json["owners"] = owners.map((value) => value.toJson()).toList();
+      _json['owners'] = owners.map((value) => value.toJson()).toList();
     }
     if (parents != null) {
-      _json["parents"] = parents;
+      _json['parents'] = parents;
     }
     if (permissionIds != null) {
-      _json["permissionIds"] = permissionIds;
+      _json['permissionIds'] = permissionIds;
     }
     if (permissions != null) {
-      _json["permissions"] =
+      _json['permissions'] =
           permissions.map((value) => value.toJson()).toList();
     }
     if (properties != null) {
-      _json["properties"] = properties;
+      _json['properties'] = properties;
     }
     if (quotaBytesUsed != null) {
-      _json["quotaBytesUsed"] = quotaBytesUsed;
+      _json['quotaBytesUsed'] = quotaBytesUsed;
     }
     if (shared != null) {
-      _json["shared"] = shared;
+      _json['shared'] = shared;
     }
     if (sharedWithMeTime != null) {
-      _json["sharedWithMeTime"] = (sharedWithMeTime).toIso8601String();
+      _json['sharedWithMeTime'] = (sharedWithMeTime).toIso8601String();
     }
     if (sharingUser != null) {
-      _json["sharingUser"] = sharingUser.toJson();
+      _json['sharingUser'] = sharingUser.toJson();
     }
     if (shortcutDetails != null) {
-      _json["shortcutDetails"] = shortcutDetails.toJson();
+      _json['shortcutDetails'] = shortcutDetails.toJson();
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     if (spaces != null) {
-      _json["spaces"] = spaces;
+      _json['spaces'] = spaces;
     }
     if (starred != null) {
-      _json["starred"] = starred;
+      _json['starred'] = starred;
     }
     if (teamDriveId != null) {
-      _json["teamDriveId"] = teamDriveId;
+      _json['teamDriveId'] = teamDriveId;
     }
     if (thumbnailLink != null) {
-      _json["thumbnailLink"] = thumbnailLink;
+      _json['thumbnailLink'] = thumbnailLink;
     }
     if (thumbnailVersion != null) {
-      _json["thumbnailVersion"] = thumbnailVersion;
+      _json['thumbnailVersion'] = thumbnailVersion;
     }
     if (trashed != null) {
-      _json["trashed"] = trashed;
+      _json['trashed'] = trashed;
     }
     if (trashedTime != null) {
-      _json["trashedTime"] = (trashedTime).toIso8601String();
+      _json['trashedTime'] = (trashedTime).toIso8601String();
     }
     if (trashingUser != null) {
-      _json["trashingUser"] = trashingUser.toJson();
+      _json['trashingUser'] = trashingUser.toJson();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     if (videoMediaMetadata != null) {
-      _json["videoMediaMetadata"] = videoMediaMetadata.toJson();
+      _json['videoMediaMetadata'] = videoMediaMetadata.toJson();
     }
     if (viewedByMe != null) {
-      _json["viewedByMe"] = viewedByMe;
+      _json['viewedByMe'] = viewedByMe;
     }
     if (viewedByMeTime != null) {
-      _json["viewedByMeTime"] = (viewedByMeTime).toIso8601String();
+      _json['viewedByMeTime'] = (viewedByMeTime).toIso8601String();
     }
     if (viewersCanCopyContent != null) {
-      _json["viewersCanCopyContent"] = viewersCanCopyContent;
+      _json['viewersCanCopyContent'] = viewersCanCopyContent;
     }
     if (webContentLink != null) {
-      _json["webContentLink"] = webContentLink;
+      _json['webContentLink'] = webContentLink;
     }
     if (webViewLink != null) {
-      _json["webViewLink"] = webViewLink;
+      _json['webViewLink'] = webViewLink;
     }
     if (writersCanShare != null) {
-      _json["writersCanShare"] = writersCanShare;
+      _json['writersCanShare'] = writersCanShare;
     }
     return _json;
   }
@@ -6384,19 +6383,19 @@ class FileList {
   FileList();
 
   FileList.fromJson(core.Map _json) {
-    if (_json.containsKey("files")) {
-      files = (_json["files"] as core.List)
+    if (_json.containsKey('files')) {
+      files = (_json['files'] as core.List)
           .map<File>((value) => File.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("incompleteSearch")) {
-      incompleteSearch = _json["incompleteSearch"];
+    if (_json.containsKey('incompleteSearch')) {
+      incompleteSearch = _json['incompleteSearch'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6404,16 +6403,16 @@ class FileList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (files != null) {
-      _json["files"] = files.map((value) => value.toJson()).toList();
+      _json['files'] = files.map((value) => value.toJson()).toList();
     }
     if (incompleteSearch != null) {
-      _json["incompleteSearch"] = incompleteSearch;
+      _json['incompleteSearch'] = incompleteSearch;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6434,14 +6433,14 @@ class GeneratedIds {
   GeneratedIds();
 
   GeneratedIds.fromJson(core.Map _json) {
-    if (_json.containsKey("ids")) {
-      ids = (_json["ids"] as core.List).cast<core.String>();
+    if (_json.containsKey('ids')) {
+      ids = (_json['ids'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("space")) {
-      space = _json["space"];
+    if (_json.containsKey('space')) {
+      space = _json['space'];
     }
   }
 
@@ -6449,13 +6448,13 @@ class GeneratedIds {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ids != null) {
-      _json["ids"] = ids;
+      _json['ids'] = ids;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (space != null) {
-      _json["space"] = space;
+      _json['space'] = space;
     }
     return _json;
   }
@@ -6488,17 +6487,17 @@ class PermissionPermissionDetails {
   PermissionPermissionDetails();
 
   PermissionPermissionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("inherited")) {
-      inherited = _json["inherited"];
+    if (_json.containsKey('inherited')) {
+      inherited = _json['inherited'];
     }
-    if (_json.containsKey("inheritedFrom")) {
-      inheritedFrom = _json["inheritedFrom"];
+    if (_json.containsKey('inheritedFrom')) {
+      inheritedFrom = _json['inheritedFrom'];
     }
-    if (_json.containsKey("permissionType")) {
-      permissionType = _json["permissionType"];
+    if (_json.containsKey('permissionType')) {
+      permissionType = _json['permissionType'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -6506,16 +6505,16 @@ class PermissionPermissionDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inherited != null) {
-      _json["inherited"] = inherited;
+      _json['inherited'] = inherited;
     }
     if (inheritedFrom != null) {
-      _json["inheritedFrom"] = inheritedFrom;
+      _json['inheritedFrom'] = inheritedFrom;
     }
     if (permissionType != null) {
-      _json["permissionType"] = permissionType;
+      _json['permissionType'] = permissionType;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -6537,17 +6536,17 @@ class PermissionTeamDrivePermissionDetails {
   PermissionTeamDrivePermissionDetails();
 
   PermissionTeamDrivePermissionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("inherited")) {
-      inherited = _json["inherited"];
+    if (_json.containsKey('inherited')) {
+      inherited = _json['inherited'];
     }
-    if (_json.containsKey("inheritedFrom")) {
-      inheritedFrom = _json["inheritedFrom"];
+    if (_json.containsKey('inheritedFrom')) {
+      inheritedFrom = _json['inheritedFrom'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
-    if (_json.containsKey("teamDrivePermissionType")) {
-      teamDrivePermissionType = _json["teamDrivePermissionType"];
+    if (_json.containsKey('teamDrivePermissionType')) {
+      teamDrivePermissionType = _json['teamDrivePermissionType'];
     }
   }
 
@@ -6555,16 +6554,16 @@ class PermissionTeamDrivePermissionDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inherited != null) {
-      _json["inherited"] = inherited;
+      _json['inherited'] = inherited;
     }
     if (inheritedFrom != null) {
-      _json["inheritedFrom"] = inheritedFrom;
+      _json['inheritedFrom'] = inheritedFrom;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     if (teamDrivePermissionType != null) {
-      _json["teamDrivePermissionType"] = teamDrivePermissionType;
+      _json['teamDrivePermissionType'] = teamDrivePermissionType;
     }
     return _json;
   }
@@ -6650,54 +6649,54 @@ class Permission {
   Permission();
 
   Permission.fromJson(core.Map _json) {
-    if (_json.containsKey("allowFileDiscovery")) {
-      allowFileDiscovery = _json["allowFileDiscovery"];
+    if (_json.containsKey('allowFileDiscovery')) {
+      allowFileDiscovery = _json['allowFileDiscovery'];
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("domain")) {
-      domain = _json["domain"];
+    if (_json.containsKey('domain')) {
+      domain = _json['domain'];
     }
-    if (_json.containsKey("emailAddress")) {
-      emailAddress = _json["emailAddress"];
+    if (_json.containsKey('emailAddress')) {
+      emailAddress = _json['emailAddress'];
     }
-    if (_json.containsKey("expirationTime")) {
-      expirationTime = core.DateTime.parse(_json["expirationTime"]);
+    if (_json.containsKey('expirationTime')) {
+      expirationTime = core.DateTime.parse(_json['expirationTime']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("permissionDetails")) {
-      permissionDetails = (_json["permissionDetails"] as core.List)
+    if (_json.containsKey('permissionDetails')) {
+      permissionDetails = (_json['permissionDetails'] as core.List)
           .map<PermissionPermissionDetails>(
               (value) => PermissionPermissionDetails.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("photoLink")) {
-      photoLink = _json["photoLink"];
+    if (_json.containsKey('photoLink')) {
+      photoLink = _json['photoLink'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
-    if (_json.containsKey("teamDrivePermissionDetails")) {
-      teamDrivePermissionDetails = (_json["teamDrivePermissionDetails"]
+    if (_json.containsKey('teamDrivePermissionDetails')) {
+      teamDrivePermissionDetails = (_json['teamDrivePermissionDetails']
               as core.List)
           .map<PermissionTeamDrivePermissionDetails>(
               (value) => PermissionTeamDrivePermissionDetails.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("view")) {
-      view = _json["view"];
+    if (_json.containsKey('view')) {
+      view = _json['view'];
     }
   }
 
@@ -6705,48 +6704,48 @@ class Permission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowFileDiscovery != null) {
-      _json["allowFileDiscovery"] = allowFileDiscovery;
+      _json['allowFileDiscovery'] = allowFileDiscovery;
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (domain != null) {
-      _json["domain"] = domain;
+      _json['domain'] = domain;
     }
     if (emailAddress != null) {
-      _json["emailAddress"] = emailAddress;
+      _json['emailAddress'] = emailAddress;
     }
     if (expirationTime != null) {
-      _json["expirationTime"] = (expirationTime).toIso8601String();
+      _json['expirationTime'] = (expirationTime).toIso8601String();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (permissionDetails != null) {
-      _json["permissionDetails"] =
+      _json['permissionDetails'] =
           permissionDetails.map((value) => value.toJson()).toList();
     }
     if (photoLink != null) {
-      _json["photoLink"] = photoLink;
+      _json['photoLink'] = photoLink;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     if (teamDrivePermissionDetails != null) {
-      _json["teamDrivePermissionDetails"] =
+      _json['teamDrivePermissionDetails'] =
           teamDrivePermissionDetails.map((value) => value.toJson()).toList();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (view != null) {
-      _json["view"] = view;
+      _json['view'] = view;
     }
     return _json;
   }
@@ -6771,14 +6770,14 @@ class PermissionList {
   PermissionList();
 
   PermissionList.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List)
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List)
           .map<Permission>((value) => Permission.fromJson(value))
           .toList();
     }
@@ -6788,13 +6787,13 @@ class PermissionList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (permissions != null) {
-      _json["permissions"] =
+      _json['permissions'] =
           permissions.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6839,32 +6838,32 @@ class Reply {
   Reply();
 
   Reply.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
+    if (_json.containsKey('action')) {
+      action = _json['action'];
     }
-    if (_json.containsKey("author")) {
-      author = User.fromJson(_json["author"]);
+    if (_json.containsKey('author')) {
+      author = User.fromJson(_json['author']);
     }
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("createdTime")) {
-      createdTime = core.DateTime.parse(_json["createdTime"]);
+    if (_json.containsKey('createdTime')) {
+      createdTime = core.DateTime.parse(_json['createdTime']);
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("htmlContent")) {
-      htmlContent = _json["htmlContent"];
+    if (_json.containsKey('htmlContent')) {
+      htmlContent = _json['htmlContent'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("modifiedTime")) {
-      modifiedTime = core.DateTime.parse(_json["modifiedTime"]);
+    if (_json.containsKey('modifiedTime')) {
+      modifiedTime = core.DateTime.parse(_json['modifiedTime']);
     }
   }
 
@@ -6872,31 +6871,31 @@ class Reply {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (action != null) {
-      _json["action"] = action;
+      _json['action'] = action;
     }
     if (author != null) {
-      _json["author"] = author.toJson();
+      _json['author'] = author.toJson();
     }
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (createdTime != null) {
-      _json["createdTime"] = (createdTime).toIso8601String();
+      _json['createdTime'] = (createdTime).toIso8601String();
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (htmlContent != null) {
-      _json["htmlContent"] = htmlContent;
+      _json['htmlContent'] = htmlContent;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (modifiedTime != null) {
-      _json["modifiedTime"] = (modifiedTime).toIso8601String();
+      _json['modifiedTime'] = (modifiedTime).toIso8601String();
     }
     return _json;
   }
@@ -6921,14 +6920,14 @@ class ReplyList {
   ReplyList();
 
   ReplyList.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("replies")) {
-      replies = (_json["replies"] as core.List)
+    if (_json.containsKey('replies')) {
+      replies = (_json['replies'] as core.List)
           .map<Reply>((value) => Reply.fromJson(value))
           .toList();
     }
@@ -6938,13 +6937,13 @@ class ReplyList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (replies != null) {
-      _json["replies"] = replies.map((value) => value.toJson()).toList();
+      _json['replies'] = replies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7008,48 +7007,48 @@ class Revision {
   Revision();
 
   Revision.fromJson(core.Map _json) {
-    if (_json.containsKey("exportLinks")) {
+    if (_json.containsKey('exportLinks')) {
       exportLinks =
-          (_json["exportLinks"] as core.Map).cast<core.String, core.String>();
+          (_json['exportLinks'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("keepForever")) {
-      keepForever = _json["keepForever"];
+    if (_json.containsKey('keepForever')) {
+      keepForever = _json['keepForever'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastModifyingUser")) {
-      lastModifyingUser = User.fromJson(_json["lastModifyingUser"]);
+    if (_json.containsKey('lastModifyingUser')) {
+      lastModifyingUser = User.fromJson(_json['lastModifyingUser']);
     }
-    if (_json.containsKey("md5Checksum")) {
-      md5Checksum = _json["md5Checksum"];
+    if (_json.containsKey('md5Checksum')) {
+      md5Checksum = _json['md5Checksum'];
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("modifiedTime")) {
-      modifiedTime = core.DateTime.parse(_json["modifiedTime"]);
+    if (_json.containsKey('modifiedTime')) {
+      modifiedTime = core.DateTime.parse(_json['modifiedTime']);
     }
-    if (_json.containsKey("originalFilename")) {
-      originalFilename = _json["originalFilename"];
+    if (_json.containsKey('originalFilename')) {
+      originalFilename = _json['originalFilename'];
     }
-    if (_json.containsKey("publishAuto")) {
-      publishAuto = _json["publishAuto"];
+    if (_json.containsKey('publishAuto')) {
+      publishAuto = _json['publishAuto'];
     }
-    if (_json.containsKey("published")) {
-      published = _json["published"];
+    if (_json.containsKey('published')) {
+      published = _json['published'];
     }
-    if (_json.containsKey("publishedLink")) {
-      publishedLink = _json["publishedLink"];
+    if (_json.containsKey('publishedLink')) {
+      publishedLink = _json['publishedLink'];
     }
-    if (_json.containsKey("publishedOutsideDomain")) {
-      publishedOutsideDomain = _json["publishedOutsideDomain"];
+    if (_json.containsKey('publishedOutsideDomain')) {
+      publishedOutsideDomain = _json['publishedOutsideDomain'];
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
   }
 
@@ -7057,46 +7056,46 @@ class Revision {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exportLinks != null) {
-      _json["exportLinks"] = exportLinks;
+      _json['exportLinks'] = exportLinks;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (keepForever != null) {
-      _json["keepForever"] = keepForever;
+      _json['keepForever'] = keepForever;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastModifyingUser != null) {
-      _json["lastModifyingUser"] = lastModifyingUser.toJson();
+      _json['lastModifyingUser'] = lastModifyingUser.toJson();
     }
     if (md5Checksum != null) {
-      _json["md5Checksum"] = md5Checksum;
+      _json['md5Checksum'] = md5Checksum;
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (modifiedTime != null) {
-      _json["modifiedTime"] = (modifiedTime).toIso8601String();
+      _json['modifiedTime'] = (modifiedTime).toIso8601String();
     }
     if (originalFilename != null) {
-      _json["originalFilename"] = originalFilename;
+      _json['originalFilename'] = originalFilename;
     }
     if (publishAuto != null) {
-      _json["publishAuto"] = publishAuto;
+      _json['publishAuto'] = publishAuto;
     }
     if (published != null) {
-      _json["published"] = published;
+      _json['published'] = published;
     }
     if (publishedLink != null) {
-      _json["publishedLink"] = publishedLink;
+      _json['publishedLink'] = publishedLink;
     }
     if (publishedOutsideDomain != null) {
-      _json["publishedOutsideDomain"] = publishedOutsideDomain;
+      _json['publishedOutsideDomain'] = publishedOutsideDomain;
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     return _json;
   }
@@ -7121,14 +7120,14 @@ class RevisionList {
   RevisionList();
 
   RevisionList.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("revisions")) {
-      revisions = (_json["revisions"] as core.List)
+    if (_json.containsKey('revisions')) {
+      revisions = (_json['revisions'] as core.List)
           .map<Revision>((value) => Revision.fromJson(value))
           .toList();
     }
@@ -7138,13 +7137,13 @@ class RevisionList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (revisions != null) {
-      _json["revisions"] = revisions.map((value) => value.toJson()).toList();
+      _json['revisions'] = revisions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7161,11 +7160,11 @@ class StartPageToken {
   StartPageToken();
 
   StartPageToken.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("startPageToken")) {
-      startPageToken = _json["startPageToken"];
+    if (_json.containsKey('startPageToken')) {
+      startPageToken = _json['startPageToken'];
     }
   }
 
@@ -7173,10 +7172,10 @@ class StartPageToken {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (startPageToken != null) {
-      _json["startPageToken"] = startPageToken;
+      _json['startPageToken'] = startPageToken;
     }
     return _json;
   }
@@ -7214,17 +7213,17 @@ class TeamDriveBackgroundImageFile {
   TeamDriveBackgroundImageFile();
 
   TeamDriveBackgroundImageFile.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"].toDouble();
+    if (_json.containsKey('width')) {
+      width = _json['width'].toDouble();
     }
-    if (_json.containsKey("xCoordinate")) {
-      xCoordinate = _json["xCoordinate"].toDouble();
+    if (_json.containsKey('xCoordinate')) {
+      xCoordinate = _json['xCoordinate'].toDouble();
     }
-    if (_json.containsKey("yCoordinate")) {
-      yCoordinate = _json["yCoordinate"].toDouble();
+    if (_json.containsKey('yCoordinate')) {
+      yCoordinate = _json['yCoordinate'].toDouble();
     }
   }
 
@@ -7232,16 +7231,16 @@ class TeamDriveBackgroundImageFile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     if (xCoordinate != null) {
-      _json["xCoordinate"] = xCoordinate;
+      _json['xCoordinate'] = xCoordinate;
     }
     if (yCoordinate != null) {
-      _json["yCoordinate"] = yCoordinate;
+      _json['yCoordinate'] = yCoordinate;
     }
     return _json;
   }
@@ -7319,65 +7318,65 @@ class TeamDriveCapabilities {
   TeamDriveCapabilities();
 
   TeamDriveCapabilities.fromJson(core.Map _json) {
-    if (_json.containsKey("canAddChildren")) {
-      canAddChildren = _json["canAddChildren"];
+    if (_json.containsKey('canAddChildren')) {
+      canAddChildren = _json['canAddChildren'];
     }
-    if (_json.containsKey("canChangeCopyRequiresWriterPermissionRestriction")) {
+    if (_json.containsKey('canChangeCopyRequiresWriterPermissionRestriction')) {
       canChangeCopyRequiresWriterPermissionRestriction =
-          _json["canChangeCopyRequiresWriterPermissionRestriction"];
+          _json['canChangeCopyRequiresWriterPermissionRestriction'];
     }
-    if (_json.containsKey("canChangeDomainUsersOnlyRestriction")) {
+    if (_json.containsKey('canChangeDomainUsersOnlyRestriction')) {
       canChangeDomainUsersOnlyRestriction =
-          _json["canChangeDomainUsersOnlyRestriction"];
+          _json['canChangeDomainUsersOnlyRestriction'];
     }
-    if (_json.containsKey("canChangeTeamDriveBackground")) {
-      canChangeTeamDriveBackground = _json["canChangeTeamDriveBackground"];
+    if (_json.containsKey('canChangeTeamDriveBackground')) {
+      canChangeTeamDriveBackground = _json['canChangeTeamDriveBackground'];
     }
-    if (_json.containsKey("canChangeTeamMembersOnlyRestriction")) {
+    if (_json.containsKey('canChangeTeamMembersOnlyRestriction')) {
       canChangeTeamMembersOnlyRestriction =
-          _json["canChangeTeamMembersOnlyRestriction"];
+          _json['canChangeTeamMembersOnlyRestriction'];
     }
-    if (_json.containsKey("canComment")) {
-      canComment = _json["canComment"];
+    if (_json.containsKey('canComment')) {
+      canComment = _json['canComment'];
     }
-    if (_json.containsKey("canCopy")) {
-      canCopy = _json["canCopy"];
+    if (_json.containsKey('canCopy')) {
+      canCopy = _json['canCopy'];
     }
-    if (_json.containsKey("canDeleteChildren")) {
-      canDeleteChildren = _json["canDeleteChildren"];
+    if (_json.containsKey('canDeleteChildren')) {
+      canDeleteChildren = _json['canDeleteChildren'];
     }
-    if (_json.containsKey("canDeleteTeamDrive")) {
-      canDeleteTeamDrive = _json["canDeleteTeamDrive"];
+    if (_json.containsKey('canDeleteTeamDrive')) {
+      canDeleteTeamDrive = _json['canDeleteTeamDrive'];
     }
-    if (_json.containsKey("canDownload")) {
-      canDownload = _json["canDownload"];
+    if (_json.containsKey('canDownload')) {
+      canDownload = _json['canDownload'];
     }
-    if (_json.containsKey("canEdit")) {
-      canEdit = _json["canEdit"];
+    if (_json.containsKey('canEdit')) {
+      canEdit = _json['canEdit'];
     }
-    if (_json.containsKey("canListChildren")) {
-      canListChildren = _json["canListChildren"];
+    if (_json.containsKey('canListChildren')) {
+      canListChildren = _json['canListChildren'];
     }
-    if (_json.containsKey("canManageMembers")) {
-      canManageMembers = _json["canManageMembers"];
+    if (_json.containsKey('canManageMembers')) {
+      canManageMembers = _json['canManageMembers'];
     }
-    if (_json.containsKey("canReadRevisions")) {
-      canReadRevisions = _json["canReadRevisions"];
+    if (_json.containsKey('canReadRevisions')) {
+      canReadRevisions = _json['canReadRevisions'];
     }
-    if (_json.containsKey("canRemoveChildren")) {
-      canRemoveChildren = _json["canRemoveChildren"];
+    if (_json.containsKey('canRemoveChildren')) {
+      canRemoveChildren = _json['canRemoveChildren'];
     }
-    if (_json.containsKey("canRename")) {
-      canRename = _json["canRename"];
+    if (_json.containsKey('canRename')) {
+      canRename = _json['canRename'];
     }
-    if (_json.containsKey("canRenameTeamDrive")) {
-      canRenameTeamDrive = _json["canRenameTeamDrive"];
+    if (_json.containsKey('canRenameTeamDrive')) {
+      canRenameTeamDrive = _json['canRenameTeamDrive'];
     }
-    if (_json.containsKey("canShare")) {
-      canShare = _json["canShare"];
+    if (_json.containsKey('canShare')) {
+      canShare = _json['canShare'];
     }
-    if (_json.containsKey("canTrashChildren")) {
-      canTrashChildren = _json["canTrashChildren"];
+    if (_json.containsKey('canTrashChildren')) {
+      canTrashChildren = _json['canTrashChildren'];
     }
   }
 
@@ -7385,64 +7384,64 @@ class TeamDriveCapabilities {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (canAddChildren != null) {
-      _json["canAddChildren"] = canAddChildren;
+      _json['canAddChildren'] = canAddChildren;
     }
     if (canChangeCopyRequiresWriterPermissionRestriction != null) {
-      _json["canChangeCopyRequiresWriterPermissionRestriction"] =
+      _json['canChangeCopyRequiresWriterPermissionRestriction'] =
           canChangeCopyRequiresWriterPermissionRestriction;
     }
     if (canChangeDomainUsersOnlyRestriction != null) {
-      _json["canChangeDomainUsersOnlyRestriction"] =
+      _json['canChangeDomainUsersOnlyRestriction'] =
           canChangeDomainUsersOnlyRestriction;
     }
     if (canChangeTeamDriveBackground != null) {
-      _json["canChangeTeamDriveBackground"] = canChangeTeamDriveBackground;
+      _json['canChangeTeamDriveBackground'] = canChangeTeamDriveBackground;
     }
     if (canChangeTeamMembersOnlyRestriction != null) {
-      _json["canChangeTeamMembersOnlyRestriction"] =
+      _json['canChangeTeamMembersOnlyRestriction'] =
           canChangeTeamMembersOnlyRestriction;
     }
     if (canComment != null) {
-      _json["canComment"] = canComment;
+      _json['canComment'] = canComment;
     }
     if (canCopy != null) {
-      _json["canCopy"] = canCopy;
+      _json['canCopy'] = canCopy;
     }
     if (canDeleteChildren != null) {
-      _json["canDeleteChildren"] = canDeleteChildren;
+      _json['canDeleteChildren'] = canDeleteChildren;
     }
     if (canDeleteTeamDrive != null) {
-      _json["canDeleteTeamDrive"] = canDeleteTeamDrive;
+      _json['canDeleteTeamDrive'] = canDeleteTeamDrive;
     }
     if (canDownload != null) {
-      _json["canDownload"] = canDownload;
+      _json['canDownload'] = canDownload;
     }
     if (canEdit != null) {
-      _json["canEdit"] = canEdit;
+      _json['canEdit'] = canEdit;
     }
     if (canListChildren != null) {
-      _json["canListChildren"] = canListChildren;
+      _json['canListChildren'] = canListChildren;
     }
     if (canManageMembers != null) {
-      _json["canManageMembers"] = canManageMembers;
+      _json['canManageMembers'] = canManageMembers;
     }
     if (canReadRevisions != null) {
-      _json["canReadRevisions"] = canReadRevisions;
+      _json['canReadRevisions'] = canReadRevisions;
     }
     if (canRemoveChildren != null) {
-      _json["canRemoveChildren"] = canRemoveChildren;
+      _json['canRemoveChildren'] = canRemoveChildren;
     }
     if (canRename != null) {
-      _json["canRename"] = canRename;
+      _json['canRename'] = canRename;
     }
     if (canRenameTeamDrive != null) {
-      _json["canRenameTeamDrive"] = canRenameTeamDrive;
+      _json['canRenameTeamDrive'] = canRenameTeamDrive;
     }
     if (canShare != null) {
-      _json["canShare"] = canShare;
+      _json['canShare'] = canShare;
     }
     if (canTrashChildren != null) {
-      _json["canTrashChildren"] = canTrashChildren;
+      _json['canTrashChildren'] = canTrashChildren;
     }
     return _json;
   }
@@ -7474,17 +7473,17 @@ class TeamDriveRestrictions {
   TeamDriveRestrictions();
 
   TeamDriveRestrictions.fromJson(core.Map _json) {
-    if (_json.containsKey("adminManagedRestrictions")) {
-      adminManagedRestrictions = _json["adminManagedRestrictions"];
+    if (_json.containsKey('adminManagedRestrictions')) {
+      adminManagedRestrictions = _json['adminManagedRestrictions'];
     }
-    if (_json.containsKey("copyRequiresWriterPermission")) {
-      copyRequiresWriterPermission = _json["copyRequiresWriterPermission"];
+    if (_json.containsKey('copyRequiresWriterPermission')) {
+      copyRequiresWriterPermission = _json['copyRequiresWriterPermission'];
     }
-    if (_json.containsKey("domainUsersOnly")) {
-      domainUsersOnly = _json["domainUsersOnly"];
+    if (_json.containsKey('domainUsersOnly')) {
+      domainUsersOnly = _json['domainUsersOnly'];
     }
-    if (_json.containsKey("teamMembersOnly")) {
-      teamMembersOnly = _json["teamMembersOnly"];
+    if (_json.containsKey('teamMembersOnly')) {
+      teamMembersOnly = _json['teamMembersOnly'];
     }
   }
 
@@ -7492,16 +7491,16 @@ class TeamDriveRestrictions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adminManagedRestrictions != null) {
-      _json["adminManagedRestrictions"] = adminManagedRestrictions;
+      _json['adminManagedRestrictions'] = adminManagedRestrictions;
     }
     if (copyRequiresWriterPermission != null) {
-      _json["copyRequiresWriterPermission"] = copyRequiresWriterPermission;
+      _json['copyRequiresWriterPermission'] = copyRequiresWriterPermission;
     }
     if (domainUsersOnly != null) {
-      _json["domainUsersOnly"] = domainUsersOnly;
+      _json['domainUsersOnly'] = domainUsersOnly;
     }
     if (teamMembersOnly != null) {
-      _json["teamMembersOnly"] = teamMembersOnly;
+      _json['teamMembersOnly'] = teamMembersOnly;
     }
     return _json;
   }
@@ -7554,36 +7553,36 @@ class TeamDrive {
   TeamDrive();
 
   TeamDrive.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundImageFile")) {
+    if (_json.containsKey('backgroundImageFile')) {
       backgroundImageFile =
-          TeamDriveBackgroundImageFile.fromJson(_json["backgroundImageFile"]);
+          TeamDriveBackgroundImageFile.fromJson(_json['backgroundImageFile']);
     }
-    if (_json.containsKey("backgroundImageLink")) {
-      backgroundImageLink = _json["backgroundImageLink"];
+    if (_json.containsKey('backgroundImageLink')) {
+      backgroundImageLink = _json['backgroundImageLink'];
     }
-    if (_json.containsKey("capabilities")) {
-      capabilities = TeamDriveCapabilities.fromJson(_json["capabilities"]);
+    if (_json.containsKey('capabilities')) {
+      capabilities = TeamDriveCapabilities.fromJson(_json['capabilities']);
     }
-    if (_json.containsKey("colorRgb")) {
-      colorRgb = _json["colorRgb"];
+    if (_json.containsKey('colorRgb')) {
+      colorRgb = _json['colorRgb'];
     }
-    if (_json.containsKey("createdTime")) {
-      createdTime = core.DateTime.parse(_json["createdTime"]);
+    if (_json.containsKey('createdTime')) {
+      createdTime = core.DateTime.parse(_json['createdTime']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("restrictions")) {
-      restrictions = TeamDriveRestrictions.fromJson(_json["restrictions"]);
+    if (_json.containsKey('restrictions')) {
+      restrictions = TeamDriveRestrictions.fromJson(_json['restrictions']);
     }
-    if (_json.containsKey("themeId")) {
-      themeId = _json["themeId"];
+    if (_json.containsKey('themeId')) {
+      themeId = _json['themeId'];
     }
   }
 
@@ -7591,34 +7590,34 @@ class TeamDrive {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundImageFile != null) {
-      _json["backgroundImageFile"] = backgroundImageFile.toJson();
+      _json['backgroundImageFile'] = backgroundImageFile.toJson();
     }
     if (backgroundImageLink != null) {
-      _json["backgroundImageLink"] = backgroundImageLink;
+      _json['backgroundImageLink'] = backgroundImageLink;
     }
     if (capabilities != null) {
-      _json["capabilities"] = capabilities.toJson();
+      _json['capabilities'] = capabilities.toJson();
     }
     if (colorRgb != null) {
-      _json["colorRgb"] = colorRgb;
+      _json['colorRgb'] = colorRgb;
     }
     if (createdTime != null) {
-      _json["createdTime"] = (createdTime).toIso8601String();
+      _json['createdTime'] = (createdTime).toIso8601String();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (restrictions != null) {
-      _json["restrictions"] = restrictions.toJson();
+      _json['restrictions'] = restrictions.toJson();
     }
     if (themeId != null) {
-      _json["themeId"] = themeId;
+      _json['themeId'] = themeId;
     }
     return _json;
   }
@@ -7643,14 +7642,14 @@ class TeamDriveList {
   TeamDriveList();
 
   TeamDriveList.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("teamDrives")) {
-      teamDrives = (_json["teamDrives"] as core.List)
+    if (_json.containsKey('teamDrives')) {
+      teamDrives = (_json['teamDrives'] as core.List)
           .map<TeamDrive>((value) => TeamDrive.fromJson(value))
           .toList();
     }
@@ -7660,13 +7659,13 @@ class TeamDriveList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (teamDrives != null) {
-      _json["teamDrives"] = teamDrives.map((value) => value.toJson()).toList();
+      _json['teamDrives'] = teamDrives.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7697,23 +7696,23 @@ class User {
   User();
 
   User.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("emailAddress")) {
-      emailAddress = _json["emailAddress"];
+    if (_json.containsKey('emailAddress')) {
+      emailAddress = _json['emailAddress'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("me")) {
-      me = _json["me"];
+    if (_json.containsKey('me')) {
+      me = _json['me'];
     }
-    if (_json.containsKey("permissionId")) {
-      permissionId = _json["permissionId"];
+    if (_json.containsKey('permissionId')) {
+      permissionId = _json['permissionId'];
     }
-    if (_json.containsKey("photoLink")) {
-      photoLink = _json["photoLink"];
+    if (_json.containsKey('photoLink')) {
+      photoLink = _json['photoLink'];
     }
   }
 
@@ -7721,22 +7720,22 @@ class User {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (emailAddress != null) {
-      _json["emailAddress"] = emailAddress;
+      _json['emailAddress'] = emailAddress;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (me != null) {
-      _json["me"] = me;
+      _json['me'] = me;
     }
     if (permissionId != null) {
-      _json["permissionId"] = permissionId;
+      _json['permissionId'] = permissionId;
     }
     if (photoLink != null) {
-      _json["photoLink"] = photoLink;
+      _json['photoLink'] = photoLink;
     }
     return _json;
   }

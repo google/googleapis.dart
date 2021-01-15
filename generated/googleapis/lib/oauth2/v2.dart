@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,23 +36,23 @@ const core.String USER_AGENT = 'dart-api-client oauth2/v2';
 class Oauth2Api {
   /// View your email address
   static const UserinfoEmailScope =
-      "https://www.googleapis.com/auth/userinfo.email";
+      'https://www.googleapis.com/auth/userinfo.email';
 
   /// See your personal info, including any personal info you've made publicly
   /// available
   static const UserinfoProfileScope =
-      "https://www.googleapis.com/auth/userinfo.profile";
+      'https://www.googleapis.com/auth/userinfo.profile';
 
   /// Associate you with your personal info on Google
-  static const OpenidScope = "openid";
+  static const OpenidScope = 'openid';
 
   final commons.ApiRequester _requester;
 
   UserinfoResourceApi get userinfo => UserinfoResourceApi(_requester);
 
   Oauth2Api(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 
@@ -86,20 +85,20 @@ class Oauth2Api {
     core.String _body;
 
     if (accessToken != null) {
-      _queryParams["access_token"] = [accessToken];
+      _queryParams['access_token'] = [accessToken];
     }
     if (idToken != null) {
-      _queryParams["id_token"] = [idToken];
+      _queryParams['id_token'] = [idToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'oauth2/v2/tokeninfo';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -140,14 +139,14 @@ class UserinfoResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'oauth2/v2/userinfo';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -194,14 +193,14 @@ class UserinfoV2MeResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'userinfo/v2/me';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -240,26 +239,26 @@ class Tokeninfo {
   Tokeninfo();
 
   Tokeninfo.fromJson(core.Map _json) {
-    if (_json.containsKey("audience")) {
-      audience = _json["audience"];
+    if (_json.containsKey('audience')) {
+      audience = _json['audience'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("expires_in")) {
-      expiresIn = _json["expires_in"];
+    if (_json.containsKey('expires_in')) {
+      expiresIn = _json['expires_in'];
     }
-    if (_json.containsKey("issued_to")) {
-      issuedTo = _json["issued_to"];
+    if (_json.containsKey('issued_to')) {
+      issuedTo = _json['issued_to'];
     }
-    if (_json.containsKey("scope")) {
-      scope = _json["scope"];
+    if (_json.containsKey('scope')) {
+      scope = _json['scope'];
     }
-    if (_json.containsKey("user_id")) {
-      userId = _json["user_id"];
+    if (_json.containsKey('user_id')) {
+      userId = _json['user_id'];
     }
-    if (_json.containsKey("verified_email")) {
-      verifiedEmail = _json["verified_email"];
+    if (_json.containsKey('verified_email')) {
+      verifiedEmail = _json['verified_email'];
     }
   }
 
@@ -267,25 +266,25 @@ class Tokeninfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audience != null) {
-      _json["audience"] = audience;
+      _json['audience'] = audience;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (expiresIn != null) {
-      _json["expires_in"] = expiresIn;
+      _json['expires_in'] = expiresIn;
     }
     if (issuedTo != null) {
-      _json["issued_to"] = issuedTo;
+      _json['issued_to'] = issuedTo;
     }
     if (scope != null) {
-      _json["scope"] = scope;
+      _json['scope'] = scope;
     }
     if (userId != null) {
-      _json["user_id"] = userId;
+      _json['user_id'] = userId;
     }
     if (verifiedEmail != null) {
-      _json["verified_email"] = verifiedEmail;
+      _json['verified_email'] = verifiedEmail;
     }
     return _json;
   }
@@ -329,38 +328,38 @@ class Userinfo {
   Userinfo();
 
   Userinfo.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("family_name")) {
-      familyName = _json["family_name"];
+    if (_json.containsKey('family_name')) {
+      familyName = _json['family_name'];
     }
-    if (_json.containsKey("gender")) {
-      gender = _json["gender"];
+    if (_json.containsKey('gender')) {
+      gender = _json['gender'];
     }
-    if (_json.containsKey("given_name")) {
-      givenName = _json["given_name"];
+    if (_json.containsKey('given_name')) {
+      givenName = _json['given_name'];
     }
-    if (_json.containsKey("hd")) {
-      hd = _json["hd"];
+    if (_json.containsKey('hd')) {
+      hd = _json['hd'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("link")) {
-      link = _json["link"];
+    if (_json.containsKey('link')) {
+      link = _json['link'];
     }
-    if (_json.containsKey("locale")) {
-      locale = _json["locale"];
+    if (_json.containsKey('locale')) {
+      locale = _json['locale'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("picture")) {
-      picture = _json["picture"];
+    if (_json.containsKey('picture')) {
+      picture = _json['picture'];
     }
-    if (_json.containsKey("verified_email")) {
-      verifiedEmail = _json["verified_email"];
+    if (_json.containsKey('verified_email')) {
+      verifiedEmail = _json['verified_email'];
     }
   }
 
@@ -368,37 +367,37 @@ class Userinfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (familyName != null) {
-      _json["family_name"] = familyName;
+      _json['family_name'] = familyName;
     }
     if (gender != null) {
-      _json["gender"] = gender;
+      _json['gender'] = gender;
     }
     if (givenName != null) {
-      _json["given_name"] = givenName;
+      _json['given_name'] = givenName;
     }
     if (hd != null) {
-      _json["hd"] = hd;
+      _json['hd'] = hd;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     if (locale != null) {
-      _json["locale"] = locale;
+      _json['locale'] = locale;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (picture != null) {
-      _json["picture"] = picture;
+      _json['picture'] = picture;
     }
     if (verifiedEmail != null) {
-      _json["verified_email"] = verifiedEmail;
+      _json['verified_email'] = verifiedEmail;
     }
     return _json;
   }

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,8 +75,8 @@ api.ActionParameter buildActionParameter() {
   var o = api.ActionParameter();
   buildCounterActionParameter++;
   if (buildCounterActionParameter < 3) {
-    o.key = "foo";
-    o.value = "foo";
+    o.key = 'foo';
+    o.value = 'foo';
   }
   buildCounterActionParameter--;
   return o;
@@ -96,8 +96,8 @@ api.ActionResponse buildActionResponse() {
   var o = api.ActionResponse();
   buildCounterActionResponse++;
   if (buildCounterActionResponse < 3) {
-    o.type = "foo";
-    o.url = "foo";
+    o.type = 'foo';
+    o.url = 'foo';
   }
   buildCounterActionResponse--;
   return o;
@@ -120,7 +120,7 @@ api.Annotation buildAnnotation() {
     o.length = 42;
     o.slashCommand = buildSlashCommandMetadata();
     o.startIndex = 42;
-    o.type = "foo";
+    o.type = 'foo';
     o.userMention = buildUserMentionMetadata();
   }
   buildCounterAnnotation--;
@@ -145,13 +145,13 @@ api.Attachment buildAttachment() {
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
     o.attachmentDataRef = buildAttachmentDataRef();
-    o.contentName = "foo";
-    o.contentType = "foo";
-    o.downloadUri = "foo";
+    o.contentName = 'foo';
+    o.contentType = 'foo';
+    o.downloadUri = 'foo';
     o.driveDataRef = buildDriveDataRef();
-    o.name = "foo";
-    o.source = "foo";
-    o.thumbnailUri = "foo";
+    o.name = 'foo';
+    o.source = 'foo';
+    o.thumbnailUri = 'foo';
   }
   buildCounterAttachment--;
   return o;
@@ -177,7 +177,7 @@ api.AttachmentDataRef buildAttachmentDataRef() {
   var o = api.AttachmentDataRef();
   buildCounterAttachmentDataRef++;
   if (buildCounterAttachmentDataRef < 3) {
-    o.resourceName = "foo";
+    o.resourceName = 'foo';
   }
   buildCounterAttachmentDataRef--;
   return o;
@@ -245,7 +245,7 @@ api.Card buildCard() {
   if (buildCounterCard < 3) {
     o.cardActions = buildUnnamed2960();
     o.header = buildCardHeader();
-    o.name = "foo";
+    o.name = 'foo';
     o.sections = buildUnnamed2961();
   }
   buildCounterCard--;
@@ -268,7 +268,7 @@ api.CardAction buildCardAction() {
   var o = api.CardAction();
   buildCounterCardAction++;
   if (buildCounterCardAction < 3) {
-    o.actionLabel = "foo";
+    o.actionLabel = 'foo';
     o.onClick = buildOnClick();
   }
   buildCounterCardAction--;
@@ -289,10 +289,10 @@ api.CardHeader buildCardHeader() {
   var o = api.CardHeader();
   buildCounterCardHeader++;
   if (buildCounterCardHeader < 3) {
-    o.imageStyle = "foo";
-    o.imageUrl = "foo";
-    o.subtitle = "foo";
-    o.title = "foo";
+    o.imageStyle = 'foo';
+    o.imageUrl = 'foo';
+    o.subtitle = 'foo';
+    o.title = 'foo';
   }
   buildCounterCardHeader--;
   return o;
@@ -315,13 +315,13 @@ api.DeprecatedEvent buildDeprecatedEvent() {
   buildCounterDeprecatedEvent++;
   if (buildCounterDeprecatedEvent < 3) {
     o.action = buildFormAction();
-    o.configCompleteRedirectUrl = "foo";
-    o.eventTime = "foo";
+    o.configCompleteRedirectUrl = 'foo';
+    o.eventTime = 'foo';
     o.message = buildMessage();
     o.space = buildSpace();
-    o.threadKey = "foo";
-    o.token = "foo";
-    o.type = "foo";
+    o.threadKey = 'foo';
+    o.token = 'foo';
+    o.type = 'foo';
     o.user = buildUser();
   }
   buildCounterDeprecatedEvent--;
@@ -349,7 +349,7 @@ api.DriveDataRef buildDriveDataRef() {
   var o = api.DriveDataRef();
   buildCounterDriveDataRef++;
   if (buildCounterDriveDataRef < 3) {
-    o.driveFileId = "foo";
+    o.driveFileId = 'foo';
   }
   buildCounterDriveDataRef--;
   return o;
@@ -396,7 +396,7 @@ api.FormAction buildFormAction() {
   var o = api.FormAction();
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
-    o.actionMethodName = "foo";
+    o.actionMethodName = 'foo';
     o.parameters = buildUnnamed2962();
   }
   buildCounterFormAction--;
@@ -418,7 +418,7 @@ api.Image buildImage() {
   buildCounterImage++;
   if (buildCounterImage < 3) {
     o.aspectRatio = 42.0;
-    o.imageUrl = "foo";
+    o.imageUrl = 'foo';
     o.onClick = buildOnClick();
   }
   buildCounterImage--;
@@ -440,9 +440,9 @@ api.ImageButton buildImageButton() {
   var o = api.ImageButton();
   buildCounterImageButton++;
   if (buildCounterImageButton < 3) {
-    o.icon = "foo";
-    o.iconUrl = "foo";
-    o.name = "foo";
+    o.icon = 'foo';
+    o.iconUrl = 'foo';
+    o.name = 'foo';
     o.onClick = buildOnClick();
   }
   buildCounterImageButton--;
@@ -465,14 +465,14 @@ api.KeyValue buildKeyValue() {
   var o = api.KeyValue();
   buildCounterKeyValue++;
   if (buildCounterKeyValue < 3) {
-    o.bottomLabel = "foo";
+    o.bottomLabel = 'foo';
     o.button = buildButton();
-    o.content = "foo";
+    o.content = 'foo';
     o.contentMultiline = true;
-    o.icon = "foo";
-    o.iconUrl = "foo";
+    o.icon = 'foo';
+    o.iconUrl = 'foo';
     o.onClick = buildOnClick();
-    o.topLabel = "foo";
+    o.topLabel = 'foo';
   }
   buildCounterKeyValue--;
   return o;
@@ -512,7 +512,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
     o.memberships = buildUnnamed2963();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListMembershipsResponse--;
   return o;
@@ -545,7 +545,7 @@ api.ListSpacesResponse buildListSpacesResponse() {
   var o = api.ListSpacesResponse();
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.spaces = buildUnnamed2964();
   }
   buildCounterListSpacesResponse--;
@@ -566,7 +566,7 @@ api.Media buildMedia() {
   var o = api.Media();
   buildCounterMedia++;
   if (buildCounterMedia < 3) {
-    o.resourceName = "foo";
+    o.resourceName = 'foo';
   }
   buildCounterMedia--;
   return o;
@@ -585,10 +585,10 @@ api.Membership buildMembership() {
   var o = api.Membership();
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
-    o.createTime = "foo";
+    o.createTime = 'foo';
     o.member = buildUser();
-    o.name = "foo";
-    o.state = "foo";
+    o.name = 'foo';
+    o.state = 'foo';
   }
   buildCounterMembership--;
   return o;
@@ -651,17 +651,17 @@ api.Message buildMessage() {
   if (buildCounterMessage < 3) {
     o.actionResponse = buildActionResponse();
     o.annotations = buildUnnamed2965();
-    o.argumentText = "foo";
+    o.argumentText = 'foo';
     o.attachment = buildUnnamed2966();
     o.cards = buildUnnamed2967();
-    o.createTime = "foo";
-    o.fallbackText = "foo";
-    o.name = "foo";
-    o.previewText = "foo";
+    o.createTime = 'foo';
+    o.fallbackText = 'foo';
+    o.name = 'foo';
+    o.previewText = 'foo';
     o.sender = buildUser();
     o.slashCommand = buildSlashCommand();
     o.space = buildSpace();
-    o.text = "foo";
+    o.text = 'foo';
     o.thread = buildThread();
   }
   buildCounterMessage--;
@@ -715,7 +715,7 @@ api.OpenLink buildOpenLink() {
   var o = api.OpenLink();
   buildCounterOpenLink++;
   if (buildCounterOpenLink < 3) {
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterOpenLink--;
   return o;
@@ -747,7 +747,7 @@ api.Section buildSection() {
   var o = api.Section();
   buildCounterSection++;
   if (buildCounterSection < 3) {
-    o.header = "foo";
+    o.header = 'foo';
     o.widgets = buildUnnamed2968();
   }
   buildCounterSection--;
@@ -768,7 +768,7 @@ api.SlashCommand buildSlashCommand() {
   var o = api.SlashCommand();
   buildCounterSlashCommand++;
   if (buildCounterSlashCommand < 3) {
-    o.commandId = "foo";
+    o.commandId = 'foo';
   }
   buildCounterSlashCommand--;
   return o;
@@ -788,10 +788,10 @@ api.SlashCommandMetadata buildSlashCommandMetadata() {
   buildCounterSlashCommandMetadata++;
   if (buildCounterSlashCommandMetadata < 3) {
     o.bot = buildUser();
-    o.commandId = "foo";
-    o.commandName = "foo";
+    o.commandId = 'foo';
+    o.commandName = 'foo';
     o.triggersDialog = true;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterSlashCommandMetadata--;
   return o;
@@ -814,11 +814,11 @@ api.Space buildSpace() {
   var o = api.Space();
   buildCounterSpace++;
   if (buildCounterSpace < 3) {
-    o.displayName = "foo";
-    o.name = "foo";
+    o.displayName = 'foo';
+    o.name = 'foo';
     o.singleUserBotDm = true;
     o.threaded = true;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterSpace--;
   return o;
@@ -842,7 +842,7 @@ api.TextButton buildTextButton() {
   buildCounterTextButton++;
   if (buildCounterTextButton < 3) {
     o.onClick = buildOnClick();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterTextButton--;
   return o;
@@ -862,7 +862,7 @@ api.TextParagraph buildTextParagraph() {
   var o = api.TextParagraph();
   buildCounterTextParagraph++;
   if (buildCounterTextParagraph < 3) {
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterTextParagraph--;
   return o;
@@ -881,7 +881,7 @@ api.Thread buildThread() {
   var o = api.Thread();
   buildCounterThread++;
   if (buildCounterThread < 3) {
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterThread--;
   return o;
@@ -900,10 +900,10 @@ api.User buildUser() {
   var o = api.User();
   buildCounterUser++;
   if (buildCounterUser < 3) {
-    o.displayName = "foo";
-    o.domainId = "foo";
-    o.name = "foo";
-    o.type = "foo";
+    o.displayName = 'foo';
+    o.domainId = 'foo';
+    o.name = 'foo';
+    o.type = 'foo';
   }
   buildCounterUser--;
   return o;
@@ -925,7 +925,7 @@ api.UserMentionMetadata buildUserMentionMetadata() {
   var o = api.UserMentionMetadata();
   buildCounterUserMentionMetadata++;
   if (buildCounterUserMentionMetadata < 3) {
-    o.type = "foo";
+    o.type = 'foo';
     o.user = buildUser();
   }
   buildCounterUserMentionMetadata--;
@@ -980,279 +980,279 @@ void checkWidgetMarkup(api.WidgetMarkup o) {
 }
 
 void main() {
-  unittest.group("obj-schema-ActionParameter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ActionParameter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildActionParameter();
       var od = api.ActionParameter.fromJson(o.toJson());
       checkActionParameter(od);
     });
   });
 
-  unittest.group("obj-schema-ActionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ActionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildActionResponse();
       var od = api.ActionResponse.fromJson(o.toJson());
       checkActionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Annotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Annotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAnnotation();
       var od = api.Annotation.fromJson(o.toJson());
       checkAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-Attachment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Attachment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAttachment();
       var od = api.Attachment.fromJson(o.toJson());
       checkAttachment(od);
     });
   });
 
-  unittest.group("obj-schema-AttachmentDataRef", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AttachmentDataRef', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAttachmentDataRef();
       var od = api.AttachmentDataRef.fromJson(o.toJson());
       checkAttachmentDataRef(od);
     });
   });
 
-  unittest.group("obj-schema-Button", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Button', () {
+    unittest.test('to-json--from-json', () {
       var o = buildButton();
       var od = api.Button.fromJson(o.toJson());
       checkButton(od);
     });
   });
 
-  unittest.group("obj-schema-Card", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Card', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCard();
       var od = api.Card.fromJson(o.toJson());
       checkCard(od);
     });
   });
 
-  unittest.group("obj-schema-CardAction", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CardAction', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCardAction();
       var od = api.CardAction.fromJson(o.toJson());
       checkCardAction(od);
     });
   });
 
-  unittest.group("obj-schema-CardHeader", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CardHeader', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCardHeader();
       var od = api.CardHeader.fromJson(o.toJson());
       checkCardHeader(od);
     });
   });
 
-  unittest.group("obj-schema-DeprecatedEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeprecatedEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeprecatedEvent();
       var od = api.DeprecatedEvent.fromJson(o.toJson());
       checkDeprecatedEvent(od);
     });
   });
 
-  unittest.group("obj-schema-DriveDataRef", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveDataRef', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveDataRef();
       var od = api.DriveDataRef.fromJson(o.toJson());
       checkDriveDataRef(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-FormAction", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FormAction', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFormAction();
       var od = api.FormAction.fromJson(o.toJson());
       checkFormAction(od);
     });
   });
 
-  unittest.group("obj-schema-Image", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Image', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od);
     });
   });
 
-  unittest.group("obj-schema-ImageButton", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImageButton', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImageButton();
       var od = api.ImageButton.fromJson(o.toJson());
       checkImageButton(od);
     });
   });
 
-  unittest.group("obj-schema-KeyValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-KeyValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildKeyValue();
       var od = api.KeyValue.fromJson(o.toJson());
       checkKeyValue(od);
     });
   });
 
-  unittest.group("obj-schema-ListMembershipsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListMembershipsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListMembershipsResponse();
       var od = api.ListMembershipsResponse.fromJson(o.toJson());
       checkListMembershipsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListSpacesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListSpacesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListSpacesResponse();
       var od = api.ListSpacesResponse.fromJson(o.toJson());
       checkListSpacesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Media", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Media', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMedia();
       var od = api.Media.fromJson(o.toJson());
       checkMedia(od);
     });
   });
 
-  unittest.group("obj-schema-Membership", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Membership', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMembership();
       var od = api.Membership.fromJson(o.toJson());
       checkMembership(od);
     });
   });
 
-  unittest.group("obj-schema-Message", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Message', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMessage();
       var od = api.Message.fromJson(o.toJson());
       checkMessage(od);
     });
   });
 
-  unittest.group("obj-schema-OnClick", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OnClick', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOnClick();
       var od = api.OnClick.fromJson(o.toJson());
       checkOnClick(od);
     });
   });
 
-  unittest.group("obj-schema-OpenLink", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OpenLink', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOpenLink();
       var od = api.OpenLink.fromJson(o.toJson());
       checkOpenLink(od);
     });
   });
 
-  unittest.group("obj-schema-Section", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Section', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSection();
       var od = api.Section.fromJson(o.toJson());
       checkSection(od);
     });
   });
 
-  unittest.group("obj-schema-SlashCommand", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SlashCommand', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSlashCommand();
       var od = api.SlashCommand.fromJson(o.toJson());
       checkSlashCommand(od);
     });
   });
 
-  unittest.group("obj-schema-SlashCommandMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SlashCommandMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSlashCommandMetadata();
       var od = api.SlashCommandMetadata.fromJson(o.toJson());
       checkSlashCommandMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-Space", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Space', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSpace();
       var od = api.Space.fromJson(o.toJson());
       checkSpace(od);
     });
   });
 
-  unittest.group("obj-schema-TextButton", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TextButton', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTextButton();
       var od = api.TextButton.fromJson(o.toJson());
       checkTextButton(od);
     });
   });
 
-  unittest.group("obj-schema-TextParagraph", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TextParagraph', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTextParagraph();
       var od = api.TextParagraph.fromJson(o.toJson());
       checkTextParagraph(od);
     });
   });
 
-  unittest.group("obj-schema-Thread", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Thread', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThread();
       var od = api.Thread.fromJson(o.toJson());
       checkThread(od);
     });
   });
 
-  unittest.group("obj-schema-User", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-User', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od);
     });
   });
 
-  unittest.group("obj-schema-UserMentionMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UserMentionMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserMentionMetadata();
       var od = api.UserMentionMetadata.fromJson(o.toJson());
       checkUserMentionMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-WidgetMarkup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WidgetMarkup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWidgetMarkup();
       var od = api.WidgetMarkup.fromJson(o.toJson());
       checkWidgetMarkup(od);
     });
   });
 
-  unittest.group("resource-MediaResourceApi", () {
-    unittest.test("method--download", () {
+  unittest.group('resource-MediaResourceApi', () {
+    unittest.test('method--download', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.MediaResourceApi res = api.ChatApi(mock).media;
-      var arg_resourceName = "foo";
-      var arg_$fields = "foo";
+      var arg_resourceName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1272,8 +1272,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1283,7 +1283,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMedia());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1296,12 +1296,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-SpacesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-SpacesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SpacesResourceApi res = api.ChatApi(mock).spaces;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1321,8 +1321,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1332,7 +1332,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSpace());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1344,12 +1344,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SpacesResourceApi res = api.ChatApi(mock).spaces;
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1368,8 +1368,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1383,7 +1383,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListSpacesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1399,12 +1399,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-SpacesMembersResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-SpacesMembersResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SpacesMembersResourceApi res = api.ChatApi(mock).spaces.members;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1424,8 +1424,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1435,7 +1435,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMembership());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1447,13 +1447,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SpacesMembersResourceApi res = api.ChatApi(mock).spaces.members;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1473,8 +1473,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1488,7 +1488,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListMembershipsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1504,14 +1504,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-SpacesMessagesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-SpacesMessagesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.SpacesMessagesResourceApi res = api.ChatApi(mock).spaces.messages;
       var arg_request = buildMessage();
-      var arg_parent = "foo";
-      var arg_threadKey = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_threadKey = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Message.fromJson(json);
         checkMessage(obj);
@@ -1534,8 +1534,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1547,7 +1547,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1560,11 +1560,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.SpacesMessagesResourceApi res = api.ChatApi(mock).spaces.messages;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1584,8 +1584,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1595,7 +1595,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1607,11 +1607,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SpacesMessagesResourceApi res = api.ChatApi(mock).spaces.messages;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1631,8 +1631,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1642,7 +1642,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1654,13 +1654,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.SpacesMessagesResourceApi res = api.ChatApi(mock).spaces.messages;
       var arg_request = buildMessage();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Message.fromJson(json);
         checkMessage(obj);
@@ -1683,8 +1683,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1696,7 +1696,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1710,13 +1710,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-SpacesMessagesAttachmentsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-SpacesMessagesAttachmentsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SpacesMessagesAttachmentsResourceApi res =
           api.ChatApi(mock).spaces.messages.attachments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1736,8 +1736,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1747,7 +1747,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAttachment());
         return async.Future.value(stringResponse(200, h, resp));

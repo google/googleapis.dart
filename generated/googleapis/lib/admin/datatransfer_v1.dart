@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,11 +39,11 @@ const core.String USER_AGENT = 'dart-api-client admin/datatransfer_v1';
 class AdminApi {
   /// View and manage data transfers between users in your organization
   static const AdminDatatransferScope =
-      "https://www.googleapis.com/auth/admin.datatransfer";
+      'https://www.googleapis.com/auth/admin.datatransfer';
 
   /// View data transfers between users in your organization
   static const AdminDatatransferReadonlyScope =
-      "https://www.googleapis.com/auth/admin.datatransfer.readonly";
+      'https://www.googleapis.com/auth/admin.datatransfer.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -53,8 +52,8 @@ class AdminApi {
   TransfersResourceApi get transfers => TransfersResourceApi(_requester);
 
   AdminApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -92,10 +91,10 @@ class ApplicationsResourceApi {
     core.String _body;
 
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/datatransfer/v1/applications/' +
@@ -103,7 +102,7 @@ class ApplicationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -148,23 +147,23 @@ class ApplicationsResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+      _queryParams['customerId'] = [customerId];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/datatransfer/v1/applications';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -209,10 +208,10 @@ class TransfersResourceApi {
     core.String _body;
 
     if (dataTransferId == null) {
-      throw core.ArgumentError("Parameter dataTransferId is required.");
+      throw core.ArgumentError('Parameter dataTransferId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/datatransfer/v1/transfers/' +
@@ -220,7 +219,7 @@ class TransfersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -261,14 +260,14 @@ class TransfersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/datatransfer/v1/transfers';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -323,32 +322,32 @@ class TransfersResourceApi {
     core.String _body;
 
     if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+      _queryParams['customerId'] = [customerId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (newOwnerUserId != null) {
-      _queryParams["newOwnerUserId"] = [newOwnerUserId];
+      _queryParams['newOwnerUserId'] = [newOwnerUserId];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (status != null) {
-      _queryParams["status"] = [status];
+      _queryParams['status'] = [status];
     }
     if (oldOwnerUserId != null) {
-      _queryParams["oldOwnerUserId"] = [oldOwnerUserId];
+      _queryParams['oldOwnerUserId'] = [oldOwnerUserId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/datatransfer/v1/transfers';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -384,20 +383,20 @@ class Application {
   Application();
 
   Application.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("transferParams")) {
-      transferParams = (_json["transferParams"] as core.List)
+    if (_json.containsKey('transferParams')) {
+      transferParams = (_json['transferParams'] as core.List)
           .map<ApplicationTransferParam>(
               (value) => ApplicationTransferParam.fromJson(value))
           .toList();
@@ -408,19 +407,19 @@ class Application {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (transferParams != null) {
-      _json["transferParams"] =
+      _json['transferParams'] =
           transferParams.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -442,18 +441,18 @@ class ApplicationDataTransfer {
   ApplicationDataTransfer();
 
   ApplicationDataTransfer.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationId")) {
-      applicationId = _json["applicationId"];
+    if (_json.containsKey('applicationId')) {
+      applicationId = _json['applicationId'];
     }
-    if (_json.containsKey("applicationTransferParams")) {
+    if (_json.containsKey('applicationTransferParams')) {
       applicationTransferParams =
-          (_json["applicationTransferParams"] as core.List)
+          (_json['applicationTransferParams'] as core.List)
               .map<ApplicationTransferParam>(
                   (value) => ApplicationTransferParam.fromJson(value))
               .toList();
     }
-    if (_json.containsKey("applicationTransferStatus")) {
-      applicationTransferStatus = _json["applicationTransferStatus"];
+    if (_json.containsKey('applicationTransferStatus')) {
+      applicationTransferStatus = _json['applicationTransferStatus'];
     }
   }
 
@@ -461,14 +460,14 @@ class ApplicationDataTransfer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (applicationId != null) {
-      _json["applicationId"] = applicationId;
+      _json['applicationId'] = applicationId;
     }
     if (applicationTransferParams != null) {
-      _json["applicationTransferParams"] =
+      _json['applicationTransferParams'] =
           applicationTransferParams.map((value) => value.toJson()).toList();
     }
     if (applicationTransferStatus != null) {
-      _json["applicationTransferStatus"] = applicationTransferStatus;
+      _json['applicationTransferStatus'] = applicationTransferStatus;
     }
     return _json;
   }
@@ -486,11 +485,11 @@ class ApplicationTransferParam {
   ApplicationTransferParam();
 
   ApplicationTransferParam.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("value")) {
-      value = (_json["value"] as core.List).cast<core.String>();
+    if (_json.containsKey('value')) {
+      value = (_json['value'] as core.List).cast<core.String>();
     }
   }
 
@@ -498,10 +497,10 @@ class ApplicationTransferParam {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -528,19 +527,19 @@ class ApplicationsListResponse {
   ApplicationsListResponse();
 
   ApplicationsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("applications")) {
-      applications = (_json["applications"] as core.List)
+    if (_json.containsKey('applications')) {
+      applications = (_json['applications'] as core.List)
           .map<Application>((value) => Application.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -548,17 +547,17 @@ class ApplicationsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (applications != null) {
-      _json["applications"] =
+      _json['applications'] =
           applications.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -599,33 +598,33 @@ class DataTransfer {
   DataTransfer();
 
   DataTransfer.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationDataTransfers")) {
+    if (_json.containsKey('applicationDataTransfers')) {
       applicationDataTransfers =
-          (_json["applicationDataTransfers"] as core.List)
+          (_json['applicationDataTransfers'] as core.List)
               .map<ApplicationDataTransfer>(
                   (value) => ApplicationDataTransfer.fromJson(value))
               .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("newOwnerUserId")) {
-      newOwnerUserId = _json["newOwnerUserId"];
+    if (_json.containsKey('newOwnerUserId')) {
+      newOwnerUserId = _json['newOwnerUserId'];
     }
-    if (_json.containsKey("oldOwnerUserId")) {
-      oldOwnerUserId = _json["oldOwnerUserId"];
+    if (_json.containsKey('oldOwnerUserId')) {
+      oldOwnerUserId = _json['oldOwnerUserId'];
     }
-    if (_json.containsKey("overallTransferStatusCode")) {
-      overallTransferStatusCode = _json["overallTransferStatusCode"];
+    if (_json.containsKey('overallTransferStatusCode')) {
+      overallTransferStatusCode = _json['overallTransferStatusCode'];
     }
-    if (_json.containsKey("requestTime")) {
-      requestTime = core.DateTime.parse(_json["requestTime"]);
+    if (_json.containsKey('requestTime')) {
+      requestTime = core.DateTime.parse(_json['requestTime']);
     }
   }
 
@@ -633,29 +632,29 @@ class DataTransfer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (applicationDataTransfers != null) {
-      _json["applicationDataTransfers"] =
+      _json['applicationDataTransfers'] =
           applicationDataTransfers.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (newOwnerUserId != null) {
-      _json["newOwnerUserId"] = newOwnerUserId;
+      _json['newOwnerUserId'] = newOwnerUserId;
     }
     if (oldOwnerUserId != null) {
-      _json["oldOwnerUserId"] = oldOwnerUserId;
+      _json['oldOwnerUserId'] = oldOwnerUserId;
     }
     if (overallTransferStatusCode != null) {
-      _json["overallTransferStatusCode"] = overallTransferStatusCode;
+      _json['overallTransferStatusCode'] = overallTransferStatusCode;
     }
     if (requestTime != null) {
-      _json["requestTime"] = (requestTime).toIso8601String();
+      _json['requestTime'] = (requestTime).toIso8601String();
     }
     return _json;
   }
@@ -681,19 +680,19 @@ class DataTransfersListResponse {
   DataTransfersListResponse();
 
   DataTransfersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("dataTransfers")) {
-      dataTransfers = (_json["dataTransfers"] as core.List)
+    if (_json.containsKey('dataTransfers')) {
+      dataTransfers = (_json['dataTransfers'] as core.List)
           .map<DataTransfer>((value) => DataTransfer.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -701,17 +700,17 @@ class DataTransfersListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dataTransfers != null) {
-      _json["dataTransfers"] =
+      _json['dataTransfers'] =
           dataTransfers.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }

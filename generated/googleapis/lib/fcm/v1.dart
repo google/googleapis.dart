@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,15 +38,15 @@ const core.String USER_AGENT = 'dart-api-client fcm/v1';
 class FcmApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   FcmApi(http.Client client,
-      {core.String rootUrl = "https://fcm.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://fcm.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -107,10 +106,10 @@ class ProjectsMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -119,7 +118,7 @@ class ProjectsMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -192,29 +191,29 @@ class AndroidConfig {
   AndroidConfig();
 
   AndroidConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("collapseKey")) {
-      collapseKey = _json["collapseKey"];
+    if (_json.containsKey('collapseKey')) {
+      collapseKey = _json['collapseKey'];
     }
-    if (_json.containsKey("data")) {
-      data = (_json["data"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("directBootOk")) {
-      directBootOk = _json["directBootOk"];
+    if (_json.containsKey('directBootOk')) {
+      directBootOk = _json['directBootOk'];
     }
-    if (_json.containsKey("fcmOptions")) {
-      fcmOptions = AndroidFcmOptions.fromJson(_json["fcmOptions"]);
+    if (_json.containsKey('fcmOptions')) {
+      fcmOptions = AndroidFcmOptions.fromJson(_json['fcmOptions']);
     }
-    if (_json.containsKey("notification")) {
-      notification = AndroidNotification.fromJson(_json["notification"]);
+    if (_json.containsKey('notification')) {
+      notification = AndroidNotification.fromJson(_json['notification']);
     }
-    if (_json.containsKey("priority")) {
-      priority = _json["priority"];
+    if (_json.containsKey('priority')) {
+      priority = _json['priority'];
     }
-    if (_json.containsKey("restrictedPackageName")) {
-      restrictedPackageName = _json["restrictedPackageName"];
+    if (_json.containsKey('restrictedPackageName')) {
+      restrictedPackageName = _json['restrictedPackageName'];
     }
-    if (_json.containsKey("ttl")) {
-      ttl = _json["ttl"];
+    if (_json.containsKey('ttl')) {
+      ttl = _json['ttl'];
     }
   }
 
@@ -222,28 +221,28 @@ class AndroidConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (collapseKey != null) {
-      _json["collapseKey"] = collapseKey;
+      _json['collapseKey'] = collapseKey;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (directBootOk != null) {
-      _json["directBootOk"] = directBootOk;
+      _json['directBootOk'] = directBootOk;
     }
     if (fcmOptions != null) {
-      _json["fcmOptions"] = fcmOptions.toJson();
+      _json['fcmOptions'] = fcmOptions.toJson();
     }
     if (notification != null) {
-      _json["notification"] = notification.toJson();
+      _json['notification'] = notification.toJson();
     }
     if (priority != null) {
-      _json["priority"] = priority;
+      _json['priority'] = priority;
     }
     if (restrictedPackageName != null) {
-      _json["restrictedPackageName"] = restrictedPackageName;
+      _json['restrictedPackageName'] = restrictedPackageName;
     }
     if (ttl != null) {
-      _json["ttl"] = ttl;
+      _json['ttl'] = ttl;
     }
     return _json;
   }
@@ -257,8 +256,8 @@ class AndroidFcmOptions {
   AndroidFcmOptions();
 
   AndroidFcmOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("analyticsLabel")) {
-      analyticsLabel = _json["analyticsLabel"];
+    if (_json.containsKey('analyticsLabel')) {
+      analyticsLabel = _json['analyticsLabel'];
     }
   }
 
@@ -266,7 +265,7 @@ class AndroidFcmOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (analyticsLabel != null) {
-      _json["analyticsLabel"] = analyticsLabel;
+      _json['analyticsLabel'] = analyticsLabel;
     }
     return _json;
   }
@@ -457,81 +456,81 @@ class AndroidNotification {
   AndroidNotification();
 
   AndroidNotification.fromJson(core.Map _json) {
-    if (_json.containsKey("body")) {
-      body = _json["body"];
+    if (_json.containsKey('body')) {
+      body = _json['body'];
     }
-    if (_json.containsKey("bodyLocArgs")) {
-      bodyLocArgs = (_json["bodyLocArgs"] as core.List).cast<core.String>();
+    if (_json.containsKey('bodyLocArgs')) {
+      bodyLocArgs = (_json['bodyLocArgs'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("bodyLocKey")) {
-      bodyLocKey = _json["bodyLocKey"];
+    if (_json.containsKey('bodyLocKey')) {
+      bodyLocKey = _json['bodyLocKey'];
     }
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("clickAction")) {
-      clickAction = _json["clickAction"];
+    if (_json.containsKey('clickAction')) {
+      clickAction = _json['clickAction'];
     }
-    if (_json.containsKey("color")) {
-      color = _json["color"];
+    if (_json.containsKey('color')) {
+      color = _json['color'];
     }
-    if (_json.containsKey("defaultLightSettings")) {
-      defaultLightSettings = _json["defaultLightSettings"];
+    if (_json.containsKey('defaultLightSettings')) {
+      defaultLightSettings = _json['defaultLightSettings'];
     }
-    if (_json.containsKey("defaultSound")) {
-      defaultSound = _json["defaultSound"];
+    if (_json.containsKey('defaultSound')) {
+      defaultSound = _json['defaultSound'];
     }
-    if (_json.containsKey("defaultVibrateTimings")) {
-      defaultVibrateTimings = _json["defaultVibrateTimings"];
+    if (_json.containsKey('defaultVibrateTimings')) {
+      defaultVibrateTimings = _json['defaultVibrateTimings'];
     }
-    if (_json.containsKey("eventTime")) {
-      eventTime = _json["eventTime"];
+    if (_json.containsKey('eventTime')) {
+      eventTime = _json['eventTime'];
     }
-    if (_json.containsKey("icon")) {
-      icon = _json["icon"];
+    if (_json.containsKey('icon')) {
+      icon = _json['icon'];
     }
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("lightSettings")) {
-      lightSettings = LightSettings.fromJson(_json["lightSettings"]);
+    if (_json.containsKey('lightSettings')) {
+      lightSettings = LightSettings.fromJson(_json['lightSettings']);
     }
-    if (_json.containsKey("localOnly")) {
-      localOnly = _json["localOnly"];
+    if (_json.containsKey('localOnly')) {
+      localOnly = _json['localOnly'];
     }
-    if (_json.containsKey("notificationCount")) {
-      notificationCount = _json["notificationCount"];
+    if (_json.containsKey('notificationCount')) {
+      notificationCount = _json['notificationCount'];
     }
-    if (_json.containsKey("notificationPriority")) {
-      notificationPriority = _json["notificationPriority"];
+    if (_json.containsKey('notificationPriority')) {
+      notificationPriority = _json['notificationPriority'];
     }
-    if (_json.containsKey("sound")) {
-      sound = _json["sound"];
+    if (_json.containsKey('sound')) {
+      sound = _json['sound'];
     }
-    if (_json.containsKey("sticky")) {
-      sticky = _json["sticky"];
+    if (_json.containsKey('sticky')) {
+      sticky = _json['sticky'];
     }
-    if (_json.containsKey("tag")) {
-      tag = _json["tag"];
+    if (_json.containsKey('tag')) {
+      tag = _json['tag'];
     }
-    if (_json.containsKey("ticker")) {
-      ticker = _json["ticker"];
+    if (_json.containsKey('ticker')) {
+      ticker = _json['ticker'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("titleLocArgs")) {
-      titleLocArgs = (_json["titleLocArgs"] as core.List).cast<core.String>();
+    if (_json.containsKey('titleLocArgs')) {
+      titleLocArgs = (_json['titleLocArgs'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("titleLocKey")) {
-      titleLocKey = _json["titleLocKey"];
+    if (_json.containsKey('titleLocKey')) {
+      titleLocKey = _json['titleLocKey'];
     }
-    if (_json.containsKey("vibrateTimings")) {
+    if (_json.containsKey('vibrateTimings')) {
       vibrateTimings =
-          (_json["vibrateTimings"] as core.List).cast<core.String>();
+          (_json['vibrateTimings'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("visibility")) {
-      visibility = _json["visibility"];
+    if (_json.containsKey('visibility')) {
+      visibility = _json['visibility'];
     }
   }
 
@@ -539,79 +538,79 @@ class AndroidNotification {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (body != null) {
-      _json["body"] = body;
+      _json['body'] = body;
     }
     if (bodyLocArgs != null) {
-      _json["bodyLocArgs"] = bodyLocArgs;
+      _json['bodyLocArgs'] = bodyLocArgs;
     }
     if (bodyLocKey != null) {
-      _json["bodyLocKey"] = bodyLocKey;
+      _json['bodyLocKey'] = bodyLocKey;
     }
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (clickAction != null) {
-      _json["clickAction"] = clickAction;
+      _json['clickAction'] = clickAction;
     }
     if (color != null) {
-      _json["color"] = color;
+      _json['color'] = color;
     }
     if (defaultLightSettings != null) {
-      _json["defaultLightSettings"] = defaultLightSettings;
+      _json['defaultLightSettings'] = defaultLightSettings;
     }
     if (defaultSound != null) {
-      _json["defaultSound"] = defaultSound;
+      _json['defaultSound'] = defaultSound;
     }
     if (defaultVibrateTimings != null) {
-      _json["defaultVibrateTimings"] = defaultVibrateTimings;
+      _json['defaultVibrateTimings'] = defaultVibrateTimings;
     }
     if (eventTime != null) {
-      _json["eventTime"] = eventTime;
+      _json['eventTime'] = eventTime;
     }
     if (icon != null) {
-      _json["icon"] = icon;
+      _json['icon'] = icon;
     }
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (lightSettings != null) {
-      _json["lightSettings"] = lightSettings.toJson();
+      _json['lightSettings'] = lightSettings.toJson();
     }
     if (localOnly != null) {
-      _json["localOnly"] = localOnly;
+      _json['localOnly'] = localOnly;
     }
     if (notificationCount != null) {
-      _json["notificationCount"] = notificationCount;
+      _json['notificationCount'] = notificationCount;
     }
     if (notificationPriority != null) {
-      _json["notificationPriority"] = notificationPriority;
+      _json['notificationPriority'] = notificationPriority;
     }
     if (sound != null) {
-      _json["sound"] = sound;
+      _json['sound'] = sound;
     }
     if (sticky != null) {
-      _json["sticky"] = sticky;
+      _json['sticky'] = sticky;
     }
     if (tag != null) {
-      _json["tag"] = tag;
+      _json['tag'] = tag;
     }
     if (ticker != null) {
-      _json["ticker"] = ticker;
+      _json['ticker'] = ticker;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (titleLocArgs != null) {
-      _json["titleLocArgs"] = titleLocArgs;
+      _json['titleLocArgs'] = titleLocArgs;
     }
     if (titleLocKey != null) {
-      _json["titleLocKey"] = titleLocKey;
+      _json['titleLocKey'] = titleLocKey;
     }
     if (vibrateTimings != null) {
-      _json["vibrateTimings"] = vibrateTimings;
+      _json['vibrateTimings'] = vibrateTimings;
     }
     if (visibility != null) {
-      _json["visibility"] = visibility;
+      _json['visibility'] = visibility;
     }
     return _json;
   }
@@ -641,14 +640,14 @@ class ApnsConfig {
   ApnsConfig();
 
   ApnsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("fcmOptions")) {
-      fcmOptions = ApnsFcmOptions.fromJson(_json["fcmOptions"]);
+    if (_json.containsKey('fcmOptions')) {
+      fcmOptions = ApnsFcmOptions.fromJson(_json['fcmOptions']);
     }
-    if (_json.containsKey("headers")) {
-      headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('headers')) {
+      headers = (_json['headers'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("payload")) {
-      payload = (_json["payload"] as core.Map).cast<core.String, core.Object>();
+    if (_json.containsKey('payload')) {
+      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -656,13 +655,13 @@ class ApnsConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fcmOptions != null) {
-      _json["fcmOptions"] = fcmOptions.toJson();
+      _json['fcmOptions'] = fcmOptions.toJson();
     }
     if (headers != null) {
-      _json["headers"] = headers;
+      _json['headers'] = headers;
     }
     if (payload != null) {
-      _json["payload"] = payload;
+      _json['payload'] = payload;
     }
     return _json;
   }
@@ -681,11 +680,11 @@ class ApnsFcmOptions {
   ApnsFcmOptions();
 
   ApnsFcmOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("analyticsLabel")) {
-      analyticsLabel = _json["analyticsLabel"];
+    if (_json.containsKey('analyticsLabel')) {
+      analyticsLabel = _json['analyticsLabel'];
     }
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
   }
 
@@ -693,10 +692,10 @@ class ApnsFcmOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (analyticsLabel != null) {
-      _json["analyticsLabel"] = analyticsLabel;
+      _json['analyticsLabel'] = analyticsLabel;
     }
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     return _json;
   }
@@ -774,17 +773,17 @@ class Color {
   Color();
 
   Color.fromJson(core.Map _json) {
-    if (_json.containsKey("alpha")) {
-      alpha = _json["alpha"].toDouble();
+    if (_json.containsKey('alpha')) {
+      alpha = _json['alpha'].toDouble();
     }
-    if (_json.containsKey("blue")) {
-      blue = _json["blue"].toDouble();
+    if (_json.containsKey('blue')) {
+      blue = _json['blue'].toDouble();
     }
-    if (_json.containsKey("green")) {
-      green = _json["green"].toDouble();
+    if (_json.containsKey('green')) {
+      green = _json['green'].toDouble();
     }
-    if (_json.containsKey("red")) {
-      red = _json["red"].toDouble();
+    if (_json.containsKey('red')) {
+      red = _json['red'].toDouble();
     }
   }
 
@@ -792,16 +791,16 @@ class Color {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alpha != null) {
-      _json["alpha"] = alpha;
+      _json['alpha'] = alpha;
     }
     if (blue != null) {
-      _json["blue"] = blue;
+      _json['blue'] = blue;
     }
     if (green != null) {
-      _json["green"] = green;
+      _json['green'] = green;
     }
     if (red != null) {
-      _json["red"] = red;
+      _json['red'] = red;
     }
     return _json;
   }
@@ -815,8 +814,8 @@ class FcmOptions {
   FcmOptions();
 
   FcmOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("analyticsLabel")) {
-      analyticsLabel = _json["analyticsLabel"];
+    if (_json.containsKey('analyticsLabel')) {
+      analyticsLabel = _json['analyticsLabel'];
     }
   }
 
@@ -824,7 +823,7 @@ class FcmOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (analyticsLabel != null) {
-      _json["analyticsLabel"] = analyticsLabel;
+      _json['analyticsLabel'] = analyticsLabel;
     }
     return _json;
   }
@@ -849,14 +848,14 @@ class LightSettings {
   LightSettings();
 
   LightSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("color")) {
-      color = Color.fromJson(_json["color"]);
+    if (_json.containsKey('color')) {
+      color = Color.fromJson(_json['color']);
     }
-    if (_json.containsKey("lightOffDuration")) {
-      lightOffDuration = _json["lightOffDuration"];
+    if (_json.containsKey('lightOffDuration')) {
+      lightOffDuration = _json['lightOffDuration'];
     }
-    if (_json.containsKey("lightOnDuration")) {
-      lightOnDuration = _json["lightOnDuration"];
+    if (_json.containsKey('lightOnDuration')) {
+      lightOnDuration = _json['lightOnDuration'];
     }
   }
 
@@ -864,13 +863,13 @@ class LightSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = color.toJson();
+      _json['color'] = color.toJson();
     }
     if (lightOffDuration != null) {
-      _json["lightOffDuration"] = lightOffDuration;
+      _json['lightOffDuration'] = lightOffDuration;
     }
     if (lightOnDuration != null) {
-      _json["lightOnDuration"] = lightOnDuration;
+      _json['lightOnDuration'] = lightOnDuration;
     }
     return _json;
   }
@@ -919,35 +918,35 @@ class Message {
   Message();
 
   Message.fromJson(core.Map _json) {
-    if (_json.containsKey("android")) {
-      android = AndroidConfig.fromJson(_json["android"]);
+    if (_json.containsKey('android')) {
+      android = AndroidConfig.fromJson(_json['android']);
     }
-    if (_json.containsKey("apns")) {
-      apns = ApnsConfig.fromJson(_json["apns"]);
+    if (_json.containsKey('apns')) {
+      apns = ApnsConfig.fromJson(_json['apns']);
     }
-    if (_json.containsKey("condition")) {
-      condition = _json["condition"];
+    if (_json.containsKey('condition')) {
+      condition = _json['condition'];
     }
-    if (_json.containsKey("data")) {
-      data = (_json["data"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("fcmOptions")) {
-      fcmOptions = FcmOptions.fromJson(_json["fcmOptions"]);
+    if (_json.containsKey('fcmOptions')) {
+      fcmOptions = FcmOptions.fromJson(_json['fcmOptions']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notification")) {
-      notification = Notification.fromJson(_json["notification"]);
+    if (_json.containsKey('notification')) {
+      notification = Notification.fromJson(_json['notification']);
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
-    if (_json.containsKey("topic")) {
-      topic = _json["topic"];
+    if (_json.containsKey('topic')) {
+      topic = _json['topic'];
     }
-    if (_json.containsKey("webpush")) {
-      webpush = WebpushConfig.fromJson(_json["webpush"]);
+    if (_json.containsKey('webpush')) {
+      webpush = WebpushConfig.fromJson(_json['webpush']);
     }
   }
 
@@ -955,34 +954,34 @@ class Message {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (android != null) {
-      _json["android"] = android.toJson();
+      _json['android'] = android.toJson();
     }
     if (apns != null) {
-      _json["apns"] = apns.toJson();
+      _json['apns'] = apns.toJson();
     }
     if (condition != null) {
-      _json["condition"] = condition;
+      _json['condition'] = condition;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (fcmOptions != null) {
-      _json["fcmOptions"] = fcmOptions.toJson();
+      _json['fcmOptions'] = fcmOptions.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notification != null) {
-      _json["notification"] = notification.toJson();
+      _json['notification'] = notification.toJson();
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     if (topic != null) {
-      _json["topic"] = topic;
+      _json['topic'] = topic;
     }
     if (webpush != null) {
-      _json["webpush"] = webpush.toJson();
+      _json['webpush'] = webpush.toJson();
     }
     return _json;
   }
@@ -1007,14 +1006,14 @@ class Notification {
   Notification();
 
   Notification.fromJson(core.Map _json) {
-    if (_json.containsKey("body")) {
-      body = _json["body"];
+    if (_json.containsKey('body')) {
+      body = _json['body'];
     }
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1022,13 +1021,13 @@ class Notification {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (body != null) {
-      _json["body"] = body;
+      _json['body'] = body;
     }
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1045,11 +1044,11 @@ class SendMessageRequest {
   SendMessageRequest();
 
   SendMessageRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("message")) {
-      message = Message.fromJson(_json["message"]);
+    if (_json.containsKey('message')) {
+      message = Message.fromJson(_json['message']);
     }
-    if (_json.containsKey("validateOnly")) {
-      validateOnly = _json["validateOnly"];
+    if (_json.containsKey('validateOnly')) {
+      validateOnly = _json['validateOnly'];
     }
   }
 
@@ -1057,10 +1056,10 @@ class SendMessageRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = message.toJson();
+      _json['message'] = message.toJson();
     }
     if (validateOnly != null) {
-      _json["validateOnly"] = validateOnly;
+      _json['validateOnly'] = validateOnly;
     }
     return _json;
   }
@@ -1094,18 +1093,18 @@ class WebpushConfig {
   WebpushConfig();
 
   WebpushConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = (_json["data"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("fcmOptions")) {
-      fcmOptions = WebpushFcmOptions.fromJson(_json["fcmOptions"]);
+    if (_json.containsKey('fcmOptions')) {
+      fcmOptions = WebpushFcmOptions.fromJson(_json['fcmOptions']);
     }
-    if (_json.containsKey("headers")) {
-      headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('headers')) {
+      headers = (_json['headers'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("notification")) {
+    if (_json.containsKey('notification')) {
       notification =
-          (_json["notification"] as core.Map).cast<core.String, core.Object>();
+          (_json['notification'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -1113,16 +1112,16 @@ class WebpushConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (fcmOptions != null) {
-      _json["fcmOptions"] = fcmOptions.toJson();
+      _json['fcmOptions'] = fcmOptions.toJson();
     }
     if (headers != null) {
-      _json["headers"] = headers;
+      _json['headers'] = headers;
     }
     if (notification != null) {
-      _json["notification"] = notification;
+      _json['notification'] = notification;
     }
     return _json;
   }
@@ -1140,11 +1139,11 @@ class WebpushFcmOptions {
   WebpushFcmOptions();
 
   WebpushFcmOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("analyticsLabel")) {
-      analyticsLabel = _json["analyticsLabel"];
+    if (_json.containsKey('analyticsLabel')) {
+      analyticsLabel = _json['analyticsLabel'];
     }
-    if (_json.containsKey("link")) {
-      link = _json["link"];
+    if (_json.containsKey('link')) {
+      link = _json['link'];
     }
   }
 
@@ -1152,10 +1151,10 @@ class WebpushFcmOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (analyticsLabel != null) {
-      _json["analyticsLabel"] = analyticsLabel;
+      _json['analyticsLabel'] = analyticsLabel;
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     return _json;
   }

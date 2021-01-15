@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -89,9 +89,9 @@ api.AdministrationRegion buildAdministrationRegion() {
   buildCounterAdministrationRegion++;
   if (buildCounterAdministrationRegion < 3) {
     o.electionAdministrationBody = buildAdministrativeBody();
-    o.id = "foo";
+    o.id = 'foo';
     o.localJurisdiction = buildAdministrationRegion();
-    o.name = "foo";
+    o.name = 'foo';
     o.sources = buildUnnamed2221();
   }
   buildCounterAdministrationRegion--;
@@ -125,8 +125,8 @@ void checkUnnamed2222(core.List<api.ElectionOfficial> o) {
 
 core.List<core.String> buildUnnamed2223() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -141,21 +141,21 @@ api.AdministrativeBody buildAdministrativeBody() {
   var o = api.AdministrativeBody();
   buildCounterAdministrativeBody++;
   if (buildCounterAdministrativeBody < 3) {
-    o.absenteeVotingInfoUrl = "foo";
-    o.ballotInfoUrl = "foo";
+    o.absenteeVotingInfoUrl = 'foo';
+    o.ballotInfoUrl = 'foo';
     o.correspondenceAddress = buildSimpleAddressType();
-    o.electionInfoUrl = "foo";
-    o.electionNoticeText = "foo";
-    o.electionNoticeUrl = "foo";
+    o.electionInfoUrl = 'foo';
+    o.electionNoticeText = 'foo';
+    o.electionNoticeUrl = 'foo';
     o.electionOfficials = buildUnnamed2222();
-    o.electionRegistrationConfirmationUrl = "foo";
-    o.electionRegistrationUrl = "foo";
-    o.electionRulesUrl = "foo";
-    o.hoursOfOperation = "foo";
-    o.name = "foo";
+    o.electionRegistrationConfirmationUrl = 'foo';
+    o.electionRegistrationUrl = 'foo';
+    o.electionRulesUrl = 'foo';
+    o.hoursOfOperation = 'foo';
+    o.name = 'foo';
     o.physicalAddress = buildSimpleAddressType();
     o.voterServices = buildUnnamed2223();
-    o.votingLocationFinderUrl = "foo";
+    o.votingLocationFinderUrl = 'foo';
   }
   buildCounterAdministrativeBody--;
   return o;
@@ -202,14 +202,14 @@ api.Candidate buildCandidate() {
   var o = api.Candidate();
   buildCounterCandidate++;
   if (buildCounterCandidate < 3) {
-    o.candidateUrl = "foo";
+    o.candidateUrl = 'foo';
     o.channels = buildUnnamed2224();
-    o.email = "foo";
-    o.name = "foo";
-    o.orderOnBallot = "foo";
-    o.party = "foo";
-    o.phone = "foo";
-    o.photoUrl = "foo";
+    o.email = 'foo';
+    o.name = 'foo';
+    o.orderOnBallot = 'foo';
+    o.party = 'foo';
+    o.phone = 'foo';
+    o.photoUrl = 'foo';
   }
   buildCounterCandidate--;
   return o;
@@ -235,8 +235,8 @@ api.Channel buildChannel() {
   var o = api.Channel();
   buildCounterChannel++;
   if (buildCounterChannel < 3) {
-    o.id = "foo";
-    o.type = "foo";
+    o.id = 'foo';
+    o.type = 'foo';
   }
   buildCounterChannel--;
   return o;
@@ -266,8 +266,8 @@ void checkUnnamed2225(core.List<api.Candidate> o) {
 
 core.List<core.String> buildUnnamed2226() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -279,8 +279,8 @@ void checkUnnamed2226(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2227() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -292,8 +292,8 @@ void checkUnnamed2227(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2228() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -305,8 +305,8 @@ void checkUnnamed2228(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2229() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -334,32 +334,32 @@ api.Contest buildContest() {
   var o = api.Contest();
   buildCounterContest++;
   if (buildCounterContest < 3) {
-    o.ballotPlacement = "foo";
-    o.ballotTitle = "foo";
+    o.ballotPlacement = 'foo';
+    o.ballotTitle = 'foo';
     o.candidates = buildUnnamed2225();
     o.district = buildElectoralDistrict();
-    o.electorateSpecifications = "foo";
-    o.id = "foo";
+    o.electorateSpecifications = 'foo';
+    o.id = 'foo';
     o.level = buildUnnamed2226();
-    o.numberElected = "foo";
-    o.numberVotingFor = "foo";
-    o.office = "foo";
+    o.numberElected = 'foo';
+    o.numberVotingFor = 'foo';
+    o.office = 'foo';
     o.primaryParties = buildUnnamed2227();
-    o.primaryParty = "foo";
+    o.primaryParty = 'foo';
     o.referendumBallotResponses = buildUnnamed2228();
-    o.referendumBrief = "foo";
-    o.referendumConStatement = "foo";
-    o.referendumEffectOfAbstain = "foo";
-    o.referendumPassageThreshold = "foo";
-    o.referendumProStatement = "foo";
-    o.referendumSubtitle = "foo";
-    o.referendumText = "foo";
-    o.referendumTitle = "foo";
-    o.referendumUrl = "foo";
+    o.referendumBrief = 'foo';
+    o.referendumConStatement = 'foo';
+    o.referendumEffectOfAbstain = 'foo';
+    o.referendumPassageThreshold = 'foo';
+    o.referendumProStatement = 'foo';
+    o.referendumSubtitle = 'foo';
+    o.referendumText = 'foo';
+    o.referendumTitle = 'foo';
+    o.referendumUrl = 'foo';
     o.roles = buildUnnamed2229();
     o.sources = buildUnnamed2230();
-    o.special = "foo";
-    o.type = "foo";
+    o.special = 'foo';
+    o.type = 'foo';
   }
   buildCounterContest--;
   return o;
@@ -416,7 +416,7 @@ api.DivisionSearchResponse buildDivisionSearchResponse() {
   var o = api.DivisionSearchResponse();
   buildCounterDivisionSearchResponse++;
   if (buildCounterDivisionSearchResponse < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.results = buildUnnamed2231();
   }
   buildCounterDivisionSearchResponse--;
@@ -434,8 +434,8 @@ void checkDivisionSearchResponse(api.DivisionSearchResponse o) {
 
 core.List<core.String> buildUnnamed2232() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -451,8 +451,8 @@ api.DivisionSearchResult buildDivisionSearchResult() {
   buildCounterDivisionSearchResult++;
   if (buildCounterDivisionSearchResult < 3) {
     o.aliases = buildUnnamed2232();
-    o.name = "foo";
-    o.ocdId = "foo";
+    o.name = 'foo';
+    o.ocdId = 'foo';
   }
   buildCounterDivisionSearchResult--;
   return o;
@@ -473,10 +473,10 @@ api.Election buildElection() {
   var o = api.Election();
   buildCounterElection++;
   if (buildCounterElection < 3) {
-    o.electionDay = "foo";
-    o.id = "foo";
-    o.name = "foo";
-    o.ocdDivisionId = "foo";
+    o.electionDay = 'foo';
+    o.id = 'foo';
+    o.name = 'foo';
+    o.ocdDivisionId = 'foo';
   }
   buildCounterElection--;
   return o;
@@ -498,11 +498,11 @@ api.ElectionOfficial buildElectionOfficial() {
   var o = api.ElectionOfficial();
   buildCounterElectionOfficial++;
   if (buildCounterElectionOfficial < 3) {
-    o.emailAddress = "foo";
-    o.faxNumber = "foo";
-    o.name = "foo";
-    o.officePhoneNumber = "foo";
-    o.title = "foo";
+    o.emailAddress = 'foo';
+    o.faxNumber = 'foo';
+    o.name = 'foo';
+    o.officePhoneNumber = 'foo';
+    o.title = 'foo';
   }
   buildCounterElectionOfficial--;
   return o;
@@ -539,7 +539,7 @@ api.ElectionsQueryResponse buildElectionsQueryResponse() {
   buildCounterElectionsQueryResponse++;
   if (buildCounterElectionsQueryResponse < 3) {
     o.elections = buildUnnamed2233();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterElectionsQueryResponse--;
   return o;
@@ -559,9 +559,9 @@ api.ElectoralDistrict buildElectoralDistrict() {
   var o = api.ElectoralDistrict();
   buildCounterElectoralDistrict++;
   if (buildCounterElectoralDistrict < 3) {
-    o.id = "foo";
-    o.name = "foo";
-    o.scope = "foo";
+    o.id = 'foo';
+    o.name = 'foo';
+    o.scope = 'foo';
   }
   buildCounterElectoralDistrict--;
   return o;
@@ -579,8 +579,8 @@ void checkElectoralDistrict(api.ElectoralDistrict o) {
 
 core.List<core.String> buildUnnamed2234() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -609,7 +609,7 @@ api.GeographicDivision buildGeographicDivision() {
   buildCounterGeographicDivision++;
   if (buildCounterGeographicDivision < 3) {
     o.alsoKnownAs = buildUnnamed2234();
-    o.name = "foo";
+    o.name = 'foo';
     o.officeIndices = buildUnnamed2235();
   }
   buildCounterGeographicDivision--;
@@ -628,8 +628,8 @@ void checkGeographicDivision(api.GeographicDivision o) {
 
 core.List<core.String> buildUnnamed2236() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -654,8 +654,8 @@ void checkUnnamed2237(core.List<core.int> o) {
 
 core.List<core.String> buildUnnamed2238() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -683,9 +683,9 @@ api.Office buildOffice() {
   var o = api.Office();
   buildCounterOffice++;
   if (buildCounterOffice < 3) {
-    o.divisionId = "foo";
+    o.divisionId = 'foo';
     o.levels = buildUnnamed2236();
-    o.name = "foo";
+    o.name = 'foo';
     o.officialIndices = buildUnnamed2237();
     o.roles = buildUnnamed2238();
     o.sources = buildUnnamed2239();
@@ -735,8 +735,8 @@ void checkUnnamed2241(core.List<api.Channel> o) {
 
 core.List<core.String> buildUnnamed2242() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -748,8 +748,8 @@ void checkUnnamed2242(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2243() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -761,8 +761,8 @@ void checkUnnamed2243(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2244() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -780,10 +780,10 @@ api.Official buildOfficial() {
     o.address = buildUnnamed2240();
     o.channels = buildUnnamed2241();
     o.emails = buildUnnamed2242();
-    o.name = "foo";
-    o.party = "foo";
+    o.name = 'foo';
+    o.party = 'foo';
     o.phones = buildUnnamed2243();
-    o.photoUrl = "foo";
+    o.photoUrl = 'foo';
     o.urls = buildUnnamed2244();
   }
   buildCounterOfficial--;
@@ -824,16 +824,16 @@ api.PollingLocation buildPollingLocation() {
   buildCounterPollingLocation++;
   if (buildCounterPollingLocation < 3) {
     o.address = buildSimpleAddressType();
-    o.endDate = "foo";
-    o.id = "foo";
+    o.endDate = 'foo';
+    o.id = 'foo';
     o.latitude = 42.0;
     o.longitude = 42.0;
-    o.name = "foo";
-    o.notes = "foo";
-    o.pollingHours = "foo";
+    o.name = 'foo';
+    o.notes = 'foo';
+    o.pollingHours = 'foo';
     o.sources = buildUnnamed2245();
-    o.startDate = "foo";
-    o.voterServices = "foo";
+    o.startDate = 'foo';
+    o.voterServices = 'foo';
   }
   buildCounterPollingLocation--;
   return o;
@@ -859,15 +859,15 @@ void checkPollingLocation(api.PollingLocation o) {
 
 core.Map<core.String, api.GeographicDivision> buildUnnamed2246() {
   var o = <core.String, api.GeographicDivision>{};
-  o["x"] = buildGeographicDivision();
-  o["y"] = buildGeographicDivision();
+  o['x'] = buildGeographicDivision();
+  o['y'] = buildGeographicDivision();
   return o;
 }
 
 void checkUnnamed2246(core.Map<core.String, api.GeographicDivision> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGeographicDivision(o["x"]);
-  checkGeographicDivision(o["y"]);
+  checkGeographicDivision(o['x']);
+  checkGeographicDivision(o['y']);
 }
 
 core.List<api.Office> buildUnnamed2247() {
@@ -921,15 +921,15 @@ void checkRepresentativeInfoData(api.RepresentativeInfoData o) {
 
 core.Map<core.String, api.GeographicDivision> buildUnnamed2249() {
   var o = <core.String, api.GeographicDivision>{};
-  o["x"] = buildGeographicDivision();
-  o["y"] = buildGeographicDivision();
+  o['x'] = buildGeographicDivision();
+  o['y'] = buildGeographicDivision();
   return o;
 }
 
 void checkUnnamed2249(core.Map<core.String, api.GeographicDivision> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGeographicDivision(o["x"]);
-  checkGeographicDivision(o["y"]);
+  checkGeographicDivision(o['x']);
+  checkGeographicDivision(o['y']);
 }
 
 core.List<api.Office> buildUnnamed2250() {
@@ -964,7 +964,7 @@ api.RepresentativeInfoResponse buildRepresentativeInfoResponse() {
   buildCounterRepresentativeInfoResponse++;
   if (buildCounterRepresentativeInfoResponse < 3) {
     o.divisions = buildUnnamed2249();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.normalizedInput = buildSimpleAddressType();
     o.offices = buildUnnamed2250();
     o.officials = buildUnnamed2251();
@@ -990,13 +990,13 @@ api.SimpleAddressType buildSimpleAddressType() {
   var o = api.SimpleAddressType();
   buildCounterSimpleAddressType++;
   if (buildCounterSimpleAddressType < 3) {
-    o.city = "foo";
-    o.line1 = "foo";
-    o.line2 = "foo";
-    o.line3 = "foo";
-    o.locationName = "foo";
-    o.state = "foo";
-    o.zip = "foo";
+    o.city = 'foo';
+    o.line1 = 'foo';
+    o.line2 = 'foo';
+    o.line3 = 'foo';
+    o.locationName = 'foo';
+    o.state = 'foo';
+    o.zip = 'foo';
   }
   buildCounterSimpleAddressType--;
   return o;
@@ -1021,7 +1021,7 @@ api.Source buildSource() {
   var o = api.Source();
   buildCounterSource++;
   if (buildCounterSource < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.official = true;
   }
   buildCounterSource--;
@@ -1124,12 +1124,12 @@ api.VoterInfoResponse buildVoterInfoResponse() {
     o.dropOffLocations = buildUnnamed2253();
     o.earlyVoteSites = buildUnnamed2254();
     o.election = buildElection();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.mailOnly = true;
     o.normalizedInput = buildSimpleAddressType();
     o.otherElections = buildUnnamed2255();
     o.pollingLocations = buildUnnamed2256();
-    o.precinctId = "foo";
+    o.precinctId = 'foo';
     o.state = buildUnnamed2257();
   }
   buildCounterVoterInfoResponse--;
@@ -1156,8 +1156,8 @@ void checkVoterInfoResponse(api.VoterInfoResponse o) {
 
 core.List<core.String> buildUnnamed2258() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1169,8 +1169,8 @@ void checkUnnamed2258(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2259() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1182,8 +1182,8 @@ void checkUnnamed2259(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2260() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1195,8 +1195,8 @@ void checkUnnamed2260(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2261() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1207,172 +1207,172 @@ void checkUnnamed2261(core.List<core.String> o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AdministrationRegion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdministrationRegion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdministrationRegion();
       var od = api.AdministrationRegion.fromJson(o.toJson());
       checkAdministrationRegion(od);
     });
   });
 
-  unittest.group("obj-schema-AdministrativeBody", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdministrativeBody', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdministrativeBody();
       var od = api.AdministrativeBody.fromJson(o.toJson());
       checkAdministrativeBody(od);
     });
   });
 
-  unittest.group("obj-schema-Candidate", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Candidate', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCandidate();
       var od = api.Candidate.fromJson(o.toJson());
       checkCandidate(od);
     });
   });
 
-  unittest.group("obj-schema-Channel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Channel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od);
     });
   });
 
-  unittest.group("obj-schema-Contest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Contest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContest();
       var od = api.Contest.fromJson(o.toJson());
       checkContest(od);
     });
   });
 
-  unittest.group("obj-schema-DivisionSearchResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DivisionSearchResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDivisionSearchResponse();
       var od = api.DivisionSearchResponse.fromJson(o.toJson());
       checkDivisionSearchResponse(od);
     });
   });
 
-  unittest.group("obj-schema-DivisionSearchResult", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DivisionSearchResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDivisionSearchResult();
       var od = api.DivisionSearchResult.fromJson(o.toJson());
       checkDivisionSearchResult(od);
     });
   });
 
-  unittest.group("obj-schema-Election", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Election', () {
+    unittest.test('to-json--from-json', () {
       var o = buildElection();
       var od = api.Election.fromJson(o.toJson());
       checkElection(od);
     });
   });
 
-  unittest.group("obj-schema-ElectionOfficial", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ElectionOfficial', () {
+    unittest.test('to-json--from-json', () {
       var o = buildElectionOfficial();
       var od = api.ElectionOfficial.fromJson(o.toJson());
       checkElectionOfficial(od);
     });
   });
 
-  unittest.group("obj-schema-ElectionsQueryResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ElectionsQueryResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildElectionsQueryResponse();
       var od = api.ElectionsQueryResponse.fromJson(o.toJson());
       checkElectionsQueryResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ElectoralDistrict", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ElectoralDistrict', () {
+    unittest.test('to-json--from-json', () {
       var o = buildElectoralDistrict();
       var od = api.ElectoralDistrict.fromJson(o.toJson());
       checkElectoralDistrict(od);
     });
   });
 
-  unittest.group("obj-schema-GeographicDivision", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GeographicDivision', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGeographicDivision();
       var od = api.GeographicDivision.fromJson(o.toJson());
       checkGeographicDivision(od);
     });
   });
 
-  unittest.group("obj-schema-Office", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Office', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOffice();
       var od = api.Office.fromJson(o.toJson());
       checkOffice(od);
     });
   });
 
-  unittest.group("obj-schema-Official", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Official', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOfficial();
       var od = api.Official.fromJson(o.toJson());
       checkOfficial(od);
     });
   });
 
-  unittest.group("obj-schema-PollingLocation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PollingLocation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPollingLocation();
       var od = api.PollingLocation.fromJson(o.toJson());
       checkPollingLocation(od);
     });
   });
 
-  unittest.group("obj-schema-RepresentativeInfoData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RepresentativeInfoData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRepresentativeInfoData();
       var od = api.RepresentativeInfoData.fromJson(o.toJson());
       checkRepresentativeInfoData(od);
     });
   });
 
-  unittest.group("obj-schema-RepresentativeInfoResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RepresentativeInfoResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRepresentativeInfoResponse();
       var od = api.RepresentativeInfoResponse.fromJson(o.toJson());
       checkRepresentativeInfoResponse(od);
     });
   });
 
-  unittest.group("obj-schema-SimpleAddressType", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SimpleAddressType', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSimpleAddressType();
       var od = api.SimpleAddressType.fromJson(o.toJson());
       checkSimpleAddressType(od);
     });
   });
 
-  unittest.group("obj-schema-Source", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Source', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSource();
       var od = api.Source.fromJson(o.toJson());
       checkSource(od);
     });
   });
 
-  unittest.group("obj-schema-VoterInfoResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-VoterInfoResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVoterInfoResponse();
       var od = api.VoterInfoResponse.fromJson(o.toJson());
       checkVoterInfoResponse(od);
     });
   });
 
-  unittest.group("resource-DivisionsResourceApi", () {
-    unittest.test("method--search", () {
+  unittest.group('resource-DivisionsResourceApi', () {
+    unittest.test('method--search', () {
       var mock = HttpServerMock();
       api.DivisionsResourceApi res = api.CivicinfoApi(mock).divisions;
-      var arg_query = "foo";
-      var arg_$fields = "foo";
+      var arg_query = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1391,8 +1391,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1403,7 +1403,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDivisionSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1416,11 +1416,11 @@ void main() {
     });
   });
 
-  unittest.group("resource-ElectionsResourceApi", () {
-    unittest.test("method--electionQuery", () {
+  unittest.group('resource-ElectionsResourceApi', () {
+    unittest.test('method--electionQuery', () {
       var mock = HttpServerMock();
       api.ElectionsResourceApi res = api.CivicinfoApi(mock).elections;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1439,8 +1439,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1450,7 +1450,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildElectionsQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1462,14 +1462,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--voterInfoQuery", () {
+    unittest.test('method--voterInfoQuery', () {
       var mock = HttpServerMock();
       api.ElectionsResourceApi res = api.CivicinfoApi(mock).elections;
-      var arg_address = "foo";
+      var arg_address = 'foo';
       var arg_returnAllAvailableData = true;
       var arg_officialOnly = true;
-      var arg_electionId = "foo";
-      var arg_$fields = "foo";
+      var arg_electionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1488,8 +1488,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1507,7 +1507,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVoterInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1524,16 +1524,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-RepresentativesResourceApi", () {
-    unittest.test("method--representativeInfoByAddress", () {
+  unittest.group('resource-RepresentativesResourceApi', () {
+    unittest.test('method--representativeInfoByAddress', () {
       var mock = HttpServerMock();
       api.RepresentativesResourceApi res =
           api.CivicinfoApi(mock).representatives;
       var arg_levels = buildUnnamed2258();
       var arg_includeOffices = true;
       var arg_roles = buildUnnamed2259();
-      var arg_address = "foo";
-      var arg_$fields = "foo";
+      var arg_address = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1552,8 +1552,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1569,7 +1569,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRepresentativeInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1586,15 +1586,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--representativeInfoByDivision", () {
+    unittest.test('method--representativeInfoByDivision', () {
       var mock = HttpServerMock();
       api.RepresentativesResourceApi res =
           api.CivicinfoApi(mock).representatives;
-      var arg_ocdId = "foo";
+      var arg_ocdId = 'foo';
       var arg_roles = buildUnnamed2260();
       var arg_recursive = true;
       var arg_levels = buildUnnamed2261();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1608,7 +1608,7 @@ void main() {
         pathOffset += 29;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_ocdId"));
+        unittest.expect(subPart, unittest.equals('$arg_ocdId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1616,8 +1616,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1631,7 +1631,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRepresentativeInfoData());
         return async.Future.value(stringResponse(200, h, resp));

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,8 +72,8 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.List<core.String> buildUnnamed2262() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -106,15 +106,15 @@ void checkCreateProfileRequest(api.CreateProfileRequest o) {
 
 core.Map<core.String, core.String> buildUnnamed2263() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2263(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterDeployment = 0;
@@ -123,8 +123,8 @@ api.Deployment buildDeployment() {
   buildCounterDeployment++;
   if (buildCounterDeployment < 3) {
     o.labels = buildUnnamed2263();
-    o.projectId = "foo";
-    o.target = "foo";
+    o.projectId = 'foo';
+    o.target = 'foo';
   }
   buildCounterDeployment--;
   return o;
@@ -142,15 +142,15 @@ void checkDeployment(api.Deployment o) {
 
 core.Map<core.String, core.String> buildUnnamed2264() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2264(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterProfile = 0;
@@ -159,11 +159,11 @@ api.Profile buildProfile() {
   buildCounterProfile++;
   if (buildCounterProfile < 3) {
     o.deployment = buildDeployment();
-    o.duration = "foo";
+    o.duration = 'foo';
     o.labels = buildUnnamed2264();
-    o.name = "foo";
-    o.profileBytes = "foo";
-    o.profileType = "foo";
+    o.name = 'foo';
+    o.profileBytes = 'foo';
+    o.profileType = 'foo';
   }
   buildCounterProfile--;
   return o;
@@ -183,38 +183,38 @@ void checkProfile(api.Profile o) {
 }
 
 void main() {
-  unittest.group("obj-schema-CreateProfileRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateProfileRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateProfileRequest();
       var od = api.CreateProfileRequest.fromJson(o.toJson());
       checkCreateProfileRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Deployment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Deployment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeployment();
       var od = api.Deployment.fromJson(o.toJson());
       checkDeployment(od);
     });
   });
 
-  unittest.group("obj-schema-Profile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Profile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProfile();
       var od = api.Profile.fromJson(o.toJson());
       checkProfile(od);
     });
   });
 
-  unittest.group("resource-ProjectsProfilesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsProfilesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsProfilesResourceApi res =
           api.CloudprofilerApi(mock).projects.profiles;
       var arg_request = buildCreateProfileRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CreateProfileRequest.fromJson(json);
         checkCreateProfileRequest(obj);
@@ -237,8 +237,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -248,7 +248,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -260,13 +260,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--createOffline", () {
+    unittest.test('method--createOffline', () {
       var mock = HttpServerMock();
       api.ProjectsProfilesResourceApi res =
           api.CloudprofilerApi(mock).projects.profiles;
       var arg_request = buildProfile();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Profile.fromJson(json);
         checkProfile(obj);
@@ -289,8 +289,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -300,7 +300,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -312,14 +312,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsProfilesResourceApi res =
           api.CloudprofilerApi(mock).projects.profiles;
       var arg_request = buildProfile();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Profile.fromJson(json);
         checkProfile(obj);
@@ -342,8 +342,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -355,7 +355,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));

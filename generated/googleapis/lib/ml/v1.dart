@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,19 +37,19 @@ const core.String USER_AGENT = 'dart-api-client ml/v1';
 class MlApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// View your data across Google Cloud Platform services
   static const CloudPlatformReadOnlyScope =
-      "https://www.googleapis.com/auth/cloud-platform.read-only";
+      'https://www.googleapis.com/auth/cloud-platform.read-only';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   MlApi(http.Client client,
-      {core.String rootUrl = "https://ml.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://ml.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -105,17 +104,17 @@ class ProjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':explain';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -157,10 +156,10 @@ class ProjectsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -168,7 +167,7 @@ class ProjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -217,17 +216,17 @@ class ProjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':predict';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -278,17 +277,17 @@ class ProjectsJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -333,17 +332,17 @@ class ProjectsJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -382,17 +381,17 @@ class ProjectsJobsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -443,15 +442,15 @@ class ProjectsJobsResourceApi {
     core.String _body;
 
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if (options_requestedPolicyVersion != null) {
-      _queryParams["options.requestedPolicyVersion"] = [
-        "${options_requestedPolicyVersion}"
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -460,7 +459,7 @@ class ProjectsJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -520,26 +519,26 @@ class ProjectsJobsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -598,20 +597,20 @@ class ProjectsJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -660,10 +659,10 @@ class ProjectsJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -672,7 +671,7 @@ class ProjectsJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -723,10 +722,10 @@ class ProjectsJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -735,7 +734,7 @@ class ProjectsJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -788,17 +787,17 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -850,16 +849,16 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -867,7 +866,7 @@ class ProjectsLocationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -923,17 +922,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -975,17 +974,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1045,13 +1044,13 @@ class ProjectsLocationsStudiesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (studyId != null) {
-      _queryParams["studyId"] = [studyId];
+      _queryParams['studyId'] = [studyId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1059,7 +1058,7 @@ class ProjectsLocationsStudiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1098,17 +1097,17 @@ class ProjectsLocationsStudiesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1147,17 +1146,17 @@ class ProjectsLocationsStudiesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1197,10 +1196,10 @@ class ProjectsLocationsStudiesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1208,7 +1207,7 @@ class ProjectsLocationsStudiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1263,10 +1262,10 @@ class ProjectsLocationsStudiesTrialsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1275,7 +1274,7 @@ class ProjectsLocationsStudiesTrialsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1323,10 +1322,10 @@ class ProjectsLocationsStudiesTrialsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1335,7 +1334,7 @@ class ProjectsLocationsStudiesTrialsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1381,17 +1380,17 @@ class ProjectsLocationsStudiesTrialsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':complete';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1436,17 +1435,17 @@ class ProjectsLocationsStudiesTrialsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/trials';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1486,17 +1485,17 @@ class ProjectsLocationsStudiesTrialsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1536,17 +1535,17 @@ class ProjectsLocationsStudiesTrialsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1585,17 +1584,17 @@ class ProjectsLocationsStudiesTrialsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/trials';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1642,17 +1641,17 @@ class ProjectsLocationsStudiesTrialsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':stop';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1700,10 +1699,10 @@ class ProjectsLocationsStudiesTrialsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1712,7 +1711,7 @@ class ProjectsLocationsStudiesTrialsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1768,17 +1767,17 @@ class ProjectsModelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1818,17 +1817,17 @@ class ProjectsModelsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1869,17 +1868,17 @@ class ProjectsModelsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1930,15 +1929,15 @@ class ProjectsModelsResourceApi {
     core.String _body;
 
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if (options_requestedPolicyVersion != null) {
-      _queryParams["options.requestedPolicyVersion"] = [
-        "${options_requestedPolicyVersion}"
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1947,7 +1946,7 @@ class ProjectsModelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2004,26 +2003,26 @@ class ProjectsModelsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2079,20 +2078,20 @@ class ProjectsModelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2141,10 +2140,10 @@ class ProjectsModelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2153,7 +2152,7 @@ class ProjectsModelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2204,10 +2203,10 @@ class ProjectsModelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2216,7 +2215,7 @@ class ProjectsModelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2275,10 +2274,10 @@ class ProjectsModelsVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2286,7 +2285,7 @@ class ProjectsModelsVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2329,17 +2328,17 @@ class ProjectsModelsVersionsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2380,17 +2379,17 @@ class ProjectsModelsVersionsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2447,19 +2446,19 @@ class ProjectsModelsVersionsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2467,7 +2466,7 @@ class ProjectsModelsVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2526,20 +2525,20 @@ class ProjectsModelsVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2590,10 +2589,10 @@ class ProjectsModelsVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2601,7 +2600,7 @@ class ProjectsModelsVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2655,17 +2654,17 @@ class ProjectsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2706,17 +2705,17 @@ class ProjectsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2772,19 +2771,19 @@ class ProjectsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2792,7 +2791,7 @@ class ProjectsOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2832,7 +2831,7 @@ class GoogleApiHttpBody {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Application specific response metadata. Must be set in the first response
@@ -2845,14 +2844,14 @@ class GoogleApiHttpBody {
   GoogleApiHttpBody();
 
   GoogleApiHttpBody.fromJson(core.Map _json) {
-    if (_json.containsKey("contentType")) {
-      contentType = _json["contentType"];
+    if (_json.containsKey('contentType')) {
+      contentType = _json['contentType'];
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("extensions")) {
-      extensions = (_json["extensions"] as core.List)
+    if (_json.containsKey('extensions')) {
+      extensions = (_json['extensions'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
@@ -2863,13 +2862,13 @@ class GoogleApiHttpBody {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentType != null) {
-      _json["contentType"] = contentType;
+      _json['contentType'] = contentType;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (extensions != null) {
-      _json["extensions"] = extensions;
+      _json['extensions'] = extensions;
     }
     return _json;
   }
@@ -2884,8 +2883,8 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
 
   GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromJson(
       core.Map _json) {
-    if (_json.containsKey("useElapsedTime")) {
-      useElapsedTime = _json["useElapsedTime"];
+    if (_json.containsKey('useElapsedTime')) {
+      useElapsedTime = _json['useElapsedTime'];
     }
   }
 
@@ -2893,7 +2892,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (useElapsedTime != null) {
-      _json["useElapsedTime"] = useElapsedTime;
+      _json['useElapsedTime'] = useElapsedTime;
     }
     return _json;
   }
@@ -2915,8 +2914,8 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
 
   GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig.fromJson(
       core.Map _json) {
-    if (_json.containsKey("useElapsedTime")) {
-      useElapsedTime = _json["useElapsedTime"];
+    if (_json.containsKey('useElapsedTime')) {
+      useElapsedTime = _json['useElapsedTime'];
     }
   }
 
@@ -2924,7 +2923,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (useElapsedTime != null) {
-      _json["useElapsedTime"] = useElapsedTime;
+      _json['useElapsedTime'] = useElapsedTime;
     }
     return _json;
   }
@@ -2942,11 +2941,11 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
 
   GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
       core.Map _json) {
-    if (_json.containsKey("objectiveValue")) {
-      objectiveValue = _json["objectiveValue"].toDouble();
+    if (_json.containsKey('objectiveValue')) {
+      objectiveValue = _json['objectiveValue'].toDouble();
     }
-    if (_json.containsKey("trainingStep")) {
-      trainingStep = _json["trainingStep"];
+    if (_json.containsKey('trainingStep')) {
+      trainingStep = _json['trainingStep'];
     }
   }
 
@@ -2954,10 +2953,10 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (objectiveValue != null) {
-      _json["objectiveValue"] = objectiveValue;
+      _json['objectiveValue'] = objectiveValue;
     }
     if (trainingStep != null) {
-      _json["trainingStep"] = trainingStep;
+      _json['trainingStep'] = trainingStep;
     }
     return _json;
   }
@@ -2974,11 +2973,11 @@ class GoogleCloudMlV1MeasurementMetric {
   GoogleCloudMlV1MeasurementMetric();
 
   GoogleCloudMlV1MeasurementMetric.fromJson(core.Map _json) {
-    if (_json.containsKey("metric")) {
-      metric = _json["metric"];
+    if (_json.containsKey('metric')) {
+      metric = _json['metric'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"].toDouble();
+    if (_json.containsKey('value')) {
+      value = _json['value'].toDouble();
     }
   }
 
@@ -2986,10 +2985,10 @@ class GoogleCloudMlV1MeasurementMetric {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (metric != null) {
-      _json["metric"] = metric;
+      _json['metric'] = metric;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -3004,8 +3003,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
 
   GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromJson(
       core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List).cast<core.String>();
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List).cast<core.String>();
     }
   }
 
@@ -3013,7 +3012,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values;
+      _json['values'] = values;
     }
     return _json;
   }
@@ -3030,8 +3029,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
 
   GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
       core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List)
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
@@ -3041,7 +3040,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values;
+      _json['values'] = values;
     }
     return _json;
   }
@@ -3058,11 +3057,11 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
 
   GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
       core.Map _json) {
-    if (_json.containsKey("maxValue")) {
-      maxValue = _json["maxValue"].toDouble();
+    if (_json.containsKey('maxValue')) {
+      maxValue = _json['maxValue'].toDouble();
     }
-    if (_json.containsKey("minValue")) {
-      minValue = _json["minValue"].toDouble();
+    if (_json.containsKey('minValue')) {
+      minValue = _json['minValue'].toDouble();
     }
   }
 
@@ -3070,10 +3069,10 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxValue != null) {
-      _json["maxValue"] = maxValue;
+      _json['maxValue'] = maxValue;
     }
     if (minValue != null) {
-      _json["minValue"] = minValue;
+      _json['minValue'] = minValue;
     }
     return _json;
   }
@@ -3090,11 +3089,11 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
 
   GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
       core.Map _json) {
-    if (_json.containsKey("maxValue")) {
-      maxValue = _json["maxValue"];
+    if (_json.containsKey('maxValue')) {
+      maxValue = _json['maxValue'];
     }
-    if (_json.containsKey("minValue")) {
-      minValue = _json["minValue"];
+    if (_json.containsKey('minValue')) {
+      minValue = _json['minValue'];
     }
   }
 
@@ -3102,10 +3101,10 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxValue != null) {
-      _json["maxValue"] = maxValue;
+      _json['maxValue'] = maxValue;
     }
     if (minValue != null) {
-      _json["minValue"] = minValue;
+      _json['minValue'] = minValue;
     }
     return _json;
   }
@@ -3121,8 +3120,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec.fromJson(
       core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List).cast<core.String>();
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List).cast<core.String>();
     }
   }
 
@@ -3130,7 +3129,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values;
+      _json['values'] = values;
     }
     return _json;
   }
@@ -3146,8 +3145,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromJson(
       core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List)
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
@@ -3157,7 +3156,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values;
+      _json['values'] = values;
     }
     return _json;
   }
@@ -3173,8 +3172,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec.fromJson(
       core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List).cast<core.String>();
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List).cast<core.String>();
     }
   }
 
@@ -3182,7 +3181,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values;
+      _json['values'] = values;
     }
     return _json;
   }
@@ -3203,11 +3202,11 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
   GoogleCloudMlV1StudyConfigMetricSpec();
 
   GoogleCloudMlV1StudyConfigMetricSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("goal")) {
-      goal = _json["goal"];
+    if (_json.containsKey('goal')) {
+      goal = _json['goal'];
     }
-    if (_json.containsKey("metric")) {
-      metric = _json["metric"];
+    if (_json.containsKey('metric')) {
+      metric = _json['metric'];
     }
   }
 
@@ -3215,10 +3214,10 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (goal != null) {
-      _json["goal"] = goal;
+      _json['goal'] = goal;
     }
     if (metric != null) {
-      _json["metric"] = metric;
+      _json['metric'] = metric;
     }
     return _json;
   }
@@ -3282,55 +3281,55 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   GoogleCloudMlV1StudyConfigParameterSpec();
 
   GoogleCloudMlV1StudyConfigParameterSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("categoricalValueSpec")) {
+    if (_json.containsKey('categoricalValueSpec')) {
       categoricalValueSpec =
           GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromJson(
-              _json["categoricalValueSpec"]);
+              _json['categoricalValueSpec']);
     }
-    if (_json.containsKey("childParameterSpecs")) {
-      childParameterSpecs = (_json["childParameterSpecs"] as core.List)
+    if (_json.containsKey('childParameterSpecs')) {
+      childParameterSpecs = (_json['childParameterSpecs'] as core.List)
           .map<GoogleCloudMlV1StudyConfigParameterSpec>((value) =>
               GoogleCloudMlV1StudyConfigParameterSpec.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("discreteValueSpec")) {
+    if (_json.containsKey('discreteValueSpec')) {
       discreteValueSpec =
           GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
-              _json["discreteValueSpec"]);
+              _json['discreteValueSpec']);
     }
-    if (_json.containsKey("doubleValueSpec")) {
+    if (_json.containsKey('doubleValueSpec')) {
       doubleValueSpec =
           GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
-              _json["doubleValueSpec"]);
+              _json['doubleValueSpec']);
     }
-    if (_json.containsKey("integerValueSpec")) {
+    if (_json.containsKey('integerValueSpec')) {
       integerValueSpec =
           GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
-              _json["integerValueSpec"]);
+              _json['integerValueSpec']);
     }
-    if (_json.containsKey("parameter")) {
-      parameter = _json["parameter"];
+    if (_json.containsKey('parameter')) {
+      parameter = _json['parameter'];
     }
-    if (_json.containsKey("parentCategoricalValues")) {
+    if (_json.containsKey('parentCategoricalValues')) {
       parentCategoricalValues =
           GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
-              .fromJson(_json["parentCategoricalValues"]);
+              .fromJson(_json['parentCategoricalValues']);
     }
-    if (_json.containsKey("parentDiscreteValues")) {
+    if (_json.containsKey('parentDiscreteValues')) {
       parentDiscreteValues =
           GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
-              .fromJson(_json["parentDiscreteValues"]);
+              .fromJson(_json['parentDiscreteValues']);
     }
-    if (_json.containsKey("parentIntValues")) {
+    if (_json.containsKey('parentIntValues')) {
       parentIntValues =
           GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
-              .fromJson(_json["parentIntValues"]);
+              .fromJson(_json['parentIntValues']);
     }
-    if (_json.containsKey("scaleType")) {
-      scaleType = _json["scaleType"];
+    if (_json.containsKey('scaleType')) {
+      scaleType = _json['scaleType'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3338,38 +3337,38 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoricalValueSpec != null) {
-      _json["categoricalValueSpec"] = categoricalValueSpec.toJson();
+      _json['categoricalValueSpec'] = categoricalValueSpec.toJson();
     }
     if (childParameterSpecs != null) {
-      _json["childParameterSpecs"] =
+      _json['childParameterSpecs'] =
           childParameterSpecs.map((value) => value.toJson()).toList();
     }
     if (discreteValueSpec != null) {
-      _json["discreteValueSpec"] = discreteValueSpec.toJson();
+      _json['discreteValueSpec'] = discreteValueSpec.toJson();
     }
     if (doubleValueSpec != null) {
-      _json["doubleValueSpec"] = doubleValueSpec.toJson();
+      _json['doubleValueSpec'] = doubleValueSpec.toJson();
     }
     if (integerValueSpec != null) {
-      _json["integerValueSpec"] = integerValueSpec.toJson();
+      _json['integerValueSpec'] = integerValueSpec.toJson();
     }
     if (parameter != null) {
-      _json["parameter"] = parameter;
+      _json['parameter'] = parameter;
     }
     if (parentCategoricalValues != null) {
-      _json["parentCategoricalValues"] = parentCategoricalValues.toJson();
+      _json['parentCategoricalValues'] = parentCategoricalValues.toJson();
     }
     if (parentDiscreteValues != null) {
-      _json["parentDiscreteValues"] = parentDiscreteValues.toJson();
+      _json['parentDiscreteValues'] = parentDiscreteValues.toJson();
     }
     if (parentIntValues != null) {
-      _json["parentIntValues"] = parentIntValues.toJson();
+      _json['parentIntValues'] = parentIntValues.toJson();
     }
     if (scaleType != null) {
-      _json["scaleType"] = scaleType;
+      _json['scaleType'] = scaleType;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3393,17 +3392,17 @@ class GoogleCloudMlV1TrialParameter {
   GoogleCloudMlV1TrialParameter();
 
   GoogleCloudMlV1TrialParameter.fromJson(core.Map _json) {
-    if (_json.containsKey("floatValue")) {
-      floatValue = _json["floatValue"].toDouble();
+    if (_json.containsKey('floatValue')) {
+      floatValue = _json['floatValue'].toDouble();
     }
-    if (_json.containsKey("intValue")) {
-      intValue = _json["intValue"];
+    if (_json.containsKey('intValue')) {
+      intValue = _json['intValue'];
     }
-    if (_json.containsKey("parameter")) {
-      parameter = _json["parameter"];
+    if (_json.containsKey('parameter')) {
+      parameter = _json['parameter'];
     }
-    if (_json.containsKey("stringValue")) {
-      stringValue = _json["stringValue"];
+    if (_json.containsKey('stringValue')) {
+      stringValue = _json['stringValue'];
     }
   }
 
@@ -3411,16 +3410,16 @@ class GoogleCloudMlV1TrialParameter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (floatValue != null) {
-      _json["floatValue"] = floatValue;
+      _json['floatValue'] = floatValue;
     }
     if (intValue != null) {
-      _json["intValue"] = intValue;
+      _json['intValue'] = intValue;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter;
+      _json['parameter'] = parameter;
     }
     if (stringValue != null) {
-      _json["stringValue"] = stringValue;
+      _json['stringValue'] = stringValue;
     }
     return _json;
   }
@@ -3451,11 +3450,11 @@ class GoogleCloudMlV1AcceleratorConfig {
   GoogleCloudMlV1AcceleratorConfig();
 
   GoogleCloudMlV1AcceleratorConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3463,10 +3462,10 @@ class GoogleCloudMlV1AcceleratorConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3480,8 +3479,8 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
   GoogleCloudMlV1AddTrialMeasurementRequest();
 
   GoogleCloudMlV1AddTrialMeasurementRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("measurement")) {
-      measurement = GoogleCloudMlV1Measurement.fromJson(_json["measurement"]);
+    if (_json.containsKey('measurement')) {
+      measurement = GoogleCloudMlV1Measurement.fromJson(_json['measurement']);
     }
   }
 
@@ -3489,7 +3488,7 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (measurement != null) {
-      _json["measurement"] = measurement.toJson();
+      _json['measurement'] = measurement.toJson();
     }
     return _json;
   }
@@ -3528,8 +3527,8 @@ class GoogleCloudMlV1AutoScaling {
   GoogleCloudMlV1AutoScaling();
 
   GoogleCloudMlV1AutoScaling.fromJson(core.Map _json) {
-    if (_json.containsKey("minNodes")) {
-      minNodes = _json["minNodes"];
+    if (_json.containsKey('minNodes')) {
+      minNodes = _json['minNodes'];
     }
   }
 
@@ -3537,7 +3536,7 @@ class GoogleCloudMlV1AutoScaling {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (minNodes != null) {
-      _json["minNodes"] = minNodes;
+      _json['minNodes'] = minNodes;
     }
     return _json;
   }
@@ -3554,15 +3553,15 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
   GoogleCloudMlV1AutomatedStoppingConfig();
 
   GoogleCloudMlV1AutomatedStoppingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("decayCurveStoppingConfig")) {
+    if (_json.containsKey('decayCurveStoppingConfig')) {
       decayCurveStoppingConfig =
           GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
-              .fromJson(_json["decayCurveStoppingConfig"]);
+              .fromJson(_json['decayCurveStoppingConfig']);
     }
-    if (_json.containsKey("medianAutomatedStoppingConfig")) {
+    if (_json.containsKey('medianAutomatedStoppingConfig')) {
       medianAutomatedStoppingConfig =
           GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
-              .fromJson(_json["medianAutomatedStoppingConfig"]);
+              .fromJson(_json['medianAutomatedStoppingConfig']);
     }
   }
 
@@ -3570,10 +3569,10 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (decayCurveStoppingConfig != null) {
-      _json["decayCurveStoppingConfig"] = decayCurveStoppingConfig.toJson();
+      _json['decayCurveStoppingConfig'] = decayCurveStoppingConfig.toJson();
     }
     if (medianAutomatedStoppingConfig != null) {
-      _json["medianAutomatedStoppingConfig"] =
+      _json['medianAutomatedStoppingConfig'] =
           medianAutomatedStoppingConfig.toJson();
     }
     return _json;
@@ -3599,17 +3598,17 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
   GoogleCloudMlV1BuiltInAlgorithmOutput();
 
   GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(core.Map _json) {
-    if (_json.containsKey("framework")) {
-      framework = _json["framework"];
+    if (_json.containsKey('framework')) {
+      framework = _json['framework'];
     }
-    if (_json.containsKey("modelPath")) {
-      modelPath = _json["modelPath"];
+    if (_json.containsKey('modelPath')) {
+      modelPath = _json['modelPath'];
     }
-    if (_json.containsKey("pythonVersion")) {
-      pythonVersion = _json["pythonVersion"];
+    if (_json.containsKey('pythonVersion')) {
+      pythonVersion = _json['pythonVersion'];
     }
-    if (_json.containsKey("runtimeVersion")) {
-      runtimeVersion = _json["runtimeVersion"];
+    if (_json.containsKey('runtimeVersion')) {
+      runtimeVersion = _json['runtimeVersion'];
     }
   }
 
@@ -3617,16 +3616,16 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (framework != null) {
-      _json["framework"] = framework;
+      _json['framework'] = framework;
     }
     if (modelPath != null) {
-      _json["modelPath"] = modelPath;
+      _json['modelPath'] = modelPath;
     }
     if (pythonVersion != null) {
-      _json["pythonVersion"] = pythonVersion;
+      _json['pythonVersion'] = pythonVersion;
     }
     if (runtimeVersion != null) {
-      _json["runtimeVersion"] = runtimeVersion;
+      _json['runtimeVersion'] = runtimeVersion;
     }
     return _json;
   }
@@ -3660,12 +3659,12 @@ class GoogleCloudMlV1Capability {
   GoogleCloudMlV1Capability();
 
   GoogleCloudMlV1Capability.fromJson(core.Map _json) {
-    if (_json.containsKey("availableAccelerators")) {
+    if (_json.containsKey('availableAccelerators')) {
       availableAccelerators =
-          (_json["availableAccelerators"] as core.List).cast<core.String>();
+          (_json['availableAccelerators'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3673,10 +3672,10 @@ class GoogleCloudMlV1Capability {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (availableAccelerators != null) {
-      _json["availableAccelerators"] = availableAccelerators;
+      _json['availableAccelerators'] = availableAccelerators;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3699,14 +3698,14 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata {
 
   GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("study")) {
-      study = _json["study"];
+    if (_json.containsKey('study')) {
+      study = _json['study'];
     }
-    if (_json.containsKey("trial")) {
-      trial = _json["trial"];
+    if (_json.containsKey('trial')) {
+      trial = _json['trial'];
     }
   }
 
@@ -3714,13 +3713,13 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (study != null) {
-      _json["study"] = study;
+      _json['study'] = study;
     }
     if (trial != null) {
-      _json["trial"] = trial;
+      _json['trial'] = trial;
     }
     return _json;
   }
@@ -3755,14 +3754,14 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse {
   GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse();
 
   GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("shouldStop")) {
-      shouldStop = _json["shouldStop"];
+    if (_json.containsKey('shouldStop')) {
+      shouldStop = _json['shouldStop'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -3770,13 +3769,13 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (shouldStop != null) {
-      _json["shouldStop"] = shouldStop;
+      _json['shouldStop'] = shouldStop;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -3800,15 +3799,15 @@ class GoogleCloudMlV1CompleteTrialRequest {
   GoogleCloudMlV1CompleteTrialRequest();
 
   GoogleCloudMlV1CompleteTrialRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("finalMeasurement")) {
+    if (_json.containsKey('finalMeasurement')) {
       finalMeasurement =
-          GoogleCloudMlV1Measurement.fromJson(_json["finalMeasurement"]);
+          GoogleCloudMlV1Measurement.fromJson(_json['finalMeasurement']);
     }
-    if (_json.containsKey("infeasibleReason")) {
-      infeasibleReason = _json["infeasibleReason"];
+    if (_json.containsKey('infeasibleReason')) {
+      infeasibleReason = _json['infeasibleReason'];
     }
-    if (_json.containsKey("trialInfeasible")) {
-      trialInfeasible = _json["trialInfeasible"];
+    if (_json.containsKey('trialInfeasible')) {
+      trialInfeasible = _json['trialInfeasible'];
     }
   }
 
@@ -3816,13 +3815,13 @@ class GoogleCloudMlV1CompleteTrialRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (finalMeasurement != null) {
-      _json["finalMeasurement"] = finalMeasurement.toJson();
+      _json['finalMeasurement'] = finalMeasurement.toJson();
     }
     if (infeasibleReason != null) {
-      _json["infeasibleReason"] = infeasibleReason;
+      _json['infeasibleReason'] = infeasibleReason;
     }
     if (trialInfeasible != null) {
-      _json["trialInfeasible"] = trialInfeasible;
+      _json['trialInfeasible'] = trialInfeasible;
     }
     return _json;
   }
@@ -3835,8 +3834,8 @@ class GoogleCloudMlV1Config {
   GoogleCloudMlV1Config();
 
   GoogleCloudMlV1Config.fromJson(core.Map _json) {
-    if (_json.containsKey("tpuServiceAccount")) {
-      tpuServiceAccount = _json["tpuServiceAccount"];
+    if (_json.containsKey('tpuServiceAccount')) {
+      tpuServiceAccount = _json['tpuServiceAccount'];
     }
   }
 
@@ -3844,7 +3843,7 @@ class GoogleCloudMlV1Config {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (tpuServiceAccount != null) {
-      _json["tpuServiceAccount"] = tpuServiceAccount;
+      _json['tpuServiceAccount'] = tpuServiceAccount;
     }
     return _json;
   }
@@ -3859,8 +3858,8 @@ class GoogleCloudMlV1ContainerPort {
   GoogleCloudMlV1ContainerPort();
 
   GoogleCloudMlV1ContainerPort.fromJson(core.Map _json) {
-    if (_json.containsKey("containerPort")) {
-      containerPort = _json["containerPort"];
+    if (_json.containsKey('containerPort')) {
+      containerPort = _json['containerPort'];
     }
   }
 
@@ -3868,7 +3867,7 @@ class GoogleCloudMlV1ContainerPort {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (containerPort != null) {
-      _json["containerPort"] = containerPort;
+      _json['containerPort'] = containerPort;
     }
     return _json;
   }
@@ -3916,23 +3915,23 @@ class GoogleCloudMlV1ContainerSpec {
   GoogleCloudMlV1ContainerSpec();
 
   GoogleCloudMlV1ContainerSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("args")) {
-      args = (_json["args"] as core.List).cast<core.String>();
+    if (_json.containsKey('args')) {
+      args = (_json['args'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("command")) {
-      command = (_json["command"] as core.List).cast<core.String>();
+    if (_json.containsKey('command')) {
+      command = (_json['command'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("env")) {
-      env = (_json["env"] as core.List)
+    if (_json.containsKey('env')) {
+      env = (_json['env'] as core.List)
           .map<GoogleCloudMlV1EnvVar>(
               (value) => GoogleCloudMlV1EnvVar.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("ports")) {
-      ports = (_json["ports"] as core.List)
+    if (_json.containsKey('ports')) {
+      ports = (_json['ports'] as core.List)
           .map<GoogleCloudMlV1ContainerPort>(
               (value) => GoogleCloudMlV1ContainerPort.fromJson(value))
           .toList();
@@ -3943,19 +3942,19 @@ class GoogleCloudMlV1ContainerSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (args != null) {
-      _json["args"] = args;
+      _json['args'] = args;
     }
     if (command != null) {
-      _json["command"] = command;
+      _json['command'] = command;
     }
     if (env != null) {
-      _json["env"] = env.map((value) => value.toJson()).toList();
+      _json['env'] = env.map((value) => value.toJson()).toList();
     }
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (ports != null) {
-      _json["ports"] = ports.map((value) => value.toJson()).toList();
+      _json['ports'] = ports.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3973,8 +3972,8 @@ class GoogleCloudMlV1EncryptionConfig {
   GoogleCloudMlV1EncryptionConfig();
 
   GoogleCloudMlV1EncryptionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("kmsKeyName")) {
-      kmsKeyName = _json["kmsKeyName"];
+    if (_json.containsKey('kmsKeyName')) {
+      kmsKeyName = _json['kmsKeyName'];
     }
   }
 
@@ -3982,7 +3981,7 @@ class GoogleCloudMlV1EncryptionConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kmsKeyName != null) {
-      _json["kmsKeyName"] = kmsKeyName;
+      _json['kmsKeyName'] = kmsKeyName;
     }
     return _json;
   }
@@ -4004,11 +4003,11 @@ class GoogleCloudMlV1EnvVar {
   GoogleCloudMlV1EnvVar();
 
   GoogleCloudMlV1EnvVar.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -4016,10 +4015,10 @@ class GoogleCloudMlV1EnvVar {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -4033,8 +4032,8 @@ class GoogleCloudMlV1ExplainRequest {
   GoogleCloudMlV1ExplainRequest();
 
   GoogleCloudMlV1ExplainRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("httpBody")) {
-      httpBody = GoogleApiHttpBody.fromJson(_json["httpBody"]);
+    if (_json.containsKey('httpBody')) {
+      httpBody = GoogleApiHttpBody.fromJson(_json['httpBody']);
     }
   }
 
@@ -4042,7 +4041,7 @@ class GoogleCloudMlV1ExplainRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (httpBody != null) {
-      _json["httpBody"] = httpBody.toJson();
+      _json['httpBody'] = httpBody.toJson();
     }
     return _json;
   }
@@ -4072,19 +4071,19 @@ class GoogleCloudMlV1ExplanationConfig {
   GoogleCloudMlV1ExplanationConfig();
 
   GoogleCloudMlV1ExplanationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("integratedGradientsAttribution")) {
+    if (_json.containsKey('integratedGradientsAttribution')) {
       integratedGradientsAttribution =
           GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(
-              _json["integratedGradientsAttribution"]);
+              _json['integratedGradientsAttribution']);
     }
-    if (_json.containsKey("sampledShapleyAttribution")) {
+    if (_json.containsKey('sampledShapleyAttribution')) {
       sampledShapleyAttribution =
           GoogleCloudMlV1SampledShapleyAttribution.fromJson(
-              _json["sampledShapleyAttribution"]);
+              _json['sampledShapleyAttribution']);
     }
-    if (_json.containsKey("xraiAttribution")) {
+    if (_json.containsKey('xraiAttribution')) {
       xraiAttribution =
-          GoogleCloudMlV1XraiAttribution.fromJson(_json["xraiAttribution"]);
+          GoogleCloudMlV1XraiAttribution.fromJson(_json['xraiAttribution']);
     }
   }
 
@@ -4092,14 +4091,14 @@ class GoogleCloudMlV1ExplanationConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (integratedGradientsAttribution != null) {
-      _json["integratedGradientsAttribution"] =
+      _json['integratedGradientsAttribution'] =
           integratedGradientsAttribution.toJson();
     }
     if (sampledShapleyAttribution != null) {
-      _json["sampledShapleyAttribution"] = sampledShapleyAttribution.toJson();
+      _json['sampledShapleyAttribution'] = sampledShapleyAttribution.toJson();
     }
     if (xraiAttribution != null) {
-      _json["xraiAttribution"] = xraiAttribution.toJson();
+      _json['xraiAttribution'] = xraiAttribution.toJson();
     }
     return _json;
   }
@@ -4118,14 +4117,14 @@ class GoogleCloudMlV1GetConfigResponse {
   GoogleCloudMlV1GetConfigResponse();
 
   GoogleCloudMlV1GetConfigResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("config")) {
-      config = GoogleCloudMlV1Config.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = GoogleCloudMlV1Config.fromJson(_json['config']);
     }
-    if (_json.containsKey("serviceAccount")) {
-      serviceAccount = _json["serviceAccount"];
+    if (_json.containsKey('serviceAccount')) {
+      serviceAccount = _json['serviceAccount'];
     }
-    if (_json.containsKey("serviceAccountProject")) {
-      serviceAccountProject = _json["serviceAccountProject"];
+    if (_json.containsKey('serviceAccountProject')) {
+      serviceAccountProject = _json['serviceAccountProject'];
     }
   }
 
@@ -4133,13 +4132,13 @@ class GoogleCloudMlV1GetConfigResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     if (serviceAccount != null) {
-      _json["serviceAccount"] = serviceAccount;
+      _json['serviceAccount'] = serviceAccount;
     }
     if (serviceAccountProject != null) {
-      _json["serviceAccountProject"] = serviceAccountProject;
+      _json['serviceAccountProject'] = serviceAccountProject;
     }
     return _json;
   }
@@ -4195,40 +4194,40 @@ class GoogleCloudMlV1HyperparameterOutput {
   GoogleCloudMlV1HyperparameterOutput();
 
   GoogleCloudMlV1HyperparameterOutput.fromJson(core.Map _json) {
-    if (_json.containsKey("allMetrics")) {
-      allMetrics = (_json["allMetrics"] as core.List)
+    if (_json.containsKey('allMetrics')) {
+      allMetrics = (_json['allMetrics'] as core.List)
           .map<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>(
               (value) => GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("builtInAlgorithmOutput")) {
+    if (_json.containsKey('builtInAlgorithmOutput')) {
       builtInAlgorithmOutput = GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
-          _json["builtInAlgorithmOutput"]);
+          _json['builtInAlgorithmOutput']);
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("finalMetric")) {
+    if (_json.containsKey('finalMetric')) {
       finalMetric =
           GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
-              _json["finalMetric"]);
+              _json['finalMetric']);
     }
-    if (_json.containsKey("hyperparameters")) {
-      hyperparameters = (_json["hyperparameters"] as core.Map)
+    if (_json.containsKey('hyperparameters')) {
+      hyperparameters = (_json['hyperparameters'] as core.Map)
           .cast<core.String, core.String>();
     }
-    if (_json.containsKey("isTrialStoppedEarly")) {
-      isTrialStoppedEarly = _json["isTrialStoppedEarly"];
+    if (_json.containsKey('isTrialStoppedEarly')) {
+      isTrialStoppedEarly = _json['isTrialStoppedEarly'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("trialId")) {
-      trialId = _json["trialId"];
+    if (_json.containsKey('trialId')) {
+      trialId = _json['trialId'];
     }
   }
 
@@ -4236,31 +4235,31 @@ class GoogleCloudMlV1HyperparameterOutput {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allMetrics != null) {
-      _json["allMetrics"] = allMetrics.map((value) => value.toJson()).toList();
+      _json['allMetrics'] = allMetrics.map((value) => value.toJson()).toList();
     }
     if (builtInAlgorithmOutput != null) {
-      _json["builtInAlgorithmOutput"] = builtInAlgorithmOutput.toJson();
+      _json['builtInAlgorithmOutput'] = builtInAlgorithmOutput.toJson();
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (finalMetric != null) {
-      _json["finalMetric"] = finalMetric.toJson();
+      _json['finalMetric'] = finalMetric.toJson();
     }
     if (hyperparameters != null) {
-      _json["hyperparameters"] = hyperparameters;
+      _json['hyperparameters'] = hyperparameters;
     }
     if (isTrialStoppedEarly != null) {
-      _json["isTrialStoppedEarly"] = isTrialStoppedEarly;
+      _json['isTrialStoppedEarly'] = isTrialStoppedEarly;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (trialId != null) {
-      _json["trialId"] = trialId;
+      _json['trialId'] = trialId;
     }
     return _json;
   }
@@ -4330,35 +4329,35 @@ class GoogleCloudMlV1HyperparameterSpec {
   GoogleCloudMlV1HyperparameterSpec();
 
   GoogleCloudMlV1HyperparameterSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("algorithm")) {
-      algorithm = _json["algorithm"];
+    if (_json.containsKey('algorithm')) {
+      algorithm = _json['algorithm'];
     }
-    if (_json.containsKey("enableTrialEarlyStopping")) {
-      enableTrialEarlyStopping = _json["enableTrialEarlyStopping"];
+    if (_json.containsKey('enableTrialEarlyStopping')) {
+      enableTrialEarlyStopping = _json['enableTrialEarlyStopping'];
     }
-    if (_json.containsKey("goal")) {
-      goal = _json["goal"];
+    if (_json.containsKey('goal')) {
+      goal = _json['goal'];
     }
-    if (_json.containsKey("hyperparameterMetricTag")) {
-      hyperparameterMetricTag = _json["hyperparameterMetricTag"];
+    if (_json.containsKey('hyperparameterMetricTag')) {
+      hyperparameterMetricTag = _json['hyperparameterMetricTag'];
     }
-    if (_json.containsKey("maxFailedTrials")) {
-      maxFailedTrials = _json["maxFailedTrials"];
+    if (_json.containsKey('maxFailedTrials')) {
+      maxFailedTrials = _json['maxFailedTrials'];
     }
-    if (_json.containsKey("maxParallelTrials")) {
-      maxParallelTrials = _json["maxParallelTrials"];
+    if (_json.containsKey('maxParallelTrials')) {
+      maxParallelTrials = _json['maxParallelTrials'];
     }
-    if (_json.containsKey("maxTrials")) {
-      maxTrials = _json["maxTrials"];
+    if (_json.containsKey('maxTrials')) {
+      maxTrials = _json['maxTrials'];
     }
-    if (_json.containsKey("params")) {
-      params = (_json["params"] as core.List)
+    if (_json.containsKey('params')) {
+      params = (_json['params'] as core.List)
           .map<GoogleCloudMlV1ParameterSpec>(
               (value) => GoogleCloudMlV1ParameterSpec.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("resumePreviousJobId")) {
-      resumePreviousJobId = _json["resumePreviousJobId"];
+    if (_json.containsKey('resumePreviousJobId')) {
+      resumePreviousJobId = _json['resumePreviousJobId'];
     }
   }
 
@@ -4366,31 +4365,31 @@ class GoogleCloudMlV1HyperparameterSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (algorithm != null) {
-      _json["algorithm"] = algorithm;
+      _json['algorithm'] = algorithm;
     }
     if (enableTrialEarlyStopping != null) {
-      _json["enableTrialEarlyStopping"] = enableTrialEarlyStopping;
+      _json['enableTrialEarlyStopping'] = enableTrialEarlyStopping;
     }
     if (goal != null) {
-      _json["goal"] = goal;
+      _json['goal'] = goal;
     }
     if (hyperparameterMetricTag != null) {
-      _json["hyperparameterMetricTag"] = hyperparameterMetricTag;
+      _json['hyperparameterMetricTag'] = hyperparameterMetricTag;
     }
     if (maxFailedTrials != null) {
-      _json["maxFailedTrials"] = maxFailedTrials;
+      _json['maxFailedTrials'] = maxFailedTrials;
     }
     if (maxParallelTrials != null) {
-      _json["maxParallelTrials"] = maxParallelTrials;
+      _json['maxParallelTrials'] = maxParallelTrials;
     }
     if (maxTrials != null) {
-      _json["maxTrials"] = maxTrials;
+      _json['maxTrials'] = maxTrials;
     }
     if (params != null) {
-      _json["params"] = params.map((value) => value.toJson()).toList();
+      _json['params'] = params.map((value) => value.toJson()).toList();
     }
     if (resumePreviousJobId != null) {
-      _json["resumePreviousJobId"] = resumePreviousJobId;
+      _json['resumePreviousJobId'] = resumePreviousJobId;
     }
     return _json;
   }
@@ -4408,8 +4407,8 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
   GoogleCloudMlV1IntegratedGradientsAttribution();
 
   GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(core.Map _json) {
-    if (_json.containsKey("numIntegralSteps")) {
-      numIntegralSteps = _json["numIntegralSteps"];
+    if (_json.containsKey('numIntegralSteps')) {
+      numIntegralSteps = _json['numIntegralSteps'];
     }
   }
 
@@ -4417,7 +4416,7 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (numIntegralSteps != null) {
-      _json["numIntegralSteps"] = numIntegralSteps;
+      _json['numIntegralSteps'] = numIntegralSteps;
     }
     return _json;
   }
@@ -4446,7 +4445,7 @@ class GoogleCloudMlV1Job {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Required. The user-specified id of the job.
@@ -4492,45 +4491,45 @@ class GoogleCloudMlV1Job {
   GoogleCloudMlV1Job();
 
   GoogleCloudMlV1Job.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("errorMessage")) {
-      errorMessage = _json["errorMessage"];
+    if (_json.containsKey('errorMessage')) {
+      errorMessage = _json['errorMessage'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("jobId")) {
-      jobId = _json["jobId"];
+    if (_json.containsKey('jobId')) {
+      jobId = _json['jobId'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("predictionInput")) {
+    if (_json.containsKey('predictionInput')) {
       predictionInput =
-          GoogleCloudMlV1PredictionInput.fromJson(_json["predictionInput"]);
+          GoogleCloudMlV1PredictionInput.fromJson(_json['predictionInput']);
     }
-    if (_json.containsKey("predictionOutput")) {
+    if (_json.containsKey('predictionOutput')) {
       predictionOutput =
-          GoogleCloudMlV1PredictionOutput.fromJson(_json["predictionOutput"]);
+          GoogleCloudMlV1PredictionOutput.fromJson(_json['predictionOutput']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("trainingInput")) {
+    if (_json.containsKey('trainingInput')) {
       trainingInput =
-          GoogleCloudMlV1TrainingInput.fromJson(_json["trainingInput"]);
+          GoogleCloudMlV1TrainingInput.fromJson(_json['trainingInput']);
     }
-    if (_json.containsKey("trainingOutput")) {
+    if (_json.containsKey('trainingOutput')) {
       trainingOutput =
-          GoogleCloudMlV1TrainingOutput.fromJson(_json["trainingOutput"]);
+          GoogleCloudMlV1TrainingOutput.fromJson(_json['trainingOutput']);
     }
   }
 
@@ -4538,40 +4537,40 @@ class GoogleCloudMlV1Job {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (errorMessage != null) {
-      _json["errorMessage"] = errorMessage;
+      _json['errorMessage'] = errorMessage;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (jobId != null) {
-      _json["jobId"] = jobId;
+      _json['jobId'] = jobId;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (predictionInput != null) {
-      _json["predictionInput"] = predictionInput.toJson();
+      _json['predictionInput'] = predictionInput.toJson();
     }
     if (predictionOutput != null) {
-      _json["predictionOutput"] = predictionOutput.toJson();
+      _json['predictionOutput'] = predictionOutput.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (trainingInput != null) {
-      _json["trainingInput"] = trainingInput.toJson();
+      _json['trainingInput'] = trainingInput.toJson();
     }
     if (trainingOutput != null) {
-      _json["trainingOutput"] = trainingOutput.toJson();
+      _json['trainingOutput'] = trainingOutput.toJson();
     }
     return _json;
   }
@@ -4589,14 +4588,14 @@ class GoogleCloudMlV1ListJobsResponse {
   GoogleCloudMlV1ListJobsResponse();
 
   GoogleCloudMlV1ListJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobs")) {
-      jobs = (_json["jobs"] as core.List)
+    if (_json.containsKey('jobs')) {
+      jobs = (_json['jobs'] as core.List)
           .map<GoogleCloudMlV1Job>(
               (value) => GoogleCloudMlV1Job.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4604,10 +4603,10 @@ class GoogleCloudMlV1ListJobsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (jobs != null) {
-      _json["jobs"] = jobs.map((value) => value.toJson()).toList();
+      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4624,14 +4623,14 @@ class GoogleCloudMlV1ListLocationsResponse {
   GoogleCloudMlV1ListLocationsResponse();
 
   GoogleCloudMlV1ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<GoogleCloudMlV1Location>(
               (value) => GoogleCloudMlV1Location.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4639,10 +4638,10 @@ class GoogleCloudMlV1ListLocationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4660,14 +4659,14 @@ class GoogleCloudMlV1ListModelsResponse {
   GoogleCloudMlV1ListModelsResponse();
 
   GoogleCloudMlV1ListModelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("models")) {
-      models = (_json["models"] as core.List)
+    if (_json.containsKey('models')) {
+      models = (_json['models'] as core.List)
           .map<GoogleCloudMlV1Model>(
               (value) => GoogleCloudMlV1Model.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4675,10 +4674,10 @@ class GoogleCloudMlV1ListModelsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (models != null) {
-      _json["models"] = models.map((value) => value.toJson()).toList();
+      _json['models'] = models.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4691,8 +4690,8 @@ class GoogleCloudMlV1ListStudiesResponse {
   GoogleCloudMlV1ListStudiesResponse();
 
   GoogleCloudMlV1ListStudiesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("studies")) {
-      studies = (_json["studies"] as core.List)
+    if (_json.containsKey('studies')) {
+      studies = (_json['studies'] as core.List)
           .map<GoogleCloudMlV1Study>(
               (value) => GoogleCloudMlV1Study.fromJson(value))
           .toList();
@@ -4703,7 +4702,7 @@ class GoogleCloudMlV1ListStudiesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (studies != null) {
-      _json["studies"] = studies.map((value) => value.toJson()).toList();
+      _json['studies'] = studies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4717,8 +4716,8 @@ class GoogleCloudMlV1ListTrialsResponse {
   GoogleCloudMlV1ListTrialsResponse();
 
   GoogleCloudMlV1ListTrialsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("trials")) {
-      trials = (_json["trials"] as core.List)
+    if (_json.containsKey('trials')) {
+      trials = (_json['trials'] as core.List)
           .map<GoogleCloudMlV1Trial>(
               (value) => GoogleCloudMlV1Trial.fromJson(value))
           .toList();
@@ -4729,7 +4728,7 @@ class GoogleCloudMlV1ListTrialsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (trials != null) {
-      _json["trials"] = trials.map((value) => value.toJson()).toList();
+      _json['trials'] = trials.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4747,11 +4746,11 @@ class GoogleCloudMlV1ListVersionsResponse {
   GoogleCloudMlV1ListVersionsResponse();
 
   GoogleCloudMlV1ListVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("versions")) {
-      versions = (_json["versions"] as core.List)
+    if (_json.containsKey('versions')) {
+      versions = (_json['versions'] as core.List)
           .map<GoogleCloudMlV1Version>(
               (value) => GoogleCloudMlV1Version.fromJson(value))
           .toList();
@@ -4762,10 +4761,10 @@ class GoogleCloudMlV1ListVersionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (versions != null) {
-      _json["versions"] = versions.map((value) => value.toJson()).toList();
+      _json['versions'] = versions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4779,14 +4778,14 @@ class GoogleCloudMlV1Location {
   GoogleCloudMlV1Location();
 
   GoogleCloudMlV1Location.fromJson(core.Map _json) {
-    if (_json.containsKey("capabilities")) {
-      capabilities = (_json["capabilities"] as core.List)
+    if (_json.containsKey('capabilities')) {
+      capabilities = (_json['capabilities'] as core.List)
           .map<GoogleCloudMlV1Capability>(
               (value) => GoogleCloudMlV1Capability.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4794,11 +4793,11 @@ class GoogleCloudMlV1Location {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (capabilities != null) {
-      _json["capabilities"] =
+      _json['capabilities'] =
           capabilities.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4815,8 +4814,8 @@ class GoogleCloudMlV1ManualScaling {
   GoogleCloudMlV1ManualScaling();
 
   GoogleCloudMlV1ManualScaling.fromJson(core.Map _json) {
-    if (_json.containsKey("nodes")) {
-      nodes = _json["nodes"];
+    if (_json.containsKey('nodes')) {
+      nodes = _json['nodes'];
     }
   }
 
@@ -4824,7 +4823,7 @@ class GoogleCloudMlV1ManualScaling {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nodes != null) {
-      _json["nodes"] = nodes;
+      _json['nodes'] = nodes;
     }
     return _json;
   }
@@ -4846,17 +4845,17 @@ class GoogleCloudMlV1Measurement {
   GoogleCloudMlV1Measurement();
 
   GoogleCloudMlV1Measurement.fromJson(core.Map _json) {
-    if (_json.containsKey("elapsedTime")) {
-      elapsedTime = _json["elapsedTime"];
+    if (_json.containsKey('elapsedTime')) {
+      elapsedTime = _json['elapsedTime'];
     }
-    if (_json.containsKey("metrics")) {
-      metrics = (_json["metrics"] as core.List)
+    if (_json.containsKey('metrics')) {
+      metrics = (_json['metrics'] as core.List)
           .map<GoogleCloudMlV1MeasurementMetric>(
               (value) => GoogleCloudMlV1MeasurementMetric.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("stepCount")) {
-      stepCount = _json["stepCount"];
+    if (_json.containsKey('stepCount')) {
+      stepCount = _json['stepCount'];
     }
   }
 
@@ -4864,13 +4863,13 @@ class GoogleCloudMlV1Measurement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (elapsedTime != null) {
-      _json["elapsedTime"] = elapsedTime;
+      _json['elapsedTime'] = elapsedTime;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
+      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
     }
     if (stepCount != null) {
-      _json["stepCount"] = stepCount;
+      _json['stepCount'] = stepCount;
     }
     return _json;
   }
@@ -4900,7 +4899,7 @@ class GoogleCloudMlV1Model {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Optional. One or more labels that you can add, to organize your models.
@@ -4943,29 +4942,29 @@ class GoogleCloudMlV1Model {
   GoogleCloudMlV1Model();
 
   GoogleCloudMlV1Model.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultVersion")) {
-      defaultVersion = GoogleCloudMlV1Version.fromJson(_json["defaultVersion"]);
+    if (_json.containsKey('defaultVersion')) {
+      defaultVersion = GoogleCloudMlV1Version.fromJson(_json['defaultVersion']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("onlinePredictionConsoleLogging")) {
-      onlinePredictionConsoleLogging = _json["onlinePredictionConsoleLogging"];
+    if (_json.containsKey('onlinePredictionConsoleLogging')) {
+      onlinePredictionConsoleLogging = _json['onlinePredictionConsoleLogging'];
     }
-    if (_json.containsKey("onlinePredictionLogging")) {
-      onlinePredictionLogging = _json["onlinePredictionLogging"];
+    if (_json.containsKey('onlinePredictionLogging')) {
+      onlinePredictionLogging = _json['onlinePredictionLogging'];
     }
-    if (_json.containsKey("regions")) {
-      regions = (_json["regions"] as core.List).cast<core.String>();
+    if (_json.containsKey('regions')) {
+      regions = (_json['regions'] as core.List).cast<core.String>();
     }
   }
 
@@ -4973,28 +4972,28 @@ class GoogleCloudMlV1Model {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (defaultVersion != null) {
-      _json["defaultVersion"] = defaultVersion.toJson();
+      _json['defaultVersion'] = defaultVersion.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (onlinePredictionConsoleLogging != null) {
-      _json["onlinePredictionConsoleLogging"] = onlinePredictionConsoleLogging;
+      _json['onlinePredictionConsoleLogging'] = onlinePredictionConsoleLogging;
     }
     if (onlinePredictionLogging != null) {
-      _json["onlinePredictionLogging"] = onlinePredictionLogging;
+      _json['onlinePredictionLogging'] = onlinePredictionLogging;
     }
     if (regions != null) {
-      _json["regions"] = regions;
+      _json['regions'] = regions;
     }
     return _json;
   }
@@ -5041,32 +5040,32 @@ class GoogleCloudMlV1OperationMetadata {
   GoogleCloudMlV1OperationMetadata();
 
   GoogleCloudMlV1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("isCancellationRequested")) {
-      isCancellationRequested = _json["isCancellationRequested"];
+    if (_json.containsKey('isCancellationRequested')) {
+      isCancellationRequested = _json['isCancellationRequested'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("modelName")) {
-      modelName = _json["modelName"];
+    if (_json.containsKey('modelName')) {
+      modelName = _json['modelName'];
     }
-    if (_json.containsKey("operationType")) {
-      operationType = _json["operationType"];
+    if (_json.containsKey('operationType')) {
+      operationType = _json['operationType'];
     }
-    if (_json.containsKey("projectNumber")) {
-      projectNumber = _json["projectNumber"];
+    if (_json.containsKey('projectNumber')) {
+      projectNumber = _json['projectNumber'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("version")) {
-      version = GoogleCloudMlV1Version.fromJson(_json["version"]);
+    if (_json.containsKey('version')) {
+      version = GoogleCloudMlV1Version.fromJson(_json['version']);
     }
   }
 
@@ -5074,31 +5073,31 @@ class GoogleCloudMlV1OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (isCancellationRequested != null) {
-      _json["isCancellationRequested"] = isCancellationRequested;
+      _json['isCancellationRequested'] = isCancellationRequested;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (modelName != null) {
-      _json["modelName"] = modelName;
+      _json['modelName'] = modelName;
     }
     if (operationType != null) {
-      _json["operationType"] = operationType;
+      _json['operationType'] = operationType;
     }
     if (projectNumber != null) {
-      _json["projectNumber"] = projectNumber;
+      _json['projectNumber'] = projectNumber;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (version != null) {
-      _json["version"] = version.toJson();
+      _json['version'] = version.toJson();
     }
     return _json;
   }
@@ -5157,29 +5156,29 @@ class GoogleCloudMlV1ParameterSpec {
   GoogleCloudMlV1ParameterSpec();
 
   GoogleCloudMlV1ParameterSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("categoricalValues")) {
+    if (_json.containsKey('categoricalValues')) {
       categoricalValues =
-          (_json["categoricalValues"] as core.List).cast<core.String>();
+          (_json['categoricalValues'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("discreteValues")) {
-      discreteValues = (_json["discreteValues"] as core.List)
+    if (_json.containsKey('discreteValues')) {
+      discreteValues = (_json['discreteValues'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
-    if (_json.containsKey("maxValue")) {
-      maxValue = _json["maxValue"].toDouble();
+    if (_json.containsKey('maxValue')) {
+      maxValue = _json['maxValue'].toDouble();
     }
-    if (_json.containsKey("minValue")) {
-      minValue = _json["minValue"].toDouble();
+    if (_json.containsKey('minValue')) {
+      minValue = _json['minValue'].toDouble();
     }
-    if (_json.containsKey("parameterName")) {
-      parameterName = _json["parameterName"];
+    if (_json.containsKey('parameterName')) {
+      parameterName = _json['parameterName'];
     }
-    if (_json.containsKey("scaleType")) {
-      scaleType = _json["scaleType"];
+    if (_json.containsKey('scaleType')) {
+      scaleType = _json['scaleType'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -5187,25 +5186,25 @@ class GoogleCloudMlV1ParameterSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoricalValues != null) {
-      _json["categoricalValues"] = categoricalValues;
+      _json['categoricalValues'] = categoricalValues;
     }
     if (discreteValues != null) {
-      _json["discreteValues"] = discreteValues;
+      _json['discreteValues'] = discreteValues;
     }
     if (maxValue != null) {
-      _json["maxValue"] = maxValue;
+      _json['maxValue'] = maxValue;
     }
     if (minValue != null) {
-      _json["minValue"] = minValue;
+      _json['minValue'] = minValue;
     }
     if (parameterName != null) {
-      _json["parameterName"] = parameterName;
+      _json['parameterName'] = parameterName;
     }
     if (scaleType != null) {
-      _json["scaleType"] = scaleType;
+      _json['scaleType'] = scaleType;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -5221,8 +5220,8 @@ class GoogleCloudMlV1PredictRequest {
   GoogleCloudMlV1PredictRequest();
 
   GoogleCloudMlV1PredictRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("httpBody")) {
-      httpBody = GoogleApiHttpBody.fromJson(_json["httpBody"]);
+    if (_json.containsKey('httpBody')) {
+      httpBody = GoogleApiHttpBody.fromJson(_json['httpBody']);
     }
   }
 
@@ -5230,7 +5229,7 @@ class GoogleCloudMlV1PredictRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (httpBody != null) {
-      _json["httpBody"] = httpBody.toJson();
+      _json['httpBody'] = httpBody.toJson();
     }
     return _json;
   }
@@ -5320,41 +5319,41 @@ class GoogleCloudMlV1PredictionInput {
   GoogleCloudMlV1PredictionInput();
 
   GoogleCloudMlV1PredictionInput.fromJson(core.Map _json) {
-    if (_json.containsKey("batchSize")) {
-      batchSize = _json["batchSize"];
+    if (_json.containsKey('batchSize')) {
+      batchSize = _json['batchSize'];
     }
-    if (_json.containsKey("dataFormat")) {
-      dataFormat = _json["dataFormat"];
+    if (_json.containsKey('dataFormat')) {
+      dataFormat = _json['dataFormat'];
     }
-    if (_json.containsKey("inputPaths")) {
-      inputPaths = (_json["inputPaths"] as core.List).cast<core.String>();
+    if (_json.containsKey('inputPaths')) {
+      inputPaths = (_json['inputPaths'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("maxWorkerCount")) {
-      maxWorkerCount = _json["maxWorkerCount"];
+    if (_json.containsKey('maxWorkerCount')) {
+      maxWorkerCount = _json['maxWorkerCount'];
     }
-    if (_json.containsKey("modelName")) {
-      modelName = _json["modelName"];
+    if (_json.containsKey('modelName')) {
+      modelName = _json['modelName'];
     }
-    if (_json.containsKey("outputDataFormat")) {
-      outputDataFormat = _json["outputDataFormat"];
+    if (_json.containsKey('outputDataFormat')) {
+      outputDataFormat = _json['outputDataFormat'];
     }
-    if (_json.containsKey("outputPath")) {
-      outputPath = _json["outputPath"];
+    if (_json.containsKey('outputPath')) {
+      outputPath = _json['outputPath'];
     }
-    if (_json.containsKey("region")) {
-      region = _json["region"];
+    if (_json.containsKey('region')) {
+      region = _json['region'];
     }
-    if (_json.containsKey("runtimeVersion")) {
-      runtimeVersion = _json["runtimeVersion"];
+    if (_json.containsKey('runtimeVersion')) {
+      runtimeVersion = _json['runtimeVersion'];
     }
-    if (_json.containsKey("signatureName")) {
-      signatureName = _json["signatureName"];
+    if (_json.containsKey('signatureName')) {
+      signatureName = _json['signatureName'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
-    if (_json.containsKey("versionName")) {
-      versionName = _json["versionName"];
+    if (_json.containsKey('versionName')) {
+      versionName = _json['versionName'];
     }
   }
 
@@ -5362,40 +5361,40 @@ class GoogleCloudMlV1PredictionInput {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batchSize != null) {
-      _json["batchSize"] = batchSize;
+      _json['batchSize'] = batchSize;
     }
     if (dataFormat != null) {
-      _json["dataFormat"] = dataFormat;
+      _json['dataFormat'] = dataFormat;
     }
     if (inputPaths != null) {
-      _json["inputPaths"] = inputPaths;
+      _json['inputPaths'] = inputPaths;
     }
     if (maxWorkerCount != null) {
-      _json["maxWorkerCount"] = maxWorkerCount;
+      _json['maxWorkerCount'] = maxWorkerCount;
     }
     if (modelName != null) {
-      _json["modelName"] = modelName;
+      _json['modelName'] = modelName;
     }
     if (outputDataFormat != null) {
-      _json["outputDataFormat"] = outputDataFormat;
+      _json['outputDataFormat'] = outputDataFormat;
     }
     if (outputPath != null) {
-      _json["outputPath"] = outputPath;
+      _json['outputPath'] = outputPath;
     }
     if (region != null) {
-      _json["region"] = region;
+      _json['region'] = region;
     }
     if (runtimeVersion != null) {
-      _json["runtimeVersion"] = runtimeVersion;
+      _json['runtimeVersion'] = runtimeVersion;
     }
     if (signatureName != null) {
-      _json["signatureName"] = signatureName;
+      _json['signatureName'] = signatureName;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     if (versionName != null) {
-      _json["versionName"] = versionName;
+      _json['versionName'] = versionName;
     }
     return _json;
   }
@@ -5419,17 +5418,17 @@ class GoogleCloudMlV1PredictionOutput {
   GoogleCloudMlV1PredictionOutput();
 
   GoogleCloudMlV1PredictionOutput.fromJson(core.Map _json) {
-    if (_json.containsKey("errorCount")) {
-      errorCount = _json["errorCount"];
+    if (_json.containsKey('errorCount')) {
+      errorCount = _json['errorCount'];
     }
-    if (_json.containsKey("nodeHours")) {
-      nodeHours = _json["nodeHours"].toDouble();
+    if (_json.containsKey('nodeHours')) {
+      nodeHours = _json['nodeHours'].toDouble();
     }
-    if (_json.containsKey("outputPath")) {
-      outputPath = _json["outputPath"];
+    if (_json.containsKey('outputPath')) {
+      outputPath = _json['outputPath'];
     }
-    if (_json.containsKey("predictionCount")) {
-      predictionCount = _json["predictionCount"];
+    if (_json.containsKey('predictionCount')) {
+      predictionCount = _json['predictionCount'];
     }
   }
 
@@ -5437,16 +5436,16 @@ class GoogleCloudMlV1PredictionOutput {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errorCount != null) {
-      _json["errorCount"] = errorCount;
+      _json['errorCount'] = errorCount;
     }
     if (nodeHours != null) {
-      _json["nodeHours"] = nodeHours;
+      _json['nodeHours'] = nodeHours;
     }
     if (outputPath != null) {
-      _json["outputPath"] = outputPath;
+      _json['outputPath'] = outputPath;
     }
     if (predictionCount != null) {
-      _json["predictionCount"] = predictionCount;
+      _json['predictionCount'] = predictionCount;
     }
     return _json;
   }
@@ -5504,22 +5503,22 @@ class GoogleCloudMlV1ReplicaConfig {
   GoogleCloudMlV1ReplicaConfig();
 
   GoogleCloudMlV1ReplicaConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("acceleratorConfig")) {
+    if (_json.containsKey('acceleratorConfig')) {
       acceleratorConfig =
-          GoogleCloudMlV1AcceleratorConfig.fromJson(_json["acceleratorConfig"]);
+          GoogleCloudMlV1AcceleratorConfig.fromJson(_json['acceleratorConfig']);
     }
-    if (_json.containsKey("containerArgs")) {
-      containerArgs = (_json["containerArgs"] as core.List).cast<core.String>();
+    if (_json.containsKey('containerArgs')) {
+      containerArgs = (_json['containerArgs'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("containerCommand")) {
+    if (_json.containsKey('containerCommand')) {
       containerCommand =
-          (_json["containerCommand"] as core.List).cast<core.String>();
+          (_json['containerCommand'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("imageUri")) {
-      imageUri = _json["imageUri"];
+    if (_json.containsKey('imageUri')) {
+      imageUri = _json['imageUri'];
     }
-    if (_json.containsKey("tpuTfVersion")) {
-      tpuTfVersion = _json["tpuTfVersion"];
+    if (_json.containsKey('tpuTfVersion')) {
+      tpuTfVersion = _json['tpuTfVersion'];
     }
   }
 
@@ -5527,19 +5526,19 @@ class GoogleCloudMlV1ReplicaConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acceleratorConfig != null) {
-      _json["acceleratorConfig"] = acceleratorConfig.toJson();
+      _json['acceleratorConfig'] = acceleratorConfig.toJson();
     }
     if (containerArgs != null) {
-      _json["containerArgs"] = containerArgs;
+      _json['containerArgs'] = containerArgs;
     }
     if (containerCommand != null) {
-      _json["containerCommand"] = containerCommand;
+      _json['containerCommand'] = containerCommand;
     }
     if (imageUri != null) {
-      _json["imageUri"] = imageUri;
+      _json['imageUri'] = imageUri;
     }
     if (tpuTfVersion != null) {
-      _json["tpuTfVersion"] = tpuTfVersion;
+      _json['tpuTfVersion'] = tpuTfVersion;
     }
     return _json;
   }
@@ -5573,11 +5572,11 @@ class GoogleCloudMlV1RequestLoggingConfig {
   GoogleCloudMlV1RequestLoggingConfig();
 
   GoogleCloudMlV1RequestLoggingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("bigqueryTableName")) {
-      bigqueryTableName = _json["bigqueryTableName"];
+    if (_json.containsKey('bigqueryTableName')) {
+      bigqueryTableName = _json['bigqueryTableName'];
     }
-    if (_json.containsKey("samplingPercentage")) {
-      samplingPercentage = _json["samplingPercentage"].toDouble();
+    if (_json.containsKey('samplingPercentage')) {
+      samplingPercentage = _json['samplingPercentage'].toDouble();
     }
   }
 
@@ -5585,10 +5584,10 @@ class GoogleCloudMlV1RequestLoggingConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bigqueryTableName != null) {
-      _json["bigqueryTableName"] = bigqueryTableName;
+      _json['bigqueryTableName'] = bigqueryTableName;
     }
     if (samplingPercentage != null) {
-      _json["samplingPercentage"] = samplingPercentage;
+      _json['samplingPercentage'] = samplingPercentage;
     }
     return _json;
   }
@@ -5607,11 +5606,11 @@ class GoogleCloudMlV1RouteMap {
   GoogleCloudMlV1RouteMap();
 
   GoogleCloudMlV1RouteMap.fromJson(core.Map _json) {
-    if (_json.containsKey("health")) {
-      health = _json["health"];
+    if (_json.containsKey('health')) {
+      health = _json['health'];
     }
-    if (_json.containsKey("predict")) {
-      predict = _json["predict"];
+    if (_json.containsKey('predict')) {
+      predict = _json['predict'];
     }
   }
 
@@ -5619,10 +5618,10 @@ class GoogleCloudMlV1RouteMap {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (health != null) {
-      _json["health"] = health;
+      _json['health'] = health;
     }
     if (predict != null) {
-      _json["predict"] = predict;
+      _json['predict'] = predict;
     }
     return _json;
   }
@@ -5639,8 +5638,8 @@ class GoogleCloudMlV1SampledShapleyAttribution {
   GoogleCloudMlV1SampledShapleyAttribution();
 
   GoogleCloudMlV1SampledShapleyAttribution.fromJson(core.Map _json) {
-    if (_json.containsKey("numPaths")) {
-      numPaths = _json["numPaths"];
+    if (_json.containsKey('numPaths')) {
+      numPaths = _json['numPaths'];
     }
   }
 
@@ -5648,7 +5647,7 @@ class GoogleCloudMlV1SampledShapleyAttribution {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (numPaths != null) {
-      _json["numPaths"] = numPaths;
+      _json['numPaths'] = numPaths;
     }
     return _json;
   }
@@ -5696,11 +5695,11 @@ class GoogleCloudMlV1Scheduling {
   GoogleCloudMlV1Scheduling();
 
   GoogleCloudMlV1Scheduling.fromJson(core.Map _json) {
-    if (_json.containsKey("maxRunningTime")) {
-      maxRunningTime = _json["maxRunningTime"];
+    if (_json.containsKey('maxRunningTime')) {
+      maxRunningTime = _json['maxRunningTime'];
     }
-    if (_json.containsKey("maxWaitTime")) {
-      maxWaitTime = _json["maxWaitTime"];
+    if (_json.containsKey('maxWaitTime')) {
+      maxWaitTime = _json['maxWaitTime'];
     }
   }
 
@@ -5708,10 +5707,10 @@ class GoogleCloudMlV1Scheduling {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxRunningTime != null) {
-      _json["maxRunningTime"] = maxRunningTime;
+      _json['maxRunningTime'] = maxRunningTime;
     }
     if (maxWaitTime != null) {
-      _json["maxWaitTime"] = maxWaitTime;
+      _json['maxWaitTime'] = maxWaitTime;
     }
     return _json;
   }
@@ -5769,20 +5768,20 @@ class GoogleCloudMlV1Study {
   GoogleCloudMlV1Study();
 
   GoogleCloudMlV1Study.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("inactiveReason")) {
-      inactiveReason = _json["inactiveReason"];
+    if (_json.containsKey('inactiveReason')) {
+      inactiveReason = _json['inactiveReason'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("studyConfig")) {
-      studyConfig = GoogleCloudMlV1StudyConfig.fromJson(_json["studyConfig"]);
+    if (_json.containsKey('studyConfig')) {
+      studyConfig = GoogleCloudMlV1StudyConfig.fromJson(_json['studyConfig']);
     }
   }
 
@@ -5790,19 +5789,19 @@ class GoogleCloudMlV1Study {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (inactiveReason != null) {
-      _json["inactiveReason"] = inactiveReason;
+      _json['inactiveReason'] = inactiveReason;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (studyConfig != null) {
-      _json["studyConfig"] = studyConfig.toJson();
+      _json['studyConfig'] = studyConfig.toJson();
     }
     return _json;
   }
@@ -5833,21 +5832,21 @@ class GoogleCloudMlV1StudyConfig {
   GoogleCloudMlV1StudyConfig();
 
   GoogleCloudMlV1StudyConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("algorithm")) {
-      algorithm = _json["algorithm"];
+    if (_json.containsKey('algorithm')) {
+      algorithm = _json['algorithm'];
     }
-    if (_json.containsKey("automatedStoppingConfig")) {
+    if (_json.containsKey('automatedStoppingConfig')) {
       automatedStoppingConfig = GoogleCloudMlV1AutomatedStoppingConfig.fromJson(
-          _json["automatedStoppingConfig"]);
+          _json['automatedStoppingConfig']);
     }
-    if (_json.containsKey("metrics")) {
-      metrics = (_json["metrics"] as core.List)
+    if (_json.containsKey('metrics')) {
+      metrics = (_json['metrics'] as core.List)
           .map<GoogleCloudMlV1StudyConfigMetricSpec>(
               (value) => GoogleCloudMlV1StudyConfigMetricSpec.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parameters")) {
-      parameters = (_json["parameters"] as core.List)
+    if (_json.containsKey('parameters')) {
+      parameters = (_json['parameters'] as core.List)
           .map<GoogleCloudMlV1StudyConfigParameterSpec>((value) =>
               GoogleCloudMlV1StudyConfigParameterSpec.fromJson(value))
           .toList();
@@ -5858,16 +5857,16 @@ class GoogleCloudMlV1StudyConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (algorithm != null) {
-      _json["algorithm"] = algorithm;
+      _json['algorithm'] = algorithm;
     }
     if (automatedStoppingConfig != null) {
-      _json["automatedStoppingConfig"] = automatedStoppingConfig.toJson();
+      _json['automatedStoppingConfig'] = automatedStoppingConfig.toJson();
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
+      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
     }
     if (parameters != null) {
-      _json["parameters"] = parameters.map((value) => value.toJson()).toList();
+      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5891,17 +5890,17 @@ class GoogleCloudMlV1SuggestTrialsMetadata {
   GoogleCloudMlV1SuggestTrialsMetadata();
 
   GoogleCloudMlV1SuggestTrialsMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
+    if (_json.containsKey('clientId')) {
+      clientId = _json['clientId'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("study")) {
-      study = _json["study"];
+    if (_json.containsKey('study')) {
+      study = _json['study'];
     }
-    if (_json.containsKey("suggestionCount")) {
-      suggestionCount = _json["suggestionCount"];
+    if (_json.containsKey('suggestionCount')) {
+      suggestionCount = _json['suggestionCount'];
     }
   }
 
@@ -5909,16 +5908,16 @@ class GoogleCloudMlV1SuggestTrialsMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientId != null) {
-      _json["clientId"] = clientId;
+      _json['clientId'] = clientId;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (study != null) {
-      _json["study"] = study;
+      _json['study'] = study;
     }
     if (suggestionCount != null) {
-      _json["suggestionCount"] = suggestionCount;
+      _json['suggestionCount'] = suggestionCount;
     }
     return _json;
   }
@@ -5938,11 +5937,11 @@ class GoogleCloudMlV1SuggestTrialsRequest {
   GoogleCloudMlV1SuggestTrialsRequest();
 
   GoogleCloudMlV1SuggestTrialsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
+    if (_json.containsKey('clientId')) {
+      clientId = _json['clientId'];
     }
-    if (_json.containsKey("suggestionCount")) {
-      suggestionCount = _json["suggestionCount"];
+    if (_json.containsKey('suggestionCount')) {
+      suggestionCount = _json['suggestionCount'];
     }
   }
 
@@ -5950,10 +5949,10 @@ class GoogleCloudMlV1SuggestTrialsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientId != null) {
-      _json["clientId"] = clientId;
+      _json['clientId'] = clientId;
     }
     if (suggestionCount != null) {
-      _json["suggestionCount"] = suggestionCount;
+      _json['suggestionCount'] = suggestionCount;
     }
     return _json;
   }
@@ -5983,17 +5982,17 @@ class GoogleCloudMlV1SuggestTrialsResponse {
   GoogleCloudMlV1SuggestTrialsResponse();
 
   GoogleCloudMlV1SuggestTrialsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("studyState")) {
-      studyState = _json["studyState"];
+    if (_json.containsKey('studyState')) {
+      studyState = _json['studyState'];
     }
-    if (_json.containsKey("trials")) {
-      trials = (_json["trials"] as core.List)
+    if (_json.containsKey('trials')) {
+      trials = (_json['trials'] as core.List)
           .map<GoogleCloudMlV1Trial>(
               (value) => GoogleCloudMlV1Trial.fromJson(value))
           .toList();
@@ -6004,16 +6003,16 @@ class GoogleCloudMlV1SuggestTrialsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (studyState != null) {
-      _json["studyState"] = studyState;
+      _json['studyState'] = studyState;
     }
     if (trials != null) {
-      _json["trials"] = trials.map((value) => value.toJson()).toList();
+      _json['trials'] = trials.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6261,86 +6260,86 @@ class GoogleCloudMlV1TrainingInput {
   GoogleCloudMlV1TrainingInput();
 
   GoogleCloudMlV1TrainingInput.fromJson(core.Map _json) {
-    if (_json.containsKey("args")) {
-      args = (_json["args"] as core.List).cast<core.String>();
+    if (_json.containsKey('args')) {
+      args = (_json['args'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("encryptionConfig")) {
+    if (_json.containsKey('encryptionConfig')) {
       encryptionConfig =
-          GoogleCloudMlV1EncryptionConfig.fromJson(_json["encryptionConfig"]);
+          GoogleCloudMlV1EncryptionConfig.fromJson(_json['encryptionConfig']);
     }
-    if (_json.containsKey("evaluatorConfig")) {
+    if (_json.containsKey('evaluatorConfig')) {
       evaluatorConfig =
-          GoogleCloudMlV1ReplicaConfig.fromJson(_json["evaluatorConfig"]);
+          GoogleCloudMlV1ReplicaConfig.fromJson(_json['evaluatorConfig']);
     }
-    if (_json.containsKey("evaluatorCount")) {
-      evaluatorCount = _json["evaluatorCount"];
+    if (_json.containsKey('evaluatorCount')) {
+      evaluatorCount = _json['evaluatorCount'];
     }
-    if (_json.containsKey("evaluatorType")) {
-      evaluatorType = _json["evaluatorType"];
+    if (_json.containsKey('evaluatorType')) {
+      evaluatorType = _json['evaluatorType'];
     }
-    if (_json.containsKey("hyperparameters")) {
+    if (_json.containsKey('hyperparameters')) {
       hyperparameters =
-          GoogleCloudMlV1HyperparameterSpec.fromJson(_json["hyperparameters"]);
+          GoogleCloudMlV1HyperparameterSpec.fromJson(_json['hyperparameters']);
     }
-    if (_json.containsKey("jobDir")) {
-      jobDir = _json["jobDir"];
+    if (_json.containsKey('jobDir')) {
+      jobDir = _json['jobDir'];
     }
-    if (_json.containsKey("masterConfig")) {
+    if (_json.containsKey('masterConfig')) {
       masterConfig =
-          GoogleCloudMlV1ReplicaConfig.fromJson(_json["masterConfig"]);
+          GoogleCloudMlV1ReplicaConfig.fromJson(_json['masterConfig']);
     }
-    if (_json.containsKey("masterType")) {
-      masterType = _json["masterType"];
+    if (_json.containsKey('masterType')) {
+      masterType = _json['masterType'];
     }
-    if (_json.containsKey("network")) {
-      network = _json["network"];
+    if (_json.containsKey('network')) {
+      network = _json['network'];
     }
-    if (_json.containsKey("packageUris")) {
-      packageUris = (_json["packageUris"] as core.List).cast<core.String>();
+    if (_json.containsKey('packageUris')) {
+      packageUris = (_json['packageUris'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("parameterServerConfig")) {
+    if (_json.containsKey('parameterServerConfig')) {
       parameterServerConfig =
-          GoogleCloudMlV1ReplicaConfig.fromJson(_json["parameterServerConfig"]);
+          GoogleCloudMlV1ReplicaConfig.fromJson(_json['parameterServerConfig']);
     }
-    if (_json.containsKey("parameterServerCount")) {
-      parameterServerCount = _json["parameterServerCount"];
+    if (_json.containsKey('parameterServerCount')) {
+      parameterServerCount = _json['parameterServerCount'];
     }
-    if (_json.containsKey("parameterServerType")) {
-      parameterServerType = _json["parameterServerType"];
+    if (_json.containsKey('parameterServerType')) {
+      parameterServerType = _json['parameterServerType'];
     }
-    if (_json.containsKey("pythonModule")) {
-      pythonModule = _json["pythonModule"];
+    if (_json.containsKey('pythonModule')) {
+      pythonModule = _json['pythonModule'];
     }
-    if (_json.containsKey("pythonVersion")) {
-      pythonVersion = _json["pythonVersion"];
+    if (_json.containsKey('pythonVersion')) {
+      pythonVersion = _json['pythonVersion'];
     }
-    if (_json.containsKey("region")) {
-      region = _json["region"];
+    if (_json.containsKey('region')) {
+      region = _json['region'];
     }
-    if (_json.containsKey("runtimeVersion")) {
-      runtimeVersion = _json["runtimeVersion"];
+    if (_json.containsKey('runtimeVersion')) {
+      runtimeVersion = _json['runtimeVersion'];
     }
-    if (_json.containsKey("scaleTier")) {
-      scaleTier = _json["scaleTier"];
+    if (_json.containsKey('scaleTier')) {
+      scaleTier = _json['scaleTier'];
     }
-    if (_json.containsKey("scheduling")) {
-      scheduling = GoogleCloudMlV1Scheduling.fromJson(_json["scheduling"]);
+    if (_json.containsKey('scheduling')) {
+      scheduling = GoogleCloudMlV1Scheduling.fromJson(_json['scheduling']);
     }
-    if (_json.containsKey("serviceAccount")) {
-      serviceAccount = _json["serviceAccount"];
+    if (_json.containsKey('serviceAccount')) {
+      serviceAccount = _json['serviceAccount'];
     }
-    if (_json.containsKey("useChiefInTfConfig")) {
-      useChiefInTfConfig = _json["useChiefInTfConfig"];
+    if (_json.containsKey('useChiefInTfConfig')) {
+      useChiefInTfConfig = _json['useChiefInTfConfig'];
     }
-    if (_json.containsKey("workerConfig")) {
+    if (_json.containsKey('workerConfig')) {
       workerConfig =
-          GoogleCloudMlV1ReplicaConfig.fromJson(_json["workerConfig"]);
+          GoogleCloudMlV1ReplicaConfig.fromJson(_json['workerConfig']);
     }
-    if (_json.containsKey("workerCount")) {
-      workerCount = _json["workerCount"];
+    if (_json.containsKey('workerCount')) {
+      workerCount = _json['workerCount'];
     }
-    if (_json.containsKey("workerType")) {
-      workerType = _json["workerType"];
+    if (_json.containsKey('workerType')) {
+      workerType = _json['workerType'];
     }
   }
 
@@ -6348,79 +6347,79 @@ class GoogleCloudMlV1TrainingInput {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (args != null) {
-      _json["args"] = args;
+      _json['args'] = args;
     }
     if (encryptionConfig != null) {
-      _json["encryptionConfig"] = encryptionConfig.toJson();
+      _json['encryptionConfig'] = encryptionConfig.toJson();
     }
     if (evaluatorConfig != null) {
-      _json["evaluatorConfig"] = evaluatorConfig.toJson();
+      _json['evaluatorConfig'] = evaluatorConfig.toJson();
     }
     if (evaluatorCount != null) {
-      _json["evaluatorCount"] = evaluatorCount;
+      _json['evaluatorCount'] = evaluatorCount;
     }
     if (evaluatorType != null) {
-      _json["evaluatorType"] = evaluatorType;
+      _json['evaluatorType'] = evaluatorType;
     }
     if (hyperparameters != null) {
-      _json["hyperparameters"] = hyperparameters.toJson();
+      _json['hyperparameters'] = hyperparameters.toJson();
     }
     if (jobDir != null) {
-      _json["jobDir"] = jobDir;
+      _json['jobDir'] = jobDir;
     }
     if (masterConfig != null) {
-      _json["masterConfig"] = masterConfig.toJson();
+      _json['masterConfig'] = masterConfig.toJson();
     }
     if (masterType != null) {
-      _json["masterType"] = masterType;
+      _json['masterType'] = masterType;
     }
     if (network != null) {
-      _json["network"] = network;
+      _json['network'] = network;
     }
     if (packageUris != null) {
-      _json["packageUris"] = packageUris;
+      _json['packageUris'] = packageUris;
     }
     if (parameterServerConfig != null) {
-      _json["parameterServerConfig"] = parameterServerConfig.toJson();
+      _json['parameterServerConfig'] = parameterServerConfig.toJson();
     }
     if (parameterServerCount != null) {
-      _json["parameterServerCount"] = parameterServerCount;
+      _json['parameterServerCount'] = parameterServerCount;
     }
     if (parameterServerType != null) {
-      _json["parameterServerType"] = parameterServerType;
+      _json['parameterServerType'] = parameterServerType;
     }
     if (pythonModule != null) {
-      _json["pythonModule"] = pythonModule;
+      _json['pythonModule'] = pythonModule;
     }
     if (pythonVersion != null) {
-      _json["pythonVersion"] = pythonVersion;
+      _json['pythonVersion'] = pythonVersion;
     }
     if (region != null) {
-      _json["region"] = region;
+      _json['region'] = region;
     }
     if (runtimeVersion != null) {
-      _json["runtimeVersion"] = runtimeVersion;
+      _json['runtimeVersion'] = runtimeVersion;
     }
     if (scaleTier != null) {
-      _json["scaleTier"] = scaleTier;
+      _json['scaleTier'] = scaleTier;
     }
     if (scheduling != null) {
-      _json["scheduling"] = scheduling.toJson();
+      _json['scheduling'] = scheduling.toJson();
     }
     if (serviceAccount != null) {
-      _json["serviceAccount"] = serviceAccount;
+      _json['serviceAccount'] = serviceAccount;
     }
     if (useChiefInTfConfig != null) {
-      _json["useChiefInTfConfig"] = useChiefInTfConfig;
+      _json['useChiefInTfConfig'] = useChiefInTfConfig;
     }
     if (workerConfig != null) {
-      _json["workerConfig"] = workerConfig.toJson();
+      _json['workerConfig'] = workerConfig.toJson();
     }
     if (workerCount != null) {
-      _json["workerCount"] = workerCount;
+      _json['workerCount'] = workerCount;
     }
     if (workerType != null) {
-      _json["workerType"] = workerType;
+      _json['workerType'] = workerType;
     }
     return _json;
   }
@@ -6458,27 +6457,27 @@ class GoogleCloudMlV1TrainingOutput {
   GoogleCloudMlV1TrainingOutput();
 
   GoogleCloudMlV1TrainingOutput.fromJson(core.Map _json) {
-    if (_json.containsKey("builtInAlgorithmOutput")) {
+    if (_json.containsKey('builtInAlgorithmOutput')) {
       builtInAlgorithmOutput = GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
-          _json["builtInAlgorithmOutput"]);
+          _json['builtInAlgorithmOutput']);
     }
-    if (_json.containsKey("completedTrialCount")) {
-      completedTrialCount = _json["completedTrialCount"];
+    if (_json.containsKey('completedTrialCount')) {
+      completedTrialCount = _json['completedTrialCount'];
     }
-    if (_json.containsKey("consumedMLUnits")) {
-      consumedMLUnits = _json["consumedMLUnits"].toDouble();
+    if (_json.containsKey('consumedMLUnits')) {
+      consumedMLUnits = _json['consumedMLUnits'].toDouble();
     }
-    if (_json.containsKey("hyperparameterMetricTag")) {
-      hyperparameterMetricTag = _json["hyperparameterMetricTag"];
+    if (_json.containsKey('hyperparameterMetricTag')) {
+      hyperparameterMetricTag = _json['hyperparameterMetricTag'];
     }
-    if (_json.containsKey("isBuiltInAlgorithmJob")) {
-      isBuiltInAlgorithmJob = _json["isBuiltInAlgorithmJob"];
+    if (_json.containsKey('isBuiltInAlgorithmJob')) {
+      isBuiltInAlgorithmJob = _json['isBuiltInAlgorithmJob'];
     }
-    if (_json.containsKey("isHyperparameterTuningJob")) {
-      isHyperparameterTuningJob = _json["isHyperparameterTuningJob"];
+    if (_json.containsKey('isHyperparameterTuningJob')) {
+      isHyperparameterTuningJob = _json['isHyperparameterTuningJob'];
     }
-    if (_json.containsKey("trials")) {
-      trials = (_json["trials"] as core.List)
+    if (_json.containsKey('trials')) {
+      trials = (_json['trials'] as core.List)
           .map<GoogleCloudMlV1HyperparameterOutput>(
               (value) => GoogleCloudMlV1HyperparameterOutput.fromJson(value))
           .toList();
@@ -6489,25 +6488,25 @@ class GoogleCloudMlV1TrainingOutput {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (builtInAlgorithmOutput != null) {
-      _json["builtInAlgorithmOutput"] = builtInAlgorithmOutput.toJson();
+      _json['builtInAlgorithmOutput'] = builtInAlgorithmOutput.toJson();
     }
     if (completedTrialCount != null) {
-      _json["completedTrialCount"] = completedTrialCount;
+      _json['completedTrialCount'] = completedTrialCount;
     }
     if (consumedMLUnits != null) {
-      _json["consumedMLUnits"] = consumedMLUnits;
+      _json['consumedMLUnits'] = consumedMLUnits;
     }
     if (hyperparameterMetricTag != null) {
-      _json["hyperparameterMetricTag"] = hyperparameterMetricTag;
+      _json['hyperparameterMetricTag'] = hyperparameterMetricTag;
     }
     if (isBuiltInAlgorithmJob != null) {
-      _json["isBuiltInAlgorithmJob"] = isBuiltInAlgorithmJob;
+      _json['isBuiltInAlgorithmJob'] = isBuiltInAlgorithmJob;
     }
     if (isHyperparameterTuningJob != null) {
-      _json["isHyperparameterTuningJob"] = isHyperparameterTuningJob;
+      _json['isHyperparameterTuningJob'] = isHyperparameterTuningJob;
     }
     if (trials != null) {
-      _json["trials"] = trials.map((value) => value.toJson()).toList();
+      _json['trials'] = trials.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6562,42 +6561,42 @@ class GoogleCloudMlV1Trial {
   GoogleCloudMlV1Trial();
 
   GoogleCloudMlV1Trial.fromJson(core.Map _json) {
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
+    if (_json.containsKey('clientId')) {
+      clientId = _json['clientId'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("finalMeasurement")) {
+    if (_json.containsKey('finalMeasurement')) {
       finalMeasurement =
-          GoogleCloudMlV1Measurement.fromJson(_json["finalMeasurement"]);
+          GoogleCloudMlV1Measurement.fromJson(_json['finalMeasurement']);
     }
-    if (_json.containsKey("infeasibleReason")) {
-      infeasibleReason = _json["infeasibleReason"];
+    if (_json.containsKey('infeasibleReason')) {
+      infeasibleReason = _json['infeasibleReason'];
     }
-    if (_json.containsKey("measurements")) {
-      measurements = (_json["measurements"] as core.List)
+    if (_json.containsKey('measurements')) {
+      measurements = (_json['measurements'] as core.List)
           .map<GoogleCloudMlV1Measurement>(
               (value) => GoogleCloudMlV1Measurement.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("parameters")) {
-      parameters = (_json["parameters"] as core.List)
+    if (_json.containsKey('parameters')) {
+      parameters = (_json['parameters'] as core.List)
           .map<GoogleCloudMlV1TrialParameter>(
               (value) => GoogleCloudMlV1TrialParameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("trialInfeasible")) {
-      trialInfeasible = _json["trialInfeasible"];
+    if (_json.containsKey('trialInfeasible')) {
+      trialInfeasible = _json['trialInfeasible'];
     }
   }
 
@@ -6605,35 +6604,35 @@ class GoogleCloudMlV1Trial {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientId != null) {
-      _json["clientId"] = clientId;
+      _json['clientId'] = clientId;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (finalMeasurement != null) {
-      _json["finalMeasurement"] = finalMeasurement.toJson();
+      _json['finalMeasurement'] = finalMeasurement.toJson();
     }
     if (infeasibleReason != null) {
-      _json["infeasibleReason"] = infeasibleReason;
+      _json['infeasibleReason'] = infeasibleReason;
     }
     if (measurements != null) {
-      _json["measurements"] =
+      _json['measurements'] =
           measurements.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (parameters != null) {
-      _json["parameters"] = parameters.map((value) => value.toJson()).toList();
+      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (trialInfeasible != null) {
-      _json["trialInfeasible"] = trialInfeasible;
+      _json['trialInfeasible'] = trialInfeasible;
     }
     return _json;
   }
@@ -6691,7 +6690,7 @@ class GoogleCloudMlV1Version {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Optional. Configures explainability features on the model's version. Some
@@ -6841,81 +6840,81 @@ class GoogleCloudMlV1Version {
   GoogleCloudMlV1Version();
 
   GoogleCloudMlV1Version.fromJson(core.Map _json) {
-    if (_json.containsKey("acceleratorConfig")) {
+    if (_json.containsKey('acceleratorConfig')) {
       acceleratorConfig =
-          GoogleCloudMlV1AcceleratorConfig.fromJson(_json["acceleratorConfig"]);
+          GoogleCloudMlV1AcceleratorConfig.fromJson(_json['acceleratorConfig']);
     }
-    if (_json.containsKey("autoScaling")) {
-      autoScaling = GoogleCloudMlV1AutoScaling.fromJson(_json["autoScaling"]);
+    if (_json.containsKey('autoScaling')) {
+      autoScaling = GoogleCloudMlV1AutoScaling.fromJson(_json['autoScaling']);
     }
-    if (_json.containsKey("container")) {
-      container = GoogleCloudMlV1ContainerSpec.fromJson(_json["container"]);
+    if (_json.containsKey('container')) {
+      container = GoogleCloudMlV1ContainerSpec.fromJson(_json['container']);
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("deploymentUri")) {
-      deploymentUri = _json["deploymentUri"];
+    if (_json.containsKey('deploymentUri')) {
+      deploymentUri = _json['deploymentUri'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("errorMessage")) {
-      errorMessage = _json["errorMessage"];
+    if (_json.containsKey('errorMessage')) {
+      errorMessage = _json['errorMessage'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("explanationConfig")) {
+    if (_json.containsKey('explanationConfig')) {
       explanationConfig =
-          GoogleCloudMlV1ExplanationConfig.fromJson(_json["explanationConfig"]);
+          GoogleCloudMlV1ExplanationConfig.fromJson(_json['explanationConfig']);
     }
-    if (_json.containsKey("framework")) {
-      framework = _json["framework"];
+    if (_json.containsKey('framework')) {
+      framework = _json['framework'];
     }
-    if (_json.containsKey("isDefault")) {
-      isDefault = _json["isDefault"];
+    if (_json.containsKey('isDefault')) {
+      isDefault = _json['isDefault'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("lastUseTime")) {
-      lastUseTime = _json["lastUseTime"];
+    if (_json.containsKey('lastUseTime')) {
+      lastUseTime = _json['lastUseTime'];
     }
-    if (_json.containsKey("machineType")) {
-      machineType = _json["machineType"];
+    if (_json.containsKey('machineType')) {
+      machineType = _json['machineType'];
     }
-    if (_json.containsKey("manualScaling")) {
+    if (_json.containsKey('manualScaling')) {
       manualScaling =
-          GoogleCloudMlV1ManualScaling.fromJson(_json["manualScaling"]);
+          GoogleCloudMlV1ManualScaling.fromJson(_json['manualScaling']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("packageUris")) {
-      packageUris = (_json["packageUris"] as core.List).cast<core.String>();
+    if (_json.containsKey('packageUris')) {
+      packageUris = (_json['packageUris'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("predictionClass")) {
-      predictionClass = _json["predictionClass"];
+    if (_json.containsKey('predictionClass')) {
+      predictionClass = _json['predictionClass'];
     }
-    if (_json.containsKey("pythonVersion")) {
-      pythonVersion = _json["pythonVersion"];
+    if (_json.containsKey('pythonVersion')) {
+      pythonVersion = _json['pythonVersion'];
     }
-    if (_json.containsKey("requestLoggingConfig")) {
+    if (_json.containsKey('requestLoggingConfig')) {
       requestLoggingConfig = GoogleCloudMlV1RequestLoggingConfig.fromJson(
-          _json["requestLoggingConfig"]);
+          _json['requestLoggingConfig']);
     }
-    if (_json.containsKey("routes")) {
-      routes = GoogleCloudMlV1RouteMap.fromJson(_json["routes"]);
+    if (_json.containsKey('routes')) {
+      routes = GoogleCloudMlV1RouteMap.fromJson(_json['routes']);
     }
-    if (_json.containsKey("runtimeVersion")) {
-      runtimeVersion = _json["runtimeVersion"];
+    if (_json.containsKey('runtimeVersion')) {
+      runtimeVersion = _json['runtimeVersion'];
     }
-    if (_json.containsKey("serviceAccount")) {
-      serviceAccount = _json["serviceAccount"];
+    if (_json.containsKey('serviceAccount')) {
+      serviceAccount = _json['serviceAccount'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -6923,76 +6922,76 @@ class GoogleCloudMlV1Version {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acceleratorConfig != null) {
-      _json["acceleratorConfig"] = acceleratorConfig.toJson();
+      _json['acceleratorConfig'] = acceleratorConfig.toJson();
     }
     if (autoScaling != null) {
-      _json["autoScaling"] = autoScaling.toJson();
+      _json['autoScaling'] = autoScaling.toJson();
     }
     if (container != null) {
-      _json["container"] = container.toJson();
+      _json['container'] = container.toJson();
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (deploymentUri != null) {
-      _json["deploymentUri"] = deploymentUri;
+      _json['deploymentUri'] = deploymentUri;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (errorMessage != null) {
-      _json["errorMessage"] = errorMessage;
+      _json['errorMessage'] = errorMessage;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (explanationConfig != null) {
-      _json["explanationConfig"] = explanationConfig.toJson();
+      _json['explanationConfig'] = explanationConfig.toJson();
     }
     if (framework != null) {
-      _json["framework"] = framework;
+      _json['framework'] = framework;
     }
     if (isDefault != null) {
-      _json["isDefault"] = isDefault;
+      _json['isDefault'] = isDefault;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (lastUseTime != null) {
-      _json["lastUseTime"] = lastUseTime;
+      _json['lastUseTime'] = lastUseTime;
     }
     if (machineType != null) {
-      _json["machineType"] = machineType;
+      _json['machineType'] = machineType;
     }
     if (manualScaling != null) {
-      _json["manualScaling"] = manualScaling.toJson();
+      _json['manualScaling'] = manualScaling.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (packageUris != null) {
-      _json["packageUris"] = packageUris;
+      _json['packageUris'] = packageUris;
     }
     if (predictionClass != null) {
-      _json["predictionClass"] = predictionClass;
+      _json['predictionClass'] = predictionClass;
     }
     if (pythonVersion != null) {
-      _json["pythonVersion"] = pythonVersion;
+      _json['pythonVersion'] = pythonVersion;
     }
     if (requestLoggingConfig != null) {
-      _json["requestLoggingConfig"] = requestLoggingConfig.toJson();
+      _json['requestLoggingConfig'] = requestLoggingConfig.toJson();
     }
     if (routes != null) {
-      _json["routes"] = routes.toJson();
+      _json['routes'] = routes.toJson();
     }
     if (runtimeVersion != null) {
-      _json["runtimeVersion"] = runtimeVersion;
+      _json['runtimeVersion'] = runtimeVersion;
     }
     if (serviceAccount != null) {
-      _json["serviceAccount"] = serviceAccount;
+      _json['serviceAccount'] = serviceAccount;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -7011,8 +7010,8 @@ class GoogleCloudMlV1XraiAttribution {
   GoogleCloudMlV1XraiAttribution();
 
   GoogleCloudMlV1XraiAttribution.fromJson(core.Map _json) {
-    if (_json.containsKey("numIntegralSteps")) {
-      numIntegralSteps = _json["numIntegralSteps"];
+    if (_json.containsKey('numIntegralSteps')) {
+      numIntegralSteps = _json['numIntegralSteps'];
     }
   }
 
@@ -7020,7 +7019,7 @@ class GoogleCloudMlV1XraiAttribution {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (numIntegralSteps != null) {
-      _json["numIntegralSteps"] = numIntegralSteps;
+      _json['numIntegralSteps'] = numIntegralSteps;
     }
     return _json;
   }
@@ -7054,14 +7053,14 @@ class GoogleIamV1AuditConfig {
   GoogleIamV1AuditConfig();
 
   GoogleIamV1AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
+    if (_json.containsKey('auditLogConfigs')) {
+      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
           .map<GoogleIamV1AuditLogConfig>(
               (value) => GoogleIamV1AuditLogConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
+    if (_json.containsKey('service')) {
+      service = _json['service'];
     }
   }
 
@@ -7069,11 +7068,11 @@ class GoogleIamV1AuditConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] =
+      _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
     }
     if (service != null) {
-      _json["service"] = service;
+      _json['service'] = service;
     }
     return _json;
   }
@@ -7100,12 +7099,12 @@ class GoogleIamV1AuditLogConfig {
   GoogleIamV1AuditLogConfig();
 
   GoogleIamV1AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("exemptedMembers")) {
+    if (_json.containsKey('exemptedMembers')) {
       exemptedMembers =
-          (_json["exemptedMembers"] as core.List).cast<core.String>();
+          (_json['exemptedMembers'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
+    if (_json.containsKey('logType')) {
+      logType = _json['logType'];
     }
   }
 
@@ -7113,10 +7112,10 @@ class GoogleIamV1AuditLogConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
+      _json['exemptedMembers'] = exemptedMembers;
     }
     if (logType != null) {
-      _json["logType"] = logType;
+      _json['logType'] = logType;
     }
     return _json;
   }
@@ -7175,17 +7174,17 @@ class GoogleIamV1Binding {
   GoogleIamV1Binding();
 
   GoogleIamV1Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
+    if (_json.containsKey('bindingId')) {
+      bindingId = _json['bindingId'];
     }
-    if (_json.containsKey("condition")) {
-      condition = GoogleTypeExpr.fromJson(_json["condition"]);
+    if (_json.containsKey('condition')) {
+      condition = GoogleTypeExpr.fromJson(_json['condition']);
     }
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List).cast<core.String>();
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -7193,16 +7192,16 @@ class GoogleIamV1Binding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bindingId != null) {
-      _json["bindingId"] = bindingId;
+      _json['bindingId'] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     if (members != null) {
-      _json["members"] = members;
+      _json['members'] = members;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -7262,7 +7261,7 @@ class GoogleIamV1Policy {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
@@ -7285,23 +7284,23 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy();
 
   GoogleIamV1Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("auditConfigs")) {
-      auditConfigs = (_json["auditConfigs"] as core.List)
+    if (_json.containsKey('auditConfigs')) {
+      auditConfigs = (_json['auditConfigs'] as core.List)
           .map<GoogleIamV1AuditConfig>(
               (value) => GoogleIamV1AuditConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("bindings")) {
-      bindings = (_json["bindings"] as core.List)
+    if (_json.containsKey('bindings')) {
+      bindings = (_json['bindings'] as core.List)
           .map<GoogleIamV1Binding>(
               (value) => GoogleIamV1Binding.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -7309,17 +7308,17 @@ class GoogleIamV1Policy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditConfigs != null) {
-      _json["auditConfigs"] =
+      _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
     }
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
+      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -7341,11 +7340,11 @@ class GoogleIamV1SetIamPolicyRequest {
   GoogleIamV1SetIamPolicyRequest();
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("policy")) {
-      policy = GoogleIamV1Policy.fromJson(_json["policy"]);
+    if (_json.containsKey('policy')) {
+      policy = GoogleIamV1Policy.fromJson(_json['policy']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -7353,10 +7352,10 @@ class GoogleIamV1SetIamPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = policy.toJson();
+      _json['policy'] = policy.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -7373,8 +7372,8 @@ class GoogleIamV1TestIamPermissionsRequest {
   GoogleIamV1TestIamPermissionsRequest();
 
   GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -7382,7 +7381,7 @@ class GoogleIamV1TestIamPermissionsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -7397,8 +7396,8 @@ class GoogleIamV1TestIamPermissionsResponse {
   GoogleIamV1TestIamPermissionsResponse();
 
   GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -7406,7 +7405,7 @@ class GoogleIamV1TestIamPermissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -7423,11 +7422,11 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse();
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<GoogleLongrunningOperation>(
               (value) => GoogleLongrunningOperation.fromJson(value))
           .toList();
@@ -7438,10 +7437,10 @@ class GoogleLongrunningListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7487,22 +7486,22 @@ class GoogleLongrunningOperation {
   GoogleLongrunningOperation();
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -7510,19 +7509,19 @@ class GoogleLongrunningOperation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -7570,17 +7569,17 @@ class GoogleRpcStatus {
   GoogleRpcStatus();
 
   GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -7588,13 +7587,13 @@ class GoogleRpcStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -7636,17 +7635,17 @@ class GoogleTypeExpr {
   GoogleTypeExpr();
 
   GoogleTypeExpr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
+    if (_json.containsKey('expression')) {
+      expression = _json['expression'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -7654,16 +7653,16 @@ class GoogleTypeExpr {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (expression != null) {
-      _json["expression"] = expression;
+      _json['expression'] = expression;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }

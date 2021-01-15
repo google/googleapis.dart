@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,7 +39,7 @@ const core.String USER_AGENT = 'dart-api-client dlp/v2';
 class DlpApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -51,8 +50,8 @@ class DlpApi {
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   DlpApi(http.Client client,
-      {core.String rootUrl = "https://dlp.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://dlp.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -105,26 +104,26 @@ class InfoTypesResourceApi {
     core.String _body;
 
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+      _queryParams['languageCode'] = [languageCode];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (parent != null) {
-      _queryParams["parent"] = [parent];
+      _queryParams['parent'] = [parent];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/infoTypes';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -195,19 +194,19 @@ class LocationsInfoTypesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+      _queryParams['languageCode'] = [languageCode];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -215,7 +214,7 @@ class LocationsInfoTypesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -298,10 +297,10 @@ class OrganizationsDeidentifyTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -310,7 +309,7 @@ class OrganizationsDeidentifyTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -354,17 +353,17 @@ class OrganizationsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -407,17 +406,17 @@ class OrganizationsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -491,22 +490,22 @@ class OrganizationsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -515,7 +514,7 @@ class OrganizationsDeidentifyTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -565,17 +564,17 @@ class OrganizationsDeidentifyTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -643,10 +642,10 @@ class OrganizationsInspectTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -655,7 +654,7 @@ class OrganizationsInspectTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -699,17 +698,17 @@ class OrganizationsInspectTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -752,17 +751,17 @@ class OrganizationsInspectTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -836,22 +835,22 @@ class OrganizationsInspectTemplatesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -860,7 +859,7 @@ class OrganizationsInspectTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -909,17 +908,17 @@ class OrganizationsInspectTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1003,10 +1002,10 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -1015,7 +1014,7 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1060,17 +1059,17 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1114,17 +1113,17 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1198,22 +1197,22 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -1222,7 +1221,7 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1273,17 +1272,17 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1351,10 +1350,10 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -1363,7 +1362,7 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1408,17 +1407,17 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1462,17 +1461,17 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1546,22 +1545,22 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -1570,7 +1569,7 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1620,17 +1619,17 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1697,10 +1696,10 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -1709,7 +1708,7 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1754,17 +1753,17 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1807,17 +1806,17 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1892,22 +1891,22 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -1916,7 +1915,7 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1967,17 +1966,17 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2044,10 +2043,10 @@ class OrganizationsStoredInfoTypesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -2056,7 +2055,7 @@ class OrganizationsStoredInfoTypesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2100,17 +2099,17 @@ class OrganizationsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2152,17 +2151,17 @@ class OrganizationsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2237,22 +2236,22 @@ class OrganizationsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -2261,7 +2260,7 @@ class OrganizationsStoredInfoTypesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2311,17 +2310,17 @@ class OrganizationsStoredInfoTypesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2409,10 +2408,10 @@ class ProjectsContentResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -2421,7 +2420,7 @@ class ProjectsContentResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2482,10 +2481,10 @@ class ProjectsContentResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -2494,7 +2493,7 @@ class ProjectsContentResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2551,10 +2550,10 @@ class ProjectsContentResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -2563,7 +2562,7 @@ class ProjectsContentResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2631,10 +2630,10 @@ class ProjectsDeidentifyTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -2643,7 +2642,7 @@ class ProjectsDeidentifyTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2687,17 +2686,17 @@ class ProjectsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2740,17 +2739,17 @@ class ProjectsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2824,22 +2823,22 @@ class ProjectsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -2848,7 +2847,7 @@ class ProjectsDeidentifyTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2898,17 +2897,17 @@ class ProjectsDeidentifyTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2963,17 +2962,17 @@ class ProjectsDlpJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3032,10 +3031,10 @@ class ProjectsDlpJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -3043,7 +3042,7 @@ class ProjectsDlpJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3085,17 +3084,17 @@ class ProjectsDlpJobsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3136,17 +3135,17 @@ class ProjectsDlpJobsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3241,28 +3240,28 @@ class ProjectsDlpJobsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (type != null) {
-      _queryParams["type"] = [type];
+      _queryParams['type'] = [type];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -3270,7 +3269,7 @@ class ProjectsDlpJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3336,10 +3335,10 @@ class ProjectsImageResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -3348,7 +3347,7 @@ class ProjectsImageResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3416,10 +3415,10 @@ class ProjectsInspectTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -3428,7 +3427,7 @@ class ProjectsInspectTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3472,17 +3471,17 @@ class ProjectsInspectTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3525,17 +3524,17 @@ class ProjectsInspectTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3609,22 +3608,22 @@ class ProjectsInspectTemplatesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -3633,7 +3632,7 @@ class ProjectsInspectTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3682,17 +3681,17 @@ class ProjectsInspectTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3747,17 +3746,17 @@ class ProjectsJobTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3813,10 +3812,10 @@ class ProjectsJobTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -3825,7 +3824,7 @@ class ProjectsJobTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3867,17 +3866,17 @@ class ProjectsJobTriggersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3918,17 +3917,17 @@ class ProjectsJobTriggersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4017,25 +4016,25 @@ class ProjectsJobTriggersResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -4044,7 +4043,7 @@ class ProjectsJobTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4092,17 +4091,17 @@ class ProjectsJobTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4191,10 +4190,10 @@ class ProjectsLocationsContentResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -4203,7 +4202,7 @@ class ProjectsLocationsContentResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4264,10 +4263,10 @@ class ProjectsLocationsContentResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -4276,7 +4275,7 @@ class ProjectsLocationsContentResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4333,10 +4332,10 @@ class ProjectsLocationsContentResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -4345,7 +4344,7 @@ class ProjectsLocationsContentResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4413,10 +4412,10 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -4425,7 +4424,7 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4470,17 +4469,17 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4524,17 +4523,17 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4608,22 +4607,22 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -4632,7 +4631,7 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4683,17 +4682,17 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4749,17 +4748,17 @@ class ProjectsLocationsDlpJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4818,10 +4817,10 @@ class ProjectsLocationsDlpJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -4829,7 +4828,7 @@ class ProjectsLocationsDlpJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4871,17 +4870,17 @@ class ProjectsLocationsDlpJobsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4930,17 +4929,17 @@ class ProjectsLocationsDlpJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':finish';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4981,17 +4980,17 @@ class ProjectsLocationsDlpJobsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5041,10 +5040,10 @@ class ProjectsLocationsDlpJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -5053,7 +5052,7 @@ class ProjectsLocationsDlpJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5149,28 +5148,28 @@ class ProjectsLocationsDlpJobsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (type != null) {
-      _queryParams["type"] = [type];
+      _queryParams['type'] = [type];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -5178,7 +5177,7 @@ class ProjectsLocationsDlpJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5245,10 +5244,10 @@ class ProjectsLocationsImageResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -5257,7 +5256,7 @@ class ProjectsLocationsImageResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5325,10 +5324,10 @@ class ProjectsLocationsInspectTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -5337,7 +5336,7 @@ class ProjectsLocationsInspectTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5382,17 +5381,17 @@ class ProjectsLocationsInspectTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5436,17 +5435,17 @@ class ProjectsLocationsInspectTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5520,22 +5519,22 @@ class ProjectsLocationsInspectTemplatesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -5544,7 +5543,7 @@ class ProjectsLocationsInspectTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5594,17 +5593,17 @@ class ProjectsLocationsInspectTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5660,17 +5659,17 @@ class ProjectsLocationsJobTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5726,10 +5725,10 @@ class ProjectsLocationsJobTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -5738,7 +5737,7 @@ class ProjectsLocationsJobTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5781,17 +5780,17 @@ class ProjectsLocationsJobTriggersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5833,17 +5832,17 @@ class ProjectsLocationsJobTriggersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5895,10 +5894,10 @@ class ProjectsLocationsJobTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -5907,7 +5906,7 @@ class ProjectsLocationsJobTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5996,25 +5995,25 @@ class ProjectsLocationsJobTriggersResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -6023,7 +6022,7 @@ class ProjectsLocationsJobTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6072,17 +6071,17 @@ class ProjectsLocationsJobTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6149,10 +6148,10 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -6161,7 +6160,7 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6206,17 +6205,17 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6259,17 +6258,17 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6344,22 +6343,22 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -6368,7 +6367,7 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6419,17 +6418,17 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6496,10 +6495,10 @@ class ProjectsStoredInfoTypesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -6508,7 +6507,7 @@ class ProjectsStoredInfoTypesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6552,17 +6551,17 @@ class ProjectsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6604,17 +6603,17 @@ class ProjectsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6689,22 +6688,22 @@ class ProjectsStoredInfoTypesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+      _queryParams['locationId'] = [locationId];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -6713,7 +6712,7 @@ class ProjectsStoredInfoTypesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6763,17 +6762,17 @@ class ProjectsStoredInfoTypesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6811,29 +6810,29 @@ class GooglePrivacyDlpV2Action {
   GooglePrivacyDlpV2Action();
 
   GooglePrivacyDlpV2Action.fromJson(core.Map _json) {
-    if (_json.containsKey("jobNotificationEmails")) {
+    if (_json.containsKey('jobNotificationEmails')) {
       jobNotificationEmails = GooglePrivacyDlpV2JobNotificationEmails.fromJson(
-          _json["jobNotificationEmails"]);
+          _json['jobNotificationEmails']);
     }
-    if (_json.containsKey("pubSub")) {
-      pubSub = GooglePrivacyDlpV2PublishToPubSub.fromJson(_json["pubSub"]);
+    if (_json.containsKey('pubSub')) {
+      pubSub = GooglePrivacyDlpV2PublishToPubSub.fromJson(_json['pubSub']);
     }
-    if (_json.containsKey("publishFindingsToCloudDataCatalog")) {
+    if (_json.containsKey('publishFindingsToCloudDataCatalog')) {
       publishFindingsToCloudDataCatalog =
           GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
-              _json["publishFindingsToCloudDataCatalog"]);
+              _json['publishFindingsToCloudDataCatalog']);
     }
-    if (_json.containsKey("publishSummaryToCscc")) {
+    if (_json.containsKey('publishSummaryToCscc')) {
       publishSummaryToCscc = GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
-          _json["publishSummaryToCscc"]);
+          _json['publishSummaryToCscc']);
     }
-    if (_json.containsKey("publishToStackdriver")) {
+    if (_json.containsKey('publishToStackdriver')) {
       publishToStackdriver = GooglePrivacyDlpV2PublishToStackdriver.fromJson(
-          _json["publishToStackdriver"]);
+          _json['publishToStackdriver']);
     }
-    if (_json.containsKey("saveFindings")) {
+    if (_json.containsKey('saveFindings')) {
       saveFindings =
-          GooglePrivacyDlpV2SaveFindings.fromJson(_json["saveFindings"]);
+          GooglePrivacyDlpV2SaveFindings.fromJson(_json['saveFindings']);
     }
   }
 
@@ -6841,23 +6840,23 @@ class GooglePrivacyDlpV2Action {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (jobNotificationEmails != null) {
-      _json["jobNotificationEmails"] = jobNotificationEmails.toJson();
+      _json['jobNotificationEmails'] = jobNotificationEmails.toJson();
     }
     if (pubSub != null) {
-      _json["pubSub"] = pubSub.toJson();
+      _json['pubSub'] = pubSub.toJson();
     }
     if (publishFindingsToCloudDataCatalog != null) {
-      _json["publishFindingsToCloudDataCatalog"] =
+      _json['publishFindingsToCloudDataCatalog'] =
           publishFindingsToCloudDataCatalog.toJson();
     }
     if (publishSummaryToCscc != null) {
-      _json["publishSummaryToCscc"] = publishSummaryToCscc.toJson();
+      _json['publishSummaryToCscc'] = publishSummaryToCscc.toJson();
     }
     if (publishToStackdriver != null) {
-      _json["publishToStackdriver"] = publishToStackdriver.toJson();
+      _json['publishToStackdriver'] = publishToStackdriver.toJson();
     }
     if (saveFindings != null) {
-      _json["saveFindings"] = saveFindings.toJson();
+      _json['saveFindings'] = saveFindings.toJson();
     }
     return _json;
   }
@@ -6908,44 +6907,44 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
   GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails();
 
   GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("categoricalStatsResult")) {
+    if (_json.containsKey('categoricalStatsResult')) {
       categoricalStatsResult =
           GooglePrivacyDlpV2CategoricalStatsResult.fromJson(
-              _json["categoricalStatsResult"]);
+              _json['categoricalStatsResult']);
     }
-    if (_json.containsKey("deltaPresenceEstimationResult")) {
+    if (_json.containsKey('deltaPresenceEstimationResult')) {
       deltaPresenceEstimationResult =
           GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(
-              _json["deltaPresenceEstimationResult"]);
+              _json['deltaPresenceEstimationResult']);
     }
-    if (_json.containsKey("kAnonymityResult")) {
+    if (_json.containsKey('kAnonymityResult')) {
       kAnonymityResult = GooglePrivacyDlpV2KAnonymityResult.fromJson(
-          _json["kAnonymityResult"]);
+          _json['kAnonymityResult']);
     }
-    if (_json.containsKey("kMapEstimationResult")) {
+    if (_json.containsKey('kMapEstimationResult')) {
       kMapEstimationResult = GooglePrivacyDlpV2KMapEstimationResult.fromJson(
-          _json["kMapEstimationResult"]);
+          _json['kMapEstimationResult']);
     }
-    if (_json.containsKey("lDiversityResult")) {
+    if (_json.containsKey('lDiversityResult')) {
       lDiversityResult = GooglePrivacyDlpV2LDiversityResult.fromJson(
-          _json["lDiversityResult"]);
+          _json['lDiversityResult']);
     }
-    if (_json.containsKey("numericalStatsResult")) {
+    if (_json.containsKey('numericalStatsResult')) {
       numericalStatsResult = GooglePrivacyDlpV2NumericalStatsResult.fromJson(
-          _json["numericalStatsResult"]);
+          _json['numericalStatsResult']);
     }
-    if (_json.containsKey("requestedOptions")) {
+    if (_json.containsKey('requestedOptions')) {
       requestedOptions =
           GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(
-              _json["requestedOptions"]);
+              _json['requestedOptions']);
     }
-    if (_json.containsKey("requestedPrivacyMetric")) {
+    if (_json.containsKey('requestedPrivacyMetric')) {
       requestedPrivacyMetric = GooglePrivacyDlpV2PrivacyMetric.fromJson(
-          _json["requestedPrivacyMetric"]);
+          _json['requestedPrivacyMetric']);
     }
-    if (_json.containsKey("requestedSourceTable")) {
+    if (_json.containsKey('requestedSourceTable')) {
       requestedSourceTable = GooglePrivacyDlpV2BigQueryTable.fromJson(
-          _json["requestedSourceTable"]);
+          _json['requestedSourceTable']);
     }
   }
 
@@ -6953,32 +6952,32 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoricalStatsResult != null) {
-      _json["categoricalStatsResult"] = categoricalStatsResult.toJson();
+      _json['categoricalStatsResult'] = categoricalStatsResult.toJson();
     }
     if (deltaPresenceEstimationResult != null) {
-      _json["deltaPresenceEstimationResult"] =
+      _json['deltaPresenceEstimationResult'] =
           deltaPresenceEstimationResult.toJson();
     }
     if (kAnonymityResult != null) {
-      _json["kAnonymityResult"] = kAnonymityResult.toJson();
+      _json['kAnonymityResult'] = kAnonymityResult.toJson();
     }
     if (kMapEstimationResult != null) {
-      _json["kMapEstimationResult"] = kMapEstimationResult.toJson();
+      _json['kMapEstimationResult'] = kMapEstimationResult.toJson();
     }
     if (lDiversityResult != null) {
-      _json["lDiversityResult"] = lDiversityResult.toJson();
+      _json['lDiversityResult'] = lDiversityResult.toJson();
     }
     if (numericalStatsResult != null) {
-      _json["numericalStatsResult"] = numericalStatsResult.toJson();
+      _json['numericalStatsResult'] = numericalStatsResult.toJson();
     }
     if (requestedOptions != null) {
-      _json["requestedOptions"] = requestedOptions.toJson();
+      _json['requestedOptions'] = requestedOptions.toJson();
     }
     if (requestedPrivacyMetric != null) {
-      _json["requestedPrivacyMetric"] = requestedPrivacyMetric.toJson();
+      _json['requestedPrivacyMetric'] = requestedPrivacyMetric.toJson();
     }
     if (requestedSourceTable != null) {
-      _json["requestedSourceTable"] = requestedSourceTable.toJson();
+      _json['requestedSourceTable'] = requestedSourceTable.toJson();
     }
     return _json;
   }
@@ -7004,18 +7003,18 @@ class GooglePrivacyDlpV2AuxiliaryTable {
   GooglePrivacyDlpV2AuxiliaryTable();
 
   GooglePrivacyDlpV2AuxiliaryTable.fromJson(core.Map _json) {
-    if (_json.containsKey("quasiIds")) {
-      quasiIds = (_json["quasiIds"] as core.List)
+    if (_json.containsKey('quasiIds')) {
+      quasiIds = (_json['quasiIds'] as core.List)
           .map<GooglePrivacyDlpV2QuasiIdField>(
               (value) => GooglePrivacyDlpV2QuasiIdField.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("relativeFrequency")) {
+    if (_json.containsKey('relativeFrequency')) {
       relativeFrequency =
-          GooglePrivacyDlpV2FieldId.fromJson(_json["relativeFrequency"]);
+          GooglePrivacyDlpV2FieldId.fromJson(_json['relativeFrequency']);
     }
-    if (_json.containsKey("table")) {
-      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
+    if (_json.containsKey('table')) {
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json['table']);
     }
   }
 
@@ -7023,13 +7022,13 @@ class GooglePrivacyDlpV2AuxiliaryTable {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
+      _json['quasiIds'] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (relativeFrequency != null) {
-      _json["relativeFrequency"] = relativeFrequency.toJson();
+      _json['relativeFrequency'] = relativeFrequency.toJson();
     }
     if (table != null) {
-      _json["table"] = table.toJson();
+      _json['table'] = table.toJson();
     }
     return _json;
   }
@@ -7046,11 +7045,11 @@ class GooglePrivacyDlpV2BigQueryField {
   GooglePrivacyDlpV2BigQueryField();
 
   GooglePrivacyDlpV2BigQueryField.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
-    if (_json.containsKey("table")) {
-      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
+    if (_json.containsKey('table')) {
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json['table']);
     }
   }
 
@@ -7058,10 +7057,10 @@ class GooglePrivacyDlpV2BigQueryField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     if (table != null) {
-      _json["table"] = table.toJson();
+      _json['table'] = table.toJson();
     }
     return _json;
   }
@@ -7082,12 +7081,12 @@ class GooglePrivacyDlpV2BigQueryKey {
   GooglePrivacyDlpV2BigQueryKey();
 
   GooglePrivacyDlpV2BigQueryKey.fromJson(core.Map _json) {
-    if (_json.containsKey("rowNumber")) {
-      rowNumber = _json["rowNumber"];
+    if (_json.containsKey('rowNumber')) {
+      rowNumber = _json['rowNumber'];
     }
-    if (_json.containsKey("tableReference")) {
+    if (_json.containsKey('tableReference')) {
       tableReference =
-          GooglePrivacyDlpV2BigQueryTable.fromJson(_json["tableReference"]);
+          GooglePrivacyDlpV2BigQueryTable.fromJson(_json['tableReference']);
     }
   }
 
@@ -7095,10 +7094,10 @@ class GooglePrivacyDlpV2BigQueryKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rowNumber != null) {
-      _json["rowNumber"] = rowNumber;
+      _json['rowNumber'] = rowNumber;
     }
     if (tableReference != null) {
-      _json["tableReference"] = tableReference.toJson();
+      _json['tableReference'] = tableReference.toJson();
     }
     return _json;
   }
@@ -7145,30 +7144,30 @@ class GooglePrivacyDlpV2BigQueryOptions {
   GooglePrivacyDlpV2BigQueryOptions();
 
   GooglePrivacyDlpV2BigQueryOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("excludedFields")) {
-      excludedFields = (_json["excludedFields"] as core.List)
+    if (_json.containsKey('excludedFields')) {
+      excludedFields = (_json['excludedFields'] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
               (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("identifyingFields")) {
-      identifyingFields = (_json["identifyingFields"] as core.List)
+    if (_json.containsKey('identifyingFields')) {
+      identifyingFields = (_json['identifyingFields'] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
               (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("rowsLimit")) {
-      rowsLimit = _json["rowsLimit"];
+    if (_json.containsKey('rowsLimit')) {
+      rowsLimit = _json['rowsLimit'];
     }
-    if (_json.containsKey("rowsLimitPercent")) {
-      rowsLimitPercent = _json["rowsLimitPercent"];
+    if (_json.containsKey('rowsLimitPercent')) {
+      rowsLimitPercent = _json['rowsLimitPercent'];
     }
-    if (_json.containsKey("sampleMethod")) {
-      sampleMethod = _json["sampleMethod"];
+    if (_json.containsKey('sampleMethod')) {
+      sampleMethod = _json['sampleMethod'];
     }
-    if (_json.containsKey("tableReference")) {
+    if (_json.containsKey('tableReference')) {
       tableReference =
-          GooglePrivacyDlpV2BigQueryTable.fromJson(_json["tableReference"]);
+          GooglePrivacyDlpV2BigQueryTable.fromJson(_json['tableReference']);
     }
   }
 
@@ -7176,24 +7175,24 @@ class GooglePrivacyDlpV2BigQueryOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludedFields != null) {
-      _json["excludedFields"] =
+      _json['excludedFields'] =
           excludedFields.map((value) => value.toJson()).toList();
     }
     if (identifyingFields != null) {
-      _json["identifyingFields"] =
+      _json['identifyingFields'] =
           identifyingFields.map((value) => value.toJson()).toList();
     }
     if (rowsLimit != null) {
-      _json["rowsLimit"] = rowsLimit;
+      _json['rowsLimit'] = rowsLimit;
     }
     if (rowsLimitPercent != null) {
-      _json["rowsLimitPercent"] = rowsLimitPercent;
+      _json['rowsLimitPercent'] = rowsLimitPercent;
     }
     if (sampleMethod != null) {
-      _json["sampleMethod"] = sampleMethod;
+      _json['sampleMethod'] = sampleMethod;
     }
     if (tableReference != null) {
-      _json["tableReference"] = tableReference.toJson();
+      _json['tableReference'] = tableReference.toJson();
     }
     return _json;
   }
@@ -7216,14 +7215,14 @@ class GooglePrivacyDlpV2BigQueryTable {
   GooglePrivacyDlpV2BigQueryTable();
 
   GooglePrivacyDlpV2BigQueryTable.fromJson(core.Map _json) {
-    if (_json.containsKey("datasetId")) {
-      datasetId = _json["datasetId"];
+    if (_json.containsKey('datasetId')) {
+      datasetId = _json['datasetId'];
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
-    if (_json.containsKey("tableId")) {
-      tableId = _json["tableId"];
+    if (_json.containsKey('tableId')) {
+      tableId = _json['tableId'];
     }
   }
 
@@ -7231,13 +7230,13 @@ class GooglePrivacyDlpV2BigQueryTable {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (datasetId != null) {
-      _json["datasetId"] = datasetId;
+      _json['datasetId'] = datasetId;
     }
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     if (tableId != null) {
-      _json["tableId"] = tableId;
+      _json['tableId'] = tableId;
     }
     return _json;
   }
@@ -7260,17 +7259,17 @@ class GooglePrivacyDlpV2BoundingBox {
   GooglePrivacyDlpV2BoundingBox();
 
   GooglePrivacyDlpV2BoundingBox.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("left")) {
-      left = _json["left"];
+    if (_json.containsKey('left')) {
+      left = _json['left'];
     }
-    if (_json.containsKey("top")) {
-      top = _json["top"];
+    if (_json.containsKey('top')) {
+      top = _json['top'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -7278,16 +7277,16 @@ class GooglePrivacyDlpV2BoundingBox {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (left != null) {
-      _json["left"] = left;
+      _json['left'] = left;
     }
     if (top != null) {
-      _json["top"] = top;
+      _json['top'] = top;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -7308,15 +7307,15 @@ class GooglePrivacyDlpV2Bucket {
   GooglePrivacyDlpV2Bucket();
 
   GooglePrivacyDlpV2Bucket.fromJson(core.Map _json) {
-    if (_json.containsKey("max")) {
-      max = GooglePrivacyDlpV2Value.fromJson(_json["max"]);
+    if (_json.containsKey('max')) {
+      max = GooglePrivacyDlpV2Value.fromJson(_json['max']);
     }
-    if (_json.containsKey("min")) {
-      min = GooglePrivacyDlpV2Value.fromJson(_json["min"]);
+    if (_json.containsKey('min')) {
+      min = GooglePrivacyDlpV2Value.fromJson(_json['min']);
     }
-    if (_json.containsKey("replacementValue")) {
+    if (_json.containsKey('replacementValue')) {
       replacementValue =
-          GooglePrivacyDlpV2Value.fromJson(_json["replacementValue"]);
+          GooglePrivacyDlpV2Value.fromJson(_json['replacementValue']);
     }
   }
 
@@ -7324,13 +7323,13 @@ class GooglePrivacyDlpV2Bucket {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (max != null) {
-      _json["max"] = max.toJson();
+      _json['max'] = max.toJson();
     }
     if (min != null) {
-      _json["min"] = min.toJson();
+      _json['min'] = min.toJson();
     }
     if (replacementValue != null) {
-      _json["replacementValue"] = replacementValue.toJson();
+      _json['replacementValue'] = replacementValue.toJson();
     }
     return _json;
   }
@@ -7351,8 +7350,8 @@ class GooglePrivacyDlpV2BucketingConfig {
   GooglePrivacyDlpV2BucketingConfig();
 
   GooglePrivacyDlpV2BucketingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("buckets")) {
-      buckets = (_json["buckets"] as core.List)
+    if (_json.containsKey('buckets')) {
+      buckets = (_json['buckets'] as core.List)
           .map<GooglePrivacyDlpV2Bucket>(
               (value) => GooglePrivacyDlpV2Bucket.fromJson(value))
           .toList();
@@ -7363,7 +7362,7 @@ class GooglePrivacyDlpV2BucketingConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (buckets != null) {
-      _json["buckets"] = buckets.map((value) => value.toJson()).toList();
+      _json['buckets'] = buckets.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7377,7 +7376,7 @@ class GooglePrivacyDlpV2ByteContentItem {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The type of data stored in the bytes string. Default will be TEXT_UTF8.
@@ -7399,11 +7398,11 @@ class GooglePrivacyDlpV2ByteContentItem {
   GooglePrivacyDlpV2ByteContentItem();
 
   GooglePrivacyDlpV2ByteContentItem.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -7411,10 +7410,10 @@ class GooglePrivacyDlpV2ByteContentItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -7444,8 +7443,8 @@ class GooglePrivacyDlpV2CategoricalStatsConfig {
   GooglePrivacyDlpV2CategoricalStatsConfig();
 
   GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
   }
 
@@ -7453,7 +7452,7 @@ class GooglePrivacyDlpV2CategoricalStatsConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     return _json;
   }
@@ -7480,23 +7479,23 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
   GooglePrivacyDlpV2CategoricalStatsHistogramBucket();
 
   GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketSize")) {
-      bucketSize = _json["bucketSize"];
+    if (_json.containsKey('bucketSize')) {
+      bucketSize = _json['bucketSize'];
     }
-    if (_json.containsKey("bucketValueCount")) {
-      bucketValueCount = _json["bucketValueCount"];
+    if (_json.containsKey('bucketValueCount')) {
+      bucketValueCount = _json['bucketValueCount'];
     }
-    if (_json.containsKey("bucketValues")) {
-      bucketValues = (_json["bucketValues"] as core.List)
+    if (_json.containsKey('bucketValues')) {
+      bucketValues = (_json['bucketValues'] as core.List)
           .map<GooglePrivacyDlpV2ValueFrequency>(
               (value) => GooglePrivacyDlpV2ValueFrequency.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("valueFrequencyLowerBound")) {
-      valueFrequencyLowerBound = _json["valueFrequencyLowerBound"];
+    if (_json.containsKey('valueFrequencyLowerBound')) {
+      valueFrequencyLowerBound = _json['valueFrequencyLowerBound'];
     }
-    if (_json.containsKey("valueFrequencyUpperBound")) {
-      valueFrequencyUpperBound = _json["valueFrequencyUpperBound"];
+    if (_json.containsKey('valueFrequencyUpperBound')) {
+      valueFrequencyUpperBound = _json['valueFrequencyUpperBound'];
     }
   }
 
@@ -7504,20 +7503,20 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketSize != null) {
-      _json["bucketSize"] = bucketSize;
+      _json['bucketSize'] = bucketSize;
     }
     if (bucketValueCount != null) {
-      _json["bucketValueCount"] = bucketValueCount;
+      _json['bucketValueCount'] = bucketValueCount;
     }
     if (bucketValues != null) {
-      _json["bucketValues"] =
+      _json['bucketValues'] =
           bucketValues.map((value) => value.toJson()).toList();
     }
     if (valueFrequencyLowerBound != null) {
-      _json["valueFrequencyLowerBound"] = valueFrequencyLowerBound;
+      _json['valueFrequencyLowerBound'] = valueFrequencyLowerBound;
     }
     if (valueFrequencyUpperBound != null) {
-      _json["valueFrequencyUpperBound"] = valueFrequencyUpperBound;
+      _json['valueFrequencyUpperBound'] = valueFrequencyUpperBound;
     }
     return _json;
   }
@@ -7532,8 +7531,8 @@ class GooglePrivacyDlpV2CategoricalStatsResult {
   GooglePrivacyDlpV2CategoricalStatsResult();
 
   GooglePrivacyDlpV2CategoricalStatsResult.fromJson(core.Map _json) {
-    if (_json.containsKey("valueFrequencyHistogramBuckets")) {
-      valueFrequencyHistogramBuckets = (_json["valueFrequencyHistogramBuckets"]
+    if (_json.containsKey('valueFrequencyHistogramBuckets')) {
+      valueFrequencyHistogramBuckets = (_json['valueFrequencyHistogramBuckets']
               as core.List)
           .map<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>((value) =>
               GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(value))
@@ -7545,7 +7544,7 @@ class GooglePrivacyDlpV2CategoricalStatsResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (valueFrequencyHistogramBuckets != null) {
-      _json["valueFrequencyHistogramBuckets"] = valueFrequencyHistogramBuckets
+      _json['valueFrequencyHistogramBuckets'] = valueFrequencyHistogramBuckets
           .map((value) => value.toJson())
           .toList();
     }
@@ -7586,20 +7585,20 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
   GooglePrivacyDlpV2CharacterMaskConfig();
 
   GooglePrivacyDlpV2CharacterMaskConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("charactersToIgnore")) {
-      charactersToIgnore = (_json["charactersToIgnore"] as core.List)
+    if (_json.containsKey('charactersToIgnore')) {
+      charactersToIgnore = (_json['charactersToIgnore'] as core.List)
           .map<GooglePrivacyDlpV2CharsToIgnore>(
               (value) => GooglePrivacyDlpV2CharsToIgnore.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("maskingCharacter")) {
-      maskingCharacter = _json["maskingCharacter"];
+    if (_json.containsKey('maskingCharacter')) {
+      maskingCharacter = _json['maskingCharacter'];
     }
-    if (_json.containsKey("numberToMask")) {
-      numberToMask = _json["numberToMask"];
+    if (_json.containsKey('numberToMask')) {
+      numberToMask = _json['numberToMask'];
     }
-    if (_json.containsKey("reverseOrder")) {
-      reverseOrder = _json["reverseOrder"];
+    if (_json.containsKey('reverseOrder')) {
+      reverseOrder = _json['reverseOrder'];
     }
   }
 
@@ -7607,17 +7606,17 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (charactersToIgnore != null) {
-      _json["charactersToIgnore"] =
+      _json['charactersToIgnore'] =
           charactersToIgnore.map((value) => value.toJson()).toList();
     }
     if (maskingCharacter != null) {
-      _json["maskingCharacter"] = maskingCharacter;
+      _json['maskingCharacter'] = maskingCharacter;
     }
     if (numberToMask != null) {
-      _json["numberToMask"] = numberToMask;
+      _json['numberToMask'] = numberToMask;
     }
     if (reverseOrder != null) {
-      _json["reverseOrder"] = reverseOrder;
+      _json['reverseOrder'] = reverseOrder;
     }
     return _json;
   }
@@ -7643,11 +7642,11 @@ class GooglePrivacyDlpV2CharsToIgnore {
   GooglePrivacyDlpV2CharsToIgnore();
 
   GooglePrivacyDlpV2CharsToIgnore.fromJson(core.Map _json) {
-    if (_json.containsKey("charactersToSkip")) {
-      charactersToSkip = _json["charactersToSkip"];
+    if (_json.containsKey('charactersToSkip')) {
+      charactersToSkip = _json['charactersToSkip'];
     }
-    if (_json.containsKey("commonCharactersToIgnore")) {
-      commonCharactersToIgnore = _json["commonCharactersToIgnore"];
+    if (_json.containsKey('commonCharactersToIgnore')) {
+      commonCharactersToIgnore = _json['commonCharactersToIgnore'];
     }
   }
 
@@ -7655,10 +7654,10 @@ class GooglePrivacyDlpV2CharsToIgnore {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (charactersToSkip != null) {
-      _json["charactersToSkip"] = charactersToSkip;
+      _json['charactersToSkip'] = charactersToSkip;
     }
     if (commonCharactersToIgnore != null) {
-      _json["commonCharactersToIgnore"] = commonCharactersToIgnore;
+      _json['commonCharactersToIgnore'] = commonCharactersToIgnore;
     }
     return _json;
   }
@@ -7672,8 +7671,8 @@ class GooglePrivacyDlpV2CloudStorageFileSet {
   GooglePrivacyDlpV2CloudStorageFileSet();
 
   GooglePrivacyDlpV2CloudStorageFileSet.fromJson(core.Map _json) {
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -7681,7 +7680,7 @@ class GooglePrivacyDlpV2CloudStorageFileSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -7729,23 +7728,23 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   GooglePrivacyDlpV2CloudStorageOptions();
 
   GooglePrivacyDlpV2CloudStorageOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("bytesLimitPerFile")) {
-      bytesLimitPerFile = _json["bytesLimitPerFile"];
+    if (_json.containsKey('bytesLimitPerFile')) {
+      bytesLimitPerFile = _json['bytesLimitPerFile'];
     }
-    if (_json.containsKey("bytesLimitPerFilePercent")) {
-      bytesLimitPerFilePercent = _json["bytesLimitPerFilePercent"];
+    if (_json.containsKey('bytesLimitPerFilePercent')) {
+      bytesLimitPerFilePercent = _json['bytesLimitPerFilePercent'];
     }
-    if (_json.containsKey("fileSet")) {
-      fileSet = GooglePrivacyDlpV2FileSet.fromJson(_json["fileSet"]);
+    if (_json.containsKey('fileSet')) {
+      fileSet = GooglePrivacyDlpV2FileSet.fromJson(_json['fileSet']);
     }
-    if (_json.containsKey("fileTypes")) {
-      fileTypes = (_json["fileTypes"] as core.List).cast<core.String>();
+    if (_json.containsKey('fileTypes')) {
+      fileTypes = (_json['fileTypes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("filesLimitPercent")) {
-      filesLimitPercent = _json["filesLimitPercent"];
+    if (_json.containsKey('filesLimitPercent')) {
+      filesLimitPercent = _json['filesLimitPercent'];
     }
-    if (_json.containsKey("sampleMethod")) {
-      sampleMethod = _json["sampleMethod"];
+    if (_json.containsKey('sampleMethod')) {
+      sampleMethod = _json['sampleMethod'];
     }
   }
 
@@ -7753,22 +7752,22 @@ class GooglePrivacyDlpV2CloudStorageOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bytesLimitPerFile != null) {
-      _json["bytesLimitPerFile"] = bytesLimitPerFile;
+      _json['bytesLimitPerFile'] = bytesLimitPerFile;
     }
     if (bytesLimitPerFilePercent != null) {
-      _json["bytesLimitPerFilePercent"] = bytesLimitPerFilePercent;
+      _json['bytesLimitPerFilePercent'] = bytesLimitPerFilePercent;
     }
     if (fileSet != null) {
-      _json["fileSet"] = fileSet.toJson();
+      _json['fileSet'] = fileSet.toJson();
     }
     if (fileTypes != null) {
-      _json["fileTypes"] = fileTypes;
+      _json['fileTypes'] = fileTypes;
     }
     if (filesLimitPercent != null) {
-      _json["filesLimitPercent"] = filesLimitPercent;
+      _json['filesLimitPercent'] = filesLimitPercent;
     }
     if (sampleMethod != null) {
-      _json["sampleMethod"] = sampleMethod;
+      _json['sampleMethod'] = sampleMethod;
     }
     return _json;
   }
@@ -7783,8 +7782,8 @@ class GooglePrivacyDlpV2CloudStoragePath {
   GooglePrivacyDlpV2CloudStoragePath();
 
   GooglePrivacyDlpV2CloudStoragePath.fromJson(core.Map _json) {
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
   }
 
@@ -7792,7 +7791,7 @@ class GooglePrivacyDlpV2CloudStoragePath {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     return _json;
   }
@@ -7841,14 +7840,14 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSet {
   GooglePrivacyDlpV2CloudStorageRegexFileSet();
 
   GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketName")) {
-      bucketName = _json["bucketName"];
+    if (_json.containsKey('bucketName')) {
+      bucketName = _json['bucketName'];
     }
-    if (_json.containsKey("excludeRegex")) {
-      excludeRegex = (_json["excludeRegex"] as core.List).cast<core.String>();
+    if (_json.containsKey('excludeRegex')) {
+      excludeRegex = (_json['excludeRegex'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("includeRegex")) {
-      includeRegex = (_json["includeRegex"] as core.List).cast<core.String>();
+    if (_json.containsKey('includeRegex')) {
+      includeRegex = (_json['includeRegex'] as core.List).cast<core.String>();
     }
   }
 
@@ -7856,13 +7855,13 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketName != null) {
-      _json["bucketName"] = bucketName;
+      _json['bucketName'] = bucketName;
     }
     if (excludeRegex != null) {
-      _json["excludeRegex"] = excludeRegex;
+      _json['excludeRegex'] = excludeRegex;
     }
     if (includeRegex != null) {
-      _json["includeRegex"] = includeRegex;
+      _json['includeRegex'] = includeRegex;
     }
     return _json;
   }
@@ -7882,14 +7881,14 @@ class GooglePrivacyDlpV2Color {
   GooglePrivacyDlpV2Color();
 
   GooglePrivacyDlpV2Color.fromJson(core.Map _json) {
-    if (_json.containsKey("blue")) {
-      blue = _json["blue"].toDouble();
+    if (_json.containsKey('blue')) {
+      blue = _json['blue'].toDouble();
     }
-    if (_json.containsKey("green")) {
-      green = _json["green"].toDouble();
+    if (_json.containsKey('green')) {
+      green = _json['green'].toDouble();
     }
-    if (_json.containsKey("red")) {
-      red = _json["red"].toDouble();
+    if (_json.containsKey('red')) {
+      red = _json['red'].toDouble();
     }
   }
 
@@ -7897,13 +7896,13 @@ class GooglePrivacyDlpV2Color {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blue != null) {
-      _json["blue"] = blue;
+      _json['blue'] = blue;
     }
     if (green != null) {
-      _json["green"] = green;
+      _json['green'] = green;
     }
     if (red != null) {
-      _json["red"] = red;
+      _json['red'] = red;
     }
     return _json;
   }
@@ -7944,14 +7943,14 @@ class GooglePrivacyDlpV2Condition {
   GooglePrivacyDlpV2Condition();
 
   GooglePrivacyDlpV2Condition.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
-    if (_json.containsKey("operator")) {
-      operator = _json["operator"];
+    if (_json.containsKey('operator')) {
+      operator = _json['operator'];
     }
-    if (_json.containsKey("value")) {
-      value = GooglePrivacyDlpV2Value.fromJson(_json["value"]);
+    if (_json.containsKey('value')) {
+      value = GooglePrivacyDlpV2Value.fromJson(_json['value']);
     }
   }
 
@@ -7959,13 +7958,13 @@ class GooglePrivacyDlpV2Condition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     if (operator != null) {
-      _json["operator"] = operator;
+      _json['operator'] = operator;
     }
     if (value != null) {
-      _json["value"] = value.toJson();
+      _json['value'] = value.toJson();
     }
     return _json;
   }
@@ -7979,8 +7978,8 @@ class GooglePrivacyDlpV2Conditions {
   GooglePrivacyDlpV2Conditions();
 
   GooglePrivacyDlpV2Conditions.fromJson(core.Map _json) {
-    if (_json.containsKey("conditions")) {
-      conditions = (_json["conditions"] as core.List)
+    if (_json.containsKey('conditions')) {
+      conditions = (_json['conditions'] as core.List)
           .map<GooglePrivacyDlpV2Condition>(
               (value) => GooglePrivacyDlpV2Condition.fromJson(value))
           .toList();
@@ -7991,7 +7990,7 @@ class GooglePrivacyDlpV2Conditions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (conditions != null) {
-      _json["conditions"] = conditions.map((value) => value.toJson()).toList();
+      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8036,26 +8035,26 @@ class GooglePrivacyDlpV2Container {
   GooglePrivacyDlpV2Container();
 
   GooglePrivacyDlpV2Container.fromJson(core.Map _json) {
-    if (_json.containsKey("fullPath")) {
-      fullPath = _json["fullPath"];
+    if (_json.containsKey('fullPath')) {
+      fullPath = _json['fullPath'];
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
-    if (_json.containsKey("relativePath")) {
-      relativePath = _json["relativePath"];
+    if (_json.containsKey('relativePath')) {
+      relativePath = _json['relativePath'];
     }
-    if (_json.containsKey("rootPath")) {
-      rootPath = _json["rootPath"];
+    if (_json.containsKey('rootPath')) {
+      rootPath = _json['rootPath'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -8063,25 +8062,25 @@ class GooglePrivacyDlpV2Container {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fullPath != null) {
-      _json["fullPath"] = fullPath;
+      _json['fullPath'] = fullPath;
     }
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     if (relativePath != null) {
-      _json["relativePath"] = relativePath;
+      _json['relativePath'] = relativePath;
     }
     if (rootPath != null) {
-      _json["rootPath"] = rootPath;
+      _json['rootPath'] = rootPath;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -8103,14 +8102,14 @@ class GooglePrivacyDlpV2ContentItem {
   GooglePrivacyDlpV2ContentItem();
 
   GooglePrivacyDlpV2ContentItem.fromJson(core.Map _json) {
-    if (_json.containsKey("byteItem")) {
-      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(_json["byteItem"]);
+    if (_json.containsKey('byteItem')) {
+      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(_json['byteItem']);
     }
-    if (_json.containsKey("table")) {
-      table = GooglePrivacyDlpV2Table.fromJson(_json["table"]);
+    if (_json.containsKey('table')) {
+      table = GooglePrivacyDlpV2Table.fromJson(_json['table']);
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -8118,13 +8117,13 @@ class GooglePrivacyDlpV2ContentItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (byteItem != null) {
-      _json["byteItem"] = byteItem.toJson();
+      _json['byteItem'] = byteItem.toJson();
     }
     if (table != null) {
-      _json["table"] = table.toJson();
+      _json['table'] = table.toJson();
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -8166,30 +8165,30 @@ class GooglePrivacyDlpV2ContentLocation {
   GooglePrivacyDlpV2ContentLocation();
 
   GooglePrivacyDlpV2ContentLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("containerName")) {
-      containerName = _json["containerName"];
+    if (_json.containsKey('containerName')) {
+      containerName = _json['containerName'];
     }
-    if (_json.containsKey("containerTimestamp")) {
-      containerTimestamp = _json["containerTimestamp"];
+    if (_json.containsKey('containerTimestamp')) {
+      containerTimestamp = _json['containerTimestamp'];
     }
-    if (_json.containsKey("containerVersion")) {
-      containerVersion = _json["containerVersion"];
+    if (_json.containsKey('containerVersion')) {
+      containerVersion = _json['containerVersion'];
     }
-    if (_json.containsKey("documentLocation")) {
+    if (_json.containsKey('documentLocation')) {
       documentLocation = GooglePrivacyDlpV2DocumentLocation.fromJson(
-          _json["documentLocation"]);
+          _json['documentLocation']);
     }
-    if (_json.containsKey("imageLocation")) {
+    if (_json.containsKey('imageLocation')) {
       imageLocation =
-          GooglePrivacyDlpV2ImageLocation.fromJson(_json["imageLocation"]);
+          GooglePrivacyDlpV2ImageLocation.fromJson(_json['imageLocation']);
     }
-    if (_json.containsKey("metadataLocation")) {
+    if (_json.containsKey('metadataLocation')) {
       metadataLocation = GooglePrivacyDlpV2MetadataLocation.fromJson(
-          _json["metadataLocation"]);
+          _json['metadataLocation']);
     }
-    if (_json.containsKey("recordLocation")) {
+    if (_json.containsKey('recordLocation')) {
       recordLocation =
-          GooglePrivacyDlpV2RecordLocation.fromJson(_json["recordLocation"]);
+          GooglePrivacyDlpV2RecordLocation.fromJson(_json['recordLocation']);
     }
   }
 
@@ -8197,25 +8196,25 @@ class GooglePrivacyDlpV2ContentLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (containerName != null) {
-      _json["containerName"] = containerName;
+      _json['containerName'] = containerName;
     }
     if (containerTimestamp != null) {
-      _json["containerTimestamp"] = containerTimestamp;
+      _json['containerTimestamp'] = containerTimestamp;
     }
     if (containerVersion != null) {
-      _json["containerVersion"] = containerVersion;
+      _json['containerVersion'] = containerVersion;
     }
     if (documentLocation != null) {
-      _json["documentLocation"] = documentLocation.toJson();
+      _json['documentLocation'] = documentLocation.toJson();
     }
     if (imageLocation != null) {
-      _json["imageLocation"] = imageLocation.toJson();
+      _json['imageLocation'] = imageLocation.toJson();
     }
     if (metadataLocation != null) {
-      _json["metadataLocation"] = metadataLocation.toJson();
+      _json['metadataLocation'] = metadataLocation.toJson();
     }
     if (recordLocation != null) {
-      _json["recordLocation"] = recordLocation.toJson();
+      _json['recordLocation'] = recordLocation.toJson();
     }
     return _json;
   }
@@ -8238,15 +8237,15 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
   GooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
 
   GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deidentifyTemplate")) {
+    if (_json.containsKey('deidentifyTemplate')) {
       deidentifyTemplate = GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          _json["deidentifyTemplate"]);
+          _json['deidentifyTemplate']);
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("templateId")) {
-      templateId = _json["templateId"];
+    if (_json.containsKey('templateId')) {
+      templateId = _json['templateId'];
     }
   }
 
@@ -8254,13 +8253,13 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deidentifyTemplate != null) {
-      _json["deidentifyTemplate"] = deidentifyTemplate.toJson();
+      _json['deidentifyTemplate'] = deidentifyTemplate.toJson();
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (templateId != null) {
-      _json["templateId"] = templateId;
+      _json['templateId'] = templateId;
     }
     return _json;
   }
@@ -8287,19 +8286,19 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
   GooglePrivacyDlpV2CreateDlpJobRequest();
 
   GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("inspectJob")) {
+    if (_json.containsKey('inspectJob')) {
       inspectJob =
-          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json["inspectJob"]);
+          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json['inspectJob']);
     }
-    if (_json.containsKey("jobId")) {
-      jobId = _json["jobId"];
+    if (_json.containsKey('jobId')) {
+      jobId = _json['jobId'];
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("riskJob")) {
+    if (_json.containsKey('riskJob')) {
       riskJob =
-          GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(_json["riskJob"]);
+          GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(_json['riskJob']);
     }
   }
 
@@ -8307,16 +8306,16 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inspectJob != null) {
-      _json["inspectJob"] = inspectJob.toJson();
+      _json['inspectJob'] = inspectJob.toJson();
     }
     if (jobId != null) {
-      _json["jobId"] = jobId;
+      _json['jobId'] = jobId;
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (riskJob != null) {
-      _json["riskJob"] = riskJob.toJson();
+      _json['riskJob'] = riskJob.toJson();
     }
     return _json;
   }
@@ -8339,15 +8338,15 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
   GooglePrivacyDlpV2CreateInspectTemplateRequest();
 
   GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("inspectTemplate")) {
+    if (_json.containsKey('inspectTemplate')) {
       inspectTemplate =
-          GooglePrivacyDlpV2InspectTemplate.fromJson(_json["inspectTemplate"]);
+          GooglePrivacyDlpV2InspectTemplate.fromJson(_json['inspectTemplate']);
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("templateId")) {
-      templateId = _json["templateId"];
+    if (_json.containsKey('templateId')) {
+      templateId = _json['templateId'];
     }
   }
 
@@ -8355,13 +8354,13 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inspectTemplate != null) {
-      _json["inspectTemplate"] = inspectTemplate.toJson();
+      _json['inspectTemplate'] = inspectTemplate.toJson();
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (templateId != null) {
-      _json["templateId"] = templateId;
+      _json['templateId'] = templateId;
     }
     return _json;
   }
@@ -8384,14 +8383,14 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
   GooglePrivacyDlpV2CreateJobTriggerRequest();
 
   GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("jobTrigger")) {
-      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(_json["jobTrigger"]);
+    if (_json.containsKey('jobTrigger')) {
+      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(_json['jobTrigger']);
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("triggerId")) {
-      triggerId = _json["triggerId"];
+    if (_json.containsKey('triggerId')) {
+      triggerId = _json['triggerId'];
     }
   }
 
@@ -8399,13 +8398,13 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (jobTrigger != null) {
-      _json["jobTrigger"] = jobTrigger.toJson();
+      _json['jobTrigger'] = jobTrigger.toJson();
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (triggerId != null) {
-      _json["triggerId"] = triggerId;
+      _json['triggerId'] = triggerId;
     }
     return _json;
   }
@@ -8428,14 +8427,14 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
   GooglePrivacyDlpV2CreateStoredInfoTypeRequest();
 
   GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("config")) {
-      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json['config']);
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("storedInfoTypeId")) {
-      storedInfoTypeId = _json["storedInfoTypeId"];
+    if (_json.containsKey('storedInfoTypeId')) {
+      storedInfoTypeId = _json['storedInfoTypeId'];
     }
   }
 
@@ -8443,13 +8442,13 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (storedInfoTypeId != null) {
-      _json["storedInfoTypeId"] = storedInfoTypeId;
+      _json['storedInfoTypeId'] = storedInfoTypeId;
     }
     return _json;
   }
@@ -8503,15 +8502,15 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
   GooglePrivacyDlpV2CryptoDeterministicConfig();
 
   GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
-      context = GooglePrivacyDlpV2FieldId.fromJson(_json["context"]);
+    if (_json.containsKey('context')) {
+      context = GooglePrivacyDlpV2FieldId.fromJson(_json['context']);
     }
-    if (_json.containsKey("cryptoKey")) {
-      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
+    if (_json.containsKey('cryptoKey')) {
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json['cryptoKey']);
     }
-    if (_json.containsKey("surrogateInfoType")) {
+    if (_json.containsKey('surrogateInfoType')) {
       surrogateInfoType =
-          GooglePrivacyDlpV2InfoType.fromJson(_json["surrogateInfoType"]);
+          GooglePrivacyDlpV2InfoType.fromJson(_json['surrogateInfoType']);
     }
   }
 
@@ -8519,13 +8518,13 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (cryptoKey != null) {
-      _json["cryptoKey"] = cryptoKey.toJson();
+      _json['cryptoKey'] = cryptoKey.toJson();
     }
     if (surrogateInfoType != null) {
-      _json["surrogateInfoType"] = surrogateInfoType.toJson();
+      _json['surrogateInfoType'] = surrogateInfoType.toJson();
     }
     return _json;
   }
@@ -8544,8 +8543,8 @@ class GooglePrivacyDlpV2CryptoHashConfig {
   GooglePrivacyDlpV2CryptoHashConfig();
 
   GooglePrivacyDlpV2CryptoHashConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("cryptoKey")) {
-      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
+    if (_json.containsKey('cryptoKey')) {
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json['cryptoKey']);
     }
   }
 
@@ -8553,7 +8552,7 @@ class GooglePrivacyDlpV2CryptoHashConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cryptoKey != null) {
-      _json["cryptoKey"] = cryptoKey.toJson();
+      _json['cryptoKey'] = cryptoKey.toJson();
     }
     return _json;
   }
@@ -8576,17 +8575,17 @@ class GooglePrivacyDlpV2CryptoKey {
   GooglePrivacyDlpV2CryptoKey();
 
   GooglePrivacyDlpV2CryptoKey.fromJson(core.Map _json) {
-    if (_json.containsKey("kmsWrapped")) {
+    if (_json.containsKey('kmsWrapped')) {
       kmsWrapped =
-          GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(_json["kmsWrapped"]);
+          GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(_json['kmsWrapped']);
     }
-    if (_json.containsKey("transient")) {
+    if (_json.containsKey('transient')) {
       transient =
-          GooglePrivacyDlpV2TransientCryptoKey.fromJson(_json["transient"]);
+          GooglePrivacyDlpV2TransientCryptoKey.fromJson(_json['transient']);
     }
-    if (_json.containsKey("unwrapped")) {
+    if (_json.containsKey('unwrapped')) {
       unwrapped =
-          GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(_json["unwrapped"]);
+          GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(_json['unwrapped']);
     }
   }
 
@@ -8594,13 +8593,13 @@ class GooglePrivacyDlpV2CryptoKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kmsWrapped != null) {
-      _json["kmsWrapped"] = kmsWrapped.toJson();
+      _json['kmsWrapped'] = kmsWrapped.toJson();
     }
     if (transient != null) {
-      _json["transient"] = transient.toJson();
+      _json['transient'] = transient.toJson();
     }
     if (unwrapped != null) {
-      _json["unwrapped"] = unwrapped.toJson();
+      _json['unwrapped'] = unwrapped.toJson();
     }
     return _json;
   }
@@ -8682,24 +8681,24 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig();
 
   GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("commonAlphabet")) {
-      commonAlphabet = _json["commonAlphabet"];
+    if (_json.containsKey('commonAlphabet')) {
+      commonAlphabet = _json['commonAlphabet'];
     }
-    if (_json.containsKey("context")) {
-      context = GooglePrivacyDlpV2FieldId.fromJson(_json["context"]);
+    if (_json.containsKey('context')) {
+      context = GooglePrivacyDlpV2FieldId.fromJson(_json['context']);
     }
-    if (_json.containsKey("cryptoKey")) {
-      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
+    if (_json.containsKey('cryptoKey')) {
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json['cryptoKey']);
     }
-    if (_json.containsKey("customAlphabet")) {
-      customAlphabet = _json["customAlphabet"];
+    if (_json.containsKey('customAlphabet')) {
+      customAlphabet = _json['customAlphabet'];
     }
-    if (_json.containsKey("radix")) {
-      radix = _json["radix"];
+    if (_json.containsKey('radix')) {
+      radix = _json['radix'];
     }
-    if (_json.containsKey("surrogateInfoType")) {
+    if (_json.containsKey('surrogateInfoType')) {
       surrogateInfoType =
-          GooglePrivacyDlpV2InfoType.fromJson(_json["surrogateInfoType"]);
+          GooglePrivacyDlpV2InfoType.fromJson(_json['surrogateInfoType']);
     }
   }
 
@@ -8707,22 +8706,22 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (commonAlphabet != null) {
-      _json["commonAlphabet"] = commonAlphabet;
+      _json['commonAlphabet'] = commonAlphabet;
     }
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (cryptoKey != null) {
-      _json["cryptoKey"] = cryptoKey.toJson();
+      _json['cryptoKey'] = cryptoKey.toJson();
     }
     if (customAlphabet != null) {
-      _json["customAlphabet"] = customAlphabet;
+      _json['customAlphabet'] = customAlphabet;
     }
     if (radix != null) {
-      _json["radix"] = radix;
+      _json['radix'] = radix;
     }
     if (surrogateInfoType != null) {
-      _json["surrogateInfoType"] = surrogateInfoType.toJson();
+      _json['surrogateInfoType'] = surrogateInfoType.toJson();
     }
     return _json;
   }
@@ -8782,33 +8781,33 @@ class GooglePrivacyDlpV2CustomInfoType {
   GooglePrivacyDlpV2CustomInfoType();
 
   GooglePrivacyDlpV2CustomInfoType.fromJson(core.Map _json) {
-    if (_json.containsKey("detectionRules")) {
-      detectionRules = (_json["detectionRules"] as core.List)
+    if (_json.containsKey('detectionRules')) {
+      detectionRules = (_json['detectionRules'] as core.List)
           .map<GooglePrivacyDlpV2DetectionRule>(
               (value) => GooglePrivacyDlpV2DetectionRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("dictionary")) {
-      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
+    if (_json.containsKey('dictionary')) {
+      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json['dictionary']);
     }
-    if (_json.containsKey("exclusionType")) {
-      exclusionType = _json["exclusionType"];
+    if (_json.containsKey('exclusionType')) {
+      exclusionType = _json['exclusionType'];
     }
-    if (_json.containsKey("infoType")) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+    if (_json.containsKey('infoType')) {
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
     }
-    if (_json.containsKey("likelihood")) {
-      likelihood = _json["likelihood"];
+    if (_json.containsKey('likelihood')) {
+      likelihood = _json['likelihood'];
     }
-    if (_json.containsKey("regex")) {
-      regex = GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
+    if (_json.containsKey('regex')) {
+      regex = GooglePrivacyDlpV2Regex.fromJson(_json['regex']);
     }
-    if (_json.containsKey("storedType")) {
-      storedType = GooglePrivacyDlpV2StoredType.fromJson(_json["storedType"]);
+    if (_json.containsKey('storedType')) {
+      storedType = GooglePrivacyDlpV2StoredType.fromJson(_json['storedType']);
     }
-    if (_json.containsKey("surrogateType")) {
+    if (_json.containsKey('surrogateType')) {
       surrogateType =
-          GooglePrivacyDlpV2SurrogateType.fromJson(_json["surrogateType"]);
+          GooglePrivacyDlpV2SurrogateType.fromJson(_json['surrogateType']);
     }
   }
 
@@ -8816,29 +8815,29 @@ class GooglePrivacyDlpV2CustomInfoType {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectionRules != null) {
-      _json["detectionRules"] =
+      _json['detectionRules'] =
           detectionRules.map((value) => value.toJson()).toList();
     }
     if (dictionary != null) {
-      _json["dictionary"] = dictionary.toJson();
+      _json['dictionary'] = dictionary.toJson();
     }
     if (exclusionType != null) {
-      _json["exclusionType"] = exclusionType;
+      _json['exclusionType'] = exclusionType;
     }
     if (infoType != null) {
-      _json["infoType"] = infoType.toJson();
+      _json['infoType'] = infoType.toJson();
     }
     if (likelihood != null) {
-      _json["likelihood"] = likelihood;
+      _json['likelihood'] = likelihood;
     }
     if (regex != null) {
-      _json["regex"] = regex.toJson();
+      _json['regex'] = regex.toJson();
     }
     if (storedType != null) {
-      _json["storedType"] = storedType.toJson();
+      _json['storedType'] = storedType.toJson();
     }
     if (surrogateType != null) {
-      _json["surrogateType"] = surrogateType.toJson();
+      _json['surrogateType'] = surrogateType.toJson();
     }
     return _json;
   }
@@ -8852,8 +8851,8 @@ class GooglePrivacyDlpV2DatastoreKey {
   GooglePrivacyDlpV2DatastoreKey();
 
   GooglePrivacyDlpV2DatastoreKey.fromJson(core.Map _json) {
-    if (_json.containsKey("entityKey")) {
-      entityKey = GooglePrivacyDlpV2Key.fromJson(_json["entityKey"]);
+    if (_json.containsKey('entityKey')) {
+      entityKey = GooglePrivacyDlpV2Key.fromJson(_json['entityKey']);
     }
   }
 
@@ -8861,7 +8860,7 @@ class GooglePrivacyDlpV2DatastoreKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entityKey != null) {
-      _json["entityKey"] = entityKey.toJson();
+      _json['entityKey'] = entityKey.toJson();
     }
     return _json;
   }
@@ -8879,12 +8878,12 @@ class GooglePrivacyDlpV2DatastoreOptions {
   GooglePrivacyDlpV2DatastoreOptions();
 
   GooglePrivacyDlpV2DatastoreOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = GooglePrivacyDlpV2KindExpression.fromJson(_json["kind"]);
+    if (_json.containsKey('kind')) {
+      kind = GooglePrivacyDlpV2KindExpression.fromJson(_json['kind']);
     }
-    if (_json.containsKey("partitionId")) {
+    if (_json.containsKey('partitionId')) {
       partitionId =
-          GooglePrivacyDlpV2PartitionId.fromJson(_json["partitionId"]);
+          GooglePrivacyDlpV2PartitionId.fromJson(_json['partitionId']);
     }
   }
 
@@ -8892,10 +8891,10 @@ class GooglePrivacyDlpV2DatastoreOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind.toJson();
+      _json['kind'] = kind.toJson();
     }
     if (partitionId != null) {
-      _json["partitionId"] = partitionId.toJson();
+      _json['partitionId'] = partitionId.toJson();
     }
     return _json;
   }
@@ -8928,17 +8927,17 @@ class GooglePrivacyDlpV2DateShiftConfig {
   GooglePrivacyDlpV2DateShiftConfig();
 
   GooglePrivacyDlpV2DateShiftConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
-      context = GooglePrivacyDlpV2FieldId.fromJson(_json["context"]);
+    if (_json.containsKey('context')) {
+      context = GooglePrivacyDlpV2FieldId.fromJson(_json['context']);
     }
-    if (_json.containsKey("cryptoKey")) {
-      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
+    if (_json.containsKey('cryptoKey')) {
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json['cryptoKey']);
     }
-    if (_json.containsKey("lowerBoundDays")) {
-      lowerBoundDays = _json["lowerBoundDays"];
+    if (_json.containsKey('lowerBoundDays')) {
+      lowerBoundDays = _json['lowerBoundDays'];
     }
-    if (_json.containsKey("upperBoundDays")) {
-      upperBoundDays = _json["upperBoundDays"];
+    if (_json.containsKey('upperBoundDays')) {
+      upperBoundDays = _json['upperBoundDays'];
     }
   }
 
@@ -8946,16 +8945,16 @@ class GooglePrivacyDlpV2DateShiftConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (cryptoKey != null) {
-      _json["cryptoKey"] = cryptoKey.toJson();
+      _json['cryptoKey'] = cryptoKey.toJson();
     }
     if (lowerBoundDays != null) {
-      _json["lowerBoundDays"] = lowerBoundDays;
+      _json['lowerBoundDays'] = lowerBoundDays;
     }
     if (upperBoundDays != null) {
-      _json["upperBoundDays"] = upperBoundDays;
+      _json['upperBoundDays'] = upperBoundDays;
     }
     return _json;
   }
@@ -8988,17 +8987,17 @@ class GooglePrivacyDlpV2DateTime {
   GooglePrivacyDlpV2DateTime();
 
   GooglePrivacyDlpV2DateTime.fromJson(core.Map _json) {
-    if (_json.containsKey("date")) {
-      date = GoogleTypeDate.fromJson(_json["date"]);
+    if (_json.containsKey('date')) {
+      date = GoogleTypeDate.fromJson(_json['date']);
     }
-    if (_json.containsKey("dayOfWeek")) {
-      dayOfWeek = _json["dayOfWeek"];
+    if (_json.containsKey('dayOfWeek')) {
+      dayOfWeek = _json['dayOfWeek'];
     }
-    if (_json.containsKey("time")) {
-      time = GoogleTypeTimeOfDay.fromJson(_json["time"]);
+    if (_json.containsKey('time')) {
+      time = GoogleTypeTimeOfDay.fromJson(_json['time']);
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = GooglePrivacyDlpV2TimeZone.fromJson(_json["timeZone"]);
+    if (_json.containsKey('timeZone')) {
+      timeZone = GooglePrivacyDlpV2TimeZone.fromJson(_json['timeZone']);
     }
   }
 
@@ -9006,16 +9005,16 @@ class GooglePrivacyDlpV2DateTime {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (date != null) {
-      _json["date"] = date.toJson();
+      _json['date'] = date.toJson();
     }
     if (dayOfWeek != null) {
-      _json["dayOfWeek"] = dayOfWeek;
+      _json['dayOfWeek'] = dayOfWeek;
     }
     if (time != null) {
-      _json["time"] = time.toJson();
+      _json['time'] = time.toJson();
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone.toJson();
+      _json['timeZone'] = timeZone.toJson();
     }
     return _json;
   }
@@ -9039,19 +9038,19 @@ class GooglePrivacyDlpV2DeidentifyConfig {
   GooglePrivacyDlpV2DeidentifyConfig();
 
   GooglePrivacyDlpV2DeidentifyConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("infoTypeTransformations")) {
+    if (_json.containsKey('infoTypeTransformations')) {
       infoTypeTransformations =
           GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
-              _json["infoTypeTransformations"]);
+              _json['infoTypeTransformations']);
     }
-    if (_json.containsKey("recordTransformations")) {
+    if (_json.containsKey('recordTransformations')) {
       recordTransformations = GooglePrivacyDlpV2RecordTransformations.fromJson(
-          _json["recordTransformations"]);
+          _json['recordTransformations']);
     }
-    if (_json.containsKey("transformationErrorHandling")) {
+    if (_json.containsKey('transformationErrorHandling')) {
       transformationErrorHandling =
           GooglePrivacyDlpV2TransformationErrorHandling.fromJson(
-              _json["transformationErrorHandling"]);
+              _json['transformationErrorHandling']);
     }
   }
 
@@ -9059,13 +9058,13 @@ class GooglePrivacyDlpV2DeidentifyConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (infoTypeTransformations != null) {
-      _json["infoTypeTransformations"] = infoTypeTransformations.toJson();
+      _json['infoTypeTransformations'] = infoTypeTransformations.toJson();
     }
     if (recordTransformations != null) {
-      _json["recordTransformations"] = recordTransformations.toJson();
+      _json['recordTransformations'] = recordTransformations.toJson();
     }
     if (transformationErrorHandling != null) {
-      _json["transformationErrorHandling"] =
+      _json['transformationErrorHandling'] =
           transformationErrorHandling.toJson();
     }
     return _json;
@@ -9106,25 +9105,25 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
   GooglePrivacyDlpV2DeidentifyContentRequest();
 
   GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deidentifyConfig")) {
+    if (_json.containsKey('deidentifyConfig')) {
       deidentifyConfig = GooglePrivacyDlpV2DeidentifyConfig.fromJson(
-          _json["deidentifyConfig"]);
+          _json['deidentifyConfig']);
     }
-    if (_json.containsKey("deidentifyTemplateName")) {
-      deidentifyTemplateName = _json["deidentifyTemplateName"];
+    if (_json.containsKey('deidentifyTemplateName')) {
+      deidentifyTemplateName = _json['deidentifyTemplateName'];
     }
-    if (_json.containsKey("inspectConfig")) {
+    if (_json.containsKey('inspectConfig')) {
       inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
     }
-    if (_json.containsKey("inspectTemplateName")) {
-      inspectTemplateName = _json["inspectTemplateName"];
+    if (_json.containsKey('inspectTemplateName')) {
+      inspectTemplateName = _json['inspectTemplateName'];
     }
-    if (_json.containsKey("item")) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+    if (_json.containsKey('item')) {
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
   }
 
@@ -9132,22 +9131,22 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deidentifyConfig != null) {
-      _json["deidentifyConfig"] = deidentifyConfig.toJson();
+      _json['deidentifyConfig'] = deidentifyConfig.toJson();
     }
     if (deidentifyTemplateName != null) {
-      _json["deidentifyTemplateName"] = deidentifyTemplateName;
+      _json['deidentifyTemplateName'] = deidentifyTemplateName;
     }
     if (inspectConfig != null) {
-      _json["inspectConfig"] = inspectConfig.toJson();
+      _json['inspectConfig'] = inspectConfig.toJson();
     }
     if (inspectTemplateName != null) {
-      _json["inspectTemplateName"] = inspectTemplateName;
+      _json['inspectTemplateName'] = inspectTemplateName;
     }
     if (item != null) {
-      _json["item"] = item.toJson();
+      _json['item'] = item.toJson();
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     return _json;
   }
@@ -9164,12 +9163,12 @@ class GooglePrivacyDlpV2DeidentifyContentResponse {
   GooglePrivacyDlpV2DeidentifyContentResponse();
 
   GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("item")) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+    if (_json.containsKey('item')) {
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
     }
-    if (_json.containsKey("overview")) {
+    if (_json.containsKey('overview')) {
       overview =
-          GooglePrivacyDlpV2TransformationOverview.fromJson(_json["overview"]);
+          GooglePrivacyDlpV2TransformationOverview.fromJson(_json['overview']);
     }
   }
 
@@ -9177,10 +9176,10 @@ class GooglePrivacyDlpV2DeidentifyContentResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (item != null) {
-      _json["item"] = item.toJson();
+      _json['item'] = item.toJson();
     }
     if (overview != null) {
-      _json["overview"] = overview.toJson();
+      _json['overview'] = overview.toJson();
     }
     return _json;
   }
@@ -9212,24 +9211,24 @@ class GooglePrivacyDlpV2DeidentifyTemplate {
   GooglePrivacyDlpV2DeidentifyTemplate();
 
   GooglePrivacyDlpV2DeidentifyTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("deidentifyConfig")) {
+    if (_json.containsKey('deidentifyConfig')) {
       deidentifyConfig = GooglePrivacyDlpV2DeidentifyConfig.fromJson(
-          _json["deidentifyConfig"]);
+          _json['deidentifyConfig']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -9237,22 +9236,22 @@ class GooglePrivacyDlpV2DeidentifyTemplate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (deidentifyConfig != null) {
-      _json["deidentifyConfig"] = deidentifyConfig.toJson();
+      _json['deidentifyConfig'] = deidentifyConfig.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -9280,20 +9279,20 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
   GooglePrivacyDlpV2DeltaPresenceEstimationConfig();
 
   GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auxiliaryTables")) {
-      auxiliaryTables = (_json["auxiliaryTables"] as core.List)
+    if (_json.containsKey('auxiliaryTables')) {
+      auxiliaryTables = (_json['auxiliaryTables'] as core.List)
           .map<GooglePrivacyDlpV2StatisticalTable>(
               (value) => GooglePrivacyDlpV2StatisticalTable.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("quasiIds")) {
-      quasiIds = (_json["quasiIds"] as core.List)
+    if (_json.containsKey('quasiIds')) {
+      quasiIds = (_json['quasiIds'] as core.List)
           .map<GooglePrivacyDlpV2QuasiId>(
               (value) => GooglePrivacyDlpV2QuasiId.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("regionCode")) {
-      regionCode = _json["regionCode"];
+    if (_json.containsKey('regionCode')) {
+      regionCode = _json['regionCode'];
     }
   }
 
@@ -9301,14 +9300,14 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auxiliaryTables != null) {
-      _json["auxiliaryTables"] =
+      _json['auxiliaryTables'] =
           auxiliaryTables.map((value) => value.toJson()).toList();
     }
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
+      _json['quasiIds'] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (regionCode != null) {
-      _json["regionCode"] = regionCode;
+      _json['regionCode'] = regionCode;
     }
     return _json;
   }
@@ -9341,24 +9340,24 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
 
   GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket.fromJson(
       core.Map _json) {
-    if (_json.containsKey("bucketSize")) {
-      bucketSize = _json["bucketSize"];
+    if (_json.containsKey('bucketSize')) {
+      bucketSize = _json['bucketSize'];
     }
-    if (_json.containsKey("bucketValueCount")) {
-      bucketValueCount = _json["bucketValueCount"];
+    if (_json.containsKey('bucketValueCount')) {
+      bucketValueCount = _json['bucketValueCount'];
     }
-    if (_json.containsKey("bucketValues")) {
-      bucketValues = (_json["bucketValues"] as core.List)
+    if (_json.containsKey('bucketValues')) {
+      bucketValues = (_json['bucketValues'] as core.List)
           .map<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>(
               (value) => GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("maxProbability")) {
-      maxProbability = _json["maxProbability"].toDouble();
+    if (_json.containsKey('maxProbability')) {
+      maxProbability = _json['maxProbability'].toDouble();
     }
-    if (_json.containsKey("minProbability")) {
-      minProbability = _json["minProbability"].toDouble();
+    if (_json.containsKey('minProbability')) {
+      minProbability = _json['minProbability'].toDouble();
     }
   }
 
@@ -9366,20 +9365,20 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketSize != null) {
-      _json["bucketSize"] = bucketSize;
+      _json['bucketSize'] = bucketSize;
     }
     if (bucketValueCount != null) {
-      _json["bucketValueCount"] = bucketValueCount;
+      _json['bucketValueCount'] = bucketValueCount;
     }
     if (bucketValues != null) {
-      _json["bucketValues"] =
+      _json['bucketValues'] =
           bucketValues.map((value) => value.toJson()).toList();
     }
     if (maxProbability != null) {
-      _json["maxProbability"] = maxProbability;
+      _json['maxProbability'] = maxProbability;
     }
     if (minProbability != null) {
-      _json["minProbability"] = minProbability;
+      _json['minProbability'] = minProbability;
     }
     return _json;
   }
@@ -9404,11 +9403,11 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
 
   GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
       core.Map _json) {
-    if (_json.containsKey("estimatedProbability")) {
-      estimatedProbability = _json["estimatedProbability"].toDouble();
+    if (_json.containsKey('estimatedProbability')) {
+      estimatedProbability = _json['estimatedProbability'].toDouble();
     }
-    if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
+    if (_json.containsKey('quasiIdsValues')) {
+      quasiIdsValues = (_json['quasiIdsValues'] as core.List)
           .map<GooglePrivacyDlpV2Value>(
               (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
@@ -9419,10 +9418,10 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (estimatedProbability != null) {
-      _json["estimatedProbability"] = estimatedProbability;
+      _json['estimatedProbability'] = estimatedProbability;
     }
     if (quasiIdsValues != null) {
-      _json["quasiIdsValues"] =
+      _json['quasiIdsValues'] =
           quasiIdsValues.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -9445,9 +9444,9 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationResult {
   GooglePrivacyDlpV2DeltaPresenceEstimationResult();
 
   GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(core.Map _json) {
-    if (_json.containsKey("deltaPresenceEstimationHistogram")) {
+    if (_json.containsKey('deltaPresenceEstimationHistogram')) {
       deltaPresenceEstimationHistogram =
-          (_json["deltaPresenceEstimationHistogram"] as core.List)
+          (_json['deltaPresenceEstimationHistogram'] as core.List)
               .map<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>(
                   (value) =>
                       GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket
@@ -9460,7 +9459,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deltaPresenceEstimationHistogram != null) {
-      _json["deltaPresenceEstimationHistogram"] =
+      _json['deltaPresenceEstimationHistogram'] =
           deltaPresenceEstimationHistogram
               .map((value) => value.toJson())
               .toList();
@@ -9480,9 +9479,9 @@ class GooglePrivacyDlpV2DetectionRule {
   GooglePrivacyDlpV2DetectionRule();
 
   GooglePrivacyDlpV2DetectionRule.fromJson(core.Map _json) {
-    if (_json.containsKey("hotwordRule")) {
+    if (_json.containsKey('hotwordRule')) {
       hotwordRule =
-          GooglePrivacyDlpV2HotwordRule.fromJson(_json["hotwordRule"]);
+          GooglePrivacyDlpV2HotwordRule.fromJson(_json['hotwordRule']);
     }
   }
 
@@ -9490,7 +9489,7 @@ class GooglePrivacyDlpV2DetectionRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hotwordRule != null) {
-      _json["hotwordRule"] = hotwordRule.toJson();
+      _json['hotwordRule'] = hotwordRule.toJson();
     }
     return _json;
   }
@@ -9526,12 +9525,12 @@ class GooglePrivacyDlpV2Dictionary {
   GooglePrivacyDlpV2Dictionary();
 
   GooglePrivacyDlpV2Dictionary.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudStoragePath")) {
+    if (_json.containsKey('cloudStoragePath')) {
       cloudStoragePath = GooglePrivacyDlpV2CloudStoragePath.fromJson(
-          _json["cloudStoragePath"]);
+          _json['cloudStoragePath']);
     }
-    if (_json.containsKey("wordList")) {
-      wordList = GooglePrivacyDlpV2WordList.fromJson(_json["wordList"]);
+    if (_json.containsKey('wordList')) {
+      wordList = GooglePrivacyDlpV2WordList.fromJson(_json['wordList']);
     }
   }
 
@@ -9539,10 +9538,10 @@ class GooglePrivacyDlpV2Dictionary {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cloudStoragePath != null) {
-      _json["cloudStoragePath"] = cloudStoragePath.toJson();
+      _json['cloudStoragePath'] = cloudStoragePath.toJson();
     }
     if (wordList != null) {
-      _json["wordList"] = wordList.toJson();
+      _json['wordList'] = wordList.toJson();
     }
     return _json;
   }
@@ -9600,40 +9599,40 @@ class GooglePrivacyDlpV2DlpJob {
   GooglePrivacyDlpV2DlpJob();
 
   GooglePrivacyDlpV2DlpJob.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("errors")) {
-      errors = (_json["errors"] as core.List)
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
           .map<GooglePrivacyDlpV2Error>(
               (value) => GooglePrivacyDlpV2Error.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("inspectDetails")) {
+    if (_json.containsKey('inspectDetails')) {
       inspectDetails = GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(
-          _json["inspectDetails"]);
+          _json['inspectDetails']);
     }
-    if (_json.containsKey("jobTriggerName")) {
-      jobTriggerName = _json["jobTriggerName"];
+    if (_json.containsKey('jobTriggerName')) {
+      jobTriggerName = _json['jobTriggerName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("riskDetails")) {
+    if (_json.containsKey('riskDetails')) {
       riskDetails = GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
-          _json["riskDetails"]);
+          _json['riskDetails']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -9641,34 +9640,34 @@ class GooglePrivacyDlpV2DlpJob {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => value.toJson()).toList();
+      _json['errors'] = errors.map((value) => value.toJson()).toList();
     }
     if (inspectDetails != null) {
-      _json["inspectDetails"] = inspectDetails.toJson();
+      _json['inspectDetails'] = inspectDetails.toJson();
     }
     if (jobTriggerName != null) {
-      _json["jobTriggerName"] = jobTriggerName;
+      _json['jobTriggerName'] = jobTriggerName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (riskDetails != null) {
-      _json["riskDetails"] = riskDetails.toJson();
+      _json['riskDetails'] = riskDetails.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -9683,8 +9682,8 @@ class GooglePrivacyDlpV2DocumentLocation {
   GooglePrivacyDlpV2DocumentLocation();
 
   GooglePrivacyDlpV2DocumentLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("fileOffset")) {
-      fileOffset = _json["fileOffset"];
+    if (_json.containsKey('fileOffset')) {
+      fileOffset = _json['fileOffset'];
     }
   }
 
@@ -9692,7 +9691,7 @@ class GooglePrivacyDlpV2DocumentLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fileOffset != null) {
-      _json["fileOffset"] = fileOffset;
+      _json['fileOffset'] = fileOffset;
     }
     return _json;
   }
@@ -9710,8 +9709,8 @@ class GooglePrivacyDlpV2EntityId {
   GooglePrivacyDlpV2EntityId();
 
   GooglePrivacyDlpV2EntityId.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
   }
 
@@ -9719,7 +9718,7 @@ class GooglePrivacyDlpV2EntityId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     return _json;
   }
@@ -9737,11 +9736,11 @@ class GooglePrivacyDlpV2Error {
   GooglePrivacyDlpV2Error();
 
   GooglePrivacyDlpV2Error.fromJson(core.Map _json) {
-    if (_json.containsKey("details")) {
-      details = GoogleRpcStatus.fromJson(_json["details"]);
+    if (_json.containsKey('details')) {
+      details = GoogleRpcStatus.fromJson(_json['details']);
     }
-    if (_json.containsKey("timestamps")) {
-      timestamps = (_json["timestamps"] as core.List).cast<core.String>();
+    if (_json.containsKey('timestamps')) {
+      timestamps = (_json['timestamps'] as core.List).cast<core.String>();
     }
   }
 
@@ -9749,10 +9748,10 @@ class GooglePrivacyDlpV2Error {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (details != null) {
-      _json["details"] = details.toJson();
+      _json['details'] = details.toJson();
     }
     if (timestamps != null) {
-      _json["timestamps"] = timestamps;
+      _json['timestamps'] = timestamps;
     }
     return _json;
   }
@@ -9772,8 +9771,8 @@ class GooglePrivacyDlpV2ExcludeInfoTypes {
   GooglePrivacyDlpV2ExcludeInfoTypes();
 
   GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(core.Map _json) {
-    if (_json.containsKey("infoTypes")) {
-      infoTypes = (_json["infoTypes"] as core.List)
+    if (_json.containsKey('infoTypes')) {
+      infoTypes = (_json['infoTypes'] as core.List)
           .map<GooglePrivacyDlpV2InfoType>(
               (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
           .toList();
@@ -9784,7 +9783,7 @@ class GooglePrivacyDlpV2ExcludeInfoTypes {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
+      _json['infoTypes'] = infoTypes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9821,18 +9820,18 @@ class GooglePrivacyDlpV2ExclusionRule {
   GooglePrivacyDlpV2ExclusionRule();
 
   GooglePrivacyDlpV2ExclusionRule.fromJson(core.Map _json) {
-    if (_json.containsKey("dictionary")) {
-      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
+    if (_json.containsKey('dictionary')) {
+      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json['dictionary']);
     }
-    if (_json.containsKey("excludeInfoTypes")) {
+    if (_json.containsKey('excludeInfoTypes')) {
       excludeInfoTypes = GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(
-          _json["excludeInfoTypes"]);
+          _json['excludeInfoTypes']);
     }
-    if (_json.containsKey("matchingType")) {
-      matchingType = _json["matchingType"];
+    if (_json.containsKey('matchingType')) {
+      matchingType = _json['matchingType'];
     }
-    if (_json.containsKey("regex")) {
-      regex = GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
+    if (_json.containsKey('regex')) {
+      regex = GooglePrivacyDlpV2Regex.fromJson(_json['regex']);
     }
   }
 
@@ -9840,16 +9839,16 @@ class GooglePrivacyDlpV2ExclusionRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dictionary != null) {
-      _json["dictionary"] = dictionary.toJson();
+      _json['dictionary'] = dictionary.toJson();
     }
     if (excludeInfoTypes != null) {
-      _json["excludeInfoTypes"] = excludeInfoTypes.toJson();
+      _json['excludeInfoTypes'] = excludeInfoTypes.toJson();
     }
     if (matchingType != null) {
-      _json["matchingType"] = matchingType;
+      _json['matchingType'] = matchingType;
     }
     if (regex != null) {
-      _json["regex"] = regex.toJson();
+      _json['regex'] = regex.toJson();
     }
     return _json;
   }
@@ -9870,11 +9869,11 @@ class GooglePrivacyDlpV2Expressions {
   GooglePrivacyDlpV2Expressions();
 
   GooglePrivacyDlpV2Expressions.fromJson(core.Map _json) {
-    if (_json.containsKey("conditions")) {
-      conditions = GooglePrivacyDlpV2Conditions.fromJson(_json["conditions"]);
+    if (_json.containsKey('conditions')) {
+      conditions = GooglePrivacyDlpV2Conditions.fromJson(_json['conditions']);
     }
-    if (_json.containsKey("logicalOperator")) {
-      logicalOperator = _json["logicalOperator"];
+    if (_json.containsKey('logicalOperator')) {
+      logicalOperator = _json['logicalOperator'];
     }
   }
 
@@ -9882,10 +9881,10 @@ class GooglePrivacyDlpV2Expressions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (conditions != null) {
-      _json["conditions"] = conditions.toJson();
+      _json['conditions'] = conditions.toJson();
     }
     if (logicalOperator != null) {
-      _json["logicalOperator"] = logicalOperator;
+      _json['logicalOperator'] = logicalOperator;
     }
     return _json;
   }
@@ -9899,8 +9898,8 @@ class GooglePrivacyDlpV2FieldId {
   GooglePrivacyDlpV2FieldId();
 
   GooglePrivacyDlpV2FieldId.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -9908,7 +9907,7 @@ class GooglePrivacyDlpV2FieldId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -9937,25 +9936,25 @@ class GooglePrivacyDlpV2FieldTransformation {
   GooglePrivacyDlpV2FieldTransformation();
 
   GooglePrivacyDlpV2FieldTransformation.fromJson(core.Map _json) {
-    if (_json.containsKey("condition")) {
+    if (_json.containsKey('condition')) {
       condition =
-          GooglePrivacyDlpV2RecordCondition.fromJson(_json["condition"]);
+          GooglePrivacyDlpV2RecordCondition.fromJson(_json['condition']);
     }
-    if (_json.containsKey("fields")) {
-      fields = (_json["fields"] as core.List)
+    if (_json.containsKey('fields')) {
+      fields = (_json['fields'] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
               (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("infoTypeTransformations")) {
+    if (_json.containsKey('infoTypeTransformations')) {
       infoTypeTransformations =
           GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
-              _json["infoTypeTransformations"]);
+              _json['infoTypeTransformations']);
     }
-    if (_json.containsKey("primitiveTransformation")) {
+    if (_json.containsKey('primitiveTransformation')) {
       primitiveTransformation =
           GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
-              _json["primitiveTransformation"]);
+              _json['primitiveTransformation']);
     }
   }
 
@@ -9963,16 +9962,16 @@ class GooglePrivacyDlpV2FieldTransformation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     if (fields != null) {
-      _json["fields"] = fields.map((value) => value.toJson()).toList();
+      _json['fields'] = fields.map((value) => value.toJson()).toList();
     }
     if (infoTypeTransformations != null) {
-      _json["infoTypeTransformations"] = infoTypeTransformations.toJson();
+      _json['infoTypeTransformations'] = infoTypeTransformations.toJson();
     }
     if (primitiveTransformation != null) {
-      _json["primitiveTransformation"] = primitiveTransformation.toJson();
+      _json['primitiveTransformation'] = primitiveTransformation.toJson();
     }
     return _json;
   }
@@ -9996,12 +9995,12 @@ class GooglePrivacyDlpV2FileSet {
   GooglePrivacyDlpV2FileSet();
 
   GooglePrivacyDlpV2FileSet.fromJson(core.Map _json) {
-    if (_json.containsKey("regexFileSet")) {
+    if (_json.containsKey('regexFileSet')) {
       regexFileSet = GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(
-          _json["regexFileSet"]);
+          _json['regexFileSet']);
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -10009,10 +10008,10 @@ class GooglePrivacyDlpV2FileSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (regexFileSet != null) {
-      _json["regexFileSet"] = regexFileSet.toJson();
+      _json['regexFileSet'] = regexFileSet.toJson();
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -10080,41 +10079,41 @@ class GooglePrivacyDlpV2Finding {
   GooglePrivacyDlpV2Finding();
 
   GooglePrivacyDlpV2Finding.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("infoType")) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+    if (_json.containsKey('infoType')) {
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
     }
-    if (_json.containsKey("jobCreateTime")) {
-      jobCreateTime = _json["jobCreateTime"];
+    if (_json.containsKey('jobCreateTime')) {
+      jobCreateTime = _json['jobCreateTime'];
     }
-    if (_json.containsKey("jobName")) {
-      jobName = _json["jobName"];
+    if (_json.containsKey('jobName')) {
+      jobName = _json['jobName'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("likelihood")) {
-      likelihood = _json["likelihood"];
+    if (_json.containsKey('likelihood')) {
+      likelihood = _json['likelihood'];
     }
-    if (_json.containsKey("location")) {
-      location = GooglePrivacyDlpV2Location.fromJson(_json["location"]);
+    if (_json.containsKey('location')) {
+      location = GooglePrivacyDlpV2Location.fromJson(_json['location']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("quote")) {
-      quote = _json["quote"];
+    if (_json.containsKey('quote')) {
+      quote = _json['quote'];
     }
-    if (_json.containsKey("quoteInfo")) {
-      quoteInfo = GooglePrivacyDlpV2QuoteInfo.fromJson(_json["quoteInfo"]);
+    if (_json.containsKey('quoteInfo')) {
+      quoteInfo = GooglePrivacyDlpV2QuoteInfo.fromJson(_json['quoteInfo']);
     }
-    if (_json.containsKey("resourceName")) {
-      resourceName = _json["resourceName"];
+    if (_json.containsKey('resourceName')) {
+      resourceName = _json['resourceName'];
     }
-    if (_json.containsKey("triggerName")) {
-      triggerName = _json["triggerName"];
+    if (_json.containsKey('triggerName')) {
+      triggerName = _json['triggerName'];
     }
   }
 
@@ -10122,40 +10121,40 @@ class GooglePrivacyDlpV2Finding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (infoType != null) {
-      _json["infoType"] = infoType.toJson();
+      _json['infoType'] = infoType.toJson();
     }
     if (jobCreateTime != null) {
-      _json["jobCreateTime"] = jobCreateTime;
+      _json['jobCreateTime'] = jobCreateTime;
     }
     if (jobName != null) {
-      _json["jobName"] = jobName;
+      _json['jobName'] = jobName;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (likelihood != null) {
-      _json["likelihood"] = likelihood;
+      _json['likelihood'] = likelihood;
     }
     if (location != null) {
-      _json["location"] = location.toJson();
+      _json['location'] = location.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (quote != null) {
-      _json["quote"] = quote;
+      _json['quote'] = quote;
     }
     if (quoteInfo != null) {
-      _json["quoteInfo"] = quoteInfo.toJson();
+      _json['quoteInfo'] = quoteInfo.toJson();
     }
     if (resourceName != null) {
-      _json["resourceName"] = resourceName;
+      _json['resourceName'] = resourceName;
     }
     if (triggerName != null) {
-      _json["triggerName"] = triggerName;
+      _json['triggerName'] = triggerName;
     }
     return _json;
   }
@@ -10180,17 +10179,17 @@ class GooglePrivacyDlpV2FindingLimits {
   GooglePrivacyDlpV2FindingLimits();
 
   GooglePrivacyDlpV2FindingLimits.fromJson(core.Map _json) {
-    if (_json.containsKey("maxFindingsPerInfoType")) {
-      maxFindingsPerInfoType = (_json["maxFindingsPerInfoType"] as core.List)
+    if (_json.containsKey('maxFindingsPerInfoType')) {
+      maxFindingsPerInfoType = (_json['maxFindingsPerInfoType'] as core.List)
           .map<GooglePrivacyDlpV2InfoTypeLimit>(
               (value) => GooglePrivacyDlpV2InfoTypeLimit.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("maxFindingsPerItem")) {
-      maxFindingsPerItem = _json["maxFindingsPerItem"];
+    if (_json.containsKey('maxFindingsPerItem')) {
+      maxFindingsPerItem = _json['maxFindingsPerItem'];
     }
-    if (_json.containsKey("maxFindingsPerRequest")) {
-      maxFindingsPerRequest = _json["maxFindingsPerRequest"];
+    if (_json.containsKey('maxFindingsPerRequest')) {
+      maxFindingsPerRequest = _json['maxFindingsPerRequest'];
     }
   }
 
@@ -10198,14 +10197,14 @@ class GooglePrivacyDlpV2FindingLimits {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxFindingsPerInfoType != null) {
-      _json["maxFindingsPerInfoType"] =
+      _json['maxFindingsPerInfoType'] =
           maxFindingsPerInfoType.map((value) => value.toJson()).toList();
     }
     if (maxFindingsPerItem != null) {
-      _json["maxFindingsPerItem"] = maxFindingsPerItem;
+      _json['maxFindingsPerItem'] = maxFindingsPerItem;
     }
     if (maxFindingsPerRequest != null) {
-      _json["maxFindingsPerRequest"] = maxFindingsPerRequest;
+      _json['maxFindingsPerRequest'] = maxFindingsPerRequest;
     }
     return _json;
   }
@@ -10256,14 +10255,14 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
   GooglePrivacyDlpV2FixedSizeBucketingConfig();
 
   GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketSize")) {
-      bucketSize = _json["bucketSize"].toDouble();
+    if (_json.containsKey('bucketSize')) {
+      bucketSize = _json['bucketSize'].toDouble();
     }
-    if (_json.containsKey("lowerBound")) {
-      lowerBound = GooglePrivacyDlpV2Value.fromJson(_json["lowerBound"]);
+    if (_json.containsKey('lowerBound')) {
+      lowerBound = GooglePrivacyDlpV2Value.fromJson(_json['lowerBound']);
     }
-    if (_json.containsKey("upperBound")) {
-      upperBound = GooglePrivacyDlpV2Value.fromJson(_json["upperBound"]);
+    if (_json.containsKey('upperBound')) {
+      upperBound = GooglePrivacyDlpV2Value.fromJson(_json['upperBound']);
     }
   }
 
@@ -10271,13 +10270,13 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketSize != null) {
-      _json["bucketSize"] = bucketSize;
+      _json['bucketSize'] = bucketSize;
     }
     if (lowerBound != null) {
-      _json["lowerBound"] = lowerBound.toJson();
+      _json['lowerBound'] = lowerBound.toJson();
     }
     if (upperBound != null) {
-      _json["upperBound"] = upperBound.toJson();
+      _json['upperBound'] = upperBound.toJson();
     }
     return _json;
   }
@@ -10305,15 +10304,15 @@ class GooglePrivacyDlpV2HotwordRule {
   GooglePrivacyDlpV2HotwordRule();
 
   GooglePrivacyDlpV2HotwordRule.fromJson(core.Map _json) {
-    if (_json.containsKey("hotwordRegex")) {
-      hotwordRegex = GooglePrivacyDlpV2Regex.fromJson(_json["hotwordRegex"]);
+    if (_json.containsKey('hotwordRegex')) {
+      hotwordRegex = GooglePrivacyDlpV2Regex.fromJson(_json['hotwordRegex']);
     }
-    if (_json.containsKey("likelihoodAdjustment")) {
+    if (_json.containsKey('likelihoodAdjustment')) {
       likelihoodAdjustment = GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(
-          _json["likelihoodAdjustment"]);
+          _json['likelihoodAdjustment']);
     }
-    if (_json.containsKey("proximity")) {
-      proximity = GooglePrivacyDlpV2Proximity.fromJson(_json["proximity"]);
+    if (_json.containsKey('proximity')) {
+      proximity = GooglePrivacyDlpV2Proximity.fromJson(_json['proximity']);
     }
   }
 
@@ -10321,13 +10320,13 @@ class GooglePrivacyDlpV2HotwordRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hotwordRegex != null) {
-      _json["hotwordRegex"] = hotwordRegex.toJson();
+      _json['hotwordRegex'] = hotwordRegex.toJson();
     }
     if (likelihoodAdjustment != null) {
-      _json["likelihoodAdjustment"] = likelihoodAdjustment.toJson();
+      _json['likelihoodAdjustment'] = likelihoodAdjustment.toJson();
     }
     if (proximity != null) {
-      _json["proximity"] = proximity.toJson();
+      _json['proximity'] = proximity.toJson();
     }
     return _json;
   }
@@ -10345,12 +10344,12 @@ class GooglePrivacyDlpV2HybridContentItem {
   GooglePrivacyDlpV2HybridContentItem();
 
   GooglePrivacyDlpV2HybridContentItem.fromJson(core.Map _json) {
-    if (_json.containsKey("findingDetails")) {
+    if (_json.containsKey('findingDetails')) {
       findingDetails = GooglePrivacyDlpV2HybridFindingDetails.fromJson(
-          _json["findingDetails"]);
+          _json['findingDetails']);
     }
-    if (_json.containsKey("item")) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+    if (_json.containsKey('item')) {
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
     }
   }
 
@@ -10358,10 +10357,10 @@ class GooglePrivacyDlpV2HybridContentItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (findingDetails != null) {
-      _json["findingDetails"] = findingDetails.toJson();
+      _json['findingDetails'] = findingDetails.toJson();
     }
     if (item != null) {
-      _json["item"] = item.toJson();
+      _json['item'] = item.toJson();
     }
     return _json;
   }
@@ -10404,22 +10403,22 @@ class GooglePrivacyDlpV2HybridFindingDetails {
   GooglePrivacyDlpV2HybridFindingDetails();
 
   GooglePrivacyDlpV2HybridFindingDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("containerDetails")) {
+    if (_json.containsKey('containerDetails')) {
       containerDetails =
-          GooglePrivacyDlpV2Container.fromJson(_json["containerDetails"]);
+          GooglePrivacyDlpV2Container.fromJson(_json['containerDetails']);
     }
-    if (_json.containsKey("fileOffset")) {
-      fileOffset = _json["fileOffset"];
+    if (_json.containsKey('fileOffset')) {
+      fileOffset = _json['fileOffset'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("rowOffset")) {
-      rowOffset = _json["rowOffset"];
+    if (_json.containsKey('rowOffset')) {
+      rowOffset = _json['rowOffset'];
     }
-    if (_json.containsKey("tableOptions")) {
+    if (_json.containsKey('tableOptions')) {
       tableOptions =
-          GooglePrivacyDlpV2TableOptions.fromJson(_json["tableOptions"]);
+          GooglePrivacyDlpV2TableOptions.fromJson(_json['tableOptions']);
     }
   }
 
@@ -10427,19 +10426,19 @@ class GooglePrivacyDlpV2HybridFindingDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (containerDetails != null) {
-      _json["containerDetails"] = containerDetails.toJson();
+      _json['containerDetails'] = containerDetails.toJson();
     }
     if (fileOffset != null) {
-      _json["fileOffset"] = fileOffset;
+      _json['fileOffset'] = fileOffset;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (rowOffset != null) {
-      _json["rowOffset"] = rowOffset;
+      _json['rowOffset'] = rowOffset;
     }
     if (tableOptions != null) {
-      _json["tableOptions"] = tableOptions.toJson();
+      _json['tableOptions'] = tableOptions.toJson();
     }
     return _json;
   }
@@ -10453,9 +10452,9 @@ class GooglePrivacyDlpV2HybridInspectDlpJobRequest {
   GooglePrivacyDlpV2HybridInspectDlpJobRequest();
 
   GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("hybridItem")) {
+    if (_json.containsKey('hybridItem')) {
       hybridItem =
-          GooglePrivacyDlpV2HybridContentItem.fromJson(_json["hybridItem"]);
+          GooglePrivacyDlpV2HybridContentItem.fromJson(_json['hybridItem']);
     }
   }
 
@@ -10463,7 +10462,7 @@ class GooglePrivacyDlpV2HybridInspectDlpJobRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hybridItem != null) {
-      _json["hybridItem"] = hybridItem.toJson();
+      _json['hybridItem'] = hybridItem.toJson();
     }
     return _json;
   }
@@ -10477,9 +10476,9 @@ class GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
   GooglePrivacyDlpV2HybridInspectJobTriggerRequest();
 
   GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("hybridItem")) {
+    if (_json.containsKey('hybridItem')) {
       hybridItem =
-          GooglePrivacyDlpV2HybridContentItem.fromJson(_json["hybridItem"]);
+          GooglePrivacyDlpV2HybridContentItem.fromJson(_json['hybridItem']);
     }
   }
 
@@ -10487,7 +10486,7 @@ class GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hybridItem != null) {
-      _json["hybridItem"] = hybridItem.toJson();
+      _json['hybridItem'] = hybridItem.toJson();
     }
     return _json;
   }
@@ -10525,14 +10524,14 @@ class GooglePrivacyDlpV2HybridInspectStatistics {
   GooglePrivacyDlpV2HybridInspectStatistics();
 
   GooglePrivacyDlpV2HybridInspectStatistics.fromJson(core.Map _json) {
-    if (_json.containsKey("abortedCount")) {
-      abortedCount = _json["abortedCount"];
+    if (_json.containsKey('abortedCount')) {
+      abortedCount = _json['abortedCount'];
     }
-    if (_json.containsKey("pendingCount")) {
-      pendingCount = _json["pendingCount"];
+    if (_json.containsKey('pendingCount')) {
+      pendingCount = _json['pendingCount'];
     }
-    if (_json.containsKey("processedCount")) {
-      processedCount = _json["processedCount"];
+    if (_json.containsKey('processedCount')) {
+      processedCount = _json['processedCount'];
     }
   }
 
@@ -10540,13 +10539,13 @@ class GooglePrivacyDlpV2HybridInspectStatistics {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (abortedCount != null) {
-      _json["abortedCount"] = abortedCount;
+      _json['abortedCount'] = abortedCount;
     }
     if (pendingCount != null) {
-      _json["pendingCount"] = pendingCount;
+      _json['pendingCount'] = pendingCount;
     }
     if (processedCount != null) {
-      _json["processedCount"] = processedCount;
+      _json['processedCount'] = processedCount;
     }
     return _json;
   }
@@ -10582,19 +10581,19 @@ class GooglePrivacyDlpV2HybridOptions {
   GooglePrivacyDlpV2HybridOptions();
 
   GooglePrivacyDlpV2HybridOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("requiredFindingLabelKeys")) {
+    if (_json.containsKey('requiredFindingLabelKeys')) {
       requiredFindingLabelKeys =
-          (_json["requiredFindingLabelKeys"] as core.List).cast<core.String>();
+          (_json['requiredFindingLabelKeys'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("tableOptions")) {
+    if (_json.containsKey('tableOptions')) {
       tableOptions =
-          GooglePrivacyDlpV2TableOptions.fromJson(_json["tableOptions"]);
+          GooglePrivacyDlpV2TableOptions.fromJson(_json['tableOptions']);
     }
   }
 
@@ -10602,16 +10601,16 @@ class GooglePrivacyDlpV2HybridOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (requiredFindingLabelKeys != null) {
-      _json["requiredFindingLabelKeys"] = requiredFindingLabelKeys;
+      _json['requiredFindingLabelKeys'] = requiredFindingLabelKeys;
     }
     if (tableOptions != null) {
-      _json["tableOptions"] = tableOptions.toJson();
+      _json['tableOptions'] = tableOptions.toJson();
     }
     return _json;
   }
@@ -10626,8 +10625,8 @@ class GooglePrivacyDlpV2ImageLocation {
   GooglePrivacyDlpV2ImageLocation();
 
   GooglePrivacyDlpV2ImageLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBoxes")) {
-      boundingBoxes = (_json["boundingBoxes"] as core.List)
+    if (_json.containsKey('boundingBoxes')) {
+      boundingBoxes = (_json['boundingBoxes'] as core.List)
           .map<GooglePrivacyDlpV2BoundingBox>(
               (value) => GooglePrivacyDlpV2BoundingBox.fromJson(value))
           .toList();
@@ -10638,7 +10637,7 @@ class GooglePrivacyDlpV2ImageLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBoxes != null) {
-      _json["boundingBoxes"] =
+      _json['boundingBoxes'] =
           boundingBoxes.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -10664,15 +10663,15 @@ class GooglePrivacyDlpV2ImageRedactionConfig {
   GooglePrivacyDlpV2ImageRedactionConfig();
 
   GooglePrivacyDlpV2ImageRedactionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("infoType")) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+    if (_json.containsKey('infoType')) {
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
     }
-    if (_json.containsKey("redactAllText")) {
-      redactAllText = _json["redactAllText"];
+    if (_json.containsKey('redactAllText')) {
+      redactAllText = _json['redactAllText'];
     }
-    if (_json.containsKey("redactionColor")) {
+    if (_json.containsKey('redactionColor')) {
       redactionColor =
-          GooglePrivacyDlpV2Color.fromJson(_json["redactionColor"]);
+          GooglePrivacyDlpV2Color.fromJson(_json['redactionColor']);
     }
   }
 
@@ -10680,13 +10679,13 @@ class GooglePrivacyDlpV2ImageRedactionConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (infoType != null) {
-      _json["infoType"] = infoType.toJson();
+      _json['infoType'] = infoType.toJson();
     }
     if (redactAllText != null) {
-      _json["redactAllText"] = redactAllText;
+      _json['redactAllText'] = redactAllText;
     }
     if (redactionColor != null) {
-      _json["redactionColor"] = redactionColor.toJson();
+      _json['redactionColor'] = redactionColor.toJson();
     }
     return _json;
   }
@@ -10704,8 +10703,8 @@ class GooglePrivacyDlpV2InfoType {
   GooglePrivacyDlpV2InfoType();
 
   GooglePrivacyDlpV2InfoType.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -10713,7 +10712,7 @@ class GooglePrivacyDlpV2InfoType {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -10737,17 +10736,17 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   GooglePrivacyDlpV2InfoTypeDescription();
 
   GooglePrivacyDlpV2InfoTypeDescription.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("supportedBy")) {
-      supportedBy = (_json["supportedBy"] as core.List).cast<core.String>();
+    if (_json.containsKey('supportedBy')) {
+      supportedBy = (_json['supportedBy'] as core.List).cast<core.String>();
     }
   }
 
@@ -10755,16 +10754,16 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (supportedBy != null) {
-      _json["supportedBy"] = supportedBy;
+      _json['supportedBy'] = supportedBy;
     }
     return _json;
   }
@@ -10785,11 +10784,11 @@ class GooglePrivacyDlpV2InfoTypeLimit {
   GooglePrivacyDlpV2InfoTypeLimit();
 
   GooglePrivacyDlpV2InfoTypeLimit.fromJson(core.Map _json) {
-    if (_json.containsKey("infoType")) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+    if (_json.containsKey('infoType')) {
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
     }
-    if (_json.containsKey("maxFindings")) {
-      maxFindings = _json["maxFindings"];
+    if (_json.containsKey('maxFindings')) {
+      maxFindings = _json['maxFindings'];
     }
   }
 
@@ -10797,10 +10796,10 @@ class GooglePrivacyDlpV2InfoTypeLimit {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (infoType != null) {
-      _json["infoType"] = infoType.toJson();
+      _json['infoType'] = infoType.toJson();
     }
     if (maxFindings != null) {
-      _json["maxFindings"] = maxFindings;
+      _json['maxFindings'] = maxFindings;
     }
     return _json;
   }
@@ -10817,11 +10816,11 @@ class GooglePrivacyDlpV2InfoTypeStats {
   GooglePrivacyDlpV2InfoTypeStats();
 
   GooglePrivacyDlpV2InfoTypeStats.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("infoType")) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+    if (_json.containsKey('infoType')) {
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
     }
   }
 
@@ -10829,10 +10828,10 @@ class GooglePrivacyDlpV2InfoTypeStats {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (infoType != null) {
-      _json["infoType"] = infoType.toJson();
+      _json['infoType'] = infoType.toJson();
     }
     return _json;
   }
@@ -10852,16 +10851,16 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
   GooglePrivacyDlpV2InfoTypeTransformation();
 
   GooglePrivacyDlpV2InfoTypeTransformation.fromJson(core.Map _json) {
-    if (_json.containsKey("infoTypes")) {
-      infoTypes = (_json["infoTypes"] as core.List)
+    if (_json.containsKey('infoTypes')) {
+      infoTypes = (_json['infoTypes'] as core.List)
           .map<GooglePrivacyDlpV2InfoType>(
               (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("primitiveTransformation")) {
+    if (_json.containsKey('primitiveTransformation')) {
       primitiveTransformation =
           GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
-              _json["primitiveTransformation"]);
+              _json['primitiveTransformation']);
     }
   }
 
@@ -10869,10 +10868,10 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
+      _json['infoTypes'] = infoTypes.map((value) => value.toJson()).toList();
     }
     if (primitiveTransformation != null) {
-      _json["primitiveTransformation"] = primitiveTransformation.toJson();
+      _json['primitiveTransformation'] = primitiveTransformation.toJson();
     }
     return _json;
   }
@@ -10889,8 +10888,8 @@ class GooglePrivacyDlpV2InfoTypeTransformations {
   GooglePrivacyDlpV2InfoTypeTransformations();
 
   GooglePrivacyDlpV2InfoTypeTransformations.fromJson(core.Map _json) {
-    if (_json.containsKey("transformations")) {
-      transformations = (_json["transformations"] as core.List)
+    if (_json.containsKey('transformations')) {
+      transformations = (_json['transformations'] as core.List)
           .map<GooglePrivacyDlpV2InfoTypeTransformation>((value) =>
               GooglePrivacyDlpV2InfoTypeTransformation.fromJson(value))
           .toList();
@@ -10901,7 +10900,7 @@ class GooglePrivacyDlpV2InfoTypeTransformations {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (transformations != null) {
-      _json["transformations"] =
+      _json['transformations'] =
           transformations.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -10959,36 +10958,36 @@ class GooglePrivacyDlpV2InspectConfig {
   GooglePrivacyDlpV2InspectConfig();
 
   GooglePrivacyDlpV2InspectConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("contentOptions")) {
+    if (_json.containsKey('contentOptions')) {
       contentOptions =
-          (_json["contentOptions"] as core.List).cast<core.String>();
+          (_json['contentOptions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("customInfoTypes")) {
-      customInfoTypes = (_json["customInfoTypes"] as core.List)
+    if (_json.containsKey('customInfoTypes')) {
+      customInfoTypes = (_json['customInfoTypes'] as core.List)
           .map<GooglePrivacyDlpV2CustomInfoType>(
               (value) => GooglePrivacyDlpV2CustomInfoType.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("excludeInfoTypes")) {
-      excludeInfoTypes = _json["excludeInfoTypes"];
+    if (_json.containsKey('excludeInfoTypes')) {
+      excludeInfoTypes = _json['excludeInfoTypes'];
     }
-    if (_json.containsKey("includeQuote")) {
-      includeQuote = _json["includeQuote"];
+    if (_json.containsKey('includeQuote')) {
+      includeQuote = _json['includeQuote'];
     }
-    if (_json.containsKey("infoTypes")) {
-      infoTypes = (_json["infoTypes"] as core.List)
+    if (_json.containsKey('infoTypes')) {
+      infoTypes = (_json['infoTypes'] as core.List)
           .map<GooglePrivacyDlpV2InfoType>(
               (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("limits")) {
-      limits = GooglePrivacyDlpV2FindingLimits.fromJson(_json["limits"]);
+    if (_json.containsKey('limits')) {
+      limits = GooglePrivacyDlpV2FindingLimits.fromJson(_json['limits']);
     }
-    if (_json.containsKey("minLikelihood")) {
-      minLikelihood = _json["minLikelihood"];
+    if (_json.containsKey('minLikelihood')) {
+      minLikelihood = _json['minLikelihood'];
     }
-    if (_json.containsKey("ruleSet")) {
-      ruleSet = (_json["ruleSet"] as core.List)
+    if (_json.containsKey('ruleSet')) {
+      ruleSet = (_json['ruleSet'] as core.List)
           .map<GooglePrivacyDlpV2InspectionRuleSet>(
               (value) => GooglePrivacyDlpV2InspectionRuleSet.fromJson(value))
           .toList();
@@ -10999,29 +10998,29 @@ class GooglePrivacyDlpV2InspectConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentOptions != null) {
-      _json["contentOptions"] = contentOptions;
+      _json['contentOptions'] = contentOptions;
     }
     if (customInfoTypes != null) {
-      _json["customInfoTypes"] =
+      _json['customInfoTypes'] =
           customInfoTypes.map((value) => value.toJson()).toList();
     }
     if (excludeInfoTypes != null) {
-      _json["excludeInfoTypes"] = excludeInfoTypes;
+      _json['excludeInfoTypes'] = excludeInfoTypes;
     }
     if (includeQuote != null) {
-      _json["includeQuote"] = includeQuote;
+      _json['includeQuote'] = includeQuote;
     }
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
+      _json['infoTypes'] = infoTypes.map((value) => value.toJson()).toList();
     }
     if (limits != null) {
-      _json["limits"] = limits.toJson();
+      _json['limits'] = limits.toJson();
     }
     if (minLikelihood != null) {
-      _json["minLikelihood"] = minLikelihood;
+      _json['minLikelihood'] = minLikelihood;
     }
     if (ruleSet != null) {
-      _json["ruleSet"] = ruleSet.map((value) => value.toJson()).toList();
+      _json['ruleSet'] = ruleSet.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11049,18 +11048,18 @@ class GooglePrivacyDlpV2InspectContentRequest {
   GooglePrivacyDlpV2InspectContentRequest();
 
   GooglePrivacyDlpV2InspectContentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("inspectConfig")) {
+    if (_json.containsKey('inspectConfig')) {
       inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
     }
-    if (_json.containsKey("inspectTemplateName")) {
-      inspectTemplateName = _json["inspectTemplateName"];
+    if (_json.containsKey('inspectTemplateName')) {
+      inspectTemplateName = _json['inspectTemplateName'];
     }
-    if (_json.containsKey("item")) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+    if (_json.containsKey('item')) {
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
   }
 
@@ -11068,16 +11067,16 @@ class GooglePrivacyDlpV2InspectContentRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inspectConfig != null) {
-      _json["inspectConfig"] = inspectConfig.toJson();
+      _json['inspectConfig'] = inspectConfig.toJson();
     }
     if (inspectTemplateName != null) {
-      _json["inspectTemplateName"] = inspectTemplateName;
+      _json['inspectTemplateName'] = inspectTemplateName;
     }
     if (item != null) {
-      _json["item"] = item.toJson();
+      _json['item'] = item.toJson();
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     return _json;
   }
@@ -11091,8 +11090,8 @@ class GooglePrivacyDlpV2InspectContentResponse {
   GooglePrivacyDlpV2InspectContentResponse();
 
   GooglePrivacyDlpV2InspectContentResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("result")) {
-      result = GooglePrivacyDlpV2InspectResult.fromJson(_json["result"]);
+    if (_json.containsKey('result')) {
+      result = GooglePrivacyDlpV2InspectResult.fromJson(_json['result']);
     }
   }
 
@@ -11100,7 +11099,7 @@ class GooglePrivacyDlpV2InspectContentResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (result != null) {
-      _json["result"] = result.toJson();
+      _json['result'] = result.toJson();
     }
     return _json;
   }
@@ -11117,12 +11116,12 @@ class GooglePrivacyDlpV2InspectDataSourceDetails {
   GooglePrivacyDlpV2InspectDataSourceDetails();
 
   GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("requestedOptions")) {
+    if (_json.containsKey('requestedOptions')) {
       requestedOptions = GooglePrivacyDlpV2RequestedOptions.fromJson(
-          _json["requestedOptions"]);
+          _json['requestedOptions']);
     }
-    if (_json.containsKey("result")) {
-      result = GooglePrivacyDlpV2Result.fromJson(_json["result"]);
+    if (_json.containsKey('result')) {
+      result = GooglePrivacyDlpV2Result.fromJson(_json['result']);
     }
   }
 
@@ -11130,10 +11129,10 @@ class GooglePrivacyDlpV2InspectDataSourceDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (requestedOptions != null) {
-      _json["requestedOptions"] = requestedOptions.toJson();
+      _json['requestedOptions'] = requestedOptions.toJson();
     }
     if (result != null) {
-      _json["result"] = result.toJson();
+      _json['result'] = result.toJson();
     }
     return _json;
   }
@@ -11158,22 +11157,22 @@ class GooglePrivacyDlpV2InspectJobConfig {
   GooglePrivacyDlpV2InspectJobConfig();
 
   GooglePrivacyDlpV2InspectJobConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("actions")) {
-      actions = (_json["actions"] as core.List)
+    if (_json.containsKey('actions')) {
+      actions = (_json['actions'] as core.List)
           .map<GooglePrivacyDlpV2Action>(
               (value) => GooglePrivacyDlpV2Action.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("inspectConfig")) {
+    if (_json.containsKey('inspectConfig')) {
       inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
     }
-    if (_json.containsKey("inspectTemplateName")) {
-      inspectTemplateName = _json["inspectTemplateName"];
+    if (_json.containsKey('inspectTemplateName')) {
+      inspectTemplateName = _json['inspectTemplateName'];
     }
-    if (_json.containsKey("storageConfig")) {
+    if (_json.containsKey('storageConfig')) {
       storageConfig =
-          GooglePrivacyDlpV2StorageConfig.fromJson(_json["storageConfig"]);
+          GooglePrivacyDlpV2StorageConfig.fromJson(_json['storageConfig']);
     }
   }
 
@@ -11181,16 +11180,16 @@ class GooglePrivacyDlpV2InspectJobConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actions != null) {
-      _json["actions"] = actions.map((value) => value.toJson()).toList();
+      _json['actions'] = actions.map((value) => value.toJson()).toList();
     }
     if (inspectConfig != null) {
-      _json["inspectConfig"] = inspectConfig.toJson();
+      _json['inspectConfig'] = inspectConfig.toJson();
     }
     if (inspectTemplateName != null) {
-      _json["inspectTemplateName"] = inspectTemplateName;
+      _json['inspectTemplateName'] = inspectTemplateName;
     }
     if (storageConfig != null) {
-      _json["storageConfig"] = storageConfig.toJson();
+      _json['storageConfig'] = storageConfig.toJson();
     }
     return _json;
   }
@@ -11212,14 +11211,14 @@ class GooglePrivacyDlpV2InspectResult {
   GooglePrivacyDlpV2InspectResult();
 
   GooglePrivacyDlpV2InspectResult.fromJson(core.Map _json) {
-    if (_json.containsKey("findings")) {
-      findings = (_json["findings"] as core.List)
+    if (_json.containsKey('findings')) {
+      findings = (_json['findings'] as core.List)
           .map<GooglePrivacyDlpV2Finding>(
               (value) => GooglePrivacyDlpV2Finding.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("findingsTruncated")) {
-      findingsTruncated = _json["findingsTruncated"];
+    if (_json.containsKey('findingsTruncated')) {
+      findingsTruncated = _json['findingsTruncated'];
     }
   }
 
@@ -11227,10 +11226,10 @@ class GooglePrivacyDlpV2InspectResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (findings != null) {
-      _json["findings"] = findings.map((value) => value.toJson()).toList();
+      _json['findings'] = findings.map((value) => value.toJson()).toList();
     }
     if (findingsTruncated != null) {
-      _json["findingsTruncated"] = findingsTruncated;
+      _json['findingsTruncated'] = findingsTruncated;
     }
     return _json;
   }
@@ -11264,24 +11263,24 @@ class GooglePrivacyDlpV2InspectTemplate {
   GooglePrivacyDlpV2InspectTemplate();
 
   GooglePrivacyDlpV2InspectTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("inspectConfig")) {
+    if (_json.containsKey('inspectConfig')) {
       inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -11289,22 +11288,22 @@ class GooglePrivacyDlpV2InspectTemplate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (inspectConfig != null) {
-      _json["inspectConfig"] = inspectConfig.toJson();
+      _json['inspectConfig'] = inspectConfig.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -11322,13 +11321,13 @@ class GooglePrivacyDlpV2InspectionRule {
   GooglePrivacyDlpV2InspectionRule();
 
   GooglePrivacyDlpV2InspectionRule.fromJson(core.Map _json) {
-    if (_json.containsKey("exclusionRule")) {
+    if (_json.containsKey('exclusionRule')) {
       exclusionRule =
-          GooglePrivacyDlpV2ExclusionRule.fromJson(_json["exclusionRule"]);
+          GooglePrivacyDlpV2ExclusionRule.fromJson(_json['exclusionRule']);
     }
-    if (_json.containsKey("hotwordRule")) {
+    if (_json.containsKey('hotwordRule')) {
       hotwordRule =
-          GooglePrivacyDlpV2HotwordRule.fromJson(_json["hotwordRule"]);
+          GooglePrivacyDlpV2HotwordRule.fromJson(_json['hotwordRule']);
     }
   }
 
@@ -11336,10 +11335,10 @@ class GooglePrivacyDlpV2InspectionRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exclusionRule != null) {
-      _json["exclusionRule"] = exclusionRule.toJson();
+      _json['exclusionRule'] = exclusionRule.toJson();
     }
     if (hotwordRule != null) {
-      _json["hotwordRule"] = hotwordRule.toJson();
+      _json['hotwordRule'] = hotwordRule.toJson();
     }
     return _json;
   }
@@ -11358,14 +11357,14 @@ class GooglePrivacyDlpV2InspectionRuleSet {
   GooglePrivacyDlpV2InspectionRuleSet();
 
   GooglePrivacyDlpV2InspectionRuleSet.fromJson(core.Map _json) {
-    if (_json.containsKey("infoTypes")) {
-      infoTypes = (_json["infoTypes"] as core.List)
+    if (_json.containsKey('infoTypes')) {
+      infoTypes = (_json['infoTypes'] as core.List)
           .map<GooglePrivacyDlpV2InfoType>(
               (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("rules")) {
-      rules = (_json["rules"] as core.List)
+    if (_json.containsKey('rules')) {
+      rules = (_json['rules'] as core.List)
           .map<GooglePrivacyDlpV2InspectionRule>(
               (value) => GooglePrivacyDlpV2InspectionRule.fromJson(value))
           .toList();
@@ -11376,10 +11375,10 @@ class GooglePrivacyDlpV2InspectionRuleSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
+      _json['infoTypes'] = infoTypes.map((value) => value.toJson()).toList();
     }
     if (rules != null) {
-      _json["rules"] = rules.map((value) => value.toJson()).toList();
+      _json['rules'] = rules.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11447,42 +11446,42 @@ class GooglePrivacyDlpV2JobTrigger {
   GooglePrivacyDlpV2JobTrigger();
 
   GooglePrivacyDlpV2JobTrigger.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("errors")) {
-      errors = (_json["errors"] as core.List)
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
           .map<GooglePrivacyDlpV2Error>(
               (value) => GooglePrivacyDlpV2Error.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("inspectJob")) {
+    if (_json.containsKey('inspectJob')) {
       inspectJob =
-          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json["inspectJob"]);
+          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json['inspectJob']);
     }
-    if (_json.containsKey("lastRunTime")) {
-      lastRunTime = _json["lastRunTime"];
+    if (_json.containsKey('lastRunTime')) {
+      lastRunTime = _json['lastRunTime'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("triggers")) {
-      triggers = (_json["triggers"] as core.List)
+    if (_json.containsKey('triggers')) {
+      triggers = (_json['triggers'] as core.List)
           .map<GooglePrivacyDlpV2Trigger>(
               (value) => GooglePrivacyDlpV2Trigger.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -11490,34 +11489,34 @@ class GooglePrivacyDlpV2JobTrigger {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => value.toJson()).toList();
+      _json['errors'] = errors.map((value) => value.toJson()).toList();
     }
     if (inspectJob != null) {
-      _json["inspectJob"] = inspectJob.toJson();
+      _json['inspectJob'] = inspectJob.toJson();
     }
     if (lastRunTime != null) {
-      _json["lastRunTime"] = lastRunTime;
+      _json['lastRunTime'] = lastRunTime;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (triggers != null) {
-      _json["triggers"] = triggers.map((value) => value.toJson()).toList();
+      _json['triggers'] = triggers.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -11545,11 +11544,11 @@ class GooglePrivacyDlpV2KAnonymityConfig {
   GooglePrivacyDlpV2KAnonymityConfig();
 
   GooglePrivacyDlpV2KAnonymityConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("entityId")) {
-      entityId = GooglePrivacyDlpV2EntityId.fromJson(_json["entityId"]);
+    if (_json.containsKey('entityId')) {
+      entityId = GooglePrivacyDlpV2EntityId.fromJson(_json['entityId']);
     }
-    if (_json.containsKey("quasiIds")) {
-      quasiIds = (_json["quasiIds"] as core.List)
+    if (_json.containsKey('quasiIds')) {
+      quasiIds = (_json['quasiIds'] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
               (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
@@ -11560,10 +11559,10 @@ class GooglePrivacyDlpV2KAnonymityConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entityId != null) {
-      _json["entityId"] = entityId.toJson();
+      _json['entityId'] = entityId.toJson();
     }
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
+      _json['quasiIds'] = quasiIds.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11583,11 +11582,11 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClass {
   GooglePrivacyDlpV2KAnonymityEquivalenceClass();
 
   GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(core.Map _json) {
-    if (_json.containsKey("equivalenceClassSize")) {
-      equivalenceClassSize = _json["equivalenceClassSize"];
+    if (_json.containsKey('equivalenceClassSize')) {
+      equivalenceClassSize = _json['equivalenceClassSize'];
     }
-    if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
+    if (_json.containsKey('quasiIdsValues')) {
+      quasiIdsValues = (_json['quasiIdsValues'] as core.List)
           .map<GooglePrivacyDlpV2Value>(
               (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
@@ -11598,10 +11597,10 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClass {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (equivalenceClassSize != null) {
-      _json["equivalenceClassSize"] = equivalenceClassSize;
+      _json['equivalenceClassSize'] = equivalenceClassSize;
     }
     if (quasiIdsValues != null) {
-      _json["quasiIdsValues"] =
+      _json['quasiIdsValues'] =
           quasiIdsValues.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -11629,23 +11628,23 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucket {
   GooglePrivacyDlpV2KAnonymityHistogramBucket();
 
   GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketSize")) {
-      bucketSize = _json["bucketSize"];
+    if (_json.containsKey('bucketSize')) {
+      bucketSize = _json['bucketSize'];
     }
-    if (_json.containsKey("bucketValueCount")) {
-      bucketValueCount = _json["bucketValueCount"];
+    if (_json.containsKey('bucketValueCount')) {
+      bucketValueCount = _json['bucketValueCount'];
     }
-    if (_json.containsKey("bucketValues")) {
-      bucketValues = (_json["bucketValues"] as core.List)
+    if (_json.containsKey('bucketValues')) {
+      bucketValues = (_json['bucketValues'] as core.List)
           .map<GooglePrivacyDlpV2KAnonymityEquivalenceClass>((value) =>
               GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("equivalenceClassSizeLowerBound")) {
-      equivalenceClassSizeLowerBound = _json["equivalenceClassSizeLowerBound"];
+    if (_json.containsKey('equivalenceClassSizeLowerBound')) {
+      equivalenceClassSizeLowerBound = _json['equivalenceClassSizeLowerBound'];
     }
-    if (_json.containsKey("equivalenceClassSizeUpperBound")) {
-      equivalenceClassSizeUpperBound = _json["equivalenceClassSizeUpperBound"];
+    if (_json.containsKey('equivalenceClassSizeUpperBound')) {
+      equivalenceClassSizeUpperBound = _json['equivalenceClassSizeUpperBound'];
     }
   }
 
@@ -11653,20 +11652,20 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucket {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketSize != null) {
-      _json["bucketSize"] = bucketSize;
+      _json['bucketSize'] = bucketSize;
     }
     if (bucketValueCount != null) {
-      _json["bucketValueCount"] = bucketValueCount;
+      _json['bucketValueCount'] = bucketValueCount;
     }
     if (bucketValues != null) {
-      _json["bucketValues"] =
+      _json['bucketValues'] =
           bucketValues.map((value) => value.toJson()).toList();
     }
     if (equivalenceClassSizeLowerBound != null) {
-      _json["equivalenceClassSizeLowerBound"] = equivalenceClassSizeLowerBound;
+      _json['equivalenceClassSizeLowerBound'] = equivalenceClassSizeLowerBound;
     }
     if (equivalenceClassSizeUpperBound != null) {
-      _json["equivalenceClassSizeUpperBound"] = equivalenceClassSizeUpperBound;
+      _json['equivalenceClassSizeUpperBound'] = equivalenceClassSizeUpperBound;
     }
     return _json;
   }
@@ -11681,9 +11680,9 @@ class GooglePrivacyDlpV2KAnonymityResult {
   GooglePrivacyDlpV2KAnonymityResult();
 
   GooglePrivacyDlpV2KAnonymityResult.fromJson(core.Map _json) {
-    if (_json.containsKey("equivalenceClassHistogramBuckets")) {
+    if (_json.containsKey('equivalenceClassHistogramBuckets')) {
       equivalenceClassHistogramBuckets =
-          (_json["equivalenceClassHistogramBuckets"] as core.List)
+          (_json['equivalenceClassHistogramBuckets'] as core.List)
               .map<GooglePrivacyDlpV2KAnonymityHistogramBucket>((value) =>
                   GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(value))
               .toList();
@@ -11694,7 +11693,7 @@ class GooglePrivacyDlpV2KAnonymityResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (equivalenceClassHistogramBuckets != null) {
-      _json["equivalenceClassHistogramBuckets"] =
+      _json['equivalenceClassHistogramBuckets'] =
           equivalenceClassHistogramBuckets
               .map((value) => value.toJson())
               .toList();
@@ -11727,20 +11726,20 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
   GooglePrivacyDlpV2KMapEstimationConfig();
 
   GooglePrivacyDlpV2KMapEstimationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auxiliaryTables")) {
-      auxiliaryTables = (_json["auxiliaryTables"] as core.List)
+    if (_json.containsKey('auxiliaryTables')) {
+      auxiliaryTables = (_json['auxiliaryTables'] as core.List)
           .map<GooglePrivacyDlpV2AuxiliaryTable>(
               (value) => GooglePrivacyDlpV2AuxiliaryTable.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("quasiIds")) {
-      quasiIds = (_json["quasiIds"] as core.List)
+    if (_json.containsKey('quasiIds')) {
+      quasiIds = (_json['quasiIds'] as core.List)
           .map<GooglePrivacyDlpV2TaggedField>(
               (value) => GooglePrivacyDlpV2TaggedField.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("regionCode")) {
-      regionCode = _json["regionCode"];
+    if (_json.containsKey('regionCode')) {
+      regionCode = _json['regionCode'];
     }
   }
 
@@ -11748,14 +11747,14 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auxiliaryTables != null) {
-      _json["auxiliaryTables"] =
+      _json['auxiliaryTables'] =
           auxiliaryTables.map((value) => value.toJson()).toList();
     }
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
+      _json['quasiIds'] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (regionCode != null) {
-      _json["regionCode"] = regionCode;
+      _json['regionCode'] = regionCode;
     }
     return _json;
   }
@@ -11787,23 +11786,23 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucket {
   GooglePrivacyDlpV2KMapEstimationHistogramBucket();
 
   GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketSize")) {
-      bucketSize = _json["bucketSize"];
+    if (_json.containsKey('bucketSize')) {
+      bucketSize = _json['bucketSize'];
     }
-    if (_json.containsKey("bucketValueCount")) {
-      bucketValueCount = _json["bucketValueCount"];
+    if (_json.containsKey('bucketValueCount')) {
+      bucketValueCount = _json['bucketValueCount'];
     }
-    if (_json.containsKey("bucketValues")) {
-      bucketValues = (_json["bucketValues"] as core.List)
+    if (_json.containsKey('bucketValues')) {
+      bucketValues = (_json['bucketValues'] as core.List)
           .map<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>((value) =>
               GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("maxAnonymity")) {
-      maxAnonymity = _json["maxAnonymity"];
+    if (_json.containsKey('maxAnonymity')) {
+      maxAnonymity = _json['maxAnonymity'];
     }
-    if (_json.containsKey("minAnonymity")) {
-      minAnonymity = _json["minAnonymity"];
+    if (_json.containsKey('minAnonymity')) {
+      minAnonymity = _json['minAnonymity'];
     }
   }
 
@@ -11811,20 +11810,20 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucket {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketSize != null) {
-      _json["bucketSize"] = bucketSize;
+      _json['bucketSize'] = bucketSize;
     }
     if (bucketValueCount != null) {
-      _json["bucketValueCount"] = bucketValueCount;
+      _json['bucketValueCount'] = bucketValueCount;
     }
     if (bucketValues != null) {
-      _json["bucketValues"] =
+      _json['bucketValues'] =
           bucketValues.map((value) => value.toJson()).toList();
     }
     if (maxAnonymity != null) {
-      _json["maxAnonymity"] = maxAnonymity;
+      _json['maxAnonymity'] = maxAnonymity;
     }
     if (minAnonymity != null) {
-      _json["minAnonymity"] = minAnonymity;
+      _json['minAnonymity'] = minAnonymity;
     }
     return _json;
   }
@@ -11841,11 +11840,11 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
   GooglePrivacyDlpV2KMapEstimationQuasiIdValues();
 
   GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(core.Map _json) {
-    if (_json.containsKey("estimatedAnonymity")) {
-      estimatedAnonymity = _json["estimatedAnonymity"];
+    if (_json.containsKey('estimatedAnonymity')) {
+      estimatedAnonymity = _json['estimatedAnonymity'];
     }
-    if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
+    if (_json.containsKey('quasiIdsValues')) {
+      quasiIdsValues = (_json['quasiIdsValues'] as core.List)
           .map<GooglePrivacyDlpV2Value>(
               (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
@@ -11856,10 +11855,10 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (estimatedAnonymity != null) {
-      _json["estimatedAnonymity"] = estimatedAnonymity;
+      _json['estimatedAnonymity'] = estimatedAnonymity;
     }
     if (quasiIdsValues != null) {
-      _json["quasiIdsValues"] =
+      _json['quasiIdsValues'] =
           quasiIdsValues.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -11881,8 +11880,8 @@ class GooglePrivacyDlpV2KMapEstimationResult {
   GooglePrivacyDlpV2KMapEstimationResult();
 
   GooglePrivacyDlpV2KMapEstimationResult.fromJson(core.Map _json) {
-    if (_json.containsKey("kMapEstimationHistogram")) {
-      kMapEstimationHistogram = (_json["kMapEstimationHistogram"] as core.List)
+    if (_json.containsKey('kMapEstimationHistogram')) {
+      kMapEstimationHistogram = (_json['kMapEstimationHistogram'] as core.List)
           .map<GooglePrivacyDlpV2KMapEstimationHistogramBucket>((value) =>
               GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(value))
           .toList();
@@ -11893,7 +11892,7 @@ class GooglePrivacyDlpV2KMapEstimationResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kMapEstimationHistogram != null) {
-      _json["kMapEstimationHistogram"] =
+      _json['kMapEstimationHistogram'] =
           kMapEstimationHistogram.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -11921,12 +11920,12 @@ class GooglePrivacyDlpV2Key {
   GooglePrivacyDlpV2Key();
 
   GooglePrivacyDlpV2Key.fromJson(core.Map _json) {
-    if (_json.containsKey("partitionId")) {
+    if (_json.containsKey('partitionId')) {
       partitionId =
-          GooglePrivacyDlpV2PartitionId.fromJson(_json["partitionId"]);
+          GooglePrivacyDlpV2PartitionId.fromJson(_json['partitionId']);
     }
-    if (_json.containsKey("path")) {
-      path = (_json["path"] as core.List)
+    if (_json.containsKey('path')) {
+      path = (_json['path'] as core.List)
           .map<GooglePrivacyDlpV2PathElement>(
               (value) => GooglePrivacyDlpV2PathElement.fromJson(value))
           .toList();
@@ -11937,10 +11936,10 @@ class GooglePrivacyDlpV2Key {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (partitionId != null) {
-      _json["partitionId"] = partitionId.toJson();
+      _json['partitionId'] = partitionId.toJson();
     }
     if (path != null) {
-      _json["path"] = path.map((value) => value.toJson()).toList();
+      _json['path'] = path.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11954,8 +11953,8 @@ class GooglePrivacyDlpV2KindExpression {
   GooglePrivacyDlpV2KindExpression();
 
   GooglePrivacyDlpV2KindExpression.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -11963,7 +11962,7 @@ class GooglePrivacyDlpV2KindExpression {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -11984,17 +11983,17 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKey {
 
   set wrappedKeyAsBytes(core.List<core.int> _bytes) {
     wrappedKey =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   GooglePrivacyDlpV2KmsWrappedCryptoKey();
 
   GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(core.Map _json) {
-    if (_json.containsKey("cryptoKeyName")) {
-      cryptoKeyName = _json["cryptoKeyName"];
+    if (_json.containsKey('cryptoKeyName')) {
+      cryptoKeyName = _json['cryptoKeyName'];
     }
-    if (_json.containsKey("wrappedKey")) {
-      wrappedKey = _json["wrappedKey"];
+    if (_json.containsKey('wrappedKey')) {
+      wrappedKey = _json['wrappedKey'];
     }
   }
 
@@ -12002,10 +12001,10 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cryptoKeyName != null) {
-      _json["cryptoKeyName"] = cryptoKeyName;
+      _json['cryptoKeyName'] = cryptoKeyName;
     }
     if (wrappedKey != null) {
-      _json["wrappedKey"] = wrappedKey;
+      _json['wrappedKey'] = wrappedKey;
     }
     return _json;
   }
@@ -12024,15 +12023,15 @@ class GooglePrivacyDlpV2LDiversityConfig {
   GooglePrivacyDlpV2LDiversityConfig();
 
   GooglePrivacyDlpV2LDiversityConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("quasiIds")) {
-      quasiIds = (_json["quasiIds"] as core.List)
+    if (_json.containsKey('quasiIds')) {
+      quasiIds = (_json['quasiIds'] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
               (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("sensitiveAttribute")) {
+    if (_json.containsKey('sensitiveAttribute')) {
       sensitiveAttribute =
-          GooglePrivacyDlpV2FieldId.fromJson(_json["sensitiveAttribute"]);
+          GooglePrivacyDlpV2FieldId.fromJson(_json['sensitiveAttribute']);
     }
   }
 
@@ -12040,10 +12039,10 @@ class GooglePrivacyDlpV2LDiversityConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
+      _json['quasiIds'] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (sensitiveAttribute != null) {
-      _json["sensitiveAttribute"] = sensitiveAttribute.toJson();
+      _json['sensitiveAttribute'] = sensitiveAttribute.toJson();
     }
     return _json;
   }
@@ -12067,20 +12066,20 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClass {
   GooglePrivacyDlpV2LDiversityEquivalenceClass();
 
   GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(core.Map _json) {
-    if (_json.containsKey("equivalenceClassSize")) {
-      equivalenceClassSize = _json["equivalenceClassSize"];
+    if (_json.containsKey('equivalenceClassSize')) {
+      equivalenceClassSize = _json['equivalenceClassSize'];
     }
-    if (_json.containsKey("numDistinctSensitiveValues")) {
-      numDistinctSensitiveValues = _json["numDistinctSensitiveValues"];
+    if (_json.containsKey('numDistinctSensitiveValues')) {
+      numDistinctSensitiveValues = _json['numDistinctSensitiveValues'];
     }
-    if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
+    if (_json.containsKey('quasiIdsValues')) {
+      quasiIdsValues = (_json['quasiIdsValues'] as core.List)
           .map<GooglePrivacyDlpV2Value>(
               (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("topSensitiveValues")) {
-      topSensitiveValues = (_json["topSensitiveValues"] as core.List)
+    if (_json.containsKey('topSensitiveValues')) {
+      topSensitiveValues = (_json['topSensitiveValues'] as core.List)
           .map<GooglePrivacyDlpV2ValueFrequency>(
               (value) => GooglePrivacyDlpV2ValueFrequency.fromJson(value))
           .toList();
@@ -12091,17 +12090,17 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClass {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (equivalenceClassSize != null) {
-      _json["equivalenceClassSize"] = equivalenceClassSize;
+      _json['equivalenceClassSize'] = equivalenceClassSize;
     }
     if (numDistinctSensitiveValues != null) {
-      _json["numDistinctSensitiveValues"] = numDistinctSensitiveValues;
+      _json['numDistinctSensitiveValues'] = numDistinctSensitiveValues;
     }
     if (quasiIdsValues != null) {
-      _json["quasiIdsValues"] =
+      _json['quasiIdsValues'] =
           quasiIdsValues.map((value) => value.toJson()).toList();
     }
     if (topSensitiveValues != null) {
-      _json["topSensitiveValues"] =
+      _json['topSensitiveValues'] =
           topSensitiveValues.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -12131,25 +12130,25 @@ class GooglePrivacyDlpV2LDiversityHistogramBucket {
   GooglePrivacyDlpV2LDiversityHistogramBucket();
 
   GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketSize")) {
-      bucketSize = _json["bucketSize"];
+    if (_json.containsKey('bucketSize')) {
+      bucketSize = _json['bucketSize'];
     }
-    if (_json.containsKey("bucketValueCount")) {
-      bucketValueCount = _json["bucketValueCount"];
+    if (_json.containsKey('bucketValueCount')) {
+      bucketValueCount = _json['bucketValueCount'];
     }
-    if (_json.containsKey("bucketValues")) {
-      bucketValues = (_json["bucketValues"] as core.List)
+    if (_json.containsKey('bucketValues')) {
+      bucketValues = (_json['bucketValues'] as core.List)
           .map<GooglePrivacyDlpV2LDiversityEquivalenceClass>((value) =>
               GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("sensitiveValueFrequencyLowerBound")) {
+    if (_json.containsKey('sensitiveValueFrequencyLowerBound')) {
       sensitiveValueFrequencyLowerBound =
-          _json["sensitiveValueFrequencyLowerBound"];
+          _json['sensitiveValueFrequencyLowerBound'];
     }
-    if (_json.containsKey("sensitiveValueFrequencyUpperBound")) {
+    if (_json.containsKey('sensitiveValueFrequencyUpperBound')) {
       sensitiveValueFrequencyUpperBound =
-          _json["sensitiveValueFrequencyUpperBound"];
+          _json['sensitiveValueFrequencyUpperBound'];
     }
   }
 
@@ -12157,21 +12156,21 @@ class GooglePrivacyDlpV2LDiversityHistogramBucket {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketSize != null) {
-      _json["bucketSize"] = bucketSize;
+      _json['bucketSize'] = bucketSize;
     }
     if (bucketValueCount != null) {
-      _json["bucketValueCount"] = bucketValueCount;
+      _json['bucketValueCount'] = bucketValueCount;
     }
     if (bucketValues != null) {
-      _json["bucketValues"] =
+      _json['bucketValues'] =
           bucketValues.map((value) => value.toJson()).toList();
     }
     if (sensitiveValueFrequencyLowerBound != null) {
-      _json["sensitiveValueFrequencyLowerBound"] =
+      _json['sensitiveValueFrequencyLowerBound'] =
           sensitiveValueFrequencyLowerBound;
     }
     if (sensitiveValueFrequencyUpperBound != null) {
-      _json["sensitiveValueFrequencyUpperBound"] =
+      _json['sensitiveValueFrequencyUpperBound'] =
           sensitiveValueFrequencyUpperBound;
     }
     return _json;
@@ -12187,9 +12186,9 @@ class GooglePrivacyDlpV2LDiversityResult {
   GooglePrivacyDlpV2LDiversityResult();
 
   GooglePrivacyDlpV2LDiversityResult.fromJson(core.Map _json) {
-    if (_json.containsKey("sensitiveValueFrequencyHistogramBuckets")) {
+    if (_json.containsKey('sensitiveValueFrequencyHistogramBuckets')) {
       sensitiveValueFrequencyHistogramBuckets =
-          (_json["sensitiveValueFrequencyHistogramBuckets"] as core.List)
+          (_json['sensitiveValueFrequencyHistogramBuckets'] as core.List)
               .map<GooglePrivacyDlpV2LDiversityHistogramBucket>((value) =>
                   GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(value))
               .toList();
@@ -12200,7 +12199,7 @@ class GooglePrivacyDlpV2LDiversityResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sensitiveValueFrequencyHistogramBuckets != null) {
-      _json["sensitiveValueFrequencyHistogramBuckets"] =
+      _json['sensitiveValueFrequencyHistogramBuckets'] =
           sensitiveValueFrequencyHistogramBuckets
               .map((value) => value.toJson())
               .toList();
@@ -12231,17 +12230,17 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
   GooglePrivacyDlpV2LargeCustomDictionaryConfig();
 
   GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("bigQueryField")) {
+    if (_json.containsKey('bigQueryField')) {
       bigQueryField =
-          GooglePrivacyDlpV2BigQueryField.fromJson(_json["bigQueryField"]);
+          GooglePrivacyDlpV2BigQueryField.fromJson(_json['bigQueryField']);
     }
-    if (_json.containsKey("cloudStorageFileSet")) {
+    if (_json.containsKey('cloudStorageFileSet')) {
       cloudStorageFileSet = GooglePrivacyDlpV2CloudStorageFileSet.fromJson(
-          _json["cloudStorageFileSet"]);
+          _json['cloudStorageFileSet']);
     }
-    if (_json.containsKey("outputPath")) {
+    if (_json.containsKey('outputPath')) {
       outputPath =
-          GooglePrivacyDlpV2CloudStoragePath.fromJson(_json["outputPath"]);
+          GooglePrivacyDlpV2CloudStoragePath.fromJson(_json['outputPath']);
     }
   }
 
@@ -12249,13 +12248,13 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bigQueryField != null) {
-      _json["bigQueryField"] = bigQueryField.toJson();
+      _json['bigQueryField'] = bigQueryField.toJson();
     }
     if (cloudStorageFileSet != null) {
-      _json["cloudStorageFileSet"] = cloudStorageFileSet.toJson();
+      _json['cloudStorageFileSet'] = cloudStorageFileSet.toJson();
     }
     if (outputPath != null) {
-      _json["outputPath"] = outputPath.toJson();
+      _json['outputPath'] = outputPath.toJson();
     }
     return _json;
   }
@@ -12269,8 +12268,8 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStats {
   GooglePrivacyDlpV2LargeCustomDictionaryStats();
 
   GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(core.Map _json) {
-    if (_json.containsKey("approxNumPhrases")) {
-      approxNumPhrases = _json["approxNumPhrases"];
+    if (_json.containsKey('approxNumPhrases')) {
+      approxNumPhrases = _json['approxNumPhrases'];
     }
   }
 
@@ -12278,7 +12277,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStats {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (approxNumPhrases != null) {
-      _json["approxNumPhrases"] = approxNumPhrases;
+      _json['approxNumPhrases'] = approxNumPhrases;
     }
     return _json;
   }
@@ -12325,11 +12324,11 @@ class GooglePrivacyDlpV2LikelihoodAdjustment {
   GooglePrivacyDlpV2LikelihoodAdjustment();
 
   GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(core.Map _json) {
-    if (_json.containsKey("fixedLikelihood")) {
-      fixedLikelihood = _json["fixedLikelihood"];
+    if (_json.containsKey('fixedLikelihood')) {
+      fixedLikelihood = _json['fixedLikelihood'];
     }
-    if (_json.containsKey("relativeLikelihood")) {
-      relativeLikelihood = _json["relativeLikelihood"];
+    if (_json.containsKey('relativeLikelihood')) {
+      relativeLikelihood = _json['relativeLikelihood'];
     }
   }
 
@@ -12337,10 +12336,10 @@ class GooglePrivacyDlpV2LikelihoodAdjustment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fixedLikelihood != null) {
-      _json["fixedLikelihood"] = fixedLikelihood;
+      _json['fixedLikelihood'] = fixedLikelihood;
     }
     if (relativeLikelihood != null) {
-      _json["relativeLikelihood"] = relativeLikelihood;
+      _json['relativeLikelihood'] = relativeLikelihood;
     }
     return _json;
   }
@@ -12359,14 +12358,14 @@ class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse();
 
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deidentifyTemplates")) {
-      deidentifyTemplates = (_json["deidentifyTemplates"] as core.List)
+    if (_json.containsKey('deidentifyTemplates')) {
+      deidentifyTemplates = (_json['deidentifyTemplates'] as core.List)
           .map<GooglePrivacyDlpV2DeidentifyTemplate>(
               (value) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -12374,11 +12373,11 @@ class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deidentifyTemplates != null) {
-      _json["deidentifyTemplates"] =
+      _json['deidentifyTemplates'] =
           deidentifyTemplates.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -12395,14 +12394,14 @@ class GooglePrivacyDlpV2ListDlpJobsResponse {
   GooglePrivacyDlpV2ListDlpJobsResponse();
 
   GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobs")) {
-      jobs = (_json["jobs"] as core.List)
+    if (_json.containsKey('jobs')) {
+      jobs = (_json['jobs'] as core.List)
           .map<GooglePrivacyDlpV2DlpJob>(
               (value) => GooglePrivacyDlpV2DlpJob.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -12410,10 +12409,10 @@ class GooglePrivacyDlpV2ListDlpJobsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (jobs != null) {
-      _json["jobs"] = jobs.map((value) => value.toJson()).toList();
+      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -12427,8 +12426,8 @@ class GooglePrivacyDlpV2ListInfoTypesResponse {
   GooglePrivacyDlpV2ListInfoTypesResponse();
 
   GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("infoTypes")) {
-      infoTypes = (_json["infoTypes"] as core.List)
+    if (_json.containsKey('infoTypes')) {
+      infoTypes = (_json['infoTypes'] as core.List)
           .map<GooglePrivacyDlpV2InfoTypeDescription>(
               (value) => GooglePrivacyDlpV2InfoTypeDescription.fromJson(value))
           .toList();
@@ -12439,7 +12438,7 @@ class GooglePrivacyDlpV2ListInfoTypesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
+      _json['infoTypes'] = infoTypes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12457,14 +12456,14 @@ class GooglePrivacyDlpV2ListInspectTemplatesResponse {
   GooglePrivacyDlpV2ListInspectTemplatesResponse();
 
   GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("inspectTemplates")) {
-      inspectTemplates = (_json["inspectTemplates"] as core.List)
+    if (_json.containsKey('inspectTemplates')) {
+      inspectTemplates = (_json['inspectTemplates'] as core.List)
           .map<GooglePrivacyDlpV2InspectTemplate>(
               (value) => GooglePrivacyDlpV2InspectTemplate.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -12472,11 +12471,11 @@ class GooglePrivacyDlpV2ListInspectTemplatesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inspectTemplates != null) {
-      _json["inspectTemplates"] =
+      _json['inspectTemplates'] =
           inspectTemplates.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -12494,14 +12493,14 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
   GooglePrivacyDlpV2ListJobTriggersResponse();
 
   GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobTriggers")) {
-      jobTriggers = (_json["jobTriggers"] as core.List)
+    if (_json.containsKey('jobTriggers')) {
+      jobTriggers = (_json['jobTriggers'] as core.List)
           .map<GooglePrivacyDlpV2JobTrigger>(
               (value) => GooglePrivacyDlpV2JobTrigger.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -12509,11 +12508,11 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (jobTriggers != null) {
-      _json["jobTriggers"] =
+      _json['jobTriggers'] =
           jobTriggers.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -12531,11 +12530,11 @@ class GooglePrivacyDlpV2ListStoredInfoTypesResponse {
   GooglePrivacyDlpV2ListStoredInfoTypesResponse();
 
   GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("storedInfoTypes")) {
-      storedInfoTypes = (_json["storedInfoTypes"] as core.List)
+    if (_json.containsKey('storedInfoTypes')) {
+      storedInfoTypes = (_json['storedInfoTypes'] as core.List)
           .map<GooglePrivacyDlpV2StoredInfoType>(
               (value) => GooglePrivacyDlpV2StoredInfoType.fromJson(value))
           .toList();
@@ -12546,10 +12545,10 @@ class GooglePrivacyDlpV2ListStoredInfoTypesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (storedInfoTypes != null) {
-      _json["storedInfoTypes"] =
+      _json['storedInfoTypes'] =
           storedInfoTypes.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -12578,18 +12577,18 @@ class GooglePrivacyDlpV2Location {
   GooglePrivacyDlpV2Location();
 
   GooglePrivacyDlpV2Location.fromJson(core.Map _json) {
-    if (_json.containsKey("byteRange")) {
-      byteRange = GooglePrivacyDlpV2Range.fromJson(_json["byteRange"]);
+    if (_json.containsKey('byteRange')) {
+      byteRange = GooglePrivacyDlpV2Range.fromJson(_json['byteRange']);
     }
-    if (_json.containsKey("codepointRange")) {
+    if (_json.containsKey('codepointRange')) {
       codepointRange =
-          GooglePrivacyDlpV2Range.fromJson(_json["codepointRange"]);
+          GooglePrivacyDlpV2Range.fromJson(_json['codepointRange']);
     }
-    if (_json.containsKey("container")) {
-      container = GooglePrivacyDlpV2Container.fromJson(_json["container"]);
+    if (_json.containsKey('container')) {
+      container = GooglePrivacyDlpV2Container.fromJson(_json['container']);
     }
-    if (_json.containsKey("contentLocations")) {
-      contentLocations = (_json["contentLocations"] as core.List)
+    if (_json.containsKey('contentLocations')) {
+      contentLocations = (_json['contentLocations'] as core.List)
           .map<GooglePrivacyDlpV2ContentLocation>(
               (value) => GooglePrivacyDlpV2ContentLocation.fromJson(value))
           .toList();
@@ -12600,16 +12599,16 @@ class GooglePrivacyDlpV2Location {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (byteRange != null) {
-      _json["byteRange"] = byteRange.toJson();
+      _json['byteRange'] = byteRange.toJson();
     }
     if (codepointRange != null) {
-      _json["codepointRange"] = codepointRange.toJson();
+      _json['codepointRange'] = codepointRange.toJson();
     }
     if (container != null) {
-      _json["container"] = container.toJson();
+      _json['container'] = container.toJson();
     }
     if (contentLocations != null) {
-      _json["contentLocations"] =
+      _json['contentLocations'] =
           contentLocations.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -12644,12 +12643,12 @@ class GooglePrivacyDlpV2MetadataLocation {
   GooglePrivacyDlpV2MetadataLocation();
 
   GooglePrivacyDlpV2MetadataLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("storageLabel")) {
+    if (_json.containsKey('storageLabel')) {
       storageLabel = GooglePrivacyDlpV2StorageMetadataLabel.fromJson(
-          _json["storageLabel"]);
+          _json['storageLabel']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -12657,10 +12656,10 @@ class GooglePrivacyDlpV2MetadataLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (storageLabel != null) {
-      _json["storageLabel"] = storageLabel.toJson();
+      _json['storageLabel'] = storageLabel.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -12676,8 +12675,8 @@ class GooglePrivacyDlpV2NumericalStatsConfig {
   GooglePrivacyDlpV2NumericalStatsConfig();
 
   GooglePrivacyDlpV2NumericalStatsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
   }
 
@@ -12685,7 +12684,7 @@ class GooglePrivacyDlpV2NumericalStatsConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     return _json;
   }
@@ -12706,14 +12705,14 @@ class GooglePrivacyDlpV2NumericalStatsResult {
   GooglePrivacyDlpV2NumericalStatsResult();
 
   GooglePrivacyDlpV2NumericalStatsResult.fromJson(core.Map _json) {
-    if (_json.containsKey("maxValue")) {
-      maxValue = GooglePrivacyDlpV2Value.fromJson(_json["maxValue"]);
+    if (_json.containsKey('maxValue')) {
+      maxValue = GooglePrivacyDlpV2Value.fromJson(_json['maxValue']);
     }
-    if (_json.containsKey("minValue")) {
-      minValue = GooglePrivacyDlpV2Value.fromJson(_json["minValue"]);
+    if (_json.containsKey('minValue')) {
+      minValue = GooglePrivacyDlpV2Value.fromJson(_json['minValue']);
     }
-    if (_json.containsKey("quantileValues")) {
-      quantileValues = (_json["quantileValues"] as core.List)
+    if (_json.containsKey('quantileValues')) {
+      quantileValues = (_json['quantileValues'] as core.List)
           .map<GooglePrivacyDlpV2Value>(
               (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
@@ -12724,13 +12723,13 @@ class GooglePrivacyDlpV2NumericalStatsResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxValue != null) {
-      _json["maxValue"] = maxValue.toJson();
+      _json['maxValue'] = maxValue.toJson();
     }
     if (minValue != null) {
-      _json["minValue"] = minValue.toJson();
+      _json['minValue'] = minValue.toJson();
     }
     if (quantileValues != null) {
-      _json["quantileValues"] =
+      _json['quantileValues'] =
           quantileValues.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -12776,11 +12775,11 @@ class GooglePrivacyDlpV2OutputStorageConfig {
   GooglePrivacyDlpV2OutputStorageConfig();
 
   GooglePrivacyDlpV2OutputStorageConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("outputSchema")) {
-      outputSchema = _json["outputSchema"];
+    if (_json.containsKey('outputSchema')) {
+      outputSchema = _json['outputSchema'];
     }
-    if (_json.containsKey("table")) {
-      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
+    if (_json.containsKey('table')) {
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json['table']);
     }
   }
 
@@ -12788,10 +12787,10 @@ class GooglePrivacyDlpV2OutputStorageConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputSchema != null) {
-      _json["outputSchema"] = outputSchema;
+      _json['outputSchema'] = outputSchema;
     }
     if (table != null) {
-      _json["table"] = table.toJson();
+      _json['table'] = table.toJson();
     }
     return _json;
   }
@@ -12811,11 +12810,11 @@ class GooglePrivacyDlpV2PartitionId {
   GooglePrivacyDlpV2PartitionId();
 
   GooglePrivacyDlpV2PartitionId.fromJson(core.Map _json) {
-    if (_json.containsKey("namespaceId")) {
-      namespaceId = _json["namespaceId"];
+    if (_json.containsKey('namespaceId')) {
+      namespaceId = _json['namespaceId'];
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
   }
 
@@ -12823,10 +12822,10 @@ class GooglePrivacyDlpV2PartitionId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (namespaceId != null) {
-      _json["namespaceId"] = namespaceId;
+      _json['namespaceId'] = namespaceId;
     }
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     return _json;
   }
@@ -12852,14 +12851,14 @@ class GooglePrivacyDlpV2PathElement {
   GooglePrivacyDlpV2PathElement();
 
   GooglePrivacyDlpV2PathElement.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -12867,13 +12866,13 @@ class GooglePrivacyDlpV2PathElement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -12917,53 +12916,53 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
   GooglePrivacyDlpV2PrimitiveTransformation();
 
   GooglePrivacyDlpV2PrimitiveTransformation.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketingConfig")) {
+    if (_json.containsKey('bucketingConfig')) {
       bucketingConfig =
-          GooglePrivacyDlpV2BucketingConfig.fromJson(_json["bucketingConfig"]);
+          GooglePrivacyDlpV2BucketingConfig.fromJson(_json['bucketingConfig']);
     }
-    if (_json.containsKey("characterMaskConfig")) {
+    if (_json.containsKey('characterMaskConfig')) {
       characterMaskConfig = GooglePrivacyDlpV2CharacterMaskConfig.fromJson(
-          _json["characterMaskConfig"]);
+          _json['characterMaskConfig']);
     }
-    if (_json.containsKey("cryptoDeterministicConfig")) {
+    if (_json.containsKey('cryptoDeterministicConfig')) {
       cryptoDeterministicConfig =
           GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(
-              _json["cryptoDeterministicConfig"]);
+              _json['cryptoDeterministicConfig']);
     }
-    if (_json.containsKey("cryptoHashConfig")) {
+    if (_json.containsKey('cryptoHashConfig')) {
       cryptoHashConfig = GooglePrivacyDlpV2CryptoHashConfig.fromJson(
-          _json["cryptoHashConfig"]);
+          _json['cryptoHashConfig']);
     }
-    if (_json.containsKey("cryptoReplaceFfxFpeConfig")) {
+    if (_json.containsKey('cryptoReplaceFfxFpeConfig')) {
       cryptoReplaceFfxFpeConfig =
           GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(
-              _json["cryptoReplaceFfxFpeConfig"]);
+              _json['cryptoReplaceFfxFpeConfig']);
     }
-    if (_json.containsKey("dateShiftConfig")) {
+    if (_json.containsKey('dateShiftConfig')) {
       dateShiftConfig =
-          GooglePrivacyDlpV2DateShiftConfig.fromJson(_json["dateShiftConfig"]);
+          GooglePrivacyDlpV2DateShiftConfig.fromJson(_json['dateShiftConfig']);
     }
-    if (_json.containsKey("fixedSizeBucketingConfig")) {
+    if (_json.containsKey('fixedSizeBucketingConfig')) {
       fixedSizeBucketingConfig =
           GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(
-              _json["fixedSizeBucketingConfig"]);
+              _json['fixedSizeBucketingConfig']);
     }
-    if (_json.containsKey("redactConfig")) {
+    if (_json.containsKey('redactConfig')) {
       redactConfig =
-          GooglePrivacyDlpV2RedactConfig.fromJson(_json["redactConfig"]);
+          GooglePrivacyDlpV2RedactConfig.fromJson(_json['redactConfig']);
     }
-    if (_json.containsKey("replaceConfig")) {
+    if (_json.containsKey('replaceConfig')) {
       replaceConfig =
-          GooglePrivacyDlpV2ReplaceValueConfig.fromJson(_json["replaceConfig"]);
+          GooglePrivacyDlpV2ReplaceValueConfig.fromJson(_json['replaceConfig']);
     }
-    if (_json.containsKey("replaceWithInfoTypeConfig")) {
+    if (_json.containsKey('replaceWithInfoTypeConfig')) {
       replaceWithInfoTypeConfig =
           GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(
-              _json["replaceWithInfoTypeConfig"]);
+              _json['replaceWithInfoTypeConfig']);
     }
-    if (_json.containsKey("timePartConfig")) {
+    if (_json.containsKey('timePartConfig')) {
       timePartConfig =
-          GooglePrivacyDlpV2TimePartConfig.fromJson(_json["timePartConfig"]);
+          GooglePrivacyDlpV2TimePartConfig.fromJson(_json['timePartConfig']);
     }
   }
 
@@ -12971,37 +12970,37 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketingConfig != null) {
-      _json["bucketingConfig"] = bucketingConfig.toJson();
+      _json['bucketingConfig'] = bucketingConfig.toJson();
     }
     if (characterMaskConfig != null) {
-      _json["characterMaskConfig"] = characterMaskConfig.toJson();
+      _json['characterMaskConfig'] = characterMaskConfig.toJson();
     }
     if (cryptoDeterministicConfig != null) {
-      _json["cryptoDeterministicConfig"] = cryptoDeterministicConfig.toJson();
+      _json['cryptoDeterministicConfig'] = cryptoDeterministicConfig.toJson();
     }
     if (cryptoHashConfig != null) {
-      _json["cryptoHashConfig"] = cryptoHashConfig.toJson();
+      _json['cryptoHashConfig'] = cryptoHashConfig.toJson();
     }
     if (cryptoReplaceFfxFpeConfig != null) {
-      _json["cryptoReplaceFfxFpeConfig"] = cryptoReplaceFfxFpeConfig.toJson();
+      _json['cryptoReplaceFfxFpeConfig'] = cryptoReplaceFfxFpeConfig.toJson();
     }
     if (dateShiftConfig != null) {
-      _json["dateShiftConfig"] = dateShiftConfig.toJson();
+      _json['dateShiftConfig'] = dateShiftConfig.toJson();
     }
     if (fixedSizeBucketingConfig != null) {
-      _json["fixedSizeBucketingConfig"] = fixedSizeBucketingConfig.toJson();
+      _json['fixedSizeBucketingConfig'] = fixedSizeBucketingConfig.toJson();
     }
     if (redactConfig != null) {
-      _json["redactConfig"] = redactConfig.toJson();
+      _json['redactConfig'] = redactConfig.toJson();
     }
     if (replaceConfig != null) {
-      _json["replaceConfig"] = replaceConfig.toJson();
+      _json['replaceConfig'] = replaceConfig.toJson();
     }
     if (replaceWithInfoTypeConfig != null) {
-      _json["replaceWithInfoTypeConfig"] = replaceWithInfoTypeConfig.toJson();
+      _json['replaceWithInfoTypeConfig'] = replaceWithInfoTypeConfig.toJson();
     }
     if (timePartConfig != null) {
-      _json["timePartConfig"] = timePartConfig.toJson();
+      _json['timePartConfig'] = timePartConfig.toJson();
     }
     return _json;
   }
@@ -13030,31 +13029,31 @@ class GooglePrivacyDlpV2PrivacyMetric {
   GooglePrivacyDlpV2PrivacyMetric();
 
   GooglePrivacyDlpV2PrivacyMetric.fromJson(core.Map _json) {
-    if (_json.containsKey("categoricalStatsConfig")) {
+    if (_json.containsKey('categoricalStatsConfig')) {
       categoricalStatsConfig =
           GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(
-              _json["categoricalStatsConfig"]);
+              _json['categoricalStatsConfig']);
     }
-    if (_json.containsKey("deltaPresenceEstimationConfig")) {
+    if (_json.containsKey('deltaPresenceEstimationConfig')) {
       deltaPresenceEstimationConfig =
           GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(
-              _json["deltaPresenceEstimationConfig"]);
+              _json['deltaPresenceEstimationConfig']);
     }
-    if (_json.containsKey("kAnonymityConfig")) {
+    if (_json.containsKey('kAnonymityConfig')) {
       kAnonymityConfig = GooglePrivacyDlpV2KAnonymityConfig.fromJson(
-          _json["kAnonymityConfig"]);
+          _json['kAnonymityConfig']);
     }
-    if (_json.containsKey("kMapEstimationConfig")) {
+    if (_json.containsKey('kMapEstimationConfig')) {
       kMapEstimationConfig = GooglePrivacyDlpV2KMapEstimationConfig.fromJson(
-          _json["kMapEstimationConfig"]);
+          _json['kMapEstimationConfig']);
     }
-    if (_json.containsKey("lDiversityConfig")) {
+    if (_json.containsKey('lDiversityConfig')) {
       lDiversityConfig = GooglePrivacyDlpV2LDiversityConfig.fromJson(
-          _json["lDiversityConfig"]);
+          _json['lDiversityConfig']);
     }
-    if (_json.containsKey("numericalStatsConfig")) {
+    if (_json.containsKey('numericalStatsConfig')) {
       numericalStatsConfig = GooglePrivacyDlpV2NumericalStatsConfig.fromJson(
-          _json["numericalStatsConfig"]);
+          _json['numericalStatsConfig']);
     }
   }
 
@@ -13062,23 +13061,23 @@ class GooglePrivacyDlpV2PrivacyMetric {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoricalStatsConfig != null) {
-      _json["categoricalStatsConfig"] = categoricalStatsConfig.toJson();
+      _json['categoricalStatsConfig'] = categoricalStatsConfig.toJson();
     }
     if (deltaPresenceEstimationConfig != null) {
-      _json["deltaPresenceEstimationConfig"] =
+      _json['deltaPresenceEstimationConfig'] =
           deltaPresenceEstimationConfig.toJson();
     }
     if (kAnonymityConfig != null) {
-      _json["kAnonymityConfig"] = kAnonymityConfig.toJson();
+      _json['kAnonymityConfig'] = kAnonymityConfig.toJson();
     }
     if (kMapEstimationConfig != null) {
-      _json["kMapEstimationConfig"] = kMapEstimationConfig.toJson();
+      _json['kMapEstimationConfig'] = kMapEstimationConfig.toJson();
     }
     if (lDiversityConfig != null) {
-      _json["lDiversityConfig"] = lDiversityConfig.toJson();
+      _json['lDiversityConfig'] = lDiversityConfig.toJson();
     }
     if (numericalStatsConfig != null) {
-      _json["numericalStatsConfig"] = numericalStatsConfig.toJson();
+      _json['numericalStatsConfig'] = numericalStatsConfig.toJson();
     }
     return _json;
   }
@@ -13095,11 +13094,11 @@ class GooglePrivacyDlpV2Proximity {
   GooglePrivacyDlpV2Proximity();
 
   GooglePrivacyDlpV2Proximity.fromJson(core.Map _json) {
-    if (_json.containsKey("windowAfter")) {
-      windowAfter = _json["windowAfter"];
+    if (_json.containsKey('windowAfter')) {
+      windowAfter = _json['windowAfter'];
     }
-    if (_json.containsKey("windowBefore")) {
-      windowBefore = _json["windowBefore"];
+    if (_json.containsKey('windowBefore')) {
+      windowBefore = _json['windowBefore'];
     }
   }
 
@@ -13107,10 +13106,10 @@ class GooglePrivacyDlpV2Proximity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (windowAfter != null) {
-      _json["windowAfter"] = windowAfter;
+      _json['windowAfter'] = windowAfter;
     }
     if (windowBefore != null) {
-      _json["windowBefore"] = windowBefore;
+      _json['windowBefore'] = windowBefore;
     }
     return _json;
   }
@@ -13173,8 +13172,8 @@ class GooglePrivacyDlpV2PublishToPubSub {
   GooglePrivacyDlpV2PublishToPubSub();
 
   GooglePrivacyDlpV2PublishToPubSub.fromJson(core.Map _json) {
-    if (_json.containsKey("topic")) {
-      topic = _json["topic"];
+    if (_json.containsKey('topic')) {
+      topic = _json['topic'];
     }
   }
 
@@ -13182,7 +13181,7 @@ class GooglePrivacyDlpV2PublishToPubSub {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (topic != null) {
-      _json["topic"] = topic;
+      _json['topic'] = topic;
     }
     return _json;
   }
@@ -13228,17 +13227,17 @@ class GooglePrivacyDlpV2QuasiId {
   GooglePrivacyDlpV2QuasiId();
 
   GooglePrivacyDlpV2QuasiId.fromJson(core.Map _json) {
-    if (_json.containsKey("customTag")) {
-      customTag = _json["customTag"];
+    if (_json.containsKey('customTag')) {
+      customTag = _json['customTag'];
     }
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
-    if (_json.containsKey("inferred")) {
-      inferred = GoogleProtobufEmpty.fromJson(_json["inferred"]);
+    if (_json.containsKey('inferred')) {
+      inferred = GoogleProtobufEmpty.fromJson(_json['inferred']);
     }
-    if (_json.containsKey("infoType")) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+    if (_json.containsKey('infoType')) {
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
     }
   }
 
@@ -13246,16 +13245,16 @@ class GooglePrivacyDlpV2QuasiId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customTag != null) {
-      _json["customTag"] = customTag;
+      _json['customTag'] = customTag;
     }
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     if (inferred != null) {
-      _json["inferred"] = inferred.toJson();
+      _json['inferred'] = inferred.toJson();
     }
     if (infoType != null) {
-      _json["infoType"] = infoType.toJson();
+      _json['infoType'] = infoType.toJson();
     }
     return _json;
   }
@@ -13273,11 +13272,11 @@ class GooglePrivacyDlpV2QuasiIdField {
   GooglePrivacyDlpV2QuasiIdField();
 
   GooglePrivacyDlpV2QuasiIdField.fromJson(core.Map _json) {
-    if (_json.containsKey("customTag")) {
-      customTag = _json["customTag"];
+    if (_json.containsKey('customTag')) {
+      customTag = _json['customTag'];
     }
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
   }
 
@@ -13285,10 +13284,10 @@ class GooglePrivacyDlpV2QuasiIdField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customTag != null) {
-      _json["customTag"] = customTag;
+      _json['customTag'] = customTag;
     }
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     return _json;
   }
@@ -13308,11 +13307,11 @@ class GooglePrivacyDlpV2QuasiIdentifierField {
   GooglePrivacyDlpV2QuasiIdentifierField();
 
   GooglePrivacyDlpV2QuasiIdentifierField.fromJson(core.Map _json) {
-    if (_json.containsKey("customTag")) {
-      customTag = _json["customTag"];
+    if (_json.containsKey('customTag')) {
+      customTag = _json['customTag'];
     }
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
   }
 
@@ -13320,10 +13319,10 @@ class GooglePrivacyDlpV2QuasiIdentifierField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customTag != null) {
-      _json["customTag"] = customTag;
+      _json['customTag'] = customTag;
     }
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     return _json;
   }
@@ -13337,8 +13336,8 @@ class GooglePrivacyDlpV2QuoteInfo {
   GooglePrivacyDlpV2QuoteInfo();
 
   GooglePrivacyDlpV2QuoteInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("dateTime")) {
-      dateTime = GooglePrivacyDlpV2DateTime.fromJson(_json["dateTime"]);
+    if (_json.containsKey('dateTime')) {
+      dateTime = GooglePrivacyDlpV2DateTime.fromJson(_json['dateTime']);
     }
   }
 
@@ -13346,7 +13345,7 @@ class GooglePrivacyDlpV2QuoteInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dateTime != null) {
-      _json["dateTime"] = dateTime.toJson();
+      _json['dateTime'] = dateTime.toJson();
     }
     return _json;
   }
@@ -13363,11 +13362,11 @@ class GooglePrivacyDlpV2Range {
   GooglePrivacyDlpV2Range();
 
   GooglePrivacyDlpV2Range.fromJson(core.Map _json) {
-    if (_json.containsKey("end")) {
-      end = _json["end"];
+    if (_json.containsKey('end')) {
+      end = _json['end'];
     }
-    if (_json.containsKey("start")) {
-      start = _json["start"];
+    if (_json.containsKey('start')) {
+      start = _json['start'];
     }
   }
 
@@ -13375,10 +13374,10 @@ class GooglePrivacyDlpV2Range {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (end != null) {
-      _json["end"] = end;
+      _json['end'] = end;
     }
     if (start != null) {
-      _json["start"] = start;
+      _json['start'] = start;
     }
     return _json;
   }
@@ -13393,9 +13392,9 @@ class GooglePrivacyDlpV2RecordCondition {
   GooglePrivacyDlpV2RecordCondition();
 
   GooglePrivacyDlpV2RecordCondition.fromJson(core.Map _json) {
-    if (_json.containsKey("expressions")) {
+    if (_json.containsKey('expressions')) {
       expressions =
-          GooglePrivacyDlpV2Expressions.fromJson(_json["expressions"]);
+          GooglePrivacyDlpV2Expressions.fromJson(_json['expressions']);
     }
   }
 
@@ -13403,7 +13402,7 @@ class GooglePrivacyDlpV2RecordCondition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expressions != null) {
-      _json["expressions"] = expressions.toJson();
+      _json['expressions'] = expressions.toJson();
     }
     return _json;
   }
@@ -13421,16 +13420,16 @@ class GooglePrivacyDlpV2RecordKey {
   GooglePrivacyDlpV2RecordKey();
 
   GooglePrivacyDlpV2RecordKey.fromJson(core.Map _json) {
-    if (_json.containsKey("bigQueryKey")) {
+    if (_json.containsKey('bigQueryKey')) {
       bigQueryKey =
-          GooglePrivacyDlpV2BigQueryKey.fromJson(_json["bigQueryKey"]);
+          GooglePrivacyDlpV2BigQueryKey.fromJson(_json['bigQueryKey']);
     }
-    if (_json.containsKey("datastoreKey")) {
+    if (_json.containsKey('datastoreKey')) {
       datastoreKey =
-          GooglePrivacyDlpV2DatastoreKey.fromJson(_json["datastoreKey"]);
+          GooglePrivacyDlpV2DatastoreKey.fromJson(_json['datastoreKey']);
     }
-    if (_json.containsKey("idValues")) {
-      idValues = (_json["idValues"] as core.List).cast<core.String>();
+    if (_json.containsKey('idValues')) {
+      idValues = (_json['idValues'] as core.List).cast<core.String>();
     }
   }
 
@@ -13438,13 +13437,13 @@ class GooglePrivacyDlpV2RecordKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bigQueryKey != null) {
-      _json["bigQueryKey"] = bigQueryKey.toJson();
+      _json['bigQueryKey'] = bigQueryKey.toJson();
     }
     if (datastoreKey != null) {
-      _json["datastoreKey"] = datastoreKey.toJson();
+      _json['datastoreKey'] = datastoreKey.toJson();
     }
     if (idValues != null) {
-      _json["idValues"] = idValues;
+      _json['idValues'] = idValues;
     }
     return _json;
   }
@@ -13464,15 +13463,15 @@ class GooglePrivacyDlpV2RecordLocation {
   GooglePrivacyDlpV2RecordLocation();
 
   GooglePrivacyDlpV2RecordLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("fieldId")) {
-      fieldId = GooglePrivacyDlpV2FieldId.fromJson(_json["fieldId"]);
+    if (_json.containsKey('fieldId')) {
+      fieldId = GooglePrivacyDlpV2FieldId.fromJson(_json['fieldId']);
     }
-    if (_json.containsKey("recordKey")) {
-      recordKey = GooglePrivacyDlpV2RecordKey.fromJson(_json["recordKey"]);
+    if (_json.containsKey('recordKey')) {
+      recordKey = GooglePrivacyDlpV2RecordKey.fromJson(_json['recordKey']);
     }
-    if (_json.containsKey("tableLocation")) {
+    if (_json.containsKey('tableLocation')) {
       tableLocation =
-          GooglePrivacyDlpV2TableLocation.fromJson(_json["tableLocation"]);
+          GooglePrivacyDlpV2TableLocation.fromJson(_json['tableLocation']);
     }
   }
 
@@ -13480,13 +13479,13 @@ class GooglePrivacyDlpV2RecordLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fieldId != null) {
-      _json["fieldId"] = fieldId.toJson();
+      _json['fieldId'] = fieldId.toJson();
     }
     if (recordKey != null) {
-      _json["recordKey"] = recordKey.toJson();
+      _json['recordKey'] = recordKey.toJson();
     }
     if (tableLocation != null) {
-      _json["tableLocation"] = tableLocation.toJson();
+      _json['tableLocation'] = tableLocation.toJson();
     }
     return _json;
   }
@@ -13502,9 +13501,9 @@ class GooglePrivacyDlpV2RecordSuppression {
   GooglePrivacyDlpV2RecordSuppression();
 
   GooglePrivacyDlpV2RecordSuppression.fromJson(core.Map _json) {
-    if (_json.containsKey("condition")) {
+    if (_json.containsKey('condition')) {
       condition =
-          GooglePrivacyDlpV2RecordCondition.fromJson(_json["condition"]);
+          GooglePrivacyDlpV2RecordCondition.fromJson(_json['condition']);
     }
   }
 
@@ -13512,7 +13511,7 @@ class GooglePrivacyDlpV2RecordSuppression {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     return _json;
   }
@@ -13531,14 +13530,14 @@ class GooglePrivacyDlpV2RecordTransformations {
   GooglePrivacyDlpV2RecordTransformations();
 
   GooglePrivacyDlpV2RecordTransformations.fromJson(core.Map _json) {
-    if (_json.containsKey("fieldTransformations")) {
-      fieldTransformations = (_json["fieldTransformations"] as core.List)
+    if (_json.containsKey('fieldTransformations')) {
+      fieldTransformations = (_json['fieldTransformations'] as core.List)
           .map<GooglePrivacyDlpV2FieldTransformation>(
               (value) => GooglePrivacyDlpV2FieldTransformation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("recordSuppressions")) {
-      recordSuppressions = (_json["recordSuppressions"] as core.List)
+    if (_json.containsKey('recordSuppressions')) {
+      recordSuppressions = (_json['recordSuppressions'] as core.List)
           .map<GooglePrivacyDlpV2RecordSuppression>(
               (value) => GooglePrivacyDlpV2RecordSuppression.fromJson(value))
           .toList();
@@ -13549,11 +13548,11 @@ class GooglePrivacyDlpV2RecordTransformations {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fieldTransformations != null) {
-      _json["fieldTransformations"] =
+      _json['fieldTransformations'] =
           fieldTransformations.map((value) => value.toJson()).toList();
     }
     if (recordSuppressions != null) {
-      _json["recordSuppressions"] =
+      _json['recordSuppressions'] =
           recordSuppressions.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -13597,24 +13596,24 @@ class GooglePrivacyDlpV2RedactImageRequest {
   GooglePrivacyDlpV2RedactImageRequest();
 
   GooglePrivacyDlpV2RedactImageRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("byteItem")) {
-      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(_json["byteItem"]);
+    if (_json.containsKey('byteItem')) {
+      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(_json['byteItem']);
     }
-    if (_json.containsKey("imageRedactionConfigs")) {
-      imageRedactionConfigs = (_json["imageRedactionConfigs"] as core.List)
+    if (_json.containsKey('imageRedactionConfigs')) {
+      imageRedactionConfigs = (_json['imageRedactionConfigs'] as core.List)
           .map<GooglePrivacyDlpV2ImageRedactionConfig>(
               (value) => GooglePrivacyDlpV2ImageRedactionConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("includeFindings")) {
-      includeFindings = _json["includeFindings"];
+    if (_json.containsKey('includeFindings')) {
+      includeFindings = _json['includeFindings'];
     }
-    if (_json.containsKey("inspectConfig")) {
+    if (_json.containsKey('inspectConfig')) {
       inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
   }
 
@@ -13622,20 +13621,20 @@ class GooglePrivacyDlpV2RedactImageRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (byteItem != null) {
-      _json["byteItem"] = byteItem.toJson();
+      _json['byteItem'] = byteItem.toJson();
     }
     if (imageRedactionConfigs != null) {
-      _json["imageRedactionConfigs"] =
+      _json['imageRedactionConfigs'] =
           imageRedactionConfigs.map((value) => value.toJson()).toList();
     }
     if (includeFindings != null) {
-      _json["includeFindings"] = includeFindings;
+      _json['includeFindings'] = includeFindings;
     }
     if (inspectConfig != null) {
-      _json["inspectConfig"] = inspectConfig.toJson();
+      _json['inspectConfig'] = inspectConfig.toJson();
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     return _json;
   }
@@ -13658,21 +13657,21 @@ class GooglePrivacyDlpV2RedactImageResponse {
 
   set redactedImageAsBytes(core.List<core.int> _bytes) {
     redactedImage =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   GooglePrivacyDlpV2RedactImageResponse();
 
   GooglePrivacyDlpV2RedactImageResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("extractedText")) {
-      extractedText = _json["extractedText"];
+    if (_json.containsKey('extractedText')) {
+      extractedText = _json['extractedText'];
     }
-    if (_json.containsKey("inspectResult")) {
+    if (_json.containsKey('inspectResult')) {
       inspectResult =
-          GooglePrivacyDlpV2InspectResult.fromJson(_json["inspectResult"]);
+          GooglePrivacyDlpV2InspectResult.fromJson(_json['inspectResult']);
     }
-    if (_json.containsKey("redactedImage")) {
-      redactedImage = _json["redactedImage"];
+    if (_json.containsKey('redactedImage')) {
+      redactedImage = _json['redactedImage'];
     }
   }
 
@@ -13680,13 +13679,13 @@ class GooglePrivacyDlpV2RedactImageResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (extractedText != null) {
-      _json["extractedText"] = extractedText;
+      _json['extractedText'] = extractedText;
     }
     if (inspectResult != null) {
-      _json["inspectResult"] = inspectResult.toJson();
+      _json['inspectResult'] = inspectResult.toJson();
     }
     if (redactedImage != null) {
-      _json["redactedImage"] = redactedImage;
+      _json['redactedImage'] = redactedImage;
     }
     return _json;
   }
@@ -13706,11 +13705,11 @@ class GooglePrivacyDlpV2Regex {
   GooglePrivacyDlpV2Regex();
 
   GooglePrivacyDlpV2Regex.fromJson(core.Map _json) {
-    if (_json.containsKey("groupIndexes")) {
-      groupIndexes = (_json["groupIndexes"] as core.List).cast<core.int>();
+    if (_json.containsKey('groupIndexes')) {
+      groupIndexes = (_json['groupIndexes'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("pattern")) {
-      pattern = _json["pattern"];
+    if (_json.containsKey('pattern')) {
+      pattern = _json['pattern'];
     }
   }
 
@@ -13718,10 +13717,10 @@ class GooglePrivacyDlpV2Regex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (groupIndexes != null) {
-      _json["groupIndexes"] = groupIndexes;
+      _json['groupIndexes'] = groupIndexes;
     }
     if (pattern != null) {
-      _json["pattern"] = pattern;
+      _json['pattern'] = pattern;
     }
     return _json;
   }
@@ -13767,25 +13766,25 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
   GooglePrivacyDlpV2ReidentifyContentRequest();
 
   GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("inspectConfig")) {
+    if (_json.containsKey('inspectConfig')) {
       inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
     }
-    if (_json.containsKey("inspectTemplateName")) {
-      inspectTemplateName = _json["inspectTemplateName"];
+    if (_json.containsKey('inspectTemplateName')) {
+      inspectTemplateName = _json['inspectTemplateName'];
     }
-    if (_json.containsKey("item")) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+    if (_json.containsKey('item')) {
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("reidentifyConfig")) {
+    if (_json.containsKey('reidentifyConfig')) {
       reidentifyConfig = GooglePrivacyDlpV2DeidentifyConfig.fromJson(
-          _json["reidentifyConfig"]);
+          _json['reidentifyConfig']);
     }
-    if (_json.containsKey("reidentifyTemplateName")) {
-      reidentifyTemplateName = _json["reidentifyTemplateName"];
+    if (_json.containsKey('reidentifyTemplateName')) {
+      reidentifyTemplateName = _json['reidentifyTemplateName'];
     }
   }
 
@@ -13793,22 +13792,22 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inspectConfig != null) {
-      _json["inspectConfig"] = inspectConfig.toJson();
+      _json['inspectConfig'] = inspectConfig.toJson();
     }
     if (inspectTemplateName != null) {
-      _json["inspectTemplateName"] = inspectTemplateName;
+      _json['inspectTemplateName'] = inspectTemplateName;
     }
     if (item != null) {
-      _json["item"] = item.toJson();
+      _json['item'] = item.toJson();
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (reidentifyConfig != null) {
-      _json["reidentifyConfig"] = reidentifyConfig.toJson();
+      _json['reidentifyConfig'] = reidentifyConfig.toJson();
     }
     if (reidentifyTemplateName != null) {
-      _json["reidentifyTemplateName"] = reidentifyTemplateName;
+      _json['reidentifyTemplateName'] = reidentifyTemplateName;
     }
     return _json;
   }
@@ -13825,12 +13824,12 @@ class GooglePrivacyDlpV2ReidentifyContentResponse {
   GooglePrivacyDlpV2ReidentifyContentResponse();
 
   GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("item")) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+    if (_json.containsKey('item')) {
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
     }
-    if (_json.containsKey("overview")) {
+    if (_json.containsKey('overview')) {
       overview =
-          GooglePrivacyDlpV2TransformationOverview.fromJson(_json["overview"]);
+          GooglePrivacyDlpV2TransformationOverview.fromJson(_json['overview']);
     }
   }
 
@@ -13838,10 +13837,10 @@ class GooglePrivacyDlpV2ReidentifyContentResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (item != null) {
-      _json["item"] = item.toJson();
+      _json['item'] = item.toJson();
     }
     if (overview != null) {
-      _json["overview"] = overview.toJson();
+      _json['overview'] = overview.toJson();
     }
     return _json;
   }
@@ -13855,8 +13854,8 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
   GooglePrivacyDlpV2ReplaceValueConfig();
 
   GooglePrivacyDlpV2ReplaceValueConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("newValue")) {
-      newValue = GooglePrivacyDlpV2Value.fromJson(_json["newValue"]);
+    if (_json.containsKey('newValue')) {
+      newValue = GooglePrivacyDlpV2Value.fromJson(_json['newValue']);
     }
   }
 
@@ -13864,7 +13863,7 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (newValue != null) {
-      _json["newValue"] = newValue.toJson();
+      _json['newValue'] = newValue.toJson();
     }
     return _json;
   }
@@ -13895,13 +13894,13 @@ class GooglePrivacyDlpV2RequestedOptions {
   GooglePrivacyDlpV2RequestedOptions();
 
   GooglePrivacyDlpV2RequestedOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("jobConfig")) {
+    if (_json.containsKey('jobConfig')) {
       jobConfig =
-          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json["jobConfig"]);
+          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json['jobConfig']);
     }
-    if (_json.containsKey("snapshotInspectTemplate")) {
+    if (_json.containsKey('snapshotInspectTemplate')) {
       snapshotInspectTemplate = GooglePrivacyDlpV2InspectTemplate.fromJson(
-          _json["snapshotInspectTemplate"]);
+          _json['snapshotInspectTemplate']);
     }
   }
 
@@ -13909,10 +13908,10 @@ class GooglePrivacyDlpV2RequestedOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (jobConfig != null) {
-      _json["jobConfig"] = jobConfig.toJson();
+      _json['jobConfig'] = jobConfig.toJson();
     }
     if (snapshotInspectTemplate != null) {
-      _json["snapshotInspectTemplate"] = snapshotInspectTemplate.toJson();
+      _json['snapshotInspectTemplate'] = snapshotInspectTemplate.toJson();
     }
     return _json;
   }
@@ -13926,9 +13925,9 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptions {
   GooglePrivacyDlpV2RequestedRiskAnalysisOptions();
 
   GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("jobConfig")) {
+    if (_json.containsKey('jobConfig')) {
       jobConfig =
-          GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(_json["jobConfig"]);
+          GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(_json['jobConfig']);
     }
   }
 
@@ -13936,7 +13935,7 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (jobConfig != null) {
-      _json["jobConfig"] = jobConfig.toJson();
+      _json['jobConfig'] = jobConfig.toJson();
     }
     return _json;
   }
@@ -13963,21 +13962,21 @@ class GooglePrivacyDlpV2Result {
   GooglePrivacyDlpV2Result();
 
   GooglePrivacyDlpV2Result.fromJson(core.Map _json) {
-    if (_json.containsKey("hybridStats")) {
+    if (_json.containsKey('hybridStats')) {
       hybridStats = GooglePrivacyDlpV2HybridInspectStatistics.fromJson(
-          _json["hybridStats"]);
+          _json['hybridStats']);
     }
-    if (_json.containsKey("infoTypeStats")) {
-      infoTypeStats = (_json["infoTypeStats"] as core.List)
+    if (_json.containsKey('infoTypeStats')) {
+      infoTypeStats = (_json['infoTypeStats'] as core.List)
           .map<GooglePrivacyDlpV2InfoTypeStats>(
               (value) => GooglePrivacyDlpV2InfoTypeStats.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("processedBytes")) {
-      processedBytes = _json["processedBytes"];
+    if (_json.containsKey('processedBytes')) {
+      processedBytes = _json['processedBytes'];
     }
-    if (_json.containsKey("totalEstimatedBytes")) {
-      totalEstimatedBytes = _json["totalEstimatedBytes"];
+    if (_json.containsKey('totalEstimatedBytes')) {
+      totalEstimatedBytes = _json['totalEstimatedBytes'];
     }
   }
 
@@ -13985,17 +13984,17 @@ class GooglePrivacyDlpV2Result {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hybridStats != null) {
-      _json["hybridStats"] = hybridStats.toJson();
+      _json['hybridStats'] = hybridStats.toJson();
     }
     if (infoTypeStats != null) {
-      _json["infoTypeStats"] =
+      _json['infoTypeStats'] =
           infoTypeStats.map((value) => value.toJson()).toList();
     }
     if (processedBytes != null) {
-      _json["processedBytes"] = processedBytes;
+      _json['processedBytes'] = processedBytes;
     }
     if (totalEstimatedBytes != null) {
-      _json["totalEstimatedBytes"] = totalEstimatedBytes;
+      _json['totalEstimatedBytes'] = totalEstimatedBytes;
     }
     return _json;
   }
@@ -14017,19 +14016,19 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfig {
   GooglePrivacyDlpV2RiskAnalysisJobConfig();
 
   GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("actions")) {
-      actions = (_json["actions"] as core.List)
+    if (_json.containsKey('actions')) {
+      actions = (_json['actions'] as core.List)
           .map<GooglePrivacyDlpV2Action>(
               (value) => GooglePrivacyDlpV2Action.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("privacyMetric")) {
+    if (_json.containsKey('privacyMetric')) {
       privacyMetric =
-          GooglePrivacyDlpV2PrivacyMetric.fromJson(_json["privacyMetric"]);
+          GooglePrivacyDlpV2PrivacyMetric.fromJson(_json['privacyMetric']);
     }
-    if (_json.containsKey("sourceTable")) {
+    if (_json.containsKey('sourceTable')) {
       sourceTable =
-          GooglePrivacyDlpV2BigQueryTable.fromJson(_json["sourceTable"]);
+          GooglePrivacyDlpV2BigQueryTable.fromJson(_json['sourceTable']);
     }
   }
 
@@ -14037,13 +14036,13 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actions != null) {
-      _json["actions"] = actions.map((value) => value.toJson()).toList();
+      _json['actions'] = actions.map((value) => value.toJson()).toList();
     }
     if (privacyMetric != null) {
-      _json["privacyMetric"] = privacyMetric.toJson();
+      _json['privacyMetric'] = privacyMetric.toJson();
     }
     if (sourceTable != null) {
-      _json["sourceTable"] = sourceTable.toJson();
+      _json['sourceTable'] = sourceTable.toJson();
     }
     return _json;
   }
@@ -14057,8 +14056,8 @@ class GooglePrivacyDlpV2Row {
   GooglePrivacyDlpV2Row();
 
   GooglePrivacyDlpV2Row.fromJson(core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List)
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List)
           .map<GooglePrivacyDlpV2Value>(
               (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
@@ -14069,7 +14068,7 @@ class GooglePrivacyDlpV2Row {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values.map((value) => value.toJson()).toList();
+      _json['values'] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14085,9 +14084,9 @@ class GooglePrivacyDlpV2SaveFindings {
   GooglePrivacyDlpV2SaveFindings();
 
   GooglePrivacyDlpV2SaveFindings.fromJson(core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
+    if (_json.containsKey('outputConfig')) {
       outputConfig =
-          GooglePrivacyDlpV2OutputStorageConfig.fromJson(_json["outputConfig"]);
+          GooglePrivacyDlpV2OutputStorageConfig.fromJson(_json['outputConfig']);
     }
   }
 
@@ -14095,7 +14094,7 @@ class GooglePrivacyDlpV2SaveFindings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -14113,8 +14112,8 @@ class GooglePrivacyDlpV2Schedule {
   GooglePrivacyDlpV2Schedule();
 
   GooglePrivacyDlpV2Schedule.fromJson(core.Map _json) {
-    if (_json.containsKey("recurrencePeriodDuration")) {
-      recurrencePeriodDuration = _json["recurrencePeriodDuration"];
+    if (_json.containsKey('recurrencePeriodDuration')) {
+      recurrencePeriodDuration = _json['recurrencePeriodDuration'];
     }
   }
 
@@ -14122,7 +14121,7 @@ class GooglePrivacyDlpV2Schedule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (recurrencePeriodDuration != null) {
-      _json["recurrencePeriodDuration"] = recurrencePeriodDuration;
+      _json['recurrencePeriodDuration'] = recurrencePeriodDuration;
     }
     return _json;
   }
@@ -14148,18 +14147,18 @@ class GooglePrivacyDlpV2StatisticalTable {
   GooglePrivacyDlpV2StatisticalTable();
 
   GooglePrivacyDlpV2StatisticalTable.fromJson(core.Map _json) {
-    if (_json.containsKey("quasiIds")) {
-      quasiIds = (_json["quasiIds"] as core.List)
+    if (_json.containsKey('quasiIds')) {
+      quasiIds = (_json['quasiIds'] as core.List)
           .map<GooglePrivacyDlpV2QuasiIdentifierField>(
               (value) => GooglePrivacyDlpV2QuasiIdentifierField.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("relativeFrequency")) {
+    if (_json.containsKey('relativeFrequency')) {
       relativeFrequency =
-          GooglePrivacyDlpV2FieldId.fromJson(_json["relativeFrequency"]);
+          GooglePrivacyDlpV2FieldId.fromJson(_json['relativeFrequency']);
     }
-    if (_json.containsKey("table")) {
-      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
+    if (_json.containsKey('table')) {
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json['table']);
     }
   }
 
@@ -14167,13 +14166,13 @@ class GooglePrivacyDlpV2StatisticalTable {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
+      _json['quasiIds'] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (relativeFrequency != null) {
-      _json["relativeFrequency"] = relativeFrequency.toJson();
+      _json['relativeFrequency'] = relativeFrequency.toJson();
     }
     if (table != null) {
-      _json["table"] = table.toJson();
+      _json['table'] = table.toJson();
     }
     return _json;
   }
@@ -14199,25 +14198,25 @@ class GooglePrivacyDlpV2StorageConfig {
   GooglePrivacyDlpV2StorageConfig();
 
   GooglePrivacyDlpV2StorageConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("bigQueryOptions")) {
+    if (_json.containsKey('bigQueryOptions')) {
       bigQueryOptions =
-          GooglePrivacyDlpV2BigQueryOptions.fromJson(_json["bigQueryOptions"]);
+          GooglePrivacyDlpV2BigQueryOptions.fromJson(_json['bigQueryOptions']);
     }
-    if (_json.containsKey("cloudStorageOptions")) {
+    if (_json.containsKey('cloudStorageOptions')) {
       cloudStorageOptions = GooglePrivacyDlpV2CloudStorageOptions.fromJson(
-          _json["cloudStorageOptions"]);
+          _json['cloudStorageOptions']);
     }
-    if (_json.containsKey("datastoreOptions")) {
+    if (_json.containsKey('datastoreOptions')) {
       datastoreOptions = GooglePrivacyDlpV2DatastoreOptions.fromJson(
-          _json["datastoreOptions"]);
+          _json['datastoreOptions']);
     }
-    if (_json.containsKey("hybridOptions")) {
+    if (_json.containsKey('hybridOptions')) {
       hybridOptions =
-          GooglePrivacyDlpV2HybridOptions.fromJson(_json["hybridOptions"]);
+          GooglePrivacyDlpV2HybridOptions.fromJson(_json['hybridOptions']);
     }
-    if (_json.containsKey("timespanConfig")) {
+    if (_json.containsKey('timespanConfig')) {
       timespanConfig =
-          GooglePrivacyDlpV2TimespanConfig.fromJson(_json["timespanConfig"]);
+          GooglePrivacyDlpV2TimespanConfig.fromJson(_json['timespanConfig']);
     }
   }
 
@@ -14225,19 +14224,19 @@ class GooglePrivacyDlpV2StorageConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bigQueryOptions != null) {
-      _json["bigQueryOptions"] = bigQueryOptions.toJson();
+      _json['bigQueryOptions'] = bigQueryOptions.toJson();
     }
     if (cloudStorageOptions != null) {
-      _json["cloudStorageOptions"] = cloudStorageOptions.toJson();
+      _json['cloudStorageOptions'] = cloudStorageOptions.toJson();
     }
     if (datastoreOptions != null) {
-      _json["datastoreOptions"] = datastoreOptions.toJson();
+      _json['datastoreOptions'] = datastoreOptions.toJson();
     }
     if (hybridOptions != null) {
-      _json["hybridOptions"] = hybridOptions.toJson();
+      _json['hybridOptions'] = hybridOptions.toJson();
     }
     if (timespanConfig != null) {
-      _json["timespanConfig"] = timespanConfig.toJson();
+      _json['timespanConfig'] = timespanConfig.toJson();
     }
     return _json;
   }
@@ -14250,8 +14249,8 @@ class GooglePrivacyDlpV2StorageMetadataLabel {
   GooglePrivacyDlpV2StorageMetadataLabel();
 
   GooglePrivacyDlpV2StorageMetadataLabel.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
   }
 
@@ -14259,7 +14258,7 @@ class GooglePrivacyDlpV2StorageMetadataLabel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     return _json;
   }
@@ -14281,15 +14280,15 @@ class GooglePrivacyDlpV2StoredInfoType {
   GooglePrivacyDlpV2StoredInfoType();
 
   GooglePrivacyDlpV2StoredInfoType.fromJson(core.Map _json) {
-    if (_json.containsKey("currentVersion")) {
+    if (_json.containsKey('currentVersion')) {
       currentVersion = GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(
-          _json["currentVersion"]);
+          _json['currentVersion']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("pendingVersions")) {
-      pendingVersions = (_json["pendingVersions"] as core.List)
+    if (_json.containsKey('pendingVersions')) {
+      pendingVersions = (_json['pendingVersions'] as core.List)
           .map<GooglePrivacyDlpV2StoredInfoTypeVersion>((value) =>
               GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(value))
           .toList();
@@ -14300,13 +14299,13 @@ class GooglePrivacyDlpV2StoredInfoType {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentVersion != null) {
-      _json["currentVersion"] = currentVersion.toJson();
+      _json['currentVersion'] = currentVersion.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (pendingVersions != null) {
-      _json["pendingVersions"] =
+      _json['pendingVersions'] =
           pendingVersions.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -14335,22 +14334,22 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
   GooglePrivacyDlpV2StoredInfoTypeConfig();
 
   GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("dictionary")) {
-      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
+    if (_json.containsKey('dictionary')) {
+      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json['dictionary']);
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("largeCustomDictionary")) {
+    if (_json.containsKey('largeCustomDictionary')) {
       largeCustomDictionary =
           GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
-              _json["largeCustomDictionary"]);
+              _json['largeCustomDictionary']);
     }
-    if (_json.containsKey("regex")) {
-      regex = GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
+    if (_json.containsKey('regex')) {
+      regex = GooglePrivacyDlpV2Regex.fromJson(_json['regex']);
     }
   }
 
@@ -14358,19 +14357,19 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (dictionary != null) {
-      _json["dictionary"] = dictionary.toJson();
+      _json['dictionary'] = dictionary.toJson();
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (largeCustomDictionary != null) {
-      _json["largeCustomDictionary"] = largeCustomDictionary.toJson();
+      _json['largeCustomDictionary'] = largeCustomDictionary.toJson();
     }
     if (regex != null) {
-      _json["regex"] = regex.toJson();
+      _json['regex'] = regex.toJson();
     }
     return _json;
   }
@@ -14384,10 +14383,10 @@ class GooglePrivacyDlpV2StoredInfoTypeStats {
   GooglePrivacyDlpV2StoredInfoTypeStats();
 
   GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(core.Map _json) {
-    if (_json.containsKey("largeCustomDictionary")) {
+    if (_json.containsKey('largeCustomDictionary')) {
       largeCustomDictionary =
           GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(
-              _json["largeCustomDictionary"]);
+              _json['largeCustomDictionary']);
     }
   }
 
@@ -14395,7 +14394,7 @@ class GooglePrivacyDlpV2StoredInfoTypeStats {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (largeCustomDictionary != null) {
-      _json["largeCustomDictionary"] = largeCustomDictionary.toJson();
+      _json['largeCustomDictionary'] = largeCustomDictionary.toJson();
     }
     return _json;
   }
@@ -14443,23 +14442,23 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
   GooglePrivacyDlpV2StoredInfoTypeVersion();
 
   GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(core.Map _json) {
-    if (_json.containsKey("config")) {
-      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json['config']);
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("errors")) {
-      errors = (_json["errors"] as core.List)
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
           .map<GooglePrivacyDlpV2Error>(
               (value) => GooglePrivacyDlpV2Error.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stats")) {
-      stats = GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(_json["stats"]);
+    if (_json.containsKey('stats')) {
+      stats = GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(_json['stats']);
     }
   }
 
@@ -14467,19 +14466,19 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => value.toJson()).toList();
+      _json['errors'] = errors.map((value) => value.toJson()).toList();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stats != null) {
-      _json["stats"] = stats.toJson();
+      _json['stats'] = stats.toJson();
     }
     return _json;
   }
@@ -14499,11 +14498,11 @@ class GooglePrivacyDlpV2StoredType {
   GooglePrivacyDlpV2StoredType();
 
   GooglePrivacyDlpV2StoredType.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -14511,10 +14510,10 @@ class GooglePrivacyDlpV2StoredType {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -14540,14 +14539,14 @@ class GooglePrivacyDlpV2SummaryResult {
   GooglePrivacyDlpV2SummaryResult();
 
   GooglePrivacyDlpV2SummaryResult.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("details")) {
-      details = _json["details"];
+    if (_json.containsKey('details')) {
+      details = _json['details'];
     }
   }
 
@@ -14555,13 +14554,13 @@ class GooglePrivacyDlpV2SummaryResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     return _json;
   }
@@ -14599,14 +14598,14 @@ class GooglePrivacyDlpV2Table {
   GooglePrivacyDlpV2Table();
 
   GooglePrivacyDlpV2Table.fromJson(core.Map _json) {
-    if (_json.containsKey("headers")) {
-      headers = (_json["headers"] as core.List)
+    if (_json.containsKey('headers')) {
+      headers = (_json['headers'] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
               (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("rows")) {
-      rows = (_json["rows"] as core.List)
+    if (_json.containsKey('rows')) {
+      rows = (_json['rows'] as core.List)
           .map<GooglePrivacyDlpV2Row>(
               (value) => GooglePrivacyDlpV2Row.fromJson(value))
           .toList();
@@ -14617,10 +14616,10 @@ class GooglePrivacyDlpV2Table {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (headers != null) {
-      _json["headers"] = headers.map((value) => value.toJson()).toList();
+      _json['headers'] = headers.map((value) => value.toJson()).toList();
     }
     if (rows != null) {
-      _json["rows"] = rows.map((value) => value.toJson()).toList();
+      _json['rows'] = rows.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14639,8 +14638,8 @@ class GooglePrivacyDlpV2TableLocation {
   GooglePrivacyDlpV2TableLocation();
 
   GooglePrivacyDlpV2TableLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("rowIndex")) {
-      rowIndex = _json["rowIndex"];
+    if (_json.containsKey('rowIndex')) {
+      rowIndex = _json['rowIndex'];
     }
   }
 
@@ -14648,7 +14647,7 @@ class GooglePrivacyDlpV2TableLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rowIndex != null) {
-      _json["rowIndex"] = rowIndex;
+      _json['rowIndex'] = rowIndex;
     }
     return _json;
   }
@@ -14665,8 +14664,8 @@ class GooglePrivacyDlpV2TableOptions {
   GooglePrivacyDlpV2TableOptions();
 
   GooglePrivacyDlpV2TableOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("identifyingFields")) {
-      identifyingFields = (_json["identifyingFields"] as core.List)
+    if (_json.containsKey('identifyingFields')) {
+      identifyingFields = (_json['identifyingFields'] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
               (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
@@ -14677,7 +14676,7 @@ class GooglePrivacyDlpV2TableOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (identifyingFields != null) {
-      _json["identifyingFields"] =
+      _json['identifyingFields'] =
           identifyingFields.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -14708,17 +14707,17 @@ class GooglePrivacyDlpV2TaggedField {
   GooglePrivacyDlpV2TaggedField();
 
   GooglePrivacyDlpV2TaggedField.fromJson(core.Map _json) {
-    if (_json.containsKey("customTag")) {
-      customTag = _json["customTag"];
+    if (_json.containsKey('customTag')) {
+      customTag = _json['customTag'];
     }
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
-    if (_json.containsKey("inferred")) {
-      inferred = GoogleProtobufEmpty.fromJson(_json["inferred"]);
+    if (_json.containsKey('inferred')) {
+      inferred = GoogleProtobufEmpty.fromJson(_json['inferred']);
     }
-    if (_json.containsKey("infoType")) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+    if (_json.containsKey('infoType')) {
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
     }
   }
 
@@ -14726,16 +14725,16 @@ class GooglePrivacyDlpV2TaggedField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customTag != null) {
-      _json["customTag"] = customTag;
+      _json['customTag'] = customTag;
     }
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     if (inferred != null) {
-      _json["inferred"] = inferred.toJson();
+      _json['inferred'] = inferred.toJson();
     }
     if (infoType != null) {
-      _json["infoType"] = infoType.toJson();
+      _json['infoType'] = infoType.toJson();
     }
     return _json;
   }
@@ -14771,8 +14770,8 @@ class GooglePrivacyDlpV2TimePartConfig {
   GooglePrivacyDlpV2TimePartConfig();
 
   GooglePrivacyDlpV2TimePartConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("partToExtract")) {
-      partToExtract = _json["partToExtract"];
+    if (_json.containsKey('partToExtract')) {
+      partToExtract = _json['partToExtract'];
     }
   }
 
@@ -14780,7 +14779,7 @@ class GooglePrivacyDlpV2TimePartConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (partToExtract != null) {
-      _json["partToExtract"] = partToExtract;
+      _json['partToExtract'] = partToExtract;
     }
     return _json;
   }
@@ -14795,8 +14794,8 @@ class GooglePrivacyDlpV2TimeZone {
   GooglePrivacyDlpV2TimeZone();
 
   GooglePrivacyDlpV2TimeZone.fromJson(core.Map _json) {
-    if (_json.containsKey("offsetMinutes")) {
-      offsetMinutes = _json["offsetMinutes"];
+    if (_json.containsKey('offsetMinutes')) {
+      offsetMinutes = _json['offsetMinutes'];
     }
   }
 
@@ -14804,7 +14803,7 @@ class GooglePrivacyDlpV2TimeZone {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (offsetMinutes != null) {
-      _json["offsetMinutes"] = offsetMinutes;
+      _json['offsetMinutes'] = offsetMinutes;
     }
     return _json;
   }
@@ -14840,19 +14839,19 @@ class GooglePrivacyDlpV2TimespanConfig {
   GooglePrivacyDlpV2TimespanConfig();
 
   GooglePrivacyDlpV2TimespanConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("enableAutoPopulationOfTimespanConfig")) {
+    if (_json.containsKey('enableAutoPopulationOfTimespanConfig')) {
       enableAutoPopulationOfTimespanConfig =
-          _json["enableAutoPopulationOfTimespanConfig"];
+          _json['enableAutoPopulationOfTimespanConfig'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("timestampField")) {
+    if (_json.containsKey('timestampField')) {
       timestampField =
-          GooglePrivacyDlpV2FieldId.fromJson(_json["timestampField"]);
+          GooglePrivacyDlpV2FieldId.fromJson(_json['timestampField']);
     }
   }
 
@@ -14860,17 +14859,17 @@ class GooglePrivacyDlpV2TimespanConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enableAutoPopulationOfTimespanConfig != null) {
-      _json["enableAutoPopulationOfTimespanConfig"] =
+      _json['enableAutoPopulationOfTimespanConfig'] =
           enableAutoPopulationOfTimespanConfig;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (timestampField != null) {
-      _json["timestampField"] = timestampField.toJson();
+      _json['timestampField'] = timestampField.toJson();
     }
     return _json;
   }
@@ -14893,12 +14892,12 @@ class GooglePrivacyDlpV2TransformationErrorHandling {
   GooglePrivacyDlpV2TransformationErrorHandling();
 
   GooglePrivacyDlpV2TransformationErrorHandling.fromJson(core.Map _json) {
-    if (_json.containsKey("leaveUntransformed")) {
+    if (_json.containsKey('leaveUntransformed')) {
       leaveUntransformed = GooglePrivacyDlpV2LeaveUntransformed.fromJson(
-          _json["leaveUntransformed"]);
+          _json['leaveUntransformed']);
     }
-    if (_json.containsKey("throwError")) {
-      throwError = GooglePrivacyDlpV2ThrowError.fromJson(_json["throwError"]);
+    if (_json.containsKey('throwError')) {
+      throwError = GooglePrivacyDlpV2ThrowError.fromJson(_json['throwError']);
     }
   }
 
@@ -14906,10 +14905,10 @@ class GooglePrivacyDlpV2TransformationErrorHandling {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (leaveUntransformed != null) {
-      _json["leaveUntransformed"] = leaveUntransformed.toJson();
+      _json['leaveUntransformed'] = leaveUntransformed.toJson();
     }
     if (throwError != null) {
-      _json["throwError"] = throwError.toJson();
+      _json['throwError'] = throwError.toJson();
     }
     return _json;
   }
@@ -14926,14 +14925,14 @@ class GooglePrivacyDlpV2TransformationOverview {
   GooglePrivacyDlpV2TransformationOverview();
 
   GooglePrivacyDlpV2TransformationOverview.fromJson(core.Map _json) {
-    if (_json.containsKey("transformationSummaries")) {
-      transformationSummaries = (_json["transformationSummaries"] as core.List)
+    if (_json.containsKey('transformationSummaries')) {
+      transformationSummaries = (_json['transformationSummaries'] as core.List)
           .map<GooglePrivacyDlpV2TransformationSummary>((value) =>
               GooglePrivacyDlpV2TransformationSummary.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("transformedBytes")) {
-      transformedBytes = _json["transformedBytes"];
+    if (_json.containsKey('transformedBytes')) {
+      transformedBytes = _json['transformedBytes'];
     }
   }
 
@@ -14941,11 +14940,11 @@ class GooglePrivacyDlpV2TransformationOverview {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (transformationSummaries != null) {
-      _json["transformationSummaries"] =
+      _json['transformationSummaries'] =
           transformationSummaries.map((value) => value.toJson()).toList();
     }
     if (transformedBytes != null) {
-      _json["transformedBytes"] = transformedBytes;
+      _json['transformedBytes'] = transformedBytes;
     }
     return _json;
   }
@@ -14980,34 +14979,34 @@ class GooglePrivacyDlpV2TransformationSummary {
   GooglePrivacyDlpV2TransformationSummary();
 
   GooglePrivacyDlpV2TransformationSummary.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
     }
-    if (_json.containsKey("fieldTransformations")) {
-      fieldTransformations = (_json["fieldTransformations"] as core.List)
+    if (_json.containsKey('fieldTransformations')) {
+      fieldTransformations = (_json['fieldTransformations'] as core.List)
           .map<GooglePrivacyDlpV2FieldTransformation>(
               (value) => GooglePrivacyDlpV2FieldTransformation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("infoType")) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+    if (_json.containsKey('infoType')) {
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
     }
-    if (_json.containsKey("recordSuppress")) {
+    if (_json.containsKey('recordSuppress')) {
       recordSuppress =
-          GooglePrivacyDlpV2RecordSuppression.fromJson(_json["recordSuppress"]);
+          GooglePrivacyDlpV2RecordSuppression.fromJson(_json['recordSuppress']);
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GooglePrivacyDlpV2SummaryResult>(
               (value) => GooglePrivacyDlpV2SummaryResult.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("transformation")) {
+    if (_json.containsKey('transformation')) {
       transformation = GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
-          _json["transformation"]);
+          _json['transformation']);
     }
-    if (_json.containsKey("transformedBytes")) {
-      transformedBytes = _json["transformedBytes"];
+    if (_json.containsKey('transformedBytes')) {
+      transformedBytes = _json['transformedBytes'];
     }
   }
 
@@ -15015,26 +15014,26 @@ class GooglePrivacyDlpV2TransformationSummary {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     if (fieldTransformations != null) {
-      _json["fieldTransformations"] =
+      _json['fieldTransformations'] =
           fieldTransformations.map((value) => value.toJson()).toList();
     }
     if (infoType != null) {
-      _json["infoType"] = infoType.toJson();
+      _json['infoType'] = infoType.toJson();
     }
     if (recordSuppress != null) {
-      _json["recordSuppress"] = recordSuppress.toJson();
+      _json['recordSuppress'] = recordSuppress.toJson();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     if (transformation != null) {
-      _json["transformation"] = transformation.toJson();
+      _json['transformation'] = transformation.toJson();
     }
     if (transformedBytes != null) {
-      _json["transformedBytes"] = transformedBytes;
+      _json['transformedBytes'] = transformedBytes;
     }
     return _json;
   }
@@ -15054,8 +15053,8 @@ class GooglePrivacyDlpV2TransientCryptoKey {
   GooglePrivacyDlpV2TransientCryptoKey();
 
   GooglePrivacyDlpV2TransientCryptoKey.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -15063,7 +15062,7 @@ class GooglePrivacyDlpV2TransientCryptoKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -15083,11 +15082,11 @@ class GooglePrivacyDlpV2Trigger {
   GooglePrivacyDlpV2Trigger();
 
   GooglePrivacyDlpV2Trigger.fromJson(core.Map _json) {
-    if (_json.containsKey("manual")) {
-      manual = GooglePrivacyDlpV2Manual.fromJson(_json["manual"]);
+    if (_json.containsKey('manual')) {
+      manual = GooglePrivacyDlpV2Manual.fromJson(_json['manual']);
     }
-    if (_json.containsKey("schedule")) {
-      schedule = GooglePrivacyDlpV2Schedule.fromJson(_json["schedule"]);
+    if (_json.containsKey('schedule')) {
+      schedule = GooglePrivacyDlpV2Schedule.fromJson(_json['schedule']);
     }
   }
 
@@ -15095,10 +15094,10 @@ class GooglePrivacyDlpV2Trigger {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (manual != null) {
-      _json["manual"] = manual.toJson();
+      _json['manual'] = manual.toJson();
     }
     if (schedule != null) {
-      _json["schedule"] = schedule.toJson();
+      _json['schedule'] = schedule.toJson();
     }
     return _json;
   }
@@ -15113,14 +15112,14 @@ class GooglePrivacyDlpV2UnwrappedCryptoKey {
 
   set keyAsBytes(core.List<core.int> _bytes) {
     key =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   GooglePrivacyDlpV2UnwrappedCryptoKey();
 
   GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
   }
 
@@ -15128,7 +15127,7 @@ class GooglePrivacyDlpV2UnwrappedCryptoKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     return _json;
   }
@@ -15145,12 +15144,12 @@ class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
   GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
 
   GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deidentifyTemplate")) {
+    if (_json.containsKey('deidentifyTemplate')) {
       deidentifyTemplate = GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          _json["deidentifyTemplate"]);
+          _json['deidentifyTemplate']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -15158,10 +15157,10 @@ class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deidentifyTemplate != null) {
-      _json["deidentifyTemplate"] = deidentifyTemplate.toJson();
+      _json['deidentifyTemplate'] = deidentifyTemplate.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -15178,12 +15177,12 @@ class GooglePrivacyDlpV2UpdateInspectTemplateRequest {
   GooglePrivacyDlpV2UpdateInspectTemplateRequest();
 
   GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("inspectTemplate")) {
+    if (_json.containsKey('inspectTemplate')) {
       inspectTemplate =
-          GooglePrivacyDlpV2InspectTemplate.fromJson(_json["inspectTemplate"]);
+          GooglePrivacyDlpV2InspectTemplate.fromJson(_json['inspectTemplate']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -15191,10 +15190,10 @@ class GooglePrivacyDlpV2UpdateInspectTemplateRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inspectTemplate != null) {
-      _json["inspectTemplate"] = inspectTemplate.toJson();
+      _json['inspectTemplate'] = inspectTemplate.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -15211,11 +15210,11 @@ class GooglePrivacyDlpV2UpdateJobTriggerRequest {
   GooglePrivacyDlpV2UpdateJobTriggerRequest();
 
   GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("jobTrigger")) {
-      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(_json["jobTrigger"]);
+    if (_json.containsKey('jobTrigger')) {
+      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(_json['jobTrigger']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -15223,10 +15222,10 @@ class GooglePrivacyDlpV2UpdateJobTriggerRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (jobTrigger != null) {
-      _json["jobTrigger"] = jobTrigger.toJson();
+      _json['jobTrigger'] = jobTrigger.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -15245,11 +15244,11 @@ class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
   GooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
 
   GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("config")) {
-      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json['config']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -15257,10 +15256,10 @@ class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -15308,29 +15307,29 @@ class GooglePrivacyDlpV2Value {
   GooglePrivacyDlpV2Value();
 
   GooglePrivacyDlpV2Value.fromJson(core.Map _json) {
-    if (_json.containsKey("booleanValue")) {
-      booleanValue = _json["booleanValue"];
+    if (_json.containsKey('booleanValue')) {
+      booleanValue = _json['booleanValue'];
     }
-    if (_json.containsKey("dateValue")) {
-      dateValue = GoogleTypeDate.fromJson(_json["dateValue"]);
+    if (_json.containsKey('dateValue')) {
+      dateValue = GoogleTypeDate.fromJson(_json['dateValue']);
     }
-    if (_json.containsKey("dayOfWeekValue")) {
-      dayOfWeekValue = _json["dayOfWeekValue"];
+    if (_json.containsKey('dayOfWeekValue')) {
+      dayOfWeekValue = _json['dayOfWeekValue'];
     }
-    if (_json.containsKey("floatValue")) {
-      floatValue = _json["floatValue"].toDouble();
+    if (_json.containsKey('floatValue')) {
+      floatValue = _json['floatValue'].toDouble();
     }
-    if (_json.containsKey("integerValue")) {
-      integerValue = _json["integerValue"];
+    if (_json.containsKey('integerValue')) {
+      integerValue = _json['integerValue'];
     }
-    if (_json.containsKey("stringValue")) {
-      stringValue = _json["stringValue"];
+    if (_json.containsKey('stringValue')) {
+      stringValue = _json['stringValue'];
     }
-    if (_json.containsKey("timeValue")) {
-      timeValue = GoogleTypeTimeOfDay.fromJson(_json["timeValue"]);
+    if (_json.containsKey('timeValue')) {
+      timeValue = GoogleTypeTimeOfDay.fromJson(_json['timeValue']);
     }
-    if (_json.containsKey("timestampValue")) {
-      timestampValue = _json["timestampValue"];
+    if (_json.containsKey('timestampValue')) {
+      timestampValue = _json['timestampValue'];
     }
   }
 
@@ -15338,28 +15337,28 @@ class GooglePrivacyDlpV2Value {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (booleanValue != null) {
-      _json["booleanValue"] = booleanValue;
+      _json['booleanValue'] = booleanValue;
     }
     if (dateValue != null) {
-      _json["dateValue"] = dateValue.toJson();
+      _json['dateValue'] = dateValue.toJson();
     }
     if (dayOfWeekValue != null) {
-      _json["dayOfWeekValue"] = dayOfWeekValue;
+      _json['dayOfWeekValue'] = dayOfWeekValue;
     }
     if (floatValue != null) {
-      _json["floatValue"] = floatValue;
+      _json['floatValue'] = floatValue;
     }
     if (integerValue != null) {
-      _json["integerValue"] = integerValue;
+      _json['integerValue'] = integerValue;
     }
     if (stringValue != null) {
-      _json["stringValue"] = stringValue;
+      _json['stringValue'] = stringValue;
     }
     if (timeValue != null) {
-      _json["timeValue"] = timeValue.toJson();
+      _json['timeValue'] = timeValue.toJson();
     }
     if (timestampValue != null) {
-      _json["timestampValue"] = timestampValue;
+      _json['timestampValue'] = timestampValue;
     }
     return _json;
   }
@@ -15376,11 +15375,11 @@ class GooglePrivacyDlpV2ValueFrequency {
   GooglePrivacyDlpV2ValueFrequency();
 
   GooglePrivacyDlpV2ValueFrequency.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("value")) {
-      value = GooglePrivacyDlpV2Value.fromJson(_json["value"]);
+    if (_json.containsKey('value')) {
+      value = GooglePrivacyDlpV2Value.fromJson(_json['value']);
     }
   }
 
@@ -15388,10 +15387,10 @@ class GooglePrivacyDlpV2ValueFrequency {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (value != null) {
-      _json["value"] = value.toJson();
+      _json['value'] = value.toJson();
     }
     return _json;
   }
@@ -15407,8 +15406,8 @@ class GooglePrivacyDlpV2WordList {
   GooglePrivacyDlpV2WordList();
 
   GooglePrivacyDlpV2WordList.fromJson(core.Map _json) {
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List).cast<core.String>();
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List).cast<core.String>();
     }
   }
 
@@ -15416,7 +15415,7 @@ class GooglePrivacyDlpV2WordList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (words != null) {
-      _json["words"] = words;
+      _json['words'] = words;
     }
     return _json;
   }
@@ -15464,17 +15463,17 @@ class GoogleRpcStatus {
   GoogleRpcStatus();
 
   GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -15482,13 +15481,13 @@ class GoogleRpcStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -15519,14 +15518,14 @@ class GoogleTypeDate {
   GoogleTypeDate();
 
   GoogleTypeDate.fromJson(core.Map _json) {
-    if (_json.containsKey("day")) {
-      day = _json["day"];
+    if (_json.containsKey('day')) {
+      day = _json['day'];
     }
-    if (_json.containsKey("month")) {
-      month = _json["month"];
+    if (_json.containsKey('month')) {
+      month = _json['month'];
     }
-    if (_json.containsKey("year")) {
-      year = _json["year"];
+    if (_json.containsKey('year')) {
+      year = _json['year'];
     }
   }
 
@@ -15534,13 +15533,13 @@ class GoogleTypeDate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (day != null) {
-      _json["day"] = day;
+      _json['day'] = day;
     }
     if (month != null) {
-      _json["month"] = month;
+      _json['month'] = month;
     }
     if (year != null) {
-      _json["year"] = year;
+      _json['year'] = year;
     }
     return _json;
   }
@@ -15567,17 +15566,17 @@ class GoogleTypeTimeOfDay {
   GoogleTypeTimeOfDay();
 
   GoogleTypeTimeOfDay.fromJson(core.Map _json) {
-    if (_json.containsKey("hours")) {
-      hours = _json["hours"];
+    if (_json.containsKey('hours')) {
+      hours = _json['hours'];
     }
-    if (_json.containsKey("minutes")) {
-      minutes = _json["minutes"];
+    if (_json.containsKey('minutes')) {
+      minutes = _json['minutes'];
     }
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'];
     }
-    if (_json.containsKey("seconds")) {
-      seconds = _json["seconds"];
+    if (_json.containsKey('seconds')) {
+      seconds = _json['seconds'];
     }
   }
 
@@ -15585,16 +15584,16 @@ class GoogleTypeTimeOfDay {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hours != null) {
-      _json["hours"] = hours;
+      _json['hours'] = hours;
     }
     if (minutes != null) {
-      _json["minutes"] = minutes;
+      _json['minutes'] = minutes;
     }
     if (nanos != null) {
-      _json["nanos"] = nanos;
+      _json['nanos'] = nanos;
     }
     if (seconds != null) {
-      _json["seconds"] = seconds;
+      _json['seconds'] = seconds;
     }
     return _json;
   }

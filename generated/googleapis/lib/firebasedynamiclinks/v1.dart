@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,7 +36,7 @@ const core.String USER_AGENT = 'dart-api-client firebasedynamiclinks/v1';
 /// Programmatically creates and manages Firebase Dynamic Links.
 class FirebasedynamiclinksApi {
   /// View and administer all your Firebase data and settings
-  static const FirebaseScope = "https://www.googleapis.com/auth/firebase";
+  static const FirebaseScope = 'https://www.googleapis.com/auth/firebase';
 
   final commons.ApiRequester _requester;
 
@@ -47,8 +46,8 @@ class FirebasedynamiclinksApi {
   V1ResourceApi get v1 => V1ResourceApi(_requester);
 
   FirebasedynamiclinksApi(http.Client client,
-      {core.String rootUrl = "https://firebasedynamiclinks.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://firebasedynamiclinks.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -98,14 +97,14 @@ class ManagedShortLinksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/managedShortLinks:create';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -158,14 +157,14 @@ class ShortLinksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/shortLinks';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -219,23 +218,23 @@ class V1ResourceApi {
     core.String _body;
 
     if (dynamicLink == null) {
-      throw core.ArgumentError("Parameter dynamicLink is required.");
+      throw core.ArgumentError('Parameter dynamicLink is required.');
     }
     if (durationDays != null) {
-      _queryParams["durationDays"] = [durationDays];
+      _queryParams['durationDays'] = [durationDays];
     }
     if (sdkVersion != null) {
-      _queryParams["sdkVersion"] = [sdkVersion];
+      _queryParams['sdkVersion'] = [sdkVersion];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariable('$dynamicLink') + '/linkStats';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -276,14 +275,14 @@ class V1ResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/installAttribution';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -325,14 +324,14 @@ class V1ResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/reopenAttribution';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -355,13 +354,13 @@ class AnalyticsInfo {
   AnalyticsInfo();
 
   AnalyticsInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("googlePlayAnalytics")) {
+    if (_json.containsKey('googlePlayAnalytics')) {
       googlePlayAnalytics =
-          GooglePlayAnalytics.fromJson(_json["googlePlayAnalytics"]);
+          GooglePlayAnalytics.fromJson(_json['googlePlayAnalytics']);
     }
-    if (_json.containsKey("itunesConnectAnalytics")) {
+    if (_json.containsKey('itunesConnectAnalytics')) {
       itunesConnectAnalytics =
-          ITunesConnectAnalytics.fromJson(_json["itunesConnectAnalytics"]);
+          ITunesConnectAnalytics.fromJson(_json['itunesConnectAnalytics']);
     }
   }
 
@@ -369,10 +368,10 @@ class AnalyticsInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (googlePlayAnalytics != null) {
-      _json["googlePlayAnalytics"] = googlePlayAnalytics.toJson();
+      _json['googlePlayAnalytics'] = googlePlayAnalytics.toJson();
     }
     if (itunesConnectAnalytics != null) {
-      _json["itunesConnectAnalytics"] = itunesConnectAnalytics.toJson();
+      _json['itunesConnectAnalytics'] = itunesConnectAnalytics.toJson();
     }
     return _json;
   }
@@ -396,17 +395,17 @@ class AndroidInfo {
   AndroidInfo();
 
   AndroidInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("androidFallbackLink")) {
-      androidFallbackLink = _json["androidFallbackLink"];
+    if (_json.containsKey('androidFallbackLink')) {
+      androidFallbackLink = _json['androidFallbackLink'];
     }
-    if (_json.containsKey("androidLink")) {
-      androidLink = _json["androidLink"];
+    if (_json.containsKey('androidLink')) {
+      androidLink = _json['androidLink'];
     }
-    if (_json.containsKey("androidMinPackageVersionCode")) {
-      androidMinPackageVersionCode = _json["androidMinPackageVersionCode"];
+    if (_json.containsKey('androidMinPackageVersionCode')) {
+      androidMinPackageVersionCode = _json['androidMinPackageVersionCode'];
     }
-    if (_json.containsKey("androidPackageName")) {
-      androidPackageName = _json["androidPackageName"];
+    if (_json.containsKey('androidPackageName')) {
+      androidPackageName = _json['androidPackageName'];
     }
   }
 
@@ -414,16 +413,16 @@ class AndroidInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (androidFallbackLink != null) {
-      _json["androidFallbackLink"] = androidFallbackLink;
+      _json['androidFallbackLink'] = androidFallbackLink;
     }
     if (androidLink != null) {
-      _json["androidLink"] = androidLink;
+      _json['androidLink'] = androidLink;
     }
     if (androidMinPackageVersionCode != null) {
-      _json["androidMinPackageVersionCode"] = androidMinPackageVersionCode;
+      _json['androidMinPackageVersionCode'] = androidMinPackageVersionCode;
     }
     if (androidPackageName != null) {
-      _json["androidPackageName"] = androidPackageName;
+      _json['androidPackageName'] = androidPackageName;
     }
     return _json;
   }
@@ -456,20 +455,20 @@ class CreateManagedShortLinkRequest {
   CreateManagedShortLinkRequest();
 
   CreateManagedShortLinkRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("dynamicLinkInfo")) {
-      dynamicLinkInfo = DynamicLinkInfo.fromJson(_json["dynamicLinkInfo"]);
+    if (_json.containsKey('dynamicLinkInfo')) {
+      dynamicLinkInfo = DynamicLinkInfo.fromJson(_json['dynamicLinkInfo']);
     }
-    if (_json.containsKey("longDynamicLink")) {
-      longDynamicLink = _json["longDynamicLink"];
+    if (_json.containsKey('longDynamicLink')) {
+      longDynamicLink = _json['longDynamicLink'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("sdkVersion")) {
-      sdkVersion = _json["sdkVersion"];
+    if (_json.containsKey('sdkVersion')) {
+      sdkVersion = _json['sdkVersion'];
     }
-    if (_json.containsKey("suffix")) {
-      suffix = Suffix.fromJson(_json["suffix"]);
+    if (_json.containsKey('suffix')) {
+      suffix = Suffix.fromJson(_json['suffix']);
     }
   }
 
@@ -477,19 +476,19 @@ class CreateManagedShortLinkRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dynamicLinkInfo != null) {
-      _json["dynamicLinkInfo"] = dynamicLinkInfo.toJson();
+      _json['dynamicLinkInfo'] = dynamicLinkInfo.toJson();
     }
     if (longDynamicLink != null) {
-      _json["longDynamicLink"] = longDynamicLink;
+      _json['longDynamicLink'] = longDynamicLink;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (sdkVersion != null) {
-      _json["sdkVersion"] = sdkVersion;
+      _json['sdkVersion'] = sdkVersion;
     }
     if (suffix != null) {
-      _json["suffix"] = suffix.toJson();
+      _json['suffix'] = suffix.toJson();
     }
     return _json;
   }
@@ -509,14 +508,14 @@ class CreateManagedShortLinkResponse {
   CreateManagedShortLinkResponse();
 
   CreateManagedShortLinkResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("managedShortLink")) {
-      managedShortLink = ManagedShortLink.fromJson(_json["managedShortLink"]);
+    if (_json.containsKey('managedShortLink')) {
+      managedShortLink = ManagedShortLink.fromJson(_json['managedShortLink']);
     }
-    if (_json.containsKey("previewLink")) {
-      previewLink = _json["previewLink"];
+    if (_json.containsKey('previewLink')) {
+      previewLink = _json['previewLink'];
     }
-    if (_json.containsKey("warning")) {
-      warning = (_json["warning"] as core.List)
+    if (_json.containsKey('warning')) {
+      warning = (_json['warning'] as core.List)
           .map<DynamicLinkWarning>(
               (value) => DynamicLinkWarning.fromJson(value))
           .toList();
@@ -527,13 +526,13 @@ class CreateManagedShortLinkResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (managedShortLink != null) {
-      _json["managedShortLink"] = managedShortLink.toJson();
+      _json['managedShortLink'] = managedShortLink.toJson();
     }
     if (previewLink != null) {
-      _json["previewLink"] = previewLink;
+      _json['previewLink'] = previewLink;
     }
     if (warning != null) {
-      _json["warning"] = warning.map((value) => value.toJson()).toList();
+      _json['warning'] = warning.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -561,17 +560,17 @@ class CreateShortDynamicLinkRequest {
   CreateShortDynamicLinkRequest();
 
   CreateShortDynamicLinkRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("dynamicLinkInfo")) {
-      dynamicLinkInfo = DynamicLinkInfo.fromJson(_json["dynamicLinkInfo"]);
+    if (_json.containsKey('dynamicLinkInfo')) {
+      dynamicLinkInfo = DynamicLinkInfo.fromJson(_json['dynamicLinkInfo']);
     }
-    if (_json.containsKey("longDynamicLink")) {
-      longDynamicLink = _json["longDynamicLink"];
+    if (_json.containsKey('longDynamicLink')) {
+      longDynamicLink = _json['longDynamicLink'];
     }
-    if (_json.containsKey("sdkVersion")) {
-      sdkVersion = _json["sdkVersion"];
+    if (_json.containsKey('sdkVersion')) {
+      sdkVersion = _json['sdkVersion'];
     }
-    if (_json.containsKey("suffix")) {
-      suffix = Suffix.fromJson(_json["suffix"]);
+    if (_json.containsKey('suffix')) {
+      suffix = Suffix.fromJson(_json['suffix']);
     }
   }
 
@@ -579,16 +578,16 @@ class CreateShortDynamicLinkRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dynamicLinkInfo != null) {
-      _json["dynamicLinkInfo"] = dynamicLinkInfo.toJson();
+      _json['dynamicLinkInfo'] = dynamicLinkInfo.toJson();
     }
     if (longDynamicLink != null) {
-      _json["longDynamicLink"] = longDynamicLink;
+      _json['longDynamicLink'] = longDynamicLink;
     }
     if (sdkVersion != null) {
-      _json["sdkVersion"] = sdkVersion;
+      _json['sdkVersion'] = sdkVersion;
     }
     if (suffix != null) {
-      _json["suffix"] = suffix.toJson();
+      _json['suffix'] = suffix.toJson();
     }
     return _json;
   }
@@ -608,14 +607,14 @@ class CreateShortDynamicLinkResponse {
   CreateShortDynamicLinkResponse();
 
   CreateShortDynamicLinkResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("previewLink")) {
-      previewLink = _json["previewLink"];
+    if (_json.containsKey('previewLink')) {
+      previewLink = _json['previewLink'];
     }
-    if (_json.containsKey("shortLink")) {
-      shortLink = _json["shortLink"];
+    if (_json.containsKey('shortLink')) {
+      shortLink = _json['shortLink'];
     }
-    if (_json.containsKey("warning")) {
-      warning = (_json["warning"] as core.List)
+    if (_json.containsKey('warning')) {
+      warning = (_json['warning'] as core.List)
           .map<DynamicLinkWarning>(
               (value) => DynamicLinkWarning.fromJson(value))
           .toList();
@@ -626,13 +625,13 @@ class CreateShortDynamicLinkResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (previewLink != null) {
-      _json["previewLink"] = previewLink;
+      _json['previewLink'] = previewLink;
     }
     if (shortLink != null) {
-      _json["shortLink"] = shortLink;
+      _json['shortLink'] = shortLink;
     }
     if (warning != null) {
-      _json["warning"] = warning.map((value) => value.toJson()).toList();
+      _json['warning'] = warning.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -646,8 +645,8 @@ class DesktopInfo {
   DesktopInfo();
 
   DesktopInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("desktopFallbackLink")) {
-      desktopFallbackLink = _json["desktopFallbackLink"];
+    if (_json.containsKey('desktopFallbackLink')) {
+      desktopFallbackLink = _json['desktopFallbackLink'];
     }
   }
 
@@ -655,7 +654,7 @@ class DesktopInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (desktopFallbackLink != null) {
-      _json["desktopFallbackLink"] = desktopFallbackLink;
+      _json['desktopFallbackLink'] = desktopFallbackLink;
     }
     return _json;
   }
@@ -690,26 +689,26 @@ class DeviceInfo {
   DeviceInfo();
 
   DeviceInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceModelName")) {
-      deviceModelName = _json["deviceModelName"];
+    if (_json.containsKey('deviceModelName')) {
+      deviceModelName = _json['deviceModelName'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("languageCodeFromWebview")) {
-      languageCodeFromWebview = _json["languageCodeFromWebview"];
+    if (_json.containsKey('languageCodeFromWebview')) {
+      languageCodeFromWebview = _json['languageCodeFromWebview'];
     }
-    if (_json.containsKey("languageCodeRaw")) {
-      languageCodeRaw = _json["languageCodeRaw"];
+    if (_json.containsKey('languageCodeRaw')) {
+      languageCodeRaw = _json['languageCodeRaw'];
     }
-    if (_json.containsKey("screenResolutionHeight")) {
-      screenResolutionHeight = _json["screenResolutionHeight"];
+    if (_json.containsKey('screenResolutionHeight')) {
+      screenResolutionHeight = _json['screenResolutionHeight'];
     }
-    if (_json.containsKey("screenResolutionWidth")) {
-      screenResolutionWidth = _json["screenResolutionWidth"];
+    if (_json.containsKey('screenResolutionWidth')) {
+      screenResolutionWidth = _json['screenResolutionWidth'];
     }
-    if (_json.containsKey("timezone")) {
-      timezone = _json["timezone"];
+    if (_json.containsKey('timezone')) {
+      timezone = _json['timezone'];
     }
   }
 
@@ -717,25 +716,25 @@ class DeviceInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceModelName != null) {
-      _json["deviceModelName"] = deviceModelName;
+      _json['deviceModelName'] = deviceModelName;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (languageCodeFromWebview != null) {
-      _json["languageCodeFromWebview"] = languageCodeFromWebview;
+      _json['languageCodeFromWebview'] = languageCodeFromWebview;
     }
     if (languageCodeRaw != null) {
-      _json["languageCodeRaw"] = languageCodeRaw;
+      _json['languageCodeRaw'] = languageCodeRaw;
     }
     if (screenResolutionHeight != null) {
-      _json["screenResolutionHeight"] = screenResolutionHeight;
+      _json['screenResolutionHeight'] = screenResolutionHeight;
     }
     if (screenResolutionWidth != null) {
-      _json["screenResolutionWidth"] = screenResolutionWidth;
+      _json['screenResolutionWidth'] = screenResolutionWidth;
     }
     if (timezone != null) {
-      _json["timezone"] = timezone;
+      _json['timezone'] = timezone;
     }
     return _json;
   }
@@ -774,14 +773,14 @@ class DynamicLinkEventStat {
   DynamicLinkEventStat();
 
   DynamicLinkEventStat.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("event")) {
-      event = _json["event"];
+    if (_json.containsKey('event')) {
+      event = _json['event'];
     }
-    if (_json.containsKey("platform")) {
-      platform = _json["platform"];
+    if (_json.containsKey('platform')) {
+      platform = _json['platform'];
     }
   }
 
@@ -789,13 +788,13 @@ class DynamicLinkEventStat {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (event != null) {
-      _json["event"] = event;
+      _json['event'] = event;
     }
     if (platform != null) {
-      _json["platform"] = platform;
+      _json['platform'] = platform;
     }
     return _json;
   }
@@ -848,33 +847,33 @@ class DynamicLinkInfo {
   DynamicLinkInfo();
 
   DynamicLinkInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("analyticsInfo")) {
-      analyticsInfo = AnalyticsInfo.fromJson(_json["analyticsInfo"]);
+    if (_json.containsKey('analyticsInfo')) {
+      analyticsInfo = AnalyticsInfo.fromJson(_json['analyticsInfo']);
     }
-    if (_json.containsKey("androidInfo")) {
-      androidInfo = AndroidInfo.fromJson(_json["androidInfo"]);
+    if (_json.containsKey('androidInfo')) {
+      androidInfo = AndroidInfo.fromJson(_json['androidInfo']);
     }
-    if (_json.containsKey("desktopInfo")) {
-      desktopInfo = DesktopInfo.fromJson(_json["desktopInfo"]);
+    if (_json.containsKey('desktopInfo')) {
+      desktopInfo = DesktopInfo.fromJson(_json['desktopInfo']);
     }
-    if (_json.containsKey("domainUriPrefix")) {
-      domainUriPrefix = _json["domainUriPrefix"];
+    if (_json.containsKey('domainUriPrefix')) {
+      domainUriPrefix = _json['domainUriPrefix'];
     }
-    if (_json.containsKey("dynamicLinkDomain")) {
-      dynamicLinkDomain = _json["dynamicLinkDomain"];
+    if (_json.containsKey('dynamicLinkDomain')) {
+      dynamicLinkDomain = _json['dynamicLinkDomain'];
     }
-    if (_json.containsKey("iosInfo")) {
-      iosInfo = IosInfo.fromJson(_json["iosInfo"]);
+    if (_json.containsKey('iosInfo')) {
+      iosInfo = IosInfo.fromJson(_json['iosInfo']);
     }
-    if (_json.containsKey("link")) {
-      link = _json["link"];
+    if (_json.containsKey('link')) {
+      link = _json['link'];
     }
-    if (_json.containsKey("navigationInfo")) {
-      navigationInfo = NavigationInfo.fromJson(_json["navigationInfo"]);
+    if (_json.containsKey('navigationInfo')) {
+      navigationInfo = NavigationInfo.fromJson(_json['navigationInfo']);
     }
-    if (_json.containsKey("socialMetaTagInfo")) {
+    if (_json.containsKey('socialMetaTagInfo')) {
       socialMetaTagInfo =
-          SocialMetaTagInfo.fromJson(_json["socialMetaTagInfo"]);
+          SocialMetaTagInfo.fromJson(_json['socialMetaTagInfo']);
     }
   }
 
@@ -882,31 +881,31 @@ class DynamicLinkInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (analyticsInfo != null) {
-      _json["analyticsInfo"] = analyticsInfo.toJson();
+      _json['analyticsInfo'] = analyticsInfo.toJson();
     }
     if (androidInfo != null) {
-      _json["androidInfo"] = androidInfo.toJson();
+      _json['androidInfo'] = androidInfo.toJson();
     }
     if (desktopInfo != null) {
-      _json["desktopInfo"] = desktopInfo.toJson();
+      _json['desktopInfo'] = desktopInfo.toJson();
     }
     if (domainUriPrefix != null) {
-      _json["domainUriPrefix"] = domainUriPrefix;
+      _json['domainUriPrefix'] = domainUriPrefix;
     }
     if (dynamicLinkDomain != null) {
-      _json["dynamicLinkDomain"] = dynamicLinkDomain;
+      _json['dynamicLinkDomain'] = dynamicLinkDomain;
     }
     if (iosInfo != null) {
-      _json["iosInfo"] = iosInfo.toJson();
+      _json['iosInfo'] = iosInfo.toJson();
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     if (navigationInfo != null) {
-      _json["navigationInfo"] = navigationInfo.toJson();
+      _json['navigationInfo'] = navigationInfo.toJson();
     }
     if (socialMetaTagInfo != null) {
-      _json["socialMetaTagInfo"] = socialMetaTagInfo.toJson();
+      _json['socialMetaTagInfo'] = socialMetaTagInfo.toJson();
     }
     return _json;
   }
@@ -920,8 +919,8 @@ class DynamicLinkStats {
   DynamicLinkStats();
 
   DynamicLinkStats.fromJson(core.Map _json) {
-    if (_json.containsKey("linkEventStats")) {
-      linkEventStats = (_json["linkEventStats"] as core.List)
+    if (_json.containsKey('linkEventStats')) {
+      linkEventStats = (_json['linkEventStats'] as core.List)
           .map<DynamicLinkEventStat>(
               (value) => DynamicLinkEventStat.fromJson(value))
           .toList();
@@ -932,7 +931,7 @@ class DynamicLinkStats {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (linkEventStats != null) {
-      _json["linkEventStats"] =
+      _json['linkEventStats'] =
           linkEventStats.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -998,14 +997,14 @@ class DynamicLinkWarning {
   DynamicLinkWarning();
 
   DynamicLinkWarning.fromJson(core.Map _json) {
-    if (_json.containsKey("warningCode")) {
-      warningCode = _json["warningCode"];
+    if (_json.containsKey('warningCode')) {
+      warningCode = _json['warningCode'];
     }
-    if (_json.containsKey("warningDocumentLink")) {
-      warningDocumentLink = _json["warningDocumentLink"];
+    if (_json.containsKey('warningDocumentLink')) {
+      warningDocumentLink = _json['warningDocumentLink'];
     }
-    if (_json.containsKey("warningMessage")) {
-      warningMessage = _json["warningMessage"];
+    if (_json.containsKey('warningMessage')) {
+      warningMessage = _json['warningMessage'];
     }
   }
 
@@ -1013,13 +1012,13 @@ class DynamicLinkWarning {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (warningCode != null) {
-      _json["warningCode"] = warningCode;
+      _json['warningCode'] = warningCode;
     }
     if (warningDocumentLink != null) {
-      _json["warningDocumentLink"] = warningDocumentLink;
+      _json['warningDocumentLink'] = warningDocumentLink;
     }
     if (warningMessage != null) {
-      _json["warningMessage"] = warningMessage;
+      _json['warningMessage'] = warningMessage;
     }
     return _json;
   }
@@ -1075,29 +1074,29 @@ class GetIosPostInstallAttributionRequest {
   GetIosPostInstallAttributionRequest();
 
   GetIosPostInstallAttributionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("appInstallationTime")) {
-      appInstallationTime = _json["appInstallationTime"];
+    if (_json.containsKey('appInstallationTime')) {
+      appInstallationTime = _json['appInstallationTime'];
     }
-    if (_json.containsKey("bundleId")) {
-      bundleId = _json["bundleId"];
+    if (_json.containsKey('bundleId')) {
+      bundleId = _json['bundleId'];
     }
-    if (_json.containsKey("device")) {
-      device = DeviceInfo.fromJson(_json["device"]);
+    if (_json.containsKey('device')) {
+      device = DeviceInfo.fromJson(_json['device']);
     }
-    if (_json.containsKey("iosVersion")) {
-      iosVersion = _json["iosVersion"];
+    if (_json.containsKey('iosVersion')) {
+      iosVersion = _json['iosVersion'];
     }
-    if (_json.containsKey("retrievalMethod")) {
-      retrievalMethod = _json["retrievalMethod"];
+    if (_json.containsKey('retrievalMethod')) {
+      retrievalMethod = _json['retrievalMethod'];
     }
-    if (_json.containsKey("sdkVersion")) {
-      sdkVersion = _json["sdkVersion"];
+    if (_json.containsKey('sdkVersion')) {
+      sdkVersion = _json['sdkVersion'];
     }
-    if (_json.containsKey("uniqueMatchLinkToCheck")) {
-      uniqueMatchLinkToCheck = _json["uniqueMatchLinkToCheck"];
+    if (_json.containsKey('uniqueMatchLinkToCheck')) {
+      uniqueMatchLinkToCheck = _json['uniqueMatchLinkToCheck'];
     }
-    if (_json.containsKey("visualStyle")) {
-      visualStyle = _json["visualStyle"];
+    if (_json.containsKey('visualStyle')) {
+      visualStyle = _json['visualStyle'];
     }
   }
 
@@ -1105,28 +1104,28 @@ class GetIosPostInstallAttributionRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appInstallationTime != null) {
-      _json["appInstallationTime"] = appInstallationTime;
+      _json['appInstallationTime'] = appInstallationTime;
     }
     if (bundleId != null) {
-      _json["bundleId"] = bundleId;
+      _json['bundleId'] = bundleId;
     }
     if (device != null) {
-      _json["device"] = device.toJson();
+      _json['device'] = device.toJson();
     }
     if (iosVersion != null) {
-      _json["iosVersion"] = iosVersion;
+      _json['iosVersion'] = iosVersion;
     }
     if (retrievalMethod != null) {
-      _json["retrievalMethod"] = retrievalMethod;
+      _json['retrievalMethod'] = retrievalMethod;
     }
     if (sdkVersion != null) {
-      _json["sdkVersion"] = sdkVersion;
+      _json['sdkVersion'] = sdkVersion;
     }
     if (uniqueMatchLinkToCheck != null) {
-      _json["uniqueMatchLinkToCheck"] = uniqueMatchLinkToCheck;
+      _json['uniqueMatchLinkToCheck'] = uniqueMatchLinkToCheck;
     }
     if (visualStyle != null) {
-      _json["visualStyle"] = visualStyle;
+      _json['visualStyle'] = visualStyle;
     }
     return _json;
   }
@@ -1214,53 +1213,53 @@ class GetIosPostInstallAttributionResponse {
   GetIosPostInstallAttributionResponse();
 
   GetIosPostInstallAttributionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("appMinimumVersion")) {
-      appMinimumVersion = _json["appMinimumVersion"];
+    if (_json.containsKey('appMinimumVersion')) {
+      appMinimumVersion = _json['appMinimumVersion'];
     }
-    if (_json.containsKey("attributionConfidence")) {
-      attributionConfidence = _json["attributionConfidence"];
+    if (_json.containsKey('attributionConfidence')) {
+      attributionConfidence = _json['attributionConfidence'];
     }
-    if (_json.containsKey("deepLink")) {
-      deepLink = _json["deepLink"];
+    if (_json.containsKey('deepLink')) {
+      deepLink = _json['deepLink'];
     }
-    if (_json.containsKey("externalBrowserDestinationLink")) {
-      externalBrowserDestinationLink = _json["externalBrowserDestinationLink"];
+    if (_json.containsKey('externalBrowserDestinationLink')) {
+      externalBrowserDestinationLink = _json['externalBrowserDestinationLink'];
     }
-    if (_json.containsKey("fallbackLink")) {
-      fallbackLink = _json["fallbackLink"];
+    if (_json.containsKey('fallbackLink')) {
+      fallbackLink = _json['fallbackLink'];
     }
-    if (_json.containsKey("invitationId")) {
-      invitationId = _json["invitationId"];
+    if (_json.containsKey('invitationId')) {
+      invitationId = _json['invitationId'];
     }
-    if (_json.containsKey("isStrongMatchExecutable")) {
-      isStrongMatchExecutable = _json["isStrongMatchExecutable"];
+    if (_json.containsKey('isStrongMatchExecutable')) {
+      isStrongMatchExecutable = _json['isStrongMatchExecutable'];
     }
-    if (_json.containsKey("matchMessage")) {
-      matchMessage = _json["matchMessage"];
+    if (_json.containsKey('matchMessage')) {
+      matchMessage = _json['matchMessage'];
     }
-    if (_json.containsKey("requestIpVersion")) {
-      requestIpVersion = _json["requestIpVersion"];
+    if (_json.containsKey('requestIpVersion')) {
+      requestIpVersion = _json['requestIpVersion'];
     }
-    if (_json.containsKey("requestedLink")) {
-      requestedLink = _json["requestedLink"];
+    if (_json.containsKey('requestedLink')) {
+      requestedLink = _json['requestedLink'];
     }
-    if (_json.containsKey("resolvedLink")) {
-      resolvedLink = _json["resolvedLink"];
+    if (_json.containsKey('resolvedLink')) {
+      resolvedLink = _json['resolvedLink'];
     }
-    if (_json.containsKey("utmCampaign")) {
-      utmCampaign = _json["utmCampaign"];
+    if (_json.containsKey('utmCampaign')) {
+      utmCampaign = _json['utmCampaign'];
     }
-    if (_json.containsKey("utmContent")) {
-      utmContent = _json["utmContent"];
+    if (_json.containsKey('utmContent')) {
+      utmContent = _json['utmContent'];
     }
-    if (_json.containsKey("utmMedium")) {
-      utmMedium = _json["utmMedium"];
+    if (_json.containsKey('utmMedium')) {
+      utmMedium = _json['utmMedium'];
     }
-    if (_json.containsKey("utmSource")) {
-      utmSource = _json["utmSource"];
+    if (_json.containsKey('utmSource')) {
+      utmSource = _json['utmSource'];
     }
-    if (_json.containsKey("utmTerm")) {
-      utmTerm = _json["utmTerm"];
+    if (_json.containsKey('utmTerm')) {
+      utmTerm = _json['utmTerm'];
     }
   }
 
@@ -1268,52 +1267,52 @@ class GetIosPostInstallAttributionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appMinimumVersion != null) {
-      _json["appMinimumVersion"] = appMinimumVersion;
+      _json['appMinimumVersion'] = appMinimumVersion;
     }
     if (attributionConfidence != null) {
-      _json["attributionConfidence"] = attributionConfidence;
+      _json['attributionConfidence'] = attributionConfidence;
     }
     if (deepLink != null) {
-      _json["deepLink"] = deepLink;
+      _json['deepLink'] = deepLink;
     }
     if (externalBrowserDestinationLink != null) {
-      _json["externalBrowserDestinationLink"] = externalBrowserDestinationLink;
+      _json['externalBrowserDestinationLink'] = externalBrowserDestinationLink;
     }
     if (fallbackLink != null) {
-      _json["fallbackLink"] = fallbackLink;
+      _json['fallbackLink'] = fallbackLink;
     }
     if (invitationId != null) {
-      _json["invitationId"] = invitationId;
+      _json['invitationId'] = invitationId;
     }
     if (isStrongMatchExecutable != null) {
-      _json["isStrongMatchExecutable"] = isStrongMatchExecutable;
+      _json['isStrongMatchExecutable'] = isStrongMatchExecutable;
     }
     if (matchMessage != null) {
-      _json["matchMessage"] = matchMessage;
+      _json['matchMessage'] = matchMessage;
     }
     if (requestIpVersion != null) {
-      _json["requestIpVersion"] = requestIpVersion;
+      _json['requestIpVersion'] = requestIpVersion;
     }
     if (requestedLink != null) {
-      _json["requestedLink"] = requestedLink;
+      _json['requestedLink'] = requestedLink;
     }
     if (resolvedLink != null) {
-      _json["resolvedLink"] = resolvedLink;
+      _json['resolvedLink'] = resolvedLink;
     }
     if (utmCampaign != null) {
-      _json["utmCampaign"] = utmCampaign;
+      _json['utmCampaign'] = utmCampaign;
     }
     if (utmContent != null) {
-      _json["utmContent"] = utmContent;
+      _json['utmContent'] = utmContent;
     }
     if (utmMedium != null) {
-      _json["utmMedium"] = utmMedium;
+      _json['utmMedium'] = utmMedium;
     }
     if (utmSource != null) {
-      _json["utmSource"] = utmSource;
+      _json['utmSource'] = utmSource;
     }
     if (utmTerm != null) {
-      _json["utmTerm"] = utmTerm;
+      _json['utmTerm'] = utmTerm;
     }
     return _json;
   }
@@ -1336,14 +1335,14 @@ class GetIosReopenAttributionRequest {
   GetIosReopenAttributionRequest();
 
   GetIosReopenAttributionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("bundleId")) {
-      bundleId = _json["bundleId"];
+    if (_json.containsKey('bundleId')) {
+      bundleId = _json['bundleId'];
     }
-    if (_json.containsKey("requestedLink")) {
-      requestedLink = _json["requestedLink"];
+    if (_json.containsKey('requestedLink')) {
+      requestedLink = _json['requestedLink'];
     }
-    if (_json.containsKey("sdkVersion")) {
-      sdkVersion = _json["sdkVersion"];
+    if (_json.containsKey('sdkVersion')) {
+      sdkVersion = _json['sdkVersion'];
     }
   }
 
@@ -1351,13 +1350,13 @@ class GetIosReopenAttributionRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bundleId != null) {
-      _json["bundleId"] = bundleId;
+      _json['bundleId'] = bundleId;
     }
     if (requestedLink != null) {
-      _json["requestedLink"] = requestedLink;
+      _json['requestedLink'] = requestedLink;
     }
     if (sdkVersion != null) {
-      _json["sdkVersion"] = sdkVersion;
+      _json['sdkVersion'] = sdkVersion;
     }
     return _json;
   }
@@ -1399,32 +1398,32 @@ class GetIosReopenAttributionResponse {
   GetIosReopenAttributionResponse();
 
   GetIosReopenAttributionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deepLink")) {
-      deepLink = _json["deepLink"];
+    if (_json.containsKey('deepLink')) {
+      deepLink = _json['deepLink'];
     }
-    if (_json.containsKey("invitationId")) {
-      invitationId = _json["invitationId"];
+    if (_json.containsKey('invitationId')) {
+      invitationId = _json['invitationId'];
     }
-    if (_json.containsKey("iosMinAppVersion")) {
-      iosMinAppVersion = _json["iosMinAppVersion"];
+    if (_json.containsKey('iosMinAppVersion')) {
+      iosMinAppVersion = _json['iosMinAppVersion'];
     }
-    if (_json.containsKey("resolvedLink")) {
-      resolvedLink = _json["resolvedLink"];
+    if (_json.containsKey('resolvedLink')) {
+      resolvedLink = _json['resolvedLink'];
     }
-    if (_json.containsKey("utmCampaign")) {
-      utmCampaign = _json["utmCampaign"];
+    if (_json.containsKey('utmCampaign')) {
+      utmCampaign = _json['utmCampaign'];
     }
-    if (_json.containsKey("utmContent")) {
-      utmContent = _json["utmContent"];
+    if (_json.containsKey('utmContent')) {
+      utmContent = _json['utmContent'];
     }
-    if (_json.containsKey("utmMedium")) {
-      utmMedium = _json["utmMedium"];
+    if (_json.containsKey('utmMedium')) {
+      utmMedium = _json['utmMedium'];
     }
-    if (_json.containsKey("utmSource")) {
-      utmSource = _json["utmSource"];
+    if (_json.containsKey('utmSource')) {
+      utmSource = _json['utmSource'];
     }
-    if (_json.containsKey("utmTerm")) {
-      utmTerm = _json["utmTerm"];
+    if (_json.containsKey('utmTerm')) {
+      utmTerm = _json['utmTerm'];
     }
   }
 
@@ -1432,31 +1431,31 @@ class GetIosReopenAttributionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deepLink != null) {
-      _json["deepLink"] = deepLink;
+      _json['deepLink'] = deepLink;
     }
     if (invitationId != null) {
-      _json["invitationId"] = invitationId;
+      _json['invitationId'] = invitationId;
     }
     if (iosMinAppVersion != null) {
-      _json["iosMinAppVersion"] = iosMinAppVersion;
+      _json['iosMinAppVersion'] = iosMinAppVersion;
     }
     if (resolvedLink != null) {
-      _json["resolvedLink"] = resolvedLink;
+      _json['resolvedLink'] = resolvedLink;
     }
     if (utmCampaign != null) {
-      _json["utmCampaign"] = utmCampaign;
+      _json['utmCampaign'] = utmCampaign;
     }
     if (utmContent != null) {
-      _json["utmContent"] = utmContent;
+      _json['utmContent'] = utmContent;
     }
     if (utmMedium != null) {
-      _json["utmMedium"] = utmMedium;
+      _json['utmMedium'] = utmMedium;
     }
     if (utmSource != null) {
-      _json["utmSource"] = utmSource;
+      _json['utmSource'] = utmSource;
     }
     if (utmTerm != null) {
-      _json["utmTerm"] = utmTerm;
+      _json['utmTerm'] = utmTerm;
     }
     return _json;
   }
@@ -1493,23 +1492,23 @@ class GooglePlayAnalytics {
   GooglePlayAnalytics();
 
   GooglePlayAnalytics.fromJson(core.Map _json) {
-    if (_json.containsKey("gclid")) {
-      gclid = _json["gclid"];
+    if (_json.containsKey('gclid')) {
+      gclid = _json['gclid'];
     }
-    if (_json.containsKey("utmCampaign")) {
-      utmCampaign = _json["utmCampaign"];
+    if (_json.containsKey('utmCampaign')) {
+      utmCampaign = _json['utmCampaign'];
     }
-    if (_json.containsKey("utmContent")) {
-      utmContent = _json["utmContent"];
+    if (_json.containsKey('utmContent')) {
+      utmContent = _json['utmContent'];
     }
-    if (_json.containsKey("utmMedium")) {
-      utmMedium = _json["utmMedium"];
+    if (_json.containsKey('utmMedium')) {
+      utmMedium = _json['utmMedium'];
     }
-    if (_json.containsKey("utmSource")) {
-      utmSource = _json["utmSource"];
+    if (_json.containsKey('utmSource')) {
+      utmSource = _json['utmSource'];
     }
-    if (_json.containsKey("utmTerm")) {
-      utmTerm = _json["utmTerm"];
+    if (_json.containsKey('utmTerm')) {
+      utmTerm = _json['utmTerm'];
     }
   }
 
@@ -1517,22 +1516,22 @@ class GooglePlayAnalytics {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gclid != null) {
-      _json["gclid"] = gclid;
+      _json['gclid'] = gclid;
     }
     if (utmCampaign != null) {
-      _json["utmCampaign"] = utmCampaign;
+      _json['utmCampaign'] = utmCampaign;
     }
     if (utmContent != null) {
-      _json["utmContent"] = utmContent;
+      _json['utmContent'] = utmContent;
     }
     if (utmMedium != null) {
-      _json["utmMedium"] = utmMedium;
+      _json['utmMedium'] = utmMedium;
     }
     if (utmSource != null) {
-      _json["utmSource"] = utmSource;
+      _json['utmSource'] = utmSource;
     }
     if (utmTerm != null) {
-      _json["utmTerm"] = utmTerm;
+      _json['utmTerm'] = utmTerm;
     }
     return _json;
   }
@@ -1557,17 +1556,17 @@ class ITunesConnectAnalytics {
   ITunesConnectAnalytics();
 
   ITunesConnectAnalytics.fromJson(core.Map _json) {
-    if (_json.containsKey("at")) {
-      at = _json["at"];
+    if (_json.containsKey('at')) {
+      at = _json['at'];
     }
-    if (_json.containsKey("ct")) {
-      ct = _json["ct"];
+    if (_json.containsKey('ct')) {
+      ct = _json['ct'];
     }
-    if (_json.containsKey("mt")) {
-      mt = _json["mt"];
+    if (_json.containsKey('mt')) {
+      mt = _json['mt'];
     }
-    if (_json.containsKey("pt")) {
-      pt = _json["pt"];
+    if (_json.containsKey('pt')) {
+      pt = _json['pt'];
     }
   }
 
@@ -1575,16 +1574,16 @@ class ITunesConnectAnalytics {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (at != null) {
-      _json["at"] = at;
+      _json['at'] = at;
     }
     if (ct != null) {
-      _json["ct"] = ct;
+      _json['ct'] = ct;
     }
     if (mt != null) {
-      _json["mt"] = mt;
+      _json['mt'] = mt;
     }
     if (pt != null) {
-      _json["pt"] = pt;
+      _json['pt'] = pt;
     }
     return _json;
   }
@@ -1618,26 +1617,26 @@ class IosInfo {
   IosInfo();
 
   IosInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("iosAppStoreId")) {
-      iosAppStoreId = _json["iosAppStoreId"];
+    if (_json.containsKey('iosAppStoreId')) {
+      iosAppStoreId = _json['iosAppStoreId'];
     }
-    if (_json.containsKey("iosBundleId")) {
-      iosBundleId = _json["iosBundleId"];
+    if (_json.containsKey('iosBundleId')) {
+      iosBundleId = _json['iosBundleId'];
     }
-    if (_json.containsKey("iosCustomScheme")) {
-      iosCustomScheme = _json["iosCustomScheme"];
+    if (_json.containsKey('iosCustomScheme')) {
+      iosCustomScheme = _json['iosCustomScheme'];
     }
-    if (_json.containsKey("iosFallbackLink")) {
-      iosFallbackLink = _json["iosFallbackLink"];
+    if (_json.containsKey('iosFallbackLink')) {
+      iosFallbackLink = _json['iosFallbackLink'];
     }
-    if (_json.containsKey("iosIpadBundleId")) {
-      iosIpadBundleId = _json["iosIpadBundleId"];
+    if (_json.containsKey('iosIpadBundleId')) {
+      iosIpadBundleId = _json['iosIpadBundleId'];
     }
-    if (_json.containsKey("iosIpadFallbackLink")) {
-      iosIpadFallbackLink = _json["iosIpadFallbackLink"];
+    if (_json.containsKey('iosIpadFallbackLink')) {
+      iosIpadFallbackLink = _json['iosIpadFallbackLink'];
     }
-    if (_json.containsKey("iosMinimumVersion")) {
-      iosMinimumVersion = _json["iosMinimumVersion"];
+    if (_json.containsKey('iosMinimumVersion')) {
+      iosMinimumVersion = _json['iosMinimumVersion'];
     }
   }
 
@@ -1645,25 +1644,25 @@ class IosInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (iosAppStoreId != null) {
-      _json["iosAppStoreId"] = iosAppStoreId;
+      _json['iosAppStoreId'] = iosAppStoreId;
     }
     if (iosBundleId != null) {
-      _json["iosBundleId"] = iosBundleId;
+      _json['iosBundleId'] = iosBundleId;
     }
     if (iosCustomScheme != null) {
-      _json["iosCustomScheme"] = iosCustomScheme;
+      _json['iosCustomScheme'] = iosCustomScheme;
     }
     if (iosFallbackLink != null) {
-      _json["iosFallbackLink"] = iosFallbackLink;
+      _json['iosFallbackLink'] = iosFallbackLink;
     }
     if (iosIpadBundleId != null) {
-      _json["iosIpadBundleId"] = iosIpadBundleId;
+      _json['iosIpadBundleId'] = iosIpadBundleId;
     }
     if (iosIpadFallbackLink != null) {
-      _json["iosIpadFallbackLink"] = iosIpadFallbackLink;
+      _json['iosIpadFallbackLink'] = iosIpadFallbackLink;
     }
     if (iosMinimumVersion != null) {
-      _json["iosMinimumVersion"] = iosMinimumVersion;
+      _json['iosMinimumVersion'] = iosMinimumVersion;
     }
     return _json;
   }
@@ -1700,24 +1699,24 @@ class ManagedShortLink {
   ManagedShortLink();
 
   ManagedShortLink.fromJson(core.Map _json) {
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("flaggedAttribute")) {
+    if (_json.containsKey('flaggedAttribute')) {
       flaggedAttribute =
-          (_json["flaggedAttribute"] as core.List).cast<core.String>();
+          (_json['flaggedAttribute'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("info")) {
-      info = DynamicLinkInfo.fromJson(_json["info"]);
+    if (_json.containsKey('info')) {
+      info = DynamicLinkInfo.fromJson(_json['info']);
     }
-    if (_json.containsKey("link")) {
-      link = _json["link"];
+    if (_json.containsKey('link')) {
+      link = _json['link'];
     }
-    if (_json.containsKey("linkName")) {
-      linkName = _json["linkName"];
+    if (_json.containsKey('linkName')) {
+      linkName = _json['linkName'];
     }
-    if (_json.containsKey("visibility")) {
-      visibility = _json["visibility"];
+    if (_json.containsKey('visibility')) {
+      visibility = _json['visibility'];
     }
   }
 
@@ -1725,22 +1724,22 @@ class ManagedShortLink {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (flaggedAttribute != null) {
-      _json["flaggedAttribute"] = flaggedAttribute;
+      _json['flaggedAttribute'] = flaggedAttribute;
     }
     if (info != null) {
-      _json["info"] = info.toJson();
+      _json['info'] = info.toJson();
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     if (linkName != null) {
-      _json["linkName"] = linkName;
+      _json['linkName'] = linkName;
     }
     if (visibility != null) {
-      _json["visibility"] = visibility;
+      _json['visibility'] = visibility;
     }
     return _json;
   }
@@ -1755,8 +1754,8 @@ class NavigationInfo {
   NavigationInfo();
 
   NavigationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("enableForcedRedirect")) {
-      enableForcedRedirect = _json["enableForcedRedirect"];
+    if (_json.containsKey('enableForcedRedirect')) {
+      enableForcedRedirect = _json['enableForcedRedirect'];
     }
   }
 
@@ -1764,7 +1763,7 @@ class NavigationInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enableForcedRedirect != null) {
-      _json["enableForcedRedirect"] = enableForcedRedirect;
+      _json['enableForcedRedirect'] = enableForcedRedirect;
     }
     return _json;
   }
@@ -1785,14 +1784,14 @@ class SocialMetaTagInfo {
   SocialMetaTagInfo();
 
   SocialMetaTagInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("socialDescription")) {
-      socialDescription = _json["socialDescription"];
+    if (_json.containsKey('socialDescription')) {
+      socialDescription = _json['socialDescription'];
     }
-    if (_json.containsKey("socialImageLink")) {
-      socialImageLink = _json["socialImageLink"];
+    if (_json.containsKey('socialImageLink')) {
+      socialImageLink = _json['socialImageLink'];
     }
-    if (_json.containsKey("socialTitle")) {
-      socialTitle = _json["socialTitle"];
+    if (_json.containsKey('socialTitle')) {
+      socialTitle = _json['socialTitle'];
     }
   }
 
@@ -1800,13 +1799,13 @@ class SocialMetaTagInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (socialDescription != null) {
-      _json["socialDescription"] = socialDescription;
+      _json['socialDescription'] = socialDescription;
     }
     if (socialImageLink != null) {
-      _json["socialImageLink"] = socialImageLink;
+      _json['socialImageLink'] = socialImageLink;
     }
     if (socialTitle != null) {
-      _json["socialTitle"] = socialTitle;
+      _json['socialTitle'] = socialTitle;
     }
     return _json;
   }
@@ -1837,11 +1836,11 @@ class Suffix {
   Suffix();
 
   Suffix.fromJson(core.Map _json) {
-    if (_json.containsKey("customSuffix")) {
-      customSuffix = _json["customSuffix"];
+    if (_json.containsKey('customSuffix')) {
+      customSuffix = _json['customSuffix'];
     }
-    if (_json.containsKey("option")) {
-      option = _json["option"];
+    if (_json.containsKey('option')) {
+      option = _json['option'];
     }
   }
 
@@ -1849,10 +1848,10 @@ class Suffix {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customSuffix != null) {
-      _json["customSuffix"] = customSuffix;
+      _json['customSuffix'] = customSuffix;
     }
     if (option != null) {
-      _json["option"] = option;
+      _json['option'] = option;
     }
     return _json;
   }

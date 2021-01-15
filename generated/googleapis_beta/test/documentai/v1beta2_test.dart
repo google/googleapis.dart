@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -80,10 +80,10 @@ api.GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata
   buildCounterGoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata++;
   if (buildCounterGoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata <
       3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata--;
   return o;
@@ -111,9 +111,9 @@ api.GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata
   buildCounterGoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata++;
   if (buildCounterGoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata <
       3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata--;
   return o;
@@ -141,10 +141,10 @@ api.GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
   buildCounterGoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata++;
   if (buildCounterGoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata <
       3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata--;
   return o;
@@ -169,10 +169,10 @@ api.GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata
   var o = api.GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata();
   buildCounterGoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata++;
   if (buildCounterGoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata--;
   return o;
@@ -196,10 +196,10 @@ api.GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata
   var o = api.GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata();
   buildCounterGoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata++;
   if (buildCounterGoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata--;
   return o;
@@ -240,10 +240,10 @@ api.GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
   var o = api.GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata();
   buildCounterGoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata++;
   if (buildCounterGoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata--;
   return o;
@@ -288,10 +288,10 @@ api.GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
   buildCounterGoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata++;
   if (buildCounterGoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata <
       3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata--;
   return o;
@@ -506,19 +506,19 @@ api.GoogleCloudDocumentaiV1beta1Document
   var o = api.GoogleCloudDocumentaiV1beta1Document();
   buildCounterGoogleCloudDocumentaiV1beta1Document++;
   if (buildCounterGoogleCloudDocumentaiV1beta1Document < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.entities = buildUnnamed6013();
     o.entityRelations = buildUnnamed6014();
     o.error = buildGoogleRpcStatus();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
     o.pages = buildUnnamed6015();
     o.revisions = buildUnnamed6016();
     o.shardInfo = buildGoogleCloudDocumentaiV1beta1DocumentShardInfo();
-    o.text = "foo";
+    o.text = 'foo';
     o.textChanges = buildUnnamed6017();
     o.textStyles = buildUnnamed6018();
     o.translations = buildUnnamed6019();
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1Document--;
   return o;
@@ -566,9 +566,9 @@ api.GoogleCloudDocumentaiV1beta1DocumentEntity
   buildCounterGoogleCloudDocumentaiV1beta1DocumentEntity++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentEntity < 3) {
     o.confidence = 42.0;
-    o.id = "foo";
-    o.mentionId = "foo";
-    o.mentionText = "foo";
+    o.id = 'foo';
+    o.mentionId = 'foo';
+    o.mentionText = 'foo';
     o.normalizedValue =
         buildGoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue();
     o.pageAnchor = buildGoogleCloudDocumentaiV1beta1DocumentPageAnchor();
@@ -576,7 +576,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentEntity
     o.provenance = buildGoogleCloudDocumentaiV1beta1DocumentProvenance();
     o.redacted = true;
     o.textAnchor = buildGoogleCloudDocumentaiV1beta1DocumentTextAnchor();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentEntity--;
   return o;
@@ -614,7 +614,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue
     o.dateValue = buildGoogleTypeDate();
     o.datetimeValue = buildGoogleTypeDateTime();
     o.moneyValue = buildGoogleTypeMoney();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue--;
   return o;
@@ -640,9 +640,9 @@ api.GoogleCloudDocumentaiV1beta1DocumentEntityRelation
   var o = api.GoogleCloudDocumentaiV1beta1DocumentEntityRelation();
   buildCounterGoogleCloudDocumentaiV1beta1DocumentEntityRelation++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentEntityRelation < 3) {
-    o.objectId = "foo";
-    o.relation = "foo";
-    o.subjectId = "foo";
+    o.objectId = 'foo';
+    o.relation = 'foo';
+    o.subjectId = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentEntityRelation--;
   return o;
@@ -881,9 +881,9 @@ api.GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef < 3) {
     o.boundingPoly = buildGoogleCloudDocumentaiV1beta1BoundingPoly();
-    o.layoutId = "foo";
-    o.layoutType = "foo";
-    o.page = "foo";
+    o.layoutId = 'foo';
+    o.layoutType = 'foo';
+    o.page = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef--;
   return o;
@@ -950,7 +950,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage <
       3) {
     o.confidence = 42.0;
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage--;
   return o;
@@ -974,7 +974,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentPageDimension
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageDimension++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentPageDimension < 3) {
     o.height = 42.0;
-    o.unit = "foo";
+    o.unit = 'foo';
     o.width = 42.0;
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageDimension--;
@@ -1032,7 +1032,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentPageFormField
     o.fieldValue = buildGoogleCloudDocumentaiV1beta1DocumentPageLayout();
     o.nameDetectedLanguages = buildUnnamed6032();
     o.valueDetectedLanguages = buildUnnamed6033();
-    o.valueType = "foo";
+    o.valueType = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageFormField--;
   return o;
@@ -1057,9 +1057,9 @@ api.GoogleCloudDocumentaiV1beta1DocumentPageImage
   var o = api.GoogleCloudDocumentaiV1beta1DocumentPageImage();
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageImage++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentPageImage < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.height = 42;
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
     o.width = 42;
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageImage--;
@@ -1086,7 +1086,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentPageLayout
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentPageLayout < 3) {
     o.boundingPoly = buildGoogleCloudDocumentaiV1beta1BoundingPoly();
     o.confidence = 42.0;
-    o.orientation = "foo";
+    o.orientation = 'foo';
     o.textAnchor = buildGoogleCloudDocumentaiV1beta1DocumentTextAnchor();
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageLayout--;
@@ -1152,7 +1152,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentPageMatrix
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageMatrix++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentPageMatrix < 3) {
     o.cols = 42;
-    o.data = "foo";
+    o.data = 'foo';
     o.rows = 42;
     o.type = 42;
   }
@@ -1414,7 +1414,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak <
       3) {
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak--;
   return o;
@@ -1453,7 +1453,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentPageVisualElement
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentPageVisualElement < 3) {
     o.detectedLanguages = buildUnnamed6042();
     o.layout = buildGoogleCloudDocumentaiV1beta1DocumentPageLayout();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentPageVisualElement--;
   return o;
@@ -1494,7 +1494,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentProvenance
     o.id = 42;
     o.parents = buildUnnamed6043();
     o.revision = 42;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentProvenance--;
   return o;
@@ -1554,13 +1554,13 @@ api.GoogleCloudDocumentaiV1beta1DocumentRevision
   var o = api.GoogleCloudDocumentaiV1beta1DocumentRevision();
   buildCounterGoogleCloudDocumentaiV1beta1DocumentRevision++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentRevision < 3) {
-    o.agent = "foo";
-    o.createTime = "foo";
+    o.agent = 'foo';
+    o.createTime = 'foo';
     o.humanReview =
         buildGoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview();
-    o.id = "foo";
+    o.id = 'foo';
     o.parent = buildUnnamed6044();
-    o.processor = "foo";
+    o.processor = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentRevision--;
   return o;
@@ -1587,8 +1587,8 @@ api.GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview
   var o = api.GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview();
   buildCounterGoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview < 3) {
-    o.state = "foo";
-    o.stateMessage = "foo";
+    o.state = 'foo';
+    o.stateMessage = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview--;
   return o;
@@ -1610,9 +1610,9 @@ api.GoogleCloudDocumentaiV1beta1DocumentShardInfo
   var o = api.GoogleCloudDocumentaiV1beta1DocumentShardInfo();
   buildCounterGoogleCloudDocumentaiV1beta1DocumentShardInfo++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentShardInfo < 3) {
-    o.shardCount = "foo";
-    o.shardIndex = "foo";
-    o.textOffset = "foo";
+    o.shardCount = 'foo';
+    o.shardIndex = 'foo';
+    o.textOffset = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentShardInfo--;
   return o;
@@ -1638,10 +1638,10 @@ api.GoogleCloudDocumentaiV1beta1DocumentStyle
     o.backgroundColor = buildGoogleTypeColor();
     o.color = buildGoogleTypeColor();
     o.fontSize = buildGoogleCloudDocumentaiV1beta1DocumentStyleFontSize();
-    o.fontWeight = "foo";
+    o.fontWeight = 'foo';
     o.textAnchor = buildGoogleCloudDocumentaiV1beta1DocumentTextAnchor();
-    o.textDecoration = "foo";
-    o.textStyle = "foo";
+    o.textDecoration = 'foo';
+    o.textStyle = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentStyle--;
   return o;
@@ -1669,7 +1669,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentStyleFontSize
   buildCounterGoogleCloudDocumentaiV1beta1DocumentStyleFontSize++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentStyleFontSize < 3) {
     o.size = 42.0;
-    o.unit = "foo";
+    o.unit = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentStyleFontSize--;
   return o;
@@ -1707,7 +1707,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentTextAnchor
   var o = api.GoogleCloudDocumentaiV1beta1DocumentTextAnchor();
   buildCounterGoogleCloudDocumentaiV1beta1DocumentTextAnchor++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentTextAnchor < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.textSegments = buildUnnamed6045();
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentTextAnchor--;
@@ -1732,8 +1732,8 @@ api.GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
   buildCounterGoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment <
       3) {
-    o.endIndex = "foo";
-    o.startIndex = "foo";
+    o.endIndex = 'foo';
+    o.startIndex = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment--;
   return o;
@@ -1771,7 +1771,7 @@ api.GoogleCloudDocumentaiV1beta1DocumentTextChange
   var o = api.GoogleCloudDocumentaiV1beta1DocumentTextChange();
   buildCounterGoogleCloudDocumentaiV1beta1DocumentTextChange++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentTextChange < 3) {
-    o.changedText = "foo";
+    o.changedText = 'foo';
     o.provenance = buildUnnamed6046();
     o.textAnchor = buildGoogleCloudDocumentaiV1beta1DocumentTextAnchor();
   }
@@ -1811,10 +1811,10 @@ api.GoogleCloudDocumentaiV1beta1DocumentTranslation
   var o = api.GoogleCloudDocumentaiV1beta1DocumentTranslation();
   buildCounterGoogleCloudDocumentaiV1beta1DocumentTranslation++;
   if (buildCounterGoogleCloudDocumentaiV1beta1DocumentTranslation < 3) {
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
     o.provenance = buildUnnamed6047();
     o.textAnchor = buildGoogleCloudDocumentaiV1beta1DocumentTextAnchor();
-    o.translatedText = "foo";
+    o.translatedText = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1DocumentTranslation--;
   return o;
@@ -1838,7 +1838,7 @@ api.GoogleCloudDocumentaiV1beta1GcsDestination
   var o = api.GoogleCloudDocumentaiV1beta1GcsDestination();
   buildCounterGoogleCloudDocumentaiV1beta1GcsDestination++;
   if (buildCounterGoogleCloudDocumentaiV1beta1GcsDestination < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1GcsDestination--;
   return o;
@@ -1859,7 +1859,7 @@ api.GoogleCloudDocumentaiV1beta1GcsSource
   var o = api.GoogleCloudDocumentaiV1beta1GcsSource();
   buildCounterGoogleCloudDocumentaiV1beta1GcsSource++;
   if (buildCounterGoogleCloudDocumentaiV1beta1GcsSource < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1GcsSource--;
   return o;
@@ -1881,7 +1881,7 @@ api.GoogleCloudDocumentaiV1beta1InputConfig
   buildCounterGoogleCloudDocumentaiV1beta1InputConfig++;
   if (buildCounterGoogleCloudDocumentaiV1beta1InputConfig < 3) {
     o.gcsSource = buildGoogleCloudDocumentaiV1beta1GcsSource();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1InputConfig--;
   return o;
@@ -1926,10 +1926,10 @@ api.GoogleCloudDocumentaiV1beta1OperationMetadata
   var o = api.GoogleCloudDocumentaiV1beta1OperationMetadata();
   buildCounterGoogleCloudDocumentaiV1beta1OperationMetadata++;
   if (buildCounterGoogleCloudDocumentaiV1beta1OperationMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta1OperationMetadata--;
   return o;
@@ -2022,7 +2022,7 @@ api.GoogleCloudDocumentaiV1beta2AutoMlParams
   var o = api.GoogleCloudDocumentaiV1beta2AutoMlParams();
   buildCounterGoogleCloudDocumentaiV1beta2AutoMlParams++;
   if (buildCounterGoogleCloudDocumentaiV1beta2AutoMlParams < 3) {
-    o.model = "foo";
+    o.model = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2AutoMlParams--;
   return o;
@@ -2286,20 +2286,20 @@ api.GoogleCloudDocumentaiV1beta2Document
   var o = api.GoogleCloudDocumentaiV1beta2Document();
   buildCounterGoogleCloudDocumentaiV1beta2Document++;
   if (buildCounterGoogleCloudDocumentaiV1beta2Document < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.entities = buildUnnamed6052();
     o.entityRelations = buildUnnamed6053();
     o.error = buildGoogleRpcStatus();
     o.labels = buildUnnamed6054();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
     o.pages = buildUnnamed6055();
     o.revisions = buildUnnamed6056();
     o.shardInfo = buildGoogleCloudDocumentaiV1beta2DocumentShardInfo();
-    o.text = "foo";
+    o.text = 'foo';
     o.textChanges = buildUnnamed6057();
     o.textStyles = buildUnnamed6058();
     o.translations = buildUnnamed6059();
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2Document--;
   return o;
@@ -2348,9 +2348,9 @@ api.GoogleCloudDocumentaiV1beta2DocumentEntity
   buildCounterGoogleCloudDocumentaiV1beta2DocumentEntity++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentEntity < 3) {
     o.confidence = 42.0;
-    o.id = "foo";
-    o.mentionId = "foo";
-    o.mentionText = "foo";
+    o.id = 'foo';
+    o.mentionId = 'foo';
+    o.mentionText = 'foo';
     o.normalizedValue =
         buildGoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue();
     o.pageAnchor = buildGoogleCloudDocumentaiV1beta2DocumentPageAnchor();
@@ -2358,7 +2358,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentEntity
     o.provenance = buildGoogleCloudDocumentaiV1beta2DocumentProvenance();
     o.redacted = true;
     o.textAnchor = buildGoogleCloudDocumentaiV1beta2DocumentTextAnchor();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentEntity--;
   return o;
@@ -2396,7 +2396,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue
     o.dateValue = buildGoogleTypeDate();
     o.datetimeValue = buildGoogleTypeDateTime();
     o.moneyValue = buildGoogleTypeMoney();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue--;
   return o;
@@ -2422,9 +2422,9 @@ api.GoogleCloudDocumentaiV1beta2DocumentEntityRelation
   var o = api.GoogleCloudDocumentaiV1beta2DocumentEntityRelation();
   buildCounterGoogleCloudDocumentaiV1beta2DocumentEntityRelation++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentEntityRelation < 3) {
-    o.objectId = "foo";
-    o.relation = "foo";
-    o.subjectId = "foo";
+    o.objectId = 'foo';
+    o.relation = 'foo';
+    o.subjectId = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentEntityRelation--;
   return o;
@@ -2447,9 +2447,9 @@ api.GoogleCloudDocumentaiV1beta2DocumentLabel
   var o = api.GoogleCloudDocumentaiV1beta2DocumentLabel();
   buildCounterGoogleCloudDocumentaiV1beta2DocumentLabel++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentLabel < 3) {
-    o.automlModel = "foo";
+    o.automlModel = 'foo';
     o.confidence = 42.0;
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentLabel--;
   return o;
@@ -2688,9 +2688,9 @@ api.GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef < 3) {
     o.boundingPoly = buildGoogleCloudDocumentaiV1beta2BoundingPoly();
-    o.layoutId = "foo";
-    o.layoutType = "foo";
-    o.page = "foo";
+    o.layoutId = 'foo';
+    o.layoutType = 'foo';
+    o.page = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef--;
   return o;
@@ -2757,7 +2757,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage <
       3) {
     o.confidence = 42.0;
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage--;
   return o;
@@ -2781,7 +2781,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentPageDimension
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageDimension++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentPageDimension < 3) {
     o.height = 42.0;
-    o.unit = "foo";
+    o.unit = 'foo';
     o.width = 42.0;
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageDimension--;
@@ -2839,7 +2839,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentPageFormField
     o.fieldValue = buildGoogleCloudDocumentaiV1beta2DocumentPageLayout();
     o.nameDetectedLanguages = buildUnnamed6072();
     o.valueDetectedLanguages = buildUnnamed6073();
-    o.valueType = "foo";
+    o.valueType = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageFormField--;
   return o;
@@ -2864,9 +2864,9 @@ api.GoogleCloudDocumentaiV1beta2DocumentPageImage
   var o = api.GoogleCloudDocumentaiV1beta2DocumentPageImage();
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageImage++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentPageImage < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.height = 42;
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
     o.width = 42;
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageImage--;
@@ -2893,7 +2893,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentPageLayout
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentPageLayout < 3) {
     o.boundingPoly = buildGoogleCloudDocumentaiV1beta2BoundingPoly();
     o.confidence = 42.0;
-    o.orientation = "foo";
+    o.orientation = 'foo';
     o.textAnchor = buildGoogleCloudDocumentaiV1beta2DocumentTextAnchor();
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageLayout--;
@@ -2959,7 +2959,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentPageMatrix
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageMatrix++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentPageMatrix < 3) {
     o.cols = 42;
-    o.data = "foo";
+    o.data = 'foo';
     o.rows = 42;
     o.type = 42;
   }
@@ -3221,7 +3221,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak <
       3) {
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak--;
   return o;
@@ -3260,7 +3260,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentPageVisualElement
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentPageVisualElement < 3) {
     o.detectedLanguages = buildUnnamed6082();
     o.layout = buildGoogleCloudDocumentaiV1beta2DocumentPageLayout();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentPageVisualElement--;
   return o;
@@ -3301,7 +3301,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentProvenance
     o.id = 42;
     o.parents = buildUnnamed6083();
     o.revision = 42;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentProvenance--;
   return o;
@@ -3361,13 +3361,13 @@ api.GoogleCloudDocumentaiV1beta2DocumentRevision
   var o = api.GoogleCloudDocumentaiV1beta2DocumentRevision();
   buildCounterGoogleCloudDocumentaiV1beta2DocumentRevision++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentRevision < 3) {
-    o.agent = "foo";
-    o.createTime = "foo";
+    o.agent = 'foo';
+    o.createTime = 'foo';
     o.humanReview =
         buildGoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview();
-    o.id = "foo";
+    o.id = 'foo';
     o.parent = buildUnnamed6084();
-    o.processor = "foo";
+    o.processor = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentRevision--;
   return o;
@@ -3394,8 +3394,8 @@ api.GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview
   var o = api.GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview();
   buildCounterGoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview < 3) {
-    o.state = "foo";
-    o.stateMessage = "foo";
+    o.state = 'foo';
+    o.stateMessage = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview--;
   return o;
@@ -3417,9 +3417,9 @@ api.GoogleCloudDocumentaiV1beta2DocumentShardInfo
   var o = api.GoogleCloudDocumentaiV1beta2DocumentShardInfo();
   buildCounterGoogleCloudDocumentaiV1beta2DocumentShardInfo++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentShardInfo < 3) {
-    o.shardCount = "foo";
-    o.shardIndex = "foo";
-    o.textOffset = "foo";
+    o.shardCount = 'foo';
+    o.shardIndex = 'foo';
+    o.textOffset = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentShardInfo--;
   return o;
@@ -3445,10 +3445,10 @@ api.GoogleCloudDocumentaiV1beta2DocumentStyle
     o.backgroundColor = buildGoogleTypeColor();
     o.color = buildGoogleTypeColor();
     o.fontSize = buildGoogleCloudDocumentaiV1beta2DocumentStyleFontSize();
-    o.fontWeight = "foo";
+    o.fontWeight = 'foo';
     o.textAnchor = buildGoogleCloudDocumentaiV1beta2DocumentTextAnchor();
-    o.textDecoration = "foo";
-    o.textStyle = "foo";
+    o.textDecoration = 'foo';
+    o.textStyle = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentStyle--;
   return o;
@@ -3476,7 +3476,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentStyleFontSize
   buildCounterGoogleCloudDocumentaiV1beta2DocumentStyleFontSize++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentStyleFontSize < 3) {
     o.size = 42.0;
-    o.unit = "foo";
+    o.unit = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentStyleFontSize--;
   return o;
@@ -3514,7 +3514,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentTextAnchor
   var o = api.GoogleCloudDocumentaiV1beta2DocumentTextAnchor();
   buildCounterGoogleCloudDocumentaiV1beta2DocumentTextAnchor++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentTextAnchor < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.textSegments = buildUnnamed6085();
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentTextAnchor--;
@@ -3539,8 +3539,8 @@ api.GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
   buildCounterGoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment <
       3) {
-    o.endIndex = "foo";
-    o.startIndex = "foo";
+    o.endIndex = 'foo';
+    o.startIndex = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment--;
   return o;
@@ -3578,7 +3578,7 @@ api.GoogleCloudDocumentaiV1beta2DocumentTextChange
   var o = api.GoogleCloudDocumentaiV1beta2DocumentTextChange();
   buildCounterGoogleCloudDocumentaiV1beta2DocumentTextChange++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentTextChange < 3) {
-    o.changedText = "foo";
+    o.changedText = 'foo';
     o.provenance = buildUnnamed6086();
     o.textAnchor = buildGoogleCloudDocumentaiV1beta2DocumentTextAnchor();
   }
@@ -3618,10 +3618,10 @@ api.GoogleCloudDocumentaiV1beta2DocumentTranslation
   var o = api.GoogleCloudDocumentaiV1beta2DocumentTranslation();
   buildCounterGoogleCloudDocumentaiV1beta2DocumentTranslation++;
   if (buildCounterGoogleCloudDocumentaiV1beta2DocumentTranslation < 3) {
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
     o.provenance = buildUnnamed6087();
     o.textAnchor = buildGoogleCloudDocumentaiV1beta2DocumentTextAnchor();
-    o.translatedText = "foo";
+    o.translatedText = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2DocumentTranslation--;
   return o;
@@ -3646,7 +3646,7 @@ api.GoogleCloudDocumentaiV1beta2EntityExtractionParams
   buildCounterGoogleCloudDocumentaiV1beta2EntityExtractionParams++;
   if (buildCounterGoogleCloudDocumentaiV1beta2EntityExtractionParams < 3) {
     o.enabled = true;
-    o.modelVersion = "foo";
+    o.modelVersion = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2EntityExtractionParams--;
   return o;
@@ -3684,7 +3684,7 @@ api.GoogleCloudDocumentaiV1beta2FormExtractionParams
   if (buildCounterGoogleCloudDocumentaiV1beta2FormExtractionParams < 3) {
     o.enabled = true;
     o.keyValuePairHints = buildUnnamed6088();
-    o.modelVersion = "foo";
+    o.modelVersion = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2FormExtractionParams--;
   return o;
@@ -3707,7 +3707,7 @@ api.GoogleCloudDocumentaiV1beta2GcsDestination
   var o = api.GoogleCloudDocumentaiV1beta2GcsDestination();
   buildCounterGoogleCloudDocumentaiV1beta2GcsDestination++;
   if (buildCounterGoogleCloudDocumentaiV1beta2GcsDestination < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2GcsDestination--;
   return o;
@@ -3728,7 +3728,7 @@ api.GoogleCloudDocumentaiV1beta2GcsSource
   var o = api.GoogleCloudDocumentaiV1beta2GcsSource();
   buildCounterGoogleCloudDocumentaiV1beta2GcsSource++;
   if (buildCounterGoogleCloudDocumentaiV1beta2GcsSource < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2GcsSource--;
   return o;
@@ -3749,9 +3749,9 @@ api.GoogleCloudDocumentaiV1beta2InputConfig
   var o = api.GoogleCloudDocumentaiV1beta2InputConfig();
   buildCounterGoogleCloudDocumentaiV1beta2InputConfig++;
   if (buildCounterGoogleCloudDocumentaiV1beta2InputConfig < 3) {
-    o.contents = "foo";
+    o.contents = 'foo';
     o.gcsSource = buildGoogleCloudDocumentaiV1beta2GcsSource();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2InputConfig--;
   return o;
@@ -3770,8 +3770,8 @@ void checkGoogleCloudDocumentaiV1beta2InputConfig(
 
 core.List<core.String> buildUnnamed6089() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3787,7 +3787,7 @@ api.GoogleCloudDocumentaiV1beta2KeyValuePairHint
   var o = api.GoogleCloudDocumentaiV1beta2KeyValuePairHint();
   buildCounterGoogleCloudDocumentaiV1beta2KeyValuePairHint++;
   if (buildCounterGoogleCloudDocumentaiV1beta2KeyValuePairHint < 3) {
-    o.key = "foo";
+    o.key = 'foo';
     o.valueTypes = buildUnnamed6089();
   }
   buildCounterGoogleCloudDocumentaiV1beta2KeyValuePairHint--;
@@ -3829,8 +3829,8 @@ void checkGoogleCloudDocumentaiV1beta2NormalizedVertex(
 
 core.List<core.String> buildUnnamed6090() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3867,10 +3867,10 @@ api.GoogleCloudDocumentaiV1beta2OperationMetadata
   var o = api.GoogleCloudDocumentaiV1beta2OperationMetadata();
   buildCounterGoogleCloudDocumentaiV1beta2OperationMetadata++;
   if (buildCounterGoogleCloudDocumentaiV1beta2OperationMetadata < 3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta2OperationMetadata--;
   return o;
@@ -3918,7 +3918,7 @@ api.GoogleCloudDocumentaiV1beta2ProcessDocumentRequest
   buildCounterGoogleCloudDocumentaiV1beta2ProcessDocumentRequest++;
   if (buildCounterGoogleCloudDocumentaiV1beta2ProcessDocumentRequest < 3) {
     o.automlParams = buildGoogleCloudDocumentaiV1beta2AutoMlParams();
-    o.documentType = "foo";
+    o.documentType = 'foo';
     o.entityExtractionParams =
         buildGoogleCloudDocumentaiV1beta2EntityExtractionParams();
     o.formExtractionParams =
@@ -3926,7 +3926,7 @@ api.GoogleCloudDocumentaiV1beta2ProcessDocumentRequest
     o.inputConfig = buildGoogleCloudDocumentaiV1beta2InputConfig();
     o.ocrParams = buildGoogleCloudDocumentaiV1beta2OcrParams();
     o.outputConfig = buildGoogleCloudDocumentaiV1beta2OutputConfig();
-    o.parent = "foo";
+    o.parent = 'foo';
     o.tableExtractionParams =
         buildGoogleCloudDocumentaiV1beta2TableExtractionParams();
   }
@@ -4002,8 +4002,8 @@ void checkGoogleCloudDocumentaiV1beta2TableBoundHint(
 
 core.List<core.String> buildUnnamed6091() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4035,7 +4035,7 @@ api.GoogleCloudDocumentaiV1beta2TableExtractionParams
   if (buildCounterGoogleCloudDocumentaiV1beta2TableExtractionParams < 3) {
     o.enabled = true;
     o.headerHints = buildUnnamed6091();
-    o.modelVersion = "foo";
+    o.modelVersion = 'foo';
     o.tableBoundHints = buildUnnamed6092();
   }
   buildCounterGoogleCloudDocumentaiV1beta2TableExtractionParams--;
@@ -4106,11 +4106,11 @@ api.GoogleCloudDocumentaiV1beta3BatchProcessMetadata
   var o = api.GoogleCloudDocumentaiV1beta3BatchProcessMetadata();
   buildCounterGoogleCloudDocumentaiV1beta3BatchProcessMetadata++;
   if (buildCounterGoogleCloudDocumentaiV1beta3BatchProcessMetadata < 3) {
-    o.createTime = "foo";
+    o.createTime = 'foo';
     o.individualProcessStatuses = buildUnnamed6093();
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta3BatchProcessMetadata--;
   return o;
@@ -4139,9 +4139,9 @@ api.GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus
   buildCounterGoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus++;
   if (buildCounterGoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus <
       3) {
-    o.humanReviewOperation = "foo";
-    o.inputGcsSource = "foo";
-    o.outputGcsDestination = "foo";
+    o.humanReviewOperation = 'foo';
+    o.inputGcsSource = 'foo';
+    o.outputGcsDestination = 'foo';
     o.status = buildGoogleRpcStatus();
   }
   buildCounterGoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus--;
@@ -4187,10 +4187,10 @@ api.GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata
   buildCounterGoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata++;
   if (buildCounterGoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata <
       3) {
-    o.createTime = "foo";
-    o.state = "foo";
-    o.stateMessage = "foo";
-    o.updateTime = "foo";
+    o.createTime = 'foo';
+    o.state = 'foo';
+    o.stateMessage = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata--;
   return o;
@@ -4215,7 +4215,7 @@ api.GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
   var o = api.GoogleCloudDocumentaiV1beta3ReviewDocumentResponse();
   buildCounterGoogleCloudDocumentaiV1beta3ReviewDocumentResponse++;
   if (buildCounterGoogleCloudDocumentaiV1beta3ReviewDocumentResponse < 3) {
-    o.gcsDestination = "foo";
+    o.gcsDestination = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta3ReviewDocumentResponse--;
   return o;
@@ -4232,12 +4232,12 @@ void checkGoogleCloudDocumentaiV1beta3ReviewDocumentResponse(
 
 core.Map<core.String, core.Object> buildUnnamed6094() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -4247,26 +4247,26 @@ core.Map<core.String, core.Object> buildUnnamed6094() {
 
 void checkUnnamed6094(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed6095() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -4276,16 +4276,16 @@ core.Map<core.String, core.Object> buildUnnamed6095() {
 
 void checkUnnamed6095(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -4296,7 +4296,7 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
     o.done = true;
     o.error = buildGoogleRpcStatus();
     o.metadata = buildUnnamed6094();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed6095();
   }
   buildCounterGoogleLongrunningOperation--;
@@ -4332,12 +4332,12 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
 
 core.Map<core.String, core.Object> buildUnnamed6096() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -4347,16 +4347,16 @@ core.Map<core.String, core.Object> buildUnnamed6096() {
 
 void checkUnnamed6096(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed6097() {
@@ -4379,7 +4379,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed6097();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
   return o;
@@ -4455,7 +4455,7 @@ api.GoogleTypeDateTime buildGoogleTypeDateTime() {
     o.nanos = 42;
     o.seconds = 42;
     o.timeZone = buildGoogleTypeTimeZone();
-    o.utcOffset = "foo";
+    o.utcOffset = 'foo';
     o.year = 42;
   }
   buildCounterGoogleTypeDateTime--;
@@ -4483,9 +4483,9 @@ api.GoogleTypeMoney buildGoogleTypeMoney() {
   var o = api.GoogleTypeMoney();
   buildCounterGoogleTypeMoney++;
   if (buildCounterGoogleTypeMoney < 3) {
-    o.currencyCode = "foo";
+    o.currencyCode = 'foo';
     o.nanos = 42;
-    o.units = "foo";
+    o.units = 'foo';
   }
   buildCounterGoogleTypeMoney--;
   return o;
@@ -4503,8 +4503,8 @@ void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
 
 core.List<core.String> buildUnnamed6098() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4516,8 +4516,8 @@ void checkUnnamed6098(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed6099() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4533,16 +4533,16 @@ api.GoogleTypePostalAddress buildGoogleTypePostalAddress() {
   buildCounterGoogleTypePostalAddress++;
   if (buildCounterGoogleTypePostalAddress < 3) {
     o.addressLines = buildUnnamed6098();
-    o.administrativeArea = "foo";
-    o.languageCode = "foo";
-    o.locality = "foo";
-    o.organization = "foo";
-    o.postalCode = "foo";
+    o.administrativeArea = 'foo';
+    o.languageCode = 'foo';
+    o.locality = 'foo';
+    o.organization = 'foo';
+    o.postalCode = 'foo';
     o.recipients = buildUnnamed6099();
-    o.regionCode = "foo";
+    o.regionCode = 'foo';
     o.revision = 42;
-    o.sortingCode = "foo";
-    o.sublocality = "foo";
+    o.sortingCode = 'foo';
+    o.sublocality = 'foo';
   }
   buildCounterGoogleTypePostalAddress--;
   return o;
@@ -4571,8 +4571,8 @@ api.GoogleTypeTimeZone buildGoogleTypeTimeZone() {
   var o = api.GoogleTypeTimeZone();
   buildCounterGoogleTypeTimeZone++;
   if (buildCounterGoogleTypeTimeZone < 3) {
-    o.id = "foo";
-    o.version = "foo";
+    o.id = 'foo';
+    o.version = 'foo';
   }
   buildCounterGoogleTypeTimeZone--;
   return o;
@@ -4589,9 +4589,9 @@ void checkGoogleTypeTimeZone(api.GoogleTypeTimeZone o) {
 
 void main() {
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata",
+      'obj-schema-GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata();
       var od =
@@ -4602,9 +4602,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata",
+      'obj-schema-GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata();
       var od = api.GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata
@@ -4614,9 +4614,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata",
+      'obj-schema-GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata();
       var od =
@@ -4627,8 +4627,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata.fromJson(
@@ -4638,8 +4638,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata.fromJson(
@@ -4649,8 +4649,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiUiv1beta3DisableProcessorResponse();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse.fromJson(
@@ -4660,8 +4660,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata.fromJson(
@@ -4671,8 +4671,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiUiv1beta3EnableProcessorResponse();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse.fromJson(
@@ -4682,9 +4682,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata",
+      'obj-schema-GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata();
       var od =
@@ -4695,9 +4695,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse",
+      'obj-schema-GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse();
       var od = api.GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
           .fromJson(o.toJson());
@@ -4705,8 +4705,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1BoundingPoly", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1BoundingPoly', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1BoundingPoly();
       var od =
           api.GoogleCloudDocumentaiV1beta1BoundingPoly.fromJson(o.toJson());
@@ -4714,16 +4714,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1Document", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1Document', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1Document();
       var od = api.GoogleCloudDocumentaiV1beta1Document.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta1Document(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentEntity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentEntity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentEntity();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentEntity.fromJson(o.toJson());
@@ -4732,9 +4732,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue",
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue
           .fromJson(o.toJson());
@@ -4743,8 +4743,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentEntityRelation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentEntityRelation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentEntityRelation();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentEntityRelation.fromJson(
           o.toJson());
@@ -4752,8 +4752,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPage();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPage.fromJson(o.toJson());
@@ -4761,9 +4761,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageAnchor",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageAnchor',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageAnchor();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageAnchor.fromJson(
           o.toJson());
@@ -4772,8 +4772,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef.fromJson(
@@ -4782,9 +4782,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageBlock",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageBlock',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageBlock();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageBlock.fromJson(
           o.toJson());
@@ -4793,9 +4793,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage",
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage.fromJson(
@@ -4804,9 +4804,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageDimension",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageDimension',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageDimension();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageDimension.fromJson(
           o.toJson());
@@ -4814,9 +4814,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageFormField",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageFormField',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageFormField();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageFormField.fromJson(
           o.toJson());
@@ -4824,9 +4824,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageImage",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageImage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageImage();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageImage.fromJson(
           o.toJson());
@@ -4834,9 +4834,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageLayout',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageLayout();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
           o.toJson());
@@ -4844,8 +4844,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageLine", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageLine', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageLine();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageLine.fromJson(o.toJson());
@@ -4853,9 +4853,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageMatrix",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageMatrix',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageMatrix();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageMatrix.fromJson(
           o.toJson());
@@ -4863,9 +4863,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageParagraph",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageParagraph',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageParagraph();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageParagraph.fromJson(
           o.toJson());
@@ -4873,9 +4873,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTable",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTable',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageTable();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageTable.fromJson(
           o.toJson());
@@ -4884,8 +4884,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageTableTableCell();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell.fromJson(
@@ -4895,8 +4895,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageTableTableRow();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow.fromJson(
@@ -4905,9 +4905,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageToken",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageToken',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageToken();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageToken.fromJson(
           o.toJson());
@@ -4916,9 +4916,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak",
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
           .fromJson(o.toJson());
@@ -4927,8 +4927,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageVisualElement", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageVisualElement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageVisualElement();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageVisualElement.fromJson(
@@ -4937,9 +4937,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentProvenance",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentProvenance',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentProvenance();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(
           o.toJson());
@@ -4948,8 +4948,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentProvenanceParent", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentProvenanceParent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentProvenanceParent();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentProvenanceParent.fromJson(
@@ -4958,8 +4958,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentRevision", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentRevision', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentRevision();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentRevision.fromJson(o.toJson());
@@ -4968,8 +4968,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview.fromJson(
@@ -4978,9 +4978,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentShardInfo",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentShardInfo',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentShardInfo();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentShardInfo.fromJson(
           o.toJson());
@@ -4988,8 +4988,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentStyle();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentStyle.fromJson(o.toJson());
@@ -4997,9 +4997,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentStyleFontSize",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentStyleFontSize',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentStyleFontSize();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentStyleFontSize.fromJson(
           o.toJson());
@@ -5007,9 +5007,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentTextAnchor",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentTextAnchor',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentTextAnchor();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentTextAnchor.fromJson(
           o.toJson());
@@ -5018,9 +5018,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment",
+      'obj-schema-GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
           .fromJson(o.toJson());
@@ -5028,9 +5028,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentTextChange",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentTextChange',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentTextChange();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentTextChange.fromJson(
           o.toJson());
@@ -5038,9 +5038,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1DocumentTranslation",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentTranslation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentTranslation();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentTranslation.fromJson(
           o.toJson());
@@ -5048,8 +5048,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1GcsDestination", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1GcsDestination', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1GcsDestination();
       var od =
           api.GoogleCloudDocumentaiV1beta1GcsDestination.fromJson(o.toJson());
@@ -5057,24 +5057,24 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1GcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1GcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1GcsSource();
       var od = api.GoogleCloudDocumentaiV1beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta1GcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1InputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1InputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1InputConfig();
       var od = api.GoogleCloudDocumentaiV1beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta1InputConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1NormalizedVertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1NormalizedVertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1NormalizedVertex();
       var od =
           api.GoogleCloudDocumentaiV1beta1NormalizedVertex.fromJson(o.toJson());
@@ -5082,9 +5082,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1OperationMetadata",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1OperationMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1OperationMetadata();
       var od = api.GoogleCloudDocumentaiV1beta1OperationMetadata.fromJson(
           o.toJson());
@@ -5092,8 +5092,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1OutputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1OutputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1OutputConfig();
       var od =
           api.GoogleCloudDocumentaiV1beta1OutputConfig.fromJson(o.toJson());
@@ -5102,8 +5102,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta1ProcessDocumentResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta1ProcessDocumentResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1ProcessDocumentResponse();
       var od = api.GoogleCloudDocumentaiV1beta1ProcessDocumentResponse.fromJson(
           o.toJson());
@@ -5111,16 +5111,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta1Vertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1Vertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta1Vertex();
       var od = api.GoogleCloudDocumentaiV1beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta1Vertex(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2AutoMlParams", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2AutoMlParams', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2AutoMlParams();
       var od =
           api.GoogleCloudDocumentaiV1beta2AutoMlParams.fromJson(o.toJson());
@@ -5129,9 +5129,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest",
+      'obj-schema-GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest();
       var od =
           api.GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest.fromJson(
@@ -5141,9 +5141,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse",
+      'obj-schema-GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse();
       var od = api.GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse
           .fromJson(o.toJson());
@@ -5151,8 +5151,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2BoundingPoly", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2BoundingPoly', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2BoundingPoly();
       var od =
           api.GoogleCloudDocumentaiV1beta2BoundingPoly.fromJson(o.toJson());
@@ -5160,16 +5160,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2Document", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2Document', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2Document();
       var od = api.GoogleCloudDocumentaiV1beta2Document.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta2Document(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentEntity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentEntity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentEntity();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentEntity.fromJson(o.toJson());
@@ -5178,9 +5178,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue",
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue
           .fromJson(o.toJson());
@@ -5189,8 +5189,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentEntityRelation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentEntityRelation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentEntityRelation();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentEntityRelation.fromJson(
           o.toJson());
@@ -5198,8 +5198,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentLabel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentLabel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentLabel();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentLabel.fromJson(o.toJson());
@@ -5207,8 +5207,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPage();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPage.fromJson(o.toJson());
@@ -5216,9 +5216,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageAnchor",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageAnchor',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageAnchor();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageAnchor.fromJson(
           o.toJson());
@@ -5227,8 +5227,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef.fromJson(
@@ -5237,9 +5237,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageBlock",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageBlock',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageBlock();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageBlock.fromJson(
           o.toJson());
@@ -5248,9 +5248,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage",
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage.fromJson(
@@ -5259,9 +5259,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageDimension",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageDimension',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageDimension();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageDimension.fromJson(
           o.toJson());
@@ -5269,9 +5269,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageFormField",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageFormField',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageFormField();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageFormField.fromJson(
           o.toJson());
@@ -5279,9 +5279,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageImage",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageImage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageImage();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageImage.fromJson(
           o.toJson());
@@ -5289,9 +5289,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageLayout',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageLayout();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
           o.toJson());
@@ -5299,8 +5299,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageLine", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageLine', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageLine();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageLine.fromJson(o.toJson());
@@ -5308,9 +5308,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageMatrix",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageMatrix',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageMatrix();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageMatrix.fromJson(
           o.toJson());
@@ -5318,9 +5318,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageParagraph",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageParagraph',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageParagraph();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageParagraph.fromJson(
           o.toJson());
@@ -5328,9 +5328,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTable",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTable',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageTable();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageTable.fromJson(
           o.toJson());
@@ -5339,8 +5339,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageTableTableCell();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell.fromJson(
@@ -5350,8 +5350,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageTableTableRow();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow.fromJson(
@@ -5360,9 +5360,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageToken",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageToken',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageToken();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageToken.fromJson(
           o.toJson());
@@ -5371,9 +5371,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak",
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak
           .fromJson(o.toJson());
@@ -5382,8 +5382,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageVisualElement", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageVisualElement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageVisualElement();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageVisualElement.fromJson(
@@ -5392,9 +5392,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentProvenance",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentProvenance',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentProvenance();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(
           o.toJson());
@@ -5403,8 +5403,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentProvenanceParent", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentProvenanceParent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentProvenanceParent();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentProvenanceParent.fromJson(
@@ -5413,8 +5413,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentRevision", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentRevision', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentRevision();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentRevision.fromJson(o.toJson());
@@ -5423,8 +5423,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview.fromJson(
@@ -5433,9 +5433,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentShardInfo",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentShardInfo',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentShardInfo();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentShardInfo.fromJson(
           o.toJson());
@@ -5443,8 +5443,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentStyle();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentStyle.fromJson(o.toJson());
@@ -5452,9 +5452,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentStyleFontSize",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentStyleFontSize',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentStyleFontSize();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentStyleFontSize.fromJson(
           o.toJson());
@@ -5462,9 +5462,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentTextAnchor",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentTextAnchor',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentTextAnchor();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentTextAnchor.fromJson(
           o.toJson());
@@ -5473,9 +5473,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment",
+      'obj-schema-GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
           .fromJson(o.toJson());
@@ -5483,9 +5483,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentTextChange",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentTextChange',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentTextChange();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentTextChange.fromJson(
           o.toJson());
@@ -5493,9 +5493,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2DocumentTranslation",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentTranslation',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentTranslation();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentTranslation.fromJson(
           o.toJson());
@@ -5504,8 +5504,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2EntityExtractionParams", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2EntityExtractionParams', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2EntityExtractionParams();
       var od = api.GoogleCloudDocumentaiV1beta2EntityExtractionParams.fromJson(
           o.toJson());
@@ -5513,9 +5513,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2FormExtractionParams",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2FormExtractionParams',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2FormExtractionParams();
       var od = api.GoogleCloudDocumentaiV1beta2FormExtractionParams.fromJson(
           o.toJson());
@@ -5523,8 +5523,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2GcsDestination", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2GcsDestination', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2GcsDestination();
       var od =
           api.GoogleCloudDocumentaiV1beta2GcsDestination.fromJson(o.toJson());
@@ -5532,24 +5532,24 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2GcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2GcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2GcsSource();
       var od = api.GoogleCloudDocumentaiV1beta2GcsSource.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta2GcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2InputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2InputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2InputConfig();
       var od = api.GoogleCloudDocumentaiV1beta2InputConfig.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta2InputConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2KeyValuePairHint", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2KeyValuePairHint', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2KeyValuePairHint();
       var od =
           api.GoogleCloudDocumentaiV1beta2KeyValuePairHint.fromJson(o.toJson());
@@ -5557,8 +5557,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2NormalizedVertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2NormalizedVertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2NormalizedVertex();
       var od =
           api.GoogleCloudDocumentaiV1beta2NormalizedVertex.fromJson(o.toJson());
@@ -5566,17 +5566,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2OcrParams", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2OcrParams', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2OcrParams();
       var od = api.GoogleCloudDocumentaiV1beta2OcrParams.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta2OcrParams(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2OperationMetadata",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2OperationMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2OperationMetadata();
       var od = api.GoogleCloudDocumentaiV1beta2OperationMetadata.fromJson(
           o.toJson());
@@ -5584,8 +5584,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2OutputConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2OutputConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2OutputConfig();
       var od =
           api.GoogleCloudDocumentaiV1beta2OutputConfig.fromJson(o.toJson());
@@ -5594,8 +5594,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2ProcessDocumentRequest", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2ProcessDocumentRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2ProcessDocumentRequest();
       var od = api.GoogleCloudDocumentaiV1beta2ProcessDocumentRequest.fromJson(
           o.toJson());
@@ -5604,8 +5604,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta2ProcessDocumentResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta2ProcessDocumentResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2ProcessDocumentResponse();
       var od = api.GoogleCloudDocumentaiV1beta2ProcessDocumentResponse.fromJson(
           o.toJson());
@@ -5613,8 +5613,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2TableBoundHint", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2TableBoundHint', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2TableBoundHint();
       var od =
           api.GoogleCloudDocumentaiV1beta2TableBoundHint.fromJson(o.toJson());
@@ -5622,9 +5622,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2TableExtractionParams",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2TableExtractionParams',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2TableExtractionParams();
       var od = api.GoogleCloudDocumentaiV1beta2TableExtractionParams.fromJson(
           o.toJson());
@@ -5632,17 +5632,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta2Vertex", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2Vertex', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta2Vertex();
       var od = api.GoogleCloudDocumentaiV1beta2Vertex.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta2Vertex(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessMetadata",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta3BatchProcessMetadata();
       var od = api.GoogleCloudDocumentaiV1beta3BatchProcessMetadata.fromJson(
           o.toJson());
@@ -5651,9 +5651,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus",
+      'obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus();
       var od =
@@ -5664,9 +5664,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessResponse",
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta3BatchProcessResponse();
       var od = api.GoogleCloudDocumentaiV1beta3BatchProcessResponse.fromJson(
           o.toJson());
@@ -5675,9 +5675,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata",
+      'obj-schema-GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata();
       var od = api.GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata
@@ -5687,8 +5687,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudDocumentaiV1beta3ReviewDocumentResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudDocumentaiV1beta3ReviewDocumentResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudDocumentaiV1beta3ReviewDocumentResponse();
       var od = api.GoogleCloudDocumentaiV1beta3ReviewDocumentResponse.fromJson(
           o.toJson());
@@ -5696,87 +5696,87 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningOperation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningOperation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleProtobufEmpty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleProtobufEmpty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleRpcStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleRpcStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleTypeColor", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleTypeColor', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleTypeColor();
       var od = api.GoogleTypeColor.fromJson(o.toJson());
       checkGoogleTypeColor(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleTypeDate", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleTypeDate', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleTypeDate();
       var od = api.GoogleTypeDate.fromJson(o.toJson());
       checkGoogleTypeDate(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleTypeDateTime", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleTypeDateTime', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleTypeDateTime();
       var od = api.GoogleTypeDateTime.fromJson(o.toJson());
       checkGoogleTypeDateTime(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleTypeMoney", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleTypeMoney', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleTypeMoney();
       var od = api.GoogleTypeMoney.fromJson(o.toJson());
       checkGoogleTypeMoney(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleTypePostalAddress", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleTypePostalAddress', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleTypePostalAddress();
       var od = api.GoogleTypePostalAddress.fromJson(o.toJson());
       checkGoogleTypePostalAddress(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleTypeTimeZone", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleTypeTimeZone', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleTypeTimeZone();
       var od = api.GoogleTypeTimeZone.fromJson(o.toJson());
       checkGoogleTypeTimeZone(od);
     });
   });
 
-  unittest.group("resource-ProjectsDocumentsResourceApi", () {
-    unittest.test("method--batchProcess", () {
+  unittest.group('resource-ProjectsDocumentsResourceApi', () {
+    unittest.test('method--batchProcess', () {
       var mock = HttpServerMock();
       api.ProjectsDocumentsResourceApi res =
           api.DocumentaiApi(mock).projects.documents;
       var arg_request =
           buildGoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest
             .fromJson(json);
@@ -5800,8 +5800,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5811,7 +5811,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5823,14 +5823,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--process", () {
+    unittest.test('method--process', () {
       var mock = HttpServerMock();
       api.ProjectsDocumentsResourceApi res =
           api.DocumentaiApi(mock).projects.documents;
       var arg_request =
           buildGoogleCloudDocumentaiV1beta2ProcessDocumentRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudDocumentaiV1beta2ProcessDocumentRequest.fromJson(
@@ -5855,8 +5855,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5866,7 +5866,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudDocumentaiV1beta2Document());
@@ -5880,15 +5880,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsDocumentsResourceApi", () {
-    unittest.test("method--batchProcess", () {
+  unittest.group('resource-ProjectsLocationsDocumentsResourceApi', () {
+    unittest.test('method--batchProcess', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDocumentsResourceApi res =
           api.DocumentaiApi(mock).projects.locations.documents;
       var arg_request =
           buildGoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest
             .fromJson(json);
@@ -5912,8 +5912,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5923,7 +5923,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5935,14 +5935,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--process", () {
+    unittest.test('method--process', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDocumentsResourceApi res =
           api.DocumentaiApi(mock).projects.locations.documents;
       var arg_request =
           buildGoogleCloudDocumentaiV1beta2ProcessDocumentRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudDocumentaiV1beta2ProcessDocumentRequest.fromJson(
@@ -5967,8 +5967,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5978,7 +5978,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudDocumentaiV1beta2Document());
@@ -5992,13 +5992,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsOperationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
           api.DocumentaiApi(mock).projects.locations.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6018,8 +6018,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6029,7 +6029,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6042,13 +6042,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsOperationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsOperationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.DocumentaiApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6068,8 +6068,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6079,7 +6079,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -88,21 +88,21 @@ api.Activity buildActivity() {
   var o = api.Activity();
   buildCounterActivity++;
   if (buildCounterActivity < 3) {
-    o.activityTime = "foo";
-    o.activityType = "foo";
+    o.activityTime = 'foo';
+    o.activityType = 'foo';
     o.appview = buildScreenviewData();
-    o.campaign = "foo";
-    o.channelGrouping = "foo";
+    o.campaign = 'foo';
+    o.channelGrouping = 'foo';
     o.customDimension = buildUnnamed5640();
     o.ecommerce = buildEcommerceData();
     o.event = buildEventData();
     o.goals = buildGoalSetData();
-    o.hostname = "foo";
-    o.keyword = "foo";
-    o.landingPagePath = "foo";
-    o.medium = "foo";
+    o.hostname = 'foo';
+    o.keyword = 'foo';
+    o.landingPagePath = 'foo';
+    o.medium = 'foo';
     o.pageview = buildPageviewData();
-    o.source = "foo";
+    o.source = 'foo';
   }
   buildCounterActivity--;
   return o;
@@ -136,8 +136,8 @@ api.Cohort buildCohort() {
   buildCounterCohort++;
   if (buildCounterCohort < 3) {
     o.dateRange = buildDateRange();
-    o.name = "foo";
-    o.type = "foo";
+    o.name = 'foo';
+    o.type = 'foo';
   }
   buildCounterCohort--;
   return o;
@@ -189,8 +189,8 @@ void checkCohortGroup(api.CohortGroup o) {
 
 core.List<core.String> buildUnnamed5642() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -227,7 +227,7 @@ api.CustomDimension buildCustomDimension() {
   buildCounterCustomDimension++;
   if (buildCounterCustomDimension < 3) {
     o.index = 42;
-    o.value = "foo";
+    o.value = 'foo';
   }
   buildCounterCustomDimension--;
   return o;
@@ -247,8 +247,8 @@ api.DateRange buildDateRange() {
   var o = api.DateRange();
   buildCounterDateRange++;
   if (buildCounterDateRange < 3) {
-    o.endDate = "foo";
-    o.startDate = "foo";
+    o.endDate = 'foo';
+    o.startDate = 'foo';
   }
   buildCounterDateRange--;
   return o;
@@ -278,8 +278,8 @@ void checkUnnamed5643(core.List<api.PivotValueRegion> o) {
 
 core.List<core.String> buildUnnamed5644() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -312,8 +312,8 @@ void checkDateRangeValues(api.DateRangeValues o) {
 
 core.List<core.String> buildUnnamed5645() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -329,7 +329,7 @@ api.Dimension buildDimension() {
   buildCounterDimension++;
   if (buildCounterDimension < 3) {
     o.histogramBuckets = buildUnnamed5645();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterDimension--;
   return o;
@@ -346,8 +346,8 @@ void checkDimension(api.Dimension o) {
 
 core.List<core.String> buildUnnamed5646() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -363,10 +363,10 @@ api.DimensionFilter buildDimensionFilter() {
   buildCounterDimensionFilter++;
   if (buildCounterDimensionFilter < 3) {
     o.caseSensitive = true;
-    o.dimensionName = "foo";
+    o.dimensionName = 'foo';
     o.expressions = buildUnnamed5646();
     o.not = true;
-    o.operator = "foo";
+    o.operator = 'foo';
   }
   buildCounterDimensionFilter--;
   return o;
@@ -403,7 +403,7 @@ api.DimensionFilterClause buildDimensionFilterClause() {
   buildCounterDimensionFilterClause++;
   if (buildCounterDimensionFilterClause < 3) {
     o.filters = buildUnnamed5647();
-    o.operator = "foo";
+    o.operator = 'foo';
   }
   buildCounterDimensionFilterClause--;
   return o;
@@ -423,7 +423,7 @@ api.DynamicSegment buildDynamicSegment() {
   var o = api.DynamicSegment();
   buildCounterDynamicSegment++;
   if (buildCounterDynamicSegment < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.sessionSegment = buildSegmentDefinition();
     o.userSegment = buildSegmentDefinition();
   }
@@ -459,8 +459,8 @@ api.EcommerceData buildEcommerceData() {
   var o = api.EcommerceData();
   buildCounterEcommerceData++;
   if (buildCounterEcommerceData < 3) {
-    o.actionType = "foo";
-    o.ecommerceType = "foo";
+    o.actionType = 'foo';
+    o.ecommerceType = 'foo';
     o.products = buildUnnamed5648();
     o.transaction = buildTransactionData();
   }
@@ -484,11 +484,11 @@ api.EventData buildEventData() {
   var o = api.EventData();
   buildCounterEventData++;
   if (buildCounterEventData < 3) {
-    o.eventAction = "foo";
-    o.eventCategory = "foo";
-    o.eventCount = "foo";
-    o.eventLabel = "foo";
-    o.eventValue = "foo";
+    o.eventAction = 'foo';
+    o.eventCategory = 'foo';
+    o.eventCount = 'foo';
+    o.eventLabel = 'foo';
+    o.eventValue = 'foo';
   }
   buildCounterEventData--;
   return o;
@@ -581,13 +581,13 @@ api.GoalData buildGoalData() {
   var o = api.GoalData();
   buildCounterGoalData++;
   if (buildCounterGoalData < 3) {
-    o.goalCompletionLocation = "foo";
-    o.goalCompletions = "foo";
+    o.goalCompletionLocation = 'foo';
+    o.goalCompletions = 'foo';
     o.goalIndex = 42;
-    o.goalName = "foo";
-    o.goalPreviousStep1 = "foo";
-    o.goalPreviousStep2 = "foo";
-    o.goalPreviousStep3 = "foo";
+    o.goalName = 'foo';
+    o.goalPreviousStep1 = 'foo';
+    o.goalPreviousStep2 = 'foo';
+    o.goalPreviousStep3 = 'foo';
     o.goalValue = 42.0;
   }
   buildCounterGoalData--;
@@ -646,9 +646,9 @@ api.Metric buildMetric() {
   var o = api.Metric();
   buildCounterMetric++;
   if (buildCounterMetric < 3) {
-    o.alias = "foo";
-    o.expression = "foo";
-    o.formattingType = "foo";
+    o.alias = 'foo';
+    o.expression = 'foo';
+    o.formattingType = 'foo';
   }
   buildCounterMetric--;
   return o;
@@ -669,10 +669,10 @@ api.MetricFilter buildMetricFilter() {
   var o = api.MetricFilter();
   buildCounterMetricFilter++;
   if (buildCounterMetricFilter < 3) {
-    o.comparisonValue = "foo";
-    o.metricName = "foo";
+    o.comparisonValue = 'foo';
+    o.metricName = 'foo';
     o.not = true;
-    o.operator = "foo";
+    o.operator = 'foo';
   }
   buildCounterMetricFilter--;
   return o;
@@ -708,7 +708,7 @@ api.MetricFilterClause buildMetricFilterClause() {
   buildCounterMetricFilterClause++;
   if (buildCounterMetricFilterClause < 3) {
     o.filters = buildUnnamed5652();
-    o.operator = "foo";
+    o.operator = 'foo';
   }
   buildCounterMetricFilterClause--;
   return o;
@@ -775,8 +775,8 @@ api.MetricHeaderEntry buildMetricHeaderEntry() {
   var o = api.MetricHeaderEntry();
   buildCounterMetricHeaderEntry++;
   if (buildCounterMetricHeaderEntry < 3) {
-    o.name = "foo";
-    o.type = "foo";
+    o.name = 'foo';
+    o.type = 'foo';
   }
   buildCounterMetricHeaderEntry--;
   return o;
@@ -828,9 +828,9 @@ api.OrderBy buildOrderBy() {
   var o = api.OrderBy();
   buildCounterOrderBy++;
   if (buildCounterOrderBy < 3) {
-    o.fieldName = "foo";
-    o.orderType = "foo";
-    o.sortOrder = "foo";
+    o.fieldName = 'foo';
+    o.orderType = 'foo';
+    o.sortOrder = 'foo';
   }
   buildCounterOrderBy--;
   return o;
@@ -851,8 +851,8 @@ api.PageviewData buildPageviewData() {
   var o = api.PageviewData();
   buildCounterPageviewData++;
   if (buildCounterPageviewData < 3) {
-    o.pagePath = "foo";
-    o.pageTitle = "foo";
+    o.pagePath = 'foo';
+    o.pageTitle = 'foo';
   }
   buildCounterPageviewData--;
   return o;
@@ -969,8 +969,8 @@ void checkPivotHeader(api.PivotHeader o) {
 
 core.List<core.String> buildUnnamed5660() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -982,8 +982,8 @@ void checkUnnamed5660(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5661() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1018,8 +1018,8 @@ void checkPivotHeaderEntry(api.PivotHeaderEntry o) {
 
 core.List<core.String> buildUnnamed5662() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1054,9 +1054,9 @@ api.ProductData buildProductData() {
   buildCounterProductData++;
   if (buildCounterProductData < 3) {
     o.itemRevenue = 42.0;
-    o.productName = "foo";
-    o.productQuantity = "foo";
-    o.productSku = "foo";
+    o.productName = 'foo';
+    o.productQuantity = 'foo';
+    o.productSku = 'foo';
   }
   buildCounterProductData--;
   return o;
@@ -1080,7 +1080,7 @@ api.Report buildReport() {
   if (buildCounterReport < 3) {
     o.columnHeader = buildColumnHeader();
     o.data = buildReportData();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterReport--;
   return o;
@@ -1137,8 +1137,8 @@ void checkUnnamed5665(core.List<api.ReportRow> o) {
 
 core.List<core.String> buildUnnamed5666() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1150,8 +1150,8 @@ void checkUnnamed5666(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5667() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1179,7 +1179,7 @@ api.ReportData buildReportData() {
   var o = api.ReportData();
   buildCounterReportData++;
   if (buildCounterReportData < 3) {
-    o.dataLastRefreshed = "foo";
+    o.dataLastRefreshed = 'foo';
     o.isDataGolden = true;
     o.maximums = buildUnnamed5663();
     o.minimums = buildUnnamed5664();
@@ -1322,7 +1322,7 @@ api.ReportRequest buildReportRequest() {
     o.dateRanges = buildUnnamed5669();
     o.dimensionFilterClauses = buildUnnamed5670();
     o.dimensions = buildUnnamed5671();
-    o.filtersExpression = "foo";
+    o.filtersExpression = 'foo';
     o.hideTotals = true;
     o.hideValueRanges = true;
     o.includeEmptyRows = true;
@@ -1330,11 +1330,11 @@ api.ReportRequest buildReportRequest() {
     o.metrics = buildUnnamed5673();
     o.orderBys = buildUnnamed5674();
     o.pageSize = 42;
-    o.pageToken = "foo";
+    o.pageToken = 'foo';
     o.pivots = buildUnnamed5675();
-    o.samplingLevel = "foo";
+    o.samplingLevel = 'foo';
     o.segments = buildUnnamed5676();
-    o.viewId = "foo";
+    o.viewId = 'foo';
   }
   buildCounterReportRequest--;
   return o;
@@ -1366,8 +1366,8 @@ void checkReportRequest(api.ReportRequest o) {
 
 core.List<core.String> buildUnnamed5677() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1437,10 +1437,10 @@ api.ScreenviewData buildScreenviewData() {
   var o = api.ScreenviewData();
   buildCounterScreenviewData++;
   if (buildCounterScreenviewData < 3) {
-    o.appName = "foo";
-    o.mobileDeviceBranding = "foo";
-    o.mobileDeviceModel = "foo";
-    o.screenName = "foo";
+    o.appName = 'foo';
+    o.mobileDeviceBranding = 'foo';
+    o.mobileDeviceModel = 'foo';
+    o.screenName = 'foo';
   }
   buildCounterScreenviewData--;
   return o;
@@ -1459,8 +1459,8 @@ void checkScreenviewData(api.ScreenviewData o) {
 
 core.List<core.String> buildUnnamed5679() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1478,9 +1478,9 @@ api.SearchUserActivityRequest buildSearchUserActivityRequest() {
     o.activityTypes = buildUnnamed5679();
     o.dateRange = buildDateRange();
     o.pageSize = 42;
-    o.pageToken = "foo";
+    o.pageToken = 'foo';
     o.user = buildUser();
-    o.viewId = "foo";
+    o.viewId = 'foo';
   }
   buildCounterSearchUserActivityRequest--;
   return o;
@@ -1517,7 +1517,7 @@ api.SearchUserActivityResponse buildSearchUserActivityResponse() {
   var o = api.SearchUserActivityResponse();
   buildCounterSearchUserActivityResponse++;
   if (buildCounterSearchUserActivityResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.sampleRate = 42.0;
     o.sessions = buildUnnamed5680();
     o.totalRows = 42;
@@ -1543,7 +1543,7 @@ api.Segment buildSegment() {
   buildCounterSegment++;
   if (buildCounterSegment < 3) {
     o.dynamicSegment = buildDynamicSegment();
-    o.segmentId = "foo";
+    o.segmentId = 'foo';
   }
   buildCounterSegment--;
   return o;
@@ -1592,8 +1592,8 @@ void checkSegmentDefinition(api.SegmentDefinition o) {
 
 core.List<core.String> buildUnnamed5682() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1609,11 +1609,11 @@ api.SegmentDimensionFilter buildSegmentDimensionFilter() {
   buildCounterSegmentDimensionFilter++;
   if (buildCounterSegmentDimensionFilter < 3) {
     o.caseSensitive = true;
-    o.dimensionName = "foo";
+    o.dimensionName = 'foo';
     o.expressions = buildUnnamed5682();
-    o.maxComparisonValue = "foo";
-    o.minComparisonValue = "foo";
-    o.operator = "foo";
+    o.maxComparisonValue = 'foo';
+    o.minComparisonValue = 'foo';
+    o.operator = 'foo';
   }
   buildCounterSegmentDimensionFilter--;
   return o;
@@ -1683,11 +1683,11 @@ api.SegmentMetricFilter buildSegmentMetricFilter() {
   var o = api.SegmentMetricFilter();
   buildCounterSegmentMetricFilter++;
   if (buildCounterSegmentMetricFilter < 3) {
-    o.comparisonValue = "foo";
-    o.maxComparisonValue = "foo";
-    o.metricName = "foo";
-    o.operator = "foo";
-    o.scope = "foo";
+    o.comparisonValue = 'foo';
+    o.maxComparisonValue = 'foo';
+    o.metricName = 'foo';
+    o.operator = 'foo';
+    o.scope = 'foo';
   }
   buildCounterSegmentMetricFilter--;
   return o;
@@ -1723,7 +1723,7 @@ api.SegmentSequenceStep buildSegmentSequenceStep() {
   var o = api.SegmentSequenceStep();
   buildCounterSegmentSequenceStep++;
   if (buildCounterSegmentSequenceStep < 3) {
-    o.matchType = "foo";
+    o.matchType = 'foo';
     o.orFiltersForSegment = buildUnnamed5683();
   }
   buildCounterSegmentSequenceStep--;
@@ -1810,7 +1810,7 @@ api.TransactionData buildTransactionData() {
   var o = api.TransactionData();
   buildCounterTransactionData++;
   if (buildCounterTransactionData < 3) {
-    o.transactionId = "foo";
+    o.transactionId = 'foo';
     o.transactionRevenue = 42.0;
     o.transactionShipping = 42.0;
     o.transactionTax = 42.0;
@@ -1835,8 +1835,8 @@ api.User buildUser() {
   var o = api.User();
   buildCounterUser++;
   if (buildCounterUser < 3) {
-    o.type = "foo";
-    o.userId = "foo";
+    o.type = 'foo';
+    o.userId = 'foo';
   }
   buildCounterUser--;
   return o;
@@ -1870,11 +1870,11 @@ api.UserActivitySession buildUserActivitySession() {
   buildCounterUserActivitySession++;
   if (buildCounterUserActivitySession < 3) {
     o.activities = buildUnnamed5686();
-    o.dataSource = "foo";
-    o.deviceCategory = "foo";
-    o.platform = "foo";
-    o.sessionDate = "foo";
-    o.sessionId = "foo";
+    o.dataSource = 'foo';
+    o.deviceCategory = 'foo';
+    o.platform = 'foo';
+    o.sessionDate = 'foo';
+    o.sessionId = 'foo';
   }
   buildCounterUserActivitySession--;
   return o;
@@ -1894,412 +1894,412 @@ void checkUserActivitySession(api.UserActivitySession o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Activity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Activity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildActivity();
       var od = api.Activity.fromJson(o.toJson());
       checkActivity(od);
     });
   });
 
-  unittest.group("obj-schema-Cohort", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Cohort', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCohort();
       var od = api.Cohort.fromJson(o.toJson());
       checkCohort(od);
     });
   });
 
-  unittest.group("obj-schema-CohortGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CohortGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCohortGroup();
       var od = api.CohortGroup.fromJson(o.toJson());
       checkCohortGroup(od);
     });
   });
 
-  unittest.group("obj-schema-ColumnHeader", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ColumnHeader', () {
+    unittest.test('to-json--from-json', () {
       var o = buildColumnHeader();
       var od = api.ColumnHeader.fromJson(o.toJson());
       checkColumnHeader(od);
     });
   });
 
-  unittest.group("obj-schema-CustomDimension", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomDimension', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomDimension();
       var od = api.CustomDimension.fromJson(o.toJson());
       checkCustomDimension(od);
     });
   });
 
-  unittest.group("obj-schema-DateRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DateRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
       checkDateRange(od);
     });
   });
 
-  unittest.group("obj-schema-DateRangeValues", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DateRangeValues', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDateRangeValues();
       var od = api.DateRangeValues.fromJson(o.toJson());
       checkDateRangeValues(od);
     });
   });
 
-  unittest.group("obj-schema-Dimension", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Dimension', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDimension();
       var od = api.Dimension.fromJson(o.toJson());
       checkDimension(od);
     });
   });
 
-  unittest.group("obj-schema-DimensionFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DimensionFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDimensionFilter();
       var od = api.DimensionFilter.fromJson(o.toJson());
       checkDimensionFilter(od);
     });
   });
 
-  unittest.group("obj-schema-DimensionFilterClause", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DimensionFilterClause', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDimensionFilterClause();
       var od = api.DimensionFilterClause.fromJson(o.toJson());
       checkDimensionFilterClause(od);
     });
   });
 
-  unittest.group("obj-schema-DynamicSegment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DynamicSegment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDynamicSegment();
       var od = api.DynamicSegment.fromJson(o.toJson());
       checkDynamicSegment(od);
     });
   });
 
-  unittest.group("obj-schema-EcommerceData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EcommerceData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEcommerceData();
       var od = api.EcommerceData.fromJson(o.toJson());
       checkEcommerceData(od);
     });
   });
 
-  unittest.group("obj-schema-EventData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventData();
       var od = api.EventData.fromJson(o.toJson());
       checkEventData(od);
     });
   });
 
-  unittest.group("obj-schema-GetReportsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GetReportsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGetReportsRequest();
       var od = api.GetReportsRequest.fromJson(o.toJson());
       checkGetReportsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GetReportsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GetReportsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGetReportsResponse();
       var od = api.GetReportsResponse.fromJson(o.toJson());
       checkGetReportsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoalData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoalData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoalData();
       var od = api.GoalData.fromJson(o.toJson());
       checkGoalData(od);
     });
   });
 
-  unittest.group("obj-schema-GoalSetData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoalSetData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoalSetData();
       var od = api.GoalSetData.fromJson(o.toJson());
       checkGoalSetData(od);
     });
   });
 
-  unittest.group("obj-schema-Metric", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Metric', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMetric();
       var od = api.Metric.fromJson(o.toJson());
       checkMetric(od);
     });
   });
 
-  unittest.group("obj-schema-MetricFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MetricFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMetricFilter();
       var od = api.MetricFilter.fromJson(o.toJson());
       checkMetricFilter(od);
     });
   });
 
-  unittest.group("obj-schema-MetricFilterClause", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MetricFilterClause', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMetricFilterClause();
       var od = api.MetricFilterClause.fromJson(o.toJson());
       checkMetricFilterClause(od);
     });
   });
 
-  unittest.group("obj-schema-MetricHeader", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MetricHeader', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMetricHeader();
       var od = api.MetricHeader.fromJson(o.toJson());
       checkMetricHeader(od);
     });
   });
 
-  unittest.group("obj-schema-MetricHeaderEntry", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MetricHeaderEntry', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMetricHeaderEntry();
       var od = api.MetricHeaderEntry.fromJson(o.toJson());
       checkMetricHeaderEntry(od);
     });
   });
 
-  unittest.group("obj-schema-OrFiltersForSegment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OrFiltersForSegment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOrFiltersForSegment();
       var od = api.OrFiltersForSegment.fromJson(o.toJson());
       checkOrFiltersForSegment(od);
     });
   });
 
-  unittest.group("obj-schema-OrderBy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OrderBy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOrderBy();
       var od = api.OrderBy.fromJson(o.toJson());
       checkOrderBy(od);
     });
   });
 
-  unittest.group("obj-schema-PageviewData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PageviewData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPageviewData();
       var od = api.PageviewData.fromJson(o.toJson());
       checkPageviewData(od);
     });
   });
 
-  unittest.group("obj-schema-Pivot", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Pivot', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPivot();
       var od = api.Pivot.fromJson(o.toJson());
       checkPivot(od);
     });
   });
 
-  unittest.group("obj-schema-PivotHeader", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PivotHeader', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPivotHeader();
       var od = api.PivotHeader.fromJson(o.toJson());
       checkPivotHeader(od);
     });
   });
 
-  unittest.group("obj-schema-PivotHeaderEntry", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PivotHeaderEntry', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPivotHeaderEntry();
       var od = api.PivotHeaderEntry.fromJson(o.toJson());
       checkPivotHeaderEntry(od);
     });
   });
 
-  unittest.group("obj-schema-PivotValueRegion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PivotValueRegion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPivotValueRegion();
       var od = api.PivotValueRegion.fromJson(o.toJson());
       checkPivotValueRegion(od);
     });
   });
 
-  unittest.group("obj-schema-ProductData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ProductData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProductData();
       var od = api.ProductData.fromJson(o.toJson());
       checkProductData(od);
     });
   });
 
-  unittest.group("obj-schema-Report", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Report', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
       checkReport(od);
     });
   });
 
-  unittest.group("obj-schema-ReportData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportData();
       var od = api.ReportData.fromJson(o.toJson());
       checkReportData(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRequest();
       var od = api.ReportRequest.fromJson(o.toJson());
       checkReportRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRow", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRow', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
       checkReportRow(od);
     });
   });
 
-  unittest.group("obj-schema-ResourceQuotasRemaining", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResourceQuotasRemaining', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResourceQuotasRemaining();
       var od = api.ResourceQuotasRemaining.fromJson(o.toJson());
       checkResourceQuotasRemaining(od);
     });
   });
 
-  unittest.group("obj-schema-ScreenviewData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ScreenviewData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildScreenviewData();
       var od = api.ScreenviewData.fromJson(o.toJson());
       checkScreenviewData(od);
     });
   });
 
-  unittest.group("obj-schema-SearchUserActivityRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchUserActivityRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchUserActivityRequest();
       var od = api.SearchUserActivityRequest.fromJson(o.toJson());
       checkSearchUserActivityRequest(od);
     });
   });
 
-  unittest.group("obj-schema-SearchUserActivityResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchUserActivityResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchUserActivityResponse();
       var od = api.SearchUserActivityResponse.fromJson(o.toJson());
       checkSearchUserActivityResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Segment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Segment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSegment();
       var od = api.Segment.fromJson(o.toJson());
       checkSegment(od);
     });
   });
 
-  unittest.group("obj-schema-SegmentDefinition", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SegmentDefinition', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSegmentDefinition();
       var od = api.SegmentDefinition.fromJson(o.toJson());
       checkSegmentDefinition(od);
     });
   });
 
-  unittest.group("obj-schema-SegmentDimensionFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SegmentDimensionFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSegmentDimensionFilter();
       var od = api.SegmentDimensionFilter.fromJson(o.toJson());
       checkSegmentDimensionFilter(od);
     });
   });
 
-  unittest.group("obj-schema-SegmentFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SegmentFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSegmentFilter();
       var od = api.SegmentFilter.fromJson(o.toJson());
       checkSegmentFilter(od);
     });
   });
 
-  unittest.group("obj-schema-SegmentFilterClause", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SegmentFilterClause', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSegmentFilterClause();
       var od = api.SegmentFilterClause.fromJson(o.toJson());
       checkSegmentFilterClause(od);
     });
   });
 
-  unittest.group("obj-schema-SegmentMetricFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SegmentMetricFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSegmentMetricFilter();
       var od = api.SegmentMetricFilter.fromJson(o.toJson());
       checkSegmentMetricFilter(od);
     });
   });
 
-  unittest.group("obj-schema-SegmentSequenceStep", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SegmentSequenceStep', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSegmentSequenceStep();
       var od = api.SegmentSequenceStep.fromJson(o.toJson());
       checkSegmentSequenceStep(od);
     });
   });
 
-  unittest.group("obj-schema-SequenceSegment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SequenceSegment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSequenceSegment();
       var od = api.SequenceSegment.fromJson(o.toJson());
       checkSequenceSegment(od);
     });
   });
 
-  unittest.group("obj-schema-SimpleSegment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SimpleSegment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSimpleSegment();
       var od = api.SimpleSegment.fromJson(o.toJson());
       checkSimpleSegment(od);
     });
   });
 
-  unittest.group("obj-schema-TransactionData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TransactionData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTransactionData();
       var od = api.TransactionData.fromJson(o.toJson());
       checkTransactionData(od);
     });
   });
 
-  unittest.group("obj-schema-User", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-User', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od);
     });
   });
 
-  unittest.group("obj-schema-UserActivitySession", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UserActivitySession', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserActivitySession();
       var od = api.UserActivitySession.fromJson(o.toJson());
       checkUserActivitySession(od);
     });
   });
 
-  unittest.group("resource-ReportsResourceApi", () {
-    unittest.test("method--batchGet", () {
+  unittest.group('resource-ReportsResourceApi', () {
+    unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
       api.ReportsResourceApi res = api.AnalyticsreportingApi(mock).reports;
       var arg_request = buildGetReportsRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GetReportsRequest.fromJson(json);
         checkGetReportsRequest(obj);
@@ -2321,8 +2321,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2332,7 +2332,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGetReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2345,13 +2345,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-UserActivityResourceApi", () {
-    unittest.test("method--search", () {
+  unittest.group('resource-UserActivityResourceApi', () {
+    unittest.test('method--search', () {
       var mock = HttpServerMock();
       api.UserActivityResourceApi res =
           api.AnalyticsreportingApi(mock).userActivity;
       var arg_request = buildSearchUserActivityRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SearchUserActivityRequest.fromJson(json);
         checkSearchUserActivityRequest(obj);
@@ -2373,8 +2373,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2384,7 +2384,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSearchUserActivityResponse());
         return async.Future.value(stringResponse(200, h, resp));

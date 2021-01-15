@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,24 +36,24 @@ const core.String USER_AGENT = 'dart-api-client youtubeAnalytics/v2';
 /// Retrieves your YouTube Analytics data.
 class YoutubeAnalyticsApi {
   /// Manage your YouTube account
-  static const YoutubeScope = "https://www.googleapis.com/auth/youtube";
+  static const YoutubeScope = 'https://www.googleapis.com/auth/youtube';
 
   /// View your YouTube account
   static const YoutubeReadonlyScope =
-      "https://www.googleapis.com/auth/youtube.readonly";
+      'https://www.googleapis.com/auth/youtube.readonly';
 
   /// View and manage your assets and associated content on YouTube
   static const YoutubepartnerScope =
-      "https://www.googleapis.com/auth/youtubepartner";
+      'https://www.googleapis.com/auth/youtubepartner';
 
   /// View monetary and non-monetary YouTube Analytics reports for your YouTube
   /// content
   static const YtAnalyticsMonetaryReadonlyScope =
-      "https://www.googleapis.com/auth/yt-analytics-monetary.readonly";
+      'https://www.googleapis.com/auth/yt-analytics-monetary.readonly';
 
   /// View YouTube Analytics reports for your YouTube content
   static const YtAnalyticsReadonlyScope =
-      "https://www.googleapis.com/auth/yt-analytics.readonly";
+      'https://www.googleapis.com/auth/yt-analytics.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -63,8 +62,8 @@ class YoutubeAnalyticsApi {
   ReportsResourceApi get reports => ReportsResourceApi(_requester);
 
   YoutubeAnalyticsApi(http.Client client,
-      {core.String rootUrl = "https://youtubeanalytics.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://youtubeanalytics.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -115,20 +114,20 @@ class GroupItemsResourceApi {
     core.String _body;
 
     if (id != null) {
-      _queryParams["id"] = [id];
+      _queryParams['id'] = [id];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/groupItems';
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -181,17 +180,17 @@ class GroupItemsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/groupItems';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -242,20 +241,20 @@ class GroupItemsResourceApi {
     core.String _body;
 
     if (groupId != null) {
-      _queryParams["groupId"] = [groupId];
+      _queryParams['groupId'] = [groupId];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/groupItems';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -312,20 +311,20 @@ class GroupsResourceApi {
     core.String _body;
 
     if (id != null) {
-      _queryParams["id"] = [id];
+      _queryParams['id'] = [id];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/groups';
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -378,17 +377,17 @@ class GroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/groups';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -455,26 +454,26 @@ class GroupsResourceApi {
     core.String _body;
 
     if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+      _queryParams['mine'] = ['${mine}'];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (id != null) {
-      _queryParams["id"] = [id];
+      _queryParams['id'] = [id];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/groups';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -527,17 +526,17 @@ class GroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/groups';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -651,49 +650,49 @@ class ReportsResourceApi {
     core.String _body;
 
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (metrics != null) {
-      _queryParams["metrics"] = [metrics];
+      _queryParams['metrics'] = [metrics];
     }
     if (sort != null) {
-      _queryParams["sort"] = [sort];
+      _queryParams['sort'] = [sort];
     }
     if (includeHistoricalChannelData != null) {
-      _queryParams["includeHistoricalChannelData"] = [
-        "${includeHistoricalChannelData}"
+      _queryParams['includeHistoricalChannelData'] = [
+        '${includeHistoricalChannelData}'
       ];
     }
     if (dimensions != null) {
-      _queryParams["dimensions"] = [dimensions];
+      _queryParams['dimensions'] = [dimensions];
     }
     if (filters != null) {
-      _queryParams["filters"] = [filters];
+      _queryParams['filters'] = [filters];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (currency != null) {
-      _queryParams["currency"] = [currency];
+      _queryParams['currency'] = [currency];
     }
     if (endDate != null) {
-      _queryParams["endDate"] = [endDate];
+      _queryParams['endDate'] = [endDate];
     }
     if (startDate != null) {
-      _queryParams["startDate"] = [startDate];
+      _queryParams['startDate'] = [startDate];
     }
     if (ids != null) {
-      _queryParams["ids"] = [ids];
+      _queryParams['ids'] = [ids];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/reports';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -712,8 +711,8 @@ class EmptyResponse {
   EmptyResponse();
 
   EmptyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("errors")) {
-      errors = Errors.fromJson(_json["errors"]);
+    if (_json.containsKey('errors')) {
+      errors = Errors.fromJson(_json['errors']);
     }
   }
 
@@ -721,7 +720,7 @@ class EmptyResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = errors.toJson();
+      _json['errors'] = errors.toJson();
     }
     return _json;
   }
@@ -774,26 +773,26 @@ class ErrorProto {
   ErrorProto();
 
   ErrorProto.fromJson(core.Map _json) {
-    if (_json.containsKey("argument")) {
-      argument = (_json["argument"] as core.List).cast<core.String>();
+    if (_json.containsKey('argument')) {
+      argument = (_json['argument'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("debugInfo")) {
-      debugInfo = _json["debugInfo"];
+    if (_json.containsKey('debugInfo')) {
+      debugInfo = _json['debugInfo'];
     }
-    if (_json.containsKey("domain")) {
-      domain = _json["domain"];
+    if (_json.containsKey('domain')) {
+      domain = _json['domain'];
     }
-    if (_json.containsKey("externalErrorMessage")) {
-      externalErrorMessage = _json["externalErrorMessage"];
+    if (_json.containsKey('externalErrorMessage')) {
+      externalErrorMessage = _json['externalErrorMessage'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("locationType")) {
-      locationType = _json["locationType"];
+    if (_json.containsKey('locationType')) {
+      locationType = _json['locationType'];
     }
   }
 
@@ -801,25 +800,25 @@ class ErrorProto {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (argument != null) {
-      _json["argument"] = argument;
+      _json['argument'] = argument;
     }
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (debugInfo != null) {
-      _json["debugInfo"] = debugInfo;
+      _json['debugInfo'] = debugInfo;
     }
     if (domain != null) {
-      _json["domain"] = domain;
+      _json['domain'] = domain;
     }
     if (externalErrorMessage != null) {
-      _json["externalErrorMessage"] = externalErrorMessage;
+      _json['externalErrorMessage'] = externalErrorMessage;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (locationType != null) {
-      _json["locationType"] = locationType;
+      _json['locationType'] = locationType;
     }
     return _json;
   }
@@ -851,16 +850,16 @@ class Errors {
   Errors();
 
   Errors.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("error")) {
-      error = (_json["error"] as core.List)
+    if (_json.containsKey('error')) {
+      error = (_json['error'] as core.List)
           .map<ErrorProto>((value) => ErrorProto.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
   }
 
@@ -868,13 +867,13 @@ class Errors {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (error != null) {
-      _json["error"] = error.map((value) => value.toJson()).toList();
+      _json['error'] = error.map((value) => value.toJson()).toList();
     }
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     return _json;
   }
@@ -905,23 +904,23 @@ class Group {
   Group();
 
   Group.fromJson(core.Map _json) {
-    if (_json.containsKey("contentDetails")) {
-      contentDetails = GroupContentDetails.fromJson(_json["contentDetails"]);
+    if (_json.containsKey('contentDetails')) {
+      contentDetails = GroupContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("errors")) {
-      errors = Errors.fromJson(_json["errors"]);
+    if (_json.containsKey('errors')) {
+      errors = Errors.fromJson(_json['errors']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = GroupSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = GroupSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -929,22 +928,22 @@ class Group {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (errors != null) {
-      _json["errors"] = errors.toJson();
+      _json['errors'] = errors.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -963,11 +962,11 @@ class GroupContentDetails {
   GroupContentDetails();
 
   GroupContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("itemCount")) {
-      itemCount = _json["itemCount"];
+    if (_json.containsKey('itemCount')) {
+      itemCount = _json['itemCount'];
     }
-    if (_json.containsKey("itemType")) {
-      itemType = _json["itemType"];
+    if (_json.containsKey('itemType')) {
+      itemType = _json['itemType'];
     }
   }
 
@@ -975,10 +974,10 @@ class GroupContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (itemCount != null) {
-      _json["itemCount"] = itemCount;
+      _json['itemCount'] = itemCount;
     }
     if (itemType != null) {
-      _json["itemType"] = itemType;
+      _json['itemType'] = itemType;
     }
     return _json;
   }
@@ -1015,23 +1014,23 @@ class GroupItem {
   GroupItem();
 
   GroupItem.fromJson(core.Map _json) {
-    if (_json.containsKey("errors")) {
-      errors = Errors.fromJson(_json["errors"]);
+    if (_json.containsKey('errors')) {
+      errors = Errors.fromJson(_json['errors']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("groupId")) {
-      groupId = _json["groupId"];
+    if (_json.containsKey('groupId')) {
+      groupId = _json['groupId'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("resource")) {
-      resource = GroupItemResource.fromJson(_json["resource"]);
+    if (_json.containsKey('resource')) {
+      resource = GroupItemResource.fromJson(_json['resource']);
     }
   }
 
@@ -1039,22 +1038,22 @@ class GroupItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = errors.toJson();
+      _json['errors'] = errors.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (groupId != null) {
-      _json["groupId"] = groupId;
+      _json['groupId'] = groupId;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (resource != null) {
-      _json["resource"] = resource.toJson();
+      _json['resource'] = resource.toJson();
     }
     return _json;
   }
@@ -1073,11 +1072,11 @@ class GroupItemResource {
   GroupItemResource();
 
   GroupItemResource.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -1085,10 +1084,10 @@ class GroupItemResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -1106,11 +1105,11 @@ class GroupSnippet {
   GroupSnippet();
 
   GroupSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1118,10 +1117,10 @@ class GroupSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1146,19 +1145,19 @@ class ListGroupItemsResponse {
   ListGroupItemsResponse();
 
   ListGroupItemsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("errors")) {
-      errors = Errors.fromJson(_json["errors"]);
+    if (_json.containsKey('errors')) {
+      errors = Errors.fromJson(_json['errors']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<GroupItem>((value) => GroupItem.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -1166,16 +1165,16 @@ class ListGroupItemsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = errors.toJson();
+      _json['errors'] = errors.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -1204,22 +1203,22 @@ class ListGroupsResponse {
   ListGroupsResponse();
 
   ListGroupsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("errors")) {
-      errors = Errors.fromJson(_json["errors"]);
+    if (_json.containsKey('errors')) {
+      errors = Errors.fromJson(_json['errors']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Group>((value) => Group.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1227,19 +1226,19 @@ class ListGroupsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = errors.toJson();
+      _json['errors'] = errors.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1282,20 +1281,20 @@ class QueryResponse {
   QueryResponse();
 
   QueryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("columnHeaders")) {
-      columnHeaders = (_json["columnHeaders"] as core.List)
+    if (_json.containsKey('columnHeaders')) {
+      columnHeaders = (_json['columnHeaders'] as core.List)
           .map<ResultTableColumnHeader>(
               (value) => ResultTableColumnHeader.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("errors")) {
-      errors = Errors.fromJson(_json["errors"]);
+    if (_json.containsKey('errors')) {
+      errors = Errors.fromJson(_json['errors']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("rows")) {
-      rows = (_json["rows"] as core.List)
+    if (_json.containsKey('rows')) {
+      rows = (_json['rows'] as core.List)
           .map<core.List<core.Object>>(
               (value) => (value as core.List).cast<core.Object>())
           .toList();
@@ -1306,17 +1305,17 @@ class QueryResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (columnHeaders != null) {
-      _json["columnHeaders"] =
+      _json['columnHeaders'] =
           columnHeaders.map((value) => value.toJson()).toList();
     }
     if (errors != null) {
-      _json["errors"] = errors.toJson();
+      _json['errors'] = errors.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (rows != null) {
-      _json["rows"] = rows;
+      _json['rows'] = rows;
     }
     return _json;
   }
@@ -1336,14 +1335,14 @@ class ResultTableColumnHeader {
   ResultTableColumnHeader();
 
   ResultTableColumnHeader.fromJson(core.Map _json) {
-    if (_json.containsKey("columnType")) {
-      columnType = _json["columnType"];
+    if (_json.containsKey('columnType')) {
+      columnType = _json['columnType'];
     }
-    if (_json.containsKey("dataType")) {
-      dataType = _json["dataType"];
+    if (_json.containsKey('dataType')) {
+      dataType = _json['dataType'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -1351,13 +1350,13 @@ class ResultTableColumnHeader {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (columnType != null) {
-      _json["columnType"] = columnType;
+      _json['columnType'] = columnType;
     }
     if (dataType != null) {
-      _json["dataType"] = dataType;
+      _json['dataType'] = dataType;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }

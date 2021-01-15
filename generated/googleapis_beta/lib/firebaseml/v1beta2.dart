@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,15 +37,15 @@ const core.String USER_AGENT = 'dart-api-client firebaseml/v1beta2';
 class FirebasemlApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   FirebasemlApi(http.Client client,
-      {core.String rootUrl = "https://firebaseml.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://firebaseml.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -103,10 +102,10 @@ class ProjectsModelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -115,7 +114,7 @@ class ProjectsModelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -155,17 +154,17 @@ class ProjectsModelsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -205,17 +204,17 @@ class ProjectsModelsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -266,19 +265,19 @@ class ProjectsModelsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -287,7 +286,7 @@ class ProjectsModelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -337,20 +336,20 @@ class ProjectsModelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -398,17 +397,17 @@ class ProjectsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -448,13 +447,13 @@ class ListModelsResponse {
   ListModelsResponse();
 
   ListModelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("models")) {
-      models = (_json["models"] as core.List)
+    if (_json.containsKey('models')) {
+      models = (_json['models'] as core.List)
           .map<Model>((value) => Model.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -462,10 +461,10 @@ class ListModelsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (models != null) {
-      _json["models"] = models.map((value) => value.toJson()).toList();
+      _json['models'] = models.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -513,37 +512,37 @@ class Model {
   Model();
 
   Model.fromJson(core.Map _json) {
-    if (_json.containsKey("activeOperations")) {
-      activeOperations = (_json["activeOperations"] as core.List)
+    if (_json.containsKey('activeOperations')) {
+      activeOperations = (_json['activeOperations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("modelHash")) {
-      modelHash = _json["modelHash"];
+    if (_json.containsKey('modelHash')) {
+      modelHash = _json['modelHash'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("state")) {
-      state = ModelState.fromJson(_json["state"]);
+    if (_json.containsKey('state')) {
+      state = ModelState.fromJson(_json['state']);
     }
-    if (_json.containsKey("tags")) {
-      tags = (_json["tags"] as core.List).cast<core.String>();
+    if (_json.containsKey('tags')) {
+      tags = (_json['tags'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("tfliteModel")) {
-      tfliteModel = TfLiteModel.fromJson(_json["tfliteModel"]);
+    if (_json.containsKey('tfliteModel')) {
+      tfliteModel = TfLiteModel.fromJson(_json['tfliteModel']);
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -551,35 +550,35 @@ class Model {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activeOperations != null) {
-      _json["activeOperations"] =
+      _json['activeOperations'] =
           activeOperations.map((value) => value.toJson()).toList();
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (modelHash != null) {
-      _json["modelHash"] = modelHash;
+      _json['modelHash'] = modelHash;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (state != null) {
-      _json["state"] = state.toJson();
+      _json['state'] = state.toJson();
     }
     if (tags != null) {
-      _json["tags"] = tags;
+      _json['tags'] = tags;
     }
     if (tfliteModel != null) {
-      _json["tfliteModel"] = tfliteModel.toJson();
+      _json['tfliteModel'] = tfliteModel.toJson();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -601,11 +600,11 @@ class ModelOperationMetadata {
   ModelOperationMetadata();
 
   ModelOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("basicOperationStatus")) {
-      basicOperationStatus = _json["basicOperationStatus"];
+    if (_json.containsKey('basicOperationStatus')) {
+      basicOperationStatus = _json['basicOperationStatus'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -613,10 +612,10 @@ class ModelOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (basicOperationStatus != null) {
-      _json["basicOperationStatus"] = basicOperationStatus;
+      _json['basicOperationStatus'] = basicOperationStatus;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -638,11 +637,11 @@ class ModelState {
   ModelState();
 
   ModelState.fromJson(core.Map _json) {
-    if (_json.containsKey("published")) {
-      published = _json["published"];
+    if (_json.containsKey('published')) {
+      published = _json['published'];
     }
-    if (_json.containsKey("validationError")) {
-      validationError = Status.fromJson(_json["validationError"]);
+    if (_json.containsKey('validationError')) {
+      validationError = Status.fromJson(_json['validationError']);
     }
   }
 
@@ -650,10 +649,10 @@ class ModelState {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (published != null) {
-      _json["published"] = published;
+      _json['published'] = published;
     }
     if (validationError != null) {
-      _json["validationError"] = validationError.toJson();
+      _json['validationError'] = validationError.toJson();
     }
     return _json;
   }
@@ -699,22 +698,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -722,19 +721,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -765,17 +764,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -783,13 +782,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -814,14 +813,14 @@ class TfLiteModel {
   TfLiteModel();
 
   TfLiteModel.fromJson(core.Map _json) {
-    if (_json.containsKey("automlModel")) {
-      automlModel = _json["automlModel"];
+    if (_json.containsKey('automlModel')) {
+      automlModel = _json['automlModel'];
     }
-    if (_json.containsKey("gcsTfliteUri")) {
-      gcsTfliteUri = _json["gcsTfliteUri"];
+    if (_json.containsKey('gcsTfliteUri')) {
+      gcsTfliteUri = _json['gcsTfliteUri'];
     }
-    if (_json.containsKey("sizeBytes")) {
-      sizeBytes = _json["sizeBytes"];
+    if (_json.containsKey('sizeBytes')) {
+      sizeBytes = _json['sizeBytes'];
     }
   }
 
@@ -829,13 +828,13 @@ class TfLiteModel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (automlModel != null) {
-      _json["automlModel"] = automlModel;
+      _json['automlModel'] = automlModel;
     }
     if (gcsTfliteUri != null) {
-      _json["gcsTfliteUri"] = gcsTfliteUri;
+      _json['gcsTfliteUri'] = gcsTfliteUri;
     }
     if (sizeBytes != null) {
-      _json["sizeBytes"] = sizeBytes;
+      _json['sizeBytes'] = sizeBytes;
     }
     return _json;
   }

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,7 +36,7 @@ const core.String USER_AGENT = 'dart-api-client books/v1';
 /// The Google Books API allows clients to access the Google Books repository.
 class BooksApi {
   /// Manage your books
-  static const BooksScope = "https://www.googleapis.com/auth/books";
+  static const BooksScope = 'https://www.googleapis.com/auth/books';
 
   final commons.ApiRequester _requester;
 
@@ -60,8 +59,8 @@ class BooksApi {
   VolumesResourceApi get volumes => VolumesResourceApi(_requester);
 
   BooksApi(http.Client client,
-      {core.String rootUrl = "https://books.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://books.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -108,16 +107,16 @@ class BookshelvesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (shelf == null) {
-      throw core.ArgumentError("Parameter shelf is required.");
+      throw core.ArgumentError('Parameter shelf is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/users/' +
@@ -127,7 +126,7 @@ class BookshelvesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -168,13 +167,13 @@ class BookshelvesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/users/' +
@@ -183,7 +182,7 @@ class BookshelvesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -244,25 +243,25 @@ class BookshelvesVolumesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (shelf == null) {
-      throw core.ArgumentError("Parameter shelf is required.");
+      throw core.ArgumentError('Parameter shelf is required.');
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (showPreorders != null) {
-      _queryParams["showPreorders"] = ["${showPreorders}"];
+      _queryParams['showPreorders'] = ['${showPreorders}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/users/' +
@@ -273,7 +272,7 @@ class BookshelvesVolumesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -329,26 +328,26 @@ class CloudloadingResourceApi {
     core.String _body;
 
     if (name != null) {
-      _queryParams["name"] = [name];
+      _queryParams['name'] = [name];
     }
     if (driveDocumentId != null) {
-      _queryParams["drive_document_id"] = [driveDocumentId];
+      _queryParams['drive_document_id'] = [driveDocumentId];
     }
     if (mimeType != null) {
-      _queryParams["mime_type"] = [mimeType];
+      _queryParams['mime_type'] = [mimeType];
     }
     if (uploadClientToken != null) {
-      _queryParams["upload_client_token"] = [uploadClientToken];
+      _queryParams['upload_client_token'] = [uploadClientToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/cloudloading/addBook';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -386,17 +385,17 @@ class CloudloadingResourceApi {
     core.String _body;
 
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/cloudloading/deleteBook';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -437,14 +436,14 @@ class CloudloadingResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/cloudloading/updateBook';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -488,17 +487,17 @@ class DictionaryResourceApi {
     core.String _body;
 
     if (cpksver != null) {
-      _queryParams["cpksver"] = [cpksver];
+      _queryParams['cpksver'] = [cpksver];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/dictionary/listOfflineMetadata';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -542,17 +541,17 @@ class FamilysharingResourceApi {
     core.String _body;
 
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/familysharing/getFamilyInfo';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -597,23 +596,23 @@ class FamilysharingResourceApi {
     core.String _body;
 
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (docId != null) {
-      _queryParams["docId"] = [docId];
+      _queryParams['docId'] = [docId];
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/familysharing/share';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -658,23 +657,23 @@ class FamilysharingResourceApi {
     core.String _body;
 
     if (docId != null) {
-      _queryParams["docId"] = [docId];
+      _queryParams['docId'] = [docId];
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/familysharing/unshare';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -732,19 +731,19 @@ class LayersResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (summaryId == null) {
-      throw core.ArgumentError("Parameter summaryId is required.");
+      throw core.ArgumentError('Parameter summaryId is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (contentVersion != null) {
-      _queryParams["contentVersion"] = [contentVersion];
+      _queryParams['contentVersion'] = [contentVersion];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/' +
@@ -754,7 +753,7 @@ class LayersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -804,22 +803,22 @@ class LayersResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (contentVersion != null) {
-      _queryParams["contentVersion"] = [contentVersion];
+      _queryParams['contentVersion'] = [contentVersion];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/' +
@@ -828,7 +827,7 @@ class LayersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -905,37 +904,37 @@ class LayersAnnotationDataResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (layerId == null) {
-      throw core.ArgumentError("Parameter layerId is required.");
+      throw core.ArgumentError('Parameter layerId is required.');
     }
     if (annotationDataId == null) {
-      throw core.ArgumentError("Parameter annotationDataId is required.");
+      throw core.ArgumentError('Parameter annotationDataId is required.');
     }
     if (allowWebDefinitions != null) {
-      _queryParams["allowWebDefinitions"] = ["${allowWebDefinitions}"];
+      _queryParams['allowWebDefinitions'] = ['${allowWebDefinitions}'];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (scale != null) {
-      _queryParams["scale"] = ["${scale}"];
+      _queryParams['scale'] = ['${scale}'];
     }
     if (h != null) {
-      _queryParams["h"] = ["${h}"];
+      _queryParams['h'] = ['${h}'];
     }
     if (w != null) {
-      _queryParams["w"] = ["${w}"];
+      _queryParams['w'] = ['${w}'];
     }
     if (contentVersion != null) {
-      _queryParams["contentVersion"] = [contentVersion];
+      _queryParams['contentVersion'] = [contentVersion];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/' +
@@ -947,7 +946,7 @@ class LayersAnnotationDataResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1027,46 +1026,46 @@ class LayersAnnotationDataResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (layerId == null) {
-      throw core.ArgumentError("Parameter layerId is required.");
+      throw core.ArgumentError('Parameter layerId is required.');
     }
     if (w != null) {
-      _queryParams["w"] = ["${w}"];
+      _queryParams['w'] = ['${w}'];
     }
     if (scale != null) {
-      _queryParams["scale"] = ["${scale}"];
+      _queryParams['scale'] = ['${scale}'];
     }
     if (updatedMin != null) {
-      _queryParams["updatedMin"] = [updatedMin];
+      _queryParams['updatedMin'] = [updatedMin];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (contentVersion != null) {
-      _queryParams["contentVersion"] = [contentVersion];
+      _queryParams['contentVersion'] = [contentVersion];
     }
     if (annotationDataId != null) {
-      _queryParams["annotationDataId"] = annotationDataId;
+      _queryParams['annotationDataId'] = annotationDataId;
     }
     if (updatedMax != null) {
-      _queryParams["updatedMax"] = [updatedMax];
+      _queryParams['updatedMax'] = [updatedMax];
     }
     if (h != null) {
-      _queryParams["h"] = ["${h}"];
+      _queryParams['h'] = ['${h}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/' +
@@ -1077,7 +1076,7 @@ class LayersAnnotationDataResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1135,22 +1134,22 @@ class LayersVolumeAnnotationsResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (layerId == null) {
-      throw core.ArgumentError("Parameter layerId is required.");
+      throw core.ArgumentError('Parameter layerId is required.');
     }
     if (annotationId == null) {
-      throw core.ArgumentError("Parameter annotationId is required.");
+      throw core.ArgumentError('Parameter annotationId is required.');
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/' +
@@ -1162,7 +1161,7 @@ class LayersVolumeAnnotationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1247,52 +1246,52 @@ class LayersVolumeAnnotationsResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (layerId == null) {
-      throw core.ArgumentError("Parameter layerId is required.");
+      throw core.ArgumentError('Parameter layerId is required.');
     }
     if (updatedMin != null) {
-      _queryParams["updatedMin"] = [updatedMin];
+      _queryParams['updatedMin'] = [updatedMin];
     }
     if (contentVersion != null) {
-      _queryParams["contentVersion"] = [contentVersion];
+      _queryParams['contentVersion'] = [contentVersion];
     }
     if (startPosition != null) {
-      _queryParams["startPosition"] = [startPosition];
+      _queryParams['startPosition'] = [startPosition];
     }
     if (endPosition != null) {
-      _queryParams["endPosition"] = [endPosition];
+      _queryParams['endPosition'] = [endPosition];
     }
     if (startOffset != null) {
-      _queryParams["startOffset"] = [startOffset];
+      _queryParams['startOffset'] = [startOffset];
     }
     if (updatedMax != null) {
-      _queryParams["updatedMax"] = [updatedMax];
+      _queryParams['updatedMax'] = [updatedMax];
     }
     if (volumeAnnotationsVersion != null) {
-      _queryParams["volumeAnnotationsVersion"] = [volumeAnnotationsVersion];
+      _queryParams['volumeAnnotationsVersion'] = [volumeAnnotationsVersion];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (endOffset != null) {
-      _queryParams["endOffset"] = [endOffset];
+      _queryParams['endOffset'] = [endOffset];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/' +
@@ -1302,7 +1301,7 @@ class LayersVolumeAnnotationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1347,17 +1346,17 @@ class MyconfigResourceApi {
     core.String _body;
 
     if (country != null) {
-      _queryParams["country"] = [country];
+      _queryParams['country'] = [country];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/myconfig/getUserSettings';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1405,26 +1404,26 @@ class MyconfigResourceApi {
     core.String _body;
 
     if (cpksver != null) {
-      _queryParams["cpksver"] = [cpksver];
+      _queryParams['cpksver'] = [cpksver];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (volumeIds != null) {
-      _queryParams["volumeIds"] = volumeIds;
+      _queryParams['volumeIds'] = volumeIds;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/myconfig/releaseDownloadAccess';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1484,32 +1483,32 @@ class MyconfigResourceApi {
     core.String _body;
 
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (nonce != null) {
-      _queryParams["nonce"] = [nonce];
+      _queryParams['nonce'] = [nonce];
     }
     if (cpksver != null) {
-      _queryParams["cpksver"] = [cpksver];
+      _queryParams['cpksver'] = [cpksver];
     }
     if (licenseTypes != null) {
-      _queryParams["licenseTypes"] = [licenseTypes];
+      _queryParams['licenseTypes'] = [licenseTypes];
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/myconfig/requestAccess';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1572,38 +1571,38 @@ class MyconfigResourceApi {
     core.String _body;
 
     if (cpksver != null) {
-      _queryParams["cpksver"] = [cpksver];
+      _queryParams['cpksver'] = [cpksver];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (showPreorders != null) {
-      _queryParams["showPreorders"] = ["${showPreorders}"];
+      _queryParams['showPreorders'] = ['${showPreorders}'];
     }
     if (includeNonComicsSeries != null) {
-      _queryParams["includeNonComicsSeries"] = ["${includeNonComicsSeries}"];
+      _queryParams['includeNonComicsSeries'] = ['${includeNonComicsSeries}'];
     }
     if (features != null) {
-      _queryParams["features"] = features;
+      _queryParams['features'] = features;
     }
     if (nonce != null) {
-      _queryParams["nonce"] = [nonce];
+      _queryParams['nonce'] = [nonce];
     }
     if (volumeIds != null) {
-      _queryParams["volumeIds"] = volumeIds;
+      _queryParams['volumeIds'] = volumeIds;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/myconfig/syncVolumeLicenses';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1646,14 +1645,14 @@ class MyconfigResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/myconfig/updateUserSettings';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1714,13 +1713,13 @@ class MylibraryAnnotationsResourceApi {
     core.String _body;
 
     if (annotationId == null) {
-      throw core.ArgumentError("Parameter annotationId is required.");
+      throw core.ArgumentError('Parameter annotationId is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/annotations/' +
@@ -1728,7 +1727,7 @@ class MylibraryAnnotationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1782,28 +1781,28 @@ class MylibraryAnnotationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (annotationId != null) {
-      _queryParams["annotationId"] = [annotationId];
+      _queryParams['annotationId'] = [annotationId];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (showOnlySummaryInResponse != null) {
-      _queryParams["showOnlySummaryInResponse"] = [
-        "${showOnlySummaryInResponse}"
+      _queryParams['showOnlySummaryInResponse'] = [
+        '${showOnlySummaryInResponse}'
       ];
     }
     if (country != null) {
-      _queryParams["country"] = [country];
+      _queryParams['country'] = [country];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/annotations';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1871,44 +1870,44 @@ class MylibraryAnnotationsResourceApi {
     core.String _body;
 
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (layerIds != null) {
-      _queryParams["layerIds"] = layerIds;
+      _queryParams['layerIds'] = layerIds;
     }
     if (layerId != null) {
-      _queryParams["layerId"] = [layerId];
+      _queryParams['layerId'] = [layerId];
     }
     if (updatedMax != null) {
-      _queryParams["updatedMax"] = [updatedMax];
+      _queryParams['updatedMax'] = [updatedMax];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if (updatedMin != null) {
-      _queryParams["updatedMin"] = [updatedMin];
+      _queryParams['updatedMin'] = [updatedMin];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (contentVersion != null) {
-      _queryParams["contentVersion"] = [contentVersion];
+      _queryParams['contentVersion'] = [contentVersion];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/annotations';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1949,20 +1948,20 @@ class MylibraryAnnotationsResourceApi {
     core.String _body;
 
     if (layerIds != null) {
-      _queryParams["layerIds"] = layerIds;
+      _queryParams['layerIds'] = layerIds;
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/annotations/summary';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2009,13 +2008,13 @@ class MylibraryAnnotationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (annotationId == null) {
-      throw core.ArgumentError("Parameter annotationId is required.");
+      throw core.ArgumentError('Parameter annotationId is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/annotations/' +
@@ -2023,7 +2022,7 @@ class MylibraryAnnotationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2085,19 +2084,19 @@ class MylibraryBookshelvesResourceApi {
     core.String _body;
 
     if (shelf == null) {
-      throw core.ArgumentError("Parameter shelf is required.");
+      throw core.ArgumentError('Parameter shelf is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (reason != null) {
-      _queryParams["reason"] = [reason];
+      _queryParams['reason'] = [reason];
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/bookshelves/' +
@@ -2106,7 +2105,7 @@ class MylibraryBookshelvesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2147,13 +2146,13 @@ class MylibraryBookshelvesResourceApi {
     core.String _body;
 
     if (shelf == null) {
-      throw core.ArgumentError("Parameter shelf is required.");
+      throw core.ArgumentError('Parameter shelf is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/bookshelves/' +
@@ -2162,7 +2161,7 @@ class MylibraryBookshelvesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2204,13 +2203,13 @@ class MylibraryBookshelvesResourceApi {
     core.String _body;
 
     if (shelf == null) {
-      throw core.ArgumentError("Parameter shelf is required.");
+      throw core.ArgumentError('Parameter shelf is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/bookshelves/' +
@@ -2218,7 +2217,7 @@ class MylibraryBookshelvesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2256,17 +2255,17 @@ class MylibraryBookshelvesResourceApi {
     core.String _body;
 
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/bookshelves';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2315,19 +2314,19 @@ class MylibraryBookshelvesResourceApi {
     core.String _body;
 
     if (shelf == null) {
-      throw core.ArgumentError("Parameter shelf is required.");
+      throw core.ArgumentError('Parameter shelf is required.');
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (volumePosition != null) {
-      _queryParams["volumePosition"] = ["${volumePosition}"];
+      _queryParams['volumePosition'] = ['${volumePosition}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/bookshelves/' +
@@ -2336,7 +2335,7 @@ class MylibraryBookshelvesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2386,19 +2385,19 @@ class MylibraryBookshelvesResourceApi {
     core.String _body;
 
     if (shelf == null) {
-      throw core.ArgumentError("Parameter shelf is required.");
+      throw core.ArgumentError('Parameter shelf is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if (reason != null) {
-      _queryParams["reason"] = [reason];
+      _queryParams['reason'] = [reason];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/bookshelves/' +
@@ -2407,7 +2406,7 @@ class MylibraryBookshelvesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2478,31 +2477,31 @@ class MylibraryBookshelvesVolumesResourceApi {
     core.String _body;
 
     if (shelf == null) {
-      throw core.ArgumentError("Parameter shelf is required.");
+      throw core.ArgumentError('Parameter shelf is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (country != null) {
-      _queryParams["country"] = [country];
+      _queryParams['country'] = [country];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (showPreorders != null) {
-      _queryParams["showPreorders"] = ["${showPreorders}"];
+      _queryParams['showPreorders'] = ['${showPreorders}'];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/bookshelves/' +
@@ -2511,7 +2510,7 @@ class MylibraryBookshelvesVolumesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2563,16 +2562,16 @@ class MylibraryReadingpositionsResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (contentVersion != null) {
-      _queryParams["contentVersion"] = [contentVersion];
+      _queryParams['contentVersion'] = [contentVersion];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/readingpositions/' +
@@ -2580,7 +2579,7 @@ class MylibraryReadingpositionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2646,28 +2645,28 @@ class MylibraryReadingpositionsResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (position != null) {
-      _queryParams["position"] = [position];
+      _queryParams['position'] = [position];
     }
     if (deviceCookie != null) {
-      _queryParams["deviceCookie"] = [deviceCookie];
+      _queryParams['deviceCookie'] = [deviceCookie];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (contentVersion != null) {
-      _queryParams["contentVersion"] = [contentVersion];
+      _queryParams['contentVersion'] = [contentVersion];
     }
     if (timestamp != null) {
-      _queryParams["timestamp"] = [timestamp];
+      _queryParams['timestamp'] = [timestamp];
     }
     if (action != null) {
-      _queryParams["action"] = [action];
+      _queryParams['action'] = [action];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/mylibrary/readingpositions/' +
@@ -2676,7 +2675,7 @@ class MylibraryReadingpositionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2727,23 +2726,23 @@ class NotificationResourceApi {
     core.String _body;
 
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (notificationId != null) {
-      _queryParams["notification_id"] = [notificationId];
+      _queryParams['notification_id'] = [notificationId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/notification/get';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2788,17 +2787,17 @@ class OnboardingResourceApi {
     core.String _body;
 
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/onboarding/listCategories';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2855,29 +2854,29 @@ class OnboardingResourceApi {
     core.String _body;
 
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (categoryId != null) {
-      _queryParams["categoryId"] = categoryId;
+      _queryParams['categoryId'] = categoryId;
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxAllowedMaturityRating != null) {
-      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/onboarding/listCategoryVolumes';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2935,23 +2934,23 @@ class PersonalizedstreamResourceApi {
     core.String _body;
 
     if (maxAllowedMaturityRating != null) {
-      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/personalizedstream/get';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3016,38 +3015,38 @@ class PromoofferResourceApi {
     core.String _body;
 
     if (offerId != null) {
-      _queryParams["offerId"] = [offerId];
+      _queryParams['offerId'] = [offerId];
     }
     if (manufacturer != null) {
-      _queryParams["manufacturer"] = [manufacturer];
+      _queryParams['manufacturer'] = [manufacturer];
     }
     if (product != null) {
-      _queryParams["product"] = [product];
+      _queryParams['product'] = [product];
     }
     if (model != null) {
-      _queryParams["model"] = [model];
+      _queryParams['model'] = [model];
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if (device != null) {
-      _queryParams["device"] = [device];
+      _queryParams['device'] = [device];
     }
     if (androidId != null) {
-      _queryParams["androidId"] = [androidId];
+      _queryParams['androidId'] = [androidId];
     }
     if (serial != null) {
-      _queryParams["serial"] = [serial];
+      _queryParams['serial'] = [serial];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/promooffer/accept';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3103,35 +3102,35 @@ class PromoofferResourceApi {
     core.String _body;
 
     if (androidId != null) {
-      _queryParams["androidId"] = [androidId];
+      _queryParams['androidId'] = [androidId];
     }
     if (product != null) {
-      _queryParams["product"] = [product];
+      _queryParams['product'] = [product];
     }
     if (serial != null) {
-      _queryParams["serial"] = [serial];
+      _queryParams['serial'] = [serial];
     }
     if (model != null) {
-      _queryParams["model"] = [model];
+      _queryParams['model'] = [model];
     }
     if (offerId != null) {
-      _queryParams["offerId"] = [offerId];
+      _queryParams['offerId'] = [offerId];
     }
     if (device != null) {
-      _queryParams["device"] = [device];
+      _queryParams['device'] = [device];
     }
     if (manufacturer != null) {
-      _queryParams["manufacturer"] = [manufacturer];
+      _queryParams['manufacturer'] = [manufacturer];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/promooffer/dismiss';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3184,32 +3183,32 @@ class PromoofferResourceApi {
     core.String _body;
 
     if (serial != null) {
-      _queryParams["serial"] = [serial];
+      _queryParams['serial'] = [serial];
     }
     if (androidId != null) {
-      _queryParams["androidId"] = [androidId];
+      _queryParams['androidId'] = [androidId];
     }
     if (manufacturer != null) {
-      _queryParams["manufacturer"] = [manufacturer];
+      _queryParams['manufacturer'] = [manufacturer];
     }
     if (model != null) {
-      _queryParams["model"] = [model];
+      _queryParams['model'] = [model];
     }
     if (device != null) {
-      _queryParams["device"] = [device];
+      _queryParams['device'] = [device];
     }
     if (product != null) {
-      _queryParams["product"] = [product];
+      _queryParams['product'] = [product];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/promooffer/get';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3256,17 +3255,17 @@ class SeriesResourceApi {
     core.String _body;
 
     if (seriesId != null) {
-      _queryParams["series_id"] = seriesId;
+      _queryParams['series_id'] = seriesId;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/series/get';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3318,23 +3317,23 @@ class SeriesMembershipResourceApi {
     core.String _body;
 
     if (pageSize != null) {
-      _queryParams["page_size"] = ["${pageSize}"];
+      _queryParams['page_size'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["page_token"] = [pageToken];
+      _queryParams['page_token'] = [pageToken];
     }
     if (seriesId != null) {
-      _queryParams["series_id"] = [seriesId];
+      _queryParams['series_id'] = [seriesId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/series/membership/get';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3410,37 +3409,37 @@ class VolumesResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (country != null) {
-      _queryParams["country"] = [country];
+      _queryParams['country'] = [country];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (partner != null) {
-      _queryParams["partner"] = [partner];
+      _queryParams['partner'] = [partner];
     }
     if (includeNonComicsSeries != null) {
-      _queryParams["includeNonComicsSeries"] = ["${includeNonComicsSeries}"];
+      _queryParams['includeNonComicsSeries'] = ['${includeNonComicsSeries}'];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (userLibraryConsistentRead != null) {
-      _queryParams["user_library_consistent_read"] = [
-        "${userLibraryConsistentRead}"
+      _queryParams['user_library_consistent_read'] = [
+        '${userLibraryConsistentRead}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/' + commons.Escaper.ecapeVariable('$volumeId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3551,56 +3550,56 @@ class VolumesResourceApi {
     core.String _body;
 
     if (partner != null) {
-      _queryParams["partner"] = [partner];
+      _queryParams['partner'] = [partner];
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (libraryRestrict != null) {
-      _queryParams["libraryRestrict"] = [libraryRestrict];
+      _queryParams['libraryRestrict'] = [libraryRestrict];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (showPreorders != null) {
-      _queryParams["showPreorders"] = ["${showPreorders}"];
+      _queryParams['showPreorders'] = ['${showPreorders}'];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (printType != null) {
-      _queryParams["printType"] = [printType];
+      _queryParams['printType'] = [printType];
     }
     if (maxAllowedMaturityRating != null) {
-      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
     }
     if (download != null) {
-      _queryParams["download"] = [download];
+      _queryParams['download'] = [download];
     }
     if (langRestrict != null) {
-      _queryParams["langRestrict"] = [langRestrict];
+      _queryParams['langRestrict'] = [langRestrict];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3669,22 +3668,22 @@ class VolumesAssociatedResourceApi {
     core.String _body;
 
     if (volumeId == null) {
-      throw core.ArgumentError("Parameter volumeId is required.");
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (association != null) {
-      _queryParams["association"] = [association];
+      _queryParams['association'] = [association];
     }
     if (maxAllowedMaturityRating != null) {
-      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/' +
@@ -3693,7 +3692,7 @@ class VolumesAssociatedResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3758,35 +3757,35 @@ class VolumesMybooksResourceApi {
     core.String _body;
 
     if (processingState != null) {
-      _queryParams["processingState"] = processingState;
+      _queryParams['processingState'] = processingState;
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (acquireMethod != null) {
-      _queryParams["acquireMethod"] = acquireMethod;
+      _queryParams['acquireMethod'] = acquireMethod;
     }
     if (country != null) {
-      _queryParams["country"] = [country];
+      _queryParams['country'] = [country];
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/mybooks';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3844,23 +3843,23 @@ class VolumesRecommendedResourceApi {
     core.String _body;
 
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if (maxAllowedMaturityRating != null) {
-      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/recommended';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3912,26 +3911,26 @@ class VolumesRecommendedResourceApi {
     core.String _body;
 
     if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
+      _queryParams['volumeId'] = [volumeId];
     }
     if (rating != null) {
-      _queryParams["rating"] = [rating];
+      _queryParams['rating'] = [rating];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/recommended/rate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3995,32 +3994,32 @@ class VolumesUseruploadedResourceApi {
     core.String _body;
 
     if (processingState != null) {
-      _queryParams["processingState"] = processingState;
+      _queryParams['processingState'] = processingState;
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (volumeId != null) {
-      _queryParams["volumeId"] = volumeId;
+      _queryParams['volumeId'] = volumeId;
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (source != null) {
-      _queryParams["source"] = [source];
+      _queryParams['source'] = [source];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'books/v1/volumes/useruploaded';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4051,20 +4050,20 @@ class AnnotationClientVersionRanges {
   AnnotationClientVersionRanges();
 
   AnnotationClientVersionRanges.fromJson(core.Map _json) {
-    if (_json.containsKey("cfiRange")) {
-      cfiRange = BooksAnnotationsRange.fromJson(_json["cfiRange"]);
+    if (_json.containsKey('cfiRange')) {
+      cfiRange = BooksAnnotationsRange.fromJson(_json['cfiRange']);
     }
-    if (_json.containsKey("contentVersion")) {
-      contentVersion = _json["contentVersion"];
+    if (_json.containsKey('contentVersion')) {
+      contentVersion = _json['contentVersion'];
     }
-    if (_json.containsKey("gbImageRange")) {
-      gbImageRange = BooksAnnotationsRange.fromJson(_json["gbImageRange"]);
+    if (_json.containsKey('gbImageRange')) {
+      gbImageRange = BooksAnnotationsRange.fromJson(_json['gbImageRange']);
     }
-    if (_json.containsKey("gbTextRange")) {
-      gbTextRange = BooksAnnotationsRange.fromJson(_json["gbTextRange"]);
+    if (_json.containsKey('gbTextRange')) {
+      gbTextRange = BooksAnnotationsRange.fromJson(_json['gbTextRange']);
     }
-    if (_json.containsKey("imageCfiRange")) {
-      imageCfiRange = BooksAnnotationsRange.fromJson(_json["imageCfiRange"]);
+    if (_json.containsKey('imageCfiRange')) {
+      imageCfiRange = BooksAnnotationsRange.fromJson(_json['imageCfiRange']);
     }
   }
 
@@ -4072,19 +4071,19 @@ class AnnotationClientVersionRanges {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cfiRange != null) {
-      _json["cfiRange"] = cfiRange.toJson();
+      _json['cfiRange'] = cfiRange.toJson();
     }
     if (contentVersion != null) {
-      _json["contentVersion"] = contentVersion;
+      _json['contentVersion'] = contentVersion;
     }
     if (gbImageRange != null) {
-      _json["gbImageRange"] = gbImageRange.toJson();
+      _json['gbImageRange'] = gbImageRange.toJson();
     }
     if (gbTextRange != null) {
-      _json["gbTextRange"] = gbTextRange.toJson();
+      _json['gbTextRange'] = gbTextRange.toJson();
     }
     if (imageCfiRange != null) {
-      _json["imageCfiRange"] = imageCfiRange.toJson();
+      _json['imageCfiRange'] = imageCfiRange.toJson();
     }
     return _json;
   }
@@ -4110,20 +4109,20 @@ class AnnotationCurrentVersionRanges {
   AnnotationCurrentVersionRanges();
 
   AnnotationCurrentVersionRanges.fromJson(core.Map _json) {
-    if (_json.containsKey("cfiRange")) {
-      cfiRange = BooksAnnotationsRange.fromJson(_json["cfiRange"]);
+    if (_json.containsKey('cfiRange')) {
+      cfiRange = BooksAnnotationsRange.fromJson(_json['cfiRange']);
     }
-    if (_json.containsKey("contentVersion")) {
-      contentVersion = _json["contentVersion"];
+    if (_json.containsKey('contentVersion')) {
+      contentVersion = _json['contentVersion'];
     }
-    if (_json.containsKey("gbImageRange")) {
-      gbImageRange = BooksAnnotationsRange.fromJson(_json["gbImageRange"]);
+    if (_json.containsKey('gbImageRange')) {
+      gbImageRange = BooksAnnotationsRange.fromJson(_json['gbImageRange']);
     }
-    if (_json.containsKey("gbTextRange")) {
-      gbTextRange = BooksAnnotationsRange.fromJson(_json["gbTextRange"]);
+    if (_json.containsKey('gbTextRange')) {
+      gbTextRange = BooksAnnotationsRange.fromJson(_json['gbTextRange']);
     }
-    if (_json.containsKey("imageCfiRange")) {
-      imageCfiRange = BooksAnnotationsRange.fromJson(_json["imageCfiRange"]);
+    if (_json.containsKey('imageCfiRange')) {
+      imageCfiRange = BooksAnnotationsRange.fromJson(_json['imageCfiRange']);
     }
   }
 
@@ -4131,19 +4130,19 @@ class AnnotationCurrentVersionRanges {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cfiRange != null) {
-      _json["cfiRange"] = cfiRange.toJson();
+      _json['cfiRange'] = cfiRange.toJson();
     }
     if (contentVersion != null) {
-      _json["contentVersion"] = contentVersion;
+      _json['contentVersion'] = contentVersion;
     }
     if (gbImageRange != null) {
-      _json["gbImageRange"] = gbImageRange.toJson();
+      _json['gbImageRange'] = gbImageRange.toJson();
     }
     if (gbTextRange != null) {
-      _json["gbTextRange"] = gbTextRange.toJson();
+      _json['gbTextRange'] = gbTextRange.toJson();
     }
     if (imageCfiRange != null) {
-      _json["imageCfiRange"] = imageCfiRange.toJson();
+      _json['imageCfiRange'] = imageCfiRange.toJson();
     }
     return _json;
   }
@@ -4164,14 +4163,14 @@ class AnnotationLayerSummary {
   AnnotationLayerSummary();
 
   AnnotationLayerSummary.fromJson(core.Map _json) {
-    if (_json.containsKey("allowedCharacterCount")) {
-      allowedCharacterCount = _json["allowedCharacterCount"];
+    if (_json.containsKey('allowedCharacterCount')) {
+      allowedCharacterCount = _json['allowedCharacterCount'];
     }
-    if (_json.containsKey("limitType")) {
-      limitType = _json["limitType"];
+    if (_json.containsKey('limitType')) {
+      limitType = _json['limitType'];
     }
-    if (_json.containsKey("remainingCharacterCount")) {
-      remainingCharacterCount = _json["remainingCharacterCount"];
+    if (_json.containsKey('remainingCharacterCount')) {
+      remainingCharacterCount = _json['remainingCharacterCount'];
     }
   }
 
@@ -4179,13 +4178,13 @@ class AnnotationLayerSummary {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowedCharacterCount != null) {
-      _json["allowedCharacterCount"] = allowedCharacterCount;
+      _json['allowedCharacterCount'] = allowedCharacterCount;
     }
     if (limitType != null) {
-      _json["limitType"] = limitType;
+      _json['limitType'] = limitType;
     }
     if (remainingCharacterCount != null) {
-      _json["remainingCharacterCount"] = remainingCharacterCount;
+      _json['remainingCharacterCount'] = remainingCharacterCount;
     }
     return _json;
   }
@@ -4246,58 +4245,58 @@ class Annotation {
   Annotation();
 
   Annotation.fromJson(core.Map _json) {
-    if (_json.containsKey("afterSelectedText")) {
-      afterSelectedText = _json["afterSelectedText"];
+    if (_json.containsKey('afterSelectedText')) {
+      afterSelectedText = _json['afterSelectedText'];
     }
-    if (_json.containsKey("beforeSelectedText")) {
-      beforeSelectedText = _json["beforeSelectedText"];
+    if (_json.containsKey('beforeSelectedText')) {
+      beforeSelectedText = _json['beforeSelectedText'];
     }
-    if (_json.containsKey("clientVersionRanges")) {
+    if (_json.containsKey('clientVersionRanges')) {
       clientVersionRanges =
-          AnnotationClientVersionRanges.fromJson(_json["clientVersionRanges"]);
+          AnnotationClientVersionRanges.fromJson(_json['clientVersionRanges']);
     }
-    if (_json.containsKey("created")) {
-      created = _json["created"];
+    if (_json.containsKey('created')) {
+      created = _json['created'];
     }
-    if (_json.containsKey("currentVersionRanges")) {
+    if (_json.containsKey('currentVersionRanges')) {
       currentVersionRanges = AnnotationCurrentVersionRanges.fromJson(
-          _json["currentVersionRanges"]);
+          _json['currentVersionRanges']);
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("highlightStyle")) {
-      highlightStyle = _json["highlightStyle"];
+    if (_json.containsKey('highlightStyle')) {
+      highlightStyle = _json['highlightStyle'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("layerId")) {
-      layerId = _json["layerId"];
+    if (_json.containsKey('layerId')) {
+      layerId = _json['layerId'];
     }
-    if (_json.containsKey("layerSummary")) {
-      layerSummary = AnnotationLayerSummary.fromJson(_json["layerSummary"]);
+    if (_json.containsKey('layerSummary')) {
+      layerSummary = AnnotationLayerSummary.fromJson(_json['layerSummary']);
     }
-    if (_json.containsKey("pageIds")) {
-      pageIds = (_json["pageIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('pageIds')) {
+      pageIds = (_json['pageIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("selectedText")) {
-      selectedText = _json["selectedText"];
+    if (_json.containsKey('selectedText')) {
+      selectedText = _json['selectedText'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -4305,55 +4304,55 @@ class Annotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (afterSelectedText != null) {
-      _json["afterSelectedText"] = afterSelectedText;
+      _json['afterSelectedText'] = afterSelectedText;
     }
     if (beforeSelectedText != null) {
-      _json["beforeSelectedText"] = beforeSelectedText;
+      _json['beforeSelectedText'] = beforeSelectedText;
     }
     if (clientVersionRanges != null) {
-      _json["clientVersionRanges"] = clientVersionRanges.toJson();
+      _json['clientVersionRanges'] = clientVersionRanges.toJson();
     }
     if (created != null) {
-      _json["created"] = created;
+      _json['created'] = created;
     }
     if (currentVersionRanges != null) {
-      _json["currentVersionRanges"] = currentVersionRanges.toJson();
+      _json['currentVersionRanges'] = currentVersionRanges.toJson();
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (highlightStyle != null) {
-      _json["highlightStyle"] = highlightStyle;
+      _json['highlightStyle'] = highlightStyle;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (layerId != null) {
-      _json["layerId"] = layerId;
+      _json['layerId'] = layerId;
     }
     if (layerSummary != null) {
-      _json["layerSummary"] = layerSummary.toJson();
+      _json['layerSummary'] = layerSummary.toJson();
     }
     if (pageIds != null) {
-      _json["pageIds"] = pageIds;
+      _json['pageIds'] = pageIds;
     }
     if (selectedText != null) {
-      _json["selectedText"] = selectedText;
+      _json['selectedText'] = selectedText;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -4377,19 +4376,19 @@ class Annotations {
   Annotations();
 
   Annotations.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Annotation>((value) => Annotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalItems")) {
-      totalItems = _json["totalItems"];
+    if (_json.containsKey('totalItems')) {
+      totalItems = _json['totalItems'];
     }
   }
 
@@ -4397,16 +4396,16 @@ class Annotations {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalItems != null) {
-      _json["totalItems"] = totalItems;
+      _json['totalItems'] = totalItems;
     }
     return _json;
   }
@@ -4422,20 +4421,20 @@ class AnnotationsSummaryLayers {
   AnnotationsSummaryLayers();
 
   AnnotationsSummaryLayers.fromJson(core.Map _json) {
-    if (_json.containsKey("allowedCharacterCount")) {
-      allowedCharacterCount = _json["allowedCharacterCount"];
+    if (_json.containsKey('allowedCharacterCount')) {
+      allowedCharacterCount = _json['allowedCharacterCount'];
     }
-    if (_json.containsKey("layerId")) {
-      layerId = _json["layerId"];
+    if (_json.containsKey('layerId')) {
+      layerId = _json['layerId'];
     }
-    if (_json.containsKey("limitType")) {
-      limitType = _json["limitType"];
+    if (_json.containsKey('limitType')) {
+      limitType = _json['limitType'];
     }
-    if (_json.containsKey("remainingCharacterCount")) {
-      remainingCharacterCount = _json["remainingCharacterCount"];
+    if (_json.containsKey('remainingCharacterCount')) {
+      remainingCharacterCount = _json['remainingCharacterCount'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
   }
 
@@ -4443,19 +4442,19 @@ class AnnotationsSummaryLayers {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowedCharacterCount != null) {
-      _json["allowedCharacterCount"] = allowedCharacterCount;
+      _json['allowedCharacterCount'] = allowedCharacterCount;
     }
     if (layerId != null) {
-      _json["layerId"] = layerId;
+      _json['layerId'] = layerId;
     }
     if (limitType != null) {
-      _json["limitType"] = limitType;
+      _json['limitType'] = limitType;
     }
     if (remainingCharacterCount != null) {
-      _json["remainingCharacterCount"] = remainingCharacterCount;
+      _json['remainingCharacterCount'] = remainingCharacterCount;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     return _json;
   }
@@ -4468,11 +4467,11 @@ class AnnotationsSummary {
   AnnotationsSummary();
 
   AnnotationsSummary.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("layers")) {
-      layers = (_json["layers"] as core.List)
+    if (_json.containsKey('layers')) {
+      layers = (_json['layers'] as core.List)
           .map<AnnotationsSummaryLayers>(
               (value) => AnnotationsSummaryLayers.fromJson(value))
           .toList();
@@ -4483,10 +4482,10 @@ class AnnotationsSummary {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (layers != null) {
-      _json["layers"] = layers.map((value) => value.toJson()).toList();
+      _json['layers'] = layers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4509,19 +4508,19 @@ class Annotationsdata {
   Annotationsdata();
 
   Annotationsdata.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<GeoAnnotationdata>((value) => GeoAnnotationdata.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalItems")) {
-      totalItems = _json["totalItems"];
+    if (_json.containsKey('totalItems')) {
+      totalItems = _json['totalItems'];
     }
   }
 
@@ -4529,16 +4528,16 @@ class Annotationsdata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalItems != null) {
-      _json["totalItems"] = totalItems;
+      _json['totalItems'] = totalItems;
     }
     return _json;
   }
@@ -4560,17 +4559,17 @@ class BooksAnnotationsRange {
   BooksAnnotationsRange();
 
   BooksAnnotationsRange.fromJson(core.Map _json) {
-    if (_json.containsKey("endOffset")) {
-      endOffset = _json["endOffset"];
+    if (_json.containsKey('endOffset')) {
+      endOffset = _json['endOffset'];
     }
-    if (_json.containsKey("endPosition")) {
-      endPosition = _json["endPosition"];
+    if (_json.containsKey('endPosition')) {
+      endPosition = _json['endPosition'];
     }
-    if (_json.containsKey("startOffset")) {
-      startOffset = _json["startOffset"];
+    if (_json.containsKey('startOffset')) {
+      startOffset = _json['startOffset'];
     }
-    if (_json.containsKey("startPosition")) {
-      startPosition = _json["startPosition"];
+    if (_json.containsKey('startPosition')) {
+      startPosition = _json['startPosition'];
     }
   }
 
@@ -4578,16 +4577,16 @@ class BooksAnnotationsRange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endOffset != null) {
-      _json["endOffset"] = endOffset;
+      _json['endOffset'] = endOffset;
     }
     if (endPosition != null) {
-      _json["endPosition"] = endPosition;
+      _json['endPosition'] = endPosition;
     }
     if (startOffset != null) {
-      _json["startOffset"] = startOffset;
+      _json['startOffset'] = startOffset;
     }
     if (startPosition != null) {
-      _json["startPosition"] = startPosition;
+      _json['startPosition'] = startPosition;
     }
     return _json;
   }
@@ -4602,17 +4601,17 @@ class BooksCloudloadingResource {
   BooksCloudloadingResource();
 
   BooksCloudloadingResource.fromJson(core.Map _json) {
-    if (_json.containsKey("author")) {
-      author = _json["author"];
+    if (_json.containsKey('author')) {
+      author = _json['author'];
     }
-    if (_json.containsKey("processingState")) {
-      processingState = _json["processingState"];
+    if (_json.containsKey('processingState')) {
+      processingState = _json['processingState'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -4620,16 +4619,16 @@ class BooksCloudloadingResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = author;
+      _json['author'] = author;
     }
     if (processingState != null) {
-      _json["processingState"] = processingState;
+      _json['processingState'] = processingState;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -4641,8 +4640,8 @@ class BooksVolumesRecommendedRateResponse {
   BooksVolumesRecommendedRateResponse();
 
   BooksVolumesRecommendedRateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("consistency_token")) {
-      consistencyToken = _json["consistency_token"];
+    if (_json.containsKey('consistency_token')) {
+      consistencyToken = _json['consistency_token'];
     }
   }
 
@@ -4650,7 +4649,7 @@ class BooksVolumesRecommendedRateResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (consistencyToken != null) {
-      _json["consistency_token"] = consistencyToken;
+      _json['consistency_token'] = consistencyToken;
     }
     return _json;
   }
@@ -4693,35 +4692,35 @@ class Bookshelf {
   Bookshelf();
 
   Bookshelf.fromJson(core.Map _json) {
-    if (_json.containsKey("access")) {
-      access = _json["access"];
+    if (_json.containsKey('access')) {
+      access = _json['access'];
     }
-    if (_json.containsKey("created")) {
-      created = _json["created"];
+    if (_json.containsKey('created')) {
+      created = _json['created'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("volumeCount")) {
-      volumeCount = _json["volumeCount"];
+    if (_json.containsKey('volumeCount')) {
+      volumeCount = _json['volumeCount'];
     }
-    if (_json.containsKey("volumesLastUpdated")) {
-      volumesLastUpdated = _json["volumesLastUpdated"];
+    if (_json.containsKey('volumesLastUpdated')) {
+      volumesLastUpdated = _json['volumesLastUpdated'];
     }
   }
 
@@ -4729,34 +4728,34 @@ class Bookshelf {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (access != null) {
-      _json["access"] = access;
+      _json['access'] = access;
     }
     if (created != null) {
-      _json["created"] = created;
+      _json['created'] = created;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (volumeCount != null) {
-      _json["volumeCount"] = volumeCount;
+      _json['volumeCount'] = volumeCount;
     }
     if (volumesLastUpdated != null) {
-      _json["volumesLastUpdated"] = volumesLastUpdated;
+      _json['volumesLastUpdated'] = volumesLastUpdated;
     }
     return _json;
   }
@@ -4772,13 +4771,13 @@ class Bookshelves {
   Bookshelves();
 
   Bookshelves.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Bookshelf>((value) => Bookshelf.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -4786,10 +4785,10 @@ class Bookshelves {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -4803,14 +4802,14 @@ class CategoryItems {
   CategoryItems();
 
   CategoryItems.fromJson(core.Map _json) {
-    if (_json.containsKey("badgeUrl")) {
-      badgeUrl = _json["badgeUrl"];
+    if (_json.containsKey('badgeUrl')) {
+      badgeUrl = _json['badgeUrl'];
     }
-    if (_json.containsKey("categoryId")) {
-      categoryId = _json["categoryId"];
+    if (_json.containsKey('categoryId')) {
+      categoryId = _json['categoryId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4818,13 +4817,13 @@ class CategoryItems {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (badgeUrl != null) {
-      _json["badgeUrl"] = badgeUrl;
+      _json['badgeUrl'] = badgeUrl;
     }
     if (categoryId != null) {
-      _json["categoryId"] = categoryId;
+      _json['categoryId'] = categoryId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4840,13 +4839,13 @@ class Category {
   Category();
 
   Category.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<CategoryItems>((value) => CategoryItems.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -4854,10 +4853,10 @@ class Category {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -4901,38 +4900,38 @@ class ConcurrentAccessRestriction {
   ConcurrentAccessRestriction();
 
   ConcurrentAccessRestriction.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceAllowed")) {
-      deviceAllowed = _json["deviceAllowed"];
+    if (_json.containsKey('deviceAllowed')) {
+      deviceAllowed = _json['deviceAllowed'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("maxConcurrentDevices")) {
-      maxConcurrentDevices = _json["maxConcurrentDevices"];
+    if (_json.containsKey('maxConcurrentDevices')) {
+      maxConcurrentDevices = _json['maxConcurrentDevices'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
-    if (_json.containsKey("nonce")) {
-      nonce = _json["nonce"];
+    if (_json.containsKey('nonce')) {
+      nonce = _json['nonce'];
     }
-    if (_json.containsKey("reasonCode")) {
-      reasonCode = _json["reasonCode"];
+    if (_json.containsKey('reasonCode')) {
+      reasonCode = _json['reasonCode'];
     }
-    if (_json.containsKey("restricted")) {
-      restricted = _json["restricted"];
+    if (_json.containsKey('restricted')) {
+      restricted = _json['restricted'];
     }
-    if (_json.containsKey("signature")) {
-      signature = _json["signature"];
+    if (_json.containsKey('signature')) {
+      signature = _json['signature'];
     }
-    if (_json.containsKey("source")) {
-      source = _json["source"];
+    if (_json.containsKey('source')) {
+      source = _json['source'];
     }
-    if (_json.containsKey("timeWindowSeconds")) {
-      timeWindowSeconds = _json["timeWindowSeconds"];
+    if (_json.containsKey('timeWindowSeconds')) {
+      timeWindowSeconds = _json['timeWindowSeconds'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -4940,37 +4939,37 @@ class ConcurrentAccessRestriction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceAllowed != null) {
-      _json["deviceAllowed"] = deviceAllowed;
+      _json['deviceAllowed'] = deviceAllowed;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (maxConcurrentDevices != null) {
-      _json["maxConcurrentDevices"] = maxConcurrentDevices;
+      _json['maxConcurrentDevices'] = maxConcurrentDevices;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     if (nonce != null) {
-      _json["nonce"] = nonce;
+      _json['nonce'] = nonce;
     }
     if (reasonCode != null) {
-      _json["reasonCode"] = reasonCode;
+      _json['reasonCode'] = reasonCode;
     }
     if (restricted != null) {
-      _json["restricted"] = restricted;
+      _json['restricted'] = restricted;
     }
     if (signature != null) {
-      _json["signature"] = signature;
+      _json['signature'] = signature;
     }
     if (source != null) {
-      _json["source"] = source;
+      _json['source'] = source;
     }
     if (timeWindowSeconds != null) {
-      _json["timeWindowSeconds"] = timeWindowSeconds;
+      _json['timeWindowSeconds'] = timeWindowSeconds;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -4991,7 +4990,7 @@ class DictionaryAnnotationdata {
 
   set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Unique id for this annotation data.
@@ -5016,32 +5015,32 @@ class DictionaryAnnotationdata {
   DictionaryAnnotationdata();
 
   DictionaryAnnotationdata.fromJson(core.Map _json) {
-    if (_json.containsKey("annotationType")) {
-      annotationType = _json["annotationType"];
+    if (_json.containsKey('annotationType')) {
+      annotationType = _json['annotationType'];
     }
-    if (_json.containsKey("data")) {
-      data = Dictlayerdata.fromJson(_json["data"]);
+    if (_json.containsKey('data')) {
+      data = Dictlayerdata.fromJson(_json['data']);
     }
-    if (_json.containsKey("encodedData")) {
-      encodedData = _json["encodedData"];
+    if (_json.containsKey('encodedData')) {
+      encodedData = _json['encodedData'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("layerId")) {
-      layerId = _json["layerId"];
+    if (_json.containsKey('layerId')) {
+      layerId = _json['layerId'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -5049,31 +5048,31 @@ class DictionaryAnnotationdata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationType != null) {
-      _json["annotationType"] = annotationType;
+      _json['annotationType'] = annotationType;
     }
     if (data != null) {
-      _json["data"] = data.toJson();
+      _json['data'] = data.toJson();
     }
     if (encodedData != null) {
-      _json["encodedData"] = encodedData;
+      _json['encodedData'] = encodedData;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (layerId != null) {
-      _json["layerId"] = layerId;
+      _json['layerId'] = layerId;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -5087,8 +5086,8 @@ class DictlayerdataCommon {
   DictlayerdataCommon();
 
   DictlayerdataCommon.fromJson(core.Map _json) {
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -5096,7 +5095,7 @@ class DictlayerdataCommon {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -5110,11 +5109,11 @@ class DictlayerdataDictSource {
   DictlayerdataDictSource();
 
   DictlayerdataDictSource.fromJson(core.Map _json) {
-    if (_json.containsKey("attribution")) {
-      attribution = _json["attribution"];
+    if (_json.containsKey('attribution')) {
+      attribution = _json['attribution'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -5122,10 +5121,10 @@ class DictlayerdataDictSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attribution != null) {
-      _json["attribution"] = attribution;
+      _json['attribution'] = attribution;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -5138,11 +5137,11 @@ class DictlayerdataDictWordsDerivativesSource {
   DictlayerdataDictWordsDerivativesSource();
 
   DictlayerdataDictWordsDerivativesSource.fromJson(core.Map _json) {
-    if (_json.containsKey("attribution")) {
-      attribution = _json["attribution"];
+    if (_json.containsKey('attribution')) {
+      attribution = _json['attribution'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -5150,10 +5149,10 @@ class DictlayerdataDictWordsDerivativesSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attribution != null) {
-      _json["attribution"] = attribution;
+      _json['attribution'] = attribution;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -5166,12 +5165,12 @@ class DictlayerdataDictWordsDerivatives {
   DictlayerdataDictWordsDerivatives();
 
   DictlayerdataDictWordsDerivatives.fromJson(core.Map _json) {
-    if (_json.containsKey("source")) {
+    if (_json.containsKey('source')) {
       source =
-          DictlayerdataDictWordsDerivativesSource.fromJson(_json["source"]);
+          DictlayerdataDictWordsDerivativesSource.fromJson(_json['source']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -5179,10 +5178,10 @@ class DictlayerdataDictWordsDerivatives {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -5195,11 +5194,11 @@ class DictlayerdataDictWordsExamplesSource {
   DictlayerdataDictWordsExamplesSource();
 
   DictlayerdataDictWordsExamplesSource.fromJson(core.Map _json) {
-    if (_json.containsKey("attribution")) {
-      attribution = _json["attribution"];
+    if (_json.containsKey('attribution')) {
+      attribution = _json['attribution'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -5207,10 +5206,10 @@ class DictlayerdataDictWordsExamplesSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attribution != null) {
-      _json["attribution"] = attribution;
+      _json['attribution'] = attribution;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -5223,11 +5222,11 @@ class DictlayerdataDictWordsExamples {
   DictlayerdataDictWordsExamples();
 
   DictlayerdataDictWordsExamples.fromJson(core.Map _json) {
-    if (_json.containsKey("source")) {
-      source = DictlayerdataDictWordsExamplesSource.fromJson(_json["source"]);
+    if (_json.containsKey('source')) {
+      source = DictlayerdataDictWordsExamplesSource.fromJson(_json['source']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -5235,10 +5234,10 @@ class DictlayerdataDictWordsExamples {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -5251,11 +5250,11 @@ class DictlayerdataDictWordsSensesConjugations {
   DictlayerdataDictWordsSensesConjugations();
 
   DictlayerdataDictWordsSensesConjugations.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -5263,10 +5262,10 @@ class DictlayerdataDictWordsSensesConjugations {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -5280,11 +5279,11 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
 
   DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
       core.Map _json) {
-    if (_json.containsKey("attribution")) {
-      attribution = _json["attribution"];
+    if (_json.containsKey('attribution')) {
+      attribution = _json['attribution'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -5292,10 +5291,10 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attribution != null) {
-      _json["attribution"] = attribution;
+      _json['attribution'] = attribution;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -5308,12 +5307,12 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
   DictlayerdataDictWordsSensesDefinitionsExamples();
 
   DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(core.Map _json) {
-    if (_json.containsKey("source")) {
+    if (_json.containsKey('source')) {
       source = DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
-          _json["source"]);
+          _json['source']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -5321,10 +5320,10 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -5337,11 +5336,11 @@ class DictlayerdataDictWordsSensesDefinitions {
   DictlayerdataDictWordsSensesDefinitions();
 
   DictlayerdataDictWordsSensesDefinitions.fromJson(core.Map _json) {
-    if (_json.containsKey("definition")) {
-      definition = _json["definition"];
+    if (_json.containsKey('definition')) {
+      definition = _json['definition'];
     }
-    if (_json.containsKey("examples")) {
-      examples = (_json["examples"] as core.List)
+    if (_json.containsKey('examples')) {
+      examples = (_json['examples'] as core.List)
           .map<DictlayerdataDictWordsSensesDefinitionsExamples>((value) =>
               DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(value))
           .toList();
@@ -5352,10 +5351,10 @@ class DictlayerdataDictWordsSensesDefinitions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (definition != null) {
-      _json["definition"] = definition;
+      _json['definition'] = definition;
     }
     if (examples != null) {
-      _json["examples"] = examples.map((value) => value.toJson()).toList();
+      _json['examples'] = examples.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5368,11 +5367,11 @@ class DictlayerdataDictWordsSensesSource {
   DictlayerdataDictWordsSensesSource();
 
   DictlayerdataDictWordsSensesSource.fromJson(core.Map _json) {
-    if (_json.containsKey("attribution")) {
-      attribution = _json["attribution"];
+    if (_json.containsKey('attribution')) {
+      attribution = _json['attribution'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -5380,10 +5379,10 @@ class DictlayerdataDictWordsSensesSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attribution != null) {
-      _json["attribution"] = attribution;
+      _json['attribution'] = attribution;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -5396,11 +5395,11 @@ class DictlayerdataDictWordsSensesSynonymsSource {
   DictlayerdataDictWordsSensesSynonymsSource();
 
   DictlayerdataDictWordsSensesSynonymsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("attribution")) {
-      attribution = _json["attribution"];
+    if (_json.containsKey('attribution')) {
+      attribution = _json['attribution'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -5408,10 +5407,10 @@ class DictlayerdataDictWordsSensesSynonymsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attribution != null) {
-      _json["attribution"] = attribution;
+      _json['attribution'] = attribution;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -5424,12 +5423,12 @@ class DictlayerdataDictWordsSensesSynonyms {
   DictlayerdataDictWordsSensesSynonyms();
 
   DictlayerdataDictWordsSensesSynonyms.fromJson(core.Map _json) {
-    if (_json.containsKey("source")) {
+    if (_json.containsKey('source')) {
       source =
-          DictlayerdataDictWordsSensesSynonymsSource.fromJson(_json["source"]);
+          DictlayerdataDictWordsSensesSynonymsSource.fromJson(_json['source']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -5437,10 +5436,10 @@ class DictlayerdataDictWordsSensesSynonyms {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -5459,35 +5458,35 @@ class DictlayerdataDictWordsSenses {
   DictlayerdataDictWordsSenses();
 
   DictlayerdataDictWordsSenses.fromJson(core.Map _json) {
-    if (_json.containsKey("conjugations")) {
-      conjugations = (_json["conjugations"] as core.List)
+    if (_json.containsKey('conjugations')) {
+      conjugations = (_json['conjugations'] as core.List)
           .map<DictlayerdataDictWordsSensesConjugations>((value) =>
               DictlayerdataDictWordsSensesConjugations.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("definitions")) {
-      definitions = (_json["definitions"] as core.List)
+    if (_json.containsKey('definitions')) {
+      definitions = (_json['definitions'] as core.List)
           .map<DictlayerdataDictWordsSensesDefinitions>((value) =>
               DictlayerdataDictWordsSensesDefinitions.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("partOfSpeech")) {
-      partOfSpeech = _json["partOfSpeech"];
+    if (_json.containsKey('partOfSpeech')) {
+      partOfSpeech = _json['partOfSpeech'];
     }
-    if (_json.containsKey("pronunciation")) {
-      pronunciation = _json["pronunciation"];
+    if (_json.containsKey('pronunciation')) {
+      pronunciation = _json['pronunciation'];
     }
-    if (_json.containsKey("pronunciationUrl")) {
-      pronunciationUrl = _json["pronunciationUrl"];
+    if (_json.containsKey('pronunciationUrl')) {
+      pronunciationUrl = _json['pronunciationUrl'];
     }
-    if (_json.containsKey("source")) {
-      source = DictlayerdataDictWordsSensesSource.fromJson(_json["source"]);
+    if (_json.containsKey('source')) {
+      source = DictlayerdataDictWordsSensesSource.fromJson(_json['source']);
     }
-    if (_json.containsKey("syllabification")) {
-      syllabification = _json["syllabification"];
+    if (_json.containsKey('syllabification')) {
+      syllabification = _json['syllabification'];
     }
-    if (_json.containsKey("synonyms")) {
-      synonyms = (_json["synonyms"] as core.List)
+    if (_json.containsKey('synonyms')) {
+      synonyms = (_json['synonyms'] as core.List)
           .map<DictlayerdataDictWordsSensesSynonyms>(
               (value) => DictlayerdataDictWordsSensesSynonyms.fromJson(value))
           .toList();
@@ -5498,30 +5497,30 @@ class DictlayerdataDictWordsSenses {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (conjugations != null) {
-      _json["conjugations"] =
+      _json['conjugations'] =
           conjugations.map((value) => value.toJson()).toList();
     }
     if (definitions != null) {
-      _json["definitions"] =
+      _json['definitions'] =
           definitions.map((value) => value.toJson()).toList();
     }
     if (partOfSpeech != null) {
-      _json["partOfSpeech"] = partOfSpeech;
+      _json['partOfSpeech'] = partOfSpeech;
     }
     if (pronunciation != null) {
-      _json["pronunciation"] = pronunciation;
+      _json['pronunciation'] = pronunciation;
     }
     if (pronunciationUrl != null) {
-      _json["pronunciationUrl"] = pronunciationUrl;
+      _json['pronunciationUrl'] = pronunciationUrl;
     }
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     if (syllabification != null) {
-      _json["syllabification"] = syllabification;
+      _json['syllabification'] = syllabification;
     }
     if (synonyms != null) {
-      _json["synonyms"] = synonyms.map((value) => value.toJson()).toList();
+      _json['synonyms'] = synonyms.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5536,11 +5535,11 @@ class DictlayerdataDictWordsSource {
   DictlayerdataDictWordsSource();
 
   DictlayerdataDictWordsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("attribution")) {
-      attribution = _json["attribution"];
+    if (_json.containsKey('attribution')) {
+      attribution = _json['attribution'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -5548,10 +5547,10 @@ class DictlayerdataDictWordsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attribution != null) {
-      _json["attribution"] = attribution;
+      _json['attribution'] = attribution;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -5569,26 +5568,26 @@ class DictlayerdataDictWords {
   DictlayerdataDictWords();
 
   DictlayerdataDictWords.fromJson(core.Map _json) {
-    if (_json.containsKey("derivatives")) {
-      derivatives = (_json["derivatives"] as core.List)
+    if (_json.containsKey('derivatives')) {
+      derivatives = (_json['derivatives'] as core.List)
           .map<DictlayerdataDictWordsDerivatives>(
               (value) => DictlayerdataDictWordsDerivatives.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("examples")) {
-      examples = (_json["examples"] as core.List)
+    if (_json.containsKey('examples')) {
+      examples = (_json['examples'] as core.List)
           .map<DictlayerdataDictWordsExamples>(
               (value) => DictlayerdataDictWordsExamples.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("senses")) {
-      senses = (_json["senses"] as core.List)
+    if (_json.containsKey('senses')) {
+      senses = (_json['senses'] as core.List)
           .map<DictlayerdataDictWordsSenses>(
               (value) => DictlayerdataDictWordsSenses.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("source")) {
-      source = DictlayerdataDictWordsSource.fromJson(_json["source"]);
+    if (_json.containsKey('source')) {
+      source = DictlayerdataDictWordsSource.fromJson(_json['source']);
     }
   }
 
@@ -5596,17 +5595,17 @@ class DictlayerdataDictWords {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (derivatives != null) {
-      _json["derivatives"] =
+      _json['derivatives'] =
           derivatives.map((value) => value.toJson()).toList();
     }
     if (examples != null) {
-      _json["examples"] = examples.map((value) => value.toJson()).toList();
+      _json['examples'] = examples.map((value) => value.toJson()).toList();
     }
     if (senses != null) {
-      _json["senses"] = senses.map((value) => value.toJson()).toList();
+      _json['senses'] = senses.map((value) => value.toJson()).toList();
     }
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     return _json;
   }
@@ -5620,11 +5619,11 @@ class DictlayerdataDict {
   DictlayerdataDict();
 
   DictlayerdataDict.fromJson(core.Map _json) {
-    if (_json.containsKey("source")) {
-      source = DictlayerdataDictSource.fromJson(_json["source"]);
+    if (_json.containsKey('source')) {
+      source = DictlayerdataDictSource.fromJson(_json['source']);
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<DictlayerdataDictWords>(
               (value) => DictlayerdataDictWords.fromJson(value))
           .toList();
@@ -5635,10 +5634,10 @@ class DictlayerdataDict {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5652,14 +5651,14 @@ class Dictlayerdata {
   Dictlayerdata();
 
   Dictlayerdata.fromJson(core.Map _json) {
-    if (_json.containsKey("common")) {
-      common = DictlayerdataCommon.fromJson(_json["common"]);
+    if (_json.containsKey('common')) {
+      common = DictlayerdataCommon.fromJson(_json['common']);
     }
-    if (_json.containsKey("dict")) {
-      dict = DictlayerdataDict.fromJson(_json["dict"]);
+    if (_json.containsKey('dict')) {
+      dict = DictlayerdataDict.fromJson(_json['dict']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -5667,13 +5666,13 @@ class Dictlayerdata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (common != null) {
-      _json["common"] = common.toJson();
+      _json['common'] = common.toJson();
     }
     if (dict != null) {
-      _json["dict"] = dict.toJson();
+      _json['dict'] = dict.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -5690,23 +5689,23 @@ class DiscoveryclustersClustersBannerWithContentContainer {
   DiscoveryclustersClustersBannerWithContentContainer();
 
   DiscoveryclustersClustersBannerWithContentContainer.fromJson(core.Map _json) {
-    if (_json.containsKey("fillColorArgb")) {
-      fillColorArgb = _json["fillColorArgb"];
+    if (_json.containsKey('fillColorArgb')) {
+      fillColorArgb = _json['fillColorArgb'];
     }
-    if (_json.containsKey("imageUrl")) {
-      imageUrl = _json["imageUrl"];
+    if (_json.containsKey('imageUrl')) {
+      imageUrl = _json['imageUrl'];
     }
-    if (_json.containsKey("maskColorArgb")) {
-      maskColorArgb = _json["maskColorArgb"];
+    if (_json.containsKey('maskColorArgb')) {
+      maskColorArgb = _json['maskColorArgb'];
     }
-    if (_json.containsKey("moreButtonText")) {
-      moreButtonText = _json["moreButtonText"];
+    if (_json.containsKey('moreButtonText')) {
+      moreButtonText = _json['moreButtonText'];
     }
-    if (_json.containsKey("moreButtonUrl")) {
-      moreButtonUrl = _json["moreButtonUrl"];
+    if (_json.containsKey('moreButtonUrl')) {
+      moreButtonUrl = _json['moreButtonUrl'];
     }
-    if (_json.containsKey("textColorArgb")) {
-      textColorArgb = _json["textColorArgb"];
+    if (_json.containsKey('textColorArgb')) {
+      textColorArgb = _json['textColorArgb'];
     }
   }
 
@@ -5714,22 +5713,22 @@ class DiscoveryclustersClustersBannerWithContentContainer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fillColorArgb != null) {
-      _json["fillColorArgb"] = fillColorArgb;
+      _json['fillColorArgb'] = fillColorArgb;
     }
     if (imageUrl != null) {
-      _json["imageUrl"] = imageUrl;
+      _json['imageUrl'] = imageUrl;
     }
     if (maskColorArgb != null) {
-      _json["maskColorArgb"] = maskColorArgb;
+      _json['maskColorArgb'] = maskColorArgb;
     }
     if (moreButtonText != null) {
-      _json["moreButtonText"] = moreButtonText;
+      _json['moreButtonText'] = moreButtonText;
     }
     if (moreButtonUrl != null) {
-      _json["moreButtonUrl"] = moreButtonUrl;
+      _json['moreButtonUrl'] = moreButtonUrl;
     }
     if (textColorArgb != null) {
-      _json["textColorArgb"] = textColorArgb;
+      _json['textColorArgb'] = textColorArgb;
     }
     return _json;
   }
@@ -5747,25 +5746,25 @@ class DiscoveryclustersClusters {
   DiscoveryclustersClusters();
 
   DiscoveryclustersClusters.fromJson(core.Map _json) {
-    if (_json.containsKey("banner_with_content_container")) {
+    if (_json.containsKey('banner_with_content_container')) {
       bannerWithContentContainer =
           DiscoveryclustersClustersBannerWithContentContainer.fromJson(
-              _json["banner_with_content_container"]);
+              _json['banner_with_content_container']);
     }
-    if (_json.containsKey("subTitle")) {
-      subTitle = _json["subTitle"];
+    if (_json.containsKey('subTitle')) {
+      subTitle = _json['subTitle'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("totalVolumes")) {
-      totalVolumes = _json["totalVolumes"];
+    if (_json.containsKey('totalVolumes')) {
+      totalVolumes = _json['totalVolumes'];
     }
-    if (_json.containsKey("uid")) {
-      uid = _json["uid"];
+    if (_json.containsKey('uid')) {
+      uid = _json['uid'];
     }
-    if (_json.containsKey("volumes")) {
-      volumes = (_json["volumes"] as core.List)
+    if (_json.containsKey('volumes')) {
+      volumes = (_json['volumes'] as core.List)
           .map<Volume>((value) => Volume.fromJson(value))
           .toList();
     }
@@ -5775,23 +5774,23 @@ class DiscoveryclustersClusters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bannerWithContentContainer != null) {
-      _json["banner_with_content_container"] =
+      _json['banner_with_content_container'] =
           bannerWithContentContainer.toJson();
     }
     if (subTitle != null) {
-      _json["subTitle"] = subTitle;
+      _json['subTitle'] = subTitle;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (totalVolumes != null) {
-      _json["totalVolumes"] = totalVolumes;
+      _json['totalVolumes'] = totalVolumes;
     }
     if (uid != null) {
-      _json["uid"] = uid;
+      _json['uid'] = uid;
     }
     if (volumes != null) {
-      _json["volumes"] = volumes.map((value) => value.toJson()).toList();
+      _json['volumes'] = volumes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5807,17 +5806,17 @@ class Discoveryclusters {
   Discoveryclusters();
 
   Discoveryclusters.fromJson(core.Map _json) {
-    if (_json.containsKey("clusters")) {
-      clusters = (_json["clusters"] as core.List)
+    if (_json.containsKey('clusters')) {
+      clusters = (_json['clusters'] as core.List)
           .map<DiscoveryclustersClusters>(
               (value) => DiscoveryclustersClusters.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("totalClusters")) {
-      totalClusters = _json["totalClusters"];
+    if (_json.containsKey('totalClusters')) {
+      totalClusters = _json['totalClusters'];
     }
   }
 
@@ -5825,13 +5824,13 @@ class Discoveryclusters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clusters != null) {
-      _json["clusters"] = clusters.map((value) => value.toJson()).toList();
+      _json['clusters'] = clusters.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (totalClusters != null) {
-      _json["totalClusters"] = totalClusters;
+      _json['totalClusters'] = totalClusters;
     }
     return _json;
   }
@@ -5882,41 +5881,41 @@ class DownloadAccessRestriction {
   DownloadAccessRestriction();
 
   DownloadAccessRestriction.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceAllowed")) {
-      deviceAllowed = _json["deviceAllowed"];
+    if (_json.containsKey('deviceAllowed')) {
+      deviceAllowed = _json['deviceAllowed'];
     }
-    if (_json.containsKey("downloadsAcquired")) {
-      downloadsAcquired = _json["downloadsAcquired"];
+    if (_json.containsKey('downloadsAcquired')) {
+      downloadsAcquired = _json['downloadsAcquired'];
     }
-    if (_json.containsKey("justAcquired")) {
-      justAcquired = _json["justAcquired"];
+    if (_json.containsKey('justAcquired')) {
+      justAcquired = _json['justAcquired'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("maxDownloadDevices")) {
-      maxDownloadDevices = _json["maxDownloadDevices"];
+    if (_json.containsKey('maxDownloadDevices')) {
+      maxDownloadDevices = _json['maxDownloadDevices'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
-    if (_json.containsKey("nonce")) {
-      nonce = _json["nonce"];
+    if (_json.containsKey('nonce')) {
+      nonce = _json['nonce'];
     }
-    if (_json.containsKey("reasonCode")) {
-      reasonCode = _json["reasonCode"];
+    if (_json.containsKey('reasonCode')) {
+      reasonCode = _json['reasonCode'];
     }
-    if (_json.containsKey("restricted")) {
-      restricted = _json["restricted"];
+    if (_json.containsKey('restricted')) {
+      restricted = _json['restricted'];
     }
-    if (_json.containsKey("signature")) {
-      signature = _json["signature"];
+    if (_json.containsKey('signature')) {
+      signature = _json['signature'];
     }
-    if (_json.containsKey("source")) {
-      source = _json["source"];
+    if (_json.containsKey('source')) {
+      source = _json['source'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -5924,40 +5923,40 @@ class DownloadAccessRestriction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceAllowed != null) {
-      _json["deviceAllowed"] = deviceAllowed;
+      _json['deviceAllowed'] = deviceAllowed;
     }
     if (downloadsAcquired != null) {
-      _json["downloadsAcquired"] = downloadsAcquired;
+      _json['downloadsAcquired'] = downloadsAcquired;
     }
     if (justAcquired != null) {
-      _json["justAcquired"] = justAcquired;
+      _json['justAcquired'] = justAcquired;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (maxDownloadDevices != null) {
-      _json["maxDownloadDevices"] = maxDownloadDevices;
+      _json['maxDownloadDevices'] = maxDownloadDevices;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     if (nonce != null) {
-      _json["nonce"] = nonce;
+      _json['nonce'] = nonce;
     }
     if (reasonCode != null) {
-      _json["reasonCode"] = reasonCode;
+      _json['reasonCode'] = reasonCode;
     }
     if (restricted != null) {
-      _json["restricted"] = restricted;
+      _json['restricted'] = restricted;
     }
     if (signature != null) {
-      _json["signature"] = signature;
+      _json['signature'] = signature;
     }
     if (source != null) {
-      _json["source"] = source;
+      _json['source'] = source;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -5973,14 +5972,14 @@ class DownloadAccesses {
   DownloadAccesses();
 
   DownloadAccesses.fromJson(core.Map _json) {
-    if (_json.containsKey("downloadAccessList")) {
-      downloadAccessList = (_json["downloadAccessList"] as core.List)
+    if (_json.containsKey('downloadAccessList')) {
+      downloadAccessList = (_json['downloadAccessList'] as core.List)
           .map<DownloadAccessRestriction>(
               (value) => DownloadAccessRestriction.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -5988,11 +5987,11 @@ class DownloadAccesses {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (downloadAccessList != null) {
-      _json["downloadAccessList"] =
+      _json['downloadAccessList'] =
           downloadAccessList.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -6033,20 +6032,20 @@ class FamilyInfoMembership {
   FamilyInfoMembership();
 
   FamilyInfoMembership.fromJson(core.Map _json) {
-    if (_json.containsKey("acquirePermission")) {
-      acquirePermission = _json["acquirePermission"];
+    if (_json.containsKey('acquirePermission')) {
+      acquirePermission = _json['acquirePermission'];
     }
-    if (_json.containsKey("ageGroup")) {
-      ageGroup = _json["ageGroup"];
+    if (_json.containsKey('ageGroup')) {
+      ageGroup = _json['ageGroup'];
     }
-    if (_json.containsKey("allowedMaturityRating")) {
-      allowedMaturityRating = _json["allowedMaturityRating"];
+    if (_json.containsKey('allowedMaturityRating')) {
+      allowedMaturityRating = _json['allowedMaturityRating'];
     }
-    if (_json.containsKey("isInFamily")) {
-      isInFamily = _json["isInFamily"];
+    if (_json.containsKey('isInFamily')) {
+      isInFamily = _json['isInFamily'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -6054,19 +6053,19 @@ class FamilyInfoMembership {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acquirePermission != null) {
-      _json["acquirePermission"] = acquirePermission;
+      _json['acquirePermission'] = acquirePermission;
     }
     if (ageGroup != null) {
-      _json["ageGroup"] = ageGroup;
+      _json['ageGroup'] = ageGroup;
     }
     if (allowedMaturityRating != null) {
-      _json["allowedMaturityRating"] = allowedMaturityRating;
+      _json['allowedMaturityRating'] = allowedMaturityRating;
     }
     if (isInFamily != null) {
-      _json["isInFamily"] = isInFamily;
+      _json['isInFamily'] = isInFamily;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -6082,11 +6081,11 @@ class FamilyInfo {
   FamilyInfo();
 
   FamilyInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("membership")) {
-      membership = FamilyInfoMembership.fromJson(_json["membership"]);
+    if (_json.containsKey('membership')) {
+      membership = FamilyInfoMembership.fromJson(_json['membership']);
     }
   }
 
@@ -6094,10 +6093,10 @@ class FamilyInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (membership != null) {
-      _json["membership"] = membership.toJson();
+      _json['membership'] = membership.toJson();
     }
     return _json;
   }
@@ -6118,7 +6117,7 @@ class GeoAnnotationdata {
 
   set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Unique id for this annotation data.
@@ -6143,32 +6142,32 @@ class GeoAnnotationdata {
   GeoAnnotationdata();
 
   GeoAnnotationdata.fromJson(core.Map _json) {
-    if (_json.containsKey("annotationType")) {
-      annotationType = _json["annotationType"];
+    if (_json.containsKey('annotationType')) {
+      annotationType = _json['annotationType'];
     }
-    if (_json.containsKey("data")) {
-      data = Geolayerdata.fromJson(_json["data"]);
+    if (_json.containsKey('data')) {
+      data = Geolayerdata.fromJson(_json['data']);
     }
-    if (_json.containsKey("encodedData")) {
-      encodedData = _json["encodedData"];
+    if (_json.containsKey('encodedData')) {
+      encodedData = _json['encodedData'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("layerId")) {
-      layerId = _json["layerId"];
+    if (_json.containsKey('layerId')) {
+      layerId = _json['layerId'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -6176,31 +6175,31 @@ class GeoAnnotationdata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationType != null) {
-      _json["annotationType"] = annotationType;
+      _json['annotationType'] = annotationType;
     }
     if (data != null) {
-      _json["data"] = data.toJson();
+      _json['data'] = data.toJson();
     }
     if (encodedData != null) {
-      _json["encodedData"] = encodedData;
+      _json['encodedData'] = encodedData;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (layerId != null) {
-      _json["layerId"] = layerId;
+      _json['layerId'] = layerId;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -6226,20 +6225,20 @@ class GeolayerdataCommon {
   GeolayerdataCommon();
 
   GeolayerdataCommon.fromJson(core.Map _json) {
-    if (_json.containsKey("lang")) {
-      lang = _json["lang"];
+    if (_json.containsKey('lang')) {
+      lang = _json['lang'];
     }
-    if (_json.containsKey("previewImageUrl")) {
-      previewImageUrl = _json["previewImageUrl"];
+    if (_json.containsKey('previewImageUrl')) {
+      previewImageUrl = _json['previewImageUrl'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = _json["snippet"];
+    if (_json.containsKey('snippet')) {
+      snippet = _json['snippet'];
     }
-    if (_json.containsKey("snippetUrl")) {
-      snippetUrl = _json["snippetUrl"];
+    if (_json.containsKey('snippetUrl')) {
+      snippetUrl = _json['snippetUrl'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -6247,19 +6246,19 @@ class GeolayerdataCommon {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lang != null) {
-      _json["lang"] = lang;
+      _json['lang'] = lang;
     }
     if (previewImageUrl != null) {
-      _json["previewImageUrl"] = previewImageUrl;
+      _json['previewImageUrl'] = previewImageUrl;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet;
+      _json['snippet'] = snippet;
     }
     if (snippetUrl != null) {
-      _json["snippetUrl"] = snippetUrl;
+      _json['snippetUrl'] = snippetUrl;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -6272,11 +6271,11 @@ class GeolayerdataGeoViewportHi {
   GeolayerdataGeoViewportHi();
 
   GeolayerdataGeoViewportHi.fromJson(core.Map _json) {
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
   }
 
@@ -6284,10 +6283,10 @@ class GeolayerdataGeoViewportHi {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     return _json;
   }
@@ -6300,11 +6299,11 @@ class GeolayerdataGeoViewportLo {
   GeolayerdataGeoViewportLo();
 
   GeolayerdataGeoViewportLo.fromJson(core.Map _json) {
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
   }
 
@@ -6312,10 +6311,10 @@ class GeolayerdataGeoViewportLo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     return _json;
   }
@@ -6330,11 +6329,11 @@ class GeolayerdataGeoViewport {
   GeolayerdataGeoViewport();
 
   GeolayerdataGeoViewport.fromJson(core.Map _json) {
-    if (_json.containsKey("hi")) {
-      hi = GeolayerdataGeoViewportHi.fromJson(_json["hi"]);
+    if (_json.containsKey('hi')) {
+      hi = GeolayerdataGeoViewportHi.fromJson(_json['hi']);
     }
-    if (_json.containsKey("lo")) {
-      lo = GeolayerdataGeoViewportLo.fromJson(_json["lo"]);
+    if (_json.containsKey('lo')) {
+      lo = GeolayerdataGeoViewportLo.fromJson(_json['lo']);
     }
   }
 
@@ -6342,10 +6341,10 @@ class GeolayerdataGeoViewport {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hi != null) {
-      _json["hi"] = hi.toJson();
+      _json['hi'] = hi.toJson();
     }
     if (lo != null) {
-      _json["lo"] = lo.toJson();
+      _json['lo'] = lo.toJson();
     }
     return _json;
   }
@@ -6385,29 +6384,29 @@ class GeolayerdataGeo {
   GeolayerdataGeo();
 
   GeolayerdataGeo.fromJson(core.Map _json) {
-    if (_json.containsKey("boundary")) {
-      boundary = (_json["boundary"] as core.List).cast<core.String>();
+    if (_json.containsKey('boundary')) {
+      boundary = (_json['boundary'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("cachePolicy")) {
-      cachePolicy = _json["cachePolicy"];
+    if (_json.containsKey('cachePolicy')) {
+      cachePolicy = _json['cachePolicy'];
     }
-    if (_json.containsKey("countryCode")) {
-      countryCode = _json["countryCode"];
+    if (_json.containsKey('countryCode')) {
+      countryCode = _json['countryCode'];
     }
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
-    if (_json.containsKey("mapType")) {
-      mapType = _json["mapType"];
+    if (_json.containsKey('mapType')) {
+      mapType = _json['mapType'];
     }
-    if (_json.containsKey("viewport")) {
-      viewport = GeolayerdataGeoViewport.fromJson(_json["viewport"]);
+    if (_json.containsKey('viewport')) {
+      viewport = GeolayerdataGeoViewport.fromJson(_json['viewport']);
     }
-    if (_json.containsKey("zoom")) {
-      zoom = _json["zoom"];
+    if (_json.containsKey('zoom')) {
+      zoom = _json['zoom'];
     }
   }
 
@@ -6415,28 +6414,28 @@ class GeolayerdataGeo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundary != null) {
-      _json["boundary"] = boundary;
+      _json['boundary'] = boundary;
     }
     if (cachePolicy != null) {
-      _json["cachePolicy"] = cachePolicy;
+      _json['cachePolicy'] = cachePolicy;
     }
     if (countryCode != null) {
-      _json["countryCode"] = countryCode;
+      _json['countryCode'] = countryCode;
     }
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     if (mapType != null) {
-      _json["mapType"] = mapType;
+      _json['mapType'] = mapType;
     }
     if (viewport != null) {
-      _json["viewport"] = viewport.toJson();
+      _json['viewport'] = viewport.toJson();
     }
     if (zoom != null) {
-      _json["zoom"] = zoom;
+      _json['zoom'] = zoom;
     }
     return _json;
   }
@@ -6450,14 +6449,14 @@ class Geolayerdata {
   Geolayerdata();
 
   Geolayerdata.fromJson(core.Map _json) {
-    if (_json.containsKey("common")) {
-      common = GeolayerdataCommon.fromJson(_json["common"]);
+    if (_json.containsKey('common')) {
+      common = GeolayerdataCommon.fromJson(_json['common']);
     }
-    if (_json.containsKey("geo")) {
-      geo = GeolayerdataGeo.fromJson(_json["geo"]);
+    if (_json.containsKey('geo')) {
+      geo = GeolayerdataGeo.fromJson(_json['geo']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -6465,13 +6464,13 @@ class Geolayerdata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (common != null) {
-      _json["common"] = common.toJson();
+      _json['common'] = common.toJson();
     }
     if (geo != null) {
-      _json["geo"] = geo.toJson();
+      _json['geo'] = geo.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -6490,16 +6489,16 @@ class Layersummaries {
   Layersummaries();
 
   Layersummaries.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Layersummary>((value) => Layersummary.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("totalItems")) {
-      totalItems = _json["totalItems"];
+    if (_json.containsKey('totalItems')) {
+      totalItems = _json['totalItems'];
     }
   }
 
@@ -6507,13 +6506,13 @@ class Layersummaries {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (totalItems != null) {
-      _json["totalItems"] = totalItems;
+      _json['totalItems'] = totalItems;
     }
     return _json;
   }
@@ -6565,45 +6564,45 @@ class Layersummary {
   Layersummary();
 
   Layersummary.fromJson(core.Map _json) {
-    if (_json.containsKey("annotationCount")) {
-      annotationCount = _json["annotationCount"];
+    if (_json.containsKey('annotationCount')) {
+      annotationCount = _json['annotationCount'];
     }
-    if (_json.containsKey("annotationTypes")) {
+    if (_json.containsKey('annotationTypes')) {
       annotationTypes =
-          (_json["annotationTypes"] as core.List).cast<core.String>();
+          (_json['annotationTypes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("annotationsDataLink")) {
-      annotationsDataLink = _json["annotationsDataLink"];
+    if (_json.containsKey('annotationsDataLink')) {
+      annotationsDataLink = _json['annotationsDataLink'];
     }
-    if (_json.containsKey("annotationsLink")) {
-      annotationsLink = _json["annotationsLink"];
+    if (_json.containsKey('annotationsLink')) {
+      annotationsLink = _json['annotationsLink'];
     }
-    if (_json.containsKey("contentVersion")) {
-      contentVersion = _json["contentVersion"];
+    if (_json.containsKey('contentVersion')) {
+      contentVersion = _json['contentVersion'];
     }
-    if (_json.containsKey("dataCount")) {
-      dataCount = _json["dataCount"];
+    if (_json.containsKey('dataCount')) {
+      dataCount = _json['dataCount'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("layerId")) {
-      layerId = _json["layerId"];
+    if (_json.containsKey('layerId')) {
+      layerId = _json['layerId'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("volumeAnnotationsVersion")) {
-      volumeAnnotationsVersion = _json["volumeAnnotationsVersion"];
+    if (_json.containsKey('volumeAnnotationsVersion')) {
+      volumeAnnotationsVersion = _json['volumeAnnotationsVersion'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -6611,43 +6610,43 @@ class Layersummary {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationCount != null) {
-      _json["annotationCount"] = annotationCount;
+      _json['annotationCount'] = annotationCount;
     }
     if (annotationTypes != null) {
-      _json["annotationTypes"] = annotationTypes;
+      _json['annotationTypes'] = annotationTypes;
     }
     if (annotationsDataLink != null) {
-      _json["annotationsDataLink"] = annotationsDataLink;
+      _json['annotationsDataLink'] = annotationsDataLink;
     }
     if (annotationsLink != null) {
-      _json["annotationsLink"] = annotationsLink;
+      _json['annotationsLink'] = annotationsLink;
     }
     if (contentVersion != null) {
-      _json["contentVersion"] = contentVersion;
+      _json['contentVersion'] = contentVersion;
     }
     if (dataCount != null) {
-      _json["dataCount"] = dataCount;
+      _json['dataCount'] = dataCount;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (layerId != null) {
-      _json["layerId"] = layerId;
+      _json['layerId'] = layerId;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (volumeAnnotationsVersion != null) {
-      _json["volumeAnnotationsVersion"] = volumeAnnotationsVersion;
+      _json['volumeAnnotationsVersion'] = volumeAnnotationsVersion;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -6663,20 +6662,20 @@ class MetadataItems {
   MetadataItems();
 
   MetadataItems.fromJson(core.Map _json) {
-    if (_json.containsKey("download_url")) {
-      downloadUrl = _json["download_url"];
+    if (_json.containsKey('download_url')) {
+      downloadUrl = _json['download_url'];
     }
-    if (_json.containsKey("encrypted_key")) {
-      encryptedKey = _json["encrypted_key"];
+    if (_json.containsKey('encrypted_key')) {
+      encryptedKey = _json['encrypted_key'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -6684,19 +6683,19 @@ class MetadataItems {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (downloadUrl != null) {
-      _json["download_url"] = downloadUrl;
+      _json['download_url'] = downloadUrl;
     }
     if (encryptedKey != null) {
-      _json["encrypted_key"] = encryptedKey;
+      _json['encrypted_key'] = encryptedKey;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -6712,13 +6711,13 @@ class Metadata {
   Metadata();
 
   Metadata.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<MetadataItems>((value) => MetadataItems.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -6726,10 +6725,10 @@ class Metadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -6760,55 +6759,55 @@ class Notification {
   Notification();
 
   Notification.fromJson(core.Map _json) {
-    if (_json.containsKey("body")) {
-      body = _json["body"];
+    if (_json.containsKey('body')) {
+      body = _json['body'];
     }
-    if (_json.containsKey("crmExperimentIds")) {
+    if (_json.containsKey('crmExperimentIds')) {
       crmExperimentIds =
-          (_json["crmExperimentIds"] as core.List).cast<core.String>();
+          (_json['crmExperimentIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("doc_id")) {
-      docId = _json["doc_id"];
+    if (_json.containsKey('doc_id')) {
+      docId = _json['doc_id'];
     }
-    if (_json.containsKey("doc_type")) {
-      docType = _json["doc_type"];
+    if (_json.containsKey('doc_type')) {
+      docType = _json['doc_type'];
     }
-    if (_json.containsKey("dont_show_notification")) {
-      dontShowNotification = _json["dont_show_notification"];
+    if (_json.containsKey('dont_show_notification')) {
+      dontShowNotification = _json['dont_show_notification'];
     }
-    if (_json.containsKey("iconUrl")) {
-      iconUrl = _json["iconUrl"];
+    if (_json.containsKey('iconUrl')) {
+      iconUrl = _json['iconUrl'];
     }
-    if (_json.containsKey("is_document_mature")) {
-      isDocumentMature = _json["is_document_mature"];
+    if (_json.containsKey('is_document_mature')) {
+      isDocumentMature = _json['is_document_mature'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("notificationGroup")) {
-      notificationGroup = _json["notificationGroup"];
+    if (_json.containsKey('notificationGroup')) {
+      notificationGroup = _json['notificationGroup'];
     }
-    if (_json.containsKey("notification_type")) {
-      notificationType = _json["notification_type"];
+    if (_json.containsKey('notification_type')) {
+      notificationType = _json['notification_type'];
     }
-    if (_json.containsKey("pcampaign_id")) {
-      pcampaignId = _json["pcampaign_id"];
+    if (_json.containsKey('pcampaign_id')) {
+      pcampaignId = _json['pcampaign_id'];
     }
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
-    if (_json.containsKey("show_notification_settings_action")) {
+    if (_json.containsKey('show_notification_settings_action')) {
       showNotificationSettingsAction =
-          _json["show_notification_settings_action"];
+          _json['show_notification_settings_action'];
     }
-    if (_json.containsKey("targetUrl")) {
-      targetUrl = _json["targetUrl"];
+    if (_json.containsKey('targetUrl')) {
+      targetUrl = _json['targetUrl'];
     }
-    if (_json.containsKey("timeToExpireMs")) {
-      timeToExpireMs = _json["timeToExpireMs"];
+    if (_json.containsKey('timeToExpireMs')) {
+      timeToExpireMs = _json['timeToExpireMs'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -6816,53 +6815,53 @@ class Notification {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (body != null) {
-      _json["body"] = body;
+      _json['body'] = body;
     }
     if (crmExperimentIds != null) {
-      _json["crmExperimentIds"] = crmExperimentIds;
+      _json['crmExperimentIds'] = crmExperimentIds;
     }
     if (docId != null) {
-      _json["doc_id"] = docId;
+      _json['doc_id'] = docId;
     }
     if (docType != null) {
-      _json["doc_type"] = docType;
+      _json['doc_type'] = docType;
     }
     if (dontShowNotification != null) {
-      _json["dont_show_notification"] = dontShowNotification;
+      _json['dont_show_notification'] = dontShowNotification;
     }
     if (iconUrl != null) {
-      _json["iconUrl"] = iconUrl;
+      _json['iconUrl'] = iconUrl;
     }
     if (isDocumentMature != null) {
-      _json["is_document_mature"] = isDocumentMature;
+      _json['is_document_mature'] = isDocumentMature;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (notificationGroup != null) {
-      _json["notificationGroup"] = notificationGroup;
+      _json['notificationGroup'] = notificationGroup;
     }
     if (notificationType != null) {
-      _json["notification_type"] = notificationType;
+      _json['notification_type'] = notificationType;
     }
     if (pcampaignId != null) {
-      _json["pcampaign_id"] = pcampaignId;
+      _json['pcampaign_id'] = pcampaignId;
     }
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     if (showNotificationSettingsAction != null) {
-      _json["show_notification_settings_action"] =
+      _json['show_notification_settings_action'] =
           showNotificationSettingsAction;
     }
     if (targetUrl != null) {
-      _json["targetUrl"] = targetUrl;
+      _json['targetUrl'] = targetUrl;
     }
     if (timeToExpireMs != null) {
-      _json["timeToExpireMs"] = timeToExpireMs;
+      _json['timeToExpireMs'] = timeToExpireMs;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -6879,23 +6878,23 @@ class OffersItemsItems {
   OffersItemsItems();
 
   OffersItemsItems.fromJson(core.Map _json) {
-    if (_json.containsKey("author")) {
-      author = _json["author"];
+    if (_json.containsKey('author')) {
+      author = _json['author'];
     }
-    if (_json.containsKey("canonicalVolumeLink")) {
-      canonicalVolumeLink = _json["canonicalVolumeLink"];
+    if (_json.containsKey('canonicalVolumeLink')) {
+      canonicalVolumeLink = _json['canonicalVolumeLink'];
     }
-    if (_json.containsKey("coverUrl")) {
-      coverUrl = _json["coverUrl"];
+    if (_json.containsKey('coverUrl')) {
+      coverUrl = _json['coverUrl'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -6903,22 +6902,22 @@ class OffersItemsItems {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = author;
+      _json['author'] = author;
     }
     if (canonicalVolumeLink != null) {
-      _json["canonicalVolumeLink"] = canonicalVolumeLink;
+      _json['canonicalVolumeLink'] = canonicalVolumeLink;
     }
     if (coverUrl != null) {
-      _json["coverUrl"] = coverUrl;
+      _json['coverUrl'] = coverUrl;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -6933,17 +6932,17 @@ class OffersItems {
   OffersItems();
 
   OffersItems.fromJson(core.Map _json) {
-    if (_json.containsKey("artUrl")) {
-      artUrl = _json["artUrl"];
+    if (_json.containsKey('artUrl')) {
+      artUrl = _json['artUrl'];
     }
-    if (_json.containsKey("gservicesKey")) {
-      gservicesKey = _json["gservicesKey"];
+    if (_json.containsKey('gservicesKey')) {
+      gservicesKey = _json['gservicesKey'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<OffersItemsItems>((value) => OffersItemsItems.fromJson(value))
           .toList();
     }
@@ -6953,16 +6952,16 @@ class OffersItems {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (artUrl != null) {
-      _json["artUrl"] = artUrl;
+      _json['artUrl'] = artUrl;
     }
     if (gservicesKey != null) {
-      _json["gservicesKey"] = gservicesKey;
+      _json['gservicesKey'] = gservicesKey;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6978,13 +6977,13 @@ class Offers {
   Offers();
 
   Offers.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<OffersItems>((value) => OffersItems.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -6992,10 +6991,10 @@ class Offers {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -7027,26 +7026,26 @@ class ReadingPosition {
   ReadingPosition();
 
   ReadingPosition.fromJson(core.Map _json) {
-    if (_json.containsKey("epubCfiPosition")) {
-      epubCfiPosition = _json["epubCfiPosition"];
+    if (_json.containsKey('epubCfiPosition')) {
+      epubCfiPosition = _json['epubCfiPosition'];
     }
-    if (_json.containsKey("gbImagePosition")) {
-      gbImagePosition = _json["gbImagePosition"];
+    if (_json.containsKey('gbImagePosition')) {
+      gbImagePosition = _json['gbImagePosition'];
     }
-    if (_json.containsKey("gbTextPosition")) {
-      gbTextPosition = _json["gbTextPosition"];
+    if (_json.containsKey('gbTextPosition')) {
+      gbTextPosition = _json['gbTextPosition'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("pdfPosition")) {
-      pdfPosition = _json["pdfPosition"];
+    if (_json.containsKey('pdfPosition')) {
+      pdfPosition = _json['pdfPosition'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -7054,25 +7053,25 @@ class ReadingPosition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (epubCfiPosition != null) {
-      _json["epubCfiPosition"] = epubCfiPosition;
+      _json['epubCfiPosition'] = epubCfiPosition;
     }
     if (gbImagePosition != null) {
-      _json["gbImagePosition"] = gbImagePosition;
+      _json['gbImagePosition'] = gbImagePosition;
     }
     if (gbTextPosition != null) {
-      _json["gbTextPosition"] = gbTextPosition;
+      _json['gbTextPosition'] = gbTextPosition;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (pdfPosition != null) {
-      _json["pdfPosition"] = pdfPosition;
+      _json['pdfPosition'] = pdfPosition;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -7091,16 +7090,16 @@ class RequestAccessData {
   RequestAccessData();
 
   RequestAccessData.fromJson(core.Map _json) {
-    if (_json.containsKey("concurrentAccess")) {
+    if (_json.containsKey('concurrentAccess')) {
       concurrentAccess =
-          ConcurrentAccessRestriction.fromJson(_json["concurrentAccess"]);
+          ConcurrentAccessRestriction.fromJson(_json['concurrentAccess']);
     }
-    if (_json.containsKey("downloadAccess")) {
+    if (_json.containsKey('downloadAccess')) {
       downloadAccess =
-          DownloadAccessRestriction.fromJson(_json["downloadAccess"]);
+          DownloadAccessRestriction.fromJson(_json['downloadAccess']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -7108,13 +7107,13 @@ class RequestAccessData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (concurrentAccess != null) {
-      _json["concurrentAccess"] = concurrentAccess.toJson();
+      _json['concurrentAccess'] = concurrentAccess.toJson();
     }
     if (downloadAccess != null) {
-      _json["downloadAccess"] = downloadAccess.toJson();
+      _json['downloadAccess'] = downloadAccess.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -7128,8 +7127,8 @@ class ReviewAuthor {
   ReviewAuthor();
 
   ReviewAuthor.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
   }
 
@@ -7137,7 +7136,7 @@ class ReviewAuthor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     return _json;
   }
@@ -7158,14 +7157,14 @@ class ReviewSource {
   ReviewSource();
 
   ReviewSource.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("extraDescription")) {
-      extraDescription = _json["extraDescription"];
+    if (_json.containsKey('extraDescription')) {
+      extraDescription = _json['extraDescription'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -7173,13 +7172,13 @@ class ReviewSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (extraDescription != null) {
-      _json["extraDescription"] = extraDescription;
+      _json['extraDescription'] = extraDescription;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -7222,35 +7221,35 @@ class Review {
   Review();
 
   Review.fromJson(core.Map _json) {
-    if (_json.containsKey("author")) {
-      author = ReviewAuthor.fromJson(_json["author"]);
+    if (_json.containsKey('author')) {
+      author = ReviewAuthor.fromJson(_json['author']);
     }
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("date")) {
-      date = _json["date"];
+    if (_json.containsKey('date')) {
+      date = _json['date'];
     }
-    if (_json.containsKey("fullTextUrl")) {
-      fullTextUrl = _json["fullTextUrl"];
+    if (_json.containsKey('fullTextUrl')) {
+      fullTextUrl = _json['fullTextUrl'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("rating")) {
-      rating = _json["rating"];
+    if (_json.containsKey('rating')) {
+      rating = _json['rating'];
     }
-    if (_json.containsKey("source")) {
-      source = ReviewSource.fromJson(_json["source"]);
+    if (_json.containsKey('source')) {
+      source = ReviewSource.fromJson(_json['source']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -7258,34 +7257,34 @@ class Review {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = author.toJson();
+      _json['author'] = author.toJson();
     }
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (date != null) {
-      _json["date"] = date;
+      _json['date'] = date;
     }
     if (fullTextUrl != null) {
-      _json["fullTextUrl"] = fullTextUrl;
+      _json['fullTextUrl'] = fullTextUrl;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (rating != null) {
-      _json["rating"] = rating;
+      _json['rating'] = rating;
     }
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -7301,17 +7300,17 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
 
   SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
       core.Map _json) {
-    if (_json.containsKey("amountInMicros")) {
-      amountInMicros = _json["amountInMicros"].toDouble();
+    if (_json.containsKey('amountInMicros')) {
+      amountInMicros = _json['amountInMicros'].toDouble();
     }
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
-    if (_json.containsKey("releaseNumber")) {
-      releaseNumber = _json["releaseNumber"];
+    if (_json.containsKey('releaseNumber')) {
+      releaseNumber = _json['releaseNumber'];
     }
-    if (_json.containsKey("releaseTime")) {
-      releaseTime = _json["releaseTime"];
+    if (_json.containsKey('releaseTime')) {
+      releaseTime = _json['releaseTime'];
     }
   }
 
@@ -7319,16 +7318,16 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amountInMicros != null) {
-      _json["amountInMicros"] = amountInMicros;
+      _json['amountInMicros'] = amountInMicros;
     }
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     if (releaseNumber != null) {
-      _json["releaseNumber"] = releaseNumber;
+      _json['releaseNumber'] = releaseNumber;
     }
     if (releaseTime != null) {
-      _json["releaseTime"] = releaseTime;
+      _json['releaseTime'] = releaseTime;
     }
     return _json;
   }
@@ -7344,17 +7343,17 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
 
   SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
       core.Map _json) {
-    if (_json.containsKey("amountInMicros")) {
-      amountInMicros = _json["amountInMicros"].toDouble();
+    if (_json.containsKey('amountInMicros')) {
+      amountInMicros = _json['amountInMicros'].toDouble();
     }
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
-    if (_json.containsKey("releaseNumber")) {
-      releaseNumber = _json["releaseNumber"];
+    if (_json.containsKey('releaseNumber')) {
+      releaseNumber = _json['releaseNumber'];
     }
-    if (_json.containsKey("releaseTime")) {
-      releaseTime = _json["releaseTime"];
+    if (_json.containsKey('releaseTime')) {
+      releaseTime = _json['releaseTime'];
     }
   }
 
@@ -7362,16 +7361,16 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amountInMicros != null) {
-      _json["amountInMicros"] = amountInMicros;
+      _json['amountInMicros'] = amountInMicros;
     }
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     if (releaseNumber != null) {
-      _json["releaseNumber"] = releaseNumber;
+      _json['releaseNumber'] = releaseNumber;
     }
     if (releaseTime != null) {
-      _json["releaseTime"] = releaseTime;
+      _json['releaseTime'] = releaseTime;
     }
     return _json;
   }
@@ -7387,21 +7386,21 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
   SeriesSeriesSeriesSubscriptionReleaseInfo();
 
   SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("cancelTime")) {
-      cancelTime = _json["cancelTime"];
+    if (_json.containsKey('cancelTime')) {
+      cancelTime = _json['cancelTime'];
     }
-    if (_json.containsKey("currentReleaseInfo")) {
+    if (_json.containsKey('currentReleaseInfo')) {
       currentReleaseInfo =
           SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
-              _json["currentReleaseInfo"]);
+              _json['currentReleaseInfo']);
     }
-    if (_json.containsKey("nextReleaseInfo")) {
+    if (_json.containsKey('nextReleaseInfo')) {
       nextReleaseInfo =
           SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
-              _json["nextReleaseInfo"]);
+              _json['nextReleaseInfo']);
     }
-    if (_json.containsKey("seriesSubscriptionType")) {
-      seriesSubscriptionType = _json["seriesSubscriptionType"];
+    if (_json.containsKey('seriesSubscriptionType')) {
+      seriesSubscriptionType = _json['seriesSubscriptionType'];
     }
   }
 
@@ -7409,16 +7408,16 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cancelTime != null) {
-      _json["cancelTime"] = cancelTime;
+      _json['cancelTime'] = cancelTime;
     }
     if (currentReleaseInfo != null) {
-      _json["currentReleaseInfo"] = currentReleaseInfo.toJson();
+      _json['currentReleaseInfo'] = currentReleaseInfo.toJson();
     }
     if (nextReleaseInfo != null) {
-      _json["nextReleaseInfo"] = nextReleaseInfo.toJson();
+      _json['nextReleaseInfo'] = nextReleaseInfo.toJson();
     }
     if (seriesSubscriptionType != null) {
-      _json["seriesSubscriptionType"] = seriesSubscriptionType;
+      _json['seriesSubscriptionType'] = seriesSubscriptionType;
     }
     return _json;
   }
@@ -7439,37 +7438,37 @@ class SeriesSeries {
   SeriesSeries();
 
   SeriesSeries.fromJson(core.Map _json) {
-    if (_json.containsKey("bannerImageUrl")) {
-      bannerImageUrl = _json["bannerImageUrl"];
+    if (_json.containsKey('bannerImageUrl')) {
+      bannerImageUrl = _json['bannerImageUrl'];
     }
-    if (_json.containsKey("eligibleForSubscription")) {
-      eligibleForSubscription = _json["eligibleForSubscription"];
+    if (_json.containsKey('eligibleForSubscription')) {
+      eligibleForSubscription = _json['eligibleForSubscription'];
     }
-    if (_json.containsKey("imageUrl")) {
-      imageUrl = _json["imageUrl"];
+    if (_json.containsKey('imageUrl')) {
+      imageUrl = _json['imageUrl'];
     }
-    if (_json.containsKey("isComplete")) {
-      isComplete = _json["isComplete"];
+    if (_json.containsKey('isComplete')) {
+      isComplete = _json['isComplete'];
     }
-    if (_json.containsKey("seriesFormatType")) {
-      seriesFormatType = _json["seriesFormatType"];
+    if (_json.containsKey('seriesFormatType')) {
+      seriesFormatType = _json['seriesFormatType'];
     }
-    if (_json.containsKey("seriesId")) {
-      seriesId = _json["seriesId"];
+    if (_json.containsKey('seriesId')) {
+      seriesId = _json['seriesId'];
     }
-    if (_json.containsKey("seriesSubscriptionReleaseInfo")) {
+    if (_json.containsKey('seriesSubscriptionReleaseInfo')) {
       seriesSubscriptionReleaseInfo =
           SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(
-              _json["seriesSubscriptionReleaseInfo"]);
+              _json['seriesSubscriptionReleaseInfo']);
     }
-    if (_json.containsKey("seriesType")) {
-      seriesType = _json["seriesType"];
+    if (_json.containsKey('seriesType')) {
+      seriesType = _json['seriesType'];
     }
-    if (_json.containsKey("subscriptionId")) {
-      subscriptionId = _json["subscriptionId"];
+    if (_json.containsKey('subscriptionId')) {
+      subscriptionId = _json['subscriptionId'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -7477,35 +7476,35 @@ class SeriesSeries {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bannerImageUrl != null) {
-      _json["bannerImageUrl"] = bannerImageUrl;
+      _json['bannerImageUrl'] = bannerImageUrl;
     }
     if (eligibleForSubscription != null) {
-      _json["eligibleForSubscription"] = eligibleForSubscription;
+      _json['eligibleForSubscription'] = eligibleForSubscription;
     }
     if (imageUrl != null) {
-      _json["imageUrl"] = imageUrl;
+      _json['imageUrl'] = imageUrl;
     }
     if (isComplete != null) {
-      _json["isComplete"] = isComplete;
+      _json['isComplete'] = isComplete;
     }
     if (seriesFormatType != null) {
-      _json["seriesFormatType"] = seriesFormatType;
+      _json['seriesFormatType'] = seriesFormatType;
     }
     if (seriesId != null) {
-      _json["seriesId"] = seriesId;
+      _json['seriesId'] = seriesId;
     }
     if (seriesSubscriptionReleaseInfo != null) {
-      _json["seriesSubscriptionReleaseInfo"] =
+      _json['seriesSubscriptionReleaseInfo'] =
           seriesSubscriptionReleaseInfo.toJson();
     }
     if (seriesType != null) {
-      _json["seriesType"] = seriesType;
+      _json['seriesType'] = seriesType;
     }
     if (subscriptionId != null) {
-      _json["subscriptionId"] = subscriptionId;
+      _json['subscriptionId'] = subscriptionId;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -7519,11 +7518,11 @@ class Series {
   Series();
 
   Series.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("series")) {
-      series = (_json["series"] as core.List)
+    if (_json.containsKey('series')) {
+      series = (_json['series'] as core.List)
           .map<SeriesSeries>((value) => SeriesSeries.fromJson(value))
           .toList();
     }
@@ -7533,10 +7532,10 @@ class Series {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (series != null) {
-      _json["series"] = series.map((value) => value.toJson()).toList();
+      _json['series'] = series.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7551,16 +7550,16 @@ class Seriesmembership {
   Seriesmembership();
 
   Seriesmembership.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("member")) {
-      member = (_json["member"] as core.List)
+    if (_json.containsKey('member')) {
+      member = (_json['member'] as core.List)
           .map<Volume>((value) => Volume.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7568,13 +7567,13 @@ class Seriesmembership {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (member != null) {
-      _json["member"] = member.map((value) => value.toJson()).toList();
+      _json['member'] = member.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7588,11 +7587,11 @@ class UsersettingsNotesExport {
   UsersettingsNotesExport();
 
   UsersettingsNotesExport.fromJson(core.Map _json) {
-    if (_json.containsKey("folderName")) {
-      folderName = _json["folderName"];
+    if (_json.containsKey('folderName')) {
+      folderName = _json['folderName'];
     }
-    if (_json.containsKey("isEnabled")) {
-      isEnabled = _json["isEnabled"];
+    if (_json.containsKey('isEnabled')) {
+      isEnabled = _json['isEnabled'];
     }
   }
 
@@ -7600,10 +7599,10 @@ class UsersettingsNotesExport {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (folderName != null) {
-      _json["folderName"] = folderName;
+      _json['folderName'] = folderName;
     }
     if (isEnabled != null) {
-      _json["isEnabled"] = isEnabled;
+      _json['isEnabled'] = isEnabled;
     }
     return _json;
   }
@@ -7615,8 +7614,8 @@ class UsersettingsNotificationMatchMyInterests {
   UsersettingsNotificationMatchMyInterests();
 
   UsersettingsNotificationMatchMyInterests.fromJson(core.Map _json) {
-    if (_json.containsKey("opted_state")) {
-      optedState = _json["opted_state"];
+    if (_json.containsKey('opted_state')) {
+      optedState = _json['opted_state'];
     }
   }
 
@@ -7624,7 +7623,7 @@ class UsersettingsNotificationMatchMyInterests {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (optedState != null) {
-      _json["opted_state"] = optedState;
+      _json['opted_state'] = optedState;
     }
     return _json;
   }
@@ -7636,8 +7635,8 @@ class UsersettingsNotificationMoreFromAuthors {
   UsersettingsNotificationMoreFromAuthors();
 
   UsersettingsNotificationMoreFromAuthors.fromJson(core.Map _json) {
-    if (_json.containsKey("opted_state")) {
-      optedState = _json["opted_state"];
+    if (_json.containsKey('opted_state')) {
+      optedState = _json['opted_state'];
     }
   }
 
@@ -7645,7 +7644,7 @@ class UsersettingsNotificationMoreFromAuthors {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (optedState != null) {
-      _json["opted_state"] = optedState;
+      _json['opted_state'] = optedState;
     }
     return _json;
   }
@@ -7657,8 +7656,8 @@ class UsersettingsNotificationMoreFromSeries {
   UsersettingsNotificationMoreFromSeries();
 
   UsersettingsNotificationMoreFromSeries.fromJson(core.Map _json) {
-    if (_json.containsKey("opted_state")) {
-      optedState = _json["opted_state"];
+    if (_json.containsKey('opted_state')) {
+      optedState = _json['opted_state'];
     }
   }
 
@@ -7666,7 +7665,7 @@ class UsersettingsNotificationMoreFromSeries {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (optedState != null) {
-      _json["opted_state"] = optedState;
+      _json['opted_state'] = optedState;
     }
     return _json;
   }
@@ -7678,8 +7677,8 @@ class UsersettingsNotificationPriceDrop {
   UsersettingsNotificationPriceDrop();
 
   UsersettingsNotificationPriceDrop.fromJson(core.Map _json) {
-    if (_json.containsKey("opted_state")) {
-      optedState = _json["opted_state"];
+    if (_json.containsKey('opted_state')) {
+      optedState = _json['opted_state'];
     }
   }
 
@@ -7687,7 +7686,7 @@ class UsersettingsNotificationPriceDrop {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (optedState != null) {
-      _json["opted_state"] = optedState;
+      _json['opted_state'] = optedState;
     }
     return _json;
   }
@@ -7699,8 +7698,8 @@ class UsersettingsNotificationRewardExpirations {
   UsersettingsNotificationRewardExpirations();
 
   UsersettingsNotificationRewardExpirations.fromJson(core.Map _json) {
-    if (_json.containsKey("opted_state")) {
-      optedState = _json["opted_state"];
+    if (_json.containsKey('opted_state')) {
+      optedState = _json['opted_state'];
     }
   }
 
@@ -7708,7 +7707,7 @@ class UsersettingsNotificationRewardExpirations {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (optedState != null) {
-      _json["opted_state"] = optedState;
+      _json['opted_state'] = optedState;
     }
     return _json;
   }
@@ -7724,25 +7723,25 @@ class UsersettingsNotification {
   UsersettingsNotification();
 
   UsersettingsNotification.fromJson(core.Map _json) {
-    if (_json.containsKey("matchMyInterests")) {
+    if (_json.containsKey('matchMyInterests')) {
       matchMyInterests = UsersettingsNotificationMatchMyInterests.fromJson(
-          _json["matchMyInterests"]);
+          _json['matchMyInterests']);
     }
-    if (_json.containsKey("moreFromAuthors")) {
+    if (_json.containsKey('moreFromAuthors')) {
       moreFromAuthors = UsersettingsNotificationMoreFromAuthors.fromJson(
-          _json["moreFromAuthors"]);
+          _json['moreFromAuthors']);
     }
-    if (_json.containsKey("moreFromSeries")) {
+    if (_json.containsKey('moreFromSeries')) {
       moreFromSeries = UsersettingsNotificationMoreFromSeries.fromJson(
-          _json["moreFromSeries"]);
+          _json['moreFromSeries']);
     }
-    if (_json.containsKey("priceDrop")) {
+    if (_json.containsKey('priceDrop')) {
       priceDrop =
-          UsersettingsNotificationPriceDrop.fromJson(_json["priceDrop"]);
+          UsersettingsNotificationPriceDrop.fromJson(_json['priceDrop']);
     }
-    if (_json.containsKey("rewardExpirations")) {
+    if (_json.containsKey('rewardExpirations')) {
       rewardExpirations = UsersettingsNotificationRewardExpirations.fromJson(
-          _json["rewardExpirations"]);
+          _json['rewardExpirations']);
     }
   }
 
@@ -7750,19 +7749,19 @@ class UsersettingsNotification {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (matchMyInterests != null) {
-      _json["matchMyInterests"] = matchMyInterests.toJson();
+      _json['matchMyInterests'] = matchMyInterests.toJson();
     }
     if (moreFromAuthors != null) {
-      _json["moreFromAuthors"] = moreFromAuthors.toJson();
+      _json['moreFromAuthors'] = moreFromAuthors.toJson();
     }
     if (moreFromSeries != null) {
-      _json["moreFromSeries"] = moreFromSeries.toJson();
+      _json['moreFromSeries'] = moreFromSeries.toJson();
     }
     if (priceDrop != null) {
-      _json["priceDrop"] = priceDrop.toJson();
+      _json['priceDrop'] = priceDrop.toJson();
     }
     if (rewardExpirations != null) {
-      _json["rewardExpirations"] = rewardExpirations.toJson();
+      _json['rewardExpirations'] = rewardExpirations.toJson();
     }
     return _json;
   }
@@ -7779,14 +7778,14 @@ class Usersettings {
   Usersettings();
 
   Usersettings.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("notesExport")) {
-      notesExport = UsersettingsNotesExport.fromJson(_json["notesExport"]);
+    if (_json.containsKey('notesExport')) {
+      notesExport = UsersettingsNotesExport.fromJson(_json['notesExport']);
     }
-    if (_json.containsKey("notification")) {
-      notification = UsersettingsNotification.fromJson(_json["notification"]);
+    if (_json.containsKey('notification')) {
+      notification = UsersettingsNotification.fromJson(_json['notification']);
     }
   }
 
@@ -7794,13 +7793,13 @@ class Usersettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (notesExport != null) {
-      _json["notesExport"] = notesExport.toJson();
+      _json['notesExport'] = notesExport.toJson();
     }
     if (notification != null) {
-      _json["notification"] = notification.toJson();
+      _json['notification'] = notification.toJson();
     }
     return _json;
   }
@@ -7821,14 +7820,14 @@ class VolumeAccessInfoEpub {
   VolumeAccessInfoEpub();
 
   VolumeAccessInfoEpub.fromJson(core.Map _json) {
-    if (_json.containsKey("acsTokenLink")) {
-      acsTokenLink = _json["acsTokenLink"];
+    if (_json.containsKey('acsTokenLink')) {
+      acsTokenLink = _json['acsTokenLink'];
     }
-    if (_json.containsKey("downloadLink")) {
-      downloadLink = _json["downloadLink"];
+    if (_json.containsKey('downloadLink')) {
+      downloadLink = _json['downloadLink'];
     }
-    if (_json.containsKey("isAvailable")) {
-      isAvailable = _json["isAvailable"];
+    if (_json.containsKey('isAvailable')) {
+      isAvailable = _json['isAvailable'];
     }
   }
 
@@ -7836,13 +7835,13 @@ class VolumeAccessInfoEpub {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acsTokenLink != null) {
-      _json["acsTokenLink"] = acsTokenLink;
+      _json['acsTokenLink'] = acsTokenLink;
     }
     if (downloadLink != null) {
-      _json["downloadLink"] = downloadLink;
+      _json['downloadLink'] = downloadLink;
     }
     if (isAvailable != null) {
-      _json["isAvailable"] = isAvailable;
+      _json['isAvailable'] = isAvailable;
     }
     return _json;
   }
@@ -7863,14 +7862,14 @@ class VolumeAccessInfoPdf {
   VolumeAccessInfoPdf();
 
   VolumeAccessInfoPdf.fromJson(core.Map _json) {
-    if (_json.containsKey("acsTokenLink")) {
-      acsTokenLink = _json["acsTokenLink"];
+    if (_json.containsKey('acsTokenLink')) {
+      acsTokenLink = _json['acsTokenLink'];
     }
-    if (_json.containsKey("downloadLink")) {
-      downloadLink = _json["downloadLink"];
+    if (_json.containsKey('downloadLink')) {
+      downloadLink = _json['downloadLink'];
     }
-    if (_json.containsKey("isAvailable")) {
-      isAvailable = _json["isAvailable"];
+    if (_json.containsKey('isAvailable')) {
+      isAvailable = _json['isAvailable'];
     }
   }
 
@@ -7878,13 +7877,13 @@ class VolumeAccessInfoPdf {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acsTokenLink != null) {
-      _json["acsTokenLink"] = acsTokenLink;
+      _json['acsTokenLink'] = acsTokenLink;
     }
     if (downloadLink != null) {
-      _json["downloadLink"] = downloadLink;
+      _json['downloadLink'] = downloadLink;
     }
     if (isAvailable != null) {
-      _json["isAvailable"] = isAvailable;
+      _json['isAvailable'] = isAvailable;
     }
     return _json;
   }
@@ -7954,49 +7953,49 @@ class VolumeAccessInfo {
   VolumeAccessInfo();
 
   VolumeAccessInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("accessViewStatus")) {
-      accessViewStatus = _json["accessViewStatus"];
+    if (_json.containsKey('accessViewStatus')) {
+      accessViewStatus = _json['accessViewStatus'];
     }
-    if (_json.containsKey("country")) {
-      country = _json["country"];
+    if (_json.containsKey('country')) {
+      country = _json['country'];
     }
-    if (_json.containsKey("downloadAccess")) {
+    if (_json.containsKey('downloadAccess')) {
       downloadAccess =
-          DownloadAccessRestriction.fromJson(_json["downloadAccess"]);
+          DownloadAccessRestriction.fromJson(_json['downloadAccess']);
     }
-    if (_json.containsKey("driveImportedContentLink")) {
-      driveImportedContentLink = _json["driveImportedContentLink"];
+    if (_json.containsKey('driveImportedContentLink')) {
+      driveImportedContentLink = _json['driveImportedContentLink'];
     }
-    if (_json.containsKey("embeddable")) {
-      embeddable = _json["embeddable"];
+    if (_json.containsKey('embeddable')) {
+      embeddable = _json['embeddable'];
     }
-    if (_json.containsKey("epub")) {
-      epub = VolumeAccessInfoEpub.fromJson(_json["epub"]);
+    if (_json.containsKey('epub')) {
+      epub = VolumeAccessInfoEpub.fromJson(_json['epub']);
     }
-    if (_json.containsKey("explicitOfflineLicenseManagement")) {
+    if (_json.containsKey('explicitOfflineLicenseManagement')) {
       explicitOfflineLicenseManagement =
-          _json["explicitOfflineLicenseManagement"];
+          _json['explicitOfflineLicenseManagement'];
     }
-    if (_json.containsKey("pdf")) {
-      pdf = VolumeAccessInfoPdf.fromJson(_json["pdf"]);
+    if (_json.containsKey('pdf')) {
+      pdf = VolumeAccessInfoPdf.fromJson(_json['pdf']);
     }
-    if (_json.containsKey("publicDomain")) {
-      publicDomain = _json["publicDomain"];
+    if (_json.containsKey('publicDomain')) {
+      publicDomain = _json['publicDomain'];
     }
-    if (_json.containsKey("quoteSharingAllowed")) {
-      quoteSharingAllowed = _json["quoteSharingAllowed"];
+    if (_json.containsKey('quoteSharingAllowed')) {
+      quoteSharingAllowed = _json['quoteSharingAllowed'];
     }
-    if (_json.containsKey("textToSpeechPermission")) {
-      textToSpeechPermission = _json["textToSpeechPermission"];
+    if (_json.containsKey('textToSpeechPermission')) {
+      textToSpeechPermission = _json['textToSpeechPermission'];
     }
-    if (_json.containsKey("viewOrderUrl")) {
-      viewOrderUrl = _json["viewOrderUrl"];
+    if (_json.containsKey('viewOrderUrl')) {
+      viewOrderUrl = _json['viewOrderUrl'];
     }
-    if (_json.containsKey("viewability")) {
-      viewability = _json["viewability"];
+    if (_json.containsKey('viewability')) {
+      viewability = _json['viewability'];
     }
-    if (_json.containsKey("webReaderLink")) {
-      webReaderLink = _json["webReaderLink"];
+    if (_json.containsKey('webReaderLink')) {
+      webReaderLink = _json['webReaderLink'];
     }
   }
 
@@ -8004,47 +8003,47 @@ class VolumeAccessInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessViewStatus != null) {
-      _json["accessViewStatus"] = accessViewStatus;
+      _json['accessViewStatus'] = accessViewStatus;
     }
     if (country != null) {
-      _json["country"] = country;
+      _json['country'] = country;
     }
     if (downloadAccess != null) {
-      _json["downloadAccess"] = downloadAccess.toJson();
+      _json['downloadAccess'] = downloadAccess.toJson();
     }
     if (driveImportedContentLink != null) {
-      _json["driveImportedContentLink"] = driveImportedContentLink;
+      _json['driveImportedContentLink'] = driveImportedContentLink;
     }
     if (embeddable != null) {
-      _json["embeddable"] = embeddable;
+      _json['embeddable'] = embeddable;
     }
     if (epub != null) {
-      _json["epub"] = epub.toJson();
+      _json['epub'] = epub.toJson();
     }
     if (explicitOfflineLicenseManagement != null) {
-      _json["explicitOfflineLicenseManagement"] =
+      _json['explicitOfflineLicenseManagement'] =
           explicitOfflineLicenseManagement;
     }
     if (pdf != null) {
-      _json["pdf"] = pdf.toJson();
+      _json['pdf'] = pdf.toJson();
     }
     if (publicDomain != null) {
-      _json["publicDomain"] = publicDomain;
+      _json['publicDomain'] = publicDomain;
     }
     if (quoteSharingAllowed != null) {
-      _json["quoteSharingAllowed"] = quoteSharingAllowed;
+      _json['quoteSharingAllowed'] = quoteSharingAllowed;
     }
     if (textToSpeechPermission != null) {
-      _json["textToSpeechPermission"] = textToSpeechPermission;
+      _json['textToSpeechPermission'] = textToSpeechPermission;
     }
     if (viewOrderUrl != null) {
-      _json["viewOrderUrl"] = viewOrderUrl;
+      _json['viewOrderUrl'] = viewOrderUrl;
     }
     if (viewability != null) {
-      _json["viewability"] = viewability;
+      _json['viewability'] = viewability;
     }
     if (webReaderLink != null) {
-      _json["webReaderLink"] = webReaderLink;
+      _json['webReaderLink'] = webReaderLink;
     }
     return _json;
   }
@@ -8062,11 +8061,11 @@ class VolumeLayerInfoLayers {
   VolumeLayerInfoLayers();
 
   VolumeLayerInfoLayers.fromJson(core.Map _json) {
-    if (_json.containsKey("layerId")) {
-      layerId = _json["layerId"];
+    if (_json.containsKey('layerId')) {
+      layerId = _json['layerId'];
     }
-    if (_json.containsKey("volumeAnnotationsVersion")) {
-      volumeAnnotationsVersion = _json["volumeAnnotationsVersion"];
+    if (_json.containsKey('volumeAnnotationsVersion')) {
+      volumeAnnotationsVersion = _json['volumeAnnotationsVersion'];
     }
   }
 
@@ -8074,10 +8073,10 @@ class VolumeLayerInfoLayers {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (layerId != null) {
-      _json["layerId"] = layerId;
+      _json['layerId'] = layerId;
     }
     if (volumeAnnotationsVersion != null) {
-      _json["volumeAnnotationsVersion"] = volumeAnnotationsVersion;
+      _json['volumeAnnotationsVersion'] = volumeAnnotationsVersion;
     }
     return _json;
   }
@@ -8091,8 +8090,8 @@ class VolumeLayerInfo {
   VolumeLayerInfo();
 
   VolumeLayerInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("layers")) {
-      layers = (_json["layers"] as core.List)
+    if (_json.containsKey('layers')) {
+      layers = (_json['layers'] as core.List)
           .map<VolumeLayerInfoLayers>(
               (value) => VolumeLayerInfoLayers.fromJson(value))
           .toList();
@@ -8103,7 +8102,7 @@ class VolumeLayerInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (layers != null) {
-      _json["layers"] = layers.map((value) => value.toJson()).toList();
+      _json['layers'] = layers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8117,8 +8116,8 @@ class VolumeRecommendedInfo {
   VolumeRecommendedInfo();
 
   VolumeRecommendedInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("explanation")) {
-      explanation = _json["explanation"];
+    if (_json.containsKey('explanation')) {
+      explanation = _json['explanation'];
     }
   }
 
@@ -8126,7 +8125,7 @@ class VolumeRecommendedInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (explanation != null) {
-      _json["explanation"] = explanation;
+      _json['explanation'] = explanation;
     }
     return _json;
   }
@@ -8143,11 +8142,11 @@ class VolumeSaleInfoListPrice {
   VolumeSaleInfoListPrice();
 
   VolumeSaleInfoListPrice.fromJson(core.Map _json) {
-    if (_json.containsKey("amount")) {
-      amount = _json["amount"].toDouble();
+    if (_json.containsKey('amount')) {
+      amount = _json['amount'].toDouble();
     }
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
   }
 
@@ -8155,10 +8154,10 @@ class VolumeSaleInfoListPrice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amount != null) {
-      _json["amount"] = amount;
+      _json['amount'] = amount;
     }
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     return _json;
   }
@@ -8172,11 +8171,11 @@ class VolumeSaleInfoOffersListPrice {
   VolumeSaleInfoOffersListPrice();
 
   VolumeSaleInfoOffersListPrice.fromJson(core.Map _json) {
-    if (_json.containsKey("amountInMicros")) {
-      amountInMicros = _json["amountInMicros"].toDouble();
+    if (_json.containsKey('amountInMicros')) {
+      amountInMicros = _json['amountInMicros'].toDouble();
     }
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
   }
 
@@ -8184,10 +8183,10 @@ class VolumeSaleInfoOffersListPrice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amountInMicros != null) {
-      _json["amountInMicros"] = amountInMicros;
+      _json['amountInMicros'] = amountInMicros;
     }
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     return _json;
   }
@@ -8201,11 +8200,11 @@ class VolumeSaleInfoOffersRentalDuration {
   VolumeSaleInfoOffersRentalDuration();
 
   VolumeSaleInfoOffersRentalDuration.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"].toDouble();
+    if (_json.containsKey('count')) {
+      count = _json['count'].toDouble();
     }
-    if (_json.containsKey("unit")) {
-      unit = _json["unit"];
+    if (_json.containsKey('unit')) {
+      unit = _json['unit'];
     }
   }
 
@@ -8213,10 +8212,10 @@ class VolumeSaleInfoOffersRentalDuration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (unit != null) {
-      _json["unit"] = unit;
+      _json['unit'] = unit;
     }
     return _json;
   }
@@ -8230,11 +8229,11 @@ class VolumeSaleInfoOffersRetailPrice {
   VolumeSaleInfoOffersRetailPrice();
 
   VolumeSaleInfoOffersRetailPrice.fromJson(core.Map _json) {
-    if (_json.containsKey("amountInMicros")) {
-      amountInMicros = _json["amountInMicros"].toDouble();
+    if (_json.containsKey('amountInMicros')) {
+      amountInMicros = _json['amountInMicros'].toDouble();
     }
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
   }
 
@@ -8242,10 +8241,10 @@ class VolumeSaleInfoOffersRetailPrice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amountInMicros != null) {
-      _json["amountInMicros"] = amountInMicros;
+      _json['amountInMicros'] = amountInMicros;
     }
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     return _json;
   }
@@ -8270,22 +8269,22 @@ class VolumeSaleInfoOffers {
   VolumeSaleInfoOffers();
 
   VolumeSaleInfoOffers.fromJson(core.Map _json) {
-    if (_json.containsKey("finskyOfferType")) {
-      finskyOfferType = _json["finskyOfferType"];
+    if (_json.containsKey('finskyOfferType')) {
+      finskyOfferType = _json['finskyOfferType'];
     }
-    if (_json.containsKey("giftable")) {
-      giftable = _json["giftable"];
+    if (_json.containsKey('giftable')) {
+      giftable = _json['giftable'];
     }
-    if (_json.containsKey("listPrice")) {
-      listPrice = VolumeSaleInfoOffersListPrice.fromJson(_json["listPrice"]);
+    if (_json.containsKey('listPrice')) {
+      listPrice = VolumeSaleInfoOffersListPrice.fromJson(_json['listPrice']);
     }
-    if (_json.containsKey("rentalDuration")) {
+    if (_json.containsKey('rentalDuration')) {
       rentalDuration =
-          VolumeSaleInfoOffersRentalDuration.fromJson(_json["rentalDuration"]);
+          VolumeSaleInfoOffersRentalDuration.fromJson(_json['rentalDuration']);
     }
-    if (_json.containsKey("retailPrice")) {
+    if (_json.containsKey('retailPrice')) {
       retailPrice =
-          VolumeSaleInfoOffersRetailPrice.fromJson(_json["retailPrice"]);
+          VolumeSaleInfoOffersRetailPrice.fromJson(_json['retailPrice']);
     }
   }
 
@@ -8293,19 +8292,19 @@ class VolumeSaleInfoOffers {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (finskyOfferType != null) {
-      _json["finskyOfferType"] = finskyOfferType;
+      _json['finskyOfferType'] = finskyOfferType;
     }
     if (giftable != null) {
-      _json["giftable"] = giftable;
+      _json['giftable'] = giftable;
     }
     if (listPrice != null) {
-      _json["listPrice"] = listPrice.toJson();
+      _json['listPrice'] = listPrice.toJson();
     }
     if (rentalDuration != null) {
-      _json["rentalDuration"] = rentalDuration.toJson();
+      _json['rentalDuration'] = rentalDuration.toJson();
     }
     if (retailPrice != null) {
-      _json["retailPrice"] = retailPrice.toJson();
+      _json['retailPrice'] = retailPrice.toJson();
     }
     return _json;
   }
@@ -8324,11 +8323,11 @@ class VolumeSaleInfoRetailPrice {
   VolumeSaleInfoRetailPrice();
 
   VolumeSaleInfoRetailPrice.fromJson(core.Map _json) {
-    if (_json.containsKey("amount")) {
-      amount = _json["amount"].toDouble();
+    if (_json.containsKey('amount')) {
+      amount = _json['amount'].toDouble();
     }
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
   }
 
@@ -8336,10 +8335,10 @@ class VolumeSaleInfoRetailPrice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amount != null) {
-      _json["amount"] = amount;
+      _json['amount'] = amount;
     }
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     return _json;
   }
@@ -8384,32 +8383,32 @@ class VolumeSaleInfo {
   VolumeSaleInfo();
 
   VolumeSaleInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("buyLink")) {
-      buyLink = _json["buyLink"];
+    if (_json.containsKey('buyLink')) {
+      buyLink = _json['buyLink'];
     }
-    if (_json.containsKey("country")) {
-      country = _json["country"];
+    if (_json.containsKey('country')) {
+      country = _json['country'];
     }
-    if (_json.containsKey("isEbook")) {
-      isEbook = _json["isEbook"];
+    if (_json.containsKey('isEbook')) {
+      isEbook = _json['isEbook'];
     }
-    if (_json.containsKey("listPrice")) {
-      listPrice = VolumeSaleInfoListPrice.fromJson(_json["listPrice"]);
+    if (_json.containsKey('listPrice')) {
+      listPrice = VolumeSaleInfoListPrice.fromJson(_json['listPrice']);
     }
-    if (_json.containsKey("offers")) {
-      offers = (_json["offers"] as core.List)
+    if (_json.containsKey('offers')) {
+      offers = (_json['offers'] as core.List)
           .map<VolumeSaleInfoOffers>(
               (value) => VolumeSaleInfoOffers.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("onSaleDate")) {
-      onSaleDate = _json["onSaleDate"];
+    if (_json.containsKey('onSaleDate')) {
+      onSaleDate = _json['onSaleDate'];
     }
-    if (_json.containsKey("retailPrice")) {
-      retailPrice = VolumeSaleInfoRetailPrice.fromJson(_json["retailPrice"]);
+    if (_json.containsKey('retailPrice')) {
+      retailPrice = VolumeSaleInfoRetailPrice.fromJson(_json['retailPrice']);
     }
-    if (_json.containsKey("saleability")) {
-      saleability = _json["saleability"];
+    if (_json.containsKey('saleability')) {
+      saleability = _json['saleability'];
     }
   }
 
@@ -8417,28 +8416,28 @@ class VolumeSaleInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (buyLink != null) {
-      _json["buyLink"] = buyLink;
+      _json['buyLink'] = buyLink;
     }
     if (country != null) {
-      _json["country"] = country;
+      _json['country'] = country;
     }
     if (isEbook != null) {
-      _json["isEbook"] = isEbook;
+      _json['isEbook'] = isEbook;
     }
     if (listPrice != null) {
-      _json["listPrice"] = listPrice.toJson();
+      _json['listPrice'] = listPrice.toJson();
     }
     if (offers != null) {
-      _json["offers"] = offers.map((value) => value.toJson()).toList();
+      _json['offers'] = offers.map((value) => value.toJson()).toList();
     }
     if (onSaleDate != null) {
-      _json["onSaleDate"] = onSaleDate;
+      _json['onSaleDate'] = onSaleDate;
     }
     if (retailPrice != null) {
-      _json["retailPrice"] = retailPrice.toJson();
+      _json['retailPrice'] = retailPrice.toJson();
     }
     if (saleability != null) {
-      _json["saleability"] = saleability;
+      _json['saleability'] = saleability;
     }
     return _json;
   }
@@ -8452,8 +8451,8 @@ class VolumeSearchInfo {
   VolumeSearchInfo();
 
   VolumeSearchInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("textSnippet")) {
-      textSnippet = _json["textSnippet"];
+    if (_json.containsKey('textSnippet')) {
+      textSnippet = _json['textSnippet'];
     }
   }
 
@@ -8461,7 +8460,7 @@ class VolumeSearchInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (textSnippet != null) {
-      _json["textSnippet"] = textSnippet;
+      _json['textSnippet'] = textSnippet;
     }
     return _json;
   }
@@ -8477,17 +8476,17 @@ class VolumeUserInfoCopy {
   VolumeUserInfoCopy();
 
   VolumeUserInfoCopy.fromJson(core.Map _json) {
-    if (_json.containsKey("allowedCharacterCount")) {
-      allowedCharacterCount = _json["allowedCharacterCount"];
+    if (_json.containsKey('allowedCharacterCount')) {
+      allowedCharacterCount = _json['allowedCharacterCount'];
     }
-    if (_json.containsKey("limitType")) {
-      limitType = _json["limitType"];
+    if (_json.containsKey('limitType')) {
+      limitType = _json['limitType'];
     }
-    if (_json.containsKey("remainingCharacterCount")) {
-      remainingCharacterCount = _json["remainingCharacterCount"];
+    if (_json.containsKey('remainingCharacterCount')) {
+      remainingCharacterCount = _json['remainingCharacterCount'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
   }
 
@@ -8495,16 +8494,16 @@ class VolumeUserInfoCopy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowedCharacterCount != null) {
-      _json["allowedCharacterCount"] = allowedCharacterCount;
+      _json['allowedCharacterCount'] = allowedCharacterCount;
     }
     if (limitType != null) {
-      _json["limitType"] = limitType;
+      _json['limitType'] = limitType;
     }
     if (remainingCharacterCount != null) {
-      _json["remainingCharacterCount"] = remainingCharacterCount;
+      _json['remainingCharacterCount'] = remainingCharacterCount;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     return _json;
   }
@@ -8527,14 +8526,14 @@ class VolumeUserInfoFamilySharing {
   VolumeUserInfoFamilySharing();
 
   VolumeUserInfoFamilySharing.fromJson(core.Map _json) {
-    if (_json.containsKey("familyRole")) {
-      familyRole = _json["familyRole"];
+    if (_json.containsKey('familyRole')) {
+      familyRole = _json['familyRole'];
     }
-    if (_json.containsKey("isSharingAllowed")) {
-      isSharingAllowed = _json["isSharingAllowed"];
+    if (_json.containsKey('isSharingAllowed')) {
+      isSharingAllowed = _json['isSharingAllowed'];
     }
-    if (_json.containsKey("isSharingDisabledByFop")) {
-      isSharingDisabledByFop = _json["isSharingDisabledByFop"];
+    if (_json.containsKey('isSharingDisabledByFop')) {
+      isSharingDisabledByFop = _json['isSharingDisabledByFop'];
     }
   }
 
@@ -8542,13 +8541,13 @@ class VolumeUserInfoFamilySharing {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (familyRole != null) {
-      _json["familyRole"] = familyRole;
+      _json['familyRole'] = familyRole;
     }
     if (isSharingAllowed != null) {
-      _json["isSharingAllowed"] = isSharingAllowed;
+      _json['isSharingAllowed'] = isSharingAllowed;
     }
     if (isSharingDisabledByFop != null) {
-      _json["isSharingDisabledByFop"] = isSharingDisabledByFop;
+      _json['isSharingDisabledByFop'] = isSharingDisabledByFop;
     }
     return _json;
   }
@@ -8562,11 +8561,11 @@ class VolumeUserInfoRentalPeriod {
   VolumeUserInfoRentalPeriod();
 
   VolumeUserInfoRentalPeriod.fromJson(core.Map _json) {
-    if (_json.containsKey("endUtcSec")) {
-      endUtcSec = _json["endUtcSec"];
+    if (_json.containsKey('endUtcSec')) {
+      endUtcSec = _json['endUtcSec'];
     }
-    if (_json.containsKey("startUtcSec")) {
-      startUtcSec = _json["startUtcSec"];
+    if (_json.containsKey('startUtcSec')) {
+      startUtcSec = _json['startUtcSec'];
     }
   }
 
@@ -8574,10 +8573,10 @@ class VolumeUserInfoRentalPeriod {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endUtcSec != null) {
-      _json["endUtcSec"] = endUtcSec;
+      _json['endUtcSec'] = endUtcSec;
     }
     if (startUtcSec != null) {
-      _json["startUtcSec"] = startUtcSec;
+      _json['startUtcSec'] = startUtcSec;
     }
     return _json;
   }
@@ -8589,8 +8588,8 @@ class VolumeUserInfoUserUploadedVolumeInfo {
   VolumeUserInfoUserUploadedVolumeInfo();
 
   VolumeUserInfoUserUploadedVolumeInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("processingState")) {
-      processingState = _json["processingState"];
+    if (_json.containsKey('processingState')) {
+      processingState = _json['processingState'];
     }
   }
 
@@ -8598,7 +8597,7 @@ class VolumeUserInfoUserUploadedVolumeInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (processingState != null) {
-      _json["processingState"] = processingState;
+      _json['processingState'] = processingState;
     }
     return _json;
   }
@@ -8672,64 +8671,64 @@ class VolumeUserInfo {
   VolumeUserInfo();
 
   VolumeUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("acquiredTime")) {
-      acquiredTime = _json["acquiredTime"];
+    if (_json.containsKey('acquiredTime')) {
+      acquiredTime = _json['acquiredTime'];
     }
-    if (_json.containsKey("acquisitionType")) {
-      acquisitionType = _json["acquisitionType"];
+    if (_json.containsKey('acquisitionType')) {
+      acquisitionType = _json['acquisitionType'];
     }
-    if (_json.containsKey("copy")) {
-      copy = VolumeUserInfoCopy.fromJson(_json["copy"]);
+    if (_json.containsKey('copy')) {
+      copy = VolumeUserInfoCopy.fromJson(_json['copy']);
     }
-    if (_json.containsKey("entitlementType")) {
-      entitlementType = _json["entitlementType"];
+    if (_json.containsKey('entitlementType')) {
+      entitlementType = _json['entitlementType'];
     }
-    if (_json.containsKey("familySharing")) {
+    if (_json.containsKey('familySharing')) {
       familySharing =
-          VolumeUserInfoFamilySharing.fromJson(_json["familySharing"]);
+          VolumeUserInfoFamilySharing.fromJson(_json['familySharing']);
     }
-    if (_json.containsKey("isFamilySharedFromUser")) {
-      isFamilySharedFromUser = _json["isFamilySharedFromUser"];
+    if (_json.containsKey('isFamilySharedFromUser')) {
+      isFamilySharedFromUser = _json['isFamilySharedFromUser'];
     }
-    if (_json.containsKey("isFamilySharedToUser")) {
-      isFamilySharedToUser = _json["isFamilySharedToUser"];
+    if (_json.containsKey('isFamilySharedToUser')) {
+      isFamilySharedToUser = _json['isFamilySharedToUser'];
     }
-    if (_json.containsKey("isFamilySharingAllowed")) {
-      isFamilySharingAllowed = _json["isFamilySharingAllowed"];
+    if (_json.containsKey('isFamilySharingAllowed')) {
+      isFamilySharingAllowed = _json['isFamilySharingAllowed'];
     }
-    if (_json.containsKey("isFamilySharingDisabledByFop")) {
-      isFamilySharingDisabledByFop = _json["isFamilySharingDisabledByFop"];
+    if (_json.containsKey('isFamilySharingDisabledByFop')) {
+      isFamilySharingDisabledByFop = _json['isFamilySharingDisabledByFop'];
     }
-    if (_json.containsKey("isInMyBooks")) {
-      isInMyBooks = _json["isInMyBooks"];
+    if (_json.containsKey('isInMyBooks')) {
+      isInMyBooks = _json['isInMyBooks'];
     }
-    if (_json.containsKey("isPreordered")) {
-      isPreordered = _json["isPreordered"];
+    if (_json.containsKey('isPreordered')) {
+      isPreordered = _json['isPreordered'];
     }
-    if (_json.containsKey("isPurchased")) {
-      isPurchased = _json["isPurchased"];
+    if (_json.containsKey('isPurchased')) {
+      isPurchased = _json['isPurchased'];
     }
-    if (_json.containsKey("isUploaded")) {
-      isUploaded = _json["isUploaded"];
+    if (_json.containsKey('isUploaded')) {
+      isUploaded = _json['isUploaded'];
     }
-    if (_json.containsKey("readingPosition")) {
-      readingPosition = ReadingPosition.fromJson(_json["readingPosition"]);
+    if (_json.containsKey('readingPosition')) {
+      readingPosition = ReadingPosition.fromJson(_json['readingPosition']);
     }
-    if (_json.containsKey("rentalPeriod")) {
-      rentalPeriod = VolumeUserInfoRentalPeriod.fromJson(_json["rentalPeriod"]);
+    if (_json.containsKey('rentalPeriod')) {
+      rentalPeriod = VolumeUserInfoRentalPeriod.fromJson(_json['rentalPeriod']);
     }
-    if (_json.containsKey("rentalState")) {
-      rentalState = _json["rentalState"];
+    if (_json.containsKey('rentalState')) {
+      rentalState = _json['rentalState'];
     }
-    if (_json.containsKey("review")) {
-      review = Review.fromJson(_json["review"]);
+    if (_json.containsKey('review')) {
+      review = Review.fromJson(_json['review']);
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("userUploadedVolumeInfo")) {
+    if (_json.containsKey('userUploadedVolumeInfo')) {
       userUploadedVolumeInfo = VolumeUserInfoUserUploadedVolumeInfo.fromJson(
-          _json["userUploadedVolumeInfo"]);
+          _json['userUploadedVolumeInfo']);
     }
   }
 
@@ -8737,61 +8736,61 @@ class VolumeUserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acquiredTime != null) {
-      _json["acquiredTime"] = acquiredTime;
+      _json['acquiredTime'] = acquiredTime;
     }
     if (acquisitionType != null) {
-      _json["acquisitionType"] = acquisitionType;
+      _json['acquisitionType'] = acquisitionType;
     }
     if (copy != null) {
-      _json["copy"] = copy.toJson();
+      _json['copy'] = copy.toJson();
     }
     if (entitlementType != null) {
-      _json["entitlementType"] = entitlementType;
+      _json['entitlementType'] = entitlementType;
     }
     if (familySharing != null) {
-      _json["familySharing"] = familySharing.toJson();
+      _json['familySharing'] = familySharing.toJson();
     }
     if (isFamilySharedFromUser != null) {
-      _json["isFamilySharedFromUser"] = isFamilySharedFromUser;
+      _json['isFamilySharedFromUser'] = isFamilySharedFromUser;
     }
     if (isFamilySharedToUser != null) {
-      _json["isFamilySharedToUser"] = isFamilySharedToUser;
+      _json['isFamilySharedToUser'] = isFamilySharedToUser;
     }
     if (isFamilySharingAllowed != null) {
-      _json["isFamilySharingAllowed"] = isFamilySharingAllowed;
+      _json['isFamilySharingAllowed'] = isFamilySharingAllowed;
     }
     if (isFamilySharingDisabledByFop != null) {
-      _json["isFamilySharingDisabledByFop"] = isFamilySharingDisabledByFop;
+      _json['isFamilySharingDisabledByFop'] = isFamilySharingDisabledByFop;
     }
     if (isInMyBooks != null) {
-      _json["isInMyBooks"] = isInMyBooks;
+      _json['isInMyBooks'] = isInMyBooks;
     }
     if (isPreordered != null) {
-      _json["isPreordered"] = isPreordered;
+      _json['isPreordered'] = isPreordered;
     }
     if (isPurchased != null) {
-      _json["isPurchased"] = isPurchased;
+      _json['isPurchased'] = isPurchased;
     }
     if (isUploaded != null) {
-      _json["isUploaded"] = isUploaded;
+      _json['isUploaded'] = isUploaded;
     }
     if (readingPosition != null) {
-      _json["readingPosition"] = readingPosition.toJson();
+      _json['readingPosition'] = readingPosition.toJson();
     }
     if (rentalPeriod != null) {
-      _json["rentalPeriod"] = rentalPeriod.toJson();
+      _json['rentalPeriod'] = rentalPeriod.toJson();
     }
     if (rentalState != null) {
-      _json["rentalState"] = rentalState;
+      _json['rentalState'] = rentalState;
     }
     if (review != null) {
-      _json["review"] = review.toJson();
+      _json['review'] = review.toJson();
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (userUploadedVolumeInfo != null) {
-      _json["userUploadedVolumeInfo"] = userUploadedVolumeInfo.toJson();
+      _json['userUploadedVolumeInfo'] = userUploadedVolumeInfo.toJson();
     }
     return _json;
   }
@@ -8811,14 +8810,14 @@ class VolumeVolumeInfoDimensions {
   VolumeVolumeInfoDimensions();
 
   VolumeVolumeInfoDimensions.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("thickness")) {
-      thickness = _json["thickness"];
+    if (_json.containsKey('thickness')) {
+      thickness = _json['thickness'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -8826,13 +8825,13 @@ class VolumeVolumeInfoDimensions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (thickness != null) {
-      _json["thickness"] = thickness;
+      _json['thickness'] = thickness;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -8864,23 +8863,23 @@ class VolumeVolumeInfoImageLinks {
   VolumeVolumeInfoImageLinks();
 
   VolumeVolumeInfoImageLinks.fromJson(core.Map _json) {
-    if (_json.containsKey("extraLarge")) {
-      extraLarge = _json["extraLarge"];
+    if (_json.containsKey('extraLarge')) {
+      extraLarge = _json['extraLarge'];
     }
-    if (_json.containsKey("large")) {
-      large = _json["large"];
+    if (_json.containsKey('large')) {
+      large = _json['large'];
     }
-    if (_json.containsKey("medium")) {
-      medium = _json["medium"];
+    if (_json.containsKey('medium')) {
+      medium = _json['medium'];
     }
-    if (_json.containsKey("small")) {
-      small = _json["small"];
+    if (_json.containsKey('small')) {
+      small = _json['small'];
     }
-    if (_json.containsKey("smallThumbnail")) {
-      smallThumbnail = _json["smallThumbnail"];
+    if (_json.containsKey('smallThumbnail')) {
+      smallThumbnail = _json['smallThumbnail'];
     }
-    if (_json.containsKey("thumbnail")) {
-      thumbnail = _json["thumbnail"];
+    if (_json.containsKey('thumbnail')) {
+      thumbnail = _json['thumbnail'];
     }
   }
 
@@ -8888,22 +8887,22 @@ class VolumeVolumeInfoImageLinks {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (extraLarge != null) {
-      _json["extraLarge"] = extraLarge;
+      _json['extraLarge'] = extraLarge;
     }
     if (large != null) {
-      _json["large"] = large;
+      _json['large'] = large;
     }
     if (medium != null) {
-      _json["medium"] = medium;
+      _json['medium'] = medium;
     }
     if (small != null) {
-      _json["small"] = small;
+      _json['small'] = small;
     }
     if (smallThumbnail != null) {
-      _json["smallThumbnail"] = smallThumbnail;
+      _json['smallThumbnail'] = smallThumbnail;
     }
     if (thumbnail != null) {
-      _json["thumbnail"] = thumbnail;
+      _json['thumbnail'] = thumbnail;
     }
     return _json;
   }
@@ -8919,11 +8918,11 @@ class VolumeVolumeInfoIndustryIdentifiers {
   VolumeVolumeInfoIndustryIdentifiers();
 
   VolumeVolumeInfoIndustryIdentifiers.fromJson(core.Map _json) {
-    if (_json.containsKey("identifier")) {
-      identifier = _json["identifier"];
+    if (_json.containsKey('identifier')) {
+      identifier = _json['identifier'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -8931,10 +8930,10 @@ class VolumeVolumeInfoIndustryIdentifiers {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (identifier != null) {
-      _json["identifier"] = identifier;
+      _json['identifier'] = identifier;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -8950,17 +8949,17 @@ class VolumeVolumeInfoPanelizationSummary {
   VolumeVolumeInfoPanelizationSummary();
 
   VolumeVolumeInfoPanelizationSummary.fromJson(core.Map _json) {
-    if (_json.containsKey("containsEpubBubbles")) {
-      containsEpubBubbles = _json["containsEpubBubbles"];
+    if (_json.containsKey('containsEpubBubbles')) {
+      containsEpubBubbles = _json['containsEpubBubbles'];
     }
-    if (_json.containsKey("containsImageBubbles")) {
-      containsImageBubbles = _json["containsImageBubbles"];
+    if (_json.containsKey('containsImageBubbles')) {
+      containsImageBubbles = _json['containsImageBubbles'];
     }
-    if (_json.containsKey("epubBubbleVersion")) {
-      epubBubbleVersion = _json["epubBubbleVersion"];
+    if (_json.containsKey('epubBubbleVersion')) {
+      epubBubbleVersion = _json['epubBubbleVersion'];
     }
-    if (_json.containsKey("imageBubbleVersion")) {
-      imageBubbleVersion = _json["imageBubbleVersion"];
+    if (_json.containsKey('imageBubbleVersion')) {
+      imageBubbleVersion = _json['imageBubbleVersion'];
     }
   }
 
@@ -8968,16 +8967,16 @@ class VolumeVolumeInfoPanelizationSummary {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (containsEpubBubbles != null) {
-      _json["containsEpubBubbles"] = containsEpubBubbles;
+      _json['containsEpubBubbles'] = containsEpubBubbles;
     }
     if (containsImageBubbles != null) {
-      _json["containsImageBubbles"] = containsImageBubbles;
+      _json['containsImageBubbles'] = containsImageBubbles;
     }
     if (epubBubbleVersion != null) {
-      _json["epubBubbleVersion"] = epubBubbleVersion;
+      _json['epubBubbleVersion'] = epubBubbleVersion;
     }
     if (imageBubbleVersion != null) {
-      _json["imageBubbleVersion"] = imageBubbleVersion;
+      _json['imageBubbleVersion'] = imageBubbleVersion;
     }
     return _json;
   }
@@ -8991,11 +8990,11 @@ class VolumeVolumeInfoReadingModes {
   VolumeVolumeInfoReadingModes();
 
   VolumeVolumeInfoReadingModes.fromJson(core.Map _json) {
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -9003,10 +9002,10 @@ class VolumeVolumeInfoReadingModes {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -9105,94 +9104,94 @@ class VolumeVolumeInfo {
   VolumeVolumeInfo();
 
   VolumeVolumeInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("allowAnonLogging")) {
-      allowAnonLogging = _json["allowAnonLogging"];
+    if (_json.containsKey('allowAnonLogging')) {
+      allowAnonLogging = _json['allowAnonLogging'];
     }
-    if (_json.containsKey("authors")) {
-      authors = (_json["authors"] as core.List).cast<core.String>();
+    if (_json.containsKey('authors')) {
+      authors = (_json['authors'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("averageRating")) {
-      averageRating = _json["averageRating"].toDouble();
+    if (_json.containsKey('averageRating')) {
+      averageRating = _json['averageRating'].toDouble();
     }
-    if (_json.containsKey("canonicalVolumeLink")) {
-      canonicalVolumeLink = _json["canonicalVolumeLink"];
+    if (_json.containsKey('canonicalVolumeLink')) {
+      canonicalVolumeLink = _json['canonicalVolumeLink'];
     }
-    if (_json.containsKey("categories")) {
-      categories = (_json["categories"] as core.List).cast<core.String>();
+    if (_json.containsKey('categories')) {
+      categories = (_json['categories'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("comicsContent")) {
-      comicsContent = _json["comicsContent"];
+    if (_json.containsKey('comicsContent')) {
+      comicsContent = _json['comicsContent'];
     }
-    if (_json.containsKey("contentVersion")) {
-      contentVersion = _json["contentVersion"];
+    if (_json.containsKey('contentVersion')) {
+      contentVersion = _json['contentVersion'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("dimensions")) {
-      dimensions = VolumeVolumeInfoDimensions.fromJson(_json["dimensions"]);
+    if (_json.containsKey('dimensions')) {
+      dimensions = VolumeVolumeInfoDimensions.fromJson(_json['dimensions']);
     }
-    if (_json.containsKey("imageLinks")) {
-      imageLinks = VolumeVolumeInfoImageLinks.fromJson(_json["imageLinks"]);
+    if (_json.containsKey('imageLinks')) {
+      imageLinks = VolumeVolumeInfoImageLinks.fromJson(_json['imageLinks']);
     }
-    if (_json.containsKey("industryIdentifiers")) {
-      industryIdentifiers = (_json["industryIdentifiers"] as core.List)
+    if (_json.containsKey('industryIdentifiers')) {
+      industryIdentifiers = (_json['industryIdentifiers'] as core.List)
           .map<VolumeVolumeInfoIndustryIdentifiers>(
               (value) => VolumeVolumeInfoIndustryIdentifiers.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("infoLink")) {
-      infoLink = _json["infoLink"];
+    if (_json.containsKey('infoLink')) {
+      infoLink = _json['infoLink'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("mainCategory")) {
-      mainCategory = _json["mainCategory"];
+    if (_json.containsKey('mainCategory')) {
+      mainCategory = _json['mainCategory'];
     }
-    if (_json.containsKey("maturityRating")) {
-      maturityRating = _json["maturityRating"];
+    if (_json.containsKey('maturityRating')) {
+      maturityRating = _json['maturityRating'];
     }
-    if (_json.containsKey("pageCount")) {
-      pageCount = _json["pageCount"];
+    if (_json.containsKey('pageCount')) {
+      pageCount = _json['pageCount'];
     }
-    if (_json.containsKey("panelizationSummary")) {
+    if (_json.containsKey('panelizationSummary')) {
       panelizationSummary = VolumeVolumeInfoPanelizationSummary.fromJson(
-          _json["panelizationSummary"]);
+          _json['panelizationSummary']);
     }
-    if (_json.containsKey("previewLink")) {
-      previewLink = _json["previewLink"];
+    if (_json.containsKey('previewLink')) {
+      previewLink = _json['previewLink'];
     }
-    if (_json.containsKey("printType")) {
-      printType = _json["printType"];
+    if (_json.containsKey('printType')) {
+      printType = _json['printType'];
     }
-    if (_json.containsKey("printedPageCount")) {
-      printedPageCount = _json["printedPageCount"];
+    if (_json.containsKey('printedPageCount')) {
+      printedPageCount = _json['printedPageCount'];
     }
-    if (_json.containsKey("publishedDate")) {
-      publishedDate = _json["publishedDate"];
+    if (_json.containsKey('publishedDate')) {
+      publishedDate = _json['publishedDate'];
     }
-    if (_json.containsKey("publisher")) {
-      publisher = _json["publisher"];
+    if (_json.containsKey('publisher')) {
+      publisher = _json['publisher'];
     }
-    if (_json.containsKey("ratingsCount")) {
-      ratingsCount = _json["ratingsCount"];
+    if (_json.containsKey('ratingsCount')) {
+      ratingsCount = _json['ratingsCount'];
     }
-    if (_json.containsKey("readingModes")) {
+    if (_json.containsKey('readingModes')) {
       readingModes =
-          VolumeVolumeInfoReadingModes.fromJson(_json["readingModes"]);
+          VolumeVolumeInfoReadingModes.fromJson(_json['readingModes']);
     }
-    if (_json.containsKey("samplePageCount")) {
-      samplePageCount = _json["samplePageCount"];
+    if (_json.containsKey('samplePageCount')) {
+      samplePageCount = _json['samplePageCount'];
     }
-    if (_json.containsKey("seriesInfo")) {
-      seriesInfo = Volumeseriesinfo.fromJson(_json["seriesInfo"]);
+    if (_json.containsKey('seriesInfo')) {
+      seriesInfo = Volumeseriesinfo.fromJson(_json['seriesInfo']);
     }
-    if (_json.containsKey("subtitle")) {
-      subtitle = _json["subtitle"];
+    if (_json.containsKey('subtitle')) {
+      subtitle = _json['subtitle'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -9200,89 +9199,89 @@ class VolumeVolumeInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowAnonLogging != null) {
-      _json["allowAnonLogging"] = allowAnonLogging;
+      _json['allowAnonLogging'] = allowAnonLogging;
     }
     if (authors != null) {
-      _json["authors"] = authors;
+      _json['authors'] = authors;
     }
     if (averageRating != null) {
-      _json["averageRating"] = averageRating;
+      _json['averageRating'] = averageRating;
     }
     if (canonicalVolumeLink != null) {
-      _json["canonicalVolumeLink"] = canonicalVolumeLink;
+      _json['canonicalVolumeLink'] = canonicalVolumeLink;
     }
     if (categories != null) {
-      _json["categories"] = categories;
+      _json['categories'] = categories;
     }
     if (comicsContent != null) {
-      _json["comicsContent"] = comicsContent;
+      _json['comicsContent'] = comicsContent;
     }
     if (contentVersion != null) {
-      _json["contentVersion"] = contentVersion;
+      _json['contentVersion'] = contentVersion;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (dimensions != null) {
-      _json["dimensions"] = dimensions.toJson();
+      _json['dimensions'] = dimensions.toJson();
     }
     if (imageLinks != null) {
-      _json["imageLinks"] = imageLinks.toJson();
+      _json['imageLinks'] = imageLinks.toJson();
     }
     if (industryIdentifiers != null) {
-      _json["industryIdentifiers"] =
+      _json['industryIdentifiers'] =
           industryIdentifiers.map((value) => value.toJson()).toList();
     }
     if (infoLink != null) {
-      _json["infoLink"] = infoLink;
+      _json['infoLink'] = infoLink;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (mainCategory != null) {
-      _json["mainCategory"] = mainCategory;
+      _json['mainCategory'] = mainCategory;
     }
     if (maturityRating != null) {
-      _json["maturityRating"] = maturityRating;
+      _json['maturityRating'] = maturityRating;
     }
     if (pageCount != null) {
-      _json["pageCount"] = pageCount;
+      _json['pageCount'] = pageCount;
     }
     if (panelizationSummary != null) {
-      _json["panelizationSummary"] = panelizationSummary.toJson();
+      _json['panelizationSummary'] = panelizationSummary.toJson();
     }
     if (previewLink != null) {
-      _json["previewLink"] = previewLink;
+      _json['previewLink'] = previewLink;
     }
     if (printType != null) {
-      _json["printType"] = printType;
+      _json['printType'] = printType;
     }
     if (printedPageCount != null) {
-      _json["printedPageCount"] = printedPageCount;
+      _json['printedPageCount'] = printedPageCount;
     }
     if (publishedDate != null) {
-      _json["publishedDate"] = publishedDate;
+      _json['publishedDate'] = publishedDate;
     }
     if (publisher != null) {
-      _json["publisher"] = publisher;
+      _json['publisher'] = publisher;
     }
     if (ratingsCount != null) {
-      _json["ratingsCount"] = ratingsCount;
+      _json['ratingsCount'] = ratingsCount;
     }
     if (readingModes != null) {
-      _json["readingModes"] = readingModes.toJson();
+      _json['readingModes'] = readingModes.toJson();
     }
     if (samplePageCount != null) {
-      _json["samplePageCount"] = samplePageCount;
+      _json['samplePageCount'] = samplePageCount;
     }
     if (seriesInfo != null) {
-      _json["seriesInfo"] = seriesInfo.toJson();
+      _json['seriesInfo'] = seriesInfo.toJson();
     }
     if (subtitle != null) {
-      _json["subtitle"] = subtitle;
+      _json['subtitle'] = subtitle;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -9332,39 +9331,39 @@ class Volume {
   Volume();
 
   Volume.fromJson(core.Map _json) {
-    if (_json.containsKey("accessInfo")) {
-      accessInfo = VolumeAccessInfo.fromJson(_json["accessInfo"]);
+    if (_json.containsKey('accessInfo')) {
+      accessInfo = VolumeAccessInfo.fromJson(_json['accessInfo']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("layerInfo")) {
-      layerInfo = VolumeLayerInfo.fromJson(_json["layerInfo"]);
+    if (_json.containsKey('layerInfo')) {
+      layerInfo = VolumeLayerInfo.fromJson(_json['layerInfo']);
     }
-    if (_json.containsKey("recommendedInfo")) {
+    if (_json.containsKey('recommendedInfo')) {
       recommendedInfo =
-          VolumeRecommendedInfo.fromJson(_json["recommendedInfo"]);
+          VolumeRecommendedInfo.fromJson(_json['recommendedInfo']);
     }
-    if (_json.containsKey("saleInfo")) {
-      saleInfo = VolumeSaleInfo.fromJson(_json["saleInfo"]);
+    if (_json.containsKey('saleInfo')) {
+      saleInfo = VolumeSaleInfo.fromJson(_json['saleInfo']);
     }
-    if (_json.containsKey("searchInfo")) {
-      searchInfo = VolumeSearchInfo.fromJson(_json["searchInfo"]);
+    if (_json.containsKey('searchInfo')) {
+      searchInfo = VolumeSearchInfo.fromJson(_json['searchInfo']);
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("userInfo")) {
-      userInfo = VolumeUserInfo.fromJson(_json["userInfo"]);
+    if (_json.containsKey('userInfo')) {
+      userInfo = VolumeUserInfo.fromJson(_json['userInfo']);
     }
-    if (_json.containsKey("volumeInfo")) {
-      volumeInfo = VolumeVolumeInfo.fromJson(_json["volumeInfo"]);
+    if (_json.containsKey('volumeInfo')) {
+      volumeInfo = VolumeVolumeInfo.fromJson(_json['volumeInfo']);
     }
   }
 
@@ -9372,37 +9371,37 @@ class Volume {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessInfo != null) {
-      _json["accessInfo"] = accessInfo.toJson();
+      _json['accessInfo'] = accessInfo.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (layerInfo != null) {
-      _json["layerInfo"] = layerInfo.toJson();
+      _json['layerInfo'] = layerInfo.toJson();
     }
     if (recommendedInfo != null) {
-      _json["recommendedInfo"] = recommendedInfo.toJson();
+      _json['recommendedInfo'] = recommendedInfo.toJson();
     }
     if (saleInfo != null) {
-      _json["saleInfo"] = saleInfo.toJson();
+      _json['saleInfo'] = saleInfo.toJson();
     }
     if (searchInfo != null) {
-      _json["searchInfo"] = searchInfo.toJson();
+      _json['searchInfo'] = searchInfo.toJson();
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (userInfo != null) {
-      _json["userInfo"] = userInfo.toJson();
+      _json['userInfo'] = userInfo.toJson();
     }
     if (volumeInfo != null) {
-      _json["volumeInfo"] = volumeInfo.toJson();
+      _json['volumeInfo'] = volumeInfo.toJson();
     }
     return _json;
   }
@@ -9419,16 +9418,16 @@ class Volume2 {
   Volume2();
 
   Volume2.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Volume>((value) => Volume.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -9436,13 +9435,13 @@ class Volume2 {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -9465,17 +9464,17 @@ class VolumeannotationContentRanges {
   VolumeannotationContentRanges();
 
   VolumeannotationContentRanges.fromJson(core.Map _json) {
-    if (_json.containsKey("cfiRange")) {
-      cfiRange = BooksAnnotationsRange.fromJson(_json["cfiRange"]);
+    if (_json.containsKey('cfiRange')) {
+      cfiRange = BooksAnnotationsRange.fromJson(_json['cfiRange']);
     }
-    if (_json.containsKey("contentVersion")) {
-      contentVersion = _json["contentVersion"];
+    if (_json.containsKey('contentVersion')) {
+      contentVersion = _json['contentVersion'];
     }
-    if (_json.containsKey("gbImageRange")) {
-      gbImageRange = BooksAnnotationsRange.fromJson(_json["gbImageRange"]);
+    if (_json.containsKey('gbImageRange')) {
+      gbImageRange = BooksAnnotationsRange.fromJson(_json['gbImageRange']);
     }
-    if (_json.containsKey("gbTextRange")) {
-      gbTextRange = BooksAnnotationsRange.fromJson(_json["gbTextRange"]);
+    if (_json.containsKey('gbTextRange')) {
+      gbTextRange = BooksAnnotationsRange.fromJson(_json['gbTextRange']);
     }
   }
 
@@ -9483,16 +9482,16 @@ class VolumeannotationContentRanges {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cfiRange != null) {
-      _json["cfiRange"] = cfiRange.toJson();
+      _json['cfiRange'] = cfiRange.toJson();
     }
     if (contentVersion != null) {
-      _json["contentVersion"] = contentVersion;
+      _json['contentVersion'] = contentVersion;
     }
     if (gbImageRange != null) {
-      _json["gbImageRange"] = gbImageRange.toJson();
+      _json['gbImageRange'] = gbImageRange.toJson();
     }
     if (gbTextRange != null) {
-      _json["gbTextRange"] = gbTextRange.toJson();
+      _json['gbTextRange'] = gbTextRange.toJson();
     }
     return _json;
   }
@@ -9545,48 +9544,48 @@ class Volumeannotation {
   Volumeannotation();
 
   Volumeannotation.fromJson(core.Map _json) {
-    if (_json.containsKey("annotationDataId")) {
-      annotationDataId = _json["annotationDataId"];
+    if (_json.containsKey('annotationDataId')) {
+      annotationDataId = _json['annotationDataId'];
     }
-    if (_json.containsKey("annotationDataLink")) {
-      annotationDataLink = _json["annotationDataLink"];
+    if (_json.containsKey('annotationDataLink')) {
+      annotationDataLink = _json['annotationDataLink'];
     }
-    if (_json.containsKey("annotationType")) {
-      annotationType = _json["annotationType"];
+    if (_json.containsKey('annotationType')) {
+      annotationType = _json['annotationType'];
     }
-    if (_json.containsKey("contentRanges")) {
+    if (_json.containsKey('contentRanges')) {
       contentRanges =
-          VolumeannotationContentRanges.fromJson(_json["contentRanges"]);
+          VolumeannotationContentRanges.fromJson(_json['contentRanges']);
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("layerId")) {
-      layerId = _json["layerId"];
+    if (_json.containsKey('layerId')) {
+      layerId = _json['layerId'];
     }
-    if (_json.containsKey("pageIds")) {
-      pageIds = (_json["pageIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('pageIds')) {
+      pageIds = (_json['pageIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("selectedText")) {
-      selectedText = _json["selectedText"];
+    if (_json.containsKey('selectedText')) {
+      selectedText = _json['selectedText'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -9594,46 +9593,46 @@ class Volumeannotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationDataId != null) {
-      _json["annotationDataId"] = annotationDataId;
+      _json['annotationDataId'] = annotationDataId;
     }
     if (annotationDataLink != null) {
-      _json["annotationDataLink"] = annotationDataLink;
+      _json['annotationDataLink'] = annotationDataLink;
     }
     if (annotationType != null) {
-      _json["annotationType"] = annotationType;
+      _json['annotationType'] = annotationType;
     }
     if (contentRanges != null) {
-      _json["contentRanges"] = contentRanges.toJson();
+      _json['contentRanges'] = contentRanges.toJson();
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (layerId != null) {
-      _json["layerId"] = layerId;
+      _json['layerId'] = layerId;
     }
     if (pageIds != null) {
-      _json["pageIds"] = pageIds;
+      _json['pageIds'] = pageIds;
     }
     if (selectedText != null) {
-      _json["selectedText"] = selectedText;
+      _json['selectedText'] = selectedText;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -9662,22 +9661,22 @@ class Volumeannotations {
   Volumeannotations();
 
   Volumeannotations.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Volumeannotation>((value) => Volumeannotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalItems")) {
-      totalItems = _json["totalItems"];
+    if (_json.containsKey('totalItems')) {
+      totalItems = _json['totalItems'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -9685,19 +9684,19 @@ class Volumeannotations {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalItems != null) {
-      _json["totalItems"] = totalItems;
+      _json['totalItems'] = totalItems;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -9717,16 +9716,16 @@ class Volumes {
   Volumes();
 
   Volumes.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Volume>((value) => Volume.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("totalItems")) {
-      totalItems = _json["totalItems"];
+    if (_json.containsKey('totalItems')) {
+      totalItems = _json['totalItems'];
     }
   }
 
@@ -9734,13 +9733,13 @@ class Volumes {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (totalItems != null) {
-      _json["totalItems"] = totalItems;
+      _json['totalItems'] = totalItems;
     }
     return _json;
   }
@@ -9753,11 +9752,11 @@ class VolumeseriesinfoVolumeSeriesIssue {
   VolumeseriesinfoVolumeSeriesIssue();
 
   VolumeseriesinfoVolumeSeriesIssue.fromJson(core.Map _json) {
-    if (_json.containsKey("issueDisplayNumber")) {
-      issueDisplayNumber = _json["issueDisplayNumber"];
+    if (_json.containsKey('issueDisplayNumber')) {
+      issueDisplayNumber = _json['issueDisplayNumber'];
     }
-    if (_json.containsKey("issueOrderNumber")) {
-      issueOrderNumber = _json["issueOrderNumber"];
+    if (_json.containsKey('issueOrderNumber')) {
+      issueOrderNumber = _json['issueOrderNumber'];
     }
   }
 
@@ -9765,10 +9764,10 @@ class VolumeseriesinfoVolumeSeriesIssue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (issueDisplayNumber != null) {
-      _json["issueDisplayNumber"] = issueDisplayNumber;
+      _json['issueDisplayNumber'] = issueDisplayNumber;
     }
     if (issueOrderNumber != null) {
-      _json["issueOrderNumber"] = issueOrderNumber;
+      _json['issueOrderNumber'] = issueOrderNumber;
     }
     return _json;
   }
@@ -9791,20 +9790,20 @@ class VolumeseriesinfoVolumeSeries {
   VolumeseriesinfoVolumeSeries();
 
   VolumeseriesinfoVolumeSeries.fromJson(core.Map _json) {
-    if (_json.containsKey("issue")) {
-      issue = (_json["issue"] as core.List)
+    if (_json.containsKey('issue')) {
+      issue = (_json['issue'] as core.List)
           .map<VolumeseriesinfoVolumeSeriesIssue>(
               (value) => VolumeseriesinfoVolumeSeriesIssue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("orderNumber")) {
-      orderNumber = _json["orderNumber"];
+    if (_json.containsKey('orderNumber')) {
+      orderNumber = _json['orderNumber'];
     }
-    if (_json.containsKey("seriesBookType")) {
-      seriesBookType = _json["seriesBookType"];
+    if (_json.containsKey('seriesBookType')) {
+      seriesBookType = _json['seriesBookType'];
     }
-    if (_json.containsKey("seriesId")) {
-      seriesId = _json["seriesId"];
+    if (_json.containsKey('seriesId')) {
+      seriesId = _json['seriesId'];
     }
   }
 
@@ -9812,16 +9811,16 @@ class VolumeseriesinfoVolumeSeries {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (issue != null) {
-      _json["issue"] = issue.map((value) => value.toJson()).toList();
+      _json['issue'] = issue.map((value) => value.toJson()).toList();
     }
     if (orderNumber != null) {
-      _json["orderNumber"] = orderNumber;
+      _json['orderNumber'] = orderNumber;
     }
     if (seriesBookType != null) {
-      _json["seriesBookType"] = seriesBookType;
+      _json['seriesBookType'] = seriesBookType;
     }
     if (seriesId != null) {
-      _json["seriesId"] = seriesId;
+      _json['seriesId'] = seriesId;
     }
     return _json;
   }
@@ -9842,17 +9841,17 @@ class Volumeseriesinfo {
   Volumeseriesinfo();
 
   Volumeseriesinfo.fromJson(core.Map _json) {
-    if (_json.containsKey("bookDisplayNumber")) {
-      bookDisplayNumber = _json["bookDisplayNumber"];
+    if (_json.containsKey('bookDisplayNumber')) {
+      bookDisplayNumber = _json['bookDisplayNumber'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("shortSeriesBookTitle")) {
-      shortSeriesBookTitle = _json["shortSeriesBookTitle"];
+    if (_json.containsKey('shortSeriesBookTitle')) {
+      shortSeriesBookTitle = _json['shortSeriesBookTitle'];
     }
-    if (_json.containsKey("volumeSeries")) {
-      volumeSeries = (_json["volumeSeries"] as core.List)
+    if (_json.containsKey('volumeSeries')) {
+      volumeSeries = (_json['volumeSeries'] as core.List)
           .map<VolumeseriesinfoVolumeSeries>(
               (value) => VolumeseriesinfoVolumeSeries.fromJson(value))
           .toList();
@@ -9863,16 +9862,16 @@ class Volumeseriesinfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bookDisplayNumber != null) {
-      _json["bookDisplayNumber"] = bookDisplayNumber;
+      _json['bookDisplayNumber'] = bookDisplayNumber;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (shortSeriesBookTitle != null) {
-      _json["shortSeriesBookTitle"] = shortSeriesBookTitle;
+      _json['shortSeriesBookTitle'] = shortSeriesBookTitle;
     }
     if (volumeSeries != null) {
-      _json["volumeSeries"] =
+      _json['volumeSeries'] =
           volumeSeries.map((value) => value.toJson()).toList();
     }
     return _json;

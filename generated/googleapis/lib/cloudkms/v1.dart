@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,19 +38,19 @@ const core.String USER_AGENT = 'dart-api-client cloudkms/v1';
 class CloudkmsApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and manage your keys and secrets stored in Cloud Key Management
   /// Service
-  static const CloudkmsScope = "https://www.googleapis.com/auth/cloudkms";
+  static const CloudkmsScope = 'https://www.googleapis.com/auth/cloudkms';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   CloudkmsApi(http.Client client,
-      {core.String rootUrl = "https://cloudkms.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://cloudkms.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -103,17 +102,17 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -161,19 +160,19 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -181,7 +180,7 @@ class ProjectsLocationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -243,13 +242,13 @@ class ProjectsLocationsKeyRingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (keyRingId != null) {
-      _queryParams["keyRingId"] = [keyRingId];
+      _queryParams['keyRingId'] = [keyRingId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -257,7 +256,7 @@ class ProjectsLocationsKeyRingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -296,17 +295,17 @@ class ProjectsLocationsKeyRingsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -357,15 +356,15 @@ class ProjectsLocationsKeyRingsResourceApi {
     core.String _body;
 
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if (options_requestedPolicyVersion != null) {
-      _queryParams["options.requestedPolicyVersion"] = [
-        "${options_requestedPolicyVersion}"
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -374,7 +373,7 @@ class ProjectsLocationsKeyRingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -435,22 +434,22 @@ class ProjectsLocationsKeyRingsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -458,7 +457,7 @@ class ProjectsLocationsKeyRingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -507,10 +506,10 @@ class ProjectsLocationsKeyRingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -519,7 +518,7 @@ class ProjectsLocationsKeyRingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -570,10 +569,10 @@ class ProjectsLocationsKeyRingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -582,7 +581,7 @@ class ProjectsLocationsKeyRingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -651,18 +650,18 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (skipInitialVersionCreation != null) {
-      _queryParams["skipInitialVersionCreation"] = [
-        "${skipInitialVersionCreation}"
+      _queryParams['skipInitialVersionCreation'] = [
+        '${skipInitialVersionCreation}'
       ];
     }
     if (cryptoKeyId != null) {
-      _queryParams["cryptoKeyId"] = [cryptoKeyId];
+      _queryParams['cryptoKeyId'] = [cryptoKeyId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -671,7 +670,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -719,17 +718,17 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':decrypt';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -778,17 +777,17 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':encrypt';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -829,17 +828,17 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -891,15 +890,15 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     core.String _body;
 
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if (options_requestedPolicyVersion != null) {
-      _queryParams["options.requestedPolicyVersion"] = [
-        "${options_requestedPolicyVersion}"
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -908,7 +907,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -978,25 +977,25 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (versionView != null) {
-      _queryParams["versionView"] = [versionView];
+      _queryParams['versionView'] = [versionView];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1005,7 +1004,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1055,20 +1054,20 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1118,10 +1117,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1130,7 +1129,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1182,10 +1181,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1194,7 +1193,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1241,10 +1240,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1253,7 +1252,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1310,10 +1309,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1322,7 +1321,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1371,10 +1370,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1383,7 +1382,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1431,10 +1430,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1443,7 +1442,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1494,17 +1493,17 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':destroy';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1544,17 +1543,17 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1595,10 +1594,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1606,7 +1605,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1654,10 +1653,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1666,7 +1665,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1737,25 +1736,25 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1764,7 +1763,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1818,20 +1817,20 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1879,17 +1878,17 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':restore';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1947,13 +1946,13 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (importJobId != null) {
-      _queryParams["importJobId"] = [importJobId];
+      _queryParams['importJobId'] = [importJobId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1962,7 +1961,7 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2002,17 +2001,17 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2064,15 +2063,15 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
     core.String _body;
 
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if (options_requestedPolicyVersion != null) {
-      _queryParams["options.requestedPolicyVersion"] = [
-        "${options_requestedPolicyVersion}"
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2081,7 +2080,7 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2142,22 +2141,22 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2166,7 +2165,7 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2216,10 +2215,10 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2228,7 +2227,7 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2280,10 +2279,10 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2292,7 +2291,7 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2313,7 +2312,7 @@ class AsymmetricDecryptRequest {
 
   set ciphertextAsBytes(core.List<core.int> _bytes) {
     ciphertext =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Optional. An optional CRC32C checksum of the
@@ -2335,11 +2334,11 @@ class AsymmetricDecryptRequest {
   AsymmetricDecryptRequest();
 
   AsymmetricDecryptRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("ciphertext")) {
-      ciphertext = _json["ciphertext"];
+    if (_json.containsKey('ciphertext')) {
+      ciphertext = _json['ciphertext'];
     }
-    if (_json.containsKey("ciphertextCrc32c")) {
-      ciphertextCrc32c = _json["ciphertextCrc32c"];
+    if (_json.containsKey('ciphertextCrc32c')) {
+      ciphertextCrc32c = _json['ciphertextCrc32c'];
     }
   }
 
@@ -2347,10 +2346,10 @@ class AsymmetricDecryptRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ciphertext != null) {
-      _json["ciphertext"] = ciphertext;
+      _json['ciphertext'] = ciphertext;
     }
     if (ciphertextCrc32c != null) {
-      _json["ciphertextCrc32c"] = ciphertextCrc32c;
+      _json['ciphertextCrc32c'] = ciphertextCrc32c;
     }
     return _json;
   }
@@ -2364,7 +2363,7 @@ class AsymmetricDecryptResponse {
 
   set plaintextAsBytes(core.List<core.int> _bytes) {
     plaintext =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field. A CRC32C checksum of the returned
@@ -2394,14 +2393,14 @@ class AsymmetricDecryptResponse {
   AsymmetricDecryptResponse();
 
   AsymmetricDecryptResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("plaintext")) {
-      plaintext = _json["plaintext"];
+    if (_json.containsKey('plaintext')) {
+      plaintext = _json['plaintext'];
     }
-    if (_json.containsKey("plaintextCrc32c")) {
-      plaintextCrc32c = _json["plaintextCrc32c"];
+    if (_json.containsKey('plaintextCrc32c')) {
+      plaintextCrc32c = _json['plaintextCrc32c'];
     }
-    if (_json.containsKey("verifiedCiphertextCrc32c")) {
-      verifiedCiphertextCrc32c = _json["verifiedCiphertextCrc32c"];
+    if (_json.containsKey('verifiedCiphertextCrc32c')) {
+      verifiedCiphertextCrc32c = _json['verifiedCiphertextCrc32c'];
     }
   }
 
@@ -2409,13 +2408,13 @@ class AsymmetricDecryptResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (plaintext != null) {
-      _json["plaintext"] = plaintext;
+      _json['plaintext'] = plaintext;
     }
     if (plaintextCrc32c != null) {
-      _json["plaintextCrc32c"] = plaintextCrc32c;
+      _json['plaintextCrc32c'] = plaintextCrc32c;
     }
     if (verifiedCiphertextCrc32c != null) {
-      _json["verifiedCiphertextCrc32c"] = verifiedCiphertextCrc32c;
+      _json['verifiedCiphertextCrc32c'] = verifiedCiphertextCrc32c;
     }
     return _json;
   }
@@ -2445,11 +2444,11 @@ class AsymmetricSignRequest {
   AsymmetricSignRequest();
 
   AsymmetricSignRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("digest")) {
-      digest = Digest.fromJson(_json["digest"]);
+    if (_json.containsKey('digest')) {
+      digest = Digest.fromJson(_json['digest']);
     }
-    if (_json.containsKey("digestCrc32c")) {
-      digestCrc32c = _json["digestCrc32c"];
+    if (_json.containsKey('digestCrc32c')) {
+      digestCrc32c = _json['digestCrc32c'];
     }
   }
 
@@ -2457,10 +2456,10 @@ class AsymmetricSignRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (digest != null) {
-      _json["digest"] = digest.toJson();
+      _json['digest'] = digest.toJson();
     }
     if (digestCrc32c != null) {
-      _json["digestCrc32c"] = digestCrc32c;
+      _json['digestCrc32c'] = digestCrc32c;
     }
     return _json;
   }
@@ -2479,7 +2478,7 @@ class AsymmetricSignResponse {
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field. A CRC32C checksum of the returned
@@ -2508,17 +2507,17 @@ class AsymmetricSignResponse {
   AsymmetricSignResponse();
 
   AsymmetricSignResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("signature")) {
-      signature = _json["signature"];
+    if (_json.containsKey('signature')) {
+      signature = _json['signature'];
     }
-    if (_json.containsKey("signatureCrc32c")) {
-      signatureCrc32c = _json["signatureCrc32c"];
+    if (_json.containsKey('signatureCrc32c')) {
+      signatureCrc32c = _json['signatureCrc32c'];
     }
-    if (_json.containsKey("verifiedDigestCrc32c")) {
-      verifiedDigestCrc32c = _json["verifiedDigestCrc32c"];
+    if (_json.containsKey('verifiedDigestCrc32c')) {
+      verifiedDigestCrc32c = _json['verifiedDigestCrc32c'];
     }
   }
 
@@ -2526,16 +2525,16 @@ class AsymmetricSignResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (signature != null) {
-      _json["signature"] = signature;
+      _json['signature'] = signature;
     }
     if (signatureCrc32c != null) {
-      _json["signatureCrc32c"] = signatureCrc32c;
+      _json['signatureCrc32c'] = signatureCrc32c;
     }
     if (verifiedDigestCrc32c != null) {
-      _json["verifiedDigestCrc32c"] = verifiedDigestCrc32c;
+      _json['verifiedDigestCrc32c'] = verifiedDigestCrc32c;
     }
     return _json;
   }
@@ -2569,13 +2568,13 @@ class AuditConfig {
   AuditConfig();
 
   AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
+    if (_json.containsKey('auditLogConfigs')) {
+      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
           .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
+    if (_json.containsKey('service')) {
+      service = _json['service'];
     }
   }
 
@@ -2583,11 +2582,11 @@ class AuditConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] =
+      _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
     }
     if (service != null) {
-      _json["service"] = service;
+      _json['service'] = service;
     }
     return _json;
   }
@@ -2614,12 +2613,12 @@ class AuditLogConfig {
   AuditLogConfig();
 
   AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("exemptedMembers")) {
+    if (_json.containsKey('exemptedMembers')) {
       exemptedMembers =
-          (_json["exemptedMembers"] as core.List).cast<core.String>();
+          (_json['exemptedMembers'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
+    if (_json.containsKey('logType')) {
+      logType = _json['logType'];
     }
   }
 
@@ -2627,10 +2626,10 @@ class AuditLogConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
+      _json['exemptedMembers'] = exemptedMembers;
     }
     if (logType != null) {
-      _json["logType"] = logType;
+      _json['logType'] = logType;
     }
     return _json;
   }
@@ -2689,17 +2688,17 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
+    if (_json.containsKey('bindingId')) {
+      bindingId = _json['bindingId'];
     }
-    if (_json.containsKey("condition")) {
-      condition = Expr.fromJson(_json["condition"]);
+    if (_json.containsKey('condition')) {
+      condition = Expr.fromJson(_json['condition']);
     }
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List).cast<core.String>();
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -2707,16 +2706,16 @@ class Binding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bindingId != null) {
-      _json["bindingId"] = bindingId;
+      _json['bindingId'] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     if (members != null) {
-      _json["members"] = members;
+      _json['members'] = members;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -2738,16 +2737,16 @@ class CertificateChains {
   CertificateChains();
 
   CertificateChains.fromJson(core.Map _json) {
-    if (_json.containsKey("caviumCerts")) {
-      caviumCerts = (_json["caviumCerts"] as core.List).cast<core.String>();
+    if (_json.containsKey('caviumCerts')) {
+      caviumCerts = (_json['caviumCerts'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("googleCardCerts")) {
+    if (_json.containsKey('googleCardCerts')) {
       googleCardCerts =
-          (_json["googleCardCerts"] as core.List).cast<core.String>();
+          (_json['googleCardCerts'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("googlePartitionCerts")) {
+    if (_json.containsKey('googlePartitionCerts')) {
       googlePartitionCerts =
-          (_json["googlePartitionCerts"] as core.List).cast<core.String>();
+          (_json['googlePartitionCerts'] as core.List).cast<core.String>();
     }
   }
 
@@ -2755,13 +2754,13 @@ class CertificateChains {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (caviumCerts != null) {
-      _json["caviumCerts"] = caviumCerts;
+      _json['caviumCerts'] = caviumCerts;
     }
     if (googleCardCerts != null) {
-      _json["googleCardCerts"] = googleCardCerts;
+      _json['googleCardCerts'] = googleCardCerts;
     }
     if (googlePartitionCerts != null) {
-      _json["googlePartitionCerts"] = googlePartitionCerts;
+      _json['googlePartitionCerts'] = googlePartitionCerts;
     }
     return _json;
   }
@@ -2823,30 +2822,30 @@ class CryptoKey {
   CryptoKey();
 
   CryptoKey.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("nextRotationTime")) {
-      nextRotationTime = _json["nextRotationTime"];
+    if (_json.containsKey('nextRotationTime')) {
+      nextRotationTime = _json['nextRotationTime'];
     }
-    if (_json.containsKey("primary")) {
-      primary = CryptoKeyVersion.fromJson(_json["primary"]);
+    if (_json.containsKey('primary')) {
+      primary = CryptoKeyVersion.fromJson(_json['primary']);
     }
-    if (_json.containsKey("purpose")) {
-      purpose = _json["purpose"];
+    if (_json.containsKey('purpose')) {
+      purpose = _json['purpose'];
     }
-    if (_json.containsKey("rotationPeriod")) {
-      rotationPeriod = _json["rotationPeriod"];
+    if (_json.containsKey('rotationPeriod')) {
+      rotationPeriod = _json['rotationPeriod'];
     }
-    if (_json.containsKey("versionTemplate")) {
+    if (_json.containsKey('versionTemplate')) {
       versionTemplate =
-          CryptoKeyVersionTemplate.fromJson(_json["versionTemplate"]);
+          CryptoKeyVersionTemplate.fromJson(_json['versionTemplate']);
     }
   }
 
@@ -2854,28 +2853,28 @@ class CryptoKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (nextRotationTime != null) {
-      _json["nextRotationTime"] = nextRotationTime;
+      _json['nextRotationTime'] = nextRotationTime;
     }
     if (primary != null) {
-      _json["primary"] = primary.toJson();
+      _json['primary'] = primary.toJson();
     }
     if (purpose != null) {
-      _json["purpose"] = purpose;
+      _json['purpose'] = purpose;
     }
     if (rotationPeriod != null) {
-      _json["rotationPeriod"] = rotationPeriod;
+      _json['rotationPeriod'] = rotationPeriod;
     }
     if (versionTemplate != null) {
-      _json["versionTemplate"] = versionTemplate.toJson();
+      _json['versionTemplate'] = versionTemplate.toJson();
     }
     return _json;
   }
@@ -3003,45 +3002,45 @@ class CryptoKeyVersion {
   CryptoKeyVersion();
 
   CryptoKeyVersion.fromJson(core.Map _json) {
-    if (_json.containsKey("algorithm")) {
-      algorithm = _json["algorithm"];
+    if (_json.containsKey('algorithm')) {
+      algorithm = _json['algorithm'];
     }
-    if (_json.containsKey("attestation")) {
-      attestation = KeyOperationAttestation.fromJson(_json["attestation"]);
+    if (_json.containsKey('attestation')) {
+      attestation = KeyOperationAttestation.fromJson(_json['attestation']);
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("destroyEventTime")) {
-      destroyEventTime = _json["destroyEventTime"];
+    if (_json.containsKey('destroyEventTime')) {
+      destroyEventTime = _json['destroyEventTime'];
     }
-    if (_json.containsKey("destroyTime")) {
-      destroyTime = _json["destroyTime"];
+    if (_json.containsKey('destroyTime')) {
+      destroyTime = _json['destroyTime'];
     }
-    if (_json.containsKey("externalProtectionLevelOptions")) {
+    if (_json.containsKey('externalProtectionLevelOptions')) {
       externalProtectionLevelOptions = ExternalProtectionLevelOptions.fromJson(
-          _json["externalProtectionLevelOptions"]);
+          _json['externalProtectionLevelOptions']);
     }
-    if (_json.containsKey("generateTime")) {
-      generateTime = _json["generateTime"];
+    if (_json.containsKey('generateTime')) {
+      generateTime = _json['generateTime'];
     }
-    if (_json.containsKey("importFailureReason")) {
-      importFailureReason = _json["importFailureReason"];
+    if (_json.containsKey('importFailureReason')) {
+      importFailureReason = _json['importFailureReason'];
     }
-    if (_json.containsKey("importJob")) {
-      importJob = _json["importJob"];
+    if (_json.containsKey('importJob')) {
+      importJob = _json['importJob'];
     }
-    if (_json.containsKey("importTime")) {
-      importTime = _json["importTime"];
+    if (_json.containsKey('importTime')) {
+      importTime = _json['importTime'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("protectionLevel")) {
-      protectionLevel = _json["protectionLevel"];
+    if (_json.containsKey('protectionLevel')) {
+      protectionLevel = _json['protectionLevel'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -3049,44 +3048,44 @@ class CryptoKeyVersion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (algorithm != null) {
-      _json["algorithm"] = algorithm;
+      _json['algorithm'] = algorithm;
     }
     if (attestation != null) {
-      _json["attestation"] = attestation.toJson();
+      _json['attestation'] = attestation.toJson();
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (destroyEventTime != null) {
-      _json["destroyEventTime"] = destroyEventTime;
+      _json['destroyEventTime'] = destroyEventTime;
     }
     if (destroyTime != null) {
-      _json["destroyTime"] = destroyTime;
+      _json['destroyTime'] = destroyTime;
     }
     if (externalProtectionLevelOptions != null) {
-      _json["externalProtectionLevelOptions"] =
+      _json['externalProtectionLevelOptions'] =
           externalProtectionLevelOptions.toJson();
     }
     if (generateTime != null) {
-      _json["generateTime"] = generateTime;
+      _json['generateTime'] = generateTime;
     }
     if (importFailureReason != null) {
-      _json["importFailureReason"] = importFailureReason;
+      _json['importFailureReason'] = importFailureReason;
     }
     if (importJob != null) {
-      _json["importJob"] = importJob;
+      _json['importJob'] = importJob;
     }
     if (importTime != null) {
-      _json["importTime"] = importTime;
+      _json['importTime'] = importTime;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (protectionLevel != null) {
-      _json["protectionLevel"] = protectionLevel;
+      _json['protectionLevel'] = protectionLevel;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -3147,11 +3146,11 @@ class CryptoKeyVersionTemplate {
   CryptoKeyVersionTemplate();
 
   CryptoKeyVersionTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey("algorithm")) {
-      algorithm = _json["algorithm"];
+    if (_json.containsKey('algorithm')) {
+      algorithm = _json['algorithm'];
     }
-    if (_json.containsKey("protectionLevel")) {
-      protectionLevel = _json["protectionLevel"];
+    if (_json.containsKey('protectionLevel')) {
+      protectionLevel = _json['protectionLevel'];
     }
   }
 
@@ -3159,10 +3158,10 @@ class CryptoKeyVersionTemplate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (algorithm != null) {
-      _json["algorithm"] = algorithm;
+      _json['algorithm'] = algorithm;
     }
     if (protectionLevel != null) {
-      _json["protectionLevel"] = protectionLevel;
+      _json['protectionLevel'] = protectionLevel;
     }
     return _json;
   }
@@ -3178,7 +3177,7 @@ class DecryptRequest {
 
   set additionalAuthenticatedDataAsBytes(core.List<core.int> _bytes) {
     additionalAuthenticatedData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Optional. An optional CRC32C checksum of the
@@ -3205,7 +3204,7 @@ class DecryptRequest {
 
   set ciphertextAsBytes(core.List<core.int> _bytes) {
     ciphertext =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Optional. An optional CRC32C checksum of the DecryptRequest.ciphertext. If
@@ -3226,18 +3225,18 @@ class DecryptRequest {
   DecryptRequest();
 
   DecryptRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("additionalAuthenticatedData")) {
-      additionalAuthenticatedData = _json["additionalAuthenticatedData"];
+    if (_json.containsKey('additionalAuthenticatedData')) {
+      additionalAuthenticatedData = _json['additionalAuthenticatedData'];
     }
-    if (_json.containsKey("additionalAuthenticatedDataCrc32c")) {
+    if (_json.containsKey('additionalAuthenticatedDataCrc32c')) {
       additionalAuthenticatedDataCrc32c =
-          _json["additionalAuthenticatedDataCrc32c"];
+          _json['additionalAuthenticatedDataCrc32c'];
     }
-    if (_json.containsKey("ciphertext")) {
-      ciphertext = _json["ciphertext"];
+    if (_json.containsKey('ciphertext')) {
+      ciphertext = _json['ciphertext'];
     }
-    if (_json.containsKey("ciphertextCrc32c")) {
-      ciphertextCrc32c = _json["ciphertextCrc32c"];
+    if (_json.containsKey('ciphertextCrc32c')) {
+      ciphertextCrc32c = _json['ciphertextCrc32c'];
     }
   }
 
@@ -3245,17 +3244,17 @@ class DecryptRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (additionalAuthenticatedData != null) {
-      _json["additionalAuthenticatedData"] = additionalAuthenticatedData;
+      _json['additionalAuthenticatedData'] = additionalAuthenticatedData;
     }
     if (additionalAuthenticatedDataCrc32c != null) {
-      _json["additionalAuthenticatedDataCrc32c"] =
+      _json['additionalAuthenticatedDataCrc32c'] =
           additionalAuthenticatedDataCrc32c;
     }
     if (ciphertext != null) {
-      _json["ciphertext"] = ciphertext;
+      _json['ciphertext'] = ciphertext;
     }
     if (ciphertextCrc32c != null) {
-      _json["ciphertextCrc32c"] = ciphertextCrc32c;
+      _json['ciphertextCrc32c'] = ciphertextCrc32c;
     }
     return _json;
   }
@@ -3269,7 +3268,7 @@ class DecryptResponse {
 
   set plaintextAsBytes(core.List<core.int> _bytes) {
     plaintext =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field. A CRC32C checksum of the returned
@@ -3290,11 +3289,11 @@ class DecryptResponse {
   DecryptResponse();
 
   DecryptResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("plaintext")) {
-      plaintext = _json["plaintext"];
+    if (_json.containsKey('plaintext')) {
+      plaintext = _json['plaintext'];
     }
-    if (_json.containsKey("plaintextCrc32c")) {
-      plaintextCrc32c = _json["plaintextCrc32c"];
+    if (_json.containsKey('plaintextCrc32c')) {
+      plaintextCrc32c = _json['plaintextCrc32c'];
     }
   }
 
@@ -3302,10 +3301,10 @@ class DecryptResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (plaintext != null) {
-      _json["plaintext"] = plaintext;
+      _json['plaintext'] = plaintext;
     }
     if (plaintextCrc32c != null) {
-      _json["plaintextCrc32c"] = plaintextCrc32c;
+      _json['plaintextCrc32c'] = plaintextCrc32c;
     }
     return _json;
   }
@@ -3332,7 +3331,7 @@ class Digest {
 
   set sha256AsBytes(core.List<core.int> _bytes) {
     sha256 =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A message digest produced with the SHA-384 algorithm.
@@ -3341,7 +3340,7 @@ class Digest {
 
   set sha384AsBytes(core.List<core.int> _bytes) {
     sha384 =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A message digest produced with the SHA-512 algorithm.
@@ -3350,20 +3349,20 @@ class Digest {
 
   set sha512AsBytes(core.List<core.int> _bytes) {
     sha512 =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   Digest();
 
   Digest.fromJson(core.Map _json) {
-    if (_json.containsKey("sha256")) {
-      sha256 = _json["sha256"];
+    if (_json.containsKey('sha256')) {
+      sha256 = _json['sha256'];
     }
-    if (_json.containsKey("sha384")) {
-      sha384 = _json["sha384"];
+    if (_json.containsKey('sha384')) {
+      sha384 = _json['sha384'];
     }
-    if (_json.containsKey("sha512")) {
-      sha512 = _json["sha512"];
+    if (_json.containsKey('sha512')) {
+      sha512 = _json['sha512'];
     }
   }
 
@@ -3371,13 +3370,13 @@ class Digest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sha256 != null) {
-      _json["sha256"] = sha256;
+      _json['sha256'] = sha256;
     }
     if (sha384 != null) {
-      _json["sha384"] = sha384;
+      _json['sha384'] = sha384;
     }
     if (sha512 != null) {
-      _json["sha512"] = sha512;
+      _json['sha512'] = sha512;
     }
     return _json;
   }
@@ -3397,7 +3396,7 @@ class EncryptRequest {
 
   set additionalAuthenticatedDataAsBytes(core.List<core.int> _bytes) {
     additionalAuthenticatedData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Optional. An optional CRC32C checksum of the
@@ -3426,7 +3425,7 @@ class EncryptRequest {
 
   set plaintextAsBytes(core.List<core.int> _bytes) {
     plaintext =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Optional. An optional CRC32C checksum of the EncryptRequest.plaintext. If
@@ -3447,18 +3446,18 @@ class EncryptRequest {
   EncryptRequest();
 
   EncryptRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("additionalAuthenticatedData")) {
-      additionalAuthenticatedData = _json["additionalAuthenticatedData"];
+    if (_json.containsKey('additionalAuthenticatedData')) {
+      additionalAuthenticatedData = _json['additionalAuthenticatedData'];
     }
-    if (_json.containsKey("additionalAuthenticatedDataCrc32c")) {
+    if (_json.containsKey('additionalAuthenticatedDataCrc32c')) {
       additionalAuthenticatedDataCrc32c =
-          _json["additionalAuthenticatedDataCrc32c"];
+          _json['additionalAuthenticatedDataCrc32c'];
     }
-    if (_json.containsKey("plaintext")) {
-      plaintext = _json["plaintext"];
+    if (_json.containsKey('plaintext')) {
+      plaintext = _json['plaintext'];
     }
-    if (_json.containsKey("plaintextCrc32c")) {
-      plaintextCrc32c = _json["plaintextCrc32c"];
+    if (_json.containsKey('plaintextCrc32c')) {
+      plaintextCrc32c = _json['plaintextCrc32c'];
     }
   }
 
@@ -3466,17 +3465,17 @@ class EncryptRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (additionalAuthenticatedData != null) {
-      _json["additionalAuthenticatedData"] = additionalAuthenticatedData;
+      _json['additionalAuthenticatedData'] = additionalAuthenticatedData;
     }
     if (additionalAuthenticatedDataCrc32c != null) {
-      _json["additionalAuthenticatedDataCrc32c"] =
+      _json['additionalAuthenticatedDataCrc32c'] =
           additionalAuthenticatedDataCrc32c;
     }
     if (plaintext != null) {
-      _json["plaintext"] = plaintext;
+      _json['plaintext'] = plaintext;
     }
     if (plaintextCrc32c != null) {
-      _json["plaintextCrc32c"] = plaintextCrc32c;
+      _json['plaintextCrc32c'] = plaintextCrc32c;
     }
     return _json;
   }
@@ -3491,7 +3490,7 @@ class EncryptResponse {
 
   set ciphertextAsBytes(core.List<core.int> _bytes) {
     ciphertext =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field. A CRC32C checksum of the returned
@@ -3535,21 +3534,21 @@ class EncryptResponse {
   EncryptResponse();
 
   EncryptResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("ciphertext")) {
-      ciphertext = _json["ciphertext"];
+    if (_json.containsKey('ciphertext')) {
+      ciphertext = _json['ciphertext'];
     }
-    if (_json.containsKey("ciphertextCrc32c")) {
-      ciphertextCrc32c = _json["ciphertextCrc32c"];
+    if (_json.containsKey('ciphertextCrc32c')) {
+      ciphertextCrc32c = _json['ciphertextCrc32c'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("verifiedAdditionalAuthenticatedDataCrc32c")) {
+    if (_json.containsKey('verifiedAdditionalAuthenticatedDataCrc32c')) {
       verifiedAdditionalAuthenticatedDataCrc32c =
-          _json["verifiedAdditionalAuthenticatedDataCrc32c"];
+          _json['verifiedAdditionalAuthenticatedDataCrc32c'];
     }
-    if (_json.containsKey("verifiedPlaintextCrc32c")) {
-      verifiedPlaintextCrc32c = _json["verifiedPlaintextCrc32c"];
+    if (_json.containsKey('verifiedPlaintextCrc32c')) {
+      verifiedPlaintextCrc32c = _json['verifiedPlaintextCrc32c'];
     }
   }
 
@@ -3557,20 +3556,20 @@ class EncryptResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ciphertext != null) {
-      _json["ciphertext"] = ciphertext;
+      _json['ciphertext'] = ciphertext;
     }
     if (ciphertextCrc32c != null) {
-      _json["ciphertextCrc32c"] = ciphertextCrc32c;
+      _json['ciphertextCrc32c'] = ciphertextCrc32c;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (verifiedAdditionalAuthenticatedDataCrc32c != null) {
-      _json["verifiedAdditionalAuthenticatedDataCrc32c"] =
+      _json['verifiedAdditionalAuthenticatedDataCrc32c'] =
           verifiedAdditionalAuthenticatedDataCrc32c;
     }
     if (verifiedPlaintextCrc32c != null) {
-      _json["verifiedPlaintextCrc32c"] = verifiedPlaintextCrc32c;
+      _json['verifiedPlaintextCrc32c'] = verifiedPlaintextCrc32c;
     }
     return _json;
   }
@@ -3612,17 +3611,17 @@ class Expr {
   Expr();
 
   Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
+    if (_json.containsKey('expression')) {
+      expression = _json['expression'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -3630,16 +3629,16 @@ class Expr {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (expression != null) {
-      _json["expression"] = expression;
+      _json['expression'] = expression;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -3655,8 +3654,8 @@ class ExternalProtectionLevelOptions {
   ExternalProtectionLevelOptions();
 
   ExternalProtectionLevelOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("externalKeyUri")) {
-      externalKeyUri = _json["externalKeyUri"];
+    if (_json.containsKey('externalKeyUri')) {
+      externalKeyUri = _json['externalKeyUri'];
     }
   }
 
@@ -3664,7 +3663,7 @@ class ExternalProtectionLevelOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (externalKeyUri != null) {
-      _json["externalKeyUri"] = externalKeyUri;
+      _json['externalKeyUri'] = externalKeyUri;
     }
     return _json;
   }
@@ -3730,20 +3729,20 @@ class ImportCryptoKeyVersionRequest {
 
   set rsaAesWrappedKeyAsBytes(core.List<core.int> _bytes) {
     rsaAesWrappedKey =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   ImportCryptoKeyVersionRequest();
 
   ImportCryptoKeyVersionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("algorithm")) {
-      algorithm = _json["algorithm"];
+    if (_json.containsKey('algorithm')) {
+      algorithm = _json['algorithm'];
     }
-    if (_json.containsKey("importJob")) {
-      importJob = _json["importJob"];
+    if (_json.containsKey('importJob')) {
+      importJob = _json['importJob'];
     }
-    if (_json.containsKey("rsaAesWrappedKey")) {
-      rsaAesWrappedKey = _json["rsaAesWrappedKey"];
+    if (_json.containsKey('rsaAesWrappedKey')) {
+      rsaAesWrappedKey = _json['rsaAesWrappedKey'];
     }
   }
 
@@ -3751,13 +3750,13 @@ class ImportCryptoKeyVersionRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (algorithm != null) {
-      _json["algorithm"] = algorithm;
+      _json['algorithm'] = algorithm;
     }
     if (importJob != null) {
-      _json["importJob"] = importJob;
+      _json['importJob'] = importJob;
     }
     if (rsaAesWrappedKey != null) {
-      _json["rsaAesWrappedKey"] = rsaAesWrappedKey;
+      _json['rsaAesWrappedKey'] = rsaAesWrappedKey;
     }
     return _json;
   }
@@ -3853,35 +3852,35 @@ class ImportJob {
   ImportJob();
 
   ImportJob.fromJson(core.Map _json) {
-    if (_json.containsKey("attestation")) {
-      attestation = KeyOperationAttestation.fromJson(_json["attestation"]);
+    if (_json.containsKey('attestation')) {
+      attestation = KeyOperationAttestation.fromJson(_json['attestation']);
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("expireEventTime")) {
-      expireEventTime = _json["expireEventTime"];
+    if (_json.containsKey('expireEventTime')) {
+      expireEventTime = _json['expireEventTime'];
     }
-    if (_json.containsKey("expireTime")) {
-      expireTime = _json["expireTime"];
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'];
     }
-    if (_json.containsKey("generateTime")) {
-      generateTime = _json["generateTime"];
+    if (_json.containsKey('generateTime')) {
+      generateTime = _json['generateTime'];
     }
-    if (_json.containsKey("importMethod")) {
-      importMethod = _json["importMethod"];
+    if (_json.containsKey('importMethod')) {
+      importMethod = _json['importMethod'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("protectionLevel")) {
-      protectionLevel = _json["protectionLevel"];
+    if (_json.containsKey('protectionLevel')) {
+      protectionLevel = _json['protectionLevel'];
     }
-    if (_json.containsKey("publicKey")) {
-      publicKey = WrappingPublicKey.fromJson(_json["publicKey"]);
+    if (_json.containsKey('publicKey')) {
+      publicKey = WrappingPublicKey.fromJson(_json['publicKey']);
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -3889,34 +3888,34 @@ class ImportJob {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attestation != null) {
-      _json["attestation"] = attestation.toJson();
+      _json['attestation'] = attestation.toJson();
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (expireEventTime != null) {
-      _json["expireEventTime"] = expireEventTime;
+      _json['expireEventTime'] = expireEventTime;
     }
     if (expireTime != null) {
-      _json["expireTime"] = expireTime;
+      _json['expireTime'] = expireTime;
     }
     if (generateTime != null) {
-      _json["generateTime"] = generateTime;
+      _json['generateTime'] = generateTime;
     }
     if (importMethod != null) {
-      _json["importMethod"] = importMethod;
+      _json['importMethod'] = importMethod;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (protectionLevel != null) {
-      _json["protectionLevel"] = protectionLevel;
+      _json['protectionLevel'] = protectionLevel;
     }
     if (publicKey != null) {
-      _json["publicKey"] = publicKey.toJson();
+      _json['publicKey'] = publicKey.toJson();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -3936,7 +3935,7 @@ class KeyOperationAttestation {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Output only. The format of the attestation data.
@@ -3952,14 +3951,14 @@ class KeyOperationAttestation {
   KeyOperationAttestation();
 
   KeyOperationAttestation.fromJson(core.Map _json) {
-    if (_json.containsKey("certChains")) {
-      certChains = CertificateChains.fromJson(_json["certChains"]);
+    if (_json.containsKey('certChains')) {
+      certChains = CertificateChains.fromJson(_json['certChains']);
     }
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("format")) {
-      format = _json["format"];
+    if (_json.containsKey('format')) {
+      format = _json['format'];
     }
   }
 
@@ -3967,13 +3966,13 @@ class KeyOperationAttestation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (certChains != null) {
-      _json["certChains"] = certChains.toJson();
+      _json['certChains'] = certChains.toJson();
     }
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (format != null) {
-      _json["format"] = format;
+      _json['format'] = format;
     }
     return _json;
   }
@@ -3991,11 +3990,11 @@ class KeyRing {
   KeyRing();
 
   KeyRing.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4003,10 +4002,10 @@ class KeyRing {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4028,16 +4027,16 @@ class ListCryptoKeyVersionsResponse {
   ListCryptoKeyVersionsResponse();
 
   ListCryptoKeyVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("cryptoKeyVersions")) {
-      cryptoKeyVersions = (_json["cryptoKeyVersions"] as core.List)
+    if (_json.containsKey('cryptoKeyVersions')) {
+      cryptoKeyVersions = (_json['cryptoKeyVersions'] as core.List)
           .map<CryptoKeyVersion>((value) => CryptoKeyVersion.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalSize")) {
-      totalSize = _json["totalSize"];
+    if (_json.containsKey('totalSize')) {
+      totalSize = _json['totalSize'];
     }
   }
 
@@ -4045,14 +4044,14 @@ class ListCryptoKeyVersionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cryptoKeyVersions != null) {
-      _json["cryptoKeyVersions"] =
+      _json['cryptoKeyVersions'] =
           cryptoKeyVersions.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalSize != null) {
-      _json["totalSize"] = totalSize;
+      _json['totalSize'] = totalSize;
     }
     return _json;
   }
@@ -4073,16 +4072,16 @@ class ListCryptoKeysResponse {
   ListCryptoKeysResponse();
 
   ListCryptoKeysResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("cryptoKeys")) {
-      cryptoKeys = (_json["cryptoKeys"] as core.List)
+    if (_json.containsKey('cryptoKeys')) {
+      cryptoKeys = (_json['cryptoKeys'] as core.List)
           .map<CryptoKey>((value) => CryptoKey.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalSize")) {
-      totalSize = _json["totalSize"];
+    if (_json.containsKey('totalSize')) {
+      totalSize = _json['totalSize'];
     }
   }
 
@@ -4090,13 +4089,13 @@ class ListCryptoKeysResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cryptoKeys != null) {
-      _json["cryptoKeys"] = cryptoKeys.map((value) => value.toJson()).toList();
+      _json['cryptoKeys'] = cryptoKeys.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalSize != null) {
-      _json["totalSize"] = totalSize;
+      _json['totalSize'] = totalSize;
     }
     return _json;
   }
@@ -4117,16 +4116,16 @@ class ListImportJobsResponse {
   ListImportJobsResponse();
 
   ListImportJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("importJobs")) {
-      importJobs = (_json["importJobs"] as core.List)
+    if (_json.containsKey('importJobs')) {
+      importJobs = (_json['importJobs'] as core.List)
           .map<ImportJob>((value) => ImportJob.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalSize")) {
-      totalSize = _json["totalSize"];
+    if (_json.containsKey('totalSize')) {
+      totalSize = _json['totalSize'];
     }
   }
 
@@ -4134,13 +4133,13 @@ class ListImportJobsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (importJobs != null) {
-      _json["importJobs"] = importJobs.map((value) => value.toJson()).toList();
+      _json['importJobs'] = importJobs.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalSize != null) {
-      _json["totalSize"] = totalSize;
+      _json['totalSize'] = totalSize;
     }
     return _json;
   }
@@ -4161,16 +4160,16 @@ class ListKeyRingsResponse {
   ListKeyRingsResponse();
 
   ListKeyRingsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("keyRings")) {
-      keyRings = (_json["keyRings"] as core.List)
+    if (_json.containsKey('keyRings')) {
+      keyRings = (_json['keyRings'] as core.List)
           .map<KeyRing>((value) => KeyRing.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalSize")) {
-      totalSize = _json["totalSize"];
+    if (_json.containsKey('totalSize')) {
+      totalSize = _json['totalSize'];
     }
   }
 
@@ -4178,13 +4177,13 @@ class ListKeyRingsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (keyRings != null) {
-      _json["keyRings"] = keyRings.map((value) => value.toJson()).toList();
+      _json['keyRings'] = keyRings.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalSize != null) {
-      _json["totalSize"] = totalSize;
+      _json['totalSize'] = totalSize;
     }
     return _json;
   }
@@ -4201,13 +4200,13 @@ class ListLocationsResponse {
   ListLocationsResponse();
 
   ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4215,10 +4214,10 @@ class ListLocationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4251,21 +4250,21 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4273,19 +4272,19 @@ class Location {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4304,11 +4303,11 @@ class LocationMetadata {
   LocationMetadata();
 
   LocationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("ekmAvailable")) {
-      ekmAvailable = _json["ekmAvailable"];
+    if (_json.containsKey('ekmAvailable')) {
+      ekmAvailable = _json['ekmAvailable'];
     }
-    if (_json.containsKey("hsmAvailable")) {
-      hsmAvailable = _json["hsmAvailable"];
+    if (_json.containsKey('hsmAvailable')) {
+      hsmAvailable = _json['hsmAvailable'];
     }
   }
 
@@ -4316,10 +4315,10 @@ class LocationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ekmAvailable != null) {
-      _json["ekmAvailable"] = ekmAvailable;
+      _json['ekmAvailable'] = ekmAvailable;
     }
     if (hsmAvailable != null) {
-      _json["hsmAvailable"] = hsmAvailable;
+      _json['hsmAvailable'] = hsmAvailable;
     }
     return _json;
   }
@@ -4379,7 +4378,7 @@ class Policy {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
@@ -4402,21 +4401,21 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("auditConfigs")) {
-      auditConfigs = (_json["auditConfigs"] as core.List)
+    if (_json.containsKey('auditConfigs')) {
+      auditConfigs = (_json['auditConfigs'] as core.List)
           .map<AuditConfig>((value) => AuditConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("bindings")) {
-      bindings = (_json["bindings"] as core.List)
+    if (_json.containsKey('bindings')) {
+      bindings = (_json['bindings'] as core.List)
           .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -4424,17 +4423,17 @@ class Policy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditConfigs != null) {
-      _json["auditConfigs"] =
+      _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
     }
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
+      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -4504,17 +4503,17 @@ class PublicKey {
   PublicKey();
 
   PublicKey.fromJson(core.Map _json) {
-    if (_json.containsKey("algorithm")) {
-      algorithm = _json["algorithm"];
+    if (_json.containsKey('algorithm')) {
+      algorithm = _json['algorithm'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("pem")) {
-      pem = _json["pem"];
+    if (_json.containsKey('pem')) {
+      pem = _json['pem'];
     }
-    if (_json.containsKey("pemCrc32c")) {
-      pemCrc32c = _json["pemCrc32c"];
+    if (_json.containsKey('pemCrc32c')) {
+      pemCrc32c = _json['pemCrc32c'];
     }
   }
 
@@ -4522,16 +4521,16 @@ class PublicKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (algorithm != null) {
-      _json["algorithm"] = algorithm;
+      _json['algorithm'] = algorithm;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (pem != null) {
-      _json["pem"] = pem;
+      _json['pem'] = pem;
     }
     if (pemCrc32c != null) {
-      _json["pemCrc32c"] = pemCrc32c;
+      _json['pemCrc32c'] = pemCrc32c;
     }
     return _json;
   }
@@ -4566,11 +4565,11 @@ class SetIamPolicyRequest {
   SetIamPolicyRequest();
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("policy")) {
-      policy = Policy.fromJson(_json["policy"]);
+    if (_json.containsKey('policy')) {
+      policy = Policy.fromJson(_json['policy']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -4578,10 +4577,10 @@ class SetIamPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = policy.toJson();
+      _json['policy'] = policy.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -4598,8 +4597,8 @@ class TestIamPermissionsRequest {
   TestIamPermissionsRequest();
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -4607,7 +4606,7 @@ class TestIamPermissionsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -4622,8 +4621,8 @@ class TestIamPermissionsResponse {
   TestIamPermissionsResponse();
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -4631,7 +4630,7 @@ class TestIamPermissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -4645,8 +4644,8 @@ class UpdateCryptoKeyPrimaryVersionRequest {
   UpdateCryptoKeyPrimaryVersionRequest();
 
   UpdateCryptoKeyPrimaryVersionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("cryptoKeyVersionId")) {
-      cryptoKeyVersionId = _json["cryptoKeyVersionId"];
+    if (_json.containsKey('cryptoKeyVersionId')) {
+      cryptoKeyVersionId = _json['cryptoKeyVersionId'];
     }
   }
 
@@ -4654,7 +4653,7 @@ class UpdateCryptoKeyPrimaryVersionRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cryptoKeyVersionId != null) {
-      _json["cryptoKeyVersionId"] = cryptoKeyVersionId;
+      _json['cryptoKeyVersionId'] = cryptoKeyVersionId;
     }
     return _json;
   }
@@ -4673,8 +4672,8 @@ class WrappingPublicKey {
   WrappingPublicKey();
 
   WrappingPublicKey.fromJson(core.Map _json) {
-    if (_json.containsKey("pem")) {
-      pem = _json["pem"];
+    if (_json.containsKey('pem')) {
+      pem = _json['pem'];
     }
   }
 
@@ -4682,7 +4681,7 @@ class WrappingPublicKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pem != null) {
-      _json["pem"] = pem;
+      _json['pem'] = pem;
     }
     return _json;
   }

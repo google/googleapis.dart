@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,15 +38,15 @@ const core.String USER_AGENT = 'dart-api-client verifiedaccess/v1';
 class VerifiedaccessApi {
   /// Verify your enterprise credentials
   static const VerifiedaccessScope =
-      "https://www.googleapis.com/auth/verifiedaccess";
+      'https://www.googleapis.com/auth/verifiedaccess';
 
   final commons.ApiRequester _requester;
 
   ChallengeResourceApi get challenge => ChallengeResourceApi(_requester);
 
   VerifiedaccessApi(http.Client client,
-      {core.String rootUrl = "https://verifiedaccess.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -88,14 +87,14 @@ class ChallengeResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/challenge';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -136,14 +135,14 @@ class ChallengeResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/challenge:verify';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -167,11 +166,11 @@ class Challenge {
   Challenge();
 
   Challenge.fromJson(core.Map _json) {
-    if (_json.containsKey("alternativeChallenge")) {
-      alternativeChallenge = SignedData.fromJson(_json["alternativeChallenge"]);
+    if (_json.containsKey('alternativeChallenge')) {
+      alternativeChallenge = SignedData.fromJson(_json['alternativeChallenge']);
     }
-    if (_json.containsKey("challenge")) {
-      challenge = SignedData.fromJson(_json["challenge"]);
+    if (_json.containsKey('challenge')) {
+      challenge = SignedData.fromJson(_json['challenge']);
     }
   }
 
@@ -179,10 +178,10 @@ class Challenge {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternativeChallenge != null) {
-      _json["alternativeChallenge"] = alternativeChallenge.toJson();
+      _json['alternativeChallenge'] = alternativeChallenge.toJson();
     }
     if (challenge != null) {
-      _json["challenge"] = challenge.toJson();
+      _json['challenge'] = challenge.toJson();
     }
     return _json;
   }
@@ -213,7 +212,7 @@ class SignedData {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The signature of the data field.
@@ -222,17 +221,17 @@ class SignedData {
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SignedData();
 
   SignedData.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("signature")) {
-      signature = _json["signature"];
+    if (_json.containsKey('signature')) {
+      signature = _json['signature'];
     }
   }
 
@@ -240,10 +239,10 @@ class SignedData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (signature != null) {
-      _json["signature"] = signature;
+      _json['signature'] = signature;
     }
     return _json;
   }
@@ -264,11 +263,11 @@ class VerifyChallengeResponseRequest {
   VerifyChallengeResponseRequest();
 
   VerifyChallengeResponseRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("challengeResponse")) {
-      challengeResponse = SignedData.fromJson(_json["challengeResponse"]);
+    if (_json.containsKey('challengeResponse')) {
+      challengeResponse = SignedData.fromJson(_json['challengeResponse']);
     }
-    if (_json.containsKey("expectedIdentity")) {
-      expectedIdentity = _json["expectedIdentity"];
+    if (_json.containsKey('expectedIdentity')) {
+      expectedIdentity = _json['expectedIdentity'];
     }
   }
 
@@ -276,10 +275,10 @@ class VerifyChallengeResponseRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (challengeResponse != null) {
-      _json["challengeResponse"] = challengeResponse.toJson();
+      _json['challengeResponse'] = challengeResponse.toJson();
     }
     if (expectedIdentity != null) {
-      _json["expectedIdentity"] = expectedIdentity;
+      _json['expectedIdentity'] = expectedIdentity;
     }
     return _json;
   }
@@ -310,17 +309,17 @@ class VerifyChallengeResponseResult {
   VerifyChallengeResponseResult();
 
   VerifyChallengeResponseResult.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceEnrollmentId")) {
-      deviceEnrollmentId = _json["deviceEnrollmentId"];
+    if (_json.containsKey('deviceEnrollmentId')) {
+      deviceEnrollmentId = _json['deviceEnrollmentId'];
     }
-    if (_json.containsKey("devicePermanentId")) {
-      devicePermanentId = _json["devicePermanentId"];
+    if (_json.containsKey('devicePermanentId')) {
+      devicePermanentId = _json['devicePermanentId'];
     }
-    if (_json.containsKey("signedPublicKeyAndChallenge")) {
-      signedPublicKeyAndChallenge = _json["signedPublicKeyAndChallenge"];
+    if (_json.containsKey('signedPublicKeyAndChallenge')) {
+      signedPublicKeyAndChallenge = _json['signedPublicKeyAndChallenge'];
     }
-    if (_json.containsKey("verificationOutput")) {
-      verificationOutput = _json["verificationOutput"];
+    if (_json.containsKey('verificationOutput')) {
+      verificationOutput = _json['verificationOutput'];
     }
   }
 
@@ -328,16 +327,16 @@ class VerifyChallengeResponseResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceEnrollmentId != null) {
-      _json["deviceEnrollmentId"] = deviceEnrollmentId;
+      _json['deviceEnrollmentId'] = deviceEnrollmentId;
     }
     if (devicePermanentId != null) {
-      _json["devicePermanentId"] = devicePermanentId;
+      _json['devicePermanentId'] = devicePermanentId;
     }
     if (signedPublicKeyAndChallenge != null) {
-      _json["signedPublicKeyAndChallenge"] = signedPublicKeyAndChallenge;
+      _json['signedPublicKeyAndChallenge'] = signedPublicKeyAndChallenge;
     }
     if (verificationOutput != null) {
-      _json["verificationOutput"] = verificationOutput;
+      _json['verificationOutput'] = verificationOutput;
     }
     return _json;
   }

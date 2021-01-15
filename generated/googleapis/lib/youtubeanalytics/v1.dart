@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,8 +37,8 @@ class YoutubeAnalyticsApi {
   final commons.ApiRequester _requester;
 
   YoutubeAnalyticsApi(http.Client client,
-      {core.String rootUrl = "https://youtubeanalytics.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://youtubeanalytics.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }

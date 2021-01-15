@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -41,111 +40,111 @@ const core.String USER_AGENT = 'dart-api-client admin/directory_v1';
 class AdminApi {
   /// View and manage customer related information
   static const AdminDirectoryCustomerScope =
-      "https://www.googleapis.com/auth/admin.directory.customer";
+      'https://www.googleapis.com/auth/admin.directory.customer';
 
   /// View customer related information
   static const AdminDirectoryCustomerReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.customer.readonly";
+      'https://www.googleapis.com/auth/admin.directory.customer.readonly';
 
   /// View and manage your Chrome OS devices' metadata
   static const AdminDirectoryDeviceChromeosScope =
-      "https://www.googleapis.com/auth/admin.directory.device.chromeos";
+      'https://www.googleapis.com/auth/admin.directory.device.chromeos';
 
   /// View your Chrome OS devices' metadata
   static const AdminDirectoryDeviceChromeosReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly";
+      'https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly';
 
   /// View and manage your mobile devices' metadata
   static const AdminDirectoryDeviceMobileScope =
-      "https://www.googleapis.com/auth/admin.directory.device.mobile";
+      'https://www.googleapis.com/auth/admin.directory.device.mobile';
 
   /// Manage your mobile devices by performing administrative tasks
   static const AdminDirectoryDeviceMobileActionScope =
-      "https://www.googleapis.com/auth/admin.directory.device.mobile.action";
+      'https://www.googleapis.com/auth/admin.directory.device.mobile.action';
 
   /// View your mobile devices' metadata
   static const AdminDirectoryDeviceMobileReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.device.mobile.readonly";
+      'https://www.googleapis.com/auth/admin.directory.device.mobile.readonly';
 
   /// View and manage the provisioning of domains for your customers
   static const AdminDirectoryDomainScope =
-      "https://www.googleapis.com/auth/admin.directory.domain";
+      'https://www.googleapis.com/auth/admin.directory.domain';
 
   /// View domains related to your customers
   static const AdminDirectoryDomainReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.domain.readonly";
+      'https://www.googleapis.com/auth/admin.directory.domain.readonly';
 
   /// View and manage the provisioning of groups on your domain
   static const AdminDirectoryGroupScope =
-      "https://www.googleapis.com/auth/admin.directory.group";
+      'https://www.googleapis.com/auth/admin.directory.group';
 
   /// View and manage group subscriptions on your domain
   static const AdminDirectoryGroupMemberScope =
-      "https://www.googleapis.com/auth/admin.directory.group.member";
+      'https://www.googleapis.com/auth/admin.directory.group.member';
 
   /// View group subscriptions on your domain
   static const AdminDirectoryGroupMemberReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.group.member.readonly";
+      'https://www.googleapis.com/auth/admin.directory.group.member.readonly';
 
   /// View groups on your domain
   static const AdminDirectoryGroupReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.group.readonly";
+      'https://www.googleapis.com/auth/admin.directory.group.readonly';
 
   /// View and manage organization units on your domain
   static const AdminDirectoryOrgunitScope =
-      "https://www.googleapis.com/auth/admin.directory.orgunit";
+      'https://www.googleapis.com/auth/admin.directory.orgunit';
 
   /// View organization units on your domain
   static const AdminDirectoryOrgunitReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.orgunit.readonly";
+      'https://www.googleapis.com/auth/admin.directory.orgunit.readonly';
 
   /// View and manage the provisioning of calendar resources on your domain
   static const AdminDirectoryResourceCalendarScope =
-      "https://www.googleapis.com/auth/admin.directory.resource.calendar";
+      'https://www.googleapis.com/auth/admin.directory.resource.calendar';
 
   /// View calendar resources on your domain
   static const AdminDirectoryResourceCalendarReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly";
+      'https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly';
 
   /// Manage delegated admin roles for your domain
   static const AdminDirectoryRolemanagementScope =
-      "https://www.googleapis.com/auth/admin.directory.rolemanagement";
+      'https://www.googleapis.com/auth/admin.directory.rolemanagement';
 
   /// View delegated admin roles for your domain
   static const AdminDirectoryRolemanagementReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.rolemanagement.readonly";
+      'https://www.googleapis.com/auth/admin.directory.rolemanagement.readonly';
 
   /// View and manage the provisioning of users on your domain
   static const AdminDirectoryUserScope =
-      "https://www.googleapis.com/auth/admin.directory.user";
+      'https://www.googleapis.com/auth/admin.directory.user';
 
   /// View and manage user aliases on your domain
   static const AdminDirectoryUserAliasScope =
-      "https://www.googleapis.com/auth/admin.directory.user.alias";
+      'https://www.googleapis.com/auth/admin.directory.user.alias';
 
   /// View user aliases on your domain
   static const AdminDirectoryUserAliasReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.user.alias.readonly";
+      'https://www.googleapis.com/auth/admin.directory.user.alias.readonly';
 
   /// View users on your domain
   static const AdminDirectoryUserReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.user.readonly";
+      'https://www.googleapis.com/auth/admin.directory.user.readonly';
 
   /// Manage data access permissions for users on your domain
   static const AdminDirectoryUserSecurityScope =
-      "https://www.googleapis.com/auth/admin.directory.user.security";
+      'https://www.googleapis.com/auth/admin.directory.user.security';
 
   /// View and manage the provisioning of user schemas on your domain
   static const AdminDirectoryUserschemaScope =
-      "https://www.googleapis.com/auth/admin.directory.userschema";
+      'https://www.googleapis.com/auth/admin.directory.userschema';
 
   /// View user schemas on your domain
   static const AdminDirectoryUserschemaReadonlyScope =
-      "https://www.googleapis.com/auth/admin.directory.userschema.readonly";
+      'https://www.googleapis.com/auth/admin.directory.userschema.readonly';
 
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -176,8 +175,8 @@ class AdminApi {
       VerificationCodesResourceApi(_requester);
 
   AdminApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -217,13 +216,13 @@ class AspsResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (codeId == null) {
-      throw core.ArgumentError("Parameter codeId is required.");
+      throw core.ArgumentError('Parameter codeId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -235,7 +234,7 @@ class AspsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -277,13 +276,13 @@ class AspsResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (codeId == null) {
-      throw core.ArgumentError("Parameter codeId is required.");
+      throw core.ArgumentError('Parameter codeId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -293,7 +292,7 @@ class AspsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -332,10 +331,10 @@ class AspsResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -344,7 +343,7 @@ class AspsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -389,7 +388,7 @@ class ChannelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -398,7 +397,7 @@ class ChannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -449,13 +448,13 @@ class ChromeosdevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (resourceId == null) {
-      throw core.ArgumentError("Parameter resourceId is required.");
+      throw core.ArgumentError('Parameter resourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -468,7 +467,7 @@ class ChromeosdevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -517,16 +516,16 @@ class ChromeosdevicesResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -536,7 +535,7 @@ class ChromeosdevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -616,31 +615,31 @@ class ChromeosdevicesResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (orgUnitPath != null) {
-      _queryParams["orgUnitPath"] = [orgUnitPath];
+      _queryParams['orgUnitPath'] = [orgUnitPath];
     }
     if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+      _queryParams['sortOrder'] = [sortOrder];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -649,7 +648,7 @@ class ChromeosdevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -694,14 +693,14 @@ class ChromeosdevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (orgUnitPath == null) {
-      throw core.ArgumentError("Parameter orgUnitPath is required.");
+      throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
-    _queryParams["orgUnitPath"] = [orgUnitPath];
+    _queryParams['orgUnitPath'] = [orgUnitPath];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -712,7 +711,7 @@ class ChromeosdevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -767,16 +766,16 @@ class ChromeosdevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -786,7 +785,7 @@ class ChromeosdevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -841,16 +840,16 @@ class ChromeosdevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -860,7 +859,7 @@ class ChromeosdevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -904,10 +903,10 @@ class CustomersResourceApi {
     core.String _body;
 
     if (customerKey == null) {
-      throw core.ArgumentError("Parameter customerKey is required.");
+      throw core.ArgumentError('Parameter customerKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customers/' +
@@ -915,7 +914,7 @@ class CustomersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -959,10 +958,10 @@ class CustomersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerKey == null) {
-      throw core.ArgumentError("Parameter customerKey is required.");
+      throw core.ArgumentError('Parameter customerKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customers/' +
@@ -970,7 +969,7 @@ class CustomersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1014,10 +1013,10 @@ class CustomersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerKey == null) {
-      throw core.ArgumentError("Parameter customerKey is required.");
+      throw core.ArgumentError('Parameter customerKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customers/' +
@@ -1025,7 +1024,7 @@ class CustomersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1070,13 +1069,13 @@ class DomainAliasesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (domainAliasName == null) {
-      throw core.ArgumentError("Parameter domainAliasName is required.");
+      throw core.ArgumentError('Parameter domainAliasName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1088,7 +1087,7 @@ class DomainAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1129,13 +1128,13 @@ class DomainAliasesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (domainAliasName == null) {
-      throw core.ArgumentError("Parameter domainAliasName is required.");
+      throw core.ArgumentError('Parameter domainAliasName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -1145,7 +1144,7 @@ class DomainAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1189,10 +1188,10 @@ class DomainAliasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -1201,7 +1200,7 @@ class DomainAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1243,13 +1242,13 @@ class DomainAliasesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (parentDomainName != null) {
-      _queryParams["parentDomainName"] = [parentDomainName];
+      _queryParams['parentDomainName'] = [parentDomainName];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -1258,7 +1257,7 @@ class DomainAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1303,13 +1302,13 @@ class DomainsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (domainName == null) {
-      throw core.ArgumentError("Parameter domainName is required.");
+      throw core.ArgumentError('Parameter domainName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1321,7 +1320,7 @@ class DomainsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1362,13 +1361,13 @@ class DomainsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (domainName == null) {
-      throw core.ArgumentError("Parameter domainName is required.");
+      throw core.ArgumentError('Parameter domainName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -1378,7 +1377,7 @@ class DomainsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1422,10 +1421,10 @@ class DomainsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -1434,7 +1433,7 @@ class DomainsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1472,10 +1471,10 @@ class DomainsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -1484,7 +1483,7 @@ class DomainsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1528,10 +1527,10 @@ class GroupsResourceApi {
     core.String _body;
 
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1541,7 +1540,7 @@ class GroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1579,10 +1578,10 @@ class GroupsResourceApi {
     core.String _body;
 
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -1590,7 +1589,7 @@ class GroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1631,14 +1630,14 @@ class GroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1713,38 +1712,38 @@ class GroupsResourceApi {
     core.String _body;
 
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+      _queryParams['sortOrder'] = [sortOrder];
     }
     if (customer != null) {
-      _queryParams["customer"] = [customer];
+      _queryParams['customer'] = [customer];
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if (domain != null) {
-      _queryParams["domain"] = [domain];
+      _queryParams['domain'] = [domain];
     }
     if (userKey != null) {
-      _queryParams["userKey"] = [userKey];
+      _queryParams['userKey'] = [userKey];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1789,10 +1788,10 @@ class GroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -1800,7 +1799,7 @@ class GroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1845,10 +1844,10 @@ class GroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -1856,7 +1855,7 @@ class GroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1901,13 +1900,13 @@ class GroupsAliasesResourceApi {
     core.String _body;
 
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if (alias == null) {
-      throw core.ArgumentError("Parameter alias is required.");
+      throw core.ArgumentError('Parameter alias is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1919,7 +1918,7 @@ class GroupsAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1963,10 +1962,10 @@ class GroupsAliasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -1975,7 +1974,7 @@ class GroupsAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2013,10 +2012,10 @@ class GroupsAliasesResourceApi {
     core.String _body;
 
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -2025,7 +2024,7 @@ class GroupsAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2070,13 +2069,13 @@ class MembersResourceApi {
     core.String _body;
 
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if (memberKey == null) {
-      throw core.ArgumentError("Parameter memberKey is required.");
+      throw core.ArgumentError('Parameter memberKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2088,7 +2087,7 @@ class MembersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2129,13 +2128,13 @@ class MembersResourceApi {
     core.String _body;
 
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if (memberKey == null) {
-      throw core.ArgumentError("Parameter memberKey is required.");
+      throw core.ArgumentError('Parameter memberKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -2145,7 +2144,7 @@ class MembersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2189,13 +2188,13 @@ class MembersResourceApi {
     core.String _body;
 
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if (memberKey == null) {
-      throw core.ArgumentError("Parameter memberKey is required.");
+      throw core.ArgumentError('Parameter memberKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -2205,7 +2204,7 @@ class MembersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2249,10 +2248,10 @@ class MembersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -2261,7 +2260,7 @@ class MembersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2313,24 +2312,24 @@ class MembersResourceApi {
     core.String _body;
 
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (includeDerivedMembership != null) {
-      _queryParams["includeDerivedMembership"] = [
-        "${includeDerivedMembership}"
+      _queryParams['includeDerivedMembership'] = [
+        '${includeDerivedMembership}'
       ];
     }
     if (roles != null) {
-      _queryParams["roles"] = [roles];
+      _queryParams['roles'] = [roles];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -2339,7 +2338,7 @@ class MembersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2388,13 +2387,13 @@ class MembersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if (memberKey == null) {
-      throw core.ArgumentError("Parameter memberKey is required.");
+      throw core.ArgumentError('Parameter memberKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -2404,7 +2403,7 @@ class MembersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2453,13 +2452,13 @@ class MembersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (groupKey == null) {
-      throw core.ArgumentError("Parameter groupKey is required.");
+      throw core.ArgumentError('Parameter groupKey is required.');
     }
     if (memberKey == null) {
-      throw core.ArgumentError("Parameter memberKey is required.");
+      throw core.ArgumentError('Parameter memberKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/groups/' +
@@ -2469,7 +2468,7 @@ class MembersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2520,13 +2519,13 @@ class MobiledevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (resourceId == null) {
-      throw core.ArgumentError("Parameter resourceId is required.");
+      throw core.ArgumentError('Parameter resourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2539,7 +2538,7 @@ class MobiledevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2578,13 +2577,13 @@ class MobiledevicesResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (resourceId == null) {
-      throw core.ArgumentError("Parameter resourceId is required.");
+      throw core.ArgumentError('Parameter resourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2596,7 +2595,7 @@ class MobiledevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2645,16 +2644,16 @@ class MobiledevicesResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (resourceId == null) {
-      throw core.ArgumentError("Parameter resourceId is required.");
+      throw core.ArgumentError('Parameter resourceId is required.');
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -2664,7 +2663,7 @@ class MobiledevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2743,28 +2742,28 @@ class MobiledevicesResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+      _queryParams['sortOrder'] = [sortOrder];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -2773,7 +2772,7 @@ class MobiledevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2819,13 +2818,13 @@ class OrgunitsResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (orgUnitPath == null) {
-      throw core.ArgumentError("Parameter orgUnitPath is required.");
+      throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2837,7 +2836,7 @@ class OrgunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2879,13 +2878,13 @@ class OrgunitsResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (orgUnitPath == null) {
-      throw core.ArgumentError("Parameter orgUnitPath is required.");
+      throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -2895,7 +2894,7 @@ class OrgunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2939,10 +2938,10 @@ class OrgunitsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -2951,7 +2950,7 @@ class OrgunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3000,16 +2999,16 @@ class OrgunitsResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (orgUnitPath != null) {
-      _queryParams["orgUnitPath"] = [orgUnitPath];
+      _queryParams['orgUnitPath'] = [orgUnitPath];
     }
     if (type != null) {
-      _queryParams["type"] = [type];
+      _queryParams['type'] = [type];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3018,7 +3017,7 @@ class OrgunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3066,13 +3065,13 @@ class OrgunitsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (orgUnitPath == null) {
-      throw core.ArgumentError("Parameter orgUnitPath is required.");
+      throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3082,7 +3081,7 @@ class OrgunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3130,13 +3129,13 @@ class OrgunitsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (orgUnitPath == null) {
-      throw core.ArgumentError("Parameter orgUnitPath is required.");
+      throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3146,7 +3145,7 @@ class OrgunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3190,10 +3189,10 @@ class PrivilegesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3202,7 +3201,7 @@ class PrivilegesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3263,13 +3262,13 @@ class ResourcesBuildingsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (buildingId == null) {
-      throw core.ArgumentError("Parameter buildingId is required.");
+      throw core.ArgumentError('Parameter buildingId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3281,7 +3280,7 @@ class ResourcesBuildingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3324,13 +3323,13 @@ class ResourcesBuildingsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (buildingId == null) {
-      throw core.ArgumentError("Parameter buildingId is required.");
+      throw core.ArgumentError('Parameter buildingId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3340,7 +3339,7 @@ class ResourcesBuildingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3398,13 +3397,13 @@ class ResourcesBuildingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (coordinatesSource != null) {
-      _queryParams["coordinatesSource"] = [coordinatesSource];
+      _queryParams['coordinatesSource'] = [coordinatesSource];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3413,7 +3412,7 @@ class ResourcesBuildingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3460,16 +3459,16 @@ class ResourcesBuildingsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3478,7 +3477,7 @@ class ResourcesBuildingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3539,16 +3538,16 @@ class ResourcesBuildingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (buildingId == null) {
-      throw core.ArgumentError("Parameter buildingId is required.");
+      throw core.ArgumentError('Parameter buildingId is required.');
     }
     if (coordinatesSource != null) {
-      _queryParams["coordinatesSource"] = [coordinatesSource];
+      _queryParams['coordinatesSource'] = [coordinatesSource];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3558,7 +3557,7 @@ class ResourcesBuildingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3619,16 +3618,16 @@ class ResourcesBuildingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (buildingId == null) {
-      throw core.ArgumentError("Parameter buildingId is required.");
+      throw core.ArgumentError('Parameter buildingId is required.');
     }
     if (coordinatesSource != null) {
-      _queryParams["coordinatesSource"] = [coordinatesSource];
+      _queryParams['coordinatesSource'] = [coordinatesSource];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3638,7 +3637,7 @@ class ResourcesBuildingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3686,13 +3685,13 @@ class ResourcesCalendarsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (calendarResourceId == null) {
-      throw core.ArgumentError("Parameter calendarResourceId is required.");
+      throw core.ArgumentError('Parameter calendarResourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3704,7 +3703,7 @@ class ResourcesCalendarsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3747,13 +3746,13 @@ class ResourcesCalendarsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (calendarResourceId == null) {
-      throw core.ArgumentError("Parameter calendarResourceId is required.");
+      throw core.ArgumentError('Parameter calendarResourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3763,7 +3762,7 @@ class ResourcesCalendarsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3809,10 +3808,10 @@ class ResourcesCalendarsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3821,7 +3820,7 @@ class ResourcesCalendarsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3888,22 +3887,22 @@ class ResourcesCalendarsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3912,7 +3911,7 @@ class ResourcesCalendarsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3961,13 +3960,13 @@ class ResourcesCalendarsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (calendarResourceId == null) {
-      throw core.ArgumentError("Parameter calendarResourceId is required.");
+      throw core.ArgumentError('Parameter calendarResourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -3977,7 +3976,7 @@ class ResourcesCalendarsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4028,13 +4027,13 @@ class ResourcesCalendarsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (calendarResourceId == null) {
-      throw core.ArgumentError("Parameter calendarResourceId is required.");
+      throw core.ArgumentError('Parameter calendarResourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4044,7 +4043,7 @@ class ResourcesCalendarsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4092,13 +4091,13 @@ class ResourcesFeaturesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (featureKey == null) {
-      throw core.ArgumentError("Parameter featureKey is required.");
+      throw core.ArgumentError('Parameter featureKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4110,7 +4109,7 @@ class ResourcesFeaturesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4153,13 +4152,13 @@ class ResourcesFeaturesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (featureKey == null) {
-      throw core.ArgumentError("Parameter featureKey is required.");
+      throw core.ArgumentError('Parameter featureKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4169,7 +4168,7 @@ class ResourcesFeaturesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4215,10 +4214,10 @@ class ResourcesFeaturesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4227,7 +4226,7 @@ class ResourcesFeaturesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4274,16 +4273,16 @@ class ResourcesFeaturesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4292,7 +4291,7 @@ class ResourcesFeaturesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4341,13 +4340,13 @@ class ResourcesFeaturesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (featureKey == null) {
-      throw core.ArgumentError("Parameter featureKey is required.");
+      throw core.ArgumentError('Parameter featureKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4357,7 +4356,7 @@ class ResourcesFeaturesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4404,13 +4403,13 @@ class ResourcesFeaturesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (oldName == null) {
-      throw core.ArgumentError("Parameter oldName is required.");
+      throw core.ArgumentError('Parameter oldName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4423,7 +4422,7 @@ class ResourcesFeaturesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4472,13 +4471,13 @@ class ResourcesFeaturesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (featureKey == null) {
-      throw core.ArgumentError("Parameter featureKey is required.");
+      throw core.ArgumentError('Parameter featureKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4488,7 +4487,7 @@ class ResourcesFeaturesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4533,13 +4532,13 @@ class RoleAssignmentsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (roleAssignmentId == null) {
-      throw core.ArgumentError("Parameter roleAssignmentId is required.");
+      throw core.ArgumentError('Parameter roleAssignmentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4551,7 +4550,7 @@ class RoleAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4592,13 +4591,13 @@ class RoleAssignmentsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (roleAssignmentId == null) {
-      throw core.ArgumentError("Parameter roleAssignmentId is required.");
+      throw core.ArgumentError('Parameter roleAssignmentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4608,7 +4607,7 @@ class RoleAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4652,10 +4651,10 @@ class RoleAssignmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4664,7 +4663,7 @@ class RoleAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4718,22 +4717,22 @@ class RoleAssignmentsResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (roleId != null) {
-      _queryParams["roleId"] = [roleId];
+      _queryParams['roleId'] = [roleId];
     }
     if (userKey != null) {
-      _queryParams["userKey"] = [userKey];
+      _queryParams['userKey'] = [userKey];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4742,7 +4741,7 @@ class RoleAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4787,13 +4786,13 @@ class RolesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (roleId == null) {
-      throw core.ArgumentError("Parameter roleId is required.");
+      throw core.ArgumentError('Parameter roleId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4805,7 +4804,7 @@ class RolesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4846,13 +4845,13 @@ class RolesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (roleId == null) {
-      throw core.ArgumentError("Parameter roleId is required.");
+      throw core.ArgumentError('Parameter roleId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4862,7 +4861,7 @@ class RolesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4906,10 +4905,10 @@ class RolesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4918,7 +4917,7 @@ class RolesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4963,16 +4962,16 @@ class RolesResourceApi {
     core.String _body;
 
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -4981,7 +4980,7 @@ class RolesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5028,13 +5027,13 @@ class RolesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (roleId == null) {
-      throw core.ArgumentError("Parameter roleId is required.");
+      throw core.ArgumentError('Parameter roleId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -5044,7 +5043,7 @@ class RolesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5091,13 +5090,13 @@ class RolesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customer == null) {
-      throw core.ArgumentError("Parameter customer is required.");
+      throw core.ArgumentError('Parameter customer is required.');
     }
     if (roleId == null) {
-      throw core.ArgumentError("Parameter roleId is required.");
+      throw core.ArgumentError('Parameter roleId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -5107,7 +5106,7 @@ class RolesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5152,13 +5151,13 @@ class SchemasResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (schemaKey == null) {
-      throw core.ArgumentError("Parameter schemaKey is required.");
+      throw core.ArgumentError('Parameter schemaKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5170,7 +5169,7 @@ class SchemasResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5211,13 +5210,13 @@ class SchemasResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (schemaKey == null) {
-      throw core.ArgumentError("Parameter schemaKey is required.");
+      throw core.ArgumentError('Parameter schemaKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -5227,7 +5226,7 @@ class SchemasResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5271,10 +5270,10 @@ class SchemasResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -5283,7 +5282,7 @@ class SchemasResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5321,10 +5320,10 @@ class SchemasResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -5333,7 +5332,7 @@ class SchemasResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5380,13 +5379,13 @@ class SchemasResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (schemaKey == null) {
-      throw core.ArgumentError("Parameter schemaKey is required.");
+      throw core.ArgumentError('Parameter schemaKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -5396,7 +5395,7 @@ class SchemasResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5443,13 +5442,13 @@ class SchemasResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (schemaKey == null) {
-      throw core.ArgumentError("Parameter schemaKey is required.");
+      throw core.ArgumentError('Parameter schemaKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/customer/' +
@@ -5459,7 +5458,7 @@ class SchemasResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5505,13 +5504,13 @@ class TokensResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (clientId == null) {
-      throw core.ArgumentError("Parameter clientId is required.");
+      throw core.ArgumentError('Parameter clientId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5523,7 +5522,7 @@ class TokensResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5565,13 +5564,13 @@ class TokensResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (clientId == null) {
-      throw core.ArgumentError("Parameter clientId is required.");
+      throw core.ArgumentError('Parameter clientId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -5581,7 +5580,7 @@ class TokensResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5621,10 +5620,10 @@ class TokensResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -5633,7 +5632,7 @@ class TokensResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5677,10 +5676,10 @@ class TwoStepVerificationResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5691,7 +5690,7 @@ class TwoStepVerificationResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5736,10 +5735,10 @@ class UsersResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5749,7 +5748,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5808,19 +5807,19 @@ class UsersResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (viewType != null) {
-      _queryParams["viewType"] = [viewType];
+      _queryParams['viewType'] = [viewType];
     }
     if (customFieldMask != null) {
-      _queryParams["customFieldMask"] = [customFieldMask];
+      _queryParams['customFieldMask'] = [customFieldMask];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -5828,7 +5827,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5869,14 +5868,14 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5971,47 +5970,47 @@ class UsersResourceApi {
     core.String _body;
 
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (domain != null) {
-      _queryParams["domain"] = [domain];
+      _queryParams['domain'] = [domain];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+      _queryParams['sortOrder'] = [sortOrder];
     }
     if (viewType != null) {
-      _queryParams["viewType"] = [viewType];
+      _queryParams['viewType'] = [viewType];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = [showDeleted];
+      _queryParams['showDeleted'] = [showDeleted];
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (customer != null) {
-      _queryParams["customer"] = [customer];
+      _queryParams['customer'] = [customer];
     }
     if (customFieldMask != null) {
-      _queryParams["customFieldMask"] = [customFieldMask];
+      _queryParams['customFieldMask'] = [customFieldMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6053,10 +6052,10 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6067,7 +6066,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6112,10 +6111,10 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -6123,7 +6122,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6162,10 +6161,10 @@ class UsersResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6176,7 +6175,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6218,10 +6217,10 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6232,7 +6231,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6277,10 +6276,10 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -6288,7 +6287,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6399,50 +6398,50 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (viewType != null) {
-      _queryParams["viewType"] = [viewType];
+      _queryParams['viewType'] = [viewType];
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if (domain != null) {
-      _queryParams["domain"] = [domain];
+      _queryParams['domain'] = [domain];
     }
     if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+      _queryParams['sortOrder'] = [sortOrder];
     }
     if (event != null) {
-      _queryParams["event"] = [event];
+      _queryParams['event'] = [event];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (customer != null) {
-      _queryParams["customer"] = [customer];
+      _queryParams['customer'] = [customer];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (customFieldMask != null) {
-      _queryParams["customFieldMask"] = [customFieldMask];
+      _queryParams['customFieldMask'] = [customFieldMask];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = [showDeleted];
+      _queryParams['showDeleted'] = [showDeleted];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/watch';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6487,13 +6486,13 @@ class UsersAliasesResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (alias == null) {
-      throw core.ArgumentError("Parameter alias is required.");
+      throw core.ArgumentError('Parameter alias is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6505,7 +6504,7 @@ class UsersAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6549,10 +6548,10 @@ class UsersAliasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -6561,7 +6560,7 @@ class UsersAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6599,10 +6598,10 @@ class UsersAliasesResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -6611,7 +6610,7 @@ class UsersAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6662,13 +6661,13 @@ class UsersAliasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (event != null) {
-      _queryParams["event"] = [event];
+      _queryParams['event'] = [event];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -6677,7 +6676,7 @@ class UsersAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6719,10 +6718,10 @@ class UsersPhotosResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6733,7 +6732,7 @@ class UsersPhotosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6771,10 +6770,10 @@ class UsersPhotosResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -6783,7 +6782,7 @@ class UsersPhotosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6827,10 +6826,10 @@ class UsersPhotosResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -6839,7 +6838,7 @@ class UsersPhotosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6883,10 +6882,10 @@ class UsersPhotosResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -6895,7 +6894,7 @@ class UsersPhotosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6938,10 +6937,10 @@ class VerificationCodesResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6952,7 +6951,7 @@ class VerificationCodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6988,10 +6987,10 @@ class VerificationCodesResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -7002,7 +7001,7 @@ class VerificationCodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -7042,10 +7041,10 @@ class VerificationCodesResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/directory/v1/users/' +
@@ -7054,7 +7053,7 @@ class VerificationCodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -7076,20 +7075,20 @@ class Alias {
   Alias();
 
   Alias.fromJson(core.Map _json) {
-    if (_json.containsKey("alias")) {
-      alias = _json["alias"];
+    if (_json.containsKey('alias')) {
+      alias = _json['alias'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("primaryEmail")) {
-      primaryEmail = _json["primaryEmail"];
+    if (_json.containsKey('primaryEmail')) {
+      primaryEmail = _json['primaryEmail'];
     }
   }
 
@@ -7097,19 +7096,19 @@ class Alias {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alias != null) {
-      _json["alias"] = alias;
+      _json['alias'] = alias;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (primaryEmail != null) {
-      _json["primaryEmail"] = primaryEmail;
+      _json['primaryEmail'] = primaryEmail;
     }
     return _json;
   }
@@ -7128,14 +7127,14 @@ class Aliases {
   Aliases();
 
   Aliases.fromJson(core.Map _json) {
-    if (_json.containsKey("aliases")) {
-      aliases = (_json["aliases"] as core.List).cast<core.Object>();
+    if (_json.containsKey('aliases')) {
+      aliases = (_json['aliases'] as core.List).cast<core.Object>();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -7143,13 +7142,13 @@ class Aliases {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (aliases != null) {
-      _json["aliases"] = aliases;
+      _json['aliases'] = aliases;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -7185,26 +7184,26 @@ class Asp {
   Asp();
 
   Asp.fromJson(core.Map _json) {
-    if (_json.containsKey("codeId")) {
-      codeId = _json["codeId"];
+    if (_json.containsKey('codeId')) {
+      codeId = _json['codeId'];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastTimeUsed")) {
-      lastTimeUsed = _json["lastTimeUsed"];
+    if (_json.containsKey('lastTimeUsed')) {
+      lastTimeUsed = _json['lastTimeUsed'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("userKey")) {
-      userKey = _json["userKey"];
+    if (_json.containsKey('userKey')) {
+      userKey = _json['userKey'];
     }
   }
 
@@ -7212,25 +7211,25 @@ class Asp {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (codeId != null) {
-      _json["codeId"] = codeId;
+      _json['codeId'] = codeId;
     }
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastTimeUsed != null) {
-      _json["lastTimeUsed"] = lastTimeUsed;
+      _json['lastTimeUsed'] = lastTimeUsed;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (userKey != null) {
-      _json["userKey"] = userKey;
+      _json['userKey'] = userKey;
     }
     return _json;
   }
@@ -7252,16 +7251,16 @@ class Asps {
   Asps();
 
   Asps.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Asp>((value) => Asp.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -7269,13 +7268,13 @@ class Asps {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -7316,29 +7315,29 @@ class Building {
   Building();
 
   Building.fromJson(core.Map _json) {
-    if (_json.containsKey("address")) {
-      address = BuildingAddress.fromJson(_json["address"]);
+    if (_json.containsKey('address')) {
+      address = BuildingAddress.fromJson(_json['address']);
     }
-    if (_json.containsKey("buildingId")) {
-      buildingId = _json["buildingId"];
+    if (_json.containsKey('buildingId')) {
+      buildingId = _json['buildingId'];
     }
-    if (_json.containsKey("buildingName")) {
-      buildingName = _json["buildingName"];
+    if (_json.containsKey('buildingName')) {
+      buildingName = _json['buildingName'];
     }
-    if (_json.containsKey("coordinates")) {
-      coordinates = BuildingCoordinates.fromJson(_json["coordinates"]);
+    if (_json.containsKey('coordinates')) {
+      coordinates = BuildingCoordinates.fromJson(_json['coordinates']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("etags")) {
-      etags = _json["etags"];
+    if (_json.containsKey('etags')) {
+      etags = _json['etags'];
     }
-    if (_json.containsKey("floorNames")) {
-      floorNames = (_json["floorNames"] as core.List).cast<core.String>();
+    if (_json.containsKey('floorNames')) {
+      floorNames = (_json['floorNames'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -7346,28 +7345,28 @@ class Building {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (address != null) {
-      _json["address"] = address.toJson();
+      _json['address'] = address.toJson();
     }
     if (buildingId != null) {
-      _json["buildingId"] = buildingId;
+      _json['buildingId'] = buildingId;
     }
     if (buildingName != null) {
-      _json["buildingName"] = buildingName;
+      _json['buildingName'] = buildingName;
     }
     if (coordinates != null) {
-      _json["coordinates"] = coordinates.toJson();
+      _json['coordinates'] = coordinates.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (etags != null) {
-      _json["etags"] = etags;
+      _json['etags'] = etags;
     }
     if (floorNames != null) {
-      _json["floorNames"] = floorNames;
+      _json['floorNames'] = floorNames;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -7403,26 +7402,26 @@ class BuildingAddress {
   BuildingAddress();
 
   BuildingAddress.fromJson(core.Map _json) {
-    if (_json.containsKey("addressLines")) {
-      addressLines = (_json["addressLines"] as core.List).cast<core.String>();
+    if (_json.containsKey('addressLines')) {
+      addressLines = (_json['addressLines'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("administrativeArea")) {
-      administrativeArea = _json["administrativeArea"];
+    if (_json.containsKey('administrativeArea')) {
+      administrativeArea = _json['administrativeArea'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("locality")) {
-      locality = _json["locality"];
+    if (_json.containsKey('locality')) {
+      locality = _json['locality'];
     }
-    if (_json.containsKey("postalCode")) {
-      postalCode = _json["postalCode"];
+    if (_json.containsKey('postalCode')) {
+      postalCode = _json['postalCode'];
     }
-    if (_json.containsKey("regionCode")) {
-      regionCode = _json["regionCode"];
+    if (_json.containsKey('regionCode')) {
+      regionCode = _json['regionCode'];
     }
-    if (_json.containsKey("sublocality")) {
-      sublocality = _json["sublocality"];
+    if (_json.containsKey('sublocality')) {
+      sublocality = _json['sublocality'];
     }
   }
 
@@ -7430,25 +7429,25 @@ class BuildingAddress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addressLines != null) {
-      _json["addressLines"] = addressLines;
+      _json['addressLines'] = addressLines;
     }
     if (administrativeArea != null) {
-      _json["administrativeArea"] = administrativeArea;
+      _json['administrativeArea'] = administrativeArea;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (locality != null) {
-      _json["locality"] = locality;
+      _json['locality'] = locality;
     }
     if (postalCode != null) {
-      _json["postalCode"] = postalCode;
+      _json['postalCode'] = postalCode;
     }
     if (regionCode != null) {
-      _json["regionCode"] = regionCode;
+      _json['regionCode'] = regionCode;
     }
     if (sublocality != null) {
-      _json["sublocality"] = sublocality;
+      _json['sublocality'] = sublocality;
     }
     return _json;
   }
@@ -7465,11 +7464,11 @@ class BuildingCoordinates {
   BuildingCoordinates();
 
   BuildingCoordinates.fromJson(core.Map _json) {
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
   }
 
@@ -7477,10 +7476,10 @@ class BuildingCoordinates {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     return _json;
   }
@@ -7504,19 +7503,19 @@ class Buildings {
   Buildings();
 
   Buildings.fromJson(core.Map _json) {
-    if (_json.containsKey("buildings")) {
-      buildings = (_json["buildings"] as core.List)
+    if (_json.containsKey('buildings')) {
+      buildings = (_json['buildings'] as core.List)
           .map<Building>((value) => Building.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7524,16 +7523,16 @@ class Buildings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (buildings != null) {
-      _json["buildings"] = buildings.map((value) => value.toJson()).toList();
+      _json['buildings'] = buildings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7597,50 +7596,50 @@ class CalendarResource {
   CalendarResource();
 
   CalendarResource.fromJson(core.Map _json) {
-    if (_json.containsKey("buildingId")) {
-      buildingId = _json["buildingId"];
+    if (_json.containsKey('buildingId')) {
+      buildingId = _json['buildingId'];
     }
-    if (_json.containsKey("capacity")) {
-      capacity = _json["capacity"];
+    if (_json.containsKey('capacity')) {
+      capacity = _json['capacity'];
     }
-    if (_json.containsKey("etags")) {
-      etags = _json["etags"];
+    if (_json.containsKey('etags')) {
+      etags = _json['etags'];
     }
-    if (_json.containsKey("featureInstances")) {
-      featureInstances = _json["featureInstances"];
+    if (_json.containsKey('featureInstances')) {
+      featureInstances = _json['featureInstances'];
     }
-    if (_json.containsKey("floorName")) {
-      floorName = _json["floorName"];
+    if (_json.containsKey('floorName')) {
+      floorName = _json['floorName'];
     }
-    if (_json.containsKey("floorSection")) {
-      floorSection = _json["floorSection"];
+    if (_json.containsKey('floorSection')) {
+      floorSection = _json['floorSection'];
     }
-    if (_json.containsKey("generatedResourceName")) {
-      generatedResourceName = _json["generatedResourceName"];
+    if (_json.containsKey('generatedResourceName')) {
+      generatedResourceName = _json['generatedResourceName'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("resourceCategory")) {
-      resourceCategory = _json["resourceCategory"];
+    if (_json.containsKey('resourceCategory')) {
+      resourceCategory = _json['resourceCategory'];
     }
-    if (_json.containsKey("resourceDescription")) {
-      resourceDescription = _json["resourceDescription"];
+    if (_json.containsKey('resourceDescription')) {
+      resourceDescription = _json['resourceDescription'];
     }
-    if (_json.containsKey("resourceEmail")) {
-      resourceEmail = _json["resourceEmail"];
+    if (_json.containsKey('resourceEmail')) {
+      resourceEmail = _json['resourceEmail'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = _json["resourceId"];
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'];
     }
-    if (_json.containsKey("resourceName")) {
-      resourceName = _json["resourceName"];
+    if (_json.containsKey('resourceName')) {
+      resourceName = _json['resourceName'];
     }
-    if (_json.containsKey("resourceType")) {
-      resourceType = _json["resourceType"];
+    if (_json.containsKey('resourceType')) {
+      resourceType = _json['resourceType'];
     }
-    if (_json.containsKey("userVisibleDescription")) {
-      userVisibleDescription = _json["userVisibleDescription"];
+    if (_json.containsKey('userVisibleDescription')) {
+      userVisibleDescription = _json['userVisibleDescription'];
     }
   }
 
@@ -7648,49 +7647,49 @@ class CalendarResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (buildingId != null) {
-      _json["buildingId"] = buildingId;
+      _json['buildingId'] = buildingId;
     }
     if (capacity != null) {
-      _json["capacity"] = capacity;
+      _json['capacity'] = capacity;
     }
     if (etags != null) {
-      _json["etags"] = etags;
+      _json['etags'] = etags;
     }
     if (featureInstances != null) {
-      _json["featureInstances"] = featureInstances;
+      _json['featureInstances'] = featureInstances;
     }
     if (floorName != null) {
-      _json["floorName"] = floorName;
+      _json['floorName'] = floorName;
     }
     if (floorSection != null) {
-      _json["floorSection"] = floorSection;
+      _json['floorSection'] = floorSection;
     }
     if (generatedResourceName != null) {
-      _json["generatedResourceName"] = generatedResourceName;
+      _json['generatedResourceName'] = generatedResourceName;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (resourceCategory != null) {
-      _json["resourceCategory"] = resourceCategory;
+      _json['resourceCategory'] = resourceCategory;
     }
     if (resourceDescription != null) {
-      _json["resourceDescription"] = resourceDescription;
+      _json['resourceDescription'] = resourceDescription;
     }
     if (resourceEmail != null) {
-      _json["resourceEmail"] = resourceEmail;
+      _json['resourceEmail'] = resourceEmail;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId;
+      _json['resourceId'] = resourceId;
     }
     if (resourceName != null) {
-      _json["resourceName"] = resourceName;
+      _json['resourceName'] = resourceName;
     }
     if (resourceType != null) {
-      _json["resourceType"] = resourceType;
+      _json['resourceType'] = resourceType;
     }
     if (userVisibleDescription != null) {
-      _json["userVisibleDescription"] = userVisibleDescription;
+      _json['userVisibleDescription'] = userVisibleDescription;
     }
     return _json;
   }
@@ -7715,19 +7714,19 @@ class CalendarResources {
   CalendarResources();
 
   CalendarResources.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<CalendarResource>((value) => CalendarResource.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7735,16 +7734,16 @@ class CalendarResources {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7789,35 +7788,35 @@ class Channel {
   Channel();
 
   Channel.fromJson(core.Map _json) {
-    if (_json.containsKey("address")) {
-      address = _json["address"];
+    if (_json.containsKey('address')) {
+      address = _json['address'];
     }
-    if (_json.containsKey("expiration")) {
-      expiration = _json["expiration"];
+    if (_json.containsKey('expiration')) {
+      expiration = _json['expiration'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("params")) {
-      params = (_json["params"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('params')) {
+      params = (_json['params'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("payload")) {
-      payload = _json["payload"];
+    if (_json.containsKey('payload')) {
+      payload = _json['payload'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = _json["resourceId"];
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'];
     }
-    if (_json.containsKey("resourceUri")) {
-      resourceUri = _json["resourceUri"];
+    if (_json.containsKey('resourceUri')) {
+      resourceUri = _json['resourceUri'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -7825,34 +7824,34 @@ class Channel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (address != null) {
-      _json["address"] = address;
+      _json['address'] = address;
     }
     if (expiration != null) {
-      _json["expiration"] = expiration;
+      _json['expiration'] = expiration;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (params != null) {
-      _json["params"] = params;
+      _json['params'] = params;
     }
     if (payload != null) {
-      _json["payload"] = payload;
+      _json['payload'] = payload;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId;
+      _json['resourceId'] = resourceId;
     }
     if (resourceUri != null) {
-      _json["resourceUri"] = resourceUri;
+      _json['resourceUri'] = resourceUri;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -7868,11 +7867,11 @@ class ChromeOsDeviceActiveTimeRanges {
   ChromeOsDeviceActiveTimeRanges();
 
   ChromeOsDeviceActiveTimeRanges.fromJson(core.Map _json) {
-    if (_json.containsKey("activeTime")) {
-      activeTime = _json["activeTime"];
+    if (_json.containsKey('activeTime')) {
+      activeTime = _json['activeTime'];
     }
-    if (_json.containsKey("date")) {
-      date = core.DateTime.parse(_json["date"]);
+    if (_json.containsKey('date')) {
+      date = core.DateTime.parse(_json['date']);
     }
   }
 
@@ -7880,10 +7879,10 @@ class ChromeOsDeviceActiveTimeRanges {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activeTime != null) {
-      _json["activeTime"] = activeTime;
+      _json['activeTime'] = activeTime;
     }
     if (date != null) {
-      _json["date"] =
+      _json['date'] =
           "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}";
     }
     return _json;
@@ -7900,11 +7899,11 @@ class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
   ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo();
 
   ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("label")) {
-      label = _json["label"];
+    if (_json.containsKey('label')) {
+      label = _json['label'];
     }
-    if (_json.containsKey("temperature")) {
-      temperature = _json["temperature"];
+    if (_json.containsKey('temperature')) {
+      temperature = _json['temperature'];
     }
   }
 
@@ -7912,10 +7911,10 @@ class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (label != null) {
-      _json["label"] = label;
+      _json['label'] = label;
     }
     if (temperature != null) {
-      _json["temperature"] = temperature;
+      _json['temperature'] = temperature;
     }
     return _json;
   }
@@ -7933,18 +7932,18 @@ class ChromeOsDeviceCpuStatusReports {
   ChromeOsDeviceCpuStatusReports();
 
   ChromeOsDeviceCpuStatusReports.fromJson(core.Map _json) {
-    if (_json.containsKey("cpuTemperatureInfo")) {
-      cpuTemperatureInfo = (_json["cpuTemperatureInfo"] as core.List)
+    if (_json.containsKey('cpuTemperatureInfo')) {
+      cpuTemperatureInfo = (_json['cpuTemperatureInfo'] as core.List)
           .map<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>((value) =>
               ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("cpuUtilizationPercentageInfo")) {
+    if (_json.containsKey('cpuUtilizationPercentageInfo')) {
       cpuUtilizationPercentageInfo =
-          (_json["cpuUtilizationPercentageInfo"] as core.List).cast<core.int>();
+          (_json['cpuUtilizationPercentageInfo'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("reportTime")) {
-      reportTime = core.DateTime.parse(_json["reportTime"]);
+    if (_json.containsKey('reportTime')) {
+      reportTime = core.DateTime.parse(_json['reportTime']);
     }
   }
 
@@ -7952,14 +7951,14 @@ class ChromeOsDeviceCpuStatusReports {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cpuTemperatureInfo != null) {
-      _json["cpuTemperatureInfo"] =
+      _json['cpuTemperatureInfo'] =
           cpuTemperatureInfo.map((value) => value.toJson()).toList();
     }
     if (cpuUtilizationPercentageInfo != null) {
-      _json["cpuUtilizationPercentageInfo"] = cpuUtilizationPercentageInfo;
+      _json['cpuUtilizationPercentageInfo'] = cpuUtilizationPercentageInfo;
     }
     if (reportTime != null) {
-      _json["reportTime"] = (reportTime).toIso8601String();
+      _json['reportTime'] = (reportTime).toIso8601String();
     }
     return _json;
   }
@@ -7981,17 +7980,17 @@ class ChromeOsDeviceDeviceFiles {
   ChromeOsDeviceDeviceFiles();
 
   ChromeOsDeviceDeviceFiles.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = core.DateTime.parse(_json["createTime"]);
+    if (_json.containsKey('createTime')) {
+      createTime = core.DateTime.parse(_json['createTime']);
     }
-    if (_json.containsKey("downloadUrl")) {
-      downloadUrl = _json["downloadUrl"];
+    if (_json.containsKey('downloadUrl')) {
+      downloadUrl = _json['downloadUrl'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -7999,16 +7998,16 @@ class ChromeOsDeviceDeviceFiles {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = (createTime).toIso8601String();
+      _json['createTime'] = (createTime).toIso8601String();
     }
     if (downloadUrl != null) {
-      _json["downloadUrl"] = downloadUrl;
+      _json['downloadUrl'] = downloadUrl;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -8027,14 +8026,14 @@ class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
   ChromeOsDeviceDiskVolumeReportsVolumeInfo();
 
   ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("storageFree")) {
-      storageFree = _json["storageFree"];
+    if (_json.containsKey('storageFree')) {
+      storageFree = _json['storageFree'];
     }
-    if (_json.containsKey("storageTotal")) {
-      storageTotal = _json["storageTotal"];
+    if (_json.containsKey('storageTotal')) {
+      storageTotal = _json['storageTotal'];
     }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
+    if (_json.containsKey('volumeId')) {
+      volumeId = _json['volumeId'];
     }
   }
 
@@ -8042,13 +8041,13 @@ class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (storageFree != null) {
-      _json["storageFree"] = storageFree;
+      _json['storageFree'] = storageFree;
     }
     if (storageTotal != null) {
-      _json["storageTotal"] = storageTotal;
+      _json['storageTotal'] = storageTotal;
     }
     if (volumeId != null) {
-      _json["volumeId"] = volumeId;
+      _json['volumeId'] = volumeId;
     }
     return _json;
   }
@@ -8061,8 +8060,8 @@ class ChromeOsDeviceDiskVolumeReports {
   ChromeOsDeviceDiskVolumeReports();
 
   ChromeOsDeviceDiskVolumeReports.fromJson(core.Map _json) {
-    if (_json.containsKey("volumeInfo")) {
-      volumeInfo = (_json["volumeInfo"] as core.List)
+    if (_json.containsKey('volumeInfo')) {
+      volumeInfo = (_json['volumeInfo'] as core.List)
           .map<ChromeOsDeviceDiskVolumeReportsVolumeInfo>((value) =>
               ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(value))
           .toList();
@@ -8073,7 +8072,7 @@ class ChromeOsDeviceDiskVolumeReports {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (volumeInfo != null) {
-      _json["volumeInfo"] = volumeInfo.map((value) => value.toJson()).toList();
+      _json['volumeInfo'] = volumeInfo.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8090,11 +8089,11 @@ class ChromeOsDeviceLastKnownNetwork {
   ChromeOsDeviceLastKnownNetwork();
 
   ChromeOsDeviceLastKnownNetwork.fromJson(core.Map _json) {
-    if (_json.containsKey("ipAddress")) {
-      ipAddress = _json["ipAddress"];
+    if (_json.containsKey('ipAddress')) {
+      ipAddress = _json['ipAddress'];
     }
-    if (_json.containsKey("wanIpAddress")) {
-      wanIpAddress = _json["wanIpAddress"];
+    if (_json.containsKey('wanIpAddress')) {
+      wanIpAddress = _json['wanIpAddress'];
     }
   }
 
@@ -8102,10 +8101,10 @@ class ChromeOsDeviceLastKnownNetwork {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ipAddress != null) {
-      _json["ipAddress"] = ipAddress;
+      _json['ipAddress'] = ipAddress;
     }
     if (wanIpAddress != null) {
-      _json["wanIpAddress"] = wanIpAddress;
+      _json['wanIpAddress'] = wanIpAddress;
     }
     return _json;
   }
@@ -8121,11 +8120,11 @@ class ChromeOsDeviceRecentUsers {
   ChromeOsDeviceRecentUsers();
 
   ChromeOsDeviceRecentUsers.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -8133,10 +8132,10 @@ class ChromeOsDeviceRecentUsers {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -8150,12 +8149,12 @@ class ChromeOsDeviceSystemRamFreeReports {
   ChromeOsDeviceSystemRamFreeReports();
 
   ChromeOsDeviceSystemRamFreeReports.fromJson(core.Map _json) {
-    if (_json.containsKey("reportTime")) {
-      reportTime = core.DateTime.parse(_json["reportTime"]);
+    if (_json.containsKey('reportTime')) {
+      reportTime = core.DateTime.parse(_json['reportTime']);
     }
-    if (_json.containsKey("systemRamFreeInfo")) {
+    if (_json.containsKey('systemRamFreeInfo')) {
       systemRamFreeInfo =
-          (_json["systemRamFreeInfo"] as core.List).cast<core.String>();
+          (_json['systemRamFreeInfo'] as core.List).cast<core.String>();
     }
   }
 
@@ -8163,10 +8162,10 @@ class ChromeOsDeviceSystemRamFreeReports {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (reportTime != null) {
-      _json["reportTime"] = (reportTime).toIso8601String();
+      _json['reportTime'] = (reportTime).toIso8601String();
     }
     if (systemRamFreeInfo != null) {
-      _json["systemRamFreeInfo"] = systemRamFreeInfo;
+      _json['systemRamFreeInfo'] = systemRamFreeInfo;
     }
     return _json;
   }
@@ -8195,23 +8194,23 @@ class ChromeOsDeviceTpmVersionInfo {
   ChromeOsDeviceTpmVersionInfo();
 
   ChromeOsDeviceTpmVersionInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("family")) {
-      family = _json["family"];
+    if (_json.containsKey('family')) {
+      family = _json['family'];
     }
-    if (_json.containsKey("firmwareVersion")) {
-      firmwareVersion = _json["firmwareVersion"];
+    if (_json.containsKey('firmwareVersion')) {
+      firmwareVersion = _json['firmwareVersion'];
     }
-    if (_json.containsKey("manufacturer")) {
-      manufacturer = _json["manufacturer"];
+    if (_json.containsKey('manufacturer')) {
+      manufacturer = _json['manufacturer'];
     }
-    if (_json.containsKey("specLevel")) {
-      specLevel = _json["specLevel"];
+    if (_json.containsKey('specLevel')) {
+      specLevel = _json['specLevel'];
     }
-    if (_json.containsKey("tpmModel")) {
-      tpmModel = _json["tpmModel"];
+    if (_json.containsKey('tpmModel')) {
+      tpmModel = _json['tpmModel'];
     }
-    if (_json.containsKey("vendorSpecific")) {
-      vendorSpecific = _json["vendorSpecific"];
+    if (_json.containsKey('vendorSpecific')) {
+      vendorSpecific = _json['vendorSpecific'];
     }
   }
 
@@ -8219,22 +8218,22 @@ class ChromeOsDeviceTpmVersionInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (family != null) {
-      _json["family"] = family;
+      _json['family'] = family;
     }
     if (firmwareVersion != null) {
-      _json["firmwareVersion"] = firmwareVersion;
+      _json['firmwareVersion'] = firmwareVersion;
     }
     if (manufacturer != null) {
-      _json["manufacturer"] = manufacturer;
+      _json['manufacturer'] = manufacturer;
     }
     if (specLevel != null) {
-      _json["specLevel"] = specLevel;
+      _json['specLevel'] = specLevel;
     }
     if (tpmModel != null) {
-      _json["tpmModel"] = tpmModel;
+      _json['tpmModel'] = tpmModel;
     }
     if (vendorSpecific != null) {
-      _json["vendorSpecific"] = vendorSpecific;
+      _json['vendorSpecific'] = vendorSpecific;
     }
     return _json;
   }
@@ -8368,135 +8367,135 @@ class ChromeOsDevice {
   ChromeOsDevice();
 
   ChromeOsDevice.fromJson(core.Map _json) {
-    if (_json.containsKey("activeTimeRanges")) {
-      activeTimeRanges = (_json["activeTimeRanges"] as core.List)
+    if (_json.containsKey('activeTimeRanges')) {
+      activeTimeRanges = (_json['activeTimeRanges'] as core.List)
           .map<ChromeOsDeviceActiveTimeRanges>(
               (value) => ChromeOsDeviceActiveTimeRanges.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("annotatedAssetId")) {
-      annotatedAssetId = _json["annotatedAssetId"];
+    if (_json.containsKey('annotatedAssetId')) {
+      annotatedAssetId = _json['annotatedAssetId'];
     }
-    if (_json.containsKey("annotatedLocation")) {
-      annotatedLocation = _json["annotatedLocation"];
+    if (_json.containsKey('annotatedLocation')) {
+      annotatedLocation = _json['annotatedLocation'];
     }
-    if (_json.containsKey("annotatedUser")) {
-      annotatedUser = _json["annotatedUser"];
+    if (_json.containsKey('annotatedUser')) {
+      annotatedUser = _json['annotatedUser'];
     }
-    if (_json.containsKey("autoUpdateExpiration")) {
-      autoUpdateExpiration = _json["autoUpdateExpiration"];
+    if (_json.containsKey('autoUpdateExpiration')) {
+      autoUpdateExpiration = _json['autoUpdateExpiration'];
     }
-    if (_json.containsKey("bootMode")) {
-      bootMode = _json["bootMode"];
+    if (_json.containsKey('bootMode')) {
+      bootMode = _json['bootMode'];
     }
-    if (_json.containsKey("cpuStatusReports")) {
-      cpuStatusReports = (_json["cpuStatusReports"] as core.List)
+    if (_json.containsKey('cpuStatusReports')) {
+      cpuStatusReports = (_json['cpuStatusReports'] as core.List)
           .map<ChromeOsDeviceCpuStatusReports>(
               (value) => ChromeOsDeviceCpuStatusReports.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("deviceFiles")) {
-      deviceFiles = (_json["deviceFiles"] as core.List)
+    if (_json.containsKey('deviceFiles')) {
+      deviceFiles = (_json['deviceFiles'] as core.List)
           .map<ChromeOsDeviceDeviceFiles>(
               (value) => ChromeOsDeviceDeviceFiles.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("deviceId")) {
-      deviceId = _json["deviceId"];
+    if (_json.containsKey('deviceId')) {
+      deviceId = _json['deviceId'];
     }
-    if (_json.containsKey("diskVolumeReports")) {
-      diskVolumeReports = (_json["diskVolumeReports"] as core.List)
+    if (_json.containsKey('diskVolumeReports')) {
+      diskVolumeReports = (_json['diskVolumeReports'] as core.List)
           .map<ChromeOsDeviceDiskVolumeReports>(
               (value) => ChromeOsDeviceDiskVolumeReports.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("dockMacAddress")) {
-      dockMacAddress = _json["dockMacAddress"];
+    if (_json.containsKey('dockMacAddress')) {
+      dockMacAddress = _json['dockMacAddress'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("ethernetMacAddress")) {
-      ethernetMacAddress = _json["ethernetMacAddress"];
+    if (_json.containsKey('ethernetMacAddress')) {
+      ethernetMacAddress = _json['ethernetMacAddress'];
     }
-    if (_json.containsKey("ethernetMacAddress0")) {
-      ethernetMacAddress0 = _json["ethernetMacAddress0"];
+    if (_json.containsKey('ethernetMacAddress0')) {
+      ethernetMacAddress0 = _json['ethernetMacAddress0'];
     }
-    if (_json.containsKey("firmwareVersion")) {
-      firmwareVersion = _json["firmwareVersion"];
+    if (_json.containsKey('firmwareVersion')) {
+      firmwareVersion = _json['firmwareVersion'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastEnrollmentTime")) {
-      lastEnrollmentTime = core.DateTime.parse(_json["lastEnrollmentTime"]);
+    if (_json.containsKey('lastEnrollmentTime')) {
+      lastEnrollmentTime = core.DateTime.parse(_json['lastEnrollmentTime']);
     }
-    if (_json.containsKey("lastKnownNetwork")) {
-      lastKnownNetwork = (_json["lastKnownNetwork"] as core.List)
+    if (_json.containsKey('lastKnownNetwork')) {
+      lastKnownNetwork = (_json['lastKnownNetwork'] as core.List)
           .map<ChromeOsDeviceLastKnownNetwork>(
               (value) => ChromeOsDeviceLastKnownNetwork.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("lastSync")) {
-      lastSync = core.DateTime.parse(_json["lastSync"]);
+    if (_json.containsKey('lastSync')) {
+      lastSync = core.DateTime.parse(_json['lastSync']);
     }
-    if (_json.containsKey("macAddress")) {
-      macAddress = _json["macAddress"];
+    if (_json.containsKey('macAddress')) {
+      macAddress = _json['macAddress'];
     }
-    if (_json.containsKey("manufactureDate")) {
-      manufactureDate = _json["manufactureDate"];
+    if (_json.containsKey('manufactureDate')) {
+      manufactureDate = _json['manufactureDate'];
     }
-    if (_json.containsKey("meid")) {
-      meid = _json["meid"];
+    if (_json.containsKey('meid')) {
+      meid = _json['meid'];
     }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("orderNumber")) {
-      orderNumber = _json["orderNumber"];
+    if (_json.containsKey('orderNumber')) {
+      orderNumber = _json['orderNumber'];
     }
-    if (_json.containsKey("orgUnitPath")) {
-      orgUnitPath = _json["orgUnitPath"];
+    if (_json.containsKey('orgUnitPath')) {
+      orgUnitPath = _json['orgUnitPath'];
     }
-    if (_json.containsKey("osVersion")) {
-      osVersion = _json["osVersion"];
+    if (_json.containsKey('osVersion')) {
+      osVersion = _json['osVersion'];
     }
-    if (_json.containsKey("platformVersion")) {
-      platformVersion = _json["platformVersion"];
+    if (_json.containsKey('platformVersion')) {
+      platformVersion = _json['platformVersion'];
     }
-    if (_json.containsKey("recentUsers")) {
-      recentUsers = (_json["recentUsers"] as core.List)
+    if (_json.containsKey('recentUsers')) {
+      recentUsers = (_json['recentUsers'] as core.List)
           .map<ChromeOsDeviceRecentUsers>(
               (value) => ChromeOsDeviceRecentUsers.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("serialNumber")) {
-      serialNumber = _json["serialNumber"];
+    if (_json.containsKey('serialNumber')) {
+      serialNumber = _json['serialNumber'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("supportEndDate")) {
-      supportEndDate = core.DateTime.parse(_json["supportEndDate"]);
+    if (_json.containsKey('supportEndDate')) {
+      supportEndDate = core.DateTime.parse(_json['supportEndDate']);
     }
-    if (_json.containsKey("systemRamFreeReports")) {
-      systemRamFreeReports = (_json["systemRamFreeReports"] as core.List)
+    if (_json.containsKey('systemRamFreeReports')) {
+      systemRamFreeReports = (_json['systemRamFreeReports'] as core.List)
           .map<ChromeOsDeviceSystemRamFreeReports>(
               (value) => ChromeOsDeviceSystemRamFreeReports.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("systemRamTotal")) {
-      systemRamTotal = _json["systemRamTotal"];
+    if (_json.containsKey('systemRamTotal')) {
+      systemRamTotal = _json['systemRamTotal'];
     }
-    if (_json.containsKey("tpmVersionInfo")) {
+    if (_json.containsKey('tpmVersionInfo')) {
       tpmVersionInfo =
-          ChromeOsDeviceTpmVersionInfo.fromJson(_json["tpmVersionInfo"]);
+          ChromeOsDeviceTpmVersionInfo.fromJson(_json['tpmVersionInfo']);
     }
-    if (_json.containsKey("willAutoRenew")) {
-      willAutoRenew = _json["willAutoRenew"];
+    if (_json.containsKey('willAutoRenew')) {
+      willAutoRenew = _json['willAutoRenew'];
     }
   }
 
@@ -8504,119 +8503,119 @@ class ChromeOsDevice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activeTimeRanges != null) {
-      _json["activeTimeRanges"] =
+      _json['activeTimeRanges'] =
           activeTimeRanges.map((value) => value.toJson()).toList();
     }
     if (annotatedAssetId != null) {
-      _json["annotatedAssetId"] = annotatedAssetId;
+      _json['annotatedAssetId'] = annotatedAssetId;
     }
     if (annotatedLocation != null) {
-      _json["annotatedLocation"] = annotatedLocation;
+      _json['annotatedLocation'] = annotatedLocation;
     }
     if (annotatedUser != null) {
-      _json["annotatedUser"] = annotatedUser;
+      _json['annotatedUser'] = annotatedUser;
     }
     if (autoUpdateExpiration != null) {
-      _json["autoUpdateExpiration"] = autoUpdateExpiration;
+      _json['autoUpdateExpiration'] = autoUpdateExpiration;
     }
     if (bootMode != null) {
-      _json["bootMode"] = bootMode;
+      _json['bootMode'] = bootMode;
     }
     if (cpuStatusReports != null) {
-      _json["cpuStatusReports"] =
+      _json['cpuStatusReports'] =
           cpuStatusReports.map((value) => value.toJson()).toList();
     }
     if (deviceFiles != null) {
-      _json["deviceFiles"] =
+      _json['deviceFiles'] =
           deviceFiles.map((value) => value.toJson()).toList();
     }
     if (deviceId != null) {
-      _json["deviceId"] = deviceId;
+      _json['deviceId'] = deviceId;
     }
     if (diskVolumeReports != null) {
-      _json["diskVolumeReports"] =
+      _json['diskVolumeReports'] =
           diskVolumeReports.map((value) => value.toJson()).toList();
     }
     if (dockMacAddress != null) {
-      _json["dockMacAddress"] = dockMacAddress;
+      _json['dockMacAddress'] = dockMacAddress;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (ethernetMacAddress != null) {
-      _json["ethernetMacAddress"] = ethernetMacAddress;
+      _json['ethernetMacAddress'] = ethernetMacAddress;
     }
     if (ethernetMacAddress0 != null) {
-      _json["ethernetMacAddress0"] = ethernetMacAddress0;
+      _json['ethernetMacAddress0'] = ethernetMacAddress0;
     }
     if (firmwareVersion != null) {
-      _json["firmwareVersion"] = firmwareVersion;
+      _json['firmwareVersion'] = firmwareVersion;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastEnrollmentTime != null) {
-      _json["lastEnrollmentTime"] = (lastEnrollmentTime).toIso8601String();
+      _json['lastEnrollmentTime'] = (lastEnrollmentTime).toIso8601String();
     }
     if (lastKnownNetwork != null) {
-      _json["lastKnownNetwork"] =
+      _json['lastKnownNetwork'] =
           lastKnownNetwork.map((value) => value.toJson()).toList();
     }
     if (lastSync != null) {
-      _json["lastSync"] = (lastSync).toIso8601String();
+      _json['lastSync'] = (lastSync).toIso8601String();
     }
     if (macAddress != null) {
-      _json["macAddress"] = macAddress;
+      _json['macAddress'] = macAddress;
     }
     if (manufactureDate != null) {
-      _json["manufactureDate"] = manufactureDate;
+      _json['manufactureDate'] = manufactureDate;
     }
     if (meid != null) {
-      _json["meid"] = meid;
+      _json['meid'] = meid;
     }
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (orderNumber != null) {
-      _json["orderNumber"] = orderNumber;
+      _json['orderNumber'] = orderNumber;
     }
     if (orgUnitPath != null) {
-      _json["orgUnitPath"] = orgUnitPath;
+      _json['orgUnitPath'] = orgUnitPath;
     }
     if (osVersion != null) {
-      _json["osVersion"] = osVersion;
+      _json['osVersion'] = osVersion;
     }
     if (platformVersion != null) {
-      _json["platformVersion"] = platformVersion;
+      _json['platformVersion'] = platformVersion;
     }
     if (recentUsers != null) {
-      _json["recentUsers"] =
+      _json['recentUsers'] =
           recentUsers.map((value) => value.toJson()).toList();
     }
     if (serialNumber != null) {
-      _json["serialNumber"] = serialNumber;
+      _json['serialNumber'] = serialNumber;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (supportEndDate != null) {
-      _json["supportEndDate"] = (supportEndDate).toIso8601String();
+      _json['supportEndDate'] = (supportEndDate).toIso8601String();
     }
     if (systemRamFreeReports != null) {
-      _json["systemRamFreeReports"] =
+      _json['systemRamFreeReports'] =
           systemRamFreeReports.map((value) => value.toJson()).toList();
     }
     if (systemRamTotal != null) {
-      _json["systemRamTotal"] = systemRamTotal;
+      _json['systemRamTotal'] = systemRamTotal;
     }
     if (tpmVersionInfo != null) {
-      _json["tpmVersionInfo"] = tpmVersionInfo.toJson();
+      _json['tpmVersionInfo'] = tpmVersionInfo.toJson();
     }
     if (willAutoRenew != null) {
-      _json["willAutoRenew"] = willAutoRenew;
+      _json['willAutoRenew'] = willAutoRenew;
     }
     return _json;
   }
@@ -8630,11 +8629,11 @@ class ChromeOsDeviceAction {
   ChromeOsDeviceAction();
 
   ChromeOsDeviceAction.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
+    if (_json.containsKey('action')) {
+      action = _json['action'];
     }
-    if (_json.containsKey("deprovisionReason")) {
-      deprovisionReason = _json["deprovisionReason"];
+    if (_json.containsKey('deprovisionReason')) {
+      deprovisionReason = _json['deprovisionReason'];
     }
   }
 
@@ -8642,10 +8641,10 @@ class ChromeOsDeviceAction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (action != null) {
-      _json["action"] = action;
+      _json['action'] = action;
     }
     if (deprovisionReason != null) {
-      _json["deprovisionReason"] = deprovisionReason;
+      _json['deprovisionReason'] = deprovisionReason;
     }
     return _json;
   }
@@ -8670,19 +8669,19 @@ class ChromeOsDevices {
   ChromeOsDevices();
 
   ChromeOsDevices.fromJson(core.Map _json) {
-    if (_json.containsKey("chromeosdevices")) {
-      chromeosdevices = (_json["chromeosdevices"] as core.List)
+    if (_json.containsKey('chromeosdevices')) {
+      chromeosdevices = (_json['chromeosdevices'] as core.List)
           .map<ChromeOsDevice>((value) => ChromeOsDevice.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8690,17 +8689,17 @@ class ChromeOsDevices {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (chromeosdevices != null) {
-      _json["chromeosdevices"] =
+      _json['chromeosdevices'] =
           chromeosdevices.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8713,8 +8712,8 @@ class ChromeOsMoveDevicesToOu {
   ChromeOsMoveDevicesToOu();
 
   ChromeOsMoveDevicesToOu.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceIds")) {
-      deviceIds = (_json["deviceIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('deviceIds')) {
+      deviceIds = (_json['deviceIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -8722,7 +8721,7 @@ class ChromeOsMoveDevicesToOu {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceIds != null) {
-      _json["deviceIds"] = deviceIds;
+      _json['deviceIds'] = deviceIds;
     }
     return _json;
   }
@@ -8764,32 +8763,32 @@ class Customer {
   Customer();
 
   Customer.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateEmail")) {
-      alternateEmail = _json["alternateEmail"];
+    if (_json.containsKey('alternateEmail')) {
+      alternateEmail = _json['alternateEmail'];
     }
-    if (_json.containsKey("customerCreationTime")) {
-      customerCreationTime = core.DateTime.parse(_json["customerCreationTime"]);
+    if (_json.containsKey('customerCreationTime')) {
+      customerCreationTime = core.DateTime.parse(_json['customerCreationTime']);
     }
-    if (_json.containsKey("customerDomain")) {
-      customerDomain = _json["customerDomain"];
+    if (_json.containsKey('customerDomain')) {
+      customerDomain = _json['customerDomain'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'];
     }
-    if (_json.containsKey("postalAddress")) {
-      postalAddress = CustomerPostalAddress.fromJson(_json["postalAddress"]);
+    if (_json.containsKey('postalAddress')) {
+      postalAddress = CustomerPostalAddress.fromJson(_json['postalAddress']);
     }
   }
 
@@ -8797,31 +8796,31 @@ class Customer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateEmail != null) {
-      _json["alternateEmail"] = alternateEmail;
+      _json['alternateEmail'] = alternateEmail;
     }
     if (customerCreationTime != null) {
-      _json["customerCreationTime"] = (customerCreationTime).toIso8601String();
+      _json['customerCreationTime'] = (customerCreationTime).toIso8601String();
     }
     if (customerDomain != null) {
-      _json["customerDomain"] = customerDomain;
+      _json['customerDomain'] = customerDomain;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     if (postalAddress != null) {
-      _json["postalAddress"] = postalAddress.toJson();
+      _json['postalAddress'] = postalAddress.toJson();
     }
     return _json;
   }
@@ -8868,32 +8867,32 @@ class CustomerPostalAddress {
   CustomerPostalAddress();
 
   CustomerPostalAddress.fromJson(core.Map _json) {
-    if (_json.containsKey("addressLine1")) {
-      addressLine1 = _json["addressLine1"];
+    if (_json.containsKey('addressLine1')) {
+      addressLine1 = _json['addressLine1'];
     }
-    if (_json.containsKey("addressLine2")) {
-      addressLine2 = _json["addressLine2"];
+    if (_json.containsKey('addressLine2')) {
+      addressLine2 = _json['addressLine2'];
     }
-    if (_json.containsKey("addressLine3")) {
-      addressLine3 = _json["addressLine3"];
+    if (_json.containsKey('addressLine3')) {
+      addressLine3 = _json['addressLine3'];
     }
-    if (_json.containsKey("contactName")) {
-      contactName = _json["contactName"];
+    if (_json.containsKey('contactName')) {
+      contactName = _json['contactName'];
     }
-    if (_json.containsKey("countryCode")) {
-      countryCode = _json["countryCode"];
+    if (_json.containsKey('countryCode')) {
+      countryCode = _json['countryCode'];
     }
-    if (_json.containsKey("locality")) {
-      locality = _json["locality"];
+    if (_json.containsKey('locality')) {
+      locality = _json['locality'];
     }
-    if (_json.containsKey("organizationName")) {
-      organizationName = _json["organizationName"];
+    if (_json.containsKey('organizationName')) {
+      organizationName = _json['organizationName'];
     }
-    if (_json.containsKey("postalCode")) {
-      postalCode = _json["postalCode"];
+    if (_json.containsKey('postalCode')) {
+      postalCode = _json['postalCode'];
     }
-    if (_json.containsKey("region")) {
-      region = _json["region"];
+    if (_json.containsKey('region')) {
+      region = _json['region'];
     }
   }
 
@@ -8901,31 +8900,31 @@ class CustomerPostalAddress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addressLine1 != null) {
-      _json["addressLine1"] = addressLine1;
+      _json['addressLine1'] = addressLine1;
     }
     if (addressLine2 != null) {
-      _json["addressLine2"] = addressLine2;
+      _json['addressLine2'] = addressLine2;
     }
     if (addressLine3 != null) {
-      _json["addressLine3"] = addressLine3;
+      _json['addressLine3'] = addressLine3;
     }
     if (contactName != null) {
-      _json["contactName"] = contactName;
+      _json['contactName'] = contactName;
     }
     if (countryCode != null) {
-      _json["countryCode"] = countryCode;
+      _json['countryCode'] = countryCode;
     }
     if (locality != null) {
-      _json["locality"] = locality;
+      _json['locality'] = locality;
     }
     if (organizationName != null) {
-      _json["organizationName"] = organizationName;
+      _json['organizationName'] = organizationName;
     }
     if (postalCode != null) {
-      _json["postalCode"] = postalCode;
+      _json['postalCode'] = postalCode;
     }
     if (region != null) {
-      _json["region"] = region;
+      _json['region'] = region;
     }
     return _json;
   }
@@ -8954,23 +8953,23 @@ class DomainAlias {
   DomainAlias();
 
   DomainAlias.fromJson(core.Map _json) {
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("domainAliasName")) {
-      domainAliasName = _json["domainAliasName"];
+    if (_json.containsKey('domainAliasName')) {
+      domainAliasName = _json['domainAliasName'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("parentDomainName")) {
-      parentDomainName = _json["parentDomainName"];
+    if (_json.containsKey('parentDomainName')) {
+      parentDomainName = _json['parentDomainName'];
     }
-    if (_json.containsKey("verified")) {
-      verified = _json["verified"];
+    if (_json.containsKey('verified')) {
+      verified = _json['verified'];
     }
   }
 
@@ -8978,22 +8977,22 @@ class DomainAlias {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (domainAliasName != null) {
-      _json["domainAliasName"] = domainAliasName;
+      _json['domainAliasName'] = domainAliasName;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (parentDomainName != null) {
-      _json["parentDomainName"] = parentDomainName;
+      _json['parentDomainName'] = parentDomainName;
     }
     if (verified != null) {
-      _json["verified"] = verified;
+      _json['verified'] = verified;
     }
     return _json;
   }
@@ -9012,16 +9011,16 @@ class DomainAliases {
   DomainAliases();
 
   DomainAliases.fromJson(core.Map _json) {
-    if (_json.containsKey("domainAliases")) {
-      domainAliases = (_json["domainAliases"] as core.List)
+    if (_json.containsKey('domainAliases')) {
+      domainAliases = (_json['domainAliases'] as core.List)
           .map<DomainAlias>((value) => DomainAlias.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -9029,14 +9028,14 @@ class DomainAliases {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (domainAliases != null) {
-      _json["domainAliases"] =
+      _json['domainAliases'] =
           domainAliases.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -9067,28 +9066,28 @@ class Domains {
   Domains();
 
   Domains.fromJson(core.Map _json) {
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("domainAliases")) {
-      domainAliases = (_json["domainAliases"] as core.List)
+    if (_json.containsKey('domainAliases')) {
+      domainAliases = (_json['domainAliases'] as core.List)
           .map<DomainAlias>((value) => DomainAlias.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("domainName")) {
-      domainName = _json["domainName"];
+    if (_json.containsKey('domainName')) {
+      domainName = _json['domainName'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("isPrimary")) {
-      isPrimary = _json["isPrimary"];
+    if (_json.containsKey('isPrimary')) {
+      isPrimary = _json['isPrimary'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("verified")) {
-      verified = _json["verified"];
+    if (_json.containsKey('verified')) {
+      verified = _json['verified'];
     }
   }
 
@@ -9096,26 +9095,26 @@ class Domains {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (domainAliases != null) {
-      _json["domainAliases"] =
+      _json['domainAliases'] =
           domainAliases.map((value) => value.toJson()).toList();
     }
     if (domainName != null) {
-      _json["domainName"] = domainName;
+      _json['domainName'] = domainName;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (isPrimary != null) {
-      _json["isPrimary"] = isPrimary;
+      _json['isPrimary'] = isPrimary;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (verified != null) {
-      _json["verified"] = verified;
+      _json['verified'] = verified;
     }
     return _json;
   }
@@ -9134,16 +9133,16 @@ class Domains2 {
   Domains2();
 
   Domains2.fromJson(core.Map _json) {
-    if (_json.containsKey("domains")) {
-      domains = (_json["domains"] as core.List)
+    if (_json.containsKey('domains')) {
+      domains = (_json['domains'] as core.List)
           .map<Domains>((value) => Domains.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -9151,13 +9150,13 @@ class Domains2 {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (domains != null) {
-      _json["domains"] = domains.map((value) => value.toJson()).toList();
+      _json['domains'] = domains.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -9177,14 +9176,14 @@ class Feature {
   Feature();
 
   Feature.fromJson(core.Map _json) {
-    if (_json.containsKey("etags")) {
-      etags = _json["etags"];
+    if (_json.containsKey('etags')) {
+      etags = _json['etags'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -9192,13 +9191,13 @@ class Feature {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etags != null) {
-      _json["etags"] = etags;
+      _json['etags'] = etags;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -9213,8 +9212,8 @@ class FeatureInstance {
   FeatureInstance();
 
   FeatureInstance.fromJson(core.Map _json) {
-    if (_json.containsKey("feature")) {
-      feature = Feature.fromJson(_json["feature"]);
+    if (_json.containsKey('feature')) {
+      feature = Feature.fromJson(_json['feature']);
     }
   }
 
@@ -9222,7 +9221,7 @@ class FeatureInstance {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (feature != null) {
-      _json["feature"] = feature.toJson();
+      _json['feature'] = feature.toJson();
     }
     return _json;
   }
@@ -9235,8 +9234,8 @@ class FeatureRename {
   FeatureRename();
 
   FeatureRename.fromJson(core.Map _json) {
-    if (_json.containsKey("newName")) {
-      newName = _json["newName"];
+    if (_json.containsKey('newName')) {
+      newName = _json['newName'];
     }
   }
 
@@ -9244,7 +9243,7 @@ class FeatureRename {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (newName != null) {
-      _json["newName"] = newName;
+      _json['newName'] = newName;
     }
     return _json;
   }
@@ -9268,19 +9267,19 @@ class Features {
   Features();
 
   Features.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("features")) {
-      features = (_json["features"] as core.List)
+    if (_json.containsKey('features')) {
+      features = (_json['features'] as core.List)
           .map<Feature>((value) => Feature.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -9288,16 +9287,16 @@ class Features {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (features != null) {
-      _json["features"] = features.map((value) => value.toJson()).toList();
+      _json['features'] = features.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -9340,36 +9339,36 @@ class Group {
   Group();
 
   Group.fromJson(core.Map _json) {
-    if (_json.containsKey("adminCreated")) {
-      adminCreated = _json["adminCreated"];
+    if (_json.containsKey('adminCreated')) {
+      adminCreated = _json['adminCreated'];
     }
-    if (_json.containsKey("aliases")) {
-      aliases = (_json["aliases"] as core.List).cast<core.String>();
+    if (_json.containsKey('aliases')) {
+      aliases = (_json['aliases'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("directMembersCount")) {
-      directMembersCount = _json["directMembersCount"];
+    if (_json.containsKey('directMembersCount')) {
+      directMembersCount = _json['directMembersCount'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("nonEditableAliases")) {
+    if (_json.containsKey('nonEditableAliases')) {
       nonEditableAliases =
-          (_json["nonEditableAliases"] as core.List).cast<core.String>();
+          (_json['nonEditableAliases'] as core.List).cast<core.String>();
     }
   }
 
@@ -9377,34 +9376,34 @@ class Group {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adminCreated != null) {
-      _json["adminCreated"] = adminCreated;
+      _json['adminCreated'] = adminCreated;
     }
     if (aliases != null) {
-      _json["aliases"] = aliases;
+      _json['aliases'] = aliases;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (directMembersCount != null) {
-      _json["directMembersCount"] = directMembersCount;
+      _json['directMembersCount'] = directMembersCount;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (nonEditableAliases != null) {
-      _json["nonEditableAliases"] = nonEditableAliases;
+      _json['nonEditableAliases'] = nonEditableAliases;
     }
     return _json;
   }
@@ -9429,19 +9428,19 @@ class Groups {
   Groups();
 
   Groups.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("groups")) {
-      groups = (_json["groups"] as core.List)
+    if (_json.containsKey('groups')) {
+      groups = (_json['groups'] as core.List)
           .map<Group>((value) => Group.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -9449,16 +9448,16 @@ class Groups {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (groups != null) {
-      _json["groups"] = groups.map((value) => value.toJson()).toList();
+      _json['groups'] = groups.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -9494,29 +9493,29 @@ class Member {
   Member();
 
   Member.fromJson(core.Map _json) {
-    if (_json.containsKey("delivery_settings")) {
-      deliverySettings = _json["delivery_settings"];
+    if (_json.containsKey('delivery_settings')) {
+      deliverySettings = _json['delivery_settings'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -9524,28 +9523,28 @@ class Member {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deliverySettings != null) {
-      _json["delivery_settings"] = deliverySettings;
+      _json['delivery_settings'] = deliverySettings;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -9567,19 +9566,19 @@ class Members {
   Members();
 
   Members.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List)
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List)
           .map<Member>((value) => Member.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -9587,16 +9586,16 @@ class Members {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (members != null) {
-      _json["members"] = members.map((value) => value.toJson()).toList();
+      _json['members'] = members.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -9611,8 +9610,8 @@ class MembersHasMember {
   MembersHasMember();
 
   MembersHasMember.fromJson(core.Map _json) {
-    if (_json.containsKey("isMember")) {
-      isMember = _json["isMember"];
+    if (_json.containsKey('isMember')) {
+      isMember = _json['isMember'];
     }
   }
 
@@ -9620,7 +9619,7 @@ class MembersHasMember {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (isMember != null) {
-      _json["isMember"] = isMember;
+      _json['isMember'] = isMember;
     }
     return _json;
   }
@@ -9645,20 +9644,20 @@ class MobileDeviceApplications {
   MobileDeviceApplications();
 
   MobileDeviceApplications.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("permission")) {
-      permission = (_json["permission"] as core.List).cast<core.String>();
+    if (_json.containsKey('permission')) {
+      permission = (_json['permission'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("versionCode")) {
-      versionCode = _json["versionCode"];
+    if (_json.containsKey('versionCode')) {
+      versionCode = _json['versionCode'];
     }
-    if (_json.containsKey("versionName")) {
-      versionName = _json["versionName"];
+    if (_json.containsKey('versionName')) {
+      versionName = _json['versionName'];
     }
   }
 
@@ -9666,19 +9665,19 @@ class MobileDeviceApplications {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (permission != null) {
-      _json["permission"] = permission;
+      _json['permission'] = permission;
     }
     if (versionCode != null) {
-      _json["versionCode"] = versionCode;
+      _json['versionCode'] = versionCode;
     }
     if (versionName != null) {
-      _json["versionName"] = versionName;
+      _json['versionName'] = versionName;
     }
     return _json;
   }
@@ -9811,129 +9810,129 @@ class MobileDevice {
   MobileDevice();
 
   MobileDevice.fromJson(core.Map _json) {
-    if (_json.containsKey("adbStatus")) {
-      adbStatus = _json["adbStatus"];
+    if (_json.containsKey('adbStatus')) {
+      adbStatus = _json['adbStatus'];
     }
-    if (_json.containsKey("applications")) {
-      applications = (_json["applications"] as core.List)
+    if (_json.containsKey('applications')) {
+      applications = (_json['applications'] as core.List)
           .map<MobileDeviceApplications>(
               (value) => MobileDeviceApplications.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("basebandVersion")) {
-      basebandVersion = _json["basebandVersion"];
+    if (_json.containsKey('basebandVersion')) {
+      basebandVersion = _json['basebandVersion'];
     }
-    if (_json.containsKey("bootloaderVersion")) {
-      bootloaderVersion = _json["bootloaderVersion"];
+    if (_json.containsKey('bootloaderVersion')) {
+      bootloaderVersion = _json['bootloaderVersion'];
     }
-    if (_json.containsKey("brand")) {
-      brand = _json["brand"];
+    if (_json.containsKey('brand')) {
+      brand = _json['brand'];
     }
-    if (_json.containsKey("buildNumber")) {
-      buildNumber = _json["buildNumber"];
+    if (_json.containsKey('buildNumber')) {
+      buildNumber = _json['buildNumber'];
     }
-    if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = _json["defaultLanguage"];
+    if (_json.containsKey('defaultLanguage')) {
+      defaultLanguage = _json['defaultLanguage'];
     }
-    if (_json.containsKey("developerOptionsStatus")) {
-      developerOptionsStatus = _json["developerOptionsStatus"];
+    if (_json.containsKey('developerOptionsStatus')) {
+      developerOptionsStatus = _json['developerOptionsStatus'];
     }
-    if (_json.containsKey("deviceCompromisedStatus")) {
-      deviceCompromisedStatus = _json["deviceCompromisedStatus"];
+    if (_json.containsKey('deviceCompromisedStatus')) {
+      deviceCompromisedStatus = _json['deviceCompromisedStatus'];
     }
-    if (_json.containsKey("deviceId")) {
-      deviceId = _json["deviceId"];
+    if (_json.containsKey('deviceId')) {
+      deviceId = _json['deviceId'];
     }
-    if (_json.containsKey("devicePasswordStatus")) {
-      devicePasswordStatus = _json["devicePasswordStatus"];
+    if (_json.containsKey('devicePasswordStatus')) {
+      devicePasswordStatus = _json['devicePasswordStatus'];
     }
-    if (_json.containsKey("email")) {
-      email = (_json["email"] as core.List).cast<core.String>();
+    if (_json.containsKey('email')) {
+      email = (_json['email'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("encryptionStatus")) {
-      encryptionStatus = _json["encryptionStatus"];
+    if (_json.containsKey('encryptionStatus')) {
+      encryptionStatus = _json['encryptionStatus'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("firstSync")) {
-      firstSync = core.DateTime.parse(_json["firstSync"]);
+    if (_json.containsKey('firstSync')) {
+      firstSync = core.DateTime.parse(_json['firstSync']);
     }
-    if (_json.containsKey("hardware")) {
-      hardware = _json["hardware"];
+    if (_json.containsKey('hardware')) {
+      hardware = _json['hardware'];
     }
-    if (_json.containsKey("hardwareId")) {
-      hardwareId = _json["hardwareId"];
+    if (_json.containsKey('hardwareId')) {
+      hardwareId = _json['hardwareId'];
     }
-    if (_json.containsKey("imei")) {
-      imei = _json["imei"];
+    if (_json.containsKey('imei')) {
+      imei = _json['imei'];
     }
-    if (_json.containsKey("kernelVersion")) {
-      kernelVersion = _json["kernelVersion"];
+    if (_json.containsKey('kernelVersion')) {
+      kernelVersion = _json['kernelVersion'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastSync")) {
-      lastSync = core.DateTime.parse(_json["lastSync"]);
+    if (_json.containsKey('lastSync')) {
+      lastSync = core.DateTime.parse(_json['lastSync']);
     }
-    if (_json.containsKey("managedAccountIsOnOwnerProfile")) {
-      managedAccountIsOnOwnerProfile = _json["managedAccountIsOnOwnerProfile"];
+    if (_json.containsKey('managedAccountIsOnOwnerProfile')) {
+      managedAccountIsOnOwnerProfile = _json['managedAccountIsOnOwnerProfile'];
     }
-    if (_json.containsKey("manufacturer")) {
-      manufacturer = _json["manufacturer"];
+    if (_json.containsKey('manufacturer')) {
+      manufacturer = _json['manufacturer'];
     }
-    if (_json.containsKey("meid")) {
-      meid = _json["meid"];
+    if (_json.containsKey('meid')) {
+      meid = _json['meid'];
     }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
-    if (_json.containsKey("name")) {
-      name = (_json["name"] as core.List).cast<core.String>();
+    if (_json.containsKey('name')) {
+      name = (_json['name'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("networkOperator")) {
-      networkOperator = _json["networkOperator"];
+    if (_json.containsKey('networkOperator')) {
+      networkOperator = _json['networkOperator'];
     }
-    if (_json.containsKey("os")) {
-      os = _json["os"];
+    if (_json.containsKey('os')) {
+      os = _json['os'];
     }
-    if (_json.containsKey("otherAccountsInfo")) {
+    if (_json.containsKey('otherAccountsInfo')) {
       otherAccountsInfo =
-          (_json["otherAccountsInfo"] as core.List).cast<core.String>();
+          (_json['otherAccountsInfo'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("privilege")) {
-      privilege = _json["privilege"];
+    if (_json.containsKey('privilege')) {
+      privilege = _json['privilege'];
     }
-    if (_json.containsKey("releaseVersion")) {
-      releaseVersion = _json["releaseVersion"];
+    if (_json.containsKey('releaseVersion')) {
+      releaseVersion = _json['releaseVersion'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = _json["resourceId"];
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'];
     }
-    if (_json.containsKey("securityPatchLevel")) {
-      securityPatchLevel = _json["securityPatchLevel"];
+    if (_json.containsKey('securityPatchLevel')) {
+      securityPatchLevel = _json['securityPatchLevel'];
     }
-    if (_json.containsKey("serialNumber")) {
-      serialNumber = _json["serialNumber"];
+    if (_json.containsKey('serialNumber')) {
+      serialNumber = _json['serialNumber'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("supportsWorkProfile")) {
-      supportsWorkProfile = _json["supportsWorkProfile"];
+    if (_json.containsKey('supportsWorkProfile')) {
+      supportsWorkProfile = _json['supportsWorkProfile'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("unknownSourcesStatus")) {
-      unknownSourcesStatus = _json["unknownSourcesStatus"];
+    if (_json.containsKey('unknownSourcesStatus')) {
+      unknownSourcesStatus = _json['unknownSourcesStatus'];
     }
-    if (_json.containsKey("userAgent")) {
-      userAgent = _json["userAgent"];
+    if (_json.containsKey('userAgent')) {
+      userAgent = _json['userAgent'];
     }
-    if (_json.containsKey("wifiMacAddress")) {
-      wifiMacAddress = _json["wifiMacAddress"];
+    if (_json.containsKey('wifiMacAddress')) {
+      wifiMacAddress = _json['wifiMacAddress'];
     }
   }
 
@@ -9941,125 +9940,125 @@ class MobileDevice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adbStatus != null) {
-      _json["adbStatus"] = adbStatus;
+      _json['adbStatus'] = adbStatus;
     }
     if (applications != null) {
-      _json["applications"] =
+      _json['applications'] =
           applications.map((value) => value.toJson()).toList();
     }
     if (basebandVersion != null) {
-      _json["basebandVersion"] = basebandVersion;
+      _json['basebandVersion'] = basebandVersion;
     }
     if (bootloaderVersion != null) {
-      _json["bootloaderVersion"] = bootloaderVersion;
+      _json['bootloaderVersion'] = bootloaderVersion;
     }
     if (brand != null) {
-      _json["brand"] = brand;
+      _json['brand'] = brand;
     }
     if (buildNumber != null) {
-      _json["buildNumber"] = buildNumber;
+      _json['buildNumber'] = buildNumber;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = defaultLanguage;
+      _json['defaultLanguage'] = defaultLanguage;
     }
     if (developerOptionsStatus != null) {
-      _json["developerOptionsStatus"] = developerOptionsStatus;
+      _json['developerOptionsStatus'] = developerOptionsStatus;
     }
     if (deviceCompromisedStatus != null) {
-      _json["deviceCompromisedStatus"] = deviceCompromisedStatus;
+      _json['deviceCompromisedStatus'] = deviceCompromisedStatus;
     }
     if (deviceId != null) {
-      _json["deviceId"] = deviceId;
+      _json['deviceId'] = deviceId;
     }
     if (devicePasswordStatus != null) {
-      _json["devicePasswordStatus"] = devicePasswordStatus;
+      _json['devicePasswordStatus'] = devicePasswordStatus;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (encryptionStatus != null) {
-      _json["encryptionStatus"] = encryptionStatus;
+      _json['encryptionStatus'] = encryptionStatus;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (firstSync != null) {
-      _json["firstSync"] = (firstSync).toIso8601String();
+      _json['firstSync'] = (firstSync).toIso8601String();
     }
     if (hardware != null) {
-      _json["hardware"] = hardware;
+      _json['hardware'] = hardware;
     }
     if (hardwareId != null) {
-      _json["hardwareId"] = hardwareId;
+      _json['hardwareId'] = hardwareId;
     }
     if (imei != null) {
-      _json["imei"] = imei;
+      _json['imei'] = imei;
     }
     if (kernelVersion != null) {
-      _json["kernelVersion"] = kernelVersion;
+      _json['kernelVersion'] = kernelVersion;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastSync != null) {
-      _json["lastSync"] = (lastSync).toIso8601String();
+      _json['lastSync'] = (lastSync).toIso8601String();
     }
     if (managedAccountIsOnOwnerProfile != null) {
-      _json["managedAccountIsOnOwnerProfile"] = managedAccountIsOnOwnerProfile;
+      _json['managedAccountIsOnOwnerProfile'] = managedAccountIsOnOwnerProfile;
     }
     if (manufacturer != null) {
-      _json["manufacturer"] = manufacturer;
+      _json['manufacturer'] = manufacturer;
     }
     if (meid != null) {
-      _json["meid"] = meid;
+      _json['meid'] = meid;
     }
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (networkOperator != null) {
-      _json["networkOperator"] = networkOperator;
+      _json['networkOperator'] = networkOperator;
     }
     if (os != null) {
-      _json["os"] = os;
+      _json['os'] = os;
     }
     if (otherAccountsInfo != null) {
-      _json["otherAccountsInfo"] = otherAccountsInfo;
+      _json['otherAccountsInfo'] = otherAccountsInfo;
     }
     if (privilege != null) {
-      _json["privilege"] = privilege;
+      _json['privilege'] = privilege;
     }
     if (releaseVersion != null) {
-      _json["releaseVersion"] = releaseVersion;
+      _json['releaseVersion'] = releaseVersion;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId;
+      _json['resourceId'] = resourceId;
     }
     if (securityPatchLevel != null) {
-      _json["securityPatchLevel"] = securityPatchLevel;
+      _json['securityPatchLevel'] = securityPatchLevel;
     }
     if (serialNumber != null) {
-      _json["serialNumber"] = serialNumber;
+      _json['serialNumber'] = serialNumber;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (supportsWorkProfile != null) {
-      _json["supportsWorkProfile"] = supportsWorkProfile;
+      _json['supportsWorkProfile'] = supportsWorkProfile;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (unknownSourcesStatus != null) {
-      _json["unknownSourcesStatus"] = unknownSourcesStatus;
+      _json['unknownSourcesStatus'] = unknownSourcesStatus;
     }
     if (userAgent != null) {
-      _json["userAgent"] = userAgent;
+      _json['userAgent'] = userAgent;
     }
     if (wifiMacAddress != null) {
-      _json["wifiMacAddress"] = wifiMacAddress;
+      _json['wifiMacAddress'] = wifiMacAddress;
     }
     return _json;
   }
@@ -10072,8 +10071,8 @@ class MobileDeviceAction {
   MobileDeviceAction();
 
   MobileDeviceAction.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
+    if (_json.containsKey('action')) {
+      action = _json['action'];
     }
   }
 
@@ -10081,7 +10080,7 @@ class MobileDeviceAction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (action != null) {
-      _json["action"] = action;
+      _json['action'] = action;
     }
     return _json;
   }
@@ -10103,19 +10102,19 @@ class MobileDevices {
   MobileDevices();
 
   MobileDevices.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("mobiledevices")) {
-      mobiledevices = (_json["mobiledevices"] as core.List)
+    if (_json.containsKey('mobiledevices')) {
+      mobiledevices = (_json['mobiledevices'] as core.List)
           .map<MobileDevice>((value) => MobileDevice.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -10123,17 +10122,17 @@ class MobileDevices {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (mobiledevices != null) {
-      _json["mobiledevices"] =
+      _json['mobiledevices'] =
           mobiledevices.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -10174,32 +10173,32 @@ class OrgUnit {
   OrgUnit();
 
   OrgUnit.fromJson(core.Map _json) {
-    if (_json.containsKey("blockInheritance")) {
-      blockInheritance = _json["blockInheritance"];
+    if (_json.containsKey('blockInheritance')) {
+      blockInheritance = _json['blockInheritance'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("orgUnitId")) {
-      orgUnitId = _json["orgUnitId"];
+    if (_json.containsKey('orgUnitId')) {
+      orgUnitId = _json['orgUnitId'];
     }
-    if (_json.containsKey("orgUnitPath")) {
-      orgUnitPath = _json["orgUnitPath"];
+    if (_json.containsKey('orgUnitPath')) {
+      orgUnitPath = _json['orgUnitPath'];
     }
-    if (_json.containsKey("parentOrgUnitId")) {
-      parentOrgUnitId = _json["parentOrgUnitId"];
+    if (_json.containsKey('parentOrgUnitId')) {
+      parentOrgUnitId = _json['parentOrgUnitId'];
     }
-    if (_json.containsKey("parentOrgUnitPath")) {
-      parentOrgUnitPath = _json["parentOrgUnitPath"];
+    if (_json.containsKey('parentOrgUnitPath')) {
+      parentOrgUnitPath = _json['parentOrgUnitPath'];
     }
   }
 
@@ -10207,31 +10206,31 @@ class OrgUnit {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blockInheritance != null) {
-      _json["blockInheritance"] = blockInheritance;
+      _json['blockInheritance'] = blockInheritance;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (orgUnitId != null) {
-      _json["orgUnitId"] = orgUnitId;
+      _json['orgUnitId'] = orgUnitId;
     }
     if (orgUnitPath != null) {
-      _json["orgUnitPath"] = orgUnitPath;
+      _json['orgUnitPath'] = orgUnitPath;
     }
     if (parentOrgUnitId != null) {
-      _json["parentOrgUnitId"] = parentOrgUnitId;
+      _json['parentOrgUnitId'] = parentOrgUnitId;
     }
     if (parentOrgUnitPath != null) {
-      _json["parentOrgUnitPath"] = parentOrgUnitPath;
+      _json['parentOrgUnitPath'] = parentOrgUnitPath;
     }
     return _json;
   }
@@ -10254,14 +10253,14 @@ class OrgUnits {
   OrgUnits();
 
   OrgUnits.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("organizationUnits")) {
-      organizationUnits = (_json["organizationUnits"] as core.List)
+    if (_json.containsKey('organizationUnits')) {
+      organizationUnits = (_json['organizationUnits'] as core.List)
           .map<OrgUnit>((value) => OrgUnit.fromJson(value))
           .toList();
     }
@@ -10271,13 +10270,13 @@ class OrgUnits {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (organizationUnits != null) {
-      _json["organizationUnits"] =
+      _json['organizationUnits'] =
           organizationUnits.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -10312,28 +10311,28 @@ class Privilege {
   Privilege();
 
   Privilege.fromJson(core.Map _json) {
-    if (_json.containsKey("childPrivileges")) {
-      childPrivileges = (_json["childPrivileges"] as core.List)
+    if (_json.containsKey('childPrivileges')) {
+      childPrivileges = (_json['childPrivileges'] as core.List)
           .map<Privilege>((value) => Privilege.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("isOuScopable")) {
-      isOuScopable = _json["isOuScopable"];
+    if (_json.containsKey('isOuScopable')) {
+      isOuScopable = _json['isOuScopable'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("privilegeName")) {
-      privilegeName = _json["privilegeName"];
+    if (_json.containsKey('privilegeName')) {
+      privilegeName = _json['privilegeName'];
     }
-    if (_json.containsKey("serviceId")) {
-      serviceId = _json["serviceId"];
+    if (_json.containsKey('serviceId')) {
+      serviceId = _json['serviceId'];
     }
-    if (_json.containsKey("serviceName")) {
-      serviceName = _json["serviceName"];
+    if (_json.containsKey('serviceName')) {
+      serviceName = _json['serviceName'];
     }
   }
 
@@ -10341,26 +10340,26 @@ class Privilege {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (childPrivileges != null) {
-      _json["childPrivileges"] =
+      _json['childPrivileges'] =
           childPrivileges.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (isOuScopable != null) {
-      _json["isOuScopable"] = isOuScopable;
+      _json['isOuScopable'] = isOuScopable;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (privilegeName != null) {
-      _json["privilegeName"] = privilegeName;
+      _json['privilegeName'] = privilegeName;
     }
     if (serviceId != null) {
-      _json["serviceId"] = serviceId;
+      _json['serviceId'] = serviceId;
     }
     if (serviceName != null) {
-      _json["serviceName"] = serviceName;
+      _json['serviceName'] = serviceName;
     }
     return _json;
   }
@@ -10379,16 +10378,16 @@ class Privileges {
   Privileges();
 
   Privileges.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Privilege>((value) => Privilege.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -10396,13 +10395,13 @@ class Privileges {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -10419,11 +10418,11 @@ class RoleRolePrivileges {
   RoleRolePrivileges();
 
   RoleRolePrivileges.fromJson(core.Map _json) {
-    if (_json.containsKey("privilegeName")) {
-      privilegeName = _json["privilegeName"];
+    if (_json.containsKey('privilegeName')) {
+      privilegeName = _json['privilegeName'];
     }
-    if (_json.containsKey("serviceId")) {
-      serviceId = _json["serviceId"];
+    if (_json.containsKey('serviceId')) {
+      serviceId = _json['serviceId'];
     }
   }
 
@@ -10431,10 +10430,10 @@ class RoleRolePrivileges {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (privilegeName != null) {
-      _json["privilegeName"] = privilegeName;
+      _json['privilegeName'] = privilegeName;
     }
     if (serviceId != null) {
-      _json["serviceId"] = serviceId;
+      _json['serviceId'] = serviceId;
     }
     return _json;
   }
@@ -10468,29 +10467,29 @@ class Role {
   Role();
 
   Role.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("isSuperAdminRole")) {
-      isSuperAdminRole = _json["isSuperAdminRole"];
+    if (_json.containsKey('isSuperAdminRole')) {
+      isSuperAdminRole = _json['isSuperAdminRole'];
     }
-    if (_json.containsKey("isSystemRole")) {
-      isSystemRole = _json["isSystemRole"];
+    if (_json.containsKey('isSystemRole')) {
+      isSystemRole = _json['isSystemRole'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("roleDescription")) {
-      roleDescription = _json["roleDescription"];
+    if (_json.containsKey('roleDescription')) {
+      roleDescription = _json['roleDescription'];
     }
-    if (_json.containsKey("roleId")) {
-      roleId = _json["roleId"];
+    if (_json.containsKey('roleId')) {
+      roleId = _json['roleId'];
     }
-    if (_json.containsKey("roleName")) {
-      roleName = _json["roleName"];
+    if (_json.containsKey('roleName')) {
+      roleName = _json['roleName'];
     }
-    if (_json.containsKey("rolePrivileges")) {
-      rolePrivileges = (_json["rolePrivileges"] as core.List)
+    if (_json.containsKey('rolePrivileges')) {
+      rolePrivileges = (_json['rolePrivileges'] as core.List)
           .map<RoleRolePrivileges>(
               (value) => RoleRolePrivileges.fromJson(value))
           .toList();
@@ -10501,28 +10500,28 @@ class Role {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (isSuperAdminRole != null) {
-      _json["isSuperAdminRole"] = isSuperAdminRole;
+      _json['isSuperAdminRole'] = isSuperAdminRole;
     }
     if (isSystemRole != null) {
-      _json["isSystemRole"] = isSystemRole;
+      _json['isSystemRole'] = isSystemRole;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (roleDescription != null) {
-      _json["roleDescription"] = roleDescription;
+      _json['roleDescription'] = roleDescription;
     }
     if (roleId != null) {
-      _json["roleId"] = roleId;
+      _json['roleId'] = roleId;
     }
     if (roleName != null) {
-      _json["roleName"] = roleName;
+      _json['roleName'] = roleName;
     }
     if (rolePrivileges != null) {
-      _json["rolePrivileges"] =
+      _json['rolePrivileges'] =
           rolePrivileges.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -10557,26 +10556,26 @@ class RoleAssignment {
   RoleAssignment();
 
   RoleAssignment.fromJson(core.Map _json) {
-    if (_json.containsKey("assignedTo")) {
-      assignedTo = _json["assignedTo"];
+    if (_json.containsKey('assignedTo')) {
+      assignedTo = _json['assignedTo'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("orgUnitId")) {
-      orgUnitId = _json["orgUnitId"];
+    if (_json.containsKey('orgUnitId')) {
+      orgUnitId = _json['orgUnitId'];
     }
-    if (_json.containsKey("roleAssignmentId")) {
-      roleAssignmentId = _json["roleAssignmentId"];
+    if (_json.containsKey('roleAssignmentId')) {
+      roleAssignmentId = _json['roleAssignmentId'];
     }
-    if (_json.containsKey("roleId")) {
-      roleId = _json["roleId"];
+    if (_json.containsKey('roleId')) {
+      roleId = _json['roleId'];
     }
-    if (_json.containsKey("scopeType")) {
-      scopeType = _json["scopeType"];
+    if (_json.containsKey('scopeType')) {
+      scopeType = _json['scopeType'];
     }
   }
 
@@ -10584,25 +10583,25 @@ class RoleAssignment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (assignedTo != null) {
-      _json["assignedTo"] = assignedTo;
+      _json['assignedTo'] = assignedTo;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (orgUnitId != null) {
-      _json["orgUnitId"] = orgUnitId;
+      _json['orgUnitId'] = orgUnitId;
     }
     if (roleAssignmentId != null) {
-      _json["roleAssignmentId"] = roleAssignmentId;
+      _json['roleAssignmentId'] = roleAssignmentId;
     }
     if (roleId != null) {
-      _json["roleId"] = roleId;
+      _json['roleId'] = roleId;
     }
     if (scopeType != null) {
-      _json["scopeType"] = scopeType;
+      _json['scopeType'] = scopeType;
     }
     return _json;
   }
@@ -10623,19 +10622,19 @@ class RoleAssignments {
   RoleAssignments();
 
   RoleAssignments.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<RoleAssignment>((value) => RoleAssignment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -10643,16 +10642,16 @@ class RoleAssignments {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -10672,19 +10671,19 @@ class Roles {
   Roles();
 
   Roles.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Role>((value) => Role.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -10692,16 +10691,16 @@ class Roles {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -10733,25 +10732,25 @@ class Schema {
   Schema();
 
   Schema.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("fields")) {
-      fields = (_json["fields"] as core.List)
+    if (_json.containsKey('fields')) {
+      fields = (_json['fields'] as core.List)
           .map<SchemaFieldSpec>((value) => SchemaFieldSpec.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("schemaId")) {
-      schemaId = _json["schemaId"];
+    if (_json.containsKey('schemaId')) {
+      schemaId = _json['schemaId'];
     }
-    if (_json.containsKey("schemaName")) {
-      schemaName = _json["schemaName"];
+    if (_json.containsKey('schemaName')) {
+      schemaName = _json['schemaName'];
     }
   }
 
@@ -10759,22 +10758,22 @@ class Schema {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (fields != null) {
-      _json["fields"] = fields.map((value) => value.toJson()).toList();
+      _json['fields'] = fields.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (schemaId != null) {
-      _json["schemaId"] = schemaId;
+      _json['schemaId'] = schemaId;
     }
     if (schemaName != null) {
-      _json["schemaName"] = schemaName;
+      _json['schemaName'] = schemaName;
     }
     return _json;
   }
@@ -10797,11 +10796,11 @@ class SchemaFieldSpecNumericIndexingSpec {
   SchemaFieldSpecNumericIndexingSpec();
 
   SchemaFieldSpecNumericIndexingSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("maxValue")) {
-      maxValue = _json["maxValue"].toDouble();
+    if (_json.containsKey('maxValue')) {
+      maxValue = _json['maxValue'].toDouble();
     }
-    if (_json.containsKey("minValue")) {
-      minValue = _json["minValue"].toDouble();
+    if (_json.containsKey('minValue')) {
+      minValue = _json['minValue'].toDouble();
     }
   }
 
@@ -10809,10 +10808,10 @@ class SchemaFieldSpecNumericIndexingSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxValue != null) {
-      _json["maxValue"] = maxValue;
+      _json['maxValue'] = maxValue;
     }
     if (minValue != null) {
-      _json["minValue"] = minValue;
+      _json['minValue'] = minValue;
     }
     return _json;
   }
@@ -10859,36 +10858,36 @@ class SchemaFieldSpec {
   SchemaFieldSpec();
 
   SchemaFieldSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("fieldId")) {
-      fieldId = _json["fieldId"];
+    if (_json.containsKey('fieldId')) {
+      fieldId = _json['fieldId'];
     }
-    if (_json.containsKey("fieldName")) {
-      fieldName = _json["fieldName"];
+    if (_json.containsKey('fieldName')) {
+      fieldName = _json['fieldName'];
     }
-    if (_json.containsKey("fieldType")) {
-      fieldType = _json["fieldType"];
+    if (_json.containsKey('fieldType')) {
+      fieldType = _json['fieldType'];
     }
-    if (_json.containsKey("indexed")) {
-      indexed = _json["indexed"];
+    if (_json.containsKey('indexed')) {
+      indexed = _json['indexed'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("multiValued")) {
-      multiValued = _json["multiValued"];
+    if (_json.containsKey('multiValued')) {
+      multiValued = _json['multiValued'];
     }
-    if (_json.containsKey("numericIndexingSpec")) {
+    if (_json.containsKey('numericIndexingSpec')) {
       numericIndexingSpec = SchemaFieldSpecNumericIndexingSpec.fromJson(
-          _json["numericIndexingSpec"]);
+          _json['numericIndexingSpec']);
     }
-    if (_json.containsKey("readAccessType")) {
-      readAccessType = _json["readAccessType"];
+    if (_json.containsKey('readAccessType')) {
+      readAccessType = _json['readAccessType'];
     }
   }
 
@@ -10896,34 +10895,34 @@ class SchemaFieldSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (fieldId != null) {
-      _json["fieldId"] = fieldId;
+      _json['fieldId'] = fieldId;
     }
     if (fieldName != null) {
-      _json["fieldName"] = fieldName;
+      _json['fieldName'] = fieldName;
     }
     if (fieldType != null) {
-      _json["fieldType"] = fieldType;
+      _json['fieldType'] = fieldType;
     }
     if (indexed != null) {
-      _json["indexed"] = indexed;
+      _json['indexed'] = indexed;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (multiValued != null) {
-      _json["multiValued"] = multiValued;
+      _json['multiValued'] = multiValued;
     }
     if (numericIndexingSpec != null) {
-      _json["numericIndexingSpec"] = numericIndexingSpec.toJson();
+      _json['numericIndexingSpec'] = numericIndexingSpec.toJson();
     }
     if (readAccessType != null) {
-      _json["readAccessType"] = readAccessType;
+      _json['readAccessType'] = readAccessType;
     }
     return _json;
   }
@@ -10946,14 +10945,14 @@ class Schemas {
   Schemas();
 
   Schemas.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("schemas")) {
-      schemas = (_json["schemas"] as core.List)
+    if (_json.containsKey('schemas')) {
+      schemas = (_json['schemas'] as core.List)
           .map<Schema>((value) => Schema.fromJson(value))
           .toList();
     }
@@ -10963,13 +10962,13 @@ class Schemas {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (schemas != null) {
-      _json["schemas"] = schemas.map((value) => value.toJson()).toList();
+      _json['schemas'] = schemas.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11009,29 +11008,29 @@ class Token {
   Token();
 
   Token.fromJson(core.Map _json) {
-    if (_json.containsKey("anonymous")) {
-      anonymous = _json["anonymous"];
+    if (_json.containsKey('anonymous')) {
+      anonymous = _json['anonymous'];
     }
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
+    if (_json.containsKey('clientId')) {
+      clientId = _json['clientId'];
     }
-    if (_json.containsKey("displayText")) {
-      displayText = _json["displayText"];
+    if (_json.containsKey('displayText')) {
+      displayText = _json['displayText'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nativeApp")) {
-      nativeApp = _json["nativeApp"];
+    if (_json.containsKey('nativeApp')) {
+      nativeApp = _json['nativeApp'];
     }
-    if (_json.containsKey("scopes")) {
-      scopes = (_json["scopes"] as core.List).cast<core.String>();
+    if (_json.containsKey('scopes')) {
+      scopes = (_json['scopes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("userKey")) {
-      userKey = _json["userKey"];
+    if (_json.containsKey('userKey')) {
+      userKey = _json['userKey'];
     }
   }
 
@@ -11039,28 +11038,28 @@ class Token {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (anonymous != null) {
-      _json["anonymous"] = anonymous;
+      _json['anonymous'] = anonymous;
     }
     if (clientId != null) {
-      _json["clientId"] = clientId;
+      _json['clientId'] = clientId;
     }
     if (displayText != null) {
-      _json["displayText"] = displayText;
+      _json['displayText'] = displayText;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nativeApp != null) {
-      _json["nativeApp"] = nativeApp;
+      _json['nativeApp'] = nativeApp;
     }
     if (scopes != null) {
-      _json["scopes"] = scopes;
+      _json['scopes'] = scopes;
     }
     if (userKey != null) {
-      _json["userKey"] = userKey;
+      _json['userKey'] = userKey;
     }
     return _json;
   }
@@ -11083,16 +11082,16 @@ class Tokens {
   Tokens();
 
   Tokens.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Token>((value) => Token.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -11100,13 +11099,13 @@ class Tokens {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -11329,146 +11328,146 @@ class User {
   User();
 
   User.fromJson(core.Map _json) {
-    if (_json.containsKey("addresses")) {
-      addresses = _json["addresses"];
+    if (_json.containsKey('addresses')) {
+      addresses = _json['addresses'];
     }
-    if (_json.containsKey("agreedToTerms")) {
-      agreedToTerms = _json["agreedToTerms"];
+    if (_json.containsKey('agreedToTerms')) {
+      agreedToTerms = _json['agreedToTerms'];
     }
-    if (_json.containsKey("aliases")) {
-      aliases = (_json["aliases"] as core.List).cast<core.String>();
+    if (_json.containsKey('aliases')) {
+      aliases = (_json['aliases'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("archived")) {
-      archived = _json["archived"];
+    if (_json.containsKey('archived')) {
+      archived = _json['archived'];
     }
-    if (_json.containsKey("changePasswordAtNextLogin")) {
-      changePasswordAtNextLogin = _json["changePasswordAtNextLogin"];
+    if (_json.containsKey('changePasswordAtNextLogin')) {
+      changePasswordAtNextLogin = _json['changePasswordAtNextLogin'];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = core.DateTime.parse(_json["creationTime"]);
+    if (_json.containsKey('creationTime')) {
+      creationTime = core.DateTime.parse(_json['creationTime']);
     }
-    if (_json.containsKey("customSchemas")) {
+    if (_json.containsKey('customSchemas')) {
       customSchemas = commons.mapMap<core.Map, UserCustomProperties>(
-          _json["customSchemas"].cast<core.String, core.Map>(),
+          _json['customSchemas'].cast<core.String, core.Map>(),
           (core.Map item) => UserCustomProperties.fromJson(item));
     }
-    if (_json.containsKey("customerId")) {
-      customerId = _json["customerId"];
+    if (_json.containsKey('customerId')) {
+      customerId = _json['customerId'];
     }
-    if (_json.containsKey("deletionTime")) {
-      deletionTime = core.DateTime.parse(_json["deletionTime"]);
+    if (_json.containsKey('deletionTime')) {
+      deletionTime = core.DateTime.parse(_json['deletionTime']);
     }
-    if (_json.containsKey("emails")) {
-      emails = _json["emails"];
+    if (_json.containsKey('emails')) {
+      emails = _json['emails'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("externalIds")) {
-      externalIds = _json["externalIds"];
+    if (_json.containsKey('externalIds')) {
+      externalIds = _json['externalIds'];
     }
-    if (_json.containsKey("gender")) {
-      gender = _json["gender"];
+    if (_json.containsKey('gender')) {
+      gender = _json['gender'];
     }
-    if (_json.containsKey("hashFunction")) {
-      hashFunction = _json["hashFunction"];
+    if (_json.containsKey('hashFunction')) {
+      hashFunction = _json['hashFunction'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("ims")) {
-      ims = _json["ims"];
+    if (_json.containsKey('ims')) {
+      ims = _json['ims'];
     }
-    if (_json.containsKey("includeInGlobalAddressList")) {
-      includeInGlobalAddressList = _json["includeInGlobalAddressList"];
+    if (_json.containsKey('includeInGlobalAddressList')) {
+      includeInGlobalAddressList = _json['includeInGlobalAddressList'];
     }
-    if (_json.containsKey("ipWhitelisted")) {
-      ipWhitelisted = _json["ipWhitelisted"];
+    if (_json.containsKey('ipWhitelisted')) {
+      ipWhitelisted = _json['ipWhitelisted'];
     }
-    if (_json.containsKey("isAdmin")) {
-      isAdmin = _json["isAdmin"];
+    if (_json.containsKey('isAdmin')) {
+      isAdmin = _json['isAdmin'];
     }
-    if (_json.containsKey("isDelegatedAdmin")) {
-      isDelegatedAdmin = _json["isDelegatedAdmin"];
+    if (_json.containsKey('isDelegatedAdmin')) {
+      isDelegatedAdmin = _json['isDelegatedAdmin'];
     }
-    if (_json.containsKey("isEnforcedIn2Sv")) {
-      isEnforcedIn2Sv = _json["isEnforcedIn2Sv"];
+    if (_json.containsKey('isEnforcedIn2Sv')) {
+      isEnforcedIn2Sv = _json['isEnforcedIn2Sv'];
     }
-    if (_json.containsKey("isEnrolledIn2Sv")) {
-      isEnrolledIn2Sv = _json["isEnrolledIn2Sv"];
+    if (_json.containsKey('isEnrolledIn2Sv')) {
+      isEnrolledIn2Sv = _json['isEnrolledIn2Sv'];
     }
-    if (_json.containsKey("isMailboxSetup")) {
-      isMailboxSetup = _json["isMailboxSetup"];
+    if (_json.containsKey('isMailboxSetup')) {
+      isMailboxSetup = _json['isMailboxSetup'];
     }
-    if (_json.containsKey("keywords")) {
-      keywords = _json["keywords"];
+    if (_json.containsKey('keywords')) {
+      keywords = _json['keywords'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("languages")) {
-      languages = _json["languages"];
+    if (_json.containsKey('languages')) {
+      languages = _json['languages'];
     }
-    if (_json.containsKey("lastLoginTime")) {
-      lastLoginTime = core.DateTime.parse(_json["lastLoginTime"]);
+    if (_json.containsKey('lastLoginTime')) {
+      lastLoginTime = core.DateTime.parse(_json['lastLoginTime']);
     }
-    if (_json.containsKey("locations")) {
-      locations = _json["locations"];
+    if (_json.containsKey('locations')) {
+      locations = _json['locations'];
     }
-    if (_json.containsKey("name")) {
-      name = UserName.fromJson(_json["name"]);
+    if (_json.containsKey('name')) {
+      name = UserName.fromJson(_json['name']);
     }
-    if (_json.containsKey("nonEditableAliases")) {
+    if (_json.containsKey('nonEditableAliases')) {
       nonEditableAliases =
-          (_json["nonEditableAliases"] as core.List).cast<core.String>();
+          (_json['nonEditableAliases'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("orgUnitPath")) {
-      orgUnitPath = _json["orgUnitPath"];
+    if (_json.containsKey('orgUnitPath')) {
+      orgUnitPath = _json['orgUnitPath'];
     }
-    if (_json.containsKey("organizations")) {
-      organizations = _json["organizations"];
+    if (_json.containsKey('organizations')) {
+      organizations = _json['organizations'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("phones")) {
-      phones = _json["phones"];
+    if (_json.containsKey('phones')) {
+      phones = _json['phones'];
     }
-    if (_json.containsKey("posixAccounts")) {
-      posixAccounts = _json["posixAccounts"];
+    if (_json.containsKey('posixAccounts')) {
+      posixAccounts = _json['posixAccounts'];
     }
-    if (_json.containsKey("primaryEmail")) {
-      primaryEmail = _json["primaryEmail"];
+    if (_json.containsKey('primaryEmail')) {
+      primaryEmail = _json['primaryEmail'];
     }
-    if (_json.containsKey("recoveryEmail")) {
-      recoveryEmail = _json["recoveryEmail"];
+    if (_json.containsKey('recoveryEmail')) {
+      recoveryEmail = _json['recoveryEmail'];
     }
-    if (_json.containsKey("recoveryPhone")) {
-      recoveryPhone = _json["recoveryPhone"];
+    if (_json.containsKey('recoveryPhone')) {
+      recoveryPhone = _json['recoveryPhone'];
     }
-    if (_json.containsKey("relations")) {
-      relations = _json["relations"];
+    if (_json.containsKey('relations')) {
+      relations = _json['relations'];
     }
-    if (_json.containsKey("sshPublicKeys")) {
-      sshPublicKeys = _json["sshPublicKeys"];
+    if (_json.containsKey('sshPublicKeys')) {
+      sshPublicKeys = _json['sshPublicKeys'];
     }
-    if (_json.containsKey("suspended")) {
-      suspended = _json["suspended"];
+    if (_json.containsKey('suspended')) {
+      suspended = _json['suspended'];
     }
-    if (_json.containsKey("suspensionReason")) {
-      suspensionReason = _json["suspensionReason"];
+    if (_json.containsKey('suspensionReason')) {
+      suspensionReason = _json['suspensionReason'];
     }
-    if (_json.containsKey("thumbnailPhotoEtag")) {
-      thumbnailPhotoEtag = _json["thumbnailPhotoEtag"];
+    if (_json.containsKey('thumbnailPhotoEtag')) {
+      thumbnailPhotoEtag = _json['thumbnailPhotoEtag'];
     }
-    if (_json.containsKey("thumbnailPhotoUrl")) {
-      thumbnailPhotoUrl = _json["thumbnailPhotoUrl"];
+    if (_json.containsKey('thumbnailPhotoUrl')) {
+      thumbnailPhotoUrl = _json['thumbnailPhotoUrl'];
     }
-    if (_json.containsKey("websites")) {
-      websites = _json["websites"];
+    if (_json.containsKey('websites')) {
+      websites = _json['websites'];
     }
   }
 
@@ -11476,142 +11475,142 @@ class User {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addresses != null) {
-      _json["addresses"] = addresses;
+      _json['addresses'] = addresses;
     }
     if (agreedToTerms != null) {
-      _json["agreedToTerms"] = agreedToTerms;
+      _json['agreedToTerms'] = agreedToTerms;
     }
     if (aliases != null) {
-      _json["aliases"] = aliases;
+      _json['aliases'] = aliases;
     }
     if (archived != null) {
-      _json["archived"] = archived;
+      _json['archived'] = archived;
     }
     if (changePasswordAtNextLogin != null) {
-      _json["changePasswordAtNextLogin"] = changePasswordAtNextLogin;
+      _json['changePasswordAtNextLogin'] = changePasswordAtNextLogin;
     }
     if (creationTime != null) {
-      _json["creationTime"] = (creationTime).toIso8601String();
+      _json['creationTime'] = (creationTime).toIso8601String();
     }
     if (customSchemas != null) {
-      _json["customSchemas"] = customSchemas;
+      _json['customSchemas'] = customSchemas;
     }
     if (customerId != null) {
-      _json["customerId"] = customerId;
+      _json['customerId'] = customerId;
     }
     if (deletionTime != null) {
-      _json["deletionTime"] = (deletionTime).toIso8601String();
+      _json['deletionTime'] = (deletionTime).toIso8601String();
     }
     if (emails != null) {
-      _json["emails"] = emails;
+      _json['emails'] = emails;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (externalIds != null) {
-      _json["externalIds"] = externalIds;
+      _json['externalIds'] = externalIds;
     }
     if (gender != null) {
-      _json["gender"] = gender;
+      _json['gender'] = gender;
     }
     if (hashFunction != null) {
-      _json["hashFunction"] = hashFunction;
+      _json['hashFunction'] = hashFunction;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (ims != null) {
-      _json["ims"] = ims;
+      _json['ims'] = ims;
     }
     if (includeInGlobalAddressList != null) {
-      _json["includeInGlobalAddressList"] = includeInGlobalAddressList;
+      _json['includeInGlobalAddressList'] = includeInGlobalAddressList;
     }
     if (ipWhitelisted != null) {
-      _json["ipWhitelisted"] = ipWhitelisted;
+      _json['ipWhitelisted'] = ipWhitelisted;
     }
     if (isAdmin != null) {
-      _json["isAdmin"] = isAdmin;
+      _json['isAdmin'] = isAdmin;
     }
     if (isDelegatedAdmin != null) {
-      _json["isDelegatedAdmin"] = isDelegatedAdmin;
+      _json['isDelegatedAdmin'] = isDelegatedAdmin;
     }
     if (isEnforcedIn2Sv != null) {
-      _json["isEnforcedIn2Sv"] = isEnforcedIn2Sv;
+      _json['isEnforcedIn2Sv'] = isEnforcedIn2Sv;
     }
     if (isEnrolledIn2Sv != null) {
-      _json["isEnrolledIn2Sv"] = isEnrolledIn2Sv;
+      _json['isEnrolledIn2Sv'] = isEnrolledIn2Sv;
     }
     if (isMailboxSetup != null) {
-      _json["isMailboxSetup"] = isMailboxSetup;
+      _json['isMailboxSetup'] = isMailboxSetup;
     }
     if (keywords != null) {
-      _json["keywords"] = keywords;
+      _json['keywords'] = keywords;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (languages != null) {
-      _json["languages"] = languages;
+      _json['languages'] = languages;
     }
     if (lastLoginTime != null) {
-      _json["lastLoginTime"] = (lastLoginTime).toIso8601String();
+      _json['lastLoginTime'] = (lastLoginTime).toIso8601String();
     }
     if (locations != null) {
-      _json["locations"] = locations;
+      _json['locations'] = locations;
     }
     if (name != null) {
-      _json["name"] = name.toJson();
+      _json['name'] = name.toJson();
     }
     if (nonEditableAliases != null) {
-      _json["nonEditableAliases"] = nonEditableAliases;
+      _json['nonEditableAliases'] = nonEditableAliases;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (orgUnitPath != null) {
-      _json["orgUnitPath"] = orgUnitPath;
+      _json['orgUnitPath'] = orgUnitPath;
     }
     if (organizations != null) {
-      _json["organizations"] = organizations;
+      _json['organizations'] = organizations;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (phones != null) {
-      _json["phones"] = phones;
+      _json['phones'] = phones;
     }
     if (posixAccounts != null) {
-      _json["posixAccounts"] = posixAccounts;
+      _json['posixAccounts'] = posixAccounts;
     }
     if (primaryEmail != null) {
-      _json["primaryEmail"] = primaryEmail;
+      _json['primaryEmail'] = primaryEmail;
     }
     if (recoveryEmail != null) {
-      _json["recoveryEmail"] = recoveryEmail;
+      _json['recoveryEmail'] = recoveryEmail;
     }
     if (recoveryPhone != null) {
-      _json["recoveryPhone"] = recoveryPhone;
+      _json['recoveryPhone'] = recoveryPhone;
     }
     if (relations != null) {
-      _json["relations"] = relations;
+      _json['relations'] = relations;
     }
     if (sshPublicKeys != null) {
-      _json["sshPublicKeys"] = sshPublicKeys;
+      _json['sshPublicKeys'] = sshPublicKeys;
     }
     if (suspended != null) {
-      _json["suspended"] = suspended;
+      _json['suspended'] = suspended;
     }
     if (suspensionReason != null) {
-      _json["suspensionReason"] = suspensionReason;
+      _json['suspensionReason'] = suspensionReason;
     }
     if (thumbnailPhotoEtag != null) {
-      _json["thumbnailPhotoEtag"] = thumbnailPhotoEtag;
+      _json['thumbnailPhotoEtag'] = thumbnailPhotoEtag;
     }
     if (thumbnailPhotoUrl != null) {
-      _json["thumbnailPhotoUrl"] = thumbnailPhotoUrl;
+      _json['thumbnailPhotoUrl'] = thumbnailPhotoUrl;
     }
     if (websites != null) {
-      _json["websites"] = websites;
+      _json['websites'] = websites;
     }
     return _json;
   }
@@ -11630,11 +11629,11 @@ class UserAbout {
   UserAbout();
 
   UserAbout.fromJson(core.Map _json) {
-    if (_json.containsKey("contentType")) {
-      contentType = _json["contentType"];
+    if (_json.containsKey('contentType')) {
+      contentType = _json['contentType'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -11642,10 +11641,10 @@ class UserAbout {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentType != null) {
-      _json["contentType"] = contentType;
+      _json['contentType'] = contentType;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -11701,44 +11700,44 @@ class UserAddress {
   UserAddress();
 
   UserAddress.fromJson(core.Map _json) {
-    if (_json.containsKey("country")) {
-      country = _json["country"];
+    if (_json.containsKey('country')) {
+      country = _json['country'];
     }
-    if (_json.containsKey("countryCode")) {
-      countryCode = _json["countryCode"];
+    if (_json.containsKey('countryCode')) {
+      countryCode = _json['countryCode'];
     }
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("extendedAddress")) {
-      extendedAddress = _json["extendedAddress"];
+    if (_json.containsKey('extendedAddress')) {
+      extendedAddress = _json['extendedAddress'];
     }
-    if (_json.containsKey("formatted")) {
-      formatted = _json["formatted"];
+    if (_json.containsKey('formatted')) {
+      formatted = _json['formatted'];
     }
-    if (_json.containsKey("locality")) {
-      locality = _json["locality"];
+    if (_json.containsKey('locality')) {
+      locality = _json['locality'];
     }
-    if (_json.containsKey("poBox")) {
-      poBox = _json["poBox"];
+    if (_json.containsKey('poBox')) {
+      poBox = _json['poBox'];
     }
-    if (_json.containsKey("postalCode")) {
-      postalCode = _json["postalCode"];
+    if (_json.containsKey('postalCode')) {
+      postalCode = _json['postalCode'];
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("region")) {
-      region = _json["region"];
+    if (_json.containsKey('region')) {
+      region = _json['region'];
     }
-    if (_json.containsKey("sourceIsStructured")) {
-      sourceIsStructured = _json["sourceIsStructured"];
+    if (_json.containsKey('sourceIsStructured')) {
+      sourceIsStructured = _json['sourceIsStructured'];
     }
-    if (_json.containsKey("streetAddress")) {
-      streetAddress = _json["streetAddress"];
+    if (_json.containsKey('streetAddress')) {
+      streetAddress = _json['streetAddress'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -11746,43 +11745,43 @@ class UserAddress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (country != null) {
-      _json["country"] = country;
+      _json['country'] = country;
     }
     if (countryCode != null) {
-      _json["countryCode"] = countryCode;
+      _json['countryCode'] = countryCode;
     }
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (extendedAddress != null) {
-      _json["extendedAddress"] = extendedAddress;
+      _json['extendedAddress'] = extendedAddress;
     }
     if (formatted != null) {
-      _json["formatted"] = formatted;
+      _json['formatted'] = formatted;
     }
     if (locality != null) {
-      _json["locality"] = locality;
+      _json['locality'] = locality;
     }
     if (poBox != null) {
-      _json["poBox"] = poBox;
+      _json['poBox'] = poBox;
     }
     if (postalCode != null) {
-      _json["postalCode"] = postalCode;
+      _json['postalCode'] = postalCode;
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (region != null) {
-      _json["region"] = region;
+      _json['region'] = region;
     }
     if (sourceIsStructured != null) {
-      _json["sourceIsStructured"] = sourceIsStructured;
+      _json['sourceIsStructured'] = sourceIsStructured;
     }
     if (streetAddress != null) {
-      _json["streetAddress"] = streetAddress;
+      _json['streetAddress'] = streetAddress;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -11846,17 +11845,17 @@ class UserEmail {
   UserEmail();
 
   UserEmail.fromJson(core.Map _json) {
-    if (_json.containsKey("address")) {
-      address = _json["address"];
+    if (_json.containsKey('address')) {
+      address = _json['address'];
     }
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -11864,16 +11863,16 @@ class UserEmail {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (address != null) {
-      _json["address"] = address;
+      _json['address'] = address;
     }
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -11893,14 +11892,14 @@ class UserExternalId {
   UserExternalId();
 
   UserExternalId.fromJson(core.Map _json) {
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -11908,13 +11907,13 @@ class UserExternalId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -11934,14 +11933,14 @@ class UserGender {
   UserGender();
 
   UserGender.fromJson(core.Map _json) {
-    if (_json.containsKey("addressMeAs")) {
-      addressMeAs = _json["addressMeAs"];
+    if (_json.containsKey('addressMeAs')) {
+      addressMeAs = _json['addressMeAs'];
     }
-    if (_json.containsKey("customGender")) {
-      customGender = _json["customGender"];
+    if (_json.containsKey('customGender')) {
+      customGender = _json['customGender'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -11949,13 +11948,13 @@ class UserGender {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addressMeAs != null) {
-      _json["addressMeAs"] = addressMeAs;
+      _json['addressMeAs'] = addressMeAs;
     }
     if (customGender != null) {
-      _json["customGender"] = customGender;
+      _json['customGender'] = customGender;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -11990,23 +11989,23 @@ class UserIm {
   UserIm();
 
   UserIm.fromJson(core.Map _json) {
-    if (_json.containsKey("customProtocol")) {
-      customProtocol = _json["customProtocol"];
+    if (_json.containsKey('customProtocol')) {
+      customProtocol = _json['customProtocol'];
     }
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("im")) {
-      im = _json["im"];
+    if (_json.containsKey('im')) {
+      im = _json['im'];
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("protocol")) {
-      protocol = _json["protocol"];
+    if (_json.containsKey('protocol')) {
+      protocol = _json['protocol'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -12014,22 +12013,22 @@ class UserIm {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customProtocol != null) {
-      _json["customProtocol"] = customProtocol;
+      _json['customProtocol'] = customProtocol;
     }
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (im != null) {
-      _json["im"] = im;
+      _json['im'] = im;
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (protocol != null) {
-      _json["protocol"] = protocol;
+      _json['protocol'] = protocol;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -12053,14 +12052,14 @@ class UserKeyword {
   UserKeyword();
 
   UserKeyword.fromJson(core.Map _json) {
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -12068,13 +12067,13 @@ class UserKeyword {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -12094,11 +12093,11 @@ class UserLanguage {
   UserLanguage();
 
   UserLanguage.fromJson(core.Map _json) {
-    if (_json.containsKey("customLanguage")) {
-      customLanguage = _json["customLanguage"];
+    if (_json.containsKey('customLanguage')) {
+      customLanguage = _json['customLanguage'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -12106,10 +12105,10 @@ class UserLanguage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customLanguage != null) {
-      _json["customLanguage"] = customLanguage;
+      _json['customLanguage'] = customLanguage;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -12148,26 +12147,26 @@ class UserLocation {
   UserLocation();
 
   UserLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("area")) {
-      area = _json["area"];
+    if (_json.containsKey('area')) {
+      area = _json['area'];
     }
-    if (_json.containsKey("buildingId")) {
-      buildingId = _json["buildingId"];
+    if (_json.containsKey('buildingId')) {
+      buildingId = _json['buildingId'];
     }
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("deskCode")) {
-      deskCode = _json["deskCode"];
+    if (_json.containsKey('deskCode')) {
+      deskCode = _json['deskCode'];
     }
-    if (_json.containsKey("floorName")) {
-      floorName = _json["floorName"];
+    if (_json.containsKey('floorName')) {
+      floorName = _json['floorName'];
     }
-    if (_json.containsKey("floorSection")) {
-      floorSection = _json["floorSection"];
+    if (_json.containsKey('floorSection')) {
+      floorSection = _json['floorSection'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -12175,25 +12174,25 @@ class UserLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (area != null) {
-      _json["area"] = area;
+      _json['area'] = area;
     }
     if (buildingId != null) {
-      _json["buildingId"] = buildingId;
+      _json['buildingId'] = buildingId;
     }
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (deskCode != null) {
-      _json["deskCode"] = deskCode;
+      _json['deskCode'] = deskCode;
     }
     if (floorName != null) {
-      _json["floorName"] = floorName;
+      _json['floorName'] = floorName;
     }
     if (floorSection != null) {
-      _json["floorSection"] = floorSection;
+      _json['floorSection'] = floorSection;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -12206,8 +12205,8 @@ class UserMakeAdmin {
   UserMakeAdmin();
 
   UserMakeAdmin.fromJson(core.Map _json) {
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
   }
 
@@ -12215,7 +12214,7 @@ class UserMakeAdmin {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     return _json;
   }
@@ -12234,14 +12233,14 @@ class UserName {
   UserName();
 
   UserName.fromJson(core.Map _json) {
-    if (_json.containsKey("familyName")) {
-      familyName = _json["familyName"];
+    if (_json.containsKey('familyName')) {
+      familyName = _json['familyName'];
     }
-    if (_json.containsKey("fullName")) {
-      fullName = _json["fullName"];
+    if (_json.containsKey('fullName')) {
+      fullName = _json['fullName'];
     }
-    if (_json.containsKey("givenName")) {
-      givenName = _json["givenName"];
+    if (_json.containsKey('givenName')) {
+      givenName = _json['givenName'];
     }
   }
 
@@ -12249,13 +12248,13 @@ class UserName {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (familyName != null) {
-      _json["familyName"] = familyName;
+      _json['familyName'] = familyName;
     }
     if (fullName != null) {
-      _json["fullName"] = fullName;
+      _json['fullName'] = fullName;
     }
     if (givenName != null) {
-      _json["givenName"] = givenName;
+      _json['givenName'] = givenName;
     }
     return _json;
   }
@@ -12307,41 +12306,41 @@ class UserOrganization {
   UserOrganization();
 
   UserOrganization.fromJson(core.Map _json) {
-    if (_json.containsKey("costCenter")) {
-      costCenter = _json["costCenter"];
+    if (_json.containsKey('costCenter')) {
+      costCenter = _json['costCenter'];
     }
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("department")) {
-      department = _json["department"];
+    if (_json.containsKey('department')) {
+      department = _json['department'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("domain")) {
-      domain = _json["domain"];
+    if (_json.containsKey('domain')) {
+      domain = _json['domain'];
     }
-    if (_json.containsKey("fullTimeEquivalent")) {
-      fullTimeEquivalent = _json["fullTimeEquivalent"];
+    if (_json.containsKey('fullTimeEquivalent')) {
+      fullTimeEquivalent = _json['fullTimeEquivalent'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("symbol")) {
-      symbol = _json["symbol"];
+    if (_json.containsKey('symbol')) {
+      symbol = _json['symbol'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -12349,40 +12348,40 @@ class UserOrganization {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (costCenter != null) {
-      _json["costCenter"] = costCenter;
+      _json['costCenter'] = costCenter;
     }
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (department != null) {
-      _json["department"] = department;
+      _json['department'] = department;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (domain != null) {
-      _json["domain"] = domain;
+      _json['domain'] = domain;
     }
     if (fullTimeEquivalent != null) {
-      _json["fullTimeEquivalent"] = fullTimeEquivalent;
+      _json['fullTimeEquivalent'] = fullTimeEquivalent;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (symbol != null) {
-      _json["symbol"] = symbol;
+      _json['symbol'] = symbol;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -12409,17 +12408,17 @@ class UserPhone {
   UserPhone();
 
   UserPhone.fromJson(core.Map _json) {
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -12427,16 +12426,16 @@ class UserPhone {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -12467,7 +12466,7 @@ class UserPhoto {
 
   set photoDataAsBytes(core.List<core.int> _bytes) {
     photoData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Primary email of User (Read-only)
@@ -12479,29 +12478,29 @@ class UserPhoto {
   UserPhoto();
 
   UserPhoto.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("photoData")) {
-      photoData = _json["photoData"];
+    if (_json.containsKey('photoData')) {
+      photoData = _json['photoData'];
     }
-    if (_json.containsKey("primaryEmail")) {
-      primaryEmail = _json["primaryEmail"];
+    if (_json.containsKey('primaryEmail')) {
+      primaryEmail = _json['primaryEmail'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -12509,28 +12508,28 @@ class UserPhoto {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (photoData != null) {
-      _json["photoData"] = photoData;
+      _json['photoData'] = photoData;
     }
     if (primaryEmail != null) {
-      _json["primaryEmail"] = primaryEmail;
+      _json['primaryEmail'] = primaryEmail;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -12572,35 +12571,35 @@ class UserPosixAccount {
   UserPosixAccount();
 
   UserPosixAccount.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("gecos")) {
-      gecos = _json["gecos"];
+    if (_json.containsKey('gecos')) {
+      gecos = _json['gecos'];
     }
-    if (_json.containsKey("gid")) {
-      gid = _json["gid"];
+    if (_json.containsKey('gid')) {
+      gid = _json['gid'];
     }
-    if (_json.containsKey("homeDirectory")) {
-      homeDirectory = _json["homeDirectory"];
+    if (_json.containsKey('homeDirectory')) {
+      homeDirectory = _json['homeDirectory'];
     }
-    if (_json.containsKey("operatingSystemType")) {
-      operatingSystemType = _json["operatingSystemType"];
+    if (_json.containsKey('operatingSystemType')) {
+      operatingSystemType = _json['operatingSystemType'];
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("shell")) {
-      shell = _json["shell"];
+    if (_json.containsKey('shell')) {
+      shell = _json['shell'];
     }
-    if (_json.containsKey("systemId")) {
-      systemId = _json["systemId"];
+    if (_json.containsKey('systemId')) {
+      systemId = _json['systemId'];
     }
-    if (_json.containsKey("uid")) {
-      uid = _json["uid"];
+    if (_json.containsKey('uid')) {
+      uid = _json['uid'];
     }
-    if (_json.containsKey("username")) {
-      username = _json["username"];
+    if (_json.containsKey('username')) {
+      username = _json['username'];
     }
   }
 
@@ -12608,34 +12607,34 @@ class UserPosixAccount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (gecos != null) {
-      _json["gecos"] = gecos;
+      _json['gecos'] = gecos;
     }
     if (gid != null) {
-      _json["gid"] = gid;
+      _json['gid'] = gid;
     }
     if (homeDirectory != null) {
-      _json["homeDirectory"] = homeDirectory;
+      _json['homeDirectory'] = homeDirectory;
     }
     if (operatingSystemType != null) {
-      _json["operatingSystemType"] = operatingSystemType;
+      _json['operatingSystemType'] = operatingSystemType;
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (shell != null) {
-      _json["shell"] = shell;
+      _json['shell'] = shell;
     }
     if (systemId != null) {
-      _json["systemId"] = systemId;
+      _json['systemId'] = systemId;
     }
     if (uid != null) {
-      _json["uid"] = uid;
+      _json['uid'] = uid;
     }
     if (username != null) {
-      _json["username"] = username;
+      _json['username'] = username;
     }
     return _json;
   }
@@ -12656,14 +12655,14 @@ class UserRelation {
   UserRelation();
 
   UserRelation.fromJson(core.Map _json) {
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -12671,13 +12670,13 @@ class UserRelation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -12697,14 +12696,14 @@ class UserSshPublicKey {
   UserSshPublicKey();
 
   UserSshPublicKey.fromJson(core.Map _json) {
-    if (_json.containsKey("expirationTimeUsec")) {
-      expirationTimeUsec = _json["expirationTimeUsec"];
+    if (_json.containsKey('expirationTimeUsec')) {
+      expirationTimeUsec = _json['expirationTimeUsec'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
   }
 
@@ -12712,13 +12711,13 @@ class UserSshPublicKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expirationTimeUsec != null) {
-      _json["expirationTimeUsec"] = expirationTimeUsec;
+      _json['expirationTimeUsec'] = expirationTimeUsec;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     return _json;
   }
@@ -12731,8 +12730,8 @@ class UserUndelete {
   UserUndelete();
 
   UserUndelete.fromJson(core.Map _json) {
-    if (_json.containsKey("orgUnitPath")) {
-      orgUnitPath = _json["orgUnitPath"];
+    if (_json.containsKey('orgUnitPath')) {
+      orgUnitPath = _json['orgUnitPath'];
     }
   }
 
@@ -12740,7 +12739,7 @@ class UserUndelete {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (orgUnitPath != null) {
-      _json["orgUnitPath"] = orgUnitPath;
+      _json['orgUnitPath'] = orgUnitPath;
     }
     return _json;
   }
@@ -12767,17 +12766,17 @@ class UserWebsite {
   UserWebsite();
 
   UserWebsite.fromJson(core.Map _json) {
-    if (_json.containsKey("customType")) {
-      customType = _json["customType"];
+    if (_json.containsKey('customType')) {
+      customType = _json['customType'];
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -12785,16 +12784,16 @@ class UserWebsite {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customType != null) {
-      _json["customType"] = customType;
+      _json['customType'] = customType;
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -12822,20 +12821,20 @@ class Users {
   Users();
 
   Users.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("trigger_event")) {
-      triggerEvent = _json["trigger_event"];
+    if (_json.containsKey('trigger_event')) {
+      triggerEvent = _json['trigger_event'];
     }
-    if (_json.containsKey("users")) {
-      users = (_json["users"] as core.List)
+    if (_json.containsKey('users')) {
+      users = (_json['users'] as core.List)
           .map<User>((value) => User.fromJson(value))
           .toList();
     }
@@ -12845,19 +12844,19 @@ class Users {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (triggerEvent != null) {
-      _json["trigger_event"] = triggerEvent;
+      _json['trigger_event'] = triggerEvent;
     }
     if (users != null) {
-      _json["users"] = users.map((value) => value.toJson()).toList();
+      _json['users'] = users.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12884,17 +12883,17 @@ class VerificationCode {
   VerificationCode();
 
   VerificationCode.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
-    if (_json.containsKey("verificationCode")) {
-      verificationCode = _json["verificationCode"];
+    if (_json.containsKey('verificationCode')) {
+      verificationCode = _json['verificationCode'];
     }
   }
 
@@ -12902,16 +12901,16 @@ class VerificationCode {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     if (verificationCode != null) {
-      _json["verificationCode"] = verificationCode;
+      _json['verificationCode'] = verificationCode;
     }
     return _json;
   }
@@ -12935,16 +12934,16 @@ class VerificationCodes {
   VerificationCodes();
 
   VerificationCodes.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<VerificationCode>((value) => VerificationCode.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -12952,13 +12951,13 @@ class VerificationCodes {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }

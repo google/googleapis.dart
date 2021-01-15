@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,15 +37,15 @@ const core.String USER_AGENT = 'dart-api-client healthcare/v1';
 class HealthcareApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   HealthcareApi(http.Client client,
-      {core.String rootUrl = "https://healthcare.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://healthcare.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -98,17 +97,17 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -156,19 +155,19 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -176,7 +175,7 @@ class ProjectsLocationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -245,13 +244,13 @@ class ProjectsLocationsDatasetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (datasetId != null) {
-      _queryParams["datasetId"] = [datasetId];
+      _queryParams['datasetId'] = [datasetId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -259,7 +258,7 @@ class ProjectsLocationsDatasetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -312,10 +311,10 @@ class ProjectsLocationsDatasetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (sourceDataset == null) {
-      throw core.ArgumentError("Parameter sourceDataset is required.");
+      throw core.ArgumentError('Parameter sourceDataset is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -324,7 +323,7 @@ class ProjectsLocationsDatasetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -366,17 +365,17 @@ class ProjectsLocationsDatasetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -416,17 +415,17 @@ class ProjectsLocationsDatasetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -477,15 +476,15 @@ class ProjectsLocationsDatasetsResourceApi {
     core.String _body;
 
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if (options_requestedPolicyVersion != null) {
-      _queryParams["options.requestedPolicyVersion"] = [
-        "${options_requestedPolicyVersion}"
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -494,7 +493,7 @@ class ProjectsLocationsDatasetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -542,16 +541,16 @@ class ProjectsLocationsDatasetsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -559,7 +558,7 @@ class ProjectsLocationsDatasetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -610,20 +609,20 @@ class ProjectsLocationsDatasetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -672,10 +671,10 @@ class ProjectsLocationsDatasetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -684,7 +683,7 @@ class ProjectsLocationsDatasetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -735,10 +734,10 @@ class ProjectsLocationsDatasetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -747,7 +746,7 @@ class ProjectsLocationsDatasetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -806,13 +805,13 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomStoreId != null) {
-      _queryParams["dicomStoreId"] = [dicomStoreId];
+      _queryParams['dicomStoreId'] = [dicomStoreId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -821,7 +820,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -875,10 +874,10 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (sourceStore == null) {
-      throw core.ArgumentError("Parameter sourceStore is required.");
+      throw core.ArgumentError('Parameter sourceStore is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -887,7 +886,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -928,17 +927,17 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -989,17 +988,17 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1039,17 +1038,17 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1101,15 +1100,15 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     core.String _body;
 
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if (options_requestedPolicyVersion != null) {
-      _queryParams["options.requestedPolicyVersion"] = [
-        "${options_requestedPolicyVersion}"
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1118,7 +1117,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1169,17 +1168,17 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1231,19 +1230,19 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1252,7 +1251,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1304,20 +1303,20 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1373,13 +1372,13 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1389,7 +1388,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1444,13 +1443,13 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1460,7 +1459,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1515,13 +1514,13 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1531,7 +1530,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1581,10 +1580,10 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1593,7 +1592,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1653,13 +1652,13 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1669,7 +1668,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1721,10 +1720,10 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1733,7 +1732,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1797,13 +1796,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1813,7 +1812,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1868,13 +1867,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1884,7 +1883,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1938,13 +1937,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1954,7 +1953,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2010,13 +2009,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2026,7 +2025,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2081,13 +2080,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2097,7 +2096,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2157,13 +2156,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2173,7 +2172,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2241,13 +2240,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2257,7 +2256,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2312,13 +2311,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2328,7 +2327,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2382,13 +2381,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2398,7 +2397,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2454,13 +2453,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2470,7 +2469,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2536,13 +2535,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2552,7 +2551,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2609,13 +2608,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2625,7 +2624,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2683,13 +2682,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2699,7 +2698,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2757,13 +2756,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2773,7 +2772,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2837,13 +2836,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2853,7 +2852,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2910,13 +2909,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (dicomWebPath == null) {
-      throw core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2926,7 +2925,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2985,13 +2984,13 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (fhirStoreId != null) {
-      _queryParams["fhirStoreId"] = [fhirStoreId];
+      _queryParams['fhirStoreId'] = [fhirStoreId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -3000,7 +2999,7 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3051,10 +3050,10 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (sourceStore == null) {
-      throw core.ArgumentError("Parameter sourceStore is required.");
+      throw core.ArgumentError('Parameter sourceStore is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -3063,7 +3062,7 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3103,17 +3102,17 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3168,17 +3167,17 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3218,17 +3217,17 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3280,15 +3279,15 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     core.String _body;
 
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if (options_requestedPolicyVersion != null) {
-      _queryParams["options.requestedPolicyVersion"] = [
-        "${options_requestedPolicyVersion}"
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -3297,7 +3296,7 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3395,17 +3394,17 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3457,19 +3456,19 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -3478,7 +3477,7 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3530,20 +3529,20 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3593,10 +3592,10 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -3605,7 +3604,7 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3657,10 +3656,10 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -3669,7 +3668,7 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3767,28 +3766,28 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (P_type != null) {
-      _queryParams["_type"] = [P_type];
+      _queryParams['_type'] = [P_type];
     }
     if (P_count != null) {
-      _queryParams["_count"] = ["${P_count}"];
+      _queryParams['_count'] = ['${P_count}'];
     }
     if (start != null) {
-      _queryParams["start"] = [start];
+      _queryParams['start'] = [start];
     }
     if (P_since != null) {
-      _queryParams["_since"] = [P_since];
+      _queryParams['_since'] = [P_since];
     }
     if (end != null) {
-      _queryParams["end"] = [end];
+      _queryParams['end'] = [end];
     }
     if (P_pageToken != null) {
-      _queryParams["_page_token"] = [P_pageToken];
+      _queryParams['_page_token'] = [P_pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -3797,7 +3796,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3842,17 +3841,17 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/\$purge';
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3905,10 +3904,10 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -3917,7 +3916,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3986,13 +3985,13 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (type == null) {
-      throw core.ArgumentError("Parameter type is required.");
+      throw core.ArgumentError('Parameter type is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -4002,7 +4001,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4051,17 +4050,17 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4133,17 +4132,17 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/fhir';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4223,29 +4222,29 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (P_pageToken != null) {
-      _queryParams["_page_token"] = [P_pageToken];
+      _queryParams['_page_token'] = [P_pageToken];
     }
     if (P_at != null) {
-      _queryParams["_at"] = [P_at];
+      _queryParams['_at'] = [P_at];
     }
     if (P_count != null) {
-      _queryParams["_count"] = ["${P_count}"];
+      _queryParams['_count'] = ['${P_count}'];
     }
     if (P_since != null) {
-      _queryParams["_since"] = [P_since];
+      _queryParams['_since'] = [P_since];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/_history';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4306,17 +4305,17 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4373,17 +4372,17 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4472,10 +4471,10 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -4484,7 +4483,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4547,17 +4546,17 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4608,17 +4607,17 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4677,13 +4676,13 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (hl7V2StoreId != null) {
-      _queryParams["hl7V2StoreId"] = [hl7V2StoreId];
+      _queryParams['hl7V2StoreId'] = [hl7V2StoreId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -4692,7 +4691,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4733,17 +4732,17 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4783,17 +4782,17 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4845,15 +4844,15 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
     core.String _body;
 
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if (options_requestedPolicyVersion != null) {
-      _queryParams["options.requestedPolicyVersion"] = [
-        "${options_requestedPolicyVersion}"
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -4862,7 +4861,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4914,19 +4913,19 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -4935,7 +4934,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4987,20 +4986,20 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5050,10 +5049,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -5062,7 +5061,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5114,10 +5113,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -5126,7 +5125,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5185,10 +5184,10 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -5196,7 +5195,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5236,17 +5235,17 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5298,20 +5297,20 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5365,10 +5364,10 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -5377,7 +5376,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5466,25 +5465,25 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -5492,7 +5491,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5549,20 +5548,20 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5623,17 +5622,17 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5675,17 +5674,17 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5741,19 +5740,19 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -5761,7 +5760,7 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5800,13 +5799,13 @@ class AuditConfig {
   AuditConfig();
 
   AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
+    if (_json.containsKey('auditLogConfigs')) {
+      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
           .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
+    if (_json.containsKey('service')) {
+      service = _json['service'];
     }
   }
 
@@ -5814,11 +5813,11 @@ class AuditConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] =
+      _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
     }
     if (service != null) {
-      _json["service"] = service;
+      _json['service'] = service;
     }
     return _json;
   }
@@ -5845,12 +5844,12 @@ class AuditLogConfig {
   AuditLogConfig();
 
   AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("exemptedMembers")) {
+    if (_json.containsKey('exemptedMembers')) {
       exemptedMembers =
-          (_json["exemptedMembers"] as core.List).cast<core.String>();
+          (_json['exemptedMembers'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
+    if (_json.containsKey('logType')) {
+      logType = _json['logType'];
     }
   }
 
@@ -5858,10 +5857,10 @@ class AuditLogConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
+      _json['exemptedMembers'] = exemptedMembers;
     }
     if (logType != null) {
-      _json["logType"] = logType;
+      _json['logType'] = logType;
     }
     return _json;
   }
@@ -5916,14 +5915,14 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("condition")) {
-      condition = Expr.fromJson(_json["condition"]);
+    if (_json.containsKey('condition')) {
+      condition = Expr.fromJson(_json['condition']);
     }
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List).cast<core.String>();
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -5931,13 +5930,13 @@ class Binding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     if (members != null) {
-      _json["members"] = members;
+      _json['members'] = members;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -5964,8 +5963,8 @@ class CharacterMaskConfig {
   CharacterMaskConfig();
 
   CharacterMaskConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("maskingCharacter")) {
-      maskingCharacter = _json["maskingCharacter"];
+    if (_json.containsKey('maskingCharacter')) {
+      maskingCharacter = _json['maskingCharacter'];
     }
   }
 
@@ -5973,7 +5972,7 @@ class CharacterMaskConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maskingCharacter != null) {
-      _json["maskingCharacter"] = maskingCharacter;
+      _json['maskingCharacter'] = maskingCharacter;
     }
     return _json;
   }
@@ -5987,8 +5986,8 @@ class CreateMessageRequest {
   CreateMessageRequest();
 
   CreateMessageRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("message")) {
-      message = Message.fromJson(_json["message"]);
+    if (_json.containsKey('message')) {
+      message = Message.fromJson(_json['message']);
     }
   }
 
@@ -5996,7 +5995,7 @@ class CreateMessageRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = message.toJson();
+      _json['message'] = message.toJson();
     }
     return _json;
   }
@@ -6014,14 +6013,14 @@ class CryptoHashConfig {
 
   set cryptoKeyAsBytes(core.List<core.int> _bytes) {
     cryptoKey =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   CryptoHashConfig();
 
   CryptoHashConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("cryptoKey")) {
-      cryptoKey = _json["cryptoKey"];
+    if (_json.containsKey('cryptoKey')) {
+      cryptoKey = _json['cryptoKey'];
     }
   }
 
@@ -6029,7 +6028,7 @@ class CryptoHashConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cryptoKey != null) {
-      _json["cryptoKey"] = cryptoKey;
+      _json['cryptoKey'] = cryptoKey;
     }
     return _json;
   }
@@ -6053,11 +6052,11 @@ class Dataset {
   Dataset();
 
   Dataset.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
   }
 
@@ -6065,10 +6064,10 @@ class Dataset {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     return _json;
   }
@@ -6085,14 +6084,14 @@ class DateShiftConfig {
 
   set cryptoKeyAsBytes(core.List<core.int> _bytes) {
     cryptoKey =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   DateShiftConfig();
 
   DateShiftConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("cryptoKey")) {
-      cryptoKey = _json["cryptoKey"];
+    if (_json.containsKey('cryptoKey')) {
+      cryptoKey = _json['cryptoKey'];
     }
   }
 
@@ -6100,7 +6099,7 @@ class DateShiftConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cryptoKey != null) {
-      _json["cryptoKey"] = cryptoKey;
+      _json['cryptoKey'] = cryptoKey;
     }
     return _json;
   }
@@ -6127,17 +6126,17 @@ class DeidentifyConfig {
   DeidentifyConfig();
 
   DeidentifyConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("dicom")) {
-      dicom = DicomConfig.fromJson(_json["dicom"]);
+    if (_json.containsKey('dicom')) {
+      dicom = DicomConfig.fromJson(_json['dicom']);
     }
-    if (_json.containsKey("fhir")) {
-      fhir = FhirConfig.fromJson(_json["fhir"]);
+    if (_json.containsKey('fhir')) {
+      fhir = FhirConfig.fromJson(_json['fhir']);
     }
-    if (_json.containsKey("image")) {
-      image = ImageConfig.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = ImageConfig.fromJson(_json['image']);
     }
-    if (_json.containsKey("text")) {
-      text = TextConfig.fromJson(_json["text"]);
+    if (_json.containsKey('text')) {
+      text = TextConfig.fromJson(_json['text']);
     }
   }
 
@@ -6145,16 +6144,16 @@ class DeidentifyConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dicom != null) {
-      _json["dicom"] = dicom.toJson();
+      _json['dicom'] = dicom.toJson();
     }
     if (fhir != null) {
-      _json["fhir"] = fhir.toJson();
+      _json['fhir'] = fhir.toJson();
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (text != null) {
-      _json["text"] = text.toJson();
+      _json['text'] = text.toJson();
     }
     return _json;
   }
@@ -6174,11 +6173,11 @@ class DeidentifyDatasetRequest {
   DeidentifyDatasetRequest();
 
   DeidentifyDatasetRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("config")) {
-      config = DeidentifyConfig.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = DeidentifyConfig.fromJson(_json['config']);
     }
-    if (_json.containsKey("destinationDataset")) {
-      destinationDataset = _json["destinationDataset"];
+    if (_json.containsKey('destinationDataset')) {
+      destinationDataset = _json['destinationDataset'];
     }
   }
 
@@ -6186,10 +6185,10 @@ class DeidentifyDatasetRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     if (destinationDataset != null) {
-      _json["destinationDataset"] = destinationDataset;
+      _json['destinationDataset'] = destinationDataset;
     }
     return _json;
   }
@@ -6216,14 +6215,14 @@ class DeidentifyDicomStoreRequest {
   DeidentifyDicomStoreRequest();
 
   DeidentifyDicomStoreRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("config")) {
-      config = DeidentifyConfig.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = DeidentifyConfig.fromJson(_json['config']);
     }
-    if (_json.containsKey("destinationStore")) {
-      destinationStore = _json["destinationStore"];
+    if (_json.containsKey('destinationStore')) {
+      destinationStore = _json['destinationStore'];
     }
-    if (_json.containsKey("filterConfig")) {
-      filterConfig = DicomFilterConfig.fromJson(_json["filterConfig"]);
+    if (_json.containsKey('filterConfig')) {
+      filterConfig = DicomFilterConfig.fromJson(_json['filterConfig']);
     }
   }
 
@@ -6231,13 +6230,13 @@ class DeidentifyDicomStoreRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     if (destinationStore != null) {
-      _json["destinationStore"] = destinationStore;
+      _json['destinationStore'] = destinationStore;
     }
     if (filterConfig != null) {
-      _json["filterConfig"] = filterConfig.toJson();
+      _json['filterConfig'] = filterConfig.toJson();
     }
     return _json;
   }
@@ -6265,14 +6264,14 @@ class DeidentifyFhirStoreRequest {
   DeidentifyFhirStoreRequest();
 
   DeidentifyFhirStoreRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("config")) {
-      config = DeidentifyConfig.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = DeidentifyConfig.fromJson(_json['config']);
     }
-    if (_json.containsKey("destinationStore")) {
-      destinationStore = _json["destinationStore"];
+    if (_json.containsKey('destinationStore')) {
+      destinationStore = _json['destinationStore'];
     }
-    if (_json.containsKey("resourceFilter")) {
-      resourceFilter = FhirFilter.fromJson(_json["resourceFilter"]);
+    if (_json.containsKey('resourceFilter')) {
+      resourceFilter = FhirFilter.fromJson(_json['resourceFilter']);
     }
   }
 
@@ -6280,13 +6279,13 @@ class DeidentifyFhirStoreRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     if (destinationStore != null) {
-      _json["destinationStore"] = destinationStore;
+      _json['destinationStore'] = destinationStore;
     }
     if (resourceFilter != null) {
-      _json["resourceFilter"] = resourceFilter.toJson();
+      _json['resourceFilter'] = resourceFilter.toJson();
     }
     return _json;
   }
@@ -6343,17 +6342,17 @@ class DicomConfig {
   DicomConfig();
 
   DicomConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("filterProfile")) {
-      filterProfile = _json["filterProfile"];
+    if (_json.containsKey('filterProfile')) {
+      filterProfile = _json['filterProfile'];
     }
-    if (_json.containsKey("keepList")) {
-      keepList = TagFilterList.fromJson(_json["keepList"]);
+    if (_json.containsKey('keepList')) {
+      keepList = TagFilterList.fromJson(_json['keepList']);
     }
-    if (_json.containsKey("removeList")) {
-      removeList = TagFilterList.fromJson(_json["removeList"]);
+    if (_json.containsKey('removeList')) {
+      removeList = TagFilterList.fromJson(_json['removeList']);
     }
-    if (_json.containsKey("skipIdRedaction")) {
-      skipIdRedaction = _json["skipIdRedaction"];
+    if (_json.containsKey('skipIdRedaction')) {
+      skipIdRedaction = _json['skipIdRedaction'];
     }
   }
 
@@ -6361,16 +6360,16 @@ class DicomConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filterProfile != null) {
-      _json["filterProfile"] = filterProfile;
+      _json['filterProfile'] = filterProfile;
     }
     if (keepList != null) {
-      _json["keepList"] = keepList.toJson();
+      _json['keepList'] = keepList.toJson();
     }
     if (removeList != null) {
-      _json["removeList"] = removeList.toJson();
+      _json['removeList'] = removeList.toJson();
     }
     if (skipIdRedaction != null) {
-      _json["skipIdRedaction"] = skipIdRedaction;
+      _json['skipIdRedaction'] = skipIdRedaction;
     }
     return _json;
   }
@@ -6391,8 +6390,8 @@ class DicomFilterConfig {
   DicomFilterConfig();
 
   DicomFilterConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("resourcePathsGcsUri")) {
-      resourcePathsGcsUri = _json["resourcePathsGcsUri"];
+    if (_json.containsKey('resourcePathsGcsUri')) {
+      resourcePathsGcsUri = _json['resourcePathsGcsUri'];
     }
   }
 
@@ -6400,7 +6399,7 @@ class DicomFilterConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourcePathsGcsUri != null) {
-      _json["resourcePathsGcsUri"] = resourcePathsGcsUri;
+      _json['resourcePathsGcsUri'] = resourcePathsGcsUri;
     }
     return _json;
   }
@@ -6428,15 +6427,15 @@ class DicomStore {
   DicomStore();
 
   DicomStore.fromJson(core.Map _json) {
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notificationConfig")) {
+    if (_json.containsKey('notificationConfig')) {
       notificationConfig =
-          NotificationConfig.fromJson(_json["notificationConfig"]);
+          NotificationConfig.fromJson(_json['notificationConfig']);
     }
   }
 
@@ -6444,13 +6443,13 @@ class DicomStore {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notificationConfig != null) {
-      _json["notificationConfig"] = notificationConfig.toJson();
+      _json['notificationConfig'] = notificationConfig.toJson();
     }
     return _json;
   }
@@ -6491,14 +6490,14 @@ class ExportDicomDataRequest {
   ExportDicomDataRequest();
 
   ExportDicomDataRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("bigqueryDestination")) {
+    if (_json.containsKey('bigqueryDestination')) {
       bigqueryDestination =
           GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
-              _json["bigqueryDestination"]);
+              _json['bigqueryDestination']);
     }
-    if (_json.containsKey("gcsDestination")) {
+    if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudHealthcareV1DicomGcsDestination.fromJson(
-          _json["gcsDestination"]);
+          _json['gcsDestination']);
     }
   }
 
@@ -6506,10 +6505,10 @@ class ExportDicomDataRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bigqueryDestination != null) {
-      _json["bigqueryDestination"] = bigqueryDestination.toJson();
+      _json['bigqueryDestination'] = bigqueryDestination.toJson();
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -6545,14 +6544,14 @@ class ExportResourcesRequest {
   ExportResourcesRequest();
 
   ExportResourcesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("bigqueryDestination")) {
+    if (_json.containsKey('bigqueryDestination')) {
       bigqueryDestination =
           GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
-              _json["bigqueryDestination"]);
+              _json['bigqueryDestination']);
     }
-    if (_json.containsKey("gcsDestination")) {
+    if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudHealthcareV1FhirGcsDestination.fromJson(
-          _json["gcsDestination"]);
+          _json['gcsDestination']);
     }
   }
 
@@ -6560,10 +6559,10 @@ class ExportResourcesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bigqueryDestination != null) {
-      _json["bigqueryDestination"] = bigqueryDestination.toJson();
+      _json['bigqueryDestination'] = bigqueryDestination.toJson();
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -6620,17 +6619,17 @@ class Expr {
   Expr();
 
   Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
+    if (_json.containsKey('expression')) {
+      expression = _json['expression'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -6638,16 +6637,16 @@ class Expr {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (expression != null) {
-      _json["expression"] = expression;
+      _json['expression'] = expression;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -6663,8 +6662,8 @@ class FhirConfig {
   FhirConfig();
 
   FhirConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("fieldMetadataList")) {
-      fieldMetadataList = (_json["fieldMetadataList"] as core.List)
+    if (_json.containsKey('fieldMetadataList')) {
+      fieldMetadataList = (_json['fieldMetadataList'] as core.List)
           .map<FieldMetadata>((value) => FieldMetadata.fromJson(value))
           .toList();
     }
@@ -6674,7 +6673,7 @@ class FhirConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fieldMetadataList != null) {
-      _json["fieldMetadataList"] =
+      _json['fieldMetadataList'] =
           fieldMetadataList.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6690,8 +6689,8 @@ class FhirFilter {
   FhirFilter();
 
   FhirFilter.fromJson(core.Map _json) {
-    if (_json.containsKey("resources")) {
-      resources = Resources.fromJson(_json["resources"]);
+    if (_json.containsKey('resources')) {
+      resources = Resources.fromJson(_json['resources']);
     }
   }
 
@@ -6699,7 +6698,7 @@ class FhirFilter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resources != null) {
-      _json["resources"] = resources.toJson();
+      _json['resources'] = resources.toJson();
     }
     return _json;
   }
@@ -6787,32 +6786,32 @@ class FhirStore {
   FhirStore();
 
   FhirStore.fromJson(core.Map _json) {
-    if (_json.containsKey("disableReferentialIntegrity")) {
-      disableReferentialIntegrity = _json["disableReferentialIntegrity"];
+    if (_json.containsKey('disableReferentialIntegrity')) {
+      disableReferentialIntegrity = _json['disableReferentialIntegrity'];
     }
-    if (_json.containsKey("disableResourceVersioning")) {
-      disableResourceVersioning = _json["disableResourceVersioning"];
+    if (_json.containsKey('disableResourceVersioning')) {
+      disableResourceVersioning = _json['disableResourceVersioning'];
     }
-    if (_json.containsKey("enableUpdateCreate")) {
-      enableUpdateCreate = _json["enableUpdateCreate"];
+    if (_json.containsKey('enableUpdateCreate')) {
+      enableUpdateCreate = _json['enableUpdateCreate'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notificationConfig")) {
+    if (_json.containsKey('notificationConfig')) {
       notificationConfig =
-          NotificationConfig.fromJson(_json["notificationConfig"]);
+          NotificationConfig.fromJson(_json['notificationConfig']);
     }
-    if (_json.containsKey("streamConfigs")) {
-      streamConfigs = (_json["streamConfigs"] as core.List)
+    if (_json.containsKey('streamConfigs')) {
+      streamConfigs = (_json['streamConfigs'] as core.List)
           .map<StreamConfig>((value) => StreamConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -6820,29 +6819,29 @@ class FhirStore {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (disableReferentialIntegrity != null) {
-      _json["disableReferentialIntegrity"] = disableReferentialIntegrity;
+      _json['disableReferentialIntegrity'] = disableReferentialIntegrity;
     }
     if (disableResourceVersioning != null) {
-      _json["disableResourceVersioning"] = disableResourceVersioning;
+      _json['disableResourceVersioning'] = disableResourceVersioning;
     }
     if (enableUpdateCreate != null) {
-      _json["enableUpdateCreate"] = enableUpdateCreate;
+      _json['enableUpdateCreate'] = enableUpdateCreate;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notificationConfig != null) {
-      _json["notificationConfig"] = notificationConfig.toJson();
+      _json['notificationConfig'] = notificationConfig.toJson();
     }
     if (streamConfigs != null) {
-      _json["streamConfigs"] =
+      _json['streamConfigs'] =
           streamConfigs.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -6873,11 +6872,11 @@ class FieldMetadata {
   FieldMetadata();
 
   FieldMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
+    if (_json.containsKey('action')) {
+      action = _json['action'];
     }
-    if (_json.containsKey("paths")) {
-      paths = (_json["paths"] as core.List).cast<core.String>();
+    if (_json.containsKey('paths')) {
+      paths = (_json['paths'] as core.List).cast<core.String>();
     }
   }
 
@@ -6885,10 +6884,10 @@ class FieldMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (action != null) {
-      _json["action"] = action;
+      _json['action'] = action;
     }
     if (paths != null) {
-      _json["paths"] = paths;
+      _json['paths'] = paths;
     }
     return _json;
   }
@@ -6937,11 +6936,11 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
   GoogleCloudHealthcareV1DicomBigQueryDestination();
 
   GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("force")) {
-      force = _json["force"];
+    if (_json.containsKey('force')) {
+      force = _json['force'];
     }
-    if (_json.containsKey("tableUri")) {
-      tableUri = _json["tableUri"];
+    if (_json.containsKey('tableUri')) {
+      tableUri = _json['tableUri'];
     }
   }
 
@@ -6949,10 +6948,10 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (force != null) {
-      _json["force"] = force;
+      _json['force'] = force;
     }
     if (tableUri != null) {
-      _json["tableUri"] = tableUri;
+      _json['tableUri'] = tableUri;
     }
     return _json;
   }
@@ -6996,11 +6995,11 @@ class GoogleCloudHealthcareV1DicomGcsDestination {
   GoogleCloudHealthcareV1DicomGcsDestination();
 
   GoogleCloudHealthcareV1DicomGcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("uriPrefix")) {
-      uriPrefix = _json["uriPrefix"];
+    if (_json.containsKey('uriPrefix')) {
+      uriPrefix = _json['uriPrefix'];
     }
   }
 
@@ -7008,10 +7007,10 @@ class GoogleCloudHealthcareV1DicomGcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (uriPrefix != null) {
-      _json["uriPrefix"] = uriPrefix;
+      _json['uriPrefix'] = uriPrefix;
     }
     return _json;
   }
@@ -7036,8 +7035,8 @@ class GoogleCloudHealthcareV1DicomGcsSource {
   GoogleCloudHealthcareV1DicomGcsSource();
 
   GoogleCloudHealthcareV1DicomGcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -7045,7 +7044,7 @@ class GoogleCloudHealthcareV1DicomGcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -7068,14 +7067,14 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
   GoogleCloudHealthcareV1FhirBigQueryDestination();
 
   GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("datasetUri")) {
-      datasetUri = _json["datasetUri"];
+    if (_json.containsKey('datasetUri')) {
+      datasetUri = _json['datasetUri'];
     }
-    if (_json.containsKey("force")) {
-      force = _json["force"];
+    if (_json.containsKey('force')) {
+      force = _json['force'];
     }
-    if (_json.containsKey("schemaConfig")) {
-      schemaConfig = SchemaConfig.fromJson(_json["schemaConfig"]);
+    if (_json.containsKey('schemaConfig')) {
+      schemaConfig = SchemaConfig.fromJson(_json['schemaConfig']);
     }
   }
 
@@ -7083,13 +7082,13 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (datasetUri != null) {
-      _json["datasetUri"] = datasetUri;
+      _json['datasetUri'] = datasetUri;
     }
     if (force != null) {
-      _json["force"] = force;
+      _json['force'] = force;
     }
     if (schemaConfig != null) {
-      _json["schemaConfig"] = schemaConfig.toJson();
+      _json['schemaConfig'] = schemaConfig.toJson();
     }
     return _json;
   }
@@ -7107,8 +7106,8 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
   GoogleCloudHealthcareV1FhirGcsDestination();
 
   GoogleCloudHealthcareV1FhirGcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("uriPrefix")) {
-      uriPrefix = _json["uriPrefix"];
+    if (_json.containsKey('uriPrefix')) {
+      uriPrefix = _json['uriPrefix'];
     }
   }
 
@@ -7116,7 +7115,7 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uriPrefix != null) {
-      _json["uriPrefix"] = uriPrefix;
+      _json['uriPrefix'] = uriPrefix;
     }
     return _json;
   }
@@ -7141,8 +7140,8 @@ class GoogleCloudHealthcareV1FhirGcsSource {
   GoogleCloudHealthcareV1FhirGcsSource();
 
   GoogleCloudHealthcareV1FhirGcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -7150,7 +7149,7 @@ class GoogleCloudHealthcareV1FhirGcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -7200,11 +7199,11 @@ class Hl7V2NotificationConfig {
   Hl7V2NotificationConfig();
 
   Hl7V2NotificationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("filter")) {
-      filter = _json["filter"];
+    if (_json.containsKey('filter')) {
+      filter = _json['filter'];
     }
-    if (_json.containsKey("pubsubTopic")) {
-      pubsubTopic = _json["pubsubTopic"];
+    if (_json.containsKey('pubsubTopic')) {
+      pubsubTopic = _json['pubsubTopic'];
     }
   }
 
@@ -7212,10 +7211,10 @@ class Hl7V2NotificationConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filter != null) {
-      _json["filter"] = filter;
+      _json['filter'] = filter;
     }
     if (pubsubTopic != null) {
-      _json["pubsubTopic"] = pubsubTopic;
+      _json['pubsubTopic'] = pubsubTopic;
     }
     return _json;
   }
@@ -7261,23 +7260,23 @@ class Hl7V2Store {
   Hl7V2Store();
 
   Hl7V2Store.fromJson(core.Map _json) {
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notificationConfigs")) {
-      notificationConfigs = (_json["notificationConfigs"] as core.List)
+    if (_json.containsKey('notificationConfigs')) {
+      notificationConfigs = (_json['notificationConfigs'] as core.List)
           .map<Hl7V2NotificationConfig>(
               (value) => Hl7V2NotificationConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parserConfig")) {
-      parserConfig = ParserConfig.fromJson(_json["parserConfig"]);
+    if (_json.containsKey('parserConfig')) {
+      parserConfig = ParserConfig.fromJson(_json['parserConfig']);
     }
-    if (_json.containsKey("rejectDuplicateMessage")) {
-      rejectDuplicateMessage = _json["rejectDuplicateMessage"];
+    if (_json.containsKey('rejectDuplicateMessage')) {
+      rejectDuplicateMessage = _json['rejectDuplicateMessage'];
     }
   }
 
@@ -7285,20 +7284,20 @@ class Hl7V2Store {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notificationConfigs != null) {
-      _json["notificationConfigs"] =
+      _json['notificationConfigs'] =
           notificationConfigs.map((value) => value.toJson()).toList();
     }
     if (parserConfig != null) {
-      _json["parserConfig"] = parserConfig.toJson();
+      _json['parserConfig'] = parserConfig.toJson();
     }
     if (rejectDuplicateMessage != null) {
-      _json["rejectDuplicateMessage"] = rejectDuplicateMessage;
+      _json['rejectDuplicateMessage'] = rejectDuplicateMessage;
     }
     return _json;
   }
@@ -7332,7 +7331,7 @@ class HttpBody {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Application specific response metadata. Must be set in the first response
@@ -7345,14 +7344,14 @@ class HttpBody {
   HttpBody();
 
   HttpBody.fromJson(core.Map _json) {
-    if (_json.containsKey("contentType")) {
-      contentType = _json["contentType"];
+    if (_json.containsKey('contentType')) {
+      contentType = _json['contentType'];
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("extensions")) {
-      extensions = (_json["extensions"] as core.List)
+    if (_json.containsKey('extensions')) {
+      extensions = (_json['extensions'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
@@ -7363,13 +7362,13 @@ class HttpBody {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentType != null) {
-      _json["contentType"] = contentType;
+      _json['contentType'] = contentType;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (extensions != null) {
-      _json["extensions"] = extensions;
+      _json['extensions'] = extensions;
     }
     return _json;
   }
@@ -7389,8 +7388,8 @@ class ImageConfig {
   ImageConfig();
 
   ImageConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("textRedactionMode")) {
-      textRedactionMode = _json["textRedactionMode"];
+    if (_json.containsKey('textRedactionMode')) {
+      textRedactionMode = _json['textRedactionMode'];
     }
   }
 
@@ -7398,7 +7397,7 @@ class ImageConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (textRedactionMode != null) {
-      _json["textRedactionMode"] = textRedactionMode;
+      _json['textRedactionMode'] = textRedactionMode;
     }
     return _json;
   }
@@ -7415,9 +7414,9 @@ class ImportDicomDataRequest {
   ImportDicomDataRequest();
 
   ImportDicomDataRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("gcsSource")) {
+    if (_json.containsKey('gcsSource')) {
       gcsSource =
-          GoogleCloudHealthcareV1DicomGcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudHealthcareV1DicomGcsSource.fromJson(_json['gcsSource']);
     }
   }
 
@@ -7425,7 +7424,7 @@ class ImportDicomDataRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     return _json;
   }
@@ -7472,12 +7471,12 @@ class ImportResourcesRequest {
   ImportResourcesRequest();
 
   ImportResourcesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("contentStructure")) {
-      contentStructure = _json["contentStructure"];
+    if (_json.containsKey('contentStructure')) {
+      contentStructure = _json['contentStructure'];
     }
-    if (_json.containsKey("gcsSource")) {
+    if (_json.containsKey('gcsSource')) {
       gcsSource =
-          GoogleCloudHealthcareV1FhirGcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudHealthcareV1FhirGcsSource.fromJson(_json['gcsSource']);
     }
   }
 
@@ -7485,10 +7484,10 @@ class ImportResourcesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentStructure != null) {
-      _json["contentStructure"] = contentStructure;
+      _json['contentStructure'] = contentStructure;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     return _json;
   }
@@ -7534,25 +7533,25 @@ class InfoTypeTransformation {
   InfoTypeTransformation();
 
   InfoTypeTransformation.fromJson(core.Map _json) {
-    if (_json.containsKey("characterMaskConfig")) {
+    if (_json.containsKey('characterMaskConfig')) {
       characterMaskConfig =
-          CharacterMaskConfig.fromJson(_json["characterMaskConfig"]);
+          CharacterMaskConfig.fromJson(_json['characterMaskConfig']);
     }
-    if (_json.containsKey("cryptoHashConfig")) {
-      cryptoHashConfig = CryptoHashConfig.fromJson(_json["cryptoHashConfig"]);
+    if (_json.containsKey('cryptoHashConfig')) {
+      cryptoHashConfig = CryptoHashConfig.fromJson(_json['cryptoHashConfig']);
     }
-    if (_json.containsKey("dateShiftConfig")) {
-      dateShiftConfig = DateShiftConfig.fromJson(_json["dateShiftConfig"]);
+    if (_json.containsKey('dateShiftConfig')) {
+      dateShiftConfig = DateShiftConfig.fromJson(_json['dateShiftConfig']);
     }
-    if (_json.containsKey("infoTypes")) {
-      infoTypes = (_json["infoTypes"] as core.List).cast<core.String>();
+    if (_json.containsKey('infoTypes')) {
+      infoTypes = (_json['infoTypes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("redactConfig")) {
-      redactConfig = RedactConfig.fromJson(_json["redactConfig"]);
+    if (_json.containsKey('redactConfig')) {
+      redactConfig = RedactConfig.fromJson(_json['redactConfig']);
     }
-    if (_json.containsKey("replaceWithInfoTypeConfig")) {
+    if (_json.containsKey('replaceWithInfoTypeConfig')) {
       replaceWithInfoTypeConfig = ReplaceWithInfoTypeConfig.fromJson(
-          _json["replaceWithInfoTypeConfig"]);
+          _json['replaceWithInfoTypeConfig']);
     }
   }
 
@@ -7560,22 +7559,22 @@ class InfoTypeTransformation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (characterMaskConfig != null) {
-      _json["characterMaskConfig"] = characterMaskConfig.toJson();
+      _json['characterMaskConfig'] = characterMaskConfig.toJson();
     }
     if (cryptoHashConfig != null) {
-      _json["cryptoHashConfig"] = cryptoHashConfig.toJson();
+      _json['cryptoHashConfig'] = cryptoHashConfig.toJson();
     }
     if (dateShiftConfig != null) {
-      _json["dateShiftConfig"] = dateShiftConfig.toJson();
+      _json['dateShiftConfig'] = dateShiftConfig.toJson();
     }
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes;
+      _json['infoTypes'] = infoTypes;
     }
     if (redactConfig != null) {
-      _json["redactConfig"] = redactConfig.toJson();
+      _json['redactConfig'] = redactConfig.toJson();
     }
     if (replaceWithInfoTypeConfig != null) {
-      _json["replaceWithInfoTypeConfig"] = replaceWithInfoTypeConfig.toJson();
+      _json['replaceWithInfoTypeConfig'] = replaceWithInfoTypeConfig.toJson();
     }
     return _json;
   }
@@ -7589,8 +7588,8 @@ class IngestMessageRequest {
   IngestMessageRequest();
 
   IngestMessageRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("message")) {
-      message = Message.fromJson(_json["message"]);
+    if (_json.containsKey('message')) {
+      message = Message.fromJson(_json['message']);
     }
   }
 
@@ -7598,7 +7597,7 @@ class IngestMessageRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = message.toJson();
+      _json['message'] = message.toJson();
     }
     return _json;
   }
@@ -7613,7 +7612,7 @@ class IngestMessageResponse {
 
   set hl7AckAsBytes(core.List<core.int> _bytes) {
     hl7Ack =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Created message resource.
@@ -7622,11 +7621,11 @@ class IngestMessageResponse {
   IngestMessageResponse();
 
   IngestMessageResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("hl7Ack")) {
-      hl7Ack = _json["hl7Ack"];
+    if (_json.containsKey('hl7Ack')) {
+      hl7Ack = _json['hl7Ack'];
     }
-    if (_json.containsKey("message")) {
-      message = Message.fromJson(_json["message"]);
+    if (_json.containsKey('message')) {
+      message = Message.fromJson(_json['message']);
     }
   }
 
@@ -7634,10 +7633,10 @@ class IngestMessageResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hl7Ack != null) {
-      _json["hl7Ack"] = hl7Ack;
+      _json['hl7Ack'] = hl7Ack;
     }
     if (message != null) {
-      _json["message"] = message.toJson();
+      _json['message'] = message.toJson();
     }
     return _json;
   }
@@ -7655,13 +7654,13 @@ class ListDatasetsResponse {
   ListDatasetsResponse();
 
   ListDatasetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("datasets")) {
-      datasets = (_json["datasets"] as core.List)
+    if (_json.containsKey('datasets')) {
+      datasets = (_json['datasets'] as core.List)
           .map<Dataset>((value) => Dataset.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7669,10 +7668,10 @@ class ListDatasetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (datasets != null) {
-      _json["datasets"] = datasets.map((value) => value.toJson()).toList();
+      _json['datasets'] = datasets.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7691,13 +7690,13 @@ class ListDicomStoresResponse {
   ListDicomStoresResponse();
 
   ListDicomStoresResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("dicomStores")) {
-      dicomStores = (_json["dicomStores"] as core.List)
+    if (_json.containsKey('dicomStores')) {
+      dicomStores = (_json['dicomStores'] as core.List)
           .map<DicomStore>((value) => DicomStore.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7705,11 +7704,11 @@ class ListDicomStoresResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dicomStores != null) {
-      _json["dicomStores"] =
+      _json['dicomStores'] =
           dicomStores.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7728,13 +7727,13 @@ class ListFhirStoresResponse {
   ListFhirStoresResponse();
 
   ListFhirStoresResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("fhirStores")) {
-      fhirStores = (_json["fhirStores"] as core.List)
+    if (_json.containsKey('fhirStores')) {
+      fhirStores = (_json['fhirStores'] as core.List)
           .map<FhirStore>((value) => FhirStore.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7742,10 +7741,10 @@ class ListFhirStoresResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fhirStores != null) {
-      _json["fhirStores"] = fhirStores.map((value) => value.toJson()).toList();
+      _json['fhirStores'] = fhirStores.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7764,13 +7763,13 @@ class ListHl7V2StoresResponse {
   ListHl7V2StoresResponse();
 
   ListHl7V2StoresResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("hl7V2Stores")) {
-      hl7V2Stores = (_json["hl7V2Stores"] as core.List)
+    if (_json.containsKey('hl7V2Stores')) {
+      hl7V2Stores = (_json['hl7V2Stores'] as core.List)
           .map<Hl7V2Store>((value) => Hl7V2Store.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7778,11 +7777,11 @@ class ListHl7V2StoresResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hl7V2Stores != null) {
-      _json["hl7V2Stores"] =
+      _json['hl7V2Stores'] =
           hl7V2Stores.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7799,13 +7798,13 @@ class ListLocationsResponse {
   ListLocationsResponse();
 
   ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7813,10 +7812,10 @@ class ListLocationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7835,13 +7834,13 @@ class ListMessagesResponse {
   ListMessagesResponse();
 
   ListMessagesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("hl7V2Messages")) {
-      hl7V2Messages = (_json["hl7V2Messages"] as core.List)
+    if (_json.containsKey('hl7V2Messages')) {
+      hl7V2Messages = (_json['hl7V2Messages'] as core.List)
           .map<Message>((value) => Message.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7849,11 +7848,11 @@ class ListMessagesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hl7V2Messages != null) {
-      _json["hl7V2Messages"] =
+      _json['hl7V2Messages'] =
           hl7V2Messages.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7870,11 +7869,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -7884,10 +7883,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7920,21 +7919,21 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -7942,19 +7941,19 @@ class Location {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -7973,7 +7972,7 @@ class Message {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys
@@ -8010,34 +8009,34 @@ class Message {
   Message();
 
   Message.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("messageType")) {
-      messageType = _json["messageType"];
+    if (_json.containsKey('messageType')) {
+      messageType = _json['messageType'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("parsedData")) {
-      parsedData = ParsedData.fromJson(_json["parsedData"]);
+    if (_json.containsKey('parsedData')) {
+      parsedData = ParsedData.fromJson(_json['parsedData']);
     }
-    if (_json.containsKey("patientIds")) {
-      patientIds = (_json["patientIds"] as core.List)
+    if (_json.containsKey('patientIds')) {
+      patientIds = (_json['patientIds'] as core.List)
           .map<PatientId>((value) => PatientId.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("sendFacility")) {
-      sendFacility = _json["sendFacility"];
+    if (_json.containsKey('sendFacility')) {
+      sendFacility = _json['sendFacility'];
     }
-    if (_json.containsKey("sendTime")) {
-      sendTime = _json["sendTime"];
+    if (_json.containsKey('sendTime')) {
+      sendTime = _json['sendTime'];
     }
   }
 
@@ -8045,31 +8044,31 @@ class Message {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (messageType != null) {
-      _json["messageType"] = messageType;
+      _json['messageType'] = messageType;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (parsedData != null) {
-      _json["parsedData"] = parsedData.toJson();
+      _json['parsedData'] = parsedData.toJson();
     }
     if (patientIds != null) {
-      _json["patientIds"] = patientIds.map((value) => value.toJson()).toList();
+      _json['patientIds'] = patientIds.map((value) => value.toJson()).toList();
     }
     if (sendFacility != null) {
-      _json["sendFacility"] = sendFacility;
+      _json['sendFacility'] = sendFacility;
     }
     if (sendTime != null) {
-      _json["sendTime"] = sendTime;
+      _json['sendTime'] = sendTime;
     }
     return _json;
   }
@@ -8098,8 +8097,8 @@ class NotificationConfig {
   NotificationConfig();
 
   NotificationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("pubsubTopic")) {
-      pubsubTopic = _json["pubsubTopic"];
+    if (_json.containsKey('pubsubTopic')) {
+      pubsubTopic = _json['pubsubTopic'];
     }
   }
 
@@ -8107,7 +8106,7 @@ class NotificationConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pubsubTopic != null) {
-      _json["pubsubTopic"] = pubsubTopic;
+      _json['pubsubTopic'] = pubsubTopic;
     }
     return _json;
   }
@@ -8153,22 +8152,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -8176,19 +8175,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -8218,23 +8217,23 @@ class OperationMetadata {
   OperationMetadata();
 
   OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("apiMethodName")) {
-      apiMethodName = _json["apiMethodName"];
+    if (_json.containsKey('apiMethodName')) {
+      apiMethodName = _json['apiMethodName'];
     }
-    if (_json.containsKey("cancelRequested")) {
-      cancelRequested = _json["cancelRequested"];
+    if (_json.containsKey('cancelRequested')) {
+      cancelRequested = _json['cancelRequested'];
     }
-    if (_json.containsKey("counter")) {
-      counter = ProgressCounter.fromJson(_json["counter"]);
+    if (_json.containsKey('counter')) {
+      counter = ProgressCounter.fromJson(_json['counter']);
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("logsUrl")) {
-      logsUrl = _json["logsUrl"];
+    if (_json.containsKey('logsUrl')) {
+      logsUrl = _json['logsUrl'];
     }
   }
 
@@ -8242,22 +8241,22 @@ class OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (apiMethodName != null) {
-      _json["apiMethodName"] = apiMethodName;
+      _json['apiMethodName'] = apiMethodName;
     }
     if (cancelRequested != null) {
-      _json["cancelRequested"] = cancelRequested;
+      _json['cancelRequested'] = cancelRequested;
     }
     if (counter != null) {
-      _json["counter"] = counter.toJson();
+      _json['counter'] = counter.toJson();
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (logsUrl != null) {
-      _json["logsUrl"] = logsUrl;
+      _json['logsUrl'] = logsUrl;
     }
     return _json;
   }
@@ -8270,8 +8269,8 @@ class ParsedData {
   ParsedData();
 
   ParsedData.fromJson(core.Map _json) {
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<Segment>((value) => Segment.fromJson(value))
           .toList();
     }
@@ -8281,7 +8280,7 @@ class ParsedData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8301,17 +8300,17 @@ class ParserConfig {
 
   set segmentTerminatorAsBytes(core.List<core.int> _bytes) {
     segmentTerminator =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   ParserConfig();
 
   ParserConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("allowNullHeader")) {
-      allowNullHeader = _json["allowNullHeader"];
+    if (_json.containsKey('allowNullHeader')) {
+      allowNullHeader = _json['allowNullHeader'];
     }
-    if (_json.containsKey("segmentTerminator")) {
-      segmentTerminator = _json["segmentTerminator"];
+    if (_json.containsKey('segmentTerminator')) {
+      segmentTerminator = _json['segmentTerminator'];
     }
   }
 
@@ -8319,10 +8318,10 @@ class ParserConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowNullHeader != null) {
-      _json["allowNullHeader"] = allowNullHeader;
+      _json['allowNullHeader'] = allowNullHeader;
     }
     if (segmentTerminator != null) {
-      _json["segmentTerminator"] = segmentTerminator;
+      _json['segmentTerminator'] = segmentTerminator;
     }
     return _json;
   }
@@ -8339,11 +8338,11 @@ class PatientId {
   PatientId();
 
   PatientId.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -8351,10 +8350,10 @@ class PatientId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -8414,7 +8413,7 @@ class Policy {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
@@ -8437,21 +8436,21 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("auditConfigs")) {
-      auditConfigs = (_json["auditConfigs"] as core.List)
+    if (_json.containsKey('auditConfigs')) {
+      auditConfigs = (_json['auditConfigs'] as core.List)
           .map<AuditConfig>((value) => AuditConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("bindings")) {
-      bindings = (_json["bindings"] as core.List)
+    if (_json.containsKey('bindings')) {
+      bindings = (_json['bindings'] as core.List)
           .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -8459,17 +8458,17 @@ class Policy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditConfigs != null) {
-      _json["auditConfigs"] =
+      _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
     }
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
+      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -8489,14 +8488,14 @@ class ProgressCounter {
   ProgressCounter();
 
   ProgressCounter.fromJson(core.Map _json) {
-    if (_json.containsKey("failure")) {
-      failure = _json["failure"];
+    if (_json.containsKey('failure')) {
+      failure = _json['failure'];
     }
-    if (_json.containsKey("pending")) {
-      pending = _json["pending"];
+    if (_json.containsKey('pending')) {
+      pending = _json['pending'];
     }
-    if (_json.containsKey("success")) {
-      success = _json["success"];
+    if (_json.containsKey('success')) {
+      success = _json['success'];
     }
   }
 
@@ -8504,13 +8503,13 @@ class ProgressCounter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (failure != null) {
-      _json["failure"] = failure;
+      _json['failure'] = failure;
     }
     if (pending != null) {
-      _json["pending"] = pending;
+      _json['pending'] = pending;
     }
     if (success != null) {
-      _json["success"] = success;
+      _json['success'] = success;
     }
     return _json;
   }
@@ -8553,8 +8552,8 @@ class Resources {
   Resources();
 
   Resources.fromJson(core.Map _json) {
-    if (_json.containsKey("resources")) {
-      resources = (_json["resources"] as core.List).cast<core.String>();
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List).cast<core.String>();
     }
   }
 
@@ -8562,7 +8561,7 @@ class Resources {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resources != null) {
-      _json["resources"] = resources;
+      _json['resources'] = resources;
     }
     return _json;
   }
@@ -8595,11 +8594,11 @@ class SchemaConfig {
   SchemaConfig();
 
   SchemaConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("recursiveStructureDepth")) {
-      recursiveStructureDepth = _json["recursiveStructureDepth"];
+    if (_json.containsKey('recursiveStructureDepth')) {
+      recursiveStructureDepth = _json['recursiveStructureDepth'];
     }
-    if (_json.containsKey("schemaType")) {
-      schemaType = _json["schemaType"];
+    if (_json.containsKey('schemaType')) {
+      schemaType = _json['schemaType'];
     }
   }
 
@@ -8607,10 +8606,10 @@ class SchemaConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (recursiveStructureDepth != null) {
-      _json["recursiveStructureDepth"] = recursiveStructureDepth;
+      _json['recursiveStructureDepth'] = recursiveStructureDepth;
     }
     if (schemaType != null) {
-      _json["schemaType"] = schemaType;
+      _json['schemaType'] = schemaType;
     }
     return _json;
   }
@@ -8628,8 +8627,8 @@ class SearchResourcesRequest {
   SearchResourcesRequest();
 
   SearchResourcesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceType")) {
-      resourceType = _json["resourceType"];
+    if (_json.containsKey('resourceType')) {
+      resourceType = _json['resourceType'];
     }
   }
 
@@ -8637,7 +8636,7 @@ class SearchResourcesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourceType != null) {
-      _json["resourceType"] = resourceType;
+      _json['resourceType'] = resourceType;
     }
     return _json;
   }
@@ -8667,14 +8666,14 @@ class Segment {
   Segment();
 
   Segment.fromJson(core.Map _json) {
-    if (_json.containsKey("fields")) {
-      fields = (_json["fields"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('fields')) {
+      fields = (_json['fields'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("segmentId")) {
-      segmentId = _json["segmentId"];
+    if (_json.containsKey('segmentId')) {
+      segmentId = _json['segmentId'];
     }
-    if (_json.containsKey("setId")) {
-      setId = _json["setId"];
+    if (_json.containsKey('setId')) {
+      setId = _json['setId'];
     }
   }
 
@@ -8682,13 +8681,13 @@ class Segment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fields != null) {
-      _json["fields"] = fields;
+      _json['fields'] = fields;
     }
     if (segmentId != null) {
-      _json["segmentId"] = segmentId;
+      _json['segmentId'] = segmentId;
     }
     if (setId != null) {
-      _json["setId"] = setId;
+      _json['setId'] = setId;
     }
     return _json;
   }
@@ -8710,11 +8709,11 @@ class SetIamPolicyRequest {
   SetIamPolicyRequest();
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("policy")) {
-      policy = Policy.fromJson(_json["policy"]);
+    if (_json.containsKey('policy')) {
+      policy = Policy.fromJson(_json['policy']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -8722,10 +8721,10 @@ class SetIamPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = policy.toJson();
+      _json['policy'] = policy.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -8756,17 +8755,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -8774,13 +8773,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -8828,13 +8827,13 @@ class StreamConfig {
   StreamConfig();
 
   StreamConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("bigqueryDestination")) {
+    if (_json.containsKey('bigqueryDestination')) {
       bigqueryDestination =
           GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
-              _json["bigqueryDestination"]);
+              _json['bigqueryDestination']);
     }
-    if (_json.containsKey("resourceTypes")) {
-      resourceTypes = (_json["resourceTypes"] as core.List).cast<core.String>();
+    if (_json.containsKey('resourceTypes')) {
+      resourceTypes = (_json['resourceTypes'] as core.List).cast<core.String>();
     }
   }
 
@@ -8842,10 +8841,10 @@ class StreamConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bigqueryDestination != null) {
-      _json["bigqueryDestination"] = bigqueryDestination.toJson();
+      _json['bigqueryDestination'] = bigqueryDestination.toJson();
     }
     if (resourceTypes != null) {
-      _json["resourceTypes"] = resourceTypes;
+      _json['resourceTypes'] = resourceTypes;
     }
     return _json;
   }
@@ -8863,8 +8862,8 @@ class TagFilterList {
   TagFilterList();
 
   TagFilterList.fromJson(core.Map _json) {
-    if (_json.containsKey("tags")) {
-      tags = (_json["tags"] as core.List).cast<core.String>();
+    if (_json.containsKey('tags')) {
+      tags = (_json['tags'] as core.List).cast<core.String>();
     }
   }
 
@@ -8872,7 +8871,7 @@ class TagFilterList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (tags != null) {
-      _json["tags"] = tags;
+      _json['tags'] = tags;
     }
     return _json;
   }
@@ -8889,8 +8888,8 @@ class TestIamPermissionsRequest {
   TestIamPermissionsRequest();
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -8898,7 +8897,7 @@ class TestIamPermissionsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -8913,8 +8912,8 @@ class TestIamPermissionsResponse {
   TestIamPermissionsResponse();
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -8922,7 +8921,7 @@ class TestIamPermissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -8935,8 +8934,8 @@ class TextConfig {
   TextConfig();
 
   TextConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("transformations")) {
-      transformations = (_json["transformations"] as core.List)
+    if (_json.containsKey('transformations')) {
+      transformations = (_json['transformations'] as core.List)
           .map<InfoTypeTransformation>(
               (value) => InfoTypeTransformation.fromJson(value))
           .toList();
@@ -8947,7 +8946,7 @@ class TextConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (transformations != null) {
-      _json["transformations"] =
+      _json['transformations'] =
           transformations.map((value) => value.toJson()).toList();
     }
     return _json;

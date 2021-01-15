@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,11 +36,11 @@ const core.String USER_AGENT = 'dart-api-client tasks/v1';
 /// The Google Tasks API lets you manage your tasks and task lists.
 class TasksApi {
   /// Create, edit, organize, and delete all your tasks
-  static const TasksScope = "https://www.googleapis.com/auth/tasks";
+  static const TasksScope = 'https://www.googleapis.com/auth/tasks';
 
   /// View your tasks
   static const TasksReadonlyScope =
-      "https://www.googleapis.com/auth/tasks.readonly";
+      'https://www.googleapis.com/auth/tasks.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -49,8 +48,8 @@ class TasksApi {
   TasksResourceApi get tasks => TasksResourceApi(_requester);
 
   TasksApi(http.Client client,
-      {core.String rootUrl = "https://tasks.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://tasks.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -86,10 +85,10 @@ class TasklistsResourceApi {
     core.String _body;
 
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -99,7 +98,7 @@ class TasklistsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -137,10 +136,10 @@ class TasklistsResourceApi {
     core.String _body;
 
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/users/@me/lists/' +
@@ -148,7 +147,7 @@ class TasklistsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -190,14 +189,14 @@ class TasklistsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/users/@me/lists';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -239,20 +238,20 @@ class TasklistsResourceApi {
     core.String _body;
 
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/users/@me/lists';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -297,10 +296,10 @@ class TasklistsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/users/@me/lists/' +
@@ -308,7 +307,7 @@ class TasklistsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -352,10 +351,10 @@ class TasklistsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/users/@me/lists/' +
@@ -363,7 +362,7 @@ class TasklistsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -407,10 +406,10 @@ class TasksResourceApi {
     core.String _body;
 
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -421,7 +420,7 @@ class TasksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -460,13 +459,13 @@ class TasksResourceApi {
     core.String _body;
 
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if (task == null) {
-      throw core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError('Parameter task is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -478,7 +477,7 @@ class TasksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -519,13 +518,13 @@ class TasksResourceApi {
     core.String _body;
 
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if (task == null) {
-      throw core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError('Parameter task is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/lists/' +
@@ -535,7 +534,7 @@ class TasksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -588,16 +587,16 @@ class TasksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if (previous != null) {
-      _queryParams["previous"] = [previous];
+      _queryParams['previous'] = [previous];
     }
     if (parent != null) {
-      _queryParams["parent"] = [parent];
+      _queryParams['parent'] = [parent];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/lists/' +
@@ -606,7 +605,7 @@ class TasksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -688,40 +687,40 @@ class TasksResourceApi {
     core.String _body;
 
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if (completedMin != null) {
-      _queryParams["completedMin"] = [completedMin];
+      _queryParams['completedMin'] = [completedMin];
     }
     if (showCompleted != null) {
-      _queryParams["showCompleted"] = ["${showCompleted}"];
+      _queryParams['showCompleted'] = ['${showCompleted}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (completedMax != null) {
-      _queryParams["completedMax"] = [completedMax];
+      _queryParams['completedMax'] = [completedMax];
     }
     if (dueMin != null) {
-      _queryParams["dueMin"] = [dueMin];
+      _queryParams['dueMin'] = [dueMin];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if (updatedMin != null) {
-      _queryParams["updatedMin"] = [updatedMin];
+      _queryParams['updatedMin'] = [updatedMin];
     }
     if (dueMax != null) {
-      _queryParams["dueMax"] = [dueMax];
+      _queryParams['dueMax'] = [dueMax];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (showHidden != null) {
-      _queryParams["showHidden"] = ["${showHidden}"];
+      _queryParams['showHidden'] = ['${showHidden}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/lists/' +
@@ -730,7 +729,7 @@ class TasksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -782,19 +781,19 @@ class TasksResourceApi {
     core.String _body;
 
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if (task == null) {
-      throw core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError('Parameter task is required.');
     }
     if (parent != null) {
-      _queryParams["parent"] = [parent];
+      _queryParams['parent'] = [parent];
     }
     if (previous != null) {
-      _queryParams["previous"] = [previous];
+      _queryParams['previous'] = [previous];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/lists/' +
@@ -805,7 +804,7 @@ class TasksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -852,13 +851,13 @@ class TasksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if (task == null) {
-      throw core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError('Parameter task is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/lists/' +
@@ -868,7 +867,7 @@ class TasksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -915,13 +914,13 @@ class TasksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError('Parameter tasklist is required.');
     }
     if (task == null) {
-      throw core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError('Parameter task is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tasks/v1/lists/' +
@@ -931,7 +930,7 @@ class TasksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -955,14 +954,14 @@ class TaskLinks {
   TaskLinks();
 
   TaskLinks.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("link")) {
-      link = _json["link"];
+    if (_json.containsKey('link')) {
+      link = _json['link'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -970,13 +969,13 @@ class TaskLinks {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1045,52 +1044,52 @@ class Task {
   Task();
 
   Task.fromJson(core.Map _json) {
-    if (_json.containsKey("completed")) {
-      completed = _json["completed"];
+    if (_json.containsKey('completed')) {
+      completed = _json['completed'];
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("due")) {
-      due = _json["due"];
+    if (_json.containsKey('due')) {
+      due = _json['due'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("hidden")) {
-      hidden = _json["hidden"];
+    if (_json.containsKey('hidden')) {
+      hidden = _json['hidden'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("links")) {
-      links = (_json["links"] as core.List)
+    if (_json.containsKey('links')) {
+      links = (_json['links'] as core.List)
           .map<TaskLinks>((value) => TaskLinks.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("parent")) {
-      parent = _json["parent"];
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'];
     }
-    if (_json.containsKey("position")) {
-      position = _json["position"];
+    if (_json.containsKey('position')) {
+      position = _json['position'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
   }
 
@@ -1098,49 +1097,49 @@ class Task {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (completed != null) {
-      _json["completed"] = completed;
+      _json['completed'] = completed;
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (due != null) {
-      _json["due"] = due;
+      _json['due'] = due;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (hidden != null) {
-      _json["hidden"] = hidden;
+      _json['hidden'] = hidden;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (links != null) {
-      _json["links"] = links.map((value) => value.toJson()).toList();
+      _json['links'] = links.map((value) => value.toJson()).toList();
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (position != null) {
-      _json["position"] = position;
+      _json['position'] = position;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     return _json;
   }
@@ -1169,23 +1168,23 @@ class TaskList {
   TaskList();
 
   TaskList.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
   }
 
@@ -1193,22 +1192,22 @@ class TaskList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     return _json;
   }
@@ -1230,19 +1229,19 @@ class TaskLists {
   TaskLists();
 
   TaskLists.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<TaskList>((value) => TaskList.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1250,16 +1249,16 @@ class TaskLists {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1281,19 +1280,19 @@ class Tasks {
   Tasks();
 
   Tasks.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Task>((value) => Task.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1301,16 +1300,16 @@ class Tasks {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }

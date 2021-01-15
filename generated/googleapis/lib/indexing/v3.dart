@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,7 +36,7 @@ const core.String USER_AGENT = 'dart-api-client indexing/v3';
 /// Notifies Google when your web pages change.
 class IndexingApi {
   /// Submit data to Google for indexing
-  static const IndexingScope = "https://www.googleapis.com/auth/indexing";
+  static const IndexingScope = 'https://www.googleapis.com/auth/indexing';
 
   final commons.ApiRequester _requester;
 
@@ -45,8 +44,8 @@ class IndexingApi {
       UrlNotificationsResourceApi(_requester);
 
   IndexingApi(http.Client client,
-      {core.String rootUrl = "https://indexing.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://indexing.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -88,17 +87,17 @@ class UrlNotificationsResourceApi {
     core.String _body;
 
     if (url != null) {
-      _queryParams["url"] = [url];
+      _queryParams['url'] = [url];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/urlNotifications/metadata';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -139,14 +138,14 @@ class UrlNotificationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/urlNotifications:publish';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -166,9 +165,9 @@ class PublishUrlNotificationResponse {
   PublishUrlNotificationResponse();
 
   PublishUrlNotificationResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("urlNotificationMetadata")) {
+    if (_json.containsKey('urlNotificationMetadata')) {
       urlNotificationMetadata =
-          UrlNotificationMetadata.fromJson(_json["urlNotificationMetadata"]);
+          UrlNotificationMetadata.fromJson(_json['urlNotificationMetadata']);
     }
   }
 
@@ -176,7 +175,7 @@ class PublishUrlNotificationResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (urlNotificationMetadata != null) {
-      _json["urlNotificationMetadata"] = urlNotificationMetadata.toJson();
+      _json['urlNotificationMetadata'] = urlNotificationMetadata.toJson();
     }
     return _json;
   }
@@ -204,14 +203,14 @@ class UrlNotification {
   UrlNotification();
 
   UrlNotification.fromJson(core.Map _json) {
-    if (_json.containsKey("notifyTime")) {
-      notifyTime = _json["notifyTime"];
+    if (_json.containsKey('notifyTime')) {
+      notifyTime = _json['notifyTime'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -219,13 +218,13 @@ class UrlNotification {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (notifyTime != null) {
-      _json["notifyTime"] = notifyTime;
+      _json['notifyTime'] = notifyTime;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -246,14 +245,14 @@ class UrlNotificationMetadata {
   UrlNotificationMetadata();
 
   UrlNotificationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("latestRemove")) {
-      latestRemove = UrlNotification.fromJson(_json["latestRemove"]);
+    if (_json.containsKey('latestRemove')) {
+      latestRemove = UrlNotification.fromJson(_json['latestRemove']);
     }
-    if (_json.containsKey("latestUpdate")) {
-      latestUpdate = UrlNotification.fromJson(_json["latestUpdate"]);
+    if (_json.containsKey('latestUpdate')) {
+      latestUpdate = UrlNotification.fromJson(_json['latestUpdate']);
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -261,13 +260,13 @@ class UrlNotificationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latestRemove != null) {
-      _json["latestRemove"] = latestRemove.toJson();
+      _json['latestRemove'] = latestRemove.toJson();
     }
     if (latestUpdate != null) {
-      _json["latestUpdate"] = latestUpdate.toJson();
+      _json['latestUpdate'] = latestUpdate.toJson();
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }

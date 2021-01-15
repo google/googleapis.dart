@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,9 +75,9 @@ api.AmpUrl buildAmpUrl() {
   var o = api.AmpUrl();
   buildCounterAmpUrl++;
   if (buildCounterAmpUrl < 3) {
-    o.ampUrl = "foo";
-    o.cdnAmpUrl = "foo";
-    o.originalUrl = "foo";
+    o.ampUrl = 'foo';
+    o.cdnAmpUrl = 'foo';
+    o.originalUrl = 'foo';
   }
   buildCounterAmpUrl--;
   return o;
@@ -98,9 +98,9 @@ api.AmpUrlError buildAmpUrlError() {
   var o = api.AmpUrlError();
   buildCounterAmpUrlError++;
   if (buildCounterAmpUrlError < 3) {
-    o.errorCode = "foo";
-    o.errorMessage = "foo";
-    o.originalUrl = "foo";
+    o.errorCode = 'foo';
+    o.errorMessage = 'foo';
+    o.originalUrl = 'foo';
   }
   buildCounterAmpUrlError--;
   return o;
@@ -118,8 +118,8 @@ void checkAmpUrlError(api.AmpUrlError o) {
 
 core.List<core.String> buildUnnamed3236() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -134,7 +134,7 @@ api.BatchGetAmpUrlsRequest buildBatchGetAmpUrlsRequest() {
   var o = api.BatchGetAmpUrlsRequest();
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
-    o.lookupStrategy = "foo";
+    o.lookupStrategy = 'foo';
     o.urls = buildUnnamed3236();
   }
   buildCounterBatchGetAmpUrlsRequest--;
@@ -198,45 +198,45 @@ void checkBatchGetAmpUrlsResponse(api.BatchGetAmpUrlsResponse o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AmpUrl", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AmpUrl', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAmpUrl();
       var od = api.AmpUrl.fromJson(o.toJson());
       checkAmpUrl(od);
     });
   });
 
-  unittest.group("obj-schema-AmpUrlError", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AmpUrlError', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAmpUrlError();
       var od = api.AmpUrlError.fromJson(o.toJson());
       checkAmpUrlError(od);
     });
   });
 
-  unittest.group("obj-schema-BatchGetAmpUrlsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchGetAmpUrlsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchGetAmpUrlsRequest();
       var od = api.BatchGetAmpUrlsRequest.fromJson(o.toJson());
       checkBatchGetAmpUrlsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BatchGetAmpUrlsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchGetAmpUrlsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchGetAmpUrlsResponse();
       var od = api.BatchGetAmpUrlsResponse.fromJson(o.toJson());
       checkBatchGetAmpUrlsResponse(od);
     });
   });
 
-  unittest.group("resource-AmpUrlsResourceApi", () {
-    unittest.test("method--batchGet", () {
+  unittest.group('resource-AmpUrlsResourceApi', () {
+    unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
       api.AmpUrlsResourceApi res =
           api.AcceleratedmobilepageurlApi(mock).ampUrls;
       var arg_request = buildBatchGetAmpUrlsRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchGetAmpUrlsRequest.fromJson(json);
         checkBatchGetAmpUrlsRequest(obj);
@@ -258,8 +258,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -269,7 +269,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchGetAmpUrlsResponse());
         return async.Future.value(stringResponse(200, h, resp));

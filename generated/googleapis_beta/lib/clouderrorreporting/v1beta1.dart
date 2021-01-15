@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,15 +39,15 @@ const core.String USER_AGENT = 'dart-api-client clouderrorreporting/v1beta1';
 class ClouderrorreportingApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   ClouderrorreportingApi(http.Client client,
-      {core.String rootUrl = "https://clouderrorreporting.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://clouderrorreporting.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -96,10 +95,10 @@ class ProjectsResourceApi {
     core.String _body;
 
     if (projectName == null) {
-      throw core.ArgumentError("Parameter projectName is required.");
+      throw core.ArgumentError('Parameter projectName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -108,7 +107,7 @@ class ProjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -195,31 +194,31 @@ class ProjectsEventsResourceApi {
     core.String _body;
 
     if (projectName == null) {
-      throw core.ArgumentError("Parameter projectName is required.");
+      throw core.ArgumentError('Parameter projectName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (timeRange_period != null) {
-      _queryParams["timeRange.period"] = [timeRange_period];
+      _queryParams['timeRange.period'] = [timeRange_period];
     }
     if (serviceFilter_service != null) {
-      _queryParams["serviceFilter.service"] = [serviceFilter_service];
+      _queryParams['serviceFilter.service'] = [serviceFilter_service];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (serviceFilter_version != null) {
-      _queryParams["serviceFilter.version"] = [serviceFilter_version];
+      _queryParams['serviceFilter.version'] = [serviceFilter_version];
     }
     if (groupId != null) {
-      _queryParams["groupId"] = [groupId];
+      _queryParams['groupId'] = [groupId];
     }
     if (serviceFilter_resourceType != null) {
-      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
+      _queryParams['serviceFilter.resourceType'] = [serviceFilter_resourceType];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -228,7 +227,7 @@ class ProjectsEventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -282,10 +281,10 @@ class ProjectsEventsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (projectName == null) {
-      throw core.ArgumentError("Parameter projectName is required.");
+      throw core.ArgumentError('Parameter projectName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -294,7 +293,7 @@ class ProjectsEventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -422,43 +421,43 @@ class ProjectsGroupStatsResourceApi {
     core.String _body;
 
     if (projectName == null) {
-      throw core.ArgumentError("Parameter projectName is required.");
+      throw core.ArgumentError('Parameter projectName is required.');
     }
     if (serviceFilter_service != null) {
-      _queryParams["serviceFilter.service"] = [serviceFilter_service];
+      _queryParams['serviceFilter.service'] = [serviceFilter_service];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (groupId != null) {
-      _queryParams["groupId"] = groupId;
+      _queryParams['groupId'] = groupId;
     }
     if (timeRange_period != null) {
-      _queryParams["timeRange.period"] = [timeRange_period];
+      _queryParams['timeRange.period'] = [timeRange_period];
     }
     if (serviceFilter_resourceType != null) {
-      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
+      _queryParams['serviceFilter.resourceType'] = [serviceFilter_resourceType];
     }
     if (order != null) {
-      _queryParams["order"] = [order];
+      _queryParams['order'] = [order];
     }
     if (serviceFilter_version != null) {
-      _queryParams["serviceFilter.version"] = [serviceFilter_version];
+      _queryParams['serviceFilter.version'] = [serviceFilter_version];
     }
     if (alignmentTime != null) {
-      _queryParams["alignmentTime"] = [alignmentTime];
+      _queryParams['alignmentTime'] = [alignmentTime];
     }
     if (alignment != null) {
-      _queryParams["alignment"] = [alignment];
+      _queryParams['alignment'] = [alignment];
     }
     if (timedCountDuration != null) {
-      _queryParams["timedCountDuration"] = [timedCountDuration];
+      _queryParams['timedCountDuration'] = [timedCountDuration];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -467,7 +466,7 @@ class ProjectsGroupStatsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -516,17 +515,17 @@ class ProjectsGroupsResourceApi {
     core.String _body;
 
     if (groupName == null) {
-      throw core.ArgumentError("Parameter groupName is required.");
+      throw core.ArgumentError('Parameter groupName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$groupName');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -573,17 +572,17 @@ class ProjectsGroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -635,19 +634,19 @@ class ErrorContext {
   ErrorContext();
 
   ErrorContext.fromJson(core.Map _json) {
-    if (_json.containsKey("httpRequest")) {
-      httpRequest = HttpRequestContext.fromJson(_json["httpRequest"]);
+    if (_json.containsKey('httpRequest')) {
+      httpRequest = HttpRequestContext.fromJson(_json['httpRequest']);
     }
-    if (_json.containsKey("reportLocation")) {
-      reportLocation = SourceLocation.fromJson(_json["reportLocation"]);
+    if (_json.containsKey('reportLocation')) {
+      reportLocation = SourceLocation.fromJson(_json['reportLocation']);
     }
-    if (_json.containsKey("sourceReferences")) {
-      sourceReferences = (_json["sourceReferences"] as core.List)
+    if (_json.containsKey('sourceReferences')) {
+      sourceReferences = (_json['sourceReferences'] as core.List)
           .map<SourceReference>((value) => SourceReference.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("user")) {
-      user = _json["user"];
+    if (_json.containsKey('user')) {
+      user = _json['user'];
     }
   }
 
@@ -655,17 +654,17 @@ class ErrorContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (httpRequest != null) {
-      _json["httpRequest"] = httpRequest.toJson();
+      _json['httpRequest'] = httpRequest.toJson();
     }
     if (reportLocation != null) {
-      _json["reportLocation"] = reportLocation.toJson();
+      _json['reportLocation'] = reportLocation.toJson();
     }
     if (sourceReferences != null) {
-      _json["sourceReferences"] =
+      _json['sourceReferences'] =
           sourceReferences.map((value) => value.toJson()).toList();
     }
     if (user != null) {
-      _json["user"] = user;
+      _json['user'] = user;
     }
     return _json;
   }
@@ -690,17 +689,17 @@ class ErrorEvent {
   ErrorEvent();
 
   ErrorEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
-      context = ErrorContext.fromJson(_json["context"]);
+    if (_json.containsKey('context')) {
+      context = ErrorContext.fromJson(_json['context']);
     }
-    if (_json.containsKey("eventTime")) {
-      eventTime = _json["eventTime"];
+    if (_json.containsKey('eventTime')) {
+      eventTime = _json['eventTime'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
-    if (_json.containsKey("serviceContext")) {
-      serviceContext = ServiceContext.fromJson(_json["serviceContext"]);
+    if (_json.containsKey('serviceContext')) {
+      serviceContext = ServiceContext.fromJson(_json['serviceContext']);
     }
   }
 
@@ -708,16 +707,16 @@ class ErrorEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (eventTime != null) {
-      _json["eventTime"] = eventTime;
+      _json['eventTime'] = eventTime;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     if (serviceContext != null) {
-      _json["serviceContext"] = serviceContext.toJson();
+      _json['serviceContext'] = serviceContext.toJson();
     }
     return _json;
   }
@@ -753,17 +752,17 @@ class ErrorGroup {
   ErrorGroup();
 
   ErrorGroup.fromJson(core.Map _json) {
-    if (_json.containsKey("groupId")) {
-      groupId = _json["groupId"];
+    if (_json.containsKey('groupId')) {
+      groupId = _json['groupId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("resolutionStatus")) {
-      resolutionStatus = _json["resolutionStatus"];
+    if (_json.containsKey('resolutionStatus')) {
+      resolutionStatus = _json['resolutionStatus'];
     }
-    if (_json.containsKey("trackingIssues")) {
-      trackingIssues = (_json["trackingIssues"] as core.List)
+    if (_json.containsKey('trackingIssues')) {
+      trackingIssues = (_json['trackingIssues'] as core.List)
           .map<TrackingIssue>((value) => TrackingIssue.fromJson(value))
           .toList();
     }
@@ -773,16 +772,16 @@ class ErrorGroup {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (groupId != null) {
-      _json["groupId"] = groupId;
+      _json['groupId'] = groupId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (resolutionStatus != null) {
-      _json["resolutionStatus"] = resolutionStatus;
+      _json['resolutionStatus'] = resolutionStatus;
     }
     if (trackingIssues != null) {
-      _json["trackingIssues"] =
+      _json['trackingIssues'] =
           trackingIssues.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -844,34 +843,34 @@ class ErrorGroupStats {
   ErrorGroupStats();
 
   ErrorGroupStats.fromJson(core.Map _json) {
-    if (_json.containsKey("affectedServices")) {
-      affectedServices = (_json["affectedServices"] as core.List)
+    if (_json.containsKey('affectedServices')) {
+      affectedServices = (_json['affectedServices'] as core.List)
           .map<ServiceContext>((value) => ServiceContext.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("affectedUsersCount")) {
-      affectedUsersCount = _json["affectedUsersCount"];
+    if (_json.containsKey('affectedUsersCount')) {
+      affectedUsersCount = _json['affectedUsersCount'];
     }
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("firstSeenTime")) {
-      firstSeenTime = _json["firstSeenTime"];
+    if (_json.containsKey('firstSeenTime')) {
+      firstSeenTime = _json['firstSeenTime'];
     }
-    if (_json.containsKey("group")) {
-      group = ErrorGroup.fromJson(_json["group"]);
+    if (_json.containsKey('group')) {
+      group = ErrorGroup.fromJson(_json['group']);
     }
-    if (_json.containsKey("lastSeenTime")) {
-      lastSeenTime = _json["lastSeenTime"];
+    if (_json.containsKey('lastSeenTime')) {
+      lastSeenTime = _json['lastSeenTime'];
     }
-    if (_json.containsKey("numAffectedServices")) {
-      numAffectedServices = _json["numAffectedServices"];
+    if (_json.containsKey('numAffectedServices')) {
+      numAffectedServices = _json['numAffectedServices'];
     }
-    if (_json.containsKey("representative")) {
-      representative = ErrorEvent.fromJson(_json["representative"]);
+    if (_json.containsKey('representative')) {
+      representative = ErrorEvent.fromJson(_json['representative']);
     }
-    if (_json.containsKey("timedCounts")) {
-      timedCounts = (_json["timedCounts"] as core.List)
+    if (_json.containsKey('timedCounts')) {
+      timedCounts = (_json['timedCounts'] as core.List)
           .map<TimedCount>((value) => TimedCount.fromJson(value))
           .toList();
     }
@@ -881,32 +880,32 @@ class ErrorGroupStats {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (affectedServices != null) {
-      _json["affectedServices"] =
+      _json['affectedServices'] =
           affectedServices.map((value) => value.toJson()).toList();
     }
     if (affectedUsersCount != null) {
-      _json["affectedUsersCount"] = affectedUsersCount;
+      _json['affectedUsersCount'] = affectedUsersCount;
     }
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (firstSeenTime != null) {
-      _json["firstSeenTime"] = firstSeenTime;
+      _json['firstSeenTime'] = firstSeenTime;
     }
     if (group != null) {
-      _json["group"] = group.toJson();
+      _json['group'] = group.toJson();
     }
     if (lastSeenTime != null) {
-      _json["lastSeenTime"] = lastSeenTime;
+      _json['lastSeenTime'] = lastSeenTime;
     }
     if (numAffectedServices != null) {
-      _json["numAffectedServices"] = numAffectedServices;
+      _json['numAffectedServices'] = numAffectedServices;
     }
     if (representative != null) {
-      _json["representative"] = representative.toJson();
+      _json['representative'] = representative.toJson();
     }
     if (timedCounts != null) {
-      _json["timedCounts"] =
+      _json['timedCounts'] =
           timedCounts.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -940,23 +939,23 @@ class HttpRequestContext {
   HttpRequestContext();
 
   HttpRequestContext.fromJson(core.Map _json) {
-    if (_json.containsKey("method")) {
-      method = _json["method"];
+    if (_json.containsKey('method')) {
+      method = _json['method'];
     }
-    if (_json.containsKey("referrer")) {
-      referrer = _json["referrer"];
+    if (_json.containsKey('referrer')) {
+      referrer = _json['referrer'];
     }
-    if (_json.containsKey("remoteIp")) {
-      remoteIp = _json["remoteIp"];
+    if (_json.containsKey('remoteIp')) {
+      remoteIp = _json['remoteIp'];
     }
-    if (_json.containsKey("responseStatusCode")) {
-      responseStatusCode = _json["responseStatusCode"];
+    if (_json.containsKey('responseStatusCode')) {
+      responseStatusCode = _json['responseStatusCode'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
-    if (_json.containsKey("userAgent")) {
-      userAgent = _json["userAgent"];
+    if (_json.containsKey('userAgent')) {
+      userAgent = _json['userAgent'];
     }
   }
 
@@ -964,22 +963,22 @@ class HttpRequestContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (method != null) {
-      _json["method"] = method;
+      _json['method'] = method;
     }
     if (referrer != null) {
-      _json["referrer"] = referrer;
+      _json['referrer'] = referrer;
     }
     if (remoteIp != null) {
-      _json["remoteIp"] = remoteIp;
+      _json['remoteIp'] = remoteIp;
     }
     if (responseStatusCode != null) {
-      _json["responseStatusCode"] = responseStatusCode;
+      _json['responseStatusCode'] = responseStatusCode;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     if (userAgent != null) {
-      _json["userAgent"] = userAgent;
+      _json['userAgent'] = userAgent;
     }
     return _json;
   }
@@ -1002,16 +1001,16 @@ class ListEventsResponse {
   ListEventsResponse();
 
   ListEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("errorEvents")) {
-      errorEvents = (_json["errorEvents"] as core.List)
+    if (_json.containsKey('errorEvents')) {
+      errorEvents = (_json['errorEvents'] as core.List)
           .map<ErrorEvent>((value) => ErrorEvent.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("timeRangeBegin")) {
-      timeRangeBegin = _json["timeRangeBegin"];
+    if (_json.containsKey('timeRangeBegin')) {
+      timeRangeBegin = _json['timeRangeBegin'];
     }
   }
 
@@ -1019,14 +1018,14 @@ class ListEventsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errorEvents != null) {
-      _json["errorEvents"] =
+      _json['errorEvents'] =
           errorEvents.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (timeRangeBegin != null) {
-      _json["timeRangeBegin"] = timeRangeBegin;
+      _json['timeRangeBegin'] = timeRangeBegin;
     }
     return _json;
   }
@@ -1051,16 +1050,16 @@ class ListGroupStatsResponse {
   ListGroupStatsResponse();
 
   ListGroupStatsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("errorGroupStats")) {
-      errorGroupStats = (_json["errorGroupStats"] as core.List)
+    if (_json.containsKey('errorGroupStats')) {
+      errorGroupStats = (_json['errorGroupStats'] as core.List)
           .map<ErrorGroupStats>((value) => ErrorGroupStats.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("timeRangeBegin")) {
-      timeRangeBegin = _json["timeRangeBegin"];
+    if (_json.containsKey('timeRangeBegin')) {
+      timeRangeBegin = _json['timeRangeBegin'];
     }
   }
 
@@ -1068,14 +1067,14 @@ class ListGroupStatsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errorGroupStats != null) {
-      _json["errorGroupStats"] =
+      _json['errorGroupStats'] =
           errorGroupStats.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (timeRangeBegin != null) {
-      _json["timeRangeBegin"] = timeRangeBegin;
+      _json['timeRangeBegin'] = timeRangeBegin;
     }
     return _json;
   }
@@ -1132,17 +1131,17 @@ class ReportedErrorEvent {
   ReportedErrorEvent();
 
   ReportedErrorEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
-      context = ErrorContext.fromJson(_json["context"]);
+    if (_json.containsKey('context')) {
+      context = ErrorContext.fromJson(_json['context']);
     }
-    if (_json.containsKey("eventTime")) {
-      eventTime = _json["eventTime"];
+    if (_json.containsKey('eventTime')) {
+      eventTime = _json['eventTime'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
-    if (_json.containsKey("serviceContext")) {
-      serviceContext = ServiceContext.fromJson(_json["serviceContext"]);
+    if (_json.containsKey('serviceContext')) {
+      serviceContext = ServiceContext.fromJson(_json['serviceContext']);
     }
   }
 
@@ -1150,16 +1149,16 @@ class ReportedErrorEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (eventTime != null) {
-      _json["eventTime"] = eventTime;
+      _json['eventTime'] = eventTime;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     if (serviceContext != null) {
-      _json["serviceContext"] = serviceContext.toJson();
+      _json['serviceContext'] = serviceContext.toJson();
     }
     return _json;
   }
@@ -1190,14 +1189,14 @@ class ServiceContext {
   ServiceContext();
 
   ServiceContext.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceType")) {
-      resourceType = _json["resourceType"];
+    if (_json.containsKey('resourceType')) {
+      resourceType = _json['resourceType'];
     }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
+    if (_json.containsKey('service')) {
+      service = _json['service'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -1205,13 +1204,13 @@ class ServiceContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourceType != null) {
-      _json["resourceType"] = resourceType;
+      _json['resourceType'] = resourceType;
     }
     if (service != null) {
-      _json["service"] = service;
+      _json['service'] = service;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -1237,14 +1236,14 @@ class SourceLocation {
   SourceLocation();
 
   SourceLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("filePath")) {
-      filePath = _json["filePath"];
+    if (_json.containsKey('filePath')) {
+      filePath = _json['filePath'];
     }
-    if (_json.containsKey("functionName")) {
-      functionName = _json["functionName"];
+    if (_json.containsKey('functionName')) {
+      functionName = _json['functionName'];
     }
-    if (_json.containsKey("lineNumber")) {
-      lineNumber = _json["lineNumber"];
+    if (_json.containsKey('lineNumber')) {
+      lineNumber = _json['lineNumber'];
     }
   }
 
@@ -1252,13 +1251,13 @@ class SourceLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filePath != null) {
-      _json["filePath"] = filePath;
+      _json['filePath'] = filePath;
     }
     if (functionName != null) {
-      _json["functionName"] = functionName;
+      _json['functionName'] = functionName;
     }
     if (lineNumber != null) {
-      _json["lineNumber"] = lineNumber;
+      _json['lineNumber'] = lineNumber;
     }
     return _json;
   }
@@ -1278,11 +1277,11 @@ class SourceReference {
   SourceReference();
 
   SourceReference.fromJson(core.Map _json) {
-    if (_json.containsKey("repository")) {
-      repository = _json["repository"];
+    if (_json.containsKey('repository')) {
+      repository = _json['repository'];
     }
-    if (_json.containsKey("revisionId")) {
-      revisionId = _json["revisionId"];
+    if (_json.containsKey('revisionId')) {
+      revisionId = _json['revisionId'];
     }
   }
 
@@ -1290,10 +1289,10 @@ class SourceReference {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (repository != null) {
-      _json["repository"] = repository;
+      _json['repository'] = repository;
     }
     if (revisionId != null) {
-      _json["revisionId"] = revisionId;
+      _json['revisionId'] = revisionId;
     }
     return _json;
   }
@@ -1314,14 +1313,14 @@ class TimedCount {
   TimedCount();
 
   TimedCount.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -1329,13 +1328,13 @@ class TimedCount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -1350,8 +1349,8 @@ class TrackingIssue {
   TrackingIssue();
 
   TrackingIssue.fromJson(core.Map _json) {
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -1359,7 +1358,7 @@ class TrackingIssue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }

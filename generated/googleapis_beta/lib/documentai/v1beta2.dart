@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,15 +39,15 @@ const core.String USER_AGENT = 'dart-api-client documentai/v1beta2';
 class DocumentaiApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   DocumentaiApi(http.Client client,
-      {core.String rootUrl = "https://documentai.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://documentai.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -110,10 +109,10 @@ class ProjectsDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -122,7 +121,7 @@ class ProjectsDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -170,10 +169,10 @@ class ProjectsDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -182,7 +181,7 @@ class ProjectsDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -250,10 +249,10 @@ class ProjectsLocationsDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -262,7 +261,7 @@ class ProjectsLocationsDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -310,10 +309,10 @@ class ProjectsLocationsDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -322,7 +321,7 @@ class ProjectsLocationsDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -372,17 +371,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -430,17 +429,17 @@ class ProjectsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -477,17 +476,17 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
 
   GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -495,16 +494,16 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -538,14 +537,14 @@ class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata {
 
   GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -553,13 +552,13 @@ class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -591,17 +590,17 @@ class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
 
   GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -609,16 +608,16 @@ class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -650,17 +649,17 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
 
   GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -668,16 +667,16 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -711,17 +710,17 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
 
   GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -729,16 +728,16 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -787,17 +786,17 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
 
   GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -805,16 +804,16 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -861,17 +860,17 @@ class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
 
   GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -879,16 +878,16 @@ class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -904,8 +903,8 @@ class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse {
 
   GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1ProcessDocumentResponse>((value) =>
               GoogleCloudDocumentaiV1beta1ProcessDocumentResponse.fromJson(
                   value))
@@ -917,7 +916,7 @@ class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -934,14 +933,14 @@ class GoogleCloudDocumentaiV1beta1BoundingPoly {
   GoogleCloudDocumentaiV1beta1BoundingPoly();
 
   GoogleCloudDocumentaiV1beta1BoundingPoly.fromJson(core.Map _json) {
-    if (_json.containsKey("normalizedVertices")) {
-      normalizedVertices = (_json["normalizedVertices"] as core.List)
+    if (_json.containsKey('normalizedVertices')) {
+      normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1NormalizedVertex>((value) =>
               GoogleCloudDocumentaiV1beta1NormalizedVertex.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1Vertex>(
               (value) => GoogleCloudDocumentaiV1beta1Vertex.fromJson(value))
           .toList();
@@ -952,11 +951,11 @@ class GoogleCloudDocumentaiV1beta1BoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedVertices != null) {
-      _json["normalizedVertices"] =
+      _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -975,7 +974,7 @@ class GoogleCloudDocumentaiV1beta1Document {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A list of entities detected on Document.text. For document shards,
@@ -1028,67 +1027,67 @@ class GoogleCloudDocumentaiV1beta1Document {
   GoogleCloudDocumentaiV1beta1Document();
 
   GoogleCloudDocumentaiV1beta1Document.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("entities")) {
-      entities = (_json["entities"] as core.List)
+    if (_json.containsKey('entities')) {
+      entities = (_json['entities'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentEntity>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentEntity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("entityRelations")) {
-      entityRelations = (_json["entityRelations"] as core.List)
+    if (_json.containsKey('entityRelations')) {
+      entityRelations = (_json['entityRelations'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentEntityRelation>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentEntityRelation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("pages")) {
-      pages = (_json["pages"] as core.List)
+    if (_json.containsKey('pages')) {
+      pages = (_json['pages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPage>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("revisions")) {
-      revisions = (_json["revisions"] as core.List)
+    if (_json.containsKey('revisions')) {
+      revisions = (_json['revisions'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentRevision>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentRevision.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shardInfo")) {
+    if (_json.containsKey('shardInfo')) {
       shardInfo = GoogleCloudDocumentaiV1beta1DocumentShardInfo.fromJson(
-          _json["shardInfo"]);
+          _json['shardInfo']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("textChanges")) {
-      textChanges = (_json["textChanges"] as core.List)
+    if (_json.containsKey('textChanges')) {
+      textChanges = (_json['textChanges'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentTextChange>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentTextChange.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textStyles")) {
-      textStyles = (_json["textStyles"] as core.List)
+    if (_json.containsKey('textStyles')) {
+      textStyles = (_json['textStyles'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentStyle>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentStyle.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("translations")) {
-      translations = (_json["translations"] as core.List)
+    if (_json.containsKey('translations')) {
+      translations = (_json['translations'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentTranslation>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentTranslation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -1096,46 +1095,46 @@ class GoogleCloudDocumentaiV1beta1Document {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (entities != null) {
-      _json["entities"] = entities.map((value) => value.toJson()).toList();
+      _json['entities'] = entities.map((value) => value.toJson()).toList();
     }
     if (entityRelations != null) {
-      _json["entityRelations"] =
+      _json['entityRelations'] =
           entityRelations.map((value) => value.toJson()).toList();
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (pages != null) {
-      _json["pages"] = pages.map((value) => value.toJson()).toList();
+      _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
     if (revisions != null) {
-      _json["revisions"] = revisions.map((value) => value.toJson()).toList();
+      _json['revisions'] = revisions.map((value) => value.toJson()).toList();
     }
     if (shardInfo != null) {
-      _json["shardInfo"] = shardInfo.toJson();
+      _json['shardInfo'] = shardInfo.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (textChanges != null) {
-      _json["textChanges"] =
+      _json['textChanges'] =
           textChanges.map((value) => value.toJson()).toList();
     }
     if (textStyles != null) {
-      _json["textStyles"] = textStyles.map((value) => value.toJson()).toList();
+      _json['textStyles'] = textStyles.map((value) => value.toJson()).toList();
     }
     if (translations != null) {
-      _json["translations"] =
+      _json['translations'] =
           translations.map((value) => value.toJson()).toList();
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -1187,46 +1186,46 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
   GoogleCloudDocumentaiV1beta1DocumentEntity();
 
   GoogleCloudDocumentaiV1beta1DocumentEntity.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("mentionId")) {
-      mentionId = _json["mentionId"];
+    if (_json.containsKey('mentionId')) {
+      mentionId = _json['mentionId'];
     }
-    if (_json.containsKey("mentionText")) {
-      mentionText = _json["mentionText"];
+    if (_json.containsKey('mentionText')) {
+      mentionText = _json['mentionText'];
     }
-    if (_json.containsKey("normalizedValue")) {
+    if (_json.containsKey('normalizedValue')) {
       normalizedValue =
           GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue.fromJson(
-              _json["normalizedValue"]);
+              _json['normalizedValue']);
     }
-    if (_json.containsKey("pageAnchor")) {
+    if (_json.containsKey('pageAnchor')) {
       pageAnchor = GoogleCloudDocumentaiV1beta1DocumentPageAnchor.fromJson(
-          _json["pageAnchor"]);
+          _json['pageAnchor']);
     }
-    if (_json.containsKey("properties")) {
-      properties = (_json["properties"] as core.List)
+    if (_json.containsKey('properties')) {
+      properties = (_json['properties'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentEntity>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentEntity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
-    if (_json.containsKey("redacted")) {
-      redacted = _json["redacted"];
+    if (_json.containsKey('redacted')) {
+      redacted = _json['redacted'];
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta1DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -1234,37 +1233,37 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (mentionId != null) {
-      _json["mentionId"] = mentionId;
+      _json['mentionId'] = mentionId;
     }
     if (mentionText != null) {
-      _json["mentionText"] = mentionText;
+      _json['mentionText'] = mentionText;
     }
     if (normalizedValue != null) {
-      _json["normalizedValue"] = normalizedValue.toJson();
+      _json['normalizedValue'] = normalizedValue.toJson();
     }
     if (pageAnchor != null) {
-      _json["pageAnchor"] = pageAnchor.toJson();
+      _json['pageAnchor'] = pageAnchor.toJson();
     }
     if (properties != null) {
-      _json["properties"] = properties.map((value) => value.toJson()).toList();
+      _json['properties'] = properties.map((value) => value.toJson()).toList();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     if (redacted != null) {
-      _json["redacted"] = redacted;
+      _json['redacted'] = redacted;
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1301,20 +1300,20 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
 
   GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue.fromJson(
       core.Map _json) {
-    if (_json.containsKey("addressValue")) {
-      addressValue = GoogleTypePostalAddress.fromJson(_json["addressValue"]);
+    if (_json.containsKey('addressValue')) {
+      addressValue = GoogleTypePostalAddress.fromJson(_json['addressValue']);
     }
-    if (_json.containsKey("dateValue")) {
-      dateValue = GoogleTypeDate.fromJson(_json["dateValue"]);
+    if (_json.containsKey('dateValue')) {
+      dateValue = GoogleTypeDate.fromJson(_json['dateValue']);
     }
-    if (_json.containsKey("datetimeValue")) {
-      datetimeValue = GoogleTypeDateTime.fromJson(_json["datetimeValue"]);
+    if (_json.containsKey('datetimeValue')) {
+      datetimeValue = GoogleTypeDateTime.fromJson(_json['datetimeValue']);
     }
-    if (_json.containsKey("moneyValue")) {
-      moneyValue = GoogleTypeMoney.fromJson(_json["moneyValue"]);
+    if (_json.containsKey('moneyValue')) {
+      moneyValue = GoogleTypeMoney.fromJson(_json['moneyValue']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -1322,19 +1321,19 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addressValue != null) {
-      _json["addressValue"] = addressValue.toJson();
+      _json['addressValue'] = addressValue.toJson();
     }
     if (dateValue != null) {
-      _json["dateValue"] = dateValue.toJson();
+      _json['dateValue'] = dateValue.toJson();
     }
     if (datetimeValue != null) {
-      _json["datetimeValue"] = datetimeValue.toJson();
+      _json['datetimeValue'] = datetimeValue.toJson();
     }
     if (moneyValue != null) {
-      _json["moneyValue"] = moneyValue.toJson();
+      _json['moneyValue'] = moneyValue.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -1354,14 +1353,14 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityRelation {
   GoogleCloudDocumentaiV1beta1DocumentEntityRelation();
 
   GoogleCloudDocumentaiV1beta1DocumentEntityRelation.fromJson(core.Map _json) {
-    if (_json.containsKey("objectId")) {
-      objectId = _json["objectId"];
+    if (_json.containsKey('objectId')) {
+      objectId = _json['objectId'];
     }
-    if (_json.containsKey("relation")) {
-      relation = _json["relation"];
+    if (_json.containsKey('relation')) {
+      relation = _json['relation'];
     }
-    if (_json.containsKey("subjectId")) {
-      subjectId = _json["subjectId"];
+    if (_json.containsKey('subjectId')) {
+      subjectId = _json['subjectId'];
     }
   }
 
@@ -1369,13 +1368,13 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityRelation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (objectId != null) {
-      _json["objectId"] = objectId;
+      _json['objectId'] = objectId;
     }
     if (relation != null) {
-      _json["relation"] = relation;
+      _json['relation'] = relation;
     }
     if (subjectId != null) {
-      _json["subjectId"] = subjectId;
+      _json['subjectId'] = subjectId;
     }
     return _json;
   }
@@ -1436,73 +1435,73 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
   GoogleCloudDocumentaiV1beta1DocumentPage();
 
   GoogleCloudDocumentaiV1beta1DocumentPage.fromJson(core.Map _json) {
-    if (_json.containsKey("blocks")) {
-      blocks = (_json["blocks"] as core.List)
+    if (_json.containsKey('blocks')) {
+      blocks = (_json['blocks'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageBlock>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageBlock.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("dimension")) {
+    if (_json.containsKey('dimension')) {
       dimension = GoogleCloudDocumentaiV1beta1DocumentPageDimension.fromJson(
-          _json["dimension"]);
+          _json['dimension']);
     }
-    if (_json.containsKey("formFields")) {
-      formFields = (_json["formFields"] as core.List)
+    if (_json.containsKey('formFields')) {
+      formFields = (_json['formFields'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageFormField>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageFormField.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("image")) {
+    if (_json.containsKey('image')) {
       image = GoogleCloudDocumentaiV1beta1DocumentPageImage.fromJson(
-          _json["image"]);
+          _json['image']);
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("lines")) {
-      lines = (_json["lines"] as core.List)
+    if (_json.containsKey('lines')) {
+      lines = (_json['lines'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageLine>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageLine.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pageNumber")) {
-      pageNumber = _json["pageNumber"];
+    if (_json.containsKey('pageNumber')) {
+      pageNumber = _json['pageNumber'];
     }
-    if (_json.containsKey("paragraphs")) {
-      paragraphs = (_json["paragraphs"] as core.List)
+    if (_json.containsKey('paragraphs')) {
+      paragraphs = (_json['paragraphs'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageParagraph>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageParagraph.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tables")) {
-      tables = (_json["tables"] as core.List)
+    if (_json.containsKey('tables')) {
+      tables = (_json['tables'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageTable>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageTable.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tokens")) {
-      tokens = (_json["tokens"] as core.List)
+    if (_json.containsKey('tokens')) {
+      tokens = (_json['tokens'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageToken>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageToken.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("transforms")) {
-      transforms = (_json["transforms"] as core.List)
+    if (_json.containsKey('transforms')) {
+      transforms = (_json['transforms'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageMatrix>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageMatrix.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("visualElements")) {
-      visualElements = (_json["visualElements"] as core.List)
+    if (_json.containsKey('visualElements')) {
+      visualElements = (_json['visualElements'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageVisualElement>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageVisualElement.fromJson(
                   value))
@@ -1514,44 +1513,44 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
+      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (dimension != null) {
-      _json["dimension"] = dimension.toJson();
+      _json['dimension'] = dimension.toJson();
     }
     if (formFields != null) {
-      _json["formFields"] = formFields.map((value) => value.toJson()).toList();
+      _json['formFields'] = formFields.map((value) => value.toJson()).toList();
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (lines != null) {
-      _json["lines"] = lines.map((value) => value.toJson()).toList();
+      _json['lines'] = lines.map((value) => value.toJson()).toList();
     }
     if (pageNumber != null) {
-      _json["pageNumber"] = pageNumber;
+      _json['pageNumber'] = pageNumber;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
+      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (tables != null) {
-      _json["tables"] = tables.map((value) => value.toJson()).toList();
+      _json['tables'] = tables.map((value) => value.toJson()).toList();
     }
     if (tokens != null) {
-      _json["tokens"] = tokens.map((value) => value.toJson()).toList();
+      _json['tokens'] = tokens.map((value) => value.toJson()).toList();
     }
     if (transforms != null) {
-      _json["transforms"] = transforms.map((value) => value.toJson()).toList();
+      _json['transforms'] = transforms.map((value) => value.toJson()).toList();
     }
     if (visualElements != null) {
-      _json["visualElements"] =
+      _json['visualElements'] =
           visualElements.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -1568,8 +1567,8 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
   GoogleCloudDocumentaiV1beta1DocumentPageAnchor();
 
   GoogleCloudDocumentaiV1beta1DocumentPageAnchor.fromJson(core.Map _json) {
-    if (_json.containsKey("pageRefs")) {
-      pageRefs = (_json["pageRefs"] as core.List)
+    if (_json.containsKey('pageRefs')) {
+      pageRefs = (_json['pageRefs'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef.fromJson(
                   value))
@@ -1581,7 +1580,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageRefs != null) {
-      _json["pageRefs"] = pageRefs.map((value) => value.toJson()).toList();
+      _json['pageRefs'] = pageRefs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1614,18 +1613,18 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
 
   GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef.fromJson(
       core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudDocumentaiV1beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("layoutId")) {
-      layoutId = _json["layoutId"];
+    if (_json.containsKey('layoutId')) {
+      layoutId = _json['layoutId'];
     }
-    if (_json.containsKey("layoutType")) {
-      layoutType = _json["layoutType"];
+    if (_json.containsKey('layoutType')) {
+      layoutType = _json['layoutType'];
     }
-    if (_json.containsKey("page")) {
-      page = _json["page"];
+    if (_json.containsKey('page')) {
+      page = _json['page'];
     }
   }
 
@@ -1633,16 +1632,16 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (layoutId != null) {
-      _json["layoutId"] = layoutId;
+      _json['layoutId'] = layoutId;
     }
     if (layoutType != null) {
-      _json["layoutType"] = layoutType;
+      _json['layoutType'] = layoutType;
     }
     if (page != null) {
-      _json["page"] = page;
+      _json['page'] = page;
     }
     return _json;
   }
@@ -1664,21 +1663,21 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
   GoogleCloudDocumentaiV1beta1DocumentPageBlock();
 
   GoogleCloudDocumentaiV1beta1DocumentPageBlock.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
   }
 
@@ -1686,14 +1685,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     return _json;
   }
@@ -1713,11 +1712,11 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
 
   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -1725,10 +1724,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -1748,14 +1747,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
   GoogleCloudDocumentaiV1beta1DocumentPageDimension();
 
   GoogleCloudDocumentaiV1beta1DocumentPageDimension.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"].toDouble();
+    if (_json.containsKey('height')) {
+      height = _json['height'].toDouble();
     }
-    if (_json.containsKey("unit")) {
-      unit = _json["unit"];
+    if (_json.containsKey('unit')) {
+      unit = _json['unit'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"].toDouble();
+    if (_json.containsKey('width')) {
+      width = _json['width'].toDouble();
     }
   }
 
@@ -1763,13 +1762,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (unit != null) {
-      _json["unit"] = unit;
+      _json['unit'] = unit;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -1800,32 +1799,32 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
   GoogleCloudDocumentaiV1beta1DocumentPageFormField();
 
   GoogleCloudDocumentaiV1beta1DocumentPageFormField.fromJson(core.Map _json) {
-    if (_json.containsKey("fieldName")) {
+    if (_json.containsKey('fieldName')) {
       fieldName = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["fieldName"]);
+          _json['fieldName']);
     }
-    if (_json.containsKey("fieldValue")) {
+    if (_json.containsKey('fieldValue')) {
       fieldValue = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["fieldValue"]);
+          _json['fieldValue']);
     }
-    if (_json.containsKey("nameDetectedLanguages")) {
-      nameDetectedLanguages = (_json["nameDetectedLanguages"] as core.List)
+    if (_json.containsKey('nameDetectedLanguages')) {
+      nameDetectedLanguages = (_json['nameDetectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("valueDetectedLanguages")) {
-      valueDetectedLanguages = (_json["valueDetectedLanguages"] as core.List)
+    if (_json.containsKey('valueDetectedLanguages')) {
+      valueDetectedLanguages = (_json['valueDetectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("valueType")) {
-      valueType = _json["valueType"];
+    if (_json.containsKey('valueType')) {
+      valueType = _json['valueType'];
     }
   }
 
@@ -1833,21 +1832,21 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fieldName != null) {
-      _json["fieldName"] = fieldName.toJson();
+      _json['fieldName'] = fieldName.toJson();
     }
     if (fieldValue != null) {
-      _json["fieldValue"] = fieldValue.toJson();
+      _json['fieldValue'] = fieldValue.toJson();
     }
     if (nameDetectedLanguages != null) {
-      _json["nameDetectedLanguages"] =
+      _json['nameDetectedLanguages'] =
           nameDetectedLanguages.map((value) => value.toJson()).toList();
     }
     if (valueDetectedLanguages != null) {
-      _json["valueDetectedLanguages"] =
+      _json['valueDetectedLanguages'] =
           valueDetectedLanguages.map((value) => value.toJson()).toList();
     }
     if (valueType != null) {
-      _json["valueType"] = valueType;
+      _json['valueType'] = valueType;
     }
     return _json;
   }
@@ -1861,7 +1860,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageImage {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Height of the image in pixels.
@@ -1876,17 +1875,17 @@ class GoogleCloudDocumentaiV1beta1DocumentPageImage {
   GoogleCloudDocumentaiV1beta1DocumentPageImage();
 
   GoogleCloudDocumentaiV1beta1DocumentPageImage.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -1894,16 +1893,16 @@ class GoogleCloudDocumentaiV1beta1DocumentPageImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -1937,19 +1936,19 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
   GoogleCloudDocumentaiV1beta1DocumentPageLayout();
 
   GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudDocumentaiV1beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("orientation")) {
-      orientation = _json["orientation"];
+    if (_json.containsKey('orientation')) {
+      orientation = _json['orientation'];
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta1DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
   }
 
@@ -1957,16 +1956,16 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (orientation != null) {
-      _json["orientation"] = orientation;
+      _json['orientation'] = orientation;
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     return _json;
   }
@@ -1988,21 +1987,21 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLine {
   GoogleCloudDocumentaiV1beta1DocumentPageLine();
 
   GoogleCloudDocumentaiV1beta1DocumentPageLine.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
   }
 
@@ -2010,14 +2009,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLine {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     return _json;
   }
@@ -2035,7 +2034,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Number of rows in the matrix.
@@ -2050,17 +2049,17 @@ class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
   GoogleCloudDocumentaiV1beta1DocumentPageMatrix();
 
   GoogleCloudDocumentaiV1beta1DocumentPageMatrix.fromJson(core.Map _json) {
-    if (_json.containsKey("cols")) {
-      cols = _json["cols"];
+    if (_json.containsKey('cols')) {
+      cols = _json['cols'];
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("rows")) {
-      rows = _json["rows"];
+    if (_json.containsKey('rows')) {
+      rows = _json['rows'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -2068,16 +2067,16 @@ class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cols != null) {
-      _json["cols"] = cols;
+      _json['cols'] = cols;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (rows != null) {
-      _json["rows"] = rows;
+      _json['rows'] = rows;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -2098,21 +2097,21 @@ class GoogleCloudDocumentaiV1beta1DocumentPageParagraph {
   GoogleCloudDocumentaiV1beta1DocumentPageParagraph();
 
   GoogleCloudDocumentaiV1beta1DocumentPageParagraph.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
   }
 
@@ -2120,14 +2119,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageParagraph {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     return _json;
   }
@@ -2151,31 +2150,31 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTable {
   GoogleCloudDocumentaiV1beta1DocumentPageTable();
 
   GoogleCloudDocumentaiV1beta1DocumentPageTable.fromJson(core.Map _json) {
-    if (_json.containsKey("bodyRows")) {
-      bodyRows = (_json["bodyRows"] as core.List)
+    if (_json.containsKey('bodyRows')) {
+      bodyRows = (_json['bodyRows'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("headerRows")) {
-      headerRows = (_json["headerRows"] as core.List)
+    if (_json.containsKey('headerRows')) {
+      headerRows = (_json['headerRows'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
   }
 
@@ -2183,17 +2182,17 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTable {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bodyRows != null) {
-      _json["bodyRows"] = bodyRows.map((value) => value.toJson()).toList();
+      _json['bodyRows'] = bodyRows.map((value) => value.toJson()).toList();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (headerRows != null) {
-      _json["headerRows"] = headerRows.map((value) => value.toJson()).toList();
+      _json['headerRows'] = headerRows.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     return _json;
   }
@@ -2218,23 +2217,23 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell {
 
   GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell.fromJson(
       core.Map _json) {
-    if (_json.containsKey("colSpan")) {
-      colSpan = _json["colSpan"];
+    if (_json.containsKey('colSpan')) {
+      colSpan = _json['colSpan'];
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("rowSpan")) {
-      rowSpan = _json["rowSpan"];
+    if (_json.containsKey('rowSpan')) {
+      rowSpan = _json['rowSpan'];
     }
   }
 
@@ -2242,17 +2241,17 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (colSpan != null) {
-      _json["colSpan"] = colSpan;
+      _json['colSpan'] = colSpan;
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (rowSpan != null) {
-      _json["rowSpan"] = rowSpan;
+      _json['rowSpan'] = rowSpan;
     }
     return _json;
   }
@@ -2267,8 +2266,8 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow {
 
   GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow.fromJson(
       core.Map _json) {
-    if (_json.containsKey("cells")) {
-      cells = (_json["cells"] as core.List)
+    if (_json.containsKey('cells')) {
+      cells = (_json['cells'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell>(
               (value) => GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell
                   .fromJson(value))
@@ -2280,7 +2279,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cells != null) {
-      _json["cells"] = cells.map((value) => value.toJson()).toList();
+      _json['cells'] = cells.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2304,26 +2303,26 @@ class GoogleCloudDocumentaiV1beta1DocumentPageToken {
   GoogleCloudDocumentaiV1beta1DocumentPageToken();
 
   GoogleCloudDocumentaiV1beta1DocumentPageToken.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedBreak")) {
+    if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak.fromJson(
-              _json["detectedBreak"]);
+              _json['detectedBreak']);
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
   }
 
@@ -2331,17 +2330,17 @@ class GoogleCloudDocumentaiV1beta1DocumentPageToken {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = detectedBreak.toJson();
+      _json['detectedBreak'] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     return _json;
   }
@@ -2362,8 +2361,8 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak {
 
   GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak.fromJson(
       core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -2371,7 +2370,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -2393,20 +2392,20 @@ class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
 
   GoogleCloudDocumentaiV1beta1DocumentPageVisualElement.fromJson(
       core.Map _json) {
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -2414,14 +2413,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -2455,21 +2454,21 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
   GoogleCloudDocumentaiV1beta1DocumentProvenance();
 
   GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("parents")) {
-      parents = (_json["parents"] as core.List)
+    if (_json.containsKey('parents')) {
+      parents = (_json['parents'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentProvenanceParent>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentProvenanceParent.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("revision")) {
-      revision = _json["revision"];
+    if (_json.containsKey('revision')) {
+      revision = _json['revision'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -2477,16 +2476,16 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (parents != null) {
-      _json["parents"] = parents.map((value) => value.toJson()).toList();
+      _json['parents'] = parents.map((value) => value.toJson()).toList();
     }
     if (revision != null) {
-      _json["revision"] = revision;
+      _json['revision'] = revision;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -2506,11 +2505,11 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent {
 
   GoogleCloudDocumentaiV1beta1DocumentProvenanceParent.fromJson(
       core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("revision")) {
-      revision = _json["revision"];
+    if (_json.containsKey('revision')) {
+      revision = _json['revision'];
     }
   }
 
@@ -2518,10 +2517,10 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (revision != null) {
-      _json["revision"] = revision;
+      _json['revision'] = revision;
     }
     return _json;
   }
@@ -2553,25 +2552,25 @@ class GoogleCloudDocumentaiV1beta1DocumentRevision {
   GoogleCloudDocumentaiV1beta1DocumentRevision();
 
   GoogleCloudDocumentaiV1beta1DocumentRevision.fromJson(core.Map _json) {
-    if (_json.containsKey("agent")) {
-      agent = _json["agent"];
+    if (_json.containsKey('agent')) {
+      agent = _json['agent'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("humanReview")) {
+    if (_json.containsKey('humanReview')) {
       humanReview =
           GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview.fromJson(
-              _json["humanReview"]);
+              _json['humanReview']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("parent")) {
-      parent = (_json["parent"] as core.List).cast<core.int>();
+    if (_json.containsKey('parent')) {
+      parent = (_json['parent'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("processor")) {
-      processor = _json["processor"];
+    if (_json.containsKey('processor')) {
+      processor = _json['processor'];
     }
   }
 
@@ -2579,22 +2578,22 @@ class GoogleCloudDocumentaiV1beta1DocumentRevision {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (agent != null) {
-      _json["agent"] = agent;
+      _json['agent'] = agent;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (humanReview != null) {
-      _json["humanReview"] = humanReview.toJson();
+      _json['humanReview'] = humanReview.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (processor != null) {
-      _json["processor"] = processor;
+      _json['processor'] = processor;
     }
     return _json;
   }
@@ -2613,11 +2612,11 @@ class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
 
   GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview.fromJson(
       core.Map _json) {
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
   }
 
@@ -2625,10 +2624,10 @@ class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     return _json;
   }
@@ -2650,14 +2649,14 @@ class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
   GoogleCloudDocumentaiV1beta1DocumentShardInfo();
 
   GoogleCloudDocumentaiV1beta1DocumentShardInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("shardCount")) {
-      shardCount = _json["shardCount"];
+    if (_json.containsKey('shardCount')) {
+      shardCount = _json['shardCount'];
     }
-    if (_json.containsKey("shardIndex")) {
-      shardIndex = _json["shardIndex"];
+    if (_json.containsKey('shardIndex')) {
+      shardIndex = _json['shardIndex'];
     }
-    if (_json.containsKey("textOffset")) {
-      textOffset = _json["textOffset"];
+    if (_json.containsKey('textOffset')) {
+      textOffset = _json['textOffset'];
     }
   }
 
@@ -2665,13 +2664,13 @@ class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (shardCount != null) {
-      _json["shardCount"] = shardCount;
+      _json['shardCount'] = shardCount;
     }
     if (shardIndex != null) {
-      _json["shardIndex"] = shardIndex;
+      _json['shardIndex'] = shardIndex;
     }
     if (textOffset != null) {
-      _json["textOffset"] = textOffset;
+      _json['textOffset'] = textOffset;
     }
     return _json;
   }
@@ -2707,28 +2706,28 @@ class GoogleCloudDocumentaiV1beta1DocumentStyle {
   GoogleCloudDocumentaiV1beta1DocumentStyle();
 
   GoogleCloudDocumentaiV1beta1DocumentStyle.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundColor")) {
-      backgroundColor = GoogleTypeColor.fromJson(_json["backgroundColor"]);
+    if (_json.containsKey('backgroundColor')) {
+      backgroundColor = GoogleTypeColor.fromJson(_json['backgroundColor']);
     }
-    if (_json.containsKey("color")) {
-      color = GoogleTypeColor.fromJson(_json["color"]);
+    if (_json.containsKey('color')) {
+      color = GoogleTypeColor.fromJson(_json['color']);
     }
-    if (_json.containsKey("fontSize")) {
+    if (_json.containsKey('fontSize')) {
       fontSize = GoogleCloudDocumentaiV1beta1DocumentStyleFontSize.fromJson(
-          _json["fontSize"]);
+          _json['fontSize']);
     }
-    if (_json.containsKey("fontWeight")) {
-      fontWeight = _json["fontWeight"];
+    if (_json.containsKey('fontWeight')) {
+      fontWeight = _json['fontWeight'];
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta1DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
-    if (_json.containsKey("textDecoration")) {
-      textDecoration = _json["textDecoration"];
+    if (_json.containsKey('textDecoration')) {
+      textDecoration = _json['textDecoration'];
     }
-    if (_json.containsKey("textStyle")) {
-      textStyle = _json["textStyle"];
+    if (_json.containsKey('textStyle')) {
+      textStyle = _json['textStyle'];
     }
   }
 
@@ -2736,25 +2735,25 @@ class GoogleCloudDocumentaiV1beta1DocumentStyle {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundColor != null) {
-      _json["backgroundColor"] = backgroundColor.toJson();
+      _json['backgroundColor'] = backgroundColor.toJson();
     }
     if (color != null) {
-      _json["color"] = color.toJson();
+      _json['color'] = color.toJson();
     }
     if (fontSize != null) {
-      _json["fontSize"] = fontSize.toJson();
+      _json['fontSize'] = fontSize.toJson();
     }
     if (fontWeight != null) {
-      _json["fontWeight"] = fontWeight;
+      _json['fontWeight'] = fontWeight;
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     if (textDecoration != null) {
-      _json["textDecoration"] = textDecoration;
+      _json['textDecoration'] = textDecoration;
     }
     if (textStyle != null) {
-      _json["textStyle"] = textStyle;
+      _json['textStyle'] = textStyle;
     }
     return _json;
   }
@@ -2771,11 +2770,11 @@ class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
   GoogleCloudDocumentaiV1beta1DocumentStyleFontSize();
 
   GoogleCloudDocumentaiV1beta1DocumentStyleFontSize.fromJson(core.Map _json) {
-    if (_json.containsKey("size")) {
-      size = _json["size"].toDouble();
+    if (_json.containsKey('size')) {
+      size = _json['size'].toDouble();
     }
-    if (_json.containsKey("unit")) {
-      unit = _json["unit"];
+    if (_json.containsKey('unit')) {
+      unit = _json['unit'];
     }
   }
 
@@ -2783,10 +2782,10 @@ class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     if (unit != null) {
-      _json["unit"] = unit;
+      _json['unit'] = unit;
     }
     return _json;
   }
@@ -2805,11 +2804,11 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
   GoogleCloudDocumentaiV1beta1DocumentTextAnchor();
 
   GoogleCloudDocumentaiV1beta1DocumentTextAnchor.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("textSegments")) {
-      textSegments = (_json["textSegments"] as core.List)
+    if (_json.containsKey('textSegments')) {
+      textSegments = (_json['textSegments'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment>(
               (value) =>
                   GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
@@ -2822,10 +2821,10 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (textSegments != null) {
-      _json["textSegments"] =
+      _json['textSegments'] =
           textSegments.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2846,11 +2845,11 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
 
   GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment.fromJson(
       core.Map _json) {
-    if (_json.containsKey("endIndex")) {
-      endIndex = _json["endIndex"];
+    if (_json.containsKey('endIndex')) {
+      endIndex = _json['endIndex'];
     }
-    if (_json.containsKey("startIndex")) {
-      startIndex = _json["startIndex"];
+    if (_json.containsKey('startIndex')) {
+      startIndex = _json['startIndex'];
     }
   }
 
@@ -2858,10 +2857,10 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endIndex != null) {
-      _json["endIndex"] = endIndex;
+      _json['endIndex'] = endIndex;
     }
     if (startIndex != null) {
-      _json["startIndex"] = startIndex;
+      _json['startIndex'] = startIndex;
     }
     return _json;
   }
@@ -2884,18 +2883,18 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
   GoogleCloudDocumentaiV1beta1DocumentTextChange();
 
   GoogleCloudDocumentaiV1beta1DocumentTextChange.fromJson(core.Map _json) {
-    if (_json.containsKey("changedText")) {
-      changedText = _json["changedText"];
+    if (_json.containsKey('changedText')) {
+      changedText = _json['changedText'];
     }
-    if (_json.containsKey("provenance")) {
-      provenance = (_json["provenance"] as core.List)
+    if (_json.containsKey('provenance')) {
+      provenance = (_json['provenance'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentProvenance>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta1DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
   }
 
@@ -2903,13 +2902,13 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (changedText != null) {
-      _json["changedText"] = changedText;
+      _json['changedText'] = changedText;
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.map((value) => value.toJson()).toList();
+      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     return _json;
   }
@@ -2937,21 +2936,21 @@ class GoogleCloudDocumentaiV1beta1DocumentTranslation {
   GoogleCloudDocumentaiV1beta1DocumentTranslation();
 
   GoogleCloudDocumentaiV1beta1DocumentTranslation.fromJson(core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("provenance")) {
-      provenance = (_json["provenance"] as core.List)
+    if (_json.containsKey('provenance')) {
+      provenance = (_json['provenance'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentProvenance>((value) =>
               GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta1DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
-    if (_json.containsKey("translatedText")) {
-      translatedText = _json["translatedText"];
+    if (_json.containsKey('translatedText')) {
+      translatedText = _json['translatedText'];
     }
   }
 
@@ -2959,16 +2958,16 @@ class GoogleCloudDocumentaiV1beta1DocumentTranslation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.map((value) => value.toJson()).toList();
+      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     if (translatedText != null) {
-      _json["translatedText"] = translatedText;
+      _json['translatedText'] = translatedText;
     }
     return _json;
   }
@@ -2981,8 +2980,8 @@ class GoogleCloudDocumentaiV1beta1GcsDestination {
   GoogleCloudDocumentaiV1beta1GcsDestination();
 
   GoogleCloudDocumentaiV1beta1GcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -2990,7 +2989,7 @@ class GoogleCloudDocumentaiV1beta1GcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -3003,8 +3002,8 @@ class GoogleCloudDocumentaiV1beta1GcsSource {
   GoogleCloudDocumentaiV1beta1GcsSource();
 
   GoogleCloudDocumentaiV1beta1GcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -3012,7 +3011,7 @@ class GoogleCloudDocumentaiV1beta1GcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -3033,12 +3032,12 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
   GoogleCloudDocumentaiV1beta1InputConfig();
 
   GoogleCloudDocumentaiV1beta1InputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("gcsSource")) {
+    if (_json.containsKey('gcsSource')) {
       gcsSource =
-          GoogleCloudDocumentaiV1beta1GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudDocumentaiV1beta1GcsSource.fromJson(_json['gcsSource']);
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
   }
 
@@ -3046,10 +3045,10 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     return _json;
   }
@@ -3067,11 +3066,11 @@ class GoogleCloudDocumentaiV1beta1NormalizedVertex {
   GoogleCloudDocumentaiV1beta1NormalizedVertex();
 
   GoogleCloudDocumentaiV1beta1NormalizedVertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -3079,10 +3078,10 @@ class GoogleCloudDocumentaiV1beta1NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -3114,17 +3113,17 @@ class GoogleCloudDocumentaiV1beta1OperationMetadata {
   GoogleCloudDocumentaiV1beta1OperationMetadata();
 
   GoogleCloudDocumentaiV1beta1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -3132,16 +3131,16 @@ class GoogleCloudDocumentaiV1beta1OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -3166,12 +3165,12 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
   GoogleCloudDocumentaiV1beta1OutputConfig();
 
   GoogleCloudDocumentaiV1beta1OutputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("gcsDestination")) {
+    if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudDocumentaiV1beta1GcsDestination.fromJson(
-          _json["gcsDestination"]);
+          _json['gcsDestination']);
     }
-    if (_json.containsKey("pagesPerShard")) {
-      pagesPerShard = _json["pagesPerShard"];
+    if (_json.containsKey('pagesPerShard')) {
+      pagesPerShard = _json['pagesPerShard'];
     }
   }
 
@@ -3179,10 +3178,10 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     if (pagesPerShard != null) {
-      _json["pagesPerShard"] = pagesPerShard;
+      _json['pagesPerShard'] = pagesPerShard;
     }
     return _json;
   }
@@ -3201,13 +3200,13 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
   GoogleCloudDocumentaiV1beta1ProcessDocumentResponse();
 
   GoogleCloudDocumentaiV1beta1ProcessDocumentResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("inputConfig")) {
+    if (_json.containsKey('inputConfig')) {
       inputConfig = GoogleCloudDocumentaiV1beta1InputConfig.fromJson(
-          _json["inputConfig"]);
+          _json['inputConfig']);
     }
-    if (_json.containsKey("outputConfig")) {
+    if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudDocumentaiV1beta1OutputConfig.fromJson(
-          _json["outputConfig"]);
+          _json['outputConfig']);
     }
   }
 
@@ -3215,10 +3214,10 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -3236,11 +3235,11 @@ class GoogleCloudDocumentaiV1beta1Vertex {
   GoogleCloudDocumentaiV1beta1Vertex();
 
   GoogleCloudDocumentaiV1beta1Vertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"];
+    if (_json.containsKey('x')) {
+      x = _json['x'];
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"];
+    if (_json.containsKey('y')) {
+      y = _json['y'];
     }
   }
 
@@ -3248,10 +3247,10 @@ class GoogleCloudDocumentaiV1beta1Vertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -3266,8 +3265,8 @@ class GoogleCloudDocumentaiV1beta2AutoMlParams {
   GoogleCloudDocumentaiV1beta2AutoMlParams();
 
   GoogleCloudDocumentaiV1beta2AutoMlParams.fromJson(core.Map _json) {
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
   }
 
@@ -3275,7 +3274,7 @@ class GoogleCloudDocumentaiV1beta2AutoMlParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     return _json;
   }
@@ -3291,8 +3290,8 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest {
 
   GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest.fromJson(
       core.Map _json) {
-    if (_json.containsKey("requests")) {
-      requests = (_json["requests"] as core.List)
+    if (_json.containsKey('requests')) {
+      requests = (_json['requests'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2ProcessDocumentRequest>((value) =>
               GoogleCloudDocumentaiV1beta2ProcessDocumentRequest.fromJson(
                   value))
@@ -3304,7 +3303,7 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (requests != null) {
-      _json["requests"] = requests.map((value) => value.toJson()).toList();
+      _json['requests'] = requests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3320,8 +3319,8 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse {
 
   GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2ProcessDocumentResponse>((value) =>
               GoogleCloudDocumentaiV1beta2ProcessDocumentResponse.fromJson(
                   value))
@@ -3333,7 +3332,7 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3350,14 +3349,14 @@ class GoogleCloudDocumentaiV1beta2BoundingPoly {
   GoogleCloudDocumentaiV1beta2BoundingPoly();
 
   GoogleCloudDocumentaiV1beta2BoundingPoly.fromJson(core.Map _json) {
-    if (_json.containsKey("normalizedVertices")) {
-      normalizedVertices = (_json["normalizedVertices"] as core.List)
+    if (_json.containsKey('normalizedVertices')) {
+      normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2NormalizedVertex>((value) =>
               GoogleCloudDocumentaiV1beta2NormalizedVertex.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2Vertex>(
               (value) => GoogleCloudDocumentaiV1beta2Vertex.fromJson(value))
           .toList();
@@ -3368,11 +3367,11 @@ class GoogleCloudDocumentaiV1beta2BoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedVertices != null) {
-      _json["normalizedVertices"] =
+      _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3391,7 +3390,7 @@ class GoogleCloudDocumentaiV1beta2Document {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A list of entities detected on Document.text. For document shards,
@@ -3447,73 +3446,73 @@ class GoogleCloudDocumentaiV1beta2Document {
   GoogleCloudDocumentaiV1beta2Document();
 
   GoogleCloudDocumentaiV1beta2Document.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("entities")) {
-      entities = (_json["entities"] as core.List)
+    if (_json.containsKey('entities')) {
+      entities = (_json['entities'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentEntity>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentEntity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("entityRelations")) {
-      entityRelations = (_json["entityRelations"] as core.List)
+    if (_json.containsKey('entityRelations')) {
+      entityRelations = (_json['entityRelations'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentEntityRelation>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentEntityRelation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.List)
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentLabel>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentLabel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("pages")) {
-      pages = (_json["pages"] as core.List)
+    if (_json.containsKey('pages')) {
+      pages = (_json['pages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPage>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("revisions")) {
-      revisions = (_json["revisions"] as core.List)
+    if (_json.containsKey('revisions')) {
+      revisions = (_json['revisions'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentRevision>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentRevision.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shardInfo")) {
+    if (_json.containsKey('shardInfo')) {
       shardInfo = GoogleCloudDocumentaiV1beta2DocumentShardInfo.fromJson(
-          _json["shardInfo"]);
+          _json['shardInfo']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("textChanges")) {
-      textChanges = (_json["textChanges"] as core.List)
+    if (_json.containsKey('textChanges')) {
+      textChanges = (_json['textChanges'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentTextChange>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentTextChange.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textStyles")) {
-      textStyles = (_json["textStyles"] as core.List)
+    if (_json.containsKey('textStyles')) {
+      textStyles = (_json['textStyles'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentStyle>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentStyle.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("translations")) {
-      translations = (_json["translations"] as core.List)
+    if (_json.containsKey('translations')) {
+      translations = (_json['translations'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentTranslation>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentTranslation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -3521,49 +3520,49 @@ class GoogleCloudDocumentaiV1beta2Document {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (entities != null) {
-      _json["entities"] = entities.map((value) => value.toJson()).toList();
+      _json['entities'] = entities.map((value) => value.toJson()).toList();
     }
     if (entityRelations != null) {
-      _json["entityRelations"] =
+      _json['entityRelations'] =
           entityRelations.map((value) => value.toJson()).toList();
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (labels != null) {
-      _json["labels"] = labels.map((value) => value.toJson()).toList();
+      _json['labels'] = labels.map((value) => value.toJson()).toList();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (pages != null) {
-      _json["pages"] = pages.map((value) => value.toJson()).toList();
+      _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
     if (revisions != null) {
-      _json["revisions"] = revisions.map((value) => value.toJson()).toList();
+      _json['revisions'] = revisions.map((value) => value.toJson()).toList();
     }
     if (shardInfo != null) {
-      _json["shardInfo"] = shardInfo.toJson();
+      _json['shardInfo'] = shardInfo.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (textChanges != null) {
-      _json["textChanges"] =
+      _json['textChanges'] =
           textChanges.map((value) => value.toJson()).toList();
     }
     if (textStyles != null) {
-      _json["textStyles"] = textStyles.map((value) => value.toJson()).toList();
+      _json['textStyles'] = textStyles.map((value) => value.toJson()).toList();
     }
     if (translations != null) {
-      _json["translations"] =
+      _json['translations'] =
           translations.map((value) => value.toJson()).toList();
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -3615,46 +3614,46 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
   GoogleCloudDocumentaiV1beta2DocumentEntity();
 
   GoogleCloudDocumentaiV1beta2DocumentEntity.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("mentionId")) {
-      mentionId = _json["mentionId"];
+    if (_json.containsKey('mentionId')) {
+      mentionId = _json['mentionId'];
     }
-    if (_json.containsKey("mentionText")) {
-      mentionText = _json["mentionText"];
+    if (_json.containsKey('mentionText')) {
+      mentionText = _json['mentionText'];
     }
-    if (_json.containsKey("normalizedValue")) {
+    if (_json.containsKey('normalizedValue')) {
       normalizedValue =
           GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue.fromJson(
-              _json["normalizedValue"]);
+              _json['normalizedValue']);
     }
-    if (_json.containsKey("pageAnchor")) {
+    if (_json.containsKey('pageAnchor')) {
       pageAnchor = GoogleCloudDocumentaiV1beta2DocumentPageAnchor.fromJson(
-          _json["pageAnchor"]);
+          _json['pageAnchor']);
     }
-    if (_json.containsKey("properties")) {
-      properties = (_json["properties"] as core.List)
+    if (_json.containsKey('properties')) {
+      properties = (_json['properties'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentEntity>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentEntity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
-    if (_json.containsKey("redacted")) {
-      redacted = _json["redacted"];
+    if (_json.containsKey('redacted')) {
+      redacted = _json['redacted'];
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta2DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3662,37 +3661,37 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (mentionId != null) {
-      _json["mentionId"] = mentionId;
+      _json['mentionId'] = mentionId;
     }
     if (mentionText != null) {
-      _json["mentionText"] = mentionText;
+      _json['mentionText'] = mentionText;
     }
     if (normalizedValue != null) {
-      _json["normalizedValue"] = normalizedValue.toJson();
+      _json['normalizedValue'] = normalizedValue.toJson();
     }
     if (pageAnchor != null) {
-      _json["pageAnchor"] = pageAnchor.toJson();
+      _json['pageAnchor'] = pageAnchor.toJson();
     }
     if (properties != null) {
-      _json["properties"] = properties.map((value) => value.toJson()).toList();
+      _json['properties'] = properties.map((value) => value.toJson()).toList();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     if (redacted != null) {
-      _json["redacted"] = redacted;
+      _json['redacted'] = redacted;
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3729,20 +3728,20 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
 
   GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue.fromJson(
       core.Map _json) {
-    if (_json.containsKey("addressValue")) {
-      addressValue = GoogleTypePostalAddress.fromJson(_json["addressValue"]);
+    if (_json.containsKey('addressValue')) {
+      addressValue = GoogleTypePostalAddress.fromJson(_json['addressValue']);
     }
-    if (_json.containsKey("dateValue")) {
-      dateValue = GoogleTypeDate.fromJson(_json["dateValue"]);
+    if (_json.containsKey('dateValue')) {
+      dateValue = GoogleTypeDate.fromJson(_json['dateValue']);
     }
-    if (_json.containsKey("datetimeValue")) {
-      datetimeValue = GoogleTypeDateTime.fromJson(_json["datetimeValue"]);
+    if (_json.containsKey('datetimeValue')) {
+      datetimeValue = GoogleTypeDateTime.fromJson(_json['datetimeValue']);
     }
-    if (_json.containsKey("moneyValue")) {
-      moneyValue = GoogleTypeMoney.fromJson(_json["moneyValue"]);
+    if (_json.containsKey('moneyValue')) {
+      moneyValue = GoogleTypeMoney.fromJson(_json['moneyValue']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -3750,19 +3749,19 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addressValue != null) {
-      _json["addressValue"] = addressValue.toJson();
+      _json['addressValue'] = addressValue.toJson();
     }
     if (dateValue != null) {
-      _json["dateValue"] = dateValue.toJson();
+      _json['dateValue'] = dateValue.toJson();
     }
     if (datetimeValue != null) {
-      _json["datetimeValue"] = datetimeValue.toJson();
+      _json['datetimeValue'] = datetimeValue.toJson();
     }
     if (moneyValue != null) {
-      _json["moneyValue"] = moneyValue.toJson();
+      _json['moneyValue'] = moneyValue.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -3782,14 +3781,14 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityRelation {
   GoogleCloudDocumentaiV1beta2DocumentEntityRelation();
 
   GoogleCloudDocumentaiV1beta2DocumentEntityRelation.fromJson(core.Map _json) {
-    if (_json.containsKey("objectId")) {
-      objectId = _json["objectId"];
+    if (_json.containsKey('objectId')) {
+      objectId = _json['objectId'];
     }
-    if (_json.containsKey("relation")) {
-      relation = _json["relation"];
+    if (_json.containsKey('relation')) {
+      relation = _json['relation'];
     }
-    if (_json.containsKey("subjectId")) {
-      subjectId = _json["subjectId"];
+    if (_json.containsKey('subjectId')) {
+      subjectId = _json['subjectId'];
     }
   }
 
@@ -3797,13 +3796,13 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityRelation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (objectId != null) {
-      _json["objectId"] = objectId;
+      _json['objectId'] = objectId;
     }
     if (relation != null) {
-      _json["relation"] = relation;
+      _json['relation'] = relation;
     }
     if (subjectId != null) {
-      _json["subjectId"] = subjectId;
+      _json['subjectId'] = subjectId;
     }
     return _json;
   }
@@ -3829,14 +3828,14 @@ class GoogleCloudDocumentaiV1beta2DocumentLabel {
   GoogleCloudDocumentaiV1beta2DocumentLabel();
 
   GoogleCloudDocumentaiV1beta2DocumentLabel.fromJson(core.Map _json) {
-    if (_json.containsKey("automlModel")) {
-      automlModel = _json["automlModel"];
+    if (_json.containsKey('automlModel')) {
+      automlModel = _json['automlModel'];
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -3844,13 +3843,13 @@ class GoogleCloudDocumentaiV1beta2DocumentLabel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (automlModel != null) {
-      _json["automlModel"] = automlModel;
+      _json['automlModel'] = automlModel;
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -3911,73 +3910,73 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
   GoogleCloudDocumentaiV1beta2DocumentPage();
 
   GoogleCloudDocumentaiV1beta2DocumentPage.fromJson(core.Map _json) {
-    if (_json.containsKey("blocks")) {
-      blocks = (_json["blocks"] as core.List)
+    if (_json.containsKey('blocks')) {
+      blocks = (_json['blocks'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageBlock>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageBlock.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("dimension")) {
+    if (_json.containsKey('dimension')) {
       dimension = GoogleCloudDocumentaiV1beta2DocumentPageDimension.fromJson(
-          _json["dimension"]);
+          _json['dimension']);
     }
-    if (_json.containsKey("formFields")) {
-      formFields = (_json["formFields"] as core.List)
+    if (_json.containsKey('formFields')) {
+      formFields = (_json['formFields'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageFormField>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageFormField.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("image")) {
+    if (_json.containsKey('image')) {
       image = GoogleCloudDocumentaiV1beta2DocumentPageImage.fromJson(
-          _json["image"]);
+          _json['image']);
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("lines")) {
-      lines = (_json["lines"] as core.List)
+    if (_json.containsKey('lines')) {
+      lines = (_json['lines'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageLine>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageLine.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pageNumber")) {
-      pageNumber = _json["pageNumber"];
+    if (_json.containsKey('pageNumber')) {
+      pageNumber = _json['pageNumber'];
     }
-    if (_json.containsKey("paragraphs")) {
-      paragraphs = (_json["paragraphs"] as core.List)
+    if (_json.containsKey('paragraphs')) {
+      paragraphs = (_json['paragraphs'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageParagraph>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageParagraph.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tables")) {
-      tables = (_json["tables"] as core.List)
+    if (_json.containsKey('tables')) {
+      tables = (_json['tables'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageTable>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageTable.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tokens")) {
-      tokens = (_json["tokens"] as core.List)
+    if (_json.containsKey('tokens')) {
+      tokens = (_json['tokens'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageToken>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageToken.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("transforms")) {
-      transforms = (_json["transforms"] as core.List)
+    if (_json.containsKey('transforms')) {
+      transforms = (_json['transforms'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageMatrix>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageMatrix.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("visualElements")) {
-      visualElements = (_json["visualElements"] as core.List)
+    if (_json.containsKey('visualElements')) {
+      visualElements = (_json['visualElements'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageVisualElement>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageVisualElement.fromJson(
                   value))
@@ -3989,44 +3988,44 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
+      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (dimension != null) {
-      _json["dimension"] = dimension.toJson();
+      _json['dimension'] = dimension.toJson();
     }
     if (formFields != null) {
-      _json["formFields"] = formFields.map((value) => value.toJson()).toList();
+      _json['formFields'] = formFields.map((value) => value.toJson()).toList();
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (lines != null) {
-      _json["lines"] = lines.map((value) => value.toJson()).toList();
+      _json['lines'] = lines.map((value) => value.toJson()).toList();
     }
     if (pageNumber != null) {
-      _json["pageNumber"] = pageNumber;
+      _json['pageNumber'] = pageNumber;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
+      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (tables != null) {
-      _json["tables"] = tables.map((value) => value.toJson()).toList();
+      _json['tables'] = tables.map((value) => value.toJson()).toList();
     }
     if (tokens != null) {
-      _json["tokens"] = tokens.map((value) => value.toJson()).toList();
+      _json['tokens'] = tokens.map((value) => value.toJson()).toList();
     }
     if (transforms != null) {
-      _json["transforms"] = transforms.map((value) => value.toJson()).toList();
+      _json['transforms'] = transforms.map((value) => value.toJson()).toList();
     }
     if (visualElements != null) {
-      _json["visualElements"] =
+      _json['visualElements'] =
           visualElements.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4043,8 +4042,8 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
   GoogleCloudDocumentaiV1beta2DocumentPageAnchor();
 
   GoogleCloudDocumentaiV1beta2DocumentPageAnchor.fromJson(core.Map _json) {
-    if (_json.containsKey("pageRefs")) {
-      pageRefs = (_json["pageRefs"] as core.List)
+    if (_json.containsKey('pageRefs')) {
+      pageRefs = (_json['pageRefs'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef.fromJson(
                   value))
@@ -4056,7 +4055,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageRefs != null) {
-      _json["pageRefs"] = pageRefs.map((value) => value.toJson()).toList();
+      _json['pageRefs'] = pageRefs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4089,18 +4088,18 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
 
   GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef.fromJson(
       core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudDocumentaiV1beta2BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("layoutId")) {
-      layoutId = _json["layoutId"];
+    if (_json.containsKey('layoutId')) {
+      layoutId = _json['layoutId'];
     }
-    if (_json.containsKey("layoutType")) {
-      layoutType = _json["layoutType"];
+    if (_json.containsKey('layoutType')) {
+      layoutType = _json['layoutType'];
     }
-    if (_json.containsKey("page")) {
-      page = _json["page"];
+    if (_json.containsKey('page')) {
+      page = _json['page'];
     }
   }
 
@@ -4108,16 +4107,16 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (layoutId != null) {
-      _json["layoutId"] = layoutId;
+      _json['layoutId'] = layoutId;
     }
     if (layoutType != null) {
-      _json["layoutType"] = layoutType;
+      _json['layoutType'] = layoutType;
     }
     if (page != null) {
-      _json["page"] = page;
+      _json['page'] = page;
     }
     return _json;
   }
@@ -4139,21 +4138,21 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
   GoogleCloudDocumentaiV1beta2DocumentPageBlock();
 
   GoogleCloudDocumentaiV1beta2DocumentPageBlock.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
   }
 
@@ -4161,14 +4160,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     return _json;
   }
@@ -4188,11 +4187,11 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
 
   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -4200,10 +4199,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -4223,14 +4222,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
   GoogleCloudDocumentaiV1beta2DocumentPageDimension();
 
   GoogleCloudDocumentaiV1beta2DocumentPageDimension.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"].toDouble();
+    if (_json.containsKey('height')) {
+      height = _json['height'].toDouble();
     }
-    if (_json.containsKey("unit")) {
-      unit = _json["unit"];
+    if (_json.containsKey('unit')) {
+      unit = _json['unit'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"].toDouble();
+    if (_json.containsKey('width')) {
+      width = _json['width'].toDouble();
     }
   }
 
@@ -4238,13 +4237,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (unit != null) {
-      _json["unit"] = unit;
+      _json['unit'] = unit;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -4275,32 +4274,32 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
   GoogleCloudDocumentaiV1beta2DocumentPageFormField();
 
   GoogleCloudDocumentaiV1beta2DocumentPageFormField.fromJson(core.Map _json) {
-    if (_json.containsKey("fieldName")) {
+    if (_json.containsKey('fieldName')) {
       fieldName = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["fieldName"]);
+          _json['fieldName']);
     }
-    if (_json.containsKey("fieldValue")) {
+    if (_json.containsKey('fieldValue')) {
       fieldValue = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["fieldValue"]);
+          _json['fieldValue']);
     }
-    if (_json.containsKey("nameDetectedLanguages")) {
-      nameDetectedLanguages = (_json["nameDetectedLanguages"] as core.List)
+    if (_json.containsKey('nameDetectedLanguages')) {
+      nameDetectedLanguages = (_json['nameDetectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("valueDetectedLanguages")) {
-      valueDetectedLanguages = (_json["valueDetectedLanguages"] as core.List)
+    if (_json.containsKey('valueDetectedLanguages')) {
+      valueDetectedLanguages = (_json['valueDetectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("valueType")) {
-      valueType = _json["valueType"];
+    if (_json.containsKey('valueType')) {
+      valueType = _json['valueType'];
     }
   }
 
@@ -4308,21 +4307,21 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fieldName != null) {
-      _json["fieldName"] = fieldName.toJson();
+      _json['fieldName'] = fieldName.toJson();
     }
     if (fieldValue != null) {
-      _json["fieldValue"] = fieldValue.toJson();
+      _json['fieldValue'] = fieldValue.toJson();
     }
     if (nameDetectedLanguages != null) {
-      _json["nameDetectedLanguages"] =
+      _json['nameDetectedLanguages'] =
           nameDetectedLanguages.map((value) => value.toJson()).toList();
     }
     if (valueDetectedLanguages != null) {
-      _json["valueDetectedLanguages"] =
+      _json['valueDetectedLanguages'] =
           valueDetectedLanguages.map((value) => value.toJson()).toList();
     }
     if (valueType != null) {
-      _json["valueType"] = valueType;
+      _json['valueType'] = valueType;
     }
     return _json;
   }
@@ -4336,7 +4335,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageImage {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Height of the image in pixels.
@@ -4351,17 +4350,17 @@ class GoogleCloudDocumentaiV1beta2DocumentPageImage {
   GoogleCloudDocumentaiV1beta2DocumentPageImage();
 
   GoogleCloudDocumentaiV1beta2DocumentPageImage.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -4369,16 +4368,16 @@ class GoogleCloudDocumentaiV1beta2DocumentPageImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -4412,19 +4411,19 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
   GoogleCloudDocumentaiV1beta2DocumentPageLayout();
 
   GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudDocumentaiV1beta2BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("orientation")) {
-      orientation = _json["orientation"];
+    if (_json.containsKey('orientation')) {
+      orientation = _json['orientation'];
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta2DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
   }
 
@@ -4432,16 +4431,16 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (orientation != null) {
-      _json["orientation"] = orientation;
+      _json['orientation'] = orientation;
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     return _json;
   }
@@ -4463,21 +4462,21 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLine {
   GoogleCloudDocumentaiV1beta2DocumentPageLine();
 
   GoogleCloudDocumentaiV1beta2DocumentPageLine.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
   }
 
@@ -4485,14 +4484,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLine {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     return _json;
   }
@@ -4510,7 +4509,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Number of rows in the matrix.
@@ -4525,17 +4524,17 @@ class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
   GoogleCloudDocumentaiV1beta2DocumentPageMatrix();
 
   GoogleCloudDocumentaiV1beta2DocumentPageMatrix.fromJson(core.Map _json) {
-    if (_json.containsKey("cols")) {
-      cols = _json["cols"];
+    if (_json.containsKey('cols')) {
+      cols = _json['cols'];
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("rows")) {
-      rows = _json["rows"];
+    if (_json.containsKey('rows')) {
+      rows = _json['rows'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4543,16 +4542,16 @@ class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cols != null) {
-      _json["cols"] = cols;
+      _json['cols'] = cols;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (rows != null) {
-      _json["rows"] = rows;
+      _json['rows'] = rows;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4573,21 +4572,21 @@ class GoogleCloudDocumentaiV1beta2DocumentPageParagraph {
   GoogleCloudDocumentaiV1beta2DocumentPageParagraph();
 
   GoogleCloudDocumentaiV1beta2DocumentPageParagraph.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
   }
 
@@ -4595,14 +4594,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageParagraph {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     return _json;
   }
@@ -4626,31 +4625,31 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTable {
   GoogleCloudDocumentaiV1beta2DocumentPageTable();
 
   GoogleCloudDocumentaiV1beta2DocumentPageTable.fromJson(core.Map _json) {
-    if (_json.containsKey("bodyRows")) {
-      bodyRows = (_json["bodyRows"] as core.List)
+    if (_json.containsKey('bodyRows')) {
+      bodyRows = (_json['bodyRows'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("headerRows")) {
-      headerRows = (_json["headerRows"] as core.List)
+    if (_json.containsKey('headerRows')) {
+      headerRows = (_json['headerRows'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
   }
 
@@ -4658,17 +4657,17 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTable {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bodyRows != null) {
-      _json["bodyRows"] = bodyRows.map((value) => value.toJson()).toList();
+      _json['bodyRows'] = bodyRows.map((value) => value.toJson()).toList();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (headerRows != null) {
-      _json["headerRows"] = headerRows.map((value) => value.toJson()).toList();
+      _json['headerRows'] = headerRows.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     return _json;
   }
@@ -4693,23 +4692,23 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell {
 
   GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell.fromJson(
       core.Map _json) {
-    if (_json.containsKey("colSpan")) {
-      colSpan = _json["colSpan"];
+    if (_json.containsKey('colSpan')) {
+      colSpan = _json['colSpan'];
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("rowSpan")) {
-      rowSpan = _json["rowSpan"];
+    if (_json.containsKey('rowSpan')) {
+      rowSpan = _json['rowSpan'];
     }
   }
 
@@ -4717,17 +4716,17 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (colSpan != null) {
-      _json["colSpan"] = colSpan;
+      _json['colSpan'] = colSpan;
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (rowSpan != null) {
-      _json["rowSpan"] = rowSpan;
+      _json['rowSpan'] = rowSpan;
     }
     return _json;
   }
@@ -4742,8 +4741,8 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow {
 
   GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow.fromJson(
       core.Map _json) {
-    if (_json.containsKey("cells")) {
-      cells = (_json["cells"] as core.List)
+    if (_json.containsKey('cells')) {
+      cells = (_json['cells'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell>(
               (value) => GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell
                   .fromJson(value))
@@ -4755,7 +4754,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cells != null) {
-      _json["cells"] = cells.map((value) => value.toJson()).toList();
+      _json['cells'] = cells.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4779,26 +4778,26 @@ class GoogleCloudDocumentaiV1beta2DocumentPageToken {
   GoogleCloudDocumentaiV1beta2DocumentPageToken();
 
   GoogleCloudDocumentaiV1beta2DocumentPageToken.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedBreak")) {
+    if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak.fromJson(
-              _json["detectedBreak"]);
+              _json['detectedBreak']);
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("provenance")) {
+    if (_json.containsKey('provenance')) {
       provenance = GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(
-          _json["provenance"]);
+          _json['provenance']);
     }
   }
 
@@ -4806,17 +4805,17 @@ class GoogleCloudDocumentaiV1beta2DocumentPageToken {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = detectedBreak.toJson();
+      _json['detectedBreak'] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.toJson();
+      _json['provenance'] = provenance.toJson();
     }
     return _json;
   }
@@ -4837,8 +4836,8 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak {
 
   GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak.fromJson(
       core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4846,7 +4845,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4868,20 +4867,20 @@ class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
 
   GoogleCloudDocumentaiV1beta2DocumentPageVisualElement.fromJson(
       core.Map _json) {
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("layout")) {
+    if (_json.containsKey('layout')) {
       layout = GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
-          _json["layout"]);
+          _json['layout']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4889,14 +4888,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     if (layout != null) {
-      _json["layout"] = layout.toJson();
+      _json['layout'] = layout.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4930,21 +4929,21 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
   GoogleCloudDocumentaiV1beta2DocumentProvenance();
 
   GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("parents")) {
-      parents = (_json["parents"] as core.List)
+    if (_json.containsKey('parents')) {
+      parents = (_json['parents'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentProvenanceParent>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentProvenanceParent.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("revision")) {
-      revision = _json["revision"];
+    if (_json.containsKey('revision')) {
+      revision = _json['revision'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4952,16 +4951,16 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (parents != null) {
-      _json["parents"] = parents.map((value) => value.toJson()).toList();
+      _json['parents'] = parents.map((value) => value.toJson()).toList();
     }
     if (revision != null) {
-      _json["revision"] = revision;
+      _json['revision'] = revision;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4981,11 +4980,11 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent {
 
   GoogleCloudDocumentaiV1beta2DocumentProvenanceParent.fromJson(
       core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("revision")) {
-      revision = _json["revision"];
+    if (_json.containsKey('revision')) {
+      revision = _json['revision'];
     }
   }
 
@@ -4993,10 +4992,10 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (revision != null) {
-      _json["revision"] = revision;
+      _json['revision'] = revision;
     }
     return _json;
   }
@@ -5028,25 +5027,25 @@ class GoogleCloudDocumentaiV1beta2DocumentRevision {
   GoogleCloudDocumentaiV1beta2DocumentRevision();
 
   GoogleCloudDocumentaiV1beta2DocumentRevision.fromJson(core.Map _json) {
-    if (_json.containsKey("agent")) {
-      agent = _json["agent"];
+    if (_json.containsKey('agent')) {
+      agent = _json['agent'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("humanReview")) {
+    if (_json.containsKey('humanReview')) {
       humanReview =
           GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview.fromJson(
-              _json["humanReview"]);
+              _json['humanReview']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("parent")) {
-      parent = (_json["parent"] as core.List).cast<core.int>();
+    if (_json.containsKey('parent')) {
+      parent = (_json['parent'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("processor")) {
-      processor = _json["processor"];
+    if (_json.containsKey('processor')) {
+      processor = _json['processor'];
     }
   }
 
@@ -5054,22 +5053,22 @@ class GoogleCloudDocumentaiV1beta2DocumentRevision {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (agent != null) {
-      _json["agent"] = agent;
+      _json['agent'] = agent;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (humanReview != null) {
-      _json["humanReview"] = humanReview.toJson();
+      _json['humanReview'] = humanReview.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (processor != null) {
-      _json["processor"] = processor;
+      _json['processor'] = processor;
     }
     return _json;
   }
@@ -5088,11 +5087,11 @@ class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
 
   GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview.fromJson(
       core.Map _json) {
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
   }
 
@@ -5100,10 +5099,10 @@ class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     return _json;
   }
@@ -5125,14 +5124,14 @@ class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
   GoogleCloudDocumentaiV1beta2DocumentShardInfo();
 
   GoogleCloudDocumentaiV1beta2DocumentShardInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("shardCount")) {
-      shardCount = _json["shardCount"];
+    if (_json.containsKey('shardCount')) {
+      shardCount = _json['shardCount'];
     }
-    if (_json.containsKey("shardIndex")) {
-      shardIndex = _json["shardIndex"];
+    if (_json.containsKey('shardIndex')) {
+      shardIndex = _json['shardIndex'];
     }
-    if (_json.containsKey("textOffset")) {
-      textOffset = _json["textOffset"];
+    if (_json.containsKey('textOffset')) {
+      textOffset = _json['textOffset'];
     }
   }
 
@@ -5140,13 +5139,13 @@ class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (shardCount != null) {
-      _json["shardCount"] = shardCount;
+      _json['shardCount'] = shardCount;
     }
     if (shardIndex != null) {
-      _json["shardIndex"] = shardIndex;
+      _json['shardIndex'] = shardIndex;
     }
     if (textOffset != null) {
-      _json["textOffset"] = textOffset;
+      _json['textOffset'] = textOffset;
     }
     return _json;
   }
@@ -5182,28 +5181,28 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle {
   GoogleCloudDocumentaiV1beta2DocumentStyle();
 
   GoogleCloudDocumentaiV1beta2DocumentStyle.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundColor")) {
-      backgroundColor = GoogleTypeColor.fromJson(_json["backgroundColor"]);
+    if (_json.containsKey('backgroundColor')) {
+      backgroundColor = GoogleTypeColor.fromJson(_json['backgroundColor']);
     }
-    if (_json.containsKey("color")) {
-      color = GoogleTypeColor.fromJson(_json["color"]);
+    if (_json.containsKey('color')) {
+      color = GoogleTypeColor.fromJson(_json['color']);
     }
-    if (_json.containsKey("fontSize")) {
+    if (_json.containsKey('fontSize')) {
       fontSize = GoogleCloudDocumentaiV1beta2DocumentStyleFontSize.fromJson(
-          _json["fontSize"]);
+          _json['fontSize']);
     }
-    if (_json.containsKey("fontWeight")) {
-      fontWeight = _json["fontWeight"];
+    if (_json.containsKey('fontWeight')) {
+      fontWeight = _json['fontWeight'];
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta2DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
-    if (_json.containsKey("textDecoration")) {
-      textDecoration = _json["textDecoration"];
+    if (_json.containsKey('textDecoration')) {
+      textDecoration = _json['textDecoration'];
     }
-    if (_json.containsKey("textStyle")) {
-      textStyle = _json["textStyle"];
+    if (_json.containsKey('textStyle')) {
+      textStyle = _json['textStyle'];
     }
   }
 
@@ -5211,25 +5210,25 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundColor != null) {
-      _json["backgroundColor"] = backgroundColor.toJson();
+      _json['backgroundColor'] = backgroundColor.toJson();
     }
     if (color != null) {
-      _json["color"] = color.toJson();
+      _json['color'] = color.toJson();
     }
     if (fontSize != null) {
-      _json["fontSize"] = fontSize.toJson();
+      _json['fontSize'] = fontSize.toJson();
     }
     if (fontWeight != null) {
-      _json["fontWeight"] = fontWeight;
+      _json['fontWeight'] = fontWeight;
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     if (textDecoration != null) {
-      _json["textDecoration"] = textDecoration;
+      _json['textDecoration'] = textDecoration;
     }
     if (textStyle != null) {
-      _json["textStyle"] = textStyle;
+      _json['textStyle'] = textStyle;
     }
     return _json;
   }
@@ -5246,11 +5245,11 @@ class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
   GoogleCloudDocumentaiV1beta2DocumentStyleFontSize();
 
   GoogleCloudDocumentaiV1beta2DocumentStyleFontSize.fromJson(core.Map _json) {
-    if (_json.containsKey("size")) {
-      size = _json["size"].toDouble();
+    if (_json.containsKey('size')) {
+      size = _json['size'].toDouble();
     }
-    if (_json.containsKey("unit")) {
-      unit = _json["unit"];
+    if (_json.containsKey('unit')) {
+      unit = _json['unit'];
     }
   }
 
@@ -5258,10 +5257,10 @@ class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     if (unit != null) {
-      _json["unit"] = unit;
+      _json['unit'] = unit;
     }
     return _json;
   }
@@ -5280,11 +5279,11 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
   GoogleCloudDocumentaiV1beta2DocumentTextAnchor();
 
   GoogleCloudDocumentaiV1beta2DocumentTextAnchor.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("textSegments")) {
-      textSegments = (_json["textSegments"] as core.List)
+    if (_json.containsKey('textSegments')) {
+      textSegments = (_json['textSegments'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment>(
               (value) =>
                   GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
@@ -5297,10 +5296,10 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (textSegments != null) {
-      _json["textSegments"] =
+      _json['textSegments'] =
           textSegments.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5321,11 +5320,11 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
 
   GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment.fromJson(
       core.Map _json) {
-    if (_json.containsKey("endIndex")) {
-      endIndex = _json["endIndex"];
+    if (_json.containsKey('endIndex')) {
+      endIndex = _json['endIndex'];
     }
-    if (_json.containsKey("startIndex")) {
-      startIndex = _json["startIndex"];
+    if (_json.containsKey('startIndex')) {
+      startIndex = _json['startIndex'];
     }
   }
 
@@ -5333,10 +5332,10 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endIndex != null) {
-      _json["endIndex"] = endIndex;
+      _json['endIndex'] = endIndex;
     }
     if (startIndex != null) {
-      _json["startIndex"] = startIndex;
+      _json['startIndex'] = startIndex;
     }
     return _json;
   }
@@ -5359,18 +5358,18 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
   GoogleCloudDocumentaiV1beta2DocumentTextChange();
 
   GoogleCloudDocumentaiV1beta2DocumentTextChange.fromJson(core.Map _json) {
-    if (_json.containsKey("changedText")) {
-      changedText = _json["changedText"];
+    if (_json.containsKey('changedText')) {
+      changedText = _json['changedText'];
     }
-    if (_json.containsKey("provenance")) {
-      provenance = (_json["provenance"] as core.List)
+    if (_json.containsKey('provenance')) {
+      provenance = (_json['provenance'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentProvenance>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta2DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
   }
 
@@ -5378,13 +5377,13 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (changedText != null) {
-      _json["changedText"] = changedText;
+      _json['changedText'] = changedText;
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.map((value) => value.toJson()).toList();
+      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     return _json;
   }
@@ -5412,21 +5411,21 @@ class GoogleCloudDocumentaiV1beta2DocumentTranslation {
   GoogleCloudDocumentaiV1beta2DocumentTranslation();
 
   GoogleCloudDocumentaiV1beta2DocumentTranslation.fromJson(core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("provenance")) {
-      provenance = (_json["provenance"] as core.List)
+    if (_json.containsKey('provenance')) {
+      provenance = (_json['provenance'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentProvenance>((value) =>
               GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textAnchor")) {
+    if (_json.containsKey('textAnchor')) {
       textAnchor = GoogleCloudDocumentaiV1beta2DocumentTextAnchor.fromJson(
-          _json["textAnchor"]);
+          _json['textAnchor']);
     }
-    if (_json.containsKey("translatedText")) {
-      translatedText = _json["translatedText"];
+    if (_json.containsKey('translatedText')) {
+      translatedText = _json['translatedText'];
     }
   }
 
@@ -5434,16 +5433,16 @@ class GoogleCloudDocumentaiV1beta2DocumentTranslation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (provenance != null) {
-      _json["provenance"] = provenance.map((value) => value.toJson()).toList();
+      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
     }
     if (textAnchor != null) {
-      _json["textAnchor"] = textAnchor.toJson();
+      _json['textAnchor'] = textAnchor.toJson();
     }
     if (translatedText != null) {
-      _json["translatedText"] = translatedText;
+      _json['translatedText'] = translatedText;
     }
     return _json;
   }
@@ -5461,11 +5460,11 @@ class GoogleCloudDocumentaiV1beta2EntityExtractionParams {
   GoogleCloudDocumentaiV1beta2EntityExtractionParams();
 
   GoogleCloudDocumentaiV1beta2EntityExtractionParams.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
-    if (_json.containsKey("modelVersion")) {
-      modelVersion = _json["modelVersion"];
+    if (_json.containsKey('modelVersion')) {
+      modelVersion = _json['modelVersion'];
     }
   }
 
@@ -5473,10 +5472,10 @@ class GoogleCloudDocumentaiV1beta2EntityExtractionParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     if (modelVersion != null) {
-      _json["modelVersion"] = modelVersion;
+      _json['modelVersion'] = modelVersion;
     }
     return _json;
   }
@@ -5500,17 +5499,17 @@ class GoogleCloudDocumentaiV1beta2FormExtractionParams {
   GoogleCloudDocumentaiV1beta2FormExtractionParams();
 
   GoogleCloudDocumentaiV1beta2FormExtractionParams.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
-    if (_json.containsKey("keyValuePairHints")) {
-      keyValuePairHints = (_json["keyValuePairHints"] as core.List)
+    if (_json.containsKey('keyValuePairHints')) {
+      keyValuePairHints = (_json['keyValuePairHints'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2KeyValuePairHint>((value) =>
               GoogleCloudDocumentaiV1beta2KeyValuePairHint.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("modelVersion")) {
-      modelVersion = _json["modelVersion"];
+    if (_json.containsKey('modelVersion')) {
+      modelVersion = _json['modelVersion'];
     }
   }
 
@@ -5518,14 +5517,14 @@ class GoogleCloudDocumentaiV1beta2FormExtractionParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     if (keyValuePairHints != null) {
-      _json["keyValuePairHints"] =
+      _json['keyValuePairHints'] =
           keyValuePairHints.map((value) => value.toJson()).toList();
     }
     if (modelVersion != null) {
-      _json["modelVersion"] = modelVersion;
+      _json['modelVersion'] = modelVersion;
     }
     return _json;
   }
@@ -5538,8 +5537,8 @@ class GoogleCloudDocumentaiV1beta2GcsDestination {
   GoogleCloudDocumentaiV1beta2GcsDestination();
 
   GoogleCloudDocumentaiV1beta2GcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -5547,7 +5546,7 @@ class GoogleCloudDocumentaiV1beta2GcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -5560,8 +5559,8 @@ class GoogleCloudDocumentaiV1beta2GcsSource {
   GoogleCloudDocumentaiV1beta2GcsSource();
 
   GoogleCloudDocumentaiV1beta2GcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -5569,7 +5568,7 @@ class GoogleCloudDocumentaiV1beta2GcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -5586,7 +5585,7 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
 
   set contentsAsBytes(core.List<core.int> _bytes) {
     contents =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The Google Cloud Storage location to read the input from. This must be a
@@ -5602,15 +5601,15 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
   GoogleCloudDocumentaiV1beta2InputConfig();
 
   GoogleCloudDocumentaiV1beta2InputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("contents")) {
-      contents = _json["contents"];
+    if (_json.containsKey('contents')) {
+      contents = _json['contents'];
     }
-    if (_json.containsKey("gcsSource")) {
+    if (_json.containsKey('gcsSource')) {
       gcsSource =
-          GoogleCloudDocumentaiV1beta2GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudDocumentaiV1beta2GcsSource.fromJson(_json['gcsSource']);
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
   }
 
@@ -5618,13 +5617,13 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contents != null) {
-      _json["contents"] = contents;
+      _json['contents'] = contents;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     return _json;
   }
@@ -5643,11 +5642,11 @@ class GoogleCloudDocumentaiV1beta2KeyValuePairHint {
   GoogleCloudDocumentaiV1beta2KeyValuePairHint();
 
   GoogleCloudDocumentaiV1beta2KeyValuePairHint.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("valueTypes")) {
-      valueTypes = (_json["valueTypes"] as core.List).cast<core.String>();
+    if (_json.containsKey('valueTypes')) {
+      valueTypes = (_json['valueTypes'] as core.List).cast<core.String>();
     }
   }
 
@@ -5655,10 +5654,10 @@ class GoogleCloudDocumentaiV1beta2KeyValuePairHint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (valueTypes != null) {
-      _json["valueTypes"] = valueTypes;
+      _json['valueTypes'] = valueTypes;
     }
     return _json;
   }
@@ -5676,11 +5675,11 @@ class GoogleCloudDocumentaiV1beta2NormalizedVertex {
   GoogleCloudDocumentaiV1beta2NormalizedVertex();
 
   GoogleCloudDocumentaiV1beta2NormalizedVertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -5688,10 +5687,10 @@ class GoogleCloudDocumentaiV1beta2NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -5712,8 +5711,8 @@ class GoogleCloudDocumentaiV1beta2OcrParams {
   GoogleCloudDocumentaiV1beta2OcrParams();
 
   GoogleCloudDocumentaiV1beta2OcrParams.fromJson(core.Map _json) {
-    if (_json.containsKey("languageHints")) {
-      languageHints = (_json["languageHints"] as core.List).cast<core.String>();
+    if (_json.containsKey('languageHints')) {
+      languageHints = (_json['languageHints'] as core.List).cast<core.String>();
     }
   }
 
@@ -5721,7 +5720,7 @@ class GoogleCloudDocumentaiV1beta2OcrParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageHints != null) {
-      _json["languageHints"] = languageHints;
+      _json['languageHints'] = languageHints;
     }
     return _json;
   }
@@ -5753,17 +5752,17 @@ class GoogleCloudDocumentaiV1beta2OperationMetadata {
   GoogleCloudDocumentaiV1beta2OperationMetadata();
 
   GoogleCloudDocumentaiV1beta2OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -5771,16 +5770,16 @@ class GoogleCloudDocumentaiV1beta2OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -5805,12 +5804,12 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
   GoogleCloudDocumentaiV1beta2OutputConfig();
 
   GoogleCloudDocumentaiV1beta2OutputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("gcsDestination")) {
+    if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudDocumentaiV1beta2GcsDestination.fromJson(
-          _json["gcsDestination"]);
+          _json['gcsDestination']);
     }
-    if (_json.containsKey("pagesPerShard")) {
-      pagesPerShard = _json["pagesPerShard"];
+    if (_json.containsKey('pagesPerShard')) {
+      pagesPerShard = _json['pagesPerShard'];
     }
   }
 
@@ -5818,10 +5817,10 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     if (pagesPerShard != null) {
-      _json["pagesPerShard"] = pagesPerShard;
+      _json['pagesPerShard'] = pagesPerShard;
     }
     return _json;
   }
@@ -5870,42 +5869,42 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentRequest {
   GoogleCloudDocumentaiV1beta2ProcessDocumentRequest();
 
   GoogleCloudDocumentaiV1beta2ProcessDocumentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("automlParams")) {
+    if (_json.containsKey('automlParams')) {
       automlParams = GoogleCloudDocumentaiV1beta2AutoMlParams.fromJson(
-          _json["automlParams"]);
+          _json['automlParams']);
     }
-    if (_json.containsKey("documentType")) {
-      documentType = _json["documentType"];
+    if (_json.containsKey('documentType')) {
+      documentType = _json['documentType'];
     }
-    if (_json.containsKey("entityExtractionParams")) {
+    if (_json.containsKey('entityExtractionParams')) {
       entityExtractionParams =
           GoogleCloudDocumentaiV1beta2EntityExtractionParams.fromJson(
-              _json["entityExtractionParams"]);
+              _json['entityExtractionParams']);
     }
-    if (_json.containsKey("formExtractionParams")) {
+    if (_json.containsKey('formExtractionParams')) {
       formExtractionParams =
           GoogleCloudDocumentaiV1beta2FormExtractionParams.fromJson(
-              _json["formExtractionParams"]);
+              _json['formExtractionParams']);
     }
-    if (_json.containsKey("inputConfig")) {
+    if (_json.containsKey('inputConfig')) {
       inputConfig = GoogleCloudDocumentaiV1beta2InputConfig.fromJson(
-          _json["inputConfig"]);
+          _json['inputConfig']);
     }
-    if (_json.containsKey("ocrParams")) {
+    if (_json.containsKey('ocrParams')) {
       ocrParams =
-          GoogleCloudDocumentaiV1beta2OcrParams.fromJson(_json["ocrParams"]);
+          GoogleCloudDocumentaiV1beta2OcrParams.fromJson(_json['ocrParams']);
     }
-    if (_json.containsKey("outputConfig")) {
+    if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudDocumentaiV1beta2OutputConfig.fromJson(
-          _json["outputConfig"]);
+          _json['outputConfig']);
     }
-    if (_json.containsKey("parent")) {
-      parent = _json["parent"];
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'];
     }
-    if (_json.containsKey("tableExtractionParams")) {
+    if (_json.containsKey('tableExtractionParams')) {
       tableExtractionParams =
           GoogleCloudDocumentaiV1beta2TableExtractionParams.fromJson(
-              _json["tableExtractionParams"]);
+              _json['tableExtractionParams']);
     }
   }
 
@@ -5913,31 +5912,31 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (automlParams != null) {
-      _json["automlParams"] = automlParams.toJson();
+      _json['automlParams'] = automlParams.toJson();
     }
     if (documentType != null) {
-      _json["documentType"] = documentType;
+      _json['documentType'] = documentType;
     }
     if (entityExtractionParams != null) {
-      _json["entityExtractionParams"] = entityExtractionParams.toJson();
+      _json['entityExtractionParams'] = entityExtractionParams.toJson();
     }
     if (formExtractionParams != null) {
-      _json["formExtractionParams"] = formExtractionParams.toJson();
+      _json['formExtractionParams'] = formExtractionParams.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (ocrParams != null) {
-      _json["ocrParams"] = ocrParams.toJson();
+      _json['ocrParams'] = ocrParams.toJson();
     }
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (tableExtractionParams != null) {
-      _json["tableExtractionParams"] = tableExtractionParams.toJson();
+      _json['tableExtractionParams'] = tableExtractionParams.toJson();
     }
     return _json;
   }
@@ -5956,13 +5955,13 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
   GoogleCloudDocumentaiV1beta2ProcessDocumentResponse();
 
   GoogleCloudDocumentaiV1beta2ProcessDocumentResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("inputConfig")) {
+    if (_json.containsKey('inputConfig')) {
       inputConfig = GoogleCloudDocumentaiV1beta2InputConfig.fromJson(
-          _json["inputConfig"]);
+          _json['inputConfig']);
     }
-    if (_json.containsKey("outputConfig")) {
+    if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudDocumentaiV1beta2OutputConfig.fromJson(
-          _json["outputConfig"]);
+          _json['outputConfig']);
     }
   }
 
@@ -5970,10 +5969,10 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -5994,12 +5993,12 @@ class GoogleCloudDocumentaiV1beta2TableBoundHint {
   GoogleCloudDocumentaiV1beta2TableBoundHint();
 
   GoogleCloudDocumentaiV1beta2TableBoundHint.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox = GoogleCloudDocumentaiV1beta2BoundingPoly.fromJson(
-          _json["boundingBox"]);
+          _json['boundingBox']);
     }
-    if (_json.containsKey("pageNumber")) {
-      pageNumber = _json["pageNumber"];
+    if (_json.containsKey('pageNumber')) {
+      pageNumber = _json['pageNumber'];
     }
   }
 
@@ -6007,10 +6006,10 @@ class GoogleCloudDocumentaiV1beta2TableBoundHint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (pageNumber != null) {
-      _json["pageNumber"] = pageNumber;
+      _json['pageNumber'] = pageNumber;
     }
     return _json;
   }
@@ -6035,17 +6034,17 @@ class GoogleCloudDocumentaiV1beta2TableExtractionParams {
   GoogleCloudDocumentaiV1beta2TableExtractionParams();
 
   GoogleCloudDocumentaiV1beta2TableExtractionParams.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
-    if (_json.containsKey("headerHints")) {
-      headerHints = (_json["headerHints"] as core.List).cast<core.String>();
+    if (_json.containsKey('headerHints')) {
+      headerHints = (_json['headerHints'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("modelVersion")) {
-      modelVersion = _json["modelVersion"];
+    if (_json.containsKey('modelVersion')) {
+      modelVersion = _json['modelVersion'];
     }
-    if (_json.containsKey("tableBoundHints")) {
-      tableBoundHints = (_json["tableBoundHints"] as core.List)
+    if (_json.containsKey('tableBoundHints')) {
+      tableBoundHints = (_json['tableBoundHints'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2TableBoundHint>((value) =>
               GoogleCloudDocumentaiV1beta2TableBoundHint.fromJson(value))
           .toList();
@@ -6056,16 +6055,16 @@ class GoogleCloudDocumentaiV1beta2TableExtractionParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     if (headerHints != null) {
-      _json["headerHints"] = headerHints;
+      _json['headerHints'] = headerHints;
     }
     if (modelVersion != null) {
-      _json["modelVersion"] = modelVersion;
+      _json['modelVersion'] = modelVersion;
     }
     if (tableBoundHints != null) {
-      _json["tableBoundHints"] =
+      _json['tableBoundHints'] =
           tableBoundHints.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6084,11 +6083,11 @@ class GoogleCloudDocumentaiV1beta2Vertex {
   GoogleCloudDocumentaiV1beta2Vertex();
 
   GoogleCloudDocumentaiV1beta2Vertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"];
+    if (_json.containsKey('x')) {
+      x = _json['x'];
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"];
+    if (_json.containsKey('y')) {
+      y = _json['y'];
     }
   }
 
@@ -6096,10 +6095,10 @@ class GoogleCloudDocumentaiV1beta2Vertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -6137,11 +6136,11 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   GoogleCloudDocumentaiV1beta3BatchProcessMetadata();
 
   GoogleCloudDocumentaiV1beta3BatchProcessMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("individualProcessStatuses")) {
-      individualProcessStatuses = (_json["individualProcessStatuses"]
+    if (_json.containsKey('individualProcessStatuses')) {
+      individualProcessStatuses = (_json['individualProcessStatuses']
               as core.List)
           .map<GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus>(
               (value) =>
@@ -6149,14 +6148,14 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -6164,20 +6163,20 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (individualProcessStatuses != null) {
-      _json["individualProcessStatuses"] =
+      _json['individualProcessStatuses'] =
           individualProcessStatuses.map((value) => value.toJson()).toList();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -6208,17 +6207,17 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
 
   GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus.fromJson(
       core.Map _json) {
-    if (_json.containsKey("humanReviewOperation")) {
-      humanReviewOperation = _json["humanReviewOperation"];
+    if (_json.containsKey('humanReviewOperation')) {
+      humanReviewOperation = _json['humanReviewOperation'];
     }
-    if (_json.containsKey("inputGcsSource")) {
-      inputGcsSource = _json["inputGcsSource"];
+    if (_json.containsKey('inputGcsSource')) {
+      inputGcsSource = _json['inputGcsSource'];
     }
-    if (_json.containsKey("outputGcsDestination")) {
-      outputGcsDestination = _json["outputGcsDestination"];
+    if (_json.containsKey('outputGcsDestination')) {
+      outputGcsDestination = _json['outputGcsDestination'];
     }
-    if (_json.containsKey("status")) {
-      status = GoogleRpcStatus.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = GoogleRpcStatus.fromJson(_json['status']);
     }
   }
 
@@ -6226,16 +6225,16 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (humanReviewOperation != null) {
-      _json["humanReviewOperation"] = humanReviewOperation;
+      _json['humanReviewOperation'] = humanReviewOperation;
     }
     if (inputGcsSource != null) {
-      _json["inputGcsSource"] = inputGcsSource;
+      _json['inputGcsSource'] = inputGcsSource;
     }
     if (outputGcsDestination != null) {
-      _json["outputGcsDestination"] = outputGcsDestination;
+      _json['outputGcsDestination'] = outputGcsDestination;
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     return _json;
   }
@@ -6280,17 +6279,17 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
 
   GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
+    if (_json.containsKey('stateMessage')) {
+      stateMessage = _json['stateMessage'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -6298,16 +6297,16 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+      _json['stateMessage'] = stateMessage;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -6321,8 +6320,8 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
   GoogleCloudDocumentaiV1beta3ReviewDocumentResponse();
 
   GoogleCloudDocumentaiV1beta3ReviewDocumentResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("gcsDestination")) {
-      gcsDestination = _json["gcsDestination"];
+    if (_json.containsKey('gcsDestination')) {
+      gcsDestination = _json['gcsDestination'];
     }
   }
 
@@ -6330,7 +6329,7 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination;
+      _json['gcsDestination'] = gcsDestination;
     }
     return _json;
   }
@@ -6376,22 +6375,22 @@ class GoogleLongrunningOperation {
   GoogleLongrunningOperation();
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -6399,19 +6398,19 @@ class GoogleLongrunningOperation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -6459,17 +6458,17 @@ class GoogleRpcStatus {
   GoogleRpcStatus();
 
   GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -6477,13 +6476,13 @@ class GoogleRpcStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -6561,17 +6560,17 @@ class GoogleTypeColor {
   GoogleTypeColor();
 
   GoogleTypeColor.fromJson(core.Map _json) {
-    if (_json.containsKey("alpha")) {
-      alpha = _json["alpha"].toDouble();
+    if (_json.containsKey('alpha')) {
+      alpha = _json['alpha'].toDouble();
     }
-    if (_json.containsKey("blue")) {
-      blue = _json["blue"].toDouble();
+    if (_json.containsKey('blue')) {
+      blue = _json['blue'].toDouble();
     }
-    if (_json.containsKey("green")) {
-      green = _json["green"].toDouble();
+    if (_json.containsKey('green')) {
+      green = _json['green'].toDouble();
     }
-    if (_json.containsKey("red")) {
-      red = _json["red"].toDouble();
+    if (_json.containsKey('red')) {
+      red = _json['red'].toDouble();
     }
   }
 
@@ -6579,16 +6578,16 @@ class GoogleTypeColor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alpha != null) {
-      _json["alpha"] = alpha;
+      _json['alpha'] = alpha;
     }
     if (blue != null) {
-      _json["blue"] = blue;
+      _json['blue'] = blue;
     }
     if (green != null) {
-      _json["green"] = green;
+      _json['green'] = green;
     }
     if (red != null) {
-      _json["red"] = red;
+      _json['red'] = red;
     }
     return _json;
   }
@@ -6619,14 +6618,14 @@ class GoogleTypeDate {
   GoogleTypeDate();
 
   GoogleTypeDate.fromJson(core.Map _json) {
-    if (_json.containsKey("day")) {
-      day = _json["day"];
+    if (_json.containsKey('day')) {
+      day = _json['day'];
     }
-    if (_json.containsKey("month")) {
-      month = _json["month"];
+    if (_json.containsKey('month')) {
+      month = _json['month'];
     }
-    if (_json.containsKey("year")) {
-      year = _json["year"];
+    if (_json.containsKey('year')) {
+      year = _json['year'];
     }
   }
 
@@ -6634,13 +6633,13 @@ class GoogleTypeDate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (day != null) {
-      _json["day"] = day;
+      _json['day'] = day;
     }
     if (month != null) {
-      _json["month"] = month;
+      _json['month'] = month;
     }
     if (year != null) {
-      _json["year"] = year;
+      _json['year'] = year;
     }
     return _json;
   }
@@ -6694,32 +6693,32 @@ class GoogleTypeDateTime {
   GoogleTypeDateTime();
 
   GoogleTypeDateTime.fromJson(core.Map _json) {
-    if (_json.containsKey("day")) {
-      day = _json["day"];
+    if (_json.containsKey('day')) {
+      day = _json['day'];
     }
-    if (_json.containsKey("hours")) {
-      hours = _json["hours"];
+    if (_json.containsKey('hours')) {
+      hours = _json['hours'];
     }
-    if (_json.containsKey("minutes")) {
-      minutes = _json["minutes"];
+    if (_json.containsKey('minutes')) {
+      minutes = _json['minutes'];
     }
-    if (_json.containsKey("month")) {
-      month = _json["month"];
+    if (_json.containsKey('month')) {
+      month = _json['month'];
     }
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'];
     }
-    if (_json.containsKey("seconds")) {
-      seconds = _json["seconds"];
+    if (_json.containsKey('seconds')) {
+      seconds = _json['seconds'];
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = GoogleTypeTimeZone.fromJson(_json["timeZone"]);
+    if (_json.containsKey('timeZone')) {
+      timeZone = GoogleTypeTimeZone.fromJson(_json['timeZone']);
     }
-    if (_json.containsKey("utcOffset")) {
-      utcOffset = _json["utcOffset"];
+    if (_json.containsKey('utcOffset')) {
+      utcOffset = _json['utcOffset'];
     }
-    if (_json.containsKey("year")) {
-      year = _json["year"];
+    if (_json.containsKey('year')) {
+      year = _json['year'];
     }
   }
 
@@ -6727,31 +6726,31 @@ class GoogleTypeDateTime {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (day != null) {
-      _json["day"] = day;
+      _json['day'] = day;
     }
     if (hours != null) {
-      _json["hours"] = hours;
+      _json['hours'] = hours;
     }
     if (minutes != null) {
-      _json["minutes"] = minutes;
+      _json['minutes'] = minutes;
     }
     if (month != null) {
-      _json["month"] = month;
+      _json['month'] = month;
     }
     if (nanos != null) {
-      _json["nanos"] = nanos;
+      _json['nanos'] = nanos;
     }
     if (seconds != null) {
-      _json["seconds"] = seconds;
+      _json['seconds'] = seconds;
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone.toJson();
+      _json['timeZone'] = timeZone.toJson();
     }
     if (utcOffset != null) {
-      _json["utcOffset"] = utcOffset;
+      _json['utcOffset'] = utcOffset;
     }
     if (year != null) {
-      _json["year"] = year;
+      _json['year'] = year;
     }
     return _json;
   }
@@ -6777,14 +6776,14 @@ class GoogleTypeMoney {
   GoogleTypeMoney();
 
   GoogleTypeMoney.fromJson(core.Map _json) {
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'];
     }
-    if (_json.containsKey("units")) {
-      units = _json["units"];
+    if (_json.containsKey('units')) {
+      units = _json['units'];
     }
   }
 
@@ -6792,13 +6791,13 @@ class GoogleTypeMoney {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     if (nanos != null) {
-      _json["nanos"] = nanos;
+      _json['nanos'] = nanos;
     }
     if (units != null) {
-      _json["units"] = units;
+      _json['units'] = units;
     }
     return _json;
   }
@@ -6898,38 +6897,38 @@ class GoogleTypePostalAddress {
   GoogleTypePostalAddress();
 
   GoogleTypePostalAddress.fromJson(core.Map _json) {
-    if (_json.containsKey("addressLines")) {
-      addressLines = (_json["addressLines"] as core.List).cast<core.String>();
+    if (_json.containsKey('addressLines')) {
+      addressLines = (_json['addressLines'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("administrativeArea")) {
-      administrativeArea = _json["administrativeArea"];
+    if (_json.containsKey('administrativeArea')) {
+      administrativeArea = _json['administrativeArea'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("locality")) {
-      locality = _json["locality"];
+    if (_json.containsKey('locality')) {
+      locality = _json['locality'];
     }
-    if (_json.containsKey("organization")) {
-      organization = _json["organization"];
+    if (_json.containsKey('organization')) {
+      organization = _json['organization'];
     }
-    if (_json.containsKey("postalCode")) {
-      postalCode = _json["postalCode"];
+    if (_json.containsKey('postalCode')) {
+      postalCode = _json['postalCode'];
     }
-    if (_json.containsKey("recipients")) {
-      recipients = (_json["recipients"] as core.List).cast<core.String>();
+    if (_json.containsKey('recipients')) {
+      recipients = (_json['recipients'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("regionCode")) {
-      regionCode = _json["regionCode"];
+    if (_json.containsKey('regionCode')) {
+      regionCode = _json['regionCode'];
     }
-    if (_json.containsKey("revision")) {
-      revision = _json["revision"];
+    if (_json.containsKey('revision')) {
+      revision = _json['revision'];
     }
-    if (_json.containsKey("sortingCode")) {
-      sortingCode = _json["sortingCode"];
+    if (_json.containsKey('sortingCode')) {
+      sortingCode = _json['sortingCode'];
     }
-    if (_json.containsKey("sublocality")) {
-      sublocality = _json["sublocality"];
+    if (_json.containsKey('sublocality')) {
+      sublocality = _json['sublocality'];
     }
   }
 
@@ -6937,37 +6936,37 @@ class GoogleTypePostalAddress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addressLines != null) {
-      _json["addressLines"] = addressLines;
+      _json['addressLines'] = addressLines;
     }
     if (administrativeArea != null) {
-      _json["administrativeArea"] = administrativeArea;
+      _json['administrativeArea'] = administrativeArea;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (locality != null) {
-      _json["locality"] = locality;
+      _json['locality'] = locality;
     }
     if (organization != null) {
-      _json["organization"] = organization;
+      _json['organization'] = organization;
     }
     if (postalCode != null) {
-      _json["postalCode"] = postalCode;
+      _json['postalCode'] = postalCode;
     }
     if (recipients != null) {
-      _json["recipients"] = recipients;
+      _json['recipients'] = recipients;
     }
     if (regionCode != null) {
-      _json["regionCode"] = regionCode;
+      _json['regionCode'] = regionCode;
     }
     if (revision != null) {
-      _json["revision"] = revision;
+      _json['revision'] = revision;
     }
     if (sortingCode != null) {
-      _json["sortingCode"] = sortingCode;
+      _json['sortingCode'] = sortingCode;
     }
     if (sublocality != null) {
-      _json["sublocality"] = sublocality;
+      _json['sublocality'] = sublocality;
     }
     return _json;
   }
@@ -6985,11 +6984,11 @@ class GoogleTypeTimeZone {
   GoogleTypeTimeZone();
 
   GoogleTypeTimeZone.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -6997,10 +6996,10 @@ class GoogleTypeTimeZone {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }

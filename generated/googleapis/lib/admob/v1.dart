@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,15 +38,15 @@ const core.String USER_AGENT = 'dart-api-client admob/v1';
 class AdmobApi {
   /// See your AdMob data
   static const AdmobReportScope =
-      "https://www.googleapis.com/auth/admob.report";
+      'https://www.googleapis.com/auth/admob.report';
 
   final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
   AdmobApi(http.Client client,
-      {core.String rootUrl = "https://admob.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://admob.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -92,17 +91,17 @@ class AccountsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -147,20 +146,20 @@ class AccountsResourceApi {
     core.String _body;
 
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/accounts';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -215,10 +214,10 @@ class AccountsMediationReportResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -227,7 +226,7 @@ class AccountsMediationReportResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -282,10 +281,10 @@ class AccountsNetworkReportResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -294,7 +293,7 @@ class AccountsNetworkReportResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -331,14 +330,14 @@ class Date {
   Date();
 
   Date.fromJson(core.Map _json) {
-    if (_json.containsKey("day")) {
-      day = _json["day"];
+    if (_json.containsKey('day')) {
+      day = _json['day'];
     }
-    if (_json.containsKey("month")) {
-      month = _json["month"];
+    if (_json.containsKey('month')) {
+      month = _json['month'];
     }
-    if (_json.containsKey("year")) {
-      year = _json["year"];
+    if (_json.containsKey('year')) {
+      year = _json['year'];
     }
   }
 
@@ -346,13 +345,13 @@ class Date {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (day != null) {
-      _json["day"] = day;
+      _json['day'] = day;
     }
     if (month != null) {
-      _json["month"] = month;
+      _json['month'] = month;
     }
     if (year != null) {
-      _json["year"] = year;
+      _json['year'] = year;
     }
     return _json;
   }
@@ -371,11 +370,11 @@ class DateRange {
   DateRange();
 
   DateRange.fromJson(core.Map _json) {
-    if (_json.containsKey("endDate")) {
-      endDate = Date.fromJson(_json["endDate"]);
+    if (_json.containsKey('endDate')) {
+      endDate = Date.fromJson(_json['endDate']);
     }
-    if (_json.containsKey("startDate")) {
-      startDate = Date.fromJson(_json["startDate"]);
+    if (_json.containsKey('startDate')) {
+      startDate = Date.fromJson(_json['startDate']);
     }
   }
 
@@ -383,10 +382,10 @@ class DateRange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endDate != null) {
-      _json["endDate"] = endDate.toJson();
+      _json['endDate'] = endDate.toJson();
     }
     if (startDate != null) {
-      _json["startDate"] = startDate.toJson();
+      _json['startDate'] = startDate.toJson();
     }
     return _json;
   }
@@ -400,8 +399,8 @@ class GenerateMediationReportRequest {
   GenerateMediationReportRequest();
 
   GenerateMediationReportRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("reportSpec")) {
-      reportSpec = MediationReportSpec.fromJson(_json["reportSpec"]);
+    if (_json.containsKey('reportSpec')) {
+      reportSpec = MediationReportSpec.fromJson(_json['reportSpec']);
     }
   }
 
@@ -409,7 +408,7 @@ class GenerateMediationReportRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (reportSpec != null) {
-      _json["reportSpec"] = reportSpec.toJson();
+      _json['reportSpec'] = reportSpec.toJson();
     }
     return _json;
   }
@@ -440,14 +439,14 @@ class GenerateMediationReportResponse {
   GenerateMediationReportResponse();
 
   GenerateMediationReportResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("footer")) {
-      footer = ReportFooter.fromJson(_json["footer"]);
+    if (_json.containsKey('footer')) {
+      footer = ReportFooter.fromJson(_json['footer']);
     }
-    if (_json.containsKey("header")) {
-      header = ReportHeader.fromJson(_json["header"]);
+    if (_json.containsKey('header')) {
+      header = ReportHeader.fromJson(_json['header']);
     }
-    if (_json.containsKey("row")) {
-      row = ReportRow.fromJson(_json["row"]);
+    if (_json.containsKey('row')) {
+      row = ReportRow.fromJson(_json['row']);
     }
   }
 
@@ -455,13 +454,13 @@ class GenerateMediationReportResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (footer != null) {
-      _json["footer"] = footer.toJson();
+      _json['footer'] = footer.toJson();
     }
     if (header != null) {
-      _json["header"] = header.toJson();
+      _json['header'] = header.toJson();
     }
     if (row != null) {
-      _json["row"] = row.toJson();
+      _json['row'] = row.toJson();
     }
     return _json;
   }
@@ -475,8 +474,8 @@ class GenerateNetworkReportRequest {
   GenerateNetworkReportRequest();
 
   GenerateNetworkReportRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("reportSpec")) {
-      reportSpec = NetworkReportSpec.fromJson(_json["reportSpec"]);
+    if (_json.containsKey('reportSpec')) {
+      reportSpec = NetworkReportSpec.fromJson(_json['reportSpec']);
     }
   }
 
@@ -484,7 +483,7 @@ class GenerateNetworkReportRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (reportSpec != null) {
-      _json["reportSpec"] = reportSpec.toJson();
+      _json['reportSpec'] = reportSpec.toJson();
     }
     return _json;
   }
@@ -515,14 +514,14 @@ class GenerateNetworkReportResponse {
   GenerateNetworkReportResponse();
 
   GenerateNetworkReportResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("footer")) {
-      footer = ReportFooter.fromJson(_json["footer"]);
+    if (_json.containsKey('footer')) {
+      footer = ReportFooter.fromJson(_json['footer']);
     }
-    if (_json.containsKey("header")) {
-      header = ReportHeader.fromJson(_json["header"]);
+    if (_json.containsKey('header')) {
+      header = ReportHeader.fromJson(_json['header']);
     }
-    if (_json.containsKey("row")) {
-      row = ReportRow.fromJson(_json["row"]);
+    if (_json.containsKey('row')) {
+      row = ReportRow.fromJson(_json['row']);
     }
   }
 
@@ -530,13 +529,13 @@ class GenerateNetworkReportResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (footer != null) {
-      _json["footer"] = footer.toJson();
+      _json['footer'] = footer.toJson();
     }
     if (header != null) {
-      _json["header"] = header.toJson();
+      _json['header'] = header.toJson();
     }
     if (row != null) {
-      _json["row"] = row.toJson();
+      _json['row'] = row.toJson();
     }
     return _json;
   }
@@ -554,13 +553,13 @@ class ListPublisherAccountsResponse {
   ListPublisherAccountsResponse();
 
   ListPublisherAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("account")) {
-      account = (_json["account"] as core.List)
+    if (_json.containsKey('account')) {
+      account = (_json['account'] as core.List)
           .map<PublisherAccount>((value) => PublisherAccount.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -568,10 +567,10 @@ class ListPublisherAccountsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (account != null) {
-      _json["account"] = account.map((value) => value.toJson()).toList();
+      _json['account'] = account.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -593,11 +592,11 @@ class LocalizationSettings {
   LocalizationSettings();
 
   LocalizationSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -605,10 +604,10 @@ class LocalizationSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -667,36 +666,36 @@ class MediationReportSpec {
   MediationReportSpec();
 
   MediationReportSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("dateRange")) {
-      dateRange = DateRange.fromJson(_json["dateRange"]);
+    if (_json.containsKey('dateRange')) {
+      dateRange = DateRange.fromJson(_json['dateRange']);
     }
-    if (_json.containsKey("dimensionFilters")) {
-      dimensionFilters = (_json["dimensionFilters"] as core.List)
+    if (_json.containsKey('dimensionFilters')) {
+      dimensionFilters = (_json['dimensionFilters'] as core.List)
           .map<MediationReportSpecDimensionFilter>(
               (value) => MediationReportSpecDimensionFilter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("dimensions")) {
-      dimensions = (_json["dimensions"] as core.List).cast<core.String>();
+    if (_json.containsKey('dimensions')) {
+      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("localizationSettings")) {
+    if (_json.containsKey('localizationSettings')) {
       localizationSettings =
-          LocalizationSettings.fromJson(_json["localizationSettings"]);
+          LocalizationSettings.fromJson(_json['localizationSettings']);
     }
-    if (_json.containsKey("maxReportRows")) {
-      maxReportRows = _json["maxReportRows"];
+    if (_json.containsKey('maxReportRows')) {
+      maxReportRows = _json['maxReportRows'];
     }
-    if (_json.containsKey("metrics")) {
-      metrics = (_json["metrics"] as core.List).cast<core.String>();
+    if (_json.containsKey('metrics')) {
+      metrics = (_json['metrics'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("sortConditions")) {
-      sortConditions = (_json["sortConditions"] as core.List)
+    if (_json.containsKey('sortConditions')) {
+      sortConditions = (_json['sortConditions'] as core.List)
           .map<MediationReportSpecSortCondition>(
               (value) => MediationReportSpecSortCondition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
   }
 
@@ -704,30 +703,30 @@ class MediationReportSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dateRange != null) {
-      _json["dateRange"] = dateRange.toJson();
+      _json['dateRange'] = dateRange.toJson();
     }
     if (dimensionFilters != null) {
-      _json["dimensionFilters"] =
+      _json['dimensionFilters'] =
           dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] = dimensions;
+      _json['dimensions'] = dimensions;
     }
     if (localizationSettings != null) {
-      _json["localizationSettings"] = localizationSettings.toJson();
+      _json['localizationSettings'] = localizationSettings.toJson();
     }
     if (maxReportRows != null) {
-      _json["maxReportRows"] = maxReportRows;
+      _json['maxReportRows'] = maxReportRows;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics;
+      _json['metrics'] = metrics;
     }
     if (sortConditions != null) {
-      _json["sortConditions"] =
+      _json['sortConditions'] =
           sortConditions.map((value) => value.toJson()).toList();
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     return _json;
   }
@@ -771,11 +770,11 @@ class MediationReportSpecDimensionFilter {
   MediationReportSpecDimensionFilter();
 
   MediationReportSpecDimensionFilter.fromJson(core.Map _json) {
-    if (_json.containsKey("dimension")) {
-      dimension = _json["dimension"];
+    if (_json.containsKey('dimension')) {
+      dimension = _json['dimension'];
     }
-    if (_json.containsKey("matchesAny")) {
-      matchesAny = StringList.fromJson(_json["matchesAny"]);
+    if (_json.containsKey('matchesAny')) {
+      matchesAny = StringList.fromJson(_json['matchesAny']);
     }
   }
 
@@ -783,10 +782,10 @@ class MediationReportSpecDimensionFilter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dimension != null) {
-      _json["dimension"] = dimension;
+      _json['dimension'] = dimension;
     }
     if (matchesAny != null) {
-      _json["matchesAny"] = matchesAny.toJson();
+      _json['matchesAny'] = matchesAny.toJson();
     }
     return _json;
   }
@@ -863,14 +862,14 @@ class MediationReportSpecSortCondition {
   MediationReportSpecSortCondition();
 
   MediationReportSpecSortCondition.fromJson(core.Map _json) {
-    if (_json.containsKey("dimension")) {
-      dimension = _json["dimension"];
+    if (_json.containsKey('dimension')) {
+      dimension = _json['dimension'];
     }
-    if (_json.containsKey("metric")) {
-      metric = _json["metric"];
+    if (_json.containsKey('metric')) {
+      metric = _json['metric'];
     }
-    if (_json.containsKey("order")) {
-      order = _json["order"];
+    if (_json.containsKey('order')) {
+      order = _json['order'];
     }
   }
 
@@ -878,13 +877,13 @@ class MediationReportSpecSortCondition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dimension != null) {
-      _json["dimension"] = dimension;
+      _json['dimension'] = dimension;
     }
     if (metric != null) {
-      _json["metric"] = metric;
+      _json['metric'] = metric;
     }
     if (order != null) {
-      _json["order"] = order;
+      _json['order'] = order;
     }
     return _json;
   }
@@ -944,36 +943,36 @@ class NetworkReportSpec {
   NetworkReportSpec();
 
   NetworkReportSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("dateRange")) {
-      dateRange = DateRange.fromJson(_json["dateRange"]);
+    if (_json.containsKey('dateRange')) {
+      dateRange = DateRange.fromJson(_json['dateRange']);
     }
-    if (_json.containsKey("dimensionFilters")) {
-      dimensionFilters = (_json["dimensionFilters"] as core.List)
+    if (_json.containsKey('dimensionFilters')) {
+      dimensionFilters = (_json['dimensionFilters'] as core.List)
           .map<NetworkReportSpecDimensionFilter>(
               (value) => NetworkReportSpecDimensionFilter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("dimensions")) {
-      dimensions = (_json["dimensions"] as core.List).cast<core.String>();
+    if (_json.containsKey('dimensions')) {
+      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("localizationSettings")) {
+    if (_json.containsKey('localizationSettings')) {
       localizationSettings =
-          LocalizationSettings.fromJson(_json["localizationSettings"]);
+          LocalizationSettings.fromJson(_json['localizationSettings']);
     }
-    if (_json.containsKey("maxReportRows")) {
-      maxReportRows = _json["maxReportRows"];
+    if (_json.containsKey('maxReportRows')) {
+      maxReportRows = _json['maxReportRows'];
     }
-    if (_json.containsKey("metrics")) {
-      metrics = (_json["metrics"] as core.List).cast<core.String>();
+    if (_json.containsKey('metrics')) {
+      metrics = (_json['metrics'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("sortConditions")) {
-      sortConditions = (_json["sortConditions"] as core.List)
+    if (_json.containsKey('sortConditions')) {
+      sortConditions = (_json['sortConditions'] as core.List)
           .map<NetworkReportSpecSortCondition>(
               (value) => NetworkReportSpecSortCondition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
   }
 
@@ -981,30 +980,30 @@ class NetworkReportSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dateRange != null) {
-      _json["dateRange"] = dateRange.toJson();
+      _json['dateRange'] = dateRange.toJson();
     }
     if (dimensionFilters != null) {
-      _json["dimensionFilters"] =
+      _json['dimensionFilters'] =
           dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] = dimensions;
+      _json['dimensions'] = dimensions;
     }
     if (localizationSettings != null) {
-      _json["localizationSettings"] = localizationSettings.toJson();
+      _json['localizationSettings'] = localizationSettings.toJson();
     }
     if (maxReportRows != null) {
-      _json["maxReportRows"] = maxReportRows;
+      _json['maxReportRows'] = maxReportRows;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics;
+      _json['metrics'] = metrics;
     }
     if (sortConditions != null) {
-      _json["sortConditions"] =
+      _json['sortConditions'] =
           sortConditions.map((value) => value.toJson()).toList();
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     return _json;
   }
@@ -1047,11 +1046,11 @@ class NetworkReportSpecDimensionFilter {
   NetworkReportSpecDimensionFilter();
 
   NetworkReportSpecDimensionFilter.fromJson(core.Map _json) {
-    if (_json.containsKey("dimension")) {
-      dimension = _json["dimension"];
+    if (_json.containsKey('dimension')) {
+      dimension = _json['dimension'];
     }
-    if (_json.containsKey("matchesAny")) {
-      matchesAny = StringList.fromJson(_json["matchesAny"]);
+    if (_json.containsKey('matchesAny')) {
+      matchesAny = StringList.fromJson(_json['matchesAny']);
     }
   }
 
@@ -1059,10 +1058,10 @@ class NetworkReportSpecDimensionFilter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dimension != null) {
-      _json["dimension"] = dimension;
+      _json['dimension'] = dimension;
     }
     if (matchesAny != null) {
-      _json["matchesAny"] = matchesAny.toJson();
+      _json['matchesAny'] = matchesAny.toJson();
     }
     return _json;
   }
@@ -1139,14 +1138,14 @@ class NetworkReportSpecSortCondition {
   NetworkReportSpecSortCondition();
 
   NetworkReportSpecSortCondition.fromJson(core.Map _json) {
-    if (_json.containsKey("dimension")) {
-      dimension = _json["dimension"];
+    if (_json.containsKey('dimension')) {
+      dimension = _json['dimension'];
     }
-    if (_json.containsKey("metric")) {
-      metric = _json["metric"];
+    if (_json.containsKey('metric')) {
+      metric = _json['metric'];
     }
-    if (_json.containsKey("order")) {
-      order = _json["order"];
+    if (_json.containsKey('order')) {
+      order = _json['order'];
     }
   }
 
@@ -1154,13 +1153,13 @@ class NetworkReportSpecSortCondition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dimension != null) {
-      _json["dimension"] = dimension;
+      _json['dimension'] = dimension;
     }
     if (metric != null) {
-      _json["metric"] = metric;
+      _json['metric'] = metric;
     }
     if (order != null) {
-      _json["order"] = order;
+      _json['order'] = order;
     }
     return _json;
   }
@@ -1189,17 +1188,17 @@ class PublisherAccount {
   PublisherAccount();
 
   PublisherAccount.fromJson(core.Map _json) {
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("publisherId")) {
-      publisherId = _json["publisherId"];
+    if (_json.containsKey('publisherId')) {
+      publisherId = _json['publisherId'];
     }
-    if (_json.containsKey("reportingTimeZone")) {
-      reportingTimeZone = _json["reportingTimeZone"];
+    if (_json.containsKey('reportingTimeZone')) {
+      reportingTimeZone = _json['reportingTimeZone'];
     }
   }
 
@@ -1207,16 +1206,16 @@ class PublisherAccount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (publisherId != null) {
-      _json["publisherId"] = publisherId;
+      _json['publisherId'] = publisherId;
     }
     if (reportingTimeZone != null) {
-      _json["reportingTimeZone"] = reportingTimeZone;
+      _json['reportingTimeZone'] = reportingTimeZone;
     }
     return _json;
   }
@@ -1236,11 +1235,11 @@ class ReportFooter {
   ReportFooter();
 
   ReportFooter.fromJson(core.Map _json) {
-    if (_json.containsKey("matchingRowCount")) {
-      matchingRowCount = _json["matchingRowCount"];
+    if (_json.containsKey('matchingRowCount')) {
+      matchingRowCount = _json['matchingRowCount'];
     }
-    if (_json.containsKey("warnings")) {
-      warnings = (_json["warnings"] as core.List)
+    if (_json.containsKey('warnings')) {
+      warnings = (_json['warnings'] as core.List)
           .map<ReportWarning>((value) => ReportWarning.fromJson(value))
           .toList();
     }
@@ -1250,10 +1249,10 @@ class ReportFooter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (matchingRowCount != null) {
-      _json["matchingRowCount"] = matchingRowCount;
+      _json['matchingRowCount'] = matchingRowCount;
     }
     if (warnings != null) {
-      _json["warnings"] = warnings.map((value) => value.toJson()).toList();
+      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1277,15 +1276,15 @@ class ReportHeader {
   ReportHeader();
 
   ReportHeader.fromJson(core.Map _json) {
-    if (_json.containsKey("dateRange")) {
-      dateRange = DateRange.fromJson(_json["dateRange"]);
+    if (_json.containsKey('dateRange')) {
+      dateRange = DateRange.fromJson(_json['dateRange']);
     }
-    if (_json.containsKey("localizationSettings")) {
+    if (_json.containsKey('localizationSettings')) {
       localizationSettings =
-          LocalizationSettings.fromJson(_json["localizationSettings"]);
+          LocalizationSettings.fromJson(_json['localizationSettings']);
     }
-    if (_json.containsKey("reportingTimeZone")) {
-      reportingTimeZone = _json["reportingTimeZone"];
+    if (_json.containsKey('reportingTimeZone')) {
+      reportingTimeZone = _json['reportingTimeZone'];
     }
   }
 
@@ -1293,13 +1292,13 @@ class ReportHeader {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dateRange != null) {
-      _json["dateRange"] = dateRange.toJson();
+      _json['dateRange'] = dateRange.toJson();
     }
     if (localizationSettings != null) {
-      _json["localizationSettings"] = localizationSettings.toJson();
+      _json['localizationSettings'] = localizationSettings.toJson();
     }
     if (reportingTimeZone != null) {
-      _json["reportingTimeZone"] = reportingTimeZone;
+      _json['reportingTimeZone'] = reportingTimeZone;
     }
     return _json;
   }
@@ -1318,14 +1317,14 @@ class ReportRow {
   ReportRow();
 
   ReportRow.fromJson(core.Map _json) {
-    if (_json.containsKey("dimensionValues")) {
+    if (_json.containsKey('dimensionValues')) {
       dimensionValues = commons.mapMap<core.Map, ReportRowDimensionValue>(
-          _json["dimensionValues"].cast<core.String, core.Map>(),
+          _json['dimensionValues'].cast<core.String, core.Map>(),
           (core.Map item) => ReportRowDimensionValue.fromJson(item));
     }
-    if (_json.containsKey("metricValues")) {
+    if (_json.containsKey('metricValues')) {
       metricValues = commons.mapMap<core.Map, ReportRowMetricValue>(
-          _json["metricValues"].cast<core.String, core.Map>(),
+          _json['metricValues'].cast<core.String, core.Map>(),
           (core.Map item) => ReportRowMetricValue.fromJson(item));
     }
   }
@@ -1334,12 +1333,12 @@ class ReportRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dimensionValues != null) {
-      _json["dimensionValues"] = commons
+      _json['dimensionValues'] = commons
           .mapMap<ReportRowDimensionValue, core.Map<core.String, core.Object>>(
               dimensionValues, (ReportRowDimensionValue item) => item.toJson());
     }
     if (metricValues != null) {
-      _json["metricValues"] = commons
+      _json['metricValues'] = commons
           .mapMap<ReportRowMetricValue, core.Map<core.String, core.Object>>(
               metricValues, (ReportRowMetricValue item) => item.toJson());
     }
@@ -1360,11 +1359,11 @@ class ReportRowDimensionValue {
   ReportRowDimensionValue();
 
   ReportRowDimensionValue.fromJson(core.Map _json) {
-    if (_json.containsKey("displayLabel")) {
-      displayLabel = _json["displayLabel"];
+    if (_json.containsKey('displayLabel')) {
+      displayLabel = _json['displayLabel'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -1372,10 +1371,10 @@ class ReportRowDimensionValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayLabel != null) {
-      _json["displayLabel"] = displayLabel;
+      _json['displayLabel'] = displayLabel;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -1397,14 +1396,14 @@ class ReportRowMetricValue {
   ReportRowMetricValue();
 
   ReportRowMetricValue.fromJson(core.Map _json) {
-    if (_json.containsKey("doubleValue")) {
-      doubleValue = _json["doubleValue"].toDouble();
+    if (_json.containsKey('doubleValue')) {
+      doubleValue = _json['doubleValue'].toDouble();
     }
-    if (_json.containsKey("integerValue")) {
-      integerValue = _json["integerValue"];
+    if (_json.containsKey('integerValue')) {
+      integerValue = _json['integerValue'];
     }
-    if (_json.containsKey("microsValue")) {
-      microsValue = _json["microsValue"];
+    if (_json.containsKey('microsValue')) {
+      microsValue = _json['microsValue'];
     }
   }
 
@@ -1412,13 +1411,13 @@ class ReportRowMetricValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (doubleValue != null) {
-      _json["doubleValue"] = doubleValue;
+      _json['doubleValue'] = doubleValue;
     }
     if (integerValue != null) {
-      _json["integerValue"] = integerValue;
+      _json['integerValue'] = integerValue;
     }
     if (microsValue != null) {
-      _json["microsValue"] = microsValue;
+      _json['microsValue'] = microsValue;
     }
     return _json;
   }
@@ -1452,11 +1451,11 @@ class ReportWarning {
   ReportWarning();
 
   ReportWarning.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -1464,10 +1463,10 @@ class ReportWarning {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1481,8 +1480,8 @@ class StringList {
   StringList();
 
   StringList.fromJson(core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List).cast<core.String>();
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List).cast<core.String>();
     }
   }
 
@@ -1490,7 +1489,7 @@ class StringList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values;
+      _json['values'] = values;
     }
     return _json;
   }

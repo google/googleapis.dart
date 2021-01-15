@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -104,8 +104,8 @@ void checkArrayValue(api.ArrayValue o) {
 
 core.List<core.String> buildUnnamed3254() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -123,8 +123,8 @@ api.BatchGetDocumentsRequest buildBatchGetDocumentsRequest() {
     o.documents = buildUnnamed3254();
     o.mask = buildDocumentMask();
     o.newTransaction = buildTransactionOptions();
-    o.readTime = "foo";
-    o.transaction = "foo";
+    o.readTime = 'foo';
+    o.transaction = 'foo';
   }
   buildCounterBatchGetDocumentsRequest--;
   return o;
@@ -148,9 +148,9 @@ api.BatchGetDocumentsResponse buildBatchGetDocumentsResponse() {
   buildCounterBatchGetDocumentsResponse++;
   if (buildCounterBatchGetDocumentsResponse < 3) {
     o.found = buildDocument();
-    o.missing = "foo";
-    o.readTime = "foo";
-    o.transaction = "foo";
+    o.missing = 'foo';
+    o.readTime = 'foo';
+    o.transaction = 'foo';
   }
   buildCounterBatchGetDocumentsResponse--;
   return o;
@@ -169,15 +169,15 @@ void checkBatchGetDocumentsResponse(api.BatchGetDocumentsResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed3255() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed3255(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<api.Write> buildUnnamed3256() {
@@ -285,7 +285,7 @@ api.BeginTransactionResponse buildBeginTransactionResponse() {
   var o = api.BeginTransactionResponse();
   buildCounterBeginTransactionResponse++;
   if (buildCounterBeginTransactionResponse < 3) {
-    o.transaction = "foo";
+    o.transaction = 'foo';
   }
   buildCounterBeginTransactionResponse--;
   return o;
@@ -305,7 +305,7 @@ api.CollectionSelector buildCollectionSelector() {
   buildCounterCollectionSelector++;
   if (buildCounterCollectionSelector < 3) {
     o.allDescendants = true;
-    o.collectionId = "foo";
+    o.collectionId = 'foo';
   }
   buildCounterCollectionSelector--;
   return o;
@@ -338,7 +338,7 @@ api.CommitRequest buildCommitRequest() {
   var o = api.CommitRequest();
   buildCounterCommitRequest++;
   if (buildCounterCommitRequest < 3) {
-    o.transaction = "foo";
+    o.transaction = 'foo';
     o.writes = buildUnnamed3259();
   }
   buildCounterCommitRequest--;
@@ -372,7 +372,7 @@ api.CommitResponse buildCommitResponse() {
   var o = api.CommitResponse();
   buildCounterCommitResponse++;
   if (buildCounterCommitResponse < 3) {
-    o.commitTime = "foo";
+    o.commitTime = 'foo';
     o.writeResults = buildUnnamed3260();
   }
   buildCounterCommitResponse--;
@@ -407,7 +407,7 @@ api.CompositeFilter buildCompositeFilter() {
   buildCounterCompositeFilter++;
   if (buildCounterCompositeFilter < 3) {
     o.filters = buildUnnamed3261();
-    o.op = "foo";
+    o.op = 'foo';
   }
   buildCounterCompositeFilter--;
   return o;
@@ -458,15 +458,15 @@ void checkCursor(api.Cursor o) {
 
 core.Map<core.String, api.Value> buildUnnamed3263() {
   var o = <core.String, api.Value>{};
-  o["x"] = buildValue();
-  o["y"] = buildValue();
+  o['x'] = buildValue();
+  o['y'] = buildValue();
   return o;
 }
 
 void checkUnnamed3263(core.Map<core.String, api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o["x"]);
-  checkValue(o["y"]);
+  checkValue(o['x']);
+  checkValue(o['y']);
 }
 
 core.int buildCounterDocument = 0;
@@ -474,10 +474,10 @@ api.Document buildDocument() {
   var o = api.Document();
   buildCounterDocument++;
   if (buildCounterDocument < 3) {
-    o.createTime = "foo";
+    o.createTime = 'foo';
     o.fields = buildUnnamed3263();
-    o.name = "foo";
-    o.updateTime = "foo";
+    o.name = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterDocument--;
   return o;
@@ -561,8 +561,8 @@ api.DocumentDelete buildDocumentDelete() {
   var o = api.DocumentDelete();
   buildCounterDocumentDelete++;
   if (buildCounterDocumentDelete < 3) {
-    o.document = "foo";
-    o.readTime = "foo";
+    o.document = 'foo';
+    o.readTime = 'foo';
     o.removedTargetIds = buildUnnamed3266();
   }
   buildCounterDocumentDelete--;
@@ -581,8 +581,8 @@ void checkDocumentDelete(api.DocumentDelete o) {
 
 core.List<core.String> buildUnnamed3267() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -629,8 +629,8 @@ api.DocumentRemove buildDocumentRemove() {
   var o = api.DocumentRemove();
   buildCounterDocumentRemove++;
   if (buildCounterDocumentRemove < 3) {
-    o.document = "foo";
-    o.readTime = "foo";
+    o.document = 'foo';
+    o.readTime = 'foo';
     o.removedTargetIds = buildUnnamed3268();
   }
   buildCounterDocumentRemove--;
@@ -665,7 +665,7 @@ api.DocumentTransform buildDocumentTransform() {
   var o = api.DocumentTransform();
   buildCounterDocumentTransform++;
   if (buildCounterDocumentTransform < 3) {
-    o.document = "foo";
+    o.document = 'foo';
     o.fieldTransforms = buildUnnamed3269();
   }
   buildCounterDocumentTransform--;
@@ -683,8 +683,8 @@ void checkDocumentTransform(api.DocumentTransform o) {
 
 core.List<core.String> buildUnnamed3270() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -755,7 +755,7 @@ api.FieldFilter buildFieldFilter() {
   buildCounterFieldFilter++;
   if (buildCounterFieldFilter < 3) {
     o.field = buildFieldReference();
-    o.op = "foo";
+    o.op = 'foo';
     o.value = buildValue();
   }
   buildCounterFieldFilter--;
@@ -777,7 +777,7 @@ api.FieldReference buildFieldReference() {
   var o = api.FieldReference();
   buildCounterFieldReference++;
   if (buildCounterFieldReference < 3) {
-    o.fieldPath = "foo";
+    o.fieldPath = 'foo';
   }
   buildCounterFieldReference--;
   return o;
@@ -797,12 +797,12 @@ api.FieldTransform buildFieldTransform() {
   buildCounterFieldTransform++;
   if (buildCounterFieldTransform < 3) {
     o.appendMissingElements = buildArrayValue();
-    o.fieldPath = "foo";
+    o.fieldPath = 'foo';
     o.increment = buildValue();
     o.maximum = buildValue();
     o.minimum = buildValue();
     o.removeAllFromArray = buildArrayValue();
-    o.setToServerValue = "foo";
+    o.setToServerValue = 'foo';
   }
   buildCounterFieldTransform--;
   return o;
@@ -847,8 +847,8 @@ void checkFilter(api.Filter o) {
 
 core.List<core.String> buildUnnamed3271() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -865,12 +865,12 @@ api.GoogleFirestoreAdminV1ExportDocumentsMetadata
   buildCounterGoogleFirestoreAdminV1ExportDocumentsMetadata++;
   if (buildCounterGoogleFirestoreAdminV1ExportDocumentsMetadata < 3) {
     o.collectionIds = buildUnnamed3271();
-    o.endTime = "foo";
-    o.operationState = "foo";
-    o.outputUriPrefix = "foo";
+    o.endTime = 'foo';
+    o.operationState = 'foo';
+    o.outputUriPrefix = 'foo';
     o.progressBytes = buildGoogleFirestoreAdminV1Progress();
     o.progressDocuments = buildGoogleFirestoreAdminV1Progress();
-    o.startTime = "foo";
+    o.startTime = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1ExportDocumentsMetadata--;
   return o;
@@ -893,8 +893,8 @@ void checkGoogleFirestoreAdminV1ExportDocumentsMetadata(
 
 core.List<core.String> buildUnnamed3272() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -911,7 +911,7 @@ api.GoogleFirestoreAdminV1ExportDocumentsRequest
   buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest++;
   if (buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest < 3) {
     o.collectionIds = buildUnnamed3272();
-    o.outputUriPrefix = "foo";
+    o.outputUriPrefix = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest--;
   return o;
@@ -933,7 +933,7 @@ api.GoogleFirestoreAdminV1ExportDocumentsResponse
   var o = api.GoogleFirestoreAdminV1ExportDocumentsResponse();
   buildCounterGoogleFirestoreAdminV1ExportDocumentsResponse++;
   if (buildCounterGoogleFirestoreAdminV1ExportDocumentsResponse < 3) {
-    o.outputUriPrefix = "foo";
+    o.outputUriPrefix = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1ExportDocumentsResponse--;
   return o;
@@ -954,7 +954,7 @@ api.GoogleFirestoreAdminV1Field buildGoogleFirestoreAdminV1Field() {
   buildCounterGoogleFirestoreAdminV1Field++;
   if (buildCounterGoogleFirestoreAdminV1Field < 3) {
     o.indexConfig = buildGoogleFirestoreAdminV1IndexConfig();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1Field--;
   return o;
@@ -988,13 +988,13 @@ api.GoogleFirestoreAdminV1FieldOperationMetadata
   var o = api.GoogleFirestoreAdminV1FieldOperationMetadata();
   buildCounterGoogleFirestoreAdminV1FieldOperationMetadata++;
   if (buildCounterGoogleFirestoreAdminV1FieldOperationMetadata < 3) {
-    o.endTime = "foo";
-    o.field = "foo";
+    o.endTime = 'foo';
+    o.field = 'foo';
     o.indexConfigDeltas = buildUnnamed3273();
     o.progressBytes = buildGoogleFirestoreAdminV1Progress();
     o.progressDocuments = buildGoogleFirestoreAdminV1Progress();
-    o.startTime = "foo";
-    o.state = "foo";
+    o.startTime = 'foo';
+    o.state = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1FieldOperationMetadata--;
   return o;
@@ -1017,8 +1017,8 @@ void checkGoogleFirestoreAdminV1FieldOperationMetadata(
 
 core.List<core.String> buildUnnamed3274() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1035,12 +1035,12 @@ api.GoogleFirestoreAdminV1ImportDocumentsMetadata
   buildCounterGoogleFirestoreAdminV1ImportDocumentsMetadata++;
   if (buildCounterGoogleFirestoreAdminV1ImportDocumentsMetadata < 3) {
     o.collectionIds = buildUnnamed3274();
-    o.endTime = "foo";
-    o.inputUriPrefix = "foo";
-    o.operationState = "foo";
+    o.endTime = 'foo';
+    o.inputUriPrefix = 'foo';
+    o.operationState = 'foo';
     o.progressBytes = buildGoogleFirestoreAdminV1Progress();
     o.progressDocuments = buildGoogleFirestoreAdminV1Progress();
-    o.startTime = "foo";
+    o.startTime = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1ImportDocumentsMetadata--;
   return o;
@@ -1063,8 +1063,8 @@ void checkGoogleFirestoreAdminV1ImportDocumentsMetadata(
 
 core.List<core.String> buildUnnamed3275() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1081,7 +1081,7 @@ api.GoogleFirestoreAdminV1ImportDocumentsRequest
   buildCounterGoogleFirestoreAdminV1ImportDocumentsRequest++;
   if (buildCounterGoogleFirestoreAdminV1ImportDocumentsRequest < 3) {
     o.collectionIds = buildUnnamed3275();
-    o.inputUriPrefix = "foo";
+    o.inputUriPrefix = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1ImportDocumentsRequest--;
   return o;
@@ -1116,9 +1116,9 @@ api.GoogleFirestoreAdminV1Index buildGoogleFirestoreAdminV1Index() {
   buildCounterGoogleFirestoreAdminV1Index++;
   if (buildCounterGoogleFirestoreAdminV1Index < 3) {
     o.fields = buildUnnamed3276();
-    o.name = "foo";
-    o.queryScope = "foo";
-    o.state = "foo";
+    o.name = 'foo';
+    o.queryScope = 'foo';
+    o.state = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1Index--;
   return o;
@@ -1153,7 +1153,7 @@ api.GoogleFirestoreAdminV1IndexConfig buildGoogleFirestoreAdminV1IndexConfig() {
   var o = api.GoogleFirestoreAdminV1IndexConfig();
   buildCounterGoogleFirestoreAdminV1IndexConfig++;
   if (buildCounterGoogleFirestoreAdminV1IndexConfig < 3) {
-    o.ancestorField = "foo";
+    o.ancestorField = 'foo';
     o.indexes = buildUnnamed3277();
     o.reverting = true;
     o.usesAncestorConfig = true;
@@ -1180,7 +1180,7 @@ api.GoogleFirestoreAdminV1IndexConfigDelta
   var o = api.GoogleFirestoreAdminV1IndexConfigDelta();
   buildCounterGoogleFirestoreAdminV1IndexConfigDelta++;
   if (buildCounterGoogleFirestoreAdminV1IndexConfigDelta < 3) {
-    o.changeType = "foo";
+    o.changeType = 'foo';
     o.index = buildGoogleFirestoreAdminV1Index();
   }
   buildCounterGoogleFirestoreAdminV1IndexConfigDelta--;
@@ -1202,9 +1202,9 @@ api.GoogleFirestoreAdminV1IndexField buildGoogleFirestoreAdminV1IndexField() {
   var o = api.GoogleFirestoreAdminV1IndexField();
   buildCounterGoogleFirestoreAdminV1IndexField++;
   if (buildCounterGoogleFirestoreAdminV1IndexField < 3) {
-    o.arrayConfig = "foo";
-    o.fieldPath = "foo";
-    o.order = "foo";
+    o.arrayConfig = 'foo';
+    o.fieldPath = 'foo';
+    o.order = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1IndexField--;
   return o;
@@ -1227,12 +1227,12 @@ api.GoogleFirestoreAdminV1IndexOperationMetadata
   var o = api.GoogleFirestoreAdminV1IndexOperationMetadata();
   buildCounterGoogleFirestoreAdminV1IndexOperationMetadata++;
   if (buildCounterGoogleFirestoreAdminV1IndexOperationMetadata < 3) {
-    o.endTime = "foo";
-    o.index = "foo";
+    o.endTime = 'foo';
+    o.index = 'foo';
     o.progressBytes = buildGoogleFirestoreAdminV1Progress();
     o.progressDocuments = buildGoogleFirestoreAdminV1Progress();
-    o.startTime = "foo";
-    o.state = "foo";
+    o.startTime = 'foo';
+    o.state = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1IndexOperationMetadata--;
   return o;
@@ -1272,7 +1272,7 @@ api.GoogleFirestoreAdminV1ListFieldsResponse
   buildCounterGoogleFirestoreAdminV1ListFieldsResponse++;
   if (buildCounterGoogleFirestoreAdminV1ListFieldsResponse < 3) {
     o.fields = buildUnnamed3278();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1ListFieldsResponse--;
   return o;
@@ -1308,7 +1308,7 @@ api.GoogleFirestoreAdminV1ListIndexesResponse
   buildCounterGoogleFirestoreAdminV1ListIndexesResponse++;
   if (buildCounterGoogleFirestoreAdminV1ListIndexesResponse < 3) {
     o.indexes = buildUnnamed3279();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1ListIndexesResponse--;
   return o;
@@ -1346,8 +1346,8 @@ api.GoogleFirestoreAdminV1Progress buildGoogleFirestoreAdminV1Progress() {
   var o = api.GoogleFirestoreAdminV1Progress();
   buildCounterGoogleFirestoreAdminV1Progress++;
   if (buildCounterGoogleFirestoreAdminV1Progress < 3) {
-    o.completedWork = "foo";
-    o.estimatedWork = "foo";
+    o.completedWork = 'foo';
+    o.estimatedWork = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1Progress--;
   return o;
@@ -1398,7 +1398,7 @@ api.GoogleLongrunningListOperationsResponse
   var o = api.GoogleLongrunningListOperationsResponse();
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed3280();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
@@ -1417,12 +1417,12 @@ void checkGoogleLongrunningListOperationsResponse(
 
 core.Map<core.String, core.Object> buildUnnamed3281() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1432,26 +1432,26 @@ core.Map<core.String, core.Object> buildUnnamed3281() {
 
 void checkUnnamed3281(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed3282() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1461,16 +1461,16 @@ core.Map<core.String, core.Object> buildUnnamed3282() {
 
 void checkUnnamed3282(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -1481,7 +1481,7 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
     o.done = true;
     o.error = buildStatus();
     o.metadata = buildUnnamed3281();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed3282();
   }
   buildCounterGoogleLongrunningOperation--;
@@ -1527,7 +1527,7 @@ api.ListCollectionIdsRequest buildListCollectionIdsRequest() {
   buildCounterListCollectionIdsRequest++;
   if (buildCounterListCollectionIdsRequest < 3) {
     o.pageSize = 42;
-    o.pageToken = "foo";
+    o.pageToken = 'foo';
   }
   buildCounterListCollectionIdsRequest--;
   return o;
@@ -1544,8 +1544,8 @@ void checkListCollectionIdsRequest(api.ListCollectionIdsRequest o) {
 
 core.List<core.String> buildUnnamed3283() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1561,7 +1561,7 @@ api.ListCollectionIdsResponse buildListCollectionIdsResponse() {
   buildCounterListCollectionIdsResponse++;
   if (buildCounterListCollectionIdsResponse < 3) {
     o.collectionIds = buildUnnamed3283();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListCollectionIdsResponse--;
   return o;
@@ -1595,7 +1595,7 @@ api.ListDocumentsResponse buildListDocumentsResponse() {
   buildCounterListDocumentsResponse++;
   if (buildCounterListDocumentsResponse < 3) {
     o.documents = buildUnnamed3284();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListDocumentsResponse--;
   return o;
@@ -1629,7 +1629,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
     o.locations = buildUnnamed3285();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
   return o;
@@ -1646,15 +1646,15 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed3286() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed3286(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterListenRequest = 0;
@@ -1709,25 +1709,25 @@ void checkListenResponse(api.ListenResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed3287() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed3287(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed3288() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1737,16 +1737,16 @@ core.Map<core.String, core.Object> buildUnnamed3288() {
 
 void checkUnnamed3288(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterLocation = 0;
@@ -1754,11 +1754,11 @@ api.Location buildLocation() {
   var o = api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.labels = buildUnnamed3287();
-    o.locationId = "foo";
+    o.locationId = 'foo';
     o.metadata = buildUnnamed3288();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterLocation--;
   return o;
@@ -1778,15 +1778,15 @@ void checkLocation(api.Location o) {
 
 core.Map<core.String, api.Value> buildUnnamed3289() {
   var o = <core.String, api.Value>{};
-  o["x"] = buildValue();
-  o["y"] = buildValue();
+  o['x'] = buildValue();
+  o['y'] = buildValue();
   return o;
 }
 
 void checkUnnamed3289(core.Map<core.String, api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o["x"]);
-  checkValue(o["y"]);
+  checkValue(o['x']);
+  checkValue(o['y']);
 }
 
 core.int buildCounterMapValue = 0;
@@ -1813,7 +1813,7 @@ api.Order buildOrder() {
   var o = api.Order();
   buildCounterOrder++;
   if (buildCounterOrder < 3) {
-    o.direction = "foo";
+    o.direction = 'foo';
     o.field = buildFieldReference();
   }
   buildCounterOrder--;
@@ -1835,8 +1835,8 @@ api.PartitionQueryRequest buildPartitionQueryRequest() {
   buildCounterPartitionQueryRequest++;
   if (buildCounterPartitionQueryRequest < 3) {
     o.pageSize = 42;
-    o.pageToken = "foo";
-    o.partitionCount = "foo";
+    o.pageToken = 'foo';
+    o.partitionCount = 'foo';
     o.structuredQuery = buildStructuredQuery();
   }
   buildCounterPartitionQueryRequest--;
@@ -1872,7 +1872,7 @@ api.PartitionQueryResponse buildPartitionQueryResponse() {
   var o = api.PartitionQueryResponse();
   buildCounterPartitionQueryResponse++;
   if (buildCounterPartitionQueryResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.partitions = buildUnnamed3290();
   }
   buildCounterPartitionQueryResponse--;
@@ -1894,7 +1894,7 @@ api.Precondition buildPrecondition() {
   buildCounterPrecondition++;
   if (buildCounterPrecondition < 3) {
     o.exists = true;
-    o.updateTime = "foo";
+    o.updateTime = 'foo';
   }
   buildCounterPrecondition--;
   return o;
@@ -1946,7 +1946,7 @@ api.QueryTarget buildQueryTarget() {
   var o = api.QueryTarget();
   buildCounterQueryTarget++;
   if (buildCounterQueryTarget < 3) {
-    o.parent = "foo";
+    o.parent = 'foo';
     o.structuredQuery = buildStructuredQuery();
   }
   buildCounterQueryTarget--;
@@ -1967,7 +1967,7 @@ api.ReadOnly buildReadOnly() {
   var o = api.ReadOnly();
   buildCounterReadOnly++;
   if (buildCounterReadOnly < 3) {
-    o.readTime = "foo";
+    o.readTime = 'foo';
   }
   buildCounterReadOnly--;
   return o;
@@ -1986,7 +1986,7 @@ api.ReadWrite buildReadWrite() {
   var o = api.ReadWrite();
   buildCounterReadWrite++;
   if (buildCounterReadWrite < 3) {
-    o.retryTransaction = "foo";
+    o.retryTransaction = 'foo';
   }
   buildCounterReadWrite--;
   return o;
@@ -2005,7 +2005,7 @@ api.RollbackRequest buildRollbackRequest() {
   var o = api.RollbackRequest();
   buildCounterRollbackRequest++;
   if (buildCounterRollbackRequest < 3) {
-    o.transaction = "foo";
+    o.transaction = 'foo';
   }
   buildCounterRollbackRequest--;
   return o;
@@ -2025,9 +2025,9 @@ api.RunQueryRequest buildRunQueryRequest() {
   buildCounterRunQueryRequest++;
   if (buildCounterRunQueryRequest < 3) {
     o.newTransaction = buildTransactionOptions();
-    o.readTime = "foo";
+    o.readTime = 'foo';
     o.structuredQuery = buildStructuredQuery();
-    o.transaction = "foo";
+    o.transaction = 'foo';
   }
   buildCounterRunQueryRequest--;
   return o;
@@ -2050,9 +2050,9 @@ api.RunQueryResponse buildRunQueryResponse() {
   buildCounterRunQueryResponse++;
   if (buildCounterRunQueryResponse < 3) {
     o.document = buildDocument();
-    o.readTime = "foo";
+    o.readTime = 'foo';
     o.skippedResults = 42;
-    o.transaction = "foo";
+    o.transaction = 'foo';
   }
   buildCounterRunQueryResponse--;
   return o;
@@ -2071,12 +2071,12 @@ void checkRunQueryResponse(api.RunQueryResponse o) {
 
 core.Map<core.String, core.Object> buildUnnamed3292() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -2086,16 +2086,16 @@ core.Map<core.String, core.Object> buildUnnamed3292() {
 
 void checkUnnamed3292(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o["x"]) as core.Map;
+  var casted7 = (o['x']) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
-  var casted8 = (o["y"]) as core.Map;
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
+  var casted8 = (o['y']) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8["bool"], unittest.equals(true));
-  unittest.expect(casted8["string"], unittest.equals('foo'));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed3293() {
@@ -2118,7 +2118,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed3293();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -2201,8 +2201,8 @@ api.Target buildTarget() {
     o.documents = buildDocumentsTarget();
     o.once = true;
     o.query = buildQueryTarget();
-    o.readTime = "foo";
-    o.resumeToken = "foo";
+    o.readTime = 'foo';
+    o.resumeToken = 'foo';
     o.targetId = 42;
   }
   buildCounterTarget--;
@@ -2241,9 +2241,9 @@ api.TargetChange buildTargetChange() {
   buildCounterTargetChange++;
   if (buildCounterTargetChange < 3) {
     o.cause = buildStatus();
-    o.readTime = "foo";
-    o.resumeToken = "foo";
-    o.targetChangeType = "foo";
+    o.readTime = 'foo';
+    o.resumeToken = 'foo';
+    o.targetChangeType = 'foo';
     o.targetIds = buildUnnamed3296();
   }
   buildCounterTargetChange--;
@@ -2289,7 +2289,7 @@ api.UnaryFilter buildUnaryFilter() {
   buildCounterUnaryFilter++;
   if (buildCounterUnaryFilter < 3) {
     o.field = buildFieldReference();
-    o.op = "foo";
+    o.op = 'foo';
   }
   buildCounterUnaryFilter--;
   return o;
@@ -2311,15 +2311,15 @@ api.Value buildValue() {
   if (buildCounterValue < 3) {
     o.arrayValue = buildArrayValue();
     o.booleanValue = true;
-    o.bytesValue = "foo";
+    o.bytesValue = 'foo';
     o.doubleValue = 42.0;
     o.geoPointValue = buildLatLng();
-    o.integerValue = "foo";
+    o.integerValue = 'foo';
     o.mapValue = buildMapValue();
-    o.nullValue = "foo";
-    o.referenceValue = "foo";
-    o.stringValue = "foo";
-    o.timestampValue = "foo";
+    o.nullValue = 'foo';
+    o.referenceValue = 'foo';
+    o.stringValue = 'foo';
+    o.timestampValue = 'foo';
   }
   buildCounterValue--;
   return o;
@@ -2362,7 +2362,7 @@ api.Write buildWrite() {
   buildCounterWrite++;
   if (buildCounterWrite < 3) {
     o.currentDocument = buildPrecondition();
-    o.delete = "foo";
+    o.delete = 'foo';
     o.transform = buildDocumentTransform();
     o.update = buildDocument();
     o.updateMask = buildDocumentMask();
@@ -2387,15 +2387,15 @@ void checkWrite(api.Write o) {
 
 core.Map<core.String, core.String> buildUnnamed3298() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed3298(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<api.Write> buildUnnamed3299() {
@@ -2417,8 +2417,8 @@ api.WriteRequest buildWriteRequest() {
   buildCounterWriteRequest++;
   if (buildCounterWriteRequest < 3) {
     o.labels = buildUnnamed3298();
-    o.streamId = "foo";
-    o.streamToken = "foo";
+    o.streamId = 'foo';
+    o.streamToken = 'foo';
     o.writes = buildUnnamed3299();
   }
   buildCounterWriteRequest--;
@@ -2454,9 +2454,9 @@ api.WriteResponse buildWriteResponse() {
   var o = api.WriteResponse();
   buildCounterWriteResponse++;
   if (buildCounterWriteResponse < 3) {
-    o.commitTime = "foo";
-    o.streamId = "foo";
-    o.streamToken = "foo";
+    o.commitTime = 'foo';
+    o.streamId = 'foo';
+    o.streamToken = 'foo';
     o.writeResults = buildUnnamed3300();
   }
   buildCounterWriteResponse--;
@@ -2493,7 +2493,7 @@ api.WriteResult buildWriteResult() {
   buildCounterWriteResult++;
   if (buildCounterWriteResult < 3) {
     o.transformResults = buildUnnamed3301();
-    o.updateTime = "foo";
+    o.updateTime = 'foo';
   }
   buildCounterWriteResult--;
   return o;
@@ -2510,8 +2510,8 @@ void checkWriteResult(api.WriteResult o) {
 
 core.List<core.String> buildUnnamed3302() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2523,8 +2523,8 @@ void checkUnnamed3302(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3303() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2536,8 +2536,8 @@ void checkUnnamed3303(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3304() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2549,8 +2549,8 @@ void checkUnnamed3304(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3305() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2562,8 +2562,8 @@ void checkUnnamed3305(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed3306() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2574,209 +2574,209 @@ void checkUnnamed3306(core.List<core.String> o) {
 }
 
 void main() {
-  unittest.group("obj-schema-ArrayValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ArrayValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildArrayValue();
       var od = api.ArrayValue.fromJson(o.toJson());
       checkArrayValue(od);
     });
   });
 
-  unittest.group("obj-schema-BatchGetDocumentsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchGetDocumentsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchGetDocumentsRequest();
       var od = api.BatchGetDocumentsRequest.fromJson(o.toJson());
       checkBatchGetDocumentsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BatchGetDocumentsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchGetDocumentsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchGetDocumentsResponse();
       var od = api.BatchGetDocumentsResponse.fromJson(o.toJson());
       checkBatchGetDocumentsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-BatchWriteRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchWriteRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchWriteRequest();
       var od = api.BatchWriteRequest.fromJson(o.toJson());
       checkBatchWriteRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BatchWriteResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchWriteResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchWriteResponse();
       var od = api.BatchWriteResponse.fromJson(o.toJson());
       checkBatchWriteResponse(od);
     });
   });
 
-  unittest.group("obj-schema-BeginTransactionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BeginTransactionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBeginTransactionRequest();
       var od = api.BeginTransactionRequest.fromJson(o.toJson());
       checkBeginTransactionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BeginTransactionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BeginTransactionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBeginTransactionResponse();
       var od = api.BeginTransactionResponse.fromJson(o.toJson());
       checkBeginTransactionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CollectionSelector", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CollectionSelector', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCollectionSelector();
       var od = api.CollectionSelector.fromJson(o.toJson());
       checkCollectionSelector(od);
     });
   });
 
-  unittest.group("obj-schema-CommitRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommitRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommitRequest();
       var od = api.CommitRequest.fromJson(o.toJson());
       checkCommitRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CommitResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommitResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommitResponse();
       var od = api.CommitResponse.fromJson(o.toJson());
       checkCommitResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CompositeFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CompositeFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCompositeFilter();
       var od = api.CompositeFilter.fromJson(o.toJson());
       checkCompositeFilter(od);
     });
   });
 
-  unittest.group("obj-schema-Cursor", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Cursor', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCursor();
       var od = api.Cursor.fromJson(o.toJson());
       checkCursor(od);
     });
   });
 
-  unittest.group("obj-schema-Document", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Document', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocument();
       var od = api.Document.fromJson(o.toJson());
       checkDocument(od);
     });
   });
 
-  unittest.group("obj-schema-DocumentChange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DocumentChange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocumentChange();
       var od = api.DocumentChange.fromJson(o.toJson());
       checkDocumentChange(od);
     });
   });
 
-  unittest.group("obj-schema-DocumentDelete", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DocumentDelete', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocumentDelete();
       var od = api.DocumentDelete.fromJson(o.toJson());
       checkDocumentDelete(od);
     });
   });
 
-  unittest.group("obj-schema-DocumentMask", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DocumentMask', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocumentMask();
       var od = api.DocumentMask.fromJson(o.toJson());
       checkDocumentMask(od);
     });
   });
 
-  unittest.group("obj-schema-DocumentRemove", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DocumentRemove', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocumentRemove();
       var od = api.DocumentRemove.fromJson(o.toJson());
       checkDocumentRemove(od);
     });
   });
 
-  unittest.group("obj-schema-DocumentTransform", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DocumentTransform', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocumentTransform();
       var od = api.DocumentTransform.fromJson(o.toJson());
       checkDocumentTransform(od);
     });
   });
 
-  unittest.group("obj-schema-DocumentsTarget", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DocumentsTarget', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocumentsTarget();
       var od = api.DocumentsTarget.fromJson(o.toJson());
       checkDocumentsTarget(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-ExistenceFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExistenceFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExistenceFilter();
       var od = api.ExistenceFilter.fromJson(o.toJson());
       checkExistenceFilter(od);
     });
   });
 
-  unittest.group("obj-schema-FieldFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FieldFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFieldFilter();
       var od = api.FieldFilter.fromJson(o.toJson());
       checkFieldFilter(od);
     });
   });
 
-  unittest.group("obj-schema-FieldReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FieldReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFieldReference();
       var od = api.FieldReference.fromJson(o.toJson());
       checkFieldReference(od);
     });
   });
 
-  unittest.group("obj-schema-FieldTransform", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FieldTransform', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFieldTransform();
       var od = api.FieldTransform.fromJson(o.toJson());
       checkFieldTransform(od);
     });
   });
 
-  unittest.group("obj-schema-Filter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Filter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
       checkFilter(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1ExportDocumentsMetadata",
+  unittest.group('obj-schema-GoogleFirestoreAdminV1ExportDocumentsMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1ExportDocumentsMetadata();
       var od = api.GoogleFirestoreAdminV1ExportDocumentsMetadata.fromJson(
           o.toJson());
@@ -2784,8 +2784,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1ExportDocumentsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1ExportDocumentsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1ExportDocumentsRequest();
       var od =
           api.GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(o.toJson());
@@ -2793,9 +2793,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1ExportDocumentsResponse",
+  unittest.group('obj-schema-GoogleFirestoreAdminV1ExportDocumentsResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1ExportDocumentsResponse();
       var od = api.GoogleFirestoreAdminV1ExportDocumentsResponse.fromJson(
           o.toJson());
@@ -2803,16 +2803,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1Field", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1Field', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1Field();
       var od = api.GoogleFirestoreAdminV1Field.fromJson(o.toJson());
       checkGoogleFirestoreAdminV1Field(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1FieldOperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1FieldOperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1FieldOperationMetadata();
       var od =
           api.GoogleFirestoreAdminV1FieldOperationMetadata.fromJson(o.toJson());
@@ -2820,9 +2820,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1ImportDocumentsMetadata",
+  unittest.group('obj-schema-GoogleFirestoreAdminV1ImportDocumentsMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1ImportDocumentsMetadata();
       var od = api.GoogleFirestoreAdminV1ImportDocumentsMetadata.fromJson(
           o.toJson());
@@ -2830,8 +2830,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1ImportDocumentsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1ImportDocumentsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1ImportDocumentsRequest();
       var od =
           api.GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(o.toJson());
@@ -2839,40 +2839,40 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1Index", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1Index', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1Index();
       var od = api.GoogleFirestoreAdminV1Index.fromJson(o.toJson());
       checkGoogleFirestoreAdminV1Index(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1IndexConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1IndexConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1IndexConfig();
       var od = api.GoogleFirestoreAdminV1IndexConfig.fromJson(o.toJson());
       checkGoogleFirestoreAdminV1IndexConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1IndexConfigDelta", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1IndexConfigDelta', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1IndexConfigDelta();
       var od = api.GoogleFirestoreAdminV1IndexConfigDelta.fromJson(o.toJson());
       checkGoogleFirestoreAdminV1IndexConfigDelta(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1IndexField", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1IndexField', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1IndexField();
       var od = api.GoogleFirestoreAdminV1IndexField.fromJson(o.toJson());
       checkGoogleFirestoreAdminV1IndexField(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1IndexOperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1IndexOperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1IndexOperationMetadata();
       var od =
           api.GoogleFirestoreAdminV1IndexOperationMetadata.fromJson(o.toJson());
@@ -2880,8 +2880,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1ListFieldsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1ListFieldsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1ListFieldsResponse();
       var od =
           api.GoogleFirestoreAdminV1ListFieldsResponse.fromJson(o.toJson());
@@ -2889,8 +2889,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1ListIndexesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1ListIndexesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1ListIndexesResponse();
       var od =
           api.GoogleFirestoreAdminV1ListIndexesResponse.fromJson(o.toJson());
@@ -2898,302 +2898,302 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1LocationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1LocationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1LocationMetadata();
       var od = api.GoogleFirestoreAdminV1LocationMetadata.fromJson(o.toJson());
       checkGoogleFirestoreAdminV1LocationMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleFirestoreAdminV1Progress", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleFirestoreAdminV1Progress', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1Progress();
       var od = api.GoogleFirestoreAdminV1Progress.fromJson(o.toJson());
       checkGoogleFirestoreAdminV1Progress(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningCancelOperationRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningCancelOperationRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningCancelOperationRequest();
       var od = api.GoogleLongrunningCancelOperationRequest.fromJson(o.toJson());
       checkGoogleLongrunningCancelOperationRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningListOperationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningOperation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningOperation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od);
     });
   });
 
-  unittest.group("obj-schema-LatLng", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LatLng', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
       checkLatLng(od);
     });
   });
 
-  unittest.group("obj-schema-ListCollectionIdsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListCollectionIdsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListCollectionIdsRequest();
       var od = api.ListCollectionIdsRequest.fromJson(o.toJson());
       checkListCollectionIdsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ListCollectionIdsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListCollectionIdsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListCollectionIdsResponse();
       var od = api.ListCollectionIdsResponse.fromJson(o.toJson());
       checkListCollectionIdsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListDocumentsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListDocumentsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListDocumentsResponse();
       var od = api.ListDocumentsResponse.fromJson(o.toJson());
       checkListDocumentsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListLocationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListLocationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListenRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListenRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListenRequest();
       var od = api.ListenRequest.fromJson(o.toJson());
       checkListenRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ListenResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListenResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListenResponse();
       var od = api.ListenResponse.fromJson(o.toJson());
       checkListenResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Location", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Location', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od);
     });
   });
 
-  unittest.group("obj-schema-MapValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MapValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMapValue();
       var od = api.MapValue.fromJson(o.toJson());
       checkMapValue(od);
     });
   });
 
-  unittest.group("obj-schema-Order", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Order', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOrder();
       var od = api.Order.fromJson(o.toJson());
       checkOrder(od);
     });
   });
 
-  unittest.group("obj-schema-PartitionQueryRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PartitionQueryRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPartitionQueryRequest();
       var od = api.PartitionQueryRequest.fromJson(o.toJson());
       checkPartitionQueryRequest(od);
     });
   });
 
-  unittest.group("obj-schema-PartitionQueryResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PartitionQueryResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPartitionQueryResponse();
       var od = api.PartitionQueryResponse.fromJson(o.toJson());
       checkPartitionQueryResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Precondition", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Precondition', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPrecondition();
       var od = api.Precondition.fromJson(o.toJson());
       checkPrecondition(od);
     });
   });
 
-  unittest.group("obj-schema-Projection", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Projection', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProjection();
       var od = api.Projection.fromJson(o.toJson());
       checkProjection(od);
     });
   });
 
-  unittest.group("obj-schema-QueryTarget", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryTarget', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryTarget();
       var od = api.QueryTarget.fromJson(o.toJson());
       checkQueryTarget(od);
     });
   });
 
-  unittest.group("obj-schema-ReadOnly", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReadOnly', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReadOnly();
       var od = api.ReadOnly.fromJson(o.toJson());
       checkReadOnly(od);
     });
   });
 
-  unittest.group("obj-schema-ReadWrite", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReadWrite', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReadWrite();
       var od = api.ReadWrite.fromJson(o.toJson());
       checkReadWrite(od);
     });
   });
 
-  unittest.group("obj-schema-RollbackRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RollbackRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRollbackRequest();
       var od = api.RollbackRequest.fromJson(o.toJson());
       checkRollbackRequest(od);
     });
   });
 
-  unittest.group("obj-schema-RunQueryRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RunQueryRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRunQueryRequest();
       var od = api.RunQueryRequest.fromJson(o.toJson());
       checkRunQueryRequest(od);
     });
   });
 
-  unittest.group("obj-schema-RunQueryResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RunQueryResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRunQueryResponse();
       var od = api.RunQueryResponse.fromJson(o.toJson());
       checkRunQueryResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-StructuredQuery", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StructuredQuery', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStructuredQuery();
       var od = api.StructuredQuery.fromJson(o.toJson());
       checkStructuredQuery(od);
     });
   });
 
-  unittest.group("obj-schema-Target", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Target', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTarget();
       var od = api.Target.fromJson(o.toJson());
       checkTarget(od);
     });
   });
 
-  unittest.group("obj-schema-TargetChange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TargetChange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTargetChange();
       var od = api.TargetChange.fromJson(o.toJson());
       checkTargetChange(od);
     });
   });
 
-  unittest.group("obj-schema-TransactionOptions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TransactionOptions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTransactionOptions();
       var od = api.TransactionOptions.fromJson(o.toJson());
       checkTransactionOptions(od);
     });
   });
 
-  unittest.group("obj-schema-UnaryFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UnaryFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUnaryFilter();
       var od = api.UnaryFilter.fromJson(o.toJson());
       checkUnaryFilter(od);
     });
   });
 
-  unittest.group("obj-schema-Value", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Value', () {
+    unittest.test('to-json--from-json', () {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
       checkValue(od);
     });
   });
 
-  unittest.group("obj-schema-Write", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Write', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWrite();
       var od = api.Write.fromJson(o.toJson());
       checkWrite(od);
     });
   });
 
-  unittest.group("obj-schema-WriteRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WriteRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWriteRequest();
       var od = api.WriteRequest.fromJson(o.toJson());
       checkWriteRequest(od);
     });
   });
 
-  unittest.group("obj-schema-WriteResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WriteResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWriteResponse();
       var od = api.WriteResponse.fromJson(o.toJson());
       checkWriteResponse(od);
     });
   });
 
-  unittest.group("obj-schema-WriteResult", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WriteResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWriteResult();
       var od = api.WriteResult.fromJson(o.toJson());
       checkWriteResult(od);
     });
   });
 
-  unittest.group("resource-ProjectsDatabasesResourceApi", () {
-    unittest.test("method--exportDocuments", () {
+  unittest.group('resource-ProjectsDatabasesResourceApi', () {
+    unittest.test('method--exportDocuments', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesResourceApi res =
           api.FirestoreApi(mock).projects.databases;
       var arg_request = buildGoogleFirestoreAdminV1ExportDocumentsRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(json);
@@ -3217,8 +3217,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3228,7 +3228,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3240,13 +3240,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--importDocuments", () {
+    unittest.test('method--importDocuments', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesResourceApi res =
           api.FirestoreApi(mock).projects.databases;
       var arg_request = buildGoogleFirestoreAdminV1ImportDocumentsRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(json);
@@ -3270,8 +3270,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3281,7 +3281,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3294,14 +3294,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsDatabasesCollectionGroupsFieldsResourceApi",
+  unittest.group('resource-ProjectsDatabasesCollectionGroupsFieldsResourceApi',
       () {
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesCollectionGroupsFieldsResourceApi res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.fields;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3321,8 +3321,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3332,7 +3332,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleFirestoreAdminV1Field());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3344,15 +3344,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesCollectionGroupsFieldsResourceApi res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.fields;
-      var arg_parent = "foo";
-      var arg_filter = "foo";
+      var arg_parent = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3372,8 +3372,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3388,7 +3388,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleFirestoreAdminV1ListFieldsResponse());
@@ -3405,14 +3405,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesCollectionGroupsFieldsResourceApi res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.fields;
       var arg_request = buildGoogleFirestoreAdminV1Field();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleFirestoreAdminV1Field.fromJson(json);
         checkGoogleFirestoreAdminV1Field(obj);
@@ -3435,8 +3435,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3448,7 +3448,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3462,15 +3462,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsDatabasesCollectionGroupsIndexesResourceApi",
+  unittest.group('resource-ProjectsDatabasesCollectionGroupsIndexesResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesCollectionGroupsIndexesResourceApi res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
       var arg_request = buildGoogleFirestoreAdminV1Index();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleFirestoreAdminV1Index.fromJson(json);
         checkGoogleFirestoreAdminV1Index(obj);
@@ -3493,8 +3493,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3504,7 +3504,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3516,12 +3516,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesCollectionGroupsIndexesResourceApi res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3541,8 +3541,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3552,7 +3552,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3564,12 +3564,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesCollectionGroupsIndexesResourceApi res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3589,8 +3589,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3600,7 +3600,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleFirestoreAdminV1Index());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3612,15 +3612,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesCollectionGroupsIndexesResourceApi res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3640,8 +3640,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3656,7 +3656,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleFirestoreAdminV1ListIndexesResponse());
@@ -3674,14 +3674,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsDatabasesDocumentsResourceApi", () {
-    unittest.test("method--batchGet", () {
+  unittest.group('resource-ProjectsDatabasesDocumentsResourceApi', () {
+    unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildBatchGetDocumentsRequest();
-      var arg_database = "foo";
-      var arg_$fields = "foo";
+      var arg_database = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchGetDocumentsRequest.fromJson(json);
         checkBatchGetDocumentsRequest(obj);
@@ -3704,8 +3704,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3715,7 +3715,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchGetDocumentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3727,13 +3727,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--batchWrite", () {
+    unittest.test('method--batchWrite', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildBatchWriteRequest();
-      var arg_database = "foo";
-      var arg_$fields = "foo";
+      var arg_database = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchWriteRequest.fromJson(json);
         checkBatchWriteRequest(obj);
@@ -3756,8 +3756,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3767,7 +3767,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchWriteResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3779,13 +3779,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--beginTransaction", () {
+    unittest.test('method--beginTransaction', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildBeginTransactionRequest();
-      var arg_database = "foo";
-      var arg_$fields = "foo";
+      var arg_database = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BeginTransactionRequest.fromJson(json);
         checkBeginTransactionRequest(obj);
@@ -3808,8 +3808,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3819,7 +3819,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBeginTransactionResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3831,13 +3831,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--commit", () {
+    unittest.test('method--commit', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildCommitRequest();
-      var arg_database = "foo";
-      var arg_$fields = "foo";
+      var arg_database = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CommitRequest.fromJson(json);
         checkCommitRequest(obj);
@@ -3860,8 +3860,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3871,7 +3871,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCommitResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3883,16 +3883,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--createDocument", () {
+    unittest.test('method--createDocument', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildDocument();
-      var arg_parent = "foo";
-      var arg_collectionId = "foo";
-      var arg_documentId = "foo";
+      var arg_parent = 'foo';
+      var arg_collectionId = 'foo';
+      var arg_documentId = 'foo';
       var arg_mask_fieldPaths = buildUnnamed3302();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Document.fromJson(json);
         checkDocument(obj);
@@ -3915,8 +3915,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3930,7 +3930,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDocument());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3945,14 +3945,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_currentDocument_exists = true;
-      var arg_currentDocument_updateTime = "foo";
-      var arg_$fields = "foo";
+      var arg_currentDocument_updateTime = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3972,8 +3972,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3987,7 +3987,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4002,15 +4002,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_mask_fieldPaths = buildUnnamed3303();
-      var arg_transaction = "foo";
-      var arg_readTime = "foo";
-      var arg_$fields = "foo";
+      var arg_transaction = 'foo';
+      var arg_readTime = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4030,8 +4030,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4047,7 +4047,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDocument());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4063,20 +4063,20 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
-      var arg_parent = "foo";
-      var arg_collectionId = "foo";
+      var arg_parent = 'foo';
+      var arg_collectionId = 'foo';
       var arg_mask_fieldPaths = buildUnnamed3304();
-      var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
-      var arg_readTime = "foo";
+      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_readTime = 'foo';
       var arg_showMissing = true;
-      var arg_transaction = "foo";
+      var arg_transaction = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4096,8 +4096,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4121,7 +4121,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListDocumentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4141,13 +4141,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--listCollectionIds", () {
+    unittest.test('method--listCollectionIds', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildListCollectionIdsRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ListCollectionIdsRequest.fromJson(json);
         checkListCollectionIdsRequest(obj);
@@ -4170,8 +4170,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4181,7 +4181,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListCollectionIdsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4193,13 +4193,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--listen", () {
+    unittest.test('method--listen', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildListenRequest();
-      var arg_database = "foo";
-      var arg_$fields = "foo";
+      var arg_database = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ListenRequest.fromJson(json);
         checkListenRequest(obj);
@@ -4222,8 +4222,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4233,7 +4233,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListenResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4245,13 +4245,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--partitionQuery", () {
+    unittest.test('method--partitionQuery', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildPartitionQueryRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PartitionQueryRequest.fromJson(json);
         checkPartitionQueryRequest(obj);
@@ -4274,8 +4274,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4285,7 +4285,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPartitionQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4297,17 +4297,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildDocument();
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_currentDocument_exists = true;
       var arg_updateMask_fieldPaths = buildUnnamed3305();
       var arg_mask_fieldPaths = buildUnnamed3306();
-      var arg_currentDocument_updateTime = "foo";
-      var arg_$fields = "foo";
+      var arg_currentDocument_updateTime = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Document.fromJson(json);
         checkDocument(obj);
@@ -4330,8 +4330,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4349,7 +4349,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDocument());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4366,13 +4366,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--rollback", () {
+    unittest.test('method--rollback', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildRollbackRequest();
-      var arg_database = "foo";
-      var arg_$fields = "foo";
+      var arg_database = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RollbackRequest.fromJson(json);
         checkRollbackRequest(obj);
@@ -4395,8 +4395,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4406,7 +4406,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4418,13 +4418,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--runQuery", () {
+    unittest.test('method--runQuery', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildRunQueryRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RunQueryRequest.fromJson(json);
         checkRunQueryRequest(obj);
@@ -4447,8 +4447,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4458,7 +4458,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRunQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4470,13 +4470,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--write", () {
+    unittest.test('method--write', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildWriteRequest();
-      var arg_database = "foo";
-      var arg_$fields = "foo";
+      var arg_database = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.WriteRequest.fromJson(json);
         checkWriteRequest(obj);
@@ -4499,8 +4499,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4510,7 +4510,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildWriteResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4523,14 +4523,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsDatabasesOperationsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-ProjectsDatabasesOperationsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesOperationsResourceApi res =
           api.FirestoreApi(mock).projects.databases.operations;
       var arg_request = buildGoogleLongrunningCancelOperationRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleLongrunningCancelOperationRequest.fromJson(json);
         checkGoogleLongrunningCancelOperationRequest(obj);
@@ -4553,8 +4553,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4564,7 +4564,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4576,12 +4576,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesOperationsResourceApi res =
           api.FirestoreApi(mock).projects.databases.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4601,8 +4601,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4612,7 +4612,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4624,12 +4624,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesOperationsResourceApi res =
           api.FirestoreApi(mock).projects.databases.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4649,8 +4649,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4660,7 +4660,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4672,15 +4672,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsDatabasesOperationsResourceApi res =
           api.FirestoreApi(mock).projects.databases.operations;
-      var arg_name = "foo";
-      var arg_pageToken = "foo";
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4700,8 +4700,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4716,7 +4716,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
@@ -4734,13 +4734,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsLocationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
           api.FirestoreApi(mock).projects.locations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4760,8 +4760,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4771,7 +4771,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4783,15 +4783,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
           api.FirestoreApi(mock).projects.locations;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4811,8 +4811,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4827,7 +4827,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));

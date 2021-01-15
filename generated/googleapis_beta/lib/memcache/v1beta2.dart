@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,15 +38,15 @@ const core.String USER_AGENT = 'dart-api-client memcache/v1beta2';
 class MemcacheApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   MemcacheApi(http.Client client,
-      {core.String rootUrl = "https://memcache.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://memcache.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -101,17 +100,17 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -159,19 +158,19 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -180,7 +179,7 @@ class ProjectsLocationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -235,10 +234,10 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -247,7 +246,7 @@ class ProjectsLocationsInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -302,13 +301,13 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (instanceId != null) {
-      _queryParams["instanceId"] = [instanceId];
+      _queryParams['instanceId'] = [instanceId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -317,7 +316,7 @@ class ProjectsLocationsInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -359,17 +358,17 @@ class ProjectsLocationsInstancesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -411,17 +410,17 @@ class ProjectsLocationsInstancesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -481,22 +480,22 @@ class ProjectsLocationsInstancesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -505,7 +504,7 @@ class ProjectsLocationsInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -560,20 +559,20 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -622,10 +621,10 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -634,7 +633,7 @@ class ProjectsLocationsInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -695,10 +694,10 @@ class ProjectsLocationsOperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -706,7 +705,7 @@ class ProjectsLocationsOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -749,17 +748,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -801,17 +800,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -867,19 +866,19 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta2/' +
@@ -888,7 +887,7 @@ class ProjectsLocationsOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -912,11 +911,11 @@ class ApplyParametersRequest {
   ApplyParametersRequest();
 
   ApplyParametersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("applyAll")) {
-      applyAll = _json["applyAll"];
+    if (_json.containsKey('applyAll')) {
+      applyAll = _json['applyAll'];
     }
-    if (_json.containsKey("nodeIds")) {
-      nodeIds = (_json["nodeIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('nodeIds')) {
+      nodeIds = (_json['nodeIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -924,10 +923,10 @@ class ApplyParametersRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (applyAll != null) {
-      _json["applyAll"] = applyAll;
+      _json['applyAll'] = applyAll;
     }
     if (nodeIds != null) {
-      _json["nodeIds"] = nodeIds;
+      _json['nodeIds'] = nodeIds;
     }
     return _json;
   }
@@ -973,9 +972,9 @@ class GoogleCloudMemcacheV1beta2LocationMetadata {
   GoogleCloudMemcacheV1beta2LocationMetadata();
 
   GoogleCloudMemcacheV1beta2LocationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("availableZones")) {
+    if (_json.containsKey('availableZones')) {
       availableZones = commons.mapMap<core.Map, ZoneMetadata>(
-          _json["availableZones"].cast<core.String, core.Map>(),
+          _json['availableZones'].cast<core.String, core.Map>(),
           (core.Map item) => ZoneMetadata.fromJson(item));
     }
   }
@@ -984,7 +983,7 @@ class GoogleCloudMemcacheV1beta2LocationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (availableZones != null) {
-      _json["availableZones"] =
+      _json['availableZones'] =
           commons.mapMap<ZoneMetadata, core.Map<core.String, core.Object>>(
               availableZones, (ZoneMetadata item) => item.toJson());
     }
@@ -1021,26 +1020,26 @@ class GoogleCloudMemcacheV1beta2OperationMetadata {
   GoogleCloudMemcacheV1beta2OperationMetadata();
 
   GoogleCloudMemcacheV1beta2OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("apiVersion")) {
-      apiVersion = _json["apiVersion"];
+    if (_json.containsKey('apiVersion')) {
+      apiVersion = _json['apiVersion'];
     }
-    if (_json.containsKey("cancelRequested")) {
-      cancelRequested = _json["cancelRequested"];
+    if (_json.containsKey('cancelRequested')) {
+      cancelRequested = _json['cancelRequested'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("statusDetail")) {
-      statusDetail = _json["statusDetail"];
+    if (_json.containsKey('statusDetail')) {
+      statusDetail = _json['statusDetail'];
     }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
+    if (_json.containsKey('target')) {
+      target = _json['target'];
     }
-    if (_json.containsKey("verb")) {
-      verb = _json["verb"];
+    if (_json.containsKey('verb')) {
+      verb = _json['verb'];
     }
   }
 
@@ -1048,25 +1047,25 @@ class GoogleCloudMemcacheV1beta2OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (apiVersion != null) {
-      _json["apiVersion"] = apiVersion;
+      _json['apiVersion'] = apiVersion;
     }
     if (cancelRequested != null) {
-      _json["cancelRequested"] = cancelRequested;
+      _json['cancelRequested'] = cancelRequested;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (statusDetail != null) {
-      _json["statusDetail"] = statusDetail;
+      _json['statusDetail'] = statusDetail;
     }
     if (target != null) {
-      _json["target"] = target;
+      _json['target'] = target;
     }
     if (verb != null) {
-      _json["verb"] = verb;
+      _json['verb'] = verb;
     }
     return _json;
   }
@@ -1156,67 +1155,67 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 
   GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
       core.Map _json) {
-    if (_json.containsKey("consumerDefinedName")) {
-      consumerDefinedName = _json["consumerDefinedName"];
+    if (_json.containsKey('consumerDefinedName')) {
+      consumerDefinedName = _json['consumerDefinedName'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("maintenancePolicyNames")) {
-      maintenancePolicyNames = (_json["maintenancePolicyNames"] as core.Map)
+    if (_json.containsKey('maintenancePolicyNames')) {
+      maintenancePolicyNames = (_json['maintenancePolicyNames'] as core.Map)
           .cast<core.String, core.String>();
     }
-    if (_json.containsKey("maintenanceSchedules")) {
+    if (_json.containsKey('maintenanceSchedules')) {
       maintenanceSchedules = commons.mapMap<core.Map,
               GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>(
-          _json["maintenanceSchedules"].cast<core.String, core.Map>(),
+          _json['maintenanceSchedules'].cast<core.String, core.Map>(),
           (core.Map item) =>
               GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
                   .fromJson(item));
     }
-    if (_json.containsKey("maintenanceSettings")) {
+    if (_json.containsKey('maintenanceSettings')) {
       maintenanceSettings =
           GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
-              .fromJson(_json["maintenanceSettings"]);
+              .fromJson(_json['maintenanceSettings']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("producerMetadata")) {
-      producerMetadata = (_json["producerMetadata"] as core.Map)
+    if (_json.containsKey('producerMetadata')) {
+      producerMetadata = (_json['producerMetadata'] as core.Map)
           .cast<core.String, core.String>();
     }
-    if (_json.containsKey("provisionedResources")) {
-      provisionedResources = (_json["provisionedResources"] as core.List)
+    if (_json.containsKey('provisionedResources')) {
+      provisionedResources = (_json['provisionedResources'] as core.List)
           .map<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>(
               (value) =>
                   GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("slmInstanceTemplate")) {
-      slmInstanceTemplate = _json["slmInstanceTemplate"];
+    if (_json.containsKey('slmInstanceTemplate')) {
+      slmInstanceTemplate = _json['slmInstanceTemplate'];
     }
-    if (_json.containsKey("sloMetadata")) {
+    if (_json.containsKey('sloMetadata')) {
       sloMetadata =
           GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata.fromJson(
-              _json["sloMetadata"]);
+              _json['sloMetadata']);
     }
-    if (_json.containsKey("softwareVersions")) {
-      softwareVersions = (_json["softwareVersions"] as core.Map)
+    if (_json.containsKey('softwareVersions')) {
+      softwareVersions = (_json['softwareVersions'] as core.Map)
           .cast<core.String, core.String>();
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("tenantProjectId")) {
-      tenantProjectId = _json["tenantProjectId"];
+    if (_json.containsKey('tenantProjectId')) {
+      tenantProjectId = _json['tenantProjectId'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -1224,19 +1223,19 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (consumerDefinedName != null) {
-      _json["consumerDefinedName"] = consumerDefinedName;
+      _json['consumerDefinedName'] = consumerDefinedName;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (maintenancePolicyNames != null) {
-      _json["maintenancePolicyNames"] = maintenancePolicyNames;
+      _json['maintenancePolicyNames'] = maintenancePolicyNames;
     }
     if (maintenanceSchedules != null) {
-      _json["maintenanceSchedules"] = commons.mapMap<
+      _json['maintenanceSchedules'] = commons.mapMap<
               GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule,
               core.Map<core.String, core.Object>>(
           maintenanceSchedules,
@@ -1245,35 +1244,35 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
               item.toJson());
     }
     if (maintenanceSettings != null) {
-      _json["maintenanceSettings"] = maintenanceSettings.toJson();
+      _json['maintenanceSettings'] = maintenanceSettings.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (producerMetadata != null) {
-      _json["producerMetadata"] = producerMetadata;
+      _json['producerMetadata'] = producerMetadata;
     }
     if (provisionedResources != null) {
-      _json["provisionedResources"] =
+      _json['provisionedResources'] =
           provisionedResources.map((value) => value.toJson()).toList();
     }
     if (slmInstanceTemplate != null) {
-      _json["slmInstanceTemplate"] = slmInstanceTemplate;
+      _json['slmInstanceTemplate'] = slmInstanceTemplate;
     }
     if (sloMetadata != null) {
-      _json["sloMetadata"] = sloMetadata.toJson();
+      _json['sloMetadata'] = sloMetadata.toJson();
     }
     if (softwareVersions != null) {
-      _json["softwareVersions"] = softwareVersions;
+      _json['softwareVersions'] = softwareVersions;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (tenantProjectId != null) {
-      _json["tenantProjectId"] = tenantProjectId;
+      _json['tenantProjectId'] = tenantProjectId;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -1302,17 +1301,17 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
 
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule.fromJson(
       core.Map _json) {
-    if (_json.containsKey("canReschedule")) {
-      canReschedule = _json["canReschedule"];
+    if (_json.containsKey('canReschedule')) {
+      canReschedule = _json['canReschedule'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("rolloutManagementPolicy")) {
-      rolloutManagementPolicy = _json["rolloutManagementPolicy"];
+    if (_json.containsKey('rolloutManagementPolicy')) {
+      rolloutManagementPolicy = _json['rolloutManagementPolicy'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -1320,16 +1319,16 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (canReschedule != null) {
-      _json["canReschedule"] = canReschedule;
+      _json['canReschedule'] = canReschedule;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (rolloutManagementPolicy != null) {
-      _json["rolloutManagementPolicy"] = rolloutManagementPolicy;
+      _json['rolloutManagementPolicy'] = rolloutManagementPolicy;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -1347,8 +1346,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
 
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings.fromJson(
       core.Map _json) {
-    if (_json.containsKey("exclude")) {
-      exclude = _json["exclude"];
+    if (_json.containsKey('exclude')) {
+      exclude = _json['exclude'];
     }
   }
 
@@ -1356,7 +1355,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exclude != null) {
-      _json["exclude"] = exclude;
+      _json['exclude'] = exclude;
     }
     return _json;
   }
@@ -1385,19 +1384,19 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
 
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("exclusions")) {
-      exclusions = (_json["exclusions"] as core.List)
+    if (_json.containsKey('exclusions')) {
+      exclusions = (_json['exclusions'] as core.List)
           .map<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>(
               (value) =>
                   GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("nodeId")) {
-      nodeId = _json["nodeId"];
+    if (_json.containsKey('nodeId')) {
+      nodeId = _json['nodeId'];
     }
   }
 
@@ -1405,13 +1404,13 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exclusions != null) {
-      _json["exclusions"] = exclusions.map((value) => value.toJson()).toList();
+      _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (nodeId != null) {
-      _json["nodeId"] = nodeId;
+      _json['nodeId'] = nodeId;
     }
     return _json;
   }
@@ -1435,11 +1434,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
 
   GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource.fromJson(
       core.Map _json) {
-    if (_json.containsKey("resourceType")) {
-      resourceType = _json["resourceType"];
+    if (_json.containsKey('resourceType')) {
+      resourceType = _json['resourceType'];
     }
-    if (_json.containsKey("resourceUrl")) {
-      resourceUrl = _json["resourceUrl"];
+    if (_json.containsKey('resourceUrl')) {
+      resourceUrl = _json['resourceUrl'];
     }
   }
 
@@ -1447,10 +1446,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourceType != null) {
-      _json["resourceType"] = resourceType;
+      _json['resourceType'] = resourceType;
     }
     if (resourceUrl != null) {
-      _json["resourceUrl"] = resourceUrl;
+      _json['resourceUrl'] = resourceUrl;
     }
     return _json;
   }
@@ -1472,11 +1471,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility.fromJson(
       core.Map _json) {
-    if (_json.containsKey("eligible")) {
-      eligible = _json["eligible"];
+    if (_json.containsKey('eligible')) {
+      eligible = _json['eligible'];
     }
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
   }
 
@@ -1484,10 +1483,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (eligible != null) {
-      _json["eligible"] = eligible;
+      _json['eligible'] = eligible;
     }
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     return _json;
   }
@@ -1521,17 +1520,17 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion.fromJson(
       core.Map _json) {
-    if (_json.containsKey("duration")) {
-      duration = _json["duration"];
+    if (_json.containsKey('duration')) {
+      duration = _json['duration'];
     }
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
-    if (_json.containsKey("sliName")) {
-      sliName = _json["sliName"];
+    if (_json.containsKey('sliName')) {
+      sliName = _json['sliName'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -1539,16 +1538,16 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (duration != null) {
-      _json["duration"] = duration;
+      _json['duration'] = duration;
     }
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     if (sliName != null) {
-      _json["sliName"] = sliName;
+      _json['sliName'] = sliName;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -1590,29 +1589,29 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("eligibility")) {
+    if (_json.containsKey('eligibility')) {
       eligibility =
           GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
-              .fromJson(_json["eligibility"]);
+              .fromJson(_json['eligibility']);
     }
-    if (_json.containsKey("exclusions")) {
-      exclusions = (_json["exclusions"] as core.List)
+    if (_json.containsKey('exclusions')) {
+      exclusions = (_json['exclusions'] as core.List)
           .map<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>(
               (value) =>
                   GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nodes")) {
-      nodes = (_json["nodes"] as core.List)
+    if (_json.containsKey('nodes')) {
+      nodes = (_json['nodes'] as core.List)
           .map<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>(
               (value) =>
                   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tier")) {
-      tier = _json["tier"];
+    if (_json.containsKey('tier')) {
+      tier = _json['tier'];
     }
   }
 
@@ -1620,16 +1619,16 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (eligibility != null) {
-      _json["eligibility"] = eligibility.toJson();
+      _json['eligibility'] = eligibility.toJson();
     }
     if (exclusions != null) {
-      _json["exclusions"] = exclusions.map((value) => value.toJson()).toList();
+      _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
     }
     if (nodes != null) {
-      _json["nodes"] = nodes.map((value) => value.toJson()).toList();
+      _json['nodes'] = nodes.map((value) => value.toJson()).toList();
     }
     if (tier != null) {
-      _json["tier"] = tier;
+      _json['tier'] = tier;
     }
     return _json;
   }
@@ -1718,57 +1717,57 @@ class Instance {
   Instance();
 
   Instance.fromJson(core.Map _json) {
-    if (_json.containsKey("authorizedNetwork")) {
-      authorizedNetwork = _json["authorizedNetwork"];
+    if (_json.containsKey('authorizedNetwork')) {
+      authorizedNetwork = _json['authorizedNetwork'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("discoveryEndpoint")) {
-      discoveryEndpoint = _json["discoveryEndpoint"];
+    if (_json.containsKey('discoveryEndpoint')) {
+      discoveryEndpoint = _json['discoveryEndpoint'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("instanceMessages")) {
-      instanceMessages = (_json["instanceMessages"] as core.List)
+    if (_json.containsKey('instanceMessages')) {
+      instanceMessages = (_json['instanceMessages'] as core.List)
           .map<InstanceMessage>((value) => InstanceMessage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("memcacheFullVersion")) {
-      memcacheFullVersion = _json["memcacheFullVersion"];
+    if (_json.containsKey('memcacheFullVersion')) {
+      memcacheFullVersion = _json['memcacheFullVersion'];
     }
-    if (_json.containsKey("memcacheNodes")) {
-      memcacheNodes = (_json["memcacheNodes"] as core.List)
+    if (_json.containsKey('memcacheNodes')) {
+      memcacheNodes = (_json['memcacheNodes'] as core.List)
           .map<Node>((value) => Node.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("memcacheVersion")) {
-      memcacheVersion = _json["memcacheVersion"];
+    if (_json.containsKey('memcacheVersion')) {
+      memcacheVersion = _json['memcacheVersion'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("nodeConfig")) {
-      nodeConfig = NodeConfig.fromJson(_json["nodeConfig"]);
+    if (_json.containsKey('nodeConfig')) {
+      nodeConfig = NodeConfig.fromJson(_json['nodeConfig']);
     }
-    if (_json.containsKey("nodeCount")) {
-      nodeCount = _json["nodeCount"];
+    if (_json.containsKey('nodeCount')) {
+      nodeCount = _json['nodeCount'];
     }
-    if (_json.containsKey("parameters")) {
-      parameters = MemcacheParameters.fromJson(_json["parameters"]);
+    if (_json.containsKey('parameters')) {
+      parameters = MemcacheParameters.fromJson(_json['parameters']);
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
-    if (_json.containsKey("zones")) {
-      zones = (_json["zones"] as core.List).cast<core.String>();
+    if (_json.containsKey('zones')) {
+      zones = (_json['zones'] as core.List).cast<core.String>();
     }
   }
 
@@ -1776,54 +1775,54 @@ class Instance {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (authorizedNetwork != null) {
-      _json["authorizedNetwork"] = authorizedNetwork;
+      _json['authorizedNetwork'] = authorizedNetwork;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (discoveryEndpoint != null) {
-      _json["discoveryEndpoint"] = discoveryEndpoint;
+      _json['discoveryEndpoint'] = discoveryEndpoint;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (instanceMessages != null) {
-      _json["instanceMessages"] =
+      _json['instanceMessages'] =
           instanceMessages.map((value) => value.toJson()).toList();
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (memcacheFullVersion != null) {
-      _json["memcacheFullVersion"] = memcacheFullVersion;
+      _json['memcacheFullVersion'] = memcacheFullVersion;
     }
     if (memcacheNodes != null) {
-      _json["memcacheNodes"] =
+      _json['memcacheNodes'] =
           memcacheNodes.map((value) => value.toJson()).toList();
     }
     if (memcacheVersion != null) {
-      _json["memcacheVersion"] = memcacheVersion;
+      _json['memcacheVersion'] = memcacheVersion;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (nodeConfig != null) {
-      _json["nodeConfig"] = nodeConfig.toJson();
+      _json['nodeConfig'] = nodeConfig.toJson();
     }
     if (nodeCount != null) {
-      _json["nodeCount"] = nodeCount;
+      _json['nodeCount'] = nodeCount;
     }
     if (parameters != null) {
-      _json["parameters"] = parameters.toJson();
+      _json['parameters'] = parameters.toJson();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     if (zones != null) {
-      _json["zones"] = zones;
+      _json['zones'] = zones;
     }
     return _json;
   }
@@ -1843,11 +1842,11 @@ class InstanceMessage {
   InstanceMessage();
 
   InstanceMessage.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -1855,10 +1854,10 @@ class InstanceMessage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -1882,16 +1881,16 @@ class ListInstancesResponse {
   ListInstancesResponse();
 
   ListInstancesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("resources")) {
-      resources = (_json["resources"] as core.List)
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List)
           .map<Instance>((value) => Instance.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("unreachable")) {
-      unreachable = (_json["unreachable"] as core.List).cast<core.String>();
+    if (_json.containsKey('unreachable')) {
+      unreachable = (_json['unreachable'] as core.List).cast<core.String>();
     }
   }
 
@@ -1899,13 +1898,13 @@ class ListInstancesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (resources != null) {
-      _json["resources"] = resources.map((value) => value.toJson()).toList();
+      _json['resources'] = resources.map((value) => value.toJson()).toList();
     }
     if (unreachable != null) {
-      _json["unreachable"] = unreachable;
+      _json['unreachable'] = unreachable;
     }
     return _json;
   }
@@ -1922,13 +1921,13 @@ class ListLocationsResponse {
   ListLocationsResponse();
 
   ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1936,10 +1935,10 @@ class ListLocationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1956,11 +1955,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -1970,10 +1969,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2006,21 +2005,21 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -2028,19 +2027,19 @@ class Location {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -2059,11 +2058,11 @@ class MemcacheParameters {
   MemcacheParameters();
 
   MemcacheParameters.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("params")) {
-      params = (_json["params"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('params')) {
+      params = (_json['params'] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -2071,10 +2070,10 @@ class MemcacheParameters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (params != null) {
-      _json["params"] = params;
+      _json['params'] = params;
     }
     return _json;
   }
@@ -2110,23 +2109,23 @@ class Node {
   Node();
 
   Node.fromJson(core.Map _json) {
-    if (_json.containsKey("host")) {
-      host = _json["host"];
+    if (_json.containsKey('host')) {
+      host = _json['host'];
     }
-    if (_json.containsKey("nodeId")) {
-      nodeId = _json["nodeId"];
+    if (_json.containsKey('nodeId')) {
+      nodeId = _json['nodeId'];
     }
-    if (_json.containsKey("parameters")) {
-      parameters = MemcacheParameters.fromJson(_json["parameters"]);
+    if (_json.containsKey('parameters')) {
+      parameters = MemcacheParameters.fromJson(_json['parameters']);
     }
-    if (_json.containsKey("port")) {
-      port = _json["port"];
+    if (_json.containsKey('port')) {
+      port = _json['port'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("zone")) {
-      zone = _json["zone"];
+    if (_json.containsKey('zone')) {
+      zone = _json['zone'];
     }
   }
 
@@ -2134,22 +2133,22 @@ class Node {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (host != null) {
-      _json["host"] = host;
+      _json['host'] = host;
     }
     if (nodeId != null) {
-      _json["nodeId"] = nodeId;
+      _json['nodeId'] = nodeId;
     }
     if (parameters != null) {
-      _json["parameters"] = parameters.toJson();
+      _json['parameters'] = parameters.toJson();
     }
     if (port != null) {
-      _json["port"] = port;
+      _json['port'] = port;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (zone != null) {
-      _json["zone"] = zone;
+      _json['zone'] = zone;
     }
     return _json;
   }
@@ -2166,11 +2165,11 @@ class NodeConfig {
   NodeConfig();
 
   NodeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("cpuCount")) {
-      cpuCount = _json["cpuCount"];
+    if (_json.containsKey('cpuCount')) {
+      cpuCount = _json['cpuCount'];
     }
-    if (_json.containsKey("memorySizeMb")) {
-      memorySizeMb = _json["memorySizeMb"];
+    if (_json.containsKey('memorySizeMb')) {
+      memorySizeMb = _json['memorySizeMb'];
     }
   }
 
@@ -2178,10 +2177,10 @@ class NodeConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cpuCount != null) {
-      _json["cpuCount"] = cpuCount;
+      _json['cpuCount'] = cpuCount;
     }
     if (memorySizeMb != null) {
-      _json["memorySizeMb"] = memorySizeMb;
+      _json['memorySizeMb'] = memorySizeMb;
     }
     return _json;
   }
@@ -2227,22 +2226,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -2250,19 +2249,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -2293,17 +2292,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -2311,13 +2310,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -2334,11 +2333,11 @@ class UpdateParametersRequest {
   UpdateParametersRequest();
 
   UpdateParametersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("parameters")) {
-      parameters = MemcacheParameters.fromJson(_json["parameters"]);
+    if (_json.containsKey('parameters')) {
+      parameters = MemcacheParameters.fromJson(_json['parameters']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -2346,10 +2345,10 @@ class UpdateParametersRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parameters != null) {
-      _json["parameters"] = parameters.toJson();
+      _json['parameters'] = parameters.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }

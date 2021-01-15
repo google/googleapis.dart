@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -97,7 +97,7 @@ api.AttributeValue buildAttributeValue() {
   buildCounterAttributeValue++;
   if (buildCounterAttributeValue < 3) {
     o.boolValue = true;
-    o.intValue = "foo";
+    o.intValue = 'foo';
     o.stringValue = buildTruncatableString();
   }
   buildCounterAttributeValue--;
@@ -116,15 +116,15 @@ void checkAttributeValue(api.AttributeValue o) {
 
 core.Map<core.String, api.AttributeValue> buildUnnamed1338() {
   var o = <core.String, api.AttributeValue>{};
-  o["x"] = buildAttributeValue();
-  o["y"] = buildAttributeValue();
+  o['x'] = buildAttributeValue();
+  o['y'] = buildAttributeValue();
   return o;
 }
 
 void checkUnnamed1338(core.Map<core.String, api.AttributeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttributeValue(o["x"]);
-  checkAttributeValue(o["y"]);
+  checkAttributeValue(o['x']);
+  checkAttributeValue(o['y']);
 }
 
 core.int buildCounterAttributes = 0;
@@ -201,9 +201,9 @@ api.Link buildLink() {
   buildCounterLink++;
   if (buildCounterLink < 3) {
     o.attributes = buildAttributes();
-    o.spanId = "foo";
-    o.traceId = "foo";
-    o.type = "foo";
+    o.spanId = 'foo';
+    o.traceId = 'foo';
+    o.type = 'foo';
   }
   buildCounterLink--;
   return o;
@@ -259,10 +259,10 @@ api.MessageEvent buildMessageEvent() {
   var o = api.MessageEvent();
   buildCounterMessageEvent++;
   if (buildCounterMessageEvent < 3) {
-    o.compressedSizeBytes = "foo";
-    o.id = "foo";
-    o.type = "foo";
-    o.uncompressedSizeBytes = "foo";
+    o.compressedSizeBytes = 'foo';
+    o.id = 'foo';
+    o.type = 'foo';
+    o.uncompressedSizeBytes = 'foo';
   }
   buildCounterMessageEvent--;
   return o;
@@ -308,15 +308,15 @@ api.Span buildSpan() {
     o.attributes = buildAttributes();
     o.childSpanCount = 42;
     o.displayName = buildTruncatableString();
-    o.endTime = "foo";
+    o.endTime = 'foo';
     o.links = buildLinks();
-    o.name = "foo";
-    o.parentSpanId = "foo";
+    o.name = 'foo';
+    o.parentSpanId = 'foo';
     o.sameProcessAsParentSpan = true;
-    o.spanId = "foo";
-    o.spanKind = "foo";
+    o.spanId = 'foo';
+    o.spanKind = 'foo';
     o.stackTrace = buildStackTrace();
-    o.startTime = "foo";
+    o.startTime = 'foo';
     o.status = buildStatus();
     o.timeEvents = buildTimeEvents();
   }
@@ -350,10 +350,10 @@ api.StackFrame buildStackFrame() {
   var o = api.StackFrame();
   buildCounterStackFrame++;
   if (buildCounterStackFrame < 3) {
-    o.columnNumber = "foo";
+    o.columnNumber = 'foo';
     o.fileName = buildTruncatableString();
     o.functionName = buildTruncatableString();
-    o.lineNumber = "foo";
+    o.lineNumber = 'foo';
     o.loadModule = buildModule();
     o.originalFunctionName = buildTruncatableString();
     o.sourceVersion = buildTruncatableString();
@@ -416,7 +416,7 @@ api.StackTrace buildStackTrace() {
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
     o.stackFrames = buildStackFrames();
-    o.stackTraceHashId = "foo";
+    o.stackTraceHashId = 'foo';
   }
   buildCounterStackTrace--;
   return o;
@@ -433,12 +433,12 @@ void checkStackTrace(api.StackTrace o) {
 
 core.Map<core.String, core.Object> buildUnnamed1342() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -448,16 +448,16 @@ core.Map<core.String, core.Object> buildUnnamed1342() {
 
 void checkUnnamed1342(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed1343() {
@@ -480,7 +480,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed1343();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -503,7 +503,7 @@ api.TimeEvent buildTimeEvent() {
   if (buildCounterTimeEvent < 3) {
     o.annotation = buildAnnotation();
     o.messageEvent = buildMessageEvent();
-    o.time = "foo";
+    o.time = 'foo';
   }
   buildCounterTimeEvent--;
   return o;
@@ -561,7 +561,7 @@ api.TruncatableString buildTruncatableString() {
   buildCounterTruncatableString++;
   if (buildCounterTruncatableString < 3) {
     o.truncatedByteCount = 42;
-    o.value = "foo";
+    o.value = 'foo';
   }
   buildCounterTruncatableString--;
   return o;
@@ -577,150 +577,150 @@ void checkTruncatableString(api.TruncatableString o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Annotation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Annotation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAnnotation();
       var od = api.Annotation.fromJson(o.toJson());
       checkAnnotation(od);
     });
   });
 
-  unittest.group("obj-schema-AttributeValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AttributeValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAttributeValue();
       var od = api.AttributeValue.fromJson(o.toJson());
       checkAttributeValue(od);
     });
   });
 
-  unittest.group("obj-schema-Attributes", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Attributes', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAttributes();
       var od = api.Attributes.fromJson(o.toJson());
       checkAttributes(od);
     });
   });
 
-  unittest.group("obj-schema-BatchWriteSpansRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchWriteSpansRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchWriteSpansRequest();
       var od = api.BatchWriteSpansRequest.fromJson(o.toJson());
       checkBatchWriteSpansRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-Link", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Link', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
       checkLink(od);
     });
   });
 
-  unittest.group("obj-schema-Links", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Links', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLinks();
       var od = api.Links.fromJson(o.toJson());
       checkLinks(od);
     });
   });
 
-  unittest.group("obj-schema-MessageEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MessageEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMessageEvent();
       var od = api.MessageEvent.fromJson(o.toJson());
       checkMessageEvent(od);
     });
   });
 
-  unittest.group("obj-schema-Module", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Module', () {
+    unittest.test('to-json--from-json', () {
       var o = buildModule();
       var od = api.Module.fromJson(o.toJson());
       checkModule(od);
     });
   });
 
-  unittest.group("obj-schema-Span", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Span', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSpan();
       var od = api.Span.fromJson(o.toJson());
       checkSpan(od);
     });
   });
 
-  unittest.group("obj-schema-StackFrame", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StackFrame', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStackFrame();
       var od = api.StackFrame.fromJson(o.toJson());
       checkStackFrame(od);
     });
   });
 
-  unittest.group("obj-schema-StackFrames", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StackFrames', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStackFrames();
       var od = api.StackFrames.fromJson(o.toJson());
       checkStackFrames(od);
     });
   });
 
-  unittest.group("obj-schema-StackTrace", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StackTrace', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStackTrace();
       var od = api.StackTrace.fromJson(o.toJson());
       checkStackTrace(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-TimeEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TimeEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTimeEvent();
       var od = api.TimeEvent.fromJson(o.toJson());
       checkTimeEvent(od);
     });
   });
 
-  unittest.group("obj-schema-TimeEvents", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TimeEvents', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTimeEvents();
       var od = api.TimeEvents.fromJson(o.toJson());
       checkTimeEvents(od);
     });
   });
 
-  unittest.group("obj-schema-TruncatableString", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TruncatableString', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTruncatableString();
       var od = api.TruncatableString.fromJson(o.toJson());
       checkTruncatableString(od);
     });
   });
 
-  unittest.group("resource-ProjectsTracesResourceApi", () {
-    unittest.test("method--batchWrite", () {
+  unittest.group('resource-ProjectsTracesResourceApi', () {
+    unittest.test('method--batchWrite', () {
       var mock = HttpServerMock();
       api.ProjectsTracesResourceApi res =
           api.CloudtraceApi(mock).projects.traces;
       var arg_request = buildBatchWriteSpansRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchWriteSpansRequest.fromJson(json);
         checkBatchWriteSpansRequest(obj);
@@ -743,8 +743,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -754,7 +754,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -767,14 +767,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsTracesSpansResourceApi", () {
-    unittest.test("method--createSpan", () {
+  unittest.group('resource-ProjectsTracesSpansResourceApi', () {
+    unittest.test('method--createSpan', () {
       var mock = HttpServerMock();
       api.ProjectsTracesSpansResourceApi res =
           api.CloudtraceApi(mock).projects.traces.spans;
       var arg_request = buildSpan();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Span.fromJson(json);
         checkSpan(obj);
@@ -797,8 +797,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -808,7 +808,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSpan());
         return async.Future.value(stringResponse(200, h, resp));

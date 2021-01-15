@@ -83,7 +83,7 @@ packages:
     description:
       path: discoveryapis_generator
       ref: HEAD
-      resolved-ref: "0bdf85c3d291a901d76a892f17d72448ef920be2"
+      resolved-ref: "75a13ef440f0596106a5e3d4f6cd5be5738cd44b"
       url: "https://github.com/dart-lang/discoveryapis_generator.git"
     source: git
     version: "0.9.16-dev"

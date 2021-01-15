@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -90,7 +90,7 @@ api.ImportSshPublicKeyResponse buildImportSshPublicKeyResponse() {
   var o = api.ImportSshPublicKeyResponse();
   buildCounterImportSshPublicKeyResponse++;
   if (buildCounterImportSshPublicKeyResponse < 3) {
-    o.details = "foo";
+    o.details = 'foo';
     o.loginProfile = buildLoginProfile();
   }
   buildCounterImportSshPublicKeyResponse--;
@@ -121,15 +121,15 @@ void checkUnnamed2735(core.List<api.PosixAccount> o) {
 
 core.Map<core.String, api.SshPublicKey> buildUnnamed2736() {
   var o = <core.String, api.SshPublicKey>{};
-  o["x"] = buildSshPublicKey();
-  o["y"] = buildSshPublicKey();
+  o['x'] = buildSshPublicKey();
+  o['y'] = buildSshPublicKey();
   return o;
 }
 
 void checkUnnamed2736(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSshPublicKey(o["x"]);
-  checkSshPublicKey(o["y"]);
+  checkSshPublicKey(o['x']);
+  checkSshPublicKey(o['y']);
 }
 
 core.int buildCounterLoginProfile = 0;
@@ -137,7 +137,7 @@ api.LoginProfile buildLoginProfile() {
   var o = api.LoginProfile();
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.posixAccounts = buildUnnamed2735();
     o.sshPublicKeys = buildUnnamed2736();
   }
@@ -160,17 +160,17 @@ api.PosixAccount buildPosixAccount() {
   var o = api.PosixAccount();
   buildCounterPosixAccount++;
   if (buildCounterPosixAccount < 3) {
-    o.accountId = "foo";
-    o.gecos = "foo";
-    o.gid = "foo";
-    o.homeDirectory = "foo";
-    o.name = "foo";
-    o.operatingSystemType = "foo";
+    o.accountId = 'foo';
+    o.gecos = 'foo';
+    o.gid = 'foo';
+    o.homeDirectory = 'foo';
+    o.name = 'foo';
+    o.operatingSystemType = 'foo';
     o.primary = true;
-    o.shell = "foo";
-    o.systemId = "foo";
-    o.uid = "foo";
-    o.username = "foo";
+    o.shell = 'foo';
+    o.systemId = 'foo';
+    o.uid = 'foo';
+    o.username = 'foo';
   }
   buildCounterPosixAccount--;
   return o;
@@ -199,10 +199,10 @@ api.SshPublicKey buildSshPublicKey() {
   var o = api.SshPublicKey();
   buildCounterSshPublicKey++;
   if (buildCounterSshPublicKey < 3) {
-    o.expirationTimeUsec = "foo";
-    o.fingerprint = "foo";
-    o.key = "foo";
-    o.name = "foo";
+    o.expirationTimeUsec = 'foo';
+    o.fingerprint = 'foo';
+    o.key = 'foo';
+    o.name = 'foo';
   }
   buildCounterSshPublicKey--;
   return o;
@@ -220,54 +220,54 @@ void checkSshPublicKey(api.SshPublicKey o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-ImportSshPublicKeyResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportSshPublicKeyResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportSshPublicKeyResponse();
       var od = api.ImportSshPublicKeyResponse.fromJson(o.toJson());
       checkImportSshPublicKeyResponse(od);
     });
   });
 
-  unittest.group("obj-schema-LoginProfile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LoginProfile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLoginProfile();
       var od = api.LoginProfile.fromJson(o.toJson());
       checkLoginProfile(od);
     });
   });
 
-  unittest.group("obj-schema-PosixAccount", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PosixAccount', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPosixAccount();
       var od = api.PosixAccount.fromJson(o.toJson());
       checkPosixAccount(od);
     });
   });
 
-  unittest.group("obj-schema-SshPublicKey", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SshPublicKey', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSshPublicKey();
       var od = api.SshPublicKey.fromJson(o.toJson());
       checkSshPublicKey(od);
     });
   });
 
-  unittest.group("resource-UsersResourceApi", () {
-    unittest.test("method--getLoginProfile", () {
+  unittest.group('resource-UsersResourceApi', () {
+    unittest.test('method--getLoginProfile', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.OsloginApi(mock).users;
-      var arg_name = "foo";
-      var arg_projectId = "foo";
-      var arg_systemId = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_projectId = 'foo';
+      var arg_systemId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -287,8 +287,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -302,7 +302,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLoginProfile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -317,13 +317,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--importSshPublicKey", () {
+    unittest.test('method--importSshPublicKey', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.OsloginApi(mock).users;
       var arg_request = buildSshPublicKey();
-      var arg_parent = "foo";
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SshPublicKey.fromJson(json);
         checkSshPublicKey(obj);
@@ -346,8 +346,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -359,7 +359,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildImportSshPublicKeyResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -373,12 +373,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-UsersProjectsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-UsersProjectsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.UsersProjectsResourceApi res = api.OsloginApi(mock).users.projects;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -398,8 +398,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -409,7 +409,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -422,13 +422,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-UsersSshPublicKeysResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-UsersSshPublicKeysResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.UsersSshPublicKeysResourceApi res =
           api.OsloginApi(mock).users.sshPublicKeys;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -448,8 +448,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -459,7 +459,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -471,12 +471,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.UsersSshPublicKeysResourceApi res =
           api.OsloginApi(mock).users.sshPublicKeys;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -496,8 +496,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -507,7 +507,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSshPublicKey());
         return async.Future.value(stringResponse(200, h, resp));
@@ -519,14 +519,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.UsersSshPublicKeysResourceApi res =
           api.OsloginApi(mock).users.sshPublicKeys;
       var arg_request = buildSshPublicKey();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SshPublicKey.fromJson(json);
         checkSshPublicKey(obj);
@@ -549,8 +549,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -562,7 +562,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSshPublicKey());
         return async.Future.value(stringResponse(200, h, resp));

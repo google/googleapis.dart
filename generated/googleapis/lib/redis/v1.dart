@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,15 +37,15 @@ const core.String USER_AGENT = 'dart-api-client redis/v1';
 class RedisApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   RedisApi(http.Client client,
-      {core.String rootUrl = "https://redis.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://redis.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -100,17 +99,17 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -158,19 +157,19 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -178,7 +177,7 @@ class ProjectsLocationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -246,13 +245,13 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (instanceId != null) {
-      _queryParams["instanceId"] = [instanceId];
+      _queryParams['instanceId'] = [instanceId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -260,7 +259,7 @@ class ProjectsLocationsInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -303,17 +302,17 @@ class ProjectsLocationsInstancesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -364,17 +363,17 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -423,17 +422,17 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':failover';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -475,17 +474,17 @@ class ProjectsLocationsInstancesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -537,17 +536,17 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -603,16 +602,16 @@ class ProjectsLocationsInstancesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -620,7 +619,7 @@ class ProjectsLocationsInstancesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -682,20 +681,20 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -744,17 +743,17 @@ class ProjectsLocationsInstancesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':upgrade';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -809,17 +808,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -862,17 +861,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -914,17 +913,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -980,19 +979,19 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1000,7 +999,7 @@ class ProjectsLocationsOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1036,8 +1035,8 @@ class ExportInstanceRequest {
   ExportInstanceRequest();
 
   ExportInstanceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
-      outputConfig = OutputConfig.fromJson(_json["outputConfig"]);
+    if (_json.containsKey('outputConfig')) {
+      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
     }
   }
 
@@ -1045,7 +1044,7 @@ class ExportInstanceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -1070,8 +1069,8 @@ class FailoverInstanceRequest {
   FailoverInstanceRequest();
 
   FailoverInstanceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("dataProtectionMode")) {
-      dataProtectionMode = _json["dataProtectionMode"];
+    if (_json.containsKey('dataProtectionMode')) {
+      dataProtectionMode = _json['dataProtectionMode'];
     }
   }
 
@@ -1079,7 +1078,7 @@ class FailoverInstanceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dataProtectionMode != null) {
-      _json["dataProtectionMode"] = dataProtectionMode;
+      _json['dataProtectionMode'] = dataProtectionMode;
     }
     return _json;
   }
@@ -1094,8 +1093,8 @@ class GcsDestination {
   GcsDestination();
 
   GcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -1103,7 +1102,7 @@ class GcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -1117,8 +1116,8 @@ class GcsSource {
   GcsSource();
 
   GcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -1126,7 +1125,7 @@ class GcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -1146,9 +1145,9 @@ class GoogleCloudRedisV1LocationMetadata {
   GoogleCloudRedisV1LocationMetadata();
 
   GoogleCloudRedisV1LocationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("availableZones")) {
+    if (_json.containsKey('availableZones')) {
       availableZones = commons.mapMap<core.Map, GoogleCloudRedisV1ZoneMetadata>(
-          _json["availableZones"].cast<core.String, core.Map>(),
+          _json['availableZones'].cast<core.String, core.Map>(),
           (core.Map item) => GoogleCloudRedisV1ZoneMetadata.fromJson(item));
     }
   }
@@ -1157,7 +1156,7 @@ class GoogleCloudRedisV1LocationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (availableZones != null) {
-      _json["availableZones"] = commons.mapMap<GoogleCloudRedisV1ZoneMetadata,
+      _json['availableZones'] = commons.mapMap<GoogleCloudRedisV1ZoneMetadata,
               core.Map<core.String, core.Object>>(availableZones,
           (GoogleCloudRedisV1ZoneMetadata item) => item.toJson());
     }
@@ -1191,26 +1190,26 @@ class GoogleCloudRedisV1OperationMetadata {
   GoogleCloudRedisV1OperationMetadata();
 
   GoogleCloudRedisV1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("apiVersion")) {
-      apiVersion = _json["apiVersion"];
+    if (_json.containsKey('apiVersion')) {
+      apiVersion = _json['apiVersion'];
     }
-    if (_json.containsKey("cancelRequested")) {
-      cancelRequested = _json["cancelRequested"];
+    if (_json.containsKey('cancelRequested')) {
+      cancelRequested = _json['cancelRequested'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("statusDetail")) {
-      statusDetail = _json["statusDetail"];
+    if (_json.containsKey('statusDetail')) {
+      statusDetail = _json['statusDetail'];
     }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
+    if (_json.containsKey('target')) {
+      target = _json['target'];
     }
-    if (_json.containsKey("verb")) {
-      verb = _json["verb"];
+    if (_json.containsKey('verb')) {
+      verb = _json['verb'];
     }
   }
 
@@ -1218,25 +1217,25 @@ class GoogleCloudRedisV1OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (apiVersion != null) {
-      _json["apiVersion"] = apiVersion;
+      _json['apiVersion'] = apiVersion;
     }
     if (cancelRequested != null) {
-      _json["cancelRequested"] = cancelRequested;
+      _json['cancelRequested'] = cancelRequested;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (statusDetail != null) {
-      _json["statusDetail"] = statusDetail;
+      _json['statusDetail'] = statusDetail;
     }
     if (target != null) {
-      _json["target"] = target;
+      _json['target'] = target;
     }
     if (verb != null) {
-      _json["verb"] = verb;
+      _json['verb'] = verb;
     }
     return _json;
   }
@@ -1264,8 +1263,8 @@ class ImportInstanceRequest {
   ImportInstanceRequest();
 
   ImportInstanceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("inputConfig")) {
-      inputConfig = InputConfig.fromJson(_json["inputConfig"]);
+    if (_json.containsKey('inputConfig')) {
+      inputConfig = InputConfig.fromJson(_json['inputConfig']);
     }
   }
 
@@ -1273,7 +1272,7 @@ class ImportInstanceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     return _json;
   }
@@ -1287,8 +1286,8 @@ class InputConfig {
   InputConfig();
 
   InputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("gcsSource")) {
-      gcsSource = GcsSource.fromJson(_json["gcsSource"]);
+    if (_json.containsKey('gcsSource')) {
+      gcsSource = GcsSource.fromJson(_json['gcsSource']);
     }
   }
 
@@ -1296,7 +1295,7 @@ class InputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     return _json;
   }
@@ -1426,63 +1425,63 @@ class Instance {
   Instance();
 
   Instance.fromJson(core.Map _json) {
-    if (_json.containsKey("alternativeLocationId")) {
-      alternativeLocationId = _json["alternativeLocationId"];
+    if (_json.containsKey('alternativeLocationId')) {
+      alternativeLocationId = _json['alternativeLocationId'];
     }
-    if (_json.containsKey("authorizedNetwork")) {
-      authorizedNetwork = _json["authorizedNetwork"];
+    if (_json.containsKey('authorizedNetwork')) {
+      authorizedNetwork = _json['authorizedNetwork'];
     }
-    if (_json.containsKey("connectMode")) {
-      connectMode = _json["connectMode"];
+    if (_json.containsKey('connectMode')) {
+      connectMode = _json['connectMode'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("currentLocationId")) {
-      currentLocationId = _json["currentLocationId"];
+    if (_json.containsKey('currentLocationId')) {
+      currentLocationId = _json['currentLocationId'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("host")) {
-      host = _json["host"];
+    if (_json.containsKey('host')) {
+      host = _json['host'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("memorySizeGb")) {
-      memorySizeGb = _json["memorySizeGb"];
+    if (_json.containsKey('memorySizeGb')) {
+      memorySizeGb = _json['memorySizeGb'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("persistenceIamIdentity")) {
-      persistenceIamIdentity = _json["persistenceIamIdentity"];
+    if (_json.containsKey('persistenceIamIdentity')) {
+      persistenceIamIdentity = _json['persistenceIamIdentity'];
     }
-    if (_json.containsKey("port")) {
-      port = _json["port"];
+    if (_json.containsKey('port')) {
+      port = _json['port'];
     }
-    if (_json.containsKey("redisConfigs")) {
+    if (_json.containsKey('redisConfigs')) {
       redisConfigs =
-          (_json["redisConfigs"] as core.Map).cast<core.String, core.String>();
+          (_json['redisConfigs'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("redisVersion")) {
-      redisVersion = _json["redisVersion"];
+    if (_json.containsKey('redisVersion')) {
+      redisVersion = _json['redisVersion'];
     }
-    if (_json.containsKey("reservedIpRange")) {
-      reservedIpRange = _json["reservedIpRange"];
+    if (_json.containsKey('reservedIpRange')) {
+      reservedIpRange = _json['reservedIpRange'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("statusMessage")) {
-      statusMessage = _json["statusMessage"];
+    if (_json.containsKey('statusMessage')) {
+      statusMessage = _json['statusMessage'];
     }
-    if (_json.containsKey("tier")) {
-      tier = _json["tier"];
+    if (_json.containsKey('tier')) {
+      tier = _json['tier'];
     }
   }
 
@@ -1490,61 +1489,61 @@ class Instance {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternativeLocationId != null) {
-      _json["alternativeLocationId"] = alternativeLocationId;
+      _json['alternativeLocationId'] = alternativeLocationId;
     }
     if (authorizedNetwork != null) {
-      _json["authorizedNetwork"] = authorizedNetwork;
+      _json['authorizedNetwork'] = authorizedNetwork;
     }
     if (connectMode != null) {
-      _json["connectMode"] = connectMode;
+      _json['connectMode'] = connectMode;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (currentLocationId != null) {
-      _json["currentLocationId"] = currentLocationId;
+      _json['currentLocationId'] = currentLocationId;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (host != null) {
-      _json["host"] = host;
+      _json['host'] = host;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (memorySizeGb != null) {
-      _json["memorySizeGb"] = memorySizeGb;
+      _json['memorySizeGb'] = memorySizeGb;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (persistenceIamIdentity != null) {
-      _json["persistenceIamIdentity"] = persistenceIamIdentity;
+      _json['persistenceIamIdentity'] = persistenceIamIdentity;
     }
     if (port != null) {
-      _json["port"] = port;
+      _json['port'] = port;
     }
     if (redisConfigs != null) {
-      _json["redisConfigs"] = redisConfigs;
+      _json['redisConfigs'] = redisConfigs;
     }
     if (redisVersion != null) {
-      _json["redisVersion"] = redisVersion;
+      _json['redisVersion'] = redisVersion;
     }
     if (reservedIpRange != null) {
-      _json["reservedIpRange"] = reservedIpRange;
+      _json['reservedIpRange'] = reservedIpRange;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (statusMessage != null) {
-      _json["statusMessage"] = statusMessage;
+      _json['statusMessage'] = statusMessage;
     }
     if (tier != null) {
-      _json["tier"] = tier;
+      _json['tier'] = tier;
     }
     return _json;
   }
@@ -1573,16 +1572,16 @@ class ListInstancesResponse {
   ListInstancesResponse();
 
   ListInstancesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("instances")) {
-      instances = (_json["instances"] as core.List)
+    if (_json.containsKey('instances')) {
+      instances = (_json['instances'] as core.List)
           .map<Instance>((value) => Instance.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("unreachable")) {
-      unreachable = (_json["unreachable"] as core.List).cast<core.String>();
+    if (_json.containsKey('unreachable')) {
+      unreachable = (_json['unreachable'] as core.List).cast<core.String>();
     }
   }
 
@@ -1590,13 +1589,13 @@ class ListInstancesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (instances != null) {
-      _json["instances"] = instances.map((value) => value.toJson()).toList();
+      _json['instances'] = instances.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (unreachable != null) {
-      _json["unreachable"] = unreachable;
+      _json['unreachable'] = unreachable;
     }
     return _json;
   }
@@ -1613,13 +1612,13 @@ class ListLocationsResponse {
   ListLocationsResponse();
 
   ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1627,10 +1626,10 @@ class ListLocationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1647,11 +1646,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -1661,10 +1660,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1699,21 +1698,21 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -1721,19 +1720,19 @@ class Location {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -1783,22 +1782,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -1806,19 +1805,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -1832,8 +1831,8 @@ class OutputConfig {
   OutputConfig();
 
   OutputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("gcsDestination")) {
-      gcsDestination = GcsDestination.fromJson(_json["gcsDestination"]);
+    if (_json.containsKey('gcsDestination')) {
+      gcsDestination = GcsDestination.fromJson(_json['gcsDestination']);
     }
   }
 
@@ -1841,7 +1840,7 @@ class OutputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -1872,17 +1871,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -1890,13 +1889,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -1910,8 +1909,8 @@ class UpgradeInstanceRequest {
   UpgradeInstanceRequest();
 
   UpgradeInstanceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("redisVersion")) {
-      redisVersion = _json["redisVersion"];
+    if (_json.containsKey('redisVersion')) {
+      redisVersion = _json['redisVersion'];
     }
   }
 
@@ -1919,7 +1918,7 @@ class UpgradeInstanceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (redisVersion != null) {
-      _json["redisVersion"] = redisVersion;
+      _json['redisVersion'] = redisVersion;
     }
     return _json;
   }

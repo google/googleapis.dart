@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -89,7 +89,7 @@ api.AuditConfig buildAuditConfig() {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
     o.auditLogConfigs = buildUnnamed2598();
-    o.service = "foo";
+    o.service = 'foo';
   }
   buildCounterAuditConfig--;
   return o;
@@ -106,8 +106,8 @@ void checkAuditConfig(api.AuditConfig o) {
 
 core.List<core.String> buildUnnamed2599() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -123,7 +123,7 @@ api.AuditLogConfig buildAuditLogConfig() {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
     o.exemptedMembers = buildUnnamed2599();
-    o.logType = "foo";
+    o.logType = 'foo';
   }
   buildCounterAuditLogConfig--;
   return o;
@@ -140,8 +140,8 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
 
 core.List<core.String> buildUnnamed2600() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -158,7 +158,7 @@ api.Binding buildBinding() {
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
     o.members = buildUnnamed2600();
-    o.role = "foo";
+    o.role = 'foo';
   }
   buildCounterBinding--;
   return o;
@@ -194,7 +194,7 @@ api.CharacterMaskConfig buildCharacterMaskConfig() {
   var o = api.CharacterMaskConfig();
   buildCounterCharacterMaskConfig++;
   if (buildCounterCharacterMaskConfig < 3) {
-    o.maskingCharacter = "foo";
+    o.maskingCharacter = 'foo';
   }
   buildCounterCharacterMaskConfig--;
   return o;
@@ -232,7 +232,7 @@ api.CryptoHashConfig buildCryptoHashConfig() {
   var o = api.CryptoHashConfig();
   buildCounterCryptoHashConfig++;
   if (buildCounterCryptoHashConfig < 3) {
-    o.cryptoKey = "foo";
+    o.cryptoKey = 'foo';
   }
   buildCounterCryptoHashConfig--;
   return o;
@@ -251,8 +251,8 @@ api.Dataset buildDataset() {
   var o = api.Dataset();
   buildCounterDataset++;
   if (buildCounterDataset < 3) {
-    o.name = "foo";
-    o.timeZone = "foo";
+    o.name = 'foo';
+    o.timeZone = 'foo';
   }
   buildCounterDataset--;
   return o;
@@ -272,7 +272,7 @@ api.DateShiftConfig buildDateShiftConfig() {
   var o = api.DateShiftConfig();
   buildCounterDateShiftConfig++;
   if (buildCounterDateShiftConfig < 3) {
-    o.cryptoKey = "foo";
+    o.cryptoKey = 'foo';
   }
   buildCounterDateShiftConfig--;
   return o;
@@ -317,7 +317,7 @@ api.DeidentifyDatasetRequest buildDeidentifyDatasetRequest() {
   buildCounterDeidentifyDatasetRequest++;
   if (buildCounterDeidentifyDatasetRequest < 3) {
     o.config = buildDeidentifyConfig();
-    o.destinationDataset = "foo";
+    o.destinationDataset = 'foo';
   }
   buildCounterDeidentifyDatasetRequest--;
   return o;
@@ -338,7 +338,7 @@ api.DeidentifyDicomStoreRequest buildDeidentifyDicomStoreRequest() {
   buildCounterDeidentifyDicomStoreRequest++;
   if (buildCounterDeidentifyDicomStoreRequest < 3) {
     o.config = buildDeidentifyConfig();
-    o.destinationStore = "foo";
+    o.destinationStore = 'foo';
     o.filterConfig = buildDicomFilterConfig();
   }
   buildCounterDeidentifyDicomStoreRequest--;
@@ -361,7 +361,7 @@ api.DeidentifyFhirStoreRequest buildDeidentifyFhirStoreRequest() {
   buildCounterDeidentifyFhirStoreRequest++;
   if (buildCounterDeidentifyFhirStoreRequest < 3) {
     o.config = buildDeidentifyConfig();
-    o.destinationStore = "foo";
+    o.destinationStore = 'foo';
     o.resourceFilter = buildFhirFilter();
   }
   buildCounterDeidentifyFhirStoreRequest--;
@@ -398,7 +398,7 @@ api.DicomConfig buildDicomConfig() {
   var o = api.DicomConfig();
   buildCounterDicomConfig++;
   if (buildCounterDicomConfig < 3) {
-    o.filterProfile = "foo";
+    o.filterProfile = 'foo';
     o.keepList = buildTagFilterList();
     o.removeList = buildTagFilterList();
     o.skipIdRedaction = true;
@@ -423,7 +423,7 @@ api.DicomFilterConfig buildDicomFilterConfig() {
   var o = api.DicomFilterConfig();
   buildCounterDicomFilterConfig++;
   if (buildCounterDicomFilterConfig < 3) {
-    o.resourcePathsGcsUri = "foo";
+    o.resourcePathsGcsUri = 'foo';
   }
   buildCounterDicomFilterConfig--;
   return o;
@@ -439,15 +439,15 @@ void checkDicomFilterConfig(api.DicomFilterConfig o) {
 
 core.Map<core.String, core.String> buildUnnamed2601() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2601(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterDicomStore = 0;
@@ -456,7 +456,7 @@ api.DicomStore buildDicomStore() {
   buildCounterDicomStore++;
   if (buildCounterDicomStore < 3) {
     o.labels = buildUnnamed2601();
-    o.name = "foo";
+    o.name = 'foo';
     o.notificationConfig = buildNotificationConfig();
   }
   buildCounterDicomStore--;
@@ -567,10 +567,10 @@ api.Expr buildExpr() {
   var o = api.Expr();
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    o.description = "foo";
-    o.expression = "foo";
-    o.location = "foo";
-    o.title = "foo";
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
   }
   buildCounterExpr--;
   return o;
@@ -640,15 +640,15 @@ void checkFhirFilter(api.FhirFilter o) {
 
 core.Map<core.String, core.String> buildUnnamed2603() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2603(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<api.StreamConfig> buildUnnamed2604() {
@@ -673,10 +673,10 @@ api.FhirStore buildFhirStore() {
     o.disableResourceVersioning = true;
     o.enableUpdateCreate = true;
     o.labels = buildUnnamed2603();
-    o.name = "foo";
+    o.name = 'foo';
     o.notificationConfig = buildNotificationConfig();
     o.streamConfigs = buildUnnamed2604();
-    o.version = "foo";
+    o.version = 'foo';
   }
   buildCounterFhirStore--;
   return o;
@@ -699,8 +699,8 @@ void checkFhirStore(api.FhirStore o) {
 
 core.List<core.String> buildUnnamed2605() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -715,7 +715,7 @@ api.FieldMetadata buildFieldMetadata() {
   var o = api.FieldMetadata();
   buildCounterFieldMetadata++;
   if (buildCounterFieldMetadata < 3) {
-    o.action = "foo";
+    o.action = 'foo';
     o.paths = buildUnnamed2605();
   }
   buildCounterFieldMetadata--;
@@ -779,7 +779,7 @@ api.GoogleCloudHealthcareV1DicomBigQueryDestination
   buildCounterGoogleCloudHealthcareV1DicomBigQueryDestination++;
   if (buildCounterGoogleCloudHealthcareV1DicomBigQueryDestination < 3) {
     o.force = true;
-    o.tableUri = "foo";
+    o.tableUri = 'foo';
   }
   buildCounterGoogleCloudHealthcareV1DicomBigQueryDestination--;
   return o;
@@ -801,8 +801,8 @@ api.GoogleCloudHealthcareV1DicomGcsDestination
   var o = api.GoogleCloudHealthcareV1DicomGcsDestination();
   buildCounterGoogleCloudHealthcareV1DicomGcsDestination++;
   if (buildCounterGoogleCloudHealthcareV1DicomGcsDestination < 3) {
-    o.mimeType = "foo";
-    o.uriPrefix = "foo";
+    o.mimeType = 'foo';
+    o.uriPrefix = 'foo';
   }
   buildCounterGoogleCloudHealthcareV1DicomGcsDestination--;
   return o;
@@ -824,7 +824,7 @@ api.GoogleCloudHealthcareV1DicomGcsSource
   var o = api.GoogleCloudHealthcareV1DicomGcsSource();
   buildCounterGoogleCloudHealthcareV1DicomGcsSource++;
   if (buildCounterGoogleCloudHealthcareV1DicomGcsSource < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudHealthcareV1DicomGcsSource--;
   return o;
@@ -845,7 +845,7 @@ api.GoogleCloudHealthcareV1FhirBigQueryDestination
   var o = api.GoogleCloudHealthcareV1FhirBigQueryDestination();
   buildCounterGoogleCloudHealthcareV1FhirBigQueryDestination++;
   if (buildCounterGoogleCloudHealthcareV1FhirBigQueryDestination < 3) {
-    o.datasetUri = "foo";
+    o.datasetUri = 'foo';
     o.force = true;
     o.schemaConfig = buildSchemaConfig();
   }
@@ -870,7 +870,7 @@ api.GoogleCloudHealthcareV1FhirGcsDestination
   var o = api.GoogleCloudHealthcareV1FhirGcsDestination();
   buildCounterGoogleCloudHealthcareV1FhirGcsDestination++;
   if (buildCounterGoogleCloudHealthcareV1FhirGcsDestination < 3) {
-    o.uriPrefix = "foo";
+    o.uriPrefix = 'foo';
   }
   buildCounterGoogleCloudHealthcareV1FhirGcsDestination--;
   return o;
@@ -891,7 +891,7 @@ api.GoogleCloudHealthcareV1FhirGcsSource
   var o = api.GoogleCloudHealthcareV1FhirGcsSource();
   buildCounterGoogleCloudHealthcareV1FhirGcsSource++;
   if (buildCounterGoogleCloudHealthcareV1FhirGcsSource < 3) {
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterGoogleCloudHealthcareV1FhirGcsSource--;
   return o;
@@ -911,8 +911,8 @@ api.Hl7V2NotificationConfig buildHl7V2NotificationConfig() {
   var o = api.Hl7V2NotificationConfig();
   buildCounterHl7V2NotificationConfig++;
   if (buildCounterHl7V2NotificationConfig < 3) {
-    o.filter = "foo";
-    o.pubsubTopic = "foo";
+    o.filter = 'foo';
+    o.pubsubTopic = 'foo';
   }
   buildCounterHl7V2NotificationConfig--;
   return o;
@@ -929,15 +929,15 @@ void checkHl7V2NotificationConfig(api.Hl7V2NotificationConfig o) {
 
 core.Map<core.String, core.String> buildUnnamed2606() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2606(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<api.Hl7V2NotificationConfig> buildUnnamed2607() {
@@ -959,7 +959,7 @@ api.Hl7V2Store buildHl7V2Store() {
   buildCounterHl7V2Store++;
   if (buildCounterHl7V2Store < 3) {
     o.labels = buildUnnamed2606();
-    o.name = "foo";
+    o.name = 'foo';
     o.notificationConfigs = buildUnnamed2607();
     o.parserConfig = buildParserConfig();
     o.rejectDuplicateMessage = true;
@@ -982,12 +982,12 @@ void checkHl7V2Store(api.Hl7V2Store o) {
 
 core.Map<core.String, core.Object> buildUnnamed2608() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -997,16 +997,16 @@ core.Map<core.String, core.Object> buildUnnamed2608() {
 
 void checkUnnamed2608(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed2609() {
@@ -1027,8 +1027,8 @@ api.HttpBody buildHttpBody() {
   var o = api.HttpBody();
   buildCounterHttpBody++;
   if (buildCounterHttpBody < 3) {
-    o.contentType = "foo";
-    o.data = "foo";
+    o.contentType = 'foo';
+    o.data = 'foo';
     o.extensions = buildUnnamed2609();
   }
   buildCounterHttpBody--;
@@ -1050,7 +1050,7 @@ api.ImageConfig buildImageConfig() {
   var o = api.ImageConfig();
   buildCounterImageConfig++;
   if (buildCounterImageConfig < 3) {
-    o.textRedactionMode = "foo";
+    o.textRedactionMode = 'foo';
   }
   buildCounterImageConfig--;
   return o;
@@ -1103,7 +1103,7 @@ api.ImportResourcesRequest buildImportResourcesRequest() {
   var o = api.ImportResourcesRequest();
   buildCounterImportResourcesRequest++;
   if (buildCounterImportResourcesRequest < 3) {
-    o.contentStructure = "foo";
+    o.contentStructure = 'foo';
     o.gcsSource = buildGoogleCloudHealthcareV1FhirGcsSource();
   }
   buildCounterImportResourcesRequest--;
@@ -1136,8 +1136,8 @@ void checkImportResourcesResponse(api.ImportResourcesResponse o) {
 
 core.List<core.String> buildUnnamed2610() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1200,7 +1200,7 @@ api.IngestMessageResponse buildIngestMessageResponse() {
   var o = api.IngestMessageResponse();
   buildCounterIngestMessageResponse++;
   if (buildCounterIngestMessageResponse < 3) {
-    o.hl7Ack = "foo";
+    o.hl7Ack = 'foo';
     o.message = buildMessage();
   }
   buildCounterIngestMessageResponse--;
@@ -1235,7 +1235,7 @@ api.ListDatasetsResponse buildListDatasetsResponse() {
   buildCounterListDatasetsResponse++;
   if (buildCounterListDatasetsResponse < 3) {
     o.datasets = buildUnnamed2611();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListDatasetsResponse--;
   return o;
@@ -1269,7 +1269,7 @@ api.ListDicomStoresResponse buildListDicomStoresResponse() {
   buildCounterListDicomStoresResponse++;
   if (buildCounterListDicomStoresResponse < 3) {
     o.dicomStores = buildUnnamed2612();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListDicomStoresResponse--;
   return o;
@@ -1303,7 +1303,7 @@ api.ListFhirStoresResponse buildListFhirStoresResponse() {
   buildCounterListFhirStoresResponse++;
   if (buildCounterListFhirStoresResponse < 3) {
     o.fhirStores = buildUnnamed2613();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListFhirStoresResponse--;
   return o;
@@ -1337,7 +1337,7 @@ api.ListHl7V2StoresResponse buildListHl7V2StoresResponse() {
   buildCounterListHl7V2StoresResponse++;
   if (buildCounterListHl7V2StoresResponse < 3) {
     o.hl7V2Stores = buildUnnamed2614();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListHl7V2StoresResponse--;
   return o;
@@ -1371,7 +1371,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
     o.locations = buildUnnamed2615();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
   return o;
@@ -1405,7 +1405,7 @@ api.ListMessagesResponse buildListMessagesResponse() {
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
     o.hl7V2Messages = buildUnnamed2616();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListMessagesResponse--;
   return o;
@@ -1438,7 +1438,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   var o = api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed2617();
   }
   buildCounterListOperationsResponse--;
@@ -1456,25 +1456,25 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed2618() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2618(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed2619() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1484,16 +1484,16 @@ core.Map<core.String, core.Object> buildUnnamed2619() {
 
 void checkUnnamed2619(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterLocation = 0;
@@ -1501,11 +1501,11 @@ api.Location buildLocation() {
   var o = api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.labels = buildUnnamed2618();
-    o.locationId = "foo";
+    o.locationId = 'foo';
     o.metadata = buildUnnamed2619();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterLocation--;
   return o;
@@ -1525,15 +1525,15 @@ void checkLocation(api.Location o) {
 
 core.Map<core.String, core.String> buildUnnamed2620() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2620(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<api.PatientId> buildUnnamed2621() {
@@ -1554,15 +1554,15 @@ api.Message buildMessage() {
   var o = api.Message();
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
-    o.createTime = "foo";
-    o.data = "foo";
+    o.createTime = 'foo';
+    o.data = 'foo';
     o.labels = buildUnnamed2620();
-    o.messageType = "foo";
-    o.name = "foo";
+    o.messageType = 'foo';
+    o.name = 'foo';
     o.parsedData = buildParsedData();
     o.patientIds = buildUnnamed2621();
-    o.sendFacility = "foo";
-    o.sendTime = "foo";
+    o.sendFacility = 'foo';
+    o.sendTime = 'foo';
   }
   buildCounterMessage--;
   return o;
@@ -1589,7 +1589,7 @@ api.NotificationConfig buildNotificationConfig() {
   var o = api.NotificationConfig();
   buildCounterNotificationConfig++;
   if (buildCounterNotificationConfig < 3) {
-    o.pubsubTopic = "foo";
+    o.pubsubTopic = 'foo';
   }
   buildCounterNotificationConfig--;
   return o;
@@ -1605,12 +1605,12 @@ void checkNotificationConfig(api.NotificationConfig o) {
 
 core.Map<core.String, core.Object> buildUnnamed2622() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1620,26 +1620,26 @@ core.Map<core.String, core.Object> buildUnnamed2622() {
 
 void checkUnnamed2622(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed2623() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1649,16 +1649,16 @@ core.Map<core.String, core.Object> buildUnnamed2623() {
 
 void checkUnnamed2623(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o["x"]) as core.Map;
+  var casted7 = (o['x']) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
-  var casted8 = (o["y"]) as core.Map;
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
+  var casted8 = (o['y']) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8["bool"], unittest.equals(true));
-  unittest.expect(casted8["string"], unittest.equals('foo'));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterOperation = 0;
@@ -1669,7 +1669,7 @@ api.Operation buildOperation() {
     o.done = true;
     o.error = buildStatus();
     o.metadata = buildUnnamed2622();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed2623();
   }
   buildCounterOperation--;
@@ -1693,12 +1693,12 @@ api.OperationMetadata buildOperationMetadata() {
   var o = api.OperationMetadata();
   buildCounterOperationMetadata++;
   if (buildCounterOperationMetadata < 3) {
-    o.apiMethodName = "foo";
+    o.apiMethodName = 'foo';
     o.cancelRequested = true;
     o.counter = buildProgressCounter();
-    o.createTime = "foo";
-    o.endTime = "foo";
-    o.logsUrl = "foo";
+    o.createTime = 'foo';
+    o.endTime = 'foo';
+    o.logsUrl = 'foo';
   }
   buildCounterOperationMetadata--;
   return o;
@@ -1755,7 +1755,7 @@ api.ParserConfig buildParserConfig() {
   buildCounterParserConfig++;
   if (buildCounterParserConfig < 3) {
     o.allowNullHeader = true;
-    o.segmentTerminator = "foo";
+    o.segmentTerminator = 'foo';
   }
   buildCounterParserConfig--;
   return o;
@@ -1775,8 +1775,8 @@ api.PatientId buildPatientId() {
   var o = api.PatientId();
   buildCounterPatientId++;
   if (buildCounterPatientId < 3) {
-    o.type = "foo";
-    o.value = "foo";
+    o.type = 'foo';
+    o.value = 'foo';
   }
   buildCounterPatientId--;
   return o;
@@ -1824,7 +1824,7 @@ api.Policy buildPolicy() {
   if (buildCounterPolicy < 3) {
     o.auditConfigs = buildUnnamed2625();
     o.bindings = buildUnnamed2626();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.version = 42;
   }
   buildCounterPolicy--;
@@ -1847,9 +1847,9 @@ api.ProgressCounter buildProgressCounter() {
   var o = api.ProgressCounter();
   buildCounterProgressCounter++;
   if (buildCounterProgressCounter < 3) {
-    o.failure = "foo";
-    o.pending = "foo";
-    o.success = "foo";
+    o.failure = 'foo';
+    o.pending = 'foo';
+    o.success = 'foo';
   }
   buildCounterProgressCounter--;
   return o;
@@ -1897,8 +1897,8 @@ void checkReplaceWithInfoTypeConfig(api.ReplaceWithInfoTypeConfig o) {
 
 core.List<core.String> buildUnnamed2627() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1932,8 +1932,8 @@ api.SchemaConfig buildSchemaConfig() {
   var o = api.SchemaConfig();
   buildCounterSchemaConfig++;
   if (buildCounterSchemaConfig < 3) {
-    o.recursiveStructureDepth = "foo";
-    o.schemaType = "foo";
+    o.recursiveStructureDepth = 'foo';
+    o.schemaType = 'foo';
   }
   buildCounterSchemaConfig--;
   return o;
@@ -1953,7 +1953,7 @@ api.SearchResourcesRequest buildSearchResourcesRequest() {
   var o = api.SearchResourcesRequest();
   buildCounterSearchResourcesRequest++;
   if (buildCounterSearchResourcesRequest < 3) {
-    o.resourceType = "foo";
+    o.resourceType = 'foo';
   }
   buildCounterSearchResourcesRequest--;
   return o;
@@ -1969,15 +1969,15 @@ void checkSearchResourcesRequest(api.SearchResourcesRequest o) {
 
 core.Map<core.String, core.String> buildUnnamed2628() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2628(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterSegment = 0;
@@ -1986,8 +1986,8 @@ api.Segment buildSegment() {
   buildCounterSegment++;
   if (buildCounterSegment < 3) {
     o.fields = buildUnnamed2628();
-    o.segmentId = "foo";
-    o.setId = "foo";
+    o.segmentId = 'foo';
+    o.setId = 'foo';
   }
   buildCounterSegment--;
   return o;
@@ -2009,7 +2009,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     o.policy = buildPolicy();
-    o.updateMask = "foo";
+    o.updateMask = 'foo';
   }
   buildCounterSetIamPolicyRequest--;
   return o;
@@ -2026,12 +2026,12 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
 
 core.Map<core.String, core.Object> buildUnnamed2629() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -2041,16 +2041,16 @@ core.Map<core.String, core.Object> buildUnnamed2629() {
 
 void checkUnnamed2629(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted9 = (o["x"]) as core.Map;
+  var casted9 = (o['x']) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(casted9["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted9["bool"], unittest.equals(true));
-  unittest.expect(casted9["string"], unittest.equals('foo'));
-  var casted10 = (o["y"]) as core.Map;
+  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted9['bool'], unittest.equals(true));
+  unittest.expect(casted9['string'], unittest.equals('foo'));
+  var casted10 = (o['y']) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(casted10["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted10["bool"], unittest.equals(true));
-  unittest.expect(casted10["string"], unittest.equals('foo'));
+  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted10['bool'], unittest.equals(true));
+  unittest.expect(casted10['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed2630() {
@@ -2073,7 +2073,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed2630();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -2091,8 +2091,8 @@ void checkStatus(api.Status o) {
 
 core.List<core.String> buildUnnamed2631() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2126,8 +2126,8 @@ void checkStreamConfig(api.StreamConfig o) {
 
 core.List<core.String> buildUnnamed2632() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2158,8 +2158,8 @@ void checkTagFilterList(api.TagFilterList o) {
 
 core.List<core.String> buildUnnamed2633() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2190,8 +2190,8 @@ void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
 
 core.List<core.String> buildUnnamed2634() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2253,216 +2253,216 @@ void checkTextConfig(api.TextConfig o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AuditConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AuditConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od);
     });
   });
 
-  unittest.group("obj-schema-AuditLogConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AuditLogConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Binding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Binding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od);
     });
   });
 
-  unittest.group("obj-schema-CancelOperationRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CancelOperationRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CharacterMaskConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CharacterMaskConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCharacterMaskConfig();
       var od = api.CharacterMaskConfig.fromJson(o.toJson());
       checkCharacterMaskConfig(od);
     });
   });
 
-  unittest.group("obj-schema-CreateMessageRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateMessageRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateMessageRequest();
       var od = api.CreateMessageRequest.fromJson(o.toJson());
       checkCreateMessageRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CryptoHashConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CryptoHashConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCryptoHashConfig();
       var od = api.CryptoHashConfig.fromJson(o.toJson());
       checkCryptoHashConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Dataset", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Dataset', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDataset();
       var od = api.Dataset.fromJson(o.toJson());
       checkDataset(od);
     });
   });
 
-  unittest.group("obj-schema-DateShiftConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DateShiftConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDateShiftConfig();
       var od = api.DateShiftConfig.fromJson(o.toJson());
       checkDateShiftConfig(od);
     });
   });
 
-  unittest.group("obj-schema-DeidentifyConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeidentifyConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeidentifyConfig();
       var od = api.DeidentifyConfig.fromJson(o.toJson());
       checkDeidentifyConfig(od);
     });
   });
 
-  unittest.group("obj-schema-DeidentifyDatasetRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeidentifyDatasetRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeidentifyDatasetRequest();
       var od = api.DeidentifyDatasetRequest.fromJson(o.toJson());
       checkDeidentifyDatasetRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeidentifyDicomStoreRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeidentifyDicomStoreRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeidentifyDicomStoreRequest();
       var od = api.DeidentifyDicomStoreRequest.fromJson(o.toJson());
       checkDeidentifyDicomStoreRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeidentifyFhirStoreRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeidentifyFhirStoreRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeidentifyFhirStoreRequest();
       var od = api.DeidentifyFhirStoreRequest.fromJson(o.toJson());
       checkDeidentifyFhirStoreRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeidentifySummary", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeidentifySummary', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeidentifySummary();
       var od = api.DeidentifySummary.fromJson(o.toJson());
       checkDeidentifySummary(od);
     });
   });
 
-  unittest.group("obj-schema-DicomConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DicomConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDicomConfig();
       var od = api.DicomConfig.fromJson(o.toJson());
       checkDicomConfig(od);
     });
   });
 
-  unittest.group("obj-schema-DicomFilterConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DicomFilterConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDicomFilterConfig();
       var od = api.DicomFilterConfig.fromJson(o.toJson());
       checkDicomFilterConfig(od);
     });
   });
 
-  unittest.group("obj-schema-DicomStore", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DicomStore', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDicomStore();
       var od = api.DicomStore.fromJson(o.toJson());
       checkDicomStore(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-ExportDicomDataRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExportDicomDataRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExportDicomDataRequest();
       var od = api.ExportDicomDataRequest.fromJson(o.toJson());
       checkExportDicomDataRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ExportDicomDataResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExportDicomDataResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExportDicomDataResponse();
       var od = api.ExportDicomDataResponse.fromJson(o.toJson());
       checkExportDicomDataResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ExportResourcesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExportResourcesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExportResourcesRequest();
       var od = api.ExportResourcesRequest.fromJson(o.toJson());
       checkExportResourcesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ExportResourcesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExportResourcesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExportResourcesResponse();
       var od = api.ExportResourcesResponse.fromJson(o.toJson());
       checkExportResourcesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Expr", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Expr', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od);
     });
   });
 
-  unittest.group("obj-schema-FhirConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FhirConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFhirConfig();
       var od = api.FhirConfig.fromJson(o.toJson());
       checkFhirConfig(od);
     });
   });
 
-  unittest.group("obj-schema-FhirFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FhirFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFhirFilter();
       var od = api.FhirFilter.fromJson(o.toJson());
       checkFhirFilter(od);
     });
   });
 
-  unittest.group("obj-schema-FhirStore", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FhirStore', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFhirStore();
       var od = api.FhirStore.fromJson(o.toJson());
       checkFhirStore(od);
     });
   });
 
-  unittest.group("obj-schema-FieldMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FieldMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFieldMetadata();
       var od = api.FieldMetadata.fromJson(o.toJson());
       checkFieldMetadata(od);
@@ -2470,9 +2470,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary",
+      'obj-schema-GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary();
       var od = api.GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary
@@ -2482,9 +2482,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary",
+      'obj-schema-GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary();
       var od = api.GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary
@@ -2493,9 +2493,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudHealthcareV1DicomBigQueryDestination",
+  unittest.group('obj-schema-GoogleCloudHealthcareV1DicomBigQueryDestination',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudHealthcareV1DicomBigQueryDestination();
       var od = api.GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
           o.toJson());
@@ -2503,8 +2503,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudHealthcareV1DicomGcsDestination", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudHealthcareV1DicomGcsDestination', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudHealthcareV1DicomGcsDestination();
       var od =
           api.GoogleCloudHealthcareV1DicomGcsDestination.fromJson(o.toJson());
@@ -2512,17 +2512,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudHealthcareV1DicomGcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudHealthcareV1DicomGcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudHealthcareV1DicomGcsSource();
       var od = api.GoogleCloudHealthcareV1DicomGcsSource.fromJson(o.toJson());
       checkGoogleCloudHealthcareV1DicomGcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudHealthcareV1FhirBigQueryDestination",
+  unittest.group('obj-schema-GoogleCloudHealthcareV1FhirBigQueryDestination',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudHealthcareV1FhirBigQueryDestination();
       var od = api.GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
           o.toJson());
@@ -2530,8 +2530,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudHealthcareV1FhirGcsDestination", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudHealthcareV1FhirGcsDestination', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudHealthcareV1FhirGcsDestination();
       var od =
           api.GoogleCloudHealthcareV1FhirGcsDestination.fromJson(o.toJson());
@@ -2539,349 +2539,349 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudHealthcareV1FhirGcsSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudHealthcareV1FhirGcsSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudHealthcareV1FhirGcsSource();
       var od = api.GoogleCloudHealthcareV1FhirGcsSource.fromJson(o.toJson());
       checkGoogleCloudHealthcareV1FhirGcsSource(od);
     });
   });
 
-  unittest.group("obj-schema-Hl7V2NotificationConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Hl7V2NotificationConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildHl7V2NotificationConfig();
       var od = api.Hl7V2NotificationConfig.fromJson(o.toJson());
       checkHl7V2NotificationConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Hl7V2Store", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Hl7V2Store', () {
+    unittest.test('to-json--from-json', () {
       var o = buildHl7V2Store();
       var od = api.Hl7V2Store.fromJson(o.toJson());
       checkHl7V2Store(od);
     });
   });
 
-  unittest.group("obj-schema-HttpBody", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-HttpBody', () {
+    unittest.test('to-json--from-json', () {
       var o = buildHttpBody();
       var od = api.HttpBody.fromJson(o.toJson());
       checkHttpBody(od);
     });
   });
 
-  unittest.group("obj-schema-ImageConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImageConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImageConfig();
       var od = api.ImageConfig.fromJson(o.toJson());
       checkImageConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ImportDicomDataRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportDicomDataRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportDicomDataRequest();
       var od = api.ImportDicomDataRequest.fromJson(o.toJson());
       checkImportDicomDataRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ImportDicomDataResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportDicomDataResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportDicomDataResponse();
       var od = api.ImportDicomDataResponse.fromJson(o.toJson());
       checkImportDicomDataResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ImportResourcesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportResourcesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportResourcesRequest();
       var od = api.ImportResourcesRequest.fromJson(o.toJson());
       checkImportResourcesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ImportResourcesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportResourcesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportResourcesResponse();
       var od = api.ImportResourcesResponse.fromJson(o.toJson());
       checkImportResourcesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-InfoTypeTransformation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InfoTypeTransformation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInfoTypeTransformation();
       var od = api.InfoTypeTransformation.fromJson(o.toJson());
       checkInfoTypeTransformation(od);
     });
   });
 
-  unittest.group("obj-schema-IngestMessageRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IngestMessageRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIngestMessageRequest();
       var od = api.IngestMessageRequest.fromJson(o.toJson());
       checkIngestMessageRequest(od);
     });
   });
 
-  unittest.group("obj-schema-IngestMessageResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IngestMessageResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIngestMessageResponse();
       var od = api.IngestMessageResponse.fromJson(o.toJson());
       checkIngestMessageResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListDatasetsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListDatasetsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListDatasetsResponse();
       var od = api.ListDatasetsResponse.fromJson(o.toJson());
       checkListDatasetsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListDicomStoresResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListDicomStoresResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListDicomStoresResponse();
       var od = api.ListDicomStoresResponse.fromJson(o.toJson());
       checkListDicomStoresResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListFhirStoresResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListFhirStoresResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListFhirStoresResponse();
       var od = api.ListFhirStoresResponse.fromJson(o.toJson());
       checkListFhirStoresResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListHl7V2StoresResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListHl7V2StoresResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListHl7V2StoresResponse();
       var od = api.ListHl7V2StoresResponse.fromJson(o.toJson());
       checkListHl7V2StoresResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListLocationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListLocationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListMessagesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListMessagesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListMessagesResponse();
       var od = api.ListMessagesResponse.fromJson(o.toJson());
       checkListMessagesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListOperationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListOperationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Location", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Location', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od);
     });
   });
 
-  unittest.group("obj-schema-Message", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Message', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMessage();
       var od = api.Message.fromJson(o.toJson());
       checkMessage(od);
     });
   });
 
-  unittest.group("obj-schema-NotificationConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NotificationConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNotificationConfig();
       var od = api.NotificationConfig.fromJson(o.toJson());
       checkNotificationConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Operation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Operation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
 
-  unittest.group("obj-schema-OperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-ParsedData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParsedData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParsedData();
       var od = api.ParsedData.fromJson(o.toJson());
       checkParsedData(od);
     });
   });
 
-  unittest.group("obj-schema-ParserConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParserConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParserConfig();
       var od = api.ParserConfig.fromJson(o.toJson());
       checkParserConfig(od);
     });
   });
 
-  unittest.group("obj-schema-PatientId", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PatientId', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPatientId();
       var od = api.PatientId.fromJson(o.toJson());
       checkPatientId(od);
     });
   });
 
-  unittest.group("obj-schema-Policy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Policy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-ProgressCounter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ProgressCounter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProgressCounter();
       var od = api.ProgressCounter.fromJson(o.toJson());
       checkProgressCounter(od);
     });
   });
 
-  unittest.group("obj-schema-RedactConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RedactConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRedactConfig();
       var od = api.RedactConfig.fromJson(o.toJson());
       checkRedactConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ReplaceWithInfoTypeConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReplaceWithInfoTypeConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReplaceWithInfoTypeConfig();
       var od = api.ReplaceWithInfoTypeConfig.fromJson(o.toJson());
       checkReplaceWithInfoTypeConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Resources", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Resources', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResources();
       var od = api.Resources.fromJson(o.toJson());
       checkResources(od);
     });
   });
 
-  unittest.group("obj-schema-SchemaConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SchemaConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSchemaConfig();
       var od = api.SchemaConfig.fromJson(o.toJson());
       checkSchemaConfig(od);
     });
   });
 
-  unittest.group("obj-schema-SearchResourcesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchResourcesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchResourcesRequest();
       var od = api.SearchResourcesRequest.fromJson(o.toJson());
       checkSearchResourcesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Segment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Segment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSegment();
       var od = api.Segment.fromJson(o.toJson());
       checkSegment(od);
     });
   });
 
-  unittest.group("obj-schema-SetIamPolicyRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SetIamPolicyRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-StreamConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StreamConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStreamConfig();
       var od = api.StreamConfig.fromJson(o.toJson());
       checkStreamConfig(od);
     });
   });
 
-  unittest.group("obj-schema-TagFilterList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TagFilterList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTagFilterList();
       var od = api.TagFilterList.fromJson(o.toJson());
       checkTagFilterList(od);
     });
   });
 
-  unittest.group("obj-schema-TestIamPermissionsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestIamPermissionsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-TestIamPermissionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestIamPermissionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-TextConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TextConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTextConfig();
       var od = api.TextConfig.fromJson(o.toJson());
       checkTextConfig(od);
     });
   });
 
-  unittest.group("resource-ProjectsLocationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsLocationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
           api.HealthcareApi(mock).projects.locations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2901,8 +2901,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2912,7 +2912,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2924,15 +2924,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
           api.HealthcareApi(mock).projects.locations;
-      var arg_name = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
+      var arg_name = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2952,8 +2952,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2968,7 +2968,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2985,15 +2985,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsDatasetsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsLocationsDatasetsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildDataset();
-      var arg_parent = "foo";
-      var arg_datasetId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_datasetId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Dataset.fromJson(json);
         checkDataset(obj);
@@ -3016,8 +3016,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3029,7 +3029,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3042,13 +3042,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--deidentify", () {
+    unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildDeidentifyDatasetRequest();
-      var arg_sourceDataset = "foo";
-      var arg_$fields = "foo";
+      var arg_sourceDataset = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DeidentifyDatasetRequest.fromJson(json);
         checkDeidentifyDatasetRequest(obj);
@@ -3071,8 +3071,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3082,7 +3082,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3094,12 +3094,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3119,8 +3119,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3130,7 +3130,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3142,12 +3142,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3167,8 +3167,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3178,7 +3178,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDataset());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3190,13 +3190,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3216,8 +3216,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3230,7 +3230,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3245,14 +3245,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3272,8 +3272,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3287,7 +3287,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListDatasetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3302,14 +3302,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildDataset();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Dataset.fromJson(json);
         checkDataset(obj);
@@ -3332,8 +3332,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3345,7 +3345,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDataset());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3358,13 +3358,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -3387,8 +3387,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3398,7 +3398,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3410,13 +3410,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -3439,8 +3439,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3450,7 +3450,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3463,16 +3463,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsDatasetsDicomStoresResourceApi",
+  unittest.group('resource-ProjectsLocationsDatasetsDicomStoresResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildDicomStore();
-      var arg_parent = "foo";
-      var arg_dicomStoreId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomStoreId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DicomStore.fromJson(json);
         checkDicomStore(obj);
@@ -3495,8 +3495,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3508,7 +3508,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDicomStore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3521,13 +3521,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--deidentify", () {
+    unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildDeidentifyDicomStoreRequest();
-      var arg_sourceStore = "foo";
-      var arg_$fields = "foo";
+      var arg_sourceStore = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DeidentifyDicomStoreRequest.fromJson(json);
         checkDeidentifyDicomStoreRequest(obj);
@@ -3550,8 +3550,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3561,7 +3561,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3573,12 +3573,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3598,8 +3598,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3609,7 +3609,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3621,13 +3621,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--export", () {
+    unittest.test('method--export', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildExportDicomDataRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ExportDicomDataRequest.fromJson(json);
         checkExportDicomDataRequest(obj);
@@ -3650,8 +3650,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3661,7 +3661,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3673,12 +3673,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3698,8 +3698,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3709,7 +3709,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDicomStore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3721,13 +3721,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3747,8 +3747,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3761,7 +3761,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3776,13 +3776,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--import", () {
+    unittest.test('method--import', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildImportDicomDataRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ImportDicomDataRequest.fromJson(json);
         checkImportDicomDataRequest(obj);
@@ -3805,8 +3805,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3816,7 +3816,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3828,15 +3828,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3856,8 +3856,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3872,7 +3872,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListDicomStoresResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3888,14 +3888,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildDicomStore();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DicomStore.fromJson(json);
         checkDicomStore(obj);
@@ -3918,8 +3918,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3931,7 +3931,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDicomStore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3944,13 +3944,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--searchForInstances", () {
+    unittest.test('method--searchForInstances', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3970,8 +3970,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3981,7 +3981,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3994,13 +3994,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--searchForSeries", () {
+    unittest.test('method--searchForSeries', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4020,8 +4020,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4031,7 +4031,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4043,13 +4043,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--searchForStudies", () {
+    unittest.test('method--searchForStudies', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4069,8 +4069,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4080,7 +4080,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4092,13 +4092,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -4121,8 +4121,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4132,7 +4132,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4144,14 +4144,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--storeInstances", () {
+    unittest.test('method--storeInstances', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildHttpBody();
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.HttpBody.fromJson(json);
         checkHttpBody(obj);
@@ -4174,8 +4174,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4185,7 +4185,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4198,13 +4198,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -4227,8 +4227,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4238,7 +4238,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4252,8 +4252,8 @@ void main() {
   });
 
   unittest.group(
-      "resource-ProjectsLocationsDatasetsDicomStoresStudiesResourceApi", () {
-    unittest.test("method--delete", () {
+      'resource-ProjectsLocationsDatasetsDicomStoresStudiesResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesResourceApi res =
           api.HealthcareApi(mock)
@@ -4262,9 +4262,9 @@ void main() {
               .datasets
               .dicomStores
               .studies;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4284,8 +4284,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4295,7 +4295,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4307,7 +4307,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--retrieveMetadata", () {
+    unittest.test('method--retrieveMetadata', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesResourceApi res =
           api.HealthcareApi(mock)
@@ -4316,9 +4316,9 @@ void main() {
               .datasets
               .dicomStores
               .studies;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4338,8 +4338,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4349,7 +4349,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4361,7 +4361,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--retrieveStudy", () {
+    unittest.test('method--retrieveStudy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesResourceApi res =
           api.HealthcareApi(mock)
@@ -4370,9 +4370,9 @@ void main() {
               .datasets
               .dicomStores
               .studies;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4392,8 +4392,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4403,7 +4403,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4415,7 +4415,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--searchForInstances", () {
+    unittest.test('method--searchForInstances', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesResourceApi res =
           api.HealthcareApi(mock)
@@ -4424,9 +4424,9 @@ void main() {
               .datasets
               .dicomStores
               .studies;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4446,8 +4446,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4457,7 +4457,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4470,7 +4470,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--searchForSeries", () {
+    unittest.test('method--searchForSeries', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesResourceApi res =
           api.HealthcareApi(mock)
@@ -4479,9 +4479,9 @@ void main() {
               .datasets
               .dicomStores
               .studies;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4501,8 +4501,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4512,7 +4512,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4524,7 +4524,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--storeInstances", () {
+    unittest.test('method--storeInstances', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesResourceApi res =
           api.HealthcareApi(mock)
@@ -4534,9 +4534,9 @@ void main() {
               .dicomStores
               .studies;
       var arg_request = buildHttpBody();
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.HttpBody.fromJson(json);
         checkHttpBody(obj);
@@ -4559,8 +4559,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4570,7 +4570,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4585,9 +4585,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi",
+      'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi',
       () {
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi res =
           api.HealthcareApi(mock)
@@ -4597,9 +4597,9 @@ void main() {
               .dicomStores
               .studies
               .series;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4619,8 +4619,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4630,7 +4630,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4642,7 +4642,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--retrieveMetadata", () {
+    unittest.test('method--retrieveMetadata', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi res =
           api.HealthcareApi(mock)
@@ -4652,9 +4652,9 @@ void main() {
               .dicomStores
               .studies
               .series;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4674,8 +4674,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4685,7 +4685,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4697,7 +4697,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--retrieveSeries", () {
+    unittest.test('method--retrieveSeries', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi res =
           api.HealthcareApi(mock)
@@ -4707,9 +4707,9 @@ void main() {
               .dicomStores
               .studies
               .series;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4729,8 +4729,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4740,7 +4740,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4752,7 +4752,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--searchForInstances", () {
+    unittest.test('method--searchForInstances', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi res =
           api.HealthcareApi(mock)
@@ -4762,9 +4762,9 @@ void main() {
               .dicomStores
               .studies
               .series;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4784,8 +4784,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4795,7 +4795,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4810,9 +4810,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi",
+      'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi',
       () {
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi
           res = api.HealthcareApi(mock)
@@ -4823,9 +4823,9 @@ void main() {
               .studies
               .series
               .instances;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4845,8 +4845,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4856,7 +4856,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4868,7 +4868,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--retrieveInstance", () {
+    unittest.test('method--retrieveInstance', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi
           res = api.HealthcareApi(mock)
@@ -4879,9 +4879,9 @@ void main() {
               .studies
               .series
               .instances;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4901,8 +4901,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4912,7 +4912,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4924,7 +4924,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--retrieveMetadata", () {
+    unittest.test('method--retrieveMetadata', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi
           res = api.HealthcareApi(mock)
@@ -4935,9 +4935,9 @@ void main() {
               .studies
               .series
               .instances;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4957,8 +4957,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4968,7 +4968,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4980,7 +4980,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--retrieveRendered", () {
+    unittest.test('method--retrieveRendered', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi
           res = api.HealthcareApi(mock)
@@ -4991,9 +4991,9 @@ void main() {
               .studies
               .series
               .instances;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5013,8 +5013,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5024,7 +5024,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5038,9 +5038,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi",
+      'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi',
       () {
-    unittest.test("method--retrieveFrames", () {
+    unittest.test('method--retrieveFrames', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi
           res = api.HealthcareApi(mock)
@@ -5052,9 +5052,9 @@ void main() {
               .series
               .instances
               .frames;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5074,8 +5074,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5085,7 +5085,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5097,7 +5097,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--retrieveRendered", () {
+    unittest.test('method--retrieveRendered', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi
           res = api.HealthcareApi(mock)
@@ -5109,9 +5109,9 @@ void main() {
               .series
               .instances
               .frames;
-      var arg_parent = "foo";
-      var arg_dicomWebPath = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_dicomWebPath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5131,8 +5131,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5142,7 +5142,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5155,15 +5155,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsDatasetsFhirStoresResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsLocationsDatasetsFhirStoresResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildFhirStore();
-      var arg_parent = "foo";
-      var arg_fhirStoreId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_fhirStoreId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.FhirStore.fromJson(json);
         checkFhirStore(obj);
@@ -5186,8 +5186,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5199,7 +5199,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFhirStore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5212,13 +5212,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--deidentify", () {
+    unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildDeidentifyFhirStoreRequest();
-      var arg_sourceStore = "foo";
-      var arg_$fields = "foo";
+      var arg_sourceStore = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DeidentifyFhirStoreRequest.fromJson(json);
         checkDeidentifyFhirStoreRequest(obj);
@@ -5241,8 +5241,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5252,7 +5252,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5264,12 +5264,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5289,8 +5289,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5300,7 +5300,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5312,13 +5312,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--export", () {
+    unittest.test('method--export', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildExportResourcesRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ExportResourcesRequest.fromJson(json);
         checkExportResourcesRequest(obj);
@@ -5341,8 +5341,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5352,7 +5352,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5364,12 +5364,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5389,8 +5389,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5400,7 +5400,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFhirStore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5412,13 +5412,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5438,8 +5438,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5452,7 +5452,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5467,13 +5467,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--import", () {
+    unittest.test('method--import', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildImportResourcesRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ImportResourcesRequest.fromJson(json);
         checkImportResourcesRequest(obj);
@@ -5496,8 +5496,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5507,7 +5507,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5519,15 +5519,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5547,8 +5547,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5563,7 +5563,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListFhirStoresResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5579,14 +5579,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildFhirStore();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.FhirStore.fromJson(json);
         checkFhirStore(obj);
@@ -5609,8 +5609,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5622,7 +5622,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFhirStore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5635,13 +5635,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -5664,8 +5664,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5675,7 +5675,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5687,13 +5687,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -5716,8 +5716,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5727,7 +5727,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5740,20 +5740,20 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsDatasetsFhirStoresFhirResourceApi",
+  unittest.group('resource-ProjectsLocationsDatasetsFhirStoresFhirResourceApi',
       () {
-    unittest.test("method--Patient_everything", () {
+    unittest.test('method--Patient_everything', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
-      var arg_name = "foo";
-      var arg_P_type = "foo";
+      var arg_name = 'foo';
+      var arg_P_type = 'foo';
       var arg_P_count = 42;
-      var arg_start = "foo";
-      var arg_P_since = "foo";
-      var arg_end = "foo";
-      var arg_P_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_start = 'foo';
+      var arg_P_since = 'foo';
+      var arg_end = 'foo';
+      var arg_P_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5773,8 +5773,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5792,7 +5792,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5810,12 +5810,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--Resource_purge", () {
+    unittest.test('method--Resource_purge', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5835,8 +5835,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5846,7 +5846,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5857,12 +5857,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--capabilities", () {
+    unittest.test('method--capabilities', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5882,8 +5882,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5893,7 +5893,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5905,14 +5905,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
       var arg_request = buildHttpBody();
-      var arg_parent = "foo";
-      var arg_type = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_type = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.HttpBody.fromJson(json);
         checkHttpBody(obj);
@@ -5935,8 +5935,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5946,7 +5946,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5958,12 +5958,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5983,8 +5983,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5994,7 +5994,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6006,13 +6006,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--executeBundle", () {
+    unittest.test('method--executeBundle', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
       var arg_request = buildHttpBody();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.HttpBody.fromJson(json);
         checkHttpBody(obj);
@@ -6035,8 +6035,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6046,7 +6046,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6058,16 +6058,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--history", () {
+    unittest.test('method--history', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
-      var arg_name = "foo";
-      var arg_P_pageToken = "foo";
-      var arg_P_at = "foo";
+      var arg_name = 'foo';
+      var arg_P_pageToken = 'foo';
+      var arg_P_at = 'foo';
       var arg_P_count = 42;
-      var arg_P_since = "foo";
-      var arg_$fields = "foo";
+      var arg_P_since = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6087,8 +6087,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6104,7 +6104,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6121,13 +6121,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
       var arg_request = buildHttpBody();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.HttpBody.fromJson(json);
         checkHttpBody(obj);
@@ -6150,8 +6150,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6161,7 +6161,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6173,12 +6173,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--read", () {
+    unittest.test('method--read', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6198,8 +6198,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6209,7 +6209,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6221,13 +6221,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--search", () {
+    unittest.test('method--search', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
       var arg_request = buildSearchResourcesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SearchResourcesRequest.fromJson(json);
         checkSearchResourcesRequest(obj);
@@ -6250,8 +6250,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6261,7 +6261,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6273,13 +6273,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
       var arg_request = buildHttpBody();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.HttpBody.fromJson(json);
         checkHttpBody(obj);
@@ -6302,8 +6302,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6313,7 +6313,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6325,12 +6325,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--vread", () {
+    unittest.test('method--vread', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6350,8 +6350,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6361,7 +6361,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6374,16 +6374,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsDatasetsHl7V2StoresResourceApi",
+  unittest.group('resource-ProjectsLocationsDatasetsHl7V2StoresResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_request = buildHl7V2Store();
-      var arg_parent = "foo";
-      var arg_hl7V2StoreId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_hl7V2StoreId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Hl7V2Store.fromJson(json);
         checkHl7V2Store(obj);
@@ -6406,8 +6406,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6419,7 +6419,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHl7V2Store());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6432,12 +6432,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6457,8 +6457,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6468,7 +6468,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6480,12 +6480,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6505,8 +6505,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6516,7 +6516,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHl7V2Store());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6528,13 +6528,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6554,8 +6554,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6568,7 +6568,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6583,15 +6583,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
-      var arg_parent = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6611,8 +6611,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6627,7 +6627,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListHl7V2StoresResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6643,14 +6643,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_request = buildHl7V2Store();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Hl7V2Store.fromJson(json);
         checkHl7V2Store(obj);
@@ -6673,8 +6673,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6686,7 +6686,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildHl7V2Store());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6699,13 +6699,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -6728,8 +6728,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6739,7 +6739,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6751,13 +6751,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -6780,8 +6780,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6791,7 +6791,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6805,8 +6805,8 @@ void main() {
   });
 
   unittest.group(
-      "resource-ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi", () {
-    unittest.test("method--create", () {
+      'resource-ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi res =
           api.HealthcareApi(mock)
@@ -6816,8 +6816,8 @@ void main() {
               .hl7V2Stores
               .messages;
       var arg_request = buildCreateMessageRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CreateMessageRequest.fromJson(json);
         checkCreateMessageRequest(obj);
@@ -6840,8 +6840,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6851,7 +6851,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6863,7 +6863,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi res =
           api.HealthcareApi(mock)
@@ -6872,8 +6872,8 @@ void main() {
               .datasets
               .hl7V2Stores
               .messages;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6893,8 +6893,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6904,7 +6904,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6916,7 +6916,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi res =
           api.HealthcareApi(mock)
@@ -6925,9 +6925,9 @@ void main() {
               .datasets
               .hl7V2Stores
               .messages;
-      var arg_name = "foo";
-      var arg_view = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_view = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6947,8 +6947,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6959,7 +6959,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6971,7 +6971,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--ingest", () {
+    unittest.test('method--ingest', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi res =
           api.HealthcareApi(mock)
@@ -6981,8 +6981,8 @@ void main() {
               .hl7V2Stores
               .messages;
       var arg_request = buildIngestMessageRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.IngestMessageRequest.fromJson(json);
         checkIngestMessageRequest(obj);
@@ -7005,8 +7005,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7016,7 +7016,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildIngestMessageResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7028,7 +7028,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi res =
           api.HealthcareApi(mock)
@@ -7037,13 +7037,13 @@ void main() {
               .datasets
               .hl7V2Stores
               .messages;
-      var arg_parent = "foo";
-      var arg_view = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
+      var arg_parent = 'foo';
+      var arg_view = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7063,8 +7063,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7082,7 +7082,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListMessagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7100,7 +7100,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi res =
           api.HealthcareApi(mock)
@@ -7110,9 +7110,9 @@ void main() {
               .hl7V2Stores
               .messages;
       var arg_request = buildMessage();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Message.fromJson(json);
         checkMessage(obj);
@@ -7135,8 +7135,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7148,7 +7148,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7162,14 +7162,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsDatasetsOperationsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-ProjectsLocationsDatasetsOperationsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsOperationsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.operations;
       var arg_request = buildCancelOperationRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CancelOperationRequest.fromJson(json);
         checkCancelOperationRequest(obj);
@@ -7192,8 +7192,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7203,7 +7203,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7215,12 +7215,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsOperationsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7240,8 +7240,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7251,7 +7251,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7263,15 +7263,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsDatasetsOperationsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.operations;
-      var arg_name = "foo";
-      var arg_pageToken = "foo";
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7291,8 +7291,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7307,7 +7307,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));

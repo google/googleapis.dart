@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,14 +75,14 @@ api.LicenseAssignment buildLicenseAssignment() {
   var o = api.LicenseAssignment();
   buildCounterLicenseAssignment++;
   if (buildCounterLicenseAssignment < 3) {
-    o.etags = "foo";
-    o.kind = "foo";
-    o.productId = "foo";
-    o.productName = "foo";
-    o.selfLink = "foo";
-    o.skuId = "foo";
-    o.skuName = "foo";
-    o.userId = "foo";
+    o.etags = 'foo';
+    o.kind = 'foo';
+    o.productId = 'foo';
+    o.productName = 'foo';
+    o.selfLink = 'foo';
+    o.skuId = 'foo';
+    o.skuName = 'foo';
+    o.userId = 'foo';
   }
   buildCounterLicenseAssignment--;
   return o;
@@ -108,7 +108,7 @@ api.LicenseAssignmentInsert buildLicenseAssignmentInsert() {
   var o = api.LicenseAssignmentInsert();
   buildCounterLicenseAssignmentInsert++;
   if (buildCounterLicenseAssignmentInsert < 3) {
-    o.userId = "foo";
+    o.userId = 'foo';
   }
   buildCounterLicenseAssignmentInsert--;
   return o;
@@ -140,10 +140,10 @@ api.LicenseAssignmentList buildLicenseAssignmentList() {
   var o = api.LicenseAssignmentList();
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed2876();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterLicenseAssignmentList--;
   return o;
@@ -161,39 +161,39 @@ void checkLicenseAssignmentList(api.LicenseAssignmentList o) {
 }
 
 void main() {
-  unittest.group("obj-schema-LicenseAssignment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LicenseAssignment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLicenseAssignment();
       var od = api.LicenseAssignment.fromJson(o.toJson());
       checkLicenseAssignment(od);
     });
   });
 
-  unittest.group("obj-schema-LicenseAssignmentInsert", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LicenseAssignmentInsert', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLicenseAssignmentInsert();
       var od = api.LicenseAssignmentInsert.fromJson(o.toJson());
       checkLicenseAssignmentInsert(od);
     });
   });
 
-  unittest.group("obj-schema-LicenseAssignmentList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LicenseAssignmentList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLicenseAssignmentList();
       var od = api.LicenseAssignmentList.fromJson(o.toJson());
       checkLicenseAssignmentList(od);
     });
   });
 
-  unittest.group("resource-LicenseAssignmentsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-LicenseAssignmentsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.LicenseAssignmentsResourceApi res =
           api.LicensingApi(mock).licenseAssignments;
-      var arg_productId = "foo";
-      var arg_skuId = "foo";
-      var arg_userId = "foo";
-      var arg_$fields = "foo";
+      var arg_productId = 'foo';
+      var arg_skuId = 'foo';
+      var arg_userId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -205,27 +205,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 26),
             unittest.equals("apps/licensing/v1/product/"));
         pathOffset += 26;
-        index = path.indexOf("/sku/", pathOffset);
+        index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(subPart, unittest.equals('$arg_productId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/sku/"));
         pathOffset += 5;
-        index = path.indexOf("/user/", pathOffset);
+        index = path.indexOf('/user/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(subPart, unittest.equals('$arg_skuId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/user/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_userId"));
+        unittest.expect(subPart, unittest.equals('$arg_userId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -233,8 +233,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -244,9 +244,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -254,14 +254,14 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.LicenseAssignmentsResourceApi res =
           api.LicensingApi(mock).licenseAssignments;
-      var arg_productId = "foo";
-      var arg_skuId = "foo";
-      var arg_userId = "foo";
-      var arg_$fields = "foo";
+      var arg_productId = 'foo';
+      var arg_skuId = 'foo';
+      var arg_userId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -273,27 +273,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 26),
             unittest.equals("apps/licensing/v1/product/"));
         pathOffset += 26;
-        index = path.indexOf("/sku/", pathOffset);
+        index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(subPart, unittest.equals('$arg_productId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/sku/"));
         pathOffset += 5;
-        index = path.indexOf("/user/", pathOffset);
+        index = path.indexOf('/user/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(subPart, unittest.equals('$arg_skuId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/user/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_userId"));
+        unittest.expect(subPart, unittest.equals('$arg_userId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -301,8 +301,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -312,7 +312,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLicenseAssignment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -324,14 +324,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.LicenseAssignmentsResourceApi res =
           api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignmentInsert();
-      var arg_productId = "foo";
-      var arg_skuId = "foo";
-      var arg_$fields = "foo";
+      var arg_productId = 'foo';
+      var arg_skuId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LicenseAssignmentInsert.fromJson(json);
         checkLicenseAssignmentInsert(obj);
@@ -346,21 +346,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 26),
             unittest.equals("apps/licensing/v1/product/"));
         pathOffset += 26;
-        index = path.indexOf("/sku/", pathOffset);
+        index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(subPart, unittest.equals('$arg_productId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/sku/"));
         pathOffset += 5;
-        index = path.indexOf("/user", pathOffset);
+        index = path.indexOf('/user', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(subPart, unittest.equals('$arg_skuId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/user"));
         pathOffset += 5;
@@ -371,8 +371,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -382,7 +382,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLicenseAssignment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -394,15 +394,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--listForProduct", () {
+    unittest.test('method--listForProduct', () {
       var mock = HttpServerMock();
       api.LicenseAssignmentsResourceApi res =
           api.LicensingApi(mock).licenseAssignments;
-      var arg_productId = "foo";
-      var arg_customerId = "foo";
-      var arg_pageToken = "foo";
+      var arg_productId = 'foo';
+      var arg_customerId = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -414,12 +414,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 26),
             unittest.equals("apps/licensing/v1/product/"));
         pathOffset += 26;
-        index = path.indexOf("/users", pathOffset);
+        index = path.indexOf('/users', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(subPart, unittest.equals('$arg_productId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/users"));
         pathOffset += 6;
@@ -430,8 +430,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -447,7 +447,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLicenseAssignmentList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -462,16 +462,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--listForProductAndSku", () {
+    unittest.test('method--listForProductAndSku', () {
       var mock = HttpServerMock();
       api.LicenseAssignmentsResourceApi res =
           api.LicensingApi(mock).licenseAssignments;
-      var arg_productId = "foo";
-      var arg_skuId = "foo";
-      var arg_customerId = "foo";
-      var arg_pageToken = "foo";
+      var arg_productId = 'foo';
+      var arg_skuId = 'foo';
+      var arg_customerId = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -483,21 +483,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 26),
             unittest.equals("apps/licensing/v1/product/"));
         pathOffset += 26;
-        index = path.indexOf("/sku/", pathOffset);
+        index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(subPart, unittest.equals('$arg_productId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/sku/"));
         pathOffset += 5;
-        index = path.indexOf("/users", pathOffset);
+        index = path.indexOf('/users', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(subPart, unittest.equals('$arg_skuId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/users"));
         pathOffset += 6;
@@ -508,8 +508,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -525,7 +525,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLicenseAssignmentList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -540,15 +540,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.LicenseAssignmentsResourceApi res =
           api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
-      var arg_productId = "foo";
-      var arg_skuId = "foo";
-      var arg_userId = "foo";
-      var arg_$fields = "foo";
+      var arg_productId = 'foo';
+      var arg_skuId = 'foo';
+      var arg_userId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LicenseAssignment.fromJson(json);
         checkLicenseAssignment(obj);
@@ -563,27 +563,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 26),
             unittest.equals("apps/licensing/v1/product/"));
         pathOffset += 26;
-        index = path.indexOf("/sku/", pathOffset);
+        index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(subPart, unittest.equals('$arg_productId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/sku/"));
         pathOffset += 5;
-        index = path.indexOf("/user/", pathOffset);
+        index = path.indexOf('/user/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(subPart, unittest.equals('$arg_skuId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/user/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_userId"));
+        unittest.expect(subPart, unittest.equals('$arg_userId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -591,8 +591,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -602,7 +602,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLicenseAssignment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -615,15 +615,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.LicenseAssignmentsResourceApi res =
           api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
-      var arg_productId = "foo";
-      var arg_skuId = "foo";
-      var arg_userId = "foo";
-      var arg_$fields = "foo";
+      var arg_productId = 'foo';
+      var arg_skuId = 'foo';
+      var arg_userId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LicenseAssignment.fromJson(json);
         checkLicenseAssignment(obj);
@@ -638,27 +638,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 26),
             unittest.equals("apps/licensing/v1/product/"));
         pathOffset += 26;
-        index = path.indexOf("/sku/", pathOffset);
+        index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(subPart, unittest.equals('$arg_productId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/sku/"));
         pathOffset += 5;
-        index = path.indexOf("/user/", pathOffset);
+        index = path.indexOf('/user/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(subPart, unittest.equals('$arg_skuId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/user/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_userId"));
+        unittest.expect(subPart, unittest.equals('$arg_userId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -666,8 +666,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -677,7 +677,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLicenseAssignment());
         return async.Future.value(stringResponse(200, h, resp));

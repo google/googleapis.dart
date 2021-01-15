@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -42,8 +41,8 @@ class DigitalassetlinksApi {
   StatementsResourceApi get statements => StatementsResourceApi(_requester);
 
   DigitalassetlinksApi(http.Client client,
-      {core.String rootUrl = "https://digitalassetlinks.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://digitalassetlinks.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -182,43 +181,43 @@ class AssetlinksResourceApi {
     core.String _body;
 
     if (source_web_site != null) {
-      _queryParams["source.web.site"] = [source_web_site];
+      _queryParams['source.web.site'] = [source_web_site];
     }
     if (target_androidApp_packageName != null) {
-      _queryParams["target.androidApp.packageName"] = [
+      _queryParams['target.androidApp.packageName'] = [
         target_androidApp_packageName
       ];
     }
     if (source_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
+      _queryParams['source.androidApp.certificate.sha256Fingerprint'] = [
         source_androidApp_certificate_sha256Fingerprint
       ];
     }
     if (relation != null) {
-      _queryParams["relation"] = [relation];
+      _queryParams['relation'] = [relation];
     }
     if (target_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams["target.androidApp.certificate.sha256Fingerprint"] = [
+      _queryParams['target.androidApp.certificate.sha256Fingerprint'] = [
         target_androidApp_certificate_sha256Fingerprint
       ];
     }
     if (target_web_site != null) {
-      _queryParams["target.web.site"] = [target_web_site];
+      _queryParams['target.web.site'] = [target_web_site];
     }
     if (source_androidApp_packageName != null) {
-      _queryParams["source.androidApp.packageName"] = [
+      _queryParams['source.androidApp.packageName'] = [
         source_androidApp_packageName
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/assetlinks:check';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -320,30 +319,30 @@ class StatementsResourceApi {
     core.String _body;
 
     if (source_web_site != null) {
-      _queryParams["source.web.site"] = [source_web_site];
+      _queryParams['source.web.site'] = [source_web_site];
     }
     if (source_androidApp_packageName != null) {
-      _queryParams["source.androidApp.packageName"] = [
+      _queryParams['source.androidApp.packageName'] = [
         source_androidApp_packageName
       ];
     }
     if (relation != null) {
-      _queryParams["relation"] = [relation];
+      _queryParams['relation'] = [relation];
     }
     if (source_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
+      _queryParams['source.androidApp.certificate.sha256Fingerprint'] = [
         source_androidApp_certificate_sha256Fingerprint
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/statements:list';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -377,11 +376,11 @@ class AndroidAppAsset {
   AndroidAppAsset();
 
   AndroidAppAsset.fromJson(core.Map _json) {
-    if (_json.containsKey("certificate")) {
-      certificate = CertificateInfo.fromJson(_json["certificate"]);
+    if (_json.containsKey('certificate')) {
+      certificate = CertificateInfo.fromJson(_json['certificate']);
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
   }
 
@@ -389,10 +388,10 @@ class AndroidAppAsset {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (certificate != null) {
-      _json["certificate"] = certificate.toJson();
+      _json['certificate'] = certificate.toJson();
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     return _json;
   }
@@ -412,11 +411,11 @@ class Asset {
   Asset();
 
   Asset.fromJson(core.Map _json) {
-    if (_json.containsKey("androidApp")) {
-      androidApp = AndroidAppAsset.fromJson(_json["androidApp"]);
+    if (_json.containsKey('androidApp')) {
+      androidApp = AndroidAppAsset.fromJson(_json['androidApp']);
     }
-    if (_json.containsKey("web")) {
-      web = WebAsset.fromJson(_json["web"]);
+    if (_json.containsKey('web')) {
+      web = WebAsset.fromJson(_json['web']);
     }
   }
 
@@ -424,10 +423,10 @@ class Asset {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (androidApp != null) {
-      _json["androidApp"] = androidApp.toJson();
+      _json['androidApp'] = androidApp.toJson();
     }
     if (web != null) {
-      _json["web"] = web.toJson();
+      _json['web'] = web.toJson();
     }
     return _json;
   }
@@ -454,8 +453,8 @@ class CertificateInfo {
   CertificateInfo();
 
   CertificateInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("sha256Fingerprint")) {
-      sha256Fingerprint = _json["sha256Fingerprint"];
+    if (_json.containsKey('sha256Fingerprint')) {
+      sha256Fingerprint = _json['sha256Fingerprint'];
     }
   }
 
@@ -463,7 +462,7 @@ class CertificateInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sha256Fingerprint != null) {
-      _json["sha256Fingerprint"] = sha256Fingerprint;
+      _json['sha256Fingerprint'] = sha256Fingerprint;
     }
     return _json;
   }
@@ -494,17 +493,17 @@ class CheckResponse {
   CheckResponse();
 
   CheckResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("debugString")) {
-      debugString = _json["debugString"];
+    if (_json.containsKey('debugString')) {
+      debugString = _json['debugString'];
     }
-    if (_json.containsKey("errorCode")) {
-      errorCode = (_json["errorCode"] as core.List).cast<core.String>();
+    if (_json.containsKey('errorCode')) {
+      errorCode = (_json['errorCode'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("linked")) {
-      linked = _json["linked"];
+    if (_json.containsKey('linked')) {
+      linked = _json['linked'];
     }
-    if (_json.containsKey("maxAge")) {
-      maxAge = _json["maxAge"];
+    if (_json.containsKey('maxAge')) {
+      maxAge = _json['maxAge'];
     }
   }
 
@@ -512,16 +511,16 @@ class CheckResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (debugString != null) {
-      _json["debugString"] = debugString;
+      _json['debugString'] = debugString;
     }
     if (errorCode != null) {
-      _json["errorCode"] = errorCode;
+      _json['errorCode'] = errorCode;
     }
     if (linked != null) {
-      _json["linked"] = linked;
+      _json['linked'] = linked;
     }
     if (maxAge != null) {
-      _json["maxAge"] = maxAge;
+      _json['maxAge'] = maxAge;
     }
     return _json;
   }
@@ -551,17 +550,17 @@ class ListResponse {
   ListResponse();
 
   ListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("debugString")) {
-      debugString = _json["debugString"];
+    if (_json.containsKey('debugString')) {
+      debugString = _json['debugString'];
     }
-    if (_json.containsKey("errorCode")) {
-      errorCode = (_json["errorCode"] as core.List).cast<core.String>();
+    if (_json.containsKey('errorCode')) {
+      errorCode = (_json['errorCode'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("maxAge")) {
-      maxAge = _json["maxAge"];
+    if (_json.containsKey('maxAge')) {
+      maxAge = _json['maxAge'];
     }
-    if (_json.containsKey("statements")) {
-      statements = (_json["statements"] as core.List)
+    if (_json.containsKey('statements')) {
+      statements = (_json['statements'] as core.List)
           .map<Statement>((value) => Statement.fromJson(value))
           .toList();
     }
@@ -571,16 +570,16 @@ class ListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (debugString != null) {
-      _json["debugString"] = debugString;
+      _json['debugString'] = debugString;
     }
     if (errorCode != null) {
-      _json["errorCode"] = errorCode;
+      _json['errorCode'] = errorCode;
     }
     if (maxAge != null) {
-      _json["maxAge"] = maxAge;
+      _json['maxAge'] = maxAge;
     }
     if (statements != null) {
-      _json["statements"] = statements.map((value) => value.toJson()).toList();
+      _json['statements'] = statements.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -613,14 +612,14 @@ class Statement {
   Statement();
 
   Statement.fromJson(core.Map _json) {
-    if (_json.containsKey("relation")) {
-      relation = _json["relation"];
+    if (_json.containsKey('relation')) {
+      relation = _json['relation'];
     }
-    if (_json.containsKey("source")) {
-      source = Asset.fromJson(_json["source"]);
+    if (_json.containsKey('source')) {
+      source = Asset.fromJson(_json['source']);
     }
-    if (_json.containsKey("target")) {
-      target = Asset.fromJson(_json["target"]);
+    if (_json.containsKey('target')) {
+      target = Asset.fromJson(_json['target']);
     }
   }
 
@@ -628,13 +627,13 @@ class Statement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (relation != null) {
-      _json["relation"] = relation;
+      _json['relation'] = relation;
     }
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     if (target != null) {
-      _json["target"] = target.toJson();
+      _json['target'] = target.toJson();
     }
     return _json;
   }
@@ -662,8 +661,8 @@ class WebAsset {
   WebAsset();
 
   WebAsset.fromJson(core.Map _json) {
-    if (_json.containsKey("site")) {
-      site = _json["site"];
+    if (_json.containsKey('site')) {
+      site = _json['site'];
     }
   }
 
@@ -671,7 +670,7 @@ class WebAsset {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (site != null) {
-      _json["site"] = site;
+      _json['site'] = site;
     }
     return _json;
   }

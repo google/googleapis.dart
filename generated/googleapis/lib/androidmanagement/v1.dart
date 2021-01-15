@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,7 +38,7 @@ const core.String USER_AGENT = 'dart-api-client androidmanagement/v1';
 class AndroidmanagementApi {
   /// Manage Android devices and apps for your customers
   static const AndroidmanagementScope =
-      "https://www.googleapis.com/auth/androidmanagement";
+      'https://www.googleapis.com/auth/androidmanagement';
 
   final commons.ApiRequester _requester;
 
@@ -47,8 +46,8 @@ class AndroidmanagementApi {
   SignupUrlsResourceApi get signupUrls => SignupUrlsResourceApi(_requester);
 
   AndroidmanagementApi(http.Client client,
-      {core.String rootUrl = "https://androidmanagement.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://androidmanagement.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -114,23 +113,23 @@ class EnterprisesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
+      _queryParams['projectId'] = [projectId];
     }
     if (enterpriseToken != null) {
-      _queryParams["enterpriseToken"] = [enterpriseToken];
+      _queryParams['enterpriseToken'] = [enterpriseToken];
     }
     if (signupUrlName != null) {
-      _queryParams["signupUrlName"] = [signupUrlName];
+      _queryParams['signupUrlName'] = [signupUrlName];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/enterprises';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -170,17 +169,17 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -230,20 +229,20 @@ class EnterprisesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -295,20 +294,20 @@ class EnterprisesApplicationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+      _queryParams['languageCode'] = [languageCode];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -366,23 +365,23 @@ class EnterprisesDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (wipeReasonMessage != null) {
-      _queryParams["wipeReasonMessage"] = [wipeReasonMessage];
+      _queryParams['wipeReasonMessage'] = [wipeReasonMessage];
     }
     if (wipeDataFlags != null) {
-      _queryParams["wipeDataFlags"] = wipeDataFlags;
+      _queryParams['wipeDataFlags'] = wipeDataFlags;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -422,17 +421,17 @@ class EnterprisesDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -480,10 +479,10 @@ class EnterprisesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -492,7 +491,7 @@ class EnterprisesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -540,16 +539,16 @@ class EnterprisesDevicesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -557,7 +556,7 @@ class EnterprisesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -607,20 +606,20 @@ class EnterprisesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -675,17 +674,17 @@ class EnterprisesDevicesOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -728,17 +727,17 @@ class EnterprisesDevicesOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -780,17 +779,17 @@ class EnterprisesDevicesOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -846,26 +845,26 @@ class EnterprisesDevicesOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -918,10 +917,10 @@ class EnterprisesEnrollmentTokensResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -930,7 +929,7 @@ class EnterprisesEnrollmentTokensResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -971,17 +970,17 @@ class EnterprisesEnrollmentTokensResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1029,17 +1028,17 @@ class EnterprisesPoliciesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1079,17 +1078,17 @@ class EnterprisesPoliciesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1137,16 +1136,16 @@ class EnterprisesPoliciesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1154,7 +1153,7 @@ class EnterprisesPoliciesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1204,20 +1203,20 @@ class EnterprisesPoliciesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1270,10 +1269,10 @@ class EnterprisesWebAppsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1281,7 +1280,7 @@ class EnterprisesWebAppsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1321,17 +1320,17 @@ class EnterprisesWebAppsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1371,17 +1370,17 @@ class EnterprisesWebAppsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1429,16 +1428,16 @@ class EnterprisesWebAppsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1446,7 +1445,7 @@ class EnterprisesWebAppsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1496,20 +1495,20 @@ class EnterprisesWebAppsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1563,10 +1562,10 @@ class EnterprisesWebTokensResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1574,7 +1573,7 @@ class EnterprisesWebTokensResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1627,20 +1626,20 @@ class SignupUrlsResourceApi {
     core.String _body;
 
     if (callbackUrl != null) {
-      _queryParams["callbackUrl"] = [callbackUrl];
+      _queryParams['callbackUrl'] = [callbackUrl];
     }
     if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
+      _queryParams['projectId'] = [projectId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/signupUrls';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1672,8 +1671,8 @@ class AdvancedSecurityOverrides {
   AdvancedSecurityOverrides();
 
   AdvancedSecurityOverrides.fromJson(core.Map _json) {
-    if (_json.containsKey("untrustedAppsPolicy")) {
-      untrustedAppsPolicy = _json["untrustedAppsPolicy"];
+    if (_json.containsKey('untrustedAppsPolicy')) {
+      untrustedAppsPolicy = _json['untrustedAppsPolicy'];
     }
   }
 
@@ -1681,7 +1680,7 @@ class AdvancedSecurityOverrides {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (untrustedAppsPolicy != null) {
-      _json["untrustedAppsPolicy"] = untrustedAppsPolicy;
+      _json['untrustedAppsPolicy'] = untrustedAppsPolicy;
     }
     return _json;
   }
@@ -1698,11 +1697,11 @@ class AlwaysOnVpnPackage {
   AlwaysOnVpnPackage();
 
   AlwaysOnVpnPackage.fromJson(core.Map _json) {
-    if (_json.containsKey("lockdownEnabled")) {
-      lockdownEnabled = _json["lockdownEnabled"];
+    if (_json.containsKey('lockdownEnabled')) {
+      lockdownEnabled = _json['lockdownEnabled'];
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
   }
 
@@ -1710,10 +1709,10 @@ class AlwaysOnVpnPackage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lockdownEnabled != null) {
-      _json["lockdownEnabled"] = lockdownEnabled;
+      _json['lockdownEnabled'] = lockdownEnabled;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     return _json;
   }
@@ -1731,8 +1730,8 @@ class ApiLevelCondition {
   ApiLevelCondition();
 
   ApiLevelCondition.fromJson(core.Map _json) {
-    if (_json.containsKey("minApiLevel")) {
-      minApiLevel = _json["minApiLevel"];
+    if (_json.containsKey('minApiLevel')) {
+      minApiLevel = _json['minApiLevel'];
     }
   }
 
@@ -1740,7 +1739,7 @@ class ApiLevelCondition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (minApiLevel != null) {
-      _json["minApiLevel"] = minApiLevel;
+      _json['minApiLevel'] = minApiLevel;
     }
     return _json;
   }
@@ -1760,11 +1759,11 @@ class AppTrackInfo {
   AppTrackInfo();
 
   AppTrackInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("trackAlias")) {
-      trackAlias = _json["trackAlias"];
+    if (_json.containsKey('trackAlias')) {
+      trackAlias = _json['trackAlias'];
     }
-    if (_json.containsKey("trackId")) {
-      trackId = _json["trackId"];
+    if (_json.containsKey('trackId')) {
+      trackId = _json['trackId'];
     }
   }
 
@@ -1772,10 +1771,10 @@ class AppTrackInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (trackAlias != null) {
-      _json["trackAlias"] = trackAlias;
+      _json['trackAlias'] = trackAlias;
     }
     if (trackId != null) {
-      _json["trackId"] = trackId;
+      _json['trackId'] = trackId;
     }
     return _json;
   }
@@ -1802,27 +1801,27 @@ class Application {
   Application();
 
   Application.fromJson(core.Map _json) {
-    if (_json.containsKey("appTracks")) {
-      appTracks = (_json["appTracks"] as core.List)
+    if (_json.containsKey('appTracks')) {
+      appTracks = (_json['appTracks'] as core.List)
           .map<AppTrackInfo>((value) => AppTrackInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("managedProperties")) {
-      managedProperties = (_json["managedProperties"] as core.List)
+    if (_json.containsKey('managedProperties')) {
+      managedProperties = (_json['managedProperties'] as core.List)
           .map<ManagedProperty>((value) => ManagedProperty.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List)
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List)
           .map<ApplicationPermission>(
               (value) => ApplicationPermission.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1830,21 +1829,21 @@ class Application {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appTracks != null) {
-      _json["appTracks"] = appTracks.map((value) => value.toJson()).toList();
+      _json['appTracks'] = appTracks.map((value) => value.toJson()).toList();
     }
     if (managedProperties != null) {
-      _json["managedProperties"] =
+      _json['managedProperties'] =
           managedProperties.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (permissions != null) {
-      _json["permissions"] =
+      _json['permissions'] =
           permissions.map((value) => value.toJson()).toList();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1873,11 +1872,11 @@ class ApplicationEvent {
   ApplicationEvent();
 
   ApplicationEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("eventType")) {
-      eventType = _json["eventType"];
+    if (_json.containsKey('eventType')) {
+      eventType = _json['eventType'];
     }
   }
 
@@ -1885,10 +1884,10 @@ class ApplicationEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (eventType != null) {
-      _json["eventType"] = eventType;
+      _json['eventType'] = eventType;
     }
     return _json;
   }
@@ -1909,14 +1908,14 @@ class ApplicationPermission {
   ApplicationPermission();
 
   ApplicationPermission.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("permissionId")) {
-      permissionId = _json["permissionId"];
+    if (_json.containsKey('permissionId')) {
+      permissionId = _json['permissionId'];
     }
   }
 
@@ -1924,13 +1923,13 @@ class ApplicationPermission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (permissionId != null) {
-      _json["permissionId"] = permissionId;
+      _json['permissionId'] = permissionId;
     }
     return _json;
   }
@@ -2039,45 +2038,45 @@ class ApplicationPolicy {
   ApplicationPolicy();
 
   ApplicationPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("accessibleTrackIds")) {
+    if (_json.containsKey('accessibleTrackIds')) {
       accessibleTrackIds =
-          (_json["accessibleTrackIds"] as core.List).cast<core.String>();
+          (_json['accessibleTrackIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("connectedWorkAndPersonalApp")) {
-      connectedWorkAndPersonalApp = _json["connectedWorkAndPersonalApp"];
+    if (_json.containsKey('connectedWorkAndPersonalApp')) {
+      connectedWorkAndPersonalApp = _json['connectedWorkAndPersonalApp'];
     }
-    if (_json.containsKey("defaultPermissionPolicy")) {
-      defaultPermissionPolicy = _json["defaultPermissionPolicy"];
+    if (_json.containsKey('defaultPermissionPolicy')) {
+      defaultPermissionPolicy = _json['defaultPermissionPolicy'];
     }
-    if (_json.containsKey("delegatedScopes")) {
+    if (_json.containsKey('delegatedScopes')) {
       delegatedScopes =
-          (_json["delegatedScopes"] as core.List).cast<core.String>();
+          (_json['delegatedScopes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("disabled")) {
-      disabled = _json["disabled"];
+    if (_json.containsKey('disabled')) {
+      disabled = _json['disabled'];
     }
-    if (_json.containsKey("installType")) {
-      installType = _json["installType"];
+    if (_json.containsKey('installType')) {
+      installType = _json['installType'];
     }
-    if (_json.containsKey("lockTaskAllowed")) {
-      lockTaskAllowed = _json["lockTaskAllowed"];
+    if (_json.containsKey('lockTaskAllowed')) {
+      lockTaskAllowed = _json['lockTaskAllowed'];
     }
-    if (_json.containsKey("managedConfiguration")) {
-      managedConfiguration = (_json["managedConfiguration"] as core.Map)
+    if (_json.containsKey('managedConfiguration')) {
+      managedConfiguration = (_json['managedConfiguration'] as core.Map)
           .cast<core.String, core.Object>();
     }
-    if (_json.containsKey("managedConfigurationTemplate")) {
+    if (_json.containsKey('managedConfigurationTemplate')) {
       managedConfigurationTemplate = ManagedConfigurationTemplate.fromJson(
-          _json["managedConfigurationTemplate"]);
+          _json['managedConfigurationTemplate']);
     }
-    if (_json.containsKey("minimumVersionCode")) {
-      minimumVersionCode = _json["minimumVersionCode"];
+    if (_json.containsKey('minimumVersionCode')) {
+      minimumVersionCode = _json['minimumVersionCode'];
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("permissionGrants")) {
-      permissionGrants = (_json["permissionGrants"] as core.List)
+    if (_json.containsKey('permissionGrants')) {
+      permissionGrants = (_json['permissionGrants'] as core.List)
           .map<PermissionGrant>((value) => PermissionGrant.fromJson(value))
           .toList();
     }
@@ -2087,41 +2086,41 @@ class ApplicationPolicy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessibleTrackIds != null) {
-      _json["accessibleTrackIds"] = accessibleTrackIds;
+      _json['accessibleTrackIds'] = accessibleTrackIds;
     }
     if (connectedWorkAndPersonalApp != null) {
-      _json["connectedWorkAndPersonalApp"] = connectedWorkAndPersonalApp;
+      _json['connectedWorkAndPersonalApp'] = connectedWorkAndPersonalApp;
     }
     if (defaultPermissionPolicy != null) {
-      _json["defaultPermissionPolicy"] = defaultPermissionPolicy;
+      _json['defaultPermissionPolicy'] = defaultPermissionPolicy;
     }
     if (delegatedScopes != null) {
-      _json["delegatedScopes"] = delegatedScopes;
+      _json['delegatedScopes'] = delegatedScopes;
     }
     if (disabled != null) {
-      _json["disabled"] = disabled;
+      _json['disabled'] = disabled;
     }
     if (installType != null) {
-      _json["installType"] = installType;
+      _json['installType'] = installType;
     }
     if (lockTaskAllowed != null) {
-      _json["lockTaskAllowed"] = lockTaskAllowed;
+      _json['lockTaskAllowed'] = lockTaskAllowed;
     }
     if (managedConfiguration != null) {
-      _json["managedConfiguration"] = managedConfiguration;
+      _json['managedConfiguration'] = managedConfiguration;
     }
     if (managedConfigurationTemplate != null) {
-      _json["managedConfigurationTemplate"] =
+      _json['managedConfigurationTemplate'] =
           managedConfigurationTemplate.toJson();
     }
     if (minimumVersionCode != null) {
-      _json["minimumVersionCode"] = minimumVersionCode;
+      _json['minimumVersionCode'] = minimumVersionCode;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (permissionGrants != null) {
-      _json["permissionGrants"] =
+      _json['permissionGrants'] =
           permissionGrants.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2184,44 +2183,44 @@ class ApplicationReport {
   ApplicationReport();
 
   ApplicationReport.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationSource")) {
-      applicationSource = _json["applicationSource"];
+    if (_json.containsKey('applicationSource')) {
+      applicationSource = _json['applicationSource'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("events")) {
-      events = (_json["events"] as core.List)
+    if (_json.containsKey('events')) {
+      events = (_json['events'] as core.List)
           .map<ApplicationEvent>((value) => ApplicationEvent.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("installerPackageName")) {
-      installerPackageName = _json["installerPackageName"];
+    if (_json.containsKey('installerPackageName')) {
+      installerPackageName = _json['installerPackageName'];
     }
-    if (_json.containsKey("keyedAppStates")) {
-      keyedAppStates = (_json["keyedAppStates"] as core.List)
+    if (_json.containsKey('keyedAppStates')) {
+      keyedAppStates = (_json['keyedAppStates'] as core.List)
           .map<KeyedAppState>((value) => KeyedAppState.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("packageSha256Hash")) {
-      packageSha256Hash = _json["packageSha256Hash"];
+    if (_json.containsKey('packageSha256Hash')) {
+      packageSha256Hash = _json['packageSha256Hash'];
     }
-    if (_json.containsKey("signingKeyCertFingerprints")) {
+    if (_json.containsKey('signingKeyCertFingerprints')) {
       signingKeyCertFingerprints =
-          (_json["signingKeyCertFingerprints"] as core.List)
+          (_json['signingKeyCertFingerprints'] as core.List)
               .cast<core.String>();
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("versionCode")) {
-      versionCode = _json["versionCode"];
+    if (_json.containsKey('versionCode')) {
+      versionCode = _json['versionCode'];
     }
-    if (_json.containsKey("versionName")) {
-      versionName = _json["versionName"];
+    if (_json.containsKey('versionName')) {
+      versionName = _json['versionName'];
     }
   }
 
@@ -2229,38 +2228,38 @@ class ApplicationReport {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (applicationSource != null) {
-      _json["applicationSource"] = applicationSource;
+      _json['applicationSource'] = applicationSource;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (events != null) {
-      _json["events"] = events.map((value) => value.toJson()).toList();
+      _json['events'] = events.map((value) => value.toJson()).toList();
     }
     if (installerPackageName != null) {
-      _json["installerPackageName"] = installerPackageName;
+      _json['installerPackageName'] = installerPackageName;
     }
     if (keyedAppStates != null) {
-      _json["keyedAppStates"] =
+      _json['keyedAppStates'] =
           keyedAppStates.map((value) => value.toJson()).toList();
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (packageSha256Hash != null) {
-      _json["packageSha256Hash"] = packageSha256Hash;
+      _json['packageSha256Hash'] = packageSha256Hash;
     }
     if (signingKeyCertFingerprints != null) {
-      _json["signingKeyCertFingerprints"] = signingKeyCertFingerprints;
+      _json['signingKeyCertFingerprints'] = signingKeyCertFingerprints;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (versionCode != null) {
-      _json["versionCode"] = versionCode;
+      _json['versionCode'] = versionCode;
     }
     if (versionName != null) {
-      _json["versionName"] = versionName;
+      _json['versionName'] = versionName;
     }
     return _json;
   }
@@ -2274,8 +2273,8 @@ class ApplicationReportingSettings {
   ApplicationReportingSettings();
 
   ApplicationReportingSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("includeRemovedApps")) {
-      includeRemovedApps = _json["includeRemovedApps"];
+    if (_json.containsKey('includeRemovedApps')) {
+      includeRemovedApps = _json['includeRemovedApps'];
     }
   }
 
@@ -2283,7 +2282,7 @@ class ApplicationReportingSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (includeRemovedApps != null) {
-      _json["includeRemovedApps"] = includeRemovedApps;
+      _json['includeRemovedApps'] = includeRemovedApps;
     }
     return _json;
   }
@@ -2313,11 +2312,11 @@ class BlockAction {
   BlockAction();
 
   BlockAction.fromJson(core.Map _json) {
-    if (_json.containsKey("blockAfterDays")) {
-      blockAfterDays = _json["blockAfterDays"];
+    if (_json.containsKey('blockAfterDays')) {
+      blockAfterDays = _json['blockAfterDays'];
     }
-    if (_json.containsKey("blockScope")) {
-      blockScope = _json["blockScope"];
+    if (_json.containsKey('blockScope')) {
+      blockScope = _json['blockScope'];
     }
   }
 
@@ -2325,10 +2324,10 @@ class BlockAction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blockAfterDays != null) {
-      _json["blockAfterDays"] = blockAfterDays;
+      _json['blockAfterDays'] = blockAfterDays;
     }
     if (blockScope != null) {
-      _json["blockScope"] = blockScope;
+      _json['blockScope'] = blockScope;
     }
     return _json;
   }
@@ -2356,14 +2355,14 @@ class ChoosePrivateKeyRule {
   ChoosePrivateKeyRule();
 
   ChoosePrivateKeyRule.fromJson(core.Map _json) {
-    if (_json.containsKey("packageNames")) {
-      packageNames = (_json["packageNames"] as core.List).cast<core.String>();
+    if (_json.containsKey('packageNames')) {
+      packageNames = (_json['packageNames'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("privateKeyAlias")) {
-      privateKeyAlias = _json["privateKeyAlias"];
+    if (_json.containsKey('privateKeyAlias')) {
+      privateKeyAlias = _json['privateKeyAlias'];
     }
-    if (_json.containsKey("urlPattern")) {
-      urlPattern = _json["urlPattern"];
+    if (_json.containsKey('urlPattern')) {
+      urlPattern = _json['urlPattern'];
     }
   }
 
@@ -2371,13 +2370,13 @@ class ChoosePrivateKeyRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (packageNames != null) {
-      _json["packageNames"] = packageNames;
+      _json['packageNames'] = packageNames;
     }
     if (privateKeyAlias != null) {
-      _json["privateKeyAlias"] = privateKeyAlias;
+      _json['privateKeyAlias'] = privateKeyAlias;
     }
     if (urlPattern != null) {
-      _json["urlPattern"] = urlPattern;
+      _json['urlPattern'] = urlPattern;
     }
     return _json;
   }
@@ -2431,27 +2430,27 @@ class Command {
   Command();
 
   Command.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("duration")) {
-      duration = _json["duration"];
+    if (_json.containsKey('duration')) {
+      duration = _json['duration'];
     }
-    if (_json.containsKey("errorCode")) {
-      errorCode = _json["errorCode"];
+    if (_json.containsKey('errorCode')) {
+      errorCode = _json['errorCode'];
     }
-    if (_json.containsKey("newPassword")) {
-      newPassword = _json["newPassword"];
+    if (_json.containsKey('newPassword')) {
+      newPassword = _json['newPassword'];
     }
-    if (_json.containsKey("resetPasswordFlags")) {
+    if (_json.containsKey('resetPasswordFlags')) {
       resetPasswordFlags =
-          (_json["resetPasswordFlags"] as core.List).cast<core.String>();
+          (_json['resetPasswordFlags'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("userName")) {
-      userName = _json["userName"];
+    if (_json.containsKey('userName')) {
+      userName = _json['userName'];
     }
   }
 
@@ -2459,25 +2458,25 @@ class Command {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (duration != null) {
-      _json["duration"] = duration;
+      _json['duration'] = duration;
     }
     if (errorCode != null) {
-      _json["errorCode"] = errorCode;
+      _json['errorCode'] = errorCode;
     }
     if (newPassword != null) {
-      _json["newPassword"] = newPassword;
+      _json['newPassword'] = newPassword;
     }
     if (resetPasswordFlags != null) {
-      _json["resetPasswordFlags"] = resetPasswordFlags;
+      _json['resetPasswordFlags'] = resetPasswordFlags;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (userName != null) {
-      _json["userName"] = userName;
+      _json['userName'] = userName;
     }
     return _json;
   }
@@ -2511,20 +2510,20 @@ class ComplianceRule {
   ComplianceRule();
 
   ComplianceRule.fromJson(core.Map _json) {
-    if (_json.containsKey("apiLevelCondition")) {
+    if (_json.containsKey('apiLevelCondition')) {
       apiLevelCondition =
-          ApiLevelCondition.fromJson(_json["apiLevelCondition"]);
+          ApiLevelCondition.fromJson(_json['apiLevelCondition']);
     }
-    if (_json.containsKey("disableApps")) {
-      disableApps = _json["disableApps"];
+    if (_json.containsKey('disableApps')) {
+      disableApps = _json['disableApps'];
     }
-    if (_json.containsKey("nonComplianceDetailCondition")) {
+    if (_json.containsKey('nonComplianceDetailCondition')) {
       nonComplianceDetailCondition = NonComplianceDetailCondition.fromJson(
-          _json["nonComplianceDetailCondition"]);
+          _json['nonComplianceDetailCondition']);
     }
-    if (_json.containsKey("packageNamesToDisable")) {
+    if (_json.containsKey('packageNamesToDisable')) {
       packageNamesToDisable =
-          (_json["packageNamesToDisable"] as core.List).cast<core.String>();
+          (_json['packageNamesToDisable'] as core.List).cast<core.String>();
     }
   }
 
@@ -2532,17 +2531,17 @@ class ComplianceRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (apiLevelCondition != null) {
-      _json["apiLevelCondition"] = apiLevelCondition.toJson();
+      _json['apiLevelCondition'] = apiLevelCondition.toJson();
     }
     if (disableApps != null) {
-      _json["disableApps"] = disableApps;
+      _json['disableApps'] = disableApps;
     }
     if (nonComplianceDetailCondition != null) {
-      _json["nonComplianceDetailCondition"] =
+      _json['nonComplianceDetailCondition'] =
           nonComplianceDetailCondition.toJson();
     }
     if (packageNamesToDisable != null) {
-      _json["packageNamesToDisable"] = packageNamesToDisable;
+      _json['packageNamesToDisable'] = packageNamesToDisable;
     }
     return _json;
   }
@@ -2573,14 +2572,14 @@ class Date {
   Date();
 
   Date.fromJson(core.Map _json) {
-    if (_json.containsKey("day")) {
-      day = _json["day"];
+    if (_json.containsKey('day')) {
+      day = _json['day'];
     }
-    if (_json.containsKey("month")) {
-      month = _json["month"];
+    if (_json.containsKey('month')) {
+      month = _json['month'];
     }
-    if (_json.containsKey("year")) {
-      year = _json["year"];
+    if (_json.containsKey('year')) {
+      year = _json['year'];
     }
   }
 
@@ -2588,13 +2587,13 @@ class Date {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (day != null) {
-      _json["day"] = day;
+      _json['day'] = day;
     }
     if (month != null) {
-      _json["month"] = month;
+      _json['month'] = month;
     }
     if (year != null) {
-      _json["year"] = year;
+      _json['year'] = year;
     }
     return _json;
   }
@@ -2764,120 +2763,120 @@ class Device {
   Device();
 
   Device.fromJson(core.Map _json) {
-    if (_json.containsKey("apiLevel")) {
-      apiLevel = _json["apiLevel"];
+    if (_json.containsKey('apiLevel')) {
+      apiLevel = _json['apiLevel'];
     }
-    if (_json.containsKey("applicationReports")) {
-      applicationReports = (_json["applicationReports"] as core.List)
+    if (_json.containsKey('applicationReports')) {
+      applicationReports = (_json['applicationReports'] as core.List)
           .map<ApplicationReport>((value) => ApplicationReport.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("appliedPolicyName")) {
-      appliedPolicyName = _json["appliedPolicyName"];
+    if (_json.containsKey('appliedPolicyName')) {
+      appliedPolicyName = _json['appliedPolicyName'];
     }
-    if (_json.containsKey("appliedPolicyVersion")) {
-      appliedPolicyVersion = _json["appliedPolicyVersion"];
+    if (_json.containsKey('appliedPolicyVersion')) {
+      appliedPolicyVersion = _json['appliedPolicyVersion'];
     }
-    if (_json.containsKey("appliedState")) {
-      appliedState = _json["appliedState"];
+    if (_json.containsKey('appliedState')) {
+      appliedState = _json['appliedState'];
     }
-    if (_json.containsKey("deviceSettings")) {
-      deviceSettings = DeviceSettings.fromJson(_json["deviceSettings"]);
+    if (_json.containsKey('deviceSettings')) {
+      deviceSettings = DeviceSettings.fromJson(_json['deviceSettings']);
     }
-    if (_json.containsKey("disabledReason")) {
-      disabledReason = UserFacingMessage.fromJson(_json["disabledReason"]);
+    if (_json.containsKey('disabledReason')) {
+      disabledReason = UserFacingMessage.fromJson(_json['disabledReason']);
     }
-    if (_json.containsKey("displays")) {
-      displays = (_json["displays"] as core.List)
+    if (_json.containsKey('displays')) {
+      displays = (_json['displays'] as core.List)
           .map<Display>((value) => Display.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("enrollmentTime")) {
-      enrollmentTime = _json["enrollmentTime"];
+    if (_json.containsKey('enrollmentTime')) {
+      enrollmentTime = _json['enrollmentTime'];
     }
-    if (_json.containsKey("enrollmentTokenData")) {
-      enrollmentTokenData = _json["enrollmentTokenData"];
+    if (_json.containsKey('enrollmentTokenData')) {
+      enrollmentTokenData = _json['enrollmentTokenData'];
     }
-    if (_json.containsKey("enrollmentTokenName")) {
-      enrollmentTokenName = _json["enrollmentTokenName"];
+    if (_json.containsKey('enrollmentTokenName')) {
+      enrollmentTokenName = _json['enrollmentTokenName'];
     }
-    if (_json.containsKey("hardwareInfo")) {
-      hardwareInfo = HardwareInfo.fromJson(_json["hardwareInfo"]);
+    if (_json.containsKey('hardwareInfo')) {
+      hardwareInfo = HardwareInfo.fromJson(_json['hardwareInfo']);
     }
-    if (_json.containsKey("hardwareStatusSamples")) {
-      hardwareStatusSamples = (_json["hardwareStatusSamples"] as core.List)
+    if (_json.containsKey('hardwareStatusSamples')) {
+      hardwareStatusSamples = (_json['hardwareStatusSamples'] as core.List)
           .map<HardwareStatus>((value) => HardwareStatus.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("lastPolicyComplianceReportTime")) {
-      lastPolicyComplianceReportTime = _json["lastPolicyComplianceReportTime"];
+    if (_json.containsKey('lastPolicyComplianceReportTime')) {
+      lastPolicyComplianceReportTime = _json['lastPolicyComplianceReportTime'];
     }
-    if (_json.containsKey("lastPolicySyncTime")) {
-      lastPolicySyncTime = _json["lastPolicySyncTime"];
+    if (_json.containsKey('lastPolicySyncTime')) {
+      lastPolicySyncTime = _json['lastPolicySyncTime'];
     }
-    if (_json.containsKey("lastStatusReportTime")) {
-      lastStatusReportTime = _json["lastStatusReportTime"];
+    if (_json.containsKey('lastStatusReportTime')) {
+      lastStatusReportTime = _json['lastStatusReportTime'];
     }
-    if (_json.containsKey("managementMode")) {
-      managementMode = _json["managementMode"];
+    if (_json.containsKey('managementMode')) {
+      managementMode = _json['managementMode'];
     }
-    if (_json.containsKey("memoryEvents")) {
-      memoryEvents = (_json["memoryEvents"] as core.List)
+    if (_json.containsKey('memoryEvents')) {
+      memoryEvents = (_json['memoryEvents'] as core.List)
           .map<MemoryEvent>((value) => MemoryEvent.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("memoryInfo")) {
-      memoryInfo = MemoryInfo.fromJson(_json["memoryInfo"]);
+    if (_json.containsKey('memoryInfo')) {
+      memoryInfo = MemoryInfo.fromJson(_json['memoryInfo']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("networkInfo")) {
-      networkInfo = NetworkInfo.fromJson(_json["networkInfo"]);
+    if (_json.containsKey('networkInfo')) {
+      networkInfo = NetworkInfo.fromJson(_json['networkInfo']);
     }
-    if (_json.containsKey("nonComplianceDetails")) {
-      nonComplianceDetails = (_json["nonComplianceDetails"] as core.List)
+    if (_json.containsKey('nonComplianceDetails')) {
+      nonComplianceDetails = (_json['nonComplianceDetails'] as core.List)
           .map<NonComplianceDetail>(
               (value) => NonComplianceDetail.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("ownership")) {
-      ownership = _json["ownership"];
+    if (_json.containsKey('ownership')) {
+      ownership = _json['ownership'];
     }
-    if (_json.containsKey("policyCompliant")) {
-      policyCompliant = _json["policyCompliant"];
+    if (_json.containsKey('policyCompliant')) {
+      policyCompliant = _json['policyCompliant'];
     }
-    if (_json.containsKey("policyName")) {
-      policyName = _json["policyName"];
+    if (_json.containsKey('policyName')) {
+      policyName = _json['policyName'];
     }
-    if (_json.containsKey("powerManagementEvents")) {
-      powerManagementEvents = (_json["powerManagementEvents"] as core.List)
+    if (_json.containsKey('powerManagementEvents')) {
+      powerManagementEvents = (_json['powerManagementEvents'] as core.List)
           .map<PowerManagementEvent>(
               (value) => PowerManagementEvent.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("previousDeviceNames")) {
+    if (_json.containsKey('previousDeviceNames')) {
       previousDeviceNames =
-          (_json["previousDeviceNames"] as core.List).cast<core.String>();
+          (_json['previousDeviceNames'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("securityPosture")) {
-      securityPosture = SecurityPosture.fromJson(_json["securityPosture"]);
+    if (_json.containsKey('securityPosture')) {
+      securityPosture = SecurityPosture.fromJson(_json['securityPosture']);
     }
-    if (_json.containsKey("softwareInfo")) {
-      softwareInfo = SoftwareInfo.fromJson(_json["softwareInfo"]);
+    if (_json.containsKey('softwareInfo')) {
+      softwareInfo = SoftwareInfo.fromJson(_json['softwareInfo']);
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("systemProperties")) {
-      systemProperties = (_json["systemProperties"] as core.Map)
+    if (_json.containsKey('systemProperties')) {
+      systemProperties = (_json['systemProperties'] as core.Map)
           .cast<core.String, core.String>();
     }
-    if (_json.containsKey("user")) {
-      user = User.fromJson(_json["user"]);
+    if (_json.containsKey('user')) {
+      user = User.fromJson(_json['user']);
     }
-    if (_json.containsKey("userName")) {
-      userName = _json["userName"];
+    if (_json.containsKey('userName')) {
+      userName = _json['userName'];
     }
   }
 
@@ -2885,108 +2884,108 @@ class Device {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (apiLevel != null) {
-      _json["apiLevel"] = apiLevel;
+      _json['apiLevel'] = apiLevel;
     }
     if (applicationReports != null) {
-      _json["applicationReports"] =
+      _json['applicationReports'] =
           applicationReports.map((value) => value.toJson()).toList();
     }
     if (appliedPolicyName != null) {
-      _json["appliedPolicyName"] = appliedPolicyName;
+      _json['appliedPolicyName'] = appliedPolicyName;
     }
     if (appliedPolicyVersion != null) {
-      _json["appliedPolicyVersion"] = appliedPolicyVersion;
+      _json['appliedPolicyVersion'] = appliedPolicyVersion;
     }
     if (appliedState != null) {
-      _json["appliedState"] = appliedState;
+      _json['appliedState'] = appliedState;
     }
     if (deviceSettings != null) {
-      _json["deviceSettings"] = deviceSettings.toJson();
+      _json['deviceSettings'] = deviceSettings.toJson();
     }
     if (disabledReason != null) {
-      _json["disabledReason"] = disabledReason.toJson();
+      _json['disabledReason'] = disabledReason.toJson();
     }
     if (displays != null) {
-      _json["displays"] = displays.map((value) => value.toJson()).toList();
+      _json['displays'] = displays.map((value) => value.toJson()).toList();
     }
     if (enrollmentTime != null) {
-      _json["enrollmentTime"] = enrollmentTime;
+      _json['enrollmentTime'] = enrollmentTime;
     }
     if (enrollmentTokenData != null) {
-      _json["enrollmentTokenData"] = enrollmentTokenData;
+      _json['enrollmentTokenData'] = enrollmentTokenData;
     }
     if (enrollmentTokenName != null) {
-      _json["enrollmentTokenName"] = enrollmentTokenName;
+      _json['enrollmentTokenName'] = enrollmentTokenName;
     }
     if (hardwareInfo != null) {
-      _json["hardwareInfo"] = hardwareInfo.toJson();
+      _json['hardwareInfo'] = hardwareInfo.toJson();
     }
     if (hardwareStatusSamples != null) {
-      _json["hardwareStatusSamples"] =
+      _json['hardwareStatusSamples'] =
           hardwareStatusSamples.map((value) => value.toJson()).toList();
     }
     if (lastPolicyComplianceReportTime != null) {
-      _json["lastPolicyComplianceReportTime"] = lastPolicyComplianceReportTime;
+      _json['lastPolicyComplianceReportTime'] = lastPolicyComplianceReportTime;
     }
     if (lastPolicySyncTime != null) {
-      _json["lastPolicySyncTime"] = lastPolicySyncTime;
+      _json['lastPolicySyncTime'] = lastPolicySyncTime;
     }
     if (lastStatusReportTime != null) {
-      _json["lastStatusReportTime"] = lastStatusReportTime;
+      _json['lastStatusReportTime'] = lastStatusReportTime;
     }
     if (managementMode != null) {
-      _json["managementMode"] = managementMode;
+      _json['managementMode'] = managementMode;
     }
     if (memoryEvents != null) {
-      _json["memoryEvents"] =
+      _json['memoryEvents'] =
           memoryEvents.map((value) => value.toJson()).toList();
     }
     if (memoryInfo != null) {
-      _json["memoryInfo"] = memoryInfo.toJson();
+      _json['memoryInfo'] = memoryInfo.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (networkInfo != null) {
-      _json["networkInfo"] = networkInfo.toJson();
+      _json['networkInfo'] = networkInfo.toJson();
     }
     if (nonComplianceDetails != null) {
-      _json["nonComplianceDetails"] =
+      _json['nonComplianceDetails'] =
           nonComplianceDetails.map((value) => value.toJson()).toList();
     }
     if (ownership != null) {
-      _json["ownership"] = ownership;
+      _json['ownership'] = ownership;
     }
     if (policyCompliant != null) {
-      _json["policyCompliant"] = policyCompliant;
+      _json['policyCompliant'] = policyCompliant;
     }
     if (policyName != null) {
-      _json["policyName"] = policyName;
+      _json['policyName'] = policyName;
     }
     if (powerManagementEvents != null) {
-      _json["powerManagementEvents"] =
+      _json['powerManagementEvents'] =
           powerManagementEvents.map((value) => value.toJson()).toList();
     }
     if (previousDeviceNames != null) {
-      _json["previousDeviceNames"] = previousDeviceNames;
+      _json['previousDeviceNames'] = previousDeviceNames;
     }
     if (securityPosture != null) {
-      _json["securityPosture"] = securityPosture.toJson();
+      _json['securityPosture'] = securityPosture.toJson();
     }
     if (softwareInfo != null) {
-      _json["softwareInfo"] = softwareInfo.toJson();
+      _json['softwareInfo'] = softwareInfo.toJson();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (systemProperties != null) {
-      _json["systemProperties"] = systemProperties;
+      _json['systemProperties'] = systemProperties;
     }
     if (user != null) {
-      _json["user"] = user.toJson();
+      _json['user'] = user.toJson();
     }
     if (userName != null) {
-      _json["userName"] = userName;
+      _json['userName'] = userName;
     }
     return _json;
   }
@@ -3034,26 +3033,26 @@ class DeviceSettings {
   DeviceSettings();
 
   DeviceSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("adbEnabled")) {
-      adbEnabled = _json["adbEnabled"];
+    if (_json.containsKey('adbEnabled')) {
+      adbEnabled = _json['adbEnabled'];
     }
-    if (_json.containsKey("developmentSettingsEnabled")) {
-      developmentSettingsEnabled = _json["developmentSettingsEnabled"];
+    if (_json.containsKey('developmentSettingsEnabled')) {
+      developmentSettingsEnabled = _json['developmentSettingsEnabled'];
     }
-    if (_json.containsKey("encryptionStatus")) {
-      encryptionStatus = _json["encryptionStatus"];
+    if (_json.containsKey('encryptionStatus')) {
+      encryptionStatus = _json['encryptionStatus'];
     }
-    if (_json.containsKey("isDeviceSecure")) {
-      isDeviceSecure = _json["isDeviceSecure"];
+    if (_json.containsKey('isDeviceSecure')) {
+      isDeviceSecure = _json['isDeviceSecure'];
     }
-    if (_json.containsKey("isEncrypted")) {
-      isEncrypted = _json["isEncrypted"];
+    if (_json.containsKey('isEncrypted')) {
+      isEncrypted = _json['isEncrypted'];
     }
-    if (_json.containsKey("unknownSourcesEnabled")) {
-      unknownSourcesEnabled = _json["unknownSourcesEnabled"];
+    if (_json.containsKey('unknownSourcesEnabled')) {
+      unknownSourcesEnabled = _json['unknownSourcesEnabled'];
     }
-    if (_json.containsKey("verifyAppsEnabled")) {
-      verifyAppsEnabled = _json["verifyAppsEnabled"];
+    if (_json.containsKey('verifyAppsEnabled')) {
+      verifyAppsEnabled = _json['verifyAppsEnabled'];
     }
   }
 
@@ -3061,25 +3060,25 @@ class DeviceSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adbEnabled != null) {
-      _json["adbEnabled"] = adbEnabled;
+      _json['adbEnabled'] = adbEnabled;
     }
     if (developmentSettingsEnabled != null) {
-      _json["developmentSettingsEnabled"] = developmentSettingsEnabled;
+      _json['developmentSettingsEnabled'] = developmentSettingsEnabled;
     }
     if (encryptionStatus != null) {
-      _json["encryptionStatus"] = encryptionStatus;
+      _json['encryptionStatus'] = encryptionStatus;
     }
     if (isDeviceSecure != null) {
-      _json["isDeviceSecure"] = isDeviceSecure;
+      _json['isDeviceSecure'] = isDeviceSecure;
     }
     if (isEncrypted != null) {
-      _json["isEncrypted"] = isEncrypted;
+      _json['isEncrypted'] = isEncrypted;
     }
     if (unknownSourcesEnabled != null) {
-      _json["unknownSourcesEnabled"] = unknownSourcesEnabled;
+      _json['unknownSourcesEnabled'] = unknownSourcesEnabled;
     }
     if (verifyAppsEnabled != null) {
-      _json["verifyAppsEnabled"] = verifyAppsEnabled;
+      _json['verifyAppsEnabled'] = verifyAppsEnabled;
     }
     return _json;
   }
@@ -3117,26 +3116,26 @@ class Display {
   Display();
 
   Display.fromJson(core.Map _json) {
-    if (_json.containsKey("density")) {
-      density = _json["density"];
+    if (_json.containsKey('density')) {
+      density = _json['density'];
     }
-    if (_json.containsKey("displayId")) {
-      displayId = _json["displayId"];
+    if (_json.containsKey('displayId')) {
+      displayId = _json['displayId'];
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("refreshRate")) {
-      refreshRate = _json["refreshRate"];
+    if (_json.containsKey('refreshRate')) {
+      refreshRate = _json['refreshRate'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -3144,25 +3143,25 @@ class Display {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (density != null) {
-      _json["density"] = density;
+      _json['density'] = density;
     }
     if (displayId != null) {
-      _json["displayId"] = displayId;
+      _json['displayId'] = displayId;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (refreshRate != null) {
-      _json["refreshRate"] = refreshRate;
+      _json['refreshRate'] = refreshRate;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -3255,35 +3254,35 @@ class EnrollmentToken {
   EnrollmentToken();
 
   EnrollmentToken.fromJson(core.Map _json) {
-    if (_json.containsKey("additionalData")) {
-      additionalData = _json["additionalData"];
+    if (_json.containsKey('additionalData')) {
+      additionalData = _json['additionalData'];
     }
-    if (_json.containsKey("allowPersonalUsage")) {
-      allowPersonalUsage = _json["allowPersonalUsage"];
+    if (_json.containsKey('allowPersonalUsage')) {
+      allowPersonalUsage = _json['allowPersonalUsage'];
     }
-    if (_json.containsKey("duration")) {
-      duration = _json["duration"];
+    if (_json.containsKey('duration')) {
+      duration = _json['duration'];
     }
-    if (_json.containsKey("expirationTimestamp")) {
-      expirationTimestamp = _json["expirationTimestamp"];
+    if (_json.containsKey('expirationTimestamp')) {
+      expirationTimestamp = _json['expirationTimestamp'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("oneTimeOnly")) {
-      oneTimeOnly = _json["oneTimeOnly"];
+    if (_json.containsKey('oneTimeOnly')) {
+      oneTimeOnly = _json['oneTimeOnly'];
     }
-    if (_json.containsKey("policyName")) {
-      policyName = _json["policyName"];
+    if (_json.containsKey('policyName')) {
+      policyName = _json['policyName'];
     }
-    if (_json.containsKey("qrCode")) {
-      qrCode = _json["qrCode"];
+    if (_json.containsKey('qrCode')) {
+      qrCode = _json['qrCode'];
     }
-    if (_json.containsKey("user")) {
-      user = User.fromJson(_json["user"]);
+    if (_json.containsKey('user')) {
+      user = User.fromJson(_json['user']);
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -3291,34 +3290,34 @@ class EnrollmentToken {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (additionalData != null) {
-      _json["additionalData"] = additionalData;
+      _json['additionalData'] = additionalData;
     }
     if (allowPersonalUsage != null) {
-      _json["allowPersonalUsage"] = allowPersonalUsage;
+      _json['allowPersonalUsage'] = allowPersonalUsage;
     }
     if (duration != null) {
-      _json["duration"] = duration;
+      _json['duration'] = duration;
     }
     if (expirationTimestamp != null) {
-      _json["expirationTimestamp"] = expirationTimestamp;
+      _json['expirationTimestamp'] = expirationTimestamp;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (oneTimeOnly != null) {
-      _json["oneTimeOnly"] = oneTimeOnly;
+      _json['oneTimeOnly'] = oneTimeOnly;
     }
     if (policyName != null) {
-      _json["policyName"] = policyName;
+      _json['policyName'] = policyName;
     }
     if (qrCode != null) {
-      _json["qrCode"] = qrCode;
+      _json['qrCode'] = qrCode;
     }
     if (user != null) {
-      _json["user"] = user.toJson();
+      _json['user'] = user.toJson();
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -3365,35 +3364,35 @@ class Enterprise {
   Enterprise();
 
   Enterprise.fromJson(core.Map _json) {
-    if (_json.containsKey("appAutoApprovalEnabled")) {
-      appAutoApprovalEnabled = _json["appAutoApprovalEnabled"];
+    if (_json.containsKey('appAutoApprovalEnabled')) {
+      appAutoApprovalEnabled = _json['appAutoApprovalEnabled'];
     }
-    if (_json.containsKey("enabledNotificationTypes")) {
+    if (_json.containsKey('enabledNotificationTypes')) {
       enabledNotificationTypes =
-          (_json["enabledNotificationTypes"] as core.List).cast<core.String>();
+          (_json['enabledNotificationTypes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("enterpriseDisplayName")) {
-      enterpriseDisplayName = _json["enterpriseDisplayName"];
+    if (_json.containsKey('enterpriseDisplayName')) {
+      enterpriseDisplayName = _json['enterpriseDisplayName'];
     }
-    if (_json.containsKey("logo")) {
-      logo = ExternalData.fromJson(_json["logo"]);
+    if (_json.containsKey('logo')) {
+      logo = ExternalData.fromJson(_json['logo']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("primaryColor")) {
-      primaryColor = _json["primaryColor"];
+    if (_json.containsKey('primaryColor')) {
+      primaryColor = _json['primaryColor'];
     }
-    if (_json.containsKey("pubsubTopic")) {
-      pubsubTopic = _json["pubsubTopic"];
+    if (_json.containsKey('pubsubTopic')) {
+      pubsubTopic = _json['pubsubTopic'];
     }
-    if (_json.containsKey("signinDetails")) {
-      signinDetails = (_json["signinDetails"] as core.List)
+    if (_json.containsKey('signinDetails')) {
+      signinDetails = (_json['signinDetails'] as core.List)
           .map<SigninDetail>((value) => SigninDetail.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("termsAndConditions")) {
-      termsAndConditions = (_json["termsAndConditions"] as core.List)
+    if (_json.containsKey('termsAndConditions')) {
+      termsAndConditions = (_json['termsAndConditions'] as core.List)
           .map<TermsAndConditions>(
               (value) => TermsAndConditions.fromJson(value))
           .toList();
@@ -3404,32 +3403,32 @@ class Enterprise {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appAutoApprovalEnabled != null) {
-      _json["appAutoApprovalEnabled"] = appAutoApprovalEnabled;
+      _json['appAutoApprovalEnabled'] = appAutoApprovalEnabled;
     }
     if (enabledNotificationTypes != null) {
-      _json["enabledNotificationTypes"] = enabledNotificationTypes;
+      _json['enabledNotificationTypes'] = enabledNotificationTypes;
     }
     if (enterpriseDisplayName != null) {
-      _json["enterpriseDisplayName"] = enterpriseDisplayName;
+      _json['enterpriseDisplayName'] = enterpriseDisplayName;
     }
     if (logo != null) {
-      _json["logo"] = logo.toJson();
+      _json['logo'] = logo.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (primaryColor != null) {
-      _json["primaryColor"] = primaryColor;
+      _json['primaryColor'] = primaryColor;
     }
     if (pubsubTopic != null) {
-      _json["pubsubTopic"] = pubsubTopic;
+      _json['pubsubTopic'] = pubsubTopic;
     }
     if (signinDetails != null) {
-      _json["signinDetails"] =
+      _json['signinDetails'] =
           signinDetails.map((value) => value.toJson()).toList();
     }
     if (termsAndConditions != null) {
-      _json["termsAndConditions"] =
+      _json['termsAndConditions'] =
           termsAndConditions.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -3453,11 +3452,11 @@ class ExternalData {
   ExternalData();
 
   ExternalData.fromJson(core.Map _json) {
-    if (_json.containsKey("sha256Hash")) {
-      sha256Hash = _json["sha256Hash"];
+    if (_json.containsKey('sha256Hash')) {
+      sha256Hash = _json['sha256Hash'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3465,10 +3464,10 @@ class ExternalData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sha256Hash != null) {
-      _json["sha256Hash"] = sha256Hash;
+      _json['sha256Hash'] = sha256Hash;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3498,11 +3497,11 @@ class FreezePeriod {
   FreezePeriod();
 
   FreezePeriod.fromJson(core.Map _json) {
-    if (_json.containsKey("endDate")) {
-      endDate = Date.fromJson(_json["endDate"]);
+    if (_json.containsKey('endDate')) {
+      endDate = Date.fromJson(_json['endDate']);
     }
-    if (_json.containsKey("startDate")) {
-      startDate = Date.fromJson(_json["startDate"]);
+    if (_json.containsKey('startDate')) {
+      startDate = Date.fromJson(_json['startDate']);
     }
   }
 
@@ -3510,10 +3509,10 @@ class FreezePeriod {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endDate != null) {
-      _json["endDate"] = endDate.toJson();
+      _json['endDate'] = endDate.toJson();
     }
     if (startDate != null) {
-      _json["startDate"] = startDate.toJson();
+      _json['startDate'] = startDate.toJson();
     }
     return _json;
   }
@@ -3572,67 +3571,67 @@ class HardwareInfo {
   HardwareInfo();
 
   HardwareInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("batteryShutdownTemperatures")) {
+    if (_json.containsKey('batteryShutdownTemperatures')) {
       batteryShutdownTemperatures =
-          (_json["batteryShutdownTemperatures"] as core.List)
+          (_json['batteryShutdownTemperatures'] as core.List)
               .map<core.double>((value) => value.toDouble())
               .toList();
     }
-    if (_json.containsKey("batteryThrottlingTemperatures")) {
+    if (_json.containsKey('batteryThrottlingTemperatures')) {
       batteryThrottlingTemperatures =
-          (_json["batteryThrottlingTemperatures"] as core.List)
+          (_json['batteryThrottlingTemperatures'] as core.List)
               .map<core.double>((value) => value.toDouble())
               .toList();
     }
-    if (_json.containsKey("brand")) {
-      brand = _json["brand"];
+    if (_json.containsKey('brand')) {
+      brand = _json['brand'];
     }
-    if (_json.containsKey("cpuShutdownTemperatures")) {
-      cpuShutdownTemperatures = (_json["cpuShutdownTemperatures"] as core.List)
+    if (_json.containsKey('cpuShutdownTemperatures')) {
+      cpuShutdownTemperatures = (_json['cpuShutdownTemperatures'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
-    if (_json.containsKey("cpuThrottlingTemperatures")) {
+    if (_json.containsKey('cpuThrottlingTemperatures')) {
       cpuThrottlingTemperatures =
-          (_json["cpuThrottlingTemperatures"] as core.List)
+          (_json['cpuThrottlingTemperatures'] as core.List)
               .map<core.double>((value) => value.toDouble())
               .toList();
     }
-    if (_json.containsKey("deviceBasebandVersion")) {
-      deviceBasebandVersion = _json["deviceBasebandVersion"];
+    if (_json.containsKey('deviceBasebandVersion')) {
+      deviceBasebandVersion = _json['deviceBasebandVersion'];
     }
-    if (_json.containsKey("gpuShutdownTemperatures")) {
-      gpuShutdownTemperatures = (_json["gpuShutdownTemperatures"] as core.List)
+    if (_json.containsKey('gpuShutdownTemperatures')) {
+      gpuShutdownTemperatures = (_json['gpuShutdownTemperatures'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
-    if (_json.containsKey("gpuThrottlingTemperatures")) {
+    if (_json.containsKey('gpuThrottlingTemperatures')) {
       gpuThrottlingTemperatures =
-          (_json["gpuThrottlingTemperatures"] as core.List)
+          (_json['gpuThrottlingTemperatures'] as core.List)
               .map<core.double>((value) => value.toDouble())
               .toList();
     }
-    if (_json.containsKey("hardware")) {
-      hardware = _json["hardware"];
+    if (_json.containsKey('hardware')) {
+      hardware = _json['hardware'];
     }
-    if (_json.containsKey("manufacturer")) {
-      manufacturer = _json["manufacturer"];
+    if (_json.containsKey('manufacturer')) {
+      manufacturer = _json['manufacturer'];
     }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
-    if (_json.containsKey("serialNumber")) {
-      serialNumber = _json["serialNumber"];
+    if (_json.containsKey('serialNumber')) {
+      serialNumber = _json['serialNumber'];
     }
-    if (_json.containsKey("skinShutdownTemperatures")) {
+    if (_json.containsKey('skinShutdownTemperatures')) {
       skinShutdownTemperatures =
-          (_json["skinShutdownTemperatures"] as core.List)
+          (_json['skinShutdownTemperatures'] as core.List)
               .map<core.double>((value) => value.toDouble())
               .toList();
     }
-    if (_json.containsKey("skinThrottlingTemperatures")) {
+    if (_json.containsKey('skinThrottlingTemperatures')) {
       skinThrottlingTemperatures =
-          (_json["skinThrottlingTemperatures"] as core.List)
+          (_json['skinThrottlingTemperatures'] as core.List)
               .map<core.double>((value) => value.toDouble())
               .toList();
     }
@@ -3642,46 +3641,46 @@ class HardwareInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batteryShutdownTemperatures != null) {
-      _json["batteryShutdownTemperatures"] = batteryShutdownTemperatures;
+      _json['batteryShutdownTemperatures'] = batteryShutdownTemperatures;
     }
     if (batteryThrottlingTemperatures != null) {
-      _json["batteryThrottlingTemperatures"] = batteryThrottlingTemperatures;
+      _json['batteryThrottlingTemperatures'] = batteryThrottlingTemperatures;
     }
     if (brand != null) {
-      _json["brand"] = brand;
+      _json['brand'] = brand;
     }
     if (cpuShutdownTemperatures != null) {
-      _json["cpuShutdownTemperatures"] = cpuShutdownTemperatures;
+      _json['cpuShutdownTemperatures'] = cpuShutdownTemperatures;
     }
     if (cpuThrottlingTemperatures != null) {
-      _json["cpuThrottlingTemperatures"] = cpuThrottlingTemperatures;
+      _json['cpuThrottlingTemperatures'] = cpuThrottlingTemperatures;
     }
     if (deviceBasebandVersion != null) {
-      _json["deviceBasebandVersion"] = deviceBasebandVersion;
+      _json['deviceBasebandVersion'] = deviceBasebandVersion;
     }
     if (gpuShutdownTemperatures != null) {
-      _json["gpuShutdownTemperatures"] = gpuShutdownTemperatures;
+      _json['gpuShutdownTemperatures'] = gpuShutdownTemperatures;
     }
     if (gpuThrottlingTemperatures != null) {
-      _json["gpuThrottlingTemperatures"] = gpuThrottlingTemperatures;
+      _json['gpuThrottlingTemperatures'] = gpuThrottlingTemperatures;
     }
     if (hardware != null) {
-      _json["hardware"] = hardware;
+      _json['hardware'] = hardware;
     }
     if (manufacturer != null) {
-      _json["manufacturer"] = manufacturer;
+      _json['manufacturer'] = manufacturer;
     }
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     if (serialNumber != null) {
-      _json["serialNumber"] = serialNumber;
+      _json['serialNumber'] = serialNumber;
     }
     if (skinShutdownTemperatures != null) {
-      _json["skinShutdownTemperatures"] = skinShutdownTemperatures;
+      _json['skinShutdownTemperatures'] = skinShutdownTemperatures;
     }
     if (skinThrottlingTemperatures != null) {
-      _json["skinThrottlingTemperatures"] = skinThrottlingTemperatures;
+      _json['skinThrottlingTemperatures'] = skinThrottlingTemperatures;
     }
     return _json;
   }
@@ -3717,36 +3716,36 @@ class HardwareStatus {
   HardwareStatus();
 
   HardwareStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("batteryTemperatures")) {
-      batteryTemperatures = (_json["batteryTemperatures"] as core.List)
+    if (_json.containsKey('batteryTemperatures')) {
+      batteryTemperatures = (_json['batteryTemperatures'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
-    if (_json.containsKey("cpuTemperatures")) {
-      cpuTemperatures = (_json["cpuTemperatures"] as core.List)
+    if (_json.containsKey('cpuTemperatures')) {
+      cpuTemperatures = (_json['cpuTemperatures'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
-    if (_json.containsKey("cpuUsages")) {
-      cpuUsages = (_json["cpuUsages"] as core.List)
+    if (_json.containsKey('cpuUsages')) {
+      cpuUsages = (_json['cpuUsages'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("fanSpeeds")) {
-      fanSpeeds = (_json["fanSpeeds"] as core.List)
+    if (_json.containsKey('fanSpeeds')) {
+      fanSpeeds = (_json['fanSpeeds'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
-    if (_json.containsKey("gpuTemperatures")) {
-      gpuTemperatures = (_json["gpuTemperatures"] as core.List)
+    if (_json.containsKey('gpuTemperatures')) {
+      gpuTemperatures = (_json['gpuTemperatures'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
-    if (_json.containsKey("skinTemperatures")) {
-      skinTemperatures = (_json["skinTemperatures"] as core.List)
+    if (_json.containsKey('skinTemperatures')) {
+      skinTemperatures = (_json['skinTemperatures'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
@@ -3756,25 +3755,25 @@ class HardwareStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batteryTemperatures != null) {
-      _json["batteryTemperatures"] = batteryTemperatures;
+      _json['batteryTemperatures'] = batteryTemperatures;
     }
     if (cpuTemperatures != null) {
-      _json["cpuTemperatures"] = cpuTemperatures;
+      _json['cpuTemperatures'] = cpuTemperatures;
     }
     if (cpuUsages != null) {
-      _json["cpuUsages"] = cpuUsages;
+      _json['cpuUsages'] = cpuUsages;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (fanSpeeds != null) {
-      _json["fanSpeeds"] = fanSpeeds;
+      _json['fanSpeeds'] = fanSpeeds;
     }
     if (gpuTemperatures != null) {
-      _json["gpuTemperatures"] = gpuTemperatures;
+      _json['gpuTemperatures'] = gpuTemperatures;
     }
     if (skinTemperatures != null) {
-      _json["skinTemperatures"] = skinTemperatures;
+      _json['skinTemperatures'] = skinTemperatures;
     }
     return _json;
   }
@@ -3815,23 +3814,23 @@ class KeyedAppState {
   KeyedAppState();
 
   KeyedAppState.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("lastUpdateTime")) {
-      lastUpdateTime = _json["lastUpdateTime"];
+    if (_json.containsKey('lastUpdateTime')) {
+      lastUpdateTime = _json['lastUpdateTime'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
-    if (_json.containsKey("severity")) {
-      severity = _json["severity"];
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'];
     }
   }
 
@@ -3839,22 +3838,22 @@ class KeyedAppState {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (lastUpdateTime != null) {
-      _json["lastUpdateTime"] = lastUpdateTime;
+      _json['lastUpdateTime'] = lastUpdateTime;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     if (severity != null) {
-      _json["severity"] = severity;
+      _json['severity'] = severity;
     }
     return _json;
   }
@@ -3927,20 +3926,20 @@ class KioskCustomization {
   KioskCustomization();
 
   KioskCustomization.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceSettings")) {
-      deviceSettings = _json["deviceSettings"];
+    if (_json.containsKey('deviceSettings')) {
+      deviceSettings = _json['deviceSettings'];
     }
-    if (_json.containsKey("powerButtonActions")) {
-      powerButtonActions = _json["powerButtonActions"];
+    if (_json.containsKey('powerButtonActions')) {
+      powerButtonActions = _json['powerButtonActions'];
     }
-    if (_json.containsKey("statusBar")) {
-      statusBar = _json["statusBar"];
+    if (_json.containsKey('statusBar')) {
+      statusBar = _json['statusBar'];
     }
-    if (_json.containsKey("systemErrorWarnings")) {
-      systemErrorWarnings = _json["systemErrorWarnings"];
+    if (_json.containsKey('systemErrorWarnings')) {
+      systemErrorWarnings = _json['systemErrorWarnings'];
     }
-    if (_json.containsKey("systemNavigation")) {
-      systemNavigation = _json["systemNavigation"];
+    if (_json.containsKey('systemNavigation')) {
+      systemNavigation = _json['systemNavigation'];
     }
   }
 
@@ -3948,19 +3947,19 @@ class KioskCustomization {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceSettings != null) {
-      _json["deviceSettings"] = deviceSettings;
+      _json['deviceSettings'] = deviceSettings;
     }
     if (powerButtonActions != null) {
-      _json["powerButtonActions"] = powerButtonActions;
+      _json['powerButtonActions'] = powerButtonActions;
     }
     if (statusBar != null) {
-      _json["statusBar"] = statusBar;
+      _json['statusBar'] = statusBar;
     }
     if (systemErrorWarnings != null) {
-      _json["systemErrorWarnings"] = systemErrorWarnings;
+      _json['systemErrorWarnings'] = systemErrorWarnings;
     }
     if (systemNavigation != null) {
-      _json["systemNavigation"] = systemNavigation;
+      _json['systemNavigation'] = systemNavigation;
     }
     return _json;
   }
@@ -3974,8 +3973,8 @@ class LaunchAppAction {
   LaunchAppAction();
 
   LaunchAppAction.fromJson(core.Map _json) {
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
   }
 
@@ -3983,7 +3982,7 @@ class LaunchAppAction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     return _json;
   }
@@ -4000,13 +3999,13 @@ class ListDevicesResponse {
   ListDevicesResponse();
 
   ListDevicesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("devices")) {
-      devices = (_json["devices"] as core.List)
+    if (_json.containsKey('devices')) {
+      devices = (_json['devices'] as core.List)
           .map<Device>((value) => Device.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4014,10 +4013,10 @@ class ListDevicesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.map((value) => value.toJson()).toList();
+      _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4034,11 +4033,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -4048,10 +4047,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4068,11 +4067,11 @@ class ListPoliciesResponse {
   ListPoliciesResponse();
 
   ListPoliciesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("policies")) {
-      policies = (_json["policies"] as core.List)
+    if (_json.containsKey('policies')) {
+      policies = (_json['policies'] as core.List)
           .map<Policy>((value) => Policy.fromJson(value))
           .toList();
     }
@@ -4082,10 +4081,10 @@ class ListPoliciesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (policies != null) {
-      _json["policies"] = policies.map((value) => value.toJson()).toList();
+      _json['policies'] = policies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4102,11 +4101,11 @@ class ListWebAppsResponse {
   ListWebAppsResponse();
 
   ListWebAppsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("webApps")) {
-      webApps = (_json["webApps"] as core.List)
+    if (_json.containsKey('webApps')) {
+      webApps = (_json['webApps'] as core.List)
           .map<WebApp>((value) => WebApp.fromJson(value))
           .toList();
     }
@@ -4116,10 +4115,10 @@ class ListWebAppsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (webApps != null) {
-      _json["webApps"] = webApps.map((value) => value.toJson()).toList();
+      _json['webApps'] = webApps.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4138,12 +4137,12 @@ class ManagedConfigurationTemplate {
   ManagedConfigurationTemplate();
 
   ManagedConfigurationTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey("configurationVariables")) {
-      configurationVariables = (_json["configurationVariables"] as core.Map)
+    if (_json.containsKey('configurationVariables')) {
+      configurationVariables = (_json['configurationVariables'] as core.Map)
           .cast<core.String, core.String>();
     }
-    if (_json.containsKey("templateId")) {
-      templateId = _json["templateId"];
+    if (_json.containsKey('templateId')) {
+      templateId = _json['templateId'];
     }
   }
 
@@ -4151,10 +4150,10 @@ class ManagedConfigurationTemplate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (configurationVariables != null) {
-      _json["configurationVariables"] = configurationVariables;
+      _json['configurationVariables'] = configurationVariables;
     }
     if (templateId != null) {
-      _json["templateId"] = templateId;
+      _json['templateId'] = templateId;
     }
     return _json;
   }
@@ -4205,31 +4204,31 @@ class ManagedProperty {
   ManagedProperty();
 
   ManagedProperty.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultValue")) {
-      defaultValue = _json["defaultValue"];
+    if (_json.containsKey('defaultValue')) {
+      defaultValue = _json['defaultValue'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entries")) {
-      entries = (_json["entries"] as core.List)
+    if (_json.containsKey('entries')) {
+      entries = (_json['entries'] as core.List)
           .map<ManagedPropertyEntry>(
               (value) => ManagedPropertyEntry.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("nestedProperties")) {
-      nestedProperties = (_json["nestedProperties"] as core.List)
+    if (_json.containsKey('nestedProperties')) {
+      nestedProperties = (_json['nestedProperties'] as core.List)
           .map<ManagedProperty>((value) => ManagedProperty.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4237,26 +4236,26 @@ class ManagedProperty {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (defaultValue != null) {
-      _json["defaultValue"] = defaultValue;
+      _json['defaultValue'] = defaultValue;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entries != null) {
-      _json["entries"] = entries.map((value) => value.toJson()).toList();
+      _json['entries'] = entries.map((value) => value.toJson()).toList();
     }
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (nestedProperties != null) {
-      _json["nestedProperties"] =
+      _json['nestedProperties'] =
           nestedProperties.map((value) => value.toJson()).toList();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4274,11 +4273,11 @@ class ManagedPropertyEntry {
   ManagedPropertyEntry();
 
   ManagedPropertyEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -4286,10 +4285,10 @@ class ManagedPropertyEntry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -4322,14 +4321,14 @@ class MemoryEvent {
   MemoryEvent();
 
   MemoryEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("byteCount")) {
-      byteCount = _json["byteCount"];
+    if (_json.containsKey('byteCount')) {
+      byteCount = _json['byteCount'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("eventType")) {
-      eventType = _json["eventType"];
+    if (_json.containsKey('eventType')) {
+      eventType = _json['eventType'];
     }
   }
 
@@ -4337,13 +4336,13 @@ class MemoryEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (byteCount != null) {
-      _json["byteCount"] = byteCount;
+      _json['byteCount'] = byteCount;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (eventType != null) {
-      _json["eventType"] = eventType;
+      _json['eventType'] = eventType;
     }
     return _json;
   }
@@ -4360,11 +4359,11 @@ class MemoryInfo {
   MemoryInfo();
 
   MemoryInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("totalInternalStorage")) {
-      totalInternalStorage = _json["totalInternalStorage"];
+    if (_json.containsKey('totalInternalStorage')) {
+      totalInternalStorage = _json['totalInternalStorage'];
     }
-    if (_json.containsKey("totalRam")) {
-      totalRam = _json["totalRam"];
+    if (_json.containsKey('totalRam')) {
+      totalRam = _json['totalRam'];
     }
   }
 
@@ -4372,10 +4371,10 @@ class MemoryInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (totalInternalStorage != null) {
-      _json["totalInternalStorage"] = totalInternalStorage;
+      _json['totalInternalStorage'] = totalInternalStorage;
     }
     if (totalRam != null) {
-      _json["totalRam"] = totalRam;
+      _json['totalRam'] = totalRam;
     }
     return _json;
   }
@@ -4398,17 +4397,17 @@ class NetworkInfo {
   NetworkInfo();
 
   NetworkInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("imei")) {
-      imei = _json["imei"];
+    if (_json.containsKey('imei')) {
+      imei = _json['imei'];
     }
-    if (_json.containsKey("meid")) {
-      meid = _json["meid"];
+    if (_json.containsKey('meid')) {
+      meid = _json['meid'];
     }
-    if (_json.containsKey("networkOperatorName")) {
-      networkOperatorName = _json["networkOperatorName"];
+    if (_json.containsKey('networkOperatorName')) {
+      networkOperatorName = _json['networkOperatorName'];
     }
-    if (_json.containsKey("wifiMacAddress")) {
-      wifiMacAddress = _json["wifiMacAddress"];
+    if (_json.containsKey('wifiMacAddress')) {
+      wifiMacAddress = _json['wifiMacAddress'];
     }
   }
 
@@ -4416,16 +4415,16 @@ class NetworkInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (imei != null) {
-      _json["imei"] = imei;
+      _json['imei'] = imei;
     }
     if (meid != null) {
-      _json["meid"] = meid;
+      _json['meid'] = meid;
     }
     if (networkOperatorName != null) {
-      _json["networkOperatorName"] = networkOperatorName;
+      _json['networkOperatorName'] = networkOperatorName;
     }
     if (wifiMacAddress != null) {
-      _json["wifiMacAddress"] = wifiMacAddress;
+      _json['wifiMacAddress'] = wifiMacAddress;
     }
     return _json;
   }
@@ -4512,23 +4511,23 @@ class NonComplianceDetail {
   NonComplianceDetail();
 
   NonComplianceDetail.fromJson(core.Map _json) {
-    if (_json.containsKey("currentValue")) {
-      currentValue = _json["currentValue"];
+    if (_json.containsKey('currentValue')) {
+      currentValue = _json['currentValue'];
     }
-    if (_json.containsKey("fieldPath")) {
-      fieldPath = _json["fieldPath"];
+    if (_json.containsKey('fieldPath')) {
+      fieldPath = _json['fieldPath'];
     }
-    if (_json.containsKey("installationFailureReason")) {
-      installationFailureReason = _json["installationFailureReason"];
+    if (_json.containsKey('installationFailureReason')) {
+      installationFailureReason = _json['installationFailureReason'];
     }
-    if (_json.containsKey("nonComplianceReason")) {
-      nonComplianceReason = _json["nonComplianceReason"];
+    if (_json.containsKey('nonComplianceReason')) {
+      nonComplianceReason = _json['nonComplianceReason'];
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("settingName")) {
-      settingName = _json["settingName"];
+    if (_json.containsKey('settingName')) {
+      settingName = _json['settingName'];
     }
   }
 
@@ -4536,22 +4535,22 @@ class NonComplianceDetail {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentValue != null) {
-      _json["currentValue"] = currentValue;
+      _json['currentValue'] = currentValue;
     }
     if (fieldPath != null) {
-      _json["fieldPath"] = fieldPath;
+      _json['fieldPath'] = fieldPath;
     }
     if (installationFailureReason != null) {
-      _json["installationFailureReason"] = installationFailureReason;
+      _json['installationFailureReason'] = installationFailureReason;
     }
     if (nonComplianceReason != null) {
-      _json["nonComplianceReason"] = nonComplianceReason;
+      _json['nonComplianceReason'] = nonComplianceReason;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (settingName != null) {
-      _json["settingName"] = settingName;
+      _json['settingName'] = settingName;
     }
     return _json;
   }
@@ -4599,14 +4598,14 @@ class NonComplianceDetailCondition {
   NonComplianceDetailCondition();
 
   NonComplianceDetailCondition.fromJson(core.Map _json) {
-    if (_json.containsKey("nonComplianceReason")) {
-      nonComplianceReason = _json["nonComplianceReason"];
+    if (_json.containsKey('nonComplianceReason')) {
+      nonComplianceReason = _json['nonComplianceReason'];
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("settingName")) {
-      settingName = _json["settingName"];
+    if (_json.containsKey('settingName')) {
+      settingName = _json['settingName'];
     }
   }
 
@@ -4614,13 +4613,13 @@ class NonComplianceDetailCondition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nonComplianceReason != null) {
-      _json["nonComplianceReason"] = nonComplianceReason;
+      _json['nonComplianceReason'] = nonComplianceReason;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (settingName != null) {
-      _json["settingName"] = settingName;
+      _json['settingName'] = settingName;
     }
     return _json;
   }
@@ -4666,22 +4665,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -4689,19 +4688,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -4715,8 +4714,8 @@ class PackageNameList {
   PackageNameList();
 
   PackageNameList.fromJson(core.Map _json) {
-    if (_json.containsKey("packageNames")) {
-      packageNames = (_json["packageNames"] as core.List).cast<core.String>();
+    if (_json.containsKey('packageNames')) {
+      packageNames = (_json['packageNames'] as core.List).cast<core.String>();
     }
   }
 
@@ -4724,7 +4723,7 @@ class PackageNameList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (packageNames != null) {
-      _json["packageNames"] = packageNames;
+      _json['packageNames'] = packageNames;
     }
     return _json;
   }
@@ -4822,44 +4821,44 @@ class PasswordRequirements {
   PasswordRequirements();
 
   PasswordRequirements.fromJson(core.Map _json) {
-    if (_json.containsKey("maximumFailedPasswordsForWipe")) {
-      maximumFailedPasswordsForWipe = _json["maximumFailedPasswordsForWipe"];
+    if (_json.containsKey('maximumFailedPasswordsForWipe')) {
+      maximumFailedPasswordsForWipe = _json['maximumFailedPasswordsForWipe'];
     }
-    if (_json.containsKey("passwordExpirationTimeout")) {
-      passwordExpirationTimeout = _json["passwordExpirationTimeout"];
+    if (_json.containsKey('passwordExpirationTimeout')) {
+      passwordExpirationTimeout = _json['passwordExpirationTimeout'];
     }
-    if (_json.containsKey("passwordHistoryLength")) {
-      passwordHistoryLength = _json["passwordHistoryLength"];
+    if (_json.containsKey('passwordHistoryLength')) {
+      passwordHistoryLength = _json['passwordHistoryLength'];
     }
-    if (_json.containsKey("passwordMinimumLength")) {
-      passwordMinimumLength = _json["passwordMinimumLength"];
+    if (_json.containsKey('passwordMinimumLength')) {
+      passwordMinimumLength = _json['passwordMinimumLength'];
     }
-    if (_json.containsKey("passwordMinimumLetters")) {
-      passwordMinimumLetters = _json["passwordMinimumLetters"];
+    if (_json.containsKey('passwordMinimumLetters')) {
+      passwordMinimumLetters = _json['passwordMinimumLetters'];
     }
-    if (_json.containsKey("passwordMinimumLowerCase")) {
-      passwordMinimumLowerCase = _json["passwordMinimumLowerCase"];
+    if (_json.containsKey('passwordMinimumLowerCase')) {
+      passwordMinimumLowerCase = _json['passwordMinimumLowerCase'];
     }
-    if (_json.containsKey("passwordMinimumNonLetter")) {
-      passwordMinimumNonLetter = _json["passwordMinimumNonLetter"];
+    if (_json.containsKey('passwordMinimumNonLetter')) {
+      passwordMinimumNonLetter = _json['passwordMinimumNonLetter'];
     }
-    if (_json.containsKey("passwordMinimumNumeric")) {
-      passwordMinimumNumeric = _json["passwordMinimumNumeric"];
+    if (_json.containsKey('passwordMinimumNumeric')) {
+      passwordMinimumNumeric = _json['passwordMinimumNumeric'];
     }
-    if (_json.containsKey("passwordMinimumSymbols")) {
-      passwordMinimumSymbols = _json["passwordMinimumSymbols"];
+    if (_json.containsKey('passwordMinimumSymbols')) {
+      passwordMinimumSymbols = _json['passwordMinimumSymbols'];
     }
-    if (_json.containsKey("passwordMinimumUpperCase")) {
-      passwordMinimumUpperCase = _json["passwordMinimumUpperCase"];
+    if (_json.containsKey('passwordMinimumUpperCase')) {
+      passwordMinimumUpperCase = _json['passwordMinimumUpperCase'];
     }
-    if (_json.containsKey("passwordQuality")) {
-      passwordQuality = _json["passwordQuality"];
+    if (_json.containsKey('passwordQuality')) {
+      passwordQuality = _json['passwordQuality'];
     }
-    if (_json.containsKey("passwordScope")) {
-      passwordScope = _json["passwordScope"];
+    if (_json.containsKey('passwordScope')) {
+      passwordScope = _json['passwordScope'];
     }
-    if (_json.containsKey("requirePasswordUnlock")) {
-      requirePasswordUnlock = _json["requirePasswordUnlock"];
+    if (_json.containsKey('requirePasswordUnlock')) {
+      requirePasswordUnlock = _json['requirePasswordUnlock'];
     }
   }
 
@@ -4867,43 +4866,43 @@ class PasswordRequirements {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maximumFailedPasswordsForWipe != null) {
-      _json["maximumFailedPasswordsForWipe"] = maximumFailedPasswordsForWipe;
+      _json['maximumFailedPasswordsForWipe'] = maximumFailedPasswordsForWipe;
     }
     if (passwordExpirationTimeout != null) {
-      _json["passwordExpirationTimeout"] = passwordExpirationTimeout;
+      _json['passwordExpirationTimeout'] = passwordExpirationTimeout;
     }
     if (passwordHistoryLength != null) {
-      _json["passwordHistoryLength"] = passwordHistoryLength;
+      _json['passwordHistoryLength'] = passwordHistoryLength;
     }
     if (passwordMinimumLength != null) {
-      _json["passwordMinimumLength"] = passwordMinimumLength;
+      _json['passwordMinimumLength'] = passwordMinimumLength;
     }
     if (passwordMinimumLetters != null) {
-      _json["passwordMinimumLetters"] = passwordMinimumLetters;
+      _json['passwordMinimumLetters'] = passwordMinimumLetters;
     }
     if (passwordMinimumLowerCase != null) {
-      _json["passwordMinimumLowerCase"] = passwordMinimumLowerCase;
+      _json['passwordMinimumLowerCase'] = passwordMinimumLowerCase;
     }
     if (passwordMinimumNonLetter != null) {
-      _json["passwordMinimumNonLetter"] = passwordMinimumNonLetter;
+      _json['passwordMinimumNonLetter'] = passwordMinimumNonLetter;
     }
     if (passwordMinimumNumeric != null) {
-      _json["passwordMinimumNumeric"] = passwordMinimumNumeric;
+      _json['passwordMinimumNumeric'] = passwordMinimumNumeric;
     }
     if (passwordMinimumSymbols != null) {
-      _json["passwordMinimumSymbols"] = passwordMinimumSymbols;
+      _json['passwordMinimumSymbols'] = passwordMinimumSymbols;
     }
     if (passwordMinimumUpperCase != null) {
-      _json["passwordMinimumUpperCase"] = passwordMinimumUpperCase;
+      _json['passwordMinimumUpperCase'] = passwordMinimumUpperCase;
     }
     if (passwordQuality != null) {
-      _json["passwordQuality"] = passwordQuality;
+      _json['passwordQuality'] = passwordQuality;
     }
     if (passwordScope != null) {
-      _json["passwordScope"] = passwordScope;
+      _json['passwordScope'] = passwordScope;
     }
     if (requirePasswordUnlock != null) {
-      _json["requirePasswordUnlock"] = requirePasswordUnlock;
+      _json['requirePasswordUnlock'] = requirePasswordUnlock;
     }
     return _json;
   }
@@ -4928,11 +4927,11 @@ class PermissionGrant {
   PermissionGrant();
 
   PermissionGrant.fromJson(core.Map _json) {
-    if (_json.containsKey("permission")) {
-      permission = _json["permission"];
+    if (_json.containsKey('permission')) {
+      permission = _json['permission'];
     }
-    if (_json.containsKey("policy")) {
-      policy = _json["policy"];
+    if (_json.containsKey('policy')) {
+      policy = _json['policy'];
     }
   }
 
@@ -4940,10 +4939,10 @@ class PermissionGrant {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permission != null) {
-      _json["permission"] = permission;
+      _json['permission'] = permission;
     }
     if (policy != null) {
-      _json["policy"] = policy;
+      _json['policy'] = policy;
     }
     return _json;
   }
@@ -4974,14 +4973,14 @@ class PersistentPreferredActivity {
   PersistentPreferredActivity();
 
   PersistentPreferredActivity.fromJson(core.Map _json) {
-    if (_json.containsKey("actions")) {
-      actions = (_json["actions"] as core.List).cast<core.String>();
+    if (_json.containsKey('actions')) {
+      actions = (_json['actions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("categories")) {
-      categories = (_json["categories"] as core.List).cast<core.String>();
+    if (_json.containsKey('categories')) {
+      categories = (_json['categories'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("receiverActivity")) {
-      receiverActivity = _json["receiverActivity"];
+    if (_json.containsKey('receiverActivity')) {
+      receiverActivity = _json['receiverActivity'];
     }
   }
 
@@ -4989,13 +4988,13 @@ class PersistentPreferredActivity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actions != null) {
-      _json["actions"] = actions;
+      _json['actions'] = actions;
     }
     if (categories != null) {
-      _json["categories"] = categories;
+      _json['categories'] = categories;
     }
     if (receiverActivity != null) {
-      _json["receiverActivity"] = receiverActivity;
+      _json['receiverActivity'] = receiverActivity;
     }
     return _json;
   }
@@ -5018,11 +5017,11 @@ class PersonalApplicationPolicy {
   PersonalApplicationPolicy();
 
   PersonalApplicationPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("installType")) {
-      installType = _json["installType"];
+    if (_json.containsKey('installType')) {
+      installType = _json['installType'];
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
   }
 
@@ -5030,10 +5029,10 @@ class PersonalApplicationPolicy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (installType != null) {
-      _json["installType"] = installType;
+      _json['installType'] = installType;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     return _json;
   }
@@ -5069,28 +5068,28 @@ class PersonalUsagePolicies {
   PersonalUsagePolicies();
 
   PersonalUsagePolicies.fromJson(core.Map _json) {
-    if (_json.containsKey("accountTypesWithManagementDisabled")) {
+    if (_json.containsKey('accountTypesWithManagementDisabled')) {
       accountTypesWithManagementDisabled =
-          (_json["accountTypesWithManagementDisabled"] as core.List)
+          (_json['accountTypesWithManagementDisabled'] as core.List)
               .cast<core.String>();
     }
-    if (_json.containsKey("cameraDisabled")) {
-      cameraDisabled = _json["cameraDisabled"];
+    if (_json.containsKey('cameraDisabled')) {
+      cameraDisabled = _json['cameraDisabled'];
     }
-    if (_json.containsKey("maxDaysWithWorkOff")) {
-      maxDaysWithWorkOff = _json["maxDaysWithWorkOff"];
+    if (_json.containsKey('maxDaysWithWorkOff')) {
+      maxDaysWithWorkOff = _json['maxDaysWithWorkOff'];
     }
-    if (_json.containsKey("personalApplications")) {
-      personalApplications = (_json["personalApplications"] as core.List)
+    if (_json.containsKey('personalApplications')) {
+      personalApplications = (_json['personalApplications'] as core.List)
           .map<PersonalApplicationPolicy>(
               (value) => PersonalApplicationPolicy.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("personalPlayStoreMode")) {
-      personalPlayStoreMode = _json["personalPlayStoreMode"];
+    if (_json.containsKey('personalPlayStoreMode')) {
+      personalPlayStoreMode = _json['personalPlayStoreMode'];
     }
-    if (_json.containsKey("screenCaptureDisabled")) {
-      screenCaptureDisabled = _json["screenCaptureDisabled"];
+    if (_json.containsKey('screenCaptureDisabled')) {
+      screenCaptureDisabled = _json['screenCaptureDisabled'];
     }
   }
 
@@ -5098,24 +5097,24 @@ class PersonalUsagePolicies {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountTypesWithManagementDisabled != null) {
-      _json["accountTypesWithManagementDisabled"] =
+      _json['accountTypesWithManagementDisabled'] =
           accountTypesWithManagementDisabled;
     }
     if (cameraDisabled != null) {
-      _json["cameraDisabled"] = cameraDisabled;
+      _json['cameraDisabled'] = cameraDisabled;
     }
     if (maxDaysWithWorkOff != null) {
-      _json["maxDaysWithWorkOff"] = maxDaysWithWorkOff;
+      _json['maxDaysWithWorkOff'] = maxDaysWithWorkOff;
     }
     if (personalApplications != null) {
-      _json["personalApplications"] =
+      _json['personalApplications'] =
           personalApplications.map((value) => value.toJson()).toList();
     }
     if (personalPlayStoreMode != null) {
-      _json["personalPlayStoreMode"] = personalPlayStoreMode;
+      _json['personalPlayStoreMode'] = personalPlayStoreMode;
     }
     if (screenCaptureDisabled != null) {
-      _json["screenCaptureDisabled"] = screenCaptureDisabled;
+      _json['screenCaptureDisabled'] = screenCaptureDisabled;
     }
     return _json;
   }
@@ -5482,289 +5481,289 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("accountTypesWithManagementDisabled")) {
+    if (_json.containsKey('accountTypesWithManagementDisabled')) {
       accountTypesWithManagementDisabled =
-          (_json["accountTypesWithManagementDisabled"] as core.List)
+          (_json['accountTypesWithManagementDisabled'] as core.List)
               .cast<core.String>();
     }
-    if (_json.containsKey("addUserDisabled")) {
-      addUserDisabled = _json["addUserDisabled"];
+    if (_json.containsKey('addUserDisabled')) {
+      addUserDisabled = _json['addUserDisabled'];
     }
-    if (_json.containsKey("adjustVolumeDisabled")) {
-      adjustVolumeDisabled = _json["adjustVolumeDisabled"];
+    if (_json.containsKey('adjustVolumeDisabled')) {
+      adjustVolumeDisabled = _json['adjustVolumeDisabled'];
     }
-    if (_json.containsKey("advancedSecurityOverrides")) {
+    if (_json.containsKey('advancedSecurityOverrides')) {
       advancedSecurityOverrides = AdvancedSecurityOverrides.fromJson(
-          _json["advancedSecurityOverrides"]);
+          _json['advancedSecurityOverrides']);
     }
-    if (_json.containsKey("alwaysOnVpnPackage")) {
+    if (_json.containsKey('alwaysOnVpnPackage')) {
       alwaysOnVpnPackage =
-          AlwaysOnVpnPackage.fromJson(_json["alwaysOnVpnPackage"]);
+          AlwaysOnVpnPackage.fromJson(_json['alwaysOnVpnPackage']);
     }
-    if (_json.containsKey("androidDevicePolicyTracks")) {
+    if (_json.containsKey('androidDevicePolicyTracks')) {
       androidDevicePolicyTracks =
-          (_json["androidDevicePolicyTracks"] as core.List).cast<core.String>();
+          (_json['androidDevicePolicyTracks'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("appAutoUpdatePolicy")) {
-      appAutoUpdatePolicy = _json["appAutoUpdatePolicy"];
+    if (_json.containsKey('appAutoUpdatePolicy')) {
+      appAutoUpdatePolicy = _json['appAutoUpdatePolicy'];
     }
-    if (_json.containsKey("applications")) {
-      applications = (_json["applications"] as core.List)
+    if (_json.containsKey('applications')) {
+      applications = (_json['applications'] as core.List)
           .map<ApplicationPolicy>((value) => ApplicationPolicy.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("autoTimeRequired")) {
-      autoTimeRequired = _json["autoTimeRequired"];
+    if (_json.containsKey('autoTimeRequired')) {
+      autoTimeRequired = _json['autoTimeRequired'];
     }
-    if (_json.containsKey("blockApplicationsEnabled")) {
-      blockApplicationsEnabled = _json["blockApplicationsEnabled"];
+    if (_json.containsKey('blockApplicationsEnabled')) {
+      blockApplicationsEnabled = _json['blockApplicationsEnabled'];
     }
-    if (_json.containsKey("bluetoothConfigDisabled")) {
-      bluetoothConfigDisabled = _json["bluetoothConfigDisabled"];
+    if (_json.containsKey('bluetoothConfigDisabled')) {
+      bluetoothConfigDisabled = _json['bluetoothConfigDisabled'];
     }
-    if (_json.containsKey("bluetoothContactSharingDisabled")) {
+    if (_json.containsKey('bluetoothContactSharingDisabled')) {
       bluetoothContactSharingDisabled =
-          _json["bluetoothContactSharingDisabled"];
+          _json['bluetoothContactSharingDisabled'];
     }
-    if (_json.containsKey("bluetoothDisabled")) {
-      bluetoothDisabled = _json["bluetoothDisabled"];
+    if (_json.containsKey('bluetoothDisabled')) {
+      bluetoothDisabled = _json['bluetoothDisabled'];
     }
-    if (_json.containsKey("cameraDisabled")) {
-      cameraDisabled = _json["cameraDisabled"];
+    if (_json.containsKey('cameraDisabled')) {
+      cameraDisabled = _json['cameraDisabled'];
     }
-    if (_json.containsKey("cellBroadcastsConfigDisabled")) {
-      cellBroadcastsConfigDisabled = _json["cellBroadcastsConfigDisabled"];
+    if (_json.containsKey('cellBroadcastsConfigDisabled')) {
+      cellBroadcastsConfigDisabled = _json['cellBroadcastsConfigDisabled'];
     }
-    if (_json.containsKey("choosePrivateKeyRules")) {
-      choosePrivateKeyRules = (_json["choosePrivateKeyRules"] as core.List)
+    if (_json.containsKey('choosePrivateKeyRules')) {
+      choosePrivateKeyRules = (_json['choosePrivateKeyRules'] as core.List)
           .map<ChoosePrivateKeyRule>(
               (value) => ChoosePrivateKeyRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("complianceRules")) {
-      complianceRules = (_json["complianceRules"] as core.List)
+    if (_json.containsKey('complianceRules')) {
+      complianceRules = (_json['complianceRules'] as core.List)
           .map<ComplianceRule>((value) => ComplianceRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("createWindowsDisabled")) {
-      createWindowsDisabled = _json["createWindowsDisabled"];
+    if (_json.containsKey('createWindowsDisabled')) {
+      createWindowsDisabled = _json['createWindowsDisabled'];
     }
-    if (_json.containsKey("credentialsConfigDisabled")) {
-      credentialsConfigDisabled = _json["credentialsConfigDisabled"];
+    if (_json.containsKey('credentialsConfigDisabled')) {
+      credentialsConfigDisabled = _json['credentialsConfigDisabled'];
     }
-    if (_json.containsKey("dataRoamingDisabled")) {
-      dataRoamingDisabled = _json["dataRoamingDisabled"];
+    if (_json.containsKey('dataRoamingDisabled')) {
+      dataRoamingDisabled = _json['dataRoamingDisabled'];
     }
-    if (_json.containsKey("debuggingFeaturesAllowed")) {
-      debuggingFeaturesAllowed = _json["debuggingFeaturesAllowed"];
+    if (_json.containsKey('debuggingFeaturesAllowed')) {
+      debuggingFeaturesAllowed = _json['debuggingFeaturesAllowed'];
     }
-    if (_json.containsKey("defaultPermissionPolicy")) {
-      defaultPermissionPolicy = _json["defaultPermissionPolicy"];
+    if (_json.containsKey('defaultPermissionPolicy')) {
+      defaultPermissionPolicy = _json['defaultPermissionPolicy'];
     }
-    if (_json.containsKey("deviceOwnerLockScreenInfo")) {
+    if (_json.containsKey('deviceOwnerLockScreenInfo')) {
       deviceOwnerLockScreenInfo =
-          UserFacingMessage.fromJson(_json["deviceOwnerLockScreenInfo"]);
+          UserFacingMessage.fromJson(_json['deviceOwnerLockScreenInfo']);
     }
-    if (_json.containsKey("encryptionPolicy")) {
-      encryptionPolicy = _json["encryptionPolicy"];
+    if (_json.containsKey('encryptionPolicy')) {
+      encryptionPolicy = _json['encryptionPolicy'];
     }
-    if (_json.containsKey("ensureVerifyAppsEnabled")) {
-      ensureVerifyAppsEnabled = _json["ensureVerifyAppsEnabled"];
+    if (_json.containsKey('ensureVerifyAppsEnabled')) {
+      ensureVerifyAppsEnabled = _json['ensureVerifyAppsEnabled'];
     }
-    if (_json.containsKey("factoryResetDisabled")) {
-      factoryResetDisabled = _json["factoryResetDisabled"];
+    if (_json.containsKey('factoryResetDisabled')) {
+      factoryResetDisabled = _json['factoryResetDisabled'];
     }
-    if (_json.containsKey("frpAdminEmails")) {
+    if (_json.containsKey('frpAdminEmails')) {
       frpAdminEmails =
-          (_json["frpAdminEmails"] as core.List).cast<core.String>();
+          (_json['frpAdminEmails'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("funDisabled")) {
-      funDisabled = _json["funDisabled"];
+    if (_json.containsKey('funDisabled')) {
+      funDisabled = _json['funDisabled'];
     }
-    if (_json.containsKey("installAppsDisabled")) {
-      installAppsDisabled = _json["installAppsDisabled"];
+    if (_json.containsKey('installAppsDisabled')) {
+      installAppsDisabled = _json['installAppsDisabled'];
     }
-    if (_json.containsKey("installUnknownSourcesAllowed")) {
-      installUnknownSourcesAllowed = _json["installUnknownSourcesAllowed"];
+    if (_json.containsKey('installUnknownSourcesAllowed')) {
+      installUnknownSourcesAllowed = _json['installUnknownSourcesAllowed'];
     }
-    if (_json.containsKey("keyguardDisabled")) {
-      keyguardDisabled = _json["keyguardDisabled"];
+    if (_json.containsKey('keyguardDisabled')) {
+      keyguardDisabled = _json['keyguardDisabled'];
     }
-    if (_json.containsKey("keyguardDisabledFeatures")) {
+    if (_json.containsKey('keyguardDisabledFeatures')) {
       keyguardDisabledFeatures =
-          (_json["keyguardDisabledFeatures"] as core.List).cast<core.String>();
+          (_json['keyguardDisabledFeatures'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("kioskCustomLauncherEnabled")) {
-      kioskCustomLauncherEnabled = _json["kioskCustomLauncherEnabled"];
+    if (_json.containsKey('kioskCustomLauncherEnabled')) {
+      kioskCustomLauncherEnabled = _json['kioskCustomLauncherEnabled'];
     }
-    if (_json.containsKey("kioskCustomization")) {
+    if (_json.containsKey('kioskCustomization')) {
       kioskCustomization =
-          KioskCustomization.fromJson(_json["kioskCustomization"]);
+          KioskCustomization.fromJson(_json['kioskCustomization']);
     }
-    if (_json.containsKey("locationMode")) {
-      locationMode = _json["locationMode"];
+    if (_json.containsKey('locationMode')) {
+      locationMode = _json['locationMode'];
     }
-    if (_json.containsKey("longSupportMessage")) {
+    if (_json.containsKey('longSupportMessage')) {
       longSupportMessage =
-          UserFacingMessage.fromJson(_json["longSupportMessage"]);
+          UserFacingMessage.fromJson(_json['longSupportMessage']);
     }
-    if (_json.containsKey("maximumTimeToLock")) {
-      maximumTimeToLock = _json["maximumTimeToLock"];
+    if (_json.containsKey('maximumTimeToLock')) {
+      maximumTimeToLock = _json['maximumTimeToLock'];
     }
-    if (_json.containsKey("minimumApiLevel")) {
-      minimumApiLevel = _json["minimumApiLevel"];
+    if (_json.containsKey('minimumApiLevel')) {
+      minimumApiLevel = _json['minimumApiLevel'];
     }
-    if (_json.containsKey("mobileNetworksConfigDisabled")) {
-      mobileNetworksConfigDisabled = _json["mobileNetworksConfigDisabled"];
+    if (_json.containsKey('mobileNetworksConfigDisabled')) {
+      mobileNetworksConfigDisabled = _json['mobileNetworksConfigDisabled'];
     }
-    if (_json.containsKey("modifyAccountsDisabled")) {
-      modifyAccountsDisabled = _json["modifyAccountsDisabled"];
+    if (_json.containsKey('modifyAccountsDisabled')) {
+      modifyAccountsDisabled = _json['modifyAccountsDisabled'];
     }
-    if (_json.containsKey("mountPhysicalMediaDisabled")) {
-      mountPhysicalMediaDisabled = _json["mountPhysicalMediaDisabled"];
+    if (_json.containsKey('mountPhysicalMediaDisabled')) {
+      mountPhysicalMediaDisabled = _json['mountPhysicalMediaDisabled'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("networkEscapeHatchEnabled")) {
-      networkEscapeHatchEnabled = _json["networkEscapeHatchEnabled"];
+    if (_json.containsKey('networkEscapeHatchEnabled')) {
+      networkEscapeHatchEnabled = _json['networkEscapeHatchEnabled'];
     }
-    if (_json.containsKey("networkResetDisabled")) {
-      networkResetDisabled = _json["networkResetDisabled"];
+    if (_json.containsKey('networkResetDisabled')) {
+      networkResetDisabled = _json['networkResetDisabled'];
     }
-    if (_json.containsKey("openNetworkConfiguration")) {
-      openNetworkConfiguration = (_json["openNetworkConfiguration"] as core.Map)
+    if (_json.containsKey('openNetworkConfiguration')) {
+      openNetworkConfiguration = (_json['openNetworkConfiguration'] as core.Map)
           .cast<core.String, core.Object>();
     }
-    if (_json.containsKey("outgoingBeamDisabled")) {
-      outgoingBeamDisabled = _json["outgoingBeamDisabled"];
+    if (_json.containsKey('outgoingBeamDisabled')) {
+      outgoingBeamDisabled = _json['outgoingBeamDisabled'];
     }
-    if (_json.containsKey("outgoingCallsDisabled")) {
-      outgoingCallsDisabled = _json["outgoingCallsDisabled"];
+    if (_json.containsKey('outgoingCallsDisabled')) {
+      outgoingCallsDisabled = _json['outgoingCallsDisabled'];
     }
-    if (_json.containsKey("passwordPolicies")) {
-      passwordPolicies = (_json["passwordPolicies"] as core.List)
+    if (_json.containsKey('passwordPolicies')) {
+      passwordPolicies = (_json['passwordPolicies'] as core.List)
           .map<PasswordRequirements>(
               (value) => PasswordRequirements.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("passwordRequirements")) {
+    if (_json.containsKey('passwordRequirements')) {
       passwordRequirements =
-          PasswordRequirements.fromJson(_json["passwordRequirements"]);
+          PasswordRequirements.fromJson(_json['passwordRequirements']);
     }
-    if (_json.containsKey("permissionGrants")) {
-      permissionGrants = (_json["permissionGrants"] as core.List)
+    if (_json.containsKey('permissionGrants')) {
+      permissionGrants = (_json['permissionGrants'] as core.List)
           .map<PermissionGrant>((value) => PermissionGrant.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("permittedAccessibilityServices")) {
+    if (_json.containsKey('permittedAccessibilityServices')) {
       permittedAccessibilityServices =
-          PackageNameList.fromJson(_json["permittedAccessibilityServices"]);
+          PackageNameList.fromJson(_json['permittedAccessibilityServices']);
     }
-    if (_json.containsKey("permittedInputMethods")) {
+    if (_json.containsKey('permittedInputMethods')) {
       permittedInputMethods =
-          PackageNameList.fromJson(_json["permittedInputMethods"]);
+          PackageNameList.fromJson(_json['permittedInputMethods']);
     }
-    if (_json.containsKey("persistentPreferredActivities")) {
+    if (_json.containsKey('persistentPreferredActivities')) {
       persistentPreferredActivities =
-          (_json["persistentPreferredActivities"] as core.List)
+          (_json['persistentPreferredActivities'] as core.List)
               .map<PersistentPreferredActivity>(
                   (value) => PersistentPreferredActivity.fromJson(value))
               .toList();
     }
-    if (_json.containsKey("personalUsagePolicies")) {
+    if (_json.containsKey('personalUsagePolicies')) {
       personalUsagePolicies =
-          PersonalUsagePolicies.fromJson(_json["personalUsagePolicies"]);
+          PersonalUsagePolicies.fromJson(_json['personalUsagePolicies']);
     }
-    if (_json.containsKey("playStoreMode")) {
-      playStoreMode = _json["playStoreMode"];
+    if (_json.containsKey('playStoreMode')) {
+      playStoreMode = _json['playStoreMode'];
     }
-    if (_json.containsKey("policyEnforcementRules")) {
-      policyEnforcementRules = (_json["policyEnforcementRules"] as core.List)
+    if (_json.containsKey('policyEnforcementRules')) {
+      policyEnforcementRules = (_json['policyEnforcementRules'] as core.List)
           .map<PolicyEnforcementRule>(
               (value) => PolicyEnforcementRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("privateKeySelectionEnabled")) {
-      privateKeySelectionEnabled = _json["privateKeySelectionEnabled"];
+    if (_json.containsKey('privateKeySelectionEnabled')) {
+      privateKeySelectionEnabled = _json['privateKeySelectionEnabled'];
     }
-    if (_json.containsKey("recommendedGlobalProxy")) {
+    if (_json.containsKey('recommendedGlobalProxy')) {
       recommendedGlobalProxy =
-          ProxyInfo.fromJson(_json["recommendedGlobalProxy"]);
+          ProxyInfo.fromJson(_json['recommendedGlobalProxy']);
     }
-    if (_json.containsKey("removeUserDisabled")) {
-      removeUserDisabled = _json["removeUserDisabled"];
+    if (_json.containsKey('removeUserDisabled')) {
+      removeUserDisabled = _json['removeUserDisabled'];
     }
-    if (_json.containsKey("safeBootDisabled")) {
-      safeBootDisabled = _json["safeBootDisabled"];
+    if (_json.containsKey('safeBootDisabled')) {
+      safeBootDisabled = _json['safeBootDisabled'];
     }
-    if (_json.containsKey("screenCaptureDisabled")) {
-      screenCaptureDisabled = _json["screenCaptureDisabled"];
+    if (_json.containsKey('screenCaptureDisabled')) {
+      screenCaptureDisabled = _json['screenCaptureDisabled'];
     }
-    if (_json.containsKey("setUserIconDisabled")) {
-      setUserIconDisabled = _json["setUserIconDisabled"];
+    if (_json.containsKey('setUserIconDisabled')) {
+      setUserIconDisabled = _json['setUserIconDisabled'];
     }
-    if (_json.containsKey("setWallpaperDisabled")) {
-      setWallpaperDisabled = _json["setWallpaperDisabled"];
+    if (_json.containsKey('setWallpaperDisabled')) {
+      setWallpaperDisabled = _json['setWallpaperDisabled'];
     }
-    if (_json.containsKey("setupActions")) {
-      setupActions = (_json["setupActions"] as core.List)
+    if (_json.containsKey('setupActions')) {
+      setupActions = (_json['setupActions'] as core.List)
           .map<SetupAction>((value) => SetupAction.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shareLocationDisabled")) {
-      shareLocationDisabled = _json["shareLocationDisabled"];
+    if (_json.containsKey('shareLocationDisabled')) {
+      shareLocationDisabled = _json['shareLocationDisabled'];
     }
-    if (_json.containsKey("shortSupportMessage")) {
+    if (_json.containsKey('shortSupportMessage')) {
       shortSupportMessage =
-          UserFacingMessage.fromJson(_json["shortSupportMessage"]);
+          UserFacingMessage.fromJson(_json['shortSupportMessage']);
     }
-    if (_json.containsKey("skipFirstUseHintsEnabled")) {
-      skipFirstUseHintsEnabled = _json["skipFirstUseHintsEnabled"];
+    if (_json.containsKey('skipFirstUseHintsEnabled')) {
+      skipFirstUseHintsEnabled = _json['skipFirstUseHintsEnabled'];
     }
-    if (_json.containsKey("smsDisabled")) {
-      smsDisabled = _json["smsDisabled"];
+    if (_json.containsKey('smsDisabled')) {
+      smsDisabled = _json['smsDisabled'];
     }
-    if (_json.containsKey("statusBarDisabled")) {
-      statusBarDisabled = _json["statusBarDisabled"];
+    if (_json.containsKey('statusBarDisabled')) {
+      statusBarDisabled = _json['statusBarDisabled'];
     }
-    if (_json.containsKey("statusReportingSettings")) {
+    if (_json.containsKey('statusReportingSettings')) {
       statusReportingSettings =
-          StatusReportingSettings.fromJson(_json["statusReportingSettings"]);
+          StatusReportingSettings.fromJson(_json['statusReportingSettings']);
     }
-    if (_json.containsKey("stayOnPluggedModes")) {
+    if (_json.containsKey('stayOnPluggedModes')) {
       stayOnPluggedModes =
-          (_json["stayOnPluggedModes"] as core.List).cast<core.String>();
+          (_json['stayOnPluggedModes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("systemUpdate")) {
-      systemUpdate = SystemUpdate.fromJson(_json["systemUpdate"]);
+    if (_json.containsKey('systemUpdate')) {
+      systemUpdate = SystemUpdate.fromJson(_json['systemUpdate']);
     }
-    if (_json.containsKey("tetheringConfigDisabled")) {
-      tetheringConfigDisabled = _json["tetheringConfigDisabled"];
+    if (_json.containsKey('tetheringConfigDisabled')) {
+      tetheringConfigDisabled = _json['tetheringConfigDisabled'];
     }
-    if (_json.containsKey("uninstallAppsDisabled")) {
-      uninstallAppsDisabled = _json["uninstallAppsDisabled"];
+    if (_json.containsKey('uninstallAppsDisabled')) {
+      uninstallAppsDisabled = _json['uninstallAppsDisabled'];
     }
-    if (_json.containsKey("unmuteMicrophoneDisabled")) {
-      unmuteMicrophoneDisabled = _json["unmuteMicrophoneDisabled"];
+    if (_json.containsKey('unmuteMicrophoneDisabled')) {
+      unmuteMicrophoneDisabled = _json['unmuteMicrophoneDisabled'];
     }
-    if (_json.containsKey("usbFileTransferDisabled")) {
-      usbFileTransferDisabled = _json["usbFileTransferDisabled"];
+    if (_json.containsKey('usbFileTransferDisabled')) {
+      usbFileTransferDisabled = _json['usbFileTransferDisabled'];
     }
-    if (_json.containsKey("usbMassStorageEnabled")) {
-      usbMassStorageEnabled = _json["usbMassStorageEnabled"];
+    if (_json.containsKey('usbMassStorageEnabled')) {
+      usbMassStorageEnabled = _json['usbMassStorageEnabled'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
-    if (_json.containsKey("vpnConfigDisabled")) {
-      vpnConfigDisabled = _json["vpnConfigDisabled"];
+    if (_json.containsKey('vpnConfigDisabled')) {
+      vpnConfigDisabled = _json['vpnConfigDisabled'];
     }
-    if (_json.containsKey("wifiConfigDisabled")) {
-      wifiConfigDisabled = _json["wifiConfigDisabled"];
+    if (_json.containsKey('wifiConfigDisabled')) {
+      wifiConfigDisabled = _json['wifiConfigDisabled'];
     }
-    if (_json.containsKey("wifiConfigsLockdownEnabled")) {
-      wifiConfigsLockdownEnabled = _json["wifiConfigsLockdownEnabled"];
+    if (_json.containsKey('wifiConfigsLockdownEnabled')) {
+      wifiConfigsLockdownEnabled = _json['wifiConfigsLockdownEnabled'];
     }
   }
 
@@ -5772,258 +5771,258 @@ class Policy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountTypesWithManagementDisabled != null) {
-      _json["accountTypesWithManagementDisabled"] =
+      _json['accountTypesWithManagementDisabled'] =
           accountTypesWithManagementDisabled;
     }
     if (addUserDisabled != null) {
-      _json["addUserDisabled"] = addUserDisabled;
+      _json['addUserDisabled'] = addUserDisabled;
     }
     if (adjustVolumeDisabled != null) {
-      _json["adjustVolumeDisabled"] = adjustVolumeDisabled;
+      _json['adjustVolumeDisabled'] = adjustVolumeDisabled;
     }
     if (advancedSecurityOverrides != null) {
-      _json["advancedSecurityOverrides"] = advancedSecurityOverrides.toJson();
+      _json['advancedSecurityOverrides'] = advancedSecurityOverrides.toJson();
     }
     if (alwaysOnVpnPackage != null) {
-      _json["alwaysOnVpnPackage"] = alwaysOnVpnPackage.toJson();
+      _json['alwaysOnVpnPackage'] = alwaysOnVpnPackage.toJson();
     }
     if (androidDevicePolicyTracks != null) {
-      _json["androidDevicePolicyTracks"] = androidDevicePolicyTracks;
+      _json['androidDevicePolicyTracks'] = androidDevicePolicyTracks;
     }
     if (appAutoUpdatePolicy != null) {
-      _json["appAutoUpdatePolicy"] = appAutoUpdatePolicy;
+      _json['appAutoUpdatePolicy'] = appAutoUpdatePolicy;
     }
     if (applications != null) {
-      _json["applications"] =
+      _json['applications'] =
           applications.map((value) => value.toJson()).toList();
     }
     if (autoTimeRequired != null) {
-      _json["autoTimeRequired"] = autoTimeRequired;
+      _json['autoTimeRequired'] = autoTimeRequired;
     }
     if (blockApplicationsEnabled != null) {
-      _json["blockApplicationsEnabled"] = blockApplicationsEnabled;
+      _json['blockApplicationsEnabled'] = blockApplicationsEnabled;
     }
     if (bluetoothConfigDisabled != null) {
-      _json["bluetoothConfigDisabled"] = bluetoothConfigDisabled;
+      _json['bluetoothConfigDisabled'] = bluetoothConfigDisabled;
     }
     if (bluetoothContactSharingDisabled != null) {
-      _json["bluetoothContactSharingDisabled"] =
+      _json['bluetoothContactSharingDisabled'] =
           bluetoothContactSharingDisabled;
     }
     if (bluetoothDisabled != null) {
-      _json["bluetoothDisabled"] = bluetoothDisabled;
+      _json['bluetoothDisabled'] = bluetoothDisabled;
     }
     if (cameraDisabled != null) {
-      _json["cameraDisabled"] = cameraDisabled;
+      _json['cameraDisabled'] = cameraDisabled;
     }
     if (cellBroadcastsConfigDisabled != null) {
-      _json["cellBroadcastsConfigDisabled"] = cellBroadcastsConfigDisabled;
+      _json['cellBroadcastsConfigDisabled'] = cellBroadcastsConfigDisabled;
     }
     if (choosePrivateKeyRules != null) {
-      _json["choosePrivateKeyRules"] =
+      _json['choosePrivateKeyRules'] =
           choosePrivateKeyRules.map((value) => value.toJson()).toList();
     }
     if (complianceRules != null) {
-      _json["complianceRules"] =
+      _json['complianceRules'] =
           complianceRules.map((value) => value.toJson()).toList();
     }
     if (createWindowsDisabled != null) {
-      _json["createWindowsDisabled"] = createWindowsDisabled;
+      _json['createWindowsDisabled'] = createWindowsDisabled;
     }
     if (credentialsConfigDisabled != null) {
-      _json["credentialsConfigDisabled"] = credentialsConfigDisabled;
+      _json['credentialsConfigDisabled'] = credentialsConfigDisabled;
     }
     if (dataRoamingDisabled != null) {
-      _json["dataRoamingDisabled"] = dataRoamingDisabled;
+      _json['dataRoamingDisabled'] = dataRoamingDisabled;
     }
     if (debuggingFeaturesAllowed != null) {
-      _json["debuggingFeaturesAllowed"] = debuggingFeaturesAllowed;
+      _json['debuggingFeaturesAllowed'] = debuggingFeaturesAllowed;
     }
     if (defaultPermissionPolicy != null) {
-      _json["defaultPermissionPolicy"] = defaultPermissionPolicy;
+      _json['defaultPermissionPolicy'] = defaultPermissionPolicy;
     }
     if (deviceOwnerLockScreenInfo != null) {
-      _json["deviceOwnerLockScreenInfo"] = deviceOwnerLockScreenInfo.toJson();
+      _json['deviceOwnerLockScreenInfo'] = deviceOwnerLockScreenInfo.toJson();
     }
     if (encryptionPolicy != null) {
-      _json["encryptionPolicy"] = encryptionPolicy;
+      _json['encryptionPolicy'] = encryptionPolicy;
     }
     if (ensureVerifyAppsEnabled != null) {
-      _json["ensureVerifyAppsEnabled"] = ensureVerifyAppsEnabled;
+      _json['ensureVerifyAppsEnabled'] = ensureVerifyAppsEnabled;
     }
     if (factoryResetDisabled != null) {
-      _json["factoryResetDisabled"] = factoryResetDisabled;
+      _json['factoryResetDisabled'] = factoryResetDisabled;
     }
     if (frpAdminEmails != null) {
-      _json["frpAdminEmails"] = frpAdminEmails;
+      _json['frpAdminEmails'] = frpAdminEmails;
     }
     if (funDisabled != null) {
-      _json["funDisabled"] = funDisabled;
+      _json['funDisabled'] = funDisabled;
     }
     if (installAppsDisabled != null) {
-      _json["installAppsDisabled"] = installAppsDisabled;
+      _json['installAppsDisabled'] = installAppsDisabled;
     }
     if (installUnknownSourcesAllowed != null) {
-      _json["installUnknownSourcesAllowed"] = installUnknownSourcesAllowed;
+      _json['installUnknownSourcesAllowed'] = installUnknownSourcesAllowed;
     }
     if (keyguardDisabled != null) {
-      _json["keyguardDisabled"] = keyguardDisabled;
+      _json['keyguardDisabled'] = keyguardDisabled;
     }
     if (keyguardDisabledFeatures != null) {
-      _json["keyguardDisabledFeatures"] = keyguardDisabledFeatures;
+      _json['keyguardDisabledFeatures'] = keyguardDisabledFeatures;
     }
     if (kioskCustomLauncherEnabled != null) {
-      _json["kioskCustomLauncherEnabled"] = kioskCustomLauncherEnabled;
+      _json['kioskCustomLauncherEnabled'] = kioskCustomLauncherEnabled;
     }
     if (kioskCustomization != null) {
-      _json["kioskCustomization"] = kioskCustomization.toJson();
+      _json['kioskCustomization'] = kioskCustomization.toJson();
     }
     if (locationMode != null) {
-      _json["locationMode"] = locationMode;
+      _json['locationMode'] = locationMode;
     }
     if (longSupportMessage != null) {
-      _json["longSupportMessage"] = longSupportMessage.toJson();
+      _json['longSupportMessage'] = longSupportMessage.toJson();
     }
     if (maximumTimeToLock != null) {
-      _json["maximumTimeToLock"] = maximumTimeToLock;
+      _json['maximumTimeToLock'] = maximumTimeToLock;
     }
     if (minimumApiLevel != null) {
-      _json["minimumApiLevel"] = minimumApiLevel;
+      _json['minimumApiLevel'] = minimumApiLevel;
     }
     if (mobileNetworksConfigDisabled != null) {
-      _json["mobileNetworksConfigDisabled"] = mobileNetworksConfigDisabled;
+      _json['mobileNetworksConfigDisabled'] = mobileNetworksConfigDisabled;
     }
     if (modifyAccountsDisabled != null) {
-      _json["modifyAccountsDisabled"] = modifyAccountsDisabled;
+      _json['modifyAccountsDisabled'] = modifyAccountsDisabled;
     }
     if (mountPhysicalMediaDisabled != null) {
-      _json["mountPhysicalMediaDisabled"] = mountPhysicalMediaDisabled;
+      _json['mountPhysicalMediaDisabled'] = mountPhysicalMediaDisabled;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (networkEscapeHatchEnabled != null) {
-      _json["networkEscapeHatchEnabled"] = networkEscapeHatchEnabled;
+      _json['networkEscapeHatchEnabled'] = networkEscapeHatchEnabled;
     }
     if (networkResetDisabled != null) {
-      _json["networkResetDisabled"] = networkResetDisabled;
+      _json['networkResetDisabled'] = networkResetDisabled;
     }
     if (openNetworkConfiguration != null) {
-      _json["openNetworkConfiguration"] = openNetworkConfiguration;
+      _json['openNetworkConfiguration'] = openNetworkConfiguration;
     }
     if (outgoingBeamDisabled != null) {
-      _json["outgoingBeamDisabled"] = outgoingBeamDisabled;
+      _json['outgoingBeamDisabled'] = outgoingBeamDisabled;
     }
     if (outgoingCallsDisabled != null) {
-      _json["outgoingCallsDisabled"] = outgoingCallsDisabled;
+      _json['outgoingCallsDisabled'] = outgoingCallsDisabled;
     }
     if (passwordPolicies != null) {
-      _json["passwordPolicies"] =
+      _json['passwordPolicies'] =
           passwordPolicies.map((value) => value.toJson()).toList();
     }
     if (passwordRequirements != null) {
-      _json["passwordRequirements"] = passwordRequirements.toJson();
+      _json['passwordRequirements'] = passwordRequirements.toJson();
     }
     if (permissionGrants != null) {
-      _json["permissionGrants"] =
+      _json['permissionGrants'] =
           permissionGrants.map((value) => value.toJson()).toList();
     }
     if (permittedAccessibilityServices != null) {
-      _json["permittedAccessibilityServices"] =
+      _json['permittedAccessibilityServices'] =
           permittedAccessibilityServices.toJson();
     }
     if (permittedInputMethods != null) {
-      _json["permittedInputMethods"] = permittedInputMethods.toJson();
+      _json['permittedInputMethods'] = permittedInputMethods.toJson();
     }
     if (persistentPreferredActivities != null) {
-      _json["persistentPreferredActivities"] =
+      _json['persistentPreferredActivities'] =
           persistentPreferredActivities.map((value) => value.toJson()).toList();
     }
     if (personalUsagePolicies != null) {
-      _json["personalUsagePolicies"] = personalUsagePolicies.toJson();
+      _json['personalUsagePolicies'] = personalUsagePolicies.toJson();
     }
     if (playStoreMode != null) {
-      _json["playStoreMode"] = playStoreMode;
+      _json['playStoreMode'] = playStoreMode;
     }
     if (policyEnforcementRules != null) {
-      _json["policyEnforcementRules"] =
+      _json['policyEnforcementRules'] =
           policyEnforcementRules.map((value) => value.toJson()).toList();
     }
     if (privateKeySelectionEnabled != null) {
-      _json["privateKeySelectionEnabled"] = privateKeySelectionEnabled;
+      _json['privateKeySelectionEnabled'] = privateKeySelectionEnabled;
     }
     if (recommendedGlobalProxy != null) {
-      _json["recommendedGlobalProxy"] = recommendedGlobalProxy.toJson();
+      _json['recommendedGlobalProxy'] = recommendedGlobalProxy.toJson();
     }
     if (removeUserDisabled != null) {
-      _json["removeUserDisabled"] = removeUserDisabled;
+      _json['removeUserDisabled'] = removeUserDisabled;
     }
     if (safeBootDisabled != null) {
-      _json["safeBootDisabled"] = safeBootDisabled;
+      _json['safeBootDisabled'] = safeBootDisabled;
     }
     if (screenCaptureDisabled != null) {
-      _json["screenCaptureDisabled"] = screenCaptureDisabled;
+      _json['screenCaptureDisabled'] = screenCaptureDisabled;
     }
     if (setUserIconDisabled != null) {
-      _json["setUserIconDisabled"] = setUserIconDisabled;
+      _json['setUserIconDisabled'] = setUserIconDisabled;
     }
     if (setWallpaperDisabled != null) {
-      _json["setWallpaperDisabled"] = setWallpaperDisabled;
+      _json['setWallpaperDisabled'] = setWallpaperDisabled;
     }
     if (setupActions != null) {
-      _json["setupActions"] =
+      _json['setupActions'] =
           setupActions.map((value) => value.toJson()).toList();
     }
     if (shareLocationDisabled != null) {
-      _json["shareLocationDisabled"] = shareLocationDisabled;
+      _json['shareLocationDisabled'] = shareLocationDisabled;
     }
     if (shortSupportMessage != null) {
-      _json["shortSupportMessage"] = shortSupportMessage.toJson();
+      _json['shortSupportMessage'] = shortSupportMessage.toJson();
     }
     if (skipFirstUseHintsEnabled != null) {
-      _json["skipFirstUseHintsEnabled"] = skipFirstUseHintsEnabled;
+      _json['skipFirstUseHintsEnabled'] = skipFirstUseHintsEnabled;
     }
     if (smsDisabled != null) {
-      _json["smsDisabled"] = smsDisabled;
+      _json['smsDisabled'] = smsDisabled;
     }
     if (statusBarDisabled != null) {
-      _json["statusBarDisabled"] = statusBarDisabled;
+      _json['statusBarDisabled'] = statusBarDisabled;
     }
     if (statusReportingSettings != null) {
-      _json["statusReportingSettings"] = statusReportingSettings.toJson();
+      _json['statusReportingSettings'] = statusReportingSettings.toJson();
     }
     if (stayOnPluggedModes != null) {
-      _json["stayOnPluggedModes"] = stayOnPluggedModes;
+      _json['stayOnPluggedModes'] = stayOnPluggedModes;
     }
     if (systemUpdate != null) {
-      _json["systemUpdate"] = systemUpdate.toJson();
+      _json['systemUpdate'] = systemUpdate.toJson();
     }
     if (tetheringConfigDisabled != null) {
-      _json["tetheringConfigDisabled"] = tetheringConfigDisabled;
+      _json['tetheringConfigDisabled'] = tetheringConfigDisabled;
     }
     if (uninstallAppsDisabled != null) {
-      _json["uninstallAppsDisabled"] = uninstallAppsDisabled;
+      _json['uninstallAppsDisabled'] = uninstallAppsDisabled;
     }
     if (unmuteMicrophoneDisabled != null) {
-      _json["unmuteMicrophoneDisabled"] = unmuteMicrophoneDisabled;
+      _json['unmuteMicrophoneDisabled'] = unmuteMicrophoneDisabled;
     }
     if (usbFileTransferDisabled != null) {
-      _json["usbFileTransferDisabled"] = usbFileTransferDisabled;
+      _json['usbFileTransferDisabled'] = usbFileTransferDisabled;
     }
     if (usbMassStorageEnabled != null) {
-      _json["usbMassStorageEnabled"] = usbMassStorageEnabled;
+      _json['usbMassStorageEnabled'] = usbMassStorageEnabled;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     if (vpnConfigDisabled != null) {
-      _json["vpnConfigDisabled"] = vpnConfigDisabled;
+      _json['vpnConfigDisabled'] = vpnConfigDisabled;
     }
     if (wifiConfigDisabled != null) {
-      _json["wifiConfigDisabled"] = wifiConfigDisabled;
+      _json['wifiConfigDisabled'] = wifiConfigDisabled;
     }
     if (wifiConfigsLockdownEnabled != null) {
-      _json["wifiConfigsLockdownEnabled"] = wifiConfigsLockdownEnabled;
+      _json['wifiConfigsLockdownEnabled'] = wifiConfigsLockdownEnabled;
     }
     return _json;
   }
@@ -6049,14 +6048,14 @@ class PolicyEnforcementRule {
   PolicyEnforcementRule();
 
   PolicyEnforcementRule.fromJson(core.Map _json) {
-    if (_json.containsKey("blockAction")) {
-      blockAction = BlockAction.fromJson(_json["blockAction"]);
+    if (_json.containsKey('blockAction')) {
+      blockAction = BlockAction.fromJson(_json['blockAction']);
     }
-    if (_json.containsKey("settingName")) {
-      settingName = _json["settingName"];
+    if (_json.containsKey('settingName')) {
+      settingName = _json['settingName'];
     }
-    if (_json.containsKey("wipeAction")) {
-      wipeAction = WipeAction.fromJson(_json["wipeAction"]);
+    if (_json.containsKey('wipeAction')) {
+      wipeAction = WipeAction.fromJson(_json['wipeAction']);
     }
   }
 
@@ -6064,13 +6063,13 @@ class PolicyEnforcementRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blockAction != null) {
-      _json["blockAction"] = blockAction.toJson();
+      _json['blockAction'] = blockAction.toJson();
     }
     if (settingName != null) {
-      _json["settingName"] = settingName;
+      _json['settingName'] = settingName;
     }
     if (wipeAction != null) {
-      _json["wipeAction"] = wipeAction.toJson();
+      _json['wipeAction'] = wipeAction.toJson();
     }
     return _json;
   }
@@ -6095,13 +6094,13 @@ class PostureDetail {
   PostureDetail();
 
   PostureDetail.fromJson(core.Map _json) {
-    if (_json.containsKey("advice")) {
-      advice = (_json["advice"] as core.List)
+    if (_json.containsKey('advice')) {
+      advice = (_json['advice'] as core.List)
           .map<UserFacingMessage>((value) => UserFacingMessage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("securityRisk")) {
-      securityRisk = _json["securityRisk"];
+    if (_json.containsKey('securityRisk')) {
+      securityRisk = _json['securityRisk'];
     }
   }
 
@@ -6109,10 +6108,10 @@ class PostureDetail {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (advice != null) {
-      _json["advice"] = advice.map((value) => value.toJson()).toList();
+      _json['advice'] = advice.map((value) => value.toJson()).toList();
     }
     if (securityRisk != null) {
-      _json["securityRisk"] = securityRisk;
+      _json['securityRisk'] = securityRisk;
     }
     return _json;
   }
@@ -6142,14 +6141,14 @@ class PowerManagementEvent {
   PowerManagementEvent();
 
   PowerManagementEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("batteryLevel")) {
-      batteryLevel = _json["batteryLevel"].toDouble();
+    if (_json.containsKey('batteryLevel')) {
+      batteryLevel = _json['batteryLevel'].toDouble();
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("eventType")) {
-      eventType = _json["eventType"];
+    if (_json.containsKey('eventType')) {
+      eventType = _json['eventType'];
     }
   }
 
@@ -6157,13 +6156,13 @@ class PowerManagementEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batteryLevel != null) {
-      _json["batteryLevel"] = batteryLevel;
+      _json['batteryLevel'] = batteryLevel;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (eventType != null) {
-      _json["eventType"] = eventType;
+      _json['eventType'] = eventType;
     }
     return _json;
   }
@@ -6189,17 +6188,17 @@ class ProxyInfo {
   ProxyInfo();
 
   ProxyInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("excludedHosts")) {
-      excludedHosts = (_json["excludedHosts"] as core.List).cast<core.String>();
+    if (_json.containsKey('excludedHosts')) {
+      excludedHosts = (_json['excludedHosts'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("host")) {
-      host = _json["host"];
+    if (_json.containsKey('host')) {
+      host = _json['host'];
     }
-    if (_json.containsKey("pacUri")) {
-      pacUri = _json["pacUri"];
+    if (_json.containsKey('pacUri')) {
+      pacUri = _json['pacUri'];
     }
-    if (_json.containsKey("port")) {
-      port = _json["port"];
+    if (_json.containsKey('port')) {
+      port = _json['port'];
     }
   }
 
@@ -6207,16 +6206,16 @@ class ProxyInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludedHosts != null) {
-      _json["excludedHosts"] = excludedHosts;
+      _json['excludedHosts'] = excludedHosts;
     }
     if (host != null) {
-      _json["host"] = host;
+      _json['host'] = host;
     }
     if (pacUri != null) {
-      _json["pacUri"] = pacUri;
+      _json['pacUri'] = pacUri;
     }
     if (port != null) {
-      _json["port"] = port;
+      _json['port'] = port;
     }
     return _json;
   }
@@ -6242,11 +6241,11 @@ class SecurityPosture {
   SecurityPosture();
 
   SecurityPosture.fromJson(core.Map _json) {
-    if (_json.containsKey("devicePosture")) {
-      devicePosture = _json["devicePosture"];
+    if (_json.containsKey('devicePosture')) {
+      devicePosture = _json['devicePosture'];
     }
-    if (_json.containsKey("postureDetails")) {
-      postureDetails = (_json["postureDetails"] as core.List)
+    if (_json.containsKey('postureDetails')) {
+      postureDetails = (_json['postureDetails'] as core.List)
           .map<PostureDetail>((value) => PostureDetail.fromJson(value))
           .toList();
     }
@@ -6256,10 +6255,10 @@ class SecurityPosture {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devicePosture != null) {
-      _json["devicePosture"] = devicePosture;
+      _json['devicePosture'] = devicePosture;
     }
     if (postureDetails != null) {
-      _json["postureDetails"] =
+      _json['postureDetails'] =
           postureDetails.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6280,14 +6279,14 @@ class SetupAction {
   SetupAction();
 
   SetupAction.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = UserFacingMessage.fromJson(_json["description"]);
+    if (_json.containsKey('description')) {
+      description = UserFacingMessage.fromJson(_json['description']);
     }
-    if (_json.containsKey("launchApp")) {
-      launchApp = LaunchAppAction.fromJson(_json["launchApp"]);
+    if (_json.containsKey('launchApp')) {
+      launchApp = LaunchAppAction.fromJson(_json['launchApp']);
     }
-    if (_json.containsKey("title")) {
-      title = UserFacingMessage.fromJson(_json["title"]);
+    if (_json.containsKey('title')) {
+      title = UserFacingMessage.fromJson(_json['title']);
     }
   }
 
@@ -6295,13 +6294,13 @@ class SetupAction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description.toJson();
+      _json['description'] = description.toJson();
     }
     if (launchApp != null) {
-      _json["launchApp"] = launchApp.toJson();
+      _json['launchApp'] = launchApp.toJson();
     }
     if (title != null) {
-      _json["title"] = title.toJson();
+      _json['title'] = title.toJson();
     }
     return _json;
   }
@@ -6345,17 +6344,17 @@ class SigninDetail {
   SigninDetail();
 
   SigninDetail.fromJson(core.Map _json) {
-    if (_json.containsKey("allowPersonalUsage")) {
-      allowPersonalUsage = _json["allowPersonalUsage"];
+    if (_json.containsKey('allowPersonalUsage')) {
+      allowPersonalUsage = _json['allowPersonalUsage'];
     }
-    if (_json.containsKey("qrCode")) {
-      qrCode = _json["qrCode"];
+    if (_json.containsKey('qrCode')) {
+      qrCode = _json['qrCode'];
     }
-    if (_json.containsKey("signinEnrollmentToken")) {
-      signinEnrollmentToken = _json["signinEnrollmentToken"];
+    if (_json.containsKey('signinEnrollmentToken')) {
+      signinEnrollmentToken = _json['signinEnrollmentToken'];
     }
-    if (_json.containsKey("signinUrl")) {
-      signinUrl = _json["signinUrl"];
+    if (_json.containsKey('signinUrl')) {
+      signinUrl = _json['signinUrl'];
     }
   }
 
@@ -6363,16 +6362,16 @@ class SigninDetail {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowPersonalUsage != null) {
-      _json["allowPersonalUsage"] = allowPersonalUsage;
+      _json['allowPersonalUsage'] = allowPersonalUsage;
     }
     if (qrCode != null) {
-      _json["qrCode"] = qrCode;
+      _json['qrCode'] = qrCode;
     }
     if (signinEnrollmentToken != null) {
-      _json["signinEnrollmentToken"] = signinEnrollmentToken;
+      _json['signinEnrollmentToken'] = signinEnrollmentToken;
     }
     if (signinUrl != null) {
-      _json["signinUrl"] = signinUrl;
+      _json['signinUrl'] = signinUrl;
     }
     return _json;
   }
@@ -6391,11 +6390,11 @@ class SignupUrl {
   SignupUrl();
 
   SignupUrl.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -6403,10 +6402,10 @@ class SignupUrl {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -6454,38 +6453,38 @@ class SoftwareInfo {
   SoftwareInfo();
 
   SoftwareInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("androidBuildNumber")) {
-      androidBuildNumber = _json["androidBuildNumber"];
+    if (_json.containsKey('androidBuildNumber')) {
+      androidBuildNumber = _json['androidBuildNumber'];
     }
-    if (_json.containsKey("androidBuildTime")) {
-      androidBuildTime = _json["androidBuildTime"];
+    if (_json.containsKey('androidBuildTime')) {
+      androidBuildTime = _json['androidBuildTime'];
     }
-    if (_json.containsKey("androidDevicePolicyVersionCode")) {
-      androidDevicePolicyVersionCode = _json["androidDevicePolicyVersionCode"];
+    if (_json.containsKey('androidDevicePolicyVersionCode')) {
+      androidDevicePolicyVersionCode = _json['androidDevicePolicyVersionCode'];
     }
-    if (_json.containsKey("androidDevicePolicyVersionName")) {
-      androidDevicePolicyVersionName = _json["androidDevicePolicyVersionName"];
+    if (_json.containsKey('androidDevicePolicyVersionName')) {
+      androidDevicePolicyVersionName = _json['androidDevicePolicyVersionName'];
     }
-    if (_json.containsKey("androidVersion")) {
-      androidVersion = _json["androidVersion"];
+    if (_json.containsKey('androidVersion')) {
+      androidVersion = _json['androidVersion'];
     }
-    if (_json.containsKey("bootloaderVersion")) {
-      bootloaderVersion = _json["bootloaderVersion"];
+    if (_json.containsKey('bootloaderVersion')) {
+      bootloaderVersion = _json['bootloaderVersion'];
     }
-    if (_json.containsKey("deviceBuildSignature")) {
-      deviceBuildSignature = _json["deviceBuildSignature"];
+    if (_json.containsKey('deviceBuildSignature')) {
+      deviceBuildSignature = _json['deviceBuildSignature'];
     }
-    if (_json.containsKey("deviceKernelVersion")) {
-      deviceKernelVersion = _json["deviceKernelVersion"];
+    if (_json.containsKey('deviceKernelVersion')) {
+      deviceKernelVersion = _json['deviceKernelVersion'];
     }
-    if (_json.containsKey("primaryLanguageCode")) {
-      primaryLanguageCode = _json["primaryLanguageCode"];
+    if (_json.containsKey('primaryLanguageCode')) {
+      primaryLanguageCode = _json['primaryLanguageCode'];
     }
-    if (_json.containsKey("securityPatchLevel")) {
-      securityPatchLevel = _json["securityPatchLevel"];
+    if (_json.containsKey('securityPatchLevel')) {
+      securityPatchLevel = _json['securityPatchLevel'];
     }
-    if (_json.containsKey("systemUpdateInfo")) {
-      systemUpdateInfo = SystemUpdateInfo.fromJson(_json["systemUpdateInfo"]);
+    if (_json.containsKey('systemUpdateInfo')) {
+      systemUpdateInfo = SystemUpdateInfo.fromJson(_json['systemUpdateInfo']);
     }
   }
 
@@ -6493,37 +6492,37 @@ class SoftwareInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (androidBuildNumber != null) {
-      _json["androidBuildNumber"] = androidBuildNumber;
+      _json['androidBuildNumber'] = androidBuildNumber;
     }
     if (androidBuildTime != null) {
-      _json["androidBuildTime"] = androidBuildTime;
+      _json['androidBuildTime'] = androidBuildTime;
     }
     if (androidDevicePolicyVersionCode != null) {
-      _json["androidDevicePolicyVersionCode"] = androidDevicePolicyVersionCode;
+      _json['androidDevicePolicyVersionCode'] = androidDevicePolicyVersionCode;
     }
     if (androidDevicePolicyVersionName != null) {
-      _json["androidDevicePolicyVersionName"] = androidDevicePolicyVersionName;
+      _json['androidDevicePolicyVersionName'] = androidDevicePolicyVersionName;
     }
     if (androidVersion != null) {
-      _json["androidVersion"] = androidVersion;
+      _json['androidVersion'] = androidVersion;
     }
     if (bootloaderVersion != null) {
-      _json["bootloaderVersion"] = bootloaderVersion;
+      _json['bootloaderVersion'] = bootloaderVersion;
     }
     if (deviceBuildSignature != null) {
-      _json["deviceBuildSignature"] = deviceBuildSignature;
+      _json['deviceBuildSignature'] = deviceBuildSignature;
     }
     if (deviceKernelVersion != null) {
-      _json["deviceKernelVersion"] = deviceKernelVersion;
+      _json['deviceKernelVersion'] = deviceKernelVersion;
     }
     if (primaryLanguageCode != null) {
-      _json["primaryLanguageCode"] = primaryLanguageCode;
+      _json['primaryLanguageCode'] = primaryLanguageCode;
     }
     if (securityPatchLevel != null) {
-      _json["securityPatchLevel"] = securityPatchLevel;
+      _json['securityPatchLevel'] = securityPatchLevel;
     }
     if (systemUpdateInfo != null) {
-      _json["systemUpdateInfo"] = systemUpdateInfo.toJson();
+      _json['systemUpdateInfo'] = systemUpdateInfo.toJson();
     }
     return _json;
   }
@@ -6554,17 +6553,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -6572,13 +6571,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -6623,36 +6622,36 @@ class StatusReportingSettings {
   StatusReportingSettings();
 
   StatusReportingSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationReportingSettings")) {
+    if (_json.containsKey('applicationReportingSettings')) {
       applicationReportingSettings = ApplicationReportingSettings.fromJson(
-          _json["applicationReportingSettings"]);
+          _json['applicationReportingSettings']);
     }
-    if (_json.containsKey("applicationReportsEnabled")) {
-      applicationReportsEnabled = _json["applicationReportsEnabled"];
+    if (_json.containsKey('applicationReportsEnabled')) {
+      applicationReportsEnabled = _json['applicationReportsEnabled'];
     }
-    if (_json.containsKey("deviceSettingsEnabled")) {
-      deviceSettingsEnabled = _json["deviceSettingsEnabled"];
+    if (_json.containsKey('deviceSettingsEnabled')) {
+      deviceSettingsEnabled = _json['deviceSettingsEnabled'];
     }
-    if (_json.containsKey("displayInfoEnabled")) {
-      displayInfoEnabled = _json["displayInfoEnabled"];
+    if (_json.containsKey('displayInfoEnabled')) {
+      displayInfoEnabled = _json['displayInfoEnabled'];
     }
-    if (_json.containsKey("hardwareStatusEnabled")) {
-      hardwareStatusEnabled = _json["hardwareStatusEnabled"];
+    if (_json.containsKey('hardwareStatusEnabled')) {
+      hardwareStatusEnabled = _json['hardwareStatusEnabled'];
     }
-    if (_json.containsKey("memoryInfoEnabled")) {
-      memoryInfoEnabled = _json["memoryInfoEnabled"];
+    if (_json.containsKey('memoryInfoEnabled')) {
+      memoryInfoEnabled = _json['memoryInfoEnabled'];
     }
-    if (_json.containsKey("networkInfoEnabled")) {
-      networkInfoEnabled = _json["networkInfoEnabled"];
+    if (_json.containsKey('networkInfoEnabled')) {
+      networkInfoEnabled = _json['networkInfoEnabled'];
     }
-    if (_json.containsKey("powerManagementEventsEnabled")) {
-      powerManagementEventsEnabled = _json["powerManagementEventsEnabled"];
+    if (_json.containsKey('powerManagementEventsEnabled')) {
+      powerManagementEventsEnabled = _json['powerManagementEventsEnabled'];
     }
-    if (_json.containsKey("softwareInfoEnabled")) {
-      softwareInfoEnabled = _json["softwareInfoEnabled"];
+    if (_json.containsKey('softwareInfoEnabled')) {
+      softwareInfoEnabled = _json['softwareInfoEnabled'];
     }
-    if (_json.containsKey("systemPropertiesEnabled")) {
-      systemPropertiesEnabled = _json["systemPropertiesEnabled"];
+    if (_json.containsKey('systemPropertiesEnabled')) {
+      systemPropertiesEnabled = _json['systemPropertiesEnabled'];
     }
   }
 
@@ -6660,35 +6659,35 @@ class StatusReportingSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (applicationReportingSettings != null) {
-      _json["applicationReportingSettings"] =
+      _json['applicationReportingSettings'] =
           applicationReportingSettings.toJson();
     }
     if (applicationReportsEnabled != null) {
-      _json["applicationReportsEnabled"] = applicationReportsEnabled;
+      _json['applicationReportsEnabled'] = applicationReportsEnabled;
     }
     if (deviceSettingsEnabled != null) {
-      _json["deviceSettingsEnabled"] = deviceSettingsEnabled;
+      _json['deviceSettingsEnabled'] = deviceSettingsEnabled;
     }
     if (displayInfoEnabled != null) {
-      _json["displayInfoEnabled"] = displayInfoEnabled;
+      _json['displayInfoEnabled'] = displayInfoEnabled;
     }
     if (hardwareStatusEnabled != null) {
-      _json["hardwareStatusEnabled"] = hardwareStatusEnabled;
+      _json['hardwareStatusEnabled'] = hardwareStatusEnabled;
     }
     if (memoryInfoEnabled != null) {
-      _json["memoryInfoEnabled"] = memoryInfoEnabled;
+      _json['memoryInfoEnabled'] = memoryInfoEnabled;
     }
     if (networkInfoEnabled != null) {
-      _json["networkInfoEnabled"] = networkInfoEnabled;
+      _json['networkInfoEnabled'] = networkInfoEnabled;
     }
     if (powerManagementEventsEnabled != null) {
-      _json["powerManagementEventsEnabled"] = powerManagementEventsEnabled;
+      _json['powerManagementEventsEnabled'] = powerManagementEventsEnabled;
     }
     if (softwareInfoEnabled != null) {
-      _json["softwareInfoEnabled"] = softwareInfoEnabled;
+      _json['softwareInfoEnabled'] = softwareInfoEnabled;
     }
     if (systemPropertiesEnabled != null) {
-      _json["systemPropertiesEnabled"] = systemPropertiesEnabled;
+      _json['systemPropertiesEnabled'] = systemPropertiesEnabled;
     }
     return _json;
   }
@@ -6731,19 +6730,19 @@ class SystemUpdate {
   SystemUpdate();
 
   SystemUpdate.fromJson(core.Map _json) {
-    if (_json.containsKey("endMinutes")) {
-      endMinutes = _json["endMinutes"];
+    if (_json.containsKey('endMinutes')) {
+      endMinutes = _json['endMinutes'];
     }
-    if (_json.containsKey("freezePeriods")) {
-      freezePeriods = (_json["freezePeriods"] as core.List)
+    if (_json.containsKey('freezePeriods')) {
+      freezePeriods = (_json['freezePeriods'] as core.List)
           .map<FreezePeriod>((value) => FreezePeriod.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("startMinutes")) {
-      startMinutes = _json["startMinutes"];
+    if (_json.containsKey('startMinutes')) {
+      startMinutes = _json['startMinutes'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -6751,17 +6750,17 @@ class SystemUpdate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endMinutes != null) {
-      _json["endMinutes"] = endMinutes;
+      _json['endMinutes'] = endMinutes;
     }
     if (freezePeriods != null) {
-      _json["freezePeriods"] =
+      _json['freezePeriods'] =
           freezePeriods.map((value) => value.toJson()).toList();
     }
     if (startMinutes != null) {
-      _json["startMinutes"] = startMinutes;
+      _json['startMinutes'] = startMinutes;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -6791,11 +6790,11 @@ class SystemUpdateInfo {
   SystemUpdateInfo();
 
   SystemUpdateInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("updateReceivedTime")) {
-      updateReceivedTime = _json["updateReceivedTime"];
+    if (_json.containsKey('updateReceivedTime')) {
+      updateReceivedTime = _json['updateReceivedTime'];
     }
-    if (_json.containsKey("updateStatus")) {
-      updateStatus = _json["updateStatus"];
+    if (_json.containsKey('updateStatus')) {
+      updateStatus = _json['updateStatus'];
     }
   }
 
@@ -6803,10 +6802,10 @@ class SystemUpdateInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (updateReceivedTime != null) {
-      _json["updateReceivedTime"] = updateReceivedTime;
+      _json['updateReceivedTime'] = updateReceivedTime;
     }
     if (updateStatus != null) {
-      _json["updateStatus"] = updateStatus;
+      _json['updateStatus'] = updateStatus;
     }
     return _json;
   }
@@ -6824,11 +6823,11 @@ class TermsAndConditions {
   TermsAndConditions();
 
   TermsAndConditions.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = UserFacingMessage.fromJson(_json["content"]);
+    if (_json.containsKey('content')) {
+      content = UserFacingMessage.fromJson(_json['content']);
     }
-    if (_json.containsKey("header")) {
-      header = UserFacingMessage.fromJson(_json["header"]);
+    if (_json.containsKey('header')) {
+      header = UserFacingMessage.fromJson(_json['header']);
     }
   }
 
@@ -6836,10 +6835,10 @@ class TermsAndConditions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content.toJson();
+      _json['content'] = content.toJson();
     }
     if (header != null) {
-      _json["header"] = header.toJson();
+      _json['header'] = header.toJson();
     }
     return _json;
   }
@@ -6857,8 +6856,8 @@ class User {
   User();
 
   User.fromJson(core.Map _json) {
-    if (_json.containsKey("accountIdentifier")) {
-      accountIdentifier = _json["accountIdentifier"];
+    if (_json.containsKey('accountIdentifier')) {
+      accountIdentifier = _json['accountIdentifier'];
     }
   }
 
@@ -6866,7 +6865,7 @@ class User {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountIdentifier != null) {
-      _json["accountIdentifier"] = accountIdentifier;
+      _json['accountIdentifier'] = accountIdentifier;
     }
     return _json;
   }
@@ -6888,11 +6887,11 @@ class UserFacingMessage {
   UserFacingMessage();
 
   UserFacingMessage.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultMessage")) {
-      defaultMessage = _json["defaultMessage"];
+    if (_json.containsKey('defaultMessage')) {
+      defaultMessage = _json['defaultMessage'];
     }
-    if (_json.containsKey("localizedMessages")) {
-      localizedMessages = (_json["localizedMessages"] as core.Map)
+    if (_json.containsKey('localizedMessages')) {
+      localizedMessages = (_json['localizedMessages'] as core.Map)
           .cast<core.String, core.String>();
     }
   }
@@ -6901,10 +6900,10 @@ class UserFacingMessage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (defaultMessage != null) {
-      _json["defaultMessage"] = defaultMessage;
+      _json['defaultMessage'] = defaultMessage;
     }
     if (localizedMessages != null) {
-      _json["localizedMessages"] = localizedMessages;
+      _json['localizedMessages'] = localizedMessages;
     }
     return _json;
   }
@@ -6949,25 +6948,25 @@ class WebApp {
   WebApp();
 
   WebApp.fromJson(core.Map _json) {
-    if (_json.containsKey("displayMode")) {
-      displayMode = _json["displayMode"];
+    if (_json.containsKey('displayMode')) {
+      displayMode = _json['displayMode'];
     }
-    if (_json.containsKey("icons")) {
-      icons = (_json["icons"] as core.List)
+    if (_json.containsKey('icons')) {
+      icons = (_json['icons'] as core.List)
           .map<WebAppIcon>((value) => WebAppIcon.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("startUrl")) {
-      startUrl = _json["startUrl"];
+    if (_json.containsKey('startUrl')) {
+      startUrl = _json['startUrl'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("versionCode")) {
-      versionCode = _json["versionCode"];
+    if (_json.containsKey('versionCode')) {
+      versionCode = _json['versionCode'];
     }
   }
 
@@ -6975,22 +6974,22 @@ class WebApp {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayMode != null) {
-      _json["displayMode"] = displayMode;
+      _json['displayMode'] = displayMode;
     }
     if (icons != null) {
-      _json["icons"] = icons.map((value) => value.toJson()).toList();
+      _json['icons'] = icons.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (startUrl != null) {
-      _json["startUrl"] = startUrl;
+      _json['startUrl'] = startUrl;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (versionCode != null) {
-      _json["versionCode"] = versionCode;
+      _json['versionCode'] = versionCode;
     }
     return _json;
   }
@@ -7007,8 +7006,8 @@ class WebAppIcon {
   WebAppIcon();
 
   WebAppIcon.fromJson(core.Map _json) {
-    if (_json.containsKey("imageData")) {
-      imageData = _json["imageData"];
+    if (_json.containsKey('imageData')) {
+      imageData = _json['imageData'];
     }
   }
 
@@ -7016,7 +7015,7 @@ class WebAppIcon {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (imageData != null) {
-      _json["imageData"] = imageData;
+      _json['imageData'] = imageData;
     }
     return _json;
   }
@@ -7053,21 +7052,21 @@ class WebToken {
   WebToken();
 
   WebToken.fromJson(core.Map _json) {
-    if (_json.containsKey("enabledFeatures")) {
+    if (_json.containsKey('enabledFeatures')) {
       enabledFeatures =
-          (_json["enabledFeatures"] as core.List).cast<core.String>();
+          (_json['enabledFeatures'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("parentFrameUrl")) {
-      parentFrameUrl = _json["parentFrameUrl"];
+    if (_json.containsKey('parentFrameUrl')) {
+      parentFrameUrl = _json['parentFrameUrl'];
     }
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -7075,19 +7074,19 @@ class WebToken {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabledFeatures != null) {
-      _json["enabledFeatures"] = enabledFeatures;
+      _json['enabledFeatures'] = enabledFeatures;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (parentFrameUrl != null) {
-      _json["parentFrameUrl"] = parentFrameUrl;
+      _json['parentFrameUrl'] = parentFrameUrl;
     }
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -7107,11 +7106,11 @@ class WipeAction {
   WipeAction();
 
   WipeAction.fromJson(core.Map _json) {
-    if (_json.containsKey("preserveFrp")) {
-      preserveFrp = _json["preserveFrp"];
+    if (_json.containsKey('preserveFrp')) {
+      preserveFrp = _json['preserveFrp'];
     }
-    if (_json.containsKey("wipeAfterDays")) {
-      wipeAfterDays = _json["wipeAfterDays"];
+    if (_json.containsKey('wipeAfterDays')) {
+      wipeAfterDays = _json['wipeAfterDays'];
     }
   }
 
@@ -7119,10 +7118,10 @@ class WipeAction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (preserveFrp != null) {
-      _json["preserveFrp"] = preserveFrp;
+      _json['preserveFrp'] = preserveFrp;
     }
     if (wipeAfterDays != null) {
-      _json["wipeAfterDays"] = wipeAfterDays;
+      _json['wipeAfterDays'] = wipeAfterDays;
     }
     return _json;
   }

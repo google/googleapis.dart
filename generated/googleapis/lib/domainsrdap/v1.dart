@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -47,8 +46,8 @@ class DomainsrdapApi {
   V1ResourceApi get v1 => V1ResourceApi(_requester);
 
   DomainsrdapApi(http.Client client,
-      {core.String rootUrl = "https://domainsrdap.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://domainsrdap.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -87,17 +86,17 @@ class AutnumResourceApi {
     core.String _body;
 
     if (autnumId == null) {
-      throw core.ArgumentError("Parameter autnumId is required.");
+      throw core.ArgumentError('Parameter autnumId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/autnum/' + commons.Escaper.ecapeVariable('$autnumId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -142,17 +141,17 @@ class DomainResourceApi {
     core.String _body;
 
     if (domainName == null) {
-      throw core.ArgumentError("Parameter domainName is required.");
+      throw core.ArgumentError('Parameter domainName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/domain/' + commons.Escaper.ecapeVariableReserved('$domainName');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -197,17 +196,17 @@ class EntityResourceApi {
     core.String _body;
 
     if (entityId == null) {
-      throw core.ArgumentError("Parameter entityId is required.");
+      throw core.ArgumentError('Parameter entityId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/entity/' + commons.Escaper.ecapeVariable('$entityId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -255,13 +254,13 @@ class IpResourceApi {
     core.String _body;
 
     if (ipId == null) {
-      throw core.ArgumentError("Parameter ipId is required.");
+      throw core.ArgumentError('Parameter ipId is required.');
     }
     if (ipId1 == null) {
-      throw core.ArgumentError("Parameter ipId1 is required.");
+      throw core.ArgumentError('Parameter ipId1 is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/ip/' +
@@ -271,7 +270,7 @@ class IpResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -316,17 +315,17 @@ class NameserverResourceApi {
     core.String _body;
 
     if (nameserverId == null) {
-      throw core.ArgumentError("Parameter nameserverId is required.");
+      throw core.ArgumentError('Parameter nameserverId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/nameserver/' + commons.Escaper.ecapeVariable('$nameserverId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -368,14 +367,14 @@ class V1ResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/domains';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -411,14 +410,14 @@ class V1ResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/entities';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -453,14 +452,14 @@ class V1ResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/help';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -496,14 +495,14 @@ class V1ResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/ip';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -539,14 +538,14 @@ class V1ResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/nameservers';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -585,7 +584,7 @@ class HttpBody {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Application specific response metadata. Must be set in the first response
@@ -598,14 +597,14 @@ class HttpBody {
   HttpBody();
 
   HttpBody.fromJson(core.Map _json) {
-    if (_json.containsKey("contentType")) {
-      contentType = _json["contentType"];
+    if (_json.containsKey('contentType')) {
+      contentType = _json['contentType'];
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("extensions")) {
-      extensions = (_json["extensions"] as core.List)
+    if (_json.containsKey('extensions')) {
+      extensions = (_json['extensions'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
@@ -616,13 +615,13 @@ class HttpBody {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentType != null) {
-      _json["contentType"] = contentType;
+      _json['contentType'] = contentType;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (extensions != null) {
-      _json["extensions"] = extensions;
+      _json['extensions'] = extensions;
     }
     return _json;
   }
@@ -655,26 +654,26 @@ class Link {
   Link();
 
   Link.fromJson(core.Map _json) {
-    if (_json.containsKey("href")) {
-      href = _json["href"];
+    if (_json.containsKey('href')) {
+      href = _json['href'];
     }
-    if (_json.containsKey("hreflang")) {
-      hreflang = _json["hreflang"];
+    if (_json.containsKey('hreflang')) {
+      hreflang = _json['hreflang'];
     }
-    if (_json.containsKey("media")) {
-      media = _json["media"];
+    if (_json.containsKey('media')) {
+      media = _json['media'];
     }
-    if (_json.containsKey("rel")) {
-      rel = _json["rel"];
+    if (_json.containsKey('rel')) {
+      rel = _json['rel'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -682,25 +681,25 @@ class Link {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (href != null) {
-      _json["href"] = href;
+      _json['href'] = href;
     }
     if (hreflang != null) {
-      _json["hreflang"] = hreflang;
+      _json['hreflang'] = hreflang;
     }
     if (media != null) {
-      _json["media"] = media;
+      _json['media'] = media;
     }
     if (rel != null) {
-      _json["rel"] = rel;
+      _json['rel'] = rel;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -728,19 +727,19 @@ class Notice {
   Notice();
 
   Notice.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = (_json["description"] as core.List).cast<core.String>();
+    if (_json.containsKey('description')) {
+      description = (_json['description'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("links")) {
-      links = (_json["links"] as core.List)
+    if (_json.containsKey('links')) {
+      links = (_json['links'] as core.List)
           .map<Link>((value) => Link.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -748,16 +747,16 @@ class Notice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (links != null) {
-      _json["links"] = links.map((value) => value.toJson()).toList();
+      _json['links'] = links.map((value) => value.toJson()).toList();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -790,29 +789,29 @@ class RdapResponse {
   RdapResponse();
 
   RdapResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = (_json["description"] as core.List).cast<core.String>();
+    if (_json.containsKey('description')) {
+      description = (_json['description'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("errorCode")) {
-      errorCode = _json["errorCode"];
+    if (_json.containsKey('errorCode')) {
+      errorCode = _json['errorCode'];
     }
-    if (_json.containsKey("jsonResponse")) {
-      jsonResponse = HttpBody.fromJson(_json["jsonResponse"]);
+    if (_json.containsKey('jsonResponse')) {
+      jsonResponse = HttpBody.fromJson(_json['jsonResponse']);
     }
-    if (_json.containsKey("lang")) {
-      lang = _json["lang"];
+    if (_json.containsKey('lang')) {
+      lang = _json['lang'];
     }
-    if (_json.containsKey("notices")) {
-      notices = (_json["notices"] as core.List)
+    if (_json.containsKey('notices')) {
+      notices = (_json['notices'] as core.List)
           .map<Notice>((value) => Notice.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("rdapConformance")) {
+    if (_json.containsKey('rdapConformance')) {
       rdapConformance =
-          (_json["rdapConformance"] as core.List).cast<core.String>();
+          (_json['rdapConformance'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -820,25 +819,25 @@ class RdapResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (errorCode != null) {
-      _json["errorCode"] = errorCode;
+      _json['errorCode'] = errorCode;
     }
     if (jsonResponse != null) {
-      _json["jsonResponse"] = jsonResponse.toJson();
+      _json['jsonResponse'] = jsonResponse.toJson();
     }
     if (lang != null) {
-      _json["lang"] = lang;
+      _json['lang'] = lang;
     }
     if (notices != null) {
-      _json["notices"] = notices.map((value) => value.toJson()).toList();
+      _json['notices'] = notices.map((value) => value.toJson()).toList();
     }
     if (rdapConformance != null) {
-      _json["rdapConformance"] = rdapConformance;
+      _json['rdapConformance'] = rdapConformance;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,12 +72,12 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.Map<core.String, core.Object> buildUnnamed5545() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -87,16 +87,16 @@ core.Map<core.String, core.Object> buildUnnamed5545() {
 
 void checkUnnamed5545(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed5546() {
@@ -117,8 +117,8 @@ api.GoogleApiHttpBody buildGoogleApiHttpBody() {
   var o = api.GoogleApiHttpBody();
   buildCounterGoogleApiHttpBody++;
   if (buildCounterGoogleApiHttpBody < 3) {
-    o.contentType = "foo";
-    o.data = "foo";
+    o.contentType = 'foo';
+    o.data = 'foo';
     o.extensions = buildUnnamed5546();
   }
   buildCounterGoogleApiHttpBody--;
@@ -196,7 +196,7 @@ api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
   buildCounterGoogleCloudMlV1HyperparameterOutputHyperparameterMetric++;
   if (buildCounterGoogleCloudMlV1HyperparameterOutputHyperparameterMetric < 3) {
     o.objectiveValue = 42.0;
-    o.trainingStep = "foo";
+    o.trainingStep = 'foo';
   }
   buildCounterGoogleCloudMlV1HyperparameterOutputHyperparameterMetric--;
   return o;
@@ -217,7 +217,7 @@ api.GoogleCloudMlV1MeasurementMetric buildGoogleCloudMlV1MeasurementMetric() {
   var o = api.GoogleCloudMlV1MeasurementMetric();
   buildCounterGoogleCloudMlV1MeasurementMetric++;
   if (buildCounterGoogleCloudMlV1MeasurementMetric < 3) {
-    o.metric = "foo";
+    o.metric = 'foo';
     o.value = 42.0;
   }
   buildCounterGoogleCloudMlV1MeasurementMetric--;
@@ -236,8 +236,8 @@ void checkGoogleCloudMlV1MeasurementMetric(
 
 core.List<core.String> buildUnnamed5547() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -338,8 +338,8 @@ api.GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec
   var o = api.GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec();
   buildCounterGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec++;
   if (buildCounterGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec < 3) {
-    o.maxValue = "foo";
-    o.minValue = "foo";
+    o.maxValue = 'foo';
+    o.minValue = 'foo';
   }
   buildCounterGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec--;
   return o;
@@ -357,8 +357,8 @@ void checkGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec(
 
 core.List<core.String> buildUnnamed5549() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -437,8 +437,8 @@ void checkGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
 
 core.List<core.String> buildUnnamed5551() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -480,8 +480,8 @@ api.GoogleCloudMlV1StudyConfigMetricSpec
   var o = api.GoogleCloudMlV1StudyConfigMetricSpec();
   buildCounterGoogleCloudMlV1StudyConfigMetricSpec++;
   if (buildCounterGoogleCloudMlV1StudyConfigMetricSpec < 3) {
-    o.goal = "foo";
-    o.metric = "foo";
+    o.goal = 'foo';
+    o.metric = 'foo';
   }
   buildCounterGoogleCloudMlV1StudyConfigMetricSpec--;
   return o;
@@ -526,15 +526,15 @@ api.GoogleCloudMlV1StudyConfigParameterSpec
         buildGoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec();
     o.integerValueSpec =
         buildGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec();
-    o.parameter = "foo";
+    o.parameter = 'foo';
     o.parentCategoricalValues =
         buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec();
     o.parentDiscreteValues =
         buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec();
     o.parentIntValues =
         buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec();
-    o.scaleType = "foo";
-    o.type = "foo";
+    o.scaleType = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleCloudMlV1StudyConfigParameterSpec--;
   return o;
@@ -572,9 +572,9 @@ api.GoogleCloudMlV1TrialParameter buildGoogleCloudMlV1TrialParameter() {
   buildCounterGoogleCloudMlV1TrialParameter++;
   if (buildCounterGoogleCloudMlV1TrialParameter < 3) {
     o.floatValue = 42.0;
-    o.intValue = "foo";
-    o.parameter = "foo";
-    o.stringValue = "foo";
+    o.intValue = 'foo';
+    o.parameter = 'foo';
+    o.stringValue = 'foo';
   }
   buildCounterGoogleCloudMlV1TrialParameter--;
   return o;
@@ -596,8 +596,8 @@ api.GoogleCloudMlV1AcceleratorConfig buildGoogleCloudMlV1AcceleratorConfig() {
   var o = api.GoogleCloudMlV1AcceleratorConfig();
   buildCounterGoogleCloudMlV1AcceleratorConfig++;
   if (buildCounterGoogleCloudMlV1AcceleratorConfig < 3) {
-    o.count = "foo";
-    o.type = "foo";
+    o.count = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleCloudMlV1AcceleratorConfig--;
   return o;
@@ -686,10 +686,10 @@ api.GoogleCloudMlV1BuiltInAlgorithmOutput
   var o = api.GoogleCloudMlV1BuiltInAlgorithmOutput();
   buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput++;
   if (buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput < 3) {
-    o.framework = "foo";
-    o.modelPath = "foo";
-    o.pythonVersion = "foo";
-    o.runtimeVersion = "foo";
+    o.framework = 'foo';
+    o.modelPath = 'foo';
+    o.pythonVersion = 'foo';
+    o.runtimeVersion = 'foo';
   }
   buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput--;
   return o;
@@ -725,8 +725,8 @@ void checkGoogleCloudMlV1CancelJobRequest(
 
 core.List<core.String> buildUnnamed5553() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -742,7 +742,7 @@ api.GoogleCloudMlV1Capability buildGoogleCloudMlV1Capability() {
   buildCounterGoogleCloudMlV1Capability++;
   if (buildCounterGoogleCloudMlV1Capability < 3) {
     o.availableAccelerators = buildUnnamed5553();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudMlV1Capability--;
   return o;
@@ -763,9 +763,9 @@ api.GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata
   var o = api.GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata();
   buildCounterGoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata++;
   if (buildCounterGoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata < 3) {
-    o.createTime = "foo";
-    o.study = "foo";
-    o.trial = "foo";
+    o.createTime = 'foo';
+    o.study = 'foo';
+    o.trial = 'foo';
   }
   buildCounterGoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata--;
   return o;
@@ -805,9 +805,9 @@ api.GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse
   var o = api.GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse();
   buildCounterGoogleCloudMlV1CheckTrialEarlyStoppingStateResponse++;
   if (buildCounterGoogleCloudMlV1CheckTrialEarlyStoppingStateResponse < 3) {
-    o.endTime = "foo";
+    o.endTime = 'foo';
     o.shouldStop = true;
-    o.startTime = "foo";
+    o.startTime = 'foo';
   }
   buildCounterGoogleCloudMlV1CheckTrialEarlyStoppingStateResponse--;
   return o;
@@ -831,7 +831,7 @@ api.GoogleCloudMlV1CompleteTrialRequest
   buildCounterGoogleCloudMlV1CompleteTrialRequest++;
   if (buildCounterGoogleCloudMlV1CompleteTrialRequest < 3) {
     o.finalMeasurement = buildGoogleCloudMlV1Measurement();
-    o.infeasibleReason = "foo";
+    o.infeasibleReason = 'foo';
     o.trialInfeasible = true;
   }
   buildCounterGoogleCloudMlV1CompleteTrialRequest--;
@@ -854,7 +854,7 @@ api.GoogleCloudMlV1Config buildGoogleCloudMlV1Config() {
   var o = api.GoogleCloudMlV1Config();
   buildCounterGoogleCloudMlV1Config++;
   if (buildCounterGoogleCloudMlV1Config < 3) {
-    o.tpuServiceAccount = "foo";
+    o.tpuServiceAccount = 'foo';
   }
   buildCounterGoogleCloudMlV1Config--;
   return o;
@@ -889,8 +889,8 @@ void checkGoogleCloudMlV1ContainerPort(api.GoogleCloudMlV1ContainerPort o) {
 
 core.List<core.String> buildUnnamed5554() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -902,8 +902,8 @@ void checkUnnamed5554(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5555() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -947,7 +947,7 @@ api.GoogleCloudMlV1ContainerSpec buildGoogleCloudMlV1ContainerSpec() {
     o.args = buildUnnamed5554();
     o.command = buildUnnamed5555();
     o.env = buildUnnamed5556();
-    o.image = "foo";
+    o.image = 'foo';
     o.ports = buildUnnamed5557();
   }
   buildCounterGoogleCloudMlV1ContainerSpec--;
@@ -971,7 +971,7 @@ api.GoogleCloudMlV1EncryptionConfig buildGoogleCloudMlV1EncryptionConfig() {
   var o = api.GoogleCloudMlV1EncryptionConfig();
   buildCounterGoogleCloudMlV1EncryptionConfig++;
   if (buildCounterGoogleCloudMlV1EncryptionConfig < 3) {
-    o.kmsKeyName = "foo";
+    o.kmsKeyName = 'foo';
   }
   buildCounterGoogleCloudMlV1EncryptionConfig--;
   return o;
@@ -991,8 +991,8 @@ api.GoogleCloudMlV1EnvVar buildGoogleCloudMlV1EnvVar() {
   var o = api.GoogleCloudMlV1EnvVar();
   buildCounterGoogleCloudMlV1EnvVar++;
   if (buildCounterGoogleCloudMlV1EnvVar < 3) {
-    o.name = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudMlV1EnvVar--;
   return o;
@@ -1059,8 +1059,8 @@ api.GoogleCloudMlV1GetConfigResponse buildGoogleCloudMlV1GetConfigResponse() {
   buildCounterGoogleCloudMlV1GetConfigResponse++;
   if (buildCounterGoogleCloudMlV1GetConfigResponse < 3) {
     o.config = buildGoogleCloudMlV1Config();
-    o.serviceAccount = "foo";
-    o.serviceAccountProject = "foo";
+    o.serviceAccount = 'foo';
+    o.serviceAccountProject = 'foo';
   }
   buildCounterGoogleCloudMlV1GetConfigResponse--;
   return o;
@@ -1094,15 +1094,15 @@ void checkUnnamed5558(
 
 core.Map<core.String, core.String> buildUnnamed5559() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5559(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudMlV1HyperparameterOutput = 0;
@@ -1113,14 +1113,14 @@ api.GoogleCloudMlV1HyperparameterOutput
   if (buildCounterGoogleCloudMlV1HyperparameterOutput < 3) {
     o.allMetrics = buildUnnamed5558();
     o.builtInAlgorithmOutput = buildGoogleCloudMlV1BuiltInAlgorithmOutput();
-    o.endTime = "foo";
+    o.endTime = 'foo';
     o.finalMetric =
         buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
     o.hyperparameters = buildUnnamed5559();
     o.isTrialStoppedEarly = true;
-    o.startTime = "foo";
-    o.state = "foo";
-    o.trialId = "foo";
+    o.startTime = 'foo';
+    o.state = 'foo';
+    o.trialId = 'foo';
   }
   buildCounterGoogleCloudMlV1HyperparameterOutput--;
   return o;
@@ -1161,15 +1161,15 @@ api.GoogleCloudMlV1HyperparameterSpec buildGoogleCloudMlV1HyperparameterSpec() {
   var o = api.GoogleCloudMlV1HyperparameterSpec();
   buildCounterGoogleCloudMlV1HyperparameterSpec++;
   if (buildCounterGoogleCloudMlV1HyperparameterSpec < 3) {
-    o.algorithm = "foo";
+    o.algorithm = 'foo';
     o.enableTrialEarlyStopping = true;
-    o.goal = "foo";
-    o.hyperparameterMetricTag = "foo";
+    o.goal = 'foo';
+    o.hyperparameterMetricTag = 'foo';
     o.maxFailedTrials = 42;
     o.maxParallelTrials = 42;
     o.maxTrials = 42;
     o.params = buildUnnamed5560();
-    o.resumePreviousJobId = "foo";
+    o.resumePreviousJobId = 'foo';
   }
   buildCounterGoogleCloudMlV1HyperparameterSpec--;
   return o;
@@ -1215,15 +1215,15 @@ void checkGoogleCloudMlV1IntegratedGradientsAttribution(
 
 core.Map<core.String, core.String> buildUnnamed5561() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5561(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudMlV1Job = 0;
@@ -1231,16 +1231,16 @@ api.GoogleCloudMlV1Job buildGoogleCloudMlV1Job() {
   var o = api.GoogleCloudMlV1Job();
   buildCounterGoogleCloudMlV1Job++;
   if (buildCounterGoogleCloudMlV1Job < 3) {
-    o.createTime = "foo";
-    o.endTime = "foo";
-    o.errorMessage = "foo";
-    o.etag = "foo";
-    o.jobId = "foo";
+    o.createTime = 'foo';
+    o.endTime = 'foo';
+    o.errorMessage = 'foo';
+    o.etag = 'foo';
+    o.jobId = 'foo';
     o.labels = buildUnnamed5561();
     o.predictionInput = buildGoogleCloudMlV1PredictionInput();
     o.predictionOutput = buildGoogleCloudMlV1PredictionOutput();
-    o.startTime = "foo";
-    o.state = "foo";
+    o.startTime = 'foo';
+    o.state = 'foo';
     o.trainingInput = buildGoogleCloudMlV1TrainingInput();
     o.trainingOutput = buildGoogleCloudMlV1TrainingOutput();
   }
@@ -1286,7 +1286,7 @@ api.GoogleCloudMlV1ListJobsResponse buildGoogleCloudMlV1ListJobsResponse() {
   buildCounterGoogleCloudMlV1ListJobsResponse++;
   if (buildCounterGoogleCloudMlV1ListJobsResponse < 3) {
     o.jobs = buildUnnamed5562();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudMlV1ListJobsResponse--;
   return o;
@@ -1322,7 +1322,7 @@ api.GoogleCloudMlV1ListLocationsResponse
   buildCounterGoogleCloudMlV1ListLocationsResponse++;
   if (buildCounterGoogleCloudMlV1ListLocationsResponse < 3) {
     o.locations = buildUnnamed5563();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudMlV1ListLocationsResponse--;
   return o;
@@ -1357,7 +1357,7 @@ api.GoogleCloudMlV1ListModelsResponse buildGoogleCloudMlV1ListModelsResponse() {
   buildCounterGoogleCloudMlV1ListModelsResponse++;
   if (buildCounterGoogleCloudMlV1ListModelsResponse < 3) {
     o.models = buildUnnamed5564();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudMlV1ListModelsResponse--;
   return o;
@@ -1459,7 +1459,7 @@ api.GoogleCloudMlV1ListVersionsResponse
   var o = api.GoogleCloudMlV1ListVersionsResponse();
   buildCounterGoogleCloudMlV1ListVersionsResponse++;
   if (buildCounterGoogleCloudMlV1ListVersionsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.versions = buildUnnamed5567();
   }
   buildCounterGoogleCloudMlV1ListVersionsResponse--;
@@ -1495,7 +1495,7 @@ api.GoogleCloudMlV1Location buildGoogleCloudMlV1Location() {
   buildCounterGoogleCloudMlV1Location++;
   if (buildCounterGoogleCloudMlV1Location < 3) {
     o.capabilities = buildUnnamed5568();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleCloudMlV1Location--;
   return o;
@@ -1547,9 +1547,9 @@ api.GoogleCloudMlV1Measurement buildGoogleCloudMlV1Measurement() {
   var o = api.GoogleCloudMlV1Measurement();
   buildCounterGoogleCloudMlV1Measurement++;
   if (buildCounterGoogleCloudMlV1Measurement < 3) {
-    o.elapsedTime = "foo";
+    o.elapsedTime = 'foo';
     o.metrics = buildUnnamed5569();
-    o.stepCount = "foo";
+    o.stepCount = 'foo';
   }
   buildCounterGoogleCloudMlV1Measurement--;
   return o;
@@ -1567,21 +1567,21 @@ void checkGoogleCloudMlV1Measurement(api.GoogleCloudMlV1Measurement o) {
 
 core.Map<core.String, core.String> buildUnnamed5570() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5570(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed5571() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1597,10 +1597,10 @@ api.GoogleCloudMlV1Model buildGoogleCloudMlV1Model() {
   buildCounterGoogleCloudMlV1Model++;
   if (buildCounterGoogleCloudMlV1Model < 3) {
     o.defaultVersion = buildGoogleCloudMlV1Version();
-    o.description = "foo";
-    o.etag = "foo";
+    o.description = 'foo';
+    o.etag = 'foo';
     o.labels = buildUnnamed5570();
-    o.name = "foo";
+    o.name = 'foo';
     o.onlinePredictionConsoleLogging = true;
     o.onlinePredictionLogging = true;
     o.regions = buildUnnamed5571();
@@ -1626,15 +1626,15 @@ void checkGoogleCloudMlV1Model(api.GoogleCloudMlV1Model o) {
 
 core.Map<core.String, core.String> buildUnnamed5572() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5572(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudMlV1OperationMetadata = 0;
@@ -1642,14 +1642,14 @@ api.GoogleCloudMlV1OperationMetadata buildGoogleCloudMlV1OperationMetadata() {
   var o = api.GoogleCloudMlV1OperationMetadata();
   buildCounterGoogleCloudMlV1OperationMetadata++;
   if (buildCounterGoogleCloudMlV1OperationMetadata < 3) {
-    o.createTime = "foo";
-    o.endTime = "foo";
+    o.createTime = 'foo';
+    o.endTime = 'foo';
     o.isCancellationRequested = true;
     o.labels = buildUnnamed5572();
-    o.modelName = "foo";
-    o.operationType = "foo";
-    o.projectNumber = "foo";
-    o.startTime = "foo";
+    o.modelName = 'foo';
+    o.operationType = 'foo';
+    o.projectNumber = 'foo';
+    o.startTime = 'foo';
     o.version = buildGoogleCloudMlV1Version();
   }
   buildCounterGoogleCloudMlV1OperationMetadata--;
@@ -1675,8 +1675,8 @@ void checkGoogleCloudMlV1OperationMetadata(
 
 core.List<core.String> buildUnnamed5573() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1708,9 +1708,9 @@ api.GoogleCloudMlV1ParameterSpec buildGoogleCloudMlV1ParameterSpec() {
     o.discreteValues = buildUnnamed5574();
     o.maxValue = 42.0;
     o.minValue = 42.0;
-    o.parameterName = "foo";
-    o.scaleType = "foo";
-    o.type = "foo";
+    o.parameterName = 'foo';
+    o.scaleType = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleCloudMlV1ParameterSpec--;
   return o;
@@ -1751,8 +1751,8 @@ void checkGoogleCloudMlV1PredictRequest(api.GoogleCloudMlV1PredictRequest o) {
 
 core.List<core.String> buildUnnamed5575() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1767,18 +1767,18 @@ api.GoogleCloudMlV1PredictionInput buildGoogleCloudMlV1PredictionInput() {
   var o = api.GoogleCloudMlV1PredictionInput();
   buildCounterGoogleCloudMlV1PredictionInput++;
   if (buildCounterGoogleCloudMlV1PredictionInput < 3) {
-    o.batchSize = "foo";
-    o.dataFormat = "foo";
+    o.batchSize = 'foo';
+    o.dataFormat = 'foo';
     o.inputPaths = buildUnnamed5575();
-    o.maxWorkerCount = "foo";
-    o.modelName = "foo";
-    o.outputDataFormat = "foo";
-    o.outputPath = "foo";
-    o.region = "foo";
-    o.runtimeVersion = "foo";
-    o.signatureName = "foo";
-    o.uri = "foo";
-    o.versionName = "foo";
+    o.maxWorkerCount = 'foo';
+    o.modelName = 'foo';
+    o.outputDataFormat = 'foo';
+    o.outputPath = 'foo';
+    o.region = 'foo';
+    o.runtimeVersion = 'foo';
+    o.signatureName = 'foo';
+    o.uri = 'foo';
+    o.versionName = 'foo';
   }
   buildCounterGoogleCloudMlV1PredictionInput--;
   return o;
@@ -1808,10 +1808,10 @@ api.GoogleCloudMlV1PredictionOutput buildGoogleCloudMlV1PredictionOutput() {
   var o = api.GoogleCloudMlV1PredictionOutput();
   buildCounterGoogleCloudMlV1PredictionOutput++;
   if (buildCounterGoogleCloudMlV1PredictionOutput < 3) {
-    o.errorCount = "foo";
+    o.errorCount = 'foo';
     o.nodeHours = 42.0;
-    o.outputPath = "foo";
-    o.predictionCount = "foo";
+    o.outputPath = 'foo';
+    o.predictionCount = 'foo';
   }
   buildCounterGoogleCloudMlV1PredictionOutput--;
   return o;
@@ -1831,8 +1831,8 @@ void checkGoogleCloudMlV1PredictionOutput(
 
 core.List<core.String> buildUnnamed5576() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1844,8 +1844,8 @@ void checkUnnamed5576(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5577() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1863,8 +1863,8 @@ api.GoogleCloudMlV1ReplicaConfig buildGoogleCloudMlV1ReplicaConfig() {
     o.acceleratorConfig = buildGoogleCloudMlV1AcceleratorConfig();
     o.containerArgs = buildUnnamed5576();
     o.containerCommand = buildUnnamed5577();
-    o.imageUri = "foo";
-    o.tpuTfVersion = "foo";
+    o.imageUri = 'foo';
+    o.tpuTfVersion = 'foo';
   }
   buildCounterGoogleCloudMlV1ReplicaConfig--;
   return o;
@@ -1888,7 +1888,7 @@ api.GoogleCloudMlV1RequestLoggingConfig
   var o = api.GoogleCloudMlV1RequestLoggingConfig();
   buildCounterGoogleCloudMlV1RequestLoggingConfig++;
   if (buildCounterGoogleCloudMlV1RequestLoggingConfig < 3) {
-    o.bigqueryTableName = "foo";
+    o.bigqueryTableName = 'foo';
     o.samplingPercentage = 42.0;
   }
   buildCounterGoogleCloudMlV1RequestLoggingConfig--;
@@ -1910,8 +1910,8 @@ api.GoogleCloudMlV1RouteMap buildGoogleCloudMlV1RouteMap() {
   var o = api.GoogleCloudMlV1RouteMap();
   buildCounterGoogleCloudMlV1RouteMap++;
   if (buildCounterGoogleCloudMlV1RouteMap < 3) {
-    o.health = "foo";
-    o.predict = "foo";
+    o.health = 'foo';
+    o.predict = 'foo';
   }
   buildCounterGoogleCloudMlV1RouteMap--;
   return o;
@@ -1952,8 +1952,8 @@ api.GoogleCloudMlV1Scheduling buildGoogleCloudMlV1Scheduling() {
   var o = api.GoogleCloudMlV1Scheduling();
   buildCounterGoogleCloudMlV1Scheduling++;
   if (buildCounterGoogleCloudMlV1Scheduling < 3) {
-    o.maxRunningTime = "foo";
-    o.maxWaitTime = "foo";
+    o.maxRunningTime = 'foo';
+    o.maxWaitTime = 'foo';
   }
   buildCounterGoogleCloudMlV1Scheduling--;
   return o;
@@ -2006,10 +2006,10 @@ api.GoogleCloudMlV1Study buildGoogleCloudMlV1Study() {
   var o = api.GoogleCloudMlV1Study();
   buildCounterGoogleCloudMlV1Study++;
   if (buildCounterGoogleCloudMlV1Study < 3) {
-    o.createTime = "foo";
-    o.inactiveReason = "foo";
-    o.name = "foo";
-    o.state = "foo";
+    o.createTime = 'foo';
+    o.inactiveReason = 'foo';
+    o.name = 'foo';
+    o.state = 'foo';
     o.studyConfig = buildGoogleCloudMlV1StudyConfig();
   }
   buildCounterGoogleCloudMlV1Study--;
@@ -2060,7 +2060,7 @@ api.GoogleCloudMlV1StudyConfig buildGoogleCloudMlV1StudyConfig() {
   var o = api.GoogleCloudMlV1StudyConfig();
   buildCounterGoogleCloudMlV1StudyConfig++;
   if (buildCounterGoogleCloudMlV1StudyConfig < 3) {
-    o.algorithm = "foo";
+    o.algorithm = 'foo';
     o.automatedStoppingConfig = buildGoogleCloudMlV1AutomatedStoppingConfig();
     o.metrics = buildUnnamed5578();
     o.parameters = buildUnnamed5579();
@@ -2086,9 +2086,9 @@ api.GoogleCloudMlV1SuggestTrialsMetadata
   var o = api.GoogleCloudMlV1SuggestTrialsMetadata();
   buildCounterGoogleCloudMlV1SuggestTrialsMetadata++;
   if (buildCounterGoogleCloudMlV1SuggestTrialsMetadata < 3) {
-    o.clientId = "foo";
-    o.createTime = "foo";
-    o.study = "foo";
+    o.clientId = 'foo';
+    o.createTime = 'foo';
+    o.study = 'foo';
     o.suggestionCount = 42;
   }
   buildCounterGoogleCloudMlV1SuggestTrialsMetadata--;
@@ -2113,7 +2113,7 @@ api.GoogleCloudMlV1SuggestTrialsRequest
   var o = api.GoogleCloudMlV1SuggestTrialsRequest();
   buildCounterGoogleCloudMlV1SuggestTrialsRequest++;
   if (buildCounterGoogleCloudMlV1SuggestTrialsRequest < 3) {
-    o.clientId = "foo";
+    o.clientId = 'foo';
     o.suggestionCount = 42;
   }
   buildCounterGoogleCloudMlV1SuggestTrialsRequest--;
@@ -2149,9 +2149,9 @@ api.GoogleCloudMlV1SuggestTrialsResponse
   var o = api.GoogleCloudMlV1SuggestTrialsResponse();
   buildCounterGoogleCloudMlV1SuggestTrialsResponse++;
   if (buildCounterGoogleCloudMlV1SuggestTrialsResponse < 3) {
-    o.endTime = "foo";
-    o.startTime = "foo";
-    o.studyState = "foo";
+    o.endTime = 'foo';
+    o.startTime = 'foo';
+    o.studyState = 'foo';
     o.trials = buildUnnamed5580();
   }
   buildCounterGoogleCloudMlV1SuggestTrialsResponse--;
@@ -2172,8 +2172,8 @@ void checkGoogleCloudMlV1SuggestTrialsResponse(
 
 core.List<core.String> buildUnnamed5581() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2185,8 +2185,8 @@ void checkUnnamed5581(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5582() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2204,28 +2204,28 @@ api.GoogleCloudMlV1TrainingInput buildGoogleCloudMlV1TrainingInput() {
     o.args = buildUnnamed5581();
     o.encryptionConfig = buildGoogleCloudMlV1EncryptionConfig();
     o.evaluatorConfig = buildGoogleCloudMlV1ReplicaConfig();
-    o.evaluatorCount = "foo";
-    o.evaluatorType = "foo";
+    o.evaluatorCount = 'foo';
+    o.evaluatorType = 'foo';
     o.hyperparameters = buildGoogleCloudMlV1HyperparameterSpec();
-    o.jobDir = "foo";
+    o.jobDir = 'foo';
     o.masterConfig = buildGoogleCloudMlV1ReplicaConfig();
-    o.masterType = "foo";
-    o.network = "foo";
+    o.masterType = 'foo';
+    o.network = 'foo';
     o.packageUris = buildUnnamed5582();
     o.parameterServerConfig = buildGoogleCloudMlV1ReplicaConfig();
-    o.parameterServerCount = "foo";
-    o.parameterServerType = "foo";
-    o.pythonModule = "foo";
-    o.pythonVersion = "foo";
-    o.region = "foo";
-    o.runtimeVersion = "foo";
-    o.scaleTier = "foo";
+    o.parameterServerCount = 'foo';
+    o.parameterServerType = 'foo';
+    o.pythonModule = 'foo';
+    o.pythonVersion = 'foo';
+    o.region = 'foo';
+    o.runtimeVersion = 'foo';
+    o.scaleTier = 'foo';
     o.scheduling = buildGoogleCloudMlV1Scheduling();
-    o.serviceAccount = "foo";
+    o.serviceAccount = 'foo';
     o.useChiefInTfConfig = true;
     o.workerConfig = buildGoogleCloudMlV1ReplicaConfig();
-    o.workerCount = "foo";
-    o.workerType = "foo";
+    o.workerCount = 'foo';
+    o.workerType = 'foo';
   }
   buildCounterGoogleCloudMlV1TrainingInput--;
   return o;
@@ -2282,9 +2282,9 @@ api.GoogleCloudMlV1TrainingOutput buildGoogleCloudMlV1TrainingOutput() {
   buildCounterGoogleCloudMlV1TrainingOutput++;
   if (buildCounterGoogleCloudMlV1TrainingOutput < 3) {
     o.builtInAlgorithmOutput = buildGoogleCloudMlV1BuiltInAlgorithmOutput();
-    o.completedTrialCount = "foo";
+    o.completedTrialCount = 'foo';
     o.consumedMLUnits = 42.0;
-    o.hyperparameterMetricTag = "foo";
+    o.hyperparameterMetricTag = 'foo';
     o.isBuiltInAlgorithmJob = true;
     o.isHyperparameterTuningJob = true;
     o.trials = buildUnnamed5583();
@@ -2338,15 +2338,15 @@ api.GoogleCloudMlV1Trial buildGoogleCloudMlV1Trial() {
   var o = api.GoogleCloudMlV1Trial();
   buildCounterGoogleCloudMlV1Trial++;
   if (buildCounterGoogleCloudMlV1Trial < 3) {
-    o.clientId = "foo";
-    o.endTime = "foo";
+    o.clientId = 'foo';
+    o.endTime = 'foo';
     o.finalMeasurement = buildGoogleCloudMlV1Measurement();
-    o.infeasibleReason = "foo";
+    o.infeasibleReason = 'foo';
     o.measurements = buildUnnamed5584();
-    o.name = "foo";
+    o.name = 'foo';
     o.parameters = buildUnnamed5585();
-    o.startTime = "foo";
-    o.state = "foo";
+    o.startTime = 'foo';
+    o.state = 'foo';
     o.trialInfeasible = true;
   }
   buildCounterGoogleCloudMlV1Trial--;
@@ -2372,21 +2372,21 @@ void checkGoogleCloudMlV1Trial(api.GoogleCloudMlV1Trial o) {
 
 core.Map<core.String, core.String> buildUnnamed5586() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5586(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed5587() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2404,27 +2404,27 @@ api.GoogleCloudMlV1Version buildGoogleCloudMlV1Version() {
     o.acceleratorConfig = buildGoogleCloudMlV1AcceleratorConfig();
     o.autoScaling = buildGoogleCloudMlV1AutoScaling();
     o.container = buildGoogleCloudMlV1ContainerSpec();
-    o.createTime = "foo";
-    o.deploymentUri = "foo";
-    o.description = "foo";
-    o.errorMessage = "foo";
-    o.etag = "foo";
+    o.createTime = 'foo';
+    o.deploymentUri = 'foo';
+    o.description = 'foo';
+    o.errorMessage = 'foo';
+    o.etag = 'foo';
     o.explanationConfig = buildGoogleCloudMlV1ExplanationConfig();
-    o.framework = "foo";
+    o.framework = 'foo';
     o.isDefault = true;
     o.labels = buildUnnamed5586();
-    o.lastUseTime = "foo";
-    o.machineType = "foo";
+    o.lastUseTime = 'foo';
+    o.machineType = 'foo';
     o.manualScaling = buildGoogleCloudMlV1ManualScaling();
-    o.name = "foo";
+    o.name = 'foo';
     o.packageUris = buildUnnamed5587();
-    o.predictionClass = "foo";
-    o.pythonVersion = "foo";
+    o.predictionClass = 'foo';
+    o.pythonVersion = 'foo';
     o.requestLoggingConfig = buildGoogleCloudMlV1RequestLoggingConfig();
     o.routes = buildGoogleCloudMlV1RouteMap();
-    o.runtimeVersion = "foo";
-    o.serviceAccount = "foo";
-    o.state = "foo";
+    o.runtimeVersion = 'foo';
+    o.serviceAccount = 'foo';
+    o.state = 'foo';
   }
   buildCounterGoogleCloudMlV1Version--;
   return o;
@@ -2499,7 +2499,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
     o.auditLogConfigs = buildUnnamed5588();
-    o.service = "foo";
+    o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
   return o;
@@ -2516,8 +2516,8 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
 
 core.List<core.String> buildUnnamed5589() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2533,7 +2533,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
     o.exemptedMembers = buildUnnamed5589();
-    o.logType = "foo";
+    o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
   return o;
@@ -2550,8 +2550,8 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
 
 core.List<core.String> buildUnnamed5590() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2566,10 +2566,10 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   var o = api.GoogleIamV1Binding();
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
-    o.bindingId = "foo";
+    o.bindingId = 'foo';
     o.condition = buildGoogleTypeExpr();
     o.members = buildUnnamed5590();
-    o.role = "foo";
+    o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
   return o;
@@ -2619,7 +2619,7 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   if (buildCounterGoogleIamV1Policy < 3) {
     o.auditConfigs = buildUnnamed5591();
     o.bindings = buildUnnamed5592();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.version = 42;
   }
   buildCounterGoogleIamV1Policy--;
@@ -2643,7 +2643,7 @@ api.GoogleIamV1SetIamPolicyRequest buildGoogleIamV1SetIamPolicyRequest() {
   buildCounterGoogleIamV1SetIamPolicyRequest++;
   if (buildCounterGoogleIamV1SetIamPolicyRequest < 3) {
     o.policy = buildGoogleIamV1Policy();
-    o.updateMask = "foo";
+    o.updateMask = 'foo';
   }
   buildCounterGoogleIamV1SetIamPolicyRequest--;
   return o;
@@ -2660,8 +2660,8 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
 
 core.List<core.String> buildUnnamed5593() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2694,8 +2694,8 @@ void checkGoogleIamV1TestIamPermissionsRequest(
 
 core.List<core.String> buildUnnamed5594() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2745,7 +2745,7 @@ api.GoogleLongrunningListOperationsResponse
   var o = api.GoogleLongrunningListOperationsResponse();
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed5595();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
@@ -2764,12 +2764,12 @@ void checkGoogleLongrunningListOperationsResponse(
 
 core.Map<core.String, core.Object> buildUnnamed5596() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -2779,26 +2779,26 @@ core.Map<core.String, core.Object> buildUnnamed5596() {
 
 void checkUnnamed5596(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed5597() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -2808,16 +2808,16 @@ core.Map<core.String, core.Object> buildUnnamed5597() {
 
 void checkUnnamed5597(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -2828,7 +2828,7 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
     o.done = true;
     o.error = buildGoogleRpcStatus();
     o.metadata = buildUnnamed5596();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed5597();
   }
   buildCounterGoogleLongrunningOperation--;
@@ -2864,12 +2864,12 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
 
 core.Map<core.String, core.Object> buildUnnamed5598() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -2879,16 +2879,16 @@ core.Map<core.String, core.Object> buildUnnamed5598() {
 
 void checkUnnamed5598(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o["x"]) as core.Map;
+  var casted7 = (o['x']) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
-  var casted8 = (o["y"]) as core.Map;
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
+  var casted8 = (o['y']) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8["bool"], unittest.equals(true));
-  unittest.expect(casted8["string"], unittest.equals('foo'));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed5599() {
@@ -2911,7 +2911,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed5599();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
   return o;
@@ -2932,10 +2932,10 @@ api.GoogleTypeExpr buildGoogleTypeExpr() {
   var o = api.GoogleTypeExpr();
   buildCounterGoogleTypeExpr++;
   if (buildCounterGoogleTypeExpr < 3) {
-    o.description = "foo";
-    o.expression = "foo";
-    o.location = "foo";
-    o.title = "foo";
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
   }
   buildCounterGoogleTypeExpr--;
   return o;
@@ -2953,8 +2953,8 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
 }
 
 void main() {
-  unittest.group("obj-schema-GoogleApiHttpBody", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleApiHttpBody', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleApiHttpBody();
       var od = api.GoogleApiHttpBody.fromJson(o.toJson());
       checkGoogleApiHttpBody(od);
@@ -2962,9 +2962,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig",
+      'obj-schema-GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig();
       var od =
@@ -2976,9 +2976,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig",
+      'obj-schema-GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig();
       var od =
@@ -2990,8 +2990,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1HyperparameterOutputHyperparameterMetric", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudMlV1HyperparameterOutputHyperparameterMetric', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
       var od =
           api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
@@ -3000,8 +3000,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1MeasurementMetric", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1MeasurementMetric', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1MeasurementMetric();
       var od = api.GoogleCloudMlV1MeasurementMetric.fromJson(o.toJson());
       checkGoogleCloudMlV1MeasurementMetric(od);
@@ -3009,9 +3009,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec",
+      'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec();
       var od = api.GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec
@@ -3021,9 +3021,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec",
+      'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec();
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
@@ -3033,8 +3033,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec();
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
@@ -3044,8 +3044,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec();
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
@@ -3055,9 +3055,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec",
+      'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec();
       var od =
@@ -3069,9 +3069,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec",
+      'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec();
       var od =
@@ -3083,9 +3083,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec",
+      'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec();
       var od =
@@ -3096,40 +3096,40 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1StudyConfigMetricSpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1StudyConfigMetricSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1StudyConfigMetricSpec();
       var od = api.GoogleCloudMlV1StudyConfigMetricSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1StudyConfigMetricSpec(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1StudyConfigParameterSpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1StudyConfigParameterSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpec();
       var od = api.GoogleCloudMlV1StudyConfigParameterSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1StudyConfigParameterSpec(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1TrialParameter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1TrialParameter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1TrialParameter();
       var od = api.GoogleCloudMlV1TrialParameter.fromJson(o.toJson());
       checkGoogleCloudMlV1TrialParameter(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1AcceleratorConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1AcceleratorConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1AcceleratorConfig();
       var od = api.GoogleCloudMlV1AcceleratorConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1AcceleratorConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1AddTrialMeasurementRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1AddTrialMeasurementRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1AddTrialMeasurementRequest();
       var od =
           api.GoogleCloudMlV1AddTrialMeasurementRequest.fromJson(o.toJson());
@@ -3137,40 +3137,40 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1AutoScaling", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1AutoScaling', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1AutoScaling();
       var od = api.GoogleCloudMlV1AutoScaling.fromJson(o.toJson());
       checkGoogleCloudMlV1AutoScaling(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1AutomatedStoppingConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1AutomatedStoppingConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1AutomatedStoppingConfig();
       var od = api.GoogleCloudMlV1AutomatedStoppingConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1AutomatedStoppingConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1BuiltInAlgorithmOutput", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1BuiltInAlgorithmOutput', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1BuiltInAlgorithmOutput();
       var od = api.GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(o.toJson());
       checkGoogleCloudMlV1BuiltInAlgorithmOutput(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1CancelJobRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1CancelJobRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1CancelJobRequest();
       var od = api.GoogleCloudMlV1CancelJobRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1CancelJobRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Capability", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Capability', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Capability();
       var od = api.GoogleCloudMlV1Capability.fromJson(o.toJson());
       checkGoogleCloudMlV1Capability(od);
@@ -3178,8 +3178,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata();
       var od =
           api.GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata.fromJson(
@@ -3189,8 +3189,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest();
       var od = api.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest.fromJson(
           o.toJson());
@@ -3199,8 +3199,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateResponse();
       var od = api.GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse.fromJson(
           o.toJson());
@@ -3208,97 +3208,97 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1CompleteTrialRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1CompleteTrialRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1CompleteTrialRequest();
       var od = api.GoogleCloudMlV1CompleteTrialRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1CompleteTrialRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Config", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Config', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Config();
       var od = api.GoogleCloudMlV1Config.fromJson(o.toJson());
       checkGoogleCloudMlV1Config(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ContainerPort", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ContainerPort', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ContainerPort();
       var od = api.GoogleCloudMlV1ContainerPort.fromJson(o.toJson());
       checkGoogleCloudMlV1ContainerPort(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ContainerSpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ContainerSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ContainerSpec();
       var od = api.GoogleCloudMlV1ContainerSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1ContainerSpec(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1EncryptionConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1EncryptionConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1EncryptionConfig();
       var od = api.GoogleCloudMlV1EncryptionConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1EncryptionConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1EnvVar", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1EnvVar', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1EnvVar();
       var od = api.GoogleCloudMlV1EnvVar.fromJson(o.toJson());
       checkGoogleCloudMlV1EnvVar(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ExplainRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ExplainRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ExplainRequest();
       var od = api.GoogleCloudMlV1ExplainRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1ExplainRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ExplanationConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ExplanationConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ExplanationConfig();
       var od = api.GoogleCloudMlV1ExplanationConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1ExplanationConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1GetConfigResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1GetConfigResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1GetConfigResponse();
       var od = api.GoogleCloudMlV1GetConfigResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1GetConfigResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1HyperparameterOutput", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1HyperparameterOutput', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1HyperparameterOutput();
       var od = api.GoogleCloudMlV1HyperparameterOutput.fromJson(o.toJson());
       checkGoogleCloudMlV1HyperparameterOutput(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1HyperparameterSpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1HyperparameterSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1HyperparameterSpec();
       var od = api.GoogleCloudMlV1HyperparameterSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1HyperparameterSpec(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1IntegratedGradientsAttribution",
+  unittest.group('obj-schema-GoogleCloudMlV1IntegratedGradientsAttribution',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1IntegratedGradientsAttribution();
       var od = api.GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(
           o.toJson());
@@ -3306,160 +3306,160 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Job", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Job', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Job();
       var od = api.GoogleCloudMlV1Job.fromJson(o.toJson());
       checkGoogleCloudMlV1Job(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ListJobsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ListJobsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ListJobsResponse();
       var od = api.GoogleCloudMlV1ListJobsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListJobsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ListLocationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ListLocationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ListLocationsResponse();
       var od = api.GoogleCloudMlV1ListLocationsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListLocationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ListModelsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ListModelsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ListModelsResponse();
       var od = api.GoogleCloudMlV1ListModelsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListModelsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ListStudiesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ListStudiesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ListStudiesResponse();
       var od = api.GoogleCloudMlV1ListStudiesResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListStudiesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ListTrialsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ListTrialsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ListTrialsResponse();
       var od = api.GoogleCloudMlV1ListTrialsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListTrialsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ListVersionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ListVersionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ListVersionsResponse();
       var od = api.GoogleCloudMlV1ListVersionsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListVersionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Location", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Location', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Location();
       var od = api.GoogleCloudMlV1Location.fromJson(o.toJson());
       checkGoogleCloudMlV1Location(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ManualScaling", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ManualScaling', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ManualScaling();
       var od = api.GoogleCloudMlV1ManualScaling.fromJson(o.toJson());
       checkGoogleCloudMlV1ManualScaling(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Measurement", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Measurement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Measurement();
       var od = api.GoogleCloudMlV1Measurement.fromJson(o.toJson());
       checkGoogleCloudMlV1Measurement(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Model", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Model', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Model();
       var od = api.GoogleCloudMlV1Model.fromJson(o.toJson());
       checkGoogleCloudMlV1Model(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1OperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1OperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1OperationMetadata();
       var od = api.GoogleCloudMlV1OperationMetadata.fromJson(o.toJson());
       checkGoogleCloudMlV1OperationMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ParameterSpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ParameterSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ParameterSpec();
       var od = api.GoogleCloudMlV1ParameterSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1ParameterSpec(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1PredictRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1PredictRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1PredictRequest();
       var od = api.GoogleCloudMlV1PredictRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1PredictRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1PredictionInput", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1PredictionInput', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1PredictionInput();
       var od = api.GoogleCloudMlV1PredictionInput.fromJson(o.toJson());
       checkGoogleCloudMlV1PredictionInput(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1PredictionOutput", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1PredictionOutput', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1PredictionOutput();
       var od = api.GoogleCloudMlV1PredictionOutput.fromJson(o.toJson());
       checkGoogleCloudMlV1PredictionOutput(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1ReplicaConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1ReplicaConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1ReplicaConfig();
       var od = api.GoogleCloudMlV1ReplicaConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1ReplicaConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1RequestLoggingConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1RequestLoggingConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1RequestLoggingConfig();
       var od = api.GoogleCloudMlV1RequestLoggingConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1RequestLoggingConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1RouteMap", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1RouteMap', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1RouteMap();
       var od = api.GoogleCloudMlV1RouteMap.fromJson(o.toJson());
       checkGoogleCloudMlV1RouteMap(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1SampledShapleyAttribution", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1SampledShapleyAttribution', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1SampledShapleyAttribution();
       var od =
           api.GoogleCloudMlV1SampledShapleyAttribution.fromJson(o.toJson());
@@ -3467,213 +3467,213 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Scheduling", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Scheduling', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Scheduling();
       var od = api.GoogleCloudMlV1Scheduling.fromJson(o.toJson());
       checkGoogleCloudMlV1Scheduling(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1SetDefaultVersionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1SetDefaultVersionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1SetDefaultVersionRequest();
       var od = api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1SetDefaultVersionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1StopTrialRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1StopTrialRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1StopTrialRequest();
       var od = api.GoogleCloudMlV1StopTrialRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1StopTrialRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Study", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Study', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Study();
       var od = api.GoogleCloudMlV1Study.fromJson(o.toJson());
       checkGoogleCloudMlV1Study(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1StudyConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1StudyConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1StudyConfig();
       var od = api.GoogleCloudMlV1StudyConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1StudyConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1SuggestTrialsMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1SuggestTrialsMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1SuggestTrialsMetadata();
       var od = api.GoogleCloudMlV1SuggestTrialsMetadata.fromJson(o.toJson());
       checkGoogleCloudMlV1SuggestTrialsMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1SuggestTrialsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1SuggestTrialsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1SuggestTrialsRequest();
       var od = api.GoogleCloudMlV1SuggestTrialsRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1SuggestTrialsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1SuggestTrialsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1SuggestTrialsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1SuggestTrialsResponse();
       var od = api.GoogleCloudMlV1SuggestTrialsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1SuggestTrialsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1TrainingInput", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1TrainingInput', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1TrainingInput();
       var od = api.GoogleCloudMlV1TrainingInput.fromJson(o.toJson());
       checkGoogleCloudMlV1TrainingInput(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1TrainingOutput", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1TrainingOutput', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1TrainingOutput();
       var od = api.GoogleCloudMlV1TrainingOutput.fromJson(o.toJson());
       checkGoogleCloudMlV1TrainingOutput(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Trial", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Trial', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Trial();
       var od = api.GoogleCloudMlV1Trial.fromJson(o.toJson());
       checkGoogleCloudMlV1Trial(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1Version", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1Version', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1Version();
       var od = api.GoogleCloudMlV1Version.fromJson(o.toJson());
       checkGoogleCloudMlV1Version(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudMlV1XraiAttribution", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudMlV1XraiAttribution', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudMlV1XraiAttribution();
       var od = api.GoogleCloudMlV1XraiAttribution.fromJson(o.toJson());
       checkGoogleCloudMlV1XraiAttribution(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1AuditConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1AuditConfig();
       var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1AuditLogConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1AuditLogConfig();
       var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditLogConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1Binding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1Binding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1Binding();
       var od = api.GoogleIamV1Binding.fromJson(o.toJson());
       checkGoogleIamV1Binding(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1Policy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1Policy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1Policy();
       var od = api.GoogleIamV1Policy.fromJson(o.toJson());
       checkGoogleIamV1Policy(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1SetIamPolicyRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1SetIamPolicyRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1SetIamPolicyRequest();
       var od = api.GoogleIamV1SetIamPolicyRequest.fromJson(o.toJson());
       checkGoogleIamV1SetIamPolicyRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1TestIamPermissionsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1TestIamPermissionsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1TestIamPermissionsRequest();
       var od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1TestIamPermissionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1TestIamPermissionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1TestIamPermissionsResponse();
       var od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningListOperationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningOperation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningOperation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleProtobufEmpty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleProtobufEmpty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleRpcStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleRpcStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleTypeExpr", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleTypeExpr', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleTypeExpr();
       var od = api.GoogleTypeExpr.fromJson(o.toJson());
       checkGoogleTypeExpr(od);
     });
   });
 
-  unittest.group("resource-ProjectsResourceApi", () {
-    unittest.test("method--explain", () {
+  unittest.group('resource-ProjectsResourceApi', () {
+    unittest.test('method--explain', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.MlApi(mock).projects;
       var arg_request = buildGoogleCloudMlV1ExplainRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1ExplainRequest.fromJson(json);
         checkGoogleCloudMlV1ExplainRequest(obj);
@@ -3696,8 +3696,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3707,7 +3707,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3719,11 +3719,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--getConfig", () {
+    unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.MlApi(mock).projects;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3743,8 +3743,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3754,7 +3754,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1GetConfigResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3766,12 +3766,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--predict", () {
+    unittest.test('method--predict', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.MlApi(mock).projects;
       var arg_request = buildGoogleCloudMlV1PredictRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1PredictRequest.fromJson(json);
         checkGoogleCloudMlV1PredictRequest(obj);
@@ -3794,8 +3794,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3805,7 +3805,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3818,13 +3818,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsJobsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-ProjectsJobsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.ProjectsJobsResourceApi res = api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1CancelJobRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1CancelJobRequest.fromJson(json);
         checkGoogleCloudMlV1CancelJobRequest(obj);
@@ -3847,8 +3847,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3858,7 +3858,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3870,12 +3870,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsJobsResourceApi res = api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1Job();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1Job.fromJson(json);
         checkGoogleCloudMlV1Job(obj);
@@ -3898,8 +3898,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3909,7 +3909,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Job());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3921,11 +3921,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsJobsResourceApi res = api.MlApi(mock).projects.jobs;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3945,8 +3945,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3956,7 +3956,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Job());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3968,12 +3968,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsJobsResourceApi res = api.MlApi(mock).projects.jobs;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3993,8 +3993,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4007,7 +4007,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4022,14 +4022,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsJobsResourceApi res = api.MlApi(mock).projects.jobs;
-      var arg_parent = "foo";
-      var arg_filter = "foo";
+      var arg_parent = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4049,8 +4049,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4065,7 +4065,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1ListJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4081,13 +4081,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsJobsResourceApi res = api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1Job();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1Job.fromJson(json);
         checkGoogleCloudMlV1Job(obj);
@@ -4110,8 +4110,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4123,7 +4123,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Job());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4136,12 +4136,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsJobsResourceApi res = api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(json);
         checkGoogleIamV1SetIamPolicyRequest(obj);
@@ -4164,8 +4164,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4175,7 +4175,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4187,12 +4187,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsJobsResourceApi res = api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleIamV1TestIamPermissionsRequest.fromJson(json);
         checkGoogleIamV1TestIamPermissionsRequest(obj);
@@ -4215,8 +4215,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4226,7 +4226,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleIamV1TestIamPermissionsResponse());
@@ -4240,12 +4240,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsLocationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res = api.MlApi(mock).projects.locations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4265,8 +4265,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4276,7 +4276,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Location());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4288,13 +4288,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res = api.MlApi(mock).projects.locations;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4314,8 +4314,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4329,7 +4329,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudMlV1ListLocationsResponse());
@@ -4346,13 +4346,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsOperationsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
           api.MlApi(mock).projects.locations.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4372,8 +4372,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4383,7 +4383,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4395,12 +4395,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
           api.MlApi(mock).projects.locations.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4420,8 +4420,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4431,7 +4431,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4444,15 +4444,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsStudiesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsLocationsStudiesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesResourceApi res =
           api.MlApi(mock).projects.locations.studies;
       var arg_request = buildGoogleCloudMlV1Study();
-      var arg_parent = "foo";
-      var arg_studyId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_studyId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1Study.fromJson(json);
         checkGoogleCloudMlV1Study(obj);
@@ -4475,8 +4475,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4488,7 +4488,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Study());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4501,12 +4501,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesResourceApi res =
           api.MlApi(mock).projects.locations.studies;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4526,8 +4526,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4537,7 +4537,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4549,12 +4549,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesResourceApi res =
           api.MlApi(mock).projects.locations.studies;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4574,8 +4574,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4585,7 +4585,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Study());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4597,12 +4597,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesResourceApi res =
           api.MlApi(mock).projects.locations.studies;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4622,8 +4622,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4633,7 +4633,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudMlV1ListStudiesResponse());
@@ -4647,14 +4647,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsStudiesTrialsResourceApi", () {
-    unittest.test("method--addMeasurement", () {
+  unittest.group('resource-ProjectsLocationsStudiesTrialsResourceApi', () {
+    unittest.test('method--addMeasurement', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesTrialsResourceApi res =
           api.MlApi(mock).projects.locations.studies.trials;
       var arg_request = buildGoogleCloudMlV1AddTrialMeasurementRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1AddTrialMeasurementRequest.fromJson(json);
         checkGoogleCloudMlV1AddTrialMeasurementRequest(obj);
@@ -4677,8 +4677,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4688,7 +4688,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4700,14 +4700,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--checkEarlyStoppingState", () {
+    unittest.test('method--checkEarlyStoppingState', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesTrialsResourceApi res =
           api.MlApi(mock).projects.locations.studies.trials;
       var arg_request =
           buildGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest.fromJson(
@@ -4732,8 +4732,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4743,7 +4743,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4755,13 +4755,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--complete", () {
+    unittest.test('method--complete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesTrialsResourceApi res =
           api.MlApi(mock).projects.locations.studies.trials;
       var arg_request = buildGoogleCloudMlV1CompleteTrialRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1CompleteTrialRequest.fromJson(json);
         checkGoogleCloudMlV1CompleteTrialRequest(obj);
@@ -4784,8 +4784,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4795,7 +4795,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4807,13 +4807,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesTrialsResourceApi res =
           api.MlApi(mock).projects.locations.studies.trials;
       var arg_request = buildGoogleCloudMlV1Trial();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1Trial.fromJson(json);
         checkGoogleCloudMlV1Trial(obj);
@@ -4836,8 +4836,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4847,7 +4847,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4859,12 +4859,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesTrialsResourceApi res =
           api.MlApi(mock).projects.locations.studies.trials;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4884,8 +4884,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4895,7 +4895,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4907,12 +4907,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesTrialsResourceApi res =
           api.MlApi(mock).projects.locations.studies.trials;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4932,8 +4932,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4943,7 +4943,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4955,12 +4955,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesTrialsResourceApi res =
           api.MlApi(mock).projects.locations.studies.trials;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4980,8 +4980,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4991,7 +4991,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudMlV1ListTrialsResponse());
@@ -5004,13 +5004,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--stop", () {
+    unittest.test('method--stop', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesTrialsResourceApi res =
           api.MlApi(mock).projects.locations.studies.trials;
       var arg_request = buildGoogleCloudMlV1StopTrialRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1StopTrialRequest.fromJson(json);
         checkGoogleCloudMlV1StopTrialRequest(obj);
@@ -5033,8 +5033,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5044,7 +5044,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5056,13 +5056,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--suggest", () {
+    unittest.test('method--suggest', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsStudiesTrialsResourceApi res =
           api.MlApi(mock).projects.locations.studies.trials;
       var arg_request = buildGoogleCloudMlV1SuggestTrialsRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1SuggestTrialsRequest.fromJson(json);
         checkGoogleCloudMlV1SuggestTrialsRequest(obj);
@@ -5085,8 +5085,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5096,7 +5096,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5109,13 +5109,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsModelsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsModelsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsModelsResourceApi res = api.MlApi(mock).projects.models;
       var arg_request = buildGoogleCloudMlV1Model();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1Model.fromJson(json);
         checkGoogleCloudMlV1Model(obj);
@@ -5138,8 +5138,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5149,7 +5149,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Model());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5161,11 +5161,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsModelsResourceApi res = api.MlApi(mock).projects.models;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5185,8 +5185,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5196,7 +5196,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5208,11 +5208,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsModelsResourceApi res = api.MlApi(mock).projects.models;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5232,8 +5232,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5243,7 +5243,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Model());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5255,12 +5255,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsModelsResourceApi res = api.MlApi(mock).projects.models;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5280,8 +5280,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5294,7 +5294,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5309,14 +5309,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsModelsResourceApi res = api.MlApi(mock).projects.models;
-      var arg_parent = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5336,8 +5336,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5352,7 +5352,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudMlV1ListModelsResponse());
@@ -5369,13 +5369,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsModelsResourceApi res = api.MlApi(mock).projects.models;
       var arg_request = buildGoogleCloudMlV1Model();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1Model.fromJson(json);
         checkGoogleCloudMlV1Model(obj);
@@ -5398,8 +5398,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5411,7 +5411,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5424,12 +5424,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsModelsResourceApi res = api.MlApi(mock).projects.models;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(json);
         checkGoogleIamV1SetIamPolicyRequest(obj);
@@ -5452,8 +5452,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5463,7 +5463,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5475,12 +5475,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsModelsResourceApi res = api.MlApi(mock).projects.models;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleIamV1TestIamPermissionsRequest.fromJson(json);
         checkGoogleIamV1TestIamPermissionsRequest(obj);
@@ -5503,8 +5503,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5514,7 +5514,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleIamV1TestIamPermissionsResponse());
@@ -5528,14 +5528,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsModelsVersionsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsModelsVersionsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsModelsVersionsResourceApi res =
           api.MlApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1Version();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1Version.fromJson(json);
         checkGoogleCloudMlV1Version(obj);
@@ -5558,8 +5558,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5569,7 +5569,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5581,12 +5581,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsModelsVersionsResourceApi res =
           api.MlApi(mock).projects.models.versions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5606,8 +5606,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5617,7 +5617,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5629,12 +5629,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsModelsVersionsResourceApi res =
           api.MlApi(mock).projects.models.versions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5654,8 +5654,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5665,7 +5665,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Version());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5677,15 +5677,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsModelsVersionsResourceApi res =
           api.MlApi(mock).projects.models.versions;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5705,8 +5705,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5721,7 +5721,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudMlV1ListVersionsResponse());
@@ -5738,14 +5738,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsModelsVersionsResourceApi res =
           api.MlApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1Version();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1Version.fromJson(json);
         checkGoogleCloudMlV1Version(obj);
@@ -5768,8 +5768,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5781,7 +5781,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5794,13 +5794,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setDefault", () {
+    unittest.test('method--setDefault', () {
       var mock = HttpServerMock();
       api.ProjectsModelsVersionsResourceApi res =
           api.MlApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1SetDefaultVersionRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(json);
         checkGoogleCloudMlV1SetDefaultVersionRequest(obj);
@@ -5823,8 +5823,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5834,7 +5834,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudMlV1Version());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5847,13 +5847,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsOperationsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-ProjectsOperationsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.MlApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5873,8 +5873,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5884,7 +5884,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5896,12 +5896,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.MlApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5921,8 +5921,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5932,7 +5932,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5944,15 +5944,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.MlApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5972,8 +5972,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5988,7 +5988,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());

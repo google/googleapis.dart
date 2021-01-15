@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,67 +75,67 @@ api.Groups buildGroups() {
   var o = api.Groups();
   buildCounterGroups++;
   if (buildCounterGroups < 3) {
-    o.allowExternalMembers = "foo";
-    o.allowGoogleCommunication = "foo";
-    o.allowWebPosting = "foo";
-    o.archiveOnly = "foo";
-    o.customFooterText = "foo";
-    o.customReplyTo = "foo";
-    o.customRolesEnabledForSettingsToBeMerged = "foo";
-    o.defaultMessageDenyNotificationText = "foo";
-    o.description = "foo";
-    o.email = "foo";
-    o.enableCollaborativeInbox = "foo";
-    o.favoriteRepliesOnTop = "foo";
-    o.includeCustomFooter = "foo";
-    o.includeInGlobalAddressList = "foo";
-    o.isArchived = "foo";
-    o.kind = "foo";
+    o.allowExternalMembers = 'foo';
+    o.allowGoogleCommunication = 'foo';
+    o.allowWebPosting = 'foo';
+    o.archiveOnly = 'foo';
+    o.customFooterText = 'foo';
+    o.customReplyTo = 'foo';
+    o.customRolesEnabledForSettingsToBeMerged = 'foo';
+    o.defaultMessageDenyNotificationText = 'foo';
+    o.description = 'foo';
+    o.email = 'foo';
+    o.enableCollaborativeInbox = 'foo';
+    o.favoriteRepliesOnTop = 'foo';
+    o.includeCustomFooter = 'foo';
+    o.includeInGlobalAddressList = 'foo';
+    o.isArchived = 'foo';
+    o.kind = 'foo';
     o.maxMessageBytes = 42;
-    o.membersCanPostAsTheGroup = "foo";
-    o.messageDisplayFont = "foo";
-    o.messageModerationLevel = "foo";
-    o.name = "foo";
-    o.primaryLanguage = "foo";
-    o.replyTo = "foo";
-    o.sendMessageDenyNotification = "foo";
-    o.showInGroupDirectory = "foo";
-    o.spamModerationLevel = "foo";
-    o.whoCanAdd = "foo";
-    o.whoCanAddReferences = "foo";
-    o.whoCanApproveMembers = "foo";
-    o.whoCanApproveMessages = "foo";
-    o.whoCanAssignTopics = "foo";
-    o.whoCanAssistContent = "foo";
-    o.whoCanBanUsers = "foo";
-    o.whoCanContactOwner = "foo";
-    o.whoCanDeleteAnyPost = "foo";
-    o.whoCanDeleteTopics = "foo";
-    o.whoCanDiscoverGroup = "foo";
-    o.whoCanEnterFreeFormTags = "foo";
-    o.whoCanHideAbuse = "foo";
-    o.whoCanInvite = "foo";
-    o.whoCanJoin = "foo";
-    o.whoCanLeaveGroup = "foo";
-    o.whoCanLockTopics = "foo";
-    o.whoCanMakeTopicsSticky = "foo";
-    o.whoCanMarkDuplicate = "foo";
-    o.whoCanMarkFavoriteReplyOnAnyTopic = "foo";
-    o.whoCanMarkFavoriteReplyOnOwnTopic = "foo";
-    o.whoCanMarkNoResponseNeeded = "foo";
-    o.whoCanModerateContent = "foo";
-    o.whoCanModerateMembers = "foo";
-    o.whoCanModifyMembers = "foo";
-    o.whoCanModifyTagsAndCategories = "foo";
-    o.whoCanMoveTopicsIn = "foo";
-    o.whoCanMoveTopicsOut = "foo";
-    o.whoCanPostAnnouncements = "foo";
-    o.whoCanPostMessage = "foo";
-    o.whoCanTakeTopics = "foo";
-    o.whoCanUnassignTopic = "foo";
-    o.whoCanUnmarkFavoriteReplyOnAnyTopic = "foo";
-    o.whoCanViewGroup = "foo";
-    o.whoCanViewMembership = "foo";
+    o.membersCanPostAsTheGroup = 'foo';
+    o.messageDisplayFont = 'foo';
+    o.messageModerationLevel = 'foo';
+    o.name = 'foo';
+    o.primaryLanguage = 'foo';
+    o.replyTo = 'foo';
+    o.sendMessageDenyNotification = 'foo';
+    o.showInGroupDirectory = 'foo';
+    o.spamModerationLevel = 'foo';
+    o.whoCanAdd = 'foo';
+    o.whoCanAddReferences = 'foo';
+    o.whoCanApproveMembers = 'foo';
+    o.whoCanApproveMessages = 'foo';
+    o.whoCanAssignTopics = 'foo';
+    o.whoCanAssistContent = 'foo';
+    o.whoCanBanUsers = 'foo';
+    o.whoCanContactOwner = 'foo';
+    o.whoCanDeleteAnyPost = 'foo';
+    o.whoCanDeleteTopics = 'foo';
+    o.whoCanDiscoverGroup = 'foo';
+    o.whoCanEnterFreeFormTags = 'foo';
+    o.whoCanHideAbuse = 'foo';
+    o.whoCanInvite = 'foo';
+    o.whoCanJoin = 'foo';
+    o.whoCanLeaveGroup = 'foo';
+    o.whoCanLockTopics = 'foo';
+    o.whoCanMakeTopicsSticky = 'foo';
+    o.whoCanMarkDuplicate = 'foo';
+    o.whoCanMarkFavoriteReplyOnAnyTopic = 'foo';
+    o.whoCanMarkFavoriteReplyOnOwnTopic = 'foo';
+    o.whoCanMarkNoResponseNeeded = 'foo';
+    o.whoCanModerateContent = 'foo';
+    o.whoCanModerateMembers = 'foo';
+    o.whoCanModifyMembers = 'foo';
+    o.whoCanModifyTagsAndCategories = 'foo';
+    o.whoCanMoveTopicsIn = 'foo';
+    o.whoCanMoveTopicsOut = 'foo';
+    o.whoCanPostAnnouncements = 'foo';
+    o.whoCanPostMessage = 'foo';
+    o.whoCanTakeTopics = 'foo';
+    o.whoCanUnassignTopic = 'foo';
+    o.whoCanUnmarkFavoriteReplyOnAnyTopic = 'foo';
+    o.whoCanViewGroup = 'foo';
+    o.whoCanViewMembership = 'foo';
   }
   buildCounterGroups--;
   return o;
@@ -215,20 +215,20 @@ void checkGroups(api.Groups o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Groups", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Groups', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGroups();
       var od = api.Groups.fromJson(o.toJson());
       checkGroups(od);
     });
   });
 
-  unittest.group("resource-GroupsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-GroupsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.GroupssettingsApi(mock).groups;
-      var arg_groupUniqueId = "foo";
-      var arg_$fields = "foo";
+      var arg_groupUniqueId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -244,8 +244,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -255,7 +255,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGroups());
         return async.Future.value(stringResponse(200, h, resp));
@@ -267,12 +267,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.GroupssettingsApi(mock).groups;
       var arg_request = buildGroups();
-      var arg_groupUniqueId = "foo";
-      var arg_$fields = "foo";
+      var arg_groupUniqueId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Groups.fromJson(json);
         checkGroups(obj);
@@ -291,8 +291,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -302,7 +302,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGroups());
         return async.Future.value(stringResponse(200, h, resp));
@@ -314,12 +314,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.GroupssettingsApi(mock).groups;
       var arg_request = buildGroups();
-      var arg_groupUniqueId = "foo";
-      var arg_$fields = "foo";
+      var arg_groupUniqueId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Groups.fromJson(json);
         checkGroups(obj);
@@ -338,8 +338,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -349,7 +349,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGroups());
         return async.Future.value(stringResponse(200, h, resp));

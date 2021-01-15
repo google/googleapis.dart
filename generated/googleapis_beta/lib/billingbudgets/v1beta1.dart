@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,11 +38,11 @@ const core.String USER_AGENT = 'dart-api-client billingbudgets/v1beta1';
 class BillingbudgetsApi {
   /// View and manage your Google Cloud Platform billing accounts
   static const CloudBillingScope =
-      "https://www.googleapis.com/auth/cloud-billing";
+      'https://www.googleapis.com/auth/cloud-billing';
 
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -51,8 +50,8 @@ class BillingbudgetsApi {
       BillingAccountsResourceApi(_requester);
 
   BillingbudgetsApi(http.Client client,
-      {core.String rootUrl = "https://billingbudgets.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://billingbudgets.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -109,10 +108,10 @@ class BillingAccountsBudgetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -121,7 +120,7 @@ class BillingAccountsBudgetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -162,17 +161,17 @@ class BillingAccountsBudgetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -215,17 +214,17 @@ class BillingAccountsBudgetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -279,16 +278,16 @@ class BillingAccountsBudgetsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -297,7 +296,7 @@ class BillingAccountsBudgetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -348,17 +347,17 @@ class BillingAccountsBudgetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -409,19 +408,19 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
   GoogleCloudBillingBudgetsV1beta1AllUpdatesRule();
 
   GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(core.Map _json) {
-    if (_json.containsKey("disableDefaultIamRecipients")) {
-      disableDefaultIamRecipients = _json["disableDefaultIamRecipients"];
+    if (_json.containsKey('disableDefaultIamRecipients')) {
+      disableDefaultIamRecipients = _json['disableDefaultIamRecipients'];
     }
-    if (_json.containsKey("monitoringNotificationChannels")) {
+    if (_json.containsKey('monitoringNotificationChannels')) {
       monitoringNotificationChannels =
-          (_json["monitoringNotificationChannels"] as core.List)
+          (_json['monitoringNotificationChannels'] as core.List)
               .cast<core.String>();
     }
-    if (_json.containsKey("pubsubTopic")) {
-      pubsubTopic = _json["pubsubTopic"];
+    if (_json.containsKey('pubsubTopic')) {
+      pubsubTopic = _json['pubsubTopic'];
     }
-    if (_json.containsKey("schemaVersion")) {
-      schemaVersion = _json["schemaVersion"];
+    if (_json.containsKey('schemaVersion')) {
+      schemaVersion = _json['schemaVersion'];
     }
   }
 
@@ -429,16 +428,16 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (disableDefaultIamRecipients != null) {
-      _json["disableDefaultIamRecipients"] = disableDefaultIamRecipients;
+      _json['disableDefaultIamRecipients'] = disableDefaultIamRecipients;
     }
     if (monitoringNotificationChannels != null) {
-      _json["monitoringNotificationChannels"] = monitoringNotificationChannels;
+      _json['monitoringNotificationChannels'] = monitoringNotificationChannels;
     }
     if (pubsubTopic != null) {
-      _json["pubsubTopic"] = pubsubTopic;
+      _json['pubsubTopic'] = pubsubTopic;
     }
     if (schemaVersion != null) {
-      _json["schemaVersion"] = schemaVersion;
+      _json['schemaVersion'] = schemaVersion;
     }
     return _json;
   }
@@ -481,29 +480,29 @@ class GoogleCloudBillingBudgetsV1beta1Budget {
   GoogleCloudBillingBudgetsV1beta1Budget();
 
   GoogleCloudBillingBudgetsV1beta1Budget.fromJson(core.Map _json) {
-    if (_json.containsKey("allUpdatesRule")) {
+    if (_json.containsKey('allUpdatesRule')) {
       allUpdatesRule = GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(
-          _json["allUpdatesRule"]);
+          _json['allUpdatesRule']);
     }
-    if (_json.containsKey("amount")) {
+    if (_json.containsKey('amount')) {
       amount = GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromJson(
-          _json["amount"]);
+          _json['amount']);
     }
-    if (_json.containsKey("budgetFilter")) {
+    if (_json.containsKey('budgetFilter')) {
       budgetFilter = GoogleCloudBillingBudgetsV1beta1Filter.fromJson(
-          _json["budgetFilter"]);
+          _json['budgetFilter']);
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("thresholdRules")) {
-      thresholdRules = (_json["thresholdRules"] as core.List)
+    if (_json.containsKey('thresholdRules')) {
+      thresholdRules = (_json['thresholdRules'] as core.List)
           .map<GoogleCloudBillingBudgetsV1beta1ThresholdRule>((value) =>
               GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(value))
           .toList();
@@ -514,25 +513,25 @@ class GoogleCloudBillingBudgetsV1beta1Budget {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allUpdatesRule != null) {
-      _json["allUpdatesRule"] = allUpdatesRule.toJson();
+      _json['allUpdatesRule'] = allUpdatesRule.toJson();
     }
     if (amount != null) {
-      _json["amount"] = amount.toJson();
+      _json['amount'] = amount.toJson();
     }
     if (budgetFilter != null) {
-      _json["budgetFilter"] = budgetFilter.toJson();
+      _json['budgetFilter'] = budgetFilter.toJson();
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (thresholdRules != null) {
-      _json["thresholdRules"] =
+      _json['thresholdRules'] =
           thresholdRules.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -552,13 +551,13 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
   GoogleCloudBillingBudgetsV1beta1BudgetAmount();
 
   GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromJson(core.Map _json) {
-    if (_json.containsKey("lastPeriodAmount")) {
+    if (_json.containsKey('lastPeriodAmount')) {
       lastPeriodAmount =
           GoogleCloudBillingBudgetsV1beta1LastPeriodAmount.fromJson(
-              _json["lastPeriodAmount"]);
+              _json['lastPeriodAmount']);
     }
-    if (_json.containsKey("specifiedAmount")) {
-      specifiedAmount = GoogleTypeMoney.fromJson(_json["specifiedAmount"]);
+    if (_json.containsKey('specifiedAmount')) {
+      specifiedAmount = GoogleTypeMoney.fromJson(_json['specifiedAmount']);
     }
   }
 
@@ -566,10 +565,10 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lastPeriodAmount != null) {
-      _json["lastPeriodAmount"] = lastPeriodAmount.toJson();
+      _json['lastPeriodAmount'] = lastPeriodAmount.toJson();
     }
     if (specifiedAmount != null) {
-      _json["specifiedAmount"] = specifiedAmount.toJson();
+      _json['specifiedAmount'] = specifiedAmount.toJson();
     }
     return _json;
   }
@@ -583,8 +582,8 @@ class GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest {
   GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest();
 
   GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("budget")) {
-      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json["budget"]);
+    if (_json.containsKey('budget')) {
+      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json['budget']);
     }
   }
 
@@ -592,7 +591,7 @@ class GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (budget != null) {
-      _json["budget"] = budget.toJson();
+      _json['budget'] = budget.toJson();
     }
     return _json;
   }
@@ -643,22 +642,22 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
   GoogleCloudBillingBudgetsV1beta1Filter();
 
   GoogleCloudBillingBudgetsV1beta1Filter.fromJson(core.Map _json) {
-    if (_json.containsKey("creditTypesTreatment")) {
-      creditTypesTreatment = _json["creditTypesTreatment"];
+    if (_json.containsKey('creditTypesTreatment')) {
+      creditTypesTreatment = _json['creditTypesTreatment'];
     }
-    if (_json.containsKey("labels")) {
+    if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.List, core.List<core.Object>>(
-          _json["labels"].cast<core.String, core.List>(),
+          _json['labels'].cast<core.String, core.List>(),
           (core.List item) => (item as core.List).cast<core.Object>());
     }
-    if (_json.containsKey("projects")) {
-      projects = (_json["projects"] as core.List).cast<core.String>();
+    if (_json.containsKey('projects')) {
+      projects = (_json['projects'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("services")) {
-      services = (_json["services"] as core.List).cast<core.String>();
+    if (_json.containsKey('services')) {
+      services = (_json['services'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("subaccounts")) {
-      subaccounts = (_json["subaccounts"] as core.List).cast<core.String>();
+    if (_json.containsKey('subaccounts')) {
+      subaccounts = (_json['subaccounts'] as core.List).cast<core.String>();
     }
   }
 
@@ -666,19 +665,19 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creditTypesTreatment != null) {
-      _json["creditTypesTreatment"] = creditTypesTreatment;
+      _json['creditTypesTreatment'] = creditTypesTreatment;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (projects != null) {
-      _json["projects"] = projects;
+      _json['projects'] = projects;
     }
     if (services != null) {
-      _json["services"] = services;
+      _json['services'] = services;
     }
     if (subaccounts != null) {
-      _json["subaccounts"] = subaccounts;
+      _json['subaccounts'] = subaccounts;
     }
     return _json;
   }
@@ -712,14 +711,14 @@ class GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
   GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse();
 
   GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("budgets")) {
-      budgets = (_json["budgets"] as core.List)
+    if (_json.containsKey('budgets')) {
+      budgets = (_json['budgets'] as core.List)
           .map<GoogleCloudBillingBudgetsV1beta1Budget>(
               (value) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -727,10 +726,10 @@ class GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (budgets != null) {
-      _json["budgets"] = budgets.map((value) => value.toJson()).toList();
+      _json['budgets'] = budgets.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -760,11 +759,11 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
   GoogleCloudBillingBudgetsV1beta1ThresholdRule();
 
   GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(core.Map _json) {
-    if (_json.containsKey("spendBasis")) {
-      spendBasis = _json["spendBasis"];
+    if (_json.containsKey('spendBasis')) {
+      spendBasis = _json['spendBasis'];
     }
-    if (_json.containsKey("thresholdPercent")) {
-      thresholdPercent = _json["thresholdPercent"].toDouble();
+    if (_json.containsKey('thresholdPercent')) {
+      thresholdPercent = _json['thresholdPercent'].toDouble();
     }
   }
 
@@ -772,10 +771,10 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (spendBasis != null) {
-      _json["spendBasis"] = spendBasis;
+      _json['spendBasis'] = spendBasis;
     }
     if (thresholdPercent != null) {
-      _json["thresholdPercent"] = thresholdPercent;
+      _json['thresholdPercent'] = thresholdPercent;
     }
     return _json;
   }
@@ -798,11 +797,11 @@ class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
   GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest();
 
   GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("budget")) {
-      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json["budget"]);
+    if (_json.containsKey('budget')) {
+      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json['budget']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -810,10 +809,10 @@ class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (budget != null) {
-      _json["budget"] = budget.toJson();
+      _json['budget'] = budget.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -856,14 +855,14 @@ class GoogleTypeMoney {
   GoogleTypeMoney();
 
   GoogleTypeMoney.fromJson(core.Map _json) {
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'];
     }
-    if (_json.containsKey("units")) {
-      units = _json["units"];
+    if (_json.containsKey('units')) {
+      units = _json['units'];
     }
   }
 
@@ -871,13 +870,13 @@ class GoogleTypeMoney {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     if (nanos != null) {
-      _json["nanos"] = nanos;
+      _json['nanos'] = nanos;
     }
     if (units != null) {
-      _json["units"] = units;
+      _json['units'] = units;
     }
     return _json;
   }

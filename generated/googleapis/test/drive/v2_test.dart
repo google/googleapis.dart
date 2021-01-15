@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,8 +72,8 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.List<core.String> buildUnnamed2171() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -89,7 +89,7 @@ api.AboutAdditionalRoleInfoRoleSets buildAboutAdditionalRoleInfoRoleSets() {
   buildCounterAboutAdditionalRoleInfoRoleSets++;
   if (buildCounterAboutAdditionalRoleInfoRoleSets < 3) {
     o.additionalRoles = buildUnnamed2171();
-    o.primaryRole = "foo";
+    o.primaryRole = 'foo';
   }
   buildCounterAboutAdditionalRoleInfoRoleSets--;
   return o;
@@ -124,7 +124,7 @@ api.AboutAdditionalRoleInfo buildAboutAdditionalRoleInfo() {
   buildCounterAboutAdditionalRoleInfo++;
   if (buildCounterAboutAdditionalRoleInfo < 3) {
     o.roleSets = buildUnnamed2172();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterAboutAdditionalRoleInfo--;
   return o;
@@ -157,9 +157,9 @@ api.AboutDriveThemes buildAboutDriveThemes() {
   var o = api.AboutDriveThemes();
   buildCounterAboutDriveThemes++;
   if (buildCounterAboutDriveThemes < 3) {
-    o.backgroundImageLink = "foo";
-    o.colorRgb = "foo";
-    o.id = "foo";
+    o.backgroundImageLink = 'foo';
+    o.colorRgb = 'foo';
+    o.id = 'foo';
   }
   buildCounterAboutDriveThemes--;
   return o;
@@ -190,8 +190,8 @@ void checkUnnamed2174(core.List<api.AboutDriveThemes> o) {
 
 core.List<core.String> buildUnnamed2175() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -206,7 +206,7 @@ api.AboutExportFormats buildAboutExportFormats() {
   var o = api.AboutExportFormats();
   buildCounterAboutExportFormats++;
   if (buildCounterAboutExportFormats < 3) {
-    o.source = "foo";
+    o.source = 'foo';
     o.targets = buildUnnamed2175();
   }
   buildCounterAboutExportFormats--;
@@ -240,7 +240,7 @@ api.AboutFeatures buildAboutFeatures() {
   var o = api.AboutFeatures();
   buildCounterAboutFeatures++;
   if (buildCounterAboutFeatures < 3) {
-    o.featureName = "foo";
+    o.featureName = 'foo';
     o.featureRate = 42.0;
   }
   buildCounterAboutFeatures--;
@@ -271,8 +271,8 @@ void checkUnnamed2177(core.List<api.AboutFeatures> o) {
 
 core.List<core.String> buildUnnamed2178() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -284,8 +284,8 @@ void checkUnnamed2178(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2179() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -300,7 +300,7 @@ api.AboutImportFormats buildAboutImportFormats() {
   var o = api.AboutImportFormats();
   buildCounterAboutImportFormats++;
   if (buildCounterAboutImportFormats < 3) {
-    o.source = "foo";
+    o.source = 'foo';
     o.targets = buildUnnamed2179();
   }
   buildCounterAboutImportFormats--;
@@ -334,8 +334,8 @@ api.AboutMaxUploadSizes buildAboutMaxUploadSizes() {
   var o = api.AboutMaxUploadSizes();
   buildCounterAboutMaxUploadSizes++;
   if (buildCounterAboutMaxUploadSizes < 3) {
-    o.size = "foo";
-    o.type = "foo";
+    o.size = 'foo';
+    o.type = 'foo';
   }
   buildCounterAboutMaxUploadSizes--;
   return o;
@@ -368,8 +368,8 @@ api.AboutQuotaBytesByService buildAboutQuotaBytesByService() {
   var o = api.AboutQuotaBytesByService();
   buildCounterAboutQuotaBytesByService++;
   if (buildCounterAboutQuotaBytesByService < 3) {
-    o.bytesUsed = "foo";
-    o.serviceName = "foo";
+    o.bytesUsed = 'foo';
+    o.serviceName = 'foo';
   }
   buildCounterAboutQuotaBytesByService--;
   return o;
@@ -402,9 +402,9 @@ api.AboutTeamDriveThemes buildAboutTeamDriveThemes() {
   var o = api.AboutTeamDriveThemes();
   buildCounterAboutTeamDriveThemes++;
   if (buildCounterAboutTeamDriveThemes < 3) {
-    o.backgroundImageLink = "foo";
-    o.colorRgb = "foo";
-    o.id = "foo";
+    o.backgroundImageLink = 'foo';
+    o.colorRgb = 'foo';
+    o.id = 'foo';
   }
   buildCounterAboutTeamDriveThemes--;
   return o;
@@ -441,29 +441,29 @@ api.About buildAbout() {
     o.additionalRoleInfo = buildUnnamed2173();
     o.canCreateDrives = true;
     o.canCreateTeamDrives = true;
-    o.domainSharingPolicy = "foo";
+    o.domainSharingPolicy = 'foo';
     o.driveThemes = buildUnnamed2174();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.exportFormats = buildUnnamed2176();
     o.features = buildUnnamed2177();
     o.folderColorPalette = buildUnnamed2178();
     o.importFormats = buildUnnamed2180();
     o.isCurrentAppInstalled = true;
-    o.kind = "foo";
-    o.languageCode = "foo";
-    o.largestChangeId = "foo";
+    o.kind = 'foo';
+    o.languageCode = 'foo';
+    o.largestChangeId = 'foo';
     o.maxUploadSizes = buildUnnamed2181();
-    o.name = "foo";
-    o.permissionId = "foo";
+    o.name = 'foo';
+    o.permissionId = 'foo';
     o.quotaBytesByService = buildUnnamed2182();
-    o.quotaBytesTotal = "foo";
-    o.quotaBytesUsed = "foo";
-    o.quotaBytesUsedAggregate = "foo";
-    o.quotaBytesUsedInTrash = "foo";
-    o.quotaType = "foo";
-    o.remainingChangeIds = "foo";
-    o.rootFolderId = "foo";
-    o.selfLink = "foo";
+    o.quotaBytesTotal = 'foo';
+    o.quotaBytesUsed = 'foo';
+    o.quotaBytesUsedAggregate = 'foo';
+    o.quotaBytesUsedInTrash = 'foo';
+    o.quotaType = 'foo';
+    o.remainingChangeIds = 'foo';
+    o.rootFolderId = 'foo';
+    o.selfLink = 'foo';
     o.teamDriveThemes = buildUnnamed2183();
     o.user = buildUser();
   }
@@ -511,8 +511,8 @@ api.AppIcons buildAppIcons() {
   var o = api.AppIcons();
   buildCounterAppIcons++;
   if (buildCounterAppIcons < 3) {
-    o.category = "foo";
-    o.iconUrl = "foo";
+    o.category = 'foo';
+    o.iconUrl = 'foo';
     o.size = 42;
   }
   buildCounterAppIcons--;
@@ -544,8 +544,8 @@ void checkUnnamed2184(core.List<api.AppIcons> o) {
 
 core.List<core.String> buildUnnamed2185() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -557,8 +557,8 @@ void checkUnnamed2185(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2186() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -570,8 +570,8 @@ void checkUnnamed2186(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2187() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -583,8 +583,8 @@ void checkUnnamed2187(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2188() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -600,24 +600,24 @@ api.App buildApp() {
   buildCounterApp++;
   if (buildCounterApp < 3) {
     o.authorized = true;
-    o.createInFolderTemplate = "foo";
-    o.createUrl = "foo";
+    o.createInFolderTemplate = 'foo';
+    o.createUrl = 'foo';
     o.hasDriveWideScope = true;
     o.icons = buildUnnamed2184();
-    o.id = "foo";
+    o.id = 'foo';
     o.installed = true;
-    o.kind = "foo";
-    o.longDescription = "foo";
-    o.name = "foo";
-    o.objectType = "foo";
-    o.openUrlTemplate = "foo";
+    o.kind = 'foo';
+    o.longDescription = 'foo';
+    o.name = 'foo';
+    o.objectType = 'foo';
+    o.openUrlTemplate = 'foo';
     o.primaryFileExtensions = buildUnnamed2185();
     o.primaryMimeTypes = buildUnnamed2186();
-    o.productId = "foo";
-    o.productUrl = "foo";
+    o.productId = 'foo';
+    o.productUrl = 'foo';
     o.secondaryFileExtensions = buildUnnamed2187();
     o.secondaryMimeTypes = buildUnnamed2188();
-    o.shortDescription = "foo";
+    o.shortDescription = 'foo';
     o.supportsCreate = true;
     o.supportsImport = true;
     o.supportsMultiOpen = true;
@@ -661,8 +661,8 @@ void checkApp(api.App o) {
 
 core.List<core.String> buildUnnamed2189() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -691,10 +691,10 @@ api.AppList buildAppList() {
   buildCounterAppList++;
   if (buildCounterAppList < 3) {
     o.defaultAppIds = buildUnnamed2189();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed2190();
-    o.kind = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterAppList--;
   return o;
@@ -717,19 +717,19 @@ api.Change buildChange() {
   var o = api.Change();
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    o.changeType = "foo";
+    o.changeType = 'foo';
     o.deleted = true;
     o.drive = buildDrive();
-    o.driveId = "foo";
+    o.driveId = 'foo';
     o.file = buildFile();
-    o.fileId = "foo";
-    o.id = "foo";
-    o.kind = "foo";
+    o.fileId = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
     o.modificationDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.selfLink = "foo";
+    o.selfLink = 'foo';
     o.teamDrive = buildTeamDrive();
-    o.teamDriveId = "foo";
-    o.type = "foo";
+    o.teamDriveId = 'foo';
+    o.type = 'foo';
   }
   buildCounterChange--;
   return o;
@@ -774,14 +774,14 @@ api.ChangeList buildChangeList() {
   var o = api.ChangeList();
   buildCounterChangeList++;
   if (buildCounterChangeList < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed2191();
-    o.kind = "foo";
-    o.largestChangeId = "foo";
-    o.newStartPageToken = "foo";
-    o.nextLink = "foo";
-    o.nextPageToken = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.largestChangeId = 'foo';
+    o.newStartPageToken = 'foo';
+    o.nextLink = 'foo';
+    o.nextPageToken = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterChangeList--;
   return o;
@@ -804,15 +804,15 @@ void checkChangeList(api.ChangeList o) {
 
 core.Map<core.String, core.String> buildUnnamed2192() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2192(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterChannel = 0;
@@ -820,16 +820,16 @@ api.Channel buildChannel() {
   var o = api.Channel();
   buildCounterChannel++;
   if (buildCounterChannel < 3) {
-    o.address = "foo";
-    o.expiration = "foo";
-    o.id = "foo";
-    o.kind = "foo";
+    o.address = 'foo';
+    o.expiration = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
     o.params = buildUnnamed2192();
     o.payload = true;
-    o.resourceId = "foo";
-    o.resourceUri = "foo";
-    o.token = "foo";
-    o.type = "foo";
+    o.resourceId = 'foo';
+    o.resourceUri = 'foo';
+    o.token = 'foo';
+    o.type = 'foo';
   }
   buildCounterChannel--;
   return o;
@@ -870,12 +870,12 @@ api.ChildList buildChildList() {
   var o = api.ChildList();
   buildCounterChildList++;
   if (buildCounterChildList < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed2193();
-    o.kind = "foo";
-    o.nextLink = "foo";
-    o.nextPageToken = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.nextLink = 'foo';
+    o.nextPageToken = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterChildList--;
   return o;
@@ -899,10 +899,10 @@ api.ChildReference buildChildReference() {
   var o = api.ChildReference();
   buildCounterChildReference++;
   if (buildCounterChildReference < 3) {
-    o.childLink = "foo";
-    o.id = "foo";
-    o.kind = "foo";
-    o.selfLink = "foo";
+    o.childLink = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterChildReference--;
   return o;
@@ -924,8 +924,8 @@ api.CommentContext buildCommentContext() {
   var o = api.CommentContext();
   buildCounterCommentContext++;
   if (buildCounterCommentContext < 3) {
-    o.type = "foo";
-    o.value = "foo";
+    o.type = 'foo';
+    o.value = 'foo';
   }
   buildCounterCommentContext--;
   return o;
@@ -958,21 +958,21 @@ api.Comment buildComment() {
   var o = api.Comment();
   buildCounterComment++;
   if (buildCounterComment < 3) {
-    o.anchor = "foo";
+    o.anchor = 'foo';
     o.author = buildUser();
-    o.commentId = "foo";
-    o.content = "foo";
+    o.commentId = 'foo';
+    o.content = 'foo';
     o.context = buildCommentContext();
     o.createdDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.deleted = true;
-    o.fileId = "foo";
-    o.fileTitle = "foo";
-    o.htmlContent = "foo";
-    o.kind = "foo";
+    o.fileId = 'foo';
+    o.fileTitle = 'foo';
+    o.htmlContent = 'foo';
+    o.kind = 'foo';
     o.modifiedDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.replies = buildUnnamed2194();
-    o.selfLink = "foo";
-    o.status = "foo";
+    o.selfLink = 'foo';
+    o.status = 'foo';
   }
   buildCounterComment--;
   return o;
@@ -1021,10 +1021,10 @@ api.CommentList buildCommentList() {
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
     o.items = buildUnnamed2195();
-    o.kind = "foo";
-    o.nextLink = "foo";
-    o.nextPageToken = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.nextLink = 'foo';
+    o.nextPageToken = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterCommentList--;
   return o;
@@ -1048,14 +1048,14 @@ api.CommentReply buildCommentReply() {
   buildCounterCommentReply++;
   if (buildCounterCommentReply < 3) {
     o.author = buildUser();
-    o.content = "foo";
+    o.content = 'foo';
     o.createdDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.deleted = true;
-    o.htmlContent = "foo";
-    o.kind = "foo";
+    o.htmlContent = 'foo';
+    o.kind = 'foo';
     o.modifiedDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.replyId = "foo";
-    o.verb = "foo";
+    o.replyId = 'foo';
+    o.verb = 'foo';
   }
   buildCounterCommentReply--;
   return o;
@@ -1098,10 +1098,10 @@ api.CommentReplyList buildCommentReplyList() {
   buildCounterCommentReplyList++;
   if (buildCounterCommentReplyList < 3) {
     o.items = buildUnnamed2196();
-    o.kind = "foo";
-    o.nextLink = "foo";
-    o.nextPageToken = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.nextLink = 'foo';
+    o.nextPageToken = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterCommentReplyList--;
   return o;
@@ -1125,10 +1125,10 @@ api.ContentRestriction buildContentRestriction() {
   buildCounterContentRestriction++;
   if (buildCounterContentRestriction < 3) {
     o.readOnly = true;
-    o.reason = "foo";
+    o.reason = 'foo';
     o.restrictingUser = buildUser();
     o.restrictionDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterContentRestriction--;
   return o;
@@ -1152,7 +1152,7 @@ api.DriveBackgroundImageFile buildDriveBackgroundImageFile() {
   var o = api.DriveBackgroundImageFile();
   buildCounterDriveBackgroundImageFile++;
   if (buildCounterDriveBackgroundImageFile < 3) {
-    o.id = "foo";
+    o.id = 'foo';
     o.width = 42.0;
     o.xCoordinate = 42.0;
     o.yCoordinate = 42.0;
@@ -1257,16 +1257,16 @@ api.Drive buildDrive() {
   buildCounterDrive++;
   if (buildCounterDrive < 3) {
     o.backgroundImageFile = buildDriveBackgroundImageFile();
-    o.backgroundImageLink = "foo";
+    o.backgroundImageLink = 'foo';
     o.capabilities = buildDriveCapabilities();
-    o.colorRgb = "foo";
+    o.colorRgb = 'foo';
     o.createdDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.hidden = true;
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
     o.restrictions = buildDriveRestrictions();
-    o.themeId = "foo";
+    o.themeId = 'foo';
   }
   buildCounterDrive--;
   return o;
@@ -1310,8 +1310,8 @@ api.DriveList buildDriveList() {
   buildCounterDriveList++;
   if (buildCounterDriveList < 3) {
     o.items = buildUnnamed2197();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterDriveList--;
   return o;
@@ -1427,15 +1427,15 @@ void checkUnnamed2198(core.List<api.ContentRestriction> o) {
 
 core.Map<core.String, core.String> buildUnnamed2199() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2199(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterFileImageMediaMetadataLocation = 0;
@@ -1467,25 +1467,25 @@ api.FileImageMediaMetadata buildFileImageMediaMetadata() {
   buildCounterFileImageMediaMetadata++;
   if (buildCounterFileImageMediaMetadata < 3) {
     o.aperture = 42.0;
-    o.cameraMake = "foo";
-    o.cameraModel = "foo";
-    o.colorSpace = "foo";
-    o.date = "foo";
+    o.cameraMake = 'foo';
+    o.cameraModel = 'foo';
+    o.colorSpace = 'foo';
+    o.date = 'foo';
     o.exposureBias = 42.0;
-    o.exposureMode = "foo";
+    o.exposureMode = 'foo';
     o.exposureTime = 42.0;
     o.flashUsed = true;
     o.focalLength = 42.0;
     o.height = 42;
     o.isoSpeed = 42;
-    o.lens = "foo";
+    o.lens = 'foo';
     o.location = buildFileImageMediaMetadataLocation();
     o.maxApertureValue = 42.0;
-    o.meteringMode = "foo";
+    o.meteringMode = 'foo';
     o.rotation = 42;
-    o.sensor = "foo";
+    o.sensor = 'foo';
     o.subjectDistance = 42;
-    o.whiteBalance = "foo";
+    o.whiteBalance = 'foo';
     o.width = 42;
   }
   buildCounterFileImageMediaMetadata--;
@@ -1525,7 +1525,7 @@ api.FileIndexableText buildFileIndexableText() {
   var o = api.FileIndexableText();
   buildCounterFileIndexableText++;
   if (buildCounterFileIndexableText < 3) {
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterFileIndexableText--;
   return o;
@@ -1570,21 +1570,21 @@ void checkFileLabels(api.FileLabels o) {
 
 core.Map<core.String, core.String> buildUnnamed2200() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2200(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed2201() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1622,8 +1622,8 @@ void checkUnnamed2203(core.List<api.ParentReference> o) {
 
 core.List<core.String> buildUnnamed2204() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1664,8 +1664,8 @@ api.FileShortcutDetails buildFileShortcutDetails() {
   var o = api.FileShortcutDetails();
   buildCounterFileShortcutDetails++;
   if (buildCounterFileShortcutDetails < 3) {
-    o.targetId = "foo";
-    o.targetMimeType = "foo";
+    o.targetId = 'foo';
+    o.targetMimeType = 'foo';
   }
   buildCounterFileShortcutDetails--;
   return o;
@@ -1682,8 +1682,8 @@ void checkFileShortcutDetails(api.FileShortcutDetails o) {
 
 core.List<core.String> buildUnnamed2207() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1698,8 +1698,8 @@ api.FileThumbnail buildFileThumbnail() {
   var o = api.FileThumbnail();
   buildCounterFileThumbnail++;
   if (buildCounterFileThumbnail < 3) {
-    o.image = "foo";
-    o.mimeType = "foo";
+    o.image = 'foo';
+    o.mimeType = 'foo';
   }
   buildCounterFileThumbnail--;
   return o;
@@ -1719,7 +1719,7 @@ api.FileVideoMediaMetadata buildFileVideoMediaMetadata() {
   var o = api.FileVideoMediaMetadata();
   buildCounterFileVideoMediaMetadata++;
   if (buildCounterFileVideoMediaMetadata < 3) {
-    o.durationMillis = "foo";
+    o.durationMillis = 'foo';
     o.height = 42;
     o.width = 42;
   }
@@ -1742,7 +1742,7 @@ api.File buildFile() {
   var o = api.File();
   buildCounterFile++;
   if (buildCounterFile < 3) {
-    o.alternateLink = "foo";
+    o.alternateLink = 'foo';
     o.appDataContents = true;
     o.canComment = true;
     o.canReadRevisions = true;
@@ -1751,39 +1751,39 @@ api.File buildFile() {
     o.copyRequiresWriterPermission = true;
     o.copyable = true;
     o.createdDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.defaultOpenWithLink = "foo";
-    o.description = "foo";
-    o.downloadUrl = "foo";
-    o.driveId = "foo";
+    o.defaultOpenWithLink = 'foo';
+    o.description = 'foo';
+    o.downloadUrl = 'foo';
+    o.driveId = 'foo';
     o.editable = true;
-    o.embedLink = "foo";
-    o.etag = "foo";
+    o.embedLink = 'foo';
+    o.etag = 'foo';
     o.explicitlyTrashed = true;
     o.exportLinks = buildUnnamed2199();
-    o.fileExtension = "foo";
-    o.fileSize = "foo";
-    o.folderColorRgb = "foo";
-    o.fullFileExtension = "foo";
+    o.fileExtension = 'foo';
+    o.fileSize = 'foo';
+    o.folderColorRgb = 'foo';
+    o.fullFileExtension = 'foo';
     o.hasAugmentedPermissions = true;
     o.hasThumbnail = true;
-    o.headRevisionId = "foo";
-    o.iconLink = "foo";
-    o.id = "foo";
+    o.headRevisionId = 'foo';
+    o.iconLink = 'foo';
+    o.id = 'foo';
     o.imageMediaMetadata = buildFileImageMediaMetadata();
     o.indexableText = buildFileIndexableText();
     o.isAppAuthorized = true;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.labels = buildFileLabels();
     o.lastModifyingUser = buildUser();
-    o.lastModifyingUserName = "foo";
+    o.lastModifyingUserName = 'foo';
     o.lastViewedByMeDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.markedViewedByMeDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.md5Checksum = "foo";
-    o.mimeType = "foo";
+    o.md5Checksum = 'foo';
+    o.mimeType = 'foo';
     o.modifiedByMeDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.modifiedDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.openWithLinks = buildUnnamed2200();
-    o.originalFilename = "foo";
+    o.originalFilename = 'foo';
     o.ownedByMe = true;
     o.ownerNames = buildUnnamed2201();
     o.owners = buildUnnamed2202();
@@ -1791,26 +1791,26 @@ api.File buildFile() {
     o.permissionIds = buildUnnamed2204();
     o.permissions = buildUnnamed2205();
     o.properties = buildUnnamed2206();
-    o.quotaBytesUsed = "foo";
-    o.selfLink = "foo";
+    o.quotaBytesUsed = 'foo';
+    o.selfLink = 'foo';
     o.shareable = true;
     o.shared = true;
     o.sharedWithMeDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.sharingUser = buildUser();
     o.shortcutDetails = buildFileShortcutDetails();
     o.spaces = buildUnnamed2207();
-    o.teamDriveId = "foo";
+    o.teamDriveId = 'foo';
     o.thumbnail = buildFileThumbnail();
-    o.thumbnailLink = "foo";
-    o.thumbnailVersion = "foo";
-    o.title = "foo";
+    o.thumbnailLink = 'foo';
+    o.thumbnailVersion = 'foo';
+    o.title = 'foo';
     o.trashedDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.trashingUser = buildUser();
     o.userPermission = buildPermission();
-    o.version = "foo";
+    o.version = 'foo';
     o.videoMediaMetadata = buildFileVideoMediaMetadata();
-    o.webContentLink = "foo";
-    o.webViewLink = "foo";
+    o.webContentLink = 'foo';
+    o.webViewLink = 'foo';
     o.writersCanShare = true;
   }
   buildCounterFile--;
@@ -1919,13 +1919,13 @@ api.FileList buildFileList() {
   var o = api.FileList();
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.incompleteSearch = true;
     o.items = buildUnnamed2208();
-    o.kind = "foo";
-    o.nextLink = "foo";
-    o.nextPageToken = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.nextLink = 'foo';
+    o.nextPageToken = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterFileList--;
   return o;
@@ -1947,8 +1947,8 @@ void checkFileList(api.FileList o) {
 
 core.List<core.String> buildUnnamed2209() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1964,8 +1964,8 @@ api.GeneratedIds buildGeneratedIds() {
   buildCounterGeneratedIds++;
   if (buildCounterGeneratedIds < 3) {
     o.ids = buildUnnamed2209();
-    o.kind = "foo";
-    o.space = "foo";
+    o.kind = 'foo';
+    o.space = 'foo';
   }
   buildCounterGeneratedIds--;
   return o;
@@ -1999,10 +1999,10 @@ api.ParentList buildParentList() {
   var o = api.ParentList();
   buildCounterParentList++;
   if (buildCounterParentList < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed2210();
-    o.kind = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterParentList--;
   return o;
@@ -2024,11 +2024,11 @@ api.ParentReference buildParentReference() {
   var o = api.ParentReference();
   buildCounterParentReference++;
   if (buildCounterParentReference < 3) {
-    o.id = "foo";
+    o.id = 'foo';
     o.isRoot = true;
-    o.kind = "foo";
-    o.parentLink = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.parentLink = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterParentReference--;
   return o;
@@ -2048,8 +2048,8 @@ void checkParentReference(api.ParentReference o) {
 
 core.List<core.String> buildUnnamed2211() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2061,8 +2061,8 @@ void checkUnnamed2211(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2212() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2079,9 +2079,9 @@ api.PermissionPermissionDetails buildPermissionPermissionDetails() {
   if (buildCounterPermissionPermissionDetails < 3) {
     o.additionalRoles = buildUnnamed2212();
     o.inherited = true;
-    o.inheritedFrom = "foo";
-    o.permissionType = "foo";
-    o.role = "foo";
+    o.inheritedFrom = 'foo';
+    o.permissionType = 'foo';
+    o.role = 'foo';
   }
   buildCounterPermissionPermissionDetails--;
   return o;
@@ -2114,8 +2114,8 @@ void checkUnnamed2213(core.List<api.PermissionPermissionDetails> o) {
 
 core.List<core.String> buildUnnamed2214() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2133,9 +2133,9 @@ api.PermissionTeamDrivePermissionDetails
   if (buildCounterPermissionTeamDrivePermissionDetails < 3) {
     o.additionalRoles = buildUnnamed2214();
     o.inherited = true;
-    o.inheritedFrom = "foo";
-    o.role = "foo";
-    o.teamDrivePermissionType = "foo";
+    o.inheritedFrom = 'foo';
+    o.role = 'foo';
+    o.teamDrivePermissionType = 'foo';
   }
   buildCounterPermissionTeamDrivePermissionDetails--;
   return o;
@@ -2173,23 +2173,23 @@ api.Permission buildPermission() {
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
     o.additionalRoles = buildUnnamed2211();
-    o.authKey = "foo";
+    o.authKey = 'foo';
     o.deleted = true;
-    o.domain = "foo";
-    o.emailAddress = "foo";
-    o.etag = "foo";
+    o.domain = 'foo';
+    o.emailAddress = 'foo';
+    o.etag = 'foo';
     o.expirationDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
     o.permissionDetails = buildUnnamed2213();
-    o.photoLink = "foo";
-    o.role = "foo";
-    o.selfLink = "foo";
+    o.photoLink = 'foo';
+    o.role = 'foo';
+    o.selfLink = 'foo';
     o.teamDrivePermissionDetails = buildUnnamed2215();
-    o.type = "foo";
-    o.value = "foo";
-    o.view = "foo";
+    o.type = 'foo';
+    o.value = 'foo';
+    o.view = 'foo';
     o.withLink = true;
   }
   buildCounterPermission--;
@@ -2228,8 +2228,8 @@ api.PermissionId buildPermissionId() {
   var o = api.PermissionId();
   buildCounterPermissionId++;
   if (buildCounterPermissionId < 3) {
-    o.id = "foo";
-    o.kind = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
   }
   buildCounterPermissionId--;
   return o;
@@ -2262,11 +2262,11 @@ api.PermissionList buildPermissionList() {
   var o = api.PermissionList();
   buildCounterPermissionList++;
   if (buildCounterPermissionList < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed2216();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterPermissionList--;
   return o;
@@ -2289,12 +2289,12 @@ api.Property buildProperty() {
   var o = api.Property();
   buildCounterProperty++;
   if (buildCounterProperty < 3) {
-    o.etag = "foo";
-    o.key = "foo";
-    o.kind = "foo";
-    o.selfLink = "foo";
-    o.value = "foo";
-    o.visibility = "foo";
+    o.etag = 'foo';
+    o.key = 'foo';
+    o.kind = 'foo';
+    o.selfLink = 'foo';
+    o.value = 'foo';
+    o.visibility = 'foo';
   }
   buildCounterProperty--;
   return o;
@@ -2331,10 +2331,10 @@ api.PropertyList buildPropertyList() {
   var o = api.PropertyList();
   buildCounterPropertyList++;
   if (buildCounterPropertyList < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed2217();
-    o.kind = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterPropertyList--;
   return o;
@@ -2353,15 +2353,15 @@ void checkPropertyList(api.PropertyList o) {
 
 core.Map<core.String, core.String> buildUnnamed2218() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2218(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterRevision = 0;
@@ -2369,24 +2369,24 @@ api.Revision buildRevision() {
   var o = api.Revision();
   buildCounterRevision++;
   if (buildCounterRevision < 3) {
-    o.downloadUrl = "foo";
-    o.etag = "foo";
+    o.downloadUrl = 'foo';
+    o.etag = 'foo';
     o.exportLinks = buildUnnamed2218();
-    o.fileSize = "foo";
-    o.id = "foo";
-    o.kind = "foo";
+    o.fileSize = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
     o.lastModifyingUser = buildUser();
-    o.lastModifyingUserName = "foo";
-    o.md5Checksum = "foo";
-    o.mimeType = "foo";
+    o.lastModifyingUserName = 'foo';
+    o.md5Checksum = 'foo';
+    o.mimeType = 'foo';
     o.modifiedDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.originalFilename = "foo";
+    o.originalFilename = 'foo';
     o.pinned = true;
     o.publishAuto = true;
     o.published = true;
-    o.publishedLink = "foo";
+    o.publishedLink = 'foo';
     o.publishedOutsideDomain = true;
-    o.selfLink = "foo";
+    o.selfLink = 'foo';
   }
   buildCounterRevision--;
   return o;
@@ -2436,11 +2436,11 @@ api.RevisionList buildRevisionList() {
   var o = api.RevisionList();
   buildCounterRevisionList++;
   if (buildCounterRevisionList < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed2219();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
-    o.selfLink = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
+    o.selfLink = 'foo';
   }
   buildCounterRevisionList--;
   return o;
@@ -2463,8 +2463,8 @@ api.StartPageToken buildStartPageToken() {
   var o = api.StartPageToken();
   buildCounterStartPageToken++;
   if (buildCounterStartPageToken < 3) {
-    o.kind = "foo";
-    o.startPageToken = "foo";
+    o.kind = 'foo';
+    o.startPageToken = 'foo';
   }
   buildCounterStartPageToken--;
   return o;
@@ -2484,7 +2484,7 @@ api.TeamDriveBackgroundImageFile buildTeamDriveBackgroundImageFile() {
   var o = api.TeamDriveBackgroundImageFile();
   buildCounterTeamDriveBackgroundImageFile++;
   if (buildCounterTeamDriveBackgroundImageFile < 3) {
-    o.id = "foo";
+    o.id = 'foo';
     o.width = 42.0;
     o.xCoordinate = 42.0;
     o.yCoordinate = 42.0;
@@ -2591,15 +2591,15 @@ api.TeamDrive buildTeamDrive() {
   buildCounterTeamDrive++;
   if (buildCounterTeamDrive < 3) {
     o.backgroundImageFile = buildTeamDriveBackgroundImageFile();
-    o.backgroundImageLink = "foo";
+    o.backgroundImageLink = 'foo';
     o.capabilities = buildTeamDriveCapabilities();
-    o.colorRgb = "foo";
+    o.colorRgb = 'foo';
     o.createdDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
     o.restrictions = buildTeamDriveRestrictions();
-    o.themeId = "foo";
+    o.themeId = 'foo';
   }
   buildCounterTeamDrive--;
   return o;
@@ -2642,8 +2642,8 @@ api.TeamDriveList buildTeamDriveList() {
   buildCounterTeamDriveList++;
   if (buildCounterTeamDriveList < 3) {
     o.items = buildUnnamed2220();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterTeamDriveList--;
   return o;
@@ -2664,7 +2664,7 @@ api.UserPicture buildUserPicture() {
   var o = api.UserPicture();
   buildCounterUserPicture++;
   if (buildCounterUserPicture < 3) {
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterUserPicture--;
   return o;
@@ -2683,11 +2683,11 @@ api.User buildUser() {
   var o = api.User();
   buildCounterUser++;
   if (buildCounterUser < 3) {
-    o.displayName = "foo";
-    o.emailAddress = "foo";
+    o.displayName = 'foo';
+    o.emailAddress = 'foo';
     o.isAuthenticatedUser = true;
-    o.kind = "foo";
-    o.permissionId = "foo";
+    o.kind = 'foo';
+    o.permissionId = 'foo';
     o.picture = buildUserPicture();
   }
   buildCounterUser--;
@@ -2708,486 +2708,486 @@ void checkUser(api.User o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AboutAdditionalRoleInfoRoleSets", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AboutAdditionalRoleInfoRoleSets', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAboutAdditionalRoleInfoRoleSets();
       var od = api.AboutAdditionalRoleInfoRoleSets.fromJson(o.toJson());
       checkAboutAdditionalRoleInfoRoleSets(od);
     });
   });
 
-  unittest.group("obj-schema-AboutAdditionalRoleInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AboutAdditionalRoleInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAboutAdditionalRoleInfo();
       var od = api.AboutAdditionalRoleInfo.fromJson(o.toJson());
       checkAboutAdditionalRoleInfo(od);
     });
   });
 
-  unittest.group("obj-schema-AboutDriveThemes", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AboutDriveThemes', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAboutDriveThemes();
       var od = api.AboutDriveThemes.fromJson(o.toJson());
       checkAboutDriveThemes(od);
     });
   });
 
-  unittest.group("obj-schema-AboutExportFormats", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AboutExportFormats', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAboutExportFormats();
       var od = api.AboutExportFormats.fromJson(o.toJson());
       checkAboutExportFormats(od);
     });
   });
 
-  unittest.group("obj-schema-AboutFeatures", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AboutFeatures', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAboutFeatures();
       var od = api.AboutFeatures.fromJson(o.toJson());
       checkAboutFeatures(od);
     });
   });
 
-  unittest.group("obj-schema-AboutImportFormats", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AboutImportFormats', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAboutImportFormats();
       var od = api.AboutImportFormats.fromJson(o.toJson());
       checkAboutImportFormats(od);
     });
   });
 
-  unittest.group("obj-schema-AboutMaxUploadSizes", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AboutMaxUploadSizes', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAboutMaxUploadSizes();
       var od = api.AboutMaxUploadSizes.fromJson(o.toJson());
       checkAboutMaxUploadSizes(od);
     });
   });
 
-  unittest.group("obj-schema-AboutQuotaBytesByService", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AboutQuotaBytesByService', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAboutQuotaBytesByService();
       var od = api.AboutQuotaBytesByService.fromJson(o.toJson());
       checkAboutQuotaBytesByService(od);
     });
   });
 
-  unittest.group("obj-schema-AboutTeamDriveThemes", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AboutTeamDriveThemes', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAboutTeamDriveThemes();
       var od = api.AboutTeamDriveThemes.fromJson(o.toJson());
       checkAboutTeamDriveThemes(od);
     });
   });
 
-  unittest.group("obj-schema-About", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-About', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAbout();
       var od = api.About.fromJson(o.toJson());
       checkAbout(od);
     });
   });
 
-  unittest.group("obj-schema-AppIcons", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AppIcons', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAppIcons();
       var od = api.AppIcons.fromJson(o.toJson());
       checkAppIcons(od);
     });
   });
 
-  unittest.group("obj-schema-App", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-App', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApp();
       var od = api.App.fromJson(o.toJson());
       checkApp(od);
     });
   });
 
-  unittest.group("obj-schema-AppList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AppList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAppList();
       var od = api.AppList.fromJson(o.toJson());
       checkAppList(od);
     });
   });
 
-  unittest.group("obj-schema-Change", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Change', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChange();
       var od = api.Change.fromJson(o.toJson());
       checkChange(od);
     });
   });
 
-  unittest.group("obj-schema-ChangeList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ChangeList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChangeList();
       var od = api.ChangeList.fromJson(o.toJson());
       checkChangeList(od);
     });
   });
 
-  unittest.group("obj-schema-Channel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Channel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od);
     });
   });
 
-  unittest.group("obj-schema-ChildList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ChildList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChildList();
       var od = api.ChildList.fromJson(o.toJson());
       checkChildList(od);
     });
   });
 
-  unittest.group("obj-schema-ChildReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ChildReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChildReference();
       var od = api.ChildReference.fromJson(o.toJson());
       checkChildReference(od);
     });
   });
 
-  unittest.group("obj-schema-CommentContext", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommentContext', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommentContext();
       var od = api.CommentContext.fromJson(o.toJson());
       checkCommentContext(od);
     });
   });
 
-  unittest.group("obj-schema-Comment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Comment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildComment();
       var od = api.Comment.fromJson(o.toJson());
       checkComment(od);
     });
   });
 
-  unittest.group("obj-schema-CommentList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommentList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommentList();
       var od = api.CommentList.fromJson(o.toJson());
       checkCommentList(od);
     });
   });
 
-  unittest.group("obj-schema-CommentReply", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommentReply', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommentReply();
       var od = api.CommentReply.fromJson(o.toJson());
       checkCommentReply(od);
     });
   });
 
-  unittest.group("obj-schema-CommentReplyList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommentReplyList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommentReplyList();
       var od = api.CommentReplyList.fromJson(o.toJson());
       checkCommentReplyList(od);
     });
   });
 
-  unittest.group("obj-schema-ContentRestriction", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContentRestriction', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContentRestriction();
       var od = api.ContentRestriction.fromJson(o.toJson());
       checkContentRestriction(od);
     });
   });
 
-  unittest.group("obj-schema-DriveBackgroundImageFile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveBackgroundImageFile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveBackgroundImageFile();
       var od = api.DriveBackgroundImageFile.fromJson(o.toJson());
       checkDriveBackgroundImageFile(od);
     });
   });
 
-  unittest.group("obj-schema-DriveCapabilities", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveCapabilities', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveCapabilities();
       var od = api.DriveCapabilities.fromJson(o.toJson());
       checkDriveCapabilities(od);
     });
   });
 
-  unittest.group("obj-schema-DriveRestrictions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveRestrictions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveRestrictions();
       var od = api.DriveRestrictions.fromJson(o.toJson());
       checkDriveRestrictions(od);
     });
   });
 
-  unittest.group("obj-schema-Drive", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Drive', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDrive();
       var od = api.Drive.fromJson(o.toJson());
       checkDrive(od);
     });
   });
 
-  unittest.group("obj-schema-DriveList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveList();
       var od = api.DriveList.fromJson(o.toJson());
       checkDriveList(od);
     });
   });
 
-  unittest.group("obj-schema-FileCapabilities", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileCapabilities', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileCapabilities();
       var od = api.FileCapabilities.fromJson(o.toJson());
       checkFileCapabilities(od);
     });
   });
 
-  unittest.group("obj-schema-FileImageMediaMetadataLocation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileImageMediaMetadataLocation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileImageMediaMetadataLocation();
       var od = api.FileImageMediaMetadataLocation.fromJson(o.toJson());
       checkFileImageMediaMetadataLocation(od);
     });
   });
 
-  unittest.group("obj-schema-FileImageMediaMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileImageMediaMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileImageMediaMetadata();
       var od = api.FileImageMediaMetadata.fromJson(o.toJson());
       checkFileImageMediaMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-FileIndexableText", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileIndexableText', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileIndexableText();
       var od = api.FileIndexableText.fromJson(o.toJson());
       checkFileIndexableText(od);
     });
   });
 
-  unittest.group("obj-schema-FileLabels", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileLabels', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileLabels();
       var od = api.FileLabels.fromJson(o.toJson());
       checkFileLabels(od);
     });
   });
 
-  unittest.group("obj-schema-FileShortcutDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileShortcutDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileShortcutDetails();
       var od = api.FileShortcutDetails.fromJson(o.toJson());
       checkFileShortcutDetails(od);
     });
   });
 
-  unittest.group("obj-schema-FileThumbnail", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileThumbnail', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileThumbnail();
       var od = api.FileThumbnail.fromJson(o.toJson());
       checkFileThumbnail(od);
     });
   });
 
-  unittest.group("obj-schema-FileVideoMediaMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileVideoMediaMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileVideoMediaMetadata();
       var od = api.FileVideoMediaMetadata.fromJson(o.toJson());
       checkFileVideoMediaMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-File", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-File', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
       checkFile(od);
     });
   });
 
-  unittest.group("obj-schema-FileList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileList();
       var od = api.FileList.fromJson(o.toJson());
       checkFileList(od);
     });
   });
 
-  unittest.group("obj-schema-GeneratedIds", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GeneratedIds', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGeneratedIds();
       var od = api.GeneratedIds.fromJson(o.toJson());
       checkGeneratedIds(od);
     });
   });
 
-  unittest.group("obj-schema-ParentList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParentList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParentList();
       var od = api.ParentList.fromJson(o.toJson());
       checkParentList(od);
     });
   });
 
-  unittest.group("obj-schema-ParentReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParentReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParentReference();
       var od = api.ParentReference.fromJson(o.toJson());
       checkParentReference(od);
     });
   });
 
-  unittest.group("obj-schema-PermissionPermissionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PermissionPermissionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPermissionPermissionDetails();
       var od = api.PermissionPermissionDetails.fromJson(o.toJson());
       checkPermissionPermissionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-PermissionTeamDrivePermissionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PermissionTeamDrivePermissionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPermissionTeamDrivePermissionDetails();
       var od = api.PermissionTeamDrivePermissionDetails.fromJson(o.toJson());
       checkPermissionTeamDrivePermissionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-Permission", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Permission', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPermission();
       var od = api.Permission.fromJson(o.toJson());
       checkPermission(od);
     });
   });
 
-  unittest.group("obj-schema-PermissionId", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PermissionId', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPermissionId();
       var od = api.PermissionId.fromJson(o.toJson());
       checkPermissionId(od);
     });
   });
 
-  unittest.group("obj-schema-PermissionList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PermissionList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPermissionList();
       var od = api.PermissionList.fromJson(o.toJson());
       checkPermissionList(od);
     });
   });
 
-  unittest.group("obj-schema-Property", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Property', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProperty();
       var od = api.Property.fromJson(o.toJson());
       checkProperty(od);
     });
   });
 
-  unittest.group("obj-schema-PropertyList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PropertyList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPropertyList();
       var od = api.PropertyList.fromJson(o.toJson());
       checkPropertyList(od);
     });
   });
 
-  unittest.group("obj-schema-Revision", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Revision', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevision();
       var od = api.Revision.fromJson(o.toJson());
       checkRevision(od);
     });
   });
 
-  unittest.group("obj-schema-RevisionList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RevisionList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevisionList();
       var od = api.RevisionList.fromJson(o.toJson());
       checkRevisionList(od);
     });
   });
 
-  unittest.group("obj-schema-StartPageToken", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StartPageToken', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStartPageToken();
       var od = api.StartPageToken.fromJson(o.toJson());
       checkStartPageToken(od);
     });
   });
 
-  unittest.group("obj-schema-TeamDriveBackgroundImageFile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TeamDriveBackgroundImageFile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTeamDriveBackgroundImageFile();
       var od = api.TeamDriveBackgroundImageFile.fromJson(o.toJson());
       checkTeamDriveBackgroundImageFile(od);
     });
   });
 
-  unittest.group("obj-schema-TeamDriveCapabilities", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TeamDriveCapabilities', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTeamDriveCapabilities();
       var od = api.TeamDriveCapabilities.fromJson(o.toJson());
       checkTeamDriveCapabilities(od);
     });
   });
 
-  unittest.group("obj-schema-TeamDriveRestrictions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TeamDriveRestrictions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTeamDriveRestrictions();
       var od = api.TeamDriveRestrictions.fromJson(o.toJson());
       checkTeamDriveRestrictions(od);
     });
   });
 
-  unittest.group("obj-schema-TeamDrive", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TeamDrive', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTeamDrive();
       var od = api.TeamDrive.fromJson(o.toJson());
       checkTeamDrive(od);
     });
   });
 
-  unittest.group("obj-schema-TeamDriveList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TeamDriveList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTeamDriveList();
       var od = api.TeamDriveList.fromJson(o.toJson());
       checkTeamDriveList(od);
     });
   });
 
-  unittest.group("obj-schema-UserPicture", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UserPicture', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserPicture();
       var od = api.UserPicture.fromJson(o.toJson());
       checkUserPicture(od);
     });
   });
 
-  unittest.group("obj-schema-User", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-User', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od);
     });
   });
 
-  unittest.group("resource-AboutResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AboutResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AboutResourceApi res = api.DriveApi(mock).about;
       var arg_includeSubscribed = true;
-      var arg_maxChangeIdCount = "foo";
-      var arg_startChangeId = "foo";
-      var arg_$fields = "foo";
+      var arg_maxChangeIdCount = 'foo';
+      var arg_startChangeId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3209,8 +3209,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3226,7 +3226,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAbout());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3243,12 +3243,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-AppsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AppsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AppsResourceApi res = api.DriveApi(mock).apps;
-      var arg_appId = "foo";
-      var arg_$fields = "foo";
+      var arg_appId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3265,7 +3265,7 @@ void main() {
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_appId"));
+        unittest.expect(subPart, unittest.equals('$arg_appId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3273,8 +3273,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3284,7 +3284,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApp());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3296,13 +3296,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AppsResourceApi res = api.DriveApi(mock).apps;
-      var arg_appFilterExtensions = "foo";
-      var arg_appFilterMimeTypes = "foo";
-      var arg_languageCode = "foo";
-      var arg_$fields = "foo";
+      var arg_appFilterExtensions = 'foo';
+      var arg_appFilterMimeTypes = 'foo';
+      var arg_languageCode = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3324,8 +3324,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3341,7 +3341,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAppList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3358,16 +3358,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ChangesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ChangesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ChangesResourceApi res = api.DriveApi(mock).changes;
-      var arg_changeId = "foo";
-      var arg_driveId = "foo";
+      var arg_changeId = 'foo';
+      var arg_driveId = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_teamDriveId = "foo";
-      var arg_$fields = "foo";
+      var arg_teamDriveId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3384,7 +3384,7 @@ void main() {
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_changeId"));
+        unittest.expect(subPart, unittest.equals('$arg_changeId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3392,8 +3392,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3411,7 +3411,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChange());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3428,14 +3428,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--getStartPageToken", () {
+    unittest.test('method--getStartPageToken', () {
       var mock = HttpServerMock();
       api.ChangesResourceApi res = api.DriveApi(mock).changes;
-      var arg_driveId = "foo";
+      var arg_driveId = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_teamDriveId = "foo";
-      var arg_$fields = "foo";
+      var arg_teamDriveId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3457,8 +3457,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3476,7 +3476,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildStartPageToken());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3493,24 +3493,24 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ChangesResourceApi res = api.DriveApi(mock).changes;
-      var arg_driveId = "foo";
+      var arg_driveId = 'foo';
       var arg_includeCorpusRemovals = true;
       var arg_includeDeleted = true;
       var arg_includeItemsFromAllDrives = true;
-      var arg_includePermissionsForView = "foo";
+      var arg_includePermissionsForView = 'foo';
       var arg_includeSubscribed = true;
       var arg_includeTeamDriveItems = true;
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_spaces = "foo";
-      var arg_startChangeId = "foo";
+      var arg_pageToken = 'foo';
+      var arg_spaces = 'foo';
+      var arg_startChangeId = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_teamDriveId = "foo";
-      var arg_$fields = "foo";
+      var arg_teamDriveId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3532,8 +3532,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3570,7 +3570,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChangeList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3597,25 +3597,25 @@ void main() {
       })));
     });
 
-    unittest.test("method--watch", () {
+    unittest.test('method--watch', () {
       var mock = HttpServerMock();
       api.ChangesResourceApi res = api.DriveApi(mock).changes;
       var arg_request = buildChannel();
-      var arg_driveId = "foo";
+      var arg_driveId = 'foo';
       var arg_includeCorpusRemovals = true;
       var arg_includeDeleted = true;
       var arg_includeItemsFromAllDrives = true;
-      var arg_includePermissionsForView = "foo";
+      var arg_includePermissionsForView = 'foo';
       var arg_includeSubscribed = true;
       var arg_includeTeamDriveItems = true;
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_spaces = "foo";
-      var arg_startChangeId = "foo";
+      var arg_pageToken = 'foo';
+      var arg_spaces = 'foo';
+      var arg_startChangeId = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_teamDriveId = "foo";
-      var arg_$fields = "foo";
+      var arg_teamDriveId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -3640,8 +3640,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3678,7 +3678,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3706,12 +3706,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-ChannelsResourceApi", () {
-    unittest.test("method--stop", () {
+  unittest.group('resource-ChannelsResourceApi', () {
+    unittest.test('method--stop', () {
       var mock = HttpServerMock();
       api.ChannelsResourceApi res = api.DriveApi(mock).channels;
       var arg_request = buildChannel();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -3736,8 +3736,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3747,9 +3747,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3758,14 +3758,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ChildrenResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-ChildrenResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ChildrenResourceApi res = api.DriveApi(mock).children;
-      var arg_folderId = "foo";
-      var arg_childId = "foo";
+      var arg_folderId = 'foo';
+      var arg_childId = 'foo';
       var arg_enforceSingleParent = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3780,18 +3780,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/children/", pathOffset);
+        index = path.indexOf('/children/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_folderId"));
+        unittest.expect(subPart, unittest.equals('$arg_folderId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/children/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_childId"));
+        unittest.expect(subPart, unittest.equals('$arg_childId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3799,8 +3799,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3812,9 +3812,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3824,12 +3824,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ChildrenResourceApi res = api.DriveApi(mock).children;
-      var arg_folderId = "foo";
-      var arg_childId = "foo";
-      var arg_$fields = "foo";
+      var arg_folderId = 'foo';
+      var arg_childId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3844,18 +3844,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/children/", pathOffset);
+        index = path.indexOf('/children/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_folderId"));
+        unittest.expect(subPart, unittest.equals('$arg_folderId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/children/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_childId"));
+        unittest.expect(subPart, unittest.equals('$arg_childId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3863,8 +3863,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3874,7 +3874,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChildReference());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3886,15 +3886,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.ChildrenResourceApi res = api.DriveApi(mock).children;
       var arg_request = buildChildReference();
-      var arg_folderId = "foo";
+      var arg_folderId = 'foo';
       var arg_enforceSingleParent = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ChildReference.fromJson(json);
         checkChildReference(obj);
@@ -3912,12 +3912,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/children", pathOffset);
+        index = path.indexOf('/children', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_folderId"));
+        unittest.expect(subPart, unittest.equals('$arg_folderId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/children"));
         pathOffset += 9;
@@ -3928,8 +3928,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3945,7 +3945,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChildReference());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3961,15 +3961,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ChildrenResourceApi res = api.DriveApi(mock).children;
-      var arg_folderId = "foo";
+      var arg_folderId = 'foo';
       var arg_maxResults = 42;
-      var arg_orderBy = "foo";
-      var arg_pageToken = "foo";
-      var arg_q = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_q = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3984,12 +3984,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/children", pathOffset);
+        index = path.indexOf('/children', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_folderId"));
+        unittest.expect(subPart, unittest.equals('$arg_folderId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/children"));
         pathOffset += 9;
@@ -4000,8 +4000,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4018,7 +4018,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChildList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4036,13 +4036,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-CommentsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-CommentsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.CommentsResourceApi res = api.DriveApi(mock).comments;
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4057,18 +4057,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4076,8 +4076,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4087,9 +4087,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4097,13 +4097,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.CommentsResourceApi res = api.DriveApi(mock).comments;
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
       var arg_includeDeleted = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4118,18 +4118,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4137,8 +4137,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4150,7 +4150,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildComment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4163,12 +4163,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.CommentsResourceApi res = api.DriveApi(mock).comments;
       var arg_request = buildComment();
-      var arg_fileId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Comment.fromJson(json);
         checkComment(obj);
@@ -4186,12 +4186,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments", pathOffset);
+        index = path.indexOf('/comments', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/comments"));
         pathOffset += 9;
@@ -4202,8 +4202,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4213,7 +4213,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildComment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4225,15 +4225,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CommentsResourceApi res = api.DriveApi(mock).comments;
-      var arg_fileId = "foo";
+      var arg_fileId = 'foo';
       var arg_includeDeleted = true;
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_updatedMin = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_updatedMin = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4248,12 +4248,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments", pathOffset);
+        index = path.indexOf('/comments', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/comments"));
         pathOffset += 9;
@@ -4264,8 +4264,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4283,7 +4283,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCommentList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4300,13 +4300,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.CommentsResourceApi res = api.DriveApi(mock).comments;
       var arg_request = buildComment();
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Comment.fromJson(json);
         checkComment(obj);
@@ -4324,18 +4324,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4343,8 +4343,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4354,7 +4354,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildComment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4366,13 +4366,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.CommentsResourceApi res = api.DriveApi(mock).comments;
       var arg_request = buildComment();
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Comment.fromJson(json);
         checkComment(obj);
@@ -4390,18 +4390,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4409,8 +4409,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4420,7 +4420,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildComment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4433,12 +4433,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-DrivesResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-DrivesResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.DrivesResourceApi res = api.DriveApi(mock).drives;
-      var arg_driveId = "foo";
-      var arg_$fields = "foo";
+      var arg_driveId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4455,7 +4455,7 @@ void main() {
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+        unittest.expect(subPart, unittest.equals('$arg_driveId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4463,8 +4463,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4474,9 +4474,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4484,12 +4484,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.DrivesResourceApi res = api.DriveApi(mock).drives;
-      var arg_driveId = "foo";
+      var arg_driveId = 'foo';
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4506,7 +4506,7 @@ void main() {
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+        unittest.expect(subPart, unittest.equals('$arg_driveId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4514,8 +4514,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4527,7 +4527,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4541,11 +4541,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--hide", () {
+    unittest.test('method--hide', () {
       var mock = HttpServerMock();
       api.DrivesResourceApi res = api.DriveApi(mock).drives;
-      var arg_driveId = "foo";
-      var arg_$fields = "foo";
+      var arg_driveId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4560,12 +4560,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("drives/"));
         pathOffset += 7;
-        index = path.indexOf("/hide", pathOffset);
+        index = path.indexOf('/hide', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+        unittest.expect(subPart, unittest.equals('$arg_driveId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/hide"));
         pathOffset += 5;
@@ -4576,8 +4576,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4587,7 +4587,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4599,12 +4599,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.DrivesResourceApi res = api.DriveApi(mock).drives;
       var arg_request = buildDrive();
-      var arg_requestId = "foo";
-      var arg_$fields = "foo";
+      var arg_requestId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Drive.fromJson(json);
         checkDrive(obj);
@@ -4629,8 +4629,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4642,7 +4642,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4654,14 +4654,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.DrivesResourceApi res = api.DriveApi(mock).drives;
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_q = "foo";
+      var arg_pageToken = 'foo';
+      var arg_q = 'foo';
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4683,8 +4683,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4701,7 +4701,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDriveList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4718,11 +4718,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--unhide", () {
+    unittest.test('method--unhide', () {
       var mock = HttpServerMock();
       api.DrivesResourceApi res = api.DriveApi(mock).drives;
-      var arg_driveId = "foo";
-      var arg_$fields = "foo";
+      var arg_driveId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4737,12 +4737,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("drives/"));
         pathOffset += 7;
-        index = path.indexOf("/unhide", pathOffset);
+        index = path.indexOf('/unhide', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+        unittest.expect(subPart, unittest.equals('$arg_driveId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/unhide"));
         pathOffset += 7;
@@ -4753,8 +4753,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4764,7 +4764,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4776,13 +4776,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.DrivesResourceApi res = api.DriveApi(mock).drives;
       var arg_request = buildDrive();
-      var arg_driveId = "foo";
+      var arg_driveId = 'foo';
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Drive.fromJson(json);
         checkDrive(obj);
@@ -4802,7 +4802,7 @@ void main() {
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+        unittest.expect(subPart, unittest.equals('$arg_driveId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4810,8 +4810,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4823,7 +4823,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4838,24 +4838,24 @@ void main() {
     });
   });
 
-  unittest.group("resource-FilesResourceApi", () {
-    unittest.test("method--copy", () {
+  unittest.group('resource-FilesResourceApi', () {
+    unittest.test('method--copy', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
       var arg_request = buildFile();
-      var arg_fileId = "foo";
+      var arg_fileId = 'foo';
       var arg_convert = true;
       var arg_enforceSingleParent = true;
-      var arg_includePermissionsForView = "foo";
+      var arg_includePermissionsForView = 'foo';
       var arg_ocr = true;
-      var arg_ocrLanguage = "foo";
+      var arg_ocrLanguage = 'foo';
       var arg_pinned = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_timedTextLanguage = "foo";
-      var arg_timedTextTrackName = "foo";
-      var arg_visibility = "foo";
-      var arg_$fields = "foo";
+      var arg_timedTextLanguage = 'foo';
+      var arg_timedTextTrackName = 'foo';
+      var arg_visibility = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.File.fromJson(json);
         checkFile(obj);
@@ -4873,12 +4873,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/copy", pathOffset);
+        index = path.indexOf('/copy', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/copy"));
         pathOffset += 5;
@@ -4889,8 +4889,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4921,7 +4921,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4945,14 +4945,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
-      var arg_fileId = "foo";
+      var arg_fileId = 'foo';
       var arg_enforceSingleParent = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4969,7 +4969,7 @@ void main() {
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4977,8 +4977,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4994,9 +4994,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5008,11 +5008,11 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--emptyTrash", () {
+    unittest.test('method--emptyTrash', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
       var arg_enforceSingleParent = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5034,8 +5034,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5047,9 +5047,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5059,15 +5059,15 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--export", () {
+    unittest.test('method--export', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
-      var arg_fileId = "foo";
-      var arg_mimeType = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_mimeType = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5082,12 +5082,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/export", pathOffset);
+        index = path.indexOf('/export', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/export"));
         pathOffset += 7;
@@ -5098,8 +5098,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5111,9 +5111,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5121,12 +5121,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--generateIds", () {
+    unittest.test('method--generateIds', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
       var arg_maxResults = 42;
-      var arg_space = "foo";
-      var arg_$fields = "foo";
+      var arg_space = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5148,8 +5148,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5162,7 +5162,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGeneratedIds());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5177,21 +5177,21 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
-      var arg_fileId = "foo";
+      var arg_fileId = 'foo';
       var arg_acknowledgeAbuse = true;
-      var arg_includePermissionsForView = "foo";
-      var arg_projection = "foo";
-      var arg_revisionId = "foo";
+      var arg_includePermissionsForView = 'foo';
+      var arg_projection = 'foo';
+      var arg_revisionId = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_updateViewedDate = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5208,7 +5208,7 @@ void main() {
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5216,8 +5216,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5241,7 +5241,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5261,7 +5261,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -5270,17 +5270,17 @@ void main() {
       var arg_request = buildFile();
       var arg_convert = true;
       var arg_enforceSingleParent = true;
-      var arg_includePermissionsForView = "foo";
+      var arg_includePermissionsForView = 'foo';
       var arg_ocr = true;
-      var arg_ocrLanguage = "foo";
+      var arg_ocrLanguage = 'foo';
       var arg_pinned = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_timedTextLanguage = "foo";
-      var arg_timedTextTrackName = "foo";
+      var arg_timedTextLanguage = 'foo';
+      var arg_timedTextTrackName = 'foo';
       var arg_useContentAsIndexableText = true;
-      var arg_visibility = "foo";
-      var arg_$fields = "foo";
+      var arg_visibility = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.File.fromJson(json);
         checkFile(obj);
@@ -5305,8 +5305,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5339,7 +5339,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5364,25 +5364,25 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
-      var arg_corpora = "foo";
-      var arg_corpus = "foo";
-      var arg_driveId = "foo";
+      var arg_corpora = 'foo';
+      var arg_corpus = 'foo';
+      var arg_driveId = 'foo';
       var arg_includeItemsFromAllDrives = true;
-      var arg_includePermissionsForView = "foo";
+      var arg_includePermissionsForView = 'foo';
       var arg_includeTeamDriveItems = true;
       var arg_maxResults = 42;
-      var arg_orderBy = "foo";
-      var arg_pageToken = "foo";
-      var arg_projection = "foo";
-      var arg_q = "foo";
-      var arg_spaces = "foo";
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_projection = 'foo';
+      var arg_q = 'foo';
+      var arg_spaces = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_teamDriveId = "foo";
-      var arg_$fields = "foo";
+      var arg_teamDriveId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5404,8 +5404,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5442,7 +5442,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFileList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5470,29 +5470,29 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
       var arg_request = buildFile();
-      var arg_fileId = "foo";
-      var arg_addParents = "foo";
+      var arg_fileId = 'foo';
+      var arg_addParents = 'foo';
       var arg_convert = true;
       var arg_enforceSingleParent = true;
-      var arg_includePermissionsForView = "foo";
-      var arg_modifiedDateBehavior = "foo";
+      var arg_includePermissionsForView = 'foo';
+      var arg_modifiedDateBehavior = 'foo';
       var arg_newRevision = true;
       var arg_ocr = true;
-      var arg_ocrLanguage = "foo";
+      var arg_ocrLanguage = 'foo';
       var arg_pinned = true;
-      var arg_removeParents = "foo";
+      var arg_removeParents = 'foo';
       var arg_setModifiedDate = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_timedTextLanguage = "foo";
-      var arg_timedTextTrackName = "foo";
+      var arg_timedTextLanguage = 'foo';
+      var arg_timedTextTrackName = 'foo';
       var arg_updateViewedDate = true;
       var arg_useContentAsIndexableText = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.File.fromJson(json);
         checkFile(obj);
@@ -5512,7 +5512,7 @@ void main() {
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5520,8 +5520,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5564,7 +5564,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5594,14 +5594,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--touch", () {
+    unittest.test('method--touch', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
-      var arg_fileId = "foo";
-      var arg_includePermissionsForView = "foo";
+      var arg_fileId = 'foo';
+      var arg_includePermissionsForView = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5616,12 +5616,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/touch", pathOffset);
+        index = path.indexOf('/touch', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/touch"));
         pathOffset += 6;
@@ -5632,8 +5632,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5649,7 +5649,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5665,14 +5665,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--trash", () {
+    unittest.test('method--trash', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
-      var arg_fileId = "foo";
-      var arg_includePermissionsForView = "foo";
+      var arg_fileId = 'foo';
+      var arg_includePermissionsForView = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5687,12 +5687,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/trash", pathOffset);
+        index = path.indexOf('/trash', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/trash"));
         pathOffset += 6;
@@ -5703,8 +5703,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5720,7 +5720,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5736,14 +5736,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--untrash", () {
+    unittest.test('method--untrash', () {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
-      var arg_fileId = "foo";
-      var arg_includePermissionsForView = "foo";
+      var arg_fileId = 'foo';
+      var arg_includePermissionsForView = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5758,12 +5758,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/untrash", pathOffset);
+        index = path.indexOf('/untrash', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/untrash"));
         pathOffset += 8;
@@ -5774,8 +5774,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5791,7 +5791,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5807,32 +5807,32 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
       var arg_request = buildFile();
-      var arg_fileId = "foo";
-      var arg_addParents = "foo";
+      var arg_fileId = 'foo';
+      var arg_addParents = 'foo';
       var arg_convert = true;
       var arg_enforceSingleParent = true;
-      var arg_includePermissionsForView = "foo";
-      var arg_modifiedDateBehavior = "foo";
+      var arg_includePermissionsForView = 'foo';
+      var arg_modifiedDateBehavior = 'foo';
       var arg_newRevision = true;
       var arg_ocr = true;
-      var arg_ocrLanguage = "foo";
+      var arg_ocrLanguage = 'foo';
       var arg_pinned = true;
-      var arg_removeParents = "foo";
+      var arg_removeParents = 'foo';
       var arg_setModifiedDate = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_timedTextLanguage = "foo";
-      var arg_timedTextTrackName = "foo";
+      var arg_timedTextLanguage = 'foo';
+      var arg_timedTextTrackName = 'foo';
       var arg_updateViewedDate = true;
       var arg_useContentAsIndexableText = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.File.fromJson(json);
         checkFile(obj);
@@ -5852,7 +5852,7 @@ void main() {
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5860,8 +5860,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5904,7 +5904,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5934,22 +5934,22 @@ void main() {
       })));
     });
 
-    unittest.test("method--watch", () {
+    unittest.test('method--watch', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DriveApi(mock).files;
       var arg_request = buildChannel();
-      var arg_fileId = "foo";
+      var arg_fileId = 'foo';
       var arg_acknowledgeAbuse = true;
-      var arg_includePermissionsForView = "foo";
-      var arg_projection = "foo";
-      var arg_revisionId = "foo";
+      var arg_includePermissionsForView = 'foo';
+      var arg_projection = 'foo';
+      var arg_revisionId = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_updateViewedDate = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -5967,12 +5967,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/watch", pathOffset);
+        index = path.indexOf('/watch', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/watch"));
         pathOffset += 6;
@@ -5983,8 +5983,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6008,7 +6008,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6029,14 +6029,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ParentsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-ParentsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ParentsResourceApi res = api.DriveApi(mock).parents;
-      var arg_fileId = "foo";
-      var arg_parentId = "foo";
+      var arg_fileId = 'foo';
+      var arg_parentId = 'foo';
       var arg_enforceSingleParent = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6051,18 +6051,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/parents/", pathOffset);
+        index = path.indexOf('/parents/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/parents/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_parentId"));
+        unittest.expect(subPart, unittest.equals('$arg_parentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6070,8 +6070,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6083,9 +6083,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -6095,12 +6095,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ParentsResourceApi res = api.DriveApi(mock).parents;
-      var arg_fileId = "foo";
-      var arg_parentId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_parentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6115,18 +6115,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/parents/", pathOffset);
+        index = path.indexOf('/parents/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/parents/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_parentId"));
+        unittest.expect(subPart, unittest.equals('$arg_parentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6134,8 +6134,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6145,7 +6145,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildParentReference());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6157,15 +6157,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.ParentsResourceApi res = api.DriveApi(mock).parents;
       var arg_request = buildParentReference();
-      var arg_fileId = "foo";
+      var arg_fileId = 'foo';
       var arg_enforceSingleParent = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ParentReference.fromJson(json);
         checkParentReference(obj);
@@ -6183,12 +6183,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/parents", pathOffset);
+        index = path.indexOf('/parents', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/parents"));
         pathOffset += 8;
@@ -6199,8 +6199,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6216,7 +6216,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildParentReference());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6232,11 +6232,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ParentsResourceApi res = api.DriveApi(mock).parents;
-      var arg_fileId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6251,12 +6251,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/parents", pathOffset);
+        index = path.indexOf('/parents', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/parents"));
         pathOffset += 8;
@@ -6267,8 +6267,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6278,7 +6278,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildParentList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6291,16 +6291,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-PermissionsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-PermissionsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
-      var arg_fileId = "foo";
-      var arg_permissionId = "foo";
+      var arg_fileId = 'foo';
+      var arg_permissionId = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6315,18 +6315,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/permissions/", pathOffset);
+        index = path.indexOf('/permissions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/permissions/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_permissionId"));
+        unittest.expect(subPart, unittest.equals('$arg_permissionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6334,8 +6334,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6351,9 +6351,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -6365,15 +6365,15 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
-      var arg_fileId = "foo";
-      var arg_permissionId = "foo";
+      var arg_fileId = 'foo';
+      var arg_permissionId = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6388,18 +6388,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/permissions/", pathOffset);
+        index = path.indexOf('/permissions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/permissions/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_permissionId"));
+        unittest.expect(subPart, unittest.equals('$arg_permissionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6407,8 +6407,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6424,7 +6424,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPermission());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6440,11 +6440,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIdForEmail", () {
+    unittest.test('method--getIdForEmail', () {
       var mock = HttpServerMock();
       api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
-      var arg_email = "foo";
-      var arg_$fields = "foo";
+      var arg_email = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6461,7 +6461,7 @@ void main() {
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_email"));
+        unittest.expect(subPart, unittest.equals('$arg_email'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6469,8 +6469,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6480,7 +6480,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPermissionId());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6492,19 +6492,19 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
-      var arg_fileId = "foo";
-      var arg_emailMessage = "foo";
+      var arg_fileId = 'foo';
+      var arg_emailMessage = 'foo';
       var arg_enforceSingleParent = true;
       var arg_moveToNewOwnersRoot = true;
       var arg_sendNotificationEmails = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Permission.fromJson(json);
         checkPermission(obj);
@@ -6522,12 +6522,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/permissions", pathOffset);
+        index = path.indexOf('/permissions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/permissions"));
         pathOffset += 12;
@@ -6538,8 +6538,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6563,7 +6563,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPermission());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6583,17 +6583,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
-      var arg_fileId = "foo";
-      var arg_includePermissionsForView = "foo";
+      var arg_fileId = 'foo';
+      var arg_includePermissionsForView = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6608,12 +6608,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/permissions", pathOffset);
+        index = path.indexOf('/permissions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/permissions"));
         pathOffset += 12;
@@ -6624,8 +6624,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6647,7 +6647,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPermissionList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6666,18 +6666,18 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
-      var arg_fileId = "foo";
-      var arg_permissionId = "foo";
+      var arg_fileId = 'foo';
+      var arg_permissionId = 'foo';
       var arg_removeExpiration = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_transferOwnership = true;
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Permission.fromJson(json);
         checkPermission(obj);
@@ -6695,18 +6695,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/permissions/", pathOffset);
+        index = path.indexOf('/permissions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/permissions/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_permissionId"));
+        unittest.expect(subPart, unittest.equals('$arg_permissionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6714,8 +6714,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6735,7 +6735,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPermission());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6753,18 +6753,18 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
-      var arg_fileId = "foo";
-      var arg_permissionId = "foo";
+      var arg_fileId = 'foo';
+      var arg_permissionId = 'foo';
       var arg_removeExpiration = true;
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_transferOwnership = true;
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Permission.fromJson(json);
         checkPermission(obj);
@@ -6782,18 +6782,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/permissions/", pathOffset);
+        index = path.indexOf('/permissions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/permissions/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_permissionId"));
+        unittest.expect(subPart, unittest.equals('$arg_permissionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6801,8 +6801,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6822,7 +6822,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPermission());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6841,14 +6841,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-PropertiesResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-PropertiesResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.PropertiesResourceApi res = api.DriveApi(mock).properties;
-      var arg_fileId = "foo";
-      var arg_propertyKey = "foo";
-      var arg_visibility = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_propertyKey = 'foo';
+      var arg_visibility = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6863,18 +6863,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/properties/", pathOffset);
+        index = path.indexOf('/properties/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/properties/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_propertyKey"));
+        unittest.expect(subPart, unittest.equals('$arg_propertyKey'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6882,8 +6882,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6895,9 +6895,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -6906,13 +6906,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.PropertiesResourceApi res = api.DriveApi(mock).properties;
-      var arg_fileId = "foo";
-      var arg_propertyKey = "foo";
-      var arg_visibility = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_propertyKey = 'foo';
+      var arg_visibility = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6927,18 +6927,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/properties/", pathOffset);
+        index = path.indexOf('/properties/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/properties/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_propertyKey"));
+        unittest.expect(subPart, unittest.equals('$arg_propertyKey'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6946,8 +6946,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6959,7 +6959,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProperty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6972,12 +6972,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.PropertiesResourceApi res = api.DriveApi(mock).properties;
       var arg_request = buildProperty();
-      var arg_fileId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Property.fromJson(json);
         checkProperty(obj);
@@ -6995,12 +6995,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/properties", pathOffset);
+        index = path.indexOf('/properties', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/properties"));
         pathOffset += 11;
@@ -7011,8 +7011,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7022,7 +7022,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProperty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7034,11 +7034,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PropertiesResourceApi res = api.DriveApi(mock).properties;
-      var arg_fileId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7053,12 +7053,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/properties", pathOffset);
+        index = path.indexOf('/properties', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/properties"));
         pathOffset += 11;
@@ -7069,8 +7069,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7080,7 +7080,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPropertyList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7092,14 +7092,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.PropertiesResourceApi res = api.DriveApi(mock).properties;
       var arg_request = buildProperty();
-      var arg_fileId = "foo";
-      var arg_propertyKey = "foo";
-      var arg_visibility = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_propertyKey = 'foo';
+      var arg_visibility = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Property.fromJson(json);
         checkProperty(obj);
@@ -7117,18 +7117,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/properties/", pathOffset);
+        index = path.indexOf('/properties/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/properties/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_propertyKey"));
+        unittest.expect(subPart, unittest.equals('$arg_propertyKey'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7136,8 +7136,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7149,7 +7149,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProperty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7162,14 +7162,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.PropertiesResourceApi res = api.DriveApi(mock).properties;
       var arg_request = buildProperty();
-      var arg_fileId = "foo";
-      var arg_propertyKey = "foo";
-      var arg_visibility = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_propertyKey = 'foo';
+      var arg_visibility = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Property.fromJson(json);
         checkProperty(obj);
@@ -7187,18 +7187,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/properties/", pathOffset);
+        index = path.indexOf('/properties/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/properties/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_propertyKey"));
+        unittest.expect(subPart, unittest.equals('$arg_propertyKey'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7206,8 +7206,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7219,7 +7219,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProperty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7233,14 +7233,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-RepliesResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-RepliesResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.RepliesResourceApi res = api.DriveApi(mock).replies;
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
-      var arg_replyId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
+      var arg_replyId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7255,27 +7255,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
-        index = path.indexOf("/replies/", pathOffset);
+        index = path.indexOf('/replies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/replies/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_replyId"));
+        unittest.expect(subPart, unittest.equals('$arg_replyId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7283,8 +7283,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7294,9 +7294,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -7304,14 +7304,14 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.RepliesResourceApi res = api.DriveApi(mock).replies;
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
-      var arg_replyId = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
+      var arg_replyId = 'foo';
       var arg_includeDeleted = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7326,27 +7326,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
-        index = path.indexOf("/replies/", pathOffset);
+        index = path.indexOf('/replies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/replies/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_replyId"));
+        unittest.expect(subPart, unittest.equals('$arg_replyId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7354,8 +7354,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7367,7 +7367,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCommentReply());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7380,13 +7380,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.RepliesResourceApi res = api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CommentReply.fromJson(json);
         checkCommentReply(obj);
@@ -7404,21 +7404,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
-        index = path.indexOf("/replies", pathOffset);
+        index = path.indexOf('/replies', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/replies"));
         pathOffset += 8;
@@ -7429,8 +7429,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7440,7 +7440,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCommentReply());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7452,15 +7452,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.RepliesResourceApi res = api.DriveApi(mock).replies;
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
       var arg_includeDeleted = true;
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7475,21 +7475,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
-        index = path.indexOf("/replies", pathOffset);
+        index = path.indexOf('/replies', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/replies"));
         pathOffset += 8;
@@ -7500,8 +7500,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7517,7 +7517,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCommentReplyList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7533,14 +7533,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.RepliesResourceApi res = api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
-      var arg_replyId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
+      var arg_replyId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CommentReply.fromJson(json);
         checkCommentReply(obj);
@@ -7558,27 +7558,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
-        index = path.indexOf("/replies/", pathOffset);
+        index = path.indexOf('/replies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/replies/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_replyId"));
+        unittest.expect(subPart, unittest.equals('$arg_replyId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7586,8 +7586,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7597,7 +7597,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCommentReply());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7610,14 +7610,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.RepliesResourceApi res = api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
-      var arg_fileId = "foo";
-      var arg_commentId = "foo";
-      var arg_replyId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_commentId = 'foo';
+      var arg_replyId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CommentReply.fromJson(json);
         checkCommentReply(obj);
@@ -7635,27 +7635,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/comments/", pathOffset);
+        index = path.indexOf('/comments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/comments/"));
         pathOffset += 10;
-        index = path.indexOf("/replies/", pathOffset);
+        index = path.indexOf('/replies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_commentId"));
+        unittest.expect(subPart, unittest.equals('$arg_commentId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/replies/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_replyId"));
+        unittest.expect(subPart, unittest.equals('$arg_replyId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7663,8 +7663,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7674,7 +7674,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCommentReply());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7688,13 +7688,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-RevisionsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-RevisionsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
-      var arg_fileId = "foo";
-      var arg_revisionId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_revisionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7709,18 +7709,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/revisions/", pathOffset);
+        index = path.indexOf('/revisions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/revisions/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_revisionId"));
+        unittest.expect(subPart, unittest.equals('$arg_revisionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7728,8 +7728,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7739,9 +7739,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -7749,12 +7749,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
-      var arg_fileId = "foo";
-      var arg_revisionId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_revisionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7769,18 +7769,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/revisions/", pathOffset);
+        index = path.indexOf('/revisions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/revisions/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_revisionId"));
+        unittest.expect(subPart, unittest.equals('$arg_revisionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7788,8 +7788,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7799,7 +7799,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevision());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7811,13 +7811,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
-      var arg_fileId = "foo";
+      var arg_fileId = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7832,12 +7832,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/revisions", pathOffset);
+        index = path.indexOf('/revisions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/revisions"));
         pathOffset += 10;
@@ -7848,8 +7848,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7863,7 +7863,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevisionList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7878,13 +7878,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
       var arg_request = buildRevision();
-      var arg_fileId = "foo";
-      var arg_revisionId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_revisionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Revision.fromJson(json);
         checkRevision(obj);
@@ -7902,18 +7902,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/revisions/", pathOffset);
+        index = path.indexOf('/revisions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/revisions/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_revisionId"));
+        unittest.expect(subPart, unittest.equals('$arg_revisionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7921,8 +7921,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7932,7 +7932,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevision());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7944,13 +7944,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
       var arg_request = buildRevision();
-      var arg_fileId = "foo";
-      var arg_revisionId = "foo";
-      var arg_$fields = "foo";
+      var arg_fileId = 'foo';
+      var arg_revisionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Revision.fromJson(json);
         checkRevision(obj);
@@ -7968,18 +7968,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("files/"));
         pathOffset += 6;
-        index = path.indexOf("/revisions/", pathOffset);
+        index = path.indexOf('/revisions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_fileId"));
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/revisions/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_revisionId"));
+        unittest.expect(subPart, unittest.equals('$arg_revisionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7987,8 +7987,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7998,7 +7998,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevision());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8011,12 +8011,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-TeamdrivesResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-TeamdrivesResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
-      var arg_teamDriveId = "foo";
-      var arg_$fields = "foo";
+      var arg_teamDriveId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8033,7 +8033,7 @@ void main() {
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_teamDriveId"));
+        unittest.expect(subPart, unittest.equals('$arg_teamDriveId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -8041,8 +8041,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8052,9 +8052,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -8062,12 +8062,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
-      var arg_teamDriveId = "foo";
+      var arg_teamDriveId = 'foo';
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8084,7 +8084,7 @@ void main() {
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_teamDriveId"));
+        unittest.expect(subPart, unittest.equals('$arg_teamDriveId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -8092,8 +8092,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8105,7 +8105,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTeamDrive());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8119,12 +8119,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
       var arg_request = buildTeamDrive();
-      var arg_requestId = "foo";
-      var arg_$fields = "foo";
+      var arg_requestId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TeamDrive.fromJson(json);
         checkTeamDrive(obj);
@@ -8149,8 +8149,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8162,7 +8162,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTeamDrive());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8174,14 +8174,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_q = "foo";
+      var arg_pageToken = 'foo';
+      var arg_q = 'foo';
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8203,8 +8203,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8221,7 +8221,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTeamDriveList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8238,13 +8238,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
       var arg_request = buildTeamDrive();
-      var arg_teamDriveId = "foo";
+      var arg_teamDriveId = 'foo';
       var arg_useDomainAdminAccess = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TeamDrive.fromJson(json);
         checkTeamDrive(obj);
@@ -8264,7 +8264,7 @@ void main() {
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_teamDriveId"));
+        unittest.expect(subPart, unittest.equals('$arg_teamDriveId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -8272,8 +8272,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8285,7 +8285,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTeamDrive());
         return async.Future.value(stringResponse(200, h, resp));

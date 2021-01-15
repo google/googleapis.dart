@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,15 +36,15 @@ const core.String USER_AGENT = 'dart-api-client libraryagent/v1';
 class LibraryagentApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ShelvesResourceApi get shelves => ShelvesResourceApi(_requester);
 
   LibraryagentApi(http.Client client,
-      {core.String rootUrl = "https://libraryagent.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://libraryagent.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -86,17 +85,17 @@ class ShelvesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -143,20 +142,20 @@ class ShelvesResourceApi {
     core.String _body;
 
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/shelves';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -205,17 +204,17 @@ class ShelvesBooksResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':borrow';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -255,17 +254,17 @@ class ShelvesBooksResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -316,23 +315,23 @@ class ShelvesBooksResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/books';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -374,17 +373,17 @@ class ShelvesBooksResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':return';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -415,17 +414,17 @@ class GoogleExampleLibraryagentV1Book {
   GoogleExampleLibraryagentV1Book();
 
   GoogleExampleLibraryagentV1Book.fromJson(core.Map _json) {
-    if (_json.containsKey("author")) {
-      author = _json["author"];
+    if (_json.containsKey('author')) {
+      author = _json['author'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("read")) {
-      read = _json["read"];
+    if (_json.containsKey('read')) {
+      read = _json['read'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -433,16 +432,16 @@ class GoogleExampleLibraryagentV1Book {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = author;
+      _json['author'] = author;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (read != null) {
-      _json["read"] = read;
+      _json['read'] = read;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -461,14 +460,14 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
   GoogleExampleLibraryagentV1ListBooksResponse();
 
   GoogleExampleLibraryagentV1ListBooksResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("books")) {
-      books = (_json["books"] as core.List)
+    if (_json.containsKey('books')) {
+      books = (_json['books'] as core.List)
           .map<GoogleExampleLibraryagentV1Book>(
               (value) => GoogleExampleLibraryagentV1Book.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -476,10 +475,10 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (books != null) {
-      _json["books"] = books.map((value) => value.toJson()).toList();
+      _json['books'] = books.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -498,11 +497,11 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
   GoogleExampleLibraryagentV1ListShelvesResponse();
 
   GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("shelves")) {
-      shelves = (_json["shelves"] as core.List)
+    if (_json.containsKey('shelves')) {
+      shelves = (_json['shelves'] as core.List)
           .map<GoogleExampleLibraryagentV1Shelf>(
               (value) => GoogleExampleLibraryagentV1Shelf.fromJson(value))
           .toList();
@@ -513,10 +512,10 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (shelves != null) {
-      _json["shelves"] = shelves.map((value) => value.toJson()).toList();
+      _json['shelves'] = shelves.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -534,11 +533,11 @@ class GoogleExampleLibraryagentV1Shelf {
   GoogleExampleLibraryagentV1Shelf();
 
   GoogleExampleLibraryagentV1Shelf.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("theme")) {
-      theme = _json["theme"];
+    if (_json.containsKey('theme')) {
+      theme = _json['theme'];
     }
   }
 
@@ -546,10 +545,10 @@ class GoogleExampleLibraryagentV1Shelf {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (theme != null) {
-      _json["theme"] = theme;
+      _json['theme'] = theme;
     }
     return _json;
   }

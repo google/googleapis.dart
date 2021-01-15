@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,18 +37,18 @@ const core.String USER_AGENT = 'dart-api-client oslogin/v1';
 class OsloginApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and manage your Google Compute Engine resources
-  static const ComputeScope = "https://www.googleapis.com/auth/compute";
+  static const ComputeScope = 'https://www.googleapis.com/auth/compute';
 
   final commons.ApiRequester _requester;
 
   UsersResourceApi get users => UsersResourceApi(_requester);
 
   OsloginApi(http.Client client,
-      {core.String rootUrl = "https://oslogin.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://oslogin.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -99,16 +98,16 @@ class UsersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
+      _queryParams['projectId'] = [projectId];
     }
     if (systemId != null) {
-      _queryParams["systemId"] = [systemId];
+      _queryParams['systemId'] = [systemId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -117,7 +116,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -167,13 +166,13 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
+      _queryParams['projectId'] = [projectId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -182,7 +181,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -230,17 +229,17 @@ class UsersProjectsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -288,17 +287,17 @@ class UsersSshPublicKeysResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -339,17 +338,17 @@ class UsersSshPublicKeysResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -401,20 +400,20 @@ class UsersSshPublicKeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -453,11 +452,11 @@ class ImportSshPublicKeyResponse {
   ImportSshPublicKeyResponse();
 
   ImportSshPublicKeyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("details")) {
-      details = _json["details"];
+    if (_json.containsKey('details')) {
+      details = _json['details'];
     }
-    if (_json.containsKey("loginProfile")) {
-      loginProfile = LoginProfile.fromJson(_json["loginProfile"]);
+    if (_json.containsKey('loginProfile')) {
+      loginProfile = LoginProfile.fromJson(_json['loginProfile']);
     }
   }
 
@@ -465,10 +464,10 @@ class ImportSshPublicKeyResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (loginProfile != null) {
-      _json["loginProfile"] = loginProfile.toJson();
+      _json['loginProfile'] = loginProfile.toJson();
     }
     return _json;
   }
@@ -489,17 +488,17 @@ class LoginProfile {
   LoginProfile();
 
   LoginProfile.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("posixAccounts")) {
-      posixAccounts = (_json["posixAccounts"] as core.List)
+    if (_json.containsKey('posixAccounts')) {
+      posixAccounts = (_json['posixAccounts'] as core.List)
           .map<PosixAccount>((value) => PosixAccount.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("sshPublicKeys")) {
+    if (_json.containsKey('sshPublicKeys')) {
       sshPublicKeys = commons.mapMap<core.Map, SshPublicKey>(
-          _json["sshPublicKeys"].cast<core.String, core.Map>(),
+          _json['sshPublicKeys'].cast<core.String, core.Map>(),
           (core.Map item) => SshPublicKey.fromJson(item));
     }
   }
@@ -508,14 +507,14 @@ class LoginProfile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (posixAccounts != null) {
-      _json["posixAccounts"] =
+      _json['posixAccounts'] =
           posixAccounts.map((value) => value.toJson()).toList();
     }
     if (sshPublicKeys != null) {
-      _json["sshPublicKeys"] =
+      _json['sshPublicKeys'] =
           commons.mapMap<SshPublicKey, core.Map<core.String, core.Object>>(
               sshPublicKeys, (SshPublicKey item) => item.toJson());
     }
@@ -567,38 +566,38 @@ class PosixAccount {
   PosixAccount();
 
   PosixAccount.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("gecos")) {
-      gecos = _json["gecos"];
+    if (_json.containsKey('gecos')) {
+      gecos = _json['gecos'];
     }
-    if (_json.containsKey("gid")) {
-      gid = _json["gid"];
+    if (_json.containsKey('gid')) {
+      gid = _json['gid'];
     }
-    if (_json.containsKey("homeDirectory")) {
-      homeDirectory = _json["homeDirectory"];
+    if (_json.containsKey('homeDirectory')) {
+      homeDirectory = _json['homeDirectory'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("operatingSystemType")) {
-      operatingSystemType = _json["operatingSystemType"];
+    if (_json.containsKey('operatingSystemType')) {
+      operatingSystemType = _json['operatingSystemType'];
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("shell")) {
-      shell = _json["shell"];
+    if (_json.containsKey('shell')) {
+      shell = _json['shell'];
     }
-    if (_json.containsKey("systemId")) {
-      systemId = _json["systemId"];
+    if (_json.containsKey('systemId')) {
+      systemId = _json['systemId'];
     }
-    if (_json.containsKey("uid")) {
-      uid = _json["uid"];
+    if (_json.containsKey('uid')) {
+      uid = _json['uid'];
     }
-    if (_json.containsKey("username")) {
-      username = _json["username"];
+    if (_json.containsKey('username')) {
+      username = _json['username'];
     }
   }
 
@@ -606,37 +605,37 @@ class PosixAccount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (gecos != null) {
-      _json["gecos"] = gecos;
+      _json['gecos'] = gecos;
     }
     if (gid != null) {
-      _json["gid"] = gid;
+      _json['gid'] = gid;
     }
     if (homeDirectory != null) {
-      _json["homeDirectory"] = homeDirectory;
+      _json['homeDirectory'] = homeDirectory;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (operatingSystemType != null) {
-      _json["operatingSystemType"] = operatingSystemType;
+      _json['operatingSystemType'] = operatingSystemType;
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (shell != null) {
-      _json["shell"] = shell;
+      _json['shell'] = shell;
     }
     if (systemId != null) {
-      _json["systemId"] = systemId;
+      _json['systemId'] = systemId;
     }
     if (uid != null) {
-      _json["uid"] = uid;
+      _json['uid'] = uid;
     }
     if (username != null) {
-      _json["username"] = username;
+      _json['username'] = username;
     }
     return _json;
   }
@@ -659,17 +658,17 @@ class SshPublicKey {
   SshPublicKey();
 
   SshPublicKey.fromJson(core.Map _json) {
-    if (_json.containsKey("expirationTimeUsec")) {
-      expirationTimeUsec = _json["expirationTimeUsec"];
+    if (_json.containsKey('expirationTimeUsec')) {
+      expirationTimeUsec = _json['expirationTimeUsec'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -677,16 +676,16 @@ class SshPublicKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expirationTimeUsec != null) {
-      _json["expirationTimeUsec"] = expirationTimeUsec;
+      _json['expirationTimeUsec'] = expirationTimeUsec;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }

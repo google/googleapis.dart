@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,10 +38,10 @@ const core.String USER_AGENT = 'dart-api-client identitytoolkit/v3';
 class IdentitytoolkitApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and administer all your Firebase data and settings
-  static const FirebaseScope = "https://www.googleapis.com/auth/firebase";
+  static const FirebaseScope = 'https://www.googleapis.com/auth/firebase';
 
   final commons.ApiRequester _requester;
 
@@ -50,8 +49,8 @@ class IdentitytoolkitApi {
       RelyingpartyResourceApi(_requester);
 
   IdentitytoolkitApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "identitytoolkit/v3/relyingparty/"})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = 'identitytoolkit/v3/relyingparty/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -92,14 +91,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'createAuthUri';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -140,14 +139,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'deleteAccount';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -188,14 +187,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'downloadAccount';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -236,14 +235,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'emailLinkSignin';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -284,14 +283,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'getAccountInfo';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -332,14 +331,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'getOobConfirmationCode';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -382,20 +381,20 @@ class RelyingpartyResourceApi {
     core.String _body;
 
     if (delegatedProjectNumber != null) {
-      _queryParams["delegatedProjectNumber"] = [delegatedProjectNumber];
+      _queryParams['delegatedProjectNumber'] = [delegatedProjectNumber];
     }
     if (projectNumber != null) {
-      _queryParams["projectNumber"] = [projectNumber];
+      _queryParams['projectNumber'] = [projectNumber];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'getProjectConfig';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -431,14 +430,14 @@ class RelyingpartyResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'publicKeys';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -474,14 +473,14 @@ class RelyingpartyResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'getRecaptchaParam';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -522,14 +521,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'resetPassword';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -572,14 +571,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'sendVerificationCode';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -621,14 +620,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'setAccountInfo';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -670,14 +669,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'setProjectConfig';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -719,14 +718,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'signOutUser';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -768,14 +767,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'signupNewUser';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -816,14 +815,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'uploadAccount';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -864,14 +863,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'verifyAssertion';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -912,14 +911,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'verifyCustomToken';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -960,14 +959,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'verifyPassword';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1010,14 +1009,14 @@ class RelyingpartyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'verifyPhoneNumber';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1062,32 +1061,32 @@ class CreateAuthUriResponse {
   CreateAuthUriResponse();
 
   CreateAuthUriResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("allProviders")) {
-      allProviders = (_json["allProviders"] as core.List).cast<core.String>();
+    if (_json.containsKey('allProviders')) {
+      allProviders = (_json['allProviders'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("authUri")) {
-      authUri = _json["authUri"];
+    if (_json.containsKey('authUri')) {
+      authUri = _json['authUri'];
     }
-    if (_json.containsKey("captchaRequired")) {
-      captchaRequired = _json["captchaRequired"];
+    if (_json.containsKey('captchaRequired')) {
+      captchaRequired = _json['captchaRequired'];
     }
-    if (_json.containsKey("forExistingProvider")) {
-      forExistingProvider = _json["forExistingProvider"];
+    if (_json.containsKey('forExistingProvider')) {
+      forExistingProvider = _json['forExistingProvider'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("providerId")) {
-      providerId = _json["providerId"];
+    if (_json.containsKey('providerId')) {
+      providerId = _json['providerId'];
     }
-    if (_json.containsKey("registered")) {
-      registered = _json["registered"];
+    if (_json.containsKey('registered')) {
+      registered = _json['registered'];
     }
-    if (_json.containsKey("sessionId")) {
-      sessionId = _json["sessionId"];
+    if (_json.containsKey('sessionId')) {
+      sessionId = _json['sessionId'];
     }
-    if (_json.containsKey("signinMethods")) {
-      signinMethods = (_json["signinMethods"] as core.List).cast<core.String>();
+    if (_json.containsKey('signinMethods')) {
+      signinMethods = (_json['signinMethods'] as core.List).cast<core.String>();
     }
   }
 
@@ -1095,31 +1094,31 @@ class CreateAuthUriResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allProviders != null) {
-      _json["allProviders"] = allProviders;
+      _json['allProviders'] = allProviders;
     }
     if (authUri != null) {
-      _json["authUri"] = authUri;
+      _json['authUri'] = authUri;
     }
     if (captchaRequired != null) {
-      _json["captchaRequired"] = captchaRequired;
+      _json['captchaRequired'] = captchaRequired;
     }
     if (forExistingProvider != null) {
-      _json["forExistingProvider"] = forExistingProvider;
+      _json['forExistingProvider'] = forExistingProvider;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (providerId != null) {
-      _json["providerId"] = providerId;
+      _json['providerId'] = providerId;
     }
     if (registered != null) {
-      _json["registered"] = registered;
+      _json['registered'] = registered;
     }
     if (sessionId != null) {
-      _json["sessionId"] = sessionId;
+      _json['sessionId'] = sessionId;
     }
     if (signinMethods != null) {
-      _json["signinMethods"] = signinMethods;
+      _json['signinMethods'] = signinMethods;
     }
     return _json;
   }
@@ -1133,8 +1132,8 @@ class DeleteAccountResponse {
   DeleteAccountResponse();
 
   DeleteAccountResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -1142,7 +1141,7 @@ class DeleteAccountResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -1163,14 +1162,14 @@ class DownloadAccountResponse {
   DownloadAccountResponse();
 
   DownloadAccountResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("users")) {
-      users = (_json["users"] as core.List)
+    if (_json.containsKey('users')) {
+      users = (_json['users'] as core.List)
           .map<UserInfo>((value) => UserInfo.fromJson(value))
           .toList();
     }
@@ -1180,13 +1179,13 @@ class DownloadAccountResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (users != null) {
-      _json["users"] = users.map((value) => value.toJson()).toList();
+      _json['users'] = users.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1218,26 +1217,26 @@ class EmailLinkSigninResponse {
   EmailLinkSigninResponse();
 
   EmailLinkSigninResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("expiresIn")) {
-      expiresIn = _json["expiresIn"];
+    if (_json.containsKey('expiresIn')) {
+      expiresIn = _json['expiresIn'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("isNewUser")) {
-      isNewUser = _json["isNewUser"];
+    if (_json.containsKey('isNewUser')) {
+      isNewUser = _json['isNewUser'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
-    if (_json.containsKey("refreshToken")) {
-      refreshToken = _json["refreshToken"];
+    if (_json.containsKey('refreshToken')) {
+      refreshToken = _json['refreshToken'];
     }
   }
 
@@ -1245,25 +1244,25 @@ class EmailLinkSigninResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (expiresIn != null) {
-      _json["expiresIn"] = expiresIn;
+      _json['expiresIn'] = expiresIn;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (isNewUser != null) {
-      _json["isNewUser"] = isNewUser;
+      _json['isNewUser'] = isNewUser;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (refreshToken != null) {
-      _json["refreshToken"] = refreshToken;
+      _json['refreshToken'] = refreshToken;
     }
     return _json;
   }
@@ -1292,23 +1291,23 @@ class EmailTemplate {
   EmailTemplate();
 
   EmailTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey("body")) {
-      body = _json["body"];
+    if (_json.containsKey('body')) {
+      body = _json['body'];
     }
-    if (_json.containsKey("format")) {
-      format = _json["format"];
+    if (_json.containsKey('format')) {
+      format = _json['format'];
     }
-    if (_json.containsKey("from")) {
-      from = _json["from"];
+    if (_json.containsKey('from')) {
+      from = _json['from'];
     }
-    if (_json.containsKey("fromDisplayName")) {
-      fromDisplayName = _json["fromDisplayName"];
+    if (_json.containsKey('fromDisplayName')) {
+      fromDisplayName = _json['fromDisplayName'];
     }
-    if (_json.containsKey("replyTo")) {
-      replyTo = _json["replyTo"];
+    if (_json.containsKey('replyTo')) {
+      replyTo = _json['replyTo'];
     }
-    if (_json.containsKey("subject")) {
-      subject = _json["subject"];
+    if (_json.containsKey('subject')) {
+      subject = _json['subject'];
     }
   }
 
@@ -1316,22 +1315,22 @@ class EmailTemplate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (body != null) {
-      _json["body"] = body;
+      _json['body'] = body;
     }
     if (format != null) {
-      _json["format"] = format;
+      _json['format'] = format;
     }
     if (from != null) {
-      _json["from"] = from;
+      _json['from'] = from;
     }
     if (fromDisplayName != null) {
-      _json["fromDisplayName"] = fromDisplayName;
+      _json['fromDisplayName'] = fromDisplayName;
     }
     if (replyTo != null) {
-      _json["replyTo"] = replyTo;
+      _json['replyTo'] = replyTo;
     }
     if (subject != null) {
-      _json["subject"] = subject;
+      _json['subject'] = subject;
     }
     return _json;
   }
@@ -1348,11 +1347,11 @@ class GetAccountInfoResponse {
   GetAccountInfoResponse();
 
   GetAccountInfoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("users")) {
-      users = (_json["users"] as core.List)
+    if (_json.containsKey('users')) {
+      users = (_json['users'] as core.List)
           .map<UserInfo>((value) => UserInfo.fromJson(value))
           .toList();
     }
@@ -1362,10 +1361,10 @@ class GetAccountInfoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (users != null) {
-      _json["users"] = users.map((value) => value.toJson()).toList();
+      _json['users'] = users.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1386,14 +1385,14 @@ class GetOobConfirmationCodeResponse {
   GetOobConfirmationCodeResponse();
 
   GetOobConfirmationCodeResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("oobCode")) {
-      oobCode = _json["oobCode"];
+    if (_json.containsKey('oobCode')) {
+      oobCode = _json['oobCode'];
     }
   }
 
@@ -1401,13 +1400,13 @@ class GetOobConfirmationCodeResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (oobCode != null) {
-      _json["oobCode"] = oobCode;
+      _json['oobCode'] = oobCode;
     }
     return _json;
   }
@@ -1428,14 +1427,14 @@ class GetRecaptchaParamResponse {
   GetRecaptchaParamResponse();
 
   GetRecaptchaParamResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("recaptchaSiteKey")) {
-      recaptchaSiteKey = _json["recaptchaSiteKey"];
+    if (_json.containsKey('recaptchaSiteKey')) {
+      recaptchaSiteKey = _json['recaptchaSiteKey'];
     }
-    if (_json.containsKey("recaptchaStoken")) {
-      recaptchaStoken = _json["recaptchaStoken"];
+    if (_json.containsKey('recaptchaStoken')) {
+      recaptchaStoken = _json['recaptchaStoken'];
     }
   }
 
@@ -1443,13 +1442,13 @@ class GetRecaptchaParamResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (recaptchaSiteKey != null) {
-      _json["recaptchaSiteKey"] = recaptchaSiteKey;
+      _json['recaptchaSiteKey'] = recaptchaSiteKey;
     }
     if (recaptchaStoken != null) {
-      _json["recaptchaStoken"] = recaptchaStoken;
+      _json['recaptchaStoken'] = recaptchaStoken;
     }
     return _json;
   }
@@ -1522,54 +1521,54 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   IdentitytoolkitRelyingpartyCreateAuthUriRequest();
 
   IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("appId")) {
-      appId = _json["appId"];
+    if (_json.containsKey('appId')) {
+      appId = _json['appId'];
     }
-    if (_json.containsKey("authFlowType")) {
-      authFlowType = _json["authFlowType"];
+    if (_json.containsKey('authFlowType')) {
+      authFlowType = _json['authFlowType'];
     }
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
+    if (_json.containsKey('clientId')) {
+      clientId = _json['clientId'];
     }
-    if (_json.containsKey("context")) {
-      context = _json["context"];
+    if (_json.containsKey('context')) {
+      context = _json['context'];
     }
-    if (_json.containsKey("continueUri")) {
-      continueUri = _json["continueUri"];
+    if (_json.containsKey('continueUri')) {
+      continueUri = _json['continueUri'];
     }
-    if (_json.containsKey("customParameter")) {
-      customParameter = (_json["customParameter"] as core.Map)
+    if (_json.containsKey('customParameter')) {
+      customParameter = (_json['customParameter'] as core.Map)
           .cast<core.String, core.String>();
     }
-    if (_json.containsKey("hostedDomain")) {
-      hostedDomain = _json["hostedDomain"];
+    if (_json.containsKey('hostedDomain')) {
+      hostedDomain = _json['hostedDomain'];
     }
-    if (_json.containsKey("identifier")) {
-      identifier = _json["identifier"];
+    if (_json.containsKey('identifier')) {
+      identifier = _json['identifier'];
     }
-    if (_json.containsKey("oauthConsumerKey")) {
-      oauthConsumerKey = _json["oauthConsumerKey"];
+    if (_json.containsKey('oauthConsumerKey')) {
+      oauthConsumerKey = _json['oauthConsumerKey'];
     }
-    if (_json.containsKey("oauthScope")) {
-      oauthScope = _json["oauthScope"];
+    if (_json.containsKey('oauthScope')) {
+      oauthScope = _json['oauthScope'];
     }
-    if (_json.containsKey("openidRealm")) {
-      openidRealm = _json["openidRealm"];
+    if (_json.containsKey('openidRealm')) {
+      openidRealm = _json['openidRealm'];
     }
-    if (_json.containsKey("otaApp")) {
-      otaApp = _json["otaApp"];
+    if (_json.containsKey('otaApp')) {
+      otaApp = _json['otaApp'];
     }
-    if (_json.containsKey("providerId")) {
-      providerId = _json["providerId"];
+    if (_json.containsKey('providerId')) {
+      providerId = _json['providerId'];
     }
-    if (_json.containsKey("sessionId")) {
-      sessionId = _json["sessionId"];
+    if (_json.containsKey('sessionId')) {
+      sessionId = _json['sessionId'];
     }
-    if (_json.containsKey("tenantId")) {
-      tenantId = _json["tenantId"];
+    if (_json.containsKey('tenantId')) {
+      tenantId = _json['tenantId'];
     }
-    if (_json.containsKey("tenantProjectNumber")) {
-      tenantProjectNumber = _json["tenantProjectNumber"];
+    if (_json.containsKey('tenantProjectNumber')) {
+      tenantProjectNumber = _json['tenantProjectNumber'];
     }
   }
 
@@ -1577,52 +1576,52 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appId != null) {
-      _json["appId"] = appId;
+      _json['appId'] = appId;
     }
     if (authFlowType != null) {
-      _json["authFlowType"] = authFlowType;
+      _json['authFlowType'] = authFlowType;
     }
     if (clientId != null) {
-      _json["clientId"] = clientId;
+      _json['clientId'] = clientId;
     }
     if (context != null) {
-      _json["context"] = context;
+      _json['context'] = context;
     }
     if (continueUri != null) {
-      _json["continueUri"] = continueUri;
+      _json['continueUri'] = continueUri;
     }
     if (customParameter != null) {
-      _json["customParameter"] = customParameter;
+      _json['customParameter'] = customParameter;
     }
     if (hostedDomain != null) {
-      _json["hostedDomain"] = hostedDomain;
+      _json['hostedDomain'] = hostedDomain;
     }
     if (identifier != null) {
-      _json["identifier"] = identifier;
+      _json['identifier'] = identifier;
     }
     if (oauthConsumerKey != null) {
-      _json["oauthConsumerKey"] = oauthConsumerKey;
+      _json['oauthConsumerKey'] = oauthConsumerKey;
     }
     if (oauthScope != null) {
-      _json["oauthScope"] = oauthScope;
+      _json['oauthScope'] = oauthScope;
     }
     if (openidRealm != null) {
-      _json["openidRealm"] = openidRealm;
+      _json['openidRealm'] = openidRealm;
     }
     if (otaApp != null) {
-      _json["otaApp"] = otaApp;
+      _json['otaApp'] = otaApp;
     }
     if (providerId != null) {
-      _json["providerId"] = providerId;
+      _json['providerId'] = providerId;
     }
     if (sessionId != null) {
-      _json["sessionId"] = sessionId;
+      _json['sessionId'] = sessionId;
     }
     if (tenantId != null) {
-      _json["tenantId"] = tenantId;
+      _json['tenantId'] = tenantId;
     }
     if (tenantProjectNumber != null) {
-      _json["tenantProjectNumber"] = tenantProjectNumber;
+      _json['tenantProjectNumber'] = tenantProjectNumber;
     }
     return _json;
   }
@@ -1643,14 +1642,14 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
   IdentitytoolkitRelyingpartyDeleteAccountRequest();
 
   IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("delegatedProjectNumber")) {
-      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    if (_json.containsKey('delegatedProjectNumber')) {
+      delegatedProjectNumber = _json['delegatedProjectNumber'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
   }
 
@@ -1658,13 +1657,13 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
-      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+      _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     return _json;
   }
@@ -1690,17 +1689,17 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
   IdentitytoolkitRelyingpartyDownloadAccountRequest();
 
   IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("delegatedProjectNumber")) {
-      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    if (_json.containsKey('delegatedProjectNumber')) {
+      delegatedProjectNumber = _json['delegatedProjectNumber'];
     }
-    if (_json.containsKey("maxResults")) {
-      maxResults = _json["maxResults"];
+    if (_json.containsKey('maxResults')) {
+      maxResults = _json['maxResults'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("targetProjectId")) {
-      targetProjectId = _json["targetProjectId"];
+    if (_json.containsKey('targetProjectId')) {
+      targetProjectId = _json['targetProjectId'];
     }
   }
 
@@ -1708,16 +1707,16 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
-      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+      _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
     if (maxResults != null) {
-      _json["maxResults"] = maxResults;
+      _json['maxResults'] = maxResults;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (targetProjectId != null) {
-      _json["targetProjectId"] = targetProjectId;
+      _json['targetProjectId'] = targetProjectId;
     }
     return _json;
   }
@@ -1737,14 +1736,14 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
   IdentitytoolkitRelyingpartyEmailLinkSigninRequest();
 
   IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("oobCode")) {
-      oobCode = _json["oobCode"];
+    if (_json.containsKey('oobCode')) {
+      oobCode = _json['oobCode'];
     }
   }
 
@@ -1752,13 +1751,13 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (oobCode != null) {
-      _json["oobCode"] = oobCode;
+      _json['oobCode'] = oobCode;
     }
     return _json;
   }
@@ -1785,20 +1784,20 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   IdentitytoolkitRelyingpartyGetAccountInfoRequest();
 
   IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("delegatedProjectNumber")) {
-      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    if (_json.containsKey('delegatedProjectNumber')) {
+      delegatedProjectNumber = _json['delegatedProjectNumber'];
     }
-    if (_json.containsKey("email")) {
-      email = (_json["email"] as core.List).cast<core.String>();
+    if (_json.containsKey('email')) {
+      email = (_json['email'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("localId")) {
-      localId = (_json["localId"] as core.List).cast<core.String>();
+    if (_json.containsKey('localId')) {
+      localId = (_json['localId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = (_json["phoneNumber"] as core.List).cast<core.String>();
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = (_json['phoneNumber'] as core.List).cast<core.String>();
     }
   }
 
@@ -1806,19 +1805,19 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
-      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+      _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     return _json;
   }
@@ -1863,48 +1862,48 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   IdentitytoolkitRelyingpartyGetProjectConfigResponse();
 
   IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("allowPasswordUser")) {
-      allowPasswordUser = _json["allowPasswordUser"];
+    if (_json.containsKey('allowPasswordUser')) {
+      allowPasswordUser = _json['allowPasswordUser'];
     }
-    if (_json.containsKey("apiKey")) {
-      apiKey = _json["apiKey"];
+    if (_json.containsKey('apiKey')) {
+      apiKey = _json['apiKey'];
     }
-    if (_json.containsKey("authorizedDomains")) {
+    if (_json.containsKey('authorizedDomains')) {
       authorizedDomains =
-          (_json["authorizedDomains"] as core.List).cast<core.String>();
+          (_json['authorizedDomains'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("changeEmailTemplate")) {
+    if (_json.containsKey('changeEmailTemplate')) {
       changeEmailTemplate =
-          EmailTemplate.fromJson(_json["changeEmailTemplate"]);
+          EmailTemplate.fromJson(_json['changeEmailTemplate']);
     }
-    if (_json.containsKey("dynamicLinksDomain")) {
-      dynamicLinksDomain = _json["dynamicLinksDomain"];
+    if (_json.containsKey('dynamicLinksDomain')) {
+      dynamicLinksDomain = _json['dynamicLinksDomain'];
     }
-    if (_json.containsKey("enableAnonymousUser")) {
-      enableAnonymousUser = _json["enableAnonymousUser"];
+    if (_json.containsKey('enableAnonymousUser')) {
+      enableAnonymousUser = _json['enableAnonymousUser'];
     }
-    if (_json.containsKey("idpConfig")) {
-      idpConfig = (_json["idpConfig"] as core.List)
+    if (_json.containsKey('idpConfig')) {
+      idpConfig = (_json['idpConfig'] as core.List)
           .map<IdpConfig>((value) => IdpConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("legacyResetPasswordTemplate")) {
+    if (_json.containsKey('legacyResetPasswordTemplate')) {
       legacyResetPasswordTemplate =
-          EmailTemplate.fromJson(_json["legacyResetPasswordTemplate"]);
+          EmailTemplate.fromJson(_json['legacyResetPasswordTemplate']);
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
-    if (_json.containsKey("resetPasswordTemplate")) {
+    if (_json.containsKey('resetPasswordTemplate')) {
       resetPasswordTemplate =
-          EmailTemplate.fromJson(_json["resetPasswordTemplate"]);
+          EmailTemplate.fromJson(_json['resetPasswordTemplate']);
     }
-    if (_json.containsKey("useEmailSending")) {
-      useEmailSending = _json["useEmailSending"];
+    if (_json.containsKey('useEmailSending')) {
+      useEmailSending = _json['useEmailSending'];
     }
-    if (_json.containsKey("verifyEmailTemplate")) {
+    if (_json.containsKey('verifyEmailTemplate')) {
       verifyEmailTemplate =
-          EmailTemplate.fromJson(_json["verifyEmailTemplate"]);
+          EmailTemplate.fromJson(_json['verifyEmailTemplate']);
     }
   }
 
@@ -1912,41 +1911,41 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowPasswordUser != null) {
-      _json["allowPasswordUser"] = allowPasswordUser;
+      _json['allowPasswordUser'] = allowPasswordUser;
     }
     if (apiKey != null) {
-      _json["apiKey"] = apiKey;
+      _json['apiKey'] = apiKey;
     }
     if (authorizedDomains != null) {
-      _json["authorizedDomains"] = authorizedDomains;
+      _json['authorizedDomains'] = authorizedDomains;
     }
     if (changeEmailTemplate != null) {
-      _json["changeEmailTemplate"] = changeEmailTemplate.toJson();
+      _json['changeEmailTemplate'] = changeEmailTemplate.toJson();
     }
     if (dynamicLinksDomain != null) {
-      _json["dynamicLinksDomain"] = dynamicLinksDomain;
+      _json['dynamicLinksDomain'] = dynamicLinksDomain;
     }
     if (enableAnonymousUser != null) {
-      _json["enableAnonymousUser"] = enableAnonymousUser;
+      _json['enableAnonymousUser'] = enableAnonymousUser;
     }
     if (idpConfig != null) {
-      _json["idpConfig"] = idpConfig.map((value) => value.toJson()).toList();
+      _json['idpConfig'] = idpConfig.map((value) => value.toJson()).toList();
     }
     if (legacyResetPasswordTemplate != null) {
-      _json["legacyResetPasswordTemplate"] =
+      _json['legacyResetPasswordTemplate'] =
           legacyResetPasswordTemplate.toJson();
     }
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     if (resetPasswordTemplate != null) {
-      _json["resetPasswordTemplate"] = resetPasswordTemplate.toJson();
+      _json['resetPasswordTemplate'] = resetPasswordTemplate.toJson();
     }
     if (useEmailSending != null) {
-      _json["useEmailSending"] = useEmailSending;
+      _json['useEmailSending'] = useEmailSending;
     }
     if (verifyEmailTemplate != null) {
-      _json["verifyEmailTemplate"] = verifyEmailTemplate.toJson();
+      _json['verifyEmailTemplate'] = verifyEmailTemplate.toJson();
     }
     return _json;
   }
@@ -2006,17 +2005,17 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
   IdentitytoolkitRelyingpartyResetPasswordRequest();
 
   IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("newPassword")) {
-      newPassword = _json["newPassword"];
+    if (_json.containsKey('newPassword')) {
+      newPassword = _json['newPassword'];
     }
-    if (_json.containsKey("oldPassword")) {
-      oldPassword = _json["oldPassword"];
+    if (_json.containsKey('oldPassword')) {
+      oldPassword = _json['oldPassword'];
     }
-    if (_json.containsKey("oobCode")) {
-      oobCode = _json["oobCode"];
+    if (_json.containsKey('oobCode')) {
+      oobCode = _json['oobCode'];
     }
   }
 
@@ -2024,16 +2023,16 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (newPassword != null) {
-      _json["newPassword"] = newPassword;
+      _json['newPassword'] = newPassword;
     }
     if (oldPassword != null) {
-      _json["oldPassword"] = oldPassword;
+      _json['oldPassword'] = oldPassword;
     }
     if (oobCode != null) {
-      _json["oobCode"] = oobCode;
+      _json['oobCode'] = oobCode;
     }
     return _json;
   }
@@ -2057,17 +2056,17 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
 
   IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
       core.Map _json) {
-    if (_json.containsKey("iosReceipt")) {
-      iosReceipt = _json["iosReceipt"];
+    if (_json.containsKey('iosReceipt')) {
+      iosReceipt = _json['iosReceipt'];
     }
-    if (_json.containsKey("iosSecret")) {
-      iosSecret = _json["iosSecret"];
+    if (_json.containsKey('iosSecret')) {
+      iosSecret = _json['iosSecret'];
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'];
     }
-    if (_json.containsKey("recaptchaToken")) {
-      recaptchaToken = _json["recaptchaToken"];
+    if (_json.containsKey('recaptchaToken')) {
+      recaptchaToken = _json['recaptchaToken'];
     }
   }
 
@@ -2075,16 +2074,16 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (iosReceipt != null) {
-      _json["iosReceipt"] = iosReceipt;
+      _json['iosReceipt'] = iosReceipt;
     }
     if (iosSecret != null) {
-      _json["iosSecret"] = iosSecret;
+      _json['iosSecret'] = iosSecret;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     if (recaptchaToken != null) {
-      _json["recaptchaToken"] = recaptchaToken;
+      _json['recaptchaToken'] = recaptchaToken;
     }
     return _json;
   }
@@ -2099,8 +2098,8 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
 
   IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("sessionInfo")) {
-      sessionInfo = _json["sessionInfo"];
+    if (_json.containsKey('sessionInfo')) {
+      sessionInfo = _json['sessionInfo'];
     }
   }
 
@@ -2108,7 +2107,7 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sessionInfo != null) {
-      _json["sessionInfo"] = sessionInfo;
+      _json['sessionInfo'] = sessionInfo;
     }
     return _json;
   }
@@ -2189,76 +2188,76 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   IdentitytoolkitRelyingpartySetAccountInfoRequest();
 
   IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("captchaChallenge")) {
-      captchaChallenge = _json["captchaChallenge"];
+    if (_json.containsKey('captchaChallenge')) {
+      captchaChallenge = _json['captchaChallenge'];
     }
-    if (_json.containsKey("captchaResponse")) {
-      captchaResponse = _json["captchaResponse"];
+    if (_json.containsKey('captchaResponse')) {
+      captchaResponse = _json['captchaResponse'];
     }
-    if (_json.containsKey("createdAt")) {
-      createdAt = _json["createdAt"];
+    if (_json.containsKey('createdAt')) {
+      createdAt = _json['createdAt'];
     }
-    if (_json.containsKey("customAttributes")) {
-      customAttributes = _json["customAttributes"];
+    if (_json.containsKey('customAttributes')) {
+      customAttributes = _json['customAttributes'];
     }
-    if (_json.containsKey("delegatedProjectNumber")) {
-      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    if (_json.containsKey('delegatedProjectNumber')) {
+      delegatedProjectNumber = _json['delegatedProjectNumber'];
     }
-    if (_json.containsKey("deleteAttribute")) {
+    if (_json.containsKey('deleteAttribute')) {
       deleteAttribute =
-          (_json["deleteAttribute"] as core.List).cast<core.String>();
+          (_json['deleteAttribute'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("deleteProvider")) {
+    if (_json.containsKey('deleteProvider')) {
       deleteProvider =
-          (_json["deleteProvider"] as core.List).cast<core.String>();
+          (_json['deleteProvider'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("disableUser")) {
-      disableUser = _json["disableUser"];
+    if (_json.containsKey('disableUser')) {
+      disableUser = _json['disableUser'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("emailVerified")) {
-      emailVerified = _json["emailVerified"];
+    if (_json.containsKey('emailVerified')) {
+      emailVerified = _json['emailVerified'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("instanceId")) {
-      instanceId = _json["instanceId"];
+    if (_json.containsKey('instanceId')) {
+      instanceId = _json['instanceId'];
     }
-    if (_json.containsKey("lastLoginAt")) {
-      lastLoginAt = _json["lastLoginAt"];
+    if (_json.containsKey('lastLoginAt')) {
+      lastLoginAt = _json['lastLoginAt'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
-    if (_json.containsKey("oobCode")) {
-      oobCode = _json["oobCode"];
+    if (_json.containsKey('oobCode')) {
+      oobCode = _json['oobCode'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'];
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
-    if (_json.containsKey("provider")) {
-      provider = (_json["provider"] as core.List).cast<core.String>();
+    if (_json.containsKey('provider')) {
+      provider = (_json['provider'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("returnSecureToken")) {
-      returnSecureToken = _json["returnSecureToken"];
+    if (_json.containsKey('returnSecureToken')) {
+      returnSecureToken = _json['returnSecureToken'];
     }
-    if (_json.containsKey("upgradeToFederatedLogin")) {
-      upgradeToFederatedLogin = _json["upgradeToFederatedLogin"];
+    if (_json.containsKey('upgradeToFederatedLogin')) {
+      upgradeToFederatedLogin = _json['upgradeToFederatedLogin'];
     }
-    if (_json.containsKey("validSince")) {
-      validSince = _json["validSince"];
+    if (_json.containsKey('validSince')) {
+      validSince = _json['validSince'];
     }
   }
 
@@ -2266,73 +2265,73 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (captchaChallenge != null) {
-      _json["captchaChallenge"] = captchaChallenge;
+      _json['captchaChallenge'] = captchaChallenge;
     }
     if (captchaResponse != null) {
-      _json["captchaResponse"] = captchaResponse;
+      _json['captchaResponse'] = captchaResponse;
     }
     if (createdAt != null) {
-      _json["createdAt"] = createdAt;
+      _json['createdAt'] = createdAt;
     }
     if (customAttributes != null) {
-      _json["customAttributes"] = customAttributes;
+      _json['customAttributes'] = customAttributes;
     }
     if (delegatedProjectNumber != null) {
-      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+      _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
     if (deleteAttribute != null) {
-      _json["deleteAttribute"] = deleteAttribute;
+      _json['deleteAttribute'] = deleteAttribute;
     }
     if (deleteProvider != null) {
-      _json["deleteProvider"] = deleteProvider;
+      _json['deleteProvider'] = deleteProvider;
     }
     if (disableUser != null) {
-      _json["disableUser"] = disableUser;
+      _json['disableUser'] = disableUser;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (emailVerified != null) {
-      _json["emailVerified"] = emailVerified;
+      _json['emailVerified'] = emailVerified;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (instanceId != null) {
-      _json["instanceId"] = instanceId;
+      _json['instanceId'] = instanceId;
     }
     if (lastLoginAt != null) {
-      _json["lastLoginAt"] = lastLoginAt;
+      _json['lastLoginAt'] = lastLoginAt;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (oobCode != null) {
-      _json["oobCode"] = oobCode;
+      _json['oobCode'] = oobCode;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     if (provider != null) {
-      _json["provider"] = provider;
+      _json['provider'] = provider;
     }
     if (returnSecureToken != null) {
-      _json["returnSecureToken"] = returnSecureToken;
+      _json['returnSecureToken'] = returnSecureToken;
     }
     if (upgradeToFederatedLogin != null) {
-      _json["upgradeToFederatedLogin"] = upgradeToFederatedLogin;
+      _json['upgradeToFederatedLogin'] = upgradeToFederatedLogin;
     }
     if (validSince != null) {
-      _json["validSince"] = validSince;
+      _json['validSince'] = validSince;
     }
     return _json;
   }
@@ -2377,45 +2376,45 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
   IdentitytoolkitRelyingpartySetProjectConfigRequest();
 
   IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("allowPasswordUser")) {
-      allowPasswordUser = _json["allowPasswordUser"];
+    if (_json.containsKey('allowPasswordUser')) {
+      allowPasswordUser = _json['allowPasswordUser'];
     }
-    if (_json.containsKey("apiKey")) {
-      apiKey = _json["apiKey"];
+    if (_json.containsKey('apiKey')) {
+      apiKey = _json['apiKey'];
     }
-    if (_json.containsKey("authorizedDomains")) {
+    if (_json.containsKey('authorizedDomains')) {
       authorizedDomains =
-          (_json["authorizedDomains"] as core.List).cast<core.String>();
+          (_json['authorizedDomains'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("changeEmailTemplate")) {
+    if (_json.containsKey('changeEmailTemplate')) {
       changeEmailTemplate =
-          EmailTemplate.fromJson(_json["changeEmailTemplate"]);
+          EmailTemplate.fromJson(_json['changeEmailTemplate']);
     }
-    if (_json.containsKey("delegatedProjectNumber")) {
-      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    if (_json.containsKey('delegatedProjectNumber')) {
+      delegatedProjectNumber = _json['delegatedProjectNumber'];
     }
-    if (_json.containsKey("enableAnonymousUser")) {
-      enableAnonymousUser = _json["enableAnonymousUser"];
+    if (_json.containsKey('enableAnonymousUser')) {
+      enableAnonymousUser = _json['enableAnonymousUser'];
     }
-    if (_json.containsKey("idpConfig")) {
-      idpConfig = (_json["idpConfig"] as core.List)
+    if (_json.containsKey('idpConfig')) {
+      idpConfig = (_json['idpConfig'] as core.List)
           .map<IdpConfig>((value) => IdpConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("legacyResetPasswordTemplate")) {
+    if (_json.containsKey('legacyResetPasswordTemplate')) {
       legacyResetPasswordTemplate =
-          EmailTemplate.fromJson(_json["legacyResetPasswordTemplate"]);
+          EmailTemplate.fromJson(_json['legacyResetPasswordTemplate']);
     }
-    if (_json.containsKey("resetPasswordTemplate")) {
+    if (_json.containsKey('resetPasswordTemplate')) {
       resetPasswordTemplate =
-          EmailTemplate.fromJson(_json["resetPasswordTemplate"]);
+          EmailTemplate.fromJson(_json['resetPasswordTemplate']);
     }
-    if (_json.containsKey("useEmailSending")) {
-      useEmailSending = _json["useEmailSending"];
+    if (_json.containsKey('useEmailSending')) {
+      useEmailSending = _json['useEmailSending'];
     }
-    if (_json.containsKey("verifyEmailTemplate")) {
+    if (_json.containsKey('verifyEmailTemplate')) {
       verifyEmailTemplate =
-          EmailTemplate.fromJson(_json["verifyEmailTemplate"]);
+          EmailTemplate.fromJson(_json['verifyEmailTemplate']);
     }
   }
 
@@ -2423,38 +2422,38 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowPasswordUser != null) {
-      _json["allowPasswordUser"] = allowPasswordUser;
+      _json['allowPasswordUser'] = allowPasswordUser;
     }
     if (apiKey != null) {
-      _json["apiKey"] = apiKey;
+      _json['apiKey'] = apiKey;
     }
     if (authorizedDomains != null) {
-      _json["authorizedDomains"] = authorizedDomains;
+      _json['authorizedDomains'] = authorizedDomains;
     }
     if (changeEmailTemplate != null) {
-      _json["changeEmailTemplate"] = changeEmailTemplate.toJson();
+      _json['changeEmailTemplate'] = changeEmailTemplate.toJson();
     }
     if (delegatedProjectNumber != null) {
-      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+      _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
     if (enableAnonymousUser != null) {
-      _json["enableAnonymousUser"] = enableAnonymousUser;
+      _json['enableAnonymousUser'] = enableAnonymousUser;
     }
     if (idpConfig != null) {
-      _json["idpConfig"] = idpConfig.map((value) => value.toJson()).toList();
+      _json['idpConfig'] = idpConfig.map((value) => value.toJson()).toList();
     }
     if (legacyResetPasswordTemplate != null) {
-      _json["legacyResetPasswordTemplate"] =
+      _json['legacyResetPasswordTemplate'] =
           legacyResetPasswordTemplate.toJson();
     }
     if (resetPasswordTemplate != null) {
-      _json["resetPasswordTemplate"] = resetPasswordTemplate.toJson();
+      _json['resetPasswordTemplate'] = resetPasswordTemplate.toJson();
     }
     if (useEmailSending != null) {
-      _json["useEmailSending"] = useEmailSending;
+      _json['useEmailSending'] = useEmailSending;
     }
     if (verifyEmailTemplate != null) {
-      _json["verifyEmailTemplate"] = verifyEmailTemplate.toJson();
+      _json['verifyEmailTemplate'] = verifyEmailTemplate.toJson();
     }
     return _json;
   }
@@ -2468,8 +2467,8 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
   IdentitytoolkitRelyingpartySetProjectConfigResponse();
 
   IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
   }
 
@@ -2477,7 +2476,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     return _json;
   }
@@ -2494,11 +2493,11 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
   IdentitytoolkitRelyingpartySignOutUserRequest();
 
   IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("instanceId")) {
-      instanceId = _json["instanceId"];
+    if (_json.containsKey('instanceId')) {
+      instanceId = _json['instanceId'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
   }
 
@@ -2506,10 +2505,10 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (instanceId != null) {
-      _json["instanceId"] = instanceId;
+      _json['instanceId'] = instanceId;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     return _json;
   }
@@ -2523,8 +2522,8 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
   IdentitytoolkitRelyingpartySignOutUserResponse();
 
   IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
   }
 
@@ -2532,7 +2531,7 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     return _json;
   }
@@ -2587,47 +2586,47 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   IdentitytoolkitRelyingpartySignupNewUserRequest();
 
   IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("captchaChallenge")) {
-      captchaChallenge = _json["captchaChallenge"];
+    if (_json.containsKey('captchaChallenge')) {
+      captchaChallenge = _json['captchaChallenge'];
     }
-    if (_json.containsKey("captchaResponse")) {
-      captchaResponse = _json["captchaResponse"];
+    if (_json.containsKey('captchaResponse')) {
+      captchaResponse = _json['captchaResponse'];
     }
-    if (_json.containsKey("disabled")) {
-      disabled = _json["disabled"];
+    if (_json.containsKey('disabled')) {
+      disabled = _json['disabled'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("emailVerified")) {
-      emailVerified = _json["emailVerified"];
+    if (_json.containsKey('emailVerified')) {
+      emailVerified = _json['emailVerified'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("instanceId")) {
-      instanceId = _json["instanceId"];
+    if (_json.containsKey('instanceId')) {
+      instanceId = _json['instanceId'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'];
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
-    if (_json.containsKey("tenantId")) {
-      tenantId = _json["tenantId"];
+    if (_json.containsKey('tenantId')) {
+      tenantId = _json['tenantId'];
     }
-    if (_json.containsKey("tenantProjectNumber")) {
-      tenantProjectNumber = _json["tenantProjectNumber"];
+    if (_json.containsKey('tenantProjectNumber')) {
+      tenantProjectNumber = _json['tenantProjectNumber'];
     }
   }
 
@@ -2635,46 +2634,46 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (captchaChallenge != null) {
-      _json["captchaChallenge"] = captchaChallenge;
+      _json['captchaChallenge'] = captchaChallenge;
     }
     if (captchaResponse != null) {
-      _json["captchaResponse"] = captchaResponse;
+      _json['captchaResponse'] = captchaResponse;
     }
     if (disabled != null) {
-      _json["disabled"] = disabled;
+      _json['disabled'] = disabled;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (emailVerified != null) {
-      _json["emailVerified"] = emailVerified;
+      _json['emailVerified'] = emailVerified;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (instanceId != null) {
-      _json["instanceId"] = instanceId;
+      _json['instanceId'] = instanceId;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     if (tenantId != null) {
-      _json["tenantId"] = tenantId;
+      _json['tenantId'] = tenantId;
     }
     if (tenantProjectNumber != null) {
-      _json["tenantProjectNumber"] = tenantProjectNumber;
+      _json['tenantProjectNumber'] = tenantProjectNumber;
     }
     return _json;
   }
@@ -2711,7 +2710,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 
   set saltSeparatorAsBytes(core.List<core.int> _bytes) {
     saltSeparator =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// If true, backend will do sanity check(including duplicate email and
@@ -2724,7 +2723,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 
   set signerKeyAsBytes(core.List<core.int> _bytes) {
     signerKey =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specify which project (field value is actually project id) to operate.
@@ -2737,47 +2736,47 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   IdentitytoolkitRelyingpartyUploadAccountRequest();
 
   IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("allowOverwrite")) {
-      allowOverwrite = _json["allowOverwrite"];
+    if (_json.containsKey('allowOverwrite')) {
+      allowOverwrite = _json['allowOverwrite'];
     }
-    if (_json.containsKey("blockSize")) {
-      blockSize = _json["blockSize"];
+    if (_json.containsKey('blockSize')) {
+      blockSize = _json['blockSize'];
     }
-    if (_json.containsKey("cpuMemCost")) {
-      cpuMemCost = _json["cpuMemCost"];
+    if (_json.containsKey('cpuMemCost')) {
+      cpuMemCost = _json['cpuMemCost'];
     }
-    if (_json.containsKey("delegatedProjectNumber")) {
-      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    if (_json.containsKey('delegatedProjectNumber')) {
+      delegatedProjectNumber = _json['delegatedProjectNumber'];
     }
-    if (_json.containsKey("dkLen")) {
-      dkLen = _json["dkLen"];
+    if (_json.containsKey('dkLen')) {
+      dkLen = _json['dkLen'];
     }
-    if (_json.containsKey("hashAlgorithm")) {
-      hashAlgorithm = _json["hashAlgorithm"];
+    if (_json.containsKey('hashAlgorithm')) {
+      hashAlgorithm = _json['hashAlgorithm'];
     }
-    if (_json.containsKey("memoryCost")) {
-      memoryCost = _json["memoryCost"];
+    if (_json.containsKey('memoryCost')) {
+      memoryCost = _json['memoryCost'];
     }
-    if (_json.containsKey("parallelization")) {
-      parallelization = _json["parallelization"];
+    if (_json.containsKey('parallelization')) {
+      parallelization = _json['parallelization'];
     }
-    if (_json.containsKey("rounds")) {
-      rounds = _json["rounds"];
+    if (_json.containsKey('rounds')) {
+      rounds = _json['rounds'];
     }
-    if (_json.containsKey("saltSeparator")) {
-      saltSeparator = _json["saltSeparator"];
+    if (_json.containsKey('saltSeparator')) {
+      saltSeparator = _json['saltSeparator'];
     }
-    if (_json.containsKey("sanityCheck")) {
-      sanityCheck = _json["sanityCheck"];
+    if (_json.containsKey('sanityCheck')) {
+      sanityCheck = _json['sanityCheck'];
     }
-    if (_json.containsKey("signerKey")) {
-      signerKey = _json["signerKey"];
+    if (_json.containsKey('signerKey')) {
+      signerKey = _json['signerKey'];
     }
-    if (_json.containsKey("targetProjectId")) {
-      targetProjectId = _json["targetProjectId"];
+    if (_json.containsKey('targetProjectId')) {
+      targetProjectId = _json['targetProjectId'];
     }
-    if (_json.containsKey("users")) {
-      users = (_json["users"] as core.List)
+    if (_json.containsKey('users')) {
+      users = (_json['users'] as core.List)
           .map<UserInfo>((value) => UserInfo.fromJson(value))
           .toList();
     }
@@ -2787,46 +2786,46 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowOverwrite != null) {
-      _json["allowOverwrite"] = allowOverwrite;
+      _json['allowOverwrite'] = allowOverwrite;
     }
     if (blockSize != null) {
-      _json["blockSize"] = blockSize;
+      _json['blockSize'] = blockSize;
     }
     if (cpuMemCost != null) {
-      _json["cpuMemCost"] = cpuMemCost;
+      _json['cpuMemCost'] = cpuMemCost;
     }
     if (delegatedProjectNumber != null) {
-      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+      _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
     if (dkLen != null) {
-      _json["dkLen"] = dkLen;
+      _json['dkLen'] = dkLen;
     }
     if (hashAlgorithm != null) {
-      _json["hashAlgorithm"] = hashAlgorithm;
+      _json['hashAlgorithm'] = hashAlgorithm;
     }
     if (memoryCost != null) {
-      _json["memoryCost"] = memoryCost;
+      _json['memoryCost'] = memoryCost;
     }
     if (parallelization != null) {
-      _json["parallelization"] = parallelization;
+      _json['parallelization'] = parallelization;
     }
     if (rounds != null) {
-      _json["rounds"] = rounds;
+      _json['rounds'] = rounds;
     }
     if (saltSeparator != null) {
-      _json["saltSeparator"] = saltSeparator;
+      _json['saltSeparator'] = saltSeparator;
     }
     if (sanityCheck != null) {
-      _json["sanityCheck"] = sanityCheck;
+      _json['sanityCheck'] = sanityCheck;
     }
     if (signerKey != null) {
-      _json["signerKey"] = signerKey;
+      _json['signerKey'] = signerKey;
     }
     if (targetProjectId != null) {
-      _json["targetProjectId"] = targetProjectId;
+      _json['targetProjectId'] = targetProjectId;
     }
     if (users != null) {
-      _json["users"] = users.map((value) => value.toJson()).toList();
+      _json['users'] = users.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2884,44 +2883,44 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   IdentitytoolkitRelyingpartyVerifyAssertionRequest();
 
   IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("autoCreate")) {
-      autoCreate = _json["autoCreate"];
+    if (_json.containsKey('autoCreate')) {
+      autoCreate = _json['autoCreate'];
     }
-    if (_json.containsKey("delegatedProjectNumber")) {
-      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    if (_json.containsKey('delegatedProjectNumber')) {
+      delegatedProjectNumber = _json['delegatedProjectNumber'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("instanceId")) {
-      instanceId = _json["instanceId"];
+    if (_json.containsKey('instanceId')) {
+      instanceId = _json['instanceId'];
     }
-    if (_json.containsKey("pendingIdToken")) {
-      pendingIdToken = _json["pendingIdToken"];
+    if (_json.containsKey('pendingIdToken')) {
+      pendingIdToken = _json['pendingIdToken'];
     }
-    if (_json.containsKey("postBody")) {
-      postBody = _json["postBody"];
+    if (_json.containsKey('postBody')) {
+      postBody = _json['postBody'];
     }
-    if (_json.containsKey("requestUri")) {
-      requestUri = _json["requestUri"];
+    if (_json.containsKey('requestUri')) {
+      requestUri = _json['requestUri'];
     }
-    if (_json.containsKey("returnIdpCredential")) {
-      returnIdpCredential = _json["returnIdpCredential"];
+    if (_json.containsKey('returnIdpCredential')) {
+      returnIdpCredential = _json['returnIdpCredential'];
     }
-    if (_json.containsKey("returnRefreshToken")) {
-      returnRefreshToken = _json["returnRefreshToken"];
+    if (_json.containsKey('returnRefreshToken')) {
+      returnRefreshToken = _json['returnRefreshToken'];
     }
-    if (_json.containsKey("returnSecureToken")) {
-      returnSecureToken = _json["returnSecureToken"];
+    if (_json.containsKey('returnSecureToken')) {
+      returnSecureToken = _json['returnSecureToken'];
     }
-    if (_json.containsKey("sessionId")) {
-      sessionId = _json["sessionId"];
+    if (_json.containsKey('sessionId')) {
+      sessionId = _json['sessionId'];
     }
-    if (_json.containsKey("tenantId")) {
-      tenantId = _json["tenantId"];
+    if (_json.containsKey('tenantId')) {
+      tenantId = _json['tenantId'];
     }
-    if (_json.containsKey("tenantProjectNumber")) {
-      tenantProjectNumber = _json["tenantProjectNumber"];
+    if (_json.containsKey('tenantProjectNumber')) {
+      tenantProjectNumber = _json['tenantProjectNumber'];
     }
   }
 
@@ -2929,43 +2928,43 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (autoCreate != null) {
-      _json["autoCreate"] = autoCreate;
+      _json['autoCreate'] = autoCreate;
     }
     if (delegatedProjectNumber != null) {
-      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+      _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (instanceId != null) {
-      _json["instanceId"] = instanceId;
+      _json['instanceId'] = instanceId;
     }
     if (pendingIdToken != null) {
-      _json["pendingIdToken"] = pendingIdToken;
+      _json['pendingIdToken'] = pendingIdToken;
     }
     if (postBody != null) {
-      _json["postBody"] = postBody;
+      _json['postBody'] = postBody;
     }
     if (requestUri != null) {
-      _json["requestUri"] = requestUri;
+      _json['requestUri'] = requestUri;
     }
     if (returnIdpCredential != null) {
-      _json["returnIdpCredential"] = returnIdpCredential;
+      _json['returnIdpCredential'] = returnIdpCredential;
     }
     if (returnRefreshToken != null) {
-      _json["returnRefreshToken"] = returnRefreshToken;
+      _json['returnRefreshToken'] = returnRefreshToken;
     }
     if (returnSecureToken != null) {
-      _json["returnSecureToken"] = returnSecureToken;
+      _json['returnSecureToken'] = returnSecureToken;
     }
     if (sessionId != null) {
-      _json["sessionId"] = sessionId;
+      _json['sessionId'] = sessionId;
     }
     if (tenantId != null) {
-      _json["tenantId"] = tenantId;
+      _json['tenantId'] = tenantId;
     }
     if (tenantProjectNumber != null) {
-      _json["tenantProjectNumber"] = tenantProjectNumber;
+      _json['tenantProjectNumber'] = tenantProjectNumber;
     }
     return _json;
   }
@@ -2989,17 +2988,17 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
   IdentitytoolkitRelyingpartyVerifyCustomTokenRequest();
 
   IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("delegatedProjectNumber")) {
-      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    if (_json.containsKey('delegatedProjectNumber')) {
+      delegatedProjectNumber = _json['delegatedProjectNumber'];
     }
-    if (_json.containsKey("instanceId")) {
-      instanceId = _json["instanceId"];
+    if (_json.containsKey('instanceId')) {
+      instanceId = _json['instanceId'];
     }
-    if (_json.containsKey("returnSecureToken")) {
-      returnSecureToken = _json["returnSecureToken"];
+    if (_json.containsKey('returnSecureToken')) {
+      returnSecureToken = _json['returnSecureToken'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
   }
 
@@ -3007,16 +3006,16 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
-      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+      _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
     if (instanceId != null) {
-      _json["instanceId"] = instanceId;
+      _json['instanceId'] = instanceId;
     }
     if (returnSecureToken != null) {
-      _json["returnSecureToken"] = returnSecureToken;
+      _json['returnSecureToken'] = returnSecureToken;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     return _json;
   }
@@ -3064,38 +3063,38 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   IdentitytoolkitRelyingpartyVerifyPasswordRequest();
 
   IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("captchaChallenge")) {
-      captchaChallenge = _json["captchaChallenge"];
+    if (_json.containsKey('captchaChallenge')) {
+      captchaChallenge = _json['captchaChallenge'];
     }
-    if (_json.containsKey("captchaResponse")) {
-      captchaResponse = _json["captchaResponse"];
+    if (_json.containsKey('captchaResponse')) {
+      captchaResponse = _json['captchaResponse'];
     }
-    if (_json.containsKey("delegatedProjectNumber")) {
-      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    if (_json.containsKey('delegatedProjectNumber')) {
+      delegatedProjectNumber = _json['delegatedProjectNumber'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("instanceId")) {
-      instanceId = _json["instanceId"];
+    if (_json.containsKey('instanceId')) {
+      instanceId = _json['instanceId'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("pendingIdToken")) {
-      pendingIdToken = _json["pendingIdToken"];
+    if (_json.containsKey('pendingIdToken')) {
+      pendingIdToken = _json['pendingIdToken'];
     }
-    if (_json.containsKey("returnSecureToken")) {
-      returnSecureToken = _json["returnSecureToken"];
+    if (_json.containsKey('returnSecureToken')) {
+      returnSecureToken = _json['returnSecureToken'];
     }
-    if (_json.containsKey("tenantId")) {
-      tenantId = _json["tenantId"];
+    if (_json.containsKey('tenantId')) {
+      tenantId = _json['tenantId'];
     }
-    if (_json.containsKey("tenantProjectNumber")) {
-      tenantProjectNumber = _json["tenantProjectNumber"];
+    if (_json.containsKey('tenantProjectNumber')) {
+      tenantProjectNumber = _json['tenantProjectNumber'];
     }
   }
 
@@ -3103,37 +3102,37 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (captchaChallenge != null) {
-      _json["captchaChallenge"] = captchaChallenge;
+      _json['captchaChallenge'] = captchaChallenge;
     }
     if (captchaResponse != null) {
-      _json["captchaResponse"] = captchaResponse;
+      _json['captchaResponse'] = captchaResponse;
     }
     if (delegatedProjectNumber != null) {
-      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+      _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (instanceId != null) {
-      _json["instanceId"] = instanceId;
+      _json['instanceId'] = instanceId;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (pendingIdToken != null) {
-      _json["pendingIdToken"] = pendingIdToken;
+      _json['pendingIdToken'] = pendingIdToken;
     }
     if (returnSecureToken != null) {
-      _json["returnSecureToken"] = returnSecureToken;
+      _json['returnSecureToken'] = returnSecureToken;
     }
     if (tenantId != null) {
-      _json["tenantId"] = tenantId;
+      _json['tenantId'] = tenantId;
     }
     if (tenantProjectNumber != null) {
-      _json["tenantProjectNumber"] = tenantProjectNumber;
+      _json['tenantProjectNumber'] = tenantProjectNumber;
     }
     return _json;
   }
@@ -3155,26 +3154,26 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
   IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest();
 
   IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("operation")) {
-      operation = _json["operation"];
+    if (_json.containsKey('operation')) {
+      operation = _json['operation'];
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'];
     }
-    if (_json.containsKey("sessionInfo")) {
-      sessionInfo = _json["sessionInfo"];
+    if (_json.containsKey('sessionInfo')) {
+      sessionInfo = _json['sessionInfo'];
     }
-    if (_json.containsKey("temporaryProof")) {
-      temporaryProof = _json["temporaryProof"];
+    if (_json.containsKey('temporaryProof')) {
+      temporaryProof = _json['temporaryProof'];
     }
-    if (_json.containsKey("verificationProof")) {
-      verificationProof = _json["verificationProof"];
+    if (_json.containsKey('verificationProof')) {
+      verificationProof = _json['verificationProof'];
     }
   }
 
@@ -3182,25 +3181,25 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (operation != null) {
-      _json["operation"] = operation;
+      _json['operation'] = operation;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     if (sessionInfo != null) {
-      _json["sessionInfo"] = sessionInfo;
+      _json['sessionInfo'] = sessionInfo;
     }
     if (temporaryProof != null) {
-      _json["temporaryProof"] = temporaryProof;
+      _json['temporaryProof'] = temporaryProof;
     }
     if (verificationProof != null) {
-      _json["verificationProof"] = verificationProof;
+      _json['verificationProof'] = verificationProof;
     }
     return _json;
   }
@@ -3223,35 +3222,35 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
 
   IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("expiresIn")) {
-      expiresIn = _json["expiresIn"];
+    if (_json.containsKey('expiresIn')) {
+      expiresIn = _json['expiresIn'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("isNewUser")) {
-      isNewUser = _json["isNewUser"];
+    if (_json.containsKey('isNewUser')) {
+      isNewUser = _json['isNewUser'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'];
     }
-    if (_json.containsKey("refreshToken")) {
-      refreshToken = _json["refreshToken"];
+    if (_json.containsKey('refreshToken')) {
+      refreshToken = _json['refreshToken'];
     }
-    if (_json.containsKey("temporaryProof")) {
-      temporaryProof = _json["temporaryProof"];
+    if (_json.containsKey('temporaryProof')) {
+      temporaryProof = _json['temporaryProof'];
     }
-    if (_json.containsKey("temporaryProofExpiresIn")) {
-      temporaryProofExpiresIn = _json["temporaryProofExpiresIn"];
+    if (_json.containsKey('temporaryProofExpiresIn')) {
+      temporaryProofExpiresIn = _json['temporaryProofExpiresIn'];
     }
-    if (_json.containsKey("verificationProof")) {
-      verificationProof = _json["verificationProof"];
+    if (_json.containsKey('verificationProof')) {
+      verificationProof = _json['verificationProof'];
     }
-    if (_json.containsKey("verificationProofExpiresIn")) {
-      verificationProofExpiresIn = _json["verificationProofExpiresIn"];
+    if (_json.containsKey('verificationProofExpiresIn')) {
+      verificationProofExpiresIn = _json['verificationProofExpiresIn'];
     }
   }
 
@@ -3259,34 +3258,34 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expiresIn != null) {
-      _json["expiresIn"] = expiresIn;
+      _json['expiresIn'] = expiresIn;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (isNewUser != null) {
-      _json["isNewUser"] = isNewUser;
+      _json['isNewUser'] = isNewUser;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     if (refreshToken != null) {
-      _json["refreshToken"] = refreshToken;
+      _json['refreshToken'] = refreshToken;
     }
     if (temporaryProof != null) {
-      _json["temporaryProof"] = temporaryProof;
+      _json['temporaryProof'] = temporaryProof;
     }
     if (temporaryProofExpiresIn != null) {
-      _json["temporaryProofExpiresIn"] = temporaryProofExpiresIn;
+      _json['temporaryProofExpiresIn'] = temporaryProofExpiresIn;
     }
     if (verificationProof != null) {
-      _json["verificationProof"] = verificationProof;
+      _json['verificationProof'] = verificationProof;
     }
     if (verificationProofExpiresIn != null) {
-      _json["verificationProofExpiresIn"] = verificationProofExpiresIn;
+      _json['verificationProofExpiresIn'] = verificationProofExpiresIn;
     }
     return _json;
   }
@@ -3316,24 +3315,24 @@ class IdpConfig {
   IdpConfig();
 
   IdpConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
+    if (_json.containsKey('clientId')) {
+      clientId = _json['clientId'];
     }
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
-    if (_json.containsKey("experimentPercent")) {
-      experimentPercent = _json["experimentPercent"];
+    if (_json.containsKey('experimentPercent')) {
+      experimentPercent = _json['experimentPercent'];
     }
-    if (_json.containsKey("provider")) {
-      provider = _json["provider"];
+    if (_json.containsKey('provider')) {
+      provider = _json['provider'];
     }
-    if (_json.containsKey("secret")) {
-      secret = _json["secret"];
+    if (_json.containsKey('secret')) {
+      secret = _json['secret'];
     }
-    if (_json.containsKey("whitelistedAudiences")) {
+    if (_json.containsKey('whitelistedAudiences')) {
       whitelistedAudiences =
-          (_json["whitelistedAudiences"] as core.List).cast<core.String>();
+          (_json['whitelistedAudiences'] as core.List).cast<core.String>();
     }
   }
 
@@ -3341,22 +3340,22 @@ class IdpConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientId != null) {
-      _json["clientId"] = clientId;
+      _json['clientId'] = clientId;
     }
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     if (experimentPercent != null) {
-      _json["experimentPercent"] = experimentPercent;
+      _json['experimentPercent'] = experimentPercent;
     }
     if (provider != null) {
-      _json["provider"] = provider;
+      _json['provider'] = provider;
     }
     if (secret != null) {
-      _json["secret"] = secret;
+      _json['secret'] = secret;
     }
     if (whitelistedAudiences != null) {
-      _json["whitelistedAudiences"] = whitelistedAudiences;
+      _json['whitelistedAudiences'] = whitelistedAudiences;
     }
     return _json;
   }
@@ -3415,50 +3414,50 @@ class Relyingparty {
   Relyingparty();
 
   Relyingparty.fromJson(core.Map _json) {
-    if (_json.containsKey("androidInstallApp")) {
-      androidInstallApp = _json["androidInstallApp"];
+    if (_json.containsKey('androidInstallApp')) {
+      androidInstallApp = _json['androidInstallApp'];
     }
-    if (_json.containsKey("androidMinimumVersion")) {
-      androidMinimumVersion = _json["androidMinimumVersion"];
+    if (_json.containsKey('androidMinimumVersion')) {
+      androidMinimumVersion = _json['androidMinimumVersion'];
     }
-    if (_json.containsKey("androidPackageName")) {
-      androidPackageName = _json["androidPackageName"];
+    if (_json.containsKey('androidPackageName')) {
+      androidPackageName = _json['androidPackageName'];
     }
-    if (_json.containsKey("canHandleCodeInApp")) {
-      canHandleCodeInApp = _json["canHandleCodeInApp"];
+    if (_json.containsKey('canHandleCodeInApp')) {
+      canHandleCodeInApp = _json['canHandleCodeInApp'];
     }
-    if (_json.containsKey("captchaResp")) {
-      captchaResp = _json["captchaResp"];
+    if (_json.containsKey('captchaResp')) {
+      captchaResp = _json['captchaResp'];
     }
-    if (_json.containsKey("challenge")) {
-      challenge = _json["challenge"];
+    if (_json.containsKey('challenge')) {
+      challenge = _json['challenge'];
     }
-    if (_json.containsKey("continueUrl")) {
-      continueUrl = _json["continueUrl"];
+    if (_json.containsKey('continueUrl')) {
+      continueUrl = _json['continueUrl'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("iOSAppStoreId")) {
-      iOSAppStoreId = _json["iOSAppStoreId"];
+    if (_json.containsKey('iOSAppStoreId')) {
+      iOSAppStoreId = _json['iOSAppStoreId'];
     }
-    if (_json.containsKey("iOSBundleId")) {
-      iOSBundleId = _json["iOSBundleId"];
+    if (_json.containsKey('iOSBundleId')) {
+      iOSBundleId = _json['iOSBundleId'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("newEmail")) {
-      newEmail = _json["newEmail"];
+    if (_json.containsKey('newEmail')) {
+      newEmail = _json['newEmail'];
     }
-    if (_json.containsKey("requestType")) {
-      requestType = _json["requestType"];
+    if (_json.containsKey('requestType')) {
+      requestType = _json['requestType'];
     }
-    if (_json.containsKey("userIp")) {
-      userIp = _json["userIp"];
+    if (_json.containsKey('userIp')) {
+      userIp = _json['userIp'];
     }
   }
 
@@ -3466,49 +3465,49 @@ class Relyingparty {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (androidInstallApp != null) {
-      _json["androidInstallApp"] = androidInstallApp;
+      _json['androidInstallApp'] = androidInstallApp;
     }
     if (androidMinimumVersion != null) {
-      _json["androidMinimumVersion"] = androidMinimumVersion;
+      _json['androidMinimumVersion'] = androidMinimumVersion;
     }
     if (androidPackageName != null) {
-      _json["androidPackageName"] = androidPackageName;
+      _json['androidPackageName'] = androidPackageName;
     }
     if (canHandleCodeInApp != null) {
-      _json["canHandleCodeInApp"] = canHandleCodeInApp;
+      _json['canHandleCodeInApp'] = canHandleCodeInApp;
     }
     if (captchaResp != null) {
-      _json["captchaResp"] = captchaResp;
+      _json['captchaResp'] = captchaResp;
     }
     if (challenge != null) {
-      _json["challenge"] = challenge;
+      _json['challenge'] = challenge;
     }
     if (continueUrl != null) {
-      _json["continueUrl"] = continueUrl;
+      _json['continueUrl'] = continueUrl;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (iOSAppStoreId != null) {
-      _json["iOSAppStoreId"] = iOSAppStoreId;
+      _json['iOSAppStoreId'] = iOSAppStoreId;
     }
     if (iOSBundleId != null) {
-      _json["iOSBundleId"] = iOSBundleId;
+      _json['iOSBundleId'] = iOSBundleId;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (newEmail != null) {
-      _json["newEmail"] = newEmail;
+      _json['newEmail'] = newEmail;
     }
     if (requestType != null) {
-      _json["requestType"] = requestType;
+      _json['requestType'] = requestType;
     }
     if (userIp != null) {
-      _json["userIp"] = userIp;
+      _json['userIp'] = userIp;
     }
     return _json;
   }
@@ -3532,17 +3531,17 @@ class ResetPasswordResponse {
   ResetPasswordResponse();
 
   ResetPasswordResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("newEmail")) {
-      newEmail = _json["newEmail"];
+    if (_json.containsKey('newEmail')) {
+      newEmail = _json['newEmail'];
     }
-    if (_json.containsKey("requestType")) {
-      requestType = _json["requestType"];
+    if (_json.containsKey('requestType')) {
+      requestType = _json['requestType'];
     }
   }
 
@@ -3550,16 +3549,16 @@ class ResetPasswordResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (newEmail != null) {
-      _json["newEmail"] = newEmail;
+      _json['newEmail'] = newEmail;
     }
     if (requestType != null) {
-      _json["requestType"] = requestType;
+      _json['requestType'] = requestType;
     }
     return _json;
   }
@@ -3583,17 +3582,17 @@ class SetAccountInfoResponseProviderUserInfo {
   SetAccountInfoResponseProviderUserInfo();
 
   SetAccountInfoResponseProviderUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("federatedId")) {
-      federatedId = _json["federatedId"];
+    if (_json.containsKey('federatedId')) {
+      federatedId = _json['federatedId'];
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
-    if (_json.containsKey("providerId")) {
-      providerId = _json["providerId"];
+    if (_json.containsKey('providerId')) {
+      providerId = _json['providerId'];
     }
   }
 
@@ -3601,16 +3600,16 @@ class SetAccountInfoResponseProviderUserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (federatedId != null) {
-      _json["federatedId"] = federatedId;
+      _json['federatedId'] = federatedId;
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     if (providerId != null) {
-      _json["providerId"] = providerId;
+      _json['providerId'] = providerId;
     }
     return _json;
   }
@@ -3650,7 +3649,7 @@ class SetAccountInfoResponse {
 
   set passwordHashAsBytes(core.List<core.int> _bytes) {
     passwordHash =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The photo url of the user.
@@ -3665,44 +3664,44 @@ class SetAccountInfoResponse {
   SetAccountInfoResponse();
 
   SetAccountInfoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("emailVerified")) {
-      emailVerified = _json["emailVerified"];
+    if (_json.containsKey('emailVerified')) {
+      emailVerified = _json['emailVerified'];
     }
-    if (_json.containsKey("expiresIn")) {
-      expiresIn = _json["expiresIn"];
+    if (_json.containsKey('expiresIn')) {
+      expiresIn = _json['expiresIn'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
-    if (_json.containsKey("newEmail")) {
-      newEmail = _json["newEmail"];
+    if (_json.containsKey('newEmail')) {
+      newEmail = _json['newEmail'];
     }
-    if (_json.containsKey("passwordHash")) {
-      passwordHash = _json["passwordHash"];
+    if (_json.containsKey('passwordHash')) {
+      passwordHash = _json['passwordHash'];
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
-    if (_json.containsKey("providerUserInfo")) {
-      providerUserInfo = (_json["providerUserInfo"] as core.List)
+    if (_json.containsKey('providerUserInfo')) {
+      providerUserInfo = (_json['providerUserInfo'] as core.List)
           .map<SetAccountInfoResponseProviderUserInfo>(
               (value) => SetAccountInfoResponseProviderUserInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("refreshToken")) {
-      refreshToken = _json["refreshToken"];
+    if (_json.containsKey('refreshToken')) {
+      refreshToken = _json['refreshToken'];
     }
   }
 
@@ -3710,41 +3709,41 @@ class SetAccountInfoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (emailVerified != null) {
-      _json["emailVerified"] = emailVerified;
+      _json['emailVerified'] = emailVerified;
     }
     if (expiresIn != null) {
-      _json["expiresIn"] = expiresIn;
+      _json['expiresIn'] = expiresIn;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (newEmail != null) {
-      _json["newEmail"] = newEmail;
+      _json['newEmail'] = newEmail;
     }
     if (passwordHash != null) {
-      _json["passwordHash"] = passwordHash;
+      _json['passwordHash'] = passwordHash;
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     if (providerUserInfo != null) {
-      _json["providerUserInfo"] =
+      _json['providerUserInfo'] =
           providerUserInfo.map((value) => value.toJson()).toList();
     }
     if (refreshToken != null) {
-      _json["refreshToken"] = refreshToken;
+      _json['refreshToken'] = refreshToken;
     }
     return _json;
   }
@@ -3778,26 +3777,26 @@ class SignupNewUserResponse {
   SignupNewUserResponse();
 
   SignupNewUserResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("expiresIn")) {
-      expiresIn = _json["expiresIn"];
+    if (_json.containsKey('expiresIn')) {
+      expiresIn = _json['expiresIn'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
-    if (_json.containsKey("refreshToken")) {
-      refreshToken = _json["refreshToken"];
+    if (_json.containsKey('refreshToken')) {
+      refreshToken = _json['refreshToken'];
     }
   }
 
@@ -3805,25 +3804,25 @@ class SignupNewUserResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (expiresIn != null) {
-      _json["expiresIn"] = expiresIn;
+      _json['expiresIn'] = expiresIn;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (refreshToken != null) {
-      _json["refreshToken"] = refreshToken;
+      _json['refreshToken'] = refreshToken;
     }
     return _json;
   }
@@ -3839,11 +3838,11 @@ class UploadAccountResponseError {
   UploadAccountResponseError();
 
   UploadAccountResponseError.fromJson(core.Map _json) {
-    if (_json.containsKey("index")) {
-      index = _json["index"];
+    if (_json.containsKey('index')) {
+      index = _json['index'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -3851,10 +3850,10 @@ class UploadAccountResponseError {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (index != null) {
-      _json["index"] = index;
+      _json['index'] = index;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -3871,14 +3870,14 @@ class UploadAccountResponse {
   UploadAccountResponse();
 
   UploadAccountResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = (_json["error"] as core.List)
+    if (_json.containsKey('error')) {
+      error = (_json['error'] as core.List)
           .map<UploadAccountResponseError>(
               (value) => UploadAccountResponseError.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -3886,10 +3885,10 @@ class UploadAccountResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.map((value) => value.toJson()).toList();
+      _json['error'] = error.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -3925,29 +3924,29 @@ class UserInfoProviderUserInfo {
   UserInfoProviderUserInfo();
 
   UserInfoProviderUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("federatedId")) {
-      federatedId = _json["federatedId"];
+    if (_json.containsKey('federatedId')) {
+      federatedId = _json['federatedId'];
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'];
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
-    if (_json.containsKey("providerId")) {
-      providerId = _json["providerId"];
+    if (_json.containsKey('providerId')) {
+      providerId = _json['providerId'];
     }
-    if (_json.containsKey("rawId")) {
-      rawId = _json["rawId"];
+    if (_json.containsKey('rawId')) {
+      rawId = _json['rawId'];
     }
-    if (_json.containsKey("screenName")) {
-      screenName = _json["screenName"];
+    if (_json.containsKey('screenName')) {
+      screenName = _json['screenName'];
     }
   }
 
@@ -3955,28 +3954,28 @@ class UserInfoProviderUserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (federatedId != null) {
-      _json["federatedId"] = federatedId;
+      _json['federatedId'] = federatedId;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     if (providerId != null) {
-      _json["providerId"] = providerId;
+      _json['providerId'] = providerId;
     }
     if (rawId != null) {
-      _json["rawId"] = rawId;
+      _json['rawId'] = rawId;
     }
     if (screenName != null) {
-      _json["screenName"] = screenName;
+      _json['screenName'] = screenName;
     }
     return _json;
   }
@@ -4018,7 +4017,7 @@ class UserInfo {
 
   set passwordHashAsBytes(core.List<core.int> _bytes) {
     passwordHash =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The timestamp when the password was last updated.
@@ -4042,7 +4041,7 @@ class UserInfo {
 
   set saltAsBytes(core.List<core.int> _bytes) {
     salt =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// User's screen name at Twitter or login name at Github.
@@ -4057,65 +4056,65 @@ class UserInfo {
   UserInfo();
 
   UserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("createdAt")) {
-      createdAt = _json["createdAt"];
+    if (_json.containsKey('createdAt')) {
+      createdAt = _json['createdAt'];
     }
-    if (_json.containsKey("customAttributes")) {
-      customAttributes = _json["customAttributes"];
+    if (_json.containsKey('customAttributes')) {
+      customAttributes = _json['customAttributes'];
     }
-    if (_json.containsKey("customAuth")) {
-      customAuth = _json["customAuth"];
+    if (_json.containsKey('customAuth')) {
+      customAuth = _json['customAuth'];
     }
-    if (_json.containsKey("disabled")) {
-      disabled = _json["disabled"];
+    if (_json.containsKey('disabled')) {
+      disabled = _json['disabled'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("emailVerified")) {
-      emailVerified = _json["emailVerified"];
+    if (_json.containsKey('emailVerified')) {
+      emailVerified = _json['emailVerified'];
     }
-    if (_json.containsKey("lastLoginAt")) {
-      lastLoginAt = _json["lastLoginAt"];
+    if (_json.containsKey('lastLoginAt')) {
+      lastLoginAt = _json['lastLoginAt'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
-    if (_json.containsKey("passwordHash")) {
-      passwordHash = _json["passwordHash"];
+    if (_json.containsKey('passwordHash')) {
+      passwordHash = _json['passwordHash'];
     }
-    if (_json.containsKey("passwordUpdatedAt")) {
-      passwordUpdatedAt = _json["passwordUpdatedAt"].toDouble();
+    if (_json.containsKey('passwordUpdatedAt')) {
+      passwordUpdatedAt = _json['passwordUpdatedAt'].toDouble();
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'];
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
-    if (_json.containsKey("providerUserInfo")) {
-      providerUserInfo = (_json["providerUserInfo"] as core.List)
+    if (_json.containsKey('providerUserInfo')) {
+      providerUserInfo = (_json['providerUserInfo'] as core.List)
           .map<UserInfoProviderUserInfo>(
               (value) => UserInfoProviderUserInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("rawPassword")) {
-      rawPassword = _json["rawPassword"];
+    if (_json.containsKey('rawPassword')) {
+      rawPassword = _json['rawPassword'];
     }
-    if (_json.containsKey("salt")) {
-      salt = _json["salt"];
+    if (_json.containsKey('salt')) {
+      salt = _json['salt'];
     }
-    if (_json.containsKey("screenName")) {
-      screenName = _json["screenName"];
+    if (_json.containsKey('screenName')) {
+      screenName = _json['screenName'];
     }
-    if (_json.containsKey("validSince")) {
-      validSince = _json["validSince"];
+    if (_json.containsKey('validSince')) {
+      validSince = _json['validSince'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -4123,62 +4122,62 @@ class UserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createdAt != null) {
-      _json["createdAt"] = createdAt;
+      _json['createdAt'] = createdAt;
     }
     if (customAttributes != null) {
-      _json["customAttributes"] = customAttributes;
+      _json['customAttributes'] = customAttributes;
     }
     if (customAuth != null) {
-      _json["customAuth"] = customAuth;
+      _json['customAuth'] = customAuth;
     }
     if (disabled != null) {
-      _json["disabled"] = disabled;
+      _json['disabled'] = disabled;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (emailVerified != null) {
-      _json["emailVerified"] = emailVerified;
+      _json['emailVerified'] = emailVerified;
     }
     if (lastLoginAt != null) {
-      _json["lastLoginAt"] = lastLoginAt;
+      _json['lastLoginAt'] = lastLoginAt;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (passwordHash != null) {
-      _json["passwordHash"] = passwordHash;
+      _json['passwordHash'] = passwordHash;
     }
     if (passwordUpdatedAt != null) {
-      _json["passwordUpdatedAt"] = passwordUpdatedAt;
+      _json['passwordUpdatedAt'] = passwordUpdatedAt;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     if (providerUserInfo != null) {
-      _json["providerUserInfo"] =
+      _json['providerUserInfo'] =
           providerUserInfo.map((value) => value.toJson()).toList();
     }
     if (rawPassword != null) {
-      _json["rawPassword"] = rawPassword;
+      _json['rawPassword'] = rawPassword;
     }
     if (salt != null) {
-      _json["salt"] = salt;
+      _json['salt'] = salt;
     }
     if (screenName != null) {
-      _json["screenName"] = screenName;
+      _json['screenName'] = screenName;
     }
     if (validSince != null) {
-      _json["validSince"] = validSince;
+      _json['validSince'] = validSince;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -4320,123 +4319,123 @@ class VerifyAssertionResponse {
   VerifyAssertionResponse();
 
   VerifyAssertionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
+    if (_json.containsKey('action')) {
+      action = _json['action'];
     }
-    if (_json.containsKey("appInstallationUrl")) {
-      appInstallationUrl = _json["appInstallationUrl"];
+    if (_json.containsKey('appInstallationUrl')) {
+      appInstallationUrl = _json['appInstallationUrl'];
     }
-    if (_json.containsKey("appScheme")) {
-      appScheme = _json["appScheme"];
+    if (_json.containsKey('appScheme')) {
+      appScheme = _json['appScheme'];
     }
-    if (_json.containsKey("context")) {
-      context = _json["context"];
+    if (_json.containsKey('context')) {
+      context = _json['context'];
     }
-    if (_json.containsKey("dateOfBirth")) {
-      dateOfBirth = _json["dateOfBirth"];
+    if (_json.containsKey('dateOfBirth')) {
+      dateOfBirth = _json['dateOfBirth'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("emailRecycled")) {
-      emailRecycled = _json["emailRecycled"];
+    if (_json.containsKey('emailRecycled')) {
+      emailRecycled = _json['emailRecycled'];
     }
-    if (_json.containsKey("emailVerified")) {
-      emailVerified = _json["emailVerified"];
+    if (_json.containsKey('emailVerified')) {
+      emailVerified = _json['emailVerified'];
     }
-    if (_json.containsKey("errorMessage")) {
-      errorMessage = _json["errorMessage"];
+    if (_json.containsKey('errorMessage')) {
+      errorMessage = _json['errorMessage'];
     }
-    if (_json.containsKey("expiresIn")) {
-      expiresIn = _json["expiresIn"];
+    if (_json.containsKey('expiresIn')) {
+      expiresIn = _json['expiresIn'];
     }
-    if (_json.containsKey("federatedId")) {
-      federatedId = _json["federatedId"];
+    if (_json.containsKey('federatedId')) {
+      federatedId = _json['federatedId'];
     }
-    if (_json.containsKey("firstName")) {
-      firstName = _json["firstName"];
+    if (_json.containsKey('firstName')) {
+      firstName = _json['firstName'];
     }
-    if (_json.containsKey("fullName")) {
-      fullName = _json["fullName"];
+    if (_json.containsKey('fullName')) {
+      fullName = _json['fullName'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("inputEmail")) {
-      inputEmail = _json["inputEmail"];
+    if (_json.containsKey('inputEmail')) {
+      inputEmail = _json['inputEmail'];
     }
-    if (_json.containsKey("isNewUser")) {
-      isNewUser = _json["isNewUser"];
+    if (_json.containsKey('isNewUser')) {
+      isNewUser = _json['isNewUser'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("lastName")) {
-      lastName = _json["lastName"];
+    if (_json.containsKey('lastName')) {
+      lastName = _json['lastName'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
-    if (_json.containsKey("needConfirmation")) {
-      needConfirmation = _json["needConfirmation"];
+    if (_json.containsKey('needConfirmation')) {
+      needConfirmation = _json['needConfirmation'];
     }
-    if (_json.containsKey("needEmail")) {
-      needEmail = _json["needEmail"];
+    if (_json.containsKey('needEmail')) {
+      needEmail = _json['needEmail'];
     }
-    if (_json.containsKey("nickName")) {
-      nickName = _json["nickName"];
+    if (_json.containsKey('nickName')) {
+      nickName = _json['nickName'];
     }
-    if (_json.containsKey("oauthAccessToken")) {
-      oauthAccessToken = _json["oauthAccessToken"];
+    if (_json.containsKey('oauthAccessToken')) {
+      oauthAccessToken = _json['oauthAccessToken'];
     }
-    if (_json.containsKey("oauthAuthorizationCode")) {
-      oauthAuthorizationCode = _json["oauthAuthorizationCode"];
+    if (_json.containsKey('oauthAuthorizationCode')) {
+      oauthAuthorizationCode = _json['oauthAuthorizationCode'];
     }
-    if (_json.containsKey("oauthExpireIn")) {
-      oauthExpireIn = _json["oauthExpireIn"];
+    if (_json.containsKey('oauthExpireIn')) {
+      oauthExpireIn = _json['oauthExpireIn'];
     }
-    if (_json.containsKey("oauthIdToken")) {
-      oauthIdToken = _json["oauthIdToken"];
+    if (_json.containsKey('oauthIdToken')) {
+      oauthIdToken = _json['oauthIdToken'];
     }
-    if (_json.containsKey("oauthRequestToken")) {
-      oauthRequestToken = _json["oauthRequestToken"];
+    if (_json.containsKey('oauthRequestToken')) {
+      oauthRequestToken = _json['oauthRequestToken'];
     }
-    if (_json.containsKey("oauthScope")) {
-      oauthScope = _json["oauthScope"];
+    if (_json.containsKey('oauthScope')) {
+      oauthScope = _json['oauthScope'];
     }
-    if (_json.containsKey("oauthTokenSecret")) {
-      oauthTokenSecret = _json["oauthTokenSecret"];
+    if (_json.containsKey('oauthTokenSecret')) {
+      oauthTokenSecret = _json['oauthTokenSecret'];
     }
-    if (_json.containsKey("originalEmail")) {
-      originalEmail = _json["originalEmail"];
+    if (_json.containsKey('originalEmail')) {
+      originalEmail = _json['originalEmail'];
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
-    if (_json.containsKey("providerId")) {
-      providerId = _json["providerId"];
+    if (_json.containsKey('providerId')) {
+      providerId = _json['providerId'];
     }
-    if (_json.containsKey("rawUserInfo")) {
-      rawUserInfo = _json["rawUserInfo"];
+    if (_json.containsKey('rawUserInfo')) {
+      rawUserInfo = _json['rawUserInfo'];
     }
-    if (_json.containsKey("refreshToken")) {
-      refreshToken = _json["refreshToken"];
+    if (_json.containsKey('refreshToken')) {
+      refreshToken = _json['refreshToken'];
     }
-    if (_json.containsKey("screenName")) {
-      screenName = _json["screenName"];
+    if (_json.containsKey('screenName')) {
+      screenName = _json['screenName'];
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
-    if (_json.containsKey("verifiedProvider")) {
+    if (_json.containsKey('verifiedProvider')) {
       verifiedProvider =
-          (_json["verifiedProvider"] as core.List).cast<core.String>();
+          (_json['verifiedProvider'] as core.List).cast<core.String>();
     }
   }
 
@@ -4444,121 +4443,121 @@ class VerifyAssertionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (action != null) {
-      _json["action"] = action;
+      _json['action'] = action;
     }
     if (appInstallationUrl != null) {
-      _json["appInstallationUrl"] = appInstallationUrl;
+      _json['appInstallationUrl'] = appInstallationUrl;
     }
     if (appScheme != null) {
-      _json["appScheme"] = appScheme;
+      _json['appScheme'] = appScheme;
     }
     if (context != null) {
-      _json["context"] = context;
+      _json['context'] = context;
     }
     if (dateOfBirth != null) {
-      _json["dateOfBirth"] = dateOfBirth;
+      _json['dateOfBirth'] = dateOfBirth;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (emailRecycled != null) {
-      _json["emailRecycled"] = emailRecycled;
+      _json['emailRecycled'] = emailRecycled;
     }
     if (emailVerified != null) {
-      _json["emailVerified"] = emailVerified;
+      _json['emailVerified'] = emailVerified;
     }
     if (errorMessage != null) {
-      _json["errorMessage"] = errorMessage;
+      _json['errorMessage'] = errorMessage;
     }
     if (expiresIn != null) {
-      _json["expiresIn"] = expiresIn;
+      _json['expiresIn'] = expiresIn;
     }
     if (federatedId != null) {
-      _json["federatedId"] = federatedId;
+      _json['federatedId'] = federatedId;
     }
     if (firstName != null) {
-      _json["firstName"] = firstName;
+      _json['firstName'] = firstName;
     }
     if (fullName != null) {
-      _json["fullName"] = fullName;
+      _json['fullName'] = fullName;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (inputEmail != null) {
-      _json["inputEmail"] = inputEmail;
+      _json['inputEmail'] = inputEmail;
     }
     if (isNewUser != null) {
-      _json["isNewUser"] = isNewUser;
+      _json['isNewUser'] = isNewUser;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (lastName != null) {
-      _json["lastName"] = lastName;
+      _json['lastName'] = lastName;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (needConfirmation != null) {
-      _json["needConfirmation"] = needConfirmation;
+      _json['needConfirmation'] = needConfirmation;
     }
     if (needEmail != null) {
-      _json["needEmail"] = needEmail;
+      _json['needEmail'] = needEmail;
     }
     if (nickName != null) {
-      _json["nickName"] = nickName;
+      _json['nickName'] = nickName;
     }
     if (oauthAccessToken != null) {
-      _json["oauthAccessToken"] = oauthAccessToken;
+      _json['oauthAccessToken'] = oauthAccessToken;
     }
     if (oauthAuthorizationCode != null) {
-      _json["oauthAuthorizationCode"] = oauthAuthorizationCode;
+      _json['oauthAuthorizationCode'] = oauthAuthorizationCode;
     }
     if (oauthExpireIn != null) {
-      _json["oauthExpireIn"] = oauthExpireIn;
+      _json['oauthExpireIn'] = oauthExpireIn;
     }
     if (oauthIdToken != null) {
-      _json["oauthIdToken"] = oauthIdToken;
+      _json['oauthIdToken'] = oauthIdToken;
     }
     if (oauthRequestToken != null) {
-      _json["oauthRequestToken"] = oauthRequestToken;
+      _json['oauthRequestToken'] = oauthRequestToken;
     }
     if (oauthScope != null) {
-      _json["oauthScope"] = oauthScope;
+      _json['oauthScope'] = oauthScope;
     }
     if (oauthTokenSecret != null) {
-      _json["oauthTokenSecret"] = oauthTokenSecret;
+      _json['oauthTokenSecret'] = oauthTokenSecret;
     }
     if (originalEmail != null) {
-      _json["originalEmail"] = originalEmail;
+      _json['originalEmail'] = originalEmail;
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     if (providerId != null) {
-      _json["providerId"] = providerId;
+      _json['providerId'] = providerId;
     }
     if (rawUserInfo != null) {
-      _json["rawUserInfo"] = rawUserInfo;
+      _json['rawUserInfo'] = rawUserInfo;
     }
     if (refreshToken != null) {
-      _json["refreshToken"] = refreshToken;
+      _json['refreshToken'] = refreshToken;
     }
     if (screenName != null) {
-      _json["screenName"] = screenName;
+      _json['screenName'] = screenName;
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     if (verifiedProvider != null) {
-      _json["verifiedProvider"] = verifiedProvider;
+      _json['verifiedProvider'] = verifiedProvider;
     }
     return _json;
   }
@@ -4585,20 +4584,20 @@ class VerifyCustomTokenResponse {
   VerifyCustomTokenResponse();
 
   VerifyCustomTokenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("expiresIn")) {
-      expiresIn = _json["expiresIn"];
+    if (_json.containsKey('expiresIn')) {
+      expiresIn = _json['expiresIn'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("isNewUser")) {
-      isNewUser = _json["isNewUser"];
+    if (_json.containsKey('isNewUser')) {
+      isNewUser = _json['isNewUser'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("refreshToken")) {
-      refreshToken = _json["refreshToken"];
+    if (_json.containsKey('refreshToken')) {
+      refreshToken = _json['refreshToken'];
     }
   }
 
@@ -4606,19 +4605,19 @@ class VerifyCustomTokenResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expiresIn != null) {
-      _json["expiresIn"] = expiresIn;
+      _json['expiresIn'] = expiresIn;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (isNewUser != null) {
-      _json["isNewUser"] = isNewUser;
+      _json['isNewUser'] = isNewUser;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (refreshToken != null) {
-      _json["refreshToken"] = refreshToken;
+      _json['refreshToken'] = refreshToken;
     }
     return _json;
   }
@@ -4668,41 +4667,41 @@ class VerifyPasswordResponse {
   VerifyPasswordResponse();
 
   VerifyPasswordResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("expiresIn")) {
-      expiresIn = _json["expiresIn"];
+    if (_json.containsKey('expiresIn')) {
+      expiresIn = _json['expiresIn'];
     }
-    if (_json.containsKey("idToken")) {
-      idToken = _json["idToken"];
+    if (_json.containsKey('idToken')) {
+      idToken = _json['idToken'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+    if (_json.containsKey('localId')) {
+      localId = _json['localId'];
     }
-    if (_json.containsKey("oauthAccessToken")) {
-      oauthAccessToken = _json["oauthAccessToken"];
+    if (_json.containsKey('oauthAccessToken')) {
+      oauthAccessToken = _json['oauthAccessToken'];
     }
-    if (_json.containsKey("oauthAuthorizationCode")) {
-      oauthAuthorizationCode = _json["oauthAuthorizationCode"];
+    if (_json.containsKey('oauthAuthorizationCode')) {
+      oauthAuthorizationCode = _json['oauthAuthorizationCode'];
     }
-    if (_json.containsKey("oauthExpireIn")) {
-      oauthExpireIn = _json["oauthExpireIn"];
+    if (_json.containsKey('oauthExpireIn')) {
+      oauthExpireIn = _json['oauthExpireIn'];
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
-    if (_json.containsKey("refreshToken")) {
-      refreshToken = _json["refreshToken"];
+    if (_json.containsKey('refreshToken')) {
+      refreshToken = _json['refreshToken'];
     }
-    if (_json.containsKey("registered")) {
-      registered = _json["registered"];
+    if (_json.containsKey('registered')) {
+      registered = _json['registered'];
     }
   }
 
@@ -4710,40 +4709,40 @@ class VerifyPasswordResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (expiresIn != null) {
-      _json["expiresIn"] = expiresIn;
+      _json['expiresIn'] = expiresIn;
     }
     if (idToken != null) {
-      _json["idToken"] = idToken;
+      _json['idToken'] = idToken;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (localId != null) {
-      _json["localId"] = localId;
+      _json['localId'] = localId;
     }
     if (oauthAccessToken != null) {
-      _json["oauthAccessToken"] = oauthAccessToken;
+      _json['oauthAccessToken'] = oauthAccessToken;
     }
     if (oauthAuthorizationCode != null) {
-      _json["oauthAuthorizationCode"] = oauthAuthorizationCode;
+      _json['oauthAuthorizationCode'] = oauthAuthorizationCode;
     }
     if (oauthExpireIn != null) {
-      _json["oauthExpireIn"] = oauthExpireIn;
+      _json['oauthExpireIn'] = oauthExpireIn;
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     if (refreshToken != null) {
-      _json["refreshToken"] = refreshToken;
+      _json['refreshToken'] = refreshToken;
     }
     if (registered != null) {
-      _json["registered"] = registered;
+      _json['registered'] = registered;
     }
     return _json;
   }

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,10 +38,10 @@ const core.String USER_AGENT = 'dart-api-client games/v1';
 class GamesApi {
   /// View and manage its own configuration data in your Google Drive
   static const DriveAppdataScope =
-      "https://www.googleapis.com/auth/drive.appdata";
+      'https://www.googleapis.com/auth/drive.appdata';
 
   /// Create, edit, and delete your Google Play Games activity
-  static const GamesScope = "https://www.googleapis.com/auth/games";
+  static const GamesScope = 'https://www.googleapis.com/auth/games';
 
   final commons.ApiRequester _requester;
 
@@ -63,8 +62,8 @@ class GamesApi {
   StatsResourceApi get stats => StatsResourceApi(_requester);
 
   GamesApi(http.Client client,
-      {core.String rootUrl = "https://games.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://games.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -113,23 +112,23 @@ class AchievementDefinitionsResourceApi {
     core.String _body;
 
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/achievements';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -183,17 +182,17 @@ class AchievementsResourceApi {
     core.String _body;
 
     if (achievementId == null) {
-      throw core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError('Parameter achievementId is required.');
     }
     if (stepsToIncrement == null) {
-      throw core.ArgumentError("Parameter stepsToIncrement is required.");
+      throw core.ArgumentError('Parameter stepsToIncrement is required.');
     }
-    _queryParams["stepsToIncrement"] = ["${stepsToIncrement}"];
+    _queryParams['stepsToIncrement'] = ['${stepsToIncrement}'];
     if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
+      _queryParams['requestId'] = [requestId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/achievements/' +
@@ -202,7 +201,7 @@ class AchievementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -265,22 +264,22 @@ class AchievementsResourceApi {
     core.String _body;
 
     if (playerId == null) {
-      throw core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError('Parameter playerId is required.');
     }
     if (state != null) {
-      _queryParams["state"] = [state];
+      _queryParams['state'] = [state];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/players/' +
@@ -289,7 +288,7 @@ class AchievementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -329,10 +328,10 @@ class AchievementsResourceApi {
     core.String _body;
 
     if (achievementId == null) {
-      throw core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError('Parameter achievementId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/achievements/' +
@@ -341,7 +340,7 @@ class AchievementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -385,14 +384,14 @@ class AchievementsResourceApi {
     core.String _body;
 
     if (achievementId == null) {
-      throw core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError('Parameter achievementId is required.');
     }
     if (steps == null) {
-      throw core.ArgumentError("Parameter steps is required.");
+      throw core.ArgumentError('Parameter steps is required.');
     }
-    _queryParams["steps"] = ["${steps}"];
+    _queryParams['steps'] = ['${steps}'];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/achievements/' +
@@ -401,7 +400,7 @@ class AchievementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -440,10 +439,10 @@ class AchievementsResourceApi {
     core.String _body;
 
     if (achievementId == null) {
-      throw core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError('Parameter achievementId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/achievements/' +
@@ -452,7 +451,7 @@ class AchievementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -493,14 +492,14 @@ class AchievementsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/achievements/updateMultiple';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -561,16 +560,16 @@ class ApplicationsResourceApi {
     core.String _body;
 
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if (platformType != null) {
-      _queryParams["platformType"] = [platformType];
+      _queryParams['platformType'] = [platformType];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/applications/' +
@@ -578,7 +577,7 @@ class ApplicationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -612,7 +611,7 @@ class ApplicationsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -621,7 +620,7 @@ class ApplicationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -662,10 +661,10 @@ class ApplicationsResourceApi {
     core.String _body;
 
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/applications/' +
@@ -674,7 +673,7 @@ class ApplicationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -728,23 +727,23 @@ class EventsResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/events';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -791,23 +790,23 @@ class EventsResourceApi {
     core.String _body;
 
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/eventDefinitions';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -853,17 +852,17 @@ class EventsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/events';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -911,13 +910,13 @@ class LeaderboardsResourceApi {
     core.String _body;
 
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/leaderboards/' +
@@ -925,7 +924,7 @@ class LeaderboardsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -972,23 +971,23 @@ class LeaderboardsResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/leaderboards';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1029,14 +1028,14 @@ class MetagameResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/metagameConfig';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1095,22 +1094,22 @@ class MetagameResourceApi {
     core.String _body;
 
     if (playerId == null) {
-      throw core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError('Parameter playerId is required.');
     }
     if (collection == null) {
-      throw core.ArgumentError("Parameter collection is required.");
+      throw core.ArgumentError('Parameter collection is required.');
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/players/' +
@@ -1120,7 +1119,7 @@ class MetagameResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1170,20 +1169,20 @@ class PlayersResourceApi {
     core.String _body;
 
     if (playerId == null) {
-      throw core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError('Parameter playerId is required.');
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/players/' + commons.Escaper.ecapeVariable('$playerId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1240,19 +1239,19 @@ class PlayersResourceApi {
     core.String _body;
 
     if (collection == null) {
-      throw core.ArgumentError("Parameter collection is required.");
+      throw core.ArgumentError('Parameter collection is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/players/me/players/' +
@@ -1260,7 +1259,7 @@ class PlayersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1308,18 +1307,18 @@ class RevisionsResourceApi {
     core.String _body;
 
     if (clientRevision == null) {
-      throw core.ArgumentError("Parameter clientRevision is required.");
+      throw core.ArgumentError('Parameter clientRevision is required.');
     }
-    _queryParams["clientRevision"] = [clientRevision];
+    _queryParams['clientRevision'] = [clientRevision];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/revisions/check';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1406,28 +1405,28 @@ class ScoresResourceApi {
     core.String _body;
 
     if (playerId == null) {
-      throw core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError('Parameter playerId is required.');
     }
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if (timeSpan == null) {
-      throw core.ArgumentError("Parameter timeSpan is required.");
+      throw core.ArgumentError('Parameter timeSpan is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (includeRankType != null) {
-      _queryParams["includeRankType"] = [includeRankType];
+      _queryParams['includeRankType'] = [includeRankType];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/players/' +
@@ -1439,7 +1438,7 @@ class ScoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1506,26 +1505,26 @@ class ScoresResourceApi {
     core.String _body;
 
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if (collection == null) {
-      throw core.ArgumentError("Parameter collection is required.");
+      throw core.ArgumentError('Parameter collection is required.');
     }
     if (timeSpan == null) {
-      throw core.ArgumentError("Parameter timeSpan is required.");
+      throw core.ArgumentError('Parameter timeSpan is required.');
     }
-    _queryParams["timeSpan"] = [timeSpan];
+    _queryParams['timeSpan'] = [timeSpan];
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/leaderboards/' +
@@ -1535,7 +1534,7 @@ class ScoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1611,32 +1610,32 @@ class ScoresResourceApi {
     core.String _body;
 
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if (collection == null) {
-      throw core.ArgumentError("Parameter collection is required.");
+      throw core.ArgumentError('Parameter collection is required.');
     }
     if (timeSpan == null) {
-      throw core.ArgumentError("Parameter timeSpan is required.");
+      throw core.ArgumentError('Parameter timeSpan is required.');
     }
-    _queryParams["timeSpan"] = [timeSpan];
+    _queryParams['timeSpan'] = [timeSpan];
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (resultsAbove != null) {
-      _queryParams["resultsAbove"] = ["${resultsAbove}"];
+      _queryParams['resultsAbove'] = ['${resultsAbove}'];
     }
     if (returnTopIfAbsent != null) {
-      _queryParams["returnTopIfAbsent"] = ["${returnTopIfAbsent}"];
+      _queryParams['returnTopIfAbsent'] = ['${returnTopIfAbsent}'];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/leaderboards/' +
@@ -1646,7 +1645,7 @@ class ScoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1702,20 +1701,20 @@ class ScoresResourceApi {
     core.String _body;
 
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if (score == null) {
-      throw core.ArgumentError("Parameter score is required.");
+      throw core.ArgumentError('Parameter score is required.');
     }
-    _queryParams["score"] = [score];
+    _queryParams['score'] = [score];
     if (scoreTag != null) {
-      _queryParams["scoreTag"] = [scoreTag];
+      _queryParams['scoreTag'] = [scoreTag];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/leaderboards/' +
@@ -1724,7 +1723,7 @@ class ScoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1769,17 +1768,17 @@ class ScoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/leaderboards/scores';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1827,20 +1826,20 @@ class SnapshotsResourceApi {
     core.String _body;
 
     if (snapshotId == null) {
-      throw core.ArgumentError("Parameter snapshotId is required.");
+      throw core.ArgumentError('Parameter snapshotId is required.');
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1892,19 +1891,19 @@ class SnapshotsResourceApi {
     core.String _body;
 
     if (playerId == null) {
-      throw core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError('Parameter playerId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/players/' +
@@ -1913,7 +1912,7 @@ class SnapshotsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1955,14 +1954,14 @@ class StatsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1/stats';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2029,44 +2028,44 @@ class AchievementDefinition {
   AchievementDefinition();
 
   AchievementDefinition.fromJson(core.Map _json) {
-    if (_json.containsKey("achievementType")) {
-      achievementType = _json["achievementType"];
+    if (_json.containsKey('achievementType')) {
+      achievementType = _json['achievementType'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("experiencePoints")) {
-      experiencePoints = _json["experiencePoints"];
+    if (_json.containsKey('experiencePoints')) {
+      experiencePoints = _json['experiencePoints'];
     }
-    if (_json.containsKey("formattedTotalSteps")) {
-      formattedTotalSteps = _json["formattedTotalSteps"];
+    if (_json.containsKey('formattedTotalSteps')) {
+      formattedTotalSteps = _json['formattedTotalSteps'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("initialState")) {
-      initialState = _json["initialState"];
+    if (_json.containsKey('initialState')) {
+      initialState = _json['initialState'];
     }
-    if (_json.containsKey("isRevealedIconUrlDefault")) {
-      isRevealedIconUrlDefault = _json["isRevealedIconUrlDefault"];
+    if (_json.containsKey('isRevealedIconUrlDefault')) {
+      isRevealedIconUrlDefault = _json['isRevealedIconUrlDefault'];
     }
-    if (_json.containsKey("isUnlockedIconUrlDefault")) {
-      isUnlockedIconUrlDefault = _json["isUnlockedIconUrlDefault"];
+    if (_json.containsKey('isUnlockedIconUrlDefault')) {
+      isUnlockedIconUrlDefault = _json['isUnlockedIconUrlDefault'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("revealedIconUrl")) {
-      revealedIconUrl = _json["revealedIconUrl"];
+    if (_json.containsKey('revealedIconUrl')) {
+      revealedIconUrl = _json['revealedIconUrl'];
     }
-    if (_json.containsKey("totalSteps")) {
-      totalSteps = _json["totalSteps"];
+    if (_json.containsKey('totalSteps')) {
+      totalSteps = _json['totalSteps'];
     }
-    if (_json.containsKey("unlockedIconUrl")) {
-      unlockedIconUrl = _json["unlockedIconUrl"];
+    if (_json.containsKey('unlockedIconUrl')) {
+      unlockedIconUrl = _json['unlockedIconUrl'];
     }
   }
 
@@ -2074,43 +2073,43 @@ class AchievementDefinition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (achievementType != null) {
-      _json["achievementType"] = achievementType;
+      _json['achievementType'] = achievementType;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (experiencePoints != null) {
-      _json["experiencePoints"] = experiencePoints;
+      _json['experiencePoints'] = experiencePoints;
     }
     if (formattedTotalSteps != null) {
-      _json["formattedTotalSteps"] = formattedTotalSteps;
+      _json['formattedTotalSteps'] = formattedTotalSteps;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (initialState != null) {
-      _json["initialState"] = initialState;
+      _json['initialState'] = initialState;
     }
     if (isRevealedIconUrlDefault != null) {
-      _json["isRevealedIconUrlDefault"] = isRevealedIconUrlDefault;
+      _json['isRevealedIconUrlDefault'] = isRevealedIconUrlDefault;
     }
     if (isUnlockedIconUrlDefault != null) {
-      _json["isUnlockedIconUrlDefault"] = isUnlockedIconUrlDefault;
+      _json['isUnlockedIconUrlDefault'] = isUnlockedIconUrlDefault;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (revealedIconUrl != null) {
-      _json["revealedIconUrl"] = revealedIconUrl;
+      _json['revealedIconUrl'] = revealedIconUrl;
     }
     if (totalSteps != null) {
-      _json["totalSteps"] = totalSteps;
+      _json['totalSteps'] = totalSteps;
     }
     if (unlockedIconUrl != null) {
-      _json["unlockedIconUrl"] = unlockedIconUrl;
+      _json['unlockedIconUrl'] = unlockedIconUrl;
     }
     return _json;
   }
@@ -2131,17 +2130,17 @@ class AchievementDefinitionsListResponse {
   AchievementDefinitionsListResponse();
 
   AchievementDefinitionsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<AchievementDefinition>(
               (value) => AchievementDefinition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2149,13 +2148,13 @@ class AchievementDefinitionsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2177,14 +2176,14 @@ class AchievementIncrementResponse {
   AchievementIncrementResponse();
 
   AchievementIncrementResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("currentSteps")) {
-      currentSteps = _json["currentSteps"];
+    if (_json.containsKey('currentSteps')) {
+      currentSteps = _json['currentSteps'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("newlyUnlocked")) {
-      newlyUnlocked = _json["newlyUnlocked"];
+    if (_json.containsKey('newlyUnlocked')) {
+      newlyUnlocked = _json['newlyUnlocked'];
     }
   }
 
@@ -2192,13 +2191,13 @@ class AchievementIncrementResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentSteps != null) {
-      _json["currentSteps"] = currentSteps;
+      _json['currentSteps'] = currentSteps;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (newlyUnlocked != null) {
-      _json["newlyUnlocked"] = newlyUnlocked;
+      _json['newlyUnlocked'] = newlyUnlocked;
     }
     return _json;
   }
@@ -2221,11 +2220,11 @@ class AchievementRevealResponse {
   AchievementRevealResponse();
 
   AchievementRevealResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("currentState")) {
-      currentState = _json["currentState"];
+    if (_json.containsKey('currentState')) {
+      currentState = _json['currentState'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -2233,10 +2232,10 @@ class AchievementRevealResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentState != null) {
-      _json["currentState"] = currentState;
+      _json['currentState'] = currentState;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -2258,14 +2257,14 @@ class AchievementSetStepsAtLeastResponse {
   AchievementSetStepsAtLeastResponse();
 
   AchievementSetStepsAtLeastResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("currentSteps")) {
-      currentSteps = _json["currentSteps"];
+    if (_json.containsKey('currentSteps')) {
+      currentSteps = _json['currentSteps'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("newlyUnlocked")) {
-      newlyUnlocked = _json["newlyUnlocked"];
+    if (_json.containsKey('newlyUnlocked')) {
+      newlyUnlocked = _json['newlyUnlocked'];
     }
   }
 
@@ -2273,13 +2272,13 @@ class AchievementSetStepsAtLeastResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentSteps != null) {
-      _json["currentSteps"] = currentSteps;
+      _json['currentSteps'] = currentSteps;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (newlyUnlocked != null) {
-      _json["newlyUnlocked"] = newlyUnlocked;
+      _json['newlyUnlocked'] = newlyUnlocked;
     }
     return _json;
   }
@@ -2298,11 +2297,11 @@ class AchievementUnlockResponse {
   AchievementUnlockResponse();
 
   AchievementUnlockResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("newlyUnlocked")) {
-      newlyUnlocked = _json["newlyUnlocked"];
+    if (_json.containsKey('newlyUnlocked')) {
+      newlyUnlocked = _json['newlyUnlocked'];
     }
   }
 
@@ -2310,10 +2309,10 @@ class AchievementUnlockResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (newlyUnlocked != null) {
-      _json["newlyUnlocked"] = newlyUnlocked;
+      _json['newlyUnlocked'] = newlyUnlocked;
     }
     return _json;
   }
@@ -2331,11 +2330,11 @@ class AchievementUpdateMultipleRequest {
   AchievementUpdateMultipleRequest();
 
   AchievementUpdateMultipleRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("updates")) {
-      updates = (_json["updates"] as core.List)
+    if (_json.containsKey('updates')) {
+      updates = (_json['updates'] as core.List)
           .map<AchievementUpdateRequest>(
               (value) => AchievementUpdateRequest.fromJson(value))
           .toList();
@@ -2346,10 +2345,10 @@ class AchievementUpdateMultipleRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (updates != null) {
-      _json["updates"] = updates.map((value) => value.toJson()).toList();
+      _json['updates'] = updates.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2367,11 +2366,11 @@ class AchievementUpdateMultipleResponse {
   AchievementUpdateMultipleResponse();
 
   AchievementUpdateMultipleResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("updatedAchievements")) {
-      updatedAchievements = (_json["updatedAchievements"] as core.List)
+    if (_json.containsKey('updatedAchievements')) {
+      updatedAchievements = (_json['updatedAchievements'] as core.List)
           .map<AchievementUpdateResponse>(
               (value) => AchievementUpdateResponse.fromJson(value))
           .toList();
@@ -2382,10 +2381,10 @@ class AchievementUpdateMultipleResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (updatedAchievements != null) {
-      _json["updatedAchievements"] =
+      _json['updatedAchievements'] =
           updatedAchievements.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2422,22 +2421,22 @@ class AchievementUpdateRequest {
   AchievementUpdateRequest();
 
   AchievementUpdateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("achievementId")) {
-      achievementId = _json["achievementId"];
+    if (_json.containsKey('achievementId')) {
+      achievementId = _json['achievementId'];
     }
-    if (_json.containsKey("incrementPayload")) {
+    if (_json.containsKey('incrementPayload')) {
       incrementPayload =
-          GamesAchievementIncrement.fromJson(_json["incrementPayload"]);
+          GamesAchievementIncrement.fromJson(_json['incrementPayload']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("setStepsAtLeastPayload")) {
+    if (_json.containsKey('setStepsAtLeastPayload')) {
       setStepsAtLeastPayload = GamesAchievementSetStepsAtLeast.fromJson(
-          _json["setStepsAtLeastPayload"]);
+          _json['setStepsAtLeastPayload']);
     }
-    if (_json.containsKey("updateType")) {
-      updateType = _json["updateType"];
+    if (_json.containsKey('updateType')) {
+      updateType = _json['updateType'];
     }
   }
 
@@ -2445,19 +2444,19 @@ class AchievementUpdateRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (achievementId != null) {
-      _json["achievementId"] = achievementId;
+      _json['achievementId'] = achievementId;
     }
     if (incrementPayload != null) {
-      _json["incrementPayload"] = incrementPayload.toJson();
+      _json['incrementPayload'] = incrementPayload.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (setStepsAtLeastPayload != null) {
-      _json["setStepsAtLeastPayload"] = setStepsAtLeastPayload.toJson();
+      _json['setStepsAtLeastPayload'] = setStepsAtLeastPayload.toJson();
     }
     if (updateType != null) {
-      _json["updateType"] = updateType;
+      _json['updateType'] = updateType;
     }
     return _json;
   }
@@ -2493,23 +2492,23 @@ class AchievementUpdateResponse {
   AchievementUpdateResponse();
 
   AchievementUpdateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("achievementId")) {
-      achievementId = _json["achievementId"];
+    if (_json.containsKey('achievementId')) {
+      achievementId = _json['achievementId'];
     }
-    if (_json.containsKey("currentState")) {
-      currentState = _json["currentState"];
+    if (_json.containsKey('currentState')) {
+      currentState = _json['currentState'];
     }
-    if (_json.containsKey("currentSteps")) {
-      currentSteps = _json["currentSteps"];
+    if (_json.containsKey('currentSteps')) {
+      currentSteps = _json['currentSteps'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("newlyUnlocked")) {
-      newlyUnlocked = _json["newlyUnlocked"];
+    if (_json.containsKey('newlyUnlocked')) {
+      newlyUnlocked = _json['newlyUnlocked'];
     }
-    if (_json.containsKey("updateOccurred")) {
-      updateOccurred = _json["updateOccurred"];
+    if (_json.containsKey('updateOccurred')) {
+      updateOccurred = _json['updateOccurred'];
     }
   }
 
@@ -2517,22 +2516,22 @@ class AchievementUpdateResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (achievementId != null) {
-      _json["achievementId"] = achievementId;
+      _json['achievementId'] = achievementId;
     }
     if (currentState != null) {
-      _json["currentState"] = currentState;
+      _json['currentState'] = currentState;
     }
     if (currentSteps != null) {
-      _json["currentSteps"] = currentSteps;
+      _json['currentSteps'] = currentSteps;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (newlyUnlocked != null) {
-      _json["newlyUnlocked"] = newlyUnlocked;
+      _json['newlyUnlocked'] = newlyUnlocked;
     }
     if (updateOccurred != null) {
-      _json["updateOccurred"] = updateOccurred;
+      _json['updateOccurred'] = updateOccurred;
     }
     return _json;
   }
@@ -2584,49 +2583,49 @@ class Application {
   Application();
 
   Application.fromJson(core.Map _json) {
-    if (_json.containsKey("achievement_count")) {
-      achievementCount = _json["achievement_count"];
+    if (_json.containsKey('achievement_count')) {
+      achievementCount = _json['achievement_count'];
     }
-    if (_json.containsKey("assets")) {
-      assets = (_json["assets"] as core.List)
+    if (_json.containsKey('assets')) {
+      assets = (_json['assets'] as core.List)
           .map<ImageAsset>((value) => ImageAsset.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("author")) {
-      author = _json["author"];
+    if (_json.containsKey('author')) {
+      author = _json['author'];
     }
-    if (_json.containsKey("category")) {
-      category = ApplicationCategory.fromJson(_json["category"]);
+    if (_json.containsKey('category')) {
+      category = ApplicationCategory.fromJson(_json['category']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("enabledFeatures")) {
+    if (_json.containsKey('enabledFeatures')) {
       enabledFeatures =
-          (_json["enabledFeatures"] as core.List).cast<core.String>();
+          (_json['enabledFeatures'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("instances")) {
-      instances = (_json["instances"] as core.List)
+    if (_json.containsKey('instances')) {
+      instances = (_json['instances'] as core.List)
           .map<Instance>((value) => Instance.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastUpdatedTimestamp")) {
-      lastUpdatedTimestamp = _json["lastUpdatedTimestamp"];
+    if (_json.containsKey('lastUpdatedTimestamp')) {
+      lastUpdatedTimestamp = _json['lastUpdatedTimestamp'];
     }
-    if (_json.containsKey("leaderboard_count")) {
-      leaderboardCount = _json["leaderboard_count"];
+    if (_json.containsKey('leaderboard_count')) {
+      leaderboardCount = _json['leaderboard_count'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("themeColor")) {
-      themeColor = _json["themeColor"];
+    if (_json.containsKey('themeColor')) {
+      themeColor = _json['themeColor'];
     }
   }
 
@@ -2634,43 +2633,43 @@ class Application {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (achievementCount != null) {
-      _json["achievement_count"] = achievementCount;
+      _json['achievement_count'] = achievementCount;
     }
     if (assets != null) {
-      _json["assets"] = assets.map((value) => value.toJson()).toList();
+      _json['assets'] = assets.map((value) => value.toJson()).toList();
     }
     if (author != null) {
-      _json["author"] = author;
+      _json['author'] = author;
     }
     if (category != null) {
-      _json["category"] = category.toJson();
+      _json['category'] = category.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (enabledFeatures != null) {
-      _json["enabledFeatures"] = enabledFeatures;
+      _json['enabledFeatures'] = enabledFeatures;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (instances != null) {
-      _json["instances"] = instances.map((value) => value.toJson()).toList();
+      _json['instances'] = instances.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastUpdatedTimestamp != null) {
-      _json["lastUpdatedTimestamp"] = lastUpdatedTimestamp;
+      _json['lastUpdatedTimestamp'] = lastUpdatedTimestamp;
     }
     if (leaderboardCount != null) {
-      _json["leaderboard_count"] = leaderboardCount;
+      _json['leaderboard_count'] = leaderboardCount;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (themeColor != null) {
-      _json["themeColor"] = themeColor;
+      _json['themeColor'] = themeColor;
     }
     return _json;
   }
@@ -2691,14 +2690,14 @@ class ApplicationCategory {
   ApplicationCategory();
 
   ApplicationCategory.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("secondary")) {
-      secondary = _json["secondary"];
+    if (_json.containsKey('secondary')) {
+      secondary = _json['secondary'];
     }
   }
 
@@ -2706,13 +2705,13 @@ class ApplicationCategory {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (secondary != null) {
-      _json["secondary"] = secondary;
+      _json['secondary'] = secondary;
     }
     return _json;
   }
@@ -2734,14 +2733,14 @@ class ApplicationVerifyResponse {
   ApplicationVerifyResponse();
 
   ApplicationVerifyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("alternate_player_id")) {
-      alternatePlayerId = _json["alternate_player_id"];
+    if (_json.containsKey('alternate_player_id')) {
+      alternatePlayerId = _json['alternate_player_id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("player_id")) {
-      playerId = _json["player_id"];
+    if (_json.containsKey('player_id')) {
+      playerId = _json['player_id'];
     }
   }
 
@@ -2749,13 +2748,13 @@ class ApplicationVerifyResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternatePlayerId != null) {
-      _json["alternate_player_id"] = alternatePlayerId;
+      _json['alternate_player_id'] = alternatePlayerId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (playerId != null) {
-      _json["player_id"] = playerId;
+      _json['player_id'] = playerId;
     }
     return _json;
   }
@@ -2776,14 +2775,14 @@ class Category {
   Category();
 
   Category.fromJson(core.Map _json) {
-    if (_json.containsKey("category")) {
-      category = _json["category"];
+    if (_json.containsKey('category')) {
+      category = _json['category'];
     }
-    if (_json.containsKey("experiencePoints")) {
-      experiencePoints = _json["experiencePoints"];
+    if (_json.containsKey('experiencePoints')) {
+      experiencePoints = _json['experiencePoints'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -2791,13 +2790,13 @@ class Category {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (category != null) {
-      _json["category"] = category;
+      _json['category'] = category;
     }
     if (experiencePoints != null) {
-      _json["experiencePoints"] = experiencePoints;
+      _json['experiencePoints'] = experiencePoints;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -2818,16 +2817,16 @@ class CategoryListResponse {
   CategoryListResponse();
 
   CategoryListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Category>((value) => Category.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2835,13 +2834,13 @@ class CategoryListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2876,14 +2875,14 @@ class EventBatchRecordFailure {
   EventBatchRecordFailure();
 
   EventBatchRecordFailure.fromJson(core.Map _json) {
-    if (_json.containsKey("failureCause")) {
-      failureCause = _json["failureCause"];
+    if (_json.containsKey('failureCause')) {
+      failureCause = _json['failureCause'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("range")) {
-      range = EventPeriodRange.fromJson(_json["range"]);
+    if (_json.containsKey('range')) {
+      range = EventPeriodRange.fromJson(_json['range']);
     }
   }
 
@@ -2891,13 +2890,13 @@ class EventBatchRecordFailure {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (failureCause != null) {
-      _json["failureCause"] = failureCause;
+      _json['failureCause'] = failureCause;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (range != null) {
-      _json["range"] = range.toJson();
+      _json['range'] = range.toJson();
     }
     return _json;
   }
@@ -2915,11 +2914,11 @@ class EventChild {
   EventChild();
 
   EventChild.fromJson(core.Map _json) {
-    if (_json.containsKey("childId")) {
-      childId = _json["childId"];
+    if (_json.containsKey('childId')) {
+      childId = _json['childId'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -2927,10 +2926,10 @@ class EventChild {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (childId != null) {
-      _json["childId"] = childId;
+      _json['childId'] = childId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -2972,31 +2971,31 @@ class EventDefinition {
   EventDefinition();
 
   EventDefinition.fromJson(core.Map _json) {
-    if (_json.containsKey("childEvents")) {
-      childEvents = (_json["childEvents"] as core.List)
+    if (_json.containsKey('childEvents')) {
+      childEvents = (_json['childEvents'] as core.List)
           .map<EventChild>((value) => EventChild.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("imageUrl")) {
-      imageUrl = _json["imageUrl"];
+    if (_json.containsKey('imageUrl')) {
+      imageUrl = _json['imageUrl'];
     }
-    if (_json.containsKey("isDefaultImageUrl")) {
-      isDefaultImageUrl = _json["isDefaultImageUrl"];
+    if (_json.containsKey('isDefaultImageUrl')) {
+      isDefaultImageUrl = _json['isDefaultImageUrl'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("visibility")) {
-      visibility = _json["visibility"];
+    if (_json.containsKey('visibility')) {
+      visibility = _json['visibility'];
     }
   }
 
@@ -3004,29 +3003,29 @@ class EventDefinition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (childEvents != null) {
-      _json["childEvents"] =
+      _json['childEvents'] =
           childEvents.map((value) => value.toJson()).toList();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (imageUrl != null) {
-      _json["imageUrl"] = imageUrl;
+      _json['imageUrl'] = imageUrl;
     }
     if (isDefaultImageUrl != null) {
-      _json["isDefaultImageUrl"] = isDefaultImageUrl;
+      _json['isDefaultImageUrl'] = isDefaultImageUrl;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (visibility != null) {
-      _json["visibility"] = visibility;
+      _json['visibility'] = visibility;
     }
     return _json;
   }
@@ -3047,16 +3046,16 @@ class EventDefinitionListResponse {
   EventDefinitionListResponse();
 
   EventDefinitionListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<EventDefinition>((value) => EventDefinition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -3064,13 +3063,13 @@ class EventDefinitionListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -3093,14 +3092,14 @@ class EventPeriodRange {
   EventPeriodRange();
 
   EventPeriodRange.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("periodEndMillis")) {
-      periodEndMillis = _json["periodEndMillis"];
+    if (_json.containsKey('periodEndMillis')) {
+      periodEndMillis = _json['periodEndMillis'];
     }
-    if (_json.containsKey("periodStartMillis")) {
-      periodStartMillis = _json["periodStartMillis"];
+    if (_json.containsKey('periodStartMillis')) {
+      periodStartMillis = _json['periodStartMillis'];
     }
   }
 
@@ -3108,13 +3107,13 @@ class EventPeriodRange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (periodEndMillis != null) {
-      _json["periodEndMillis"] = periodEndMillis;
+      _json['periodEndMillis'] = periodEndMillis;
     }
     if (periodStartMillis != null) {
-      _json["periodStartMillis"] = periodStartMillis;
+      _json['periodStartMillis'] = periodStartMillis;
     }
     return _json;
   }
@@ -3135,14 +3134,14 @@ class EventPeriodUpdate {
   EventPeriodUpdate();
 
   EventPeriodUpdate.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("timePeriod")) {
-      timePeriod = EventPeriodRange.fromJson(_json["timePeriod"]);
+    if (_json.containsKey('timePeriod')) {
+      timePeriod = EventPeriodRange.fromJson(_json['timePeriod']);
     }
-    if (_json.containsKey("updates")) {
-      updates = (_json["updates"] as core.List)
+    if (_json.containsKey('updates')) {
+      updates = (_json['updates'] as core.List)
           .map<EventUpdateRequest>(
               (value) => EventUpdateRequest.fromJson(value))
           .toList();
@@ -3153,13 +3152,13 @@ class EventPeriodUpdate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (timePeriod != null) {
-      _json["timePeriod"] = timePeriod.toJson();
+      _json['timePeriod'] = timePeriod.toJson();
     }
     if (updates != null) {
-      _json["updates"] = updates.map((value) => value.toJson()).toList();
+      _json['updates'] = updates.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3186,14 +3185,14 @@ class EventRecordFailure {
   EventRecordFailure();
 
   EventRecordFailure.fromJson(core.Map _json) {
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("failureCause")) {
-      failureCause = _json["failureCause"];
+    if (_json.containsKey('failureCause')) {
+      failureCause = _json['failureCause'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -3201,13 +3200,13 @@ class EventRecordFailure {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (failureCause != null) {
-      _json["failureCause"] = failureCause;
+      _json['failureCause'] = failureCause;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -3232,17 +3231,17 @@ class EventRecordRequest {
   EventRecordRequest();
 
   EventRecordRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("currentTimeMillis")) {
-      currentTimeMillis = _json["currentTimeMillis"];
+    if (_json.containsKey('currentTimeMillis')) {
+      currentTimeMillis = _json['currentTimeMillis'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
-    if (_json.containsKey("timePeriods")) {
-      timePeriods = (_json["timePeriods"] as core.List)
+    if (_json.containsKey('timePeriods')) {
+      timePeriods = (_json['timePeriods'] as core.List)
           .map<EventPeriodUpdate>((value) => EventPeriodUpdate.fromJson(value))
           .toList();
     }
@@ -3252,16 +3251,16 @@ class EventRecordRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentTimeMillis != null) {
-      _json["currentTimeMillis"] = currentTimeMillis;
+      _json['currentTimeMillis'] = currentTimeMillis;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     if (timePeriods != null) {
-      _json["timePeriods"] =
+      _json['timePeriods'] =
           timePeriods.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -3283,14 +3282,14 @@ class EventUpdateRequest {
   EventUpdateRequest();
 
   EventUpdateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("definitionId")) {
-      definitionId = _json["definitionId"];
+    if (_json.containsKey('definitionId')) {
+      definitionId = _json['definitionId'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("updateCount")) {
-      updateCount = _json["updateCount"];
+    if (_json.containsKey('updateCount')) {
+      updateCount = _json['updateCount'];
     }
   }
 
@@ -3298,13 +3297,13 @@ class EventUpdateRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (definitionId != null) {
-      _json["definitionId"] = definitionId;
+      _json['definitionId'] = definitionId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (updateCount != null) {
-      _json["updateCount"] = updateCount;
+      _json['updateCount'] = updateCount;
     }
     return _json;
   }
@@ -3328,23 +3327,23 @@ class EventUpdateResponse {
   EventUpdateResponse();
 
   EventUpdateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("batchFailures")) {
-      batchFailures = (_json["batchFailures"] as core.List)
+    if (_json.containsKey('batchFailures')) {
+      batchFailures = (_json['batchFailures'] as core.List)
           .map<EventBatchRecordFailure>(
               (value) => EventBatchRecordFailure.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("eventFailures")) {
-      eventFailures = (_json["eventFailures"] as core.List)
+    if (_json.containsKey('eventFailures')) {
+      eventFailures = (_json['eventFailures'] as core.List)
           .map<EventRecordFailure>(
               (value) => EventRecordFailure.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("playerEvents")) {
-      playerEvents = (_json["playerEvents"] as core.List)
+    if (_json.containsKey('playerEvents')) {
+      playerEvents = (_json['playerEvents'] as core.List)
           .map<PlayerEvent>((value) => PlayerEvent.fromJson(value))
           .toList();
     }
@@ -3354,18 +3353,18 @@ class EventUpdateResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batchFailures != null) {
-      _json["batchFailures"] =
+      _json['batchFailures'] =
           batchFailures.map((value) => value.toJson()).toList();
     }
     if (eventFailures != null) {
-      _json["eventFailures"] =
+      _json['eventFailures'] =
           eventFailures.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (playerEvents != null) {
-      _json["playerEvents"] =
+      _json['playerEvents'] =
           playerEvents.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -3387,14 +3386,14 @@ class GamesAchievementIncrement {
   GamesAchievementIncrement();
 
   GamesAchievementIncrement.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
-    if (_json.containsKey("steps")) {
-      steps = _json["steps"];
+    if (_json.containsKey('steps')) {
+      steps = _json['steps'];
     }
   }
 
@@ -3402,13 +3401,13 @@ class GamesAchievementIncrement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     if (steps != null) {
-      _json["steps"] = steps;
+      _json['steps'] = steps;
     }
     return _json;
   }
@@ -3426,11 +3425,11 @@ class GamesAchievementSetStepsAtLeast {
   GamesAchievementSetStepsAtLeast();
 
   GamesAchievementSetStepsAtLeast.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("steps")) {
-      steps = _json["steps"];
+    if (_json.containsKey('steps')) {
+      steps = _json['steps'];
     }
   }
 
@@ -3438,10 +3437,10 @@ class GamesAchievementSetStepsAtLeast {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (steps != null) {
-      _json["steps"] = steps;
+      _json['steps'] = steps;
     }
     return _json;
   }
@@ -3468,20 +3467,20 @@ class ImageAsset {
   ImageAsset();
 
   ImageAsset.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -3489,19 +3488,19 @@ class ImageAsset {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -3545,33 +3544,33 @@ class Instance {
   Instance();
 
   Instance.fromJson(core.Map _json) {
-    if (_json.containsKey("acquisitionUri")) {
-      acquisitionUri = _json["acquisitionUri"];
+    if (_json.containsKey('acquisitionUri')) {
+      acquisitionUri = _json['acquisitionUri'];
     }
-    if (_json.containsKey("androidInstance")) {
+    if (_json.containsKey('androidInstance')) {
       androidInstance =
-          InstanceAndroidDetails.fromJson(_json["androidInstance"]);
+          InstanceAndroidDetails.fromJson(_json['androidInstance']);
     }
-    if (_json.containsKey("iosInstance")) {
-      iosInstance = InstanceIosDetails.fromJson(_json["iosInstance"]);
+    if (_json.containsKey('iosInstance')) {
+      iosInstance = InstanceIosDetails.fromJson(_json['iosInstance']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("platformType")) {
-      platformType = _json["platformType"];
+    if (_json.containsKey('platformType')) {
+      platformType = _json['platformType'];
     }
-    if (_json.containsKey("realtimePlay")) {
-      realtimePlay = _json["realtimePlay"];
+    if (_json.containsKey('realtimePlay')) {
+      realtimePlay = _json['realtimePlay'];
     }
-    if (_json.containsKey("turnBasedPlay")) {
-      turnBasedPlay = _json["turnBasedPlay"];
+    if (_json.containsKey('turnBasedPlay')) {
+      turnBasedPlay = _json['turnBasedPlay'];
     }
-    if (_json.containsKey("webInstance")) {
-      webInstance = InstanceWebDetails.fromJson(_json["webInstance"]);
+    if (_json.containsKey('webInstance')) {
+      webInstance = InstanceWebDetails.fromJson(_json['webInstance']);
     }
   }
 
@@ -3579,31 +3578,31 @@ class Instance {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acquisitionUri != null) {
-      _json["acquisitionUri"] = acquisitionUri;
+      _json['acquisitionUri'] = acquisitionUri;
     }
     if (androidInstance != null) {
-      _json["androidInstance"] = androidInstance.toJson();
+      _json['androidInstance'] = androidInstance.toJson();
     }
     if (iosInstance != null) {
-      _json["iosInstance"] = iosInstance.toJson();
+      _json['iosInstance'] = iosInstance.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (platformType != null) {
-      _json["platformType"] = platformType;
+      _json['platformType'] = platformType;
     }
     if (realtimePlay != null) {
-      _json["realtimePlay"] = realtimePlay;
+      _json['realtimePlay'] = realtimePlay;
     }
     if (turnBasedPlay != null) {
-      _json["turnBasedPlay"] = turnBasedPlay;
+      _json['turnBasedPlay'] = turnBasedPlay;
     }
     if (webInstance != null) {
-      _json["webInstance"] = webInstance.toJson();
+      _json['webInstance'] = webInstance.toJson();
     }
     return _json;
   }
@@ -3627,17 +3626,17 @@ class InstanceAndroidDetails {
   InstanceAndroidDetails();
 
   InstanceAndroidDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("enablePiracyCheck")) {
-      enablePiracyCheck = _json["enablePiracyCheck"];
+    if (_json.containsKey('enablePiracyCheck')) {
+      enablePiracyCheck = _json['enablePiracyCheck'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("preferred")) {
-      preferred = _json["preferred"];
+    if (_json.containsKey('preferred')) {
+      preferred = _json['preferred'];
     }
   }
 
@@ -3645,16 +3644,16 @@ class InstanceAndroidDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enablePiracyCheck != null) {
-      _json["enablePiracyCheck"] = enablePiracyCheck;
+      _json['enablePiracyCheck'] = enablePiracyCheck;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (preferred != null) {
-      _json["preferred"] = preferred;
+      _json['preferred'] = preferred;
     }
     return _json;
   }
@@ -3689,26 +3688,26 @@ class InstanceIosDetails {
   InstanceIosDetails();
 
   InstanceIosDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("bundleIdentifier")) {
-      bundleIdentifier = _json["bundleIdentifier"];
+    if (_json.containsKey('bundleIdentifier')) {
+      bundleIdentifier = _json['bundleIdentifier'];
     }
-    if (_json.containsKey("itunesAppId")) {
-      itunesAppId = _json["itunesAppId"];
+    if (_json.containsKey('itunesAppId')) {
+      itunesAppId = _json['itunesAppId'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("preferredForIpad")) {
-      preferredForIpad = _json["preferredForIpad"];
+    if (_json.containsKey('preferredForIpad')) {
+      preferredForIpad = _json['preferredForIpad'];
     }
-    if (_json.containsKey("preferredForIphone")) {
-      preferredForIphone = _json["preferredForIphone"];
+    if (_json.containsKey('preferredForIphone')) {
+      preferredForIphone = _json['preferredForIphone'];
     }
-    if (_json.containsKey("supportIpad")) {
-      supportIpad = _json["supportIpad"];
+    if (_json.containsKey('supportIpad')) {
+      supportIpad = _json['supportIpad'];
     }
-    if (_json.containsKey("supportIphone")) {
-      supportIphone = _json["supportIphone"];
+    if (_json.containsKey('supportIphone')) {
+      supportIphone = _json['supportIphone'];
     }
   }
 
@@ -3716,25 +3715,25 @@ class InstanceIosDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bundleIdentifier != null) {
-      _json["bundleIdentifier"] = bundleIdentifier;
+      _json['bundleIdentifier'] = bundleIdentifier;
     }
     if (itunesAppId != null) {
-      _json["itunesAppId"] = itunesAppId;
+      _json['itunesAppId'] = itunesAppId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (preferredForIpad != null) {
-      _json["preferredForIpad"] = preferredForIpad;
+      _json['preferredForIpad'] = preferredForIpad;
     }
     if (preferredForIphone != null) {
-      _json["preferredForIphone"] = preferredForIphone;
+      _json['preferredForIphone'] = preferredForIphone;
     }
     if (supportIpad != null) {
-      _json["supportIpad"] = supportIpad;
+      _json['supportIpad'] = supportIpad;
     }
     if (supportIphone != null) {
-      _json["supportIphone"] = supportIphone;
+      _json['supportIphone'] = supportIphone;
     }
     return _json;
   }
@@ -3755,14 +3754,14 @@ class InstanceWebDetails {
   InstanceWebDetails();
 
   InstanceWebDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("launchUrl")) {
-      launchUrl = _json["launchUrl"];
+    if (_json.containsKey('launchUrl')) {
+      launchUrl = _json['launchUrl'];
     }
-    if (_json.containsKey("preferred")) {
-      preferred = _json["preferred"];
+    if (_json.containsKey('preferred')) {
+      preferred = _json['preferred'];
     }
   }
 
@@ -3770,13 +3769,13 @@ class InstanceWebDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (launchUrl != null) {
-      _json["launchUrl"] = launchUrl;
+      _json['launchUrl'] = launchUrl;
     }
     if (preferred != null) {
-      _json["preferred"] = preferred;
+      _json['preferred'] = preferred;
     }
     return _json;
   }
@@ -3813,23 +3812,23 @@ class Leaderboard {
   Leaderboard();
 
   Leaderboard.fromJson(core.Map _json) {
-    if (_json.containsKey("iconUrl")) {
-      iconUrl = _json["iconUrl"];
+    if (_json.containsKey('iconUrl')) {
+      iconUrl = _json['iconUrl'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("isIconUrlDefault")) {
-      isIconUrlDefault = _json["isIconUrlDefault"];
+    if (_json.containsKey('isIconUrlDefault')) {
+      isIconUrlDefault = _json['isIconUrlDefault'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("order")) {
-      order = _json["order"];
+    if (_json.containsKey('order')) {
+      order = _json['order'];
     }
   }
 
@@ -3837,22 +3836,22 @@ class Leaderboard {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (iconUrl != null) {
-      _json["iconUrl"] = iconUrl;
+      _json['iconUrl'] = iconUrl;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (isIconUrlDefault != null) {
-      _json["isIconUrlDefault"] = isIconUrlDefault;
+      _json['isIconUrlDefault'] = isIconUrlDefault;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (order != null) {
-      _json["order"] = order;
+      _json['order'] = order;
     }
     return _json;
   }
@@ -3898,32 +3897,32 @@ class LeaderboardEntry {
   LeaderboardEntry();
 
   LeaderboardEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("formattedScore")) {
-      formattedScore = _json["formattedScore"];
+    if (_json.containsKey('formattedScore')) {
+      formattedScore = _json['formattedScore'];
     }
-    if (_json.containsKey("formattedScoreRank")) {
-      formattedScoreRank = _json["formattedScoreRank"];
+    if (_json.containsKey('formattedScoreRank')) {
+      formattedScoreRank = _json['formattedScoreRank'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("player")) {
-      player = Player.fromJson(_json["player"]);
+    if (_json.containsKey('player')) {
+      player = Player.fromJson(_json['player']);
     }
-    if (_json.containsKey("scoreRank")) {
-      scoreRank = _json["scoreRank"];
+    if (_json.containsKey('scoreRank')) {
+      scoreRank = _json['scoreRank'];
     }
-    if (_json.containsKey("scoreTag")) {
-      scoreTag = _json["scoreTag"];
+    if (_json.containsKey('scoreTag')) {
+      scoreTag = _json['scoreTag'];
     }
-    if (_json.containsKey("scoreValue")) {
-      scoreValue = _json["scoreValue"];
+    if (_json.containsKey('scoreValue')) {
+      scoreValue = _json['scoreValue'];
     }
-    if (_json.containsKey("timeSpan")) {
-      timeSpan = _json["timeSpan"];
+    if (_json.containsKey('timeSpan')) {
+      timeSpan = _json['timeSpan'];
     }
-    if (_json.containsKey("writeTimestampMillis")) {
-      writeTimestampMillis = _json["writeTimestampMillis"];
+    if (_json.containsKey('writeTimestampMillis')) {
+      writeTimestampMillis = _json['writeTimestampMillis'];
     }
   }
 
@@ -3931,31 +3930,31 @@ class LeaderboardEntry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (formattedScore != null) {
-      _json["formattedScore"] = formattedScore;
+      _json['formattedScore'] = formattedScore;
     }
     if (formattedScoreRank != null) {
-      _json["formattedScoreRank"] = formattedScoreRank;
+      _json['formattedScoreRank'] = formattedScoreRank;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (player != null) {
-      _json["player"] = player.toJson();
+      _json['player'] = player.toJson();
     }
     if (scoreRank != null) {
-      _json["scoreRank"] = scoreRank;
+      _json['scoreRank'] = scoreRank;
     }
     if (scoreTag != null) {
-      _json["scoreTag"] = scoreTag;
+      _json['scoreTag'] = scoreTag;
     }
     if (scoreValue != null) {
-      _json["scoreValue"] = scoreValue;
+      _json['scoreValue'] = scoreValue;
     }
     if (timeSpan != null) {
-      _json["timeSpan"] = timeSpan;
+      _json['timeSpan'] = timeSpan;
     }
     if (writeTimestampMillis != null) {
-      _json["writeTimestampMillis"] = writeTimestampMillis;
+      _json['writeTimestampMillis'] = writeTimestampMillis;
     }
     return _json;
   }
@@ -3976,16 +3975,16 @@ class LeaderboardListResponse {
   LeaderboardListResponse();
 
   LeaderboardListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Leaderboard>((value) => Leaderboard.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -3993,13 +3992,13 @@ class LeaderboardListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4026,20 +4025,20 @@ class LeaderboardScoreRank {
   LeaderboardScoreRank();
 
   LeaderboardScoreRank.fromJson(core.Map _json) {
-    if (_json.containsKey("formattedNumScores")) {
-      formattedNumScores = _json["formattedNumScores"];
+    if (_json.containsKey('formattedNumScores')) {
+      formattedNumScores = _json['formattedNumScores'];
     }
-    if (_json.containsKey("formattedRank")) {
-      formattedRank = _json["formattedRank"];
+    if (_json.containsKey('formattedRank')) {
+      formattedRank = _json['formattedRank'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("numScores")) {
-      numScores = _json["numScores"];
+    if (_json.containsKey('numScores')) {
+      numScores = _json['numScores'];
     }
-    if (_json.containsKey("rank")) {
-      rank = _json["rank"];
+    if (_json.containsKey('rank')) {
+      rank = _json['rank'];
     }
   }
 
@@ -4047,19 +4046,19 @@ class LeaderboardScoreRank {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (formattedNumScores != null) {
-      _json["formattedNumScores"] = formattedNumScores;
+      _json['formattedNumScores'] = formattedNumScores;
     }
     if (formattedRank != null) {
-      _json["formattedRank"] = formattedRank;
+      _json['formattedRank'] = formattedRank;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (numScores != null) {
-      _json["numScores"] = numScores;
+      _json['numScores'] = numScores;
     }
     if (rank != null) {
-      _json["rank"] = rank;
+      _json['rank'] = rank;
     }
     return _json;
   }
@@ -4093,25 +4092,25 @@ class LeaderboardScores {
   LeaderboardScores();
 
   LeaderboardScores.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<LeaderboardEntry>((value) => LeaderboardEntry.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("numScores")) {
-      numScores = _json["numScores"];
+    if (_json.containsKey('numScores')) {
+      numScores = _json['numScores'];
     }
-    if (_json.containsKey("playerScore")) {
-      playerScore = LeaderboardEntry.fromJson(_json["playerScore"]);
+    if (_json.containsKey('playerScore')) {
+      playerScore = LeaderboardEntry.fromJson(_json['playerScore']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
   }
 
@@ -4119,22 +4118,22 @@ class LeaderboardScores {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (numScores != null) {
-      _json["numScores"] = numScores;
+      _json['numScores'] = numScores;
     }
     if (playerScore != null) {
-      _json["playerScore"] = playerScore.toJson();
+      _json['playerScore'] = playerScore.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     return _json;
   }
@@ -4156,14 +4155,14 @@ class MetagameConfig {
   MetagameConfig();
 
   MetagameConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("currentVersion")) {
-      currentVersion = _json["currentVersion"];
+    if (_json.containsKey('currentVersion')) {
+      currentVersion = _json['currentVersion'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("playerLevels")) {
-      playerLevels = (_json["playerLevels"] as core.List)
+    if (_json.containsKey('playerLevels')) {
+      playerLevels = (_json['playerLevels'] as core.List)
           .map<PlayerLevel>((value) => PlayerLevel.fromJson(value))
           .toList();
     }
@@ -4173,13 +4172,13 @@ class MetagameConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentVersion != null) {
-      _json["currentVersion"] = currentVersion;
+      _json['currentVersion'] = currentVersion;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (playerLevels != null) {
-      _json["playerLevels"] =
+      _json['playerLevels'] =
           playerLevels.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4199,11 +4198,11 @@ class PlayerName {
   PlayerName();
 
   PlayerName.fromJson(core.Map _json) {
-    if (_json.containsKey("familyName")) {
-      familyName = _json["familyName"];
+    if (_json.containsKey('familyName')) {
+      familyName = _json['familyName'];
     }
-    if (_json.containsKey("givenName")) {
-      givenName = _json["givenName"];
+    if (_json.containsKey('givenName')) {
+      givenName = _json['givenName'];
     }
   }
 
@@ -4211,10 +4210,10 @@ class PlayerName {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (familyName != null) {
-      _json["familyName"] = familyName;
+      _json['familyName'] = familyName;
     }
     if (givenName != null) {
-      _json["givenName"] = givenName;
+      _json['givenName'] = givenName;
     }
     return _json;
   }
@@ -4271,41 +4270,41 @@ class Player {
   Player();
 
   Player.fromJson(core.Map _json) {
-    if (_json.containsKey("avatarImageUrl")) {
-      avatarImageUrl = _json["avatarImageUrl"];
+    if (_json.containsKey('avatarImageUrl')) {
+      avatarImageUrl = _json['avatarImageUrl'];
     }
-    if (_json.containsKey("bannerUrlLandscape")) {
-      bannerUrlLandscape = _json["bannerUrlLandscape"];
+    if (_json.containsKey('bannerUrlLandscape')) {
+      bannerUrlLandscape = _json['bannerUrlLandscape'];
     }
-    if (_json.containsKey("bannerUrlPortrait")) {
-      bannerUrlPortrait = _json["bannerUrlPortrait"];
+    if (_json.containsKey('bannerUrlPortrait')) {
+      bannerUrlPortrait = _json['bannerUrlPortrait'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("experienceInfo")) {
-      experienceInfo = PlayerExperienceInfo.fromJson(_json["experienceInfo"]);
+    if (_json.containsKey('experienceInfo')) {
+      experienceInfo = PlayerExperienceInfo.fromJson(_json['experienceInfo']);
     }
-    if (_json.containsKey("friendStatus")) {
-      friendStatus = _json["friendStatus"];
+    if (_json.containsKey('friendStatus')) {
+      friendStatus = _json['friendStatus'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = PlayerName.fromJson(_json["name"]);
+    if (_json.containsKey('name')) {
+      name = PlayerName.fromJson(_json['name']);
     }
-    if (_json.containsKey("originalPlayerId")) {
-      originalPlayerId = _json["originalPlayerId"];
+    if (_json.containsKey('originalPlayerId')) {
+      originalPlayerId = _json['originalPlayerId'];
     }
-    if (_json.containsKey("playerId")) {
-      playerId = _json["playerId"];
+    if (_json.containsKey('playerId')) {
+      playerId = _json['playerId'];
     }
-    if (_json.containsKey("profileSettings")) {
-      profileSettings = ProfileSettings.fromJson(_json["profileSettings"]);
+    if (_json.containsKey('profileSettings')) {
+      profileSettings = ProfileSettings.fromJson(_json['profileSettings']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -4313,40 +4312,40 @@ class Player {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (avatarImageUrl != null) {
-      _json["avatarImageUrl"] = avatarImageUrl;
+      _json['avatarImageUrl'] = avatarImageUrl;
     }
     if (bannerUrlLandscape != null) {
-      _json["bannerUrlLandscape"] = bannerUrlLandscape;
+      _json['bannerUrlLandscape'] = bannerUrlLandscape;
     }
     if (bannerUrlPortrait != null) {
-      _json["bannerUrlPortrait"] = bannerUrlPortrait;
+      _json['bannerUrlPortrait'] = bannerUrlPortrait;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (experienceInfo != null) {
-      _json["experienceInfo"] = experienceInfo.toJson();
+      _json['experienceInfo'] = experienceInfo.toJson();
     }
     if (friendStatus != null) {
-      _json["friendStatus"] = friendStatus;
+      _json['friendStatus'] = friendStatus;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name.toJson();
+      _json['name'] = name.toJson();
     }
     if (originalPlayerId != null) {
-      _json["originalPlayerId"] = originalPlayerId;
+      _json['originalPlayerId'] = originalPlayerId;
     }
     if (playerId != null) {
-      _json["playerId"] = playerId;
+      _json['playerId'] = playerId;
     }
     if (profileSettings != null) {
-      _json["profileSettings"] = profileSettings.toJson();
+      _json['profileSettings'] = profileSettings.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -4386,26 +4385,26 @@ class PlayerAchievement {
   PlayerAchievement();
 
   PlayerAchievement.fromJson(core.Map _json) {
-    if (_json.containsKey("achievementState")) {
-      achievementState = _json["achievementState"];
+    if (_json.containsKey('achievementState')) {
+      achievementState = _json['achievementState'];
     }
-    if (_json.containsKey("currentSteps")) {
-      currentSteps = _json["currentSteps"];
+    if (_json.containsKey('currentSteps')) {
+      currentSteps = _json['currentSteps'];
     }
-    if (_json.containsKey("experiencePoints")) {
-      experiencePoints = _json["experiencePoints"];
+    if (_json.containsKey('experiencePoints')) {
+      experiencePoints = _json['experiencePoints'];
     }
-    if (_json.containsKey("formattedCurrentStepsString")) {
-      formattedCurrentStepsString = _json["formattedCurrentStepsString"];
+    if (_json.containsKey('formattedCurrentStepsString')) {
+      formattedCurrentStepsString = _json['formattedCurrentStepsString'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastUpdatedTimestamp")) {
-      lastUpdatedTimestamp = _json["lastUpdatedTimestamp"];
+    if (_json.containsKey('lastUpdatedTimestamp')) {
+      lastUpdatedTimestamp = _json['lastUpdatedTimestamp'];
     }
   }
 
@@ -4413,25 +4412,25 @@ class PlayerAchievement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (achievementState != null) {
-      _json["achievementState"] = achievementState;
+      _json['achievementState'] = achievementState;
     }
     if (currentSteps != null) {
-      _json["currentSteps"] = currentSteps;
+      _json['currentSteps'] = currentSteps;
     }
     if (experiencePoints != null) {
-      _json["experiencePoints"] = experiencePoints;
+      _json['experiencePoints'] = experiencePoints;
     }
     if (formattedCurrentStepsString != null) {
-      _json["formattedCurrentStepsString"] = formattedCurrentStepsString;
+      _json['formattedCurrentStepsString'] = formattedCurrentStepsString;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastUpdatedTimestamp != null) {
-      _json["lastUpdatedTimestamp"] = lastUpdatedTimestamp;
+      _json['lastUpdatedTimestamp'] = lastUpdatedTimestamp;
     }
     return _json;
   }
@@ -4452,16 +4451,16 @@ class PlayerAchievementListResponse {
   PlayerAchievementListResponse();
 
   PlayerAchievementListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<PlayerAchievement>((value) => PlayerAchievement.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4469,13 +4468,13 @@ class PlayerAchievementListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4504,20 +4503,20 @@ class PlayerEvent {
   PlayerEvent();
 
   PlayerEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("definitionId")) {
-      definitionId = _json["definitionId"];
+    if (_json.containsKey('definitionId')) {
+      definitionId = _json['definitionId'];
     }
-    if (_json.containsKey("formattedNumEvents")) {
-      formattedNumEvents = _json["formattedNumEvents"];
+    if (_json.containsKey('formattedNumEvents')) {
+      formattedNumEvents = _json['formattedNumEvents'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("numEvents")) {
-      numEvents = _json["numEvents"];
+    if (_json.containsKey('numEvents')) {
+      numEvents = _json['numEvents'];
     }
-    if (_json.containsKey("playerId")) {
-      playerId = _json["playerId"];
+    if (_json.containsKey('playerId')) {
+      playerId = _json['playerId'];
     }
   }
 
@@ -4525,19 +4524,19 @@ class PlayerEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (definitionId != null) {
-      _json["definitionId"] = definitionId;
+      _json['definitionId'] = definitionId;
     }
     if (formattedNumEvents != null) {
-      _json["formattedNumEvents"] = formattedNumEvents;
+      _json['formattedNumEvents'] = formattedNumEvents;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (numEvents != null) {
-      _json["numEvents"] = numEvents;
+      _json['numEvents'] = numEvents;
     }
     if (playerId != null) {
-      _json["playerId"] = playerId;
+      _json['playerId'] = playerId;
     }
     return _json;
   }
@@ -4558,16 +4557,16 @@ class PlayerEventListResponse {
   PlayerEventListResponse();
 
   PlayerEventListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<PlayerEvent>((value) => PlayerEvent.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4575,13 +4574,13 @@ class PlayerEventListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4610,20 +4609,20 @@ class PlayerExperienceInfo {
   PlayerExperienceInfo();
 
   PlayerExperienceInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("currentExperiencePoints")) {
-      currentExperiencePoints = _json["currentExperiencePoints"];
+    if (_json.containsKey('currentExperiencePoints')) {
+      currentExperiencePoints = _json['currentExperiencePoints'];
     }
-    if (_json.containsKey("currentLevel")) {
-      currentLevel = PlayerLevel.fromJson(_json["currentLevel"]);
+    if (_json.containsKey('currentLevel')) {
+      currentLevel = PlayerLevel.fromJson(_json['currentLevel']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastLevelUpTimestampMillis")) {
-      lastLevelUpTimestampMillis = _json["lastLevelUpTimestampMillis"];
+    if (_json.containsKey('lastLevelUpTimestampMillis')) {
+      lastLevelUpTimestampMillis = _json['lastLevelUpTimestampMillis'];
     }
-    if (_json.containsKey("nextLevel")) {
-      nextLevel = PlayerLevel.fromJson(_json["nextLevel"]);
+    if (_json.containsKey('nextLevel')) {
+      nextLevel = PlayerLevel.fromJson(_json['nextLevel']);
     }
   }
 
@@ -4631,19 +4630,19 @@ class PlayerExperienceInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentExperiencePoints != null) {
-      _json["currentExperiencePoints"] = currentExperiencePoints;
+      _json['currentExperiencePoints'] = currentExperiencePoints;
     }
     if (currentLevel != null) {
-      _json["currentLevel"] = currentLevel.toJson();
+      _json['currentLevel'] = currentLevel.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastLevelUpTimestampMillis != null) {
-      _json["lastLevelUpTimestampMillis"] = lastLevelUpTimestampMillis;
+      _json['lastLevelUpTimestampMillis'] = lastLevelUpTimestampMillis;
     }
     if (nextLevel != null) {
-      _json["nextLevel"] = nextLevel.toJson();
+      _json['nextLevel'] = nextLevel.toJson();
     }
     return _json;
   }
@@ -4693,35 +4692,35 @@ class PlayerLeaderboardScore {
   PlayerLeaderboardScore();
 
   PlayerLeaderboardScore.fromJson(core.Map _json) {
-    if (_json.containsKey("friendsRank")) {
-      friendsRank = LeaderboardScoreRank.fromJson(_json["friendsRank"]);
+    if (_json.containsKey('friendsRank')) {
+      friendsRank = LeaderboardScoreRank.fromJson(_json['friendsRank']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("leaderboard_id")) {
-      leaderboardId = _json["leaderboard_id"];
+    if (_json.containsKey('leaderboard_id')) {
+      leaderboardId = _json['leaderboard_id'];
     }
-    if (_json.containsKey("publicRank")) {
-      publicRank = LeaderboardScoreRank.fromJson(_json["publicRank"]);
+    if (_json.containsKey('publicRank')) {
+      publicRank = LeaderboardScoreRank.fromJson(_json['publicRank']);
     }
-    if (_json.containsKey("scoreString")) {
-      scoreString = _json["scoreString"];
+    if (_json.containsKey('scoreString')) {
+      scoreString = _json['scoreString'];
     }
-    if (_json.containsKey("scoreTag")) {
-      scoreTag = _json["scoreTag"];
+    if (_json.containsKey('scoreTag')) {
+      scoreTag = _json['scoreTag'];
     }
-    if (_json.containsKey("scoreValue")) {
-      scoreValue = _json["scoreValue"];
+    if (_json.containsKey('scoreValue')) {
+      scoreValue = _json['scoreValue'];
     }
-    if (_json.containsKey("socialRank")) {
-      socialRank = LeaderboardScoreRank.fromJson(_json["socialRank"]);
+    if (_json.containsKey('socialRank')) {
+      socialRank = LeaderboardScoreRank.fromJson(_json['socialRank']);
     }
-    if (_json.containsKey("timeSpan")) {
-      timeSpan = _json["timeSpan"];
+    if (_json.containsKey('timeSpan')) {
+      timeSpan = _json['timeSpan'];
     }
-    if (_json.containsKey("writeTimestamp")) {
-      writeTimestamp = _json["writeTimestamp"];
+    if (_json.containsKey('writeTimestamp')) {
+      writeTimestamp = _json['writeTimestamp'];
     }
   }
 
@@ -4729,34 +4728,34 @@ class PlayerLeaderboardScore {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (friendsRank != null) {
-      _json["friendsRank"] = friendsRank.toJson();
+      _json['friendsRank'] = friendsRank.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (leaderboardId != null) {
-      _json["leaderboard_id"] = leaderboardId;
+      _json['leaderboard_id'] = leaderboardId;
     }
     if (publicRank != null) {
-      _json["publicRank"] = publicRank.toJson();
+      _json['publicRank'] = publicRank.toJson();
     }
     if (scoreString != null) {
-      _json["scoreString"] = scoreString;
+      _json['scoreString'] = scoreString;
     }
     if (scoreTag != null) {
-      _json["scoreTag"] = scoreTag;
+      _json['scoreTag'] = scoreTag;
     }
     if (scoreValue != null) {
-      _json["scoreValue"] = scoreValue;
+      _json['scoreValue'] = scoreValue;
     }
     if (socialRank != null) {
-      _json["socialRank"] = socialRank.toJson();
+      _json['socialRank'] = socialRank.toJson();
     }
     if (timeSpan != null) {
-      _json["timeSpan"] = timeSpan;
+      _json['timeSpan'] = timeSpan;
     }
     if (writeTimestamp != null) {
-      _json["writeTimestamp"] = writeTimestamp;
+      _json['writeTimestamp'] = writeTimestamp;
     }
     return _json;
   }
@@ -4780,20 +4779,20 @@ class PlayerLeaderboardScoreListResponse {
   PlayerLeaderboardScoreListResponse();
 
   PlayerLeaderboardScoreListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<PlayerLeaderboardScore>(
               (value) => PlayerLeaderboardScore.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("player")) {
-      player = Player.fromJson(_json["player"]);
+    if (_json.containsKey('player')) {
+      player = Player.fromJson(_json['player']);
     }
   }
 
@@ -4801,16 +4800,16 @@ class PlayerLeaderboardScoreListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (player != null) {
-      _json["player"] = player.toJson();
+      _json['player'] = player.toJson();
     }
     return _json;
   }
@@ -4834,17 +4833,17 @@ class PlayerLevel {
   PlayerLevel();
 
   PlayerLevel.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("level")) {
-      level = _json["level"];
+    if (_json.containsKey('level')) {
+      level = _json['level'];
     }
-    if (_json.containsKey("maxExperiencePoints")) {
-      maxExperiencePoints = _json["maxExperiencePoints"];
+    if (_json.containsKey('maxExperiencePoints')) {
+      maxExperiencePoints = _json['maxExperiencePoints'];
     }
-    if (_json.containsKey("minExperiencePoints")) {
-      minExperiencePoints = _json["minExperiencePoints"];
+    if (_json.containsKey('minExperiencePoints')) {
+      minExperiencePoints = _json['minExperiencePoints'];
     }
   }
 
@@ -4852,16 +4851,16 @@ class PlayerLevel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (level != null) {
-      _json["level"] = level;
+      _json['level'] = level;
     }
     if (maxExperiencePoints != null) {
-      _json["maxExperiencePoints"] = maxExperiencePoints;
+      _json['maxExperiencePoints'] = maxExperiencePoints;
     }
     if (minExperiencePoints != null) {
-      _json["minExperiencePoints"] = minExperiencePoints;
+      _json['minExperiencePoints'] = minExperiencePoints;
     }
     return _json;
   }
@@ -4882,16 +4881,16 @@ class PlayerListResponse {
   PlayerListResponse();
 
   PlayerListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Player>((value) => Player.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4899,13 +4898,13 @@ class PlayerListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4938,20 +4937,20 @@ class PlayerScore {
   PlayerScore();
 
   PlayerScore.fromJson(core.Map _json) {
-    if (_json.containsKey("formattedScore")) {
-      formattedScore = _json["formattedScore"];
+    if (_json.containsKey('formattedScore')) {
+      formattedScore = _json['formattedScore'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"];
+    if (_json.containsKey('score')) {
+      score = _json['score'];
     }
-    if (_json.containsKey("scoreTag")) {
-      scoreTag = _json["scoreTag"];
+    if (_json.containsKey('scoreTag')) {
+      scoreTag = _json['scoreTag'];
     }
-    if (_json.containsKey("timeSpan")) {
-      timeSpan = _json["timeSpan"];
+    if (_json.containsKey('timeSpan')) {
+      timeSpan = _json['timeSpan'];
     }
   }
 
@@ -4959,19 +4958,19 @@ class PlayerScore {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (formattedScore != null) {
-      _json["formattedScore"] = formattedScore;
+      _json['formattedScore'] = formattedScore;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (scoreTag != null) {
-      _json["scoreTag"] = scoreTag;
+      _json['scoreTag'] = scoreTag;
     }
     if (timeSpan != null) {
-      _json["timeSpan"] = timeSpan;
+      _json['timeSpan'] = timeSpan;
     }
     return _json;
   }
@@ -4989,11 +4988,11 @@ class PlayerScoreListResponse {
   PlayerScoreListResponse();
 
   PlayerScoreListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("submittedScores")) {
-      submittedScores = (_json["submittedScores"] as core.List)
+    if (_json.containsKey('submittedScores')) {
+      submittedScores = (_json['submittedScores'] as core.List)
           .map<PlayerScoreResponse>(
               (value) => PlayerScoreResponse.fromJson(value))
           .toList();
@@ -5004,10 +5003,10 @@ class PlayerScoreListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (submittedScores != null) {
-      _json["submittedScores"] =
+      _json['submittedScores'] =
           submittedScores.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5042,24 +5041,24 @@ class PlayerScoreResponse {
   PlayerScoreResponse();
 
   PlayerScoreResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("beatenScoreTimeSpans")) {
+    if (_json.containsKey('beatenScoreTimeSpans')) {
       beatenScoreTimeSpans =
-          (_json["beatenScoreTimeSpans"] as core.List).cast<core.String>();
+          (_json['beatenScoreTimeSpans'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("formattedScore")) {
-      formattedScore = _json["formattedScore"];
+    if (_json.containsKey('formattedScore')) {
+      formattedScore = _json['formattedScore'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("leaderboardId")) {
-      leaderboardId = _json["leaderboardId"];
+    if (_json.containsKey('leaderboardId')) {
+      leaderboardId = _json['leaderboardId'];
     }
-    if (_json.containsKey("scoreTag")) {
-      scoreTag = _json["scoreTag"];
+    if (_json.containsKey('scoreTag')) {
+      scoreTag = _json['scoreTag'];
     }
-    if (_json.containsKey("unbeatenScores")) {
-      unbeatenScores = (_json["unbeatenScores"] as core.List)
+    if (_json.containsKey('unbeatenScores')) {
+      unbeatenScores = (_json['unbeatenScores'] as core.List)
           .map<PlayerScore>((value) => PlayerScore.fromJson(value))
           .toList();
     }
@@ -5069,22 +5068,22 @@ class PlayerScoreResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (beatenScoreTimeSpans != null) {
-      _json["beatenScoreTimeSpans"] = beatenScoreTimeSpans;
+      _json['beatenScoreTimeSpans'] = beatenScoreTimeSpans;
     }
     if (formattedScore != null) {
-      _json["formattedScore"] = formattedScore;
+      _json['formattedScore'] = formattedScore;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (leaderboardId != null) {
-      _json["leaderboardId"] = leaderboardId;
+      _json['leaderboardId'] = leaderboardId;
     }
     if (scoreTag != null) {
-      _json["scoreTag"] = scoreTag;
+      _json['scoreTag'] = scoreTag;
     }
     if (unbeatenScores != null) {
-      _json["unbeatenScores"] =
+      _json['unbeatenScores'] =
           unbeatenScores.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5103,11 +5102,11 @@ class PlayerScoreSubmissionList {
   PlayerScoreSubmissionList();
 
   PlayerScoreSubmissionList.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("scores")) {
-      scores = (_json["scores"] as core.List)
+    if (_json.containsKey('scores')) {
+      scores = (_json['scores'] as core.List)
           .map<ScoreSubmission>((value) => ScoreSubmission.fromJson(value))
           .toList();
     }
@@ -5117,10 +5116,10 @@ class PlayerScoreSubmissionList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (scores != null) {
-      _json["scores"] = scores.map((value) => value.toJson()).toList();
+      _json['scores'] = scores.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5151,14 +5150,14 @@ class ProfileSettings {
   ProfileSettings();
 
   ProfileSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("friendsListVisibility")) {
-      friendsListVisibility = _json["friendsListVisibility"];
+    if (_json.containsKey('friendsListVisibility')) {
+      friendsListVisibility = _json['friendsListVisibility'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("profileVisible")) {
-      profileVisible = _json["profileVisible"];
+    if (_json.containsKey('profileVisible')) {
+      profileVisible = _json['profileVisible'];
     }
   }
 
@@ -5166,13 +5165,13 @@ class ProfileSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (friendsListVisibility != null) {
-      _json["friendsListVisibility"] = friendsListVisibility;
+      _json['friendsListVisibility'] = friendsListVisibility;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (profileVisible != null) {
-      _json["profileVisible"] = profileVisible;
+      _json['profileVisible'] = profileVisible;
     }
     return _json;
   }
@@ -5201,14 +5200,14 @@ class RevisionCheckResponse {
   RevisionCheckResponse();
 
   RevisionCheckResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("apiVersion")) {
-      apiVersion = _json["apiVersion"];
+    if (_json.containsKey('apiVersion')) {
+      apiVersion = _json['apiVersion'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("revisionStatus")) {
-      revisionStatus = _json["revisionStatus"];
+    if (_json.containsKey('revisionStatus')) {
+      revisionStatus = _json['revisionStatus'];
     }
   }
 
@@ -5216,13 +5215,13 @@ class RevisionCheckResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (apiVersion != null) {
-      _json["apiVersion"] = apiVersion;
+      _json['apiVersion'] = apiVersion;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (revisionStatus != null) {
-      _json["revisionStatus"] = revisionStatus;
+      _json['revisionStatus'] = revisionStatus;
     }
     return _json;
   }
@@ -5251,20 +5250,20 @@ class ScoreSubmission {
   ScoreSubmission();
 
   ScoreSubmission.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("leaderboardId")) {
-      leaderboardId = _json["leaderboardId"];
+    if (_json.containsKey('leaderboardId')) {
+      leaderboardId = _json['leaderboardId'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"];
+    if (_json.containsKey('score')) {
+      score = _json['score'];
     }
-    if (_json.containsKey("scoreTag")) {
-      scoreTag = _json["scoreTag"];
+    if (_json.containsKey('scoreTag')) {
+      scoreTag = _json['scoreTag'];
     }
-    if (_json.containsKey("signature")) {
-      signature = _json["signature"];
+    if (_json.containsKey('signature')) {
+      signature = _json['signature'];
     }
   }
 
@@ -5272,19 +5271,19 @@ class ScoreSubmission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (leaderboardId != null) {
-      _json["leaderboardId"] = leaderboardId;
+      _json['leaderboardId'] = leaderboardId;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (scoreTag != null) {
-      _json["scoreTag"] = scoreTag;
+      _json['scoreTag'] = scoreTag;
     }
     if (signature != null) {
-      _json["signature"] = signature;
+      _json['signature'] = signature;
     }
     return _json;
   }
@@ -5336,38 +5335,38 @@ class Snapshot {
   Snapshot();
 
   Snapshot.fromJson(core.Map _json) {
-    if (_json.containsKey("coverImage")) {
-      coverImage = SnapshotImage.fromJson(_json["coverImage"]);
+    if (_json.containsKey('coverImage')) {
+      coverImage = SnapshotImage.fromJson(_json['coverImage']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("driveId")) {
-      driveId = _json["driveId"];
+    if (_json.containsKey('driveId')) {
+      driveId = _json['driveId'];
     }
-    if (_json.containsKey("durationMillis")) {
-      durationMillis = _json["durationMillis"];
+    if (_json.containsKey('durationMillis')) {
+      durationMillis = _json['durationMillis'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastModifiedMillis")) {
-      lastModifiedMillis = _json["lastModifiedMillis"];
+    if (_json.containsKey('lastModifiedMillis')) {
+      lastModifiedMillis = _json['lastModifiedMillis'];
     }
-    if (_json.containsKey("progressValue")) {
-      progressValue = _json["progressValue"];
+    if (_json.containsKey('progressValue')) {
+      progressValue = _json['progressValue'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("uniqueName")) {
-      uniqueName = _json["uniqueName"];
+    if (_json.containsKey('uniqueName')) {
+      uniqueName = _json['uniqueName'];
     }
   }
 
@@ -5375,37 +5374,37 @@ class Snapshot {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (coverImage != null) {
-      _json["coverImage"] = coverImage.toJson();
+      _json['coverImage'] = coverImage.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (driveId != null) {
-      _json["driveId"] = driveId;
+      _json['driveId'] = driveId;
     }
     if (durationMillis != null) {
-      _json["durationMillis"] = durationMillis;
+      _json['durationMillis'] = durationMillis;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastModifiedMillis != null) {
-      _json["lastModifiedMillis"] = lastModifiedMillis;
+      _json['lastModifiedMillis'] = lastModifiedMillis;
     }
     if (progressValue != null) {
-      _json["progressValue"] = progressValue;
+      _json['progressValue'] = progressValue;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (uniqueName != null) {
-      _json["uniqueName"] = uniqueName;
+      _json['uniqueName'] = uniqueName;
     }
     return _json;
   }
@@ -5433,20 +5432,20 @@ class SnapshotImage {
   SnapshotImage();
 
   SnapshotImage.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("mime_type")) {
-      mimeType = _json["mime_type"];
+    if (_json.containsKey('mime_type')) {
+      mimeType = _json['mime_type'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -5454,19 +5453,19 @@ class SnapshotImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (mimeType != null) {
-      _json["mime_type"] = mimeType;
+      _json['mime_type'] = mimeType;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -5488,16 +5487,16 @@ class SnapshotListResponse {
   SnapshotListResponse();
 
   SnapshotListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Snapshot>((value) => Snapshot.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -5505,13 +5504,13 @@ class SnapshotListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -5574,38 +5573,38 @@ class StatsResponse {
   StatsResponse();
 
   StatsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("avg_session_length_minutes")) {
-      avgSessionLengthMinutes = _json["avg_session_length_minutes"].toDouble();
+    if (_json.containsKey('avg_session_length_minutes')) {
+      avgSessionLengthMinutes = _json['avg_session_length_minutes'].toDouble();
     }
-    if (_json.containsKey("churn_probability")) {
-      churnProbability = _json["churn_probability"].toDouble();
+    if (_json.containsKey('churn_probability')) {
+      churnProbability = _json['churn_probability'].toDouble();
     }
-    if (_json.containsKey("days_since_last_played")) {
-      daysSinceLastPlayed = _json["days_since_last_played"];
+    if (_json.containsKey('days_since_last_played')) {
+      daysSinceLastPlayed = _json['days_since_last_played'];
     }
-    if (_json.containsKey("high_spender_probability")) {
-      highSpenderProbability = _json["high_spender_probability"].toDouble();
+    if (_json.containsKey('high_spender_probability')) {
+      highSpenderProbability = _json['high_spender_probability'].toDouble();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("num_purchases")) {
-      numPurchases = _json["num_purchases"];
+    if (_json.containsKey('num_purchases')) {
+      numPurchases = _json['num_purchases'];
     }
-    if (_json.containsKey("num_sessions")) {
-      numSessions = _json["num_sessions"];
+    if (_json.containsKey('num_sessions')) {
+      numSessions = _json['num_sessions'];
     }
-    if (_json.containsKey("num_sessions_percentile")) {
-      numSessionsPercentile = _json["num_sessions_percentile"].toDouble();
+    if (_json.containsKey('num_sessions_percentile')) {
+      numSessionsPercentile = _json['num_sessions_percentile'].toDouble();
     }
-    if (_json.containsKey("spend_percentile")) {
-      spendPercentile = _json["spend_percentile"].toDouble();
+    if (_json.containsKey('spend_percentile')) {
+      spendPercentile = _json['spend_percentile'].toDouble();
     }
-    if (_json.containsKey("spend_probability")) {
-      spendProbability = _json["spend_probability"].toDouble();
+    if (_json.containsKey('spend_probability')) {
+      spendProbability = _json['spend_probability'].toDouble();
     }
-    if (_json.containsKey("total_spend_next_28_days")) {
-      totalSpendNext28Days = _json["total_spend_next_28_days"].toDouble();
+    if (_json.containsKey('total_spend_next_28_days')) {
+      totalSpendNext28Days = _json['total_spend_next_28_days'].toDouble();
     }
   }
 
@@ -5613,37 +5612,37 @@ class StatsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (avgSessionLengthMinutes != null) {
-      _json["avg_session_length_minutes"] = avgSessionLengthMinutes;
+      _json['avg_session_length_minutes'] = avgSessionLengthMinutes;
     }
     if (churnProbability != null) {
-      _json["churn_probability"] = churnProbability;
+      _json['churn_probability'] = churnProbability;
     }
     if (daysSinceLastPlayed != null) {
-      _json["days_since_last_played"] = daysSinceLastPlayed;
+      _json['days_since_last_played'] = daysSinceLastPlayed;
     }
     if (highSpenderProbability != null) {
-      _json["high_spender_probability"] = highSpenderProbability;
+      _json['high_spender_probability'] = highSpenderProbability;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (numPurchases != null) {
-      _json["num_purchases"] = numPurchases;
+      _json['num_purchases'] = numPurchases;
     }
     if (numSessions != null) {
-      _json["num_sessions"] = numSessions;
+      _json['num_sessions'] = numSessions;
     }
     if (numSessionsPercentile != null) {
-      _json["num_sessions_percentile"] = numSessionsPercentile;
+      _json['num_sessions_percentile'] = numSessionsPercentile;
     }
     if (spendPercentile != null) {
-      _json["spend_percentile"] = spendPercentile;
+      _json['spend_percentile'] = spendPercentile;
     }
     if (spendProbability != null) {
-      _json["spend_probability"] = spendProbability;
+      _json['spend_probability'] = spendProbability;
     }
     if (totalSpendNext28Days != null) {
-      _json["total_spend_next_28_days"] = totalSpendNext28Days;
+      _json['total_spend_next_28_days'] = totalSpendNext28Days;
     }
     return _json;
   }

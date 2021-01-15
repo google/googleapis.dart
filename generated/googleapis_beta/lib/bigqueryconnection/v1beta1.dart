@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,19 +36,19 @@ const core.String USER_AGENT = 'dart-api-client bigqueryconnection/v1beta1';
 /// Allows users to manage BigQuery connections to external data sources.
 class BigqueryconnectionApi {
   /// View and manage your data in Google BigQuery
-  static const BigqueryScope = "https://www.googleapis.com/auth/bigquery";
+  static const BigqueryScope = 'https://www.googleapis.com/auth/bigquery';
 
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   BigqueryconnectionApi(http.Client client,
-      {core.String rootUrl = "https://bigqueryconnection.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://bigqueryconnection.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -119,13 +118,13 @@ class ProjectsLocationsConnectionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (connectionId != null) {
-      _queryParams["connectionId"] = [connectionId];
+      _queryParams['connectionId'] = [connectionId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -134,7 +133,7 @@ class ProjectsLocationsConnectionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -175,17 +174,17 @@ class ProjectsLocationsConnectionsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -226,17 +225,17 @@ class ProjectsLocationsConnectionsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -285,10 +284,10 @@ class ProjectsLocationsConnectionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -297,7 +296,7 @@ class ProjectsLocationsConnectionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -343,16 +342,16 @@ class ProjectsLocationsConnectionsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -361,7 +360,7 @@ class ProjectsLocationsConnectionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -413,20 +412,20 @@ class ProjectsLocationsConnectionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -476,10 +475,10 @@ class ProjectsLocationsConnectionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -488,7 +487,7 @@ class ProjectsLocationsConnectionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -540,10 +539,10 @@ class ProjectsLocationsConnectionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -552,7 +551,7 @@ class ProjectsLocationsConnectionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -599,17 +598,17 @@ class ProjectsLocationsConnectionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -648,13 +647,13 @@ class AuditConfig {
   AuditConfig();
 
   AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
+    if (_json.containsKey('auditLogConfigs')) {
+      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
           .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
+    if (_json.containsKey('service')) {
+      service = _json['service'];
     }
   }
 
@@ -662,11 +661,11 @@ class AuditConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] =
+      _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
     }
     if (service != null) {
-      _json["service"] = service;
+      _json['service'] = service;
     }
     return _json;
   }
@@ -693,12 +692,12 @@ class AuditLogConfig {
   AuditLogConfig();
 
   AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("exemptedMembers")) {
+    if (_json.containsKey('exemptedMembers')) {
       exemptedMembers =
-          (_json["exemptedMembers"] as core.List).cast<core.String>();
+          (_json['exemptedMembers'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
+    if (_json.containsKey('logType')) {
+      logType = _json['logType'];
     }
   }
 
@@ -706,10 +705,10 @@ class AuditLogConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
+      _json['exemptedMembers'] = exemptedMembers;
     }
     if (logType != null) {
-      _json["logType"] = logType;
+      _json['logType'] = logType;
     }
     return _json;
   }
@@ -764,14 +763,14 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("condition")) {
-      condition = Expr.fromJson(_json["condition"]);
+    if (_json.containsKey('condition')) {
+      condition = Expr.fromJson(_json['condition']);
     }
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List).cast<core.String>();
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -779,13 +778,13 @@ class Binding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     if (members != null) {
-      _json["members"] = members;
+      _json['members'] = members;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -802,11 +801,11 @@ class CloudSqlCredential {
   CloudSqlCredential();
 
   CloudSqlCredential.fromJson(core.Map _json) {
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("username")) {
-      username = _json["username"];
+    if (_json.containsKey('username')) {
+      username = _json['username'];
     }
   }
 
@@ -814,10 +813,10 @@ class CloudSqlCredential {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (username != null) {
-      _json["username"] = username;
+      _json['username'] = username;
     }
     return _json;
   }
@@ -844,17 +843,17 @@ class CloudSqlProperties {
   CloudSqlProperties();
 
   CloudSqlProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("credential")) {
-      credential = CloudSqlCredential.fromJson(_json["credential"]);
+    if (_json.containsKey('credential')) {
+      credential = CloudSqlCredential.fromJson(_json['credential']);
     }
-    if (_json.containsKey("database")) {
-      database = _json["database"];
+    if (_json.containsKey('database')) {
+      database = _json['database'];
     }
-    if (_json.containsKey("instanceId")) {
-      instanceId = _json["instanceId"];
+    if (_json.containsKey('instanceId')) {
+      instanceId = _json['instanceId'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -862,16 +861,16 @@ class CloudSqlProperties {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (credential != null) {
-      _json["credential"] = credential.toJson();
+      _json['credential'] = credential.toJson();
     }
     if (database != null) {
-      _json["database"] = database;
+      _json['database'] = database;
     }
     if (instanceId != null) {
-      _json["instanceId"] = instanceId;
+      _json['instanceId'] = instanceId;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -905,26 +904,26 @@ class Connection {
   Connection();
 
   Connection.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudSql")) {
-      cloudSql = CloudSqlProperties.fromJson(_json["cloudSql"]);
+    if (_json.containsKey('cloudSql')) {
+      cloudSql = CloudSqlProperties.fromJson(_json['cloudSql']);
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("friendlyName")) {
-      friendlyName = _json["friendlyName"];
+    if (_json.containsKey('friendlyName')) {
+      friendlyName = _json['friendlyName'];
     }
-    if (_json.containsKey("hasCredential")) {
-      hasCredential = _json["hasCredential"];
+    if (_json.containsKey('hasCredential')) {
+      hasCredential = _json['hasCredential'];
     }
-    if (_json.containsKey("lastModifiedTime")) {
-      lastModifiedTime = _json["lastModifiedTime"];
+    if (_json.containsKey('lastModifiedTime')) {
+      lastModifiedTime = _json['lastModifiedTime'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -932,25 +931,25 @@ class Connection {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cloudSql != null) {
-      _json["cloudSql"] = cloudSql.toJson();
+      _json['cloudSql'] = cloudSql.toJson();
     }
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (friendlyName != null) {
-      _json["friendlyName"] = friendlyName;
+      _json['friendlyName'] = friendlyName;
     }
     if (hasCredential != null) {
-      _json["hasCredential"] = hasCredential;
+      _json['hasCredential'] = hasCredential;
     }
     if (lastModifiedTime != null) {
-      _json["lastModifiedTime"] = lastModifiedTime;
+      _json['lastModifiedTime'] = lastModifiedTime;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -964,8 +963,8 @@ class ConnectionCredential {
   ConnectionCredential();
 
   ConnectionCredential.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudSql")) {
-      cloudSql = CloudSqlCredential.fromJson(_json["cloudSql"]);
+    if (_json.containsKey('cloudSql')) {
+      cloudSql = CloudSqlCredential.fromJson(_json['cloudSql']);
     }
   }
 
@@ -973,7 +972,7 @@ class ConnectionCredential {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cloudSql != null) {
-      _json["cloudSql"] = cloudSql.toJson();
+      _json['cloudSql'] = cloudSql.toJson();
     }
     return _json;
   }
@@ -1032,17 +1031,17 @@ class Expr {
   Expr();
 
   Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
+    if (_json.containsKey('expression')) {
+      expression = _json['expression'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1050,16 +1049,16 @@ class Expr {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (expression != null) {
-      _json["expression"] = expression;
+      _json['expression'] = expression;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1074,8 +1073,8 @@ class GetIamPolicyRequest {
   GetIamPolicyRequest();
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("options")) {
-      options = GetPolicyOptions.fromJson(_json["options"]);
+    if (_json.containsKey('options')) {
+      options = GetPolicyOptions.fromJson(_json['options']);
     }
   }
 
@@ -1083,7 +1082,7 @@ class GetIamPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = options.toJson();
+      _json['options'] = options.toJson();
     }
     return _json;
   }
@@ -1103,8 +1102,8 @@ class GetPolicyOptions {
   GetPolicyOptions();
 
   GetPolicyOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("requestedPolicyVersion")) {
-      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    if (_json.containsKey('requestedPolicyVersion')) {
+      requestedPolicyVersion = _json['requestedPolicyVersion'];
     }
   }
 
@@ -1112,7 +1111,7 @@ class GetPolicyOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
-      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+      _json['requestedPolicyVersion'] = requestedPolicyVersion;
     }
     return _json;
   }
@@ -1129,13 +1128,13 @@ class ListConnectionsResponse {
   ListConnectionsResponse();
 
   ListConnectionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("connections")) {
-      connections = (_json["connections"] as core.List)
+    if (_json.containsKey('connections')) {
+      connections = (_json['connections'] as core.List)
           .map<Connection>((value) => Connection.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1143,11 +1142,11 @@ class ListConnectionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (connections != null) {
-      _json["connections"] =
+      _json['connections'] =
           connections.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1207,7 +1206,7 @@ class Policy {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
@@ -1230,21 +1229,21 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("auditConfigs")) {
-      auditConfigs = (_json["auditConfigs"] as core.List)
+    if (_json.containsKey('auditConfigs')) {
+      auditConfigs = (_json['auditConfigs'] as core.List)
           .map<AuditConfig>((value) => AuditConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("bindings")) {
-      bindings = (_json["bindings"] as core.List)
+    if (_json.containsKey('bindings')) {
+      bindings = (_json['bindings'] as core.List)
           .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -1252,17 +1251,17 @@ class Policy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditConfigs != null) {
-      _json["auditConfigs"] =
+      _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
     }
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
+      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -1284,11 +1283,11 @@ class SetIamPolicyRequest {
   SetIamPolicyRequest();
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("policy")) {
-      policy = Policy.fromJson(_json["policy"]);
+    if (_json.containsKey('policy')) {
+      policy = Policy.fromJson(_json['policy']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'];
     }
   }
 
@@ -1296,10 +1295,10 @@ class SetIamPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = policy.toJson();
+      _json['policy'] = policy.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask;
+      _json['updateMask'] = updateMask;
     }
     return _json;
   }
@@ -1316,8 +1315,8 @@ class TestIamPermissionsRequest {
   TestIamPermissionsRequest();
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -1325,7 +1324,7 @@ class TestIamPermissionsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -1340,8 +1339,8 @@ class TestIamPermissionsResponse {
   TestIamPermissionsResponse();
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -1349,7 +1348,7 @@ class TestIamPermissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }

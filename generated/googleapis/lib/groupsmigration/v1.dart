@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -46,15 +45,15 @@ const core.String USER_AGENT = 'dart-api-client groupsmigration/v1';
 class GroupsmigrationApi {
   /// Manage messages in groups on your domain
   static const AppsGroupsMigrationScope =
-      "https://www.googleapis.com/auth/apps.groups.migration";
+      'https://www.googleapis.com/auth/apps.groups.migration';
 
   final commons.ApiRequester _requester;
 
   ArchiveResourceApi get archive => ArchiveResourceApi(_requester);
 
   GroupsmigrationApi(http.Client client,
-      {core.String rootUrl = "https://groupsmigration.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://groupsmigration.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -95,10 +94,10 @@ class ArchiveResourceApi {
     core.String _body;
 
     if (groupId == null) {
-      throw core.ArgumentError("Parameter groupId is required.");
+      throw core.ArgumentError('Parameter groupId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -116,7 +115,7 @@ class ArchiveResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -138,11 +137,11 @@ class Groups {
   Groups();
 
   Groups.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("responseCode")) {
-      responseCode = _json["responseCode"];
+    if (_json.containsKey('responseCode')) {
+      responseCode = _json['responseCode'];
     }
   }
 
@@ -150,10 +149,10 @@ class Groups {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (responseCode != null) {
-      _json["responseCode"] = responseCode;
+      _json['responseCode'] = responseCode;
     }
     return _json;
   }

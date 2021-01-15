@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,12 +72,12 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.Map<core.String, core.Object> buildUnnamed4946() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -87,16 +87,16 @@ core.Map<core.String, core.Object> buildUnnamed4946() {
 
 void checkUnnamed4946(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed4947() {
@@ -117,8 +117,8 @@ api.GoogleApiHttpBody buildGoogleApiHttpBody() {
   var o = api.GoogleApiHttpBody();
   buildCounterGoogleApiHttpBody++;
   if (buildCounterGoogleApiHttpBody < 3) {
-    o.contentType = "foo";
-    o.data = "foo";
+    o.contentType = 'foo';
+    o.data = 'foo';
     o.extensions = buildUnnamed4947();
   }
   buildCounterGoogleApiHttpBody--;
@@ -163,8 +163,8 @@ api.GoogleCloudApigeeV1AccessGet buildGoogleCloudApigeeV1AccessGet() {
   var o = api.GoogleCloudApigeeV1AccessGet();
   buildCounterGoogleCloudApigeeV1AccessGet++;
   if (buildCounterGoogleCloudApigeeV1AccessGet < 3) {
-    o.name = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudApigeeV1AccessGet--;
   return o;
@@ -184,7 +184,7 @@ api.GoogleCloudApigeeV1AccessRemove buildGoogleCloudApigeeV1AccessRemove() {
   var o = api.GoogleCloudApigeeV1AccessRemove();
   buildCounterGoogleCloudApigeeV1AccessRemove++;
   if (buildCounterGoogleCloudApigeeV1AccessRemove < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.success = true;
   }
   buildCounterGoogleCloudApigeeV1AccessRemove--;
@@ -206,9 +206,9 @@ api.GoogleCloudApigeeV1AccessSet buildGoogleCloudApigeeV1AccessSet() {
   var o = api.GoogleCloudApigeeV1AccessSet();
   buildCounterGoogleCloudApigeeV1AccessSet++;
   if (buildCounterGoogleCloudApigeeV1AccessSet < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.success = true;
-    o.value = "foo";
+    o.value = 'foo';
   }
   buildCounterGoogleCloudApigeeV1AccessSet--;
   return o;
@@ -229,9 +229,9 @@ api.GoogleCloudApigeeV1Alias buildGoogleCloudApigeeV1Alias() {
   var o = api.GoogleCloudApigeeV1Alias();
   buildCounterGoogleCloudApigeeV1Alias++;
   if (buildCounterGoogleCloudApigeeV1Alias < 3) {
-    o.alias = "foo";
+    o.alias = 'foo';
     o.certsInfo = buildGoogleCloudApigeeV1Certificate();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Alias--;
   return o;
@@ -253,9 +253,9 @@ api.GoogleCloudApigeeV1AliasRevisionConfig
   var o = api.GoogleCloudApigeeV1AliasRevisionConfig();
   buildCounterGoogleCloudApigeeV1AliasRevisionConfig++;
   if (buildCounterGoogleCloudApigeeV1AliasRevisionConfig < 3) {
-    o.location = "foo";
-    o.name = "foo";
-    o.type = "foo";
+    o.location = 'foo';
+    o.name = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1AliasRevisionConfig--;
   return o;
@@ -278,10 +278,10 @@ api.GoogleCloudApigeeV1ApiCategory buildGoogleCloudApigeeV1ApiCategory() {
   buildCounterGoogleCloudApigeeV1ApiCategory++;
   if (buildCounterGoogleCloudApigeeV1ApiCategory < 3) {
     o.data = buildGoogleCloudApigeeV1ApiCategoryData();
-    o.errorCode = "foo";
-    o.message = "foo";
-    o.requestId = "foo";
-    o.status = "foo";
+    o.errorCode = 'foo';
+    o.message = 'foo';
+    o.requestId = 'foo';
+    o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ApiCategory--;
   return o;
@@ -305,10 +305,10 @@ api.GoogleCloudApigeeV1ApiCategoryData
   var o = api.GoogleCloudApigeeV1ApiCategoryData();
   buildCounterGoogleCloudApigeeV1ApiCategoryData++;
   if (buildCounterGoogleCloudApigeeV1ApiCategoryData < 3) {
-    o.id = "foo";
-    o.name = "foo";
-    o.siteId = "foo";
-    o.updateTime = "foo";
+    o.id = 'foo';
+    o.name = 'foo';
+    o.siteId = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ApiCategoryData--;
   return o;
@@ -328,8 +328,8 @@ void checkGoogleCloudApigeeV1ApiCategoryData(
 
 core.List<core.String> buildUnnamed4948() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -354,8 +354,8 @@ void checkUnnamed4949(core.List<api.GoogleCloudApigeeV1Attribute> o) {
 
 core.List<core.String> buildUnnamed4950() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -367,8 +367,8 @@ void checkUnnamed4950(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4951() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -380,8 +380,8 @@ void checkUnnamed4951(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4952() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -397,19 +397,19 @@ api.GoogleCloudApigeeV1ApiProduct buildGoogleCloudApigeeV1ApiProduct() {
   buildCounterGoogleCloudApigeeV1ApiProduct++;
   if (buildCounterGoogleCloudApigeeV1ApiProduct < 3) {
     o.apiResources = buildUnnamed4948();
-    o.approvalType = "foo";
+    o.approvalType = 'foo';
     o.attributes = buildUnnamed4949();
-    o.createdAt = "foo";
-    o.description = "foo";
-    o.displayName = "foo";
+    o.createdAt = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
     o.environments = buildUnnamed4950();
-    o.lastModifiedAt = "foo";
-    o.name = "foo";
+    o.lastModifiedAt = 'foo';
+    o.name = 'foo';
     o.operationGroup = buildGoogleCloudApigeeV1OperationGroup();
     o.proxies = buildUnnamed4951();
-    o.quota = "foo";
-    o.quotaInterval = "foo";
-    o.quotaTimeUnit = "foo";
+    o.quota = 'foo';
+    o.quotaInterval = 'foo';
+    o.quotaTimeUnit = 'foo';
     o.scopes = buildUnnamed4952();
   }
   buildCounterGoogleCloudApigeeV1ApiProduct--;
@@ -443,8 +443,8 @@ api.GoogleCloudApigeeV1ApiProductRef buildGoogleCloudApigeeV1ApiProductRef() {
   var o = api.GoogleCloudApigeeV1ApiProductRef();
   buildCounterGoogleCloudApigeeV1ApiProductRef++;
   if (buildCounterGoogleCloudApigeeV1ApiProductRef < 3) {
-    o.apiproduct = "foo";
-    o.status = "foo";
+    o.apiproduct = 'foo';
+    o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ApiProductRef--;
   return o;
@@ -462,8 +462,8 @@ void checkGoogleCloudApigeeV1ApiProductRef(
 
 core.List<core.String> buildUnnamed4953() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -478,9 +478,9 @@ api.GoogleCloudApigeeV1ApiProxy buildGoogleCloudApigeeV1ApiProxy() {
   var o = api.GoogleCloudApigeeV1ApiProxy();
   buildCounterGoogleCloudApigeeV1ApiProxy++;
   if (buildCounterGoogleCloudApigeeV1ApiProxy < 3) {
-    o.latestRevisionId = "foo";
+    o.latestRevisionId = 'foo';
     o.metaData = buildGoogleCloudApigeeV1EntityMetadata();
-    o.name = "foo";
+    o.name = 'foo';
     o.revision = buildUnnamed4953();
   }
   buildCounterGoogleCloudApigeeV1ApiProxy--;
@@ -500,8 +500,8 @@ void checkGoogleCloudApigeeV1ApiProxy(api.GoogleCloudApigeeV1ApiProxy o) {
 
 core.List<core.String> buildUnnamed4954() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -513,21 +513,21 @@ void checkUnnamed4954(core.List<core.String> o) {
 
 core.Map<core.String, core.String> buildUnnamed4955() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed4955(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed4956() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -539,8 +539,8 @@ void checkUnnamed4956(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4957() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -552,8 +552,8 @@ void checkUnnamed4957(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4958() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -565,8 +565,8 @@ void checkUnnamed4958(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4959() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -578,8 +578,8 @@ void checkUnnamed4959(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4960() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -591,8 +591,8 @@ void checkUnnamed4960(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4961() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -604,8 +604,8 @@ void checkUnnamed4961(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4962() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -617,8 +617,8 @@ void checkUnnamed4962(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4963() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -630,8 +630,8 @@ void checkUnnamed4963(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4964() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -649,26 +649,26 @@ api.GoogleCloudApigeeV1ApiProxyRevision
   if (buildCounterGoogleCloudApigeeV1ApiProxyRevision < 3) {
     o.basepaths = buildUnnamed4954();
     o.configurationVersion = buildGoogleCloudApigeeV1ConfigVersion();
-    o.contextInfo = "foo";
-    o.createdAt = "foo";
-    o.description = "foo";
-    o.displayName = "foo";
+    o.contextInfo = 'foo';
+    o.createdAt = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
     o.entityMetaDataAsProperties = buildUnnamed4955();
-    o.lastModifiedAt = "foo";
-    o.name = "foo";
+    o.lastModifiedAt = 'foo';
+    o.name = 'foo';
     o.policies = buildUnnamed4956();
     o.proxies = buildUnnamed4957();
     o.proxyEndpoints = buildUnnamed4958();
     o.resourceFiles = buildGoogleCloudApigeeV1ResourceFiles();
     o.resources = buildUnnamed4959();
-    o.revision = "foo";
+    o.revision = 'foo';
     o.sharedFlows = buildUnnamed4960();
-    o.spec = "foo";
+    o.spec = 'foo';
     o.targetEndpoints = buildUnnamed4961();
     o.targetServers = buildUnnamed4962();
     o.targets = buildUnnamed4963();
     o.teams = buildUnnamed4964();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ApiProxyRevision--;
   return o;
@@ -710,10 +710,10 @@ api.GoogleCloudApigeeV1ApiResponseWrapper
   var o = api.GoogleCloudApigeeV1ApiResponseWrapper();
   buildCounterGoogleCloudApigeeV1ApiResponseWrapper++;
   if (buildCounterGoogleCloudApigeeV1ApiResponseWrapper < 3) {
-    o.errorCode = "foo";
-    o.message = "foo";
-    o.requestId = "foo";
-    o.status = "foo";
+    o.errorCode = 'foo';
+    o.message = 'foo';
+    o.requestId = 'foo';
+    o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ApiResponseWrapper--;
   return o;
@@ -772,8 +772,8 @@ void checkUnnamed4967(core.List<api.GoogleCloudApigeeV1Credential> o) {
 
 core.List<core.String> buildUnnamed4968() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -789,18 +789,18 @@ api.GoogleCloudApigeeV1App buildGoogleCloudApigeeV1App() {
   buildCounterGoogleCloudApigeeV1App++;
   if (buildCounterGoogleCloudApigeeV1App < 3) {
     o.apiProducts = buildUnnamed4965();
-    o.appId = "foo";
+    o.appId = 'foo';
     o.attributes = buildUnnamed4966();
-    o.callbackUrl = "foo";
-    o.companyName = "foo";
-    o.createdAt = "foo";
+    o.callbackUrl = 'foo';
+    o.companyName = 'foo';
+    o.createdAt = 'foo';
     o.credentials = buildUnnamed4967();
-    o.developerId = "foo";
-    o.keyExpiresIn = "foo";
-    o.lastModifiedAt = "foo";
-    o.name = "foo";
+    o.developerId = 'foo';
+    o.keyExpiresIn = 'foo';
+    o.lastModifiedAt = 'foo';
+    o.name = 'foo';
     o.scopes = buildUnnamed4968();
-    o.status = "foo";
+    o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1App--;
   return o;
@@ -831,18 +831,18 @@ api.GoogleCloudApigeeV1AsyncQuery buildGoogleCloudApigeeV1AsyncQuery() {
   var o = api.GoogleCloudApigeeV1AsyncQuery();
   buildCounterGoogleCloudApigeeV1AsyncQuery++;
   if (buildCounterGoogleCloudApigeeV1AsyncQuery < 3) {
-    o.created = "foo";
-    o.error = "foo";
-    o.executionTime = "foo";
-    o.name = "foo";
+    o.created = 'foo';
+    o.error = 'foo';
+    o.executionTime = 'foo';
+    o.name = 'foo';
     o.queryParams = buildGoogleCloudApigeeV1QueryMetadata();
-    o.reportDefinitionId = "foo";
+    o.reportDefinitionId = 'foo';
     o.result = buildGoogleCloudApigeeV1AsyncQueryResult();
-    o.resultFileSize = "foo";
-    o.resultRows = "foo";
-    o.self = "foo";
-    o.state = "foo";
-    o.updated = "foo";
+    o.resultFileSize = 'foo';
+    o.resultRows = 'foo';
+    o.self = 'foo';
+    o.state = 'foo';
+    o.updated = 'foo';
   }
   buildCounterGoogleCloudApigeeV1AsyncQuery--;
   return o;
@@ -873,8 +873,8 @@ api.GoogleCloudApigeeV1AsyncQueryResult
   var o = api.GoogleCloudApigeeV1AsyncQueryResult();
   buildCounterGoogleCloudApigeeV1AsyncQueryResult++;
   if (buildCounterGoogleCloudApigeeV1AsyncQueryResult < 3) {
-    o.expires = "foo";
-    o.self = "foo";
+    o.expires = 'foo';
+    o.self = 'foo';
   }
   buildCounterGoogleCloudApigeeV1AsyncQueryResult--;
   return o;
@@ -895,8 +895,8 @@ api.GoogleCloudApigeeV1Attribute buildGoogleCloudApigeeV1Attribute() {
   var o = api.GoogleCloudApigeeV1Attribute();
   buildCounterGoogleCloudApigeeV1Attribute++;
   if (buildCounterGoogleCloudApigeeV1Attribute < 3) {
-    o.name = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Attribute--;
   return o;
@@ -945,8 +945,8 @@ void checkGoogleCloudApigeeV1Attributes(api.GoogleCloudApigeeV1Attributes o) {
 
 core.List<core.String> buildUnnamed4970() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -961,16 +961,16 @@ api.GoogleCloudApigeeV1CertInfo buildGoogleCloudApigeeV1CertInfo() {
   var o = api.GoogleCloudApigeeV1CertInfo();
   buildCounterGoogleCloudApigeeV1CertInfo++;
   if (buildCounterGoogleCloudApigeeV1CertInfo < 3) {
-    o.basicConstraints = "foo";
-    o.expiryDate = "foo";
-    o.isValid = "foo";
-    o.issuer = "foo";
-    o.publicKey = "foo";
-    o.serialNumber = "foo";
-    o.sigAlgName = "foo";
-    o.subject = "foo";
+    o.basicConstraints = 'foo';
+    o.expiryDate = 'foo';
+    o.isValid = 'foo';
+    o.issuer = 'foo';
+    o.publicKey = 'foo';
+    o.serialNumber = 'foo';
+    o.sigAlgName = 'foo';
+    o.subject = 'foo';
     o.subjectAlternativeNames = buildUnnamed4970();
-    o.validFrom = "foo";
+    o.validFrom = 'foo';
     o.version = 42;
   }
   buildCounterGoogleCloudApigeeV1CertInfo--;
@@ -1034,7 +1034,7 @@ api.GoogleCloudApigeeV1CommonNameConfig
   buildCounterGoogleCloudApigeeV1CommonNameConfig++;
   if (buildCounterGoogleCloudApigeeV1CommonNameConfig < 3) {
     o.matchWildCards = true;
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1CommonNameConfig--;
   return o;
@@ -1100,8 +1100,8 @@ void checkUnnamed4973(core.List<api.GoogleCloudApigeeV1Attribute> o) {
 
 core.List<core.String> buildUnnamed4974() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1118,12 +1118,12 @@ api.GoogleCloudApigeeV1Credential buildGoogleCloudApigeeV1Credential() {
   if (buildCounterGoogleCloudApigeeV1Credential < 3) {
     o.apiProducts = buildUnnamed4972();
     o.attributes = buildUnnamed4973();
-    o.consumerKey = "foo";
-    o.consumerSecret = "foo";
-    o.expiresAt = "foo";
-    o.issuedAt = "foo";
+    o.consumerKey = 'foo';
+    o.consumerSecret = 'foo';
+    o.expiresAt = 'foo';
+    o.issuedAt = 'foo';
     o.scopes = buildUnnamed4974();
-    o.status = "foo";
+    o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Credential--;
   return o;
@@ -1146,8 +1146,8 @@ void checkGoogleCloudApigeeV1Credential(api.GoogleCloudApigeeV1Credential o) {
 
 core.List<core.String> buildUnnamed4975() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1159,8 +1159,8 @@ void checkUnnamed4975(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4976() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1198,8 +1198,8 @@ void checkUnnamed4978(core.List<api.GoogleCloudApigeeV1ReportProperty> o) {
 
 core.List<core.String> buildUnnamed4979() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1211,8 +1211,8 @@ void checkUnnamed4979(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4980() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1227,28 +1227,28 @@ api.GoogleCloudApigeeV1CustomReport buildGoogleCloudApigeeV1CustomReport() {
   var o = api.GoogleCloudApigeeV1CustomReport();
   buildCounterGoogleCloudApigeeV1CustomReport++;
   if (buildCounterGoogleCloudApigeeV1CustomReport < 3) {
-    o.chartType = "foo";
+    o.chartType = 'foo';
     o.comments = buildUnnamed4975();
-    o.createdAt = "foo";
+    o.createdAt = 'foo';
     o.dimensions = buildUnnamed4976();
-    o.displayName = "foo";
-    o.environment = "foo";
-    o.filter = "foo";
-    o.fromTime = "foo";
-    o.lastModifiedAt = "foo";
-    o.lastViewedAt = "foo";
-    o.limit = "foo";
+    o.displayName = 'foo';
+    o.environment = 'foo';
+    o.filter = 'foo';
+    o.fromTime = 'foo';
+    o.lastModifiedAt = 'foo';
+    o.lastViewedAt = 'foo';
+    o.limit = 'foo';
     o.metrics = buildUnnamed4977();
-    o.name = "foo";
-    o.offset = "foo";
-    o.organization = "foo";
+    o.name = 'foo';
+    o.offset = 'foo';
+    o.organization = 'foo';
     o.properties = buildUnnamed4978();
     o.sortByCols = buildUnnamed4979();
-    o.sortOrder = "foo";
+    o.sortOrder = 'foo';
     o.tags = buildUnnamed4980();
-    o.timeUnit = "foo";
-    o.toTime = "foo";
-    o.topk = "foo";
+    o.timeUnit = 'foo';
+    o.toTime = 'foo';
+    o.topk = 'foo';
   }
   buildCounterGoogleCloudApigeeV1CustomReport--;
   return o;
@@ -1290,8 +1290,8 @@ api.GoogleCloudApigeeV1CustomReportMetric
   var o = api.GoogleCloudApigeeV1CustomReportMetric();
   buildCounterGoogleCloudApigeeV1CustomReportMetric++;
   if (buildCounterGoogleCloudApigeeV1CustomReportMetric < 3) {
-    o.function = "foo";
-    o.name = "foo";
+    o.function = 'foo';
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1CustomReportMetric--;
   return o;
@@ -1313,8 +1313,8 @@ api.GoogleCloudApigeeV1DataCollectorConfig
   var o = api.GoogleCloudApigeeV1DataCollectorConfig();
   buildCounterGoogleCloudApigeeV1DataCollectorConfig++;
   if (buildCounterGoogleCloudApigeeV1DataCollectorConfig < 3) {
-    o.name = "foo";
-    o.type = "foo";
+    o.name = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DataCollectorConfig--;
   return o;
@@ -1335,13 +1335,13 @@ api.GoogleCloudApigeeV1Datastore buildGoogleCloudApigeeV1Datastore() {
   var o = api.GoogleCloudApigeeV1Datastore();
   buildCounterGoogleCloudApigeeV1Datastore++;
   if (buildCounterGoogleCloudApigeeV1Datastore < 3) {
-    o.createTime = "foo";
+    o.createTime = 'foo';
     o.datastoreConfig = buildGoogleCloudApigeeV1DatastoreConfig();
-    o.displayName = "foo";
-    o.lastUpdateTime = "foo";
-    o.org = "foo";
-    o.self = "foo";
-    o.targetType = "foo";
+    o.displayName = 'foo';
+    o.lastUpdateTime = 'foo';
+    o.org = 'foo';
+    o.self = 'foo';
+    o.targetType = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Datastore--;
   return o;
@@ -1367,11 +1367,11 @@ api.GoogleCloudApigeeV1DatastoreConfig
   var o = api.GoogleCloudApigeeV1DatastoreConfig();
   buildCounterGoogleCloudApigeeV1DatastoreConfig++;
   if (buildCounterGoogleCloudApigeeV1DatastoreConfig < 3) {
-    o.bucketName = "foo";
-    o.datasetName = "foo";
-    o.path = "foo";
-    o.projectId = "foo";
-    o.tablePrefix = "foo";
+    o.bucketName = 'foo';
+    o.datasetName = 'foo';
+    o.path = 'foo';
+    o.projectId = 'foo';
+    o.tablePrefix = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DatastoreConfig--;
   return o;
@@ -1395,8 +1395,8 @@ api.GoogleCloudApigeeV1DateRange buildGoogleCloudApigeeV1DateRange() {
   var o = api.GoogleCloudApigeeV1DateRange();
   buildCounterGoogleCloudApigeeV1DateRange++;
   if (buildCounterGoogleCloudApigeeV1DateRange < 3) {
-    o.end = "foo";
-    o.start = "foo";
+    o.end = 'foo';
+    o.start = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DateRange--;
   return o;
@@ -1413,8 +1413,8 @@ void checkGoogleCloudApigeeV1DateRange(api.GoogleCloudApigeeV1DateRange o) {
 
 core.List<core.String> buildUnnamed4981() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1426,8 +1426,8 @@ void checkUnnamed4981(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4982() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1439,21 +1439,21 @@ void checkUnnamed4982(core.List<core.String> o) {
 
 core.Map<core.String, core.String> buildUnnamed4983() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed4983(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed4984() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1465,8 +1465,8 @@ void checkUnnamed4984(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4985() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1478,8 +1478,8 @@ void checkUnnamed4985(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4986() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1491,8 +1491,8 @@ void checkUnnamed4986(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4987() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1504,8 +1504,8 @@ void checkUnnamed4987(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4988() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1522,7 +1522,7 @@ api.GoogleCloudApigeeV1DebugMask buildGoogleCloudApigeeV1DebugMask() {
   if (buildCounterGoogleCloudApigeeV1DebugMask < 3) {
     o.faultJSONPaths = buildUnnamed4981();
     o.faultXPaths = buildUnnamed4982();
-    o.name = "foo";
+    o.name = 'foo';
     o.namespaces = buildUnnamed4983();
     o.requestJSONPaths = buildUnnamed4984();
     o.requestXPaths = buildUnnamed4985();
@@ -1556,9 +1556,9 @@ api.GoogleCloudApigeeV1DebugSession buildGoogleCloudApigeeV1DebugSession() {
   buildCounterGoogleCloudApigeeV1DebugSession++;
   if (buildCounterGoogleCloudApigeeV1DebugSession < 3) {
     o.count = 42;
-    o.filter = "foo";
-    o.name = "foo";
-    o.timeout = "foo";
+    o.filter = 'foo';
+    o.name = 'foo';
+    o.timeout = 'foo';
     o.tracesize = 42;
     o.validity = 42;
   }
@@ -1622,7 +1622,7 @@ api.GoogleCloudApigeeV1DeleteCustomReportResponse
   var o = api.GoogleCloudApigeeV1DeleteCustomReportResponse();
   buildCounterGoogleCloudApigeeV1DeleteCustomReportResponse++;
   if (buildCounterGoogleCloudApigeeV1DeleteCustomReportResponse < 3) {
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DeleteCustomReportResponse--;
   return o;
@@ -1697,15 +1697,15 @@ api.GoogleCloudApigeeV1Deployment buildGoogleCloudApigeeV1Deployment() {
   var o = api.GoogleCloudApigeeV1Deployment();
   buildCounterGoogleCloudApigeeV1Deployment++;
   if (buildCounterGoogleCloudApigeeV1Deployment < 3) {
-    o.apiProxy = "foo";
-    o.deployStartTime = "foo";
-    o.environment = "foo";
+    o.apiProxy = 'foo';
+    o.deployStartTime = 'foo';
+    o.environment = 'foo';
     o.errors = buildUnnamed4990();
     o.instances = buildUnnamed4991();
     o.pods = buildUnnamed4992();
-    o.revision = "foo";
+    o.revision = 'foo';
     o.routeConflicts = buildUnnamed4993();
-    o.state = "foo";
+    o.state = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Deployment--;
   return o;
@@ -1788,8 +1788,8 @@ api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
   var o = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
   buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingChange++;
   if (buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingChange < 3) {
-    o.description = "foo";
-    o.environmentGroup = "foo";
+    o.description = 'foo';
+    o.environmentGroup = 'foo';
     o.fromDeployment =
         buildGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
     o.shouldSequenceRollout = true;
@@ -1825,8 +1825,8 @@ api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
       3) {
     o.conflictingDeployment =
         buildGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
-    o.description = "foo";
-    o.environmentGroup = "foo";
+    o.description = 'foo';
+    o.environmentGroup = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict--;
   return o;
@@ -1853,10 +1853,10 @@ api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
   buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment++;
   if (buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment <
       3) {
-    o.apiProxy = "foo";
-    o.basepath = "foo";
-    o.environment = "foo";
-    o.revision = "foo";
+    o.apiProxy = 'foo';
+    o.basepath = 'foo';
+    o.environment = 'foo';
+    o.revision = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment--;
   return o;
@@ -1877,15 +1877,15 @@ void checkGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment(
 
 core.Map<core.String, core.String> buildUnnamed4996() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed4996(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudApigeeV1DeploymentConfig = 0;
@@ -1895,11 +1895,11 @@ api.GoogleCloudApigeeV1DeploymentConfig
   buildCounterGoogleCloudApigeeV1DeploymentConfig++;
   if (buildCounterGoogleCloudApigeeV1DeploymentConfig < 3) {
     o.attributes = buildUnnamed4996();
-    o.basePath = "foo";
-    o.location = "foo";
-    o.name = "foo";
-    o.proxyUid = "foo";
-    o.uid = "foo";
+    o.basePath = 'foo';
+    o.location = 'foo';
+    o.name = 'foo';
+    o.proxyUid = 'foo';
+    o.uid = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DeploymentConfig--;
   return o;
@@ -1921,8 +1921,8 @@ void checkGoogleCloudApigeeV1DeploymentConfig(
 
 core.List<core.String> buildUnnamed4997() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1947,8 +1947,8 @@ void checkUnnamed4998(core.List<api.GoogleCloudApigeeV1Attribute> o) {
 
 core.List<core.String> buildUnnamed4999() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1963,20 +1963,20 @@ api.GoogleCloudApigeeV1Developer buildGoogleCloudApigeeV1Developer() {
   var o = api.GoogleCloudApigeeV1Developer();
   buildCounterGoogleCloudApigeeV1Developer++;
   if (buildCounterGoogleCloudApigeeV1Developer < 3) {
-    o.accessType = "foo";
-    o.appFamily = "foo";
+    o.accessType = 'foo';
+    o.appFamily = 'foo';
     o.apps = buildUnnamed4997();
     o.attributes = buildUnnamed4998();
     o.companies = buildUnnamed4999();
-    o.createdAt = "foo";
-    o.developerId = "foo";
-    o.email = "foo";
-    o.firstName = "foo";
-    o.lastModifiedAt = "foo";
-    o.lastName = "foo";
-    o.organizationName = "foo";
-    o.status = "foo";
-    o.userName = "foo";
+    o.createdAt = 'foo';
+    o.developerId = 'foo';
+    o.email = 'foo';
+    o.firstName = 'foo';
+    o.lastModifiedAt = 'foo';
+    o.lastName = 'foo';
+    o.organizationName = 'foo';
+    o.status = 'foo';
+    o.userName = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Developer--;
   return o;
@@ -2005,8 +2005,8 @@ void checkGoogleCloudApigeeV1Developer(api.GoogleCloudApigeeV1Developer o) {
 
 core.List<core.String> buildUnnamed5000() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2044,8 +2044,8 @@ void checkUnnamed5002(core.List<api.GoogleCloudApigeeV1Credential> o) {
 
 core.List<core.String> buildUnnamed5003() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2061,18 +2061,18 @@ api.GoogleCloudApigeeV1DeveloperApp buildGoogleCloudApigeeV1DeveloperApp() {
   buildCounterGoogleCloudApigeeV1DeveloperApp++;
   if (buildCounterGoogleCloudApigeeV1DeveloperApp < 3) {
     o.apiProducts = buildUnnamed5000();
-    o.appFamily = "foo";
-    o.appId = "foo";
+    o.appFamily = 'foo';
+    o.appId = 'foo';
     o.attributes = buildUnnamed5001();
-    o.callbackUrl = "foo";
-    o.createdAt = "foo";
+    o.callbackUrl = 'foo';
+    o.createdAt = 'foo';
     o.credentials = buildUnnamed5002();
-    o.developerId = "foo";
-    o.keyExpiresIn = "foo";
-    o.lastModifiedAt = "foo";
-    o.name = "foo";
+    o.developerId = 'foo';
+    o.keyExpiresIn = 'foo';
+    o.lastModifiedAt = 'foo';
+    o.name = 'foo';
     o.scopes = buildUnnamed5003();
-    o.status = "foo";
+    o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DeveloperApp--;
   return o;
@@ -2118,14 +2118,14 @@ void checkUnnamed5004(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o[0]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
   var casted4 = (o[1]) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed5005() {
@@ -2143,8 +2143,8 @@ void checkUnnamed5005(core.List<api.GoogleCloudApigeeV1Attribute> o) {
 
 core.List<core.String> buildUnnamed5006() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2162,12 +2162,12 @@ api.GoogleCloudApigeeV1DeveloperAppKey
   if (buildCounterGoogleCloudApigeeV1DeveloperAppKey < 3) {
     o.apiProducts = buildUnnamed5004();
     o.attributes = buildUnnamed5005();
-    o.consumerKey = "foo";
-    o.consumerSecret = "foo";
-    o.expiresAt = "foo";
-    o.issuedAt = "foo";
+    o.consumerKey = 'foo';
+    o.consumerSecret = 'foo';
+    o.expiresAt = 'foo';
+    o.issuedAt = 'foo';
     o.scopes = buildUnnamed5006();
-    o.status = "foo";
+    o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DeveloperAppKey--;
   return o;
@@ -2209,7 +2209,7 @@ api.GoogleCloudApigeeV1DimensionMetric
   buildCounterGoogleCloudApigeeV1DimensionMetric++;
   if (buildCounterGoogleCloudApigeeV1DimensionMetric < 3) {
     o.metrics = buildUnnamed5007();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1DimensionMetric--;
   return o;
@@ -2230,9 +2230,9 @@ api.GoogleCloudApigeeV1EntityMetadata buildGoogleCloudApigeeV1EntityMetadata() {
   var o = api.GoogleCloudApigeeV1EntityMetadata();
   buildCounterGoogleCloudApigeeV1EntityMetadata++;
   if (buildCounterGoogleCloudApigeeV1EntityMetadata < 3) {
-    o.createdAt = "foo";
-    o.lastModifiedAt = "foo";
-    o.subType = "foo";
+    o.createdAt = 'foo';
+    o.lastModifiedAt = 'foo';
+    o.subType = 'foo';
   }
   buildCounterGoogleCloudApigeeV1EntityMetadata--;
   return o;
@@ -2254,11 +2254,11 @@ api.GoogleCloudApigeeV1Environment buildGoogleCloudApigeeV1Environment() {
   var o = api.GoogleCloudApigeeV1Environment();
   buildCounterGoogleCloudApigeeV1Environment++;
   if (buildCounterGoogleCloudApigeeV1Environment < 3) {
-    o.createdAt = "foo";
-    o.description = "foo";
-    o.displayName = "foo";
-    o.lastModifiedAt = "foo";
-    o.name = "foo";
+    o.createdAt = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.lastModifiedAt = 'foo';
+    o.name = 'foo';
     o.properties = buildGoogleCloudApigeeV1Properties();
   }
   buildCounterGoogleCloudApigeeV1Environment--;
@@ -2306,15 +2306,15 @@ void checkUnnamed5009(core.List<api.GoogleCloudApigeeV1DeploymentConfig> o) {
 
 core.Map<core.String, core.String> buildUnnamed5010() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5010(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<api.GoogleCloudApigeeV1FlowHookConfig> buildUnnamed5011() {
@@ -2388,23 +2388,23 @@ api.GoogleCloudApigeeV1EnvironmentConfig
   var o = api.GoogleCloudApigeeV1EnvironmentConfig();
   buildCounterGoogleCloudApigeeV1EnvironmentConfig++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentConfig < 3) {
-    o.createTime = "foo";
+    o.createTime = 'foo';
     o.dataCollectors = buildUnnamed5008();
     o.debugMask = buildGoogleCloudApigeeV1DebugMask();
     o.deployments = buildUnnamed5009();
     o.featureFlags = buildUnnamed5010();
     o.flowhooks = buildUnnamed5011();
     o.keystores = buildUnnamed5012();
-    o.name = "foo";
-    o.provider = "foo";
-    o.pubsubTopic = "foo";
+    o.name = 'foo';
+    o.provider = 'foo';
+    o.pubsubTopic = 'foo';
     o.resourceReferences = buildUnnamed5013();
     o.resources = buildUnnamed5014();
-    o.revisionId = "foo";
-    o.sequenceNumber = "foo";
+    o.revisionId = 'foo';
+    o.sequenceNumber = 'foo';
     o.targets = buildUnnamed5015();
     o.traceConfig = buildGoogleCloudApigeeV1RuntimeTraceConfig();
-    o.uid = "foo";
+    o.uid = 'foo';
   }
   buildCounterGoogleCloudApigeeV1EnvironmentConfig--;
   return o;
@@ -2437,8 +2437,8 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
 
 core.List<core.String> buildUnnamed5016() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2454,10 +2454,10 @@ api.GoogleCloudApigeeV1EnvironmentGroup
   var o = api.GoogleCloudApigeeV1EnvironmentGroup();
   buildCounterGoogleCloudApigeeV1EnvironmentGroup++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentGroup < 3) {
-    o.createdAt = "foo";
+    o.createdAt = 'foo';
     o.hostnames = buildUnnamed5016();
-    o.lastModifiedAt = "foo";
-    o.name = "foo";
+    o.lastModifiedAt = 'foo';
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1EnvironmentGroup--;
   return o;
@@ -2481,9 +2481,9 @@ api.GoogleCloudApigeeV1EnvironmentGroupAttachment
   var o = api.GoogleCloudApigeeV1EnvironmentGroupAttachment();
   buildCounterGoogleCloudApigeeV1EnvironmentGroupAttachment++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentGroupAttachment < 3) {
-    o.createdAt = "foo";
-    o.environment = "foo";
-    o.name = "foo";
+    o.createdAt = 'foo';
+    o.environment = 'foo';
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1EnvironmentGroupAttachment--;
   return o;
@@ -2502,8 +2502,8 @@ void checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
 
 core.List<core.String> buildUnnamed5017() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2533,10 +2533,10 @@ api.GoogleCloudApigeeV1EnvironmentGroupConfig
   buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig < 3) {
     o.hostnames = buildUnnamed5017();
-    o.name = "foo";
-    o.revisionId = "foo";
+    o.name = 'foo';
+    o.revisionId = 'foo';
     o.routingRules = buildUnnamed5018();
-    o.uid = "foo";
+    o.uid = 'foo';
   }
   buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig--;
   return o;
@@ -2560,15 +2560,15 @@ api.GoogleCloudApigeeV1Export buildGoogleCloudApigeeV1Export() {
   var o = api.GoogleCloudApigeeV1Export();
   buildCounterGoogleCloudApigeeV1Export++;
   if (buildCounterGoogleCloudApigeeV1Export < 3) {
-    o.created = "foo";
-    o.datastoreName = "foo";
-    o.description = "foo";
-    o.error = "foo";
-    o.executionTime = "foo";
-    o.name = "foo";
-    o.self = "foo";
-    o.state = "foo";
-    o.updated = "foo";
+    o.created = 'foo';
+    o.datastoreName = 'foo';
+    o.description = 'foo';
+    o.error = 'foo';
+    o.executionTime = 'foo';
+    o.name = 'foo';
+    o.self = 'foo';
+    o.state = 'foo';
+    o.updated = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Export--;
   return o;
@@ -2595,12 +2595,12 @@ api.GoogleCloudApigeeV1ExportRequest buildGoogleCloudApigeeV1ExportRequest() {
   var o = api.GoogleCloudApigeeV1ExportRequest();
   buildCounterGoogleCloudApigeeV1ExportRequest++;
   if (buildCounterGoogleCloudApigeeV1ExportRequest < 3) {
-    o.csvDelimiter = "foo";
-    o.datastoreName = "foo";
+    o.csvDelimiter = 'foo';
+    o.datastoreName = 'foo';
     o.dateRange = buildGoogleCloudApigeeV1DateRange();
-    o.description = "foo";
-    o.name = "foo";
-    o.outputFormat = "foo";
+    o.description = 'foo';
+    o.name = 'foo';
+    o.outputFormat = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ExportRequest--;
   return o;
@@ -2626,9 +2626,9 @@ api.GoogleCloudApigeeV1FlowHook buildGoogleCloudApigeeV1FlowHook() {
   buildCounterGoogleCloudApigeeV1FlowHook++;
   if (buildCounterGoogleCloudApigeeV1FlowHook < 3) {
     o.continueOnError = true;
-    o.description = "foo";
-    o.flowHookPoint = "foo";
-    o.sharedFlow = "foo";
+    o.description = 'foo';
+    o.flowHookPoint = 'foo';
+    o.sharedFlow = 'foo';
   }
   buildCounterGoogleCloudApigeeV1FlowHook--;
   return o;
@@ -2651,8 +2651,8 @@ api.GoogleCloudApigeeV1FlowHookConfig buildGoogleCloudApigeeV1FlowHookConfig() {
   buildCounterGoogleCloudApigeeV1FlowHookConfig++;
   if (buildCounterGoogleCloudApigeeV1FlowHookConfig < 3) {
     o.continueOnError = true;
-    o.name = "foo";
-    o.sharedFlowName = "foo";
+    o.name = 'foo';
+    o.sharedFlowName = 'foo';
   }
   buildCounterGoogleCloudApigeeV1FlowHookConfig--;
   return o;
@@ -2706,10 +2706,10 @@ api.GoogleCloudApigeeV1IngressConfig buildGoogleCloudApigeeV1IngressConfig() {
   buildCounterGoogleCloudApigeeV1IngressConfig++;
   if (buildCounterGoogleCloudApigeeV1IngressConfig < 3) {
     o.environmentGroups = buildUnnamed5019();
-    o.name = "foo";
-    o.revisionCreateTime = "foo";
-    o.revisionId = "foo";
-    o.uid = "foo";
+    o.name = 'foo';
+    o.revisionCreateTime = 'foo';
+    o.revisionId = 'foo';
+    o.uid = 'foo';
   }
   buildCounterGoogleCloudApigeeV1IngressConfig--;
   return o;
@@ -2733,16 +2733,16 @@ api.GoogleCloudApigeeV1Instance buildGoogleCloudApigeeV1Instance() {
   var o = api.GoogleCloudApigeeV1Instance();
   buildCounterGoogleCloudApigeeV1Instance++;
   if (buildCounterGoogleCloudApigeeV1Instance < 3) {
-    o.createdAt = "foo";
-    o.description = "foo";
-    o.diskEncryptionKeyName = "foo";
-    o.displayName = "foo";
-    o.host = "foo";
-    o.lastModifiedAt = "foo";
-    o.location = "foo";
-    o.name = "foo";
-    o.port = "foo";
-    o.state = "foo";
+    o.createdAt = 'foo';
+    o.description = 'foo';
+    o.diskEncryptionKeyName = 'foo';
+    o.displayName = 'foo';
+    o.host = 'foo';
+    o.lastModifiedAt = 'foo';
+    o.location = 'foo';
+    o.name = 'foo';
+    o.port = 'foo';
+    o.state = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Instance--;
   return o;
@@ -2771,9 +2771,9 @@ api.GoogleCloudApigeeV1InstanceAttachment
   var o = api.GoogleCloudApigeeV1InstanceAttachment();
   buildCounterGoogleCloudApigeeV1InstanceAttachment++;
   if (buildCounterGoogleCloudApigeeV1InstanceAttachment < 3) {
-    o.createdAt = "foo";
-    o.environment = "foo";
-    o.name = "foo";
+    o.createdAt = 'foo';
+    o.environment = 'foo';
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1InstanceAttachment--;
   return o;
@@ -2829,7 +2829,7 @@ api.GoogleCloudApigeeV1InstanceDeploymentStatus
   if (buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus < 3) {
     o.deployedRevisions = buildUnnamed5020();
     o.deployedRoutes = buildUnnamed5021();
-    o.instance = "foo";
+    o.instance = 'foo';
   }
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus--;
   return o;
@@ -2855,7 +2855,7 @@ api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
   if (buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision <
       3) {
     o.percentage = 42;
-    o.revision = "foo";
+    o.revision = 'foo';
   }
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision--;
   return o;
@@ -2880,9 +2880,9 @@ api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute++;
   if (buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute <
       3) {
-    o.basepath = "foo";
-    o.envgroup = "foo";
-    o.environment = "foo";
+    o.basepath = 'foo';
+    o.envgroup = 'foo';
+    o.environment = 'foo';
     o.percentage = 42;
   }
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute--;
@@ -2908,8 +2908,8 @@ api.GoogleCloudApigeeV1KeyAliasReference
   var o = api.GoogleCloudApigeeV1KeyAliasReference();
   buildCounterGoogleCloudApigeeV1KeyAliasReference++;
   if (buildCounterGoogleCloudApigeeV1KeyAliasReference < 3) {
-    o.aliasId = "foo";
-    o.reference = "foo";
+    o.aliasId = 'foo';
+    o.reference = 'foo';
   }
   buildCounterGoogleCloudApigeeV1KeyAliasReference--;
   return o;
@@ -2931,7 +2931,7 @@ api.GoogleCloudApigeeV1KeyValueMap buildGoogleCloudApigeeV1KeyValueMap() {
   buildCounterGoogleCloudApigeeV1KeyValueMap++;
   if (buildCounterGoogleCloudApigeeV1KeyValueMap < 3) {
     o.encrypted = true;
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1KeyValueMap--;
   return o;
@@ -2948,8 +2948,8 @@ void checkGoogleCloudApigeeV1KeyValueMap(api.GoogleCloudApigeeV1KeyValueMap o) {
 
 core.List<core.String> buildUnnamed5022() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2965,7 +2965,7 @@ api.GoogleCloudApigeeV1Keystore buildGoogleCloudApigeeV1Keystore() {
   buildCounterGoogleCloudApigeeV1Keystore++;
   if (buildCounterGoogleCloudApigeeV1Keystore < 3) {
     o.aliases = buildUnnamed5022();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Keystore--;
   return o;
@@ -2999,7 +2999,7 @@ api.GoogleCloudApigeeV1KeystoreConfig buildGoogleCloudApigeeV1KeystoreConfig() {
   buildCounterGoogleCloudApigeeV1KeystoreConfig++;
   if (buildCounterGoogleCloudApigeeV1KeystoreConfig < 3) {
     o.aliases = buildUnnamed5023();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1KeystoreConfig--;
   return o;
@@ -3035,10 +3035,10 @@ api.GoogleCloudApigeeV1ListApiCategoriesResponse
   buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse < 3) {
     o.data = buildUnnamed5024();
-    o.errorCode = "foo";
-    o.message = "foo";
-    o.requestId = "foo";
-    o.status = "foo";
+    o.errorCode = 'foo';
+    o.message = 'foo';
+    o.requestId = 'foo';
+    o.status = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse--;
   return o;
@@ -3280,7 +3280,7 @@ api.GoogleCloudApigeeV1ListDebugSessionsResponse
   var o = api.GoogleCloudApigeeV1ListDebugSessionsResponse();
   buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.sessions = buildUnnamed5031();
   }
   buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse--;
@@ -3389,7 +3389,7 @@ api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse <
       3) {
     o.environmentGroupAttachments = buildUnnamed5034();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse--;
   return o;
@@ -3426,7 +3426,7 @@ api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse < 3) {
     o.environmentGroups = buildUnnamed5035();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse--;
   return o;
@@ -3565,7 +3565,7 @@ api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse
   buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse < 3) {
     o.attachments = buildUnnamed5039();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse--;
   return o;
@@ -3601,7 +3601,7 @@ api.GoogleCloudApigeeV1ListInstancesResponse
   buildCounterGoogleCloudApigeeV1ListInstancesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListInstancesResponse < 3) {
     o.instances = buildUnnamed5040();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ListInstancesResponse--;
   return o;
@@ -3723,8 +3723,8 @@ void checkGoogleCloudApigeeV1ListSharedFlowsResponse(
 
 core.List<core.String> buildUnnamed5044() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3736,8 +3736,8 @@ void checkUnnamed5044(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5045() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3787,14 +3787,14 @@ void checkUnnamed5046(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o[0]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
   var casted6 = (o[1]) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudApigeeV1Metric = 0;
@@ -3802,7 +3802,7 @@ api.GoogleCloudApigeeV1Metric buildGoogleCloudApigeeV1Metric() {
   var o = api.GoogleCloudApigeeV1Metric();
   buildCounterGoogleCloudApigeeV1Metric++;
   if (buildCounterGoogleCloudApigeeV1Metric < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.values = buildUnnamed5046();
   }
   buildCounterGoogleCloudApigeeV1Metric--;
@@ -3820,8 +3820,8 @@ void checkGoogleCloudApigeeV1Metric(api.GoogleCloudApigeeV1Metric o) {
 
 core.List<core.String> buildUnnamed5047() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3837,7 +3837,7 @@ api.GoogleCloudApigeeV1Operation buildGoogleCloudApigeeV1Operation() {
   buildCounterGoogleCloudApigeeV1Operation++;
   if (buildCounterGoogleCloudApigeeV1Operation < 3) {
     o.methods = buildUnnamed5047();
-    o.resource = "foo";
+    o.resource = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Operation--;
   return o;
@@ -3884,7 +3884,7 @@ api.GoogleCloudApigeeV1OperationConfig
   var o = api.GoogleCloudApigeeV1OperationConfig();
   buildCounterGoogleCloudApigeeV1OperationConfig++;
   if (buildCounterGoogleCloudApigeeV1OperationConfig < 3) {
-    o.apiSource = "foo";
+    o.apiSource = 'foo';
     o.attributes = buildUnnamed5048();
     o.operations = buildUnnamed5049();
     o.quota = buildGoogleCloudApigeeV1Quota();
@@ -3923,7 +3923,7 @@ api.GoogleCloudApigeeV1OperationGroup buildGoogleCloudApigeeV1OperationGroup() {
   var o = api.GoogleCloudApigeeV1OperationGroup();
   buildCounterGoogleCloudApigeeV1OperationGroup++;
   if (buildCounterGoogleCloudApigeeV1OperationGroup < 3) {
-    o.operationConfigType = "foo";
+    o.operationConfigType = 'foo';
     o.operationConfigs = buildUnnamed5050();
   }
   buildCounterGoogleCloudApigeeV1OperationGroup--;
@@ -3946,9 +3946,9 @@ api.GoogleCloudApigeeV1OperationMetadata
   var o = api.GoogleCloudApigeeV1OperationMetadata();
   buildCounterGoogleCloudApigeeV1OperationMetadata++;
   if (buildCounterGoogleCloudApigeeV1OperationMetadata < 3) {
-    o.operationType = "foo";
-    o.state = "foo";
-    o.targetResourceName = "foo";
+    o.operationType = 'foo';
+    o.state = 'foo';
+    o.targetResourceName = 'foo';
   }
   buildCounterGoogleCloudApigeeV1OperationMetadata--;
   return o;
@@ -4004,14 +4004,14 @@ void checkUnnamed5051(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o[0]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
   var casted8 = (o[1]) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8["bool"], unittest.equals(true));
-  unittest.expect(casted8["string"], unittest.equals('foo'));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudApigeeV1OptimizedStatsNode = 0;
@@ -4037,8 +4037,8 @@ void checkGoogleCloudApigeeV1OptimizedStatsNode(
 
 core.List<core.String> buildUnnamed5052() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4077,8 +4077,8 @@ void checkGoogleCloudApigeeV1OptimizedStatsResponse(
 
 core.List<core.String> buildUnnamed5053() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4090,8 +4090,8 @@ void checkUnnamed5053(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5054() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4106,22 +4106,22 @@ api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
   var o = api.GoogleCloudApigeeV1Organization();
   buildCounterGoogleCloudApigeeV1Organization++;
   if (buildCounterGoogleCloudApigeeV1Organization < 3) {
-    o.analyticsRegion = "foo";
+    o.analyticsRegion = 'foo';
     o.attributes = buildUnnamed5053();
-    o.authorizedNetwork = "foo";
-    o.caCertificate = "foo";
-    o.createdAt = "foo";
-    o.customerName = "foo";
-    o.description = "foo";
-    o.displayName = "foo";
+    o.authorizedNetwork = 'foo';
+    o.caCertificate = 'foo';
+    o.createdAt = 'foo';
+    o.customerName = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
     o.environments = buildUnnamed5054();
-    o.lastModifiedAt = "foo";
-    o.name = "foo";
-    o.projectId = "foo";
+    o.lastModifiedAt = 'foo';
+    o.name = 'foo';
+    o.projectId = 'foo';
     o.properties = buildGoogleCloudApigeeV1Properties();
-    o.runtimeType_ = "foo";
-    o.subscriptionType = "foo";
-    o.type = "foo";
+    o.runtimeType_ = 'foo';
+    o.subscriptionType = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Organization--;
   return o;
@@ -4153,8 +4153,8 @@ void checkGoogleCloudApigeeV1Organization(
 
 core.List<core.String> buildUnnamed5055() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4170,7 +4170,7 @@ api.GoogleCloudApigeeV1OrganizationProjectMapping
   var o = api.GoogleCloudApigeeV1OrganizationProjectMapping();
   buildCounterGoogleCloudApigeeV1OrganizationProjectMapping++;
   if (buildCounterGoogleCloudApigeeV1OrganizationProjectMapping < 3) {
-    o.organization = "foo";
+    o.organization = 'foo';
     o.projectIds = buildUnnamed5055();
   }
   buildCounterGoogleCloudApigeeV1OrganizationProjectMapping--;
@@ -4192,15 +4192,15 @@ api.GoogleCloudApigeeV1PodStatus buildGoogleCloudApigeeV1PodStatus() {
   var o = api.GoogleCloudApigeeV1PodStatus();
   buildCounterGoogleCloudApigeeV1PodStatus++;
   if (buildCounterGoogleCloudApigeeV1PodStatus < 3) {
-    o.appVersion = "foo";
-    o.deploymentStatus = "foo";
-    o.deploymentStatusTime = "foo";
-    o.deploymentTime = "foo";
-    o.podName = "foo";
-    o.podStatus = "foo";
-    o.podStatusTime = "foo";
-    o.statusCode = "foo";
-    o.statusCodeDetails = "foo";
+    o.appVersion = 'foo';
+    o.deploymentStatus = 'foo';
+    o.deploymentStatusTime = 'foo';
+    o.deploymentTime = 'foo';
+    o.podName = 'foo';
+    o.podStatus = 'foo';
+    o.podStatusTime = 'foo';
+    o.statusCode = 'foo';
+    o.statusCodeDetails = 'foo';
   }
   buildCounterGoogleCloudApigeeV1PodStatus--;
   return o;
@@ -4240,7 +4240,7 @@ api.GoogleCloudApigeeV1Point buildGoogleCloudApigeeV1Point() {
   var o = api.GoogleCloudApigeeV1Point();
   buildCounterGoogleCloudApigeeV1Point++;
   if (buildCounterGoogleCloudApigeeV1Point < 3) {
-    o.id = "foo";
+    o.id = 'foo';
     o.results = buildUnnamed5056();
   }
   buildCounterGoogleCloudApigeeV1Point--;
@@ -4293,8 +4293,8 @@ api.GoogleCloudApigeeV1Property buildGoogleCloudApigeeV1Property() {
   var o = api.GoogleCloudApigeeV1Property();
   buildCounterGoogleCloudApigeeV1Property++;
   if (buildCounterGoogleCloudApigeeV1Property < 3) {
-    o.name = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Property--;
   return o;
@@ -4315,9 +4315,9 @@ api.GoogleCloudApigeeV1ProvisionOrganizationRequest
   var o = api.GoogleCloudApigeeV1ProvisionOrganizationRequest();
   buildCounterGoogleCloudApigeeV1ProvisionOrganizationRequest++;
   if (buildCounterGoogleCloudApigeeV1ProvisionOrganizationRequest < 3) {
-    o.analyticsRegion = "foo";
-    o.authorizedNetwork = "foo";
-    o.runtimeLocation = "foo";
+    o.analyticsRegion = 'foo';
+    o.authorizedNetwork = 'foo';
+    o.runtimeLocation = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ProvisionOrganizationRequest--;
   return o;
@@ -4336,8 +4336,8 @@ void checkGoogleCloudApigeeV1ProvisionOrganizationRequest(
 
 core.List<core.String> buildUnnamed5058() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4365,15 +4365,15 @@ api.GoogleCloudApigeeV1Query buildGoogleCloudApigeeV1Query() {
   var o = api.GoogleCloudApigeeV1Query();
   buildCounterGoogleCloudApigeeV1Query++;
   if (buildCounterGoogleCloudApigeeV1Query < 3) {
-    o.csvDelimiter = "foo";
+    o.csvDelimiter = 'foo';
     o.dimensions = buildUnnamed5058();
-    o.filter = "foo";
-    o.groupByTimeUnit = "foo";
+    o.filter = 'foo';
+    o.groupByTimeUnit = 'foo';
     o.limit = 42;
     o.metrics = buildUnnamed5059();
-    o.name = "foo";
-    o.outputFormat = "foo";
-    o.reportDefinitionId = "foo";
+    o.name = 'foo';
+    o.outputFormat = 'foo';
+    o.reportDefinitionId = 'foo';
     o.timeRange = {
       'list': [1, 2, 3],
       'bool': true,
@@ -4398,17 +4398,17 @@ void checkGoogleCloudApigeeV1Query(api.GoogleCloudApigeeV1Query o) {
     unittest.expect(o.reportDefinitionId, unittest.equals('foo'));
     var casted9 = (o.timeRange) as core.Map;
     unittest.expect(casted9, unittest.hasLength(3));
-    unittest.expect(casted9["list"], unittest.equals([1, 2, 3]));
-    unittest.expect(casted9["bool"], unittest.equals(true));
-    unittest.expect(casted9["string"], unittest.equals('foo'));
+    unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted9['bool'], unittest.equals(true));
+    unittest.expect(casted9['string'], unittest.equals('foo'));
   }
   buildCounterGoogleCloudApigeeV1Query--;
 }
 
 core.List<core.String> buildUnnamed5060() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4420,8 +4420,8 @@ void checkUnnamed5060(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5061() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4437,11 +4437,11 @@ api.GoogleCloudApigeeV1QueryMetadata buildGoogleCloudApigeeV1QueryMetadata() {
   buildCounterGoogleCloudApigeeV1QueryMetadata++;
   if (buildCounterGoogleCloudApigeeV1QueryMetadata < 3) {
     o.dimensions = buildUnnamed5060();
-    o.endTimestamp = "foo";
+    o.endTimestamp = 'foo';
     o.metrics = buildUnnamed5061();
-    o.outputFormat = "foo";
-    o.startTimestamp = "foo";
-    o.timeUnit = "foo";
+    o.outputFormat = 'foo';
+    o.startTimestamp = 'foo';
+    o.timeUnit = 'foo';
   }
   buildCounterGoogleCloudApigeeV1QueryMetadata--;
   return o;
@@ -4466,11 +4466,11 @@ api.GoogleCloudApigeeV1QueryMetric buildGoogleCloudApigeeV1QueryMetric() {
   var o = api.GoogleCloudApigeeV1QueryMetric();
   buildCounterGoogleCloudApigeeV1QueryMetric++;
   if (buildCounterGoogleCloudApigeeV1QueryMetric < 3) {
-    o.alias = "foo";
-    o.function = "foo";
-    o.name = "foo";
-    o.operator = "foo";
-    o.value = "foo";
+    o.alias = 'foo';
+    o.function = 'foo';
+    o.name = 'foo';
+    o.operator = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleCloudApigeeV1QueryMetric--;
   return o;
@@ -4493,9 +4493,9 @@ api.GoogleCloudApigeeV1Quota buildGoogleCloudApigeeV1Quota() {
   var o = api.GoogleCloudApigeeV1Quota();
   buildCounterGoogleCloudApigeeV1Quota++;
   if (buildCounterGoogleCloudApigeeV1Quota < 3) {
-    o.interval = "foo";
-    o.limit = "foo";
-    o.timeUnit = "foo";
+    o.interval = 'foo';
+    o.limit = 'foo';
+    o.timeUnit = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Quota--;
   return o;
@@ -4516,10 +4516,10 @@ api.GoogleCloudApigeeV1Reference buildGoogleCloudApigeeV1Reference() {
   var o = api.GoogleCloudApigeeV1Reference();
   buildCounterGoogleCloudApigeeV1Reference++;
   if (buildCounterGoogleCloudApigeeV1Reference < 3) {
-    o.description = "foo";
-    o.name = "foo";
-    o.refers = "foo";
-    o.resourceType = "foo";
+    o.description = 'foo';
+    o.name = 'foo';
+    o.refers = 'foo';
+    o.resourceType = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Reference--;
   return o;
@@ -4542,8 +4542,8 @@ api.GoogleCloudApigeeV1ReferenceConfig
   var o = api.GoogleCloudApigeeV1ReferenceConfig();
   buildCounterGoogleCloudApigeeV1ReferenceConfig++;
   if (buildCounterGoogleCloudApigeeV1ReferenceConfig < 3) {
-    o.name = "foo";
-    o.resourceName = "foo";
+    o.name = 'foo';
+    o.resourceName = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ReferenceConfig--;
   return o;
@@ -4578,8 +4578,8 @@ api.GoogleCloudApigeeV1ReportInstanceStatusRequest
   var o = api.GoogleCloudApigeeV1ReportInstanceStatusRequest();
   buildCounterGoogleCloudApigeeV1ReportInstanceStatusRequest++;
   if (buildCounterGoogleCloudApigeeV1ReportInstanceStatusRequest < 3) {
-    o.instanceUid = "foo";
-    o.reportTime = "foo";
+    o.instanceUid = 'foo';
+    o.reportTime = 'foo';
     o.resources = buildUnnamed5062();
   }
   buildCounterGoogleCloudApigeeV1ReportInstanceStatusRequest--;
@@ -4632,7 +4632,7 @@ api.GoogleCloudApigeeV1ReportProperty buildGoogleCloudApigeeV1ReportProperty() {
   var o = api.GoogleCloudApigeeV1ReportProperty();
   buildCounterGoogleCloudApigeeV1ReportProperty++;
   if (buildCounterGoogleCloudApigeeV1ReportProperty < 3) {
-    o.property = "foo";
+    o.property = 'foo';
     o.value = buildUnnamed5063();
   }
   buildCounterGoogleCloudApigeeV1ReportProperty--;
@@ -4654,8 +4654,8 @@ api.GoogleCloudApigeeV1ResourceConfig buildGoogleCloudApigeeV1ResourceConfig() {
   var o = api.GoogleCloudApigeeV1ResourceConfig();
   buildCounterGoogleCloudApigeeV1ResourceConfig++;
   if (buildCounterGoogleCloudApigeeV1ResourceConfig < 3) {
-    o.location = "foo";
-    o.name = "foo";
+    o.location = 'foo';
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ResourceConfig--;
   return o;
@@ -4676,8 +4676,8 @@ api.GoogleCloudApigeeV1ResourceFile buildGoogleCloudApigeeV1ResourceFile() {
   var o = api.GoogleCloudApigeeV1ResourceFile();
   buildCounterGoogleCloudApigeeV1ResourceFile++;
   if (buildCounterGoogleCloudApigeeV1ResourceFile < 3) {
-    o.name = "foo";
-    o.type = "foo";
+    o.name = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ResourceFile--;
   return o;
@@ -4744,10 +4744,10 @@ api.GoogleCloudApigeeV1ResourceStatus buildGoogleCloudApigeeV1ResourceStatus() {
   var o = api.GoogleCloudApigeeV1ResourceStatus();
   buildCounterGoogleCloudApigeeV1ResourceStatus++;
   if (buildCounterGoogleCloudApigeeV1ResourceStatus < 3) {
-    o.resource = "foo";
+    o.resource = 'foo';
     o.revisions = buildUnnamed5065();
     o.totalReplicas = 42;
-    o.uid = "foo";
+    o.uid = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ResourceStatus--;
   return o;
@@ -4796,16 +4796,16 @@ api.GoogleCloudApigeeV1Result buildGoogleCloudApigeeV1Result() {
   var o = api.GoogleCloudApigeeV1Result();
   buildCounterGoogleCloudApigeeV1Result++;
   if (buildCounterGoogleCloudApigeeV1Result < 3) {
-    o.ActionResult = "foo";
+    o.ActionResult = 'foo';
     o.accessList = buildUnnamed5066();
-    o.content = "foo";
+    o.content = 'foo';
     o.headers = buildUnnamed5067();
     o.properties = buildGoogleCloudApigeeV1Properties();
-    o.reasonPhrase = "foo";
-    o.statusCode = "foo";
-    o.timestamp = "foo";
-    o.uRI = "foo";
-    o.verb = "foo";
+    o.reasonPhrase = 'foo';
+    o.statusCode = 'foo';
+    o.timestamp = 'foo';
+    o.uRI = 'foo';
+    o.verb = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Result--;
   return o;
@@ -4847,9 +4847,9 @@ api.GoogleCloudApigeeV1RevisionStatus buildGoogleCloudApigeeV1RevisionStatus() {
   buildCounterGoogleCloudApigeeV1RevisionStatus++;
   if (buildCounterGoogleCloudApigeeV1RevisionStatus < 3) {
     o.errors = buildUnnamed5068();
-    o.jsonSpec = "foo";
+    o.jsonSpec = 'foo';
     o.replicas = 42;
-    o.revisionId = "foo";
+    o.revisionId = 'foo';
   }
   buildCounterGoogleCloudApigeeV1RevisionStatus--;
   return o;
@@ -4872,11 +4872,11 @@ api.GoogleCloudApigeeV1RoutingRule buildGoogleCloudApigeeV1RoutingRule() {
   var o = api.GoogleCloudApigeeV1RoutingRule();
   buildCounterGoogleCloudApigeeV1RoutingRule++;
   if (buildCounterGoogleCloudApigeeV1RoutingRule < 3) {
-    o.basepath = "foo";
-    o.envGroupRevision = "foo";
-    o.environment = "foo";
-    o.receiver = "foo";
-    o.updateTime = "foo";
+    o.basepath = 'foo';
+    o.envGroupRevision = 'foo';
+    o.environment = 'foo';
+    o.receiver = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudApigeeV1RoutingRule--;
   return o;
@@ -4915,12 +4915,12 @@ api.GoogleCloudApigeeV1RuntimeTraceConfig
   var o = api.GoogleCloudApigeeV1RuntimeTraceConfig();
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfig++;
   if (buildCounterGoogleCloudApigeeV1RuntimeTraceConfig < 3) {
-    o.endpoint = "foo";
-    o.exporter = "foo";
-    o.name = "foo";
+    o.endpoint = 'foo';
+    o.exporter = 'foo';
+    o.name = 'foo';
     o.overrides = buildUnnamed5069();
-    o.revisionCreateTime = "foo";
-    o.revisionId = "foo";
+    o.revisionCreateTime = 'foo';
+    o.revisionId = 'foo';
     o.samplingConfig = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
   }
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfig--;
@@ -4948,12 +4948,12 @@ api.GoogleCloudApigeeV1RuntimeTraceConfigOverride
   var o = api.GoogleCloudApigeeV1RuntimeTraceConfigOverride();
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride++;
   if (buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride < 3) {
-    o.apiProxy = "foo";
-    o.name = "foo";
-    o.revisionCreateTime = "foo";
-    o.revisionId = "foo";
+    o.apiProxy = 'foo';
+    o.name = 'foo';
+    o.revisionCreateTime = 'foo';
+    o.revisionId = 'foo';
     o.samplingConfig = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
-    o.uid = "foo";
+    o.uid = 'foo';
   }
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride--;
   return o;
@@ -4975,8 +4975,8 @@ void checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(
 
 core.List<core.String> buildUnnamed5070() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5026,7 +5026,7 @@ api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig
     o.errorSources = buildUnnamed5070();
     o.responseCodeRanges = buildUnnamed5071();
     o.responseCodes = buildUnnamed5072();
-    o.sampler = "foo";
+    o.sampler = 'foo';
     o.samplingRate = 42.0;
   }
   buildCounterGoogleCloudApigeeV1RuntimeTraceSamplingConfig--;
@@ -5088,8 +5088,8 @@ void checkUnnamed5073(core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> o) {
 
 core.List<core.String> buildUnnamed5074() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5141,7 +5141,7 @@ api.GoogleCloudApigeeV1SchemaSchemaElement
   var o = api.GoogleCloudApigeeV1SchemaSchemaElement();
   buildCounterGoogleCloudApigeeV1SchemaSchemaElement++;
   if (buildCounterGoogleCloudApigeeV1SchemaSchemaElement < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.properties = buildGoogleCloudApigeeV1SchemaSchemaProperty();
   }
   buildCounterGoogleCloudApigeeV1SchemaSchemaElement--;
@@ -5164,9 +5164,9 @@ api.GoogleCloudApigeeV1SchemaSchemaProperty
   var o = api.GoogleCloudApigeeV1SchemaSchemaProperty();
   buildCounterGoogleCloudApigeeV1SchemaSchemaProperty++;
   if (buildCounterGoogleCloudApigeeV1SchemaSchemaProperty < 3) {
-    o.createTime = "foo";
-    o.custom = "foo";
-    o.type = "foo";
+    o.createTime = 'foo';
+    o.custom = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1SchemaSchemaProperty--;
   return o;
@@ -5185,8 +5185,8 @@ void checkGoogleCloudApigeeV1SchemaSchemaProperty(
 
 core.List<core.String> buildUnnamed5076() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5203,7 +5203,7 @@ api.GoogleCloudApigeeV1ServiceIssuersMapping
   buildCounterGoogleCloudApigeeV1ServiceIssuersMapping++;
   if (buildCounterGoogleCloudApigeeV1ServiceIssuersMapping < 3) {
     o.emailIds = buildUnnamed5076();
-    o.service = "foo";
+    o.service = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ServiceIssuersMapping--;
   return o;
@@ -5224,8 +5224,8 @@ api.GoogleCloudApigeeV1Session buildGoogleCloudApigeeV1Session() {
   var o = api.GoogleCloudApigeeV1Session();
   buildCounterGoogleCloudApigeeV1Session++;
   if (buildCounterGoogleCloudApigeeV1Session < 3) {
-    o.id = "foo";
-    o.timestampMs = "foo";
+    o.id = 'foo';
+    o.timestampMs = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Session--;
   return o;
@@ -5242,8 +5242,8 @@ void checkGoogleCloudApigeeV1Session(api.GoogleCloudApigeeV1Session o) {
 
 core.List<core.String> buildUnnamed5077() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5258,9 +5258,9 @@ api.GoogleCloudApigeeV1SharedFlow buildGoogleCloudApigeeV1SharedFlow() {
   var o = api.GoogleCloudApigeeV1SharedFlow();
   buildCounterGoogleCloudApigeeV1SharedFlow++;
   if (buildCounterGoogleCloudApigeeV1SharedFlow < 3) {
-    o.latestRevisionId = "foo";
+    o.latestRevisionId = 'foo';
     o.metaData = buildGoogleCloudApigeeV1EntityMetadata();
-    o.name = "foo";
+    o.name = 'foo';
     o.revision = buildUnnamed5077();
   }
   buildCounterGoogleCloudApigeeV1SharedFlow--;
@@ -5280,21 +5280,21 @@ void checkGoogleCloudApigeeV1SharedFlow(api.GoogleCloudApigeeV1SharedFlow o) {
 
 core.Map<core.String, core.String> buildUnnamed5078() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5078(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed5079() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5306,8 +5306,8 @@ void checkUnnamed5079(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5080() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5319,8 +5319,8 @@ void checkUnnamed5080(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5081() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5337,19 +5337,19 @@ api.GoogleCloudApigeeV1SharedFlowRevision
   buildCounterGoogleCloudApigeeV1SharedFlowRevision++;
   if (buildCounterGoogleCloudApigeeV1SharedFlowRevision < 3) {
     o.configurationVersion = buildGoogleCloudApigeeV1ConfigVersion();
-    o.contextInfo = "foo";
-    o.createdAt = "foo";
-    o.description = "foo";
-    o.displayName = "foo";
+    o.contextInfo = 'foo';
+    o.createdAt = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
     o.entityMetaDataAsProperties = buildUnnamed5078();
-    o.lastModifiedAt = "foo";
-    o.name = "foo";
+    o.lastModifiedAt = 'foo';
+    o.name = 'foo';
     o.policies = buildUnnamed5079();
     o.resourceFiles = buildGoogleCloudApigeeV1ResourceFiles();
     o.resources = buildUnnamed5080();
-    o.revision = "foo";
+    o.revision = 'foo';
     o.sharedFlows = buildUnnamed5081();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1SharedFlowRevision--;
   return o;
@@ -5446,7 +5446,7 @@ api.GoogleCloudApigeeV1StatsEnvironmentStats
   if (buildCounterGoogleCloudApigeeV1StatsEnvironmentStats < 3) {
     o.dimensions = buildUnnamed5083();
     o.metrics = buildUnnamed5084();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1StatsEnvironmentStats--;
   return o;
@@ -5468,7 +5468,7 @@ api.GoogleCloudApigeeV1Subscription buildGoogleCloudApigeeV1Subscription() {
   var o = api.GoogleCloudApigeeV1Subscription();
   buildCounterGoogleCloudApigeeV1Subscription++;
   if (buildCounterGoogleCloudApigeeV1Subscription < 3) {
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Subscription--;
   return o;
@@ -5485,8 +5485,8 @@ void checkGoogleCloudApigeeV1Subscription(
 
 core.List<core.String> buildUnnamed5085() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5502,7 +5502,7 @@ api.GoogleCloudApigeeV1SyncAuthorization
   var o = api.GoogleCloudApigeeV1SyncAuthorization();
   buildCounterGoogleCloudApigeeV1SyncAuthorization++;
   if (buildCounterGoogleCloudApigeeV1SyncAuthorization < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.identities = buildUnnamed5085();
   }
   buildCounterGoogleCloudApigeeV1SyncAuthorization--;
@@ -5524,10 +5524,10 @@ api.GoogleCloudApigeeV1TargetServer buildGoogleCloudApigeeV1TargetServer() {
   var o = api.GoogleCloudApigeeV1TargetServer();
   buildCounterGoogleCloudApigeeV1TargetServer++;
   if (buildCounterGoogleCloudApigeeV1TargetServer < 3) {
-    o.description = "foo";
-    o.host = "foo";
+    o.description = 'foo';
+    o.host = 'foo';
     o.isEnabled = true;
-    o.name = "foo";
+    o.name = 'foo';
     o.port = 42;
     o.sSLInfo = buildGoogleCloudApigeeV1TlsInfo();
   }
@@ -5555,8 +5555,8 @@ api.GoogleCloudApigeeV1TargetServerConfig
   var o = api.GoogleCloudApigeeV1TargetServerConfig();
   buildCounterGoogleCloudApigeeV1TargetServerConfig++;
   if (buildCounterGoogleCloudApigeeV1TargetServerConfig < 3) {
-    o.host = "foo";
-    o.name = "foo";
+    o.host = 'foo';
+    o.name = 'foo';
     o.port = 42;
     o.tlsInfo = buildGoogleCloudApigeeV1TlsInfoConfig();
   }
@@ -5582,8 +5582,8 @@ api.GoogleCloudApigeeV1TestDatastoreResponse
   var o = api.GoogleCloudApigeeV1TestDatastoreResponse();
   buildCounterGoogleCloudApigeeV1TestDatastoreResponse++;
   if (buildCounterGoogleCloudApigeeV1TestDatastoreResponse < 3) {
-    o.error = "foo";
-    o.state = "foo";
+    o.error = 'foo';
+    o.state = 'foo';
   }
   buildCounterGoogleCloudApigeeV1TestDatastoreResponse--;
   return o;
@@ -5601,8 +5601,8 @@ void checkGoogleCloudApigeeV1TestDatastoreResponse(
 
 core.List<core.String> buildUnnamed5086() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5614,8 +5614,8 @@ void checkUnnamed5086(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5087() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5635,10 +5635,10 @@ api.GoogleCloudApigeeV1TlsInfo buildGoogleCloudApigeeV1TlsInfo() {
     o.commonName = buildGoogleCloudApigeeV1TlsInfoCommonName();
     o.enabled = true;
     o.ignoreValidationErrors = true;
-    o.keyAlias = "foo";
-    o.keyStore = "foo";
+    o.keyAlias = 'foo';
+    o.keyStore = 'foo';
     o.protocols = buildUnnamed5087();
-    o.trustStore = "foo";
+    o.trustStore = 'foo';
   }
   buildCounterGoogleCloudApigeeV1TlsInfo--;
   return o;
@@ -5666,7 +5666,7 @@ api.GoogleCloudApigeeV1TlsInfoCommonName
   var o = api.GoogleCloudApigeeV1TlsInfoCommonName();
   buildCounterGoogleCloudApigeeV1TlsInfoCommonName++;
   if (buildCounterGoogleCloudApigeeV1TlsInfoCommonName < 3) {
-    o.value = "foo";
+    o.value = 'foo';
     o.wildcardMatch = true;
   }
   buildCounterGoogleCloudApigeeV1TlsInfoCommonName--;
@@ -5685,8 +5685,8 @@ void checkGoogleCloudApigeeV1TlsInfoCommonName(
 
 core.List<core.String> buildUnnamed5088() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5698,8 +5698,8 @@ void checkUnnamed5088(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5089() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5719,10 +5719,10 @@ api.GoogleCloudApigeeV1TlsInfoConfig buildGoogleCloudApigeeV1TlsInfoConfig() {
     o.commonName = buildGoogleCloudApigeeV1CommonNameConfig();
     o.enabled = true;
     o.ignoreValidationErrors = true;
-    o.keyAlias = "foo";
+    o.keyAlias = 'foo';
     o.keyAliasReference = buildGoogleCloudApigeeV1KeyAliasReference();
     o.protocols = buildUnnamed5089();
-    o.trustStore = "foo";
+    o.trustStore = 'foo';
   }
   buildCounterGoogleCloudApigeeV1TlsInfoConfig--;
   return o;
@@ -5750,10 +5750,10 @@ api.GoogleCloudApigeeV1UpdateError buildGoogleCloudApigeeV1UpdateError() {
   var o = api.GoogleCloudApigeeV1UpdateError();
   buildCounterGoogleCloudApigeeV1UpdateError++;
   if (buildCounterGoogleCloudApigeeV1UpdateError < 3) {
-    o.code = "foo";
-    o.message = "foo";
-    o.resource = "foo";
-    o.type = "foo";
+    o.code = 'foo';
+    o.message = 'foo';
+    o.resource = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleCloudApigeeV1UpdateError--;
   return o;
@@ -5789,7 +5789,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
     o.auditLogConfigs = buildUnnamed5090();
-    o.service = "foo";
+    o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
   return o;
@@ -5806,8 +5806,8 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
 
 core.List<core.String> buildUnnamed5091() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5823,7 +5823,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
     o.exemptedMembers = buildUnnamed5091();
-    o.logType = "foo";
+    o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
   return o;
@@ -5840,8 +5840,8 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
 
 core.List<core.String> buildUnnamed5092() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5858,7 +5858,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
     o.members = buildUnnamed5092();
-    o.role = "foo";
+    o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
   return o;
@@ -5907,7 +5907,7 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   if (buildCounterGoogleIamV1Policy < 3) {
     o.auditConfigs = buildUnnamed5093();
     o.bindings = buildUnnamed5094();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.version = 42;
   }
   buildCounterGoogleIamV1Policy--;
@@ -5931,7 +5931,7 @@ api.GoogleIamV1SetIamPolicyRequest buildGoogleIamV1SetIamPolicyRequest() {
   buildCounterGoogleIamV1SetIamPolicyRequest++;
   if (buildCounterGoogleIamV1SetIamPolicyRequest < 3) {
     o.policy = buildGoogleIamV1Policy();
-    o.updateMask = "foo";
+    o.updateMask = 'foo';
   }
   buildCounterGoogleIamV1SetIamPolicyRequest--;
   return o;
@@ -5948,8 +5948,8 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
 
 core.List<core.String> buildUnnamed5095() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5982,8 +5982,8 @@ void checkGoogleIamV1TestIamPermissionsRequest(
 
 core.List<core.String> buildUnnamed5096() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -6033,7 +6033,7 @@ api.GoogleLongrunningListOperationsResponse
   var o = api.GoogleLongrunningListOperationsResponse();
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed5097();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
@@ -6052,12 +6052,12 @@ void checkGoogleLongrunningListOperationsResponse(
 
 core.Map<core.String, core.Object> buildUnnamed5098() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -6067,26 +6067,26 @@ core.Map<core.String, core.Object> buildUnnamed5098() {
 
 void checkUnnamed5098(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted10 = (o["x"]) as core.Map;
+  var casted10 = (o['x']) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(casted10["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted10["bool"], unittest.equals(true));
-  unittest.expect(casted10["string"], unittest.equals('foo'));
-  var casted11 = (o["y"]) as core.Map;
+  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted10['bool'], unittest.equals(true));
+  unittest.expect(casted10['string'], unittest.equals('foo'));
+  var casted11 = (o['y']) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
-  unittest.expect(casted11["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted11["bool"], unittest.equals(true));
-  unittest.expect(casted11["string"], unittest.equals('foo'));
+  unittest.expect(casted11['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted11['bool'], unittest.equals(true));
+  unittest.expect(casted11['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed5099() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -6096,16 +6096,16 @@ core.Map<core.String, core.Object> buildUnnamed5099() {
 
 void checkUnnamed5099(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted12 = (o["x"]) as core.Map;
+  var casted12 = (o['x']) as core.Map;
   unittest.expect(casted12, unittest.hasLength(3));
-  unittest.expect(casted12["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted12["bool"], unittest.equals(true));
-  unittest.expect(casted12["string"], unittest.equals('foo'));
-  var casted13 = (o["y"]) as core.Map;
+  unittest.expect(casted12['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted12['bool'], unittest.equals(true));
+  unittest.expect(casted12['string'], unittest.equals('foo'));
+  var casted13 = (o['y']) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
-  unittest.expect(casted13["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted13["bool"], unittest.equals(true));
-  unittest.expect(casted13["string"], unittest.equals('foo'));
+  unittest.expect(casted13['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted13['bool'], unittest.equals(true));
+  unittest.expect(casted13['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -6116,7 +6116,7 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
     o.done = true;
     o.error = buildGoogleRpcStatus();
     o.metadata = buildUnnamed5098();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed5099();
   }
   buildCounterGoogleLongrunningOperation--;
@@ -6188,9 +6188,9 @@ api.GoogleRpcPreconditionFailureViolation
   var o = api.GoogleRpcPreconditionFailureViolation();
   buildCounterGoogleRpcPreconditionFailureViolation++;
   if (buildCounterGoogleRpcPreconditionFailureViolation < 3) {
-    o.description = "foo";
-    o.subject = "foo";
-    o.type = "foo";
+    o.description = 'foo';
+    o.subject = 'foo';
+    o.type = 'foo';
   }
   buildCounterGoogleRpcPreconditionFailureViolation--;
   return o;
@@ -6209,12 +6209,12 @@ void checkGoogleRpcPreconditionFailureViolation(
 
 core.Map<core.String, core.Object> buildUnnamed5101() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -6224,16 +6224,16 @@ core.Map<core.String, core.Object> buildUnnamed5101() {
 
 void checkUnnamed5101(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted14 = (o["x"]) as core.Map;
+  var casted14 = (o['x']) as core.Map;
   unittest.expect(casted14, unittest.hasLength(3));
-  unittest.expect(casted14["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted14["bool"], unittest.equals(true));
-  unittest.expect(casted14["string"], unittest.equals('foo'));
-  var casted15 = (o["y"]) as core.Map;
+  unittest.expect(casted14['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted14['bool'], unittest.equals(true));
+  unittest.expect(casted14['string'], unittest.equals('foo'));
+  var casted15 = (o['y']) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
-  unittest.expect(casted15["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted15["bool"], unittest.equals(true));
-  unittest.expect(casted15["string"], unittest.equals('foo'));
+  unittest.expect(casted15['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted15['bool'], unittest.equals(true));
+  unittest.expect(casted15['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed5102() {
@@ -6256,7 +6256,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed5102();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
   return o;
@@ -6277,10 +6277,10 @@ api.GoogleTypeExpr buildGoogleTypeExpr() {
   var o = api.GoogleTypeExpr();
   buildCounterGoogleTypeExpr++;
   if (buildCounterGoogleTypeExpr < 3) {
-    o.description = "foo";
-    o.expression = "foo";
-    o.location = "foo";
-    o.title = "foo";
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
   }
   buildCounterGoogleTypeExpr--;
   return o;
@@ -6298,264 +6298,264 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
 }
 
 void main() {
-  unittest.group("obj-schema-GoogleApiHttpBody", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleApiHttpBody', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleApiHttpBody();
       var od = api.GoogleApiHttpBody.fromJson(o.toJson());
       checkGoogleApiHttpBody(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Access", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Access', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Access();
       var od = api.GoogleCloudApigeeV1Access.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Access(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1AccessGet", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1AccessGet', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1AccessGet();
       var od = api.GoogleCloudApigeeV1AccessGet.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AccessGet(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1AccessRemove", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1AccessRemove', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1AccessRemove();
       var od = api.GoogleCloudApigeeV1AccessRemove.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AccessRemove(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1AccessSet", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1AccessSet', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1AccessSet();
       var od = api.GoogleCloudApigeeV1AccessSet.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AccessSet(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Alias", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Alias', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Alias();
       var od = api.GoogleCloudApigeeV1Alias.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Alias(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1AliasRevisionConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1AliasRevisionConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1AliasRevisionConfig();
       var od = api.GoogleCloudApigeeV1AliasRevisionConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AliasRevisionConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ApiCategory", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategory', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ApiCategory();
       var od = api.GoogleCloudApigeeV1ApiCategory.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiCategory(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ApiCategoryData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategoryData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ApiCategoryData();
       var od = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiCategoryData(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ApiProduct", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ApiProduct', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ApiProduct();
       var od = api.GoogleCloudApigeeV1ApiProduct.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiProduct(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ApiProductRef", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ApiProductRef', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ApiProductRef();
       var od = api.GoogleCloudApigeeV1ApiProductRef.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiProductRef(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ApiProxy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ApiProxy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ApiProxy();
       var od = api.GoogleCloudApigeeV1ApiProxy.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiProxy(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ApiProxyRevision", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ApiProxyRevision', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ApiProxyRevision();
       var od = api.GoogleCloudApigeeV1ApiProxyRevision.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiProxyRevision(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ApiResponseWrapper", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ApiResponseWrapper', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ApiResponseWrapper();
       var od = api.GoogleCloudApigeeV1ApiResponseWrapper.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiResponseWrapper(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1App", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1App', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1App();
       var od = api.GoogleCloudApigeeV1App.fromJson(o.toJson());
       checkGoogleCloudApigeeV1App(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1AsyncQuery", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQuery', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1AsyncQuery();
       var od = api.GoogleCloudApigeeV1AsyncQuery.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AsyncQuery(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1AsyncQueryResult", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQueryResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1AsyncQueryResult();
       var od = api.GoogleCloudApigeeV1AsyncQueryResult.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AsyncQueryResult(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Attribute", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Attribute', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Attribute();
       var od = api.GoogleCloudApigeeV1Attribute.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Attribute(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Attributes", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Attributes', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Attributes();
       var od = api.GoogleCloudApigeeV1Attributes.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Attributes(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1CertInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1CertInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1CertInfo();
       var od = api.GoogleCloudApigeeV1CertInfo.fromJson(o.toJson());
       checkGoogleCloudApigeeV1CertInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Certificate", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Certificate', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Certificate();
       var od = api.GoogleCloudApigeeV1Certificate.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Certificate(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1CommonNameConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1CommonNameConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1CommonNameConfig();
       var od = api.GoogleCloudApigeeV1CommonNameConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1CommonNameConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ConfigVersion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ConfigVersion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ConfigVersion();
       var od = api.GoogleCloudApigeeV1ConfigVersion.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ConfigVersion(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Credential", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Credential', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Credential();
       var od = api.GoogleCloudApigeeV1Credential.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Credential(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1CustomReport", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1CustomReport', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1CustomReport();
       var od = api.GoogleCloudApigeeV1CustomReport.fromJson(o.toJson());
       checkGoogleCloudApigeeV1CustomReport(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1CustomReportMetric", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1CustomReportMetric', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1CustomReportMetric();
       var od = api.GoogleCloudApigeeV1CustomReportMetric.fromJson(o.toJson());
       checkGoogleCloudApigeeV1CustomReportMetric(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DataCollectorConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DataCollectorConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DataCollectorConfig();
       var od = api.GoogleCloudApigeeV1DataCollectorConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DataCollectorConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Datastore", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Datastore', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Datastore();
       var od = api.GoogleCloudApigeeV1Datastore.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Datastore(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DatastoreConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DatastoreConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DatastoreConfig();
       var od = api.GoogleCloudApigeeV1DatastoreConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DatastoreConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DateRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DateRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DateRange();
       var od = api.GoogleCloudApigeeV1DateRange.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DateRange(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DebugMask", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DebugMask', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DebugMask();
       var od = api.GoogleCloudApigeeV1DebugMask.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DebugMask(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DebugSession", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DebugSession', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DebugSession();
       var od = api.GoogleCloudApigeeV1DebugSession.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DebugSession(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DebugSessionTransaction", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DebugSessionTransaction', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DebugSessionTransaction();
       var od =
           api.GoogleCloudApigeeV1DebugSessionTransaction.fromJson(o.toJson());
@@ -6563,9 +6563,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DeleteCustomReportResponse",
+  unittest.group('obj-schema-GoogleCloudApigeeV1DeleteCustomReportResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DeleteCustomReportResponse();
       var od = api.GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
           o.toJson());
@@ -6573,16 +6573,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Deployment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Deployment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Deployment();
       var od = api.GoogleCloudApigeeV1Deployment.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Deployment(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DeploymentChangeReport", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DeploymentChangeReport', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReport();
       var od =
           api.GoogleCloudApigeeV1DeploymentChangeReport.fromJson(o.toJson());
@@ -6591,8 +6591,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingChange", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingChange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
       var od =
           api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange.fromJson(
@@ -6602,9 +6602,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict",
+      'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
       var od =
           api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict.fromJson(
@@ -6614,9 +6614,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment",
+      'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
       var od = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
           .fromJson(o.toJson());
@@ -6624,81 +6624,81 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DeploymentConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DeploymentConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DeploymentConfig();
       var od = api.GoogleCloudApigeeV1DeploymentConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DeploymentConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Developer", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Developer', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Developer();
       var od = api.GoogleCloudApigeeV1Developer.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Developer(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DeveloperApp", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DeveloperApp', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DeveloperApp();
       var od = api.GoogleCloudApigeeV1DeveloperApp.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DeveloperApp(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DeveloperAppKey", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DeveloperAppKey', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DeveloperAppKey();
       var od = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DeveloperAppKey(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1DimensionMetric", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1DimensionMetric', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1DimensionMetric();
       var od = api.GoogleCloudApigeeV1DimensionMetric.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DimensionMetric(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1EntityMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1EntityMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1EntityMetadata();
       var od = api.GoogleCloudApigeeV1EntityMetadata.fromJson(o.toJson());
       checkGoogleCloudApigeeV1EntityMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Environment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Environment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Environment();
       var od = api.GoogleCloudApigeeV1Environment.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Environment(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1EnvironmentConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1EnvironmentConfig();
       var od = api.GoogleCloudApigeeV1EnvironmentConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1EnvironmentConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1EnvironmentGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1EnvironmentGroup();
       var od = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(o.toJson());
       checkGoogleCloudApigeeV1EnvironmentGroup(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1EnvironmentGroupAttachment",
+  unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroupAttachment',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
       var od = api.GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
           o.toJson());
@@ -6706,8 +6706,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1EnvironmentGroupConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroupConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1EnvironmentGroupConfig();
       var od =
           api.GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(o.toJson());
@@ -6715,41 +6715,41 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Export", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Export', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Export();
       var od = api.GoogleCloudApigeeV1Export.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Export(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ExportRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ExportRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ExportRequest();
       var od = api.GoogleCloudApigeeV1ExportRequest.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ExportRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1FlowHook", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1FlowHook', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1FlowHook();
       var od = api.GoogleCloudApigeeV1FlowHook.fromJson(o.toJson());
       checkGoogleCloudApigeeV1FlowHook(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1FlowHookConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1FlowHookConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1FlowHookConfig();
       var od = api.GoogleCloudApigeeV1FlowHookConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1FlowHookConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1GetSyncAuthorizationRequest",
+  unittest.group('obj-schema-GoogleCloudApigeeV1GetSyncAuthorizationRequest',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
       var od = api.GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
           o.toJson());
@@ -6757,32 +6757,32 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1IngressConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1IngressConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1IngressConfig();
       var od = api.GoogleCloudApigeeV1IngressConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1IngressConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Instance", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Instance', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Instance();
       var od = api.GoogleCloudApigeeV1Instance.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Instance(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1InstanceAttachment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1InstanceAttachment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1InstanceAttachment();
       var od = api.GoogleCloudApigeeV1InstanceAttachment.fromJson(o.toJson());
       checkGoogleCloudApigeeV1InstanceAttachment(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1InstanceDeploymentStatus();
       var od =
           api.GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(o.toJson());
@@ -6791,9 +6791,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision",
+      'obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
       var od = api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
@@ -6803,9 +6803,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute",
+      'obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
       var od =
           api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute.fromJson(
@@ -6814,40 +6814,40 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1KeyAliasReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1KeyAliasReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1KeyAliasReference();
       var od = api.GoogleCloudApigeeV1KeyAliasReference.fromJson(o.toJson());
       checkGoogleCloudApigeeV1KeyAliasReference(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1KeyValueMap", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1KeyValueMap', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1KeyValueMap();
       var od = api.GoogleCloudApigeeV1KeyValueMap.fromJson(o.toJson());
       checkGoogleCloudApigeeV1KeyValueMap(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Keystore", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Keystore', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Keystore();
       var od = api.GoogleCloudApigeeV1Keystore.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Keystore(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1KeystoreConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1KeystoreConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1KeystoreConfig();
       var od = api.GoogleCloudApigeeV1KeystoreConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1KeystoreConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListApiCategoriesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListApiCategoriesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListApiCategoriesResponse();
       var od =
           api.GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(o.toJson());
@@ -6855,8 +6855,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListApiProductsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListApiProductsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListApiProductsResponse();
       var od =
           api.GoogleCloudApigeeV1ListApiProductsResponse.fromJson(o.toJson());
@@ -6864,8 +6864,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListApiProxiesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListApiProxiesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListApiProxiesResponse();
       var od =
           api.GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(o.toJson());
@@ -6873,16 +6873,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListAppsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListAppsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListAppsResponse();
       var od = api.GoogleCloudApigeeV1ListAppsResponse.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ListAppsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListAsyncQueriesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListAsyncQueriesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListAsyncQueriesResponse();
       var od =
           api.GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(o.toJson());
@@ -6890,8 +6890,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListCustomReportsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListCustomReportsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListCustomReportsResponse();
       var od =
           api.GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(o.toJson());
@@ -6899,8 +6899,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListDatastoresResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListDatastoresResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListDatastoresResponse();
       var od =
           api.GoogleCloudApigeeV1ListDatastoresResponse.fromJson(o.toJson());
@@ -6908,8 +6908,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListDebugSessionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListDebugSessionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListDebugSessionsResponse();
       var od =
           api.GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(o.toJson());
@@ -6917,8 +6917,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListDeploymentsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListDeploymentsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListDeploymentsResponse();
       var od =
           api.GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(o.toJson());
@@ -6926,8 +6926,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListDeveloperAppsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListDeveloperAppsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListDeveloperAppsResponse();
       var od =
           api.GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(o.toJson());
@@ -6936,9 +6936,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse",
+      'obj-schema-GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
       var od = api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
           .fromJson(o.toJson());
@@ -6946,9 +6946,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListEnvironmentGroupsResponse",
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListEnvironmentGroupsResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse();
       var od = api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
           o.toJson());
@@ -6957,8 +6957,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudApigeeV1ListEnvironmentResourcesResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudApigeeV1ListEnvironmentResourcesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse();
       var od = api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
           o.toJson());
@@ -6966,16 +6966,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListExportsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListExportsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListExportsResponse();
       var od = api.GoogleCloudApigeeV1ListExportsResponse.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ListExportsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListHybridIssuersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListHybridIssuersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListHybridIssuersResponse();
       var od =
           api.GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(o.toJson());
@@ -6984,8 +6984,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudApigeeV1ListInstanceAttachmentsResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudApigeeV1ListInstanceAttachmentsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse();
       var od = api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
           o.toJson());
@@ -6993,8 +6993,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListInstancesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListInstancesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListInstancesResponse();
       var od =
           api.GoogleCloudApigeeV1ListInstancesResponse.fromJson(o.toJson());
@@ -7002,8 +7002,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListOfDevelopersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListOfDevelopersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListOfDevelopersResponse();
       var od =
           api.GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(o.toJson());
@@ -7011,8 +7011,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListOrganizationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListOrganizationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListOrganizationsResponse();
       var od =
           api.GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(o.toJson());
@@ -7020,8 +7020,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ListSharedFlowsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ListSharedFlowsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ListSharedFlowsResponse();
       var od =
           api.GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(o.toJson());
@@ -7029,72 +7029,72 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Metadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Metadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Metadata();
       var od = api.GoogleCloudApigeeV1Metadata.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Metadata(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Metric", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Metric', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Metric();
       var od = api.GoogleCloudApigeeV1Metric.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Metric(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Operation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Operation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Operation();
       var od = api.GoogleCloudApigeeV1Operation.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Operation(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1OperationConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1OperationConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1OperationConfig();
       var od = api.GoogleCloudApigeeV1OperationConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OperationConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1OperationGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1OperationGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1OperationGroup();
       var od = api.GoogleCloudApigeeV1OperationGroup.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OperationGroup(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1OperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1OperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1OperationMetadata();
       var od = api.GoogleCloudApigeeV1OperationMetadata.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OperationMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1OptimizedStats", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStats', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1OptimizedStats();
       var od = api.GoogleCloudApigeeV1OptimizedStats.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OptimizedStats(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1OptimizedStatsNode", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStatsNode', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1OptimizedStatsNode();
       var od = api.GoogleCloudApigeeV1OptimizedStatsNode.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OptimizedStatsNode(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1OptimizedStatsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStatsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1OptimizedStatsResponse();
       var od =
           api.GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(o.toJson());
@@ -7102,17 +7102,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Organization", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Organization', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Organization();
       var od = api.GoogleCloudApigeeV1Organization.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Organization(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1OrganizationProjectMapping",
+  unittest.group('obj-schema-GoogleCloudApigeeV1OrganizationProjectMapping',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1OrganizationProjectMapping();
       var od = api.GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(
           o.toJson());
@@ -7120,41 +7120,41 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1PodStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1PodStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1PodStatus();
       var od = api.GoogleCloudApigeeV1PodStatus.fromJson(o.toJson());
       checkGoogleCloudApigeeV1PodStatus(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Point", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Point', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Point();
       var od = api.GoogleCloudApigeeV1Point.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Point(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Properties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Properties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Properties();
       var od = api.GoogleCloudApigeeV1Properties.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Properties(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Property", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Property', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Property();
       var od = api.GoogleCloudApigeeV1Property.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Property(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ProvisionOrganizationRequest",
+  unittest.group('obj-schema-GoogleCloudApigeeV1ProvisionOrganizationRequest',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
       var od = api.GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(
           o.toJson());
@@ -7162,57 +7162,57 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Query", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Query', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Query();
       var od = api.GoogleCloudApigeeV1Query.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Query(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1QueryMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1QueryMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1QueryMetadata();
       var od = api.GoogleCloudApigeeV1QueryMetadata.fromJson(o.toJson());
       checkGoogleCloudApigeeV1QueryMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1QueryMetric", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1QueryMetric', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1QueryMetric();
       var od = api.GoogleCloudApigeeV1QueryMetric.fromJson(o.toJson());
       checkGoogleCloudApigeeV1QueryMetric(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Quota", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Quota', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Quota();
       var od = api.GoogleCloudApigeeV1Quota.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Quota(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Reference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Reference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Reference();
       var od = api.GoogleCloudApigeeV1Reference.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Reference(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ReferenceConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ReferenceConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ReferenceConfig();
       var od = api.GoogleCloudApigeeV1ReferenceConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ReferenceConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ReportInstanceStatusRequest",
+  unittest.group('obj-schema-GoogleCloudApigeeV1ReportInstanceStatusRequest',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
       var od = api.GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(
           o.toJson());
@@ -7220,9 +7220,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ReportInstanceStatusResponse",
+  unittest.group('obj-schema-GoogleCloudApigeeV1ReportInstanceStatusResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ReportInstanceStatusResponse();
       var od = api.GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
           o.toJson());
@@ -7230,81 +7230,81 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ReportProperty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ReportProperty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ReportProperty();
       var od = api.GoogleCloudApigeeV1ReportProperty.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ReportProperty(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ResourceConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ResourceConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ResourceConfig();
       var od = api.GoogleCloudApigeeV1ResourceConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ResourceConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ResourceFile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ResourceFile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ResourceFile();
       var od = api.GoogleCloudApigeeV1ResourceFile.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ResourceFile(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ResourceFiles", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ResourceFiles', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ResourceFiles();
       var od = api.GoogleCloudApigeeV1ResourceFiles.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ResourceFiles(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ResourceStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ResourceStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ResourceStatus();
       var od = api.GoogleCloudApigeeV1ResourceStatus.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ResourceStatus(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Result", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Result', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Result();
       var od = api.GoogleCloudApigeeV1Result.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Result(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1RevisionStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1RevisionStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1RevisionStatus();
       var od = api.GoogleCloudApigeeV1RevisionStatus.fromJson(o.toJson());
       checkGoogleCloudApigeeV1RevisionStatus(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1RoutingRule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1RoutingRule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1RoutingRule();
       var od = api.GoogleCloudApigeeV1RoutingRule.fromJson(o.toJson());
       checkGoogleCloudApigeeV1RoutingRule(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1RuntimeTraceConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1RuntimeTraceConfig();
       var od = api.GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1RuntimeTraceConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1RuntimeTraceConfigOverride",
+  unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceConfigOverride',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1RuntimeTraceConfigOverride();
       var od = api.GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
           o.toJson());
@@ -7312,9 +7312,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1RuntimeTraceSamplingConfig",
+  unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceSamplingConfig',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
       var od = api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
           o.toJson());
@@ -7323,9 +7323,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange",
+      'obj-schema-GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange();
       var od =
@@ -7335,32 +7335,32 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Schema", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Schema', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Schema();
       var od = api.GoogleCloudApigeeV1Schema.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Schema(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1SchemaSchemaElement", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1SchemaSchemaElement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1SchemaSchemaElement();
       var od = api.GoogleCloudApigeeV1SchemaSchemaElement.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SchemaSchemaElement(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1SchemaSchemaProperty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1SchemaSchemaProperty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1SchemaSchemaProperty();
       var od = api.GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SchemaSchemaProperty(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1ServiceIssuersMapping", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ServiceIssuersMapping', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1ServiceIssuersMapping();
       var od =
           api.GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(o.toJson());
@@ -7368,40 +7368,40 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Session", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Session', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Session();
       var od = api.GoogleCloudApigeeV1Session.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Session(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1SharedFlow", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1SharedFlow', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1SharedFlow();
       var od = api.GoogleCloudApigeeV1SharedFlow.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SharedFlow(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1SharedFlowRevision", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1SharedFlowRevision', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1SharedFlowRevision();
       var od = api.GoogleCloudApigeeV1SharedFlowRevision.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SharedFlowRevision(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Stats", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Stats', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Stats();
       var od = api.GoogleCloudApigeeV1Stats.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Stats(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1StatsEnvironmentStats", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1StatsEnvironmentStats', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1StatsEnvironmentStats();
       var od =
           api.GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(o.toJson());
@@ -7409,40 +7409,40 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1Subscription", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1Subscription', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1Subscription();
       var od = api.GoogleCloudApigeeV1Subscription.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Subscription(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1SyncAuthorization", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1SyncAuthorization', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1SyncAuthorization();
       var od = api.GoogleCloudApigeeV1SyncAuthorization.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SyncAuthorization(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1TargetServer", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1TargetServer', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1TargetServer();
       var od = api.GoogleCloudApigeeV1TargetServer.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TargetServer(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1TargetServerConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1TargetServerConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1TargetServerConfig();
       var od = api.GoogleCloudApigeeV1TargetServerConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TargetServerConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1TestDatastoreResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1TestDatastoreResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1TestDatastoreResponse();
       var od =
           api.GoogleCloudApigeeV1TestDatastoreResponse.fromJson(o.toJson());
@@ -7450,156 +7450,156 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1TlsInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1TlsInfo();
       var od = api.GoogleCloudApigeeV1TlsInfo.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TlsInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1TlsInfoCommonName", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfoCommonName', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1TlsInfoCommonName();
       var od = api.GoogleCloudApigeeV1TlsInfoCommonName.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TlsInfoCommonName(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1TlsInfoConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfoConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1TlsInfoConfig();
       var od = api.GoogleCloudApigeeV1TlsInfoConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TlsInfoConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudApigeeV1UpdateError", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1UpdateError', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudApigeeV1UpdateError();
       var od = api.GoogleCloudApigeeV1UpdateError.fromJson(o.toJson());
       checkGoogleCloudApigeeV1UpdateError(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1AuditConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1AuditConfig();
       var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1AuditLogConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1AuditLogConfig();
       var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditLogConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1Binding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1Binding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1Binding();
       var od = api.GoogleIamV1Binding.fromJson(o.toJson());
       checkGoogleIamV1Binding(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1Policy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1Policy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1Policy();
       var od = api.GoogleIamV1Policy.fromJson(o.toJson());
       checkGoogleIamV1Policy(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1SetIamPolicyRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1SetIamPolicyRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1SetIamPolicyRequest();
       var od = api.GoogleIamV1SetIamPolicyRequest.fromJson(o.toJson());
       checkGoogleIamV1SetIamPolicyRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1TestIamPermissionsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1TestIamPermissionsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1TestIamPermissionsRequest();
       var od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1TestIamPermissionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1TestIamPermissionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1TestIamPermissionsResponse();
       var od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningListOperationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningOperation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningOperation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleProtobufEmpty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleProtobufEmpty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleRpcPreconditionFailure", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleRpcPreconditionFailure', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleRpcPreconditionFailure();
       var od = api.GoogleRpcPreconditionFailure.fromJson(o.toJson());
       checkGoogleRpcPreconditionFailure(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleRpcPreconditionFailureViolation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleRpcPreconditionFailureViolation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleRpcPreconditionFailureViolation();
       var od = api.GoogleRpcPreconditionFailureViolation.fromJson(o.toJson());
       checkGoogleRpcPreconditionFailureViolation(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleRpcStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleRpcStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleTypeExpr", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleTypeExpr', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleTypeExpr();
       var od = api.GoogleTypeExpr.fromJson(o.toJson());
       checkGoogleTypeExpr(od);
     });
   });
 
-  unittest.group("resource-HybridIssuersResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-HybridIssuersResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.HybridIssuersResourceApi res = api.ApigeeApi(mock).hybrid.issuers;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7619,8 +7619,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7630,7 +7630,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListHybridIssuersResponse());
@@ -7644,13 +7644,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1Organization();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Organization.fromJson(json);
         checkGoogleCloudApigeeV1Organization(obj);
@@ -7672,8 +7672,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7684,7 +7684,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7696,11 +7696,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7720,8 +7720,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7731,7 +7731,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Organization());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7743,12 +7743,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getDeployedIngressConfig", () {
+    unittest.test('method--getDeployedIngressConfig', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
-      var arg_name = "foo";
-      var arg_view = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_view = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7768,8 +7768,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7780,7 +7780,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1IngressConfig());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7793,12 +7793,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getSyncAuthorization", () {
+    unittest.test('method--getSyncAuthorization', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(json);
@@ -7822,8 +7822,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7833,7 +7833,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1SyncAuthorization());
@@ -7846,11 +7846,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7870,8 +7870,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7881,7 +7881,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListOrganizationsResponse());
@@ -7894,12 +7894,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--setSyncAuthorization", () {
+    unittest.test('method--setSyncAuthorization', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1SyncAuthorization();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1SyncAuthorization.fromJson(json);
         checkGoogleCloudApigeeV1SyncAuthorization(obj);
@@ -7922,8 +7922,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7933,7 +7933,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1SyncAuthorization());
@@ -7946,12 +7946,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1Organization();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Organization.fromJson(json);
         checkGoogleCloudApigeeV1Organization(obj);
@@ -7974,8 +7974,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7985,7 +7985,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Organization());
         return async.Future.value(stringResponse(200, h, resp));
@@ -7998,14 +7998,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsAnalyticsDatastoresResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsAnalyticsDatastoresResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsAnalyticsDatastoresResourceApi res =
           api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_request = buildGoogleCloudApigeeV1Datastore();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Datastore.fromJson(json);
         checkGoogleCloudApigeeV1Datastore(obj);
@@ -8028,8 +8028,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8039,7 +8039,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8051,12 +8051,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsAnalyticsDatastoresResourceApi res =
           api.ApigeeApi(mock).organizations.analytics.datastores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8076,8 +8076,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8087,7 +8087,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8099,12 +8099,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsAnalyticsDatastoresResourceApi res =
           api.ApigeeApi(mock).organizations.analytics.datastores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8124,8 +8124,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8135,7 +8135,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8147,13 +8147,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsAnalyticsDatastoresResourceApi res =
           api.ApigeeApi(mock).organizations.analytics.datastores;
-      var arg_parent = "foo";
-      var arg_targetType = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_targetType = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8173,8 +8173,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8186,7 +8186,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDatastoresResponse());
@@ -8199,13 +8199,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--test", () {
+    unittest.test('method--test', () {
       var mock = HttpServerMock();
       api.OrganizationsAnalyticsDatastoresResourceApi res =
           api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_request = buildGoogleCloudApigeeV1Datastore();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Datastore.fromJson(json);
         checkGoogleCloudApigeeV1Datastore(obj);
@@ -8228,8 +8228,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8239,7 +8239,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1TestDatastoreResponse());
@@ -8252,13 +8252,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsAnalyticsDatastoresResourceApi res =
           api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_request = buildGoogleCloudApigeeV1Datastore();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Datastore.fromJson(json);
         checkGoogleCloudApigeeV1Datastore(obj);
@@ -8281,8 +8281,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8292,7 +8292,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8305,14 +8305,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsApiproductsResourceApi", () {
-    unittest.test("method--attributes", () {
+  unittest.group('resource-OrganizationsApiproductsResourceApi', () {
+    unittest.test('method--attributes', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts;
       var arg_request = buildGoogleCloudApigeeV1Attributes();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Attributes.fromJson(json);
         checkGoogleCloudApigeeV1Attributes(obj);
@@ -8335,8 +8335,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8346,7 +8346,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8358,13 +8358,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts;
       var arg_request = buildGoogleCloudApigeeV1ApiProduct();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1ApiProduct.fromJson(json);
         checkGoogleCloudApigeeV1ApiProduct(obj);
@@ -8387,8 +8387,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8398,7 +8398,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8410,12 +8410,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8435,8 +8435,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8446,7 +8446,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8458,12 +8458,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8483,8 +8483,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8494,7 +8494,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8506,17 +8506,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_expand = true;
-      var arg_attributevalue = "foo";
-      var arg_startKey = "foo";
-      var arg_count = "foo";
-      var arg_attributename = "foo";
-      var arg_$fields = "foo";
+      var arg_attributevalue = 'foo';
+      var arg_startKey = 'foo';
+      var arg_count = 'foo';
+      var arg_attributename = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8536,8 +8536,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8556,7 +8556,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListApiProductsResponse());
@@ -8575,13 +8575,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts;
       var arg_request = buildGoogleCloudApigeeV1ApiProduct();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1ApiProduct.fromJson(json);
         checkGoogleCloudApigeeV1ApiProduct(obj);
@@ -8604,8 +8604,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8615,7 +8615,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8628,13 +8628,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsApiproductsAttributesResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-OrganizationsApiproductsAttributesResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8654,8 +8654,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8665,7 +8665,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8677,12 +8677,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8702,8 +8702,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8713,7 +8713,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8725,12 +8725,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8750,8 +8750,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8761,7 +8761,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8773,13 +8773,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateApiProductAttribute", () {
+    unittest.test('method--updateApiProductAttribute', () {
       var mock = HttpServerMock();
       api.OrganizationsApiproductsAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
       var arg_request = buildGoogleCloudApigeeV1Attribute();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Attribute.fromJson(json);
         checkGoogleCloudApigeeV1Attribute(obj);
@@ -8802,8 +8802,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8813,7 +8813,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8827,17 +8827,17 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsApisResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsApisResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsApisResourceApi res =
           api.ApigeeApi(mock).organizations.apis;
       var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = "foo";
-      var arg_name = "foo";
+      var arg_parent = 'foo';
+      var arg_name = 'foo';
       var arg_validate = true;
-      var arg_action = "foo";
-      var arg_$fields = "foo";
+      var arg_action = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
         checkGoogleApiHttpBody(obj);
@@ -8860,8 +8860,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8875,7 +8875,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1ApiProxyRevision());
@@ -8892,12 +8892,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsApisResourceApi res =
           api.ApigeeApi(mock).organizations.apis;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8917,8 +8917,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8928,7 +8928,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProxy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8940,12 +8940,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsApisResourceApi res =
           api.ApigeeApi(mock).organizations.apis;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8965,8 +8965,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8976,7 +8976,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProxy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8988,14 +8988,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsApisResourceApi res =
           api.ApigeeApi(mock).organizations.apis;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_includeMetaData = true;
       var arg_includeRevisions = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9015,8 +9015,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9030,7 +9030,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListApiProxiesResponse());
@@ -9047,13 +9047,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsApisDeploymentsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-OrganizationsApisDeploymentsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsApisDeploymentsResourceApi res =
           api.ApigeeApi(mock).organizations.apis.deployments;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9073,8 +9073,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9084,7 +9084,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
@@ -9098,14 +9098,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsApisKeyvaluemapsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsApisKeyvaluemapsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsApisKeyvaluemapsResourceApi res =
           api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
       var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1KeyValueMap.fromJson(json);
         checkGoogleCloudApigeeV1KeyValueMap(obj);
@@ -9128,8 +9128,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9139,7 +9139,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9151,12 +9151,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsApisKeyvaluemapsResourceApi res =
           api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9176,8 +9176,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9187,7 +9187,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9200,13 +9200,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsApisRevisionsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-OrganizationsApisRevisionsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsApisRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.apis.revisions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9226,8 +9226,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9237,7 +9237,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1ApiProxyRevision());
@@ -9250,13 +9250,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsApisRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.apis.revisions;
-      var arg_name = "foo";
-      var arg_format = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_format = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9276,8 +9276,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9288,7 +9288,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9300,14 +9300,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateApiProxyRevision", () {
+    unittest.test('method--updateApiProxyRevision', () {
       var mock = HttpServerMock();
       api.OrganizationsApisRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.apis.revisions;
       var arg_request = buildGoogleApiHttpBody();
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_validate = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
         checkGoogleApiHttpBody(obj);
@@ -9330,8 +9330,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9343,7 +9343,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1ApiProxyRevision());
@@ -9358,14 +9358,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsApisRevisionsDeploymentsResourceApi",
+  unittest.group('resource-OrganizationsApisRevisionsDeploymentsResourceApi',
       () {
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsApisRevisionsDeploymentsResourceApi res =
           api.ApigeeApi(mock).organizations.apis.revisions.deployments;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9385,8 +9385,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9396,7 +9396,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
@@ -9410,13 +9410,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsAppsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-OrganizationsAppsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsAppsResourceApi res =
           api.ApigeeApi(mock).organizations.apps;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9436,8 +9436,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9447,7 +9447,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1App());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9459,21 +9459,21 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsAppsResourceApi res =
           api.ApigeeApi(mock).organizations.apps;
-      var arg_parent = "foo";
-      var arg_startKey = "foo";
+      var arg_parent = 'foo';
+      var arg_startKey = 'foo';
       var arg_expand = true;
       var arg_includeCred = true;
-      var arg_rows = "foo";
-      var arg_status = "foo";
-      var arg_keyStatus = "foo";
-      var arg_apptype = "foo";
-      var arg_apiProduct = "foo";
-      var arg_ids = "foo";
-      var arg_$fields = "foo";
+      var arg_rows = 'foo';
+      var arg_status = 'foo';
+      var arg_keyStatus = 'foo';
+      var arg_apptype = 'foo';
+      var arg_apiProduct = 'foo';
+      var arg_ids = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9493,8 +9493,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9519,7 +9519,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1ListAppsResponse());
@@ -9543,14 +9543,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsDeploymentsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-OrganizationsDeploymentsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsDeploymentsResourceApi res =
           api.ApigeeApi(mock).organizations.deployments;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_sharedFlows = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9570,8 +9570,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9583,7 +9583,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
@@ -9597,14 +9597,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsDevelopersResourceApi", () {
-    unittest.test("method--attributes", () {
+  unittest.group('resource-OrganizationsDevelopersResourceApi', () {
+    unittest.test('method--attributes', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersResourceApi res =
           api.ApigeeApi(mock).organizations.developers;
       var arg_request = buildGoogleCloudApigeeV1Attributes();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Attributes.fromJson(json);
         checkGoogleCloudApigeeV1Attributes(obj);
@@ -9627,8 +9627,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9638,7 +9638,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9650,13 +9650,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersResourceApi res =
           api.ApigeeApi(mock).organizations.developers;
       var arg_request = buildGoogleCloudApigeeV1Developer();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Developer.fromJson(json);
         checkGoogleCloudApigeeV1Developer(obj);
@@ -9679,8 +9679,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9690,7 +9690,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9702,12 +9702,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersResourceApi res =
           api.ApigeeApi(mock).organizations.developers;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9727,8 +9727,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9738,7 +9738,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9750,13 +9750,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersResourceApi res =
           api.ApigeeApi(mock).organizations.developers;
-      var arg_name = "foo";
-      var arg_action = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_action = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9776,8 +9776,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9788,7 +9788,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9800,17 +9800,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersResourceApi res =
           api.ApigeeApi(mock).organizations.developers;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_expand = true;
       var arg_includeCompany = true;
-      var arg_startKey = "foo";
-      var arg_ids = "foo";
-      var arg_count = "foo";
-      var arg_$fields = "foo";
+      var arg_startKey = 'foo';
+      var arg_ids = 'foo';
+      var arg_count = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9830,8 +9830,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9849,7 +9849,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListOfDevelopersResponse());
@@ -9868,13 +9868,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setDeveloperStatus", () {
+    unittest.test('method--setDeveloperStatus', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersResourceApi res =
           api.ApigeeApi(mock).organizations.developers;
-      var arg_name = "foo";
-      var arg_action = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_action = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9894,8 +9894,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9906,7 +9906,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9919,13 +9919,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersResourceApi res =
           api.ApigeeApi(mock).organizations.developers;
       var arg_request = buildGoogleCloudApigeeV1Developer();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Developer.fromJson(json);
         checkGoogleCloudApigeeV1Developer(obj);
@@ -9948,8 +9948,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9959,7 +9959,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9972,14 +9972,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsDevelopersAppsResourceApi", () {
-    unittest.test("method--attributes", () {
+  unittest.group('resource-OrganizationsDevelopersAppsResourceApi', () {
+    unittest.test('method--attributes', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1Attributes();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Attributes.fromJson(json);
         checkGoogleCloudApigeeV1Attributes(obj);
@@ -10002,8 +10002,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10013,7 +10013,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10025,13 +10025,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DeveloperApp.fromJson(json);
         checkGoogleCloudApigeeV1DeveloperApp(obj);
@@ -10054,8 +10054,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10065,7 +10065,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10077,12 +10077,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10102,8 +10102,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10113,7 +10113,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10125,14 +10125,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--generateKeyPairOrUpdateDeveloperAppStatus", () {
+    unittest.test('method--generateKeyPairOrUpdateDeveloperAppStatus', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
-      var arg_name = "foo";
-      var arg_action = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_action = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DeveloperApp.fromJson(json);
         checkGoogleCloudApigeeV1DeveloperApp(obj);
@@ -10155,8 +10155,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10167,7 +10167,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10180,14 +10180,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_name = "foo";
-      var arg_query = "foo";
-      var arg_entity = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_query = 'foo';
+      var arg_entity = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10207,8 +10207,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10220,7 +10220,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10233,16 +10233,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_parent = "foo";
-      var arg_startKey = "foo";
+      var arg_parent = 'foo';
+      var arg_startKey = 'foo';
       var arg_shallowExpand = true;
       var arg_expand = true;
-      var arg_count = "foo";
-      var arg_$fields = "foo";
+      var arg_count = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10262,8 +10262,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10280,7 +10280,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeveloperAppsResponse());
@@ -10298,13 +10298,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DeveloperApp.fromJson(json);
         checkGoogleCloudApigeeV1DeveloperApp(obj);
@@ -10327,8 +10327,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10338,7 +10338,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10351,14 +10351,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsDevelopersAppsAttributesResourceApi",
+  unittest.group('resource-OrganizationsDevelopersAppsAttributesResourceApi',
       () {
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10378,8 +10378,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10389,7 +10389,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10401,12 +10401,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10426,8 +10426,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10437,7 +10437,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10449,12 +10449,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10474,8 +10474,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10485,7 +10485,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10497,13 +10497,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateDeveloperAppAttribute", () {
+    unittest.test('method--updateDeveloperAppAttribute', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
       var arg_request = buildGoogleCloudApigeeV1Attribute();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Attribute.fromJson(json);
         checkGoogleCloudApigeeV1Attribute(obj);
@@ -10526,8 +10526,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10537,7 +10537,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10551,14 +10551,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsDevelopersAppsKeysResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsDevelopersAppsKeysResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsKeysResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(json);
         checkGoogleCloudApigeeV1DeveloperAppKey(obj);
@@ -10581,8 +10581,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10592,7 +10592,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
@@ -10605,12 +10605,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsKeysResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.keys;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10630,8 +10630,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10641,7 +10641,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
@@ -10654,12 +10654,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsKeysResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.keys;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10679,8 +10679,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10690,7 +10690,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
@@ -10703,13 +10703,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--replaceDeveloperAppKey", () {
+    unittest.test('method--replaceDeveloperAppKey', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsKeysResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(json);
         checkGoogleCloudApigeeV1DeveloperAppKey(obj);
@@ -10732,8 +10732,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10743,7 +10743,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
@@ -10756,14 +10756,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateDeveloperAppKey", () {
+    unittest.test('method--updateDeveloperAppKey', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsKeysResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var arg_name = "foo";
-      var arg_action = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_action = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(json);
         checkGoogleCloudApigeeV1DeveloperAppKey(obj);
@@ -10786,8 +10786,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10798,7 +10798,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
@@ -10814,13 +10814,13 @@ void main() {
   });
 
   unittest.group(
-      "resource-OrganizationsDevelopersAppsKeysApiproductsResourceApi", () {
-    unittest.test("method--delete", () {
+      'resource-OrganizationsDevelopersAppsKeysApiproductsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsKeysApiproductsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10840,8 +10840,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10851,7 +10851,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
@@ -10864,13 +10864,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateDeveloperAppKeyApiProduct", () {
+    unittest.test('method--updateDeveloperAppKeyApiProduct', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsKeysApiproductsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
-      var arg_name = "foo";
-      var arg_action = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_action = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10890,8 +10890,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10902,7 +10902,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10916,15 +10916,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsDevelopersAppsKeysCreateResourceApi",
+  unittest.group('resource-OrganizationsDevelopersAppsKeysCreateResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAppsKeysCreateResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps.keys.create_1;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(json);
         checkGoogleCloudApigeeV1DeveloperAppKey(obj);
@@ -10947,8 +10947,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10958,7 +10958,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
@@ -10972,13 +10972,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsDevelopersAttributesResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-OrganizationsDevelopersAttributesResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.developers.attributes_1;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10998,8 +10998,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11009,7 +11009,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11021,12 +11021,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.developers.attributes_1;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11046,8 +11046,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11057,7 +11057,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11069,12 +11069,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.developers.attributes_1;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11094,8 +11094,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11105,7 +11105,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11117,13 +11117,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateDeveloperAttribute", () {
+    unittest.test('method--updateDeveloperAttribute', () {
       var mock = HttpServerMock();
       api.OrganizationsDevelopersAttributesResourceApi res =
           api.ApigeeApi(mock).organizations.developers.attributes_1;
       var arg_request = buildGoogleCloudApigeeV1Attribute();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Attribute.fromJson(json);
         checkGoogleCloudApigeeV1Attribute(obj);
@@ -11146,8 +11146,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11157,7 +11157,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11170,15 +11170,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvgroupsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsEnvgroupsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvgroupsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups;
       var arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
-      var arg_parent = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(json);
         checkGoogleCloudApigeeV1EnvironmentGroup(obj);
@@ -11201,8 +11201,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11213,7 +11213,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11225,12 +11225,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvgroupsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11250,8 +11250,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11261,7 +11261,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11273,12 +11273,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvgroupsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11298,8 +11298,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11309,7 +11309,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1EnvironmentGroup());
@@ -11322,14 +11322,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvgroupsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11349,8 +11349,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11364,7 +11364,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse());
@@ -11380,14 +11380,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvgroupsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups;
       var arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(json);
         checkGoogleCloudApigeeV1EnvironmentGroup(obj);
@@ -11410,8 +11410,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11423,7 +11423,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11437,14 +11437,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvgroupsAttachmentsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsEnvgroupsAttachmentsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvgroupsAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_request = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(json);
@@ -11468,8 +11468,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11479,7 +11479,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11491,12 +11491,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvgroupsAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups.attachments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11516,8 +11516,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11527,7 +11527,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11539,12 +11539,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvgroupsAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups.attachments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11564,8 +11564,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11575,7 +11575,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1EnvironmentGroupAttachment());
@@ -11588,14 +11588,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvgroupsAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups.attachments;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11615,8 +11615,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11630,7 +11630,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(
             buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse());
@@ -11648,15 +11648,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsEnvironmentsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Environment();
-      var arg_parent = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Environment.fromJson(json);
         checkGoogleCloudApigeeV1Environment(obj);
@@ -11679,8 +11679,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11691,7 +11691,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11703,12 +11703,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11728,8 +11728,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11739,7 +11739,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11751,12 +11751,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11776,8 +11776,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11787,7 +11787,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11799,12 +11799,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getDebugmask", () {
+    unittest.test('method--getDebugmask', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11824,8 +11824,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11835,7 +11835,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugMask());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11847,12 +11847,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getDeployedConfig", () {
+    unittest.test('method--getDeployedConfig', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11872,8 +11872,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11883,7 +11883,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1EnvironmentConfig());
@@ -11896,13 +11896,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11922,8 +11922,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11936,7 +11936,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11951,13 +11951,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(json);
         checkGoogleIamV1SetIamPolicyRequest(obj);
@@ -11980,8 +11980,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11991,7 +11991,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12003,12 +12003,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--subscribe", () {
+    unittest.test('method--subscribe', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12028,8 +12028,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12039,7 +12039,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Subscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12051,13 +12051,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleIamV1TestIamPermissionsRequest.fromJson(json);
         checkGoogleIamV1TestIamPermissionsRequest(obj);
@@ -12080,8 +12080,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12091,7 +12091,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleIamV1TestIamPermissionsResponse());
@@ -12104,13 +12104,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--unsubscribe", () {
+    unittest.test('method--unsubscribe', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Subscription();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Subscription.fromJson(json);
         checkGoogleCloudApigeeV1Subscription(obj);
@@ -12133,8 +12133,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12144,7 +12144,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12156,13 +12156,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Environment();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Environment.fromJson(json);
         checkGoogleCloudApigeeV1Environment(obj);
@@ -12185,8 +12185,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12196,7 +12196,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12208,15 +12208,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateDebugmask", () {
+    unittest.test('method--updateDebugmask', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1DebugMask();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
       var arg_replaceRepeatedFields = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DebugMask.fromJson(json);
         checkGoogleCloudApigeeV1DebugMask(obj);
@@ -12239,8 +12239,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12254,7 +12254,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugMask());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12269,13 +12269,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateEnvironment", () {
+    unittest.test('method--updateEnvironment', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Environment();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Environment.fromJson(json);
         checkGoogleCloudApigeeV1Environment(obj);
@@ -12298,8 +12298,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12309,7 +12309,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12322,15 +12322,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsAnalyticsAdminResourceApi",
+  unittest.group('resource-OrganizationsEnvironmentsAnalyticsAdminResourceApi',
       () {
-    unittest.test("method--getSchemav2", () {
+    unittest.test('method--getSchemav2', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsAnalyticsAdminResourceApi res =
           api.ApigeeApi(mock).organizations.environments.analytics.admin;
-      var arg_name = "foo";
-      var arg_type = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_type = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12350,8 +12350,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12362,7 +12362,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Schema());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12376,14 +12376,14 @@ void main() {
   });
 
   unittest.group(
-      "resource-OrganizationsEnvironmentsAnalyticsExportsResourceApi", () {
-    unittest.test("method--create", () {
+      'resource-OrganizationsEnvironmentsAnalyticsExportsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsAnalyticsExportsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
       var arg_request = buildGoogleCloudApigeeV1ExportRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1ExportRequest.fromJson(json);
         checkGoogleCloudApigeeV1ExportRequest(obj);
@@ -12406,8 +12406,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12417,7 +12417,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Export());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12429,12 +12429,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsAnalyticsExportsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12454,8 +12454,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12465,7 +12465,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Export());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12477,12 +12477,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsAnalyticsExportsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12502,8 +12502,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12513,7 +12513,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1ListExportsResponse());
@@ -12527,14 +12527,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsApisDeploymentsResourceApi",
+  unittest.group('resource-OrganizationsEnvironmentsApisDeploymentsResourceApi',
       () {
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisDeploymentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.apis.deployments;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12554,8 +12554,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12565,7 +12565,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
@@ -12579,16 +12579,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsApisRevisionsResourceApi",
+  unittest.group('resource-OrganizationsEnvironmentsApisRevisionsResourceApi',
       () {
-    unittest.test("method--deploy", () {
+    unittest.test('method--deploy', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.apis.revisions;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_override = true;
       var arg_sequencedRollout = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12608,8 +12608,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12623,7 +12623,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12638,12 +12638,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getDeployments", () {
+    unittest.test('method--getDeployments', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.apis.revisions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12663,8 +12663,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12674,7 +12674,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12686,13 +12686,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--undeploy", () {
+    unittest.test('method--undeploy', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.apis.revisions;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_sequencedRollout = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12712,8 +12712,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12725,7 +12725,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12740,9 +12740,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi",
+      'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi res =
           api.ApigeeApi(mock)
@@ -12752,9 +12752,9 @@ void main() {
               .revisions
               .debugsessions;
       var arg_request = buildGoogleCloudApigeeV1DebugSession();
-      var arg_parent = "foo";
-      var arg_timeout = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_timeout = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DebugSession.fromJson(json);
         checkGoogleCloudApigeeV1DebugSession(obj);
@@ -12777,8 +12777,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12790,7 +12790,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugSession());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12803,7 +12803,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--deleteData", () {
+    unittest.test('method--deleteData', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi res =
           api.ApigeeApi(mock)
@@ -12812,8 +12812,8 @@ void main() {
               .apis
               .revisions
               .debugsessions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12833,8 +12833,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12844,7 +12844,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12856,7 +12856,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi res =
           api.ApigeeApi(mock)
@@ -12865,8 +12865,8 @@ void main() {
               .apis
               .revisions
               .debugsessions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12886,8 +12886,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12897,7 +12897,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugSession());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12909,7 +12909,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi res =
           api.ApigeeApi(mock)
@@ -12918,10 +12918,10 @@ void main() {
               .apis
               .revisions
               .debugsessions;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12941,8 +12941,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12956,7 +12956,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDebugSessionsResponse());
@@ -12974,9 +12974,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi",
+      'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi',
       () {
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi
           res = api.ApigeeApi(mock)
@@ -12986,8 +12986,8 @@ void main() {
               .revisions
               .debugsessions
               .data;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13007,8 +13007,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13018,7 +13018,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1DebugSessionTransaction());
@@ -13033,9 +13033,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi",
+      'resource-OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi',
       () {
-    unittest.test("method--generateDeployChangeReport", () {
+    unittest.test('method--generateDeployChangeReport', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi res =
           api.ApigeeApi(mock)
@@ -13044,9 +13044,9 @@ void main() {
               .apis
               .revisions
               .deployments;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_override = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13066,8 +13066,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13079,7 +13079,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1DeploymentChangeReport());
@@ -13093,7 +13093,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--generateUndeployChangeReport", () {
+    unittest.test('method--generateUndeployChangeReport', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi res =
           api.ApigeeApi(mock)
@@ -13102,8 +13102,8 @@ void main() {
               .apis
               .revisions
               .deployments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13123,8 +13123,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13134,7 +13134,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1DeploymentChangeReport());
@@ -13148,13 +13148,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsCachesResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-OrganizationsEnvironmentsCachesResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsCachesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.caches;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13174,8 +13174,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13185,7 +13185,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13198,15 +13198,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsDeploymentsResourceApi",
+  unittest.group('resource-OrganizationsEnvironmentsDeploymentsResourceApi',
       () {
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsDeploymentsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.deployments;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_sharedFlows = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13226,8 +13226,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13239,7 +13239,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
@@ -13253,14 +13253,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsFlowhooksResourceApi", () {
-    unittest.test("method--attachSharedFlowToFlowHook", () {
+  unittest.group('resource-OrganizationsEnvironmentsFlowhooksResourceApi', () {
+    unittest.test('method--attachSharedFlowToFlowHook', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsFlowhooksResourceApi res =
           api.ApigeeApi(mock).organizations.environments.flowhooks;
       var arg_request = buildGoogleCloudApigeeV1FlowHook();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1FlowHook.fromJson(json);
         checkGoogleCloudApigeeV1FlowHook(obj);
@@ -13283,8 +13283,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13294,7 +13294,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13307,12 +13307,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--detachSharedFlowFromFlowHook", () {
+    unittest.test('method--detachSharedFlowFromFlowHook', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsFlowhooksResourceApi res =
           api.ApigeeApi(mock).organizations.environments.flowhooks;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13332,8 +13332,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13343,7 +13343,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13355,12 +13355,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsFlowhooksResourceApi res =
           api.ApigeeApi(mock).organizations.environments.flowhooks;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13380,8 +13380,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13391,7 +13391,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13404,15 +13404,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsKeystoresResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsEnvironmentsKeystoresResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeystoresResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keystores;
       var arg_request = buildGoogleCloudApigeeV1Keystore();
-      var arg_parent = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Keystore.fromJson(json);
         checkGoogleCloudApigeeV1Keystore(obj);
@@ -13435,8 +13435,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13447,7 +13447,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13459,12 +13459,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeystoresResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keystores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13484,8 +13484,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13495,7 +13495,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13507,12 +13507,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeystoresResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keystores;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13532,8 +13532,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13543,7 +13543,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13557,19 +13557,19 @@ void main() {
   });
 
   unittest.group(
-      "resource-OrganizationsEnvironmentsKeystoresAliasesResourceApi", () {
-    unittest.test("method--create", () {
+      'resource-OrganizationsEnvironmentsKeystoresAliasesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = "foo";
-      var arg_alias = "foo";
+      var arg_parent = 'foo';
+      var arg_alias = 'foo';
       var arg_ignoreNewlineValidation = true;
-      var arg_P_password = "foo";
+      var arg_P_password = 'foo';
       var arg_ignoreExpiryValidation = true;
-      var arg_format = "foo";
-      var arg_$fields = "foo";
+      var arg_format = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
         checkGoogleApiHttpBody(obj);
@@ -13592,8 +13592,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13611,7 +13611,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13629,12 +13629,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--csr", () {
+    unittest.test('method--csr', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13654,8 +13654,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13665,7 +13665,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13677,12 +13677,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13702,8 +13702,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13713,7 +13713,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13725,12 +13725,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13750,8 +13750,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13761,7 +13761,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13773,12 +13773,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getCertificate", () {
+    unittest.test('method--getCertificate', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13798,8 +13798,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13809,7 +13809,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13821,15 +13821,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_request = buildGoogleApiHttpBody();
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_ignoreNewlineValidation = true;
       var arg_ignoreExpiryValidation = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
         checkGoogleApiHttpBody(obj);
@@ -13852,8 +13852,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13867,7 +13867,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13883,15 +13883,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsKeyvaluemapsResourceApi",
+  unittest.group('resource-OrganizationsEnvironmentsKeyvaluemapsResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeyvaluemapsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
       var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1KeyValueMap.fromJson(json);
         checkGoogleCloudApigeeV1KeyValueMap(obj);
@@ -13914,8 +13914,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13925,7 +13925,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13937,12 +13937,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsKeyvaluemapsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13962,8 +13962,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13973,7 +13973,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13986,29 +13986,29 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsOptimizedStatsResourceApi",
+  unittest.group('resource-OrganizationsEnvironmentsOptimizedStatsResourceApi',
       () {
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsOptimizedStatsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.optimizedStats;
-      var arg_name = "foo";
-      var arg_offset = "foo";
+      var arg_name = 'foo';
+      var arg_offset = 'foo';
       var arg_sonar = true;
-      var arg_accuracy = "foo";
-      var arg_limit = "foo";
-      var arg_timeUnit = "foo";
-      var arg_sort = "foo";
+      var arg_accuracy = 'foo';
+      var arg_limit = 'foo';
+      var arg_timeUnit = 'foo';
+      var arg_sort = 'foo';
       var arg_realtime = true;
-      var arg_aggTable = "foo";
-      var arg_timeRange = "foo";
-      var arg_tzo = "foo";
-      var arg_sortby = "foo";
-      var arg_topk = "foo";
-      var arg_select = "foo";
+      var arg_aggTable = 'foo';
+      var arg_timeRange = 'foo';
+      var arg_tzo = 'foo';
+      var arg_sortby = 'foo';
+      var arg_topk = 'foo';
+      var arg_select = 'foo';
       var arg_tsAscending = true;
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14028,8 +14028,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14060,7 +14060,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1OptimizedStats());
@@ -14090,14 +14090,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsQueriesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsEnvironmentsQueriesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsQueriesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.queries;
       var arg_request = buildGoogleCloudApigeeV1Query();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Query.fromJson(json);
         checkGoogleCloudApigeeV1Query(obj);
@@ -14120,8 +14120,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14131,7 +14131,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14143,12 +14143,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsQueriesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.queries;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14168,8 +14168,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14179,7 +14179,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14191,12 +14191,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getResult", () {
+    unittest.test('method--getResult', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsQueriesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.queries;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14216,8 +14216,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14227,7 +14227,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14239,18 +14239,18 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsQueriesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.queries;
-      var arg_parent = "foo";
-      var arg_submittedBy = "foo";
-      var arg_from = "foo";
-      var arg_inclQueriesWithoutReport = "foo";
-      var arg_to = "foo";
-      var arg_status = "foo";
-      var arg_dataset = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_submittedBy = 'foo';
+      var arg_from = 'foo';
+      var arg_inclQueriesWithoutReport = 'foo';
+      var arg_to = 'foo';
+      var arg_status = 'foo';
+      var arg_dataset = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14270,8 +14270,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14290,7 +14290,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListAsyncQueriesResponse());
@@ -14311,14 +14311,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsReferencesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsEnvironmentsReferencesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsReferencesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.references;
       var arg_request = buildGoogleCloudApigeeV1Reference();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Reference.fromJson(json);
         checkGoogleCloudApigeeV1Reference(obj);
@@ -14341,8 +14341,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14352,7 +14352,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14364,12 +14364,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsReferencesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.references;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14389,8 +14389,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14400,7 +14400,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14412,12 +14412,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsReferencesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.references;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14437,8 +14437,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14448,7 +14448,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14460,13 +14460,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsReferencesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.references;
       var arg_request = buildGoogleCloudApigeeV1Reference();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Reference.fromJson(json);
         checkGoogleCloudApigeeV1Reference(obj);
@@ -14489,8 +14489,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14500,7 +14500,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14513,17 +14513,17 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsResourcefilesResourceApi",
+  unittest.group('resource-OrganizationsEnvironmentsResourcefilesResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourcefilesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = "foo";
-      var arg_type = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_type = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
         checkGoogleApiHttpBody(obj);
@@ -14546,8 +14546,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14559,7 +14559,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14572,14 +14572,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourcefilesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_parent = "foo";
-      var arg_type = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_type = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14599,8 +14599,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14610,7 +14610,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14622,14 +14622,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourcefilesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_parent = "foo";
-      var arg_type = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_type = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14649,8 +14649,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14660,7 +14660,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14672,13 +14672,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourcefilesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_parent = "foo";
-      var arg_type = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_type = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14698,8 +14698,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14710,7 +14710,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse());
@@ -14723,13 +14723,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--listEnvironmentResources", () {
+    unittest.test('method--listEnvironmentResources', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourcefilesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_parent = "foo";
-      var arg_type = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_type = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14749,8 +14749,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14760,7 +14760,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse());
@@ -14773,15 +14773,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsResourcefilesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = "foo";
-      var arg_type = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_type = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
         checkGoogleApiHttpBody(obj);
@@ -14804,8 +14804,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14815,7 +14815,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14830,9 +14830,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi",
+      'resource-OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi',
       () {
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi res =
           api.ApigeeApi(mock)
@@ -14840,8 +14840,8 @@ void main() {
               .environments
               .sharedflows
               .deployments;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14861,8 +14861,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14872,7 +14872,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
@@ -14887,14 +14887,14 @@ void main() {
   });
 
   unittest.group(
-      "resource-OrganizationsEnvironmentsSharedflowsRevisionsResourceApi", () {
-    unittest.test("method--deploy", () {
+      'resource-OrganizationsEnvironmentsSharedflowsRevisionsResourceApi', () {
+    unittest.test('method--deploy', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsSharedflowsRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_override = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14914,8 +14914,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14927,7 +14927,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14939,12 +14939,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getDeployments", () {
+    unittest.test('method--getDeployments', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsSharedflowsRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14964,8 +14964,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14975,7 +14975,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14987,12 +14987,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--undeploy", () {
+    unittest.test('method--undeploy', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsSharedflowsRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15012,8 +15012,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15023,7 +15023,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15036,28 +15036,28 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsStatsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-OrganizationsEnvironmentsStatsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsStatsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.stats;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_realtime = true;
-      var arg_timeUnit = "foo";
-      var arg_sortby = "foo";
-      var arg_accuracy = "foo";
-      var arg_filter = "foo";
-      var arg_tzo = "foo";
-      var arg_sort = "foo";
-      var arg_select = "foo";
-      var arg_offset = "foo";
-      var arg_limit = "foo";
+      var arg_timeUnit = 'foo';
+      var arg_sortby = 'foo';
+      var arg_accuracy = 'foo';
+      var arg_filter = 'foo';
+      var arg_tzo = 'foo';
+      var arg_sort = 'foo';
+      var arg_select = 'foo';
+      var arg_offset = 'foo';
+      var arg_limit = 'foo';
       var arg_sonar = true;
-      var arg_topk = "foo";
-      var arg_timeRange = "foo";
+      var arg_topk = 'foo';
+      var arg_timeRange = 'foo';
       var arg_tsAscending = true;
-      var arg_aggTable = "foo";
-      var arg_$fields = "foo";
+      var arg_aggTable = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15077,8 +15077,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15109,7 +15109,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Stats());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15138,16 +15138,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsEnvironmentsTargetserversResourceApi",
+  unittest.group('resource-OrganizationsEnvironmentsTargetserversResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsTargetserversResourceApi res =
           api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_request = buildGoogleCloudApigeeV1TargetServer();
-      var arg_parent = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1TargetServer.fromJson(json);
         checkGoogleCloudApigeeV1TargetServer(obj);
@@ -15170,8 +15170,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15182,7 +15182,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15194,12 +15194,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsTargetserversResourceApi res =
           api.ApigeeApi(mock).organizations.environments.targetservers;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15219,8 +15219,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15230,7 +15230,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15242,12 +15242,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsTargetserversResourceApi res =
           api.ApigeeApi(mock).organizations.environments.targetservers;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15267,8 +15267,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15278,7 +15278,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15290,13 +15290,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsEnvironmentsTargetserversResourceApi res =
           api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_request = buildGoogleCloudApigeeV1TargetServer();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1TargetServer.fromJson(json);
         checkGoogleCloudApigeeV1TargetServer(obj);
@@ -15319,8 +15319,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15330,7 +15330,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15343,14 +15343,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsInstancesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsInstancesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsInstancesResourceApi res =
           api.ApigeeApi(mock).organizations.instances;
       var arg_request = buildGoogleCloudApigeeV1Instance();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1Instance.fromJson(json);
         checkGoogleCloudApigeeV1Instance(obj);
@@ -15373,8 +15373,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15384,7 +15384,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15396,12 +15396,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsInstancesResourceApi res =
           api.ApigeeApi(mock).organizations.instances;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15421,8 +15421,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15432,7 +15432,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15444,12 +15444,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsInstancesResourceApi res =
           api.ApigeeApi(mock).organizations.instances;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15469,8 +15469,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15480,7 +15480,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Instance());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15492,14 +15492,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsInstancesResourceApi res =
           api.ApigeeApi(mock).organizations.instances;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15519,8 +15519,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15534,7 +15534,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListInstancesResponse());
@@ -15550,13 +15550,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--reportStatus", () {
+    unittest.test('method--reportStatus', () {
       var mock = HttpServerMock();
       api.OrganizationsInstancesResourceApi res =
           api.ApigeeApi(mock).organizations.instances;
       var arg_request = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
-      var arg_instance = "foo";
-      var arg_$fields = "foo";
+      var arg_instance = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(json);
@@ -15580,8 +15580,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15591,7 +15591,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ReportInstanceStatusResponse());
@@ -15605,14 +15605,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsInstancesAttachmentsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsInstancesAttachmentsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsInstancesAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_request = buildGoogleCloudApigeeV1InstanceAttachment();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1InstanceAttachment.fromJson(json);
         checkGoogleCloudApigeeV1InstanceAttachment(obj);
@@ -15635,8 +15635,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15646,7 +15646,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15658,12 +15658,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsInstancesAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.instances.attachments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15683,8 +15683,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15694,7 +15694,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15706,12 +15706,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsInstancesAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.instances.attachments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15731,8 +15731,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15742,7 +15742,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1InstanceAttachment());
@@ -15755,14 +15755,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsInstancesAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.instances.attachments;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15782,8 +15782,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15797,7 +15797,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse());
@@ -15814,14 +15814,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsKeyvaluemapsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsKeyvaluemapsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsKeyvaluemapsResourceApi res =
           api.ApigeeApi(mock).organizations.keyvaluemaps;
       var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1KeyValueMap.fromJson(json);
         checkGoogleCloudApigeeV1KeyValueMap(obj);
@@ -15844,8 +15844,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15855,7 +15855,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15867,12 +15867,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsKeyvaluemapsResourceApi res =
           api.ApigeeApi(mock).organizations.keyvaluemaps;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15892,8 +15892,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15903,7 +15903,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15916,13 +15916,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsOperationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-OrganizationsOperationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsOperationsResourceApi res =
           api.ApigeeApi(mock).organizations.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15942,8 +15942,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15953,7 +15953,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15965,15 +15965,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsOperationsResourceApi res =
           api.ApigeeApi(mock).organizations.operations;
-      var arg_name = "foo";
-      var arg_filter = "foo";
+      var arg_name = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15993,8 +15993,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16009,7 +16009,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
@@ -16027,14 +16027,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsReportsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsReportsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsReportsResourceApi res =
           api.ApigeeApi(mock).organizations.reports;
       var arg_request = buildGoogleCloudApigeeV1CustomReport();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1CustomReport.fromJson(json);
         checkGoogleCloudApigeeV1CustomReport(obj);
@@ -16057,8 +16057,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16068,7 +16068,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
         return async.Future.value(stringResponse(200, h, resp));
@@ -16080,12 +16080,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsReportsResourceApi res =
           api.ApigeeApi(mock).organizations.reports;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16105,8 +16105,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16116,7 +16116,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1DeleteCustomReportResponse());
@@ -16129,12 +16129,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsReportsResourceApi res =
           api.ApigeeApi(mock).organizations.reports;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16154,8 +16154,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16165,7 +16165,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
         return async.Future.value(stringResponse(200, h, resp));
@@ -16177,13 +16177,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsReportsResourceApi res =
           api.ApigeeApi(mock).organizations.reports;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_expand = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16203,8 +16203,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16216,7 +16216,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListCustomReportsResponse());
@@ -16229,13 +16229,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.OrganizationsReportsResourceApi res =
           api.ApigeeApi(mock).organizations.reports;
       var arg_request = buildGoogleCloudApigeeV1CustomReport();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1CustomReport.fromJson(json);
         checkGoogleCloudApigeeV1CustomReport(obj);
@@ -16258,8 +16258,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16269,7 +16269,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
         return async.Future.value(stringResponse(200, h, resp));
@@ -16282,16 +16282,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsSharedflowsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsSharedflowsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsSharedflowsResourceApi res =
           api.ApigeeApi(mock).organizations.sharedflows;
       var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = "foo";
-      var arg_action = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_action = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
         checkGoogleApiHttpBody(obj);
@@ -16314,8 +16314,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16327,7 +16327,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1SharedFlowRevision());
@@ -16341,12 +16341,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsSharedflowsResourceApi res =
           api.ApigeeApi(mock).organizations.sharedflows;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16366,8 +16366,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16377,7 +16377,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1SharedFlow());
         return async.Future.value(stringResponse(200, h, resp));
@@ -16389,12 +16389,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsSharedflowsResourceApi res =
           api.ApigeeApi(mock).organizations.sharedflows;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16414,8 +16414,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16425,7 +16425,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1SharedFlow());
         return async.Future.value(stringResponse(200, h, resp));
@@ -16437,14 +16437,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsSharedflowsResourceApi res =
           api.ApigeeApi(mock).organizations.sharedflows;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_includeMetaData = true;
       var arg_includeRevisions = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16464,8 +16464,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16479,7 +16479,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListSharedFlowsResponse());
@@ -16496,13 +16496,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsSharedflowsDeploymentsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-OrganizationsSharedflowsDeploymentsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsSharedflowsDeploymentsResourceApi res =
           api.ApigeeApi(mock).organizations.sharedflows.deployments;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16522,8 +16522,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16533,7 +16533,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
@@ -16547,13 +16547,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsSharedflowsRevisionsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-OrganizationsSharedflowsRevisionsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsSharedflowsRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.sharedflows.revisions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16573,8 +16573,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16584,7 +16584,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1SharedFlowRevision());
@@ -16597,13 +16597,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsSharedflowsRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.sharedflows.revisions;
-      var arg_name = "foo";
-      var arg_format = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_format = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16623,8 +16623,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16635,7 +16635,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
@@ -16647,14 +16647,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateSharedFlowRevision", () {
+    unittest.test('method--updateSharedFlowRevision', () {
       var mock = HttpServerMock();
       api.OrganizationsSharedflowsRevisionsResourceApi res =
           api.ApigeeApi(mock).organizations.sharedflows.revisions;
       var arg_request = buildGoogleApiHttpBody();
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_validate = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
         checkGoogleApiHttpBody(obj);
@@ -16677,8 +16677,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16690,7 +16690,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1SharedFlowRevision());
@@ -16706,13 +16706,13 @@ void main() {
   });
 
   unittest.group(
-      "resource-OrganizationsSharedflowsRevisionsDeploymentsResourceApi", () {
-    unittest.test("method--list", () {
+      'resource-OrganizationsSharedflowsRevisionsDeploymentsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsSharedflowsRevisionsDeploymentsResourceApi res =
           api.ApigeeApi(mock).organizations.sharedflows.revisions.deployments;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16732,8 +16732,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16743,7 +16743,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
@@ -16757,14 +16757,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsSitesApicategoriesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsSitesApicategoriesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsSitesApicategoriesResourceApi res =
           api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(json);
         checkGoogleCloudApigeeV1ApiCategoryData(obj);
@@ -16787,8 +16787,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16798,7 +16798,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
         return async.Future.value(stringResponse(200, h, resp));
@@ -16810,12 +16810,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsSitesApicategoriesResourceApi res =
           api.ApigeeApi(mock).organizations.sites.apicategories;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16835,8 +16835,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16846,7 +16846,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleCloudApigeeV1ApiResponseWrapper());
@@ -16859,12 +16859,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsSitesApicategoriesResourceApi res =
           api.ApigeeApi(mock).organizations.sites.apicategories;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16884,8 +16884,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16895,7 +16895,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
         return async.Future.value(stringResponse(200, h, resp));
@@ -16907,12 +16907,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsSitesApicategoriesResourceApi res =
           api.ApigeeApi(mock).organizations.sites.apicategories;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -16932,8 +16932,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16943,7 +16943,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListApiCategoriesResponse());
@@ -16956,13 +16956,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.OrganizationsSitesApicategoriesResourceApi res =
           api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(json);
         checkGoogleCloudApigeeV1ApiCategoryData(obj);
@@ -16985,8 +16985,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16996,7 +16996,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
         return async.Future.value(stringResponse(200, h, resp));
@@ -17009,13 +17009,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsResourceApi", () {
-    unittest.test("method--provisionOrganization", () {
+  unittest.group('resource-ProjectsResourceApi', () {
+    unittest.test('method--provisionOrganization', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.ApigeeApi(mock).projects;
       var arg_request = buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
-      var arg_project = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(json);
@@ -17039,8 +17039,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17050,7 +17050,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));

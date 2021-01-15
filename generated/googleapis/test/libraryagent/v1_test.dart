@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,10 +75,10 @@ api.GoogleExampleLibraryagentV1Book buildGoogleExampleLibraryagentV1Book() {
   var o = api.GoogleExampleLibraryagentV1Book();
   buildCounterGoogleExampleLibraryagentV1Book++;
   if (buildCounterGoogleExampleLibraryagentV1Book < 3) {
-    o.author = "foo";
-    o.name = "foo";
+    o.author = 'foo';
+    o.name = 'foo';
     o.read = true;
-    o.title = "foo";
+    o.title = 'foo';
   }
   buildCounterGoogleExampleLibraryagentV1Book--;
   return o;
@@ -116,7 +116,7 @@ api.GoogleExampleLibraryagentV1ListBooksResponse
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListBooksResponse < 3) {
     o.books = buildUnnamed3625();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse--;
   return o;
@@ -151,7 +151,7 @@ api.GoogleExampleLibraryagentV1ListShelvesResponse
   var o = api.GoogleExampleLibraryagentV1ListShelvesResponse();
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListShelvesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.shelves = buildUnnamed3626();
   }
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse--;
@@ -173,8 +173,8 @@ api.GoogleExampleLibraryagentV1Shelf buildGoogleExampleLibraryagentV1Shelf() {
   var o = api.GoogleExampleLibraryagentV1Shelf();
   buildCounterGoogleExampleLibraryagentV1Shelf++;
   if (buildCounterGoogleExampleLibraryagentV1Shelf < 3) {
-    o.name = "foo";
-    o.theme = "foo";
+    o.name = 'foo';
+    o.theme = 'foo';
   }
   buildCounterGoogleExampleLibraryagentV1Shelf--;
   return o;
@@ -191,16 +191,16 @@ void checkGoogleExampleLibraryagentV1Shelf(
 }
 
 void main() {
-  unittest.group("obj-schema-GoogleExampleLibraryagentV1Book", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleExampleLibraryagentV1Book', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleExampleLibraryagentV1Book();
       var od = api.GoogleExampleLibraryagentV1Book.fromJson(o.toJson());
       checkGoogleExampleLibraryagentV1Book(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleExampleLibraryagentV1ListBooksResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleExampleLibraryagentV1ListBooksResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleExampleLibraryagentV1ListBooksResponse();
       var od =
           api.GoogleExampleLibraryagentV1ListBooksResponse.fromJson(o.toJson());
@@ -208,9 +208,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleExampleLibraryagentV1ListShelvesResponse",
+  unittest.group('obj-schema-GoogleExampleLibraryagentV1ListShelvesResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleExampleLibraryagentV1ListShelvesResponse();
       var od = api.GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
           o.toJson());
@@ -218,20 +218,20 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleExampleLibraryagentV1Shelf", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleExampleLibraryagentV1Shelf', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleExampleLibraryagentV1Shelf();
       var od = api.GoogleExampleLibraryagentV1Shelf.fromJson(o.toJson());
       checkGoogleExampleLibraryagentV1Shelf(od);
     });
   });
 
-  unittest.group("resource-ShelvesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ShelvesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ShelvesResourceApi res = api.LibraryagentApi(mock).shelves;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -251,8 +251,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -262,7 +262,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleExampleLibraryagentV1Shelf());
         return async.Future.value(stringResponse(200, h, resp));
@@ -274,12 +274,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ShelvesResourceApi res = api.LibraryagentApi(mock).shelves;
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -298,8 +298,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -313,7 +313,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleExampleLibraryagentV1ListShelvesResponse());
@@ -330,12 +330,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-ShelvesBooksResourceApi", () {
-    unittest.test("method--borrow", () {
+  unittest.group('resource-ShelvesBooksResourceApi', () {
+    unittest.test('method--borrow', () {
       var mock = HttpServerMock();
       api.ShelvesBooksResourceApi res = api.LibraryagentApi(mock).shelves.books;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -355,8 +355,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -366,7 +366,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleExampleLibraryagentV1Book());
         return async.Future.value(stringResponse(200, h, resp));
@@ -378,11 +378,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ShelvesBooksResourceApi res = api.LibraryagentApi(mock).shelves.books;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -402,8 +402,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -413,7 +413,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleExampleLibraryagentV1Book());
         return async.Future.value(stringResponse(200, h, resp));
@@ -425,13 +425,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ShelvesBooksResourceApi res = api.LibraryagentApi(mock).shelves.books;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -451,8 +451,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -466,7 +466,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleExampleLibraryagentV1ListBooksResponse());
@@ -482,11 +482,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--return_", () {
+    unittest.test('method--return_', () {
       var mock = HttpServerMock();
       api.ShelvesBooksResourceApi res = api.LibraryagentApi(mock).shelves.books;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -506,8 +506,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -517,7 +517,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleExampleLibraryagentV1Book());
         return async.Future.value(stringResponse(200, h, resp));

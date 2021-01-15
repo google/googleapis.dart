@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,8 +72,8 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.List<core.String> buildUnnamed1374() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -115,9 +115,9 @@ api.ApiDimensionFilter buildApiDimensionFilter() {
   var o = api.ApiDimensionFilter();
   buildCounterApiDimensionFilter++;
   if (buildCounterApiDimensionFilter < 3) {
-    o.dimension = "foo";
-    o.expression = "foo";
-    o.operator = "foo";
+    o.dimension = 'foo';
+    o.expression = 'foo';
+    o.operator = 'foo';
   }
   buildCounterApiDimensionFilter--;
   return o;
@@ -152,7 +152,7 @@ api.ApiDimensionFilterGroup buildApiDimensionFilterGroup() {
   buildCounterApiDimensionFilterGroup++;
   if (buildCounterApiDimensionFilterGroup < 3) {
     o.filters = buildUnnamed1375();
-    o.groupType = "foo";
+    o.groupType = 'foo';
   }
   buildCounterApiDimensionFilterGroup--;
   return o;
@@ -172,7 +172,7 @@ api.BlockedResource buildBlockedResource() {
   var o = api.BlockedResource();
   buildCounterBlockedResource++;
   if (buildCounterBlockedResource < 3) {
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterBlockedResource--;
   return o;
@@ -191,8 +191,8 @@ api.Image buildImage() {
   var o = api.Image();
   buildCounterImage++;
   if (buildCounterImage < 3) {
-    o.data = "foo";
-    o.mimeType = "foo";
+    o.data = 'foo';
+    o.mimeType = 'foo';
   }
   buildCounterImage--;
   return o;
@@ -212,7 +212,7 @@ api.MobileFriendlyIssue buildMobileFriendlyIssue() {
   var o = api.MobileFriendlyIssue();
   buildCounterMobileFriendlyIssue++;
   if (buildCounterMobileFriendlyIssue < 3) {
-    o.rule = "foo";
+    o.rule = 'foo';
   }
   buildCounterMobileFriendlyIssue--;
   return o;
@@ -251,7 +251,7 @@ api.RunMobileFriendlyTestRequest buildRunMobileFriendlyTestRequest() {
   buildCounterRunMobileFriendlyTestRequest++;
   if (buildCounterRunMobileFriendlyTestRequest < 3) {
     o.requestScreenshot = true;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterRunMobileFriendlyTestRequest--;
   return o;
@@ -297,7 +297,7 @@ api.RunMobileFriendlyTestResponse buildRunMobileFriendlyTestResponse() {
   var o = api.RunMobileFriendlyTestResponse();
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
-    o.mobileFriendliness = "foo";
+    o.mobileFriendliness = 'foo';
     o.mobileFriendlyIssues = buildUnnamed1376();
     o.resourceIssues = buildUnnamed1377();
     o.screenshot = buildImage();
@@ -334,8 +334,8 @@ void checkUnnamed1378(core.List<api.ApiDimensionFilterGroup> o) {
 
 core.List<core.String> buildUnnamed1379() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -350,13 +350,13 @@ api.SearchAnalyticsQueryRequest buildSearchAnalyticsQueryRequest() {
   var o = api.SearchAnalyticsQueryRequest();
   buildCounterSearchAnalyticsQueryRequest++;
   if (buildCounterSearchAnalyticsQueryRequest < 3) {
-    o.aggregationType = "foo";
+    o.aggregationType = 'foo';
     o.dimensionFilterGroups = buildUnnamed1378();
     o.dimensions = buildUnnamed1379();
-    o.endDate = "foo";
+    o.endDate = 'foo';
     o.rowLimit = 42;
-    o.searchType = "foo";
-    o.startDate = "foo";
+    o.searchType = 'foo';
+    o.startDate = 'foo';
     o.startRow = 42;
   }
   buildCounterSearchAnalyticsQueryRequest--;
@@ -396,7 +396,7 @@ api.SearchAnalyticsQueryResponse buildSearchAnalyticsQueryResponse() {
   var o = api.SearchAnalyticsQueryResponse();
   buildCounterSearchAnalyticsQueryResponse++;
   if (buildCounterSearchAnalyticsQueryResponse < 3) {
-    o.responseAggregationType = "foo";
+    o.responseAggregationType = 'foo';
     o.rows = buildUnnamed1380();
   }
   buildCounterSearchAnalyticsQueryResponse--;
@@ -481,8 +481,8 @@ api.TestStatus buildTestStatus() {
   var o = api.TestStatus();
   buildCounterTestStatus++;
   if (buildCounterTestStatus < 3) {
-    o.details = "foo";
-    o.status = "foo";
+    o.details = 'foo';
+    o.status = 'foo';
   }
   buildCounterTestStatus--;
   return o;
@@ -502,8 +502,8 @@ api.WmxSite buildWmxSite() {
   var o = api.WmxSite();
   buildCounterWmxSite++;
   if (buildCounterWmxSite < 3) {
-    o.permissionLevel = "foo";
-    o.siteUrl = "foo";
+    o.permissionLevel = 'foo';
+    o.siteUrl = 'foo';
   }
   buildCounterWmxSite--;
   return o;
@@ -537,14 +537,14 @@ api.WmxSitemap buildWmxSitemap() {
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
     o.contents = buildUnnamed1383();
-    o.errors = "foo";
+    o.errors = 'foo';
     o.isPending = true;
     o.isSitemapsIndex = true;
-    o.lastDownloaded = "foo";
-    o.lastSubmitted = "foo";
-    o.path = "foo";
-    o.type = "foo";
-    o.warnings = "foo";
+    o.lastDownloaded = 'foo';
+    o.lastSubmitted = 'foo';
+    o.path = 'foo';
+    o.type = 'foo';
+    o.warnings = 'foo';
   }
   buildCounterWmxSitemap--;
   return o;
@@ -571,9 +571,9 @@ api.WmxSitemapContent buildWmxSitemapContent() {
   var o = api.WmxSitemapContent();
   buildCounterWmxSitemapContent++;
   if (buildCounterWmxSitemapContent < 3) {
-    o.indexed = "foo";
-    o.submitted = "foo";
-    o.type = "foo";
+    o.indexed = 'foo';
+    o.submitted = 'foo';
+    o.type = 'foo';
   }
   buildCounterWmxSitemapContent--;
   return o;
@@ -590,150 +590,150 @@ void checkWmxSitemapContent(api.WmxSitemapContent o) {
 }
 
 void main() {
-  unittest.group("obj-schema-ApiDataRow", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApiDataRow', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApiDataRow();
       var od = api.ApiDataRow.fromJson(o.toJson());
       checkApiDataRow(od);
     });
   });
 
-  unittest.group("obj-schema-ApiDimensionFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApiDimensionFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApiDimensionFilter();
       var od = api.ApiDimensionFilter.fromJson(o.toJson());
       checkApiDimensionFilter(od);
     });
   });
 
-  unittest.group("obj-schema-ApiDimensionFilterGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApiDimensionFilterGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApiDimensionFilterGroup();
       var od = api.ApiDimensionFilterGroup.fromJson(o.toJson());
       checkApiDimensionFilterGroup(od);
     });
   });
 
-  unittest.group("obj-schema-BlockedResource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BlockedResource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBlockedResource();
       var od = api.BlockedResource.fromJson(o.toJson());
       checkBlockedResource(od);
     });
   });
 
-  unittest.group("obj-schema-Image", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Image', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od);
     });
   });
 
-  unittest.group("obj-schema-MobileFriendlyIssue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MobileFriendlyIssue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMobileFriendlyIssue();
       var od = api.MobileFriendlyIssue.fromJson(o.toJson());
       checkMobileFriendlyIssue(od);
     });
   });
 
-  unittest.group("obj-schema-ResourceIssue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResourceIssue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResourceIssue();
       var od = api.ResourceIssue.fromJson(o.toJson());
       checkResourceIssue(od);
     });
   });
 
-  unittest.group("obj-schema-RunMobileFriendlyTestRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RunMobileFriendlyTestRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRunMobileFriendlyTestRequest();
       var od = api.RunMobileFriendlyTestRequest.fromJson(o.toJson());
       checkRunMobileFriendlyTestRequest(od);
     });
   });
 
-  unittest.group("obj-schema-RunMobileFriendlyTestResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RunMobileFriendlyTestResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRunMobileFriendlyTestResponse();
       var od = api.RunMobileFriendlyTestResponse.fromJson(o.toJson());
       checkRunMobileFriendlyTestResponse(od);
     });
   });
 
-  unittest.group("obj-schema-SearchAnalyticsQueryRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchAnalyticsQueryRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchAnalyticsQueryRequest();
       var od = api.SearchAnalyticsQueryRequest.fromJson(o.toJson());
       checkSearchAnalyticsQueryRequest(od);
     });
   });
 
-  unittest.group("obj-schema-SearchAnalyticsQueryResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchAnalyticsQueryResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchAnalyticsQueryResponse();
       var od = api.SearchAnalyticsQueryResponse.fromJson(o.toJson());
       checkSearchAnalyticsQueryResponse(od);
     });
   });
 
-  unittest.group("obj-schema-SitemapsListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SitemapsListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSitemapsListResponse();
       var od = api.SitemapsListResponse.fromJson(o.toJson());
       checkSitemapsListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-SitesListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SitesListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSitesListResponse();
       var od = api.SitesListResponse.fromJson(o.toJson());
       checkSitesListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-TestStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestStatus();
       var od = api.TestStatus.fromJson(o.toJson());
       checkTestStatus(od);
     });
   });
 
-  unittest.group("obj-schema-WmxSite", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WmxSite', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWmxSite();
       var od = api.WmxSite.fromJson(o.toJson());
       checkWmxSite(od);
     });
   });
 
-  unittest.group("obj-schema-WmxSitemap", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WmxSitemap', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWmxSitemap();
       var od = api.WmxSitemap.fromJson(o.toJson());
       checkWmxSitemap(od);
     });
   });
 
-  unittest.group("obj-schema-WmxSitemapContent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WmxSitemapContent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWmxSitemapContent();
       var od = api.WmxSitemapContent.fromJson(o.toJson());
       checkWmxSitemapContent(od);
     });
   });
 
-  unittest.group("resource-SearchanalyticsResourceApi", () {
-    unittest.test("method--query", () {
+  unittest.group('resource-SearchanalyticsResourceApi', () {
+    unittest.test('method--query', () {
       var mock = HttpServerMock();
       api.SearchanalyticsResourceApi res =
           api.SearchconsoleApi(mock).searchanalytics;
       var arg_request = buildSearchAnalyticsQueryRequest();
-      var arg_siteUrl = "foo";
-      var arg_$fields = "foo";
+      var arg_siteUrl = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SearchAnalyticsQueryRequest.fromJson(json);
         checkSearchAnalyticsQueryRequest(obj);
@@ -748,12 +748,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 20),
             unittest.equals("webmasters/v3/sites/"));
         pathOffset += 20;
-        index = path.indexOf("/searchAnalytics/query", pathOffset);
+        index = path.indexOf('/searchAnalytics/query', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_siteUrl"));
+        unittest.expect(subPart, unittest.equals('$arg_siteUrl'));
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("/searchAnalytics/query"));
         pathOffset += 22;
@@ -764,8 +764,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -775,7 +775,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSearchAnalyticsQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -788,13 +788,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-SitemapsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-SitemapsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.SitemapsResourceApi res = api.SearchconsoleApi(mock).sitemaps;
-      var arg_siteUrl = "foo";
-      var arg_feedpath = "foo";
-      var arg_$fields = "foo";
+      var arg_siteUrl = 'foo';
+      var arg_feedpath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -806,18 +806,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 20),
             unittest.equals("webmasters/v3/sites/"));
         pathOffset += 20;
-        index = path.indexOf("/sitemaps/", pathOffset);
+        index = path.indexOf('/sitemaps/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_siteUrl"));
+        unittest.expect(subPart, unittest.equals('$arg_siteUrl'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/sitemaps/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_feedpath"));
+        unittest.expect(subPart, unittest.equals('$arg_feedpath'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -825,8 +825,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -836,9 +836,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -846,12 +846,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SitemapsResourceApi res = api.SearchconsoleApi(mock).sitemaps;
-      var arg_siteUrl = "foo";
-      var arg_feedpath = "foo";
-      var arg_$fields = "foo";
+      var arg_siteUrl = 'foo';
+      var arg_feedpath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -863,18 +863,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 20),
             unittest.equals("webmasters/v3/sites/"));
         pathOffset += 20;
-        index = path.indexOf("/sitemaps/", pathOffset);
+        index = path.indexOf('/sitemaps/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_siteUrl"));
+        unittest.expect(subPart, unittest.equals('$arg_siteUrl'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/sitemaps/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_feedpath"));
+        unittest.expect(subPart, unittest.equals('$arg_feedpath'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -882,8 +882,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -893,7 +893,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildWmxSitemap());
         return async.Future.value(stringResponse(200, h, resp));
@@ -905,12 +905,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SitemapsResourceApi res = api.SearchconsoleApi(mock).sitemaps;
-      var arg_siteUrl = "foo";
-      var arg_sitemapIndex = "foo";
-      var arg_$fields = "foo";
+      var arg_siteUrl = 'foo';
+      var arg_sitemapIndex = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -922,12 +922,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 20),
             unittest.equals("webmasters/v3/sites/"));
         pathOffset += 20;
-        index = path.indexOf("/sitemaps", pathOffset);
+        index = path.indexOf('/sitemaps', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_siteUrl"));
+        unittest.expect(subPart, unittest.equals('$arg_siteUrl'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/sitemaps"));
         pathOffset += 9;
@@ -938,8 +938,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -951,7 +951,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSitemapsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -964,12 +964,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--submit", () {
+    unittest.test('method--submit', () {
       var mock = HttpServerMock();
       api.SitemapsResourceApi res = api.SearchconsoleApi(mock).sitemaps;
-      var arg_siteUrl = "foo";
-      var arg_feedpath = "foo";
-      var arg_$fields = "foo";
+      var arg_siteUrl = 'foo';
+      var arg_feedpath = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -981,18 +981,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 20),
             unittest.equals("webmasters/v3/sites/"));
         pathOffset += 20;
-        index = path.indexOf("/sitemaps/", pathOffset);
+        index = path.indexOf('/sitemaps/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_siteUrl"));
+        unittest.expect(subPart, unittest.equals('$arg_siteUrl'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/sitemaps/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_feedpath"));
+        unittest.expect(subPart, unittest.equals('$arg_feedpath'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1000,8 +1000,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1011,9 +1011,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -1022,12 +1022,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-SitesResourceApi", () {
-    unittest.test("method--add", () {
+  unittest.group('resource-SitesResourceApi', () {
+    unittest.test('method--add', () {
       var mock = HttpServerMock();
       api.SitesResourceApi res = api.SearchconsoleApi(mock).sites;
-      var arg_siteUrl = "foo";
-      var arg_$fields = "foo";
+      var arg_siteUrl = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1041,7 +1041,7 @@ void main() {
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_siteUrl"));
+        unittest.expect(subPart, unittest.equals('$arg_siteUrl'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1049,8 +1049,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1060,9 +1060,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -1070,11 +1070,11 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.SitesResourceApi res = api.SearchconsoleApi(mock).sites;
-      var arg_siteUrl = "foo";
-      var arg_$fields = "foo";
+      var arg_siteUrl = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1088,7 +1088,7 @@ void main() {
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_siteUrl"));
+        unittest.expect(subPart, unittest.equals('$arg_siteUrl'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1096,8 +1096,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1107,9 +1107,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -1117,11 +1117,11 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SitesResourceApi res = api.SearchconsoleApi(mock).sites;
-      var arg_siteUrl = "foo";
-      var arg_$fields = "foo";
+      var arg_siteUrl = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1135,7 +1135,7 @@ void main() {
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_siteUrl"));
+        unittest.expect(subPart, unittest.equals('$arg_siteUrl'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1143,8 +1143,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1154,7 +1154,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildWmxSite());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1166,10 +1166,10 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SitesResourceApi res = api.SearchconsoleApi(mock).sites;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1188,8 +1188,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1199,7 +1199,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSitesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1210,13 +1210,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-UrlTestingToolsMobileFriendlyTestResourceApi", () {
-    unittest.test("method--run", () {
+  unittest.group('resource-UrlTestingToolsMobileFriendlyTestResourceApi', () {
+    unittest.test('method--run', () {
       var mock = HttpServerMock();
       api.UrlTestingToolsMobileFriendlyTestResourceApi res =
           api.SearchconsoleApi(mock).urlTestingTools.mobileFriendlyTest;
       var arg_request = buildRunMobileFriendlyTestRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RunMobileFriendlyTestRequest.fromJson(json);
         checkRunMobileFriendlyTestRequest(obj);
@@ -1238,8 +1238,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1249,7 +1249,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRunMobileFriendlyTestResponse());
         return async.Future.value(stringResponse(200, h, resp));

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -46,7 +45,7 @@ const core.String USER_AGENT = 'dart-api-client androidpublisher/v3';
 class AndroidpublisherApi {
   /// View and manage your Google Play Developer account
   static const AndroidpublisherScope =
-      "https://www.googleapis.com/auth/androidpublisher";
+      'https://www.googleapis.com/auth/androidpublisher';
 
   final commons.ApiRequester _requester;
 
@@ -61,8 +60,8 @@ class AndroidpublisherApi {
   SystemapksResourceApi get systemapks => SystemapksResourceApi(_requester);
 
   AndroidpublisherApi(http.Client client,
-      {core.String rootUrl = "https://androidpublisher.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://androidpublisher.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -115,13 +114,13 @@ class EditsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -132,7 +131,7 @@ class EditsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -171,13 +170,13 @@ class EditsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -189,7 +188,7 @@ class EditsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -230,13 +229,13 @@ class EditsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -246,7 +245,7 @@ class EditsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -290,10 +289,10 @@ class EditsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -302,7 +301,7 @@ class EditsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -343,13 +342,13 @@ class EditsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -360,7 +359,7 @@ class EditsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -416,13 +415,13 @@ class EditsApksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -433,7 +432,7 @@ class EditsApksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -475,13 +474,13 @@ class EditsApksResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -492,7 +491,7 @@ class EditsApksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -541,13 +540,13 @@ class EditsApksResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -575,7 +574,7 @@ class EditsApksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -622,13 +621,13 @@ class EditsBundlesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -639,7 +638,7 @@ class EditsBundlesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -698,18 +697,18 @@ class EditsBundlesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (ackBundleInstallationWarning != null) {
-      _queryParams["ackBundleInstallationWarning"] = [
-        "${ackBundleInstallationWarning}"
+      _queryParams['ackBundleInstallationWarning'] = [
+        '${ackBundleInstallationWarning}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -737,7 +736,7 @@ class EditsBundlesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -805,19 +804,19 @@ class EditsDeobfuscationfilesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (apkVersionCode == null) {
-      throw core.ArgumentError("Parameter apkVersionCode is required.");
+      throw core.ArgumentError('Parameter apkVersionCode is required.');
     }
     if (deobfuscationFileType == null) {
-      throw core.ArgumentError("Parameter deobfuscationFileType is required.");
+      throw core.ArgumentError('Parameter deobfuscationFileType is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -854,7 +853,7 @@ class EditsDeobfuscationfilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -902,13 +901,13 @@ class EditsDetailsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -919,7 +918,7 @@ class EditsDetailsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -966,13 +965,13 @@ class EditsDetailsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -983,7 +982,7 @@ class EditsDetailsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1030,13 +1029,13 @@ class EditsDetailsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -1047,7 +1046,7 @@ class EditsDetailsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1107,19 +1106,19 @@ class EditsExpansionfilesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (apkVersionCode == null) {
-      throw core.ArgumentError("Parameter apkVersionCode is required.");
+      throw core.ArgumentError('Parameter apkVersionCode is required.');
     }
     if (expansionFileType == null) {
-      throw core.ArgumentError("Parameter expansionFileType is required.");
+      throw core.ArgumentError('Parameter expansionFileType is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -1133,7 +1132,7 @@ class EditsExpansionfilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1193,19 +1192,19 @@ class EditsExpansionfilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (apkVersionCode == null) {
-      throw core.ArgumentError("Parameter apkVersionCode is required.");
+      throw core.ArgumentError('Parameter apkVersionCode is required.');
     }
     if (expansionFileType == null) {
-      throw core.ArgumentError("Parameter expansionFileType is required.");
+      throw core.ArgumentError('Parameter expansionFileType is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -1219,7 +1218,7 @@ class EditsExpansionfilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1279,19 +1278,19 @@ class EditsExpansionfilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (apkVersionCode == null) {
-      throw core.ArgumentError("Parameter apkVersionCode is required.");
+      throw core.ArgumentError('Parameter apkVersionCode is required.');
     }
     if (expansionFileType == null) {
-      throw core.ArgumentError("Parameter expansionFileType is required.");
+      throw core.ArgumentError('Parameter expansionFileType is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -1305,7 +1304,7 @@ class EditsExpansionfilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1366,19 +1365,19 @@ class EditsExpansionfilesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (apkVersionCode == null) {
-      throw core.ArgumentError("Parameter apkVersionCode is required.");
+      throw core.ArgumentError('Parameter apkVersionCode is required.');
     }
     if (expansionFileType == null) {
-      throw core.ArgumentError("Parameter expansionFileType is required.");
+      throw core.ArgumentError('Parameter expansionFileType is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1415,7 +1414,7 @@ class EditsExpansionfilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1482,22 +1481,22 @@ class EditsImagesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (language == null) {
-      throw core.ArgumentError("Parameter language is required.");
+      throw core.ArgumentError('Parameter language is required.');
     }
     if (imageType == null) {
-      throw core.ArgumentError("Parameter imageType is required.");
+      throw core.ArgumentError('Parameter imageType is required.');
     }
     if (imageId == null) {
-      throw core.ArgumentError("Parameter imageId is required.");
+      throw core.ArgumentError('Parameter imageId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1515,7 +1514,7 @@ class EditsImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1576,19 +1575,19 @@ class EditsImagesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (language == null) {
-      throw core.ArgumentError("Parameter language is required.");
+      throw core.ArgumentError('Parameter language is required.');
     }
     if (imageType == null) {
-      throw core.ArgumentError("Parameter imageType is required.");
+      throw core.ArgumentError('Parameter imageType is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -1602,7 +1601,7 @@ class EditsImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1662,19 +1661,19 @@ class EditsImagesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (language == null) {
-      throw core.ArgumentError("Parameter language is required.");
+      throw core.ArgumentError('Parameter language is required.');
     }
     if (imageType == null) {
-      throw core.ArgumentError("Parameter imageType is required.");
+      throw core.ArgumentError('Parameter imageType is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -1688,7 +1687,7 @@ class EditsImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1756,19 +1755,19 @@ class EditsImagesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (language == null) {
-      throw core.ArgumentError("Parameter language is required.");
+      throw core.ArgumentError('Parameter language is required.');
     }
     if (imageType == null) {
-      throw core.ArgumentError("Parameter imageType is required.");
+      throw core.ArgumentError('Parameter imageType is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1805,7 +1804,7 @@ class EditsImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1854,16 +1853,16 @@ class EditsListingsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (language == null) {
-      throw core.ArgumentError("Parameter language is required.");
+      throw core.ArgumentError('Parameter language is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1877,7 +1876,7 @@ class EditsListingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1916,13 +1915,13 @@ class EditsListingsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1935,7 +1934,7 @@ class EditsListingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1980,16 +1979,16 @@ class EditsListingsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (language == null) {
-      throw core.ArgumentError("Parameter language is required.");
+      throw core.ArgumentError('Parameter language is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2001,7 +2000,7 @@ class EditsListingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2042,13 +2041,13 @@ class EditsListingsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2059,7 +2058,7 @@ class EditsListingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2110,16 +2109,16 @@ class EditsListingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (language == null) {
-      throw core.ArgumentError("Parameter language is required.");
+      throw core.ArgumentError('Parameter language is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2131,7 +2130,7 @@ class EditsListingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2182,16 +2181,16 @@ class EditsListingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (language == null) {
-      throw core.ArgumentError("Parameter language is required.");
+      throw core.ArgumentError('Parameter language is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2203,7 +2202,7 @@ class EditsListingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2253,16 +2252,16 @@ class EditsTestersResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (track == null) {
-      throw core.ArgumentError("Parameter track is required.");
+      throw core.ArgumentError('Parameter track is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2274,7 +2273,7 @@ class EditsTestersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2324,16 +2323,16 @@ class EditsTestersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (track == null) {
-      throw core.ArgumentError("Parameter track is required.");
+      throw core.ArgumentError('Parameter track is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2345,7 +2344,7 @@ class EditsTestersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2395,16 +2394,16 @@ class EditsTestersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (track == null) {
-      throw core.ArgumentError("Parameter track is required.");
+      throw core.ArgumentError('Parameter track is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2416,7 +2415,7 @@ class EditsTestersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2466,16 +2465,16 @@ class EditsTracksResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (track == null) {
-      throw core.ArgumentError("Parameter track is required.");
+      throw core.ArgumentError('Parameter track is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2487,7 +2486,7 @@ class EditsTracksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2528,13 +2527,13 @@ class EditsTracksResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2545,7 +2544,7 @@ class EditsTracksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2595,16 +2594,16 @@ class EditsTracksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (track == null) {
-      throw core.ArgumentError("Parameter track is required.");
+      throw core.ArgumentError('Parameter track is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2616,7 +2615,7 @@ class EditsTracksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2666,16 +2665,16 @@ class EditsTracksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (editId == null) {
-      throw core.ArgumentError("Parameter editId is required.");
+      throw core.ArgumentError('Parameter editId is required.');
     }
     if (track == null) {
-      throw core.ArgumentError("Parameter track is required.");
+      throw core.ArgumentError('Parameter track is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2687,7 +2686,7 @@ class EditsTracksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2732,13 +2731,13 @@ class InappproductsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (sku == null) {
-      throw core.ArgumentError("Parameter sku is required.");
+      throw core.ArgumentError('Parameter sku is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2750,7 +2749,7 @@ class InappproductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2791,13 +2790,13 @@ class InappproductsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (sku == null) {
-      throw core.ArgumentError("Parameter sku is required.");
+      throw core.ArgumentError('Parameter sku is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2807,7 +2806,7 @@ class InappproductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2857,15 +2856,15 @@ class InappproductsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (autoConvertMissingPrices != null) {
-      _queryParams["autoConvertMissingPrices"] = [
-        "${autoConvertMissingPrices}"
+      _queryParams['autoConvertMissingPrices'] = [
+        '${autoConvertMissingPrices}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2874,7 +2873,7 @@ class InappproductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2921,19 +2920,19 @@ class InappproductsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (token != null) {
-      _queryParams["token"] = [token];
+      _queryParams['token'] = [token];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -2942,7 +2941,7 @@ class InappproductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2995,18 +2994,18 @@ class InappproductsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (sku == null) {
-      throw core.ArgumentError("Parameter sku is required.");
+      throw core.ArgumentError('Parameter sku is required.');
     }
     if (autoConvertMissingPrices != null) {
-      _queryParams["autoConvertMissingPrices"] = [
-        "${autoConvertMissingPrices}"
+      _queryParams['autoConvertMissingPrices'] = [
+        '${autoConvertMissingPrices}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -3016,7 +3015,7 @@ class InappproductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3069,18 +3068,18 @@ class InappproductsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (sku == null) {
-      throw core.ArgumentError("Parameter sku is required.");
+      throw core.ArgumentError('Parameter sku is required.');
     }
     if (autoConvertMissingPrices != null) {
-      _queryParams["autoConvertMissingPrices"] = [
-        "${autoConvertMissingPrices}"
+      _queryParams['autoConvertMissingPrices'] = [
+        '${autoConvertMissingPrices}'
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -3090,7 +3089,7 @@ class InappproductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3148,10 +3147,10 @@ class InternalappsharingartifactsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -3174,7 +3173,7 @@ class InternalappsharingartifactsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3225,10 +3224,10 @@ class InternalappsharingartifactsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -3251,7 +3250,7 @@ class InternalappsharingartifactsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3305,16 +3304,16 @@ class OrdersResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (orderId == null) {
-      throw core.ArgumentError("Parameter orderId is required.");
+      throw core.ArgumentError('Parameter orderId is required.');
     }
     if (revoke != null) {
-      _queryParams["revoke"] = ["${revoke}"];
+      _queryParams['revoke'] = ['${revoke}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3327,7 +3326,7 @@ class OrdersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3398,16 +3397,16 @@ class PurchasesProductsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (token == null) {
-      throw core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError('Parameter token is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3422,7 +3421,7 @@ class PurchasesProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3469,16 +3468,16 @@ class PurchasesProductsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (token == null) {
-      throw core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError('Parameter token is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -3490,7 +3489,7 @@ class PurchasesProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3548,16 +3547,16 @@ class PurchasesSubscriptionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if (token == null) {
-      throw core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError('Parameter token is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3572,7 +3571,7 @@ class PurchasesSubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3614,13 +3613,13 @@ class PurchasesSubscriptionsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (token == null) {
-      throw core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError('Parameter token is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3633,7 +3632,7 @@ class PurchasesSubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3687,16 +3686,16 @@ class PurchasesSubscriptionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if (token == null) {
-      throw core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError('Parameter token is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -3709,7 +3708,7 @@ class PurchasesSubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3758,16 +3757,16 @@ class PurchasesSubscriptionsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if (token == null) {
-      throw core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError('Parameter token is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -3779,7 +3778,7 @@ class PurchasesSubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3825,16 +3824,16 @@ class PurchasesSubscriptionsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if (token == null) {
-      throw core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError('Parameter token is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3849,7 +3848,7 @@ class PurchasesSubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3896,16 +3895,16 @@ class PurchasesSubscriptionsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if (token == null) {
-      throw core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError('Parameter token is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3920,7 +3919,7 @@ class PurchasesSubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4005,28 +4004,28 @@ class PurchasesVoidedpurchasesResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (token != null) {
-      _queryParams["token"] = [token];
+      _queryParams['token'] = [token];
     }
     if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+      _queryParams['startTime'] = [startTime];
     }
     if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
+      _queryParams['endTime'] = [endTime];
     }
     if (type != null) {
-      _queryParams["type"] = ["${type}"];
+      _queryParams['type'] = ['${type}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -4035,7 +4034,7 @@ class PurchasesVoidedpurchasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4085,16 +4084,16 @@ class ReviewsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (reviewId == null) {
-      throw core.ArgumentError("Parameter reviewId is required.");
+      throw core.ArgumentError('Parameter reviewId is required.');
     }
     if (translationLanguage != null) {
-      _queryParams["translationLanguage"] = [translationLanguage];
+      _queryParams['translationLanguage'] = [translationLanguage];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -4104,7 +4103,7 @@ class ReviewsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4154,22 +4153,22 @@ class ReviewsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (translationLanguage != null) {
-      _queryParams["translationLanguage"] = [translationLanguage];
+      _queryParams['translationLanguage'] = [translationLanguage];
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (token != null) {
-      _queryParams["token"] = [token];
+      _queryParams['token'] = [token];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -4178,7 +4177,7 @@ class ReviewsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4225,13 +4224,13 @@ class ReviewsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (reviewId == null) {
-      throw core.ArgumentError("Parameter reviewId is required.");
+      throw core.ArgumentError('Parameter reviewId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -4242,7 +4241,7 @@ class ReviewsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4306,13 +4305,13 @@ class SystemapksVariantsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (versionCode == null) {
-      throw core.ArgumentError("Parameter versionCode is required.");
+      throw core.ArgumentError('Parameter versionCode is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -4323,7 +4322,7 @@ class SystemapksVariantsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4371,16 +4370,16 @@ class SystemapksVariantsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (versionCode == null) {
-      throw core.ArgumentError("Parameter versionCode is required.");
+      throw core.ArgumentError('Parameter versionCode is required.');
     }
     if (variantId == null) {
-      throw core.ArgumentError("Parameter variantId is required.");
+      throw core.ArgumentError('Parameter variantId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -4395,7 +4394,7 @@ class SystemapksVariantsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4444,16 +4443,16 @@ class SystemapksVariantsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (versionCode == null) {
-      throw core.ArgumentError("Parameter versionCode is required.");
+      throw core.ArgumentError('Parameter versionCode is required.');
     }
     if (variantId == null) {
-      throw core.ArgumentError("Parameter variantId is required.");
+      throw core.ArgumentError('Parameter variantId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -4465,7 +4464,7 @@ class SystemapksVariantsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4506,13 +4505,13 @@ class SystemapksVariantsResourceApi {
     core.String _body;
 
     if (packageName == null) {
-      throw core.ArgumentError("Parameter packageName is required.");
+      throw core.ArgumentError('Parameter packageName is required.');
     }
     if (versionCode == null) {
-      throw core.ArgumentError("Parameter versionCode is required.");
+      throw core.ArgumentError('Parameter versionCode is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidpublisher/v3/applications/' +
@@ -4523,7 +4522,7 @@ class SystemapksVariantsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4545,11 +4544,11 @@ class Apk {
   Apk();
 
   Apk.fromJson(core.Map _json) {
-    if (_json.containsKey("binary")) {
-      binary = ApkBinary.fromJson(_json["binary"]);
+    if (_json.containsKey('binary')) {
+      binary = ApkBinary.fromJson(_json['binary']);
     }
-    if (_json.containsKey("versionCode")) {
-      versionCode = _json["versionCode"];
+    if (_json.containsKey('versionCode')) {
+      versionCode = _json['versionCode'];
     }
   }
 
@@ -4557,10 +4556,10 @@ class Apk {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (binary != null) {
-      _json["binary"] = binary.toJson();
+      _json['binary'] = binary.toJson();
     }
     if (versionCode != null) {
-      _json["versionCode"] = versionCode;
+      _json['versionCode'] = versionCode;
     }
     return _json;
   }
@@ -4579,11 +4578,11 @@ class ApkBinary {
   ApkBinary();
 
   ApkBinary.fromJson(core.Map _json) {
-    if (_json.containsKey("sha1")) {
-      sha1 = _json["sha1"];
+    if (_json.containsKey('sha1')) {
+      sha1 = _json['sha1'];
     }
-    if (_json.containsKey("sha256")) {
-      sha256 = _json["sha256"];
+    if (_json.containsKey('sha256')) {
+      sha256 = _json['sha256'];
     }
   }
 
@@ -4591,10 +4590,10 @@ class ApkBinary {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sha1 != null) {
-      _json["sha1"] = sha1;
+      _json['sha1'] = sha1;
     }
     if (sha256 != null) {
-      _json["sha256"] = sha256;
+      _json['sha256'] = sha256;
     }
     return _json;
   }
@@ -4608,9 +4607,9 @@ class ApksAddExternallyHostedRequest {
   ApksAddExternallyHostedRequest();
 
   ApksAddExternallyHostedRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("externallyHostedApk")) {
+    if (_json.containsKey('externallyHostedApk')) {
       externallyHostedApk =
-          ExternallyHostedApk.fromJson(_json["externallyHostedApk"]);
+          ExternallyHostedApk.fromJson(_json['externallyHostedApk']);
     }
   }
 
@@ -4618,7 +4617,7 @@ class ApksAddExternallyHostedRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (externallyHostedApk != null) {
-      _json["externallyHostedApk"] = externallyHostedApk.toJson();
+      _json['externallyHostedApk'] = externallyHostedApk.toJson();
     }
     return _json;
   }
@@ -4632,9 +4631,9 @@ class ApksAddExternallyHostedResponse {
   ApksAddExternallyHostedResponse();
 
   ApksAddExternallyHostedResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("externallyHostedApk")) {
+    if (_json.containsKey('externallyHostedApk')) {
       externallyHostedApk =
-          ExternallyHostedApk.fromJson(_json["externallyHostedApk"]);
+          ExternallyHostedApk.fromJson(_json['externallyHostedApk']);
     }
   }
 
@@ -4642,7 +4641,7 @@ class ApksAddExternallyHostedResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (externallyHostedApk != null) {
-      _json["externallyHostedApk"] = externallyHostedApk.toJson();
+      _json['externallyHostedApk'] = externallyHostedApk.toJson();
     }
     return _json;
   }
@@ -4659,13 +4658,13 @@ class ApksListResponse {
   ApksListResponse();
 
   ApksListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("apks")) {
-      apks = (_json["apks"] as core.List)
+    if (_json.containsKey('apks')) {
+      apks = (_json['apks'] as core.List)
           .map<Apk>((value) => Apk.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -4673,10 +4672,10 @@ class ApksListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (apks != null) {
-      _json["apks"] = apks.map((value) => value.toJson()).toList();
+      _json['apks'] = apks.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -4699,17 +4698,17 @@ class AppDetails {
   AppDetails();
 
   AppDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("contactEmail")) {
-      contactEmail = _json["contactEmail"];
+    if (_json.containsKey('contactEmail')) {
+      contactEmail = _json['contactEmail'];
     }
-    if (_json.containsKey("contactPhone")) {
-      contactPhone = _json["contactPhone"];
+    if (_json.containsKey('contactPhone')) {
+      contactPhone = _json['contactPhone'];
     }
-    if (_json.containsKey("contactWebsite")) {
-      contactWebsite = _json["contactWebsite"];
+    if (_json.containsKey('contactWebsite')) {
+      contactWebsite = _json['contactWebsite'];
     }
-    if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = _json["defaultLanguage"];
+    if (_json.containsKey('defaultLanguage')) {
+      defaultLanguage = _json['defaultLanguage'];
     }
   }
 
@@ -4717,16 +4716,16 @@ class AppDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contactEmail != null) {
-      _json["contactEmail"] = contactEmail;
+      _json['contactEmail'] = contactEmail;
     }
     if (contactPhone != null) {
-      _json["contactPhone"] = contactPhone;
+      _json['contactPhone'] = contactPhone;
     }
     if (contactWebsite != null) {
-      _json["contactWebsite"] = contactWebsite;
+      _json['contactWebsite'] = contactWebsite;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = defaultLanguage;
+      _json['defaultLanguage'] = defaultLanguage;
     }
     return _json;
   }
@@ -4744,11 +4743,11 @@ class AppEdit {
   AppEdit();
 
   AppEdit.fromJson(core.Map _json) {
-    if (_json.containsKey("expiryTimeSeconds")) {
-      expiryTimeSeconds = _json["expiryTimeSeconds"];
+    if (_json.containsKey('expiryTimeSeconds')) {
+      expiryTimeSeconds = _json['expiryTimeSeconds'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -4756,10 +4755,10 @@ class AppEdit {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expiryTimeSeconds != null) {
-      _json["expiryTimeSeconds"] = expiryTimeSeconds;
+      _json['expiryTimeSeconds'] = expiryTimeSeconds;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -4782,14 +4781,14 @@ class Bundle {
   Bundle();
 
   Bundle.fromJson(core.Map _json) {
-    if (_json.containsKey("sha1")) {
-      sha1 = _json["sha1"];
+    if (_json.containsKey('sha1')) {
+      sha1 = _json['sha1'];
     }
-    if (_json.containsKey("sha256")) {
-      sha256 = _json["sha256"];
+    if (_json.containsKey('sha256')) {
+      sha256 = _json['sha256'];
     }
-    if (_json.containsKey("versionCode")) {
-      versionCode = _json["versionCode"];
+    if (_json.containsKey('versionCode')) {
+      versionCode = _json['versionCode'];
     }
   }
 
@@ -4797,13 +4796,13 @@ class Bundle {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sha1 != null) {
-      _json["sha1"] = sha1;
+      _json['sha1'] = sha1;
     }
     if (sha256 != null) {
-      _json["sha256"] = sha256;
+      _json['sha256'] = sha256;
     }
     if (versionCode != null) {
-      _json["versionCode"] = versionCode;
+      _json['versionCode'] = versionCode;
     }
     return _json;
   }
@@ -4820,13 +4819,13 @@ class BundlesListResponse {
   BundlesListResponse();
 
   BundlesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("bundles")) {
-      bundles = (_json["bundles"] as core.List)
+    if (_json.containsKey('bundles')) {
+      bundles = (_json['bundles'] as core.List)
           .map<Bundle>((value) => Bundle.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -4834,10 +4833,10 @@ class BundlesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bundles != null) {
-      _json["bundles"] = bundles.map((value) => value.toJson()).toList();
+      _json['bundles'] = bundles.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -4854,11 +4853,11 @@ class Comment {
   Comment();
 
   Comment.fromJson(core.Map _json) {
-    if (_json.containsKey("developerComment")) {
-      developerComment = DeveloperComment.fromJson(_json["developerComment"]);
+    if (_json.containsKey('developerComment')) {
+      developerComment = DeveloperComment.fromJson(_json['developerComment']);
     }
-    if (_json.containsKey("userComment")) {
-      userComment = UserComment.fromJson(_json["userComment"]);
+    if (_json.containsKey('userComment')) {
+      userComment = UserComment.fromJson(_json['userComment']);
     }
   }
 
@@ -4866,10 +4865,10 @@ class Comment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (developerComment != null) {
-      _json["developerComment"] = developerComment.toJson();
+      _json['developerComment'] = developerComment.toJson();
     }
     if (userComment != null) {
-      _json["userComment"] = userComment.toJson();
+      _json['userComment'] = userComment.toJson();
     }
     return _json;
   }
@@ -4887,11 +4886,11 @@ class CountryTargeting {
   CountryTargeting();
 
   CountryTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("countries")) {
-      countries = (_json["countries"] as core.List).cast<core.String>();
+    if (_json.containsKey('countries')) {
+      countries = (_json['countries'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("includeRestOfWorld")) {
-      includeRestOfWorld = _json["includeRestOfWorld"];
+    if (_json.containsKey('includeRestOfWorld')) {
+      includeRestOfWorld = _json['includeRestOfWorld'];
     }
   }
 
@@ -4899,10 +4898,10 @@ class CountryTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (countries != null) {
-      _json["countries"] = countries;
+      _json['countries'] = countries;
     }
     if (includeRestOfWorld != null) {
-      _json["includeRestOfWorld"] = includeRestOfWorld;
+      _json['includeRestOfWorld'] = includeRestOfWorld;
     }
     return _json;
   }
@@ -4921,8 +4920,8 @@ class DeobfuscationFile {
   DeobfuscationFile();
 
   DeobfuscationFile.fromJson(core.Map _json) {
-    if (_json.containsKey("symbolType")) {
-      symbolType = _json["symbolType"];
+    if (_json.containsKey('symbolType')) {
+      symbolType = _json['symbolType'];
     }
   }
 
@@ -4930,7 +4929,7 @@ class DeobfuscationFile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (symbolType != null) {
-      _json["symbolType"] = symbolType;
+      _json['symbolType'] = symbolType;
     }
     return _json;
   }
@@ -4944,9 +4943,9 @@ class DeobfuscationFilesUploadResponse {
   DeobfuscationFilesUploadResponse();
 
   DeobfuscationFilesUploadResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deobfuscationFile")) {
+    if (_json.containsKey('deobfuscationFile')) {
       deobfuscationFile =
-          DeobfuscationFile.fromJson(_json["deobfuscationFile"]);
+          DeobfuscationFile.fromJson(_json['deobfuscationFile']);
     }
   }
 
@@ -4954,7 +4953,7 @@ class DeobfuscationFilesUploadResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deobfuscationFile != null) {
-      _json["deobfuscationFile"] = deobfuscationFile.toJson();
+      _json['deobfuscationFile'] = deobfuscationFile.toJson();
     }
     return _json;
   }
@@ -4971,11 +4970,11 @@ class DeveloperComment {
   DeveloperComment();
 
   DeveloperComment.fromJson(core.Map _json) {
-    if (_json.containsKey("lastModified")) {
-      lastModified = Timestamp.fromJson(_json["lastModified"]);
+    if (_json.containsKey('lastModified')) {
+      lastModified = Timestamp.fromJson(_json['lastModified']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -4983,10 +4982,10 @@ class DeveloperComment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lastModified != null) {
-      _json["lastModified"] = lastModified.toJson();
+      _json['lastModified'] = lastModified.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -5030,38 +5029,38 @@ class DeviceMetadata {
   DeviceMetadata();
 
   DeviceMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("cpuMake")) {
-      cpuMake = _json["cpuMake"];
+    if (_json.containsKey('cpuMake')) {
+      cpuMake = _json['cpuMake'];
     }
-    if (_json.containsKey("cpuModel")) {
-      cpuModel = _json["cpuModel"];
+    if (_json.containsKey('cpuModel')) {
+      cpuModel = _json['cpuModel'];
     }
-    if (_json.containsKey("deviceClass")) {
-      deviceClass = _json["deviceClass"];
+    if (_json.containsKey('deviceClass')) {
+      deviceClass = _json['deviceClass'];
     }
-    if (_json.containsKey("glEsVersion")) {
-      glEsVersion = _json["glEsVersion"];
+    if (_json.containsKey('glEsVersion')) {
+      glEsVersion = _json['glEsVersion'];
     }
-    if (_json.containsKey("manufacturer")) {
-      manufacturer = _json["manufacturer"];
+    if (_json.containsKey('manufacturer')) {
+      manufacturer = _json['manufacturer'];
     }
-    if (_json.containsKey("nativePlatform")) {
-      nativePlatform = _json["nativePlatform"];
+    if (_json.containsKey('nativePlatform')) {
+      nativePlatform = _json['nativePlatform'];
     }
-    if (_json.containsKey("productName")) {
-      productName = _json["productName"];
+    if (_json.containsKey('productName')) {
+      productName = _json['productName'];
     }
-    if (_json.containsKey("ramMb")) {
-      ramMb = _json["ramMb"];
+    if (_json.containsKey('ramMb')) {
+      ramMb = _json['ramMb'];
     }
-    if (_json.containsKey("screenDensityDpi")) {
-      screenDensityDpi = _json["screenDensityDpi"];
+    if (_json.containsKey('screenDensityDpi')) {
+      screenDensityDpi = _json['screenDensityDpi'];
     }
-    if (_json.containsKey("screenHeightPx")) {
-      screenHeightPx = _json["screenHeightPx"];
+    if (_json.containsKey('screenHeightPx')) {
+      screenHeightPx = _json['screenHeightPx'];
     }
-    if (_json.containsKey("screenWidthPx")) {
-      screenWidthPx = _json["screenWidthPx"];
+    if (_json.containsKey('screenWidthPx')) {
+      screenWidthPx = _json['screenWidthPx'];
     }
   }
 
@@ -5069,37 +5068,37 @@ class DeviceMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cpuMake != null) {
-      _json["cpuMake"] = cpuMake;
+      _json['cpuMake'] = cpuMake;
     }
     if (cpuModel != null) {
-      _json["cpuModel"] = cpuModel;
+      _json['cpuModel'] = cpuModel;
     }
     if (deviceClass != null) {
-      _json["deviceClass"] = deviceClass;
+      _json['deviceClass'] = deviceClass;
     }
     if (glEsVersion != null) {
-      _json["glEsVersion"] = glEsVersion;
+      _json['glEsVersion'] = glEsVersion;
     }
     if (manufacturer != null) {
-      _json["manufacturer"] = manufacturer;
+      _json['manufacturer'] = manufacturer;
     }
     if (nativePlatform != null) {
-      _json["nativePlatform"] = nativePlatform;
+      _json['nativePlatform'] = nativePlatform;
     }
     if (productName != null) {
-      _json["productName"] = productName;
+      _json['productName'] = productName;
     }
     if (ramMb != null) {
-      _json["ramMb"] = ramMb;
+      _json['ramMb'] = ramMb;
     }
     if (screenDensityDpi != null) {
-      _json["screenDensityDpi"] = screenDensityDpi;
+      _json['screenDensityDpi'] = screenDensityDpi;
     }
     if (screenHeightPx != null) {
-      _json["screenHeightPx"] = screenHeightPx;
+      _json['screenHeightPx'] = screenHeightPx;
     }
     if (screenWidthPx != null) {
-      _json["screenWidthPx"] = screenWidthPx;
+      _json['screenWidthPx'] = screenWidthPx;
     }
     return _json;
   }
@@ -5120,15 +5119,15 @@ class DeviceSpec {
   DeviceSpec();
 
   DeviceSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("screenDensity")) {
-      screenDensity = _json["screenDensity"];
+    if (_json.containsKey('screenDensity')) {
+      screenDensity = _json['screenDensity'];
     }
-    if (_json.containsKey("supportedAbis")) {
-      supportedAbis = (_json["supportedAbis"] as core.List).cast<core.String>();
+    if (_json.containsKey('supportedAbis')) {
+      supportedAbis = (_json['supportedAbis'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("supportedLocales")) {
+    if (_json.containsKey('supportedLocales')) {
       supportedLocales =
-          (_json["supportedLocales"] as core.List).cast<core.String>();
+          (_json['supportedLocales'] as core.List).cast<core.String>();
     }
   }
 
@@ -5136,13 +5135,13 @@ class DeviceSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (screenDensity != null) {
-      _json["screenDensity"] = screenDensity;
+      _json['screenDensity'] = screenDensity;
     }
     if (supportedAbis != null) {
-      _json["supportedAbis"] = supportedAbis;
+      _json['supportedAbis'] = supportedAbis;
     }
     if (supportedLocales != null) {
-      _json["supportedLocales"] = supportedLocales;
+      _json['supportedLocales'] = supportedLocales;
     }
     return _json;
   }
@@ -5162,11 +5161,11 @@ class ExpansionFile {
   ExpansionFile();
 
   ExpansionFile.fromJson(core.Map _json) {
-    if (_json.containsKey("fileSize")) {
-      fileSize = _json["fileSize"];
+    if (_json.containsKey('fileSize')) {
+      fileSize = _json['fileSize'];
     }
-    if (_json.containsKey("referencesVersion")) {
-      referencesVersion = _json["referencesVersion"];
+    if (_json.containsKey('referencesVersion')) {
+      referencesVersion = _json['referencesVersion'];
     }
   }
 
@@ -5174,10 +5173,10 @@ class ExpansionFile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fileSize != null) {
-      _json["fileSize"] = fileSize;
+      _json['fileSize'] = fileSize;
     }
     if (referencesVersion != null) {
-      _json["referencesVersion"] = referencesVersion;
+      _json['referencesVersion'] = referencesVersion;
     }
     return _json;
   }
@@ -5191,8 +5190,8 @@ class ExpansionFilesUploadResponse {
   ExpansionFilesUploadResponse();
 
   ExpansionFilesUploadResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("expansionFile")) {
-      expansionFile = ExpansionFile.fromJson(_json["expansionFile"]);
+    if (_json.containsKey('expansionFile')) {
+      expansionFile = ExpansionFile.fromJson(_json['expansionFile']);
     }
   }
 
@@ -5200,7 +5199,7 @@ class ExpansionFilesUploadResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expansionFile != null) {
-      _json["expansionFile"] = expansionFile.toJson();
+      _json['expansionFile'] = expansionFile.toJson();
     }
     return _json;
   }
@@ -5261,53 +5260,53 @@ class ExternallyHostedApk {
   ExternallyHostedApk();
 
   ExternallyHostedApk.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationLabel")) {
-      applicationLabel = _json["applicationLabel"];
+    if (_json.containsKey('applicationLabel')) {
+      applicationLabel = _json['applicationLabel'];
     }
-    if (_json.containsKey("certificateBase64s")) {
+    if (_json.containsKey('certificateBase64s')) {
       certificateBase64s =
-          (_json["certificateBase64s"] as core.List).cast<core.String>();
+          (_json['certificateBase64s'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("externallyHostedUrl")) {
-      externallyHostedUrl = _json["externallyHostedUrl"];
+    if (_json.containsKey('externallyHostedUrl')) {
+      externallyHostedUrl = _json['externallyHostedUrl'];
     }
-    if (_json.containsKey("fileSha1Base64")) {
-      fileSha1Base64 = _json["fileSha1Base64"];
+    if (_json.containsKey('fileSha1Base64')) {
+      fileSha1Base64 = _json['fileSha1Base64'];
     }
-    if (_json.containsKey("fileSha256Base64")) {
-      fileSha256Base64 = _json["fileSha256Base64"];
+    if (_json.containsKey('fileSha256Base64')) {
+      fileSha256Base64 = _json['fileSha256Base64'];
     }
-    if (_json.containsKey("fileSize")) {
-      fileSize = _json["fileSize"];
+    if (_json.containsKey('fileSize')) {
+      fileSize = _json['fileSize'];
     }
-    if (_json.containsKey("iconBase64")) {
-      iconBase64 = _json["iconBase64"];
+    if (_json.containsKey('iconBase64')) {
+      iconBase64 = _json['iconBase64'];
     }
-    if (_json.containsKey("maximumSdk")) {
-      maximumSdk = _json["maximumSdk"];
+    if (_json.containsKey('maximumSdk')) {
+      maximumSdk = _json['maximumSdk'];
     }
-    if (_json.containsKey("minimumSdk")) {
-      minimumSdk = _json["minimumSdk"];
+    if (_json.containsKey('minimumSdk')) {
+      minimumSdk = _json['minimumSdk'];
     }
-    if (_json.containsKey("nativeCodes")) {
-      nativeCodes = (_json["nativeCodes"] as core.List).cast<core.String>();
+    if (_json.containsKey('nativeCodes')) {
+      nativeCodes = (_json['nativeCodes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("usesFeatures")) {
-      usesFeatures = (_json["usesFeatures"] as core.List).cast<core.String>();
+    if (_json.containsKey('usesFeatures')) {
+      usesFeatures = (_json['usesFeatures'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("usesPermissions")) {
-      usesPermissions = (_json["usesPermissions"] as core.List)
+    if (_json.containsKey('usesPermissions')) {
+      usesPermissions = (_json['usesPermissions'] as core.List)
           .map<UsesPermission>((value) => UsesPermission.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("versionCode")) {
-      versionCode = _json["versionCode"];
+    if (_json.containsKey('versionCode')) {
+      versionCode = _json['versionCode'];
     }
-    if (_json.containsKey("versionName")) {
-      versionName = _json["versionName"];
+    if (_json.containsKey('versionName')) {
+      versionName = _json['versionName'];
     }
   }
 
@@ -5315,50 +5314,50 @@ class ExternallyHostedApk {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (applicationLabel != null) {
-      _json["applicationLabel"] = applicationLabel;
+      _json['applicationLabel'] = applicationLabel;
     }
     if (certificateBase64s != null) {
-      _json["certificateBase64s"] = certificateBase64s;
+      _json['certificateBase64s'] = certificateBase64s;
     }
     if (externallyHostedUrl != null) {
-      _json["externallyHostedUrl"] = externallyHostedUrl;
+      _json['externallyHostedUrl'] = externallyHostedUrl;
     }
     if (fileSha1Base64 != null) {
-      _json["fileSha1Base64"] = fileSha1Base64;
+      _json['fileSha1Base64'] = fileSha1Base64;
     }
     if (fileSha256Base64 != null) {
-      _json["fileSha256Base64"] = fileSha256Base64;
+      _json['fileSha256Base64'] = fileSha256Base64;
     }
     if (fileSize != null) {
-      _json["fileSize"] = fileSize;
+      _json['fileSize'] = fileSize;
     }
     if (iconBase64 != null) {
-      _json["iconBase64"] = iconBase64;
+      _json['iconBase64'] = iconBase64;
     }
     if (maximumSdk != null) {
-      _json["maximumSdk"] = maximumSdk;
+      _json['maximumSdk'] = maximumSdk;
     }
     if (minimumSdk != null) {
-      _json["minimumSdk"] = minimumSdk;
+      _json['minimumSdk'] = minimumSdk;
     }
     if (nativeCodes != null) {
-      _json["nativeCodes"] = nativeCodes;
+      _json['nativeCodes'] = nativeCodes;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (usesFeatures != null) {
-      _json["usesFeatures"] = usesFeatures;
+      _json['usesFeatures'] = usesFeatures;
     }
     if (usesPermissions != null) {
-      _json["usesPermissions"] =
+      _json['usesPermissions'] =
           usesPermissions.map((value) => value.toJson()).toList();
     }
     if (versionCode != null) {
-      _json["versionCode"] = versionCode;
+      _json['versionCode'] = versionCode;
     }
     if (versionName != null) {
-      _json["versionName"] = versionName;
+      _json['versionName'] = versionName;
     }
     return _json;
   }
@@ -5381,17 +5380,17 @@ class Image {
   Image();
 
   Image.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("sha1")) {
-      sha1 = _json["sha1"];
+    if (_json.containsKey('sha1')) {
+      sha1 = _json['sha1'];
     }
-    if (_json.containsKey("sha256")) {
-      sha256 = _json["sha256"];
+    if (_json.containsKey('sha256')) {
+      sha256 = _json['sha256'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -5399,16 +5398,16 @@ class Image {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (sha1 != null) {
-      _json["sha1"] = sha1;
+      _json['sha1'] = sha1;
     }
     if (sha256 != null) {
-      _json["sha256"] = sha256;
+      _json['sha256'] = sha256;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -5422,8 +5421,8 @@ class ImagesDeleteAllResponse {
   ImagesDeleteAllResponse();
 
   ImagesDeleteAllResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deleted")) {
-      deleted = (_json["deleted"] as core.List)
+    if (_json.containsKey('deleted')) {
+      deleted = (_json['deleted'] as core.List)
           .map<Image>((value) => Image.fromJson(value))
           .toList();
     }
@@ -5433,7 +5432,7 @@ class ImagesDeleteAllResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deleted != null) {
-      _json["deleted"] = deleted.map((value) => value.toJson()).toList();
+      _json['deleted'] = deleted.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5447,8 +5446,8 @@ class ImagesListResponse {
   ImagesListResponse();
 
   ImagesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("images")) {
-      images = (_json["images"] as core.List)
+    if (_json.containsKey('images')) {
+      images = (_json['images'] as core.List)
           .map<Image>((value) => Image.fromJson(value))
           .toList();
     }
@@ -5458,7 +5457,7 @@ class ImagesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (images != null) {
-      _json["images"] = images.map((value) => value.toJson()).toList();
+      _json['images'] = images.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5472,8 +5471,8 @@ class ImagesUploadResponse {
   ImagesUploadResponse();
 
   ImagesUploadResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("image")) {
-      image = Image.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = Image.fromJson(_json['image']);
     }
   }
 
@@ -5481,7 +5480,7 @@ class ImagesUploadResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     return _json;
   }
@@ -5545,42 +5544,42 @@ class InAppProduct {
   InAppProduct();
 
   InAppProduct.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = _json["defaultLanguage"];
+    if (_json.containsKey('defaultLanguage')) {
+      defaultLanguage = _json['defaultLanguage'];
     }
-    if (_json.containsKey("defaultPrice")) {
-      defaultPrice = Price.fromJson(_json["defaultPrice"]);
+    if (_json.containsKey('defaultPrice')) {
+      defaultPrice = Price.fromJson(_json['defaultPrice']);
     }
-    if (_json.containsKey("gracePeriod")) {
-      gracePeriod = _json["gracePeriod"];
+    if (_json.containsKey('gracePeriod')) {
+      gracePeriod = _json['gracePeriod'];
     }
-    if (_json.containsKey("listings")) {
+    if (_json.containsKey('listings')) {
       listings = commons.mapMap<core.Map, InAppProductListing>(
-          _json["listings"].cast<core.String, core.Map>(),
+          _json['listings'].cast<core.String, core.Map>(),
           (core.Map item) => InAppProductListing.fromJson(item));
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("prices")) {
+    if (_json.containsKey('prices')) {
       prices = commons.mapMap<core.Map, Price>(
-          _json["prices"].cast<core.String, core.Map>(),
+          _json['prices'].cast<core.String, core.Map>(),
           (core.Map item) => Price.fromJson(item));
     }
-    if (_json.containsKey("purchaseType")) {
-      purchaseType = _json["purchaseType"];
+    if (_json.containsKey('purchaseType')) {
+      purchaseType = _json['purchaseType'];
     }
-    if (_json.containsKey("sku")) {
-      sku = _json["sku"];
+    if (_json.containsKey('sku')) {
+      sku = _json['sku'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("subscriptionPeriod")) {
-      subscriptionPeriod = _json["subscriptionPeriod"];
+    if (_json.containsKey('subscriptionPeriod')) {
+      subscriptionPeriod = _json['subscriptionPeriod'];
     }
-    if (_json.containsKey("trialPeriod")) {
-      trialPeriod = _json["trialPeriod"];
+    if (_json.containsKey('trialPeriod')) {
+      trialPeriod = _json['trialPeriod'];
     }
   }
 
@@ -5588,41 +5587,41 @@ class InAppProduct {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = defaultLanguage;
+      _json['defaultLanguage'] = defaultLanguage;
     }
     if (defaultPrice != null) {
-      _json["defaultPrice"] = defaultPrice.toJson();
+      _json['defaultPrice'] = defaultPrice.toJson();
     }
     if (gracePeriod != null) {
-      _json["gracePeriod"] = gracePeriod;
+      _json['gracePeriod'] = gracePeriod;
     }
     if (listings != null) {
-      _json["listings"] = commons
+      _json['listings'] = commons
           .mapMap<InAppProductListing, core.Map<core.String, core.Object>>(
               listings, (InAppProductListing item) => item.toJson());
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (prices != null) {
-      _json["prices"] =
+      _json['prices'] =
           commons.mapMap<Price, core.Map<core.String, core.Object>>(
               prices, (Price item) => item.toJson());
     }
     if (purchaseType != null) {
-      _json["purchaseType"] = purchaseType;
+      _json['purchaseType'] = purchaseType;
     }
     if (sku != null) {
-      _json["sku"] = sku;
+      _json['sku'] = sku;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (subscriptionPeriod != null) {
-      _json["subscriptionPeriod"] = subscriptionPeriod;
+      _json['subscriptionPeriod'] = subscriptionPeriod;
     }
     if (trialPeriod != null) {
-      _json["trialPeriod"] = trialPeriod;
+      _json['trialPeriod'] = trialPeriod;
     }
     return _json;
   }
@@ -5642,14 +5641,14 @@ class InAppProductListing {
   InAppProductListing();
 
   InAppProductListing.fromJson(core.Map _json) {
-    if (_json.containsKey("benefits")) {
-      benefits = (_json["benefits"] as core.List).cast<core.String>();
+    if (_json.containsKey('benefits')) {
+      benefits = (_json['benefits'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -5657,13 +5656,13 @@ class InAppProductListing {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (benefits != null) {
-      _json["benefits"] = benefits;
+      _json['benefits'] = benefits;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -5686,19 +5685,19 @@ class InappproductsListResponse {
   InappproductsListResponse();
 
   InappproductsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("inappproduct")) {
-      inappproduct = (_json["inappproduct"] as core.List)
+    if (_json.containsKey('inappproduct')) {
+      inappproduct = (_json['inappproduct'] as core.List)
           .map<InAppProduct>((value) => InAppProduct.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
   }
 
@@ -5706,17 +5705,17 @@ class InappproductsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inappproduct != null) {
-      _json["inappproduct"] =
+      _json['inappproduct'] =
           inappproduct.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     return _json;
   }
@@ -5741,14 +5740,14 @@ class InternalAppSharingArtifact {
   InternalAppSharingArtifact();
 
   InternalAppSharingArtifact.fromJson(core.Map _json) {
-    if (_json.containsKey("certificateFingerprint")) {
-      certificateFingerprint = _json["certificateFingerprint"];
+    if (_json.containsKey('certificateFingerprint')) {
+      certificateFingerprint = _json['certificateFingerprint'];
     }
-    if (_json.containsKey("downloadUrl")) {
-      downloadUrl = _json["downloadUrl"];
+    if (_json.containsKey('downloadUrl')) {
+      downloadUrl = _json['downloadUrl'];
     }
-    if (_json.containsKey("sha256")) {
-      sha256 = _json["sha256"];
+    if (_json.containsKey('sha256')) {
+      sha256 = _json['sha256'];
     }
   }
 
@@ -5756,13 +5755,13 @@ class InternalAppSharingArtifact {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (certificateFingerprint != null) {
-      _json["certificateFingerprint"] = certificateFingerprint;
+      _json['certificateFingerprint'] = certificateFingerprint;
     }
     if (downloadUrl != null) {
-      _json["downloadUrl"] = downloadUrl;
+      _json['downloadUrl'] = downloadUrl;
     }
     if (sha256 != null) {
-      _json["sha256"] = sha256;
+      _json['sha256'] = sha256;
     }
     return _json;
   }
@@ -5792,17 +5791,17 @@ class IntroductoryPriceInfo {
   IntroductoryPriceInfo();
 
   IntroductoryPriceInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("introductoryPriceAmountMicros")) {
-      introductoryPriceAmountMicros = _json["introductoryPriceAmountMicros"];
+    if (_json.containsKey('introductoryPriceAmountMicros')) {
+      introductoryPriceAmountMicros = _json['introductoryPriceAmountMicros'];
     }
-    if (_json.containsKey("introductoryPriceCurrencyCode")) {
-      introductoryPriceCurrencyCode = _json["introductoryPriceCurrencyCode"];
+    if (_json.containsKey('introductoryPriceCurrencyCode')) {
+      introductoryPriceCurrencyCode = _json['introductoryPriceCurrencyCode'];
     }
-    if (_json.containsKey("introductoryPriceCycles")) {
-      introductoryPriceCycles = _json["introductoryPriceCycles"];
+    if (_json.containsKey('introductoryPriceCycles')) {
+      introductoryPriceCycles = _json['introductoryPriceCycles'];
     }
-    if (_json.containsKey("introductoryPricePeriod")) {
-      introductoryPricePeriod = _json["introductoryPricePeriod"];
+    if (_json.containsKey('introductoryPricePeriod')) {
+      introductoryPricePeriod = _json['introductoryPricePeriod'];
     }
   }
 
@@ -5810,16 +5809,16 @@ class IntroductoryPriceInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (introductoryPriceAmountMicros != null) {
-      _json["introductoryPriceAmountMicros"] = introductoryPriceAmountMicros;
+      _json['introductoryPriceAmountMicros'] = introductoryPriceAmountMicros;
     }
     if (introductoryPriceCurrencyCode != null) {
-      _json["introductoryPriceCurrencyCode"] = introductoryPriceCurrencyCode;
+      _json['introductoryPriceCurrencyCode'] = introductoryPriceCurrencyCode;
     }
     if (introductoryPriceCycles != null) {
-      _json["introductoryPriceCycles"] = introductoryPriceCycles;
+      _json['introductoryPriceCycles'] = introductoryPriceCycles;
     }
     if (introductoryPricePeriod != null) {
-      _json["introductoryPricePeriod"] = introductoryPricePeriod;
+      _json['introductoryPricePeriod'] = introductoryPricePeriod;
     }
     return _json;
   }
@@ -5846,20 +5845,20 @@ class Listing {
   Listing();
 
   Listing.fromJson(core.Map _json) {
-    if (_json.containsKey("fullDescription")) {
-      fullDescription = _json["fullDescription"];
+    if (_json.containsKey('fullDescription')) {
+      fullDescription = _json['fullDescription'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("shortDescription")) {
-      shortDescription = _json["shortDescription"];
+    if (_json.containsKey('shortDescription')) {
+      shortDescription = _json['shortDescription'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("video")) {
-      video = _json["video"];
+    if (_json.containsKey('video')) {
+      video = _json['video'];
     }
   }
 
@@ -5867,19 +5866,19 @@ class Listing {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fullDescription != null) {
-      _json["fullDescription"] = fullDescription;
+      _json['fullDescription'] = fullDescription;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (shortDescription != null) {
-      _json["shortDescription"] = shortDescription;
+      _json['shortDescription'] = shortDescription;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (video != null) {
-      _json["video"] = video;
+      _json['video'] = video;
     }
     return _json;
   }
@@ -5896,11 +5895,11 @@ class ListingsListResponse {
   ListingsListResponse();
 
   ListingsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("listings")) {
-      listings = (_json["listings"] as core.List)
+    if (_json.containsKey('listings')) {
+      listings = (_json['listings'] as core.List)
           .map<Listing>((value) => Listing.fromJson(value))
           .toList();
     }
@@ -5910,10 +5909,10 @@ class ListingsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (listings != null) {
-      _json["listings"] = listings.map((value) => value.toJson()).toList();
+      _json['listings'] = listings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5931,11 +5930,11 @@ class LocalizedText {
   LocalizedText();
 
   LocalizedText.fromJson(core.Map _json) {
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -5943,10 +5942,10 @@ class LocalizedText {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -5970,14 +5969,14 @@ class PageInfo {
   PageInfo();
 
   PageInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("resultPerPage")) {
-      resultPerPage = _json["resultPerPage"];
+    if (_json.containsKey('resultPerPage')) {
+      resultPerPage = _json['resultPerPage'];
     }
-    if (_json.containsKey("startIndex")) {
-      startIndex = _json["startIndex"];
+    if (_json.containsKey('startIndex')) {
+      startIndex = _json['startIndex'];
     }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
+    if (_json.containsKey('totalResults')) {
+      totalResults = _json['totalResults'];
     }
   }
 
@@ -5985,13 +5984,13 @@ class PageInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resultPerPage != null) {
-      _json["resultPerPage"] = resultPerPage;
+      _json['resultPerPage'] = resultPerPage;
     }
     if (startIndex != null) {
-      _json["startIndex"] = startIndex;
+      _json['startIndex'] = startIndex;
     }
     if (totalResults != null) {
-      _json["totalResults"] = totalResults;
+      _json['totalResults'] = totalResults;
     }
     return _json;
   }
@@ -6009,11 +6008,11 @@ class Price {
   Price();
 
   Price.fromJson(core.Map _json) {
-    if (_json.containsKey("currency")) {
-      currency = _json["currency"];
+    if (_json.containsKey('currency')) {
+      currency = _json['currency'];
     }
-    if (_json.containsKey("priceMicros")) {
-      priceMicros = _json["priceMicros"];
+    if (_json.containsKey('priceMicros')) {
+      priceMicros = _json['priceMicros'];
     }
   }
 
@@ -6021,10 +6020,10 @@ class Price {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currency != null) {
-      _json["currency"] = currency;
+      _json['currency'] = currency;
     }
     if (priceMicros != null) {
-      _json["priceMicros"] = priceMicros;
+      _json['priceMicros'] = priceMicros;
     }
     return _json;
   }
@@ -6095,47 +6094,47 @@ class ProductPurchase {
   ProductPurchase();
 
   ProductPurchase.fromJson(core.Map _json) {
-    if (_json.containsKey("acknowledgementState")) {
-      acknowledgementState = _json["acknowledgementState"];
+    if (_json.containsKey('acknowledgementState')) {
+      acknowledgementState = _json['acknowledgementState'];
     }
-    if (_json.containsKey("consumptionState")) {
-      consumptionState = _json["consumptionState"];
+    if (_json.containsKey('consumptionState')) {
+      consumptionState = _json['consumptionState'];
     }
-    if (_json.containsKey("developerPayload")) {
-      developerPayload = _json["developerPayload"];
+    if (_json.containsKey('developerPayload')) {
+      developerPayload = _json['developerPayload'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("obfuscatedExternalAccountId")) {
-      obfuscatedExternalAccountId = _json["obfuscatedExternalAccountId"];
+    if (_json.containsKey('obfuscatedExternalAccountId')) {
+      obfuscatedExternalAccountId = _json['obfuscatedExternalAccountId'];
     }
-    if (_json.containsKey("obfuscatedExternalProfileId")) {
-      obfuscatedExternalProfileId = _json["obfuscatedExternalProfileId"];
+    if (_json.containsKey('obfuscatedExternalProfileId')) {
+      obfuscatedExternalProfileId = _json['obfuscatedExternalProfileId'];
     }
-    if (_json.containsKey("orderId")) {
-      orderId = _json["orderId"];
+    if (_json.containsKey('orderId')) {
+      orderId = _json['orderId'];
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("purchaseState")) {
-      purchaseState = _json["purchaseState"];
+    if (_json.containsKey('purchaseState')) {
+      purchaseState = _json['purchaseState'];
     }
-    if (_json.containsKey("purchaseTimeMillis")) {
-      purchaseTimeMillis = _json["purchaseTimeMillis"];
+    if (_json.containsKey('purchaseTimeMillis')) {
+      purchaseTimeMillis = _json['purchaseTimeMillis'];
     }
-    if (_json.containsKey("purchaseToken")) {
-      purchaseToken = _json["purchaseToken"];
+    if (_json.containsKey('purchaseToken')) {
+      purchaseToken = _json['purchaseToken'];
     }
-    if (_json.containsKey("purchaseType")) {
-      purchaseType = _json["purchaseType"];
+    if (_json.containsKey('purchaseType')) {
+      purchaseType = _json['purchaseType'];
     }
-    if (_json.containsKey("quantity")) {
-      quantity = _json["quantity"];
+    if (_json.containsKey('quantity')) {
+      quantity = _json['quantity'];
     }
-    if (_json.containsKey("regionCode")) {
-      regionCode = _json["regionCode"];
+    if (_json.containsKey('regionCode')) {
+      regionCode = _json['regionCode'];
     }
   }
 
@@ -6143,46 +6142,46 @@ class ProductPurchase {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acknowledgementState != null) {
-      _json["acknowledgementState"] = acknowledgementState;
+      _json['acknowledgementState'] = acknowledgementState;
     }
     if (consumptionState != null) {
-      _json["consumptionState"] = consumptionState;
+      _json['consumptionState'] = consumptionState;
     }
     if (developerPayload != null) {
-      _json["developerPayload"] = developerPayload;
+      _json['developerPayload'] = developerPayload;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (obfuscatedExternalAccountId != null) {
-      _json["obfuscatedExternalAccountId"] = obfuscatedExternalAccountId;
+      _json['obfuscatedExternalAccountId'] = obfuscatedExternalAccountId;
     }
     if (obfuscatedExternalProfileId != null) {
-      _json["obfuscatedExternalProfileId"] = obfuscatedExternalProfileId;
+      _json['obfuscatedExternalProfileId'] = obfuscatedExternalProfileId;
     }
     if (orderId != null) {
-      _json["orderId"] = orderId;
+      _json['orderId'] = orderId;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (purchaseState != null) {
-      _json["purchaseState"] = purchaseState;
+      _json['purchaseState'] = purchaseState;
     }
     if (purchaseTimeMillis != null) {
-      _json["purchaseTimeMillis"] = purchaseTimeMillis;
+      _json['purchaseTimeMillis'] = purchaseTimeMillis;
     }
     if (purchaseToken != null) {
-      _json["purchaseToken"] = purchaseToken;
+      _json['purchaseToken'] = purchaseToken;
     }
     if (purchaseType != null) {
-      _json["purchaseType"] = purchaseType;
+      _json['purchaseType'] = purchaseType;
     }
     if (quantity != null) {
-      _json["quantity"] = quantity;
+      _json['quantity'] = quantity;
     }
     if (regionCode != null) {
-      _json["regionCode"] = regionCode;
+      _json['regionCode'] = regionCode;
     }
     return _json;
   }
@@ -6196,8 +6195,8 @@ class ProductPurchasesAcknowledgeRequest {
   ProductPurchasesAcknowledgeRequest();
 
   ProductPurchasesAcknowledgeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("developerPayload")) {
-      developerPayload = _json["developerPayload"];
+    if (_json.containsKey('developerPayload')) {
+      developerPayload = _json['developerPayload'];
     }
   }
 
@@ -6205,7 +6204,7 @@ class ProductPurchasesAcknowledgeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (developerPayload != null) {
-      _json["developerPayload"] = developerPayload;
+      _json['developerPayload'] = developerPayload;
     }
     return _json;
   }
@@ -6225,16 +6224,16 @@ class Review {
   Review();
 
   Review.fromJson(core.Map _json) {
-    if (_json.containsKey("authorName")) {
-      authorName = _json["authorName"];
+    if (_json.containsKey('authorName')) {
+      authorName = _json['authorName'];
     }
-    if (_json.containsKey("comments")) {
-      comments = (_json["comments"] as core.List)
+    if (_json.containsKey('comments')) {
+      comments = (_json['comments'] as core.List)
           .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("reviewId")) {
-      reviewId = _json["reviewId"];
+    if (_json.containsKey('reviewId')) {
+      reviewId = _json['reviewId'];
     }
   }
 
@@ -6242,13 +6241,13 @@ class Review {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (authorName != null) {
-      _json["authorName"] = authorName;
+      _json['authorName'] = authorName;
     }
     if (comments != null) {
-      _json["comments"] = comments.map((value) => value.toJson()).toList();
+      _json['comments'] = comments.map((value) => value.toJson()).toList();
     }
     if (reviewId != null) {
-      _json["reviewId"] = reviewId;
+      _json['reviewId'] = reviewId;
     }
     return _json;
   }
@@ -6265,11 +6264,11 @@ class ReviewReplyResult {
   ReviewReplyResult();
 
   ReviewReplyResult.fromJson(core.Map _json) {
-    if (_json.containsKey("lastEdited")) {
-      lastEdited = Timestamp.fromJson(_json["lastEdited"]);
+    if (_json.containsKey('lastEdited')) {
+      lastEdited = Timestamp.fromJson(_json['lastEdited']);
     }
-    if (_json.containsKey("replyText")) {
-      replyText = _json["replyText"];
+    if (_json.containsKey('replyText')) {
+      replyText = _json['replyText'];
     }
   }
 
@@ -6277,10 +6276,10 @@ class ReviewReplyResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lastEdited != null) {
-      _json["lastEdited"] = lastEdited.toJson();
+      _json['lastEdited'] = lastEdited.toJson();
     }
     if (replyText != null) {
-      _json["replyText"] = replyText;
+      _json['replyText'] = replyText;
     }
     return _json;
   }
@@ -6300,16 +6299,16 @@ class ReviewsListResponse {
   ReviewsListResponse();
 
   ReviewsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("reviews")) {
-      reviews = (_json["reviews"] as core.List)
+    if (_json.containsKey('reviews')) {
+      reviews = (_json['reviews'] as core.List)
           .map<Review>((value) => Review.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
   }
 
@@ -6317,13 +6316,13 @@ class ReviewsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (reviews != null) {
-      _json["reviews"] = reviews.map((value) => value.toJson()).toList();
+      _json['reviews'] = reviews.map((value) => value.toJson()).toList();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     return _json;
   }
@@ -6338,8 +6337,8 @@ class ReviewsReplyRequest {
   ReviewsReplyRequest();
 
   ReviewsReplyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("replyText")) {
-      replyText = _json["replyText"];
+    if (_json.containsKey('replyText')) {
+      replyText = _json['replyText'];
     }
   }
 
@@ -6347,7 +6346,7 @@ class ReviewsReplyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (replyText != null) {
-      _json["replyText"] = replyText;
+      _json['replyText'] = replyText;
     }
     return _json;
   }
@@ -6361,8 +6360,8 @@ class ReviewsReplyResponse {
   ReviewsReplyResponse();
 
   ReviewsReplyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("result")) {
-      result = ReviewReplyResult.fromJson(_json["result"]);
+    if (_json.containsKey('result')) {
+      result = ReviewReplyResult.fromJson(_json['result']);
     }
   }
 
@@ -6370,7 +6369,7 @@ class ReviewsReplyResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (result != null) {
-      _json["result"] = result.toJson();
+      _json['result'] = result.toJson();
     }
     return _json;
   }
@@ -6391,11 +6390,11 @@ class SubscriptionCancelSurveyResult {
   SubscriptionCancelSurveyResult();
 
   SubscriptionCancelSurveyResult.fromJson(core.Map _json) {
-    if (_json.containsKey("cancelSurveyReason")) {
-      cancelSurveyReason = _json["cancelSurveyReason"];
+    if (_json.containsKey('cancelSurveyReason')) {
+      cancelSurveyReason = _json['cancelSurveyReason'];
     }
-    if (_json.containsKey("userInputCancelReason")) {
-      userInputCancelReason = _json["userInputCancelReason"];
+    if (_json.containsKey('userInputCancelReason')) {
+      userInputCancelReason = _json['userInputCancelReason'];
     }
   }
 
@@ -6403,10 +6402,10 @@ class SubscriptionCancelSurveyResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cancelSurveyReason != null) {
-      _json["cancelSurveyReason"] = cancelSurveyReason;
+      _json['cancelSurveyReason'] = cancelSurveyReason;
     }
     if (userInputCancelReason != null) {
-      _json["userInputCancelReason"] = userInputCancelReason;
+      _json['userInputCancelReason'] = userInputCancelReason;
     }
     return _json;
   }
@@ -6428,11 +6427,11 @@ class SubscriptionDeferralInfo {
   SubscriptionDeferralInfo();
 
   SubscriptionDeferralInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("desiredExpiryTimeMillis")) {
-      desiredExpiryTimeMillis = _json["desiredExpiryTimeMillis"];
+    if (_json.containsKey('desiredExpiryTimeMillis')) {
+      desiredExpiryTimeMillis = _json['desiredExpiryTimeMillis'];
     }
-    if (_json.containsKey("expectedExpiryTimeMillis")) {
-      expectedExpiryTimeMillis = _json["expectedExpiryTimeMillis"];
+    if (_json.containsKey('expectedExpiryTimeMillis')) {
+      expectedExpiryTimeMillis = _json['expectedExpiryTimeMillis'];
     }
   }
 
@@ -6440,10 +6439,10 @@ class SubscriptionDeferralInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (desiredExpiryTimeMillis != null) {
-      _json["desiredExpiryTimeMillis"] = desiredExpiryTimeMillis;
+      _json['desiredExpiryTimeMillis'] = desiredExpiryTimeMillis;
     }
     if (expectedExpiryTimeMillis != null) {
-      _json["expectedExpiryTimeMillis"] = expectedExpiryTimeMillis;
+      _json['expectedExpiryTimeMillis'] = expectedExpiryTimeMillis;
     }
     return _json;
   }
@@ -6470,11 +6469,11 @@ class SubscriptionPriceChange {
   SubscriptionPriceChange();
 
   SubscriptionPriceChange.fromJson(core.Map _json) {
-    if (_json.containsKey("newPrice")) {
-      newPrice = Price.fromJson(_json["newPrice"]);
+    if (_json.containsKey('newPrice')) {
+      newPrice = Price.fromJson(_json['newPrice']);
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -6482,10 +6481,10 @@ class SubscriptionPriceChange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (newPrice != null) {
-      _json["newPrice"] = newPrice.toJson();
+      _json['newPrice'] = newPrice.toJson();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -6642,94 +6641,94 @@ class SubscriptionPurchase {
   SubscriptionPurchase();
 
   SubscriptionPurchase.fromJson(core.Map _json) {
-    if (_json.containsKey("acknowledgementState")) {
-      acknowledgementState = _json["acknowledgementState"];
+    if (_json.containsKey('acknowledgementState')) {
+      acknowledgementState = _json['acknowledgementState'];
     }
-    if (_json.containsKey("autoRenewing")) {
-      autoRenewing = _json["autoRenewing"];
+    if (_json.containsKey('autoRenewing')) {
+      autoRenewing = _json['autoRenewing'];
     }
-    if (_json.containsKey("autoResumeTimeMillis")) {
-      autoResumeTimeMillis = _json["autoResumeTimeMillis"];
+    if (_json.containsKey('autoResumeTimeMillis')) {
+      autoResumeTimeMillis = _json['autoResumeTimeMillis'];
     }
-    if (_json.containsKey("cancelReason")) {
-      cancelReason = _json["cancelReason"];
+    if (_json.containsKey('cancelReason')) {
+      cancelReason = _json['cancelReason'];
     }
-    if (_json.containsKey("cancelSurveyResult")) {
+    if (_json.containsKey('cancelSurveyResult')) {
       cancelSurveyResult =
-          SubscriptionCancelSurveyResult.fromJson(_json["cancelSurveyResult"]);
+          SubscriptionCancelSurveyResult.fromJson(_json['cancelSurveyResult']);
     }
-    if (_json.containsKey("countryCode")) {
-      countryCode = _json["countryCode"];
+    if (_json.containsKey('countryCode')) {
+      countryCode = _json['countryCode'];
     }
-    if (_json.containsKey("developerPayload")) {
-      developerPayload = _json["developerPayload"];
+    if (_json.containsKey('developerPayload')) {
+      developerPayload = _json['developerPayload'];
     }
-    if (_json.containsKey("emailAddress")) {
-      emailAddress = _json["emailAddress"];
+    if (_json.containsKey('emailAddress')) {
+      emailAddress = _json['emailAddress'];
     }
-    if (_json.containsKey("expiryTimeMillis")) {
-      expiryTimeMillis = _json["expiryTimeMillis"];
+    if (_json.containsKey('expiryTimeMillis')) {
+      expiryTimeMillis = _json['expiryTimeMillis'];
     }
-    if (_json.containsKey("externalAccountId")) {
-      externalAccountId = _json["externalAccountId"];
+    if (_json.containsKey('externalAccountId')) {
+      externalAccountId = _json['externalAccountId'];
     }
-    if (_json.containsKey("familyName")) {
-      familyName = _json["familyName"];
+    if (_json.containsKey('familyName')) {
+      familyName = _json['familyName'];
     }
-    if (_json.containsKey("givenName")) {
-      givenName = _json["givenName"];
+    if (_json.containsKey('givenName')) {
+      givenName = _json['givenName'];
     }
-    if (_json.containsKey("introductoryPriceInfo")) {
+    if (_json.containsKey('introductoryPriceInfo')) {
       introductoryPriceInfo =
-          IntroductoryPriceInfo.fromJson(_json["introductoryPriceInfo"]);
+          IntroductoryPriceInfo.fromJson(_json['introductoryPriceInfo']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("linkedPurchaseToken")) {
-      linkedPurchaseToken = _json["linkedPurchaseToken"];
+    if (_json.containsKey('linkedPurchaseToken')) {
+      linkedPurchaseToken = _json['linkedPurchaseToken'];
     }
-    if (_json.containsKey("obfuscatedExternalAccountId")) {
-      obfuscatedExternalAccountId = _json["obfuscatedExternalAccountId"];
+    if (_json.containsKey('obfuscatedExternalAccountId')) {
+      obfuscatedExternalAccountId = _json['obfuscatedExternalAccountId'];
     }
-    if (_json.containsKey("obfuscatedExternalProfileId")) {
-      obfuscatedExternalProfileId = _json["obfuscatedExternalProfileId"];
+    if (_json.containsKey('obfuscatedExternalProfileId')) {
+      obfuscatedExternalProfileId = _json['obfuscatedExternalProfileId'];
     }
-    if (_json.containsKey("orderId")) {
-      orderId = _json["orderId"];
+    if (_json.containsKey('orderId')) {
+      orderId = _json['orderId'];
     }
-    if (_json.containsKey("paymentState")) {
-      paymentState = _json["paymentState"];
+    if (_json.containsKey('paymentState')) {
+      paymentState = _json['paymentState'];
     }
-    if (_json.containsKey("priceAmountMicros")) {
-      priceAmountMicros = _json["priceAmountMicros"];
+    if (_json.containsKey('priceAmountMicros')) {
+      priceAmountMicros = _json['priceAmountMicros'];
     }
-    if (_json.containsKey("priceChange")) {
-      priceChange = SubscriptionPriceChange.fromJson(_json["priceChange"]);
+    if (_json.containsKey('priceChange')) {
+      priceChange = SubscriptionPriceChange.fromJson(_json['priceChange']);
     }
-    if (_json.containsKey("priceCurrencyCode")) {
-      priceCurrencyCode = _json["priceCurrencyCode"];
+    if (_json.containsKey('priceCurrencyCode')) {
+      priceCurrencyCode = _json['priceCurrencyCode'];
     }
-    if (_json.containsKey("profileId")) {
-      profileId = _json["profileId"];
+    if (_json.containsKey('profileId')) {
+      profileId = _json['profileId'];
     }
-    if (_json.containsKey("profileName")) {
-      profileName = _json["profileName"];
+    if (_json.containsKey('profileName')) {
+      profileName = _json['profileName'];
     }
-    if (_json.containsKey("promotionCode")) {
-      promotionCode = _json["promotionCode"];
+    if (_json.containsKey('promotionCode')) {
+      promotionCode = _json['promotionCode'];
     }
-    if (_json.containsKey("promotionType")) {
-      promotionType = _json["promotionType"];
+    if (_json.containsKey('promotionType')) {
+      promotionType = _json['promotionType'];
     }
-    if (_json.containsKey("purchaseType")) {
-      purchaseType = _json["purchaseType"];
+    if (_json.containsKey('purchaseType')) {
+      purchaseType = _json['purchaseType'];
     }
-    if (_json.containsKey("startTimeMillis")) {
-      startTimeMillis = _json["startTimeMillis"];
+    if (_json.containsKey('startTimeMillis')) {
+      startTimeMillis = _json['startTimeMillis'];
     }
-    if (_json.containsKey("userCancellationTimeMillis")) {
-      userCancellationTimeMillis = _json["userCancellationTimeMillis"];
+    if (_json.containsKey('userCancellationTimeMillis')) {
+      userCancellationTimeMillis = _json['userCancellationTimeMillis'];
     }
   }
 
@@ -6737,91 +6736,91 @@ class SubscriptionPurchase {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acknowledgementState != null) {
-      _json["acknowledgementState"] = acknowledgementState;
+      _json['acknowledgementState'] = acknowledgementState;
     }
     if (autoRenewing != null) {
-      _json["autoRenewing"] = autoRenewing;
+      _json['autoRenewing'] = autoRenewing;
     }
     if (autoResumeTimeMillis != null) {
-      _json["autoResumeTimeMillis"] = autoResumeTimeMillis;
+      _json['autoResumeTimeMillis'] = autoResumeTimeMillis;
     }
     if (cancelReason != null) {
-      _json["cancelReason"] = cancelReason;
+      _json['cancelReason'] = cancelReason;
     }
     if (cancelSurveyResult != null) {
-      _json["cancelSurveyResult"] = cancelSurveyResult.toJson();
+      _json['cancelSurveyResult'] = cancelSurveyResult.toJson();
     }
     if (countryCode != null) {
-      _json["countryCode"] = countryCode;
+      _json['countryCode'] = countryCode;
     }
     if (developerPayload != null) {
-      _json["developerPayload"] = developerPayload;
+      _json['developerPayload'] = developerPayload;
     }
     if (emailAddress != null) {
-      _json["emailAddress"] = emailAddress;
+      _json['emailAddress'] = emailAddress;
     }
     if (expiryTimeMillis != null) {
-      _json["expiryTimeMillis"] = expiryTimeMillis;
+      _json['expiryTimeMillis'] = expiryTimeMillis;
     }
     if (externalAccountId != null) {
-      _json["externalAccountId"] = externalAccountId;
+      _json['externalAccountId'] = externalAccountId;
     }
     if (familyName != null) {
-      _json["familyName"] = familyName;
+      _json['familyName'] = familyName;
     }
     if (givenName != null) {
-      _json["givenName"] = givenName;
+      _json['givenName'] = givenName;
     }
     if (introductoryPriceInfo != null) {
-      _json["introductoryPriceInfo"] = introductoryPriceInfo.toJson();
+      _json['introductoryPriceInfo'] = introductoryPriceInfo.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (linkedPurchaseToken != null) {
-      _json["linkedPurchaseToken"] = linkedPurchaseToken;
+      _json['linkedPurchaseToken'] = linkedPurchaseToken;
     }
     if (obfuscatedExternalAccountId != null) {
-      _json["obfuscatedExternalAccountId"] = obfuscatedExternalAccountId;
+      _json['obfuscatedExternalAccountId'] = obfuscatedExternalAccountId;
     }
     if (obfuscatedExternalProfileId != null) {
-      _json["obfuscatedExternalProfileId"] = obfuscatedExternalProfileId;
+      _json['obfuscatedExternalProfileId'] = obfuscatedExternalProfileId;
     }
     if (orderId != null) {
-      _json["orderId"] = orderId;
+      _json['orderId'] = orderId;
     }
     if (paymentState != null) {
-      _json["paymentState"] = paymentState;
+      _json['paymentState'] = paymentState;
     }
     if (priceAmountMicros != null) {
-      _json["priceAmountMicros"] = priceAmountMicros;
+      _json['priceAmountMicros'] = priceAmountMicros;
     }
     if (priceChange != null) {
-      _json["priceChange"] = priceChange.toJson();
+      _json['priceChange'] = priceChange.toJson();
     }
     if (priceCurrencyCode != null) {
-      _json["priceCurrencyCode"] = priceCurrencyCode;
+      _json['priceCurrencyCode'] = priceCurrencyCode;
     }
     if (profileId != null) {
-      _json["profileId"] = profileId;
+      _json['profileId'] = profileId;
     }
     if (profileName != null) {
-      _json["profileName"] = profileName;
+      _json['profileName'] = profileName;
     }
     if (promotionCode != null) {
-      _json["promotionCode"] = promotionCode;
+      _json['promotionCode'] = promotionCode;
     }
     if (promotionType != null) {
-      _json["promotionType"] = promotionType;
+      _json['promotionType'] = promotionType;
     }
     if (purchaseType != null) {
-      _json["purchaseType"] = purchaseType;
+      _json['purchaseType'] = purchaseType;
     }
     if (startTimeMillis != null) {
-      _json["startTimeMillis"] = startTimeMillis;
+      _json['startTimeMillis'] = startTimeMillis;
     }
     if (userCancellationTimeMillis != null) {
-      _json["userCancellationTimeMillis"] = userCancellationTimeMillis;
+      _json['userCancellationTimeMillis'] = userCancellationTimeMillis;
     }
     return _json;
   }
@@ -6835,8 +6834,8 @@ class SubscriptionPurchasesAcknowledgeRequest {
   SubscriptionPurchasesAcknowledgeRequest();
 
   SubscriptionPurchasesAcknowledgeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("developerPayload")) {
-      developerPayload = _json["developerPayload"];
+    if (_json.containsKey('developerPayload')) {
+      developerPayload = _json['developerPayload'];
     }
   }
 
@@ -6844,7 +6843,7 @@ class SubscriptionPurchasesAcknowledgeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (developerPayload != null) {
-      _json["developerPayload"] = developerPayload;
+      _json['developerPayload'] = developerPayload;
     }
     return _json;
   }
@@ -6858,8 +6857,8 @@ class SubscriptionPurchasesDeferRequest {
   SubscriptionPurchasesDeferRequest();
 
   SubscriptionPurchasesDeferRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deferralInfo")) {
-      deferralInfo = SubscriptionDeferralInfo.fromJson(_json["deferralInfo"]);
+    if (_json.containsKey('deferralInfo')) {
+      deferralInfo = SubscriptionDeferralInfo.fromJson(_json['deferralInfo']);
     }
   }
 
@@ -6867,7 +6866,7 @@ class SubscriptionPurchasesDeferRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deferralInfo != null) {
-      _json["deferralInfo"] = deferralInfo.toJson();
+      _json['deferralInfo'] = deferralInfo.toJson();
     }
     return _json;
   }
@@ -6881,8 +6880,8 @@ class SubscriptionPurchasesDeferResponse {
   SubscriptionPurchasesDeferResponse();
 
   SubscriptionPurchasesDeferResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("newExpiryTimeMillis")) {
-      newExpiryTimeMillis = _json["newExpiryTimeMillis"];
+    if (_json.containsKey('newExpiryTimeMillis')) {
+      newExpiryTimeMillis = _json['newExpiryTimeMillis'];
     }
   }
 
@@ -6890,7 +6889,7 @@ class SubscriptionPurchasesDeferResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (newExpiryTimeMillis != null) {
-      _json["newExpiryTimeMillis"] = newExpiryTimeMillis;
+      _json['newExpiryTimeMillis'] = newExpiryTimeMillis;
     }
     return _json;
   }
@@ -6904,8 +6903,8 @@ class SystemApksListResponse {
   SystemApksListResponse();
 
   SystemApksListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("variants")) {
-      variants = (_json["variants"] as core.List)
+    if (_json.containsKey('variants')) {
+      variants = (_json['variants'] as core.List)
           .map<Variant>((value) => Variant.fromJson(value))
           .toList();
     }
@@ -6915,7 +6914,7 @@ class SystemApksListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (variants != null) {
-      _json["variants"] = variants.map((value) => value.toJson()).toList();
+      _json['variants'] = variants.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6929,8 +6928,8 @@ class Testers {
   Testers();
 
   Testers.fromJson(core.Map _json) {
-    if (_json.containsKey("googleGroups")) {
-      googleGroups = (_json["googleGroups"] as core.List).cast<core.String>();
+    if (_json.containsKey('googleGroups')) {
+      googleGroups = (_json['googleGroups'] as core.List).cast<core.String>();
     }
   }
 
@@ -6938,7 +6937,7 @@ class Testers {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (googleGroups != null) {
-      _json["googleGroups"] = googleGroups;
+      _json['googleGroups'] = googleGroups;
     }
     return _json;
   }
@@ -6959,11 +6958,11 @@ class Timestamp {
   Timestamp();
 
   Timestamp.fromJson(core.Map _json) {
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'];
     }
-    if (_json.containsKey("seconds")) {
-      seconds = _json["seconds"];
+    if (_json.containsKey('seconds')) {
+      seconds = _json['seconds'];
     }
   }
 
@@ -6971,10 +6970,10 @@ class Timestamp {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nanos != null) {
-      _json["nanos"] = nanos;
+      _json['nanos'] = nanos;
     }
     if (seconds != null) {
-      _json["seconds"] = seconds;
+      _json['seconds'] = seconds;
     }
     return _json;
   }
@@ -6997,11 +6996,11 @@ class TokenPagination {
   TokenPagination();
 
   TokenPagination.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("previousPageToken")) {
-      previousPageToken = _json["previousPageToken"];
+    if (_json.containsKey('previousPageToken')) {
+      previousPageToken = _json['previousPageToken'];
     }
   }
 
@@ -7009,10 +7008,10 @@ class TokenPagination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (previousPageToken != null) {
-      _json["previousPageToken"] = previousPageToken;
+      _json['previousPageToken'] = previousPageToken;
     }
     return _json;
   }
@@ -7030,13 +7029,13 @@ class Track {
   Track();
 
   Track.fromJson(core.Map _json) {
-    if (_json.containsKey("releases")) {
-      releases = (_json["releases"] as core.List)
+    if (_json.containsKey('releases')) {
+      releases = (_json['releases'] as core.List)
           .map<TrackRelease>((value) => TrackRelease.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("track")) {
-      track = _json["track"];
+    if (_json.containsKey('track')) {
+      track = _json['track'];
     }
   }
 
@@ -7044,10 +7043,10 @@ class Track {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (releases != null) {
-      _json["releases"] = releases.map((value) => value.toJson()).toList();
+      _json['releases'] = releases.map((value) => value.toJson()).toList();
     }
     if (track != null) {
-      _json["track"] = track;
+      _json['track'] = track;
     }
     return _json;
   }
@@ -7097,28 +7096,28 @@ class TrackRelease {
   TrackRelease();
 
   TrackRelease.fromJson(core.Map _json) {
-    if (_json.containsKey("countryTargeting")) {
-      countryTargeting = CountryTargeting.fromJson(_json["countryTargeting"]);
+    if (_json.containsKey('countryTargeting')) {
+      countryTargeting = CountryTargeting.fromJson(_json['countryTargeting']);
     }
-    if (_json.containsKey("inAppUpdatePriority")) {
-      inAppUpdatePriority = _json["inAppUpdatePriority"];
+    if (_json.containsKey('inAppUpdatePriority')) {
+      inAppUpdatePriority = _json['inAppUpdatePriority'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("releaseNotes")) {
-      releaseNotes = (_json["releaseNotes"] as core.List)
+    if (_json.containsKey('releaseNotes')) {
+      releaseNotes = (_json['releaseNotes'] as core.List)
           .map<LocalizedText>((value) => LocalizedText.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("userFraction")) {
-      userFraction = _json["userFraction"].toDouble();
+    if (_json.containsKey('userFraction')) {
+      userFraction = _json['userFraction'].toDouble();
     }
-    if (_json.containsKey("versionCodes")) {
-      versionCodes = (_json["versionCodes"] as core.List).cast<core.String>();
+    if (_json.containsKey('versionCodes')) {
+      versionCodes = (_json['versionCodes'] as core.List).cast<core.String>();
     }
   }
 
@@ -7126,26 +7125,26 @@ class TrackRelease {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (countryTargeting != null) {
-      _json["countryTargeting"] = countryTargeting.toJson();
+      _json['countryTargeting'] = countryTargeting.toJson();
     }
     if (inAppUpdatePriority != null) {
-      _json["inAppUpdatePriority"] = inAppUpdatePriority;
+      _json['inAppUpdatePriority'] = inAppUpdatePriority;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (releaseNotes != null) {
-      _json["releaseNotes"] =
+      _json['releaseNotes'] =
           releaseNotes.map((value) => value.toJson()).toList();
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (userFraction != null) {
-      _json["userFraction"] = userFraction;
+      _json['userFraction'] = userFraction;
     }
     if (versionCodes != null) {
-      _json["versionCodes"] = versionCodes;
+      _json['versionCodes'] = versionCodes;
     }
     return _json;
   }
@@ -7162,11 +7161,11 @@ class TracksListResponse {
   TracksListResponse();
 
   TracksListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List)
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List)
           .map<Track>((value) => Track.fromJson(value))
           .toList();
     }
@@ -7176,10 +7175,10 @@ class TracksListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (tracks != null) {
-      _json["tracks"] = tracks.map((value) => value.toJson()).toList();
+      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7234,41 +7233,41 @@ class UserComment {
   UserComment();
 
   UserComment.fromJson(core.Map _json) {
-    if (_json.containsKey("androidOsVersion")) {
-      androidOsVersion = _json["androidOsVersion"];
+    if (_json.containsKey('androidOsVersion')) {
+      androidOsVersion = _json['androidOsVersion'];
     }
-    if (_json.containsKey("appVersionCode")) {
-      appVersionCode = _json["appVersionCode"];
+    if (_json.containsKey('appVersionCode')) {
+      appVersionCode = _json['appVersionCode'];
     }
-    if (_json.containsKey("appVersionName")) {
-      appVersionName = _json["appVersionName"];
+    if (_json.containsKey('appVersionName')) {
+      appVersionName = _json['appVersionName'];
     }
-    if (_json.containsKey("device")) {
-      device = _json["device"];
+    if (_json.containsKey('device')) {
+      device = _json['device'];
     }
-    if (_json.containsKey("deviceMetadata")) {
-      deviceMetadata = DeviceMetadata.fromJson(_json["deviceMetadata"]);
+    if (_json.containsKey('deviceMetadata')) {
+      deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
     }
-    if (_json.containsKey("lastModified")) {
-      lastModified = Timestamp.fromJson(_json["lastModified"]);
+    if (_json.containsKey('lastModified')) {
+      lastModified = Timestamp.fromJson(_json['lastModified']);
     }
-    if (_json.containsKey("originalText")) {
-      originalText = _json["originalText"];
+    if (_json.containsKey('originalText')) {
+      originalText = _json['originalText'];
     }
-    if (_json.containsKey("reviewerLanguage")) {
-      reviewerLanguage = _json["reviewerLanguage"];
+    if (_json.containsKey('reviewerLanguage')) {
+      reviewerLanguage = _json['reviewerLanguage'];
     }
-    if (_json.containsKey("starRating")) {
-      starRating = _json["starRating"];
+    if (_json.containsKey('starRating')) {
+      starRating = _json['starRating'];
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("thumbsDownCount")) {
-      thumbsDownCount = _json["thumbsDownCount"];
+    if (_json.containsKey('thumbsDownCount')) {
+      thumbsDownCount = _json['thumbsDownCount'];
     }
-    if (_json.containsKey("thumbsUpCount")) {
-      thumbsUpCount = _json["thumbsUpCount"];
+    if (_json.containsKey('thumbsUpCount')) {
+      thumbsUpCount = _json['thumbsUpCount'];
     }
   }
 
@@ -7276,40 +7275,40 @@ class UserComment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (androidOsVersion != null) {
-      _json["androidOsVersion"] = androidOsVersion;
+      _json['androidOsVersion'] = androidOsVersion;
     }
     if (appVersionCode != null) {
-      _json["appVersionCode"] = appVersionCode;
+      _json['appVersionCode'] = appVersionCode;
     }
     if (appVersionName != null) {
-      _json["appVersionName"] = appVersionName;
+      _json['appVersionName'] = appVersionName;
     }
     if (device != null) {
-      _json["device"] = device;
+      _json['device'] = device;
     }
     if (deviceMetadata != null) {
-      _json["deviceMetadata"] = deviceMetadata.toJson();
+      _json['deviceMetadata'] = deviceMetadata.toJson();
     }
     if (lastModified != null) {
-      _json["lastModified"] = lastModified.toJson();
+      _json['lastModified'] = lastModified.toJson();
     }
     if (originalText != null) {
-      _json["originalText"] = originalText;
+      _json['originalText'] = originalText;
     }
     if (reviewerLanguage != null) {
-      _json["reviewerLanguage"] = reviewerLanguage;
+      _json['reviewerLanguage'] = reviewerLanguage;
     }
     if (starRating != null) {
-      _json["starRating"] = starRating;
+      _json['starRating'] = starRating;
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (thumbsDownCount != null) {
-      _json["thumbsDownCount"] = thumbsDownCount;
+      _json['thumbsDownCount'] = thumbsDownCount;
     }
     if (thumbsUpCount != null) {
-      _json["thumbsUpCount"] = thumbsUpCount;
+      _json['thumbsUpCount'] = thumbsUpCount;
     }
     return _json;
   }
@@ -7326,11 +7325,11 @@ class UsesPermission {
   UsesPermission();
 
   UsesPermission.fromJson(core.Map _json) {
-    if (_json.containsKey("maxSdkVersion")) {
-      maxSdkVersion = _json["maxSdkVersion"];
+    if (_json.containsKey('maxSdkVersion')) {
+      maxSdkVersion = _json['maxSdkVersion'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -7338,10 +7337,10 @@ class UsesPermission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxSdkVersion != null) {
-      _json["maxSdkVersion"] = maxSdkVersion;
+      _json['maxSdkVersion'] = maxSdkVersion;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -7359,11 +7358,11 @@ class Variant {
   Variant();
 
   Variant.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceSpec")) {
-      deviceSpec = DeviceSpec.fromJson(_json["deviceSpec"]);
+    if (_json.containsKey('deviceSpec')) {
+      deviceSpec = DeviceSpec.fromJson(_json['deviceSpec']);
     }
-    if (_json.containsKey("variantId")) {
-      variantId = _json["variantId"];
+    if (_json.containsKey('variantId')) {
+      variantId = _json['variantId'];
     }
   }
 
@@ -7371,10 +7370,10 @@ class Variant {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceSpec != null) {
-      _json["deviceSpec"] = deviceSpec.toJson();
+      _json['deviceSpec'] = deviceSpec.toJson();
     }
     if (variantId != null) {
-      _json["variantId"] = variantId;
+      _json['variantId'] = variantId;
     }
     return _json;
   }
@@ -7416,26 +7415,26 @@ class VoidedPurchase {
   VoidedPurchase();
 
   VoidedPurchase.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("orderId")) {
-      orderId = _json["orderId"];
+    if (_json.containsKey('orderId')) {
+      orderId = _json['orderId'];
     }
-    if (_json.containsKey("purchaseTimeMillis")) {
-      purchaseTimeMillis = _json["purchaseTimeMillis"];
+    if (_json.containsKey('purchaseTimeMillis')) {
+      purchaseTimeMillis = _json['purchaseTimeMillis'];
     }
-    if (_json.containsKey("purchaseToken")) {
-      purchaseToken = _json["purchaseToken"];
+    if (_json.containsKey('purchaseToken')) {
+      purchaseToken = _json['purchaseToken'];
     }
-    if (_json.containsKey("voidedReason")) {
-      voidedReason = _json["voidedReason"];
+    if (_json.containsKey('voidedReason')) {
+      voidedReason = _json['voidedReason'];
     }
-    if (_json.containsKey("voidedSource")) {
-      voidedSource = _json["voidedSource"];
+    if (_json.containsKey('voidedSource')) {
+      voidedSource = _json['voidedSource'];
     }
-    if (_json.containsKey("voidedTimeMillis")) {
-      voidedTimeMillis = _json["voidedTimeMillis"];
+    if (_json.containsKey('voidedTimeMillis')) {
+      voidedTimeMillis = _json['voidedTimeMillis'];
     }
   }
 
@@ -7443,25 +7442,25 @@ class VoidedPurchase {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (orderId != null) {
-      _json["orderId"] = orderId;
+      _json['orderId'] = orderId;
     }
     if (purchaseTimeMillis != null) {
-      _json["purchaseTimeMillis"] = purchaseTimeMillis;
+      _json['purchaseTimeMillis'] = purchaseTimeMillis;
     }
     if (purchaseToken != null) {
-      _json["purchaseToken"] = purchaseToken;
+      _json['purchaseToken'] = purchaseToken;
     }
     if (voidedReason != null) {
-      _json["voidedReason"] = voidedReason;
+      _json['voidedReason'] = voidedReason;
     }
     if (voidedSource != null) {
-      _json["voidedSource"] = voidedSource;
+      _json['voidedSource'] = voidedSource;
     }
     if (voidedTimeMillis != null) {
-      _json["voidedTimeMillis"] = voidedTimeMillis;
+      _json['voidedTimeMillis'] = voidedTimeMillis;
     }
     return _json;
   }
@@ -7479,14 +7478,14 @@ class VoidedPurchasesListResponse {
   VoidedPurchasesListResponse();
 
   VoidedPurchasesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("voidedPurchases")) {
-      voidedPurchases = (_json["voidedPurchases"] as core.List)
+    if (_json.containsKey('voidedPurchases')) {
+      voidedPurchases = (_json['voidedPurchases'] as core.List)
           .map<VoidedPurchase>((value) => VoidedPurchase.fromJson(value))
           .toList();
     }
@@ -7496,13 +7495,13 @@ class VoidedPurchasesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (voidedPurchases != null) {
-      _json["voidedPurchases"] =
+      _json['voidedPurchases'] =
           voidedPurchases.map((value) => value.toJson()).toList();
     }
     return _json;

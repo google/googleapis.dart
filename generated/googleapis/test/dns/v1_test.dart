@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -103,11 +103,11 @@ api.Change buildChange() {
   if (buildCounterChange < 3) {
     o.additions = buildUnnamed1787();
     o.deletions = buildUnnamed1788();
-    o.id = "foo";
+    o.id = 'foo';
     o.isServing = true;
-    o.kind = "foo";
-    o.startTime = "foo";
-    o.status = "foo";
+    o.kind = 'foo';
+    o.startTime = 'foo';
+    o.status = 'foo';
   }
   buildCounterChange--;
   return o;
@@ -147,8 +147,8 @@ api.ChangesListResponse buildChangesListResponse() {
   if (buildCounterChangesListResponse < 3) {
     o.changes = buildUnnamed1789();
     o.header = buildResponseHeader();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterChangesListResponse--;
   return o;
@@ -183,17 +183,17 @@ api.DnsKey buildDnsKey() {
   var o = api.DnsKey();
   buildCounterDnsKey++;
   if (buildCounterDnsKey < 3) {
-    o.algorithm = "foo";
-    o.creationTime = "foo";
-    o.description = "foo";
+    o.algorithm = 'foo';
+    o.creationTime = 'foo';
+    o.description = 'foo';
     o.digests = buildUnnamed1790();
-    o.id = "foo";
+    o.id = 'foo';
     o.isActive = true;
     o.keyLength = 42;
     o.keyTag = 42;
-    o.kind = "foo";
-    o.publicKey = "foo";
-    o.type = "foo";
+    o.kind = 'foo';
+    o.publicKey = 'foo';
+    o.type = 'foo';
   }
   buildCounterDnsKey--;
   return o;
@@ -222,8 +222,8 @@ api.DnsKeyDigest buildDnsKeyDigest() {
   var o = api.DnsKeyDigest();
   buildCounterDnsKeyDigest++;
   if (buildCounterDnsKeyDigest < 3) {
-    o.digest = "foo";
-    o.type = "foo";
+    o.digest = 'foo';
+    o.type = 'foo';
   }
   buildCounterDnsKeyDigest--;
   return o;
@@ -243,10 +243,10 @@ api.DnsKeySpec buildDnsKeySpec() {
   var o = api.DnsKeySpec();
   buildCounterDnsKeySpec++;
   if (buildCounterDnsKeySpec < 3) {
-    o.algorithm = "foo";
+    o.algorithm = 'foo';
     o.keyLength = 42;
-    o.keyType = "foo";
-    o.kind = "foo";
+    o.keyType = 'foo';
+    o.kind = 'foo';
   }
   buildCounterDnsKeySpec--;
   return o;
@@ -283,8 +283,8 @@ api.DnsKeysListResponse buildDnsKeysListResponse() {
   if (buildCounterDnsKeysListResponse < 3) {
     o.dnsKeys = buildUnnamed1791();
     o.header = buildResponseHeader();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterDnsKeysListResponse--;
   return o;
@@ -303,21 +303,21 @@ void checkDnsKeysListResponse(api.DnsKeysListResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed1792() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed1792(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed1793() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -332,21 +332,21 @@ api.ManagedZone buildManagedZone() {
   var o = api.ManagedZone();
   buildCounterManagedZone++;
   if (buildCounterManagedZone < 3) {
-    o.creationTime = "foo";
-    o.description = "foo";
-    o.dnsName = "foo";
+    o.creationTime = 'foo';
+    o.description = 'foo';
+    o.dnsName = 'foo';
     o.dnssecConfig = buildManagedZoneDnsSecConfig();
     o.forwardingConfig = buildManagedZoneForwardingConfig();
-    o.id = "foo";
-    o.kind = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
     o.labels = buildUnnamed1792();
-    o.name = "foo";
-    o.nameServerSet = "foo";
+    o.name = 'foo';
+    o.nameServerSet = 'foo';
     o.nameServers = buildUnnamed1793();
     o.peeringConfig = buildManagedZonePeeringConfig();
     o.privateVisibilityConfig = buildManagedZonePrivateVisibilityConfig();
     o.reverseLookupConfig = buildManagedZoneReverseLookupConfig();
-    o.visibility = "foo";
+    o.visibility = 'foo';
   }
   buildCounterManagedZone--;
   return o;
@@ -393,9 +393,9 @@ api.ManagedZoneDnsSecConfig buildManagedZoneDnsSecConfig() {
   buildCounterManagedZoneDnsSecConfig++;
   if (buildCounterManagedZoneDnsSecConfig < 3) {
     o.defaultKeySpecs = buildUnnamed1794();
-    o.kind = "foo";
-    o.nonExistence = "foo";
-    o.state = "foo";
+    o.kind = 'foo';
+    o.nonExistence = 'foo';
+    o.state = 'foo';
   }
   buildCounterManagedZoneDnsSecConfig--;
   return o;
@@ -431,7 +431,7 @@ api.ManagedZoneForwardingConfig buildManagedZoneForwardingConfig() {
   var o = api.ManagedZoneForwardingConfig();
   buildCounterManagedZoneForwardingConfig++;
   if (buildCounterManagedZoneForwardingConfig < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.targetNameServers = buildUnnamed1795();
   }
   buildCounterManagedZoneForwardingConfig--;
@@ -453,9 +453,9 @@ api.ManagedZoneForwardingConfigNameServerTarget
   var o = api.ManagedZoneForwardingConfigNameServerTarget();
   buildCounterManagedZoneForwardingConfigNameServerTarget++;
   if (buildCounterManagedZoneForwardingConfigNameServerTarget < 3) {
-    o.forwardingPath = "foo";
-    o.ipv4Address = "foo";
-    o.kind = "foo";
+    o.forwardingPath = 'foo';
+    o.ipv4Address = 'foo';
+    o.kind = 'foo';
   }
   buildCounterManagedZoneForwardingConfigNameServerTarget--;
   return o;
@@ -491,8 +491,8 @@ api.ManagedZoneOperationsListResponse buildManagedZoneOperationsListResponse() {
   buildCounterManagedZoneOperationsListResponse++;
   if (buildCounterManagedZoneOperationsListResponse < 3) {
     o.header = buildResponseHeader();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed1796();
   }
   buildCounterManagedZoneOperationsListResponse--;
@@ -516,7 +516,7 @@ api.ManagedZonePeeringConfig buildManagedZonePeeringConfig() {
   var o = api.ManagedZonePeeringConfig();
   buildCounterManagedZonePeeringConfig++;
   if (buildCounterManagedZonePeeringConfig < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.targetNetwork = buildManagedZonePeeringConfigTargetNetwork();
   }
   buildCounterManagedZonePeeringConfig--;
@@ -538,9 +538,9 @@ api.ManagedZonePeeringConfigTargetNetwork
   var o = api.ManagedZonePeeringConfigTargetNetwork();
   buildCounterManagedZonePeeringConfigTargetNetwork++;
   if (buildCounterManagedZonePeeringConfigTargetNetwork < 3) {
-    o.deactivateTime = "foo";
-    o.kind = "foo";
-    o.networkUrl = "foo";
+    o.deactivateTime = 'foo';
+    o.kind = 'foo';
+    o.networkUrl = 'foo';
   }
   buildCounterManagedZonePeeringConfigTargetNetwork--;
   return o;
@@ -577,7 +577,7 @@ api.ManagedZonePrivateVisibilityConfig
   var o = api.ManagedZonePrivateVisibilityConfig();
   buildCounterManagedZonePrivateVisibilityConfig++;
   if (buildCounterManagedZonePrivateVisibilityConfig < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.networks = buildUnnamed1797();
   }
   buildCounterManagedZonePrivateVisibilityConfig--;
@@ -600,8 +600,8 @@ api.ManagedZonePrivateVisibilityConfigNetwork
   var o = api.ManagedZonePrivateVisibilityConfigNetwork();
   buildCounterManagedZonePrivateVisibilityConfigNetwork++;
   if (buildCounterManagedZonePrivateVisibilityConfigNetwork < 3) {
-    o.kind = "foo";
-    o.networkUrl = "foo";
+    o.kind = 'foo';
+    o.networkUrl = 'foo';
   }
   buildCounterManagedZonePrivateVisibilityConfigNetwork--;
   return o;
@@ -622,7 +622,7 @@ api.ManagedZoneReverseLookupConfig buildManagedZoneReverseLookupConfig() {
   var o = api.ManagedZoneReverseLookupConfig();
   buildCounterManagedZoneReverseLookupConfig++;
   if (buildCounterManagedZoneReverseLookupConfig < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterManagedZoneReverseLookupConfig--;
   return o;
@@ -655,9 +655,9 @@ api.ManagedZonesListResponse buildManagedZonesListResponse() {
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
     o.header = buildResponseHeader();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.managedZones = buildUnnamed1798();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterManagedZonesListResponse--;
   return o;
@@ -680,12 +680,12 @@ api.Operation buildOperation() {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     o.dnsKeyContext = buildOperationDnsKeyContext();
-    o.id = "foo";
-    o.kind = "foo";
-    o.startTime = "foo";
-    o.status = "foo";
-    o.type = "foo";
-    o.user = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.startTime = 'foo';
+    o.status = 'foo';
+    o.type = 'foo';
+    o.user = 'foo';
     o.zoneContext = buildOperationManagedZoneContext();
   }
   buildCounterOperation--;
@@ -768,8 +768,8 @@ api.PoliciesListResponse buildPoliciesListResponse() {
   buildCounterPoliciesListResponse++;
   if (buildCounterPoliciesListResponse < 3) {
     o.header = buildResponseHeader();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
     o.policies = buildUnnamed1799();
   }
   buildCounterPoliciesListResponse--;
@@ -848,12 +848,12 @@ api.Policy buildPolicy() {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
     o.alternativeNameServerConfig = buildPolicyAlternativeNameServerConfig();
-    o.description = "foo";
+    o.description = 'foo';
     o.enableInboundForwarding = true;
     o.enableLogging = true;
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
     o.networks = buildUnnamed1800();
   }
   buildCounterPolicy--;
@@ -895,7 +895,7 @@ api.PolicyAlternativeNameServerConfig buildPolicyAlternativeNameServerConfig() {
   var o = api.PolicyAlternativeNameServerConfig();
   buildCounterPolicyAlternativeNameServerConfig++;
   if (buildCounterPolicyAlternativeNameServerConfig < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.targetNameServers = buildUnnamed1801();
   }
   buildCounterPolicyAlternativeNameServerConfig--;
@@ -918,9 +918,9 @@ api.PolicyAlternativeNameServerConfigTargetNameServer
   var o = api.PolicyAlternativeNameServerConfigTargetNameServer();
   buildCounterPolicyAlternativeNameServerConfigTargetNameServer++;
   if (buildCounterPolicyAlternativeNameServerConfigTargetNameServer < 3) {
-    o.forwardingPath = "foo";
-    o.ipv4Address = "foo";
-    o.kind = "foo";
+    o.forwardingPath = 'foo';
+    o.ipv4Address = 'foo';
+    o.kind = 'foo';
   }
   buildCounterPolicyAlternativeNameServerConfigTargetNameServer--;
   return o;
@@ -942,8 +942,8 @@ api.PolicyNetwork buildPolicyNetwork() {
   var o = api.PolicyNetwork();
   buildCounterPolicyNetwork++;
   if (buildCounterPolicyNetwork < 3) {
-    o.kind = "foo";
-    o.networkUrl = "foo";
+    o.kind = 'foo';
+    o.networkUrl = 'foo';
   }
   buildCounterPolicyNetwork--;
   return o;
@@ -963,9 +963,9 @@ api.Project buildProject() {
   var o = api.Project();
   buildCounterProject++;
   if (buildCounterProject < 3) {
-    o.id = "foo";
-    o.kind = "foo";
-    o.number = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.number = 'foo';
     o.quota = buildQuota();
   }
   buildCounterProject--;
@@ -1002,7 +1002,7 @@ api.Quota buildQuota() {
   buildCounterQuota++;
   if (buildCounterQuota < 3) {
     o.dnsKeysPerManagedZone = 42;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.managedZones = 42;
     o.managedZonesPerNetwork = 42;
     o.networksPerManagedZone = 42;
@@ -1045,8 +1045,8 @@ void checkQuota(api.Quota o) {
 
 core.List<core.String> buildUnnamed1803() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1058,8 +1058,8 @@ void checkUnnamed1803(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1804() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1074,12 +1074,12 @@ api.ResourceRecordSet buildResourceRecordSet() {
   var o = api.ResourceRecordSet();
   buildCounterResourceRecordSet++;
   if (buildCounterResourceRecordSet < 3) {
-    o.kind = "foo";
-    o.name = "foo";
+    o.kind = 'foo';
+    o.name = 'foo';
     o.rrdatas = buildUnnamed1803();
     o.signatureRrdatas = buildUnnamed1804();
     o.ttl = 42;
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterResourceRecordSet--;
   return o;
@@ -1117,8 +1117,8 @@ api.ResourceRecordSetsListResponse buildResourceRecordSetsListResponse() {
   buildCounterResourceRecordSetsListResponse++;
   if (buildCounterResourceRecordSetsListResponse < 3) {
     o.header = buildResponseHeader();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
     o.rrsets = buildUnnamed1805();
   }
   buildCounterResourceRecordSetsListResponse--;
@@ -1141,7 +1141,7 @@ api.ResponseHeader buildResponseHeader() {
   var o = api.ResponseHeader();
   buildCounterResponseHeader++;
   if (buildCounterResponseHeader < 3) {
-    o.operationId = "foo";
+    o.operationId = 'foo';
   }
   buildCounterResponseHeader--;
   return o;
@@ -1156,80 +1156,80 @@ void checkResponseHeader(api.ResponseHeader o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Change", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Change', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChange();
       var od = api.Change.fromJson(o.toJson());
       checkChange(od);
     });
   });
 
-  unittest.group("obj-schema-ChangesListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ChangesListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChangesListResponse();
       var od = api.ChangesListResponse.fromJson(o.toJson());
       checkChangesListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-DnsKey", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DnsKey', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDnsKey();
       var od = api.DnsKey.fromJson(o.toJson());
       checkDnsKey(od);
     });
   });
 
-  unittest.group("obj-schema-DnsKeyDigest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DnsKeyDigest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDnsKeyDigest();
       var od = api.DnsKeyDigest.fromJson(o.toJson());
       checkDnsKeyDigest(od);
     });
   });
 
-  unittest.group("obj-schema-DnsKeySpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DnsKeySpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDnsKeySpec();
       var od = api.DnsKeySpec.fromJson(o.toJson());
       checkDnsKeySpec(od);
     });
   });
 
-  unittest.group("obj-schema-DnsKeysListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DnsKeysListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDnsKeysListResponse();
       var od = api.DnsKeysListResponse.fromJson(o.toJson());
       checkDnsKeysListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedZone", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZone', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZone();
       var od = api.ManagedZone.fromJson(o.toJson());
       checkManagedZone(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedZoneDnsSecConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZoneDnsSecConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZoneDnsSecConfig();
       var od = api.ManagedZoneDnsSecConfig.fromJson(o.toJson());
       checkManagedZoneDnsSecConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedZoneForwardingConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZoneForwardingConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZoneForwardingConfig();
       var od = api.ManagedZoneForwardingConfig.fromJson(o.toJson());
       checkManagedZoneForwardingConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedZoneForwardingConfigNameServerTarget", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZoneForwardingConfigNameServerTarget', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZoneForwardingConfigNameServerTarget();
       var od =
           api.ManagedZoneForwardingConfigNameServerTarget.fromJson(o.toJson());
@@ -1237,40 +1237,40 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ManagedZoneOperationsListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZoneOperationsListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZoneOperationsListResponse();
       var od = api.ManagedZoneOperationsListResponse.fromJson(o.toJson());
       checkManagedZoneOperationsListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedZonePeeringConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZonePeeringConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZonePeeringConfig();
       var od = api.ManagedZonePeeringConfig.fromJson(o.toJson());
       checkManagedZonePeeringConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedZonePeeringConfigTargetNetwork", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZonePeeringConfigTargetNetwork', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZonePeeringConfigTargetNetwork();
       var od = api.ManagedZonePeeringConfigTargetNetwork.fromJson(o.toJson());
       checkManagedZonePeeringConfigTargetNetwork(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedZonePrivateVisibilityConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZonePrivateVisibilityConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZonePrivateVisibilityConfig();
       var od = api.ManagedZonePrivateVisibilityConfig.fromJson(o.toJson());
       checkManagedZonePrivateVisibilityConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedZonePrivateVisibilityConfigNetwork", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZonePrivateVisibilityConfigNetwork', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZonePrivateVisibilityConfigNetwork();
       var od =
           api.ManagedZonePrivateVisibilityConfigNetwork.fromJson(o.toJson());
@@ -1278,89 +1278,89 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ManagedZoneReverseLookupConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZoneReverseLookupConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZoneReverseLookupConfig();
       var od = api.ManagedZoneReverseLookupConfig.fromJson(o.toJson());
       checkManagedZoneReverseLookupConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedZonesListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedZonesListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedZonesListResponse();
       var od = api.ManagedZonesListResponse.fromJson(o.toJson());
       checkManagedZonesListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Operation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Operation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
 
-  unittest.group("obj-schema-OperationDnsKeyContext", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OperationDnsKeyContext', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperationDnsKeyContext();
       var od = api.OperationDnsKeyContext.fromJson(o.toJson());
       checkOperationDnsKeyContext(od);
     });
   });
 
-  unittest.group("obj-schema-OperationManagedZoneContext", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OperationManagedZoneContext', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperationManagedZoneContext();
       var od = api.OperationManagedZoneContext.fromJson(o.toJson());
       checkOperationManagedZoneContext(od);
     });
   });
 
-  unittest.group("obj-schema-PoliciesListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PoliciesListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPoliciesListResponse();
       var od = api.PoliciesListResponse.fromJson(o.toJson());
       checkPoliciesListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PoliciesPatchResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PoliciesPatchResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPoliciesPatchResponse();
       var od = api.PoliciesPatchResponse.fromJson(o.toJson());
       checkPoliciesPatchResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PoliciesUpdateResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PoliciesUpdateResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPoliciesUpdateResponse();
       var od = api.PoliciesUpdateResponse.fromJson(o.toJson());
       checkPoliciesUpdateResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Policy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Policy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-PolicyAlternativeNameServerConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PolicyAlternativeNameServerConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPolicyAlternativeNameServerConfig();
       var od = api.PolicyAlternativeNameServerConfig.fromJson(o.toJson());
       checkPolicyAlternativeNameServerConfig(od);
     });
   });
 
-  unittest.group("obj-schema-PolicyAlternativeNameServerConfigTargetNameServer",
+  unittest.group('obj-schema-PolicyAlternativeNameServerConfigTargetNameServer',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildPolicyAlternativeNameServerConfigTargetNameServer();
       var od = api.PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
           o.toJson());
@@ -1368,63 +1368,63 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-PolicyNetwork", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PolicyNetwork', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPolicyNetwork();
       var od = api.PolicyNetwork.fromJson(o.toJson());
       checkPolicyNetwork(od);
     });
   });
 
-  unittest.group("obj-schema-Project", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Project', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProject();
       var od = api.Project.fromJson(o.toJson());
       checkProject(od);
     });
   });
 
-  unittest.group("obj-schema-Quota", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Quota', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQuota();
       var od = api.Quota.fromJson(o.toJson());
       checkQuota(od);
     });
   });
 
-  unittest.group("obj-schema-ResourceRecordSet", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResourceRecordSet', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResourceRecordSet();
       var od = api.ResourceRecordSet.fromJson(o.toJson());
       checkResourceRecordSet(od);
     });
   });
 
-  unittest.group("obj-schema-ResourceRecordSetsListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResourceRecordSetsListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResourceRecordSetsListResponse();
       var od = api.ResourceRecordSetsListResponse.fromJson(o.toJson());
       checkResourceRecordSetsListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ResponseHeader", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResponseHeader', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResponseHeader();
       var od = api.ResponseHeader.fromJson(o.toJson());
       checkResponseHeader(od);
     });
   });
 
-  unittest.group("resource-ChangesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ChangesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ChangesResourceApi res = api.DnsApi(mock).changes;
       var arg_request = buildChange();
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Change.fromJson(json);
         checkChange(obj);
@@ -1439,21 +1439,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
-        index = path.indexOf("/changes", pathOffset);
+        index = path.indexOf('/changes', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/changes"));
         pathOffset += 8;
@@ -1464,8 +1464,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1477,7 +1477,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChange());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1490,14 +1490,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ChangesResourceApi res = api.DnsApi(mock).changes;
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_changeId = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_changeId = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1509,27 +1509,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
-        index = path.indexOf("/changes/", pathOffset);
+        index = path.indexOf('/changes/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/changes/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_changeId"));
+        unittest.expect(subPart, unittest.equals('$arg_changeId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1537,8 +1537,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1550,7 +1550,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChange());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1563,16 +1563,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ChangesResourceApi res = api.DnsApi(mock).changes;
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_sortBy = "foo";
-      var arg_sortOrder = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_sortBy = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1584,21 +1584,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
-        index = path.indexOf("/changes", pathOffset);
+        index = path.indexOf('/changes', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/changes"));
         pathOffset += 8;
@@ -1609,8 +1609,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1627,7 +1627,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChangesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1645,16 +1645,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-DnsKeysResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-DnsKeysResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.DnsKeysResourceApi res = api.DnsApi(mock).dnsKeys;
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_dnsKeyId = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_digestType = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_dnsKeyId = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_digestType = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1666,27 +1666,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
-        index = path.indexOf("/dnsKeys/", pathOffset);
+        index = path.indexOf('/dnsKeys/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/dnsKeys/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_dnsKeyId"));
+        unittest.expect(subPart, unittest.equals('$arg_dnsKeyId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1694,8 +1694,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1709,7 +1709,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDnsKey());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1724,15 +1724,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.DnsKeysResourceApi res = api.DnsApi(mock).dnsKeys;
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_digestType = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_digestType = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1744,21 +1744,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
-        index = path.indexOf("/dnsKeys", pathOffset);
+        index = path.indexOf('/dnsKeys', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/dnsKeys"));
         pathOffset += 8;
@@ -1769,8 +1769,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1786,7 +1786,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDnsKeysListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1803,16 +1803,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ManagedZoneOperationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ManagedZoneOperationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ManagedZoneOperationsResourceApi res =
           api.DnsApi(mock).managedZoneOperations;
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_operation = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_operation = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1824,27 +1824,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
-        index = path.indexOf("/operations/", pathOffset);
+        index = path.indexOf('/operations/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/operations/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_operation"));
+        unittest.expect(subPart, unittest.equals('$arg_operation'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1852,8 +1852,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1865,7 +1865,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1878,16 +1878,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ManagedZoneOperationsResourceApi res =
           api.DnsApi(mock).managedZoneOperations;
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_pageToken = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_sortBy = "foo";
-      var arg_$fields = "foo";
+      var arg_sortBy = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1899,21 +1899,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
-        index = path.indexOf("/operations", pathOffset);
+        index = path.indexOf('/operations', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/operations"));
         pathOffset += 11;
@@ -1924,8 +1924,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1940,7 +1940,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildManagedZoneOperationsListResponse());
@@ -1958,14 +1958,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ManagedZonesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ManagedZonesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
-      var arg_project = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ManagedZone.fromJson(json);
         checkManagedZone(obj);
@@ -1980,12 +1980,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones", pathOffset);
+        index = path.indexOf('/managedZones', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/managedZones"));
         pathOffset += 13;
@@ -1996,8 +1996,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2009,7 +2009,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildManagedZone());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2022,13 +2022,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2040,18 +2040,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2059,8 +2059,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2072,9 +2072,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2083,13 +2083,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2101,18 +2101,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2120,8 +2120,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2133,7 +2133,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildManagedZone());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2146,14 +2146,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
-      var arg_project = "foo";
+      var arg_project = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_dnsName = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_dnsName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2165,12 +2165,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones", pathOffset);
+        index = path.indexOf('/managedZones', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/managedZones"));
         pathOffset += 13;
@@ -2181,8 +2181,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2198,7 +2198,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildManagedZonesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2214,14 +2214,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ManagedZone.fromJson(json);
         checkManagedZone(obj);
@@ -2236,18 +2236,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2255,8 +2255,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2268,7 +2268,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2281,14 +2281,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ManagedZone.fromJson(json);
         checkManagedZone(obj);
@@ -2303,18 +2303,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2322,8 +2322,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2335,7 +2335,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2349,14 +2349,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-PoliciesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-PoliciesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.PoliciesResourceApi res = api.DnsApi(mock).policies;
       var arg_request = buildPolicy();
-      var arg_project = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Policy.fromJson(json);
         checkPolicy(obj);
@@ -2371,12 +2371,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/policies", pathOffset);
+        index = path.indexOf('/policies', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/policies"));
         pathOffset += 9;
@@ -2387,8 +2387,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2400,7 +2400,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2413,13 +2413,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.PoliciesResourceApi res = api.DnsApi(mock).policies;
-      var arg_project = "foo";
-      var arg_policy = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_policy = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2431,18 +2431,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/policies/", pathOffset);
+        index = path.indexOf('/policies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/policies/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_policy"));
+        unittest.expect(subPart, unittest.equals('$arg_policy'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2450,8 +2450,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2463,9 +2463,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2474,13 +2474,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.PoliciesResourceApi res = api.DnsApi(mock).policies;
-      var arg_project = "foo";
-      var arg_policy = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_policy = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2492,18 +2492,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/policies/", pathOffset);
+        index = path.indexOf('/policies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/policies/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_policy"));
+        unittest.expect(subPart, unittest.equals('$arg_policy'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2511,8 +2511,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2524,7 +2524,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2537,13 +2537,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PoliciesResourceApi res = api.DnsApi(mock).policies;
-      var arg_project = "foo";
-      var arg_pageToken = "foo";
+      var arg_project = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2555,12 +2555,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/policies", pathOffset);
+        index = path.indexOf('/policies', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/policies"));
         pathOffset += 9;
@@ -2571,8 +2571,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2586,7 +2586,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPoliciesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2601,14 +2601,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.PoliciesResourceApi res = api.DnsApi(mock).policies;
       var arg_request = buildPolicy();
-      var arg_project = "foo";
-      var arg_policy = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_policy = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Policy.fromJson(json);
         checkPolicy(obj);
@@ -2623,18 +2623,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/policies/", pathOffset);
+        index = path.indexOf('/policies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/policies/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_policy"));
+        unittest.expect(subPart, unittest.equals('$arg_policy'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2642,8 +2642,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2655,7 +2655,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPoliciesPatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2668,14 +2668,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.PoliciesResourceApi res = api.DnsApi(mock).policies;
       var arg_request = buildPolicy();
-      var arg_project = "foo";
-      var arg_policy = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_policy = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Policy.fromJson(json);
         checkPolicy(obj);
@@ -2690,18 +2690,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/policies/", pathOffset);
+        index = path.indexOf('/policies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/policies/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_policy"));
+        unittest.expect(subPart, unittest.equals('$arg_policy'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2709,8 +2709,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2722,7 +2722,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPoliciesUpdateResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2736,13 +2736,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DnsApi(mock).projects;
-      var arg_project = "foo";
-      var arg_clientOperationId = "foo";
-      var arg_$fields = "foo";
+      var arg_project = 'foo';
+      var arg_clientOperationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2756,7 +2756,7 @@ void main() {
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2764,8 +2764,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2777,7 +2777,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProject());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2791,18 +2791,18 @@ void main() {
     });
   });
 
-  unittest.group("resource-ResourceRecordSetsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-ResourceRecordSetsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ResourceRecordSetsResourceApi res =
           api.DnsApi(mock).resourceRecordSets;
-      var arg_project = "foo";
-      var arg_managedZone = "foo";
+      var arg_project = 'foo';
+      var arg_managedZone = 'foo';
       var arg_maxResults = 42;
-      var arg_type = "foo";
-      var arg_name = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_type = 'foo';
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2814,21 +2814,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("dns/v1/projects/"));
         pathOffset += 16;
-        index = path.indexOf("/managedZones/", pathOffset);
+        index = path.indexOf('/managedZones/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(subPart, unittest.equals('$arg_project'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/managedZones/"));
         pathOffset += 14;
-        index = path.indexOf("/rrsets", pathOffset);
+        index = path.indexOf('/rrsets', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(subPart, unittest.equals('$arg_managedZone'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/rrsets"));
         pathOffset += 7;
@@ -2839,8 +2839,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2856,7 +2856,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildResourceRecordSetsListResponse());
         return async.Future.value(stringResponse(200, h, resp));

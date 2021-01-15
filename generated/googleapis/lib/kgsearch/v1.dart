@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,8 +39,8 @@ class KgsearchApi {
   EntitiesResourceApi get entities => EntitiesResourceApi(_requester);
 
   KgsearchApi(http.Client client,
-      {core.String rootUrl = "https://kgsearch.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://kgsearch.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -104,35 +103,35 @@ class EntitiesResourceApi {
     core.String _body;
 
     if (ids != null) {
-      _queryParams["ids"] = ids;
+      _queryParams['ids'] = ids;
     }
     if (types != null) {
-      _queryParams["types"] = types;
+      _queryParams['types'] = types;
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if (prefix != null) {
-      _queryParams["prefix"] = ["${prefix}"];
+      _queryParams['prefix'] = ['${prefix}'];
     }
     if (indent != null) {
-      _queryParams["indent"] = ["${indent}"];
+      _queryParams['indent'] = ['${indent}'];
     }
     if (limit != null) {
-      _queryParams["limit"] = ["${limit}"];
+      _queryParams['limit'] = ['${limit}'];
     }
     if (languages != null) {
-      _queryParams["languages"] = languages;
+      _queryParams['languages'] = languages;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/entities:search';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -168,15 +167,15 @@ class SearchResponse {
   SearchResponse();
 
   SearchResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("@context")) {
-      P_context = _json["@context"];
+    if (_json.containsKey('@context')) {
+      P_context = _json['@context'];
     }
-    if (_json.containsKey("@type")) {
-      P_type = _json["@type"];
+    if (_json.containsKey('@type')) {
+      P_type = _json['@type'];
     }
-    if (_json.containsKey("itemListElement")) {
+    if (_json.containsKey('itemListElement')) {
       itemListElement =
-          (_json["itemListElement"] as core.List).cast<core.Object>();
+          (_json['itemListElement'] as core.List).cast<core.Object>();
     }
   }
 
@@ -184,13 +183,13 @@ class SearchResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (P_context != null) {
-      _json["@context"] = P_context;
+      _json['@context'] = P_context;
     }
     if (P_type != null) {
-      _json["@type"] = P_type;
+      _json['@type'] = P_type;
     }
     if (itemListElement != null) {
-      _json["itemListElement"] = itemListElement;
+      _json['itemListElement'] = itemListElement;
     }
     return _json;
   }

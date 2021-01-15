@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -90,11 +90,11 @@ api.GdataBlobstore2Info buildGdataBlobstore2Info() {
   var o = api.GdataBlobstore2Info();
   buildCounterGdataBlobstore2Info++;
   if (buildCounterGdataBlobstore2Info < 3) {
-    o.blobGeneration = "foo";
-    o.blobId = "foo";
-    o.downloadReadHandle = "foo";
-    o.readToken = "foo";
-    o.uploadMetadataContainer = "foo";
+    o.blobGeneration = 'foo';
+    o.blobId = 'foo';
+    o.downloadReadHandle = 'foo';
+    o.readToken = 'foo';
+    o.uploadMetadataContainer = 'foo';
   }
   buildCounterGdataBlobstore2Info--;
   return o;
@@ -117,17 +117,17 @@ api.GdataCompositeMedia buildGdataCompositeMedia() {
   var o = api.GdataCompositeMedia();
   buildCounterGdataCompositeMedia++;
   if (buildCounterGdataCompositeMedia < 3) {
-    o.blobRef = "foo";
+    o.blobRef = 'foo';
     o.blobstore2Info = buildGdataBlobstore2Info();
-    o.cosmoBinaryReference = "foo";
+    o.cosmoBinaryReference = 'foo';
     o.crc32cHash = 42;
-    o.inline = "foo";
-    o.length = "foo";
-    o.md5Hash = "foo";
+    o.inline = 'foo';
+    o.length = 'foo';
+    o.md5Hash = 'foo';
     o.objectId = buildGdataObjectId();
-    o.path = "foo";
-    o.referenceType = "foo";
-    o.sha1Hash = "foo";
+    o.path = 'foo';
+    o.referenceType = 'foo';
+    o.sha1Hash = 'foo';
   }
   buildCounterGdataCompositeMedia--;
   return o;
@@ -156,11 +156,11 @@ api.GdataContentTypeInfo buildGdataContentTypeInfo() {
   var o = api.GdataContentTypeInfo();
   buildCounterGdataContentTypeInfo++;
   if (buildCounterGdataContentTypeInfo < 3) {
-    o.bestGuess = "foo";
-    o.fromBytes = "foo";
-    o.fromFileName = "foo";
-    o.fromHeader = "foo";
-    o.fromUrlPath = "foo";
+    o.bestGuess = 'foo';
+    o.fromBytes = 'foo';
+    o.fromFileName = 'foo';
+    o.fromHeader = 'foo';
+    o.fromUrlPath = 'foo';
   }
   buildCounterGdataContentTypeInfo--;
   return o;
@@ -184,10 +184,10 @@ api.GdataDiffChecksumsResponse buildGdataDiffChecksumsResponse() {
   buildCounterGdataDiffChecksumsResponse++;
   if (buildCounterGdataDiffChecksumsResponse < 3) {
     o.checksumsLocation = buildGdataCompositeMedia();
-    o.chunkSizeBytes = "foo";
+    o.chunkSizeBytes = 'foo';
     o.objectLocation = buildGdataCompositeMedia();
-    o.objectSizeBytes = "foo";
-    o.objectVersion = "foo";
+    o.objectSizeBytes = 'foo';
+    o.objectVersion = 'foo';
   }
   buildCounterGdataDiffChecksumsResponse--;
   return o;
@@ -231,7 +231,7 @@ api.GdataDiffUploadRequest buildGdataDiffUploadRequest() {
   if (buildCounterGdataDiffUploadRequest < 3) {
     o.checksumsInfo = buildGdataCompositeMedia();
     o.objectInfo = buildGdataCompositeMedia();
-    o.objectVersion = "foo";
+    o.objectVersion = 'foo';
   }
   buildCounterGdataDiffUploadRequest--;
   return o;
@@ -252,7 +252,7 @@ api.GdataDiffUploadResponse buildGdataDiffUploadResponse() {
   var o = api.GdataDiffUploadResponse();
   buildCounterGdataDiffUploadResponse++;
   if (buildCounterGdataDiffUploadResponse < 3) {
-    o.objectVersion = "foo";
+    o.objectVersion = 'foo';
     o.originalObject = buildGdataCompositeMedia();
   }
   buildCounterGdataDiffUploadResponse--;
@@ -273,8 +273,8 @@ api.GdataDiffVersionResponse buildGdataDiffVersionResponse() {
   var o = api.GdataDiffVersionResponse();
   buildCounterGdataDiffVersionResponse++;
   if (buildCounterGdataDiffVersionResponse < 3) {
-    o.objectSizeBytes = "foo";
-    o.objectVersion = "foo";
+    o.objectSizeBytes = 'foo';
+    o.objectVersion = 'foo';
   }
   buildCounterGdataDiffVersionResponse--;
   return o;
@@ -328,14 +328,14 @@ api.GdataMedia buildGdataMedia() {
   var o = api.GdataMedia();
   buildCounterGdataMedia++;
   if (buildCounterGdataMedia < 3) {
-    o.algorithm = "foo";
-    o.bigstoreObjectRef = "foo";
-    o.blobRef = "foo";
+    o.algorithm = 'foo';
+    o.bigstoreObjectRef = 'foo';
+    o.blobRef = 'foo';
     o.blobstore2Info = buildGdataBlobstore2Info();
     o.compositeMedia = buildUnnamed3232();
-    o.contentType = "foo";
+    o.contentType = 'foo';
     o.contentTypeInfo = buildGdataContentTypeInfo();
-    o.cosmoBinaryReference = "foo";
+    o.cosmoBinaryReference = 'foo';
     o.crc32cHash = 42;
     o.diffChecksumsResponse = buildGdataDiffChecksumsResponse();
     o.diffDownloadResponse = buildGdataDiffDownloadResponse();
@@ -343,21 +343,21 @@ api.GdataMedia buildGdataMedia() {
     o.diffUploadResponse = buildGdataDiffUploadResponse();
     o.diffVersionResponse = buildGdataDiffVersionResponse();
     o.downloadParameters = buildGdataDownloadParameters();
-    o.filename = "foo";
-    o.hash = "foo";
+    o.filename = 'foo';
+    o.hash = 'foo';
     o.hashVerified = true;
-    o.inline = "foo";
+    o.inline = 'foo';
     o.isPotentialRetry = true;
-    o.length = "foo";
-    o.md5Hash = "foo";
-    o.mediaId = "foo";
+    o.length = 'foo';
+    o.md5Hash = 'foo';
+    o.mediaId = 'foo';
     o.objectId = buildGdataObjectId();
-    o.path = "foo";
-    o.referenceType = "foo";
-    o.sha1Hash = "foo";
-    o.sha256Hash = "foo";
-    o.timestamp = "foo";
-    o.token = "foo";
+    o.path = 'foo';
+    o.referenceType = 'foo';
+    o.sha1Hash = 'foo';
+    o.sha256Hash = 'foo';
+    o.timestamp = 'foo';
+    o.token = 'foo';
   }
   buildCounterGdataMedia--;
   return o;
@@ -405,9 +405,9 @@ api.GdataObjectId buildGdataObjectId() {
   var o = api.GdataObjectId();
   buildCounterGdataObjectId++;
   if (buildCounterGdataObjectId < 3) {
-    o.bucketName = "foo";
-    o.generation = "foo";
-    o.objectName = "foo";
+    o.bucketName = 'foo';
+    o.generation = 'foo';
+    o.objectName = 'foo';
   }
   buildCounterGdataObjectId--;
   return o;
@@ -428,11 +428,11 @@ api.Job buildJob() {
   var o = api.Job();
   buildCounterJob++;
   if (buildCounterJob < 3) {
-    o.createTime = "foo";
-    o.expireTime = "foo";
-    o.id = "foo";
-    o.name = "foo";
-    o.reportTypeId = "foo";
+    o.createTime = 'foo';
+    o.expireTime = 'foo';
+    o.id = 'foo';
+    o.name = 'foo';
+    o.reportTypeId = 'foo';
     o.systemManaged = true;
   }
   buildCounterJob--;
@@ -471,7 +471,7 @@ api.ListJobsResponse buildListJobsResponse() {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
     o.jobs = buildUnnamed3233();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListJobsResponse--;
   return o;
@@ -504,7 +504,7 @@ api.ListReportTypesResponse buildListReportTypesResponse() {
   var o = api.ListReportTypesResponse();
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.reportTypes = buildUnnamed3234();
   }
   buildCounterListReportTypesResponse--;
@@ -538,7 +538,7 @@ api.ListReportsResponse buildListReportsResponse() {
   var o = api.ListReportsResponse();
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.reports = buildUnnamed3235();
   }
   buildCounterListReportsResponse--;
@@ -559,13 +559,13 @@ api.Report buildReport() {
   var o = api.Report();
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    o.createTime = "foo";
-    o.downloadUrl = "foo";
-    o.endTime = "foo";
-    o.id = "foo";
-    o.jobExpireTime = "foo";
-    o.jobId = "foo";
-    o.startTime = "foo";
+    o.createTime = 'foo';
+    o.downloadUrl = 'foo';
+    o.endTime = 'foo';
+    o.id = 'foo';
+    o.jobExpireTime = 'foo';
+    o.jobId = 'foo';
+    o.startTime = 'foo';
   }
   buildCounterReport--;
   return o;
@@ -590,9 +590,9 @@ api.ReportType buildReportType() {
   var o = api.ReportType();
   buildCounterReportType++;
   if (buildCounterReportType < 3) {
-    o.deprecateTime = "foo";
-    o.id = "foo";
-    o.name = "foo";
+    o.deprecateTime = 'foo';
+    o.id = 'foo';
+    o.name = 'foo';
     o.systemManaged = true;
   }
   buildCounterReportType--;
@@ -611,157 +611,157 @@ void checkReportType(api.ReportType o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-GdataBlobstore2Info", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataBlobstore2Info', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataBlobstore2Info();
       var od = api.GdataBlobstore2Info.fromJson(o.toJson());
       checkGdataBlobstore2Info(od);
     });
   });
 
-  unittest.group("obj-schema-GdataCompositeMedia", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataCompositeMedia', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataCompositeMedia();
       var od = api.GdataCompositeMedia.fromJson(o.toJson());
       checkGdataCompositeMedia(od);
     });
   });
 
-  unittest.group("obj-schema-GdataContentTypeInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataContentTypeInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataContentTypeInfo();
       var od = api.GdataContentTypeInfo.fromJson(o.toJson());
       checkGdataContentTypeInfo(od);
     });
   });
 
-  unittest.group("obj-schema-GdataDiffChecksumsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataDiffChecksumsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataDiffChecksumsResponse();
       var od = api.GdataDiffChecksumsResponse.fromJson(o.toJson());
       checkGdataDiffChecksumsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GdataDiffDownloadResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataDiffDownloadResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataDiffDownloadResponse();
       var od = api.GdataDiffDownloadResponse.fromJson(o.toJson());
       checkGdataDiffDownloadResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GdataDiffUploadRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataDiffUploadRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataDiffUploadRequest();
       var od = api.GdataDiffUploadRequest.fromJson(o.toJson());
       checkGdataDiffUploadRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GdataDiffUploadResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataDiffUploadResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataDiffUploadResponse();
       var od = api.GdataDiffUploadResponse.fromJson(o.toJson());
       checkGdataDiffUploadResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GdataDiffVersionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataDiffVersionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataDiffVersionResponse();
       var od = api.GdataDiffVersionResponse.fromJson(o.toJson());
       checkGdataDiffVersionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GdataDownloadParameters", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataDownloadParameters', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataDownloadParameters();
       var od = api.GdataDownloadParameters.fromJson(o.toJson());
       checkGdataDownloadParameters(od);
     });
   });
 
-  unittest.group("obj-schema-GdataMedia", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataMedia', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataMedia();
       var od = api.GdataMedia.fromJson(o.toJson());
       checkGdataMedia(od);
     });
   });
 
-  unittest.group("obj-schema-GdataObjectId", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GdataObjectId', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGdataObjectId();
       var od = api.GdataObjectId.fromJson(o.toJson());
       checkGdataObjectId(od);
     });
   });
 
-  unittest.group("obj-schema-Job", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Job', () {
+    unittest.test('to-json--from-json', () {
       var o = buildJob();
       var od = api.Job.fromJson(o.toJson());
       checkJob(od);
     });
   });
 
-  unittest.group("obj-schema-ListJobsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListJobsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListJobsResponse();
       var od = api.ListJobsResponse.fromJson(o.toJson());
       checkListJobsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListReportTypesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListReportTypesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListReportTypesResponse();
       var od = api.ListReportTypesResponse.fromJson(o.toJson());
       checkListReportTypesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListReportsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListReportsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListReportsResponse();
       var od = api.ListReportsResponse.fromJson(o.toJson());
       checkListReportsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Report", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Report', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
       checkReport(od);
     });
   });
 
-  unittest.group("obj-schema-ReportType", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportType', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportType();
       var od = api.ReportType.fromJson(o.toJson());
       checkReportType(od);
     });
   });
 
-  unittest.group("resource-JobsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-JobsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.JobsResourceApi res = api.YoutubereportingApi(mock).jobs;
       var arg_request = buildJob();
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Job.fromJson(json);
         checkJob(obj);
@@ -783,8 +783,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -796,7 +796,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -810,12 +810,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.JobsResourceApi res = api.YoutubereportingApi(mock).jobs;
-      var arg_jobId = "foo";
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_jobId = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -829,7 +829,7 @@ void main() {
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
+        unittest.expect(subPart, unittest.equals('$arg_jobId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -837,8 +837,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -850,7 +850,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -864,12 +864,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.JobsResourceApi res = api.YoutubereportingApi(mock).jobs;
-      var arg_jobId = "foo";
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_jobId = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -883,7 +883,7 @@ void main() {
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
+        unittest.expect(subPart, unittest.equals('$arg_jobId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -891,8 +891,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -904,7 +904,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -918,14 +918,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.JobsResourceApi res = api.YoutubereportingApi(mock).jobs;
-      var arg_pageToken = "foo";
-      var arg_onBehalfOfContentOwner = "foo";
+      var arg_pageToken = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
       var arg_pageSize = 42;
       var arg_includeSystemManaged = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -944,8 +944,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -963,7 +963,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -981,15 +981,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-JobsReportsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-JobsReportsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.JobsReportsResourceApi res =
           api.YoutubereportingApi(mock).jobs.reports;
-      var arg_jobId = "foo";
-      var arg_reportId = "foo";
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_jobId = 'foo';
+      var arg_reportId = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1001,18 +1001,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("v1/jobs/"));
         pathOffset += 8;
-        index = path.indexOf("/reports/", pathOffset);
+        index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
+        unittest.expect(subPart, unittest.equals('$arg_jobId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/reports/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_reportId"));
+        unittest.expect(subPart, unittest.equals('$arg_reportId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1020,8 +1020,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1033,7 +1033,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildReport());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1047,18 +1047,18 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.JobsReportsResourceApi res =
           api.YoutubereportingApi(mock).jobs.reports;
-      var arg_jobId = "foo";
-      var arg_startTimeAtOrAfter = "foo";
-      var arg_onBehalfOfContentOwner = "foo";
+      var arg_jobId = 'foo';
+      var arg_startTimeAtOrAfter = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_createdAfter = "foo";
-      var arg_startTimeBefore = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_createdAfter = 'foo';
+      var arg_startTimeBefore = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1070,12 +1070,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("v1/jobs/"));
         pathOffset += 8;
-        index = path.indexOf("/reports", pathOffset);
+        index = path.indexOf('/reports', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
+        unittest.expect(subPart, unittest.equals('$arg_jobId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/reports"));
         pathOffset += 8;
@@ -1086,8 +1086,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1109,7 +1109,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1129,15 +1129,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-MediaResourceApi", () {
-    unittest.test("method--download", () {
+  unittest.group('resource-MediaResourceApi', () {
+    unittest.test('method--download', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.MediaResourceApi res = api.YoutubereportingApi(mock).media;
-      var arg_resourceName = "foo";
-      var arg_$fields = "foo";
+      var arg_resourceName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1157,8 +1157,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1168,7 +1168,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGdataMedia());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1181,16 +1181,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ReportTypesResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-ReportTypesResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ReportTypesResourceApi res =
           api.YoutubereportingApi(mock).reportTypes;
       var arg_includeSystemManaged = true;
-      var arg_onBehalfOfContentOwner = "foo";
+      var arg_onBehalfOfContentOwner = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1209,8 +1209,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1228,7 +1228,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListReportTypesResponse());
         return async.Future.value(stringResponse(200, h, resp));

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -96,10 +96,10 @@ api.AndroidInfo buildAndroidInfo() {
   var o = api.AndroidInfo();
   buildCounterAndroidInfo++;
   if (buildCounterAndroidInfo < 3) {
-    o.androidFallbackLink = "foo";
-    o.androidLink = "foo";
-    o.androidMinPackageVersionCode = "foo";
-    o.androidPackageName = "foo";
+    o.androidFallbackLink = 'foo';
+    o.androidLink = 'foo';
+    o.androidMinPackageVersionCode = 'foo';
+    o.androidPackageName = 'foo';
   }
   buildCounterAndroidInfo--;
   return o;
@@ -122,9 +122,9 @@ api.CreateManagedShortLinkRequest buildCreateManagedShortLinkRequest() {
   buildCounterCreateManagedShortLinkRequest++;
   if (buildCounterCreateManagedShortLinkRequest < 3) {
     o.dynamicLinkInfo = buildDynamicLinkInfo();
-    o.longDynamicLink = "foo";
-    o.name = "foo";
-    o.sdkVersion = "foo";
+    o.longDynamicLink = 'foo';
+    o.name = 'foo';
+    o.sdkVersion = 'foo';
     o.suffix = buildSuffix();
   }
   buildCounterCreateManagedShortLinkRequest--;
@@ -162,7 +162,7 @@ api.CreateManagedShortLinkResponse buildCreateManagedShortLinkResponse() {
   buildCounterCreateManagedShortLinkResponse++;
   if (buildCounterCreateManagedShortLinkResponse < 3) {
     o.managedShortLink = buildManagedShortLink();
-    o.previewLink = "foo";
+    o.previewLink = 'foo';
     o.warning = buildUnnamed2737();
   }
   buildCounterCreateManagedShortLinkResponse--;
@@ -185,8 +185,8 @@ api.CreateShortDynamicLinkRequest buildCreateShortDynamicLinkRequest() {
   buildCounterCreateShortDynamicLinkRequest++;
   if (buildCounterCreateShortDynamicLinkRequest < 3) {
     o.dynamicLinkInfo = buildDynamicLinkInfo();
-    o.longDynamicLink = "foo";
-    o.sdkVersion = "foo";
+    o.longDynamicLink = 'foo';
+    o.sdkVersion = 'foo';
     o.suffix = buildSuffix();
   }
   buildCounterCreateShortDynamicLinkRequest--;
@@ -222,8 +222,8 @@ api.CreateShortDynamicLinkResponse buildCreateShortDynamicLinkResponse() {
   var o = api.CreateShortDynamicLinkResponse();
   buildCounterCreateShortDynamicLinkResponse++;
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
-    o.previewLink = "foo";
-    o.shortLink = "foo";
+    o.previewLink = 'foo';
+    o.shortLink = 'foo';
     o.warning = buildUnnamed2738();
   }
   buildCounterCreateShortDynamicLinkResponse--;
@@ -245,7 +245,7 @@ api.DesktopInfo buildDesktopInfo() {
   var o = api.DesktopInfo();
   buildCounterDesktopInfo++;
   if (buildCounterDesktopInfo < 3) {
-    o.desktopFallbackLink = "foo";
+    o.desktopFallbackLink = 'foo';
   }
   buildCounterDesktopInfo--;
   return o;
@@ -264,13 +264,13 @@ api.DeviceInfo buildDeviceInfo() {
   var o = api.DeviceInfo();
   buildCounterDeviceInfo++;
   if (buildCounterDeviceInfo < 3) {
-    o.deviceModelName = "foo";
-    o.languageCode = "foo";
-    o.languageCodeFromWebview = "foo";
-    o.languageCodeRaw = "foo";
-    o.screenResolutionHeight = "foo";
-    o.screenResolutionWidth = "foo";
-    o.timezone = "foo";
+    o.deviceModelName = 'foo';
+    o.languageCode = 'foo';
+    o.languageCodeFromWebview = 'foo';
+    o.languageCodeRaw = 'foo';
+    o.screenResolutionHeight = 'foo';
+    o.screenResolutionWidth = 'foo';
+    o.timezone = 'foo';
   }
   buildCounterDeviceInfo--;
   return o;
@@ -295,9 +295,9 @@ api.DynamicLinkEventStat buildDynamicLinkEventStat() {
   var o = api.DynamicLinkEventStat();
   buildCounterDynamicLinkEventStat++;
   if (buildCounterDynamicLinkEventStat < 3) {
-    o.count = "foo";
-    o.event = "foo";
-    o.platform = "foo";
+    o.count = 'foo';
+    o.event = 'foo';
+    o.platform = 'foo';
   }
   buildCounterDynamicLinkEventStat--;
   return o;
@@ -321,10 +321,10 @@ api.DynamicLinkInfo buildDynamicLinkInfo() {
     o.analyticsInfo = buildAnalyticsInfo();
     o.androidInfo = buildAndroidInfo();
     o.desktopInfo = buildDesktopInfo();
-    o.domainUriPrefix = "foo";
-    o.dynamicLinkDomain = "foo";
+    o.domainUriPrefix = 'foo';
+    o.dynamicLinkDomain = 'foo';
     o.iosInfo = buildIosInfo();
-    o.link = "foo";
+    o.link = 'foo';
     o.navigationInfo = buildNavigationInfo();
     o.socialMetaTagInfo = buildSocialMetaTagInfo();
   }
@@ -385,9 +385,9 @@ api.DynamicLinkWarning buildDynamicLinkWarning() {
   var o = api.DynamicLinkWarning();
   buildCounterDynamicLinkWarning++;
   if (buildCounterDynamicLinkWarning < 3) {
-    o.warningCode = "foo";
-    o.warningDocumentLink = "foo";
-    o.warningMessage = "foo";
+    o.warningCode = 'foo';
+    o.warningDocumentLink = 'foo';
+    o.warningMessage = 'foo';
   }
   buildCounterDynamicLinkWarning--;
   return o;
@@ -409,14 +409,14 @@ api.GetIosPostInstallAttributionRequest
   var o = api.GetIosPostInstallAttributionRequest();
   buildCounterGetIosPostInstallAttributionRequest++;
   if (buildCounterGetIosPostInstallAttributionRequest < 3) {
-    o.appInstallationTime = "foo";
-    o.bundleId = "foo";
+    o.appInstallationTime = 'foo';
+    o.bundleId = 'foo';
     o.device = buildDeviceInfo();
-    o.iosVersion = "foo";
-    o.retrievalMethod = "foo";
-    o.sdkVersion = "foo";
-    o.uniqueMatchLinkToCheck = "foo";
-    o.visualStyle = "foo";
+    o.iosVersion = 'foo';
+    o.retrievalMethod = 'foo';
+    o.sdkVersion = 'foo';
+    o.uniqueMatchLinkToCheck = 'foo';
+    o.visualStyle = 'foo';
   }
   buildCounterGetIosPostInstallAttributionRequest--;
   return o;
@@ -444,22 +444,22 @@ api.GetIosPostInstallAttributionResponse
   var o = api.GetIosPostInstallAttributionResponse();
   buildCounterGetIosPostInstallAttributionResponse++;
   if (buildCounterGetIosPostInstallAttributionResponse < 3) {
-    o.appMinimumVersion = "foo";
-    o.attributionConfidence = "foo";
-    o.deepLink = "foo";
-    o.externalBrowserDestinationLink = "foo";
-    o.fallbackLink = "foo";
-    o.invitationId = "foo";
+    o.appMinimumVersion = 'foo';
+    o.attributionConfidence = 'foo';
+    o.deepLink = 'foo';
+    o.externalBrowserDestinationLink = 'foo';
+    o.fallbackLink = 'foo';
+    o.invitationId = 'foo';
     o.isStrongMatchExecutable = true;
-    o.matchMessage = "foo";
-    o.requestIpVersion = "foo";
-    o.requestedLink = "foo";
-    o.resolvedLink = "foo";
-    o.utmCampaign = "foo";
-    o.utmContent = "foo";
-    o.utmMedium = "foo";
-    o.utmSource = "foo";
-    o.utmTerm = "foo";
+    o.matchMessage = 'foo';
+    o.requestIpVersion = 'foo';
+    o.requestedLink = 'foo';
+    o.resolvedLink = 'foo';
+    o.utmCampaign = 'foo';
+    o.utmContent = 'foo';
+    o.utmMedium = 'foo';
+    o.utmSource = 'foo';
+    o.utmTerm = 'foo';
   }
   buildCounterGetIosPostInstallAttributionResponse--;
   return o;
@@ -494,9 +494,9 @@ api.GetIosReopenAttributionRequest buildGetIosReopenAttributionRequest() {
   var o = api.GetIosReopenAttributionRequest();
   buildCounterGetIosReopenAttributionRequest++;
   if (buildCounterGetIosReopenAttributionRequest < 3) {
-    o.bundleId = "foo";
-    o.requestedLink = "foo";
-    o.sdkVersion = "foo";
+    o.bundleId = 'foo';
+    o.requestedLink = 'foo';
+    o.sdkVersion = 'foo';
   }
   buildCounterGetIosReopenAttributionRequest--;
   return o;
@@ -517,15 +517,15 @@ api.GetIosReopenAttributionResponse buildGetIosReopenAttributionResponse() {
   var o = api.GetIosReopenAttributionResponse();
   buildCounterGetIosReopenAttributionResponse++;
   if (buildCounterGetIosReopenAttributionResponse < 3) {
-    o.deepLink = "foo";
-    o.invitationId = "foo";
-    o.iosMinAppVersion = "foo";
-    o.resolvedLink = "foo";
-    o.utmCampaign = "foo";
-    o.utmContent = "foo";
-    o.utmMedium = "foo";
-    o.utmSource = "foo";
-    o.utmTerm = "foo";
+    o.deepLink = 'foo';
+    o.invitationId = 'foo';
+    o.iosMinAppVersion = 'foo';
+    o.resolvedLink = 'foo';
+    o.utmCampaign = 'foo';
+    o.utmContent = 'foo';
+    o.utmMedium = 'foo';
+    o.utmSource = 'foo';
+    o.utmTerm = 'foo';
   }
   buildCounterGetIosReopenAttributionResponse--;
   return o;
@@ -553,12 +553,12 @@ api.GooglePlayAnalytics buildGooglePlayAnalytics() {
   var o = api.GooglePlayAnalytics();
   buildCounterGooglePlayAnalytics++;
   if (buildCounterGooglePlayAnalytics < 3) {
-    o.gclid = "foo";
-    o.utmCampaign = "foo";
-    o.utmContent = "foo";
-    o.utmMedium = "foo";
-    o.utmSource = "foo";
-    o.utmTerm = "foo";
+    o.gclid = 'foo';
+    o.utmCampaign = 'foo';
+    o.utmContent = 'foo';
+    o.utmMedium = 'foo';
+    o.utmSource = 'foo';
+    o.utmTerm = 'foo';
   }
   buildCounterGooglePlayAnalytics--;
   return o;
@@ -582,10 +582,10 @@ api.ITunesConnectAnalytics buildITunesConnectAnalytics() {
   var o = api.ITunesConnectAnalytics();
   buildCounterITunesConnectAnalytics++;
   if (buildCounterITunesConnectAnalytics < 3) {
-    o.at = "foo";
-    o.ct = "foo";
-    o.mt = "foo";
-    o.pt = "foo";
+    o.at = 'foo';
+    o.ct = 'foo';
+    o.mt = 'foo';
+    o.pt = 'foo';
   }
   buildCounterITunesConnectAnalytics--;
   return o;
@@ -607,13 +607,13 @@ api.IosInfo buildIosInfo() {
   var o = api.IosInfo();
   buildCounterIosInfo++;
   if (buildCounterIosInfo < 3) {
-    o.iosAppStoreId = "foo";
-    o.iosBundleId = "foo";
-    o.iosCustomScheme = "foo";
-    o.iosFallbackLink = "foo";
-    o.iosIpadBundleId = "foo";
-    o.iosIpadFallbackLink = "foo";
-    o.iosMinimumVersion = "foo";
+    o.iosAppStoreId = 'foo';
+    o.iosBundleId = 'foo';
+    o.iosCustomScheme = 'foo';
+    o.iosFallbackLink = 'foo';
+    o.iosIpadBundleId = 'foo';
+    o.iosIpadFallbackLink = 'foo';
+    o.iosMinimumVersion = 'foo';
   }
   buildCounterIosInfo--;
   return o;
@@ -635,8 +635,8 @@ void checkIosInfo(api.IosInfo o) {
 
 core.List<core.String> buildUnnamed2740() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -651,12 +651,12 @@ api.ManagedShortLink buildManagedShortLink() {
   var o = api.ManagedShortLink();
   buildCounterManagedShortLink++;
   if (buildCounterManagedShortLink < 3) {
-    o.creationTime = "foo";
+    o.creationTime = 'foo';
     o.flaggedAttribute = buildUnnamed2740();
     o.info = buildDynamicLinkInfo();
-    o.link = "foo";
-    o.linkName = "foo";
-    o.visibility = "foo";
+    o.link = 'foo';
+    o.linkName = 'foo';
+    o.visibility = 'foo';
   }
   buildCounterManagedShortLink--;
   return o;
@@ -699,9 +699,9 @@ api.SocialMetaTagInfo buildSocialMetaTagInfo() {
   var o = api.SocialMetaTagInfo();
   buildCounterSocialMetaTagInfo++;
   if (buildCounterSocialMetaTagInfo < 3) {
-    o.socialDescription = "foo";
-    o.socialImageLink = "foo";
-    o.socialTitle = "foo";
+    o.socialDescription = 'foo';
+    o.socialImageLink = 'foo';
+    o.socialTitle = 'foo';
   }
   buildCounterSocialMetaTagInfo--;
   return o;
@@ -722,8 +722,8 @@ api.Suffix buildSuffix() {
   var o = api.Suffix();
   buildCounterSuffix++;
   if (buildCounterSuffix < 3) {
-    o.customSuffix = "foo";
-    o.option = "foo";
+    o.customSuffix = 'foo';
+    o.option = 'foo';
   }
   buildCounterSuffix--;
   return o;
@@ -739,197 +739,197 @@ void checkSuffix(api.Suffix o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AnalyticsInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AnalyticsInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAnalyticsInfo();
       var od = api.AnalyticsInfo.fromJson(o.toJson());
       checkAnalyticsInfo(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidInfo();
       var od = api.AndroidInfo.fromJson(o.toJson());
       checkAndroidInfo(od);
     });
   });
 
-  unittest.group("obj-schema-CreateManagedShortLinkRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateManagedShortLinkRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateManagedShortLinkRequest();
       var od = api.CreateManagedShortLinkRequest.fromJson(o.toJson());
       checkCreateManagedShortLinkRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CreateManagedShortLinkResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateManagedShortLinkResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateManagedShortLinkResponse();
       var od = api.CreateManagedShortLinkResponse.fromJson(o.toJson());
       checkCreateManagedShortLinkResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CreateShortDynamicLinkRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateShortDynamicLinkRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateShortDynamicLinkRequest();
       var od = api.CreateShortDynamicLinkRequest.fromJson(o.toJson());
       checkCreateShortDynamicLinkRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CreateShortDynamicLinkResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateShortDynamicLinkResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateShortDynamicLinkResponse();
       var od = api.CreateShortDynamicLinkResponse.fromJson(o.toJson());
       checkCreateShortDynamicLinkResponse(od);
     });
   });
 
-  unittest.group("obj-schema-DesktopInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DesktopInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDesktopInfo();
       var od = api.DesktopInfo.fromJson(o.toJson());
       checkDesktopInfo(od);
     });
   });
 
-  unittest.group("obj-schema-DeviceInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeviceInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceInfo();
       var od = api.DeviceInfo.fromJson(o.toJson());
       checkDeviceInfo(od);
     });
   });
 
-  unittest.group("obj-schema-DynamicLinkEventStat", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DynamicLinkEventStat', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDynamicLinkEventStat();
       var od = api.DynamicLinkEventStat.fromJson(o.toJson());
       checkDynamicLinkEventStat(od);
     });
   });
 
-  unittest.group("obj-schema-DynamicLinkInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DynamicLinkInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDynamicLinkInfo();
       var od = api.DynamicLinkInfo.fromJson(o.toJson());
       checkDynamicLinkInfo(od);
     });
   });
 
-  unittest.group("obj-schema-DynamicLinkStats", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DynamicLinkStats', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDynamicLinkStats();
       var od = api.DynamicLinkStats.fromJson(o.toJson());
       checkDynamicLinkStats(od);
     });
   });
 
-  unittest.group("obj-schema-DynamicLinkWarning", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DynamicLinkWarning', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDynamicLinkWarning();
       var od = api.DynamicLinkWarning.fromJson(o.toJson());
       checkDynamicLinkWarning(od);
     });
   });
 
-  unittest.group("obj-schema-GetIosPostInstallAttributionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GetIosPostInstallAttributionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGetIosPostInstallAttributionRequest();
       var od = api.GetIosPostInstallAttributionRequest.fromJson(o.toJson());
       checkGetIosPostInstallAttributionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GetIosPostInstallAttributionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GetIosPostInstallAttributionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGetIosPostInstallAttributionResponse();
       var od = api.GetIosPostInstallAttributionResponse.fromJson(o.toJson());
       checkGetIosPostInstallAttributionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GetIosReopenAttributionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GetIosReopenAttributionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGetIosReopenAttributionRequest();
       var od = api.GetIosReopenAttributionRequest.fromJson(o.toJson());
       checkGetIosReopenAttributionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GetIosReopenAttributionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GetIosReopenAttributionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGetIosReopenAttributionResponse();
       var od = api.GetIosReopenAttributionResponse.fromJson(o.toJson());
       checkGetIosReopenAttributionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GooglePlayAnalytics", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GooglePlayAnalytics', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGooglePlayAnalytics();
       var od = api.GooglePlayAnalytics.fromJson(o.toJson());
       checkGooglePlayAnalytics(od);
     });
   });
 
-  unittest.group("obj-schema-ITunesConnectAnalytics", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ITunesConnectAnalytics', () {
+    unittest.test('to-json--from-json', () {
       var o = buildITunesConnectAnalytics();
       var od = api.ITunesConnectAnalytics.fromJson(o.toJson());
       checkITunesConnectAnalytics(od);
     });
   });
 
-  unittest.group("obj-schema-IosInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosInfo();
       var od = api.IosInfo.fromJson(o.toJson());
       checkIosInfo(od);
     });
   });
 
-  unittest.group("obj-schema-ManagedShortLink", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManagedShortLink', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManagedShortLink();
       var od = api.ManagedShortLink.fromJson(o.toJson());
       checkManagedShortLink(od);
     });
   });
 
-  unittest.group("obj-schema-NavigationInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NavigationInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNavigationInfo();
       var od = api.NavigationInfo.fromJson(o.toJson());
       checkNavigationInfo(od);
     });
   });
 
-  unittest.group("obj-schema-SocialMetaTagInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SocialMetaTagInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSocialMetaTagInfo();
       var od = api.SocialMetaTagInfo.fromJson(o.toJson());
       checkSocialMetaTagInfo(od);
     });
   });
 
-  unittest.group("obj-schema-Suffix", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Suffix', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuffix();
       var od = api.Suffix.fromJson(o.toJson());
       checkSuffix(od);
     });
   });
 
-  unittest.group("resource-ManagedShortLinksResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ManagedShortLinksResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ManagedShortLinksResourceApi res =
           api.FirebasedynamiclinksApi(mock).managedShortLinks;
       var arg_request = buildCreateManagedShortLinkRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CreateManagedShortLinkRequest.fromJson(json);
         checkCreateManagedShortLinkRequest(obj);
@@ -951,8 +951,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -962,7 +962,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreateManagedShortLinkResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -975,13 +975,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ShortLinksResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ShortLinksResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ShortLinksResourceApi res =
           api.FirebasedynamiclinksApi(mock).shortLinks;
       var arg_request = buildCreateShortDynamicLinkRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CreateShortDynamicLinkRequest.fromJson(json);
         checkCreateShortDynamicLinkRequest(obj);
@@ -1003,8 +1003,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1014,7 +1014,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreateShortDynamicLinkResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1027,14 +1027,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-V1ResourceApi", () {
-    unittest.test("method--getLinkStats", () {
+  unittest.group('resource-V1ResourceApi', () {
+    unittest.test('method--getLinkStats', () {
       var mock = HttpServerMock();
       api.V1ResourceApi res = api.FirebasedynamiclinksApi(mock).v1;
-      var arg_dynamicLink = "foo";
-      var arg_durationDays = "foo";
-      var arg_sdkVersion = "foo";
-      var arg_$fields = "foo";
+      var arg_dynamicLink = 'foo';
+      var arg_durationDays = 'foo';
+      var arg_sdkVersion = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1046,12 +1046,12 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
-        index = path.indexOf("/linkStats", pathOffset);
+        index = path.indexOf('/linkStats', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_dynamicLink"));
+        unittest.expect(subPart, unittest.equals('$arg_dynamicLink'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/linkStats"));
         pathOffset += 10;
@@ -1062,8 +1062,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1077,7 +1077,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDynamicLinkStats());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1092,11 +1092,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--installAttribution", () {
+    unittest.test('method--installAttribution', () {
       var mock = HttpServerMock();
       api.V1ResourceApi res = api.FirebasedynamiclinksApi(mock).v1;
       var arg_request = buildGetIosPostInstallAttributionRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GetIosPostInstallAttributionRequest.fromJson(json);
         checkGetIosPostInstallAttributionRequest(obj);
@@ -1118,8 +1118,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1129,7 +1129,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGetIosPostInstallAttributionResponse());
@@ -1142,11 +1142,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--reopenAttribution", () {
+    unittest.test('method--reopenAttribution', () {
       var mock = HttpServerMock();
       api.V1ResourceApi res = api.FirebasedynamiclinksApi(mock).v1;
       var arg_request = buildGetIosReopenAttributionRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GetIosReopenAttributionRequest.fromJson(json);
         checkGetIosReopenAttributionRequest(obj);
@@ -1168,8 +1168,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1179,7 +1179,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGetIosReopenAttributionResponse());
         return async.Future.value(stringResponse(200, h, resp));

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,11 +39,11 @@ const core.String USER_AGENT = 'dart-api-client admin/reports_v1';
 class AdminApi {
   /// View audit reports for your G Suite domain
   static const AdminReportsAuditReadonlyScope =
-      "https://www.googleapis.com/auth/admin.reports.audit.readonly";
+      'https://www.googleapis.com/auth/admin.reports.audit.readonly';
 
   /// View usage reports for your G Suite domain
   static const AdminReportsUsageReadonlyScope =
-      "https://www.googleapis.com/auth/admin.reports.usage.readonly";
+      'https://www.googleapis.com/auth/admin.reports.usage.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -58,8 +57,8 @@ class AdminApi {
       UserUsageReportResourceApi(_requester);
 
   AdminApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -260,40 +259,40 @@ class ActivitiesResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (applicationName == null) {
-      throw core.ArgumentError("Parameter applicationName is required.");
+      throw core.ArgumentError('Parameter applicationName is required.');
     }
     if (actorIpAddress != null) {
-      _queryParams["actorIpAddress"] = [actorIpAddress];
+      _queryParams['actorIpAddress'] = [actorIpAddress];
     }
     if (filters != null) {
-      _queryParams["filters"] = [filters];
+      _queryParams['filters'] = [filters];
     }
     if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+      _queryParams['startTime'] = [startTime];
     }
     if (orgUnitID != null) {
-      _queryParams["orgUnitID"] = [orgUnitID];
+      _queryParams['orgUnitID'] = [orgUnitID];
     }
     if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
+      _queryParams['endTime'] = [endTime];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+      _queryParams['customerId'] = [customerId];
     }
     if (eventName != null) {
-      _queryParams["eventName"] = [eventName];
+      _queryParams['eventName'] = [eventName];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/reports/v1/activity/users/' +
@@ -303,7 +302,7 @@ class ActivitiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -507,40 +506,40 @@ class ActivitiesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (applicationName == null) {
-      throw core.ArgumentError("Parameter applicationName is required.");
+      throw core.ArgumentError('Parameter applicationName is required.');
     }
     if (eventName != null) {
-      _queryParams["eventName"] = [eventName];
+      _queryParams['eventName'] = [eventName];
     }
     if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+      _queryParams['customerId'] = [customerId];
     }
     if (orgUnitID != null) {
-      _queryParams["orgUnitID"] = [orgUnitID];
+      _queryParams['orgUnitID'] = [orgUnitID];
     }
     if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
+      _queryParams['endTime'] = [endTime];
     }
     if (filters != null) {
-      _queryParams["filters"] = [filters];
+      _queryParams['filters'] = [filters];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (actorIpAddress != null) {
-      _queryParams["actorIpAddress"] = [actorIpAddress];
+      _queryParams['actorIpAddress'] = [actorIpAddress];
     }
     if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+      _queryParams['startTime'] = [startTime];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/reports/v1/activity/users/' +
@@ -551,7 +550,7 @@ class ActivitiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -596,7 +595,7 @@ class ChannelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -605,7 +604,7 @@ class ChannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -685,19 +684,19 @@ class CustomerUsageReportsResourceApi {
     core.String _body;
 
     if (date == null) {
-      throw core.ArgumentError("Parameter date is required.");
+      throw core.ArgumentError('Parameter date is required.');
     }
     if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+      _queryParams['customerId'] = [customerId];
     }
     if (parameters != null) {
-      _queryParams["parameters"] = [parameters];
+      _queryParams['parameters'] = [parameters];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/reports/v1/usage/dates/' +
@@ -705,7 +704,7 @@ class CustomerUsageReportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -825,31 +824,31 @@ class EntityUsageReportsResourceApi {
     core.String _body;
 
     if (entityType == null) {
-      throw core.ArgumentError("Parameter entityType is required.");
+      throw core.ArgumentError('Parameter entityType is required.');
     }
     if (entityKey == null) {
-      throw core.ArgumentError("Parameter entityKey is required.");
+      throw core.ArgumentError('Parameter entityKey is required.');
     }
     if (date == null) {
-      throw core.ArgumentError("Parameter date is required.");
+      throw core.ArgumentError('Parameter date is required.');
     }
     if (filters != null) {
-      _queryParams["filters"] = [filters];
+      _queryParams['filters'] = [filters];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (parameters != null) {
-      _queryParams["parameters"] = [parameters];
+      _queryParams['parameters'] = [parameters];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+      _queryParams['customerId'] = [customerId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/reports/v1/usage/' +
@@ -861,7 +860,7 @@ class EntityUsageReportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -979,31 +978,31 @@ class UserUsageReportResourceApi {
     core.String _body;
 
     if (userKey == null) {
-      throw core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError('Parameter userKey is required.');
     }
     if (date == null) {
-      throw core.ArgumentError("Parameter date is required.");
+      throw core.ArgumentError('Parameter date is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+      _queryParams['customerId'] = [customerId];
     }
     if (orgUnitID != null) {
-      _queryParams["orgUnitID"] = [orgUnitID];
+      _queryParams['orgUnitID'] = [orgUnitID];
     }
     if (parameters != null) {
-      _queryParams["parameters"] = [parameters];
+      _queryParams['parameters'] = [parameters];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filters != null) {
-      _queryParams["filters"] = [filters];
+      _queryParams['filters'] = [filters];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'admin/reports/v1/usage/users/' +
@@ -1013,7 +1012,7 @@ class UserUsageReportResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1043,19 +1042,19 @@ class Activities {
   Activities();
 
   Activities.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Activity>((value) => Activity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1063,16 +1062,16 @@ class Activities {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1098,17 +1097,17 @@ class ActivityActor {
   ActivityActor();
 
   ActivityActor.fromJson(core.Map _json) {
-    if (_json.containsKey("callerType")) {
-      callerType = _json["callerType"];
+    if (_json.containsKey('callerType')) {
+      callerType = _json['callerType'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("profileId")) {
-      profileId = _json["profileId"];
+    if (_json.containsKey('profileId')) {
+      profileId = _json['profileId'];
     }
   }
 
@@ -1116,16 +1115,16 @@ class ActivityActor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (callerType != null) {
-      _json["callerType"] = callerType;
+      _json['callerType'] = callerType;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (profileId != null) {
-      _json["profileId"] = profileId;
+      _json['profileId'] = profileId;
     }
     return _json;
   }
@@ -1142,8 +1141,8 @@ class ActivityEventsParametersMessageValue {
   ActivityEventsParametersMessageValue();
 
   ActivityEventsParametersMessageValue.fromJson(core.Map _json) {
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<NestedParameter>((value) => NestedParameter.fromJson(value))
           .toList();
     }
@@ -1153,7 +1152,7 @@ class ActivityEventsParametersMessageValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1166,8 +1165,8 @@ class ActivityEventsParametersMultiMessageValue {
   ActivityEventsParametersMultiMessageValue();
 
   ActivityEventsParametersMultiMessageValue.fromJson(core.Map _json) {
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<NestedParameter>((value) => NestedParameter.fromJson(value))
           .toList();
     }
@@ -1177,7 +1176,7 @@ class ActivityEventsParametersMultiMessageValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1214,33 +1213,33 @@ class ActivityEventsParameters {
   ActivityEventsParameters();
 
   ActivityEventsParameters.fromJson(core.Map _json) {
-    if (_json.containsKey("boolValue")) {
-      boolValue = _json["boolValue"];
+    if (_json.containsKey('boolValue')) {
+      boolValue = _json['boolValue'];
     }
-    if (_json.containsKey("intValue")) {
-      intValue = _json["intValue"];
+    if (_json.containsKey('intValue')) {
+      intValue = _json['intValue'];
     }
-    if (_json.containsKey("messageValue")) {
+    if (_json.containsKey('messageValue')) {
       messageValue =
-          ActivityEventsParametersMessageValue.fromJson(_json["messageValue"]);
+          ActivityEventsParametersMessageValue.fromJson(_json['messageValue']);
     }
-    if (_json.containsKey("multiIntValue")) {
-      multiIntValue = (_json["multiIntValue"] as core.List).cast<core.String>();
+    if (_json.containsKey('multiIntValue')) {
+      multiIntValue = (_json['multiIntValue'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("multiMessageValue")) {
-      multiMessageValue = (_json["multiMessageValue"] as core.List)
+    if (_json.containsKey('multiMessageValue')) {
+      multiMessageValue = (_json['multiMessageValue'] as core.List)
           .map<ActivityEventsParametersMultiMessageValue>((value) =>
               ActivityEventsParametersMultiMessageValue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("multiValue")) {
-      multiValue = (_json["multiValue"] as core.List).cast<core.String>();
+    if (_json.containsKey('multiValue')) {
+      multiValue = (_json['multiValue'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -1248,29 +1247,29 @@ class ActivityEventsParameters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boolValue != null) {
-      _json["boolValue"] = boolValue;
+      _json['boolValue'] = boolValue;
     }
     if (intValue != null) {
-      _json["intValue"] = intValue;
+      _json['intValue'] = intValue;
     }
     if (messageValue != null) {
-      _json["messageValue"] = messageValue.toJson();
+      _json['messageValue'] = messageValue.toJson();
     }
     if (multiIntValue != null) {
-      _json["multiIntValue"] = multiIntValue;
+      _json['multiIntValue'] = multiIntValue;
     }
     if (multiMessageValue != null) {
-      _json["multiMessageValue"] =
+      _json['multiMessageValue'] =
           multiMessageValue.map((value) => value.toJson()).toList();
     }
     if (multiValue != null) {
-      _json["multiValue"] = multiValue;
+      _json['multiValue'] = multiValue;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -1303,17 +1302,17 @@ class ActivityEvents {
   ActivityEvents();
 
   ActivityEvents.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("parameters")) {
-      parameters = (_json["parameters"] as core.List)
+    if (_json.containsKey('parameters')) {
+      parameters = (_json['parameters'] as core.List)
           .map<ActivityEventsParameters>(
               (value) => ActivityEventsParameters.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -1321,13 +1320,13 @@ class ActivityEvents {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (parameters != null) {
-      _json["parameters"] = parameters.map((value) => value.toJson()).toList();
+      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1351,17 +1350,17 @@ class ActivityId {
   ActivityId();
 
   ActivityId.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationName")) {
-      applicationName = _json["applicationName"];
+    if (_json.containsKey('applicationName')) {
+      applicationName = _json['applicationName'];
     }
-    if (_json.containsKey("customerId")) {
-      customerId = _json["customerId"];
+    if (_json.containsKey('customerId')) {
+      customerId = _json['customerId'];
     }
-    if (_json.containsKey("time")) {
-      time = core.DateTime.parse(_json["time"]);
+    if (_json.containsKey('time')) {
+      time = core.DateTime.parse(_json['time']);
     }
-    if (_json.containsKey("uniqueQualifier")) {
-      uniqueQualifier = _json["uniqueQualifier"];
+    if (_json.containsKey('uniqueQualifier')) {
+      uniqueQualifier = _json['uniqueQualifier'];
     }
   }
 
@@ -1369,16 +1368,16 @@ class ActivityId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (applicationName != null) {
-      _json["applicationName"] = applicationName;
+      _json['applicationName'] = applicationName;
     }
     if (customerId != null) {
-      _json["customerId"] = customerId;
+      _json['customerId'] = customerId;
     }
     if (time != null) {
-      _json["time"] = (time).toIso8601String();
+      _json['time'] = (time).toIso8601String();
     }
     if (uniqueQualifier != null) {
-      _json["uniqueQualifier"] = uniqueQualifier;
+      _json['uniqueQualifier'] = uniqueQualifier;
     }
     return _json;
   }
@@ -1416,28 +1415,28 @@ class Activity {
   Activity();
 
   Activity.fromJson(core.Map _json) {
-    if (_json.containsKey("actor")) {
-      actor = ActivityActor.fromJson(_json["actor"]);
+    if (_json.containsKey('actor')) {
+      actor = ActivityActor.fromJson(_json['actor']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("events")) {
-      events = (_json["events"] as core.List)
+    if (_json.containsKey('events')) {
+      events = (_json['events'] as core.List)
           .map<ActivityEvents>((value) => ActivityEvents.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("id")) {
-      id = ActivityId.fromJson(_json["id"]);
+    if (_json.containsKey('id')) {
+      id = ActivityId.fromJson(_json['id']);
     }
-    if (_json.containsKey("ipAddress")) {
-      ipAddress = _json["ipAddress"];
+    if (_json.containsKey('ipAddress')) {
+      ipAddress = _json['ipAddress'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("ownerDomain")) {
-      ownerDomain = _json["ownerDomain"];
+    if (_json.containsKey('ownerDomain')) {
+      ownerDomain = _json['ownerDomain'];
     }
   }
 
@@ -1445,25 +1444,25 @@ class Activity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actor != null) {
-      _json["actor"] = actor.toJson();
+      _json['actor'] = actor.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (events != null) {
-      _json["events"] = events.map((value) => value.toJson()).toList();
+      _json['events'] = events.map((value) => value.toJson()).toList();
     }
     if (id != null) {
-      _json["id"] = id.toJson();
+      _json['id'] = id.toJson();
     }
     if (ipAddress != null) {
-      _json["ipAddress"] = ipAddress;
+      _json['ipAddress'] = ipAddress;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (ownerDomain != null) {
-      _json["ownerDomain"] = ownerDomain;
+      _json['ownerDomain'] = ownerDomain;
     }
     return _json;
   }
@@ -1508,35 +1507,35 @@ class Channel {
   Channel();
 
   Channel.fromJson(core.Map _json) {
-    if (_json.containsKey("address")) {
-      address = _json["address"];
+    if (_json.containsKey('address')) {
+      address = _json['address'];
     }
-    if (_json.containsKey("expiration")) {
-      expiration = _json["expiration"];
+    if (_json.containsKey('expiration')) {
+      expiration = _json['expiration'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("params")) {
-      params = (_json["params"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('params')) {
+      params = (_json['params'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("payload")) {
-      payload = _json["payload"];
+    if (_json.containsKey('payload')) {
+      payload = _json['payload'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = _json["resourceId"];
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'];
     }
-    if (_json.containsKey("resourceUri")) {
-      resourceUri = _json["resourceUri"];
+    if (_json.containsKey('resourceUri')) {
+      resourceUri = _json['resourceUri'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -1544,34 +1543,34 @@ class Channel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (address != null) {
-      _json["address"] = address;
+      _json['address'] = address;
     }
     if (expiration != null) {
-      _json["expiration"] = expiration;
+      _json['expiration'] = expiration;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (params != null) {
-      _json["params"] = params;
+      _json['params'] = params;
     }
     if (payload != null) {
-      _json["payload"] = payload;
+      _json['payload'] = payload;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId;
+      _json['resourceId'] = resourceId;
     }
     if (resourceUri != null) {
-      _json["resourceUri"] = resourceUri;
+      _json['resourceUri'] = resourceUri;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1603,26 +1602,26 @@ class NestedParameter {
   NestedParameter();
 
   NestedParameter.fromJson(core.Map _json) {
-    if (_json.containsKey("boolValue")) {
-      boolValue = _json["boolValue"];
+    if (_json.containsKey('boolValue')) {
+      boolValue = _json['boolValue'];
     }
-    if (_json.containsKey("intValue")) {
-      intValue = _json["intValue"];
+    if (_json.containsKey('intValue')) {
+      intValue = _json['intValue'];
     }
-    if (_json.containsKey("multiBoolValue")) {
-      multiBoolValue = (_json["multiBoolValue"] as core.List).cast<core.bool>();
+    if (_json.containsKey('multiBoolValue')) {
+      multiBoolValue = (_json['multiBoolValue'] as core.List).cast<core.bool>();
     }
-    if (_json.containsKey("multiIntValue")) {
-      multiIntValue = (_json["multiIntValue"] as core.List).cast<core.String>();
+    if (_json.containsKey('multiIntValue')) {
+      multiIntValue = (_json['multiIntValue'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("multiValue")) {
-      multiValue = (_json["multiValue"] as core.List).cast<core.String>();
+    if (_json.containsKey('multiValue')) {
+      multiValue = (_json['multiValue'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -1630,25 +1629,25 @@ class NestedParameter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boolValue != null) {
-      _json["boolValue"] = boolValue;
+      _json['boolValue'] = boolValue;
     }
     if (intValue != null) {
-      _json["intValue"] = intValue;
+      _json['intValue'] = intValue;
     }
     if (multiBoolValue != null) {
-      _json["multiBoolValue"] = multiBoolValue;
+      _json['multiBoolValue'] = multiBoolValue;
     }
     if (multiIntValue != null) {
-      _json["multiIntValue"] = multiIntValue;
+      _json['multiIntValue'] = multiIntValue;
     }
     if (multiValue != null) {
-      _json["multiValue"] = multiValue;
+      _json['multiValue'] = multiValue;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -1676,20 +1675,20 @@ class UsageReportEntity {
   UsageReportEntity();
 
   UsageReportEntity.fromJson(core.Map _json) {
-    if (_json.containsKey("customerId")) {
-      customerId = _json["customerId"];
+    if (_json.containsKey('customerId')) {
+      customerId = _json['customerId'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("profileId")) {
-      profileId = _json["profileId"];
+    if (_json.containsKey('profileId')) {
+      profileId = _json['profileId'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("userEmail")) {
-      userEmail = _json["userEmail"];
+    if (_json.containsKey('userEmail')) {
+      userEmail = _json['userEmail'];
     }
   }
 
@@ -1697,19 +1696,19 @@ class UsageReportEntity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customerId != null) {
-      _json["customerId"] = customerId;
+      _json['customerId'] = customerId;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (profileId != null) {
-      _json["profileId"] = profileId;
+      _json['profileId'] = profileId;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (userEmail != null) {
-      _json["userEmail"] = userEmail;
+      _json['userEmail'] = userEmail;
     }
     return _json;
   }
@@ -1741,26 +1740,26 @@ class UsageReportParameters {
   UsageReportParameters();
 
   UsageReportParameters.fromJson(core.Map _json) {
-    if (_json.containsKey("boolValue")) {
-      boolValue = _json["boolValue"];
+    if (_json.containsKey('boolValue')) {
+      boolValue = _json['boolValue'];
     }
-    if (_json.containsKey("datetimeValue")) {
-      datetimeValue = core.DateTime.parse(_json["datetimeValue"]);
+    if (_json.containsKey('datetimeValue')) {
+      datetimeValue = core.DateTime.parse(_json['datetimeValue']);
     }
-    if (_json.containsKey("intValue")) {
-      intValue = _json["intValue"];
+    if (_json.containsKey('intValue')) {
+      intValue = _json['intValue'];
     }
-    if (_json.containsKey("msgValue")) {
-      msgValue = (_json["msgValue"] as core.List)
+    if (_json.containsKey('msgValue')) {
+      msgValue = (_json['msgValue'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("stringValue")) {
-      stringValue = _json["stringValue"];
+    if (_json.containsKey('stringValue')) {
+      stringValue = _json['stringValue'];
     }
   }
 
@@ -1768,22 +1767,22 @@ class UsageReportParameters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boolValue != null) {
-      _json["boolValue"] = boolValue;
+      _json['boolValue'] = boolValue;
     }
     if (datetimeValue != null) {
-      _json["datetimeValue"] = (datetimeValue).toIso8601String();
+      _json['datetimeValue'] = (datetimeValue).toIso8601String();
     }
     if (intValue != null) {
-      _json["intValue"] = intValue;
+      _json['intValue'] = intValue;
     }
     if (msgValue != null) {
-      _json["msgValue"] = msgValue;
+      _json['msgValue'] = msgValue;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (stringValue != null) {
-      _json["stringValue"] = stringValue;
+      _json['stringValue'] = stringValue;
     }
     return _json;
   }
@@ -1812,20 +1811,20 @@ class UsageReport {
   UsageReport();
 
   UsageReport.fromJson(core.Map _json) {
-    if (_json.containsKey("date")) {
-      date = _json["date"];
+    if (_json.containsKey('date')) {
+      date = _json['date'];
     }
-    if (_json.containsKey("entity")) {
-      entity = UsageReportEntity.fromJson(_json["entity"]);
+    if (_json.containsKey('entity')) {
+      entity = UsageReportEntity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("parameters")) {
-      parameters = (_json["parameters"] as core.List)
+    if (_json.containsKey('parameters')) {
+      parameters = (_json['parameters'] as core.List)
           .map<UsageReportParameters>(
               (value) => UsageReportParameters.fromJson(value))
           .toList();
@@ -1836,19 +1835,19 @@ class UsageReport {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (date != null) {
-      _json["date"] = date;
+      _json['date'] = date;
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (parameters != null) {
-      _json["parameters"] = parameters.map((value) => value.toJson()).toList();
+      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1866,11 +1865,11 @@ class UsageReportsWarningsData {
   UsageReportsWarningsData();
 
   UsageReportsWarningsData.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -1878,10 +1877,10 @@ class UsageReportsWarningsData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -1904,17 +1903,17 @@ class UsageReportsWarnings {
   UsageReportsWarnings();
 
   UsageReportsWarnings.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("data")) {
-      data = (_json["data"] as core.List)
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.List)
           .map<UsageReportsWarningsData>(
               (value) => UsageReportsWarningsData.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -1922,13 +1921,13 @@ class UsageReportsWarnings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (data != null) {
-      _json["data"] = data.map((value) => value.toJson()).toList();
+      _json['data'] = data.map((value) => value.toJson()).toList();
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -1957,22 +1956,22 @@ class UsageReports {
   UsageReports();
 
   UsageReports.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("usageReports")) {
-      usageReports = (_json["usageReports"] as core.List)
+    if (_json.containsKey('usageReports')) {
+      usageReports = (_json['usageReports'] as core.List)
           .map<UsageReport>((value) => UsageReport.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("warnings")) {
-      warnings = (_json["warnings"] as core.List)
+    if (_json.containsKey('warnings')) {
+      warnings = (_json['warnings'] as core.List)
           .map<UsageReportsWarnings>(
               (value) => UsageReportsWarnings.fromJson(value))
           .toList();
@@ -1983,20 +1982,20 @@ class UsageReports {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (usageReports != null) {
-      _json["usageReports"] =
+      _json['usageReports'] =
           usageReports.map((value) => value.toJson()).toList();
     }
     if (warnings != null) {
-      _json["warnings"] = warnings.map((value) => value.toJson()).toList();
+      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
     }
     return _json;
   }

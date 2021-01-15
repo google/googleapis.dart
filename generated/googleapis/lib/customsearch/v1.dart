@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,8 +39,8 @@ class CustomsearchApi {
   CseResourceApi get cse => CseResourceApi(_requester);
 
   CustomsearchApi(http.Client client,
-      {core.String rootUrl = "https://customsearch.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://customsearch.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -317,107 +316,107 @@ class CseResourceApi {
     core.String _body;
 
     if (dateRestrict != null) {
-      _queryParams["dateRestrict"] = [dateRestrict];
+      _queryParams['dateRestrict'] = [dateRestrict];
     }
     if (relatedSite != null) {
-      _queryParams["relatedSite"] = [relatedSite];
+      _queryParams['relatedSite'] = [relatedSite];
     }
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if (fileType != null) {
-      _queryParams["fileType"] = [fileType];
+      _queryParams['fileType'] = [fileType];
     }
     if (googlehost != null) {
-      _queryParams["googlehost"] = [googlehost];
+      _queryParams['googlehost'] = [googlehost];
     }
     if (imgType != null) {
-      _queryParams["imgType"] = [imgType];
+      _queryParams['imgType'] = [imgType];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (imgColorType != null) {
-      _queryParams["imgColorType"] = [imgColorType];
+      _queryParams['imgColorType'] = [imgColorType];
     }
     if (rights != null) {
-      _queryParams["rights"] = [rights];
+      _queryParams['rights'] = [rights];
     }
     if (cr != null) {
-      _queryParams["cr"] = [cr];
+      _queryParams['cr'] = [cr];
     }
     if (cx != null) {
-      _queryParams["cx"] = [cx];
+      _queryParams['cx'] = [cx];
     }
     if (siteSearchFilter != null) {
-      _queryParams["siteSearchFilter"] = [siteSearchFilter];
+      _queryParams['siteSearchFilter'] = [siteSearchFilter];
     }
     if (orTerms != null) {
-      _queryParams["orTerms"] = [orTerms];
+      _queryParams['orTerms'] = [orTerms];
     }
     if (sort != null) {
-      _queryParams["sort"] = [sort];
+      _queryParams['sort'] = [sort];
     }
     if (highRange != null) {
-      _queryParams["highRange"] = [highRange];
+      _queryParams['highRange'] = [highRange];
     }
     if (imgDominantColor != null) {
-      _queryParams["imgDominantColor"] = [imgDominantColor];
+      _queryParams['imgDominantColor'] = [imgDominantColor];
     }
     if (safe != null) {
-      _queryParams["safe"] = [safe];
+      _queryParams['safe'] = [safe];
     }
     if (num != null) {
-      _queryParams["num"] = ["${num}"];
+      _queryParams['num'] = ['${num}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (searchType != null) {
-      _queryParams["searchType"] = [searchType];
+      _queryParams['searchType'] = [searchType];
     }
     if (exactTerms != null) {
-      _queryParams["exactTerms"] = [exactTerms];
+      _queryParams['exactTerms'] = [exactTerms];
     }
     if (linkSite != null) {
-      _queryParams["linkSite"] = [linkSite];
+      _queryParams['linkSite'] = [linkSite];
     }
     if (lowRange != null) {
-      _queryParams["lowRange"] = [lowRange];
+      _queryParams['lowRange'] = [lowRange];
     }
     if (gl != null) {
-      _queryParams["gl"] = [gl];
+      _queryParams['gl'] = [gl];
     }
     if (excludeTerms != null) {
-      _queryParams["excludeTerms"] = [excludeTerms];
+      _queryParams['excludeTerms'] = [excludeTerms];
     }
     if (c2coff != null) {
-      _queryParams["c2coff"] = [c2coff];
+      _queryParams['c2coff'] = [c2coff];
     }
     if (start != null) {
-      _queryParams["start"] = ["${start}"];
+      _queryParams['start'] = ['${start}'];
     }
     if (lr != null) {
-      _queryParams["lr"] = [lr];
+      _queryParams['lr'] = [lr];
     }
     if (imgSize != null) {
-      _queryParams["imgSize"] = [imgSize];
+      _queryParams['imgSize'] = [imgSize];
     }
     if (siteSearch != null) {
-      _queryParams["siteSearch"] = [siteSearch];
+      _queryParams['siteSearch'] = [siteSearch];
     }
     if (hq != null) {
-      _queryParams["hq"] = [hq];
+      _queryParams['hq'] = [hq];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customsearch/v1';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -697,107 +696,107 @@ class CseSiterestrictResourceApi {
     core.String _body;
 
     if (relatedSite != null) {
-      _queryParams["relatedSite"] = [relatedSite];
+      _queryParams['relatedSite'] = [relatedSite];
     }
     if (cx != null) {
-      _queryParams["cx"] = [cx];
+      _queryParams['cx'] = [cx];
     }
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if (imgType != null) {
-      _queryParams["imgType"] = [imgType];
+      _queryParams['imgType'] = [imgType];
     }
     if (siteSearch != null) {
-      _queryParams["siteSearch"] = [siteSearch];
+      _queryParams['siteSearch'] = [siteSearch];
     }
     if (lowRange != null) {
-      _queryParams["lowRange"] = [lowRange];
+      _queryParams['lowRange'] = [lowRange];
     }
     if (gl != null) {
-      _queryParams["gl"] = [gl];
+      _queryParams['gl'] = [gl];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (siteSearchFilter != null) {
-      _queryParams["siteSearchFilter"] = [siteSearchFilter];
+      _queryParams['siteSearchFilter'] = [siteSearchFilter];
     }
     if (hq != null) {
-      _queryParams["hq"] = [hq];
+      _queryParams['hq'] = [hq];
     }
     if (num != null) {
-      _queryParams["num"] = ["${num}"];
+      _queryParams['num'] = ['${num}'];
     }
     if (orTerms != null) {
-      _queryParams["orTerms"] = [orTerms];
+      _queryParams['orTerms'] = [orTerms];
     }
     if (lr != null) {
-      _queryParams["lr"] = [lr];
+      _queryParams['lr'] = [lr];
     }
     if (rights != null) {
-      _queryParams["rights"] = [rights];
+      _queryParams['rights'] = [rights];
     }
     if (sort != null) {
-      _queryParams["sort"] = [sort];
+      _queryParams['sort'] = [sort];
     }
     if (imgSize != null) {
-      _queryParams["imgSize"] = [imgSize];
+      _queryParams['imgSize'] = [imgSize];
     }
     if (cr != null) {
-      _queryParams["cr"] = [cr];
+      _queryParams['cr'] = [cr];
     }
     if (dateRestrict != null) {
-      _queryParams["dateRestrict"] = [dateRestrict];
+      _queryParams['dateRestrict'] = [dateRestrict];
     }
     if (start != null) {
-      _queryParams["start"] = ["${start}"];
+      _queryParams['start'] = ['${start}'];
     }
     if (linkSite != null) {
-      _queryParams["linkSite"] = [linkSite];
+      _queryParams['linkSite'] = [linkSite];
     }
     if (searchType != null) {
-      _queryParams["searchType"] = [searchType];
+      _queryParams['searchType'] = [searchType];
     }
     if (fileType != null) {
-      _queryParams["fileType"] = [fileType];
+      _queryParams['fileType'] = [fileType];
     }
     if (highRange != null) {
-      _queryParams["highRange"] = [highRange];
+      _queryParams['highRange'] = [highRange];
     }
     if (exactTerms != null) {
-      _queryParams["exactTerms"] = [exactTerms];
+      _queryParams['exactTerms'] = [exactTerms];
     }
     if (c2coff != null) {
-      _queryParams["c2coff"] = [c2coff];
+      _queryParams['c2coff'] = [c2coff];
     }
     if (excludeTerms != null) {
-      _queryParams["excludeTerms"] = [excludeTerms];
+      _queryParams['excludeTerms'] = [excludeTerms];
     }
     if (imgDominantColor != null) {
-      _queryParams["imgDominantColor"] = [imgDominantColor];
+      _queryParams['imgDominantColor'] = [imgDominantColor];
     }
     if (safe != null) {
-      _queryParams["safe"] = [safe];
+      _queryParams['safe'] = [safe];
     }
     if (imgColorType != null) {
-      _queryParams["imgColorType"] = [imgColorType];
+      _queryParams['imgColorType'] = [imgColorType];
     }
     if (googlehost != null) {
-      _queryParams["googlehost"] = [googlehost];
+      _queryParams['googlehost'] = [googlehost];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customsearch/v1/siterestrict';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -825,17 +824,17 @@ class PromotionBodyLines {
   PromotionBodyLines();
 
   PromotionBodyLines.fromJson(core.Map _json) {
-    if (_json.containsKey("htmlTitle")) {
-      htmlTitle = _json["htmlTitle"];
+    if (_json.containsKey('htmlTitle')) {
+      htmlTitle = _json['htmlTitle'];
     }
-    if (_json.containsKey("link")) {
-      link = _json["link"];
+    if (_json.containsKey('link')) {
+      link = _json['link'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -843,16 +842,16 @@ class PromotionBodyLines {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (htmlTitle != null) {
-      _json["htmlTitle"] = htmlTitle;
+      _json['htmlTitle'] = htmlTitle;
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -872,14 +871,14 @@ class PromotionImage {
   PromotionImage();
 
   PromotionImage.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("source")) {
-      source = _json["source"];
+    if (_json.containsKey('source')) {
+      source = _json['source'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -887,13 +886,13 @@ class PromotionImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (source != null) {
-      _json["source"] = source;
+      _json['source'] = source;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -925,26 +924,26 @@ class Promotion {
   Promotion();
 
   Promotion.fromJson(core.Map _json) {
-    if (_json.containsKey("bodyLines")) {
-      bodyLines = (_json["bodyLines"] as core.List)
+    if (_json.containsKey('bodyLines')) {
+      bodyLines = (_json['bodyLines'] as core.List)
           .map<PromotionBodyLines>(
               (value) => PromotionBodyLines.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("displayLink")) {
-      displayLink = _json["displayLink"];
+    if (_json.containsKey('displayLink')) {
+      displayLink = _json['displayLink'];
     }
-    if (_json.containsKey("htmlTitle")) {
-      htmlTitle = _json["htmlTitle"];
+    if (_json.containsKey('htmlTitle')) {
+      htmlTitle = _json['htmlTitle'];
     }
-    if (_json.containsKey("image")) {
-      image = PromotionImage.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = PromotionImage.fromJson(_json['image']);
     }
-    if (_json.containsKey("link")) {
-      link = _json["link"];
+    if (_json.containsKey('link')) {
+      link = _json['link'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -952,22 +951,22 @@ class Promotion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bodyLines != null) {
-      _json["bodyLines"] = bodyLines.map((value) => value.toJson()).toList();
+      _json['bodyLines'] = bodyLines.map((value) => value.toJson()).toList();
     }
     if (displayLink != null) {
-      _json["displayLink"] = displayLink;
+      _json['displayLink'] = displayLink;
     }
     if (htmlTitle != null) {
-      _json["htmlTitle"] = htmlTitle;
+      _json['htmlTitle'] = htmlTitle;
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -999,26 +998,26 @@ class ResultImage {
   ResultImage();
 
   ResultImage.fromJson(core.Map _json) {
-    if (_json.containsKey("byteSize")) {
-      byteSize = _json["byteSize"];
+    if (_json.containsKey('byteSize')) {
+      byteSize = _json['byteSize'];
     }
-    if (_json.containsKey("contextLink")) {
-      contextLink = _json["contextLink"];
+    if (_json.containsKey('contextLink')) {
+      contextLink = _json['contextLink'];
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("thumbnailHeight")) {
-      thumbnailHeight = _json["thumbnailHeight"];
+    if (_json.containsKey('thumbnailHeight')) {
+      thumbnailHeight = _json['thumbnailHeight'];
     }
-    if (_json.containsKey("thumbnailLink")) {
-      thumbnailLink = _json["thumbnailLink"];
+    if (_json.containsKey('thumbnailLink')) {
+      thumbnailLink = _json['thumbnailLink'];
     }
-    if (_json.containsKey("thumbnailWidth")) {
-      thumbnailWidth = _json["thumbnailWidth"];
+    if (_json.containsKey('thumbnailWidth')) {
+      thumbnailWidth = _json['thumbnailWidth'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -1026,25 +1025,25 @@ class ResultImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (byteSize != null) {
-      _json["byteSize"] = byteSize;
+      _json['byteSize'] = byteSize;
     }
     if (contextLink != null) {
-      _json["contextLink"] = contextLink;
+      _json['contextLink'] = contextLink;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (thumbnailHeight != null) {
-      _json["thumbnailHeight"] = thumbnailHeight;
+      _json['thumbnailHeight'] = thumbnailHeight;
     }
     if (thumbnailLink != null) {
-      _json["thumbnailLink"] = thumbnailLink;
+      _json['thumbnailLink'] = thumbnailLink;
     }
     if (thumbnailWidth != null) {
-      _json["thumbnailWidth"] = thumbnailWidth;
+      _json['thumbnailWidth'] = thumbnailWidth;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -1066,14 +1065,14 @@ class ResultLabels {
   ResultLabels();
 
   ResultLabels.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("label_with_op")) {
-      labelWithOp = _json["label_with_op"];
+    if (_json.containsKey('label_with_op')) {
+      labelWithOp = _json['label_with_op'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -1081,13 +1080,13 @@ class ResultLabels {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (labelWithOp != null) {
-      _json["label_with_op"] = labelWithOp;
+      _json['label_with_op'] = labelWithOp;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -1151,52 +1150,52 @@ class Result {
   Result();
 
   Result.fromJson(core.Map _json) {
-    if (_json.containsKey("cacheId")) {
-      cacheId = _json["cacheId"];
+    if (_json.containsKey('cacheId')) {
+      cacheId = _json['cacheId'];
     }
-    if (_json.containsKey("displayLink")) {
-      displayLink = _json["displayLink"];
+    if (_json.containsKey('displayLink')) {
+      displayLink = _json['displayLink'];
     }
-    if (_json.containsKey("fileFormat")) {
-      fileFormat = _json["fileFormat"];
+    if (_json.containsKey('fileFormat')) {
+      fileFormat = _json['fileFormat'];
     }
-    if (_json.containsKey("formattedUrl")) {
-      formattedUrl = _json["formattedUrl"];
+    if (_json.containsKey('formattedUrl')) {
+      formattedUrl = _json['formattedUrl'];
     }
-    if (_json.containsKey("htmlFormattedUrl")) {
-      htmlFormattedUrl = _json["htmlFormattedUrl"];
+    if (_json.containsKey('htmlFormattedUrl')) {
+      htmlFormattedUrl = _json['htmlFormattedUrl'];
     }
-    if (_json.containsKey("htmlSnippet")) {
-      htmlSnippet = _json["htmlSnippet"];
+    if (_json.containsKey('htmlSnippet')) {
+      htmlSnippet = _json['htmlSnippet'];
     }
-    if (_json.containsKey("htmlTitle")) {
-      htmlTitle = _json["htmlTitle"];
+    if (_json.containsKey('htmlTitle')) {
+      htmlTitle = _json['htmlTitle'];
     }
-    if (_json.containsKey("image")) {
-      image = ResultImage.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = ResultImage.fromJson(_json['image']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.List)
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.List)
           .map<ResultLabels>((value) => ResultLabels.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("link")) {
-      link = _json["link"];
+    if (_json.containsKey('link')) {
+      link = _json['link'];
     }
-    if (_json.containsKey("mime")) {
-      mime = _json["mime"];
+    if (_json.containsKey('mime')) {
+      mime = _json['mime'];
     }
-    if (_json.containsKey("pagemap")) {
-      pagemap = (_json["pagemap"] as core.Map).cast<core.String, core.Object>();
+    if (_json.containsKey('pagemap')) {
+      pagemap = (_json['pagemap'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("snippet")) {
-      snippet = _json["snippet"];
+    if (_json.containsKey('snippet')) {
+      snippet = _json['snippet'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1204,49 +1203,49 @@ class Result {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cacheId != null) {
-      _json["cacheId"] = cacheId;
+      _json['cacheId'] = cacheId;
     }
     if (displayLink != null) {
-      _json["displayLink"] = displayLink;
+      _json['displayLink'] = displayLink;
     }
     if (fileFormat != null) {
-      _json["fileFormat"] = fileFormat;
+      _json['fileFormat'] = fileFormat;
     }
     if (formattedUrl != null) {
-      _json["formattedUrl"] = formattedUrl;
+      _json['formattedUrl'] = formattedUrl;
     }
     if (htmlFormattedUrl != null) {
-      _json["htmlFormattedUrl"] = htmlFormattedUrl;
+      _json['htmlFormattedUrl'] = htmlFormattedUrl;
     }
     if (htmlSnippet != null) {
-      _json["htmlSnippet"] = htmlSnippet;
+      _json['htmlSnippet'] = htmlSnippet;
     }
     if (htmlTitle != null) {
-      _json["htmlTitle"] = htmlTitle;
+      _json['htmlTitle'] = htmlTitle;
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (labels != null) {
-      _json["labels"] = labels.map((value) => value.toJson()).toList();
+      _json['labels'] = labels.map((value) => value.toJson()).toList();
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     if (mime != null) {
-      _json["mime"] = mime;
+      _json['mime'] = mime;
     }
     if (pagemap != null) {
-      _json["pagemap"] = pagemap;
+      _json['pagemap'] = pagemap;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet;
+      _json['snippet'] = snippet;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1441,113 +1440,113 @@ class SearchQueriesNextPage {
   SearchQueriesNextPage();
 
   SearchQueriesNextPage.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("cr")) {
-      cr = _json["cr"];
+    if (_json.containsKey('cr')) {
+      cr = _json['cr'];
     }
-    if (_json.containsKey("cx")) {
-      cx = _json["cx"];
+    if (_json.containsKey('cx')) {
+      cx = _json['cx'];
     }
-    if (_json.containsKey("dateRestrict")) {
-      dateRestrict = _json["dateRestrict"];
+    if (_json.containsKey('dateRestrict')) {
+      dateRestrict = _json['dateRestrict'];
     }
-    if (_json.containsKey("disableCnTwTranslation")) {
-      disableCnTwTranslation = _json["disableCnTwTranslation"];
+    if (_json.containsKey('disableCnTwTranslation')) {
+      disableCnTwTranslation = _json['disableCnTwTranslation'];
     }
-    if (_json.containsKey("exactTerms")) {
-      exactTerms = _json["exactTerms"];
+    if (_json.containsKey('exactTerms')) {
+      exactTerms = _json['exactTerms'];
     }
-    if (_json.containsKey("excludeTerms")) {
-      excludeTerms = _json["excludeTerms"];
+    if (_json.containsKey('excludeTerms')) {
+      excludeTerms = _json['excludeTerms'];
     }
-    if (_json.containsKey("fileType")) {
-      fileType = _json["fileType"];
+    if (_json.containsKey('fileType')) {
+      fileType = _json['fileType'];
     }
-    if (_json.containsKey("filter")) {
-      filter = _json["filter"];
+    if (_json.containsKey('filter')) {
+      filter = _json['filter'];
     }
-    if (_json.containsKey("gl")) {
-      gl = _json["gl"];
+    if (_json.containsKey('gl')) {
+      gl = _json['gl'];
     }
-    if (_json.containsKey("googleHost")) {
-      googleHost = _json["googleHost"];
+    if (_json.containsKey('googleHost')) {
+      googleHost = _json['googleHost'];
     }
-    if (_json.containsKey("highRange")) {
-      highRange = _json["highRange"];
+    if (_json.containsKey('highRange')) {
+      highRange = _json['highRange'];
     }
-    if (_json.containsKey("hl")) {
-      hl = _json["hl"];
+    if (_json.containsKey('hl')) {
+      hl = _json['hl'];
     }
-    if (_json.containsKey("hq")) {
-      hq = _json["hq"];
+    if (_json.containsKey('hq')) {
+      hq = _json['hq'];
     }
-    if (_json.containsKey("imgColorType")) {
-      imgColorType = _json["imgColorType"];
+    if (_json.containsKey('imgColorType')) {
+      imgColorType = _json['imgColorType'];
     }
-    if (_json.containsKey("imgDominantColor")) {
-      imgDominantColor = _json["imgDominantColor"];
+    if (_json.containsKey('imgDominantColor')) {
+      imgDominantColor = _json['imgDominantColor'];
     }
-    if (_json.containsKey("imgSize")) {
-      imgSize = _json["imgSize"];
+    if (_json.containsKey('imgSize')) {
+      imgSize = _json['imgSize'];
     }
-    if (_json.containsKey("imgType")) {
-      imgType = _json["imgType"];
+    if (_json.containsKey('imgType')) {
+      imgType = _json['imgType'];
     }
-    if (_json.containsKey("inputEncoding")) {
-      inputEncoding = _json["inputEncoding"];
+    if (_json.containsKey('inputEncoding')) {
+      inputEncoding = _json['inputEncoding'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("linkSite")) {
-      linkSite = _json["linkSite"];
+    if (_json.containsKey('linkSite')) {
+      linkSite = _json['linkSite'];
     }
-    if (_json.containsKey("lowRange")) {
-      lowRange = _json["lowRange"];
+    if (_json.containsKey('lowRange')) {
+      lowRange = _json['lowRange'];
     }
-    if (_json.containsKey("orTerms")) {
-      orTerms = _json["orTerms"];
+    if (_json.containsKey('orTerms')) {
+      orTerms = _json['orTerms'];
     }
-    if (_json.containsKey("outputEncoding")) {
-      outputEncoding = _json["outputEncoding"];
+    if (_json.containsKey('outputEncoding')) {
+      outputEncoding = _json['outputEncoding'];
     }
-    if (_json.containsKey("relatedSite")) {
-      relatedSite = _json["relatedSite"];
+    if (_json.containsKey('relatedSite')) {
+      relatedSite = _json['relatedSite'];
     }
-    if (_json.containsKey("rights")) {
-      rights = _json["rights"];
+    if (_json.containsKey('rights')) {
+      rights = _json['rights'];
     }
-    if (_json.containsKey("safe")) {
-      safe = _json["safe"];
+    if (_json.containsKey('safe')) {
+      safe = _json['safe'];
     }
-    if (_json.containsKey("searchTerms")) {
-      searchTerms = _json["searchTerms"];
+    if (_json.containsKey('searchTerms')) {
+      searchTerms = _json['searchTerms'];
     }
-    if (_json.containsKey("searchType")) {
-      searchType = _json["searchType"];
+    if (_json.containsKey('searchType')) {
+      searchType = _json['searchType'];
     }
-    if (_json.containsKey("siteSearch")) {
-      siteSearch = _json["siteSearch"];
+    if (_json.containsKey('siteSearch')) {
+      siteSearch = _json['siteSearch'];
     }
-    if (_json.containsKey("siteSearchFilter")) {
-      siteSearchFilter = _json["siteSearchFilter"];
+    if (_json.containsKey('siteSearchFilter')) {
+      siteSearchFilter = _json['siteSearchFilter'];
     }
-    if (_json.containsKey("sort")) {
-      sort = _json["sort"];
+    if (_json.containsKey('sort')) {
+      sort = _json['sort'];
     }
-    if (_json.containsKey("startIndex")) {
-      startIndex = _json["startIndex"];
+    if (_json.containsKey('startIndex')) {
+      startIndex = _json['startIndex'];
     }
-    if (_json.containsKey("startPage")) {
-      startPage = _json["startPage"];
+    if (_json.containsKey('startPage')) {
+      startPage = _json['startPage'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
+    if (_json.containsKey('totalResults')) {
+      totalResults = _json['totalResults'];
     }
   }
 
@@ -1555,112 +1554,112 @@ class SearchQueriesNextPage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (cr != null) {
-      _json["cr"] = cr;
+      _json['cr'] = cr;
     }
     if (cx != null) {
-      _json["cx"] = cx;
+      _json['cx'] = cx;
     }
     if (dateRestrict != null) {
-      _json["dateRestrict"] = dateRestrict;
+      _json['dateRestrict'] = dateRestrict;
     }
     if (disableCnTwTranslation != null) {
-      _json["disableCnTwTranslation"] = disableCnTwTranslation;
+      _json['disableCnTwTranslation'] = disableCnTwTranslation;
     }
     if (exactTerms != null) {
-      _json["exactTerms"] = exactTerms;
+      _json['exactTerms'] = exactTerms;
     }
     if (excludeTerms != null) {
-      _json["excludeTerms"] = excludeTerms;
+      _json['excludeTerms'] = excludeTerms;
     }
     if (fileType != null) {
-      _json["fileType"] = fileType;
+      _json['fileType'] = fileType;
     }
     if (filter != null) {
-      _json["filter"] = filter;
+      _json['filter'] = filter;
     }
     if (gl != null) {
-      _json["gl"] = gl;
+      _json['gl'] = gl;
     }
     if (googleHost != null) {
-      _json["googleHost"] = googleHost;
+      _json['googleHost'] = googleHost;
     }
     if (highRange != null) {
-      _json["highRange"] = highRange;
+      _json['highRange'] = highRange;
     }
     if (hl != null) {
-      _json["hl"] = hl;
+      _json['hl'] = hl;
     }
     if (hq != null) {
-      _json["hq"] = hq;
+      _json['hq'] = hq;
     }
     if (imgColorType != null) {
-      _json["imgColorType"] = imgColorType;
+      _json['imgColorType'] = imgColorType;
     }
     if (imgDominantColor != null) {
-      _json["imgDominantColor"] = imgDominantColor;
+      _json['imgDominantColor'] = imgDominantColor;
     }
     if (imgSize != null) {
-      _json["imgSize"] = imgSize;
+      _json['imgSize'] = imgSize;
     }
     if (imgType != null) {
-      _json["imgType"] = imgType;
+      _json['imgType'] = imgType;
     }
     if (inputEncoding != null) {
-      _json["inputEncoding"] = inputEncoding;
+      _json['inputEncoding'] = inputEncoding;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (linkSite != null) {
-      _json["linkSite"] = linkSite;
+      _json['linkSite'] = linkSite;
     }
     if (lowRange != null) {
-      _json["lowRange"] = lowRange;
+      _json['lowRange'] = lowRange;
     }
     if (orTerms != null) {
-      _json["orTerms"] = orTerms;
+      _json['orTerms'] = orTerms;
     }
     if (outputEncoding != null) {
-      _json["outputEncoding"] = outputEncoding;
+      _json['outputEncoding'] = outputEncoding;
     }
     if (relatedSite != null) {
-      _json["relatedSite"] = relatedSite;
+      _json['relatedSite'] = relatedSite;
     }
     if (rights != null) {
-      _json["rights"] = rights;
+      _json['rights'] = rights;
     }
     if (safe != null) {
-      _json["safe"] = safe;
+      _json['safe'] = safe;
     }
     if (searchTerms != null) {
-      _json["searchTerms"] = searchTerms;
+      _json['searchTerms'] = searchTerms;
     }
     if (searchType != null) {
-      _json["searchType"] = searchType;
+      _json['searchType'] = searchType;
     }
     if (siteSearch != null) {
-      _json["siteSearch"] = siteSearch;
+      _json['siteSearch'] = siteSearch;
     }
     if (siteSearchFilter != null) {
-      _json["siteSearchFilter"] = siteSearchFilter;
+      _json['siteSearchFilter'] = siteSearchFilter;
     }
     if (sort != null) {
-      _json["sort"] = sort;
+      _json['sort'] = sort;
     }
     if (startIndex != null) {
-      _json["startIndex"] = startIndex;
+      _json['startIndex'] = startIndex;
     }
     if (startPage != null) {
-      _json["startPage"] = startPage;
+      _json['startPage'] = startPage;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (totalResults != null) {
-      _json["totalResults"] = totalResults;
+      _json['totalResults'] = totalResults;
     }
     return _json;
   }
@@ -1855,113 +1854,113 @@ class SearchQueriesPreviousPage {
   SearchQueriesPreviousPage();
 
   SearchQueriesPreviousPage.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("cr")) {
-      cr = _json["cr"];
+    if (_json.containsKey('cr')) {
+      cr = _json['cr'];
     }
-    if (_json.containsKey("cx")) {
-      cx = _json["cx"];
+    if (_json.containsKey('cx')) {
+      cx = _json['cx'];
     }
-    if (_json.containsKey("dateRestrict")) {
-      dateRestrict = _json["dateRestrict"];
+    if (_json.containsKey('dateRestrict')) {
+      dateRestrict = _json['dateRestrict'];
     }
-    if (_json.containsKey("disableCnTwTranslation")) {
-      disableCnTwTranslation = _json["disableCnTwTranslation"];
+    if (_json.containsKey('disableCnTwTranslation')) {
+      disableCnTwTranslation = _json['disableCnTwTranslation'];
     }
-    if (_json.containsKey("exactTerms")) {
-      exactTerms = _json["exactTerms"];
+    if (_json.containsKey('exactTerms')) {
+      exactTerms = _json['exactTerms'];
     }
-    if (_json.containsKey("excludeTerms")) {
-      excludeTerms = _json["excludeTerms"];
+    if (_json.containsKey('excludeTerms')) {
+      excludeTerms = _json['excludeTerms'];
     }
-    if (_json.containsKey("fileType")) {
-      fileType = _json["fileType"];
+    if (_json.containsKey('fileType')) {
+      fileType = _json['fileType'];
     }
-    if (_json.containsKey("filter")) {
-      filter = _json["filter"];
+    if (_json.containsKey('filter')) {
+      filter = _json['filter'];
     }
-    if (_json.containsKey("gl")) {
-      gl = _json["gl"];
+    if (_json.containsKey('gl')) {
+      gl = _json['gl'];
     }
-    if (_json.containsKey("googleHost")) {
-      googleHost = _json["googleHost"];
+    if (_json.containsKey('googleHost')) {
+      googleHost = _json['googleHost'];
     }
-    if (_json.containsKey("highRange")) {
-      highRange = _json["highRange"];
+    if (_json.containsKey('highRange')) {
+      highRange = _json['highRange'];
     }
-    if (_json.containsKey("hl")) {
-      hl = _json["hl"];
+    if (_json.containsKey('hl')) {
+      hl = _json['hl'];
     }
-    if (_json.containsKey("hq")) {
-      hq = _json["hq"];
+    if (_json.containsKey('hq')) {
+      hq = _json['hq'];
     }
-    if (_json.containsKey("imgColorType")) {
-      imgColorType = _json["imgColorType"];
+    if (_json.containsKey('imgColorType')) {
+      imgColorType = _json['imgColorType'];
     }
-    if (_json.containsKey("imgDominantColor")) {
-      imgDominantColor = _json["imgDominantColor"];
+    if (_json.containsKey('imgDominantColor')) {
+      imgDominantColor = _json['imgDominantColor'];
     }
-    if (_json.containsKey("imgSize")) {
-      imgSize = _json["imgSize"];
+    if (_json.containsKey('imgSize')) {
+      imgSize = _json['imgSize'];
     }
-    if (_json.containsKey("imgType")) {
-      imgType = _json["imgType"];
+    if (_json.containsKey('imgType')) {
+      imgType = _json['imgType'];
     }
-    if (_json.containsKey("inputEncoding")) {
-      inputEncoding = _json["inputEncoding"];
+    if (_json.containsKey('inputEncoding')) {
+      inputEncoding = _json['inputEncoding'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("linkSite")) {
-      linkSite = _json["linkSite"];
+    if (_json.containsKey('linkSite')) {
+      linkSite = _json['linkSite'];
     }
-    if (_json.containsKey("lowRange")) {
-      lowRange = _json["lowRange"];
+    if (_json.containsKey('lowRange')) {
+      lowRange = _json['lowRange'];
     }
-    if (_json.containsKey("orTerms")) {
-      orTerms = _json["orTerms"];
+    if (_json.containsKey('orTerms')) {
+      orTerms = _json['orTerms'];
     }
-    if (_json.containsKey("outputEncoding")) {
-      outputEncoding = _json["outputEncoding"];
+    if (_json.containsKey('outputEncoding')) {
+      outputEncoding = _json['outputEncoding'];
     }
-    if (_json.containsKey("relatedSite")) {
-      relatedSite = _json["relatedSite"];
+    if (_json.containsKey('relatedSite')) {
+      relatedSite = _json['relatedSite'];
     }
-    if (_json.containsKey("rights")) {
-      rights = _json["rights"];
+    if (_json.containsKey('rights')) {
+      rights = _json['rights'];
     }
-    if (_json.containsKey("safe")) {
-      safe = _json["safe"];
+    if (_json.containsKey('safe')) {
+      safe = _json['safe'];
     }
-    if (_json.containsKey("searchTerms")) {
-      searchTerms = _json["searchTerms"];
+    if (_json.containsKey('searchTerms')) {
+      searchTerms = _json['searchTerms'];
     }
-    if (_json.containsKey("searchType")) {
-      searchType = _json["searchType"];
+    if (_json.containsKey('searchType')) {
+      searchType = _json['searchType'];
     }
-    if (_json.containsKey("siteSearch")) {
-      siteSearch = _json["siteSearch"];
+    if (_json.containsKey('siteSearch')) {
+      siteSearch = _json['siteSearch'];
     }
-    if (_json.containsKey("siteSearchFilter")) {
-      siteSearchFilter = _json["siteSearchFilter"];
+    if (_json.containsKey('siteSearchFilter')) {
+      siteSearchFilter = _json['siteSearchFilter'];
     }
-    if (_json.containsKey("sort")) {
-      sort = _json["sort"];
+    if (_json.containsKey('sort')) {
+      sort = _json['sort'];
     }
-    if (_json.containsKey("startIndex")) {
-      startIndex = _json["startIndex"];
+    if (_json.containsKey('startIndex')) {
+      startIndex = _json['startIndex'];
     }
-    if (_json.containsKey("startPage")) {
-      startPage = _json["startPage"];
+    if (_json.containsKey('startPage')) {
+      startPage = _json['startPage'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
+    if (_json.containsKey('totalResults')) {
+      totalResults = _json['totalResults'];
     }
   }
 
@@ -1969,112 +1968,112 @@ class SearchQueriesPreviousPage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (cr != null) {
-      _json["cr"] = cr;
+      _json['cr'] = cr;
     }
     if (cx != null) {
-      _json["cx"] = cx;
+      _json['cx'] = cx;
     }
     if (dateRestrict != null) {
-      _json["dateRestrict"] = dateRestrict;
+      _json['dateRestrict'] = dateRestrict;
     }
     if (disableCnTwTranslation != null) {
-      _json["disableCnTwTranslation"] = disableCnTwTranslation;
+      _json['disableCnTwTranslation'] = disableCnTwTranslation;
     }
     if (exactTerms != null) {
-      _json["exactTerms"] = exactTerms;
+      _json['exactTerms'] = exactTerms;
     }
     if (excludeTerms != null) {
-      _json["excludeTerms"] = excludeTerms;
+      _json['excludeTerms'] = excludeTerms;
     }
     if (fileType != null) {
-      _json["fileType"] = fileType;
+      _json['fileType'] = fileType;
     }
     if (filter != null) {
-      _json["filter"] = filter;
+      _json['filter'] = filter;
     }
     if (gl != null) {
-      _json["gl"] = gl;
+      _json['gl'] = gl;
     }
     if (googleHost != null) {
-      _json["googleHost"] = googleHost;
+      _json['googleHost'] = googleHost;
     }
     if (highRange != null) {
-      _json["highRange"] = highRange;
+      _json['highRange'] = highRange;
     }
     if (hl != null) {
-      _json["hl"] = hl;
+      _json['hl'] = hl;
     }
     if (hq != null) {
-      _json["hq"] = hq;
+      _json['hq'] = hq;
     }
     if (imgColorType != null) {
-      _json["imgColorType"] = imgColorType;
+      _json['imgColorType'] = imgColorType;
     }
     if (imgDominantColor != null) {
-      _json["imgDominantColor"] = imgDominantColor;
+      _json['imgDominantColor'] = imgDominantColor;
     }
     if (imgSize != null) {
-      _json["imgSize"] = imgSize;
+      _json['imgSize'] = imgSize;
     }
     if (imgType != null) {
-      _json["imgType"] = imgType;
+      _json['imgType'] = imgType;
     }
     if (inputEncoding != null) {
-      _json["inputEncoding"] = inputEncoding;
+      _json['inputEncoding'] = inputEncoding;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (linkSite != null) {
-      _json["linkSite"] = linkSite;
+      _json['linkSite'] = linkSite;
     }
     if (lowRange != null) {
-      _json["lowRange"] = lowRange;
+      _json['lowRange'] = lowRange;
     }
     if (orTerms != null) {
-      _json["orTerms"] = orTerms;
+      _json['orTerms'] = orTerms;
     }
     if (outputEncoding != null) {
-      _json["outputEncoding"] = outputEncoding;
+      _json['outputEncoding'] = outputEncoding;
     }
     if (relatedSite != null) {
-      _json["relatedSite"] = relatedSite;
+      _json['relatedSite'] = relatedSite;
     }
     if (rights != null) {
-      _json["rights"] = rights;
+      _json['rights'] = rights;
     }
     if (safe != null) {
-      _json["safe"] = safe;
+      _json['safe'] = safe;
     }
     if (searchTerms != null) {
-      _json["searchTerms"] = searchTerms;
+      _json['searchTerms'] = searchTerms;
     }
     if (searchType != null) {
-      _json["searchType"] = searchType;
+      _json['searchType'] = searchType;
     }
     if (siteSearch != null) {
-      _json["siteSearch"] = siteSearch;
+      _json['siteSearch'] = siteSearch;
     }
     if (siteSearchFilter != null) {
-      _json["siteSearchFilter"] = siteSearchFilter;
+      _json['siteSearchFilter'] = siteSearchFilter;
     }
     if (sort != null) {
-      _json["sort"] = sort;
+      _json['sort'] = sort;
     }
     if (startIndex != null) {
-      _json["startIndex"] = startIndex;
+      _json['startIndex'] = startIndex;
     }
     if (startPage != null) {
-      _json["startPage"] = startPage;
+      _json['startPage'] = startPage;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (totalResults != null) {
-      _json["totalResults"] = totalResults;
+      _json['totalResults'] = totalResults;
     }
     return _json;
   }
@@ -2269,113 +2268,113 @@ class SearchQueriesRequest {
   SearchQueriesRequest();
 
   SearchQueriesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("cr")) {
-      cr = _json["cr"];
+    if (_json.containsKey('cr')) {
+      cr = _json['cr'];
     }
-    if (_json.containsKey("cx")) {
-      cx = _json["cx"];
+    if (_json.containsKey('cx')) {
+      cx = _json['cx'];
     }
-    if (_json.containsKey("dateRestrict")) {
-      dateRestrict = _json["dateRestrict"];
+    if (_json.containsKey('dateRestrict')) {
+      dateRestrict = _json['dateRestrict'];
     }
-    if (_json.containsKey("disableCnTwTranslation")) {
-      disableCnTwTranslation = _json["disableCnTwTranslation"];
+    if (_json.containsKey('disableCnTwTranslation')) {
+      disableCnTwTranslation = _json['disableCnTwTranslation'];
     }
-    if (_json.containsKey("exactTerms")) {
-      exactTerms = _json["exactTerms"];
+    if (_json.containsKey('exactTerms')) {
+      exactTerms = _json['exactTerms'];
     }
-    if (_json.containsKey("excludeTerms")) {
-      excludeTerms = _json["excludeTerms"];
+    if (_json.containsKey('excludeTerms')) {
+      excludeTerms = _json['excludeTerms'];
     }
-    if (_json.containsKey("fileType")) {
-      fileType = _json["fileType"];
+    if (_json.containsKey('fileType')) {
+      fileType = _json['fileType'];
     }
-    if (_json.containsKey("filter")) {
-      filter = _json["filter"];
+    if (_json.containsKey('filter')) {
+      filter = _json['filter'];
     }
-    if (_json.containsKey("gl")) {
-      gl = _json["gl"];
+    if (_json.containsKey('gl')) {
+      gl = _json['gl'];
     }
-    if (_json.containsKey("googleHost")) {
-      googleHost = _json["googleHost"];
+    if (_json.containsKey('googleHost')) {
+      googleHost = _json['googleHost'];
     }
-    if (_json.containsKey("highRange")) {
-      highRange = _json["highRange"];
+    if (_json.containsKey('highRange')) {
+      highRange = _json['highRange'];
     }
-    if (_json.containsKey("hl")) {
-      hl = _json["hl"];
+    if (_json.containsKey('hl')) {
+      hl = _json['hl'];
     }
-    if (_json.containsKey("hq")) {
-      hq = _json["hq"];
+    if (_json.containsKey('hq')) {
+      hq = _json['hq'];
     }
-    if (_json.containsKey("imgColorType")) {
-      imgColorType = _json["imgColorType"];
+    if (_json.containsKey('imgColorType')) {
+      imgColorType = _json['imgColorType'];
     }
-    if (_json.containsKey("imgDominantColor")) {
-      imgDominantColor = _json["imgDominantColor"];
+    if (_json.containsKey('imgDominantColor')) {
+      imgDominantColor = _json['imgDominantColor'];
     }
-    if (_json.containsKey("imgSize")) {
-      imgSize = _json["imgSize"];
+    if (_json.containsKey('imgSize')) {
+      imgSize = _json['imgSize'];
     }
-    if (_json.containsKey("imgType")) {
-      imgType = _json["imgType"];
+    if (_json.containsKey('imgType')) {
+      imgType = _json['imgType'];
     }
-    if (_json.containsKey("inputEncoding")) {
-      inputEncoding = _json["inputEncoding"];
+    if (_json.containsKey('inputEncoding')) {
+      inputEncoding = _json['inputEncoding'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("linkSite")) {
-      linkSite = _json["linkSite"];
+    if (_json.containsKey('linkSite')) {
+      linkSite = _json['linkSite'];
     }
-    if (_json.containsKey("lowRange")) {
-      lowRange = _json["lowRange"];
+    if (_json.containsKey('lowRange')) {
+      lowRange = _json['lowRange'];
     }
-    if (_json.containsKey("orTerms")) {
-      orTerms = _json["orTerms"];
+    if (_json.containsKey('orTerms')) {
+      orTerms = _json['orTerms'];
     }
-    if (_json.containsKey("outputEncoding")) {
-      outputEncoding = _json["outputEncoding"];
+    if (_json.containsKey('outputEncoding')) {
+      outputEncoding = _json['outputEncoding'];
     }
-    if (_json.containsKey("relatedSite")) {
-      relatedSite = _json["relatedSite"];
+    if (_json.containsKey('relatedSite')) {
+      relatedSite = _json['relatedSite'];
     }
-    if (_json.containsKey("rights")) {
-      rights = _json["rights"];
+    if (_json.containsKey('rights')) {
+      rights = _json['rights'];
     }
-    if (_json.containsKey("safe")) {
-      safe = _json["safe"];
+    if (_json.containsKey('safe')) {
+      safe = _json['safe'];
     }
-    if (_json.containsKey("searchTerms")) {
-      searchTerms = _json["searchTerms"];
+    if (_json.containsKey('searchTerms')) {
+      searchTerms = _json['searchTerms'];
     }
-    if (_json.containsKey("searchType")) {
-      searchType = _json["searchType"];
+    if (_json.containsKey('searchType')) {
+      searchType = _json['searchType'];
     }
-    if (_json.containsKey("siteSearch")) {
-      siteSearch = _json["siteSearch"];
+    if (_json.containsKey('siteSearch')) {
+      siteSearch = _json['siteSearch'];
     }
-    if (_json.containsKey("siteSearchFilter")) {
-      siteSearchFilter = _json["siteSearchFilter"];
+    if (_json.containsKey('siteSearchFilter')) {
+      siteSearchFilter = _json['siteSearchFilter'];
     }
-    if (_json.containsKey("sort")) {
-      sort = _json["sort"];
+    if (_json.containsKey('sort')) {
+      sort = _json['sort'];
     }
-    if (_json.containsKey("startIndex")) {
-      startIndex = _json["startIndex"];
+    if (_json.containsKey('startIndex')) {
+      startIndex = _json['startIndex'];
     }
-    if (_json.containsKey("startPage")) {
-      startPage = _json["startPage"];
+    if (_json.containsKey('startPage')) {
+      startPage = _json['startPage'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
+    if (_json.containsKey('totalResults')) {
+      totalResults = _json['totalResults'];
     }
   }
 
@@ -2383,112 +2382,112 @@ class SearchQueriesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (cr != null) {
-      _json["cr"] = cr;
+      _json['cr'] = cr;
     }
     if (cx != null) {
-      _json["cx"] = cx;
+      _json['cx'] = cx;
     }
     if (dateRestrict != null) {
-      _json["dateRestrict"] = dateRestrict;
+      _json['dateRestrict'] = dateRestrict;
     }
     if (disableCnTwTranslation != null) {
-      _json["disableCnTwTranslation"] = disableCnTwTranslation;
+      _json['disableCnTwTranslation'] = disableCnTwTranslation;
     }
     if (exactTerms != null) {
-      _json["exactTerms"] = exactTerms;
+      _json['exactTerms'] = exactTerms;
     }
     if (excludeTerms != null) {
-      _json["excludeTerms"] = excludeTerms;
+      _json['excludeTerms'] = excludeTerms;
     }
     if (fileType != null) {
-      _json["fileType"] = fileType;
+      _json['fileType'] = fileType;
     }
     if (filter != null) {
-      _json["filter"] = filter;
+      _json['filter'] = filter;
     }
     if (gl != null) {
-      _json["gl"] = gl;
+      _json['gl'] = gl;
     }
     if (googleHost != null) {
-      _json["googleHost"] = googleHost;
+      _json['googleHost'] = googleHost;
     }
     if (highRange != null) {
-      _json["highRange"] = highRange;
+      _json['highRange'] = highRange;
     }
     if (hl != null) {
-      _json["hl"] = hl;
+      _json['hl'] = hl;
     }
     if (hq != null) {
-      _json["hq"] = hq;
+      _json['hq'] = hq;
     }
     if (imgColorType != null) {
-      _json["imgColorType"] = imgColorType;
+      _json['imgColorType'] = imgColorType;
     }
     if (imgDominantColor != null) {
-      _json["imgDominantColor"] = imgDominantColor;
+      _json['imgDominantColor'] = imgDominantColor;
     }
     if (imgSize != null) {
-      _json["imgSize"] = imgSize;
+      _json['imgSize'] = imgSize;
     }
     if (imgType != null) {
-      _json["imgType"] = imgType;
+      _json['imgType'] = imgType;
     }
     if (inputEncoding != null) {
-      _json["inputEncoding"] = inputEncoding;
+      _json['inputEncoding'] = inputEncoding;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (linkSite != null) {
-      _json["linkSite"] = linkSite;
+      _json['linkSite'] = linkSite;
     }
     if (lowRange != null) {
-      _json["lowRange"] = lowRange;
+      _json['lowRange'] = lowRange;
     }
     if (orTerms != null) {
-      _json["orTerms"] = orTerms;
+      _json['orTerms'] = orTerms;
     }
     if (outputEncoding != null) {
-      _json["outputEncoding"] = outputEncoding;
+      _json['outputEncoding'] = outputEncoding;
     }
     if (relatedSite != null) {
-      _json["relatedSite"] = relatedSite;
+      _json['relatedSite'] = relatedSite;
     }
     if (rights != null) {
-      _json["rights"] = rights;
+      _json['rights'] = rights;
     }
     if (safe != null) {
-      _json["safe"] = safe;
+      _json['safe'] = safe;
     }
     if (searchTerms != null) {
-      _json["searchTerms"] = searchTerms;
+      _json['searchTerms'] = searchTerms;
     }
     if (searchType != null) {
-      _json["searchType"] = searchType;
+      _json['searchType'] = searchType;
     }
     if (siteSearch != null) {
-      _json["siteSearch"] = siteSearch;
+      _json['siteSearch'] = siteSearch;
     }
     if (siteSearchFilter != null) {
-      _json["siteSearchFilter"] = siteSearchFilter;
+      _json['siteSearchFilter'] = siteSearchFilter;
     }
     if (sort != null) {
-      _json["sort"] = sort;
+      _json['sort'] = sort;
     }
     if (startIndex != null) {
-      _json["startIndex"] = startIndex;
+      _json['startIndex'] = startIndex;
     }
     if (startPage != null) {
-      _json["startPage"] = startPage;
+      _json['startPage'] = startPage;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (totalResults != null) {
-      _json["totalResults"] = totalResults;
+      _json['totalResults'] = totalResults;
     }
     return _json;
   }
@@ -2508,20 +2507,20 @@ class SearchQueries {
   SearchQueries();
 
   SearchQueries.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPage")) {
-      nextPage = (_json["nextPage"] as core.List)
+    if (_json.containsKey('nextPage')) {
+      nextPage = (_json['nextPage'] as core.List)
           .map<SearchQueriesNextPage>(
               (value) => SearchQueriesNextPage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("previousPage")) {
-      previousPage = (_json["previousPage"] as core.List)
+    if (_json.containsKey('previousPage')) {
+      previousPage = (_json['previousPage'] as core.List)
           .map<SearchQueriesPreviousPage>(
               (value) => SearchQueriesPreviousPage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("request")) {
-      request = (_json["request"] as core.List)
+    if (_json.containsKey('request')) {
+      request = (_json['request'] as core.List)
           .map<SearchQueriesRequest>(
               (value) => SearchQueriesRequest.fromJson(value))
           .toList();
@@ -2532,14 +2531,14 @@ class SearchQueries {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPage != null) {
-      _json["nextPage"] = nextPage.map((value) => value.toJson()).toList();
+      _json['nextPage'] = nextPage.map((value) => value.toJson()).toList();
     }
     if (previousPage != null) {
-      _json["previousPage"] =
+      _json['previousPage'] =
           previousPage.map((value) => value.toJson()).toList();
     }
     if (request != null) {
-      _json["request"] = request.map((value) => value.toJson()).toList();
+      _json['request'] = request.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2563,17 +2562,17 @@ class SearchSearchInformation {
   SearchSearchInformation();
 
   SearchSearchInformation.fromJson(core.Map _json) {
-    if (_json.containsKey("formattedSearchTime")) {
-      formattedSearchTime = _json["formattedSearchTime"];
+    if (_json.containsKey('formattedSearchTime')) {
+      formattedSearchTime = _json['formattedSearchTime'];
     }
-    if (_json.containsKey("formattedTotalResults")) {
-      formattedTotalResults = _json["formattedTotalResults"];
+    if (_json.containsKey('formattedTotalResults')) {
+      formattedTotalResults = _json['formattedTotalResults'];
     }
-    if (_json.containsKey("searchTime")) {
-      searchTime = _json["searchTime"].toDouble();
+    if (_json.containsKey('searchTime')) {
+      searchTime = _json['searchTime'].toDouble();
     }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
+    if (_json.containsKey('totalResults')) {
+      totalResults = _json['totalResults'];
     }
   }
 
@@ -2581,16 +2580,16 @@ class SearchSearchInformation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (formattedSearchTime != null) {
-      _json["formattedSearchTime"] = formattedSearchTime;
+      _json['formattedSearchTime'] = formattedSearchTime;
     }
     if (formattedTotalResults != null) {
-      _json["formattedTotalResults"] = formattedTotalResults;
+      _json['formattedTotalResults'] = formattedTotalResults;
     }
     if (searchTime != null) {
-      _json["searchTime"] = searchTime;
+      _json['searchTime'] = searchTime;
     }
     if (totalResults != null) {
-      _json["totalResults"] = totalResults;
+      _json['totalResults'] = totalResults;
     }
     return _json;
   }
@@ -2607,11 +2606,11 @@ class SearchSpelling {
   SearchSpelling();
 
   SearchSpelling.fromJson(core.Map _json) {
-    if (_json.containsKey("correctedQuery")) {
-      correctedQuery = _json["correctedQuery"];
+    if (_json.containsKey('correctedQuery')) {
+      correctedQuery = _json['correctedQuery'];
     }
-    if (_json.containsKey("htmlCorrectedQuery")) {
-      htmlCorrectedQuery = _json["htmlCorrectedQuery"];
+    if (_json.containsKey('htmlCorrectedQuery')) {
+      htmlCorrectedQuery = _json['htmlCorrectedQuery'];
     }
   }
 
@@ -2619,10 +2618,10 @@ class SearchSpelling {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (correctedQuery != null) {
-      _json["correctedQuery"] = correctedQuery;
+      _json['correctedQuery'] = correctedQuery;
     }
     if (htmlCorrectedQuery != null) {
-      _json["htmlCorrectedQuery"] = htmlCorrectedQuery;
+      _json['htmlCorrectedQuery'] = htmlCorrectedQuery;
     }
     return _json;
   }
@@ -2642,11 +2641,11 @@ class SearchUrl {
   SearchUrl();
 
   SearchUrl.fromJson(core.Map _json) {
-    if (_json.containsKey("template")) {
-      template = _json["template"];
+    if (_json.containsKey('template')) {
+      template = _json['template'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -2654,10 +2653,10 @@ class SearchUrl {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (template != null) {
-      _json["template"] = template;
+      _json['template'] = template;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -2703,34 +2702,34 @@ class Search {
   Search();
 
   Search.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
-      context = (_json["context"] as core.Map).cast<core.String, core.Object>();
+    if (_json.containsKey('context')) {
+      context = (_json['context'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Result>((value) => Result.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("promotions")) {
-      promotions = (_json["promotions"] as core.List)
+    if (_json.containsKey('promotions')) {
+      promotions = (_json['promotions'] as core.List)
           .map<Promotion>((value) => Promotion.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("queries")) {
-      queries = SearchQueries.fromJson(_json["queries"]);
+    if (_json.containsKey('queries')) {
+      queries = SearchQueries.fromJson(_json['queries']);
     }
-    if (_json.containsKey("searchInformation")) {
+    if (_json.containsKey('searchInformation')) {
       searchInformation =
-          SearchSearchInformation.fromJson(_json["searchInformation"]);
+          SearchSearchInformation.fromJson(_json['searchInformation']);
     }
-    if (_json.containsKey("spelling")) {
-      spelling = SearchSpelling.fromJson(_json["spelling"]);
+    if (_json.containsKey('spelling')) {
+      spelling = SearchSpelling.fromJson(_json['spelling']);
     }
-    if (_json.containsKey("url")) {
-      url = SearchUrl.fromJson(_json["url"]);
+    if (_json.containsKey('url')) {
+      url = SearchUrl.fromJson(_json['url']);
     }
   }
 
@@ -2738,28 +2737,28 @@ class Search {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context;
+      _json['context'] = context;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (promotions != null) {
-      _json["promotions"] = promotions.map((value) => value.toJson()).toList();
+      _json['promotions'] = promotions.map((value) => value.toJson()).toList();
     }
     if (queries != null) {
-      _json["queries"] = queries.toJson();
+      _json['queries'] = queries.toJson();
     }
     if (searchInformation != null) {
-      _json["searchInformation"] = searchInformation.toJson();
+      _json['searchInformation'] = searchInformation.toJson();
     }
     if (spelling != null) {
-      _json["spelling"] = spelling.toJson();
+      _json['spelling'] = spelling.toJson();
     }
     if (url != null) {
-      _json["url"] = url.toJson();
+      _json['url'] = url.toJson();
     }
     return _json;
   }

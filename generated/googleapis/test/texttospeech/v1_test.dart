@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,8 +72,8 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.List<core.String> buildUnnamed4542() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -88,7 +88,7 @@ api.AudioConfig buildAudioConfig() {
   var o = api.AudioConfig();
   buildCounterAudioConfig++;
   if (buildCounterAudioConfig < 3) {
-    o.audioEncoding = "foo";
+    o.audioEncoding = 'foo';
     o.effectsProfileId = buildUnnamed4542();
     o.pitch = 42.0;
     o.sampleRateHertz = 42;
@@ -149,8 +149,8 @@ api.SynthesisInput buildSynthesisInput() {
   var o = api.SynthesisInput();
   buildCounterSynthesisInput++;
   if (buildCounterSynthesisInput < 3) {
-    o.ssml = "foo";
-    o.text = "foo";
+    o.ssml = 'foo';
+    o.text = 'foo';
   }
   buildCounterSynthesisInput--;
   return o;
@@ -193,7 +193,7 @@ api.SynthesizeSpeechResponse buildSynthesizeSpeechResponse() {
   var o = api.SynthesizeSpeechResponse();
   buildCounterSynthesizeSpeechResponse++;
   if (buildCounterSynthesizeSpeechResponse < 3) {
-    o.audioContent = "foo";
+    o.audioContent = 'foo';
   }
   buildCounterSynthesizeSpeechResponse--;
   return o;
@@ -209,8 +209,8 @@ void checkSynthesizeSpeechResponse(api.SynthesizeSpeechResponse o) {
 
 core.List<core.String> buildUnnamed4544() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -226,9 +226,9 @@ api.Voice buildVoice() {
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
     o.languageCodes = buildUnnamed4544();
-    o.name = "foo";
+    o.name = 'foo';
     o.naturalSampleRateHertz = 42;
-    o.ssmlGender = "foo";
+    o.ssmlGender = 'foo';
   }
   buildCounterVoice--;
   return o;
@@ -250,9 +250,9 @@ api.VoiceSelectionParams buildVoiceSelectionParams() {
   var o = api.VoiceSelectionParams();
   buildCounterVoiceSelectionParams++;
   if (buildCounterVoiceSelectionParams < 3) {
-    o.languageCode = "foo";
-    o.name = "foo";
-    o.ssmlGender = "foo";
+    o.languageCode = 'foo';
+    o.name = 'foo';
+    o.ssmlGender = 'foo';
   }
   buildCounterVoiceSelectionParams--;
   return o;
@@ -269,68 +269,68 @@ void checkVoiceSelectionParams(api.VoiceSelectionParams o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AudioConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AudioConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAudioConfig();
       var od = api.AudioConfig.fromJson(o.toJson());
       checkAudioConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ListVoicesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListVoicesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListVoicesResponse();
       var od = api.ListVoicesResponse.fromJson(o.toJson());
       checkListVoicesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-SynthesisInput", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SynthesisInput', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSynthesisInput();
       var od = api.SynthesisInput.fromJson(o.toJson());
       checkSynthesisInput(od);
     });
   });
 
-  unittest.group("obj-schema-SynthesizeSpeechRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SynthesizeSpeechRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSynthesizeSpeechRequest();
       var od = api.SynthesizeSpeechRequest.fromJson(o.toJson());
       checkSynthesizeSpeechRequest(od);
     });
   });
 
-  unittest.group("obj-schema-SynthesizeSpeechResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SynthesizeSpeechResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSynthesizeSpeechResponse();
       var od = api.SynthesizeSpeechResponse.fromJson(o.toJson());
       checkSynthesizeSpeechResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Voice", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Voice', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVoice();
       var od = api.Voice.fromJson(o.toJson());
       checkVoice(od);
     });
   });
 
-  unittest.group("obj-schema-VoiceSelectionParams", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-VoiceSelectionParams', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVoiceSelectionParams();
       var od = api.VoiceSelectionParams.fromJson(o.toJson());
       checkVoiceSelectionParams(od);
     });
   });
 
-  unittest.group("resource-TextResourceApi", () {
-    unittest.test("method--synthesize", () {
+  unittest.group('resource-TextResourceApi', () {
+    unittest.test('method--synthesize', () {
       var mock = HttpServerMock();
       api.TextResourceApi res = api.TexttospeechApi(mock).text;
       var arg_request = buildSynthesizeSpeechRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SynthesizeSpeechRequest.fromJson(json);
         checkSynthesizeSpeechRequest(obj);
@@ -352,8 +352,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -363,7 +363,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSynthesizeSpeechResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -376,12 +376,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-VoicesResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-VoicesResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.VoicesResourceApi res = api.TexttospeechApi(mock).voices;
-      var arg_languageCode = "foo";
-      var arg_$fields = "foo";
+      var arg_languageCode = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -400,8 +400,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -413,7 +413,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListVoicesResponse());
         return async.Future.value(stringResponse(200, h, resp));

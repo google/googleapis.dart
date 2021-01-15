@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -85,8 +85,8 @@ void checkUnnamed1727(core.List<api.Image> o) {
 
 core.List<core.String> buildUnnamed1728() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -111,8 +111,8 @@ void checkUnnamed1729(core.List<api.FeatureDescription> o) {
 
 core.List<core.String> buildUnnamed1730() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -124,8 +124,8 @@ void checkUnnamed1730(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1731() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -150,8 +150,8 @@ void checkUnnamed1732(core.List<api.ProductDetail> o) {
 
 core.List<core.String> buildUnnamed1733() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -163,8 +163,8 @@ void checkUnnamed1733(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1734() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -176,8 +176,8 @@ void checkUnnamed1734(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1735() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -193,40 +193,40 @@ api.Attributes buildAttributes() {
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
     o.additionalImageLink = buildUnnamed1727();
-    o.ageGroup = "foo";
-    o.brand = "foo";
+    o.ageGroup = 'foo';
+    o.brand = 'foo';
     o.capacity = buildCapacity();
-    o.color = "foo";
+    o.color = 'foo';
     o.count = buildCount();
-    o.description = "foo";
-    o.disclosureDate = "foo";
+    o.description = 'foo';
+    o.disclosureDate = 'foo';
     o.excludedDestination = buildUnnamed1728();
     o.featureDescription = buildUnnamed1729();
-    o.flavor = "foo";
-    o.format = "foo";
-    o.gender = "foo";
+    o.flavor = 'foo';
+    o.format = 'foo';
+    o.gender = 'foo';
     o.gtin = buildUnnamed1730();
     o.imageLink = buildImage();
     o.includedDestination = buildUnnamed1731();
-    o.itemGroupId = "foo";
-    o.material = "foo";
-    o.mpn = "foo";
-    o.pattern = "foo";
+    o.itemGroupId = 'foo';
+    o.material = 'foo';
+    o.mpn = 'foo';
+    o.pattern = 'foo';
     o.productDetail = buildUnnamed1732();
-    o.productLine = "foo";
-    o.productName = "foo";
-    o.productPageUrl = "foo";
+    o.productLine = 'foo';
+    o.productName = 'foo';
+    o.productPageUrl = 'foo';
     o.productType = buildUnnamed1733();
-    o.releaseDate = "foo";
+    o.releaseDate = 'foo';
     o.richProductContent = buildUnnamed1734();
-    o.scent = "foo";
-    o.size = "foo";
-    o.sizeSystem = "foo";
-    o.sizeType = "foo";
+    o.scent = 'foo';
+    o.size = 'foo';
+    o.sizeSystem = 'foo';
+    o.sizeType = 'foo';
     o.suggestedRetailPrice = buildPrice();
-    o.targetClientId = "foo";
-    o.theme = "foo";
-    o.title = "foo";
+    o.targetClientId = 'foo';
+    o.theme = 'foo';
+    o.title = 'foo';
     o.videoLink = buildUnnamed1735();
   }
   buildCounterAttributes--;
@@ -281,8 +281,8 @@ api.Capacity buildCapacity() {
   var o = api.Capacity();
   buildCounterCapacity++;
   if (buildCounterCapacity < 3) {
-    o.unit = "foo";
-    o.value = "foo";
+    o.unit = 'foo';
+    o.value = 'foo';
   }
   buildCounterCapacity--;
   return o;
@@ -302,8 +302,8 @@ api.Count buildCount() {
   var o = api.Count();
   buildCounterCount++;
   if (buildCounterCount < 3) {
-    o.unit = "foo";
-    o.value = "foo";
+    o.unit = 'foo';
+    o.value = 'foo';
   }
   buildCounterCount--;
   return o;
@@ -323,8 +323,8 @@ api.DestinationStatus buildDestinationStatus() {
   var o = api.DestinationStatus();
   buildCounterDestinationStatus++;
   if (buildCounterDestinationStatus < 3) {
-    o.destination = "foo";
-    o.status = "foo";
+    o.destination = 'foo';
+    o.status = 'foo';
   }
   buildCounterDestinationStatus--;
   return o;
@@ -359,9 +359,9 @@ api.FeatureDescription buildFeatureDescription() {
   var o = api.FeatureDescription();
   buildCounterFeatureDescription++;
   if (buildCounterFeatureDescription < 3) {
-    o.headline = "foo";
+    o.headline = 'foo';
     o.image = buildImage();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterFeatureDescription--;
   return o;
@@ -382,9 +382,9 @@ api.Image buildImage() {
   var o = api.Image();
   buildCounterImage++;
   if (buildCounterImage < 3) {
-    o.imageUrl = "foo";
-    o.status = "foo";
-    o.type = "foo";
+    o.imageUrl = 'foo';
+    o.status = 'foo';
+    o.type = 'foo';
   }
   buildCounterImage--;
   return o;
@@ -405,14 +405,14 @@ api.Issue buildIssue() {
   var o = api.Issue();
   buildCounterIssue++;
   if (buildCounterIssue < 3) {
-    o.attribute = "foo";
-    o.description = "foo";
-    o.destination = "foo";
-    o.resolution = "foo";
-    o.severity = "foo";
-    o.timestamp = "foo";
-    o.title = "foo";
-    o.type = "foo";
+    o.attribute = 'foo';
+    o.description = 'foo';
+    o.destination = 'foo';
+    o.resolution = 'foo';
+    o.severity = 'foo';
+    o.timestamp = 'foo';
+    o.title = 'foo';
+    o.type = 'foo';
   }
   buildCounterIssue--;
   return o;
@@ -451,7 +451,7 @@ api.ListProductsResponse buildListProductsResponse() {
   var o = api.ListProductsResponse();
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.products = buildUnnamed1736();
   }
   buildCounterListProductsResponse--;
@@ -472,8 +472,8 @@ api.Price buildPrice() {
   var o = api.Price();
   buildCounterPrice++;
   if (buildCounterPrice < 3) {
-    o.amount = "foo";
-    o.currency = "foo";
+    o.amount = 'foo';
+    o.currency = 'foo';
   }
   buildCounterPrice--;
   return o;
@@ -520,13 +520,13 @@ api.Product buildProduct() {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
     o.attributes = buildAttributes();
-    o.contentLanguage = "foo";
+    o.contentLanguage = 'foo';
     o.destinationStatuses = buildUnnamed1737();
     o.issues = buildUnnamed1738();
-    o.name = "foo";
-    o.parent = "foo";
-    o.productId = "foo";
-    o.targetCountry = "foo";
+    o.name = 'foo';
+    o.parent = 'foo';
+    o.productId = 'foo';
+    o.targetCountry = 'foo';
   }
   buildCounterProduct--;
   return o;
@@ -552,9 +552,9 @@ api.ProductDetail buildProductDetail() {
   var o = api.ProductDetail();
   buildCounterProductDetail++;
   if (buildCounterProductDetail < 3) {
-    o.attributeName = "foo";
-    o.attributeValue = "foo";
-    o.sectionName = "foo";
+    o.attributeName = 'foo';
+    o.attributeValue = 'foo';
+    o.sectionName = 'foo';
   }
   buildCounterProductDetail--;
   return o;
@@ -572,8 +572,8 @@ void checkProductDetail(api.ProductDetail o) {
 
 core.List<core.String> buildUnnamed1739() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -585,8 +585,8 @@ void checkUnnamed1739(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1740() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -597,110 +597,110 @@ void checkUnnamed1740(core.List<core.String> o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Attributes", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Attributes', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAttributes();
       var od = api.Attributes.fromJson(o.toJson());
       checkAttributes(od);
     });
   });
 
-  unittest.group("obj-schema-Capacity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Capacity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCapacity();
       var od = api.Capacity.fromJson(o.toJson());
       checkCapacity(od);
     });
   });
 
-  unittest.group("obj-schema-Count", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Count', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCount();
       var od = api.Count.fromJson(o.toJson());
       checkCount(od);
     });
   });
 
-  unittest.group("obj-schema-DestinationStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DestinationStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDestinationStatus();
       var od = api.DestinationStatus.fromJson(o.toJson());
       checkDestinationStatus(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-FeatureDescription", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FeatureDescription', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFeatureDescription();
       var od = api.FeatureDescription.fromJson(o.toJson());
       checkFeatureDescription(od);
     });
   });
 
-  unittest.group("obj-schema-Image", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Image', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od);
     });
   });
 
-  unittest.group("obj-schema-Issue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Issue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIssue();
       var od = api.Issue.fromJson(o.toJson());
       checkIssue(od);
     });
   });
 
-  unittest.group("obj-schema-ListProductsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListProductsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListProductsResponse();
       var od = api.ListProductsResponse.fromJson(o.toJson());
       checkListProductsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Price", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Price', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPrice();
       var od = api.Price.fromJson(o.toJson());
       checkPrice(od);
     });
   });
 
-  unittest.group("obj-schema-Product", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Product', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProduct();
       var od = api.Product.fromJson(o.toJson());
       checkProduct(od);
     });
   });
 
-  unittest.group("obj-schema-ProductDetail", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ProductDetail', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProductDetail();
       var od = api.ProductDetail.fromJson(o.toJson());
       checkProductDetail(od);
     });
   });
 
-  unittest.group("resource-AccountsProductsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-AccountsProductsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsProductsResourceApi res =
           api.ManufacturersApi(mock).accounts.products;
-      var arg_parent = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -720,8 +720,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -731,7 +731,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -743,14 +743,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsProductsResourceApi res =
           api.ManufacturersApi(mock).accounts.products;
-      var arg_parent = "foo";
-      var arg_name = "foo";
+      var arg_parent = 'foo';
+      var arg_name = 'foo';
       var arg_include = buildUnnamed1739();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -770,8 +770,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -782,7 +782,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
@@ -794,15 +794,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsProductsResourceApi res =
           api.ManufacturersApi(mock).accounts.products;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_include = buildUnnamed1740();
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -822,8 +822,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -838,7 +838,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListProductsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -854,14 +854,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsProductsResourceApi res =
           api.ManufacturersApi(mock).accounts.products;
       var arg_request = buildAttributes();
-      var arg_parent = "foo";
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Attributes.fromJson(json);
         checkAttributes(obj);
@@ -884,8 +884,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -895,7 +895,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));

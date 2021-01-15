@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,7 +75,7 @@ api.Checksum buildChecksum() {
   var o = api.Checksum();
   buildCounterChecksum++;
   if (buildCounterChecksum < 3) {
-    o.sha256 = "foo";
+    o.sha256 = 'foo';
   }
   buildCounterChecksum--;
   return o;
@@ -94,8 +94,8 @@ api.ClientInfo buildClientInfo() {
   var o = api.ClientInfo();
   buildCounterClientInfo++;
   if (buildCounterClientInfo < 3) {
-    o.clientId = "foo";
-    o.clientVersion = "foo";
+    o.clientId = 'foo';
+    o.clientVersion = 'foo';
   }
   buildCounterClientInfo--;
   return o;
@@ -112,8 +112,8 @@ void checkClientInfo(api.ClientInfo o) {
 
 core.List<core.String> buildUnnamed4550() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -128,11 +128,11 @@ api.Constraints buildConstraints() {
   var o = api.Constraints();
   buildCounterConstraints++;
   if (buildCounterConstraints < 3) {
-    o.deviceLocation = "foo";
-    o.language = "foo";
+    o.deviceLocation = 'foo';
+    o.language = 'foo';
     o.maxDatabaseEntries = 42;
     o.maxUpdateEntries = 42;
-    o.region = "foo";
+    o.region = 'foo';
     o.supportedCompressions = buildUnnamed4550();
   }
   buildCounterConstraints--;
@@ -220,7 +220,7 @@ api.FetchThreatListUpdatesResponse buildFetchThreatListUpdatesResponse() {
   buildCounterFetchThreatListUpdatesResponse++;
   if (buildCounterFetchThreatListUpdatesResponse < 3) {
     o.listUpdateResponses = buildUnnamed4552();
-    o.minimumWaitDuration = "foo";
+    o.minimumWaitDuration = 'foo';
   }
   buildCounterFetchThreatListUpdatesResponse--;
   return o;
@@ -237,8 +237,8 @@ void checkFetchThreatListUpdatesResponse(api.FetchThreatListUpdatesResponse o) {
 
 core.List<core.String> buildUnnamed4553() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -292,8 +292,8 @@ api.FindFullHashesResponse buildFindFullHashesResponse() {
   buildCounterFindFullHashesResponse++;
   if (buildCounterFindFullHashesResponse < 3) {
     o.matches = buildUnnamed4554();
-    o.minimumWaitDuration = "foo";
-    o.negativeCacheDuration = "foo";
+    o.minimumWaitDuration = 'foo';
+    o.negativeCacheDuration = 'foo';
   }
   buildCounterFindFullHashesResponse--;
   return o;
@@ -400,10 +400,10 @@ api.ListUpdateRequest buildListUpdateRequest() {
   buildCounterListUpdateRequest++;
   if (buildCounterListUpdateRequest < 3) {
     o.constraints = buildConstraints();
-    o.platformType = "foo";
-    o.state = "foo";
-    o.threatEntryType = "foo";
-    o.threatType = "foo";
+    o.platformType = 'foo';
+    o.state = 'foo';
+    o.threatEntryType = 'foo';
+    o.threatType = 'foo';
   }
   buildCounterListUpdateRequest--;
   return o;
@@ -454,12 +454,12 @@ api.ListUpdateResponse buildListUpdateResponse() {
   if (buildCounterListUpdateResponse < 3) {
     o.additions = buildUnnamed4557();
     o.checksum = buildChecksum();
-    o.newClientState = "foo";
-    o.platformType = "foo";
+    o.newClientState = 'foo';
+    o.platformType = 'foo';
     o.removals = buildUnnamed4558();
-    o.responseType = "foo";
-    o.threatEntryType = "foo";
-    o.threatType = "foo";
+    o.responseType = 'foo';
+    o.threatEntryType = 'foo';
+    o.threatType = 'foo';
   }
   buildCounterListUpdateResponse--;
   return o;
@@ -485,8 +485,8 @@ api.MetadataEntry buildMetadataEntry() {
   var o = api.MetadataEntry();
   buildCounterMetadataEntry++;
   if (buildCounterMetadataEntry < 3) {
-    o.key = "foo";
-    o.value = "foo";
+    o.key = 'foo';
+    o.value = 'foo';
   }
   buildCounterMetadataEntry--;
   return o;
@@ -507,7 +507,7 @@ api.RawHashes buildRawHashes() {
   buildCounterRawHashes++;
   if (buildCounterRawHashes < 3) {
     o.prefixSize = 42;
-    o.rawHashes = "foo";
+    o.rawHashes = 'foo';
   }
   buildCounterRawHashes--;
   return o;
@@ -559,8 +559,8 @@ api.RiceDeltaEncoding buildRiceDeltaEncoding() {
   var o = api.RiceDeltaEncoding();
   buildCounterRiceDeltaEncoding++;
   if (buildCounterRiceDeltaEncoding < 3) {
-    o.encodedData = "foo";
-    o.firstValue = "foo";
+    o.encodedData = 'foo';
+    o.firstValue = 'foo';
     o.numEntries = 42;
     o.riceParameter = 42;
   }
@@ -584,9 +584,9 @@ api.ThreatEntry buildThreatEntry() {
   var o = api.ThreatEntry();
   buildCounterThreatEntry++;
   if (buildCounterThreatEntry < 3) {
-    o.digest = "foo";
-    o.hash = "foo";
-    o.url = "foo";
+    o.digest = 'foo';
+    o.hash = 'foo';
+    o.url = 'foo';
   }
   buildCounterThreatEntry--;
   return o;
@@ -639,7 +639,7 @@ api.ThreatEntrySet buildThreatEntrySet() {
   var o = api.ThreatEntrySet();
   buildCounterThreatEntrySet++;
   if (buildCounterThreatEntrySet < 3) {
-    o.compressionType = "foo";
+    o.compressionType = 'foo';
     o.rawHashes = buildRawHashes();
     o.rawIndices = buildRawIndices();
     o.riceHashes = buildRiceDeltaEncoding();
@@ -681,9 +681,9 @@ api.ThreatHit buildThreatHit() {
   if (buildCounterThreatHit < 3) {
     o.clientInfo = buildClientInfo();
     o.entry = buildThreatEntry();
-    o.platformType = "foo";
+    o.platformType = 'foo';
     o.resources = buildUnnamed4561();
-    o.threatType = "foo";
+    o.threatType = 'foo';
     o.userInfo = buildUserInfo();
   }
   buildCounterThreatHit--;
@@ -705,8 +705,8 @@ void checkThreatHit(api.ThreatHit o) {
 
 core.List<core.String> buildUnnamed4562() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -731,8 +731,8 @@ void checkUnnamed4563(core.List<api.ThreatEntry> o) {
 
 core.List<core.String> buildUnnamed4564() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -744,8 +744,8 @@ void checkUnnamed4564(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4565() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -785,9 +785,9 @@ api.ThreatListDescriptor buildThreatListDescriptor() {
   var o = api.ThreatListDescriptor();
   buildCounterThreatListDescriptor++;
   if (buildCounterThreatListDescriptor < 3) {
-    o.platformType = "foo";
-    o.threatEntryType = "foo";
-    o.threatType = "foo";
+    o.platformType = 'foo';
+    o.threatEntryType = 'foo';
+    o.threatType = 'foo';
   }
   buildCounterThreatListDescriptor--;
   return o;
@@ -808,12 +808,12 @@ api.ThreatMatch buildThreatMatch() {
   var o = api.ThreatMatch();
   buildCounterThreatMatch++;
   if (buildCounterThreatMatch < 3) {
-    o.cacheDuration = "foo";
-    o.platformType = "foo";
+    o.cacheDuration = 'foo';
+    o.platformType = 'foo';
     o.threat = buildThreatEntry();
     o.threatEntryMetadata = buildThreatEntryMetadata();
-    o.threatEntryType = "foo";
-    o.threatType = "foo";
+    o.threatEntryType = 'foo';
+    o.threatType = 'foo';
   }
   buildCounterThreatMatch--;
   return o;
@@ -837,10 +837,10 @@ api.ThreatSource buildThreatSource() {
   var o = api.ThreatSource();
   buildCounterThreatSource++;
   if (buildCounterThreatSource < 3) {
-    o.referrer = "foo";
-    o.remoteIp = "foo";
-    o.type = "foo";
-    o.url = "foo";
+    o.referrer = 'foo';
+    o.remoteIp = 'foo';
+    o.type = 'foo';
+    o.url = 'foo';
   }
   buildCounterThreatSource--;
   return o;
@@ -862,8 +862,8 @@ api.UserInfo buildUserInfo() {
   var o = api.UserInfo();
   buildCounterUserInfo++;
   if (buildCounterUserInfo < 3) {
-    o.regionCode = "foo";
-    o.userId = "foo";
+    o.regionCode = 'foo';
+    o.userId = 'foo';
   }
   buildCounterUserInfo--;
   return o;
@@ -879,223 +879,223 @@ void checkUserInfo(api.UserInfo o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Checksum", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Checksum', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChecksum();
       var od = api.Checksum.fromJson(o.toJson());
       checkChecksum(od);
     });
   });
 
-  unittest.group("obj-schema-ClientInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ClientInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildClientInfo();
       var od = api.ClientInfo.fromJson(o.toJson());
       checkClientInfo(od);
     });
   });
 
-  unittest.group("obj-schema-Constraints", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Constraints', () {
+    unittest.test('to-json--from-json', () {
       var o = buildConstraints();
       var od = api.Constraints.fromJson(o.toJson());
       checkConstraints(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-FetchThreatListUpdatesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FetchThreatListUpdatesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFetchThreatListUpdatesRequest();
       var od = api.FetchThreatListUpdatesRequest.fromJson(o.toJson());
       checkFetchThreatListUpdatesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-FetchThreatListUpdatesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FetchThreatListUpdatesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFetchThreatListUpdatesResponse();
       var od = api.FetchThreatListUpdatesResponse.fromJson(o.toJson());
       checkFetchThreatListUpdatesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-FindFullHashesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FindFullHashesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFindFullHashesRequest();
       var od = api.FindFullHashesRequest.fromJson(o.toJson());
       checkFindFullHashesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-FindFullHashesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FindFullHashesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFindFullHashesResponse();
       var od = api.FindFullHashesResponse.fromJson(o.toJson());
       checkFindFullHashesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-FindThreatMatchesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FindThreatMatchesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFindThreatMatchesRequest();
       var od = api.FindThreatMatchesRequest.fromJson(o.toJson());
       checkFindThreatMatchesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-FindThreatMatchesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FindThreatMatchesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFindThreatMatchesResponse();
       var od = api.FindThreatMatchesResponse.fromJson(o.toJson());
       checkFindThreatMatchesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListThreatListsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListThreatListsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListThreatListsResponse();
       var od = api.ListThreatListsResponse.fromJson(o.toJson());
       checkListThreatListsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListUpdateRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListUpdateRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListUpdateRequest();
       var od = api.ListUpdateRequest.fromJson(o.toJson());
       checkListUpdateRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ListUpdateResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListUpdateResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListUpdateResponse();
       var od = api.ListUpdateResponse.fromJson(o.toJson());
       checkListUpdateResponse(od);
     });
   });
 
-  unittest.group("obj-schema-MetadataEntry", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MetadataEntry', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMetadataEntry();
       var od = api.MetadataEntry.fromJson(o.toJson());
       checkMetadataEntry(od);
     });
   });
 
-  unittest.group("obj-schema-RawHashes", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RawHashes', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRawHashes();
       var od = api.RawHashes.fromJson(o.toJson());
       checkRawHashes(od);
     });
   });
 
-  unittest.group("obj-schema-RawIndices", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RawIndices', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRawIndices();
       var od = api.RawIndices.fromJson(o.toJson());
       checkRawIndices(od);
     });
   });
 
-  unittest.group("obj-schema-RiceDeltaEncoding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RiceDeltaEncoding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRiceDeltaEncoding();
       var od = api.RiceDeltaEncoding.fromJson(o.toJson());
       checkRiceDeltaEncoding(od);
     });
   });
 
-  unittest.group("obj-schema-ThreatEntry", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThreatEntry', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThreatEntry();
       var od = api.ThreatEntry.fromJson(o.toJson());
       checkThreatEntry(od);
     });
   });
 
-  unittest.group("obj-schema-ThreatEntryMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThreatEntryMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThreatEntryMetadata();
       var od = api.ThreatEntryMetadata.fromJson(o.toJson());
       checkThreatEntryMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-ThreatEntrySet", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThreatEntrySet', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThreatEntrySet();
       var od = api.ThreatEntrySet.fromJson(o.toJson());
       checkThreatEntrySet(od);
     });
   });
 
-  unittest.group("obj-schema-ThreatHit", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThreatHit', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThreatHit();
       var od = api.ThreatHit.fromJson(o.toJson());
       checkThreatHit(od);
     });
   });
 
-  unittest.group("obj-schema-ThreatInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThreatInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThreatInfo();
       var od = api.ThreatInfo.fromJson(o.toJson());
       checkThreatInfo(od);
     });
   });
 
-  unittest.group("obj-schema-ThreatListDescriptor", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThreatListDescriptor', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThreatListDescriptor();
       var od = api.ThreatListDescriptor.fromJson(o.toJson());
       checkThreatListDescriptor(od);
     });
   });
 
-  unittest.group("obj-schema-ThreatMatch", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThreatMatch', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThreatMatch();
       var od = api.ThreatMatch.fromJson(o.toJson());
       checkThreatMatch(od);
     });
   });
 
-  unittest.group("obj-schema-ThreatSource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThreatSource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThreatSource();
       var od = api.ThreatSource.fromJson(o.toJson());
       checkThreatSource(od);
     });
   });
 
-  unittest.group("obj-schema-UserInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UserInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserInfo();
       var od = api.UserInfo.fromJson(o.toJson());
       checkUserInfo(od);
     });
   });
 
-  unittest.group("resource-EncodedFullHashesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-EncodedFullHashesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.EncodedFullHashesResourceApi res =
           api.SafebrowsingApi(mock).encodedFullHashes;
-      var arg_encodedRequest = "foo";
-      var arg_clientVersion = "foo";
-      var arg_clientId = "foo";
-      var arg_$fields = "foo";
+      var arg_encodedRequest = 'foo';
+      var arg_clientVersion = 'foo';
+      var arg_clientId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1109,7 +1109,7 @@ void main() {
         pathOffset += 21;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_encodedRequest"));
+        unittest.expect(subPart, unittest.equals('$arg_encodedRequest'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1117,8 +1117,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1132,7 +1132,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFindFullHashesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1148,15 +1148,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-EncodedUpdatesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-EncodedUpdatesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.EncodedUpdatesResourceApi res =
           api.SafebrowsingApi(mock).encodedUpdates;
-      var arg_encodedRequest = "foo";
-      var arg_clientId = "foo";
-      var arg_clientVersion = "foo";
-      var arg_$fields = "foo";
+      var arg_encodedRequest = 'foo';
+      var arg_clientId = 'foo';
+      var arg_clientVersion = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1170,7 +1170,7 @@ void main() {
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_encodedRequest"));
+        unittest.expect(subPart, unittest.equals('$arg_encodedRequest'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1178,8 +1178,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1193,7 +1193,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFetchThreatListUpdatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1209,12 +1209,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-FullHashesResourceApi", () {
-    unittest.test("method--find", () {
+  unittest.group('resource-FullHashesResourceApi', () {
+    unittest.test('method--find', () {
       var mock = HttpServerMock();
       api.FullHashesResourceApi res = api.SafebrowsingApi(mock).fullHashes;
       var arg_request = buildFindFullHashesRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.FindFullHashesRequest.fromJson(json);
         checkFindFullHashesRequest(obj);
@@ -1236,8 +1236,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1247,7 +1247,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFindFullHashesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1260,12 +1260,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-ThreatHitsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ThreatHitsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ThreatHitsResourceApi res = api.SafebrowsingApi(mock).threatHits;
       var arg_request = buildThreatHit();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ThreatHit.fromJson(json);
         checkThreatHit(obj);
@@ -1287,8 +1287,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1298,7 +1298,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1311,13 +1311,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ThreatListUpdatesResourceApi", () {
-    unittest.test("method--fetch", () {
+  unittest.group('resource-ThreatListUpdatesResourceApi', () {
+    unittest.test('method--fetch', () {
       var mock = HttpServerMock();
       api.ThreatListUpdatesResourceApi res =
           api.SafebrowsingApi(mock).threatListUpdates;
       var arg_request = buildFetchThreatListUpdatesRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.FetchThreatListUpdatesRequest.fromJson(json);
         checkFetchThreatListUpdatesRequest(obj);
@@ -1339,8 +1339,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1350,7 +1350,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFetchThreatListUpdatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1363,11 +1363,11 @@ void main() {
     });
   });
 
-  unittest.group("resource-ThreatListsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-ThreatListsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ThreatListsResourceApi res = api.SafebrowsingApi(mock).threatLists;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1386,8 +1386,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1397,7 +1397,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListThreatListsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1408,13 +1408,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ThreatMatchesResourceApi", () {
-    unittest.test("method--find", () {
+  unittest.group('resource-ThreatMatchesResourceApi', () {
+    unittest.test('method--find', () {
       var mock = HttpServerMock();
       api.ThreatMatchesResourceApi res =
           api.SafebrowsingApi(mock).threatMatches;
       var arg_request = buildFindThreatMatchesRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.FindThreatMatchesRequest.fromJson(json);
         checkFindThreatMatchesRequest(obj);
@@ -1436,8 +1436,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1447,7 +1447,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFindThreatMatchesResponse());
         return async.Future.value(stringResponse(200, h, resp));

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,93 +37,93 @@ const core.String USER_AGENT = 'dart-api-client fitness/v1';
 class FitnessApi {
   /// Use Google Fit to see and store your physical activity data
   static const FitnessActivityReadScope =
-      "https://www.googleapis.com/auth/fitness.activity.read";
+      'https://www.googleapis.com/auth/fitness.activity.read';
 
   /// See and add to your Google Fit physical activity data
   static const FitnessActivityWriteScope =
-      "https://www.googleapis.com/auth/fitness.activity.write";
+      'https://www.googleapis.com/auth/fitness.activity.write';
 
   /// See info about your blood glucose in Google Fit. I consent to Google
   /// sharing my blood glucose information with this app.
   static const FitnessBloodGlucoseReadScope =
-      "https://www.googleapis.com/auth/fitness.blood_glucose.read";
+      'https://www.googleapis.com/auth/fitness.blood_glucose.read';
 
   /// See and add info about your blood glucose to Google Fit. I consent to
   /// Google sharing my blood glucose information with this app.
   static const FitnessBloodGlucoseWriteScope =
-      "https://www.googleapis.com/auth/fitness.blood_glucose.write";
+      'https://www.googleapis.com/auth/fitness.blood_glucose.write';
 
   /// See info about your blood pressure in Google Fit. I consent to Google
   /// sharing my blood pressure information with this app.
   static const FitnessBloodPressureReadScope =
-      "https://www.googleapis.com/auth/fitness.blood_pressure.read";
+      'https://www.googleapis.com/auth/fitness.blood_pressure.read';
 
   /// See and add info about your blood pressure in Google Fit. I consent to
   /// Google sharing my blood pressure information with this app.
   static const FitnessBloodPressureWriteScope =
-      "https://www.googleapis.com/auth/fitness.blood_pressure.write";
+      'https://www.googleapis.com/auth/fitness.blood_pressure.write';
 
   /// See info about your body measurements and heart rate in Google Fit
   static const FitnessBodyReadScope =
-      "https://www.googleapis.com/auth/fitness.body.read";
+      'https://www.googleapis.com/auth/fitness.body.read';
 
   /// See and add info about your body measurements and heart rate to Google Fit
   static const FitnessBodyWriteScope =
-      "https://www.googleapis.com/auth/fitness.body.write";
+      'https://www.googleapis.com/auth/fitness.body.write';
 
   /// See info about your body temperature in Google Fit. I consent to Google
   /// sharing my body temperature information with this app.
   static const FitnessBodyTemperatureReadScope =
-      "https://www.googleapis.com/auth/fitness.body_temperature.read";
+      'https://www.googleapis.com/auth/fitness.body_temperature.read';
 
   /// See and add to info about your body temperature in Google Fit. I consent
   /// to Google sharing my body temperature information with this app.
   static const FitnessBodyTemperatureWriteScope =
-      "https://www.googleapis.com/auth/fitness.body_temperature.write";
+      'https://www.googleapis.com/auth/fitness.body_temperature.write';
 
   /// See your Google Fit speed and distance data
   static const FitnessLocationReadScope =
-      "https://www.googleapis.com/auth/fitness.location.read";
+      'https://www.googleapis.com/auth/fitness.location.read';
 
   /// See and add to your Google Fit location data
   static const FitnessLocationWriteScope =
-      "https://www.googleapis.com/auth/fitness.location.write";
+      'https://www.googleapis.com/auth/fitness.location.write';
 
   /// See info about your nutrition in Google Fit
   static const FitnessNutritionReadScope =
-      "https://www.googleapis.com/auth/fitness.nutrition.read";
+      'https://www.googleapis.com/auth/fitness.nutrition.read';
 
   /// See and add to info about your nutrition in Google Fit
   static const FitnessNutritionWriteScope =
-      "https://www.googleapis.com/auth/fitness.nutrition.write";
+      'https://www.googleapis.com/auth/fitness.nutrition.write';
 
   /// See info about your oxygen saturation in Google Fit. I consent to Google
   /// sharing my oxygen saturation information with this app.
   static const FitnessOxygenSaturationReadScope =
-      "https://www.googleapis.com/auth/fitness.oxygen_saturation.read";
+      'https://www.googleapis.com/auth/fitness.oxygen_saturation.read';
 
   /// See and add info about your oxygen saturation in Google Fit. I consent to
   /// Google sharing my oxygen saturation information with this app.
   static const FitnessOxygenSaturationWriteScope =
-      "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
+      'https://www.googleapis.com/auth/fitness.oxygen_saturation.write';
 
   /// See info about your reproductive health in Google Fit. I consent to Google
   /// sharing my reproductive health information with this app.
   static const FitnessReproductiveHealthReadScope =
-      "https://www.googleapis.com/auth/fitness.reproductive_health.read";
+      'https://www.googleapis.com/auth/fitness.reproductive_health.read';
 
   /// See and add info about your reproductive health in Google Fit. I consent
   /// to Google sharing my reproductive health information with this app.
   static const FitnessReproductiveHealthWriteScope =
-      "https://www.googleapis.com/auth/fitness.reproductive_health.write";
+      'https://www.googleapis.com/auth/fitness.reproductive_health.write';
 
   final commons.ApiRequester _requester;
 
   UsersResourceApi get users => UsersResourceApi(_requester);
 
   FitnessApi(http.Client client,
-      {core.String rootUrl = "https://fitness.googleapis.com/",
-      core.String servicePath = "fitness/v1/users/"})
+      {core.String rootUrl = 'https://fitness.googleapis.com/',
+      core.String servicePath = 'fitness/v1/users/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -211,17 +210,17 @@ class UsersDataSourcesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -264,13 +263,13 @@ class UsersDataSourcesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (dataSourceId == null) {
-      throw core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError('Parameter dataSourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -279,7 +278,7 @@ class UsersDataSourcesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -321,13 +320,13 @@ class UsersDataSourcesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (dataSourceId == null) {
-      throw core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError('Parameter dataSourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -336,7 +335,7 @@ class UsersDataSourcesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -382,20 +381,20 @@ class UsersDataSourcesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (dataTypeName != null) {
-      _queryParams["dataTypeName"] = dataTypeName;
+      _queryParams['dataTypeName'] = dataTypeName;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -445,13 +444,13 @@ class UsersDataSourcesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (dataSourceId == null) {
-      throw core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError('Parameter dataSourceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -460,7 +459,7 @@ class UsersDataSourcesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -519,19 +518,19 @@ class UsersDataSourcesDataPointChangesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (dataSourceId == null) {
-      throw core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError('Parameter dataSourceId is required.');
     }
     if (limit != null) {
-      _queryParams["limit"] = ["${limit}"];
+      _queryParams['limit'] = ['${limit}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -541,7 +540,7 @@ class UsersDataSourcesDataPointChangesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -609,22 +608,22 @@ class UsersDataSourcesDatasetsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (dataSourceId == null) {
-      throw core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError('Parameter dataSourceId is required.');
     }
     if (datasetId == null) {
-      throw core.ArgumentError("Parameter datasetId is required.");
+      throw core.ArgumentError('Parameter datasetId is required.');
     }
     if (currentTimeMillis != null) {
-      _queryParams["currentTimeMillis"] = [currentTimeMillis];
+      _queryParams['currentTimeMillis'] = [currentTimeMillis];
     }
     if (modifiedTimeMillis != null) {
-      _queryParams["modifiedTimeMillis"] = [modifiedTimeMillis];
+      _queryParams['modifiedTimeMillis'] = [modifiedTimeMillis];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -637,7 +636,7 @@ class UsersDataSourcesDatasetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -702,22 +701,22 @@ class UsersDataSourcesDatasetsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (dataSourceId == null) {
-      throw core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError('Parameter dataSourceId is required.');
     }
     if (datasetId == null) {
-      throw core.ArgumentError("Parameter datasetId is required.");
+      throw core.ArgumentError('Parameter datasetId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (limit != null) {
-      _queryParams["limit"] = ["${limit}"];
+      _queryParams['limit'] = ['${limit}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -728,7 +727,7 @@ class UsersDataSourcesDatasetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -791,19 +790,19 @@ class UsersDataSourcesDatasetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (dataSourceId == null) {
-      throw core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError('Parameter dataSourceId is required.');
     }
     if (datasetId == null) {
-      throw core.ArgumentError("Parameter datasetId is required.");
+      throw core.ArgumentError('Parameter datasetId is required.');
     }
     if (currentTimeMillis != null) {
-      _queryParams["currentTimeMillis"] = [currentTimeMillis];
+      _queryParams['currentTimeMillis'] = [currentTimeMillis];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -814,7 +813,7 @@ class UsersDataSourcesDatasetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -868,17 +867,17 @@ class UsersDatasetResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -928,16 +927,16 @@ class UsersSessionsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sessionId == null) {
-      throw core.ArgumentError("Parameter sessionId is required.");
+      throw core.ArgumentError('Parameter sessionId is required.');
     }
     if (currentTimeMillis != null) {
-      _queryParams["currentTimeMillis"] = [currentTimeMillis];
+      _queryParams['currentTimeMillis'] = [currentTimeMillis];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -948,7 +947,7 @@ class UsersSessionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1015,33 +1014,33 @@ class UsersSessionsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
+      _queryParams['endTime'] = [endTime];
     }
     if (activityType != null) {
-      _queryParams["activityType"] =
-          activityType.map((item) => "${item}").toList();
+      _queryParams['activityType'] =
+          activityType.map((item) => '${item}').toList();
     }
     if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
+      _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+      _queryParams['startTime'] = [startTime];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1093,16 +1092,16 @@ class UsersSessionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sessionId == null) {
-      throw core.ArgumentError("Parameter sessionId is required.");
+      throw core.ArgumentError('Parameter sessionId is required.');
     }
     if (currentTimeMillis != null) {
-      _queryParams["currentTimeMillis"] = [currentTimeMillis];
+      _queryParams['currentTimeMillis'] = [currentTimeMillis];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -1111,7 +1110,7 @@ class UsersSessionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1163,25 +1162,25 @@ class AggregateBucket {
   AggregateBucket();
 
   AggregateBucket.fromJson(core.Map _json) {
-    if (_json.containsKey("activity")) {
-      activity = _json["activity"];
+    if (_json.containsKey('activity')) {
+      activity = _json['activity'];
     }
-    if (_json.containsKey("dataset")) {
-      dataset = (_json["dataset"] as core.List)
+    if (_json.containsKey('dataset')) {
+      dataset = (_json['dataset'] as core.List)
           .map<Dataset>((value) => Dataset.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("endTimeMillis")) {
-      endTimeMillis = _json["endTimeMillis"];
+    if (_json.containsKey('endTimeMillis')) {
+      endTimeMillis = _json['endTimeMillis'];
     }
-    if (_json.containsKey("session")) {
-      session = Session.fromJson(_json["session"]);
+    if (_json.containsKey('session')) {
+      session = Session.fromJson(_json['session']);
     }
-    if (_json.containsKey("startTimeMillis")) {
-      startTimeMillis = _json["startTimeMillis"];
+    if (_json.containsKey('startTimeMillis')) {
+      startTimeMillis = _json['startTimeMillis'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -1189,22 +1188,22 @@ class AggregateBucket {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activity != null) {
-      _json["activity"] = activity;
+      _json['activity'] = activity;
     }
     if (dataset != null) {
-      _json["dataset"] = dataset.map((value) => value.toJson()).toList();
+      _json['dataset'] = dataset.map((value) => value.toJson()).toList();
     }
     if (endTimeMillis != null) {
-      _json["endTimeMillis"] = endTimeMillis;
+      _json['endTimeMillis'] = endTimeMillis;
     }
     if (session != null) {
-      _json["session"] = session.toJson();
+      _json['session'] = session.toJson();
     }
     if (startTimeMillis != null) {
-      _json["startTimeMillis"] = startTimeMillis;
+      _json['startTimeMillis'] = startTimeMillis;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1231,11 +1230,11 @@ class AggregateBy {
   AggregateBy();
 
   AggregateBy.fromJson(core.Map _json) {
-    if (_json.containsKey("dataSourceId")) {
-      dataSourceId = _json["dataSourceId"];
+    if (_json.containsKey('dataSourceId')) {
+      dataSourceId = _json['dataSourceId'];
     }
-    if (_json.containsKey("dataTypeName")) {
-      dataTypeName = _json["dataTypeName"];
+    if (_json.containsKey('dataTypeName')) {
+      dataTypeName = _json['dataTypeName'];
     }
   }
 
@@ -1243,10 +1242,10 @@ class AggregateBy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dataSourceId != null) {
-      _json["dataSourceId"] = dataSourceId;
+      _json['dataSourceId'] = dataSourceId;
     }
     if (dataTypeName != null) {
-      _json["dataTypeName"] = dataTypeName;
+      _json['dataTypeName'] = dataTypeName;
     }
     return _json;
   }
@@ -1297,35 +1296,35 @@ class AggregateRequest {
   AggregateRequest();
 
   AggregateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("aggregateBy")) {
-      aggregateBy = (_json["aggregateBy"] as core.List)
+    if (_json.containsKey('aggregateBy')) {
+      aggregateBy = (_json['aggregateBy'] as core.List)
           .map<AggregateBy>((value) => AggregateBy.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("bucketByActivitySegment")) {
+    if (_json.containsKey('bucketByActivitySegment')) {
       bucketByActivitySegment =
-          BucketByActivity.fromJson(_json["bucketByActivitySegment"]);
+          BucketByActivity.fromJson(_json['bucketByActivitySegment']);
     }
-    if (_json.containsKey("bucketByActivityType")) {
+    if (_json.containsKey('bucketByActivityType')) {
       bucketByActivityType =
-          BucketByActivity.fromJson(_json["bucketByActivityType"]);
+          BucketByActivity.fromJson(_json['bucketByActivityType']);
     }
-    if (_json.containsKey("bucketBySession")) {
-      bucketBySession = BucketBySession.fromJson(_json["bucketBySession"]);
+    if (_json.containsKey('bucketBySession')) {
+      bucketBySession = BucketBySession.fromJson(_json['bucketBySession']);
     }
-    if (_json.containsKey("bucketByTime")) {
-      bucketByTime = BucketByTime.fromJson(_json["bucketByTime"]);
+    if (_json.containsKey('bucketByTime')) {
+      bucketByTime = BucketByTime.fromJson(_json['bucketByTime']);
     }
-    if (_json.containsKey("endTimeMillis")) {
-      endTimeMillis = _json["endTimeMillis"];
+    if (_json.containsKey('endTimeMillis')) {
+      endTimeMillis = _json['endTimeMillis'];
     }
-    if (_json.containsKey("filteredDataQualityStandard")) {
+    if (_json.containsKey('filteredDataQualityStandard')) {
       filteredDataQualityStandard =
-          (_json["filteredDataQualityStandard"] as core.List)
+          (_json['filteredDataQualityStandard'] as core.List)
               .cast<core.String>();
     }
-    if (_json.containsKey("startTimeMillis")) {
-      startTimeMillis = _json["startTimeMillis"];
+    if (_json.containsKey('startTimeMillis')) {
+      startTimeMillis = _json['startTimeMillis'];
     }
   }
 
@@ -1333,29 +1332,29 @@ class AggregateRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (aggregateBy != null) {
-      _json["aggregateBy"] =
+      _json['aggregateBy'] =
           aggregateBy.map((value) => value.toJson()).toList();
     }
     if (bucketByActivitySegment != null) {
-      _json["bucketByActivitySegment"] = bucketByActivitySegment.toJson();
+      _json['bucketByActivitySegment'] = bucketByActivitySegment.toJson();
     }
     if (bucketByActivityType != null) {
-      _json["bucketByActivityType"] = bucketByActivityType.toJson();
+      _json['bucketByActivityType'] = bucketByActivityType.toJson();
     }
     if (bucketBySession != null) {
-      _json["bucketBySession"] = bucketBySession.toJson();
+      _json['bucketBySession'] = bucketBySession.toJson();
     }
     if (bucketByTime != null) {
-      _json["bucketByTime"] = bucketByTime.toJson();
+      _json['bucketByTime'] = bucketByTime.toJson();
     }
     if (endTimeMillis != null) {
-      _json["endTimeMillis"] = endTimeMillis;
+      _json['endTimeMillis'] = endTimeMillis;
     }
     if (filteredDataQualityStandard != null) {
-      _json["filteredDataQualityStandard"] = filteredDataQualityStandard;
+      _json['filteredDataQualityStandard'] = filteredDataQualityStandard;
     }
     if (startTimeMillis != null) {
-      _json["startTimeMillis"] = startTimeMillis;
+      _json['startTimeMillis'] = startTimeMillis;
     }
     return _json;
   }
@@ -1368,8 +1367,8 @@ class AggregateResponse {
   AggregateResponse();
 
   AggregateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("bucket")) {
-      bucket = (_json["bucket"] as core.List)
+    if (_json.containsKey('bucket')) {
+      bucket = (_json['bucket'] as core.List)
           .map<AggregateBucket>((value) => AggregateBucket.fromJson(value))
           .toList();
     }
@@ -1379,7 +1378,7 @@ class AggregateResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucket != null) {
-      _json["bucket"] = bucket.map((value) => value.toJson()).toList();
+      _json['bucket'] = bucket.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1408,17 +1407,17 @@ class Application {
   Application();
 
   Application.fromJson(core.Map _json) {
-    if (_json.containsKey("detailsUrl")) {
-      detailsUrl = _json["detailsUrl"];
+    if (_json.containsKey('detailsUrl')) {
+      detailsUrl = _json['detailsUrl'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -1426,16 +1425,16 @@ class Application {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detailsUrl != null) {
-      _json["detailsUrl"] = detailsUrl;
+      _json['detailsUrl'] = detailsUrl;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -1454,11 +1453,11 @@ class BucketByActivity {
   BucketByActivity();
 
   BucketByActivity.fromJson(core.Map _json) {
-    if (_json.containsKey("activityDataSourceId")) {
-      activityDataSourceId = _json["activityDataSourceId"];
+    if (_json.containsKey('activityDataSourceId')) {
+      activityDataSourceId = _json['activityDataSourceId'];
     }
-    if (_json.containsKey("minDurationMillis")) {
-      minDurationMillis = _json["minDurationMillis"];
+    if (_json.containsKey('minDurationMillis')) {
+      minDurationMillis = _json['minDurationMillis'];
     }
   }
 
@@ -1466,10 +1465,10 @@ class BucketByActivity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activityDataSourceId != null) {
-      _json["activityDataSourceId"] = activityDataSourceId;
+      _json['activityDataSourceId'] = activityDataSourceId;
     }
     if (minDurationMillis != null) {
-      _json["minDurationMillis"] = minDurationMillis;
+      _json['minDurationMillis'] = minDurationMillis;
     }
     return _json;
   }
@@ -1483,8 +1482,8 @@ class BucketBySession {
   BucketBySession();
 
   BucketBySession.fromJson(core.Map _json) {
-    if (_json.containsKey("minDurationMillis")) {
-      minDurationMillis = _json["minDurationMillis"];
+    if (_json.containsKey('minDurationMillis')) {
+      minDurationMillis = _json['minDurationMillis'];
     }
   }
 
@@ -1492,7 +1491,7 @@ class BucketBySession {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (minDurationMillis != null) {
-      _json["minDurationMillis"] = minDurationMillis;
+      _json['minDurationMillis'] = minDurationMillis;
     }
     return _json;
   }
@@ -1508,11 +1507,11 @@ class BucketByTime {
   BucketByTime();
 
   BucketByTime.fromJson(core.Map _json) {
-    if (_json.containsKey("durationMillis")) {
-      durationMillis = _json["durationMillis"];
+    if (_json.containsKey('durationMillis')) {
+      durationMillis = _json['durationMillis'];
     }
-    if (_json.containsKey("period")) {
-      period = BucketByTimePeriod.fromJson(_json["period"]);
+    if (_json.containsKey('period')) {
+      period = BucketByTimePeriod.fromJson(_json['period']);
     }
   }
 
@@ -1520,10 +1519,10 @@ class BucketByTime {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (durationMillis != null) {
-      _json["durationMillis"] = durationMillis;
+      _json['durationMillis'] = durationMillis;
     }
     if (period != null) {
-      _json["period"] = period.toJson();
+      _json['period'] = period.toJson();
     }
     return _json;
   }
@@ -1544,14 +1543,14 @@ class BucketByTimePeriod {
   BucketByTimePeriod();
 
   BucketByTimePeriod.fromJson(core.Map _json) {
-    if (_json.containsKey("timeZoneId")) {
-      timeZoneId = _json["timeZoneId"];
+    if (_json.containsKey('timeZoneId')) {
+      timeZoneId = _json['timeZoneId'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -1559,13 +1558,13 @@ class BucketByTimePeriod {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (timeZoneId != null) {
-      _json["timeZoneId"] = timeZoneId;
+      _json['timeZoneId'] = timeZoneId;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -1619,29 +1618,29 @@ class DataPoint {
   DataPoint();
 
   DataPoint.fromJson(core.Map _json) {
-    if (_json.containsKey("computationTimeMillis")) {
-      computationTimeMillis = _json["computationTimeMillis"];
+    if (_json.containsKey('computationTimeMillis')) {
+      computationTimeMillis = _json['computationTimeMillis'];
     }
-    if (_json.containsKey("dataTypeName")) {
-      dataTypeName = _json["dataTypeName"];
+    if (_json.containsKey('dataTypeName')) {
+      dataTypeName = _json['dataTypeName'];
     }
-    if (_json.containsKey("endTimeNanos")) {
-      endTimeNanos = _json["endTimeNanos"];
+    if (_json.containsKey('endTimeNanos')) {
+      endTimeNanos = _json['endTimeNanos'];
     }
-    if (_json.containsKey("modifiedTimeMillis")) {
-      modifiedTimeMillis = _json["modifiedTimeMillis"];
+    if (_json.containsKey('modifiedTimeMillis')) {
+      modifiedTimeMillis = _json['modifiedTimeMillis'];
     }
-    if (_json.containsKey("originDataSourceId")) {
-      originDataSourceId = _json["originDataSourceId"];
+    if (_json.containsKey('originDataSourceId')) {
+      originDataSourceId = _json['originDataSourceId'];
     }
-    if (_json.containsKey("rawTimestampNanos")) {
-      rawTimestampNanos = _json["rawTimestampNanos"];
+    if (_json.containsKey('rawTimestampNanos')) {
+      rawTimestampNanos = _json['rawTimestampNanos'];
     }
-    if (_json.containsKey("startTimeNanos")) {
-      startTimeNanos = _json["startTimeNanos"];
+    if (_json.containsKey('startTimeNanos')) {
+      startTimeNanos = _json['startTimeNanos'];
     }
-    if (_json.containsKey("value")) {
-      value = (_json["value"] as core.List)
+    if (_json.containsKey('value')) {
+      value = (_json['value'] as core.List)
           .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
@@ -1651,28 +1650,28 @@ class DataPoint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (computationTimeMillis != null) {
-      _json["computationTimeMillis"] = computationTimeMillis;
+      _json['computationTimeMillis'] = computationTimeMillis;
     }
     if (dataTypeName != null) {
-      _json["dataTypeName"] = dataTypeName;
+      _json['dataTypeName'] = dataTypeName;
     }
     if (endTimeNanos != null) {
-      _json["endTimeNanos"] = endTimeNanos;
+      _json['endTimeNanos'] = endTimeNanos;
     }
     if (modifiedTimeMillis != null) {
-      _json["modifiedTimeMillis"] = modifiedTimeMillis;
+      _json['modifiedTimeMillis'] = modifiedTimeMillis;
     }
     if (originDataSourceId != null) {
-      _json["originDataSourceId"] = originDataSourceId;
+      _json['originDataSourceId'] = originDataSourceId;
     }
     if (rawTimestampNanos != null) {
-      _json["rawTimestampNanos"] = rawTimestampNanos;
+      _json['rawTimestampNanos'] = rawTimestampNanos;
     }
     if (startTimeNanos != null) {
-      _json["startTimeNanos"] = startTimeNanos;
+      _json['startTimeNanos'] = startTimeNanos;
     }
     if (value != null) {
-      _json["value"] = value.map((value) => value.toJson()).toList();
+      _json['value'] = value.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1755,30 +1754,30 @@ class DataSource {
   DataSource();
 
   DataSource.fromJson(core.Map _json) {
-    if (_json.containsKey("application")) {
-      application = Application.fromJson(_json["application"]);
+    if (_json.containsKey('application')) {
+      application = Application.fromJson(_json['application']);
     }
-    if (_json.containsKey("dataQualityStandard")) {
+    if (_json.containsKey('dataQualityStandard')) {
       dataQualityStandard =
-          (_json["dataQualityStandard"] as core.List).cast<core.String>();
+          (_json['dataQualityStandard'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("dataStreamId")) {
-      dataStreamId = _json["dataStreamId"];
+    if (_json.containsKey('dataStreamId')) {
+      dataStreamId = _json['dataStreamId'];
     }
-    if (_json.containsKey("dataStreamName")) {
-      dataStreamName = _json["dataStreamName"];
+    if (_json.containsKey('dataStreamName')) {
+      dataStreamName = _json['dataStreamName'];
     }
-    if (_json.containsKey("dataType")) {
-      dataType = DataType.fromJson(_json["dataType"]);
+    if (_json.containsKey('dataType')) {
+      dataType = DataType.fromJson(_json['dataType']);
     }
-    if (_json.containsKey("device")) {
-      device = Device.fromJson(_json["device"]);
+    if (_json.containsKey('device')) {
+      device = Device.fromJson(_json['device']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -1786,28 +1785,28 @@ class DataSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (application != null) {
-      _json["application"] = application.toJson();
+      _json['application'] = application.toJson();
     }
     if (dataQualityStandard != null) {
-      _json["dataQualityStandard"] = dataQualityStandard;
+      _json['dataQualityStandard'] = dataQualityStandard;
     }
     if (dataStreamId != null) {
-      _json["dataStreamId"] = dataStreamId;
+      _json['dataStreamId'] = dataStreamId;
     }
     if (dataStreamName != null) {
-      _json["dataStreamName"] = dataStreamName;
+      _json['dataStreamName'] = dataStreamName;
     }
     if (dataType != null) {
-      _json["dataType"] = dataType.toJson();
+      _json['dataType'] = dataType.toJson();
     }
     if (device != null) {
-      _json["device"] = device.toJson();
+      _json['device'] = device.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1824,13 +1823,13 @@ class DataType {
   DataType();
 
   DataType.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = (_json["field"] as core.List)
+    if (_json.containsKey('field')) {
+      field = (_json['field'] as core.List)
           .map<DataTypeField>((value) => DataTypeField.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -1838,10 +1837,10 @@ class DataType {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.map((value) => value.toJson()).toList();
+      _json['field'] = field.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -1872,14 +1871,14 @@ class DataTypeField {
   DataTypeField();
 
   DataTypeField.fromJson(core.Map _json) {
-    if (_json.containsKey("format")) {
-      format = _json["format"];
+    if (_json.containsKey('format')) {
+      format = _json['format'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("optional")) {
-      optional = _json["optional"];
+    if (_json.containsKey('optional')) {
+      optional = _json['optional'];
     }
   }
 
@@ -1887,13 +1886,13 @@ class DataTypeField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (format != null) {
-      _json["format"] = format;
+      _json['format'] = format;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (optional != null) {
-      _json["optional"] = optional;
+      _json['optional'] = optional;
     }
     return _json;
   }
@@ -1932,20 +1931,20 @@ class Dataset {
   Dataset();
 
   Dataset.fromJson(core.Map _json) {
-    if (_json.containsKey("dataSourceId")) {
-      dataSourceId = _json["dataSourceId"];
+    if (_json.containsKey('dataSourceId')) {
+      dataSourceId = _json['dataSourceId'];
     }
-    if (_json.containsKey("maxEndTimeNs")) {
-      maxEndTimeNs = _json["maxEndTimeNs"];
+    if (_json.containsKey('maxEndTimeNs')) {
+      maxEndTimeNs = _json['maxEndTimeNs'];
     }
-    if (_json.containsKey("minStartTimeNs")) {
-      minStartTimeNs = _json["minStartTimeNs"];
+    if (_json.containsKey('minStartTimeNs')) {
+      minStartTimeNs = _json['minStartTimeNs'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("point")) {
-      point = (_json["point"] as core.List)
+    if (_json.containsKey('point')) {
+      point = (_json['point'] as core.List)
           .map<DataPoint>((value) => DataPoint.fromJson(value))
           .toList();
     }
@@ -1955,19 +1954,19 @@ class Dataset {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dataSourceId != null) {
-      _json["dataSourceId"] = dataSourceId;
+      _json['dataSourceId'] = dataSourceId;
     }
     if (maxEndTimeNs != null) {
-      _json["maxEndTimeNs"] = maxEndTimeNs;
+      _json['maxEndTimeNs'] = maxEndTimeNs;
     }
     if (minStartTimeNs != null) {
-      _json["minStartTimeNs"] = minStartTimeNs;
+      _json['minStartTimeNs'] = minStartTimeNs;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (point != null) {
-      _json["point"] = point.map((value) => value.toJson()).toList();
+      _json['point'] = point.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2015,20 +2014,20 @@ class Device {
   Device();
 
   Device.fromJson(core.Map _json) {
-    if (_json.containsKey("manufacturer")) {
-      manufacturer = _json["manufacturer"];
+    if (_json.containsKey('manufacturer')) {
+      manufacturer = _json['manufacturer'];
     }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("uid")) {
-      uid = _json["uid"];
+    if (_json.containsKey('uid')) {
+      uid = _json['uid'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -2036,19 +2035,19 @@ class Device {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (manufacturer != null) {
-      _json["manufacturer"] = manufacturer;
+      _json['manufacturer'] = manufacturer;
     }
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (uid != null) {
-      _json["uid"] = uid;
+      _json['uid'] = uid;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -2073,21 +2072,21 @@ class ListDataPointChangesResponse {
   ListDataPointChangesResponse();
 
   ListDataPointChangesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("dataSourceId")) {
-      dataSourceId = _json["dataSourceId"];
+    if (_json.containsKey('dataSourceId')) {
+      dataSourceId = _json['dataSourceId'];
     }
-    if (_json.containsKey("deletedDataPoint")) {
-      deletedDataPoint = (_json["deletedDataPoint"] as core.List)
+    if (_json.containsKey('deletedDataPoint')) {
+      deletedDataPoint = (_json['deletedDataPoint'] as core.List)
           .map<DataPoint>((value) => DataPoint.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("insertedDataPoint")) {
-      insertedDataPoint = (_json["insertedDataPoint"] as core.List)
+    if (_json.containsKey('insertedDataPoint')) {
+      insertedDataPoint = (_json['insertedDataPoint'] as core.List)
           .map<DataPoint>((value) => DataPoint.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2095,18 +2094,18 @@ class ListDataPointChangesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dataSourceId != null) {
-      _json["dataSourceId"] = dataSourceId;
+      _json['dataSourceId'] = dataSourceId;
     }
     if (deletedDataPoint != null) {
-      _json["deletedDataPoint"] =
+      _json['deletedDataPoint'] =
           deletedDataPoint.map((value) => value.toJson()).toList();
     }
     if (insertedDataPoint != null) {
-      _json["insertedDataPoint"] =
+      _json['insertedDataPoint'] =
           insertedDataPoint.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2119,8 +2118,8 @@ class ListDataSourcesResponse {
   ListDataSourcesResponse();
 
   ListDataSourcesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("dataSource")) {
-      dataSource = (_json["dataSource"] as core.List)
+    if (_json.containsKey('dataSource')) {
+      dataSource = (_json['dataSource'] as core.List)
           .map<DataSource>((value) => DataSource.fromJson(value))
           .toList();
     }
@@ -2130,7 +2129,7 @@ class ListDataSourcesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dataSource != null) {
-      _json["dataSource"] = dataSource.map((value) => value.toJson()).toList();
+      _json['dataSource'] = dataSource.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2157,19 +2156,19 @@ class ListSessionsResponse {
   ListSessionsResponse();
 
   ListSessionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deletedSession")) {
-      deletedSession = (_json["deletedSession"] as core.List)
+    if (_json.containsKey('deletedSession')) {
+      deletedSession = (_json['deletedSession'] as core.List)
           .map<Session>((value) => Session.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("hasMoreData")) {
-      hasMoreData = _json["hasMoreData"];
+    if (_json.containsKey('hasMoreData')) {
+      hasMoreData = _json['hasMoreData'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("session")) {
-      session = (_json["session"] as core.List)
+    if (_json.containsKey('session')) {
+      session = (_json['session'] as core.List)
           .map<Session>((value) => Session.fromJson(value))
           .toList();
     }
@@ -2179,17 +2178,17 @@ class ListSessionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deletedSession != null) {
-      _json["deletedSession"] =
+      _json['deletedSession'] =
           deletedSession.map((value) => value.toJson()).toList();
     }
     if (hasMoreData != null) {
-      _json["hasMoreData"] = hasMoreData;
+      _json['hasMoreData'] = hasMoreData;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (session != null) {
-      _json["session"] = session.map((value) => value.toJson()).toList();
+      _json['session'] = session.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2204,8 +2203,8 @@ class MapValue {
   MapValue();
 
   MapValue.fromJson(core.Map _json) {
-    if (_json.containsKey("fpVal")) {
-      fpVal = _json["fpVal"].toDouble();
+    if (_json.containsKey('fpVal')) {
+      fpVal = _json['fpVal'].toDouble();
     }
   }
 
@@ -2213,7 +2212,7 @@ class MapValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fpVal != null) {
-      _json["fpVal"] = fpVal;
+      _json['fpVal'] = fpVal;
     }
     return _json;
   }
@@ -2257,32 +2256,32 @@ class Session {
   Session();
 
   Session.fromJson(core.Map _json) {
-    if (_json.containsKey("activeTimeMillis")) {
-      activeTimeMillis = _json["activeTimeMillis"];
+    if (_json.containsKey('activeTimeMillis')) {
+      activeTimeMillis = _json['activeTimeMillis'];
     }
-    if (_json.containsKey("activityType")) {
-      activityType = _json["activityType"];
+    if (_json.containsKey('activityType')) {
+      activityType = _json['activityType'];
     }
-    if (_json.containsKey("application")) {
-      application = Application.fromJson(_json["application"]);
+    if (_json.containsKey('application')) {
+      application = Application.fromJson(_json['application']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("endTimeMillis")) {
-      endTimeMillis = _json["endTimeMillis"];
+    if (_json.containsKey('endTimeMillis')) {
+      endTimeMillis = _json['endTimeMillis'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("modifiedTimeMillis")) {
-      modifiedTimeMillis = _json["modifiedTimeMillis"];
+    if (_json.containsKey('modifiedTimeMillis')) {
+      modifiedTimeMillis = _json['modifiedTimeMillis'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("startTimeMillis")) {
-      startTimeMillis = _json["startTimeMillis"];
+    if (_json.containsKey('startTimeMillis')) {
+      startTimeMillis = _json['startTimeMillis'];
     }
   }
 
@@ -2290,31 +2289,31 @@ class Session {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activeTimeMillis != null) {
-      _json["activeTimeMillis"] = activeTimeMillis;
+      _json['activeTimeMillis'] = activeTimeMillis;
     }
     if (activityType != null) {
-      _json["activityType"] = activityType;
+      _json['activityType'] = activityType;
     }
     if (application != null) {
-      _json["application"] = application.toJson();
+      _json['application'] = application.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (endTimeMillis != null) {
-      _json["endTimeMillis"] = endTimeMillis;
+      _json['endTimeMillis'] = endTimeMillis;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (modifiedTimeMillis != null) {
-      _json["modifiedTimeMillis"] = modifiedTimeMillis;
+      _json['modifiedTimeMillis'] = modifiedTimeMillis;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (startTimeMillis != null) {
-      _json["startTimeMillis"] = startTimeMillis;
+      _json['startTimeMillis'] = startTimeMillis;
     }
     return _json;
   }
@@ -2344,19 +2343,19 @@ class Value {
   Value();
 
   Value.fromJson(core.Map _json) {
-    if (_json.containsKey("fpVal")) {
-      fpVal = _json["fpVal"].toDouble();
+    if (_json.containsKey('fpVal')) {
+      fpVal = _json['fpVal'].toDouble();
     }
-    if (_json.containsKey("intVal")) {
-      intVal = _json["intVal"];
+    if (_json.containsKey('intVal')) {
+      intVal = _json['intVal'];
     }
-    if (_json.containsKey("mapVal")) {
-      mapVal = (_json["mapVal"] as core.List)
+    if (_json.containsKey('mapVal')) {
+      mapVal = (_json['mapVal'] as core.List)
           .map<ValueMapValEntry>((value) => ValueMapValEntry.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("stringVal")) {
-      stringVal = _json["stringVal"];
+    if (_json.containsKey('stringVal')) {
+      stringVal = _json['stringVal'];
     }
   }
 
@@ -2364,16 +2363,16 @@ class Value {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fpVal != null) {
-      _json["fpVal"] = fpVal;
+      _json['fpVal'] = fpVal;
     }
     if (intVal != null) {
-      _json["intVal"] = intVal;
+      _json['intVal'] = intVal;
     }
     if (mapVal != null) {
-      _json["mapVal"] = mapVal.map((value) => value.toJson()).toList();
+      _json['mapVal'] = mapVal.map((value) => value.toJson()).toList();
     }
     if (stringVal != null) {
-      _json["stringVal"] = stringVal;
+      _json['stringVal'] = stringVal;
     }
     return _json;
   }
@@ -2386,11 +2385,11 @@ class ValueMapValEntry {
   ValueMapValEntry();
 
   ValueMapValEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("value")) {
-      value = MapValue.fromJson(_json["value"]);
+    if (_json.containsKey('value')) {
+      value = MapValue.fromJson(_json['value']);
     }
   }
 
@@ -2398,10 +2397,10 @@ class ValueMapValEntry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (value != null) {
-      _json["value"] = value.toJson();
+      _json['value'] = value.toJson();
     }
     return _json;
   }

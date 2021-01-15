@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,23 +37,23 @@ const core.String USER_AGENT = 'dart-api-client calendar/v3';
 class CalendarApi {
   /// See, edit, share, and permanently delete all the calendars you can access
   /// using Google Calendar
-  static const CalendarScope = "https://www.googleapis.com/auth/calendar";
+  static const CalendarScope = 'https://www.googleapis.com/auth/calendar';
 
   /// View and edit events on all your calendars
   static const CalendarEventsScope =
-      "https://www.googleapis.com/auth/calendar.events";
+      'https://www.googleapis.com/auth/calendar.events';
 
   /// View events on all your calendars
   static const CalendarEventsReadonlyScope =
-      "https://www.googleapis.com/auth/calendar.events.readonly";
+      'https://www.googleapis.com/auth/calendar.events.readonly';
 
   /// View your calendars
   static const CalendarReadonlyScope =
-      "https://www.googleapis.com/auth/calendar.readonly";
+      'https://www.googleapis.com/auth/calendar.readonly';
 
   /// View your Calendar settings
   static const CalendarSettingsReadonlyScope =
-      "https://www.googleapis.com/auth/calendar.settings.readonly";
+      'https://www.googleapis.com/auth/calendar.settings.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -69,8 +68,8 @@ class CalendarApi {
   SettingsResourceApi get settings => SettingsResourceApi(_requester);
 
   CalendarApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "calendar/v3/"})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = 'calendar/v3/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -111,13 +110,13 @@ class AclResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (ruleId == null) {
-      throw core.ArgumentError("Parameter ruleId is required.");
+      throw core.ArgumentError('Parameter ruleId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -129,7 +128,7 @@ class AclResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -172,13 +171,13 @@ class AclResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (ruleId == null) {
-      throw core.ArgumentError("Parameter ruleId is required.");
+      throw core.ArgumentError('Parameter ruleId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -188,7 +187,7 @@ class AclResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -238,20 +237,20 @@ class AclResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+      _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -316,29 +315,29 @@ class AclResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+      _queryParams['syncToken'] = [syncToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -392,16 +391,16 @@ class AclResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (ruleId == null) {
-      throw core.ArgumentError("Parameter ruleId is required.");
+      throw core.ArgumentError('Parameter ruleId is required.');
     }
     if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+      _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -411,7 +410,7 @@ class AclResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -465,16 +464,16 @@ class AclResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (ruleId == null) {
-      throw core.ArgumentError("Parameter ruleId is required.");
+      throw core.ArgumentError('Parameter ruleId is required.');
     }
     if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+      _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -484,7 +483,7 @@ class AclResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -555,22 +554,22 @@ class AclResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+      _queryParams['syncToken'] = [syncToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -579,7 +578,7 @@ class AclResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -623,10 +622,10 @@ class CalendarListResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -636,7 +635,7 @@ class CalendarListResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -676,10 +675,10 @@ class CalendarListResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -687,7 +686,7 @@ class CalendarListResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -734,17 +733,17 @@ class CalendarListResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (colorRgbFormat != null) {
-      _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
+      _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'users/me/calendarList';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -820,32 +819,32 @@ class CalendarListResourceApi {
     core.String _body;
 
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if (showHidden != null) {
-      _queryParams["showHidden"] = ["${showHidden}"];
+      _queryParams['showHidden'] = ['${showHidden}'];
     }
     if (minAccessRole != null) {
-      _queryParams["minAccessRole"] = [minAccessRole];
+      _queryParams['minAccessRole'] = [minAccessRole];
     }
     if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+      _queryParams['syncToken'] = [syncToken];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'users/me/calendarList';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -898,13 +897,13 @@ class CalendarListResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (colorRgbFormat != null) {
-      _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
+      _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -912,7 +911,7 @@ class CalendarListResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -964,13 +963,13 @@ class CalendarListResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (colorRgbFormat != null) {
-      _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
+      _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -978,7 +977,7 @@ class CalendarListResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1060,32 +1059,32 @@ class CalendarListResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (showHidden != null) {
-      _queryParams["showHidden"] = ["${showHidden}"];
+      _queryParams['showHidden'] = ['${showHidden}'];
     }
     if (minAccessRole != null) {
-      _queryParams["minAccessRole"] = [minAccessRole];
+      _queryParams['minAccessRole'] = [minAccessRole];
     }
     if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+      _queryParams['syncToken'] = [syncToken];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'users/me/calendarList/watch';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1130,10 +1129,10 @@ class CalendarsResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1143,7 +1142,7 @@ class CalendarsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1182,10 +1181,10 @@ class CalendarsResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1194,7 +1193,7 @@ class CalendarsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1234,17 +1233,17 @@ class CalendarsResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1285,14 +1284,14 @@ class CalendarsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1338,17 +1337,17 @@ class CalendarsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1394,17 +1393,17 @@ class CalendarsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1449,7 +1448,7 @@ class ChannelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1458,7 +1457,7 @@ class ChannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1499,14 +1498,14 @@ class ColorsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'colors';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1571,19 +1570,19 @@ class EventsResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (eventId == null) {
-      throw core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError('Parameter eventId is required.');
     }
     if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+      _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
     if (sendUpdates != null) {
-      _queryParams["sendUpdates"] = [sendUpdates];
+      _queryParams['sendUpdates'] = [sendUpdates];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1595,7 +1594,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1653,22 +1652,22 @@ class EventsResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (eventId == null) {
-      throw core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError('Parameter eventId is required.');
     }
     if (timeZone != null) {
-      _queryParams["timeZone"] = [timeZone];
+      _queryParams['timeZone'] = [timeZone];
     }
     if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+      _queryParams['maxAttendees'] = ['${maxAttendees}'];
     }
     if (alwaysIncludeEmail != null) {
-      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -1678,7 +1677,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1737,16 +1736,16 @@ class EventsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (conferenceDataVersion != null) {
-      _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
+      _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
     }
     if (supportsAttachments != null) {
-      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+      _queryParams['supportsAttachments'] = ['${supportsAttachments}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -1755,7 +1754,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1837,25 +1836,25 @@ class EventsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (conferenceDataVersion != null) {
-      _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
+      _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
     }
     if (sendUpdates != null) {
-      _queryParams["sendUpdates"] = [sendUpdates];
+      _queryParams['sendUpdates'] = [sendUpdates];
     }
     if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+      _queryParams['maxAttendees'] = ['${maxAttendees}'];
     }
     if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+      _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
     if (supportsAttachments != null) {
-      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+      _queryParams['supportsAttachments'] = ['${supportsAttachments}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1863,7 +1862,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1949,40 +1948,40 @@ class EventsResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (eventId == null) {
-      throw core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError('Parameter eventId is required.');
     }
     if (timeMin != null) {
-      _queryParams["timeMin"] = [(timeMin).toIso8601String()];
+      _queryParams['timeMin'] = [(timeMin).toIso8601String()];
     }
     if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+      _queryParams['maxAttendees'] = ['${maxAttendees}'];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if (originalStart != null) {
-      _queryParams["originalStart"] = [originalStart];
+      _queryParams['originalStart'] = [originalStart];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (timeMax != null) {
-      _queryParams["timeMax"] = [(timeMax).toIso8601String()];
+      _queryParams['timeMax'] = [(timeMax).toIso8601String()];
     }
     if (timeZone != null) {
-      _queryParams["timeZone"] = [timeZone];
+      _queryParams['timeZone'] = [timeZone];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (alwaysIncludeEmail != null) {
-      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -1993,7 +1992,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2151,61 +2150,61 @@ class EventsResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (timeMax != null) {
-      _queryParams["timeMax"] = [(timeMax).toIso8601String()];
+      _queryParams['timeMax'] = [(timeMax).toIso8601String()];
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if (alwaysIncludeEmail != null) {
-      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
     if (updatedMin != null) {
-      _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
+      _queryParams['updatedMin'] = [(updatedMin).toIso8601String()];
     }
     if (timeZone != null) {
-      _queryParams["timeZone"] = [timeZone];
+      _queryParams['timeZone'] = [timeZone];
     }
     if (sharedExtendedProperty != null) {
-      _queryParams["sharedExtendedProperty"] = sharedExtendedProperty;
+      _queryParams['sharedExtendedProperty'] = sharedExtendedProperty;
     }
     if (privateExtendedProperty != null) {
-      _queryParams["privateExtendedProperty"] = privateExtendedProperty;
+      _queryParams['privateExtendedProperty'] = privateExtendedProperty;
     }
     if (timeMin != null) {
-      _queryParams["timeMin"] = [(timeMin).toIso8601String()];
+      _queryParams['timeMin'] = [(timeMin).toIso8601String()];
     }
     if (iCalUID != null) {
-      _queryParams["iCalUID"] = [iCalUID];
+      _queryParams['iCalUID'] = [iCalUID];
     }
     if (showHiddenInvitations != null) {
-      _queryParams["showHiddenInvitations"] = ["${showHiddenInvitations}"];
+      _queryParams['showHiddenInvitations'] = ['${showHiddenInvitations}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+      _queryParams['syncToken'] = [syncToken];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (singleEvents != null) {
-      _queryParams["singleEvents"] = ["${singleEvents}"];
+      _queryParams['singleEvents'] = ['${singleEvents}'];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+      _queryParams['maxAttendees'] = ['${maxAttendees}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2213,7 +2212,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2277,23 +2276,23 @@ class EventsResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (eventId == null) {
-      throw core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError('Parameter eventId is required.');
     }
     if (destination == null) {
-      throw core.ArgumentError("Parameter destination is required.");
+      throw core.ArgumentError('Parameter destination is required.');
     }
-    _queryParams["destination"] = [destination];
+    _queryParams['destination'] = [destination];
     if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+      _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
     if (sendUpdates != null) {
-      _queryParams["sendUpdates"] = [sendUpdates];
+      _queryParams['sendUpdates'] = [sendUpdates];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -2304,7 +2303,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2394,31 +2393,31 @@ class EventsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (eventId == null) {
-      throw core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError('Parameter eventId is required.');
     }
     if (sendUpdates != null) {
-      _queryParams["sendUpdates"] = [sendUpdates];
+      _queryParams['sendUpdates'] = [sendUpdates];
     }
     if (alwaysIncludeEmail != null) {
-      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
     if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+      _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
     if (conferenceDataVersion != null) {
-      _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
+      _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
     }
     if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+      _queryParams['maxAttendees'] = ['${maxAttendees}'];
     }
     if (supportsAttachments != null) {
-      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+      _queryParams['supportsAttachments'] = ['${supportsAttachments}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -2428,7 +2427,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2489,20 +2488,20 @@ class EventsResourceApi {
     core.String _body;
 
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (text == null) {
-      throw core.ArgumentError("Parameter text is required.");
+      throw core.ArgumentError('Parameter text is required.');
     }
-    _queryParams["text"] = [text];
+    _queryParams['text'] = [text];
     if (sendUpdates != null) {
-      _queryParams["sendUpdates"] = [sendUpdates];
+      _queryParams['sendUpdates'] = [sendUpdates];
     }
     if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+      _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -2511,7 +2510,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2601,31 +2600,31 @@ class EventsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (eventId == null) {
-      throw core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError('Parameter eventId is required.');
     }
     if (alwaysIncludeEmail != null) {
-      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
     if (conferenceDataVersion != null) {
-      _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
+      _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
     }
     if (supportsAttachments != null) {
-      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+      _queryParams['supportsAttachments'] = ['${supportsAttachments}'];
     }
     if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+      _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
     if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+      _queryParams['maxAttendees'] = ['${maxAttendees}'];
     }
     if (sendUpdates != null) {
-      _queryParams["sendUpdates"] = [sendUpdates];
+      _queryParams['sendUpdates'] = [sendUpdates];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -2635,7 +2634,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2799,61 +2798,61 @@ class EventsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError('Parameter calendarId is required.');
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (timeMax != null) {
-      _queryParams["timeMax"] = [(timeMax).toIso8601String()];
+      _queryParams['timeMax'] = [(timeMax).toIso8601String()];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (alwaysIncludeEmail != null) {
-      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
     if (sharedExtendedProperty != null) {
-      _queryParams["sharedExtendedProperty"] = sharedExtendedProperty;
+      _queryParams['sharedExtendedProperty'] = sharedExtendedProperty;
     }
     if (iCalUID != null) {
-      _queryParams["iCalUID"] = [iCalUID];
+      _queryParams['iCalUID'] = [iCalUID];
     }
     if (showHiddenInvitations != null) {
-      _queryParams["showHiddenInvitations"] = ["${showHiddenInvitations}"];
+      _queryParams['showHiddenInvitations'] = ['${showHiddenInvitations}'];
     }
     if (timeZone != null) {
-      _queryParams["timeZone"] = [timeZone];
+      _queryParams['timeZone'] = [timeZone];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+      _queryParams['syncToken'] = [syncToken];
     }
     if (privateExtendedProperty != null) {
-      _queryParams["privateExtendedProperty"] = privateExtendedProperty;
+      _queryParams['privateExtendedProperty'] = privateExtendedProperty;
     }
     if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+      _queryParams['showDeleted'] = ['${showDeleted}'];
     }
     if (updatedMin != null) {
-      _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
+      _queryParams['updatedMin'] = [(updatedMin).toIso8601String()];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+      _queryParams['maxAttendees'] = ['${maxAttendees}'];
     }
     if (singleEvents != null) {
-      _queryParams["singleEvents"] = ["${singleEvents}"];
+      _queryParams['singleEvents'] = ['${singleEvents}'];
     }
     if (timeMin != null) {
-      _queryParams["timeMin"] = [(timeMin).toIso8601String()];
+      _queryParams['timeMin'] = [(timeMin).toIso8601String()];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -2862,7 +2861,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2909,14 +2908,14 @@ class FreebusyResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'freeBusy';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2960,17 +2959,17 @@ class SettingsResourceApi {
     core.String _body;
 
     if (setting == null) {
-      throw core.ArgumentError("Parameter setting is required.");
+      throw core.ArgumentError('Parameter setting is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3023,23 +3022,23 @@ class SettingsResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+      _queryParams['syncToken'] = [syncToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'users/me/settings';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3098,23 +3097,23 @@ class SettingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+      _queryParams['syncToken'] = [syncToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'users/me/settings/watch';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3147,22 +3146,22 @@ class Acl {
   Acl();
 
   Acl.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<AclRule>((value) => AclRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("nextSyncToken")) {
-      nextSyncToken = _json["nextSyncToken"];
+    if (_json.containsKey('nextSyncToken')) {
+      nextSyncToken = _json['nextSyncToken'];
     }
   }
 
@@ -3170,19 +3169,19 @@ class Acl {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (nextSyncToken != null) {
-      _json["nextSyncToken"] = nextSyncToken;
+      _json['nextSyncToken'] = nextSyncToken;
     }
     return _json;
   }
@@ -3206,11 +3205,11 @@ class AclRuleScope {
   AclRuleScope();
 
   AclRuleScope.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -3218,10 +3217,10 @@ class AclRuleScope {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -3256,20 +3255,20 @@ class AclRule {
   AclRule();
 
   AclRule.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
-    if (_json.containsKey("scope")) {
-      scope = AclRuleScope.fromJson(_json["scope"]);
+    if (_json.containsKey('scope')) {
+      scope = AclRuleScope.fromJson(_json['scope']);
     }
   }
 
@@ -3277,19 +3276,19 @@ class AclRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     if (scope != null) {
-      _json["scope"] = scope.toJson();
+      _json['scope'] = scope.toJson();
     }
     return _json;
   }
@@ -3326,30 +3325,30 @@ class Calendar {
   Calendar();
 
   Calendar.fromJson(core.Map _json) {
-    if (_json.containsKey("conferenceProperties")) {
+    if (_json.containsKey('conferenceProperties')) {
       conferenceProperties =
-          ConferenceProperties.fromJson(_json["conferenceProperties"]);
+          ConferenceProperties.fromJson(_json['conferenceProperties']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("summary")) {
-      summary = _json["summary"];
+    if (_json.containsKey('summary')) {
+      summary = _json['summary'];
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
   }
 
@@ -3357,28 +3356,28 @@ class Calendar {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (conferenceProperties != null) {
-      _json["conferenceProperties"] = conferenceProperties.toJson();
+      _json['conferenceProperties'] = conferenceProperties.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (summary != null) {
-      _json["summary"] = summary;
+      _json['summary'] = summary;
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     return _json;
   }
@@ -3406,22 +3405,22 @@ class CalendarList {
   CalendarList();
 
   CalendarList.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<CalendarListEntry>((value) => CalendarListEntry.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("nextSyncToken")) {
-      nextSyncToken = _json["nextSyncToken"];
+    if (_json.containsKey('nextSyncToken')) {
+      nextSyncToken = _json['nextSyncToken'];
     }
   }
 
@@ -3429,19 +3428,19 @@ class CalendarList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (nextSyncToken != null) {
-      _json["nextSyncToken"] = nextSyncToken;
+      _json['nextSyncToken'] = nextSyncToken;
     }
     return _json;
   }
@@ -3456,8 +3455,8 @@ class CalendarListEntryNotificationSettings {
   CalendarListEntryNotificationSettings();
 
   CalendarListEntryNotificationSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("notifications")) {
-      notifications = (_json["notifications"] as core.List)
+    if (_json.containsKey('notifications')) {
+      notifications = (_json['notifications'] as core.List)
           .map<CalendarNotification>(
               (value) => CalendarNotification.fromJson(value))
           .toList();
@@ -3468,7 +3467,7 @@ class CalendarListEntryNotificationSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (notifications != null) {
-      _json["notifications"] =
+      _json['notifications'] =
           notifications.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -3564,66 +3563,66 @@ class CalendarListEntry {
   CalendarListEntry();
 
   CalendarListEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("accessRole")) {
-      accessRole = _json["accessRole"];
+    if (_json.containsKey('accessRole')) {
+      accessRole = _json['accessRole'];
     }
-    if (_json.containsKey("backgroundColor")) {
-      backgroundColor = _json["backgroundColor"];
+    if (_json.containsKey('backgroundColor')) {
+      backgroundColor = _json['backgroundColor'];
     }
-    if (_json.containsKey("colorId")) {
-      colorId = _json["colorId"];
+    if (_json.containsKey('colorId')) {
+      colorId = _json['colorId'];
     }
-    if (_json.containsKey("conferenceProperties")) {
+    if (_json.containsKey('conferenceProperties')) {
       conferenceProperties =
-          ConferenceProperties.fromJson(_json["conferenceProperties"]);
+          ConferenceProperties.fromJson(_json['conferenceProperties']);
     }
-    if (_json.containsKey("defaultReminders")) {
-      defaultReminders = (_json["defaultReminders"] as core.List)
+    if (_json.containsKey('defaultReminders')) {
+      defaultReminders = (_json['defaultReminders'] as core.List)
           .map<EventReminder>((value) => EventReminder.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("foregroundColor")) {
-      foregroundColor = _json["foregroundColor"];
+    if (_json.containsKey('foregroundColor')) {
+      foregroundColor = _json['foregroundColor'];
     }
-    if (_json.containsKey("hidden")) {
-      hidden = _json["hidden"];
+    if (_json.containsKey('hidden')) {
+      hidden = _json['hidden'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("notificationSettings")) {
+    if (_json.containsKey('notificationSettings')) {
       notificationSettings = CalendarListEntryNotificationSettings.fromJson(
-          _json["notificationSettings"]);
+          _json['notificationSettings']);
     }
-    if (_json.containsKey("primary")) {
-      primary = _json["primary"];
+    if (_json.containsKey('primary')) {
+      primary = _json['primary'];
     }
-    if (_json.containsKey("selected")) {
-      selected = _json["selected"];
+    if (_json.containsKey('selected')) {
+      selected = _json['selected'];
     }
-    if (_json.containsKey("summary")) {
-      summary = _json["summary"];
+    if (_json.containsKey('summary')) {
+      summary = _json['summary'];
     }
-    if (_json.containsKey("summaryOverride")) {
-      summaryOverride = _json["summaryOverride"];
+    if (_json.containsKey('summaryOverride')) {
+      summaryOverride = _json['summaryOverride'];
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
   }
 
@@ -3631,62 +3630,62 @@ class CalendarListEntry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessRole != null) {
-      _json["accessRole"] = accessRole;
+      _json['accessRole'] = accessRole;
     }
     if (backgroundColor != null) {
-      _json["backgroundColor"] = backgroundColor;
+      _json['backgroundColor'] = backgroundColor;
     }
     if (colorId != null) {
-      _json["colorId"] = colorId;
+      _json['colorId'] = colorId;
     }
     if (conferenceProperties != null) {
-      _json["conferenceProperties"] = conferenceProperties.toJson();
+      _json['conferenceProperties'] = conferenceProperties.toJson();
     }
     if (defaultReminders != null) {
-      _json["defaultReminders"] =
+      _json['defaultReminders'] =
           defaultReminders.map((value) => value.toJson()).toList();
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (foregroundColor != null) {
-      _json["foregroundColor"] = foregroundColor;
+      _json['foregroundColor'] = foregroundColor;
     }
     if (hidden != null) {
-      _json["hidden"] = hidden;
+      _json['hidden'] = hidden;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (notificationSettings != null) {
-      _json["notificationSettings"] = notificationSettings.toJson();
+      _json['notificationSettings'] = notificationSettings.toJson();
     }
     if (primary != null) {
-      _json["primary"] = primary;
+      _json['primary'] = primary;
     }
     if (selected != null) {
-      _json["selected"] = selected;
+      _json['selected'] = selected;
     }
     if (summary != null) {
-      _json["summary"] = summary;
+      _json['summary'] = summary;
     }
     if (summaryOverride != null) {
-      _json["summaryOverride"] = summaryOverride;
+      _json['summaryOverride'] = summaryOverride;
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     return _json;
   }
@@ -3713,11 +3712,11 @@ class CalendarNotification {
   CalendarNotification();
 
   CalendarNotification.fromJson(core.Map _json) {
-    if (_json.containsKey("method")) {
-      method = _json["method"];
+    if (_json.containsKey('method')) {
+      method = _json['method'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3725,10 +3724,10 @@ class CalendarNotification {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (method != null) {
-      _json["method"] = method;
+      _json['method'] = method;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3772,35 +3771,35 @@ class Channel {
   Channel();
 
   Channel.fromJson(core.Map _json) {
-    if (_json.containsKey("address")) {
-      address = _json["address"];
+    if (_json.containsKey('address')) {
+      address = _json['address'];
     }
-    if (_json.containsKey("expiration")) {
-      expiration = _json["expiration"];
+    if (_json.containsKey('expiration')) {
+      expiration = _json['expiration'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("params")) {
-      params = (_json["params"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('params')) {
+      params = (_json['params'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("payload")) {
-      payload = _json["payload"];
+    if (_json.containsKey('payload')) {
+      payload = _json['payload'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = _json["resourceId"];
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'];
     }
-    if (_json.containsKey("resourceUri")) {
-      resourceUri = _json["resourceUri"];
+    if (_json.containsKey('resourceUri')) {
+      resourceUri = _json['resourceUri'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3808,34 +3807,34 @@ class Channel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (address != null) {
-      _json["address"] = address;
+      _json['address'] = address;
     }
     if (expiration != null) {
-      _json["expiration"] = expiration;
+      _json['expiration'] = expiration;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (params != null) {
-      _json["params"] = params;
+      _json['params'] = params;
     }
     if (payload != null) {
-      _json["payload"] = payload;
+      _json['payload'] = payload;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId;
+      _json['resourceId'] = resourceId;
     }
     if (resourceUri != null) {
-      _json["resourceUri"] = resourceUri;
+      _json['resourceUri'] = resourceUri;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3852,11 +3851,11 @@ class ColorDefinition {
   ColorDefinition();
 
   ColorDefinition.fromJson(core.Map _json) {
-    if (_json.containsKey("background")) {
-      background = _json["background"];
+    if (_json.containsKey('background')) {
+      background = _json['background'];
     }
-    if (_json.containsKey("foreground")) {
-      foreground = _json["foreground"];
+    if (_json.containsKey('foreground')) {
+      foreground = _json['foreground'];
     }
   }
 
@@ -3864,10 +3863,10 @@ class ColorDefinition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (background != null) {
-      _json["background"] = background;
+      _json['background'] = background;
     }
     if (foreground != null) {
-      _json["foreground"] = foreground;
+      _json['foreground'] = foreground;
     }
     return _json;
   }
@@ -3894,21 +3893,21 @@ class Colors {
   Colors();
 
   Colors.fromJson(core.Map _json) {
-    if (_json.containsKey("calendar")) {
+    if (_json.containsKey('calendar')) {
       calendar = commons.mapMap<core.Map, ColorDefinition>(
-          _json["calendar"].cast<core.String, core.Map>(),
+          _json['calendar'].cast<core.String, core.Map>(),
           (core.Map item) => ColorDefinition.fromJson(item));
     }
-    if (_json.containsKey("event")) {
+    if (_json.containsKey('event')) {
       event = commons.mapMap<core.Map, ColorDefinition>(
-          _json["event"].cast<core.String, core.Map>(),
+          _json['event'].cast<core.String, core.Map>(),
           (core.Map item) => ColorDefinition.fromJson(item));
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+    if (_json.containsKey('updated')) {
+      updated = core.DateTime.parse(_json['updated']);
     }
   }
 
@@ -3916,20 +3915,20 @@ class Colors {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (calendar != null) {
-      _json["calendar"] =
+      _json['calendar'] =
           commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(
               calendar, (ColorDefinition item) => item.toJson());
     }
     if (event != null) {
-      _json["event"] =
+      _json['event'] =
           commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(
               event, (ColorDefinition item) => item.toJson());
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json['updated'] = (updated).toIso8601String();
     }
     return _json;
   }
@@ -3985,29 +3984,29 @@ class ConferenceData {
   ConferenceData();
 
   ConferenceData.fromJson(core.Map _json) {
-    if (_json.containsKey("conferenceId")) {
-      conferenceId = _json["conferenceId"];
+    if (_json.containsKey('conferenceId')) {
+      conferenceId = _json['conferenceId'];
     }
-    if (_json.containsKey("conferenceSolution")) {
+    if (_json.containsKey('conferenceSolution')) {
       conferenceSolution =
-          ConferenceSolution.fromJson(_json["conferenceSolution"]);
+          ConferenceSolution.fromJson(_json['conferenceSolution']);
     }
-    if (_json.containsKey("createRequest")) {
-      createRequest = CreateConferenceRequest.fromJson(_json["createRequest"]);
+    if (_json.containsKey('createRequest')) {
+      createRequest = CreateConferenceRequest.fromJson(_json['createRequest']);
     }
-    if (_json.containsKey("entryPoints")) {
-      entryPoints = (_json["entryPoints"] as core.List)
+    if (_json.containsKey('entryPoints')) {
+      entryPoints = (_json['entryPoints'] as core.List)
           .map<EntryPoint>((value) => EntryPoint.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("parameters")) {
-      parameters = ConferenceParameters.fromJson(_json["parameters"]);
+    if (_json.containsKey('parameters')) {
+      parameters = ConferenceParameters.fromJson(_json['parameters']);
     }
-    if (_json.containsKey("signature")) {
-      signature = _json["signature"];
+    if (_json.containsKey('signature')) {
+      signature = _json['signature'];
     }
   }
 
@@ -4015,26 +4014,26 @@ class ConferenceData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (conferenceId != null) {
-      _json["conferenceId"] = conferenceId;
+      _json['conferenceId'] = conferenceId;
     }
     if (conferenceSolution != null) {
-      _json["conferenceSolution"] = conferenceSolution.toJson();
+      _json['conferenceSolution'] = conferenceSolution.toJson();
     }
     if (createRequest != null) {
-      _json["createRequest"] = createRequest.toJson();
+      _json['createRequest'] = createRequest.toJson();
     }
     if (entryPoints != null) {
-      _json["entryPoints"] =
+      _json['entryPoints'] =
           entryPoints.map((value) => value.toJson()).toList();
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (parameters != null) {
-      _json["parameters"] = parameters.toJson();
+      _json['parameters'] = parameters.toJson();
     }
     if (signature != null) {
-      _json["signature"] = signature;
+      _json['signature'] = signature;
     }
     return _json;
   }
@@ -4047,9 +4046,9 @@ class ConferenceParameters {
   ConferenceParameters();
 
   ConferenceParameters.fromJson(core.Map _json) {
-    if (_json.containsKey("addOnParameters")) {
+    if (_json.containsKey('addOnParameters')) {
       addOnParameters = ConferenceParametersAddOnParameters.fromJson(
-          _json["addOnParameters"]);
+          _json['addOnParameters']);
     }
   }
 
@@ -4057,7 +4056,7 @@ class ConferenceParameters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addOnParameters != null) {
-      _json["addOnParameters"] = addOnParameters.toJson();
+      _json['addOnParameters'] = addOnParameters.toJson();
     }
     return _json;
   }
@@ -4069,9 +4068,9 @@ class ConferenceParametersAddOnParameters {
   ConferenceParametersAddOnParameters();
 
   ConferenceParametersAddOnParameters.fromJson(core.Map _json) {
-    if (_json.containsKey("parameters")) {
+    if (_json.containsKey('parameters')) {
       parameters =
-          (_json["parameters"] as core.Map).cast<core.String, core.String>();
+          (_json['parameters'] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -4079,7 +4078,7 @@ class ConferenceParametersAddOnParameters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parameters != null) {
-      _json["parameters"] = parameters;
+      _json['parameters'] = parameters;
     }
     return _json;
   }
@@ -4096,9 +4095,9 @@ class ConferenceProperties {
   ConferenceProperties();
 
   ConferenceProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("allowedConferenceSolutionTypes")) {
+    if (_json.containsKey('allowedConferenceSolutionTypes')) {
       allowedConferenceSolutionTypes =
-          (_json["allowedConferenceSolutionTypes"] as core.List)
+          (_json['allowedConferenceSolutionTypes'] as core.List)
               .cast<core.String>();
     }
   }
@@ -4107,7 +4106,7 @@ class ConferenceProperties {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowedConferenceSolutionTypes != null) {
-      _json["allowedConferenceSolutionTypes"] = allowedConferenceSolutionTypes;
+      _json['allowedConferenceSolutionTypes'] = allowedConferenceSolutionTypes;
     }
     return _json;
   }
@@ -4126,8 +4125,8 @@ class ConferenceRequestStatus {
   ConferenceRequestStatus();
 
   ConferenceRequestStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("statusCode")) {
-      statusCode = _json["statusCode"];
+    if (_json.containsKey('statusCode')) {
+      statusCode = _json['statusCode'];
     }
   }
 
@@ -4135,7 +4134,7 @@ class ConferenceRequestStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (statusCode != null) {
-      _json["statusCode"] = statusCode;
+      _json['statusCode'] = statusCode;
     }
     return _json;
   }
@@ -4155,14 +4154,14 @@ class ConferenceSolution {
   ConferenceSolution();
 
   ConferenceSolution.fromJson(core.Map _json) {
-    if (_json.containsKey("iconUri")) {
-      iconUri = _json["iconUri"];
+    if (_json.containsKey('iconUri')) {
+      iconUri = _json['iconUri'];
     }
-    if (_json.containsKey("key")) {
-      key = ConferenceSolutionKey.fromJson(_json["key"]);
+    if (_json.containsKey('key')) {
+      key = ConferenceSolutionKey.fromJson(_json['key']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4170,13 +4169,13 @@ class ConferenceSolution {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (iconUri != null) {
-      _json["iconUri"] = iconUri;
+      _json['iconUri'] = iconUri;
     }
     if (key != null) {
-      _json["key"] = key.toJson();
+      _json['key'] = key.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4198,8 +4197,8 @@ class ConferenceSolutionKey {
   ConferenceSolutionKey();
 
   ConferenceSolutionKey.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4207,7 +4206,7 @@ class ConferenceSolutionKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4228,15 +4227,15 @@ class CreateConferenceRequest {
   CreateConferenceRequest();
 
   CreateConferenceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("conferenceSolutionKey")) {
+    if (_json.containsKey('conferenceSolutionKey')) {
       conferenceSolutionKey =
-          ConferenceSolutionKey.fromJson(_json["conferenceSolutionKey"]);
+          ConferenceSolutionKey.fromJson(_json['conferenceSolutionKey']);
     }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
-    if (_json.containsKey("status")) {
-      status = ConferenceRequestStatus.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = ConferenceRequestStatus.fromJson(_json['status']);
     }
   }
 
@@ -4244,13 +4243,13 @@ class CreateConferenceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (conferenceSolutionKey != null) {
-      _json["conferenceSolutionKey"] = conferenceSolutionKey.toJson();
+      _json['conferenceSolutionKey'] = conferenceSolutionKey.toJson();
     }
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     return _json;
   }
@@ -4345,36 +4344,36 @@ class EntryPoint {
   EntryPoint();
 
   EntryPoint.fromJson(core.Map _json) {
-    if (_json.containsKey("accessCode")) {
-      accessCode = _json["accessCode"];
+    if (_json.containsKey('accessCode')) {
+      accessCode = _json['accessCode'];
     }
-    if (_json.containsKey("entryPointFeatures")) {
+    if (_json.containsKey('entryPointFeatures')) {
       entryPointFeatures =
-          (_json["entryPointFeatures"] as core.List).cast<core.String>();
+          (_json['entryPointFeatures'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("entryPointType")) {
-      entryPointType = _json["entryPointType"];
+    if (_json.containsKey('entryPointType')) {
+      entryPointType = _json['entryPointType'];
     }
-    if (_json.containsKey("label")) {
-      label = _json["label"];
+    if (_json.containsKey('label')) {
+      label = _json['label'];
     }
-    if (_json.containsKey("meetingCode")) {
-      meetingCode = _json["meetingCode"];
+    if (_json.containsKey('meetingCode')) {
+      meetingCode = _json['meetingCode'];
     }
-    if (_json.containsKey("passcode")) {
-      passcode = _json["passcode"];
+    if (_json.containsKey('passcode')) {
+      passcode = _json['passcode'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("pin")) {
-      pin = _json["pin"];
+    if (_json.containsKey('pin')) {
+      pin = _json['pin'];
     }
-    if (_json.containsKey("regionCode")) {
-      regionCode = _json["regionCode"];
+    if (_json.containsKey('regionCode')) {
+      regionCode = _json['regionCode'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -4382,34 +4381,34 @@ class EntryPoint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessCode != null) {
-      _json["accessCode"] = accessCode;
+      _json['accessCode'] = accessCode;
     }
     if (entryPointFeatures != null) {
-      _json["entryPointFeatures"] = entryPointFeatures;
+      _json['entryPointFeatures'] = entryPointFeatures;
     }
     if (entryPointType != null) {
-      _json["entryPointType"] = entryPointType;
+      _json['entryPointType'] = entryPointType;
     }
     if (label != null) {
-      _json["label"] = label;
+      _json['label'] = label;
     }
     if (meetingCode != null) {
-      _json["meetingCode"] = meetingCode;
+      _json['meetingCode'] = meetingCode;
     }
     if (passcode != null) {
-      _json["passcode"] = passcode;
+      _json['passcode'] = passcode;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (pin != null) {
-      _json["pin"] = pin;
+      _json['pin'] = pin;
     }
     if (regionCode != null) {
-      _json["regionCode"] = regionCode;
+      _json['regionCode'] = regionCode;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -4433,11 +4432,11 @@ class Error {
   Error();
 
   Error.fromJson(core.Map _json) {
-    if (_json.containsKey("domain")) {
-      domain = _json["domain"];
+    if (_json.containsKey('domain')) {
+      domain = _json['domain'];
     }
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
   }
 
@@ -4445,10 +4444,10 @@ class Error {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (domain != null) {
-      _json["domain"] = domain;
+      _json['domain'] = domain;
     }
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     return _json;
   }
@@ -4473,17 +4472,17 @@ class EventCreator {
   EventCreator();
 
   EventCreator.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("self")) {
-      self = _json["self"];
+    if (_json.containsKey('self')) {
+      self = _json['self'];
     }
   }
 
@@ -4491,16 +4490,16 @@ class EventCreator {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (self != null) {
-      _json["self"] = self;
+      _json['self'] = self;
     }
     return _json;
   }
@@ -4519,11 +4518,11 @@ class EventExtendedProperties {
   EventExtendedProperties();
 
   EventExtendedProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("private")) {
-      private = (_json["private"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('private')) {
+      private = (_json['private'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("shared")) {
-      shared = (_json["shared"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('shared')) {
+      shared = (_json['shared'] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -4531,10 +4530,10 @@ class EventExtendedProperties {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (private != null) {
-      _json["private"] = private;
+      _json['private'] = private;
     }
     if (shared != null) {
-      _json["shared"] = shared;
+      _json['shared'] = shared;
     }
     return _json;
   }
@@ -4575,30 +4574,30 @@ class EventGadget {
   EventGadget();
 
   EventGadget.fromJson(core.Map _json) {
-    if (_json.containsKey("display")) {
-      display = _json["display"];
+    if (_json.containsKey('display')) {
+      display = _json['display'];
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("iconLink")) {
-      iconLink = _json["iconLink"];
+    if (_json.containsKey('iconLink')) {
+      iconLink = _json['iconLink'];
     }
-    if (_json.containsKey("link")) {
-      link = _json["link"];
+    if (_json.containsKey('link')) {
+      link = _json['link'];
     }
-    if (_json.containsKey("preferences")) {
+    if (_json.containsKey('preferences')) {
       preferences =
-          (_json["preferences"] as core.Map).cast<core.String, core.String>();
+          (_json['preferences'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -4606,28 +4605,28 @@ class EventGadget {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (display != null) {
-      _json["display"] = display;
+      _json['display'] = display;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (iconLink != null) {
-      _json["iconLink"] = iconLink;
+      _json['iconLink'] = iconLink;
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     if (preferences != null) {
-      _json["preferences"] = preferences;
+      _json['preferences'] = preferences;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -4656,17 +4655,17 @@ class EventOrganizer {
   EventOrganizer();
 
   EventOrganizer.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("self")) {
-      self = _json["self"];
+    if (_json.containsKey('self')) {
+      self = _json['self'];
     }
   }
 
@@ -4674,16 +4673,16 @@ class EventOrganizer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (self != null) {
-      _json["self"] = self;
+      _json['self'] = self;
     }
     return _json;
   }
@@ -4702,13 +4701,13 @@ class EventReminders {
   EventReminders();
 
   EventReminders.fromJson(core.Map _json) {
-    if (_json.containsKey("overrides")) {
-      overrides = (_json["overrides"] as core.List)
+    if (_json.containsKey('overrides')) {
+      overrides = (_json['overrides'] as core.List)
           .map<EventReminder>((value) => EventReminder.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("useDefault")) {
-      useDefault = _json["useDefault"];
+    if (_json.containsKey('useDefault')) {
+      useDefault = _json['useDefault'];
     }
   }
 
@@ -4716,10 +4715,10 @@ class EventReminders {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (overrides != null) {
-      _json["overrides"] = overrides.map((value) => value.toJson()).toList();
+      _json['overrides'] = overrides.map((value) => value.toJson()).toList();
     }
     if (useDefault != null) {
-      _json["useDefault"] = useDefault;
+      _json['useDefault'] = useDefault;
     }
     return _json;
   }
@@ -4740,11 +4739,11 @@ class EventSource {
   EventSource();
 
   EventSource.fromJson(core.Map _json) {
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -4752,10 +4751,10 @@ class EventSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -4981,124 +4980,124 @@ class Event {
   Event();
 
   Event.fromJson(core.Map _json) {
-    if (_json.containsKey("anyoneCanAddSelf")) {
-      anyoneCanAddSelf = _json["anyoneCanAddSelf"];
+    if (_json.containsKey('anyoneCanAddSelf')) {
+      anyoneCanAddSelf = _json['anyoneCanAddSelf'];
     }
-    if (_json.containsKey("attachments")) {
-      attachments = (_json["attachments"] as core.List)
+    if (_json.containsKey('attachments')) {
+      attachments = (_json['attachments'] as core.List)
           .map<EventAttachment>((value) => EventAttachment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("attendees")) {
-      attendees = (_json["attendees"] as core.List)
+    if (_json.containsKey('attendees')) {
+      attendees = (_json['attendees'] as core.List)
           .map<EventAttendee>((value) => EventAttendee.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("attendeesOmitted")) {
-      attendeesOmitted = _json["attendeesOmitted"];
+    if (_json.containsKey('attendeesOmitted')) {
+      attendeesOmitted = _json['attendeesOmitted'];
     }
-    if (_json.containsKey("colorId")) {
-      colorId = _json["colorId"];
+    if (_json.containsKey('colorId')) {
+      colorId = _json['colorId'];
     }
-    if (_json.containsKey("conferenceData")) {
-      conferenceData = ConferenceData.fromJson(_json["conferenceData"]);
+    if (_json.containsKey('conferenceData')) {
+      conferenceData = ConferenceData.fromJson(_json['conferenceData']);
     }
-    if (_json.containsKey("created")) {
-      created = core.DateTime.parse(_json["created"]);
+    if (_json.containsKey('created')) {
+      created = core.DateTime.parse(_json['created']);
     }
-    if (_json.containsKey("creator")) {
-      creator = EventCreator.fromJson(_json["creator"]);
+    if (_json.containsKey('creator')) {
+      creator = EventCreator.fromJson(_json['creator']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("end")) {
-      end = EventDateTime.fromJson(_json["end"]);
+    if (_json.containsKey('end')) {
+      end = EventDateTime.fromJson(_json['end']);
     }
-    if (_json.containsKey("endTimeUnspecified")) {
-      endTimeUnspecified = _json["endTimeUnspecified"];
+    if (_json.containsKey('endTimeUnspecified')) {
+      endTimeUnspecified = _json['endTimeUnspecified'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("extendedProperties")) {
+    if (_json.containsKey('extendedProperties')) {
       extendedProperties =
-          EventExtendedProperties.fromJson(_json["extendedProperties"]);
+          EventExtendedProperties.fromJson(_json['extendedProperties']);
     }
-    if (_json.containsKey("gadget")) {
-      gadget = EventGadget.fromJson(_json["gadget"]);
+    if (_json.containsKey('gadget')) {
+      gadget = EventGadget.fromJson(_json['gadget']);
     }
-    if (_json.containsKey("guestsCanInviteOthers")) {
-      guestsCanInviteOthers = _json["guestsCanInviteOthers"];
+    if (_json.containsKey('guestsCanInviteOthers')) {
+      guestsCanInviteOthers = _json['guestsCanInviteOthers'];
     }
-    if (_json.containsKey("guestsCanModify")) {
-      guestsCanModify = _json["guestsCanModify"];
+    if (_json.containsKey('guestsCanModify')) {
+      guestsCanModify = _json['guestsCanModify'];
     }
-    if (_json.containsKey("guestsCanSeeOtherGuests")) {
-      guestsCanSeeOtherGuests = _json["guestsCanSeeOtherGuests"];
+    if (_json.containsKey('guestsCanSeeOtherGuests')) {
+      guestsCanSeeOtherGuests = _json['guestsCanSeeOtherGuests'];
     }
-    if (_json.containsKey("hangoutLink")) {
-      hangoutLink = _json["hangoutLink"];
+    if (_json.containsKey('hangoutLink')) {
+      hangoutLink = _json['hangoutLink'];
     }
-    if (_json.containsKey("htmlLink")) {
-      htmlLink = _json["htmlLink"];
+    if (_json.containsKey('htmlLink')) {
+      htmlLink = _json['htmlLink'];
     }
-    if (_json.containsKey("iCalUID")) {
-      iCalUID = _json["iCalUID"];
+    if (_json.containsKey('iCalUID')) {
+      iCalUID = _json['iCalUID'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("locked")) {
-      locked = _json["locked"];
+    if (_json.containsKey('locked')) {
+      locked = _json['locked'];
     }
-    if (_json.containsKey("organizer")) {
-      organizer = EventOrganizer.fromJson(_json["organizer"]);
+    if (_json.containsKey('organizer')) {
+      organizer = EventOrganizer.fromJson(_json['organizer']);
     }
-    if (_json.containsKey("originalStartTime")) {
-      originalStartTime = EventDateTime.fromJson(_json["originalStartTime"]);
+    if (_json.containsKey('originalStartTime')) {
+      originalStartTime = EventDateTime.fromJson(_json['originalStartTime']);
     }
-    if (_json.containsKey("privateCopy")) {
-      privateCopy = _json["privateCopy"];
+    if (_json.containsKey('privateCopy')) {
+      privateCopy = _json['privateCopy'];
     }
-    if (_json.containsKey("recurrence")) {
-      recurrence = (_json["recurrence"] as core.List).cast<core.String>();
+    if (_json.containsKey('recurrence')) {
+      recurrence = (_json['recurrence'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("recurringEventId")) {
-      recurringEventId = _json["recurringEventId"];
+    if (_json.containsKey('recurringEventId')) {
+      recurringEventId = _json['recurringEventId'];
     }
-    if (_json.containsKey("reminders")) {
-      reminders = EventReminders.fromJson(_json["reminders"]);
+    if (_json.containsKey('reminders')) {
+      reminders = EventReminders.fromJson(_json['reminders']);
     }
-    if (_json.containsKey("sequence")) {
-      sequence = _json["sequence"];
+    if (_json.containsKey('sequence')) {
+      sequence = _json['sequence'];
     }
-    if (_json.containsKey("source")) {
-      source = EventSource.fromJson(_json["source"]);
+    if (_json.containsKey('source')) {
+      source = EventSource.fromJson(_json['source']);
     }
-    if (_json.containsKey("start")) {
-      start = EventDateTime.fromJson(_json["start"]);
+    if (_json.containsKey('start')) {
+      start = EventDateTime.fromJson(_json['start']);
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("summary")) {
-      summary = _json["summary"];
+    if (_json.containsKey('summary')) {
+      summary = _json['summary'];
     }
-    if (_json.containsKey("transparency")) {
-      transparency = _json["transparency"];
+    if (_json.containsKey('transparency')) {
+      transparency = _json['transparency'];
     }
-    if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+    if (_json.containsKey('updated')) {
+      updated = core.DateTime.parse(_json['updated']);
     }
-    if (_json.containsKey("visibility")) {
-      visibility = _json["visibility"];
+    if (_json.containsKey('visibility')) {
+      visibility = _json['visibility'];
     }
   }
 
@@ -5106,119 +5105,119 @@ class Event {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (anyoneCanAddSelf != null) {
-      _json["anyoneCanAddSelf"] = anyoneCanAddSelf;
+      _json['anyoneCanAddSelf'] = anyoneCanAddSelf;
     }
     if (attachments != null) {
-      _json["attachments"] =
+      _json['attachments'] =
           attachments.map((value) => value.toJson()).toList();
     }
     if (attendees != null) {
-      _json["attendees"] = attendees.map((value) => value.toJson()).toList();
+      _json['attendees'] = attendees.map((value) => value.toJson()).toList();
     }
     if (attendeesOmitted != null) {
-      _json["attendeesOmitted"] = attendeesOmitted;
+      _json['attendeesOmitted'] = attendeesOmitted;
     }
     if (colorId != null) {
-      _json["colorId"] = colorId;
+      _json['colorId'] = colorId;
     }
     if (conferenceData != null) {
-      _json["conferenceData"] = conferenceData.toJson();
+      _json['conferenceData'] = conferenceData.toJson();
     }
     if (created != null) {
-      _json["created"] = (created).toIso8601String();
+      _json['created'] = (created).toIso8601String();
     }
     if (creator != null) {
-      _json["creator"] = creator.toJson();
+      _json['creator'] = creator.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (end != null) {
-      _json["end"] = end.toJson();
+      _json['end'] = end.toJson();
     }
     if (endTimeUnspecified != null) {
-      _json["endTimeUnspecified"] = endTimeUnspecified;
+      _json['endTimeUnspecified'] = endTimeUnspecified;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (extendedProperties != null) {
-      _json["extendedProperties"] = extendedProperties.toJson();
+      _json['extendedProperties'] = extendedProperties.toJson();
     }
     if (gadget != null) {
-      _json["gadget"] = gadget.toJson();
+      _json['gadget'] = gadget.toJson();
     }
     if (guestsCanInviteOthers != null) {
-      _json["guestsCanInviteOthers"] = guestsCanInviteOthers;
+      _json['guestsCanInviteOthers'] = guestsCanInviteOthers;
     }
     if (guestsCanModify != null) {
-      _json["guestsCanModify"] = guestsCanModify;
+      _json['guestsCanModify'] = guestsCanModify;
     }
     if (guestsCanSeeOtherGuests != null) {
-      _json["guestsCanSeeOtherGuests"] = guestsCanSeeOtherGuests;
+      _json['guestsCanSeeOtherGuests'] = guestsCanSeeOtherGuests;
     }
     if (hangoutLink != null) {
-      _json["hangoutLink"] = hangoutLink;
+      _json['hangoutLink'] = hangoutLink;
     }
     if (htmlLink != null) {
-      _json["htmlLink"] = htmlLink;
+      _json['htmlLink'] = htmlLink;
     }
     if (iCalUID != null) {
-      _json["iCalUID"] = iCalUID;
+      _json['iCalUID'] = iCalUID;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (locked != null) {
-      _json["locked"] = locked;
+      _json['locked'] = locked;
     }
     if (organizer != null) {
-      _json["organizer"] = organizer.toJson();
+      _json['organizer'] = organizer.toJson();
     }
     if (originalStartTime != null) {
-      _json["originalStartTime"] = originalStartTime.toJson();
+      _json['originalStartTime'] = originalStartTime.toJson();
     }
     if (privateCopy != null) {
-      _json["privateCopy"] = privateCopy;
+      _json['privateCopy'] = privateCopy;
     }
     if (recurrence != null) {
-      _json["recurrence"] = recurrence;
+      _json['recurrence'] = recurrence;
     }
     if (recurringEventId != null) {
-      _json["recurringEventId"] = recurringEventId;
+      _json['recurringEventId'] = recurringEventId;
     }
     if (reminders != null) {
-      _json["reminders"] = reminders.toJson();
+      _json['reminders'] = reminders.toJson();
     }
     if (sequence != null) {
-      _json["sequence"] = sequence;
+      _json['sequence'] = sequence;
     }
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     if (start != null) {
-      _json["start"] = start.toJson();
+      _json['start'] = start.toJson();
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (summary != null) {
-      _json["summary"] = summary;
+      _json['summary'] = summary;
     }
     if (transparency != null) {
-      _json["transparency"] = transparency;
+      _json['transparency'] = transparency;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json['updated'] = (updated).toIso8601String();
     }
     if (visibility != null) {
-      _json["visibility"] = visibility;
+      _json['visibility'] = visibility;
     }
     return _json;
   }
@@ -5248,20 +5247,20 @@ class EventAttachment {
   EventAttachment();
 
   EventAttachment.fromJson(core.Map _json) {
-    if (_json.containsKey("fileId")) {
-      fileId = _json["fileId"];
+    if (_json.containsKey('fileId')) {
+      fileId = _json['fileId'];
     }
-    if (_json.containsKey("fileUrl")) {
-      fileUrl = _json["fileUrl"];
+    if (_json.containsKey('fileUrl')) {
+      fileUrl = _json['fileUrl'];
     }
-    if (_json.containsKey("iconLink")) {
-      iconLink = _json["iconLink"];
+    if (_json.containsKey('iconLink')) {
+      iconLink = _json['iconLink'];
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -5269,19 +5268,19 @@ class EventAttachment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fileId != null) {
-      _json["fileId"] = fileId;
+      _json['fileId'] = fileId;
     }
     if (fileUrl != null) {
-      _json["fileUrl"] = fileUrl;
+      _json['fileUrl'] = fileUrl;
     }
     if (iconLink != null) {
-      _json["iconLink"] = iconLink;
+      _json['iconLink'] = iconLink;
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -5332,35 +5331,35 @@ class EventAttendee {
   EventAttendee();
 
   EventAttendee.fromJson(core.Map _json) {
-    if (_json.containsKey("additionalGuests")) {
-      additionalGuests = _json["additionalGuests"];
+    if (_json.containsKey('additionalGuests')) {
+      additionalGuests = _json['additionalGuests'];
     }
-    if (_json.containsKey("comment")) {
-      comment = _json["comment"];
+    if (_json.containsKey('comment')) {
+      comment = _json['comment'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("optional")) {
-      optional = _json["optional"];
+    if (_json.containsKey('optional')) {
+      optional = _json['optional'];
     }
-    if (_json.containsKey("organizer")) {
-      organizer = _json["organizer"];
+    if (_json.containsKey('organizer')) {
+      organizer = _json['organizer'];
     }
-    if (_json.containsKey("resource")) {
-      resource = _json["resource"];
+    if (_json.containsKey('resource')) {
+      resource = _json['resource'];
     }
-    if (_json.containsKey("responseStatus")) {
-      responseStatus = _json["responseStatus"];
+    if (_json.containsKey('responseStatus')) {
+      responseStatus = _json['responseStatus'];
     }
-    if (_json.containsKey("self")) {
-      self = _json["self"];
+    if (_json.containsKey('self')) {
+      self = _json['self'];
     }
   }
 
@@ -5368,34 +5367,34 @@ class EventAttendee {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (additionalGuests != null) {
-      _json["additionalGuests"] = additionalGuests;
+      _json['additionalGuests'] = additionalGuests;
     }
     if (comment != null) {
-      _json["comment"] = comment;
+      _json['comment'] = comment;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (optional != null) {
-      _json["optional"] = optional;
+      _json['optional'] = optional;
     }
     if (organizer != null) {
-      _json["organizer"] = organizer;
+      _json['organizer'] = organizer;
     }
     if (resource != null) {
-      _json["resource"] = resource;
+      _json['resource'] = resource;
     }
     if (responseStatus != null) {
-      _json["responseStatus"] = responseStatus;
+      _json['responseStatus'] = responseStatus;
     }
     if (self != null) {
-      _json["self"] = self;
+      _json['self'] = self;
     }
     return _json;
   }
@@ -5420,14 +5419,14 @@ class EventDateTime {
   EventDateTime();
 
   EventDateTime.fromJson(core.Map _json) {
-    if (_json.containsKey("date")) {
-      date = core.DateTime.parse(_json["date"]);
+    if (_json.containsKey('date')) {
+      date = core.DateTime.parse(_json['date']);
     }
-    if (_json.containsKey("dateTime")) {
-      dateTime = core.DateTime.parse(_json["dateTime"]);
+    if (_json.containsKey('dateTime')) {
+      dateTime = core.DateTime.parse(_json['dateTime']);
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
   }
 
@@ -5435,14 +5434,14 @@ class EventDateTime {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (date != null) {
-      _json["date"] =
+      _json['date'] =
           "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}";
     }
     if (dateTime != null) {
-      _json["dateTime"] = (dateTime).toIso8601String();
+      _json['dateTime'] = (dateTime).toIso8601String();
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     return _json;
   }
@@ -5463,11 +5462,11 @@ class EventReminder {
   EventReminder();
 
   EventReminder.fromJson(core.Map _json) {
-    if (_json.containsKey("method")) {
-      method = _json["method"];
+    if (_json.containsKey('method')) {
+      method = _json['method'];
     }
-    if (_json.containsKey("minutes")) {
-      minutes = _json["minutes"];
+    if (_json.containsKey('minutes')) {
+      minutes = _json['minutes'];
     }
   }
 
@@ -5475,10 +5474,10 @@ class EventReminder {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (method != null) {
-      _json["method"] = method;
+      _json['method'] = method;
     }
     if (minutes != null) {
-      _json["minutes"] = minutes;
+      _json['minutes'] = minutes;
     }
     return _json;
   }
@@ -5537,42 +5536,42 @@ class Events {
   Events();
 
   Events.fromJson(core.Map _json) {
-    if (_json.containsKey("accessRole")) {
-      accessRole = _json["accessRole"];
+    if (_json.containsKey('accessRole')) {
+      accessRole = _json['accessRole'];
     }
-    if (_json.containsKey("defaultReminders")) {
-      defaultReminders = (_json["defaultReminders"] as core.List)
+    if (_json.containsKey('defaultReminders')) {
+      defaultReminders = (_json['defaultReminders'] as core.List)
           .map<EventReminder>((value) => EventReminder.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Event>((value) => Event.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("nextSyncToken")) {
-      nextSyncToken = _json["nextSyncToken"];
+    if (_json.containsKey('nextSyncToken')) {
+      nextSyncToken = _json['nextSyncToken'];
     }
-    if (_json.containsKey("summary")) {
-      summary = _json["summary"];
+    if (_json.containsKey('summary')) {
+      summary = _json['summary'];
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
-    if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+    if (_json.containsKey('updated')) {
+      updated = core.DateTime.parse(_json['updated']);
     }
   }
 
@@ -5580,38 +5579,38 @@ class Events {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessRole != null) {
-      _json["accessRole"] = accessRole;
+      _json['accessRole'] = accessRole;
     }
     if (defaultReminders != null) {
-      _json["defaultReminders"] =
+      _json['defaultReminders'] =
           defaultReminders.map((value) => value.toJson()).toList();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (nextSyncToken != null) {
-      _json["nextSyncToken"] = nextSyncToken;
+      _json['nextSyncToken'] = nextSyncToken;
     }
     if (summary != null) {
-      _json["summary"] = summary;
+      _json['summary'] = summary;
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json['updated'] = (updated).toIso8601String();
     }
     return _json;
   }
@@ -5627,13 +5626,13 @@ class FreeBusyCalendar {
   FreeBusyCalendar();
 
   FreeBusyCalendar.fromJson(core.Map _json) {
-    if (_json.containsKey("busy")) {
-      busy = (_json["busy"] as core.List)
+    if (_json.containsKey('busy')) {
+      busy = (_json['busy'] as core.List)
           .map<TimePeriod>((value) => TimePeriod.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("errors")) {
-      errors = (_json["errors"] as core.List)
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
           .map<Error>((value) => Error.fromJson(value))
           .toList();
     }
@@ -5643,10 +5642,10 @@ class FreeBusyCalendar {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (busy != null) {
-      _json["busy"] = busy.map((value) => value.toJson()).toList();
+      _json['busy'] = busy.map((value) => value.toJson()).toList();
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => value.toJson()).toList();
+      _json['errors'] = errors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5662,11 +5661,11 @@ class FreeBusyGroup {
   FreeBusyGroup();
 
   FreeBusyGroup.fromJson(core.Map _json) {
-    if (_json.containsKey("calendars")) {
-      calendars = (_json["calendars"] as core.List).cast<core.String>();
+    if (_json.containsKey('calendars')) {
+      calendars = (_json['calendars'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("errors")) {
-      errors = (_json["errors"] as core.List)
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
           .map<Error>((value) => Error.fromJson(value))
           .toList();
     }
@@ -5676,10 +5675,10 @@ class FreeBusyGroup {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (calendars != null) {
-      _json["calendars"] = calendars;
+      _json['calendars'] = calendars;
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => value.toJson()).toList();
+      _json['errors'] = errors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5710,26 +5709,26 @@ class FreeBusyRequest {
   FreeBusyRequest();
 
   FreeBusyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("calendarExpansionMax")) {
-      calendarExpansionMax = _json["calendarExpansionMax"];
+    if (_json.containsKey('calendarExpansionMax')) {
+      calendarExpansionMax = _json['calendarExpansionMax'];
     }
-    if (_json.containsKey("groupExpansionMax")) {
-      groupExpansionMax = _json["groupExpansionMax"];
+    if (_json.containsKey('groupExpansionMax')) {
+      groupExpansionMax = _json['groupExpansionMax'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<FreeBusyRequestItem>(
               (value) => FreeBusyRequestItem.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("timeMax")) {
-      timeMax = core.DateTime.parse(_json["timeMax"]);
+    if (_json.containsKey('timeMax')) {
+      timeMax = core.DateTime.parse(_json['timeMax']);
     }
-    if (_json.containsKey("timeMin")) {
-      timeMin = core.DateTime.parse(_json["timeMin"]);
+    if (_json.containsKey('timeMin')) {
+      timeMin = core.DateTime.parse(_json['timeMin']);
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
   }
 
@@ -5737,22 +5736,22 @@ class FreeBusyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (calendarExpansionMax != null) {
-      _json["calendarExpansionMax"] = calendarExpansionMax;
+      _json['calendarExpansionMax'] = calendarExpansionMax;
     }
     if (groupExpansionMax != null) {
-      _json["groupExpansionMax"] = groupExpansionMax;
+      _json['groupExpansionMax'] = groupExpansionMax;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (timeMax != null) {
-      _json["timeMax"] = (timeMax).toIso8601String();
+      _json['timeMax'] = (timeMax).toIso8601String();
     }
     if (timeMin != null) {
-      _json["timeMin"] = (timeMin).toIso8601String();
+      _json['timeMin'] = (timeMin).toIso8601String();
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     return _json;
   }
@@ -5765,8 +5764,8 @@ class FreeBusyRequestItem {
   FreeBusyRequestItem();
 
   FreeBusyRequestItem.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -5774,7 +5773,7 @@ class FreeBusyRequestItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -5799,24 +5798,24 @@ class FreeBusyResponse {
   FreeBusyResponse();
 
   FreeBusyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("calendars")) {
+    if (_json.containsKey('calendars')) {
       calendars = commons.mapMap<core.Map, FreeBusyCalendar>(
-          _json["calendars"].cast<core.String, core.Map>(),
+          _json['calendars'].cast<core.String, core.Map>(),
           (core.Map item) => FreeBusyCalendar.fromJson(item));
     }
-    if (_json.containsKey("groups")) {
+    if (_json.containsKey('groups')) {
       groups = commons.mapMap<core.Map, FreeBusyGroup>(
-          _json["groups"].cast<core.String, core.Map>(),
+          _json['groups'].cast<core.String, core.Map>(),
           (core.Map item) => FreeBusyGroup.fromJson(item));
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("timeMax")) {
-      timeMax = core.DateTime.parse(_json["timeMax"]);
+    if (_json.containsKey('timeMax')) {
+      timeMax = core.DateTime.parse(_json['timeMax']);
     }
-    if (_json.containsKey("timeMin")) {
-      timeMin = core.DateTime.parse(_json["timeMin"]);
+    if (_json.containsKey('timeMin')) {
+      timeMin = core.DateTime.parse(_json['timeMin']);
     }
   }
 
@@ -5824,23 +5823,23 @@ class FreeBusyResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (calendars != null) {
-      _json["calendars"] =
+      _json['calendars'] =
           commons.mapMap<FreeBusyCalendar, core.Map<core.String, core.Object>>(
               calendars, (FreeBusyCalendar item) => item.toJson());
     }
     if (groups != null) {
-      _json["groups"] =
+      _json['groups'] =
           commons.mapMap<FreeBusyGroup, core.Map<core.String, core.Object>>(
               groups, (FreeBusyGroup item) => item.toJson());
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (timeMax != null) {
-      _json["timeMax"] = (timeMax).toIso8601String();
+      _json['timeMax'] = (timeMax).toIso8601String();
     }
     if (timeMin != null) {
-      _json["timeMin"] = (timeMin).toIso8601String();
+      _json['timeMin'] = (timeMin).toIso8601String();
     }
     return _json;
   }
@@ -5864,17 +5863,17 @@ class Setting {
   Setting();
 
   Setting.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -5882,16 +5881,16 @@ class Setting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -5919,22 +5918,22 @@ class Settings {
   Settings();
 
   Settings.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Setting>((value) => Setting.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("nextSyncToken")) {
-      nextSyncToken = _json["nextSyncToken"];
+    if (_json.containsKey('nextSyncToken')) {
+      nextSyncToken = _json['nextSyncToken'];
     }
   }
 
@@ -5942,19 +5941,19 @@ class Settings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (nextSyncToken != null) {
-      _json["nextSyncToken"] = nextSyncToken;
+      _json['nextSyncToken'] = nextSyncToken;
     }
     return _json;
   }
@@ -5970,11 +5969,11 @@ class TimePeriod {
   TimePeriod();
 
   TimePeriod.fromJson(core.Map _json) {
-    if (_json.containsKey("end")) {
-      end = core.DateTime.parse(_json["end"]);
+    if (_json.containsKey('end')) {
+      end = core.DateTime.parse(_json['end']);
     }
-    if (_json.containsKey("start")) {
-      start = core.DateTime.parse(_json["start"]);
+    if (_json.containsKey('start')) {
+      start = core.DateTime.parse(_json['start']);
     }
   }
 
@@ -5982,10 +5981,10 @@ class TimePeriod {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (end != null) {
-      _json["end"] = (end).toIso8601String();
+      _json['end'] = (end).toIso8601String();
     }
     if (start != null) {
-      _json["start"] = (start).toIso8601String();
+      _json['start'] = (start).toIso8601String();
     }
     return _json;
   }

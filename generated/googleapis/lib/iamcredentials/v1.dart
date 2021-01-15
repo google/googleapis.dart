@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,15 +39,15 @@ const core.String USER_AGENT = 'dart-api-client iamcredentials/v1';
 class IamcredentialsApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   IamcredentialsApi(http.Client client,
-      {core.String rootUrl = "https://iamcredentials.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://iamcredentials.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -106,10 +105,10 @@ class ProjectsServiceAccountsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -118,7 +117,7 @@ class ProjectsServiceAccountsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -166,10 +165,10 @@ class ProjectsServiceAccountsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -178,7 +177,7 @@ class ProjectsServiceAccountsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -226,17 +225,17 @@ class ProjectsServiceAccountsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -284,17 +283,17 @@ class ProjectsServiceAccountsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -335,14 +334,14 @@ class GenerateAccessTokenRequest {
   GenerateAccessTokenRequest();
 
   GenerateAccessTokenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("delegates")) {
-      delegates = (_json["delegates"] as core.List).cast<core.String>();
+    if (_json.containsKey('delegates')) {
+      delegates = (_json['delegates'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("lifetime")) {
-      lifetime = _json["lifetime"];
+    if (_json.containsKey('lifetime')) {
+      lifetime = _json['lifetime'];
     }
-    if (_json.containsKey("scope")) {
-      scope = (_json["scope"] as core.List).cast<core.String>();
+    if (_json.containsKey('scope')) {
+      scope = (_json['scope'] as core.List).cast<core.String>();
     }
   }
 
@@ -350,13 +349,13 @@ class GenerateAccessTokenRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (delegates != null) {
-      _json["delegates"] = delegates;
+      _json['delegates'] = delegates;
     }
     if (lifetime != null) {
-      _json["lifetime"] = lifetime;
+      _json['lifetime'] = lifetime;
     }
     if (scope != null) {
-      _json["scope"] = scope;
+      _json['scope'] = scope;
     }
     return _json;
   }
@@ -372,11 +371,11 @@ class GenerateAccessTokenResponse {
   GenerateAccessTokenResponse();
 
   GenerateAccessTokenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("accessToken")) {
-      accessToken = _json["accessToken"];
+    if (_json.containsKey('accessToken')) {
+      accessToken = _json['accessToken'];
     }
-    if (_json.containsKey("expireTime")) {
-      expireTime = _json["expireTime"];
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'];
     }
   }
 
@@ -384,10 +383,10 @@ class GenerateAccessTokenResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessToken != null) {
-      _json["accessToken"] = accessToken;
+      _json['accessToken'] = accessToken;
     }
     if (expireTime != null) {
-      _json["expireTime"] = expireTime;
+      _json['expireTime'] = expireTime;
     }
     return _json;
   }
@@ -415,14 +414,14 @@ class GenerateIdTokenRequest {
   GenerateIdTokenRequest();
 
   GenerateIdTokenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("audience")) {
-      audience = _json["audience"];
+    if (_json.containsKey('audience')) {
+      audience = _json['audience'];
     }
-    if (_json.containsKey("delegates")) {
-      delegates = (_json["delegates"] as core.List).cast<core.String>();
+    if (_json.containsKey('delegates')) {
+      delegates = (_json['delegates'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("includeEmail")) {
-      includeEmail = _json["includeEmail"];
+    if (_json.containsKey('includeEmail')) {
+      includeEmail = _json['includeEmail'];
     }
   }
 
@@ -430,13 +429,13 @@ class GenerateIdTokenRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audience != null) {
-      _json["audience"] = audience;
+      _json['audience'] = audience;
     }
     if (delegates != null) {
-      _json["delegates"] = delegates;
+      _json['delegates'] = delegates;
     }
     if (includeEmail != null) {
-      _json["includeEmail"] = includeEmail;
+      _json['includeEmail'] = includeEmail;
     }
     return _json;
   }
@@ -449,8 +448,8 @@ class GenerateIdTokenResponse {
   GenerateIdTokenResponse();
 
   GenerateIdTokenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
   }
 
@@ -458,7 +457,7 @@ class GenerateIdTokenResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     return _json;
   }
@@ -481,17 +480,17 @@ class SignBlobRequest {
 
   set payloadAsBytes(core.List<core.int> _bytes) {
     payload =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SignBlobRequest();
 
   SignBlobRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("delegates")) {
-      delegates = (_json["delegates"] as core.List).cast<core.String>();
+    if (_json.containsKey('delegates')) {
+      delegates = (_json['delegates'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("payload")) {
-      payload = _json["payload"];
+    if (_json.containsKey('payload')) {
+      payload = _json['payload'];
     }
   }
 
@@ -499,10 +498,10 @@ class SignBlobRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (delegates != null) {
-      _json["delegates"] = delegates;
+      _json['delegates'] = delegates;
     }
     if (payload != null) {
-      _json["payload"] = payload;
+      _json['payload'] = payload;
     }
     return _json;
   }
@@ -530,17 +529,17 @@ class SignBlobResponse {
 
   set signedBlobAsBytes(core.List<core.int> _bytes) {
     signedBlob =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SignBlobResponse();
 
   SignBlobResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("keyId")) {
-      keyId = _json["keyId"];
+    if (_json.containsKey('keyId')) {
+      keyId = _json['keyId'];
     }
-    if (_json.containsKey("signedBlob")) {
-      signedBlob = _json["signedBlob"];
+    if (_json.containsKey('signedBlob')) {
+      signedBlob = _json['signedBlob'];
     }
   }
 
@@ -548,10 +547,10 @@ class SignBlobResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (keyId != null) {
-      _json["keyId"] = keyId;
+      _json['keyId'] = keyId;
     }
     if (signedBlob != null) {
-      _json["signedBlob"] = signedBlob;
+      _json['signedBlob'] = signedBlob;
     }
     return _json;
   }
@@ -578,11 +577,11 @@ class SignJwtRequest {
   SignJwtRequest();
 
   SignJwtRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("delegates")) {
-      delegates = (_json["delegates"] as core.List).cast<core.String>();
+    if (_json.containsKey('delegates')) {
+      delegates = (_json['delegates'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("payload")) {
-      payload = _json["payload"];
+    if (_json.containsKey('payload')) {
+      payload = _json['payload'];
     }
   }
 
@@ -590,10 +589,10 @@ class SignJwtRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (delegates != null) {
-      _json["delegates"] = delegates;
+      _json['delegates'] = delegates;
     }
     if (payload != null) {
-      _json["payload"] = payload;
+      _json['payload'] = payload;
     }
     return _json;
   }
@@ -622,11 +621,11 @@ class SignJwtResponse {
   SignJwtResponse();
 
   SignJwtResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("keyId")) {
-      keyId = _json["keyId"];
+    if (_json.containsKey('keyId')) {
+      keyId = _json['keyId'];
     }
-    if (_json.containsKey("signedJwt")) {
-      signedJwt = _json["signedJwt"];
+    if (_json.containsKey('signedJwt')) {
+      signedJwt = _json['signedJwt'];
     }
   }
 
@@ -634,10 +633,10 @@ class SignJwtResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (keyId != null) {
-      _json["keyId"] = keyId;
+      _json['keyId'] = keyId;
     }
     if (signedJwt != null) {
-      _json["signedJwt"] = signedJwt;
+      _json['signedJwt'] = signedJwt;
     }
     return _json;
   }

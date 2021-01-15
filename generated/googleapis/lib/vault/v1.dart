@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,11 +36,11 @@ const core.String USER_AGENT = 'dart-api-client vault/v1';
 /// Archiving and eDiscovery for G Suite.
 class VaultApi {
   /// Manage your eDiscovery data
-  static const EdiscoveryScope = "https://www.googleapis.com/auth/ediscovery";
+  static const EdiscoveryScope = 'https://www.googleapis.com/auth/ediscovery';
 
   /// View your eDiscovery data
   static const EdiscoveryReadonlyScope =
-      "https://www.googleapis.com/auth/ediscovery.readonly";
+      'https://www.googleapis.com/auth/ediscovery.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -49,8 +48,8 @@ class VaultApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
 
   VaultApi(http.Client client,
-      {core.String rootUrl = "https://vault.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://vault.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -100,10 +99,10 @@ class MattersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -112,7 +111,7 @@ class MattersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -156,10 +155,10 @@ class MattersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -167,7 +166,7 @@ class MattersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -210,14 +209,14 @@ class MattersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -255,17 +254,17 @@ class MattersResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -312,20 +311,20 @@ class MattersResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -385,26 +384,26 @@ class MattersResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (state != null) {
-      _queryParams["state"] = [state];
+      _queryParams['state'] = [state];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -448,10 +447,10 @@ class MattersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -460,7 +459,7 @@ class MattersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -504,10 +503,10 @@ class MattersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -515,7 +514,7 @@ class MattersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -559,10 +558,10 @@ class MattersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -571,7 +570,7 @@ class MattersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -617,17 +616,17 @@ class MattersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -677,10 +676,10 @@ class MattersExportsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -688,7 +687,7 @@ class MattersExportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -729,13 +728,13 @@ class MattersExportsResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (exportId == null) {
-      throw core.ArgumentError("Parameter exportId is required.");
+      throw core.ArgumentError('Parameter exportId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -745,7 +744,7 @@ class MattersExportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -786,13 +785,13 @@ class MattersExportsResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (exportId == null) {
-      throw core.ArgumentError("Parameter exportId is required.");
+      throw core.ArgumentError('Parameter exportId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -802,7 +801,7 @@ class MattersExportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -846,16 +845,16 @@ class MattersExportsResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -863,7 +862,7 @@ class MattersExportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -921,13 +920,13 @@ class MattersHoldsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (holdId == null) {
-      throw core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError('Parameter holdId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -938,7 +937,7 @@ class MattersHoldsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -982,10 +981,10 @@ class MattersHoldsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -993,7 +992,7 @@ class MattersHoldsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1034,13 +1033,13 @@ class MattersHoldsResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (holdId == null) {
-      throw core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError('Parameter holdId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1050,7 +1049,7 @@ class MattersHoldsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1102,16 +1101,16 @@ class MattersHoldsResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (holdId == null) {
-      throw core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError('Parameter holdId is required.');
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1121,7 +1120,7 @@ class MattersHoldsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1180,19 +1179,19 @@ class MattersHoldsResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1200,7 +1199,7 @@ class MattersHoldsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1249,13 +1248,13 @@ class MattersHoldsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (holdId == null) {
-      throw core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError('Parameter holdId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1266,7 +1265,7 @@ class MattersHoldsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1315,13 +1314,13 @@ class MattersHoldsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (holdId == null) {
-      throw core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError('Parameter holdId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1331,7 +1330,7 @@ class MattersHoldsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1387,13 +1386,13 @@ class MattersHoldsAccountsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (holdId == null) {
-      throw core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError('Parameter holdId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1404,7 +1403,7 @@ class MattersHoldsAccountsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1449,16 +1448,16 @@ class MattersHoldsAccountsResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (holdId == null) {
-      throw core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError('Parameter holdId is required.');
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1470,7 +1469,7 @@ class MattersHoldsAccountsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1513,13 +1512,13 @@ class MattersHoldsAccountsResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (holdId == null) {
-      throw core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError('Parameter holdId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1530,7 +1529,7 @@ class MattersHoldsAccountsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1582,10 +1581,10 @@ class MattersSavedQueriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1594,7 +1593,7 @@ class MattersSavedQueriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1636,13 +1635,13 @@ class MattersSavedQueriesResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (savedQueryId == null) {
-      throw core.ArgumentError("Parameter savedQueryId is required.");
+      throw core.ArgumentError('Parameter savedQueryId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1652,7 +1651,7 @@ class MattersSavedQueriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1694,13 +1693,13 @@ class MattersSavedQueriesResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (savedQueryId == null) {
-      throw core.ArgumentError("Parameter savedQueryId is required.");
+      throw core.ArgumentError('Parameter savedQueryId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1710,7 +1709,7 @@ class MattersSavedQueriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1757,16 +1756,16 @@ class MattersSavedQueriesResourceApi {
     core.String _body;
 
     if (matterId == null) {
-      throw core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError('Parameter matterId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -1775,7 +1774,7 @@ class MattersSavedQueriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1823,17 +1822,17 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1852,8 +1851,8 @@ class AccountInfo {
   AccountInfo();
 
   AccountInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("emails")) {
-      emails = (_json["emails"] as core.List).cast<core.String>();
+    if (_json.containsKey('emails')) {
+      emails = (_json['emails'] as core.List).cast<core.String>();
     }
   }
 
@@ -1861,7 +1860,7 @@ class AccountInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (emails != null) {
-      _json["emails"] = emails;
+      _json['emails'] = emails;
     }
     return _json;
   }
@@ -1879,11 +1878,11 @@ class AddHeldAccountResult {
   AddHeldAccountResult();
 
   AddHeldAccountResult.fromJson(core.Map _json) {
-    if (_json.containsKey("account")) {
-      account = HeldAccount.fromJson(_json["account"]);
+    if (_json.containsKey('account')) {
+      account = HeldAccount.fromJson(_json['account']);
     }
-    if (_json.containsKey("status")) {
-      status = Status.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = Status.fromJson(_json['status']);
     }
   }
 
@@ -1891,10 +1890,10 @@ class AddHeldAccountResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (account != null) {
-      _json["account"] = account.toJson();
+      _json['account'] = account.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     return _json;
   }
@@ -1913,11 +1912,11 @@ class AddHeldAccountsRequest {
   AddHeldAccountsRequest();
 
   AddHeldAccountsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("accountIds")) {
-      accountIds = (_json["accountIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('accountIds')) {
+      accountIds = (_json['accountIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("emails")) {
-      emails = (_json["emails"] as core.List).cast<core.String>();
+    if (_json.containsKey('emails')) {
+      emails = (_json['emails'] as core.List).cast<core.String>();
     }
   }
 
@@ -1925,10 +1924,10 @@ class AddHeldAccountsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountIds != null) {
-      _json["accountIds"] = accountIds;
+      _json['accountIds'] = accountIds;
     }
     if (emails != null) {
-      _json["emails"] = emails;
+      _json['emails'] = emails;
     }
     return _json;
   }
@@ -1942,8 +1941,8 @@ class AddHeldAccountsResponse {
   AddHeldAccountsResponse();
 
   AddHeldAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<AddHeldAccountResult>(
               (value) => AddHeldAccountResult.fromJson(value))
           .toList();
@@ -1954,7 +1953,7 @@ class AddHeldAccountsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1977,14 +1976,14 @@ class AddMatterPermissionsRequest {
   AddMatterPermissionsRequest();
 
   AddMatterPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("ccMe")) {
-      ccMe = _json["ccMe"];
+    if (_json.containsKey('ccMe')) {
+      ccMe = _json['ccMe'];
     }
-    if (_json.containsKey("matterPermission")) {
-      matterPermission = MatterPermission.fromJson(_json["matterPermission"]);
+    if (_json.containsKey('matterPermission')) {
+      matterPermission = MatterPermission.fromJson(_json['matterPermission']);
     }
-    if (_json.containsKey("sendEmails")) {
-      sendEmails = _json["sendEmails"];
+    if (_json.containsKey('sendEmails')) {
+      sendEmails = _json['sendEmails'];
     }
   }
 
@@ -1992,13 +1991,13 @@ class AddMatterPermissionsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ccMe != null) {
-      _json["ccMe"] = ccMe;
+      _json['ccMe'] = ccMe;
     }
     if (matterPermission != null) {
-      _json["matterPermission"] = matterPermission.toJson();
+      _json['matterPermission'] = matterPermission.toJson();
     }
     if (sendEmails != null) {
-      _json["sendEmails"] = sendEmails;
+      _json['sendEmails'] = sendEmails;
     }
     return _json;
   }
@@ -2025,8 +2024,8 @@ class CloseMatterResponse {
   CloseMatterResponse();
 
   CloseMatterResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("matter")) {
-      matter = Matter.fromJson(_json["matter"]);
+    if (_json.containsKey('matter')) {
+      matter = Matter.fromJson(_json['matter']);
     }
   }
 
@@ -2034,7 +2033,7 @@ class CloseMatterResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (matter != null) {
-      _json["matter"] = matter.toJson();
+      _json['matter'] = matter.toJson();
     }
     return _json;
   }
@@ -2060,17 +2059,17 @@ class CloudStorageFile {
   CloudStorageFile();
 
   CloudStorageFile.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketName")) {
-      bucketName = _json["bucketName"];
+    if (_json.containsKey('bucketName')) {
+      bucketName = _json['bucketName'];
     }
-    if (_json.containsKey("md5Hash")) {
-      md5Hash = _json["md5Hash"];
+    if (_json.containsKey('md5Hash')) {
+      md5Hash = _json['md5Hash'];
     }
-    if (_json.containsKey("objectName")) {
-      objectName = _json["objectName"];
+    if (_json.containsKey('objectName')) {
+      objectName = _json['objectName'];
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
   }
 
@@ -2078,16 +2077,16 @@ class CloudStorageFile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketName != null) {
-      _json["bucketName"] = bucketName;
+      _json['bucketName'] = bucketName;
     }
     if (md5Hash != null) {
-      _json["md5Hash"] = md5Hash;
+      _json['md5Hash'] = md5Hash;
     }
     if (objectName != null) {
-      _json["objectName"] = objectName;
+      _json['objectName'] = objectName;
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     return _json;
   }
@@ -2101,8 +2100,8 @@ class CloudStorageSink {
   CloudStorageSink();
 
   CloudStorageSink.fromJson(core.Map _json) {
-    if (_json.containsKey("files")) {
-      files = (_json["files"] as core.List)
+    if (_json.containsKey('files')) {
+      files = (_json['files'] as core.List)
           .map<CloudStorageFile>((value) => CloudStorageFile.fromJson(value))
           .toList();
     }
@@ -2112,7 +2111,7 @@ class CloudStorageSink {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (files != null) {
-      _json["files"] = files.map((value) => value.toJson()).toList();
+      _json['files'] = files.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2136,18 +2135,18 @@ class CorpusQuery {
   CorpusQuery();
 
   CorpusQuery.fromJson(core.Map _json) {
-    if (_json.containsKey("driveQuery")) {
-      driveQuery = HeldDriveQuery.fromJson(_json["driveQuery"]);
+    if (_json.containsKey('driveQuery')) {
+      driveQuery = HeldDriveQuery.fromJson(_json['driveQuery']);
     }
-    if (_json.containsKey("groupsQuery")) {
-      groupsQuery = HeldGroupsQuery.fromJson(_json["groupsQuery"]);
+    if (_json.containsKey('groupsQuery')) {
+      groupsQuery = HeldGroupsQuery.fromJson(_json['groupsQuery']);
     }
-    if (_json.containsKey("hangoutsChatQuery")) {
+    if (_json.containsKey('hangoutsChatQuery')) {
       hangoutsChatQuery =
-          HeldHangoutsChatQuery.fromJson(_json["hangoutsChatQuery"]);
+          HeldHangoutsChatQuery.fromJson(_json['hangoutsChatQuery']);
     }
-    if (_json.containsKey("mailQuery")) {
-      mailQuery = HeldMailQuery.fromJson(_json["mailQuery"]);
+    if (_json.containsKey('mailQuery')) {
+      mailQuery = HeldMailQuery.fromJson(_json['mailQuery']);
     }
   }
 
@@ -2155,16 +2154,16 @@ class CorpusQuery {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (driveQuery != null) {
-      _json["driveQuery"] = driveQuery.toJson();
+      _json['driveQuery'] = driveQuery.toJson();
     }
     if (groupsQuery != null) {
-      _json["groupsQuery"] = groupsQuery.toJson();
+      _json['groupsQuery'] = groupsQuery.toJson();
     }
     if (hangoutsChatQuery != null) {
-      _json["hangoutsChatQuery"] = hangoutsChatQuery.toJson();
+      _json['hangoutsChatQuery'] = hangoutsChatQuery.toJson();
     }
     if (mailQuery != null) {
-      _json["mailQuery"] = mailQuery.toJson();
+      _json['mailQuery'] = mailQuery.toJson();
     }
     return _json;
   }
@@ -2179,8 +2178,8 @@ class DriveExportOptions {
   DriveExportOptions();
 
   DriveExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("includeAccessInfo")) {
-      includeAccessInfo = _json["includeAccessInfo"];
+    if (_json.containsKey('includeAccessInfo')) {
+      includeAccessInfo = _json['includeAccessInfo'];
     }
   }
 
@@ -2188,7 +2187,7 @@ class DriveExportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (includeAccessInfo != null) {
-      _json["includeAccessInfo"] = includeAccessInfo;
+      _json['includeAccessInfo'] = includeAccessInfo;
     }
     return _json;
   }
@@ -2209,14 +2208,14 @@ class DriveOptions {
   DriveOptions();
 
   DriveOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("includeSharedDrives")) {
-      includeSharedDrives = _json["includeSharedDrives"];
+    if (_json.containsKey('includeSharedDrives')) {
+      includeSharedDrives = _json['includeSharedDrives'];
     }
-    if (_json.containsKey("includeTeamDrives")) {
-      includeTeamDrives = _json["includeTeamDrives"];
+    if (_json.containsKey('includeTeamDrives')) {
+      includeTeamDrives = _json['includeTeamDrives'];
     }
-    if (_json.containsKey("versionDate")) {
-      versionDate = _json["versionDate"];
+    if (_json.containsKey('versionDate')) {
+      versionDate = _json['versionDate'];
     }
   }
 
@@ -2224,13 +2223,13 @@ class DriveOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (includeSharedDrives != null) {
-      _json["includeSharedDrives"] = includeSharedDrives;
+      _json['includeSharedDrives'] = includeSharedDrives;
     }
     if (includeTeamDrives != null) {
-      _json["includeTeamDrives"] = includeTeamDrives;
+      _json['includeTeamDrives'] = includeTeamDrives;
     }
     if (versionDate != null) {
-      _json["versionDate"] = versionDate;
+      _json['versionDate'] = versionDate;
     }
     return _json;
   }
@@ -2293,35 +2292,35 @@ class Export {
   Export();
 
   Export.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudStorageSink")) {
-      cloudStorageSink = CloudStorageSink.fromJson(_json["cloudStorageSink"]);
+    if (_json.containsKey('cloudStorageSink')) {
+      cloudStorageSink = CloudStorageSink.fromJson(_json['cloudStorageSink']);
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("exportOptions")) {
-      exportOptions = ExportOptions.fromJson(_json["exportOptions"]);
+    if (_json.containsKey('exportOptions')) {
+      exportOptions = ExportOptions.fromJson(_json['exportOptions']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("matterId")) {
-      matterId = _json["matterId"];
+    if (_json.containsKey('matterId')) {
+      matterId = _json['matterId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("query")) {
-      query = Query.fromJson(_json["query"]);
+    if (_json.containsKey('query')) {
+      query = Query.fromJson(_json['query']);
     }
-    if (_json.containsKey("requester")) {
-      requester = UserInfo.fromJson(_json["requester"]);
+    if (_json.containsKey('requester')) {
+      requester = UserInfo.fromJson(_json['requester']);
     }
-    if (_json.containsKey("stats")) {
-      stats = ExportStats.fromJson(_json["stats"]);
+    if (_json.containsKey('stats')) {
+      stats = ExportStats.fromJson(_json['stats']);
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
   }
 
@@ -2329,34 +2328,34 @@ class Export {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cloudStorageSink != null) {
-      _json["cloudStorageSink"] = cloudStorageSink.toJson();
+      _json['cloudStorageSink'] = cloudStorageSink.toJson();
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (exportOptions != null) {
-      _json["exportOptions"] = exportOptions.toJson();
+      _json['exportOptions'] = exportOptions.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (matterId != null) {
-      _json["matterId"] = matterId;
+      _json['matterId'] = matterId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (query != null) {
-      _json["query"] = query.toJson();
+      _json['query'] = query.toJson();
     }
     if (requester != null) {
-      _json["requester"] = requester.toJson();
+      _json['requester'] = requester.toJson();
     }
     if (stats != null) {
-      _json["stats"] = stats.toJson();
+      _json['stats'] = stats.toJson();
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     return _json;
   }
@@ -2388,21 +2387,21 @@ class ExportOptions {
   ExportOptions();
 
   ExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("driveOptions")) {
-      driveOptions = DriveExportOptions.fromJson(_json["driveOptions"]);
+    if (_json.containsKey('driveOptions')) {
+      driveOptions = DriveExportOptions.fromJson(_json['driveOptions']);
     }
-    if (_json.containsKey("groupsOptions")) {
-      groupsOptions = GroupsExportOptions.fromJson(_json["groupsOptions"]);
+    if (_json.containsKey('groupsOptions')) {
+      groupsOptions = GroupsExportOptions.fromJson(_json['groupsOptions']);
     }
-    if (_json.containsKey("hangoutsChatOptions")) {
+    if (_json.containsKey('hangoutsChatOptions')) {
       hangoutsChatOptions =
-          HangoutsChatExportOptions.fromJson(_json["hangoutsChatOptions"]);
+          HangoutsChatExportOptions.fromJson(_json['hangoutsChatOptions']);
     }
-    if (_json.containsKey("mailOptions")) {
-      mailOptions = MailExportOptions.fromJson(_json["mailOptions"]);
+    if (_json.containsKey('mailOptions')) {
+      mailOptions = MailExportOptions.fromJson(_json['mailOptions']);
     }
-    if (_json.containsKey("region")) {
-      region = _json["region"];
+    if (_json.containsKey('region')) {
+      region = _json['region'];
     }
   }
 
@@ -2410,19 +2409,19 @@ class ExportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (driveOptions != null) {
-      _json["driveOptions"] = driveOptions.toJson();
+      _json['driveOptions'] = driveOptions.toJson();
     }
     if (groupsOptions != null) {
-      _json["groupsOptions"] = groupsOptions.toJson();
+      _json['groupsOptions'] = groupsOptions.toJson();
     }
     if (hangoutsChatOptions != null) {
-      _json["hangoutsChatOptions"] = hangoutsChatOptions.toJson();
+      _json['hangoutsChatOptions'] = hangoutsChatOptions.toJson();
     }
     if (mailOptions != null) {
-      _json["mailOptions"] = mailOptions.toJson();
+      _json['mailOptions'] = mailOptions.toJson();
     }
     if (region != null) {
-      _json["region"] = region;
+      _json['region'] = region;
     }
     return _json;
   }
@@ -2442,14 +2441,14 @@ class ExportStats {
   ExportStats();
 
   ExportStats.fromJson(core.Map _json) {
-    if (_json.containsKey("exportedArtifactCount")) {
-      exportedArtifactCount = _json["exportedArtifactCount"];
+    if (_json.containsKey('exportedArtifactCount')) {
+      exportedArtifactCount = _json['exportedArtifactCount'];
     }
-    if (_json.containsKey("sizeInBytes")) {
-      sizeInBytes = _json["sizeInBytes"];
+    if (_json.containsKey('sizeInBytes')) {
+      sizeInBytes = _json['sizeInBytes'];
     }
-    if (_json.containsKey("totalArtifactCount")) {
-      totalArtifactCount = _json["totalArtifactCount"];
+    if (_json.containsKey('totalArtifactCount')) {
+      totalArtifactCount = _json['totalArtifactCount'];
     }
   }
 
@@ -2457,13 +2456,13 @@ class ExportStats {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exportedArtifactCount != null) {
-      _json["exportedArtifactCount"] = exportedArtifactCount;
+      _json['exportedArtifactCount'] = exportedArtifactCount;
     }
     if (sizeInBytes != null) {
-      _json["sizeInBytes"] = sizeInBytes;
+      _json['sizeInBytes'] = sizeInBytes;
     }
     if (totalArtifactCount != null) {
-      _json["totalArtifactCount"] = totalArtifactCount;
+      _json['totalArtifactCount'] = totalArtifactCount;
     }
     return _json;
   }
@@ -2481,8 +2480,8 @@ class GroupsExportOptions {
   GroupsExportOptions();
 
   GroupsExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("exportFormat")) {
-      exportFormat = _json["exportFormat"];
+    if (_json.containsKey('exportFormat')) {
+      exportFormat = _json['exportFormat'];
     }
   }
 
@@ -2490,7 +2489,7 @@ class GroupsExportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exportFormat != null) {
-      _json["exportFormat"] = exportFormat;
+      _json['exportFormat'] = exportFormat;
     }
     return _json;
   }
@@ -2508,8 +2507,8 @@ class HangoutsChatExportOptions {
   HangoutsChatExportOptions();
 
   HangoutsChatExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("exportFormat")) {
-      exportFormat = _json["exportFormat"];
+    if (_json.containsKey('exportFormat')) {
+      exportFormat = _json['exportFormat'];
     }
   }
 
@@ -2517,7 +2516,7 @@ class HangoutsChatExportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exportFormat != null) {
-      _json["exportFormat"] = exportFormat;
+      _json['exportFormat'] = exportFormat;
     }
     return _json;
   }
@@ -2531,8 +2530,8 @@ class HangoutsChatInfo {
   HangoutsChatInfo();
 
   HangoutsChatInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("roomId")) {
-      roomId = (_json["roomId"] as core.List).cast<core.String>();
+    if (_json.containsKey('roomId')) {
+      roomId = (_json['roomId'] as core.List).cast<core.String>();
     }
   }
 
@@ -2540,7 +2539,7 @@ class HangoutsChatInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (roomId != null) {
-      _json["roomId"] = roomId;
+      _json['roomId'] = roomId;
     }
     return _json;
   }
@@ -2554,8 +2553,8 @@ class HangoutsChatOptions {
   HangoutsChatOptions();
 
   HangoutsChatOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("includeRooms")) {
-      includeRooms = _json["includeRooms"];
+    if (_json.containsKey('includeRooms')) {
+      includeRooms = _json['includeRooms'];
     }
   }
 
@@ -2563,7 +2562,7 @@ class HangoutsChatOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (includeRooms != null) {
-      _json["includeRooms"] = includeRooms;
+      _json['includeRooms'] = includeRooms;
     }
     return _json;
   }
@@ -2591,20 +2590,20 @@ class HeldAccount {
   HeldAccount();
 
   HeldAccount.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("firstName")) {
-      firstName = _json["firstName"];
+    if (_json.containsKey('firstName')) {
+      firstName = _json['firstName'];
     }
-    if (_json.containsKey("holdTime")) {
-      holdTime = _json["holdTime"];
+    if (_json.containsKey('holdTime')) {
+      holdTime = _json['holdTime'];
     }
-    if (_json.containsKey("lastName")) {
-      lastName = _json["lastName"];
+    if (_json.containsKey('lastName')) {
+      lastName = _json['lastName'];
     }
   }
 
@@ -2612,19 +2611,19 @@ class HeldAccount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (firstName != null) {
-      _json["firstName"] = firstName;
+      _json['firstName'] = firstName;
     }
     if (holdTime != null) {
-      _json["holdTime"] = holdTime;
+      _json['holdTime'] = holdTime;
     }
     if (lastName != null) {
-      _json["lastName"] = lastName;
+      _json['lastName'] = lastName;
     }
     return _json;
   }
@@ -2641,11 +2640,11 @@ class HeldDriveQuery {
   HeldDriveQuery();
 
   HeldDriveQuery.fromJson(core.Map _json) {
-    if (_json.containsKey("includeSharedDriveFiles")) {
-      includeSharedDriveFiles = _json["includeSharedDriveFiles"];
+    if (_json.containsKey('includeSharedDriveFiles')) {
+      includeSharedDriveFiles = _json['includeSharedDriveFiles'];
     }
-    if (_json.containsKey("includeTeamDriveFiles")) {
-      includeTeamDriveFiles = _json["includeTeamDriveFiles"];
+    if (_json.containsKey('includeTeamDriveFiles')) {
+      includeTeamDriveFiles = _json['includeTeamDriveFiles'];
     }
   }
 
@@ -2653,10 +2652,10 @@ class HeldDriveQuery {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (includeSharedDriveFiles != null) {
-      _json["includeSharedDriveFiles"] = includeSharedDriveFiles;
+      _json['includeSharedDriveFiles'] = includeSharedDriveFiles;
     }
     if (includeTeamDriveFiles != null) {
-      _json["includeTeamDriveFiles"] = includeTeamDriveFiles;
+      _json['includeTeamDriveFiles'] = includeTeamDriveFiles;
     }
     return _json;
   }
@@ -2678,14 +2677,14 @@ class HeldGroupsQuery {
   HeldGroupsQuery();
 
   HeldGroupsQuery.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("terms")) {
-      terms = _json["terms"];
+    if (_json.containsKey('terms')) {
+      terms = _json['terms'];
     }
   }
 
@@ -2693,13 +2692,13 @@ class HeldGroupsQuery {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (terms != null) {
-      _json["terms"] = terms;
+      _json['terms'] = terms;
     }
     return _json;
   }
@@ -2713,8 +2712,8 @@ class HeldHangoutsChatQuery {
   HeldHangoutsChatQuery();
 
   HeldHangoutsChatQuery.fromJson(core.Map _json) {
-    if (_json.containsKey("includeRooms")) {
-      includeRooms = _json["includeRooms"];
+    if (_json.containsKey('includeRooms')) {
+      includeRooms = _json['includeRooms'];
     }
   }
 
@@ -2722,7 +2721,7 @@ class HeldHangoutsChatQuery {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (includeRooms != null) {
-      _json["includeRooms"] = includeRooms;
+      _json['includeRooms'] = includeRooms;
     }
     return _json;
   }
@@ -2744,14 +2743,14 @@ class HeldMailQuery {
   HeldMailQuery();
 
   HeldMailQuery.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("terms")) {
-      terms = _json["terms"];
+    if (_json.containsKey('terms')) {
+      terms = _json['terms'];
     }
   }
 
@@ -2759,13 +2758,13 @@ class HeldMailQuery {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (terms != null) {
-      _json["terms"] = terms;
+      _json['terms'] = terms;
     }
     return _json;
   }
@@ -2783,11 +2782,11 @@ class HeldOrgUnit {
   HeldOrgUnit();
 
   HeldOrgUnit.fromJson(core.Map _json) {
-    if (_json.containsKey("holdTime")) {
-      holdTime = _json["holdTime"];
+    if (_json.containsKey('holdTime')) {
+      holdTime = _json['holdTime'];
     }
-    if (_json.containsKey("orgUnitId")) {
-      orgUnitId = _json["orgUnitId"];
+    if (_json.containsKey('orgUnitId')) {
+      orgUnitId = _json['orgUnitId'];
     }
   }
 
@@ -2795,10 +2794,10 @@ class HeldOrgUnit {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (holdTime != null) {
-      _json["holdTime"] = holdTime;
+      _json['holdTime'] = holdTime;
     }
     if (orgUnitId != null) {
-      _json["orgUnitId"] = orgUnitId;
+      _json['orgUnitId'] = orgUnitId;
     }
     return _json;
   }
@@ -2842,28 +2841,28 @@ class Hold {
   Hold();
 
   Hold.fromJson(core.Map _json) {
-    if (_json.containsKey("accounts")) {
-      accounts = (_json["accounts"] as core.List)
+    if (_json.containsKey('accounts')) {
+      accounts = (_json['accounts'] as core.List)
           .map<HeldAccount>((value) => HeldAccount.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("corpus")) {
-      corpus = _json["corpus"];
+    if (_json.containsKey('corpus')) {
+      corpus = _json['corpus'];
     }
-    if (_json.containsKey("holdId")) {
-      holdId = _json["holdId"];
+    if (_json.containsKey('holdId')) {
+      holdId = _json['holdId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("orgUnit")) {
-      orgUnit = HeldOrgUnit.fromJson(_json["orgUnit"]);
+    if (_json.containsKey('orgUnit')) {
+      orgUnit = HeldOrgUnit.fromJson(_json['orgUnit']);
     }
-    if (_json.containsKey("query")) {
-      query = CorpusQuery.fromJson(_json["query"]);
+    if (_json.containsKey('query')) {
+      query = CorpusQuery.fromJson(_json['query']);
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -2871,25 +2870,25 @@ class Hold {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accounts != null) {
-      _json["accounts"] = accounts.map((value) => value.toJson()).toList();
+      _json['accounts'] = accounts.map((value) => value.toJson()).toList();
     }
     if (corpus != null) {
-      _json["corpus"] = corpus;
+      _json['corpus'] = corpus;
     }
     if (holdId != null) {
-      _json["holdId"] = holdId;
+      _json['holdId'] = holdId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (orgUnit != null) {
-      _json["orgUnit"] = orgUnit.toJson();
+      _json['orgUnit'] = orgUnit.toJson();
     }
     if (query != null) {
-      _json["query"] = query.toJson();
+      _json['query'] = query.toJson();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -2906,13 +2905,13 @@ class ListExportsResponse {
   ListExportsResponse();
 
   ListExportsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("exports")) {
-      exports = (_json["exports"] as core.List)
+    if (_json.containsKey('exports')) {
+      exports = (_json['exports'] as core.List)
           .map<Export>((value) => Export.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2920,10 +2919,10 @@ class ListExportsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exports != null) {
-      _json["exports"] = exports.map((value) => value.toJson()).toList();
+      _json['exports'] = exports.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2937,8 +2936,8 @@ class ListHeldAccountsResponse {
   ListHeldAccountsResponse();
 
   ListHeldAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("accounts")) {
-      accounts = (_json["accounts"] as core.List)
+    if (_json.containsKey('accounts')) {
+      accounts = (_json['accounts'] as core.List)
           .map<HeldAccount>((value) => HeldAccount.fromJson(value))
           .toList();
     }
@@ -2948,7 +2947,7 @@ class ListHeldAccountsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accounts != null) {
-      _json["accounts"] = accounts.map((value) => value.toJson()).toList();
+      _json['accounts'] = accounts.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2966,13 +2965,13 @@ class ListHoldsResponse {
   ListHoldsResponse();
 
   ListHoldsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("holds")) {
-      holds = (_json["holds"] as core.List)
+    if (_json.containsKey('holds')) {
+      holds = (_json['holds'] as core.List)
           .map<Hold>((value) => Hold.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2980,10 +2979,10 @@ class ListHoldsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (holds != null) {
-      _json["holds"] = holds.map((value) => value.toJson()).toList();
+      _json['holds'] = holds.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -3000,13 +2999,13 @@ class ListMattersResponse {
   ListMattersResponse();
 
   ListMattersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("matters")) {
-      matters = (_json["matters"] as core.List)
+    if (_json.containsKey('matters')) {
+      matters = (_json['matters'] as core.List)
           .map<Matter>((value) => Matter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -3014,10 +3013,10 @@ class ListMattersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (matters != null) {
-      _json["matters"] = matters.map((value) => value.toJson()).toList();
+      _json['matters'] = matters.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -3035,11 +3034,11 @@ class ListSavedQueriesResponse {
   ListSavedQueriesResponse();
 
   ListSavedQueriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("savedQueries")) {
-      savedQueries = (_json["savedQueries"] as core.List)
+    if (_json.containsKey('savedQueries')) {
+      savedQueries = (_json['savedQueries'] as core.List)
           .map<SavedQuery>((value) => SavedQuery.fromJson(value))
           .toList();
     }
@@ -3049,10 +3048,10 @@ class ListSavedQueriesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (savedQueries != null) {
-      _json["savedQueries"] =
+      _json['savedQueries'] =
           savedQueries.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -3074,11 +3073,11 @@ class MailExportOptions {
   MailExportOptions();
 
   MailExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("exportFormat")) {
-      exportFormat = _json["exportFormat"];
+    if (_json.containsKey('exportFormat')) {
+      exportFormat = _json['exportFormat'];
     }
-    if (_json.containsKey("showConfidentialModeContent")) {
-      showConfidentialModeContent = _json["showConfidentialModeContent"];
+    if (_json.containsKey('showConfidentialModeContent')) {
+      showConfidentialModeContent = _json['showConfidentialModeContent'];
     }
   }
 
@@ -3086,10 +3085,10 @@ class MailExportOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exportFormat != null) {
-      _json["exportFormat"] = exportFormat;
+      _json['exportFormat'] = exportFormat;
     }
     if (showConfidentialModeContent != null) {
-      _json["showConfidentialModeContent"] = showConfidentialModeContent;
+      _json['showConfidentialModeContent'] = showConfidentialModeContent;
     }
     return _json;
   }
@@ -3103,8 +3102,8 @@ class MailOptions {
   MailOptions();
 
   MailOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("excludeDrafts")) {
-      excludeDrafts = _json["excludeDrafts"];
+    if (_json.containsKey('excludeDrafts')) {
+      excludeDrafts = _json['excludeDrafts'];
     }
   }
 
@@ -3112,7 +3111,7 @@ class MailOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludeDrafts != null) {
-      _json["excludeDrafts"] = excludeDrafts;
+      _json['excludeDrafts'] = excludeDrafts;
     }
     return _json;
   }
@@ -3145,22 +3144,22 @@ class Matter {
   Matter();
 
   Matter.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("matterId")) {
-      matterId = _json["matterId"];
+    if (_json.containsKey('matterId')) {
+      matterId = _json['matterId'];
     }
-    if (_json.containsKey("matterPermissions")) {
-      matterPermissions = (_json["matterPermissions"] as core.List)
+    if (_json.containsKey('matterPermissions')) {
+      matterPermissions = (_json['matterPermissions'] as core.List)
           .map<MatterPermission>((value) => MatterPermission.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -3168,20 +3167,20 @@ class Matter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (matterId != null) {
-      _json["matterId"] = matterId;
+      _json['matterId'] = matterId;
     }
     if (matterPermissions != null) {
-      _json["matterPermissions"] =
+      _json['matterPermissions'] =
           matterPermissions.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -3204,11 +3203,11 @@ class MatterPermission {
   MatterPermission();
 
   MatterPermission.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -3216,10 +3215,10 @@ class MatterPermission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -3233,8 +3232,8 @@ class OrgUnitInfo {
   OrgUnitInfo();
 
   OrgUnitInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("orgUnitId")) {
-      orgUnitId = _json["orgUnitId"];
+    if (_json.containsKey('orgUnitId')) {
+      orgUnitId = _json['orgUnitId'];
     }
   }
 
@@ -3242,7 +3241,7 @@ class OrgUnitInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (orgUnitId != null) {
-      _json["orgUnitId"] = orgUnitId;
+      _json['orgUnitId'] = orgUnitId;
     }
     return _json;
   }
@@ -3351,54 +3350,54 @@ class Query {
   Query();
 
   Query.fromJson(core.Map _json) {
-    if (_json.containsKey("accountInfo")) {
-      accountInfo = AccountInfo.fromJson(_json["accountInfo"]);
+    if (_json.containsKey('accountInfo')) {
+      accountInfo = AccountInfo.fromJson(_json['accountInfo']);
     }
-    if (_json.containsKey("corpus")) {
-      corpus = _json["corpus"];
+    if (_json.containsKey('corpus')) {
+      corpus = _json['corpus'];
     }
-    if (_json.containsKey("dataScope")) {
-      dataScope = _json["dataScope"];
+    if (_json.containsKey('dataScope')) {
+      dataScope = _json['dataScope'];
     }
-    if (_json.containsKey("driveOptions")) {
-      driveOptions = DriveOptions.fromJson(_json["driveOptions"]);
+    if (_json.containsKey('driveOptions')) {
+      driveOptions = DriveOptions.fromJson(_json['driveOptions']);
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("hangoutsChatInfo")) {
-      hangoutsChatInfo = HangoutsChatInfo.fromJson(_json["hangoutsChatInfo"]);
+    if (_json.containsKey('hangoutsChatInfo')) {
+      hangoutsChatInfo = HangoutsChatInfo.fromJson(_json['hangoutsChatInfo']);
     }
-    if (_json.containsKey("hangoutsChatOptions")) {
+    if (_json.containsKey('hangoutsChatOptions')) {
       hangoutsChatOptions =
-          HangoutsChatOptions.fromJson(_json["hangoutsChatOptions"]);
+          HangoutsChatOptions.fromJson(_json['hangoutsChatOptions']);
     }
-    if (_json.containsKey("mailOptions")) {
-      mailOptions = MailOptions.fromJson(_json["mailOptions"]);
+    if (_json.containsKey('mailOptions')) {
+      mailOptions = MailOptions.fromJson(_json['mailOptions']);
     }
-    if (_json.containsKey("method")) {
-      method = _json["method"];
+    if (_json.containsKey('method')) {
+      method = _json['method'];
     }
-    if (_json.containsKey("orgUnitInfo")) {
-      orgUnitInfo = OrgUnitInfo.fromJson(_json["orgUnitInfo"]);
+    if (_json.containsKey('orgUnitInfo')) {
+      orgUnitInfo = OrgUnitInfo.fromJson(_json['orgUnitInfo']);
     }
-    if (_json.containsKey("searchMethod")) {
-      searchMethod = _json["searchMethod"];
+    if (_json.containsKey('searchMethod')) {
+      searchMethod = _json['searchMethod'];
     }
-    if (_json.containsKey("sharedDriveInfo")) {
-      sharedDriveInfo = SharedDriveInfo.fromJson(_json["sharedDriveInfo"]);
+    if (_json.containsKey('sharedDriveInfo')) {
+      sharedDriveInfo = SharedDriveInfo.fromJson(_json['sharedDriveInfo']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("teamDriveInfo")) {
-      teamDriveInfo = TeamDriveInfo.fromJson(_json["teamDriveInfo"]);
+    if (_json.containsKey('teamDriveInfo')) {
+      teamDriveInfo = TeamDriveInfo.fromJson(_json['teamDriveInfo']);
     }
-    if (_json.containsKey("terms")) {
-      terms = _json["terms"];
+    if (_json.containsKey('terms')) {
+      terms = _json['terms'];
     }
-    if (_json.containsKey("timeZone")) {
-      timeZone = _json["timeZone"];
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'];
     }
   }
 
@@ -3406,52 +3405,52 @@ class Query {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountInfo != null) {
-      _json["accountInfo"] = accountInfo.toJson();
+      _json['accountInfo'] = accountInfo.toJson();
     }
     if (corpus != null) {
-      _json["corpus"] = corpus;
+      _json['corpus'] = corpus;
     }
     if (dataScope != null) {
-      _json["dataScope"] = dataScope;
+      _json['dataScope'] = dataScope;
     }
     if (driveOptions != null) {
-      _json["driveOptions"] = driveOptions.toJson();
+      _json['driveOptions'] = driveOptions.toJson();
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (hangoutsChatInfo != null) {
-      _json["hangoutsChatInfo"] = hangoutsChatInfo.toJson();
+      _json['hangoutsChatInfo'] = hangoutsChatInfo.toJson();
     }
     if (hangoutsChatOptions != null) {
-      _json["hangoutsChatOptions"] = hangoutsChatOptions.toJson();
+      _json['hangoutsChatOptions'] = hangoutsChatOptions.toJson();
     }
     if (mailOptions != null) {
-      _json["mailOptions"] = mailOptions.toJson();
+      _json['mailOptions'] = mailOptions.toJson();
     }
     if (method != null) {
-      _json["method"] = method;
+      _json['method'] = method;
     }
     if (orgUnitInfo != null) {
-      _json["orgUnitInfo"] = orgUnitInfo.toJson();
+      _json['orgUnitInfo'] = orgUnitInfo.toJson();
     }
     if (searchMethod != null) {
-      _json["searchMethod"] = searchMethod;
+      _json['searchMethod'] = searchMethod;
     }
     if (sharedDriveInfo != null) {
-      _json["sharedDriveInfo"] = sharedDriveInfo.toJson();
+      _json['sharedDriveInfo'] = sharedDriveInfo.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (teamDriveInfo != null) {
-      _json["teamDriveInfo"] = teamDriveInfo.toJson();
+      _json['teamDriveInfo'] = teamDriveInfo.toJson();
     }
     if (terms != null) {
-      _json["terms"] = terms;
+      _json['terms'] = terms;
     }
     if (timeZone != null) {
-      _json["timeZone"] = timeZone;
+      _json['timeZone'] = timeZone;
     }
     return _json;
   }
@@ -3465,8 +3464,8 @@ class RemoveHeldAccountsRequest {
   RemoveHeldAccountsRequest();
 
   RemoveHeldAccountsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("accountIds")) {
-      accountIds = (_json["accountIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('accountIds')) {
+      accountIds = (_json['accountIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -3474,7 +3473,7 @@ class RemoveHeldAccountsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountIds != null) {
-      _json["accountIds"] = accountIds;
+      _json['accountIds'] = accountIds;
     }
     return _json;
   }
@@ -3489,8 +3488,8 @@ class RemoveHeldAccountsResponse {
   RemoveHeldAccountsResponse();
 
   RemoveHeldAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("statuses")) {
-      statuses = (_json["statuses"] as core.List)
+    if (_json.containsKey('statuses')) {
+      statuses = (_json['statuses'] as core.List)
           .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
@@ -3500,7 +3499,7 @@ class RemoveHeldAccountsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (statuses != null) {
-      _json["statuses"] = statuses.map((value) => value.toJson()).toList();
+      _json['statuses'] = statuses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3514,8 +3513,8 @@ class RemoveMatterPermissionsRequest {
   RemoveMatterPermissionsRequest();
 
   RemoveMatterPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
   }
 
@@ -3523,7 +3522,7 @@ class RemoveMatterPermissionsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     return _json;
   }
@@ -3550,8 +3549,8 @@ class ReopenMatterResponse {
   ReopenMatterResponse();
 
   ReopenMatterResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("matter")) {
-      matter = Matter.fromJson(_json["matter"]);
+    if (_json.containsKey('matter')) {
+      matter = Matter.fromJson(_json['matter']);
     }
   }
 
@@ -3559,7 +3558,7 @@ class ReopenMatterResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (matter != null) {
-      _json["matter"] = matter.toJson();
+      _json['matter'] = matter.toJson();
     }
     return _json;
   }
@@ -3588,20 +3587,20 @@ class SavedQuery {
   SavedQuery();
 
   SavedQuery.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("matterId")) {
-      matterId = _json["matterId"];
+    if (_json.containsKey('matterId')) {
+      matterId = _json['matterId'];
     }
-    if (_json.containsKey("query")) {
-      query = Query.fromJson(_json["query"]);
+    if (_json.containsKey('query')) {
+      query = Query.fromJson(_json['query']);
     }
-    if (_json.containsKey("savedQueryId")) {
-      savedQueryId = _json["savedQueryId"];
+    if (_json.containsKey('savedQueryId')) {
+      savedQueryId = _json['savedQueryId'];
     }
   }
 
@@ -3609,19 +3608,19 @@ class SavedQuery {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (matterId != null) {
-      _json["matterId"] = matterId;
+      _json['matterId'] = matterId;
     }
     if (query != null) {
-      _json["query"] = query.toJson();
+      _json['query'] = query.toJson();
     }
     if (savedQueryId != null) {
-      _json["savedQueryId"] = savedQueryId;
+      _json['savedQueryId'] = savedQueryId;
     }
     return _json;
   }
@@ -3635,9 +3634,9 @@ class SharedDriveInfo {
   SharedDriveInfo();
 
   SharedDriveInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("sharedDriveIds")) {
+    if (_json.containsKey('sharedDriveIds')) {
       sharedDriveIds =
-          (_json["sharedDriveIds"] as core.List).cast<core.String>();
+          (_json['sharedDriveIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -3645,7 +3644,7 @@ class SharedDriveInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sharedDriveIds != null) {
-      _json["sharedDriveIds"] = sharedDriveIds;
+      _json['sharedDriveIds'] = sharedDriveIds;
     }
     return _json;
   }
@@ -3676,17 +3675,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -3694,13 +3693,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -3714,8 +3713,8 @@ class TeamDriveInfo {
   TeamDriveInfo();
 
   TeamDriveInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("teamDriveIds")) {
-      teamDriveIds = (_json["teamDriveIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('teamDriveIds')) {
+      teamDriveIds = (_json['teamDriveIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -3723,7 +3722,7 @@ class TeamDriveInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (teamDriveIds != null) {
-      _json["teamDriveIds"] = teamDriveIds;
+      _json['teamDriveIds'] = teamDriveIds;
     }
     return _json;
   }
@@ -3753,11 +3752,11 @@ class UserInfo {
   UserInfo();
 
   UserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
   }
 
@@ -3765,10 +3764,10 @@ class UserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     return _json;
   }

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -85,8 +85,8 @@ void checkUnnamed4338(core.List<api.EnrolledService> o) {
 
 core.List<core.String> buildUnnamed4339() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -103,7 +103,7 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
   if (buildCounterAccessApprovalSettings < 3) {
     o.enrolledAncestor = true;
     o.enrolledServices = buildUnnamed4338();
-    o.name = "foo";
+    o.name = 'foo';
     o.notificationEmails = buildUnnamed4339();
   }
   buildCounterAccessApprovalSettings--;
@@ -126,8 +126,8 @@ api.AccessLocations buildAccessLocations() {
   var o = api.AccessLocations();
   buildCounterAccessLocations++;
   if (buildCounterAccessLocations < 3) {
-    o.principalOfficeCountry = "foo";
-    o.principalPhysicalLocationCountry = "foo";
+    o.principalOfficeCountry = 'foo';
+    o.principalPhysicalLocationCountry = 'foo';
   }
   buildCounterAccessLocations--;
   return o;
@@ -147,8 +147,8 @@ api.AccessReason buildAccessReason() {
   var o = api.AccessReason();
   buildCounterAccessReason++;
   if (buildCounterAccessReason < 3) {
-    o.detail = "foo";
-    o.type = "foo";
+    o.detail = 'foo';
+    o.type = 'foo';
   }
   buildCounterAccessReason--;
   return o;
@@ -170,12 +170,12 @@ api.ApprovalRequest buildApprovalRequest() {
   if (buildCounterApprovalRequest < 3) {
     o.approve = buildApproveDecision();
     o.dismiss = buildDismissDecision();
-    o.name = "foo";
-    o.requestTime = "foo";
-    o.requestedExpiration = "foo";
+    o.name = 'foo';
+    o.requestTime = 'foo';
+    o.requestedExpiration = 'foo';
     o.requestedLocations = buildAccessLocations();
     o.requestedReason = buildAccessReason();
-    o.requestedResourceName = "foo";
+    o.requestedResourceName = 'foo';
     o.requestedResourceProperties = buildResourceProperties();
   }
   buildCounterApprovalRequest--;
@@ -203,7 +203,7 @@ api.ApproveApprovalRequestMessage buildApproveApprovalRequestMessage() {
   var o = api.ApproveApprovalRequestMessage();
   buildCounterApproveApprovalRequestMessage++;
   if (buildCounterApproveApprovalRequestMessage < 3) {
-    o.expireTime = "foo";
+    o.expireTime = 'foo';
   }
   buildCounterApproveApprovalRequestMessage--;
   return o;
@@ -222,8 +222,8 @@ api.ApproveDecision buildApproveDecision() {
   var o = api.ApproveDecision();
   buildCounterApproveDecision++;
   if (buildCounterApproveDecision < 3) {
-    o.approveTime = "foo";
-    o.expireTime = "foo";
+    o.approveTime = 'foo';
+    o.expireTime = 'foo';
   }
   buildCounterApproveDecision--;
   return o;
@@ -258,7 +258,7 @@ api.DismissDecision buildDismissDecision() {
   var o = api.DismissDecision();
   buildCounterDismissDecision++;
   if (buildCounterDismissDecision < 3) {
-    o.dismissTime = "foo";
+    o.dismissTime = 'foo';
     o.implicit = true;
   }
   buildCounterDismissDecision--;
@@ -294,8 +294,8 @@ api.EnrolledService buildEnrolledService() {
   var o = api.EnrolledService();
   buildCounterEnrolledService++;
   if (buildCounterEnrolledService < 3) {
-    o.cloudProduct = "foo";
-    o.enrollmentLevel = "foo";
+    o.cloudProduct = 'foo';
+    o.enrollmentLevel = 'foo';
   }
   buildCounterEnrolledService--;
   return o;
@@ -329,7 +329,7 @@ api.ListApprovalRequestsResponse buildListApprovalRequestsResponse() {
   buildCounterListApprovalRequestsResponse++;
   if (buildCounterListApprovalRequestsResponse < 3) {
     o.approvalRequests = buildUnnamed4340();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListApprovalRequestsResponse--;
   return o;
@@ -364,108 +364,108 @@ void checkResourceProperties(api.ResourceProperties o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AccessApprovalSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AccessApprovalSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccessApprovalSettings();
       var od = api.AccessApprovalSettings.fromJson(o.toJson());
       checkAccessApprovalSettings(od);
     });
   });
 
-  unittest.group("obj-schema-AccessLocations", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AccessLocations', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccessLocations();
       var od = api.AccessLocations.fromJson(o.toJson());
       checkAccessLocations(od);
     });
   });
 
-  unittest.group("obj-schema-AccessReason", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AccessReason', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccessReason();
       var od = api.AccessReason.fromJson(o.toJson());
       checkAccessReason(od);
     });
   });
 
-  unittest.group("obj-schema-ApprovalRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApprovalRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApprovalRequest();
       var od = api.ApprovalRequest.fromJson(o.toJson());
       checkApprovalRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ApproveApprovalRequestMessage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApproveApprovalRequestMessage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApproveApprovalRequestMessage();
       var od = api.ApproveApprovalRequestMessage.fromJson(o.toJson());
       checkApproveApprovalRequestMessage(od);
     });
   });
 
-  unittest.group("obj-schema-ApproveDecision", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApproveDecision', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApproveDecision();
       var od = api.ApproveDecision.fromJson(o.toJson());
       checkApproveDecision(od);
     });
   });
 
-  unittest.group("obj-schema-DismissApprovalRequestMessage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DismissApprovalRequestMessage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDismissApprovalRequestMessage();
       var od = api.DismissApprovalRequestMessage.fromJson(o.toJson());
       checkDismissApprovalRequestMessage(od);
     });
   });
 
-  unittest.group("obj-schema-DismissDecision", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DismissDecision', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDismissDecision();
       var od = api.DismissDecision.fromJson(o.toJson());
       checkDismissDecision(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-EnrolledService", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EnrolledService', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEnrolledService();
       var od = api.EnrolledService.fromJson(o.toJson());
       checkEnrolledService(od);
     });
   });
 
-  unittest.group("obj-schema-ListApprovalRequestsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListApprovalRequestsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListApprovalRequestsResponse();
       var od = api.ListApprovalRequestsResponse.fromJson(o.toJson());
       checkListApprovalRequestsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ResourceProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResourceProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResourceProperties();
       var od = api.ResourceProperties.fromJson(o.toJson());
       checkResourceProperties(od);
     });
   });
 
-  unittest.group("resource-FoldersResourceApi", () {
-    unittest.test("method--deleteAccessApprovalSettings", () {
+  unittest.group('resource-FoldersResourceApi', () {
+    unittest.test('method--deleteAccessApprovalSettings', () {
       var mock = HttpServerMock();
       api.FoldersResourceApi res = api.AccessapprovalApi(mock).folders;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -485,8 +485,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -496,7 +496,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -508,11 +508,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--getAccessApprovalSettings", () {
+    unittest.test('method--getAccessApprovalSettings', () {
       var mock = HttpServerMock();
       api.FoldersResourceApi res = api.AccessapprovalApi(mock).folders;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -532,8 +532,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -543,7 +543,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
@@ -555,13 +555,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateAccessApprovalSettings", () {
+    unittest.test('method--updateAccessApprovalSettings', () {
       var mock = HttpServerMock();
       api.FoldersResourceApi res = api.AccessapprovalApi(mock).folders;
       var arg_request = buildAccessApprovalSettings();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AccessApprovalSettings.fromJson(json);
         checkAccessApprovalSettings(obj);
@@ -584,8 +584,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -597,7 +597,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
@@ -611,14 +611,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-FoldersApprovalRequestsResourceApi", () {
-    unittest.test("method--approve", () {
+  unittest.group('resource-FoldersApprovalRequestsResourceApi', () {
+    unittest.test('method--approve', () {
       var mock = HttpServerMock();
       api.FoldersApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).folders.approvalRequests;
       var arg_request = buildApproveApprovalRequestMessage();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ApproveApprovalRequestMessage.fromJson(json);
         checkApproveApprovalRequestMessage(obj);
@@ -641,8 +641,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -652,7 +652,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
@@ -664,13 +664,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--dismiss", () {
+    unittest.test('method--dismiss', () {
       var mock = HttpServerMock();
       api.FoldersApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).folders.approvalRequests;
       var arg_request = buildDismissApprovalRequestMessage();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DismissApprovalRequestMessage.fromJson(json);
         checkDismissApprovalRequestMessage(obj);
@@ -693,8 +693,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -704,7 +704,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
@@ -716,12 +716,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.FoldersApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).folders.approvalRequests;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -741,8 +741,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -752,7 +752,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
@@ -764,15 +764,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.FoldersApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).folders.approvalRequests;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -792,8 +792,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -808,7 +808,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListApprovalRequestsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -825,13 +825,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsResourceApi", () {
-    unittest.test("method--deleteAccessApprovalSettings", () {
+  unittest.group('resource-OrganizationsResourceApi', () {
+    unittest.test('method--deleteAccessApprovalSettings', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res =
           api.AccessapprovalApi(mock).organizations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -851,8 +851,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -862,7 +862,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -874,12 +874,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getAccessApprovalSettings", () {
+    unittest.test('method--getAccessApprovalSettings', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res =
           api.AccessapprovalApi(mock).organizations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -899,8 +899,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -910,7 +910,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
@@ -922,14 +922,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateAccessApprovalSettings", () {
+    unittest.test('method--updateAccessApprovalSettings', () {
       var mock = HttpServerMock();
       api.OrganizationsResourceApi res =
           api.AccessapprovalApi(mock).organizations;
       var arg_request = buildAccessApprovalSettings();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AccessApprovalSettings.fromJson(json);
         checkAccessApprovalSettings(obj);
@@ -952,8 +952,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -965,7 +965,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
@@ -979,14 +979,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsApprovalRequestsResourceApi", () {
-    unittest.test("method--approve", () {
+  unittest.group('resource-OrganizationsApprovalRequestsResourceApi', () {
+    unittest.test('method--approve', () {
       var mock = HttpServerMock();
       api.OrganizationsApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).organizations.approvalRequests;
       var arg_request = buildApproveApprovalRequestMessage();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ApproveApprovalRequestMessage.fromJson(json);
         checkApproveApprovalRequestMessage(obj);
@@ -1009,8 +1009,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1020,7 +1020,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1032,13 +1032,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--dismiss", () {
+    unittest.test('method--dismiss', () {
       var mock = HttpServerMock();
       api.OrganizationsApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).organizations.approvalRequests;
       var arg_request = buildDismissApprovalRequestMessage();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DismissApprovalRequestMessage.fromJson(json);
         checkDismissApprovalRequestMessage(obj);
@@ -1061,8 +1061,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1072,7 +1072,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1084,12 +1084,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).organizations.approvalRequests;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1109,8 +1109,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1120,7 +1120,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1132,15 +1132,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).organizations.approvalRequests;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1160,8 +1160,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1176,7 +1176,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListApprovalRequestsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1193,12 +1193,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsResourceApi", () {
-    unittest.test("method--deleteAccessApprovalSettings", () {
+  unittest.group('resource-ProjectsResourceApi', () {
+    unittest.test('method--deleteAccessApprovalSettings', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.AccessapprovalApi(mock).projects;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1218,8 +1218,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1229,7 +1229,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1241,11 +1241,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--getAccessApprovalSettings", () {
+    unittest.test('method--getAccessApprovalSettings', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.AccessapprovalApi(mock).projects;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1265,8 +1265,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1276,7 +1276,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1288,13 +1288,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateAccessApprovalSettings", () {
+    unittest.test('method--updateAccessApprovalSettings', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.AccessapprovalApi(mock).projects;
       var arg_request = buildAccessApprovalSettings();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AccessApprovalSettings.fromJson(json);
         checkAccessApprovalSettings(obj);
@@ -1317,8 +1317,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1330,7 +1330,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1344,14 +1344,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsApprovalRequestsResourceApi", () {
-    unittest.test("method--approve", () {
+  unittest.group('resource-ProjectsApprovalRequestsResourceApi', () {
+    unittest.test('method--approve', () {
       var mock = HttpServerMock();
       api.ProjectsApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).projects.approvalRequests;
       var arg_request = buildApproveApprovalRequestMessage();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ApproveApprovalRequestMessage.fromJson(json);
         checkApproveApprovalRequestMessage(obj);
@@ -1374,8 +1374,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1385,7 +1385,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1397,13 +1397,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--dismiss", () {
+    unittest.test('method--dismiss', () {
       var mock = HttpServerMock();
       api.ProjectsApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).projects.approvalRequests;
       var arg_request = buildDismissApprovalRequestMessage();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DismissApprovalRequestMessage.fromJson(json);
         checkDismissApprovalRequestMessage(obj);
@@ -1426,8 +1426,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1437,7 +1437,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1449,12 +1449,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).projects.approvalRequests;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1474,8 +1474,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1485,7 +1485,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1497,15 +1497,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsApprovalRequestsResourceApi res =
           api.AccessapprovalApi(mock).projects.approvalRequests;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1525,8 +1525,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1541,7 +1541,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListApprovalRequestsResponse());
         return async.Future.value(stringResponse(200, h, resp));

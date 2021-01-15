@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,15 +36,15 @@ const core.String USER_AGENT = 'dart-api-client speech/v2beta1';
 class SpeechApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   SpeechApi(http.Client client,
-      {core.String rootUrl = "https://speech.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://speech.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -107,17 +106,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -173,19 +172,19 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -194,7 +193,7 @@ class ProjectsLocationsOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -216,11 +215,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -230,10 +229,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -261,17 +260,17 @@ class LongRunningRecognizeMetadata {
   LongRunningRecognizeMetadata();
 
   LongRunningRecognizeMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("lastUpdateTime")) {
-      lastUpdateTime = _json["lastUpdateTime"];
+    if (_json.containsKey('lastUpdateTime')) {
+      lastUpdateTime = _json['lastUpdateTime'];
     }
-    if (_json.containsKey("progressPercent")) {
-      progressPercent = _json["progressPercent"];
+    if (_json.containsKey('progressPercent')) {
+      progressPercent = _json['progressPercent'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -279,16 +278,16 @@ class LongRunningRecognizeMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lastUpdateTime != null) {
-      _json["lastUpdateTime"] = lastUpdateTime;
+      _json['lastUpdateTime'] = lastUpdateTime;
     }
     if (progressPercent != null) {
-      _json["progressPercent"] = progressPercent;
+      _json['progressPercent'] = progressPercent;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -307,8 +306,8 @@ class LongRunningRecognizeResponse {
   LongRunningRecognizeResponse();
 
   LongRunningRecognizeResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<SpeechRecognitionResult>(
               (value) => SpeechRecognitionResult.fromJson(value))
           .toList();
@@ -319,7 +318,7 @@ class LongRunningRecognizeResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -365,22 +364,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -388,19 +387,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -428,14 +427,14 @@ class SpeechRecognitionAlternative {
   SpeechRecognitionAlternative();
 
   SpeechRecognitionAlternative.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("transcript")) {
-      transcript = _json["transcript"];
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'];
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<WordInfo>((value) => WordInfo.fromJson(value))
           .toList();
     }
@@ -445,13 +444,13 @@ class SpeechRecognitionAlternative {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (transcript != null) {
-      _json["transcript"] = transcript;
+      _json['transcript'] = transcript;
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -479,17 +478,17 @@ class SpeechRecognitionResult {
   SpeechRecognitionResult();
 
   SpeechRecognitionResult.fromJson(core.Map _json) {
-    if (_json.containsKey("alternatives")) {
-      alternatives = (_json["alternatives"] as core.List)
+    if (_json.containsKey('alternatives')) {
+      alternatives = (_json['alternatives'] as core.List)
           .map<SpeechRecognitionAlternative>(
               (value) => SpeechRecognitionAlternative.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("channelTag")) {
-      channelTag = _json["channelTag"];
+    if (_json.containsKey('channelTag')) {
+      channelTag = _json['channelTag'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -497,14 +496,14 @@ class SpeechRecognitionResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternatives != null) {
-      _json["alternatives"] =
+      _json['alternatives'] =
           alternatives.map((value) => value.toJson()).toList();
     }
     if (channelTag != null) {
-      _json["channelTag"] = channelTag;
+      _json['channelTag'] = channelTag;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -535,17 +534,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -553,13 +552,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -602,20 +601,20 @@ class WordInfo {
   WordInfo();
 
   WordInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("endOffset")) {
-      endOffset = _json["endOffset"];
+    if (_json.containsKey('endOffset')) {
+      endOffset = _json['endOffset'];
     }
-    if (_json.containsKey("speakerTag")) {
-      speakerTag = _json["speakerTag"];
+    if (_json.containsKey('speakerTag')) {
+      speakerTag = _json['speakerTag'];
     }
-    if (_json.containsKey("startOffset")) {
-      startOffset = _json["startOffset"];
+    if (_json.containsKey('startOffset')) {
+      startOffset = _json['startOffset'];
     }
-    if (_json.containsKey("word")) {
-      word = _json["word"];
+    if (_json.containsKey('word')) {
+      word = _json['word'];
     }
   }
 
@@ -623,19 +622,19 @@ class WordInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (endOffset != null) {
-      _json["endOffset"] = endOffset;
+      _json['endOffset'] = endOffset;
     }
     if (speakerTag != null) {
-      _json["speakerTag"] = speakerTag;
+      _json['speakerTag'] = speakerTag;
     }
     if (startOffset != null) {
-      _json["startOffset"] = startOffset;
+      _json['startOffset'] = startOffset;
     }
     if (word != null) {
-      _json["word"] = word;
+      _json['word'] = word;
     }
     return _json;
   }

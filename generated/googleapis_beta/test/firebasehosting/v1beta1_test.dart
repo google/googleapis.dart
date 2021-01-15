@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,8 +75,8 @@ api.ActingUser buildActingUser() {
   var o = api.ActingUser();
   buildCounterActingUser++;
   if (buildCounterActingUser < 3) {
-    o.email = "foo";
-    o.imageUrl = "foo";
+    o.email = 'foo';
+    o.imageUrl = 'foo';
   }
   buildCounterActingUser--;
   return o;
@@ -96,8 +96,8 @@ api.CertDnsChallenge buildCertDnsChallenge() {
   var o = api.CertDnsChallenge();
   buildCounterCertDnsChallenge++;
   if (buildCounterCertDnsChallenge < 3) {
-    o.domainName = "foo";
-    o.token = "foo";
+    o.domainName = 'foo';
+    o.token = 'foo';
   }
   buildCounterCertDnsChallenge--;
   return o;
@@ -117,8 +117,8 @@ api.CertHttpChallenge buildCertHttpChallenge() {
   var o = api.CertHttpChallenge();
   buildCounterCertHttpChallenge++;
   if (buildCounterCertHttpChallenge < 3) {
-    o.path = "foo";
-    o.token = "foo";
+    o.path = 'foo';
+    o.token = 'foo';
   }
   buildCounterCertHttpChallenge--;
   return o;
@@ -135,15 +135,15 @@ void checkCertHttpChallenge(api.CertHttpChallenge o) {
 
 core.Map<core.String, core.String> buildUnnamed5872() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5872(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterChannel = 0;
@@ -151,15 +151,15 @@ api.Channel buildChannel() {
   var o = api.Channel();
   buildCounterChannel++;
   if (buildCounterChannel < 3) {
-    o.createTime = "foo";
-    o.expireTime = "foo";
+    o.createTime = 'foo';
+    o.expireTime = 'foo';
     o.labels = buildUnnamed5872();
-    o.name = "foo";
+    o.name = 'foo';
     o.release = buildRelease();
     o.retainedReleaseCount = 42;
-    o.ttl = "foo";
-    o.updateTime = "foo";
-    o.url = "foo";
+    o.ttl = 'foo';
+    o.updateTime = 'foo';
+    o.url = 'foo';
   }
   buildCounterChannel--;
   return o;
@@ -189,7 +189,7 @@ api.CloneVersionRequest buildCloneVersionRequest() {
     o.exclude = buildPathFilter();
     o.finalize = true;
     o.include = buildPathFilter();
-    o.sourceVersion = "foo";
+    o.sourceVersion = 'foo';
   }
   buildCounterCloneVersionRequest--;
   return o;
@@ -211,8 +211,8 @@ api.CloudRunRewrite buildCloudRunRewrite() {
   var o = api.CloudRunRewrite();
   buildCounterCloudRunRewrite++;
   if (buildCounterCloudRunRewrite < 3) {
-    o.region = "foo";
-    o.serviceId = "foo";
+    o.region = 'foo';
+    o.serviceId = 'foo';
   }
   buildCounterCloudRunRewrite--;
   return o;
@@ -232,12 +232,12 @@ api.Domain buildDomain() {
   var o = api.Domain();
   buildCounterDomain++;
   if (buildCounterDomain < 3) {
-    o.domainName = "foo";
+    o.domainName = 'foo';
     o.domainRedirect = buildDomainRedirect();
     o.provisioning = buildDomainProvisioning();
-    o.site = "foo";
-    o.status = "foo";
-    o.updateTime = "foo";
+    o.site = 'foo';
+    o.status = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterDomain--;
   return o;
@@ -258,8 +258,8 @@ void checkDomain(api.Domain o) {
 
 core.List<core.String> buildUnnamed5873() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -271,8 +271,8 @@ void checkUnnamed5873(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5874() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -284,8 +284,8 @@ void checkUnnamed5874(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5875() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -303,10 +303,10 @@ api.DomainProvisioning buildDomainProvisioning() {
     o.certChallengeDiscoveredTxt = buildUnnamed5873();
     o.certChallengeDns = buildCertDnsChallenge();
     o.certChallengeHttp = buildCertHttpChallenge();
-    o.certStatus = "foo";
+    o.certStatus = 'foo';
     o.discoveredIps = buildUnnamed5874();
-    o.dnsFetchTime = "foo";
-    o.dnsStatus = "foo";
+    o.dnsFetchTime = 'foo';
+    o.dnsStatus = 'foo';
     o.expectedIps = buildUnnamed5875();
   }
   buildCounterDomainProvisioning--;
@@ -333,8 +333,8 @@ api.DomainRedirect buildDomainRedirect() {
   var o = api.DomainRedirect();
   buildCounterDomainRedirect++;
   if (buildCounterDomainRedirect < 3) {
-    o.domainName = "foo";
-    o.type = "foo";
+    o.domainName = 'foo';
+    o.type = 'foo';
   }
   buildCounterDomainRedirect--;
   return o;
@@ -366,15 +366,15 @@ void checkEmpty(api.Empty o) {
 
 core.Map<core.String, core.String> buildUnnamed5876() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5876(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterHeader = 0;
@@ -382,9 +382,9 @@ api.Header buildHeader() {
   var o = api.Header();
   buildCounterHeader++;
   if (buildCounterHeader < 3) {
-    o.glob = "foo";
+    o.glob = 'foo';
     o.headers = buildUnnamed5876();
-    o.regex = "foo";
+    o.regex = 'foo';
   }
   buildCounterHeader--;
   return o;
@@ -405,7 +405,7 @@ api.I18nConfig buildI18nConfig() {
   var o = api.I18nConfig();
   buildCounterI18nConfig++;
   if (buildCounterI18nConfig < 3) {
-    o.root = "foo";
+    o.root = 'foo';
   }
   buildCounterI18nConfig--;
   return o;
@@ -438,7 +438,7 @@ api.ListChannelsResponse buildListChannelsResponse() {
   buildCounterListChannelsResponse++;
   if (buildCounterListChannelsResponse < 3) {
     o.channels = buildUnnamed5877();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListChannelsResponse--;
   return o;
@@ -472,7 +472,7 @@ api.ListDomainsResponse buildListDomainsResponse() {
   buildCounterListDomainsResponse++;
   if (buildCounterListDomainsResponse < 3) {
     o.domains = buildUnnamed5878();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListDomainsResponse--;
   return o;
@@ -505,7 +505,7 @@ api.ListReleasesResponse buildListReleasesResponse() {
   var o = api.ListReleasesResponse();
   buildCounterListReleasesResponse++;
   if (buildCounterListReleasesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.releases = buildUnnamed5879();
   }
   buildCounterListReleasesResponse--;
@@ -540,7 +540,7 @@ api.ListVersionFilesResponse buildListVersionFilesResponse() {
   buildCounterListVersionFilesResponse++;
   if (buildCounterListVersionFilesResponse < 3) {
     o.files = buildUnnamed5880();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListVersionFilesResponse--;
   return o;
@@ -573,7 +573,7 @@ api.ListVersionsResponse buildListVersionsResponse() {
   var o = api.ListVersionsResponse();
   buildCounterListVersionsResponse++;
   if (buildCounterListVersionsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.versions = buildUnnamed5881();
   }
   buildCounterListVersionsResponse--;
@@ -591,12 +591,12 @@ void checkListVersionsResponse(api.ListVersionsResponse o) {
 
 core.Map<core.String, core.Object> buildUnnamed5882() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -606,26 +606,26 @@ core.Map<core.String, core.Object> buildUnnamed5882() {
 
 void checkUnnamed5882(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed5883() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -635,16 +635,16 @@ core.Map<core.String, core.Object> buildUnnamed5883() {
 
 void checkUnnamed5883(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterOperation = 0;
@@ -655,7 +655,7 @@ api.Operation buildOperation() {
     o.done = true;
     o.error = buildStatus();
     o.metadata = buildUnnamed5882();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed5883();
   }
   buildCounterOperation--;
@@ -676,8 +676,8 @@ void checkOperation(api.Operation o) {
 
 core.List<core.String> buildUnnamed5884() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -708,15 +708,15 @@ void checkPathFilter(api.PathFilter o) {
 
 core.Map<core.String, core.String> buildUnnamed5885() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5885(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterPopulateVersionFilesRequest = 0;
@@ -740,8 +740,8 @@ void checkPopulateVersionFilesRequest(api.PopulateVersionFilesRequest o) {
 
 core.List<core.String> buildUnnamed5886() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -757,7 +757,7 @@ api.PopulateVersionFilesResponse buildPopulateVersionFilesResponse() {
   buildCounterPopulateVersionFilesResponse++;
   if (buildCounterPopulateVersionFilesResponse < 3) {
     o.uploadRequiredHashes = buildUnnamed5886();
-    o.uploadUrl = "foo";
+    o.uploadUrl = 'foo';
   }
   buildCounterPopulateVersionFilesResponse--;
   return o;
@@ -778,7 +778,7 @@ api.PreviewConfig buildPreviewConfig() {
   buildCounterPreviewConfig++;
   if (buildCounterPreviewConfig < 3) {
     o.active = true;
-    o.expireTime = "foo";
+    o.expireTime = 'foo';
   }
   buildCounterPreviewConfig--;
   return o;
@@ -798,9 +798,9 @@ api.Redirect buildRedirect() {
   var o = api.Redirect();
   buildCounterRedirect++;
   if (buildCounterRedirect < 3) {
-    o.glob = "foo";
-    o.location = "foo";
-    o.regex = "foo";
+    o.glob = 'foo';
+    o.location = 'foo';
+    o.regex = 'foo';
     o.statusCode = 42;
   }
   buildCounterRedirect--;
@@ -823,11 +823,11 @@ api.Release buildRelease() {
   var o = api.Release();
   buildCounterRelease++;
   if (buildCounterRelease < 3) {
-    o.message = "foo";
-    o.name = "foo";
-    o.releaseTime = "foo";
+    o.message = 'foo';
+    o.name = 'foo';
+    o.releaseTime = 'foo';
     o.releaseUser = buildActingUser();
-    o.type = "foo";
+    o.type = 'foo';
     o.version = buildVersion();
   }
   buildCounterRelease--;
@@ -853,10 +853,10 @@ api.Rewrite buildRewrite() {
   buildCounterRewrite++;
   if (buildCounterRewrite < 3) {
     o.dynamicLinks = true;
-    o.function = "foo";
-    o.glob = "foo";
-    o.path = "foo";
-    o.regex = "foo";
+    o.function = 'foo';
+    o.glob = 'foo';
+    o.path = 'foo';
+    o.regex = 'foo';
     o.run = buildCloudRunRewrite();
   }
   buildCounterRewrite--;
@@ -920,13 +920,13 @@ api.ServingConfig buildServingConfig() {
   var o = api.ServingConfig();
   buildCounterServingConfig++;
   if (buildCounterServingConfig < 3) {
-    o.appAssociation = "foo";
+    o.appAssociation = 'foo';
     o.cleanUrls = true;
     o.headers = buildUnnamed5887();
     o.i18n = buildI18nConfig();
     o.redirects = buildUnnamed5888();
     o.rewrites = buildUnnamed5889();
-    o.trailingSlashBehavior = "foo";
+    o.trailingSlashBehavior = 'foo';
   }
   buildCounterServingConfig--;
   return o;
@@ -952,7 +952,7 @@ api.SiteConfig buildSiteConfig() {
   buildCounterSiteConfig++;
   if (buildCounterSiteConfig < 3) {
     o.cloudLoggingEnabled = true;
-    o.maxVersions = "foo";
+    o.maxVersions = 'foo';
   }
   buildCounterSiteConfig--;
   return o;
@@ -969,12 +969,12 @@ void checkSiteConfig(api.SiteConfig o) {
 
 core.Map<core.String, core.Object> buildUnnamed5890() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -984,16 +984,16 @@ core.Map<core.String, core.Object> buildUnnamed5890() {
 
 void checkUnnamed5890(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed5891() {
@@ -1016,7 +1016,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed5891();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -1034,15 +1034,15 @@ void checkStatus(api.Status o) {
 
 core.Map<core.String, core.String> buildUnnamed5892() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed5892(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterVersion = 0;
@@ -1051,18 +1051,18 @@ api.Version buildVersion() {
   buildCounterVersion++;
   if (buildCounterVersion < 3) {
     o.config = buildServingConfig();
-    o.createTime = "foo";
+    o.createTime = 'foo';
     o.createUser = buildActingUser();
-    o.deleteTime = "foo";
+    o.deleteTime = 'foo';
     o.deleteUser = buildActingUser();
-    o.fileCount = "foo";
-    o.finalizeTime = "foo";
+    o.fileCount = 'foo';
+    o.finalizeTime = 'foo';
     o.finalizeUser = buildActingUser();
     o.labels = buildUnnamed5892();
-    o.name = "foo";
+    o.name = 'foo';
     o.preview = buildPreviewConfig();
-    o.status = "foo";
-    o.versionBytes = "foo";
+    o.status = 'foo';
+    o.versionBytes = 'foo';
   }
   buildCounterVersion--;
   return o;
@@ -1093,9 +1093,9 @@ api.VersionFile buildVersionFile() {
   var o = api.VersionFile();
   buildCounterVersionFile++;
   if (buildCounterVersionFile < 3) {
-    o.hash = "foo";
-    o.path = "foo";
-    o.status = "foo";
+    o.hash = 'foo';
+    o.path = 'foo';
+    o.status = 'foo';
   }
   buildCounterVersionFile--;
   return o;
@@ -1112,253 +1112,253 @@ void checkVersionFile(api.VersionFile o) {
 }
 
 void main() {
-  unittest.group("obj-schema-ActingUser", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ActingUser', () {
+    unittest.test('to-json--from-json', () {
       var o = buildActingUser();
       var od = api.ActingUser.fromJson(o.toJson());
       checkActingUser(od);
     });
   });
 
-  unittest.group("obj-schema-CertDnsChallenge", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CertDnsChallenge', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCertDnsChallenge();
       var od = api.CertDnsChallenge.fromJson(o.toJson());
       checkCertDnsChallenge(od);
     });
   });
 
-  unittest.group("obj-schema-CertHttpChallenge", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CertHttpChallenge', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCertHttpChallenge();
       var od = api.CertHttpChallenge.fromJson(o.toJson());
       checkCertHttpChallenge(od);
     });
   });
 
-  unittest.group("obj-schema-Channel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Channel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od);
     });
   });
 
-  unittest.group("obj-schema-CloneVersionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CloneVersionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCloneVersionRequest();
       var od = api.CloneVersionRequest.fromJson(o.toJson());
       checkCloneVersionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CloudRunRewrite", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CloudRunRewrite', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCloudRunRewrite();
       var od = api.CloudRunRewrite.fromJson(o.toJson());
       checkCloudRunRewrite(od);
     });
   });
 
-  unittest.group("obj-schema-Domain", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Domain', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDomain();
       var od = api.Domain.fromJson(o.toJson());
       checkDomain(od);
     });
   });
 
-  unittest.group("obj-schema-DomainProvisioning", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DomainProvisioning', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDomainProvisioning();
       var od = api.DomainProvisioning.fromJson(o.toJson());
       checkDomainProvisioning(od);
     });
   });
 
-  unittest.group("obj-schema-DomainRedirect", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DomainRedirect', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDomainRedirect();
       var od = api.DomainRedirect.fromJson(o.toJson());
       checkDomainRedirect(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-Header", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Header', () {
+    unittest.test('to-json--from-json', () {
       var o = buildHeader();
       var od = api.Header.fromJson(o.toJson());
       checkHeader(od);
     });
   });
 
-  unittest.group("obj-schema-I18nConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-I18nConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildI18nConfig();
       var od = api.I18nConfig.fromJson(o.toJson());
       checkI18nConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ListChannelsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListChannelsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListChannelsResponse();
       var od = api.ListChannelsResponse.fromJson(o.toJson());
       checkListChannelsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListDomainsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListDomainsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListDomainsResponse();
       var od = api.ListDomainsResponse.fromJson(o.toJson());
       checkListDomainsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListReleasesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListReleasesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListReleasesResponse();
       var od = api.ListReleasesResponse.fromJson(o.toJson());
       checkListReleasesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListVersionFilesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListVersionFilesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListVersionFilesResponse();
       var od = api.ListVersionFilesResponse.fromJson(o.toJson());
       checkListVersionFilesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListVersionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListVersionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListVersionsResponse();
       var od = api.ListVersionsResponse.fromJson(o.toJson());
       checkListVersionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Operation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Operation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
 
-  unittest.group("obj-schema-PathFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PathFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPathFilter();
       var od = api.PathFilter.fromJson(o.toJson());
       checkPathFilter(od);
     });
   });
 
-  unittest.group("obj-schema-PopulateVersionFilesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PopulateVersionFilesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPopulateVersionFilesRequest();
       var od = api.PopulateVersionFilesRequest.fromJson(o.toJson());
       checkPopulateVersionFilesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-PopulateVersionFilesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PopulateVersionFilesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPopulateVersionFilesResponse();
       var od = api.PopulateVersionFilesResponse.fromJson(o.toJson());
       checkPopulateVersionFilesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PreviewConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PreviewConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPreviewConfig();
       var od = api.PreviewConfig.fromJson(o.toJson());
       checkPreviewConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Redirect", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Redirect', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRedirect();
       var od = api.Redirect.fromJson(o.toJson());
       checkRedirect(od);
     });
   });
 
-  unittest.group("obj-schema-Release", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Release', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRelease();
       var od = api.Release.fromJson(o.toJson());
       checkRelease(od);
     });
   });
 
-  unittest.group("obj-schema-Rewrite", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Rewrite', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRewrite();
       var od = api.Rewrite.fromJson(o.toJson());
       checkRewrite(od);
     });
   });
 
-  unittest.group("obj-schema-ServingConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ServingConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildServingConfig();
       var od = api.ServingConfig.fromJson(o.toJson());
       checkServingConfig(od);
     });
   });
 
-  unittest.group("obj-schema-SiteConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SiteConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSiteConfig();
       var od = api.SiteConfig.fromJson(o.toJson());
       checkSiteConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-Version", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Version', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVersion();
       var od = api.Version.fromJson(o.toJson());
       checkVersion(od);
     });
   });
 
-  unittest.group("obj-schema-VersionFile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-VersionFile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVersionFile();
       var od = api.VersionFile.fromJson(o.toJson());
       checkVersionFile(od);
     });
   });
 
-  unittest.group("resource-ProjectsOperationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsOperationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.FirebasehostingApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1378,8 +1378,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1389,7 +1389,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1402,13 +1402,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsSitesResourceApi", () {
-    unittest.test("method--getConfig", () {
+  unittest.group('resource-ProjectsSitesResourceApi', () {
+    unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
       api.ProjectsSitesResourceApi res =
           api.FirebasehostingApi(mock).projects.sites;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1428,8 +1428,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1439,7 +1439,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSiteConfig());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1451,14 +1451,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateConfig", () {
+    unittest.test('method--updateConfig', () {
       var mock = HttpServerMock();
       api.ProjectsSitesResourceApi res =
           api.FirebasehostingApi(mock).projects.sites;
       var arg_request = buildSiteConfig();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SiteConfig.fromJson(json);
         checkSiteConfig(obj);
@@ -1481,8 +1481,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1494,7 +1494,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSiteConfig());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1508,15 +1508,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsSitesChannelsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsSitesChannelsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsSitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.channels;
       var arg_request = buildChannel();
-      var arg_parent = "foo";
-      var arg_channelId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_channelId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -1539,8 +1539,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1552,7 +1552,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1565,12 +1565,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsSitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.channels;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1590,8 +1590,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1601,7 +1601,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1613,12 +1613,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsSitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.channels;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1638,8 +1638,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1649,7 +1649,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1661,14 +1661,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsSitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.channels;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1688,8 +1688,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1703,7 +1703,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListChannelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1718,14 +1718,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsSitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.channels;
       var arg_request = buildChannel();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -1748,8 +1748,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1761,7 +1761,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1775,15 +1775,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsSitesChannelsReleasesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsSitesChannelsReleasesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsSitesChannelsReleasesResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.channels.releases;
       var arg_request = buildRelease();
-      var arg_parent = "foo";
-      var arg_versionName = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_versionName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Release.fromJson(json);
         checkRelease(obj);
@@ -1806,8 +1806,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1819,7 +1819,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRelease());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1832,14 +1832,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsSitesChannelsReleasesResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.channels.releases;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1859,8 +1859,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1874,7 +1874,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListReleasesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1890,14 +1890,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsSitesDomainsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsSitesDomainsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsSitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.domains;
       var arg_request = buildDomain();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Domain.fromJson(json);
         checkDomain(obj);
@@ -1920,8 +1920,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1931,7 +1931,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDomain());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1943,12 +1943,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsSitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.domains;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1968,8 +1968,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1979,7 +1979,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1991,12 +1991,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsSitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.domains;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2016,8 +2016,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2027,7 +2027,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDomain());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2039,14 +2039,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsSitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.domains;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2066,8 +2066,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2081,7 +2081,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListDomainsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2096,13 +2096,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.ProjectsSitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.domains;
       var arg_request = buildDomain();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Domain.fromJson(json);
         checkDomain(obj);
@@ -2125,8 +2125,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2136,7 +2136,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDomain());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2149,15 +2149,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsSitesReleasesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsSitesReleasesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsSitesReleasesResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.releases;
       var arg_request = buildRelease();
-      var arg_parent = "foo";
-      var arg_versionName = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_versionName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Release.fromJson(json);
         checkRelease(obj);
@@ -2180,8 +2180,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2193,7 +2193,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRelease());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2206,14 +2206,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsSitesReleasesResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.releases;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2233,8 +2233,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2248,7 +2248,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListReleasesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2264,14 +2264,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsSitesVersionsResourceApi", () {
-    unittest.test("method--clone", () {
+  unittest.group('resource-ProjectsSitesVersionsResourceApi', () {
+    unittest.test('method--clone', () {
       var mock = HttpServerMock();
       api.ProjectsSitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.versions;
       var arg_request = buildCloneVersionRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CloneVersionRequest.fromJson(json);
         checkCloneVersionRequest(obj);
@@ -2294,8 +2294,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2305,7 +2305,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2317,15 +2317,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsSitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.versions;
       var arg_request = buildVersion();
-      var arg_parent = "foo";
-      var arg_sizeBytes = "foo";
-      var arg_versionId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_sizeBytes = 'foo';
+      var arg_versionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Version.fromJson(json);
         checkVersion(obj);
@@ -2348,8 +2348,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2363,7 +2363,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2378,12 +2378,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsSitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.versions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2403,8 +2403,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2414,7 +2414,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2426,15 +2426,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsSitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.versions;
-      var arg_parent = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2454,8 +2454,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2470,7 +2470,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2486,14 +2486,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsSitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.versions;
       var arg_request = buildVersion();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Version.fromJson(json);
         checkVersion(obj);
@@ -2516,8 +2516,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2529,7 +2529,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2542,13 +2542,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--populateFiles", () {
+    unittest.test('method--populateFiles', () {
       var mock = HttpServerMock();
       api.ProjectsSitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.versions;
       var arg_request = buildPopulateVersionFilesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PopulateVersionFilesRequest.fromJson(json);
         checkPopulateVersionFilesRequest(obj);
@@ -2571,8 +2571,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2582,7 +2582,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPopulateVersionFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2595,16 +2595,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsSitesVersionsFilesResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-ProjectsSitesVersionsFilesResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsSitesVersionsFilesResourceApi res =
           api.FirebasehostingApi(mock).projects.sites.versions.files;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_status = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_status = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2624,8 +2624,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2640,7 +2640,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListVersionFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2657,12 +2657,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-SitesResourceApi", () {
-    unittest.test("method--getConfig", () {
+  unittest.group('resource-SitesResourceApi', () {
+    unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
       api.SitesResourceApi res = api.FirebasehostingApi(mock).sites;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2682,8 +2682,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2693,7 +2693,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSiteConfig());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2705,13 +2705,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateConfig", () {
+    unittest.test('method--updateConfig', () {
       var mock = HttpServerMock();
       api.SitesResourceApi res = api.FirebasehostingApi(mock).sites;
       var arg_request = buildSiteConfig();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SiteConfig.fromJson(json);
         checkSiteConfig(obj);
@@ -2734,8 +2734,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2747,7 +2747,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSiteConfig());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2761,15 +2761,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-SitesChannelsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-SitesChannelsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.SitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).sites.channels;
       var arg_request = buildChannel();
-      var arg_parent = "foo";
-      var arg_channelId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_channelId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -2792,8 +2792,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2805,7 +2805,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2818,12 +2818,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.SitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).sites.channels;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2843,8 +2843,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2854,7 +2854,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2866,12 +2866,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).sites.channels;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2891,8 +2891,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2902,7 +2902,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2914,14 +2914,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).sites.channels;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2941,8 +2941,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2956,7 +2956,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListChannelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2971,14 +2971,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.SitesChannelsResourceApi res =
           api.FirebasehostingApi(mock).sites.channels;
       var arg_request = buildChannel();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -3001,8 +3001,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3014,7 +3014,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3028,15 +3028,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-SitesChannelsReleasesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-SitesChannelsReleasesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.SitesChannelsReleasesResourceApi res =
           api.FirebasehostingApi(mock).sites.channels.releases;
       var arg_request = buildRelease();
-      var arg_parent = "foo";
-      var arg_versionName = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_versionName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Release.fromJson(json);
         checkRelease(obj);
@@ -3059,8 +3059,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3072,7 +3072,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRelease());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3085,14 +3085,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SitesChannelsReleasesResourceApi res =
           api.FirebasehostingApi(mock).sites.channels.releases;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3112,8 +3112,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3127,7 +3127,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListReleasesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3143,14 +3143,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-SitesDomainsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-SitesDomainsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.SitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).sites.domains;
       var arg_request = buildDomain();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Domain.fromJson(json);
         checkDomain(obj);
@@ -3173,8 +3173,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3184,7 +3184,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDomain());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3196,12 +3196,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.SitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).sites.domains;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3221,8 +3221,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3232,7 +3232,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3244,12 +3244,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).sites.domains;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3269,8 +3269,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3280,7 +3280,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDomain());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3292,14 +3292,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).sites.domains;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3319,8 +3319,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3334,7 +3334,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListDomainsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3349,13 +3349,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.SitesDomainsResourceApi res =
           api.FirebasehostingApi(mock).sites.domains;
       var arg_request = buildDomain();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Domain.fromJson(json);
         checkDomain(obj);
@@ -3378,8 +3378,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3389,7 +3389,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDomain());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3402,15 +3402,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-SitesReleasesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-SitesReleasesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.SitesReleasesResourceApi res =
           api.FirebasehostingApi(mock).sites.releases;
       var arg_request = buildRelease();
-      var arg_parent = "foo";
-      var arg_versionName = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_versionName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Release.fromJson(json);
         checkRelease(obj);
@@ -3433,8 +3433,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3446,7 +3446,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRelease());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3459,14 +3459,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SitesReleasesResourceApi res =
           api.FirebasehostingApi(mock).sites.releases;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3486,8 +3486,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3501,7 +3501,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListReleasesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3517,14 +3517,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-SitesVersionsResourceApi", () {
-    unittest.test("method--clone", () {
+  unittest.group('resource-SitesVersionsResourceApi', () {
+    unittest.test('method--clone', () {
       var mock = HttpServerMock();
       api.SitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).sites.versions;
       var arg_request = buildCloneVersionRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CloneVersionRequest.fromJson(json);
         checkCloneVersionRequest(obj);
@@ -3547,8 +3547,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3558,7 +3558,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3570,15 +3570,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.SitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).sites.versions;
       var arg_request = buildVersion();
-      var arg_parent = "foo";
-      var arg_versionId = "foo";
-      var arg_sizeBytes = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_versionId = 'foo';
+      var arg_sizeBytes = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Version.fromJson(json);
         checkVersion(obj);
@@ -3601,8 +3601,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3616,7 +3616,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3631,12 +3631,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.SitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).sites.versions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3656,8 +3656,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3667,7 +3667,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3679,15 +3679,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).sites.versions;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3707,8 +3707,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3723,7 +3723,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3739,14 +3739,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.SitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).sites.versions;
       var arg_request = buildVersion();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Version.fromJson(json);
         checkVersion(obj);
@@ -3769,8 +3769,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3782,7 +3782,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3795,13 +3795,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--populateFiles", () {
+    unittest.test('method--populateFiles', () {
       var mock = HttpServerMock();
       api.SitesVersionsResourceApi res =
           api.FirebasehostingApi(mock).sites.versions;
       var arg_request = buildPopulateVersionFilesRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PopulateVersionFilesRequest.fromJson(json);
         checkPopulateVersionFilesRequest(obj);
@@ -3824,8 +3824,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3835,7 +3835,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPopulateVersionFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3848,16 +3848,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-SitesVersionsFilesResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-SitesVersionsFilesResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SitesVersionsFilesResourceApi res =
           api.FirebasehostingApi(mock).sites.versions.files;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_status = "foo";
-      var arg_$fields = "foo";
+      var arg_status = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3877,8 +3877,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3893,7 +3893,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListVersionFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));

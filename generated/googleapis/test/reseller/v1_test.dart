@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,16 +75,16 @@ api.Address buildAddress() {
   var o = api.Address();
   buildCounterAddress++;
   if (buildCounterAddress < 3) {
-    o.addressLine1 = "foo";
-    o.addressLine2 = "foo";
-    o.addressLine3 = "foo";
-    o.contactName = "foo";
-    o.countryCode = "foo";
-    o.kind = "foo";
-    o.locality = "foo";
-    o.organizationName = "foo";
-    o.postalCode = "foo";
-    o.region = "foo";
+    o.addressLine1 = 'foo';
+    o.addressLine2 = 'foo';
+    o.addressLine3 = 'foo';
+    o.contactName = 'foo';
+    o.countryCode = 'foo';
+    o.kind = 'foo';
+    o.locality = 'foo';
+    o.organizationName = 'foo';
+    o.postalCode = 'foo';
+    o.region = 'foo';
   }
   buildCounterAddress--;
   return o;
@@ -112,10 +112,10 @@ api.ChangePlanRequest buildChangePlanRequest() {
   var o = api.ChangePlanRequest();
   buildCounterChangePlanRequest++;
   if (buildCounterChangePlanRequest < 3) {
-    o.dealCode = "foo";
-    o.kind = "foo";
-    o.planName = "foo";
-    o.purchaseOrderId = "foo";
+    o.dealCode = 'foo';
+    o.kind = 'foo';
+    o.planName = 'foo';
+    o.purchaseOrderId = 'foo';
     o.seats = buildSeats();
   }
   buildCounterChangePlanRequest--;
@@ -139,14 +139,14 @@ api.Customer buildCustomer() {
   var o = api.Customer();
   buildCounterCustomer++;
   if (buildCounterCustomer < 3) {
-    o.alternateEmail = "foo";
-    o.customerDomain = "foo";
+    o.alternateEmail = 'foo';
+    o.customerDomain = 'foo';
     o.customerDomainVerified = true;
-    o.customerId = "foo";
-    o.kind = "foo";
-    o.phoneNumber = "foo";
+    o.customerId = 'foo';
+    o.kind = 'foo';
+    o.phoneNumber = 'foo';
     o.postalAddress = buildAddress();
-    o.resourceUiUrl = "foo";
+    o.resourceUiUrl = 'foo';
   }
   buildCounterCustomer--;
   return o;
@@ -172,8 +172,8 @@ api.RenewalSettings buildRenewalSettings() {
   var o = api.RenewalSettings();
   buildCounterRenewalSettings++;
   if (buildCounterRenewalSettings < 3) {
-    o.kind = "foo";
-    o.renewalType = "foo";
+    o.kind = 'foo';
+    o.renewalType = 'foo';
   }
   buildCounterRenewalSettings--;
   return o;
@@ -190,8 +190,8 @@ void checkRenewalSettings(api.RenewalSettings o) {
 
 core.List<core.String> buildUnnamed3387() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -208,7 +208,7 @@ api.ResellernotifyGetwatchdetailsResponse
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
     o.serviceAccountEmailAddresses = buildUnnamed3387();
-    o.topicName = "foo";
+    o.topicName = 'foo';
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
   return o;
@@ -229,7 +229,7 @@ api.ResellernotifyResource buildResellernotifyResource() {
   var o = api.ResellernotifyResource();
   buildCounterResellernotifyResource++;
   if (buildCounterResellernotifyResource < 3) {
-    o.topicName = "foo";
+    o.topicName = 'foo';
   }
   buildCounterResellernotifyResource--;
   return o;
@@ -248,7 +248,7 @@ api.Seats buildSeats() {
   var o = api.Seats();
   buildCounterSeats++;
   if (buildCounterSeats < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.licensedNumberOfSeats = 42;
     o.maximumNumberOfSeats = 42;
     o.numberOfSeats = 42;
@@ -274,8 +274,8 @@ api.SubscriptionPlanCommitmentInterval
   var o = api.SubscriptionPlanCommitmentInterval();
   buildCounterSubscriptionPlanCommitmentInterval++;
   if (buildCounterSubscriptionPlanCommitmentInterval < 3) {
-    o.endTime = "foo";
-    o.startTime = "foo";
+    o.endTime = 'foo';
+    o.startTime = 'foo';
   }
   buildCounterSubscriptionPlanCommitmentInterval--;
   return o;
@@ -298,7 +298,7 @@ api.SubscriptionPlan buildSubscriptionPlan() {
   if (buildCounterSubscriptionPlan < 3) {
     o.commitmentInterval = buildSubscriptionPlanCommitmentInterval();
     o.isCommitmentPlan = true;
-    o.planName = "foo";
+    o.planName = 'foo';
   }
   buildCounterSubscriptionPlan--;
   return o;
@@ -316,8 +316,8 @@ void checkSubscriptionPlan(api.SubscriptionPlan o) {
 
 core.List<core.String> buildUnnamed3388() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -333,7 +333,7 @@ api.SubscriptionTransferInfo buildSubscriptionTransferInfo() {
   buildCounterSubscriptionTransferInfo++;
   if (buildCounterSubscriptionTransferInfo < 3) {
     o.minimumTransferableSeats = 42;
-    o.transferabilityExpirationTime = "foo";
+    o.transferabilityExpirationTime = 'foo';
   }
   buildCounterSubscriptionTransferInfo--;
   return o;
@@ -354,7 +354,7 @@ api.SubscriptionTrialSettings buildSubscriptionTrialSettings() {
   buildCounterSubscriptionTrialSettings++;
   if (buildCounterSubscriptionTrialSettings < 3) {
     o.isInTrial = true;
-    o.trialEndTime = "foo";
+    o.trialEndTime = 'foo';
   }
   buildCounterSubscriptionTrialSettings--;
   return o;
@@ -374,21 +374,21 @@ api.Subscription buildSubscription() {
   var o = api.Subscription();
   buildCounterSubscription++;
   if (buildCounterSubscription < 3) {
-    o.billingMethod = "foo";
-    o.creationTime = "foo";
-    o.customerDomain = "foo";
-    o.customerId = "foo";
-    o.dealCode = "foo";
-    o.kind = "foo";
+    o.billingMethod = 'foo';
+    o.creationTime = 'foo';
+    o.customerDomain = 'foo';
+    o.customerId = 'foo';
+    o.dealCode = 'foo';
+    o.kind = 'foo';
     o.plan = buildSubscriptionPlan();
-    o.purchaseOrderId = "foo";
+    o.purchaseOrderId = 'foo';
     o.renewalSettings = buildRenewalSettings();
-    o.resourceUiUrl = "foo";
+    o.resourceUiUrl = 'foo';
     o.seats = buildSeats();
-    o.skuId = "foo";
-    o.skuName = "foo";
-    o.status = "foo";
-    o.subscriptionId = "foo";
+    o.skuId = 'foo';
+    o.skuName = 'foo';
+    o.status = 'foo';
+    o.subscriptionId = 'foo';
     o.suspensionReasons = buildUnnamed3388();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
@@ -440,8 +440,8 @@ api.Subscriptions buildSubscriptions() {
   var o = api.Subscriptions();
   buildCounterSubscriptions++;
   if (buildCounterSubscriptions < 3) {
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
     o.subscriptions = buildUnnamed3389();
   }
   buildCounterSubscriptions--;
@@ -459,116 +459,116 @@ void checkSubscriptions(api.Subscriptions o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Address", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Address', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAddress();
       var od = api.Address.fromJson(o.toJson());
       checkAddress(od);
     });
   });
 
-  unittest.group("obj-schema-ChangePlanRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ChangePlanRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChangePlanRequest();
       var od = api.ChangePlanRequest.fromJson(o.toJson());
       checkChangePlanRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Customer", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Customer', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomer();
       var od = api.Customer.fromJson(o.toJson());
       checkCustomer(od);
     });
   });
 
-  unittest.group("obj-schema-RenewalSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RenewalSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRenewalSettings();
       var od = api.RenewalSettings.fromJson(o.toJson());
       checkRenewalSettings(od);
     });
   });
 
-  unittest.group("obj-schema-ResellernotifyGetwatchdetailsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResellernotifyGetwatchdetailsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResellernotifyGetwatchdetailsResponse();
       var od = api.ResellernotifyGetwatchdetailsResponse.fromJson(o.toJson());
       checkResellernotifyGetwatchdetailsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ResellernotifyResource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResellernotifyResource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResellernotifyResource();
       var od = api.ResellernotifyResource.fromJson(o.toJson());
       checkResellernotifyResource(od);
     });
   });
 
-  unittest.group("obj-schema-Seats", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Seats', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSeats();
       var od = api.Seats.fromJson(o.toJson());
       checkSeats(od);
     });
   });
 
-  unittest.group("obj-schema-SubscriptionPlanCommitmentInterval", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SubscriptionPlanCommitmentInterval', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubscriptionPlanCommitmentInterval();
       var od = api.SubscriptionPlanCommitmentInterval.fromJson(o.toJson());
       checkSubscriptionPlanCommitmentInterval(od);
     });
   });
 
-  unittest.group("obj-schema-SubscriptionPlan", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SubscriptionPlan', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubscriptionPlan();
       var od = api.SubscriptionPlan.fromJson(o.toJson());
       checkSubscriptionPlan(od);
     });
   });
 
-  unittest.group("obj-schema-SubscriptionTransferInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SubscriptionTransferInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubscriptionTransferInfo();
       var od = api.SubscriptionTransferInfo.fromJson(o.toJson());
       checkSubscriptionTransferInfo(od);
     });
   });
 
-  unittest.group("obj-schema-SubscriptionTrialSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SubscriptionTrialSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubscriptionTrialSettings();
       var od = api.SubscriptionTrialSettings.fromJson(o.toJson());
       checkSubscriptionTrialSettings(od);
     });
   });
 
-  unittest.group("obj-schema-Subscription", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Subscription', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubscription();
       var od = api.Subscription.fromJson(o.toJson());
       checkSubscription(od);
     });
   });
 
-  unittest.group("obj-schema-Subscriptions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Subscriptions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubscriptions();
       var od = api.Subscriptions.fromJson(o.toJson());
       checkSubscriptions(od);
     });
   });
 
-  unittest.group("resource-CustomersResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-CustomersResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.CustomersResourceApi res = api.ResellerApi(mock).customers;
-      var arg_customerId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -585,7 +585,7 @@ void main() {
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -593,8 +593,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -604,7 +604,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -616,12 +616,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.CustomersResourceApi res = api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
-      var arg_customerAuthToken = "foo";
-      var arg_$fields = "foo";
+      var arg_customerAuthToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Customer.fromJson(json);
         checkCustomer(obj);
@@ -646,8 +646,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -659,7 +659,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -672,12 +672,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.CustomersResourceApi res = api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
-      var arg_customerId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Customer.fromJson(json);
         checkCustomer(obj);
@@ -697,7 +697,7 @@ void main() {
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -705,8 +705,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -716,7 +716,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -728,12 +728,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.CustomersResourceApi res = api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
-      var arg_customerId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Customer.fromJson(json);
         checkCustomer(obj);
@@ -753,7 +753,7 @@ void main() {
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -761,8 +761,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -772,7 +772,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -785,11 +785,11 @@ void main() {
     });
   });
 
-  unittest.group("resource-ResellernotifyResourceApi", () {
-    unittest.test("method--getwatchdetails", () {
+  unittest.group('resource-ResellernotifyResourceApi', () {
+    unittest.test('method--getwatchdetails', () {
       var mock = HttpServerMock();
       api.ResellernotifyResourceApi res = api.ResellerApi(mock).resellernotify;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -811,8 +811,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -822,7 +822,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildResellernotifyGetwatchdetailsResponse());
@@ -835,11 +835,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--register", () {
+    unittest.test('method--register', () {
       var mock = HttpServerMock();
       api.ResellernotifyResourceApi res = api.ResellerApi(mock).resellernotify;
-      var arg_serviceAccountEmailAddress = "foo";
-      var arg_$fields = "foo";
+      var arg_serviceAccountEmailAddress = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -861,8 +861,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -874,7 +874,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildResellernotifyResource());
         return async.Future.value(stringResponse(200, h, resp));
@@ -888,11 +888,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--unregister", () {
+    unittest.test('method--unregister', () {
       var mock = HttpServerMock();
       api.ResellernotifyResourceApi res = api.ResellerApi(mock).resellernotify;
-      var arg_serviceAccountEmailAddress = "foo";
-      var arg_$fields = "foo";
+      var arg_serviceAccountEmailAddress = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -914,8 +914,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -927,7 +927,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildResellernotifyResource());
         return async.Future.value(stringResponse(200, h, resp));
@@ -942,13 +942,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-SubscriptionsResourceApi", () {
-    unittest.test("method--activate", () {
+  unittest.group('resource-SubscriptionsResourceApi', () {
+    unittest.test('method--activate', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
-      var arg_customerId = "foo";
-      var arg_subscriptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_subscriptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -963,21 +963,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("customers/"));
         pathOffset += 10;
-        index = path.indexOf("/subscriptions/", pathOffset);
+        index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/subscriptions/"));
         pathOffset += 15;
-        index = path.indexOf("/activate", pathOffset);
+        index = path.indexOf('/activate', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(subPart, unittest.equals('$arg_subscriptionId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/activate"));
         pathOffset += 9;
@@ -988,8 +988,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -999,7 +999,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1011,13 +1011,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--changePlan", () {
+    unittest.test('method--changePlan', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildChangePlanRequest();
-      var arg_customerId = "foo";
-      var arg_subscriptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_subscriptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ChangePlanRequest.fromJson(json);
         checkChangePlanRequest(obj);
@@ -1035,21 +1035,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("customers/"));
         pathOffset += 10;
-        index = path.indexOf("/subscriptions/", pathOffset);
+        index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/subscriptions/"));
         pathOffset += 15;
-        index = path.indexOf("/changePlan", pathOffset);
+        index = path.indexOf('/changePlan', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(subPart, unittest.equals('$arg_subscriptionId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/changePlan"));
         pathOffset += 11;
@@ -1060,8 +1060,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1071,7 +1071,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1084,13 +1084,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--changeRenewalSettings", () {
+    unittest.test('method--changeRenewalSettings', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildRenewalSettings();
-      var arg_customerId = "foo";
-      var arg_subscriptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_subscriptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RenewalSettings.fromJson(json);
         checkRenewalSettings(obj);
@@ -1108,21 +1108,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("customers/"));
         pathOffset += 10;
-        index = path.indexOf("/subscriptions/", pathOffset);
+        index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/subscriptions/"));
         pathOffset += 15;
-        index = path.indexOf("/changeRenewalSettings", pathOffset);
+        index = path.indexOf('/changeRenewalSettings', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(subPart, unittest.equals('$arg_subscriptionId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("/changeRenewalSettings"));
         pathOffset += 22;
@@ -1133,8 +1133,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1144,7 +1144,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1158,13 +1158,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--changeSeats", () {
+    unittest.test('method--changeSeats', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildSeats();
-      var arg_customerId = "foo";
-      var arg_subscriptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_subscriptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Seats.fromJson(json);
         checkSeats(obj);
@@ -1182,21 +1182,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("customers/"));
         pathOffset += 10;
-        index = path.indexOf("/subscriptions/", pathOffset);
+        index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/subscriptions/"));
         pathOffset += 15;
-        index = path.indexOf("/changeSeats", pathOffset);
+        index = path.indexOf('/changeSeats', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(subPart, unittest.equals('$arg_subscriptionId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/changeSeats"));
         pathOffset += 12;
@@ -1207,8 +1207,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1218,7 +1218,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1231,13 +1231,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
-      var arg_customerId = "foo";
-      var arg_subscriptionId = "foo";
-      var arg_deletionType = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_subscriptionId = 'foo';
+      var arg_deletionType = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1252,18 +1252,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("customers/"));
         pathOffset += 10;
-        index = path.indexOf("/subscriptions/", pathOffset);
+        index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/subscriptions/"));
         pathOffset += 15;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(subPart, unittest.equals('$arg_subscriptionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1271,8 +1271,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1284,9 +1284,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -1295,12 +1295,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
-      var arg_customerId = "foo";
-      var arg_subscriptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_subscriptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1315,18 +1315,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("customers/"));
         pathOffset += 10;
-        index = path.indexOf("/subscriptions/", pathOffset);
+        index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/subscriptions/"));
         pathOffset += 15;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(subPart, unittest.equals('$arg_subscriptionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1334,8 +1334,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1345,7 +1345,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1357,13 +1357,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildSubscription();
-      var arg_customerId = "foo";
-      var arg_customerAuthToken = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_customerAuthToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Subscription.fromJson(json);
         checkSubscription(obj);
@@ -1381,12 +1381,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("customers/"));
         pathOffset += 10;
-        index = path.indexOf("/subscriptions", pathOffset);
+        index = path.indexOf('/subscriptions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/subscriptions"));
         pathOffset += 14;
@@ -1397,8 +1397,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1410,7 +1410,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1423,15 +1423,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
       var arg_maxResults = 42;
-      var arg_customerNamePrefix = "foo";
-      var arg_customerAuthToken = "foo";
-      var arg_customerId = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_customerNamePrefix = 'foo';
+      var arg_customerAuthToken = 'foo';
+      var arg_customerId = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1453,8 +1453,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1474,7 +1474,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscriptions());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1492,12 +1492,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--startPaidService", () {
+    unittest.test('method--startPaidService', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
-      var arg_customerId = "foo";
-      var arg_subscriptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_subscriptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1512,21 +1512,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("customers/"));
         pathOffset += 10;
-        index = path.indexOf("/subscriptions/", pathOffset);
+        index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/subscriptions/"));
         pathOffset += 15;
-        index = path.indexOf("/startPaidService", pathOffset);
+        index = path.indexOf('/startPaidService', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(subPart, unittest.equals('$arg_subscriptionId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 17),
             unittest.equals("/startPaidService"));
         pathOffset += 17;
@@ -1537,8 +1537,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1548,7 +1548,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1561,12 +1561,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--suspend", () {
+    unittest.test('method--suspend', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
-      var arg_customerId = "foo";
-      var arg_subscriptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_customerId = 'foo';
+      var arg_subscriptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1581,21 +1581,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("customers/"));
         pathOffset += 10;
-        index = path.indexOf("/subscriptions/", pathOffset);
+        index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_customerId"));
+        unittest.expect(subPart, unittest.equals('$arg_customerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/subscriptions/"));
         pathOffset += 15;
-        index = path.indexOf("/suspend", pathOffset);
+        index = path.indexOf('/suspend', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(subPart, unittest.equals('$arg_subscriptionId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/suspend"));
         pathOffset += 8;
@@ -1606,8 +1606,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1617,7 +1617,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));

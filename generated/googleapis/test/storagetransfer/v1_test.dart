@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,8 +75,8 @@ api.AwsAccessKey buildAwsAccessKey() {
   var o = api.AwsAccessKey();
   buildCounterAwsAccessKey++;
   if (buildCounterAwsAccessKey < 3) {
-    o.accessKeyId = "foo";
-    o.secretAccessKey = "foo";
+    o.accessKeyId = 'foo';
+    o.secretAccessKey = 'foo';
   }
   buildCounterAwsAccessKey--;
   return o;
@@ -97,7 +97,7 @@ api.AwsS3Data buildAwsS3Data() {
   buildCounterAwsS3Data++;
   if (buildCounterAwsS3Data < 3) {
     o.awsAccessKey = buildAwsAccessKey();
-    o.bucketName = "foo";
+    o.bucketName = 'foo';
   }
   buildCounterAwsS3Data--;
   return o;
@@ -118,8 +118,8 @@ api.AzureBlobStorageData buildAzureBlobStorageData() {
   buildCounterAzureBlobStorageData++;
   if (buildCounterAzureBlobStorageData < 3) {
     o.azureCredentials = buildAzureCredentials();
-    o.container = "foo";
-    o.storageAccount = "foo";
+    o.container = 'foo';
+    o.storageAccount = 'foo';
   }
   buildCounterAzureBlobStorageData--;
   return o;
@@ -140,7 +140,7 @@ api.AzureCredentials buildAzureCredentials() {
   var o = api.AzureCredentials();
   buildCounterAzureCredentials++;
   if (buildCounterAzureCredentials < 3) {
-    o.sasToken = "foo";
+    o.sasToken = 'foo';
   }
   buildCounterAzureCredentials--;
   return o;
@@ -209,8 +209,8 @@ void checkEmpty(api.Empty o) {
 
 core.List<core.String> buildUnnamed1396() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -226,7 +226,7 @@ api.ErrorLogEntry buildErrorLogEntry() {
   buildCounterErrorLogEntry++;
   if (buildCounterErrorLogEntry < 3) {
     o.errorDetails = buildUnnamed1396();
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterErrorLogEntry--;
   return o;
@@ -259,8 +259,8 @@ api.ErrorSummary buildErrorSummary() {
   var o = api.ErrorSummary();
   buildCounterErrorSummary++;
   if (buildCounterErrorSummary < 3) {
-    o.errorCode = "foo";
-    o.errorCount = "foo";
+    o.errorCode = 'foo';
+    o.errorCount = 'foo';
     o.errorLogEntries = buildUnnamed1397();
   }
   buildCounterErrorSummary--;
@@ -282,7 +282,7 @@ api.GcsData buildGcsData() {
   var o = api.GcsData();
   buildCounterGcsData++;
   if (buildCounterGcsData < 3) {
-    o.bucketName = "foo";
+    o.bucketName = 'foo';
   }
   buildCounterGcsData--;
   return o;
@@ -301,7 +301,7 @@ api.GoogleServiceAccount buildGoogleServiceAccount() {
   var o = api.GoogleServiceAccount();
   buildCounterGoogleServiceAccount++;
   if (buildCounterGoogleServiceAccount < 3) {
-    o.accountEmail = "foo";
+    o.accountEmail = 'foo';
   }
   buildCounterGoogleServiceAccount--;
   return o;
@@ -320,7 +320,7 @@ api.HttpData buildHttpData() {
   var o = api.HttpData();
   buildCounterHttpData++;
   if (buildCounterHttpData < 3) {
-    o.listUrl = "foo";
+    o.listUrl = 'foo';
   }
   buildCounterHttpData--;
   return o;
@@ -352,7 +352,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   var o = api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed1398();
   }
   buildCounterListOperationsResponse--;
@@ -386,7 +386,7 @@ api.ListTransferJobsResponse buildListTransferJobsResponse() {
   var o = api.ListTransferJobsResponse();
   buildCounterListTransferJobsResponse++;
   if (buildCounterListTransferJobsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.transferJobs = buildUnnamed1399();
   }
   buildCounterListTransferJobsResponse--;
@@ -404,8 +404,8 @@ void checkListTransferJobsResponse(api.ListTransferJobsResponse o) {
 
 core.List<core.String> buildUnnamed1400() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -421,8 +421,8 @@ api.NotificationConfig buildNotificationConfig() {
   buildCounterNotificationConfig++;
   if (buildCounterNotificationConfig < 3) {
     o.eventTypes = buildUnnamed1400();
-    o.payloadFormat = "foo";
-    o.pubsubTopic = "foo";
+    o.payloadFormat = 'foo';
+    o.pubsubTopic = 'foo';
   }
   buildCounterNotificationConfig--;
   return o;
@@ -440,8 +440,8 @@ void checkNotificationConfig(api.NotificationConfig o) {
 
 core.List<core.String> buildUnnamed1401() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -453,8 +453,8 @@ void checkUnnamed1401(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1402() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -471,10 +471,10 @@ api.ObjectConditions buildObjectConditions() {
   if (buildCounterObjectConditions < 3) {
     o.excludePrefixes = buildUnnamed1401();
     o.includePrefixes = buildUnnamed1402();
-    o.lastModifiedBefore = "foo";
-    o.lastModifiedSince = "foo";
-    o.maxTimeElapsedSinceLastModification = "foo";
-    o.minTimeElapsedSinceLastModification = "foo";
+    o.lastModifiedBefore = 'foo';
+    o.lastModifiedSince = 'foo';
+    o.maxTimeElapsedSinceLastModification = 'foo';
+    o.minTimeElapsedSinceLastModification = 'foo';
   }
   buildCounterObjectConditions--;
   return o;
@@ -497,12 +497,12 @@ void checkObjectConditions(api.ObjectConditions o) {
 
 core.Map<core.String, core.Object> buildUnnamed1403() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -512,26 +512,26 @@ core.Map<core.String, core.Object> buildUnnamed1403() {
 
 void checkUnnamed1403(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed1404() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -541,16 +541,16 @@ core.Map<core.String, core.Object> buildUnnamed1404() {
 
 void checkUnnamed1404(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterOperation = 0;
@@ -561,7 +561,7 @@ api.Operation buildOperation() {
     o.done = true;
     o.error = buildStatus();
     o.metadata = buildUnnamed1403();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed1404();
   }
   buildCounterOperation--;
@@ -635,12 +635,12 @@ void checkSchedule(api.Schedule o) {
 
 core.Map<core.String, core.Object> buildUnnamed1405() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -650,16 +650,16 @@ core.Map<core.String, core.Object> buildUnnamed1405() {
 
 void checkUnnamed1405(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed1406() {
@@ -682,7 +682,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed1406();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -728,22 +728,22 @@ api.TransferCounters buildTransferCounters() {
   var o = api.TransferCounters();
   buildCounterTransferCounters++;
   if (buildCounterTransferCounters < 3) {
-    o.bytesCopiedToSink = "foo";
-    o.bytesDeletedFromSink = "foo";
-    o.bytesDeletedFromSource = "foo";
-    o.bytesFailedToDeleteFromSink = "foo";
-    o.bytesFoundFromSource = "foo";
-    o.bytesFoundOnlyFromSink = "foo";
-    o.bytesFromSourceFailed = "foo";
-    o.bytesFromSourceSkippedBySync = "foo";
-    o.objectsCopiedToSink = "foo";
-    o.objectsDeletedFromSink = "foo";
-    o.objectsDeletedFromSource = "foo";
-    o.objectsFailedToDeleteFromSink = "foo";
-    o.objectsFoundFromSource = "foo";
-    o.objectsFoundOnlyFromSink = "foo";
-    o.objectsFromSourceFailed = "foo";
-    o.objectsFromSourceSkippedBySync = "foo";
+    o.bytesCopiedToSink = 'foo';
+    o.bytesDeletedFromSink = 'foo';
+    o.bytesDeletedFromSource = 'foo';
+    o.bytesFailedToDeleteFromSink = 'foo';
+    o.bytesFoundFromSource = 'foo';
+    o.bytesFoundOnlyFromSink = 'foo';
+    o.bytesFromSourceFailed = 'foo';
+    o.bytesFromSourceSkippedBySync = 'foo';
+    o.objectsCopiedToSink = 'foo';
+    o.objectsDeletedFromSink = 'foo';
+    o.objectsDeletedFromSource = 'foo';
+    o.objectsFailedToDeleteFromSink = 'foo';
+    o.objectsFoundFromSource = 'foo';
+    o.objectsFoundOnlyFromSink = 'foo';
+    o.objectsFromSourceFailed = 'foo';
+    o.objectsFromSourceSkippedBySync = 'foo';
   }
   buildCounterTransferCounters--;
   return o;
@@ -777,15 +777,15 @@ api.TransferJob buildTransferJob() {
   var o = api.TransferJob();
   buildCounterTransferJob++;
   if (buildCounterTransferJob < 3) {
-    o.creationTime = "foo";
-    o.deletionTime = "foo";
-    o.description = "foo";
-    o.lastModificationTime = "foo";
-    o.name = "foo";
+    o.creationTime = 'foo';
+    o.deletionTime = 'foo';
+    o.description = 'foo';
+    o.lastModificationTime = 'foo';
+    o.name = 'foo';
     o.notificationConfig = buildNotificationConfig();
-    o.projectId = "foo";
+    o.projectId = 'foo';
     o.schedule = buildSchedule();
-    o.status = "foo";
+    o.status = 'foo';
     o.transferSpec = buildTransferSpec();
   }
   buildCounterTransferJob--;
@@ -828,14 +828,14 @@ api.TransferOperation buildTransferOperation() {
   buildCounterTransferOperation++;
   if (buildCounterTransferOperation < 3) {
     o.counters = buildTransferCounters();
-    o.endTime = "foo";
+    o.endTime = 'foo';
     o.errorBreakdowns = buildUnnamed1407();
-    o.name = "foo";
+    o.name = 'foo';
     o.notificationConfig = buildNotificationConfig();
-    o.projectId = "foo";
-    o.startTime = "foo";
-    o.status = "foo";
-    o.transferJobName = "foo";
+    o.projectId = 'foo';
+    o.startTime = 'foo';
+    o.status = 'foo';
+    o.transferJobName = 'foo';
     o.transferSpec = buildTransferSpec();
   }
   buildCounterTransferOperation--;
@@ -918,9 +918,9 @@ api.UpdateTransferJobRequest buildUpdateTransferJobRequest() {
   var o = api.UpdateTransferJobRequest();
   buildCounterUpdateTransferJobRequest++;
   if (buildCounterUpdateTransferJobRequest < 3) {
-    o.projectId = "foo";
+    o.projectId = 'foo';
     o.transferJob = buildTransferJob();
-    o.updateTransferJobFieldMask = "foo";
+    o.updateTransferJobFieldMask = 'foo';
   }
   buildCounterUpdateTransferJobRequest--;
   return o;
@@ -937,237 +937,237 @@ void checkUpdateTransferJobRequest(api.UpdateTransferJobRequest o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AwsAccessKey", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AwsAccessKey', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAwsAccessKey();
       var od = api.AwsAccessKey.fromJson(o.toJson());
       checkAwsAccessKey(od);
     });
   });
 
-  unittest.group("obj-schema-AwsS3Data", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AwsS3Data', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAwsS3Data();
       var od = api.AwsS3Data.fromJson(o.toJson());
       checkAwsS3Data(od);
     });
   });
 
-  unittest.group("obj-schema-AzureBlobStorageData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AzureBlobStorageData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAzureBlobStorageData();
       var od = api.AzureBlobStorageData.fromJson(o.toJson());
       checkAzureBlobStorageData(od);
     });
   });
 
-  unittest.group("obj-schema-AzureCredentials", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AzureCredentials', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAzureCredentials();
       var od = api.AzureCredentials.fromJson(o.toJson());
       checkAzureCredentials(od);
     });
   });
 
-  unittest.group("obj-schema-CancelOperationRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CancelOperationRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Date", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Date', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-ErrorLogEntry", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ErrorLogEntry', () {
+    unittest.test('to-json--from-json', () {
       var o = buildErrorLogEntry();
       var od = api.ErrorLogEntry.fromJson(o.toJson());
       checkErrorLogEntry(od);
     });
   });
 
-  unittest.group("obj-schema-ErrorSummary", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ErrorSummary', () {
+    unittest.test('to-json--from-json', () {
       var o = buildErrorSummary();
       var od = api.ErrorSummary.fromJson(o.toJson());
       checkErrorSummary(od);
     });
   });
 
-  unittest.group("obj-schema-GcsData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GcsData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGcsData();
       var od = api.GcsData.fromJson(o.toJson());
       checkGcsData(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleServiceAccount", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleServiceAccount', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleServiceAccount();
       var od = api.GoogleServiceAccount.fromJson(o.toJson());
       checkGoogleServiceAccount(od);
     });
   });
 
-  unittest.group("obj-schema-HttpData", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-HttpData', () {
+    unittest.test('to-json--from-json', () {
       var o = buildHttpData();
       var od = api.HttpData.fromJson(o.toJson());
       checkHttpData(od);
     });
   });
 
-  unittest.group("obj-schema-ListOperationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListOperationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTransferJobsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTransferJobsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTransferJobsResponse();
       var od = api.ListTransferJobsResponse.fromJson(o.toJson());
       checkListTransferJobsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-NotificationConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NotificationConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNotificationConfig();
       var od = api.NotificationConfig.fromJson(o.toJson());
       checkNotificationConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ObjectConditions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ObjectConditions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildObjectConditions();
       var od = api.ObjectConditions.fromJson(o.toJson());
       checkObjectConditions(od);
     });
   });
 
-  unittest.group("obj-schema-Operation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Operation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
 
-  unittest.group("obj-schema-PauseTransferOperationRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PauseTransferOperationRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPauseTransferOperationRequest();
       var od = api.PauseTransferOperationRequest.fromJson(o.toJson());
       checkPauseTransferOperationRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ResumeTransferOperationRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResumeTransferOperationRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResumeTransferOperationRequest();
       var od = api.ResumeTransferOperationRequest.fromJson(o.toJson());
       checkResumeTransferOperationRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Schedule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Schedule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSchedule();
       var od = api.Schedule.fromJson(o.toJson());
       checkSchedule(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-TimeOfDay", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TimeOfDay', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTimeOfDay();
       var od = api.TimeOfDay.fromJson(o.toJson());
       checkTimeOfDay(od);
     });
   });
 
-  unittest.group("obj-schema-TransferCounters", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TransferCounters', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTransferCounters();
       var od = api.TransferCounters.fromJson(o.toJson());
       checkTransferCounters(od);
     });
   });
 
-  unittest.group("obj-schema-TransferJob", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TransferJob', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTransferJob();
       var od = api.TransferJob.fromJson(o.toJson());
       checkTransferJob(od);
     });
   });
 
-  unittest.group("obj-schema-TransferOperation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TransferOperation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTransferOperation();
       var od = api.TransferOperation.fromJson(o.toJson());
       checkTransferOperation(od);
     });
   });
 
-  unittest.group("obj-schema-TransferOptions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TransferOptions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTransferOptions();
       var od = api.TransferOptions.fromJson(o.toJson());
       checkTransferOptions(od);
     });
   });
 
-  unittest.group("obj-schema-TransferSpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TransferSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTransferSpec();
       var od = api.TransferSpec.fromJson(o.toJson());
       checkTransferSpec(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateTransferJobRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateTransferJobRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateTransferJobRequest();
       var od = api.UpdateTransferJobRequest.fromJson(o.toJson());
       checkUpdateTransferJobRequest(od);
     });
   });
 
-  unittest.group("resource-GoogleServiceAccountsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-GoogleServiceAccountsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.GoogleServiceAccountsResourceApi res =
           api.StoragetransferApi(mock).googleServiceAccounts;
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1181,7 +1181,7 @@ void main() {
         pathOffset += 25;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1189,8 +1189,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1200,7 +1200,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleServiceAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1213,13 +1213,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-TransferJobsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-TransferJobsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.TransferJobsResourceApi res =
           api.StoragetransferApi(mock).transferJobs;
       var arg_request = buildTransferJob();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TransferJob.fromJson(json);
         checkTransferJob(obj);
@@ -1241,8 +1241,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1252,7 +1252,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTransferJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1264,13 +1264,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.TransferJobsResourceApi res =
           api.StoragetransferApi(mock).transferJobs;
-      var arg_jobName = "foo";
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_jobName = 'foo';
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1290,8 +1290,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1303,7 +1303,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTransferJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1315,14 +1315,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.TransferJobsResourceApi res =
           api.StoragetransferApi(mock).transferJobs;
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1341,8 +1341,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1357,7 +1357,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTransferJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1373,13 +1373,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.TransferJobsResourceApi res =
           api.StoragetransferApi(mock).transferJobs;
       var arg_request = buildUpdateTransferJobRequest();
-      var arg_jobName = "foo";
-      var arg_$fields = "foo";
+      var arg_jobName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UpdateTransferJobRequest.fromJson(json);
         checkUpdateTransferJobRequest(obj);
@@ -1402,8 +1402,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1413,7 +1413,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTransferJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1426,14 +1426,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-TransferOperationsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-TransferOperationsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.TransferOperationsResourceApi res =
           api.StoragetransferApi(mock).transferOperations;
       var arg_request = buildCancelOperationRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CancelOperationRequest.fromJson(json);
         checkCancelOperationRequest(obj);
@@ -1456,8 +1456,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1467,7 +1467,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1479,12 +1479,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.TransferOperationsResourceApi res =
           api.StoragetransferApi(mock).transferOperations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1504,8 +1504,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1515,7 +1515,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1527,15 +1527,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.TransferOperationsResourceApi res =
           api.StoragetransferApi(mock).transferOperations;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1555,8 +1555,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1571,7 +1571,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1587,13 +1587,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--pause", () {
+    unittest.test('method--pause', () {
       var mock = HttpServerMock();
       api.TransferOperationsResourceApi res =
           api.StoragetransferApi(mock).transferOperations;
       var arg_request = buildPauseTransferOperationRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PauseTransferOperationRequest.fromJson(json);
         checkPauseTransferOperationRequest(obj);
@@ -1616,8 +1616,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1627,7 +1627,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1639,13 +1639,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--resume", () {
+    unittest.test('method--resume', () {
       var mock = HttpServerMock();
       api.TransferOperationsResourceApi res =
           api.StoragetransferApi(mock).transferOperations;
       var arg_request = buildResumeTransferOperationRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ResumeTransferOperationRequest.fromJson(json);
         checkResumeTransferOperationRequest(obj);
@@ -1668,8 +1668,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1679,7 +1679,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));

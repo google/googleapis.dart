@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -76,11 +76,11 @@ api.ActiveViewVideoViewabilityMetricConfig
   var o = api.ActiveViewVideoViewabilityMetricConfig();
   buildCounterActiveViewVideoViewabilityMetricConfig++;
   if (buildCounterActiveViewVideoViewabilityMetricConfig < 3) {
-    o.displayName = "foo";
-    o.minimumDuration = "foo";
-    o.minimumQuartile = "foo";
-    o.minimumViewability = "foo";
-    o.minimumVolume = "foo";
+    o.displayName = 'foo';
+    o.minimumDuration = 'foo';
+    o.minimumQuartile = 'foo';
+    o.minimumViewability = 'foo';
+    o.minimumVolume = 'foo';
   }
   buildCounterActiveViewVideoViewabilityMetricConfig--;
   return o;
@@ -101,8 +101,8 @@ void checkActiveViewVideoViewabilityMetricConfig(
 
 core.List<core.String> buildUnnamed4566() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -137,17 +137,17 @@ api.Advertiser buildAdvertiser() {
   buildCounterAdvertiser++;
   if (buildCounterAdvertiser < 3) {
     o.adServerConfig = buildAdvertiserAdServerConfig();
-    o.advertiserId = "foo";
+    o.advertiserId = 'foo';
     o.creativeConfig = buildAdvertiserCreativeConfig();
     o.dataAccessConfig = buildAdvertiserDataAccessConfig();
-    o.displayName = "foo";
-    o.entityStatus = "foo";
+    o.displayName = 'foo';
+    o.entityStatus = 'foo';
     o.generalConfig = buildAdvertiserGeneralConfig();
     o.integrationDetails = buildIntegrationDetails();
-    o.name = "foo";
-    o.partnerId = "foo";
+    o.name = 'foo';
+    o.partnerId = 'foo';
     o.servingConfig = buildAdvertiserTargetingConfig();
-    o.updateTime = "foo";
+    o.updateTime = 'foo';
   }
   buildCounterAdvertiser--;
   return o;
@@ -199,7 +199,7 @@ api.AdvertiserCreativeConfig buildAdvertiserCreativeConfig() {
   buildCounterAdvertiserCreativeConfig++;
   if (buildCounterAdvertiserCreativeConfig < 3) {
     o.dynamicCreativeEnabled = true;
-    o.iasClientId = "foo";
+    o.iasClientId = 'foo';
     o.obaComplianceDisabled = true;
     o.videoCreativeDataSharingAuthorized = true;
   }
@@ -242,9 +242,9 @@ api.AdvertiserGeneralConfig buildAdvertiserGeneralConfig() {
   var o = api.AdvertiserGeneralConfig();
   buildCounterAdvertiserGeneralConfig++;
   if (buildCounterAdvertiserGeneralConfig < 3) {
-    o.currencyCode = "foo";
-    o.domainUrl = "foo";
-    o.timeZone = "foo";
+    o.currencyCode = 'foo';
+    o.domainUrl = 'foo';
+    o.timeZone = 'foo';
   }
   buildCounterAdvertiserGeneralConfig--;
   return o;
@@ -306,8 +306,8 @@ api.AgeRangeAssignedTargetingOptionDetails
   var o = api.AgeRangeAssignedTargetingOptionDetails();
   buildCounterAgeRangeAssignedTargetingOptionDetails++;
   if (buildCounterAgeRangeAssignedTargetingOptionDetails < 3) {
-    o.ageRange = "foo";
-    o.targetingOptionId = "foo";
+    o.ageRange = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterAgeRangeAssignedTargetingOptionDetails--;
   return o;
@@ -328,7 +328,7 @@ api.AgeRangeTargetingOptionDetails buildAgeRangeTargetingOptionDetails() {
   var o = api.AgeRangeTargetingOptionDetails();
   buildCounterAgeRangeTargetingOptionDetails++;
   if (buildCounterAgeRangeTargetingOptionDetails < 3) {
-    o.ageRange = "foo";
+    o.ageRange = 'foo';
   }
   buildCounterAgeRangeTargetingOptionDetails--;
   return o;
@@ -347,8 +347,8 @@ api.AppAssignedTargetingOptionDetails buildAppAssignedTargetingOptionDetails() {
   var o = api.AppAssignedTargetingOptionDetails();
   buildCounterAppAssignedTargetingOptionDetails++;
   if (buildCounterAppAssignedTargetingOptionDetails < 3) {
-    o.appId = "foo";
-    o.displayName = "foo";
+    o.appId = 'foo';
+    o.displayName = 'foo';
     o.negative = true;
   }
   buildCounterAppAssignedTargetingOptionDetails--;
@@ -372,9 +372,9 @@ api.AppCategoryAssignedTargetingOptionDetails
   var o = api.AppCategoryAssignedTargetingOptionDetails();
   buildCounterAppCategoryAssignedTargetingOptionDetails++;
   if (buildCounterAppCategoryAssignedTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.negative = true;
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterAppCategoryAssignedTargetingOptionDetails--;
   return o;
@@ -396,7 +396,7 @@ api.AppCategoryTargetingOptionDetails buildAppCategoryTargetingOptionDetails() {
   var o = api.AppCategoryTargetingOptionDetails();
   buildCounterAppCategoryTargetingOptionDetails++;
   if (buildCounterAppCategoryTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
   }
   buildCounterAppCategoryTargetingOptionDetails--;
   return o;
@@ -416,8 +416,8 @@ api.Asset buildAsset() {
   var o = api.Asset();
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    o.content = "foo";
-    o.mediaId = "foo";
+    o.content = 'foo';
+    o.mediaId = 'foo';
   }
   buildCounterAsset--;
   return o;
@@ -438,7 +438,7 @@ api.AssetAssociation buildAssetAssociation() {
   buildCounterAssetAssociation++;
   if (buildCounterAssetAssociation < 3) {
     o.asset = buildAsset();
-    o.role = "foo";
+    o.role = 'foo';
   }
   buildCounterAssetAssociation--;
   return o;
@@ -458,9 +458,9 @@ api.AssignedInventorySource buildAssignedInventorySource() {
   var o = api.AssignedInventorySource();
   buildCounterAssignedInventorySource++;
   if (buildCounterAssignedInventorySource < 3) {
-    o.assignedInventorySourceId = "foo";
-    o.inventorySourceId = "foo";
-    o.name = "foo";
+    o.assignedInventorySourceId = 'foo';
+    o.inventorySourceId = 'foo';
+    o.name = 'foo';
   }
   buildCounterAssignedInventorySource--;
   return o;
@@ -481,9 +481,9 @@ api.AssignedLocation buildAssignedLocation() {
   var o = api.AssignedLocation();
   buildCounterAssignedLocation++;
   if (buildCounterAssignedLocation < 3) {
-    o.assignedLocationId = "foo";
-    o.name = "foo";
-    o.targetingOptionId = "foo";
+    o.assignedLocationId = 'foo';
+    o.name = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterAssignedLocation--;
   return o;
@@ -507,7 +507,7 @@ api.AssignedTargetingOption buildAssignedTargetingOption() {
     o.ageRangeDetails = buildAgeRangeAssignedTargetingOptionDetails();
     o.appCategoryDetails = buildAppCategoryAssignedTargetingOptionDetails();
     o.appDetails = buildAppAssignedTargetingOptionDetails();
-    o.assignedTargetingOptionId = "foo";
+    o.assignedTargetingOptionId = 'foo';
     o.audienceGroupDetails = buildAudienceGroupAssignedTargetingOptionDetails();
     o.authorizedSellerStatusDetails =
         buildAuthorizedSellerStatusAssignedTargetingOptionDetails();
@@ -531,14 +531,14 @@ api.AssignedTargetingOption buildAssignedTargetingOption() {
     o.geoRegionDetails = buildGeoRegionAssignedTargetingOptionDetails();
     o.householdIncomeDetails =
         buildHouseholdIncomeAssignedTargetingOptionDetails();
-    o.inheritance = "foo";
+    o.inheritance = 'foo';
     o.inventorySourceDetails =
         buildInventorySourceAssignedTargetingOptionDetails();
     o.inventorySourceGroupDetails =
         buildInventorySourceGroupAssignedTargetingOptionDetails();
     o.keywordDetails = buildKeywordAssignedTargetingOptionDetails();
     o.languageDetails = buildLanguageAssignedTargetingOptionDetails();
-    o.name = "foo";
+    o.name = 'foo';
     o.negativeKeywordListDetails =
         buildNegativeKeywordListAssignedTargetingOptionDetails();
     o.onScreenPositionDetails =
@@ -554,7 +554,7 @@ api.AssignedTargetingOption buildAssignedTargetingOption() {
     o.sensitiveCategoryExclusionDetails =
         buildSensitiveCategoryAssignedTargetingOptionDetails();
     o.subExchangeDetails = buildSubExchangeAssignedTargetingOptionDetails();
-    o.targetingType = "foo";
+    o.targetingType = 'foo';
     o.thirdPartyVerifierDetails =
         buildThirdPartyVerifierAssignedTargetingOptionDetails();
     o.urlDetails = buildUrlAssignedTargetingOptionDetails();
@@ -638,10 +638,10 @@ api.AssignedUserRole buildAssignedUserRole() {
   var o = api.AssignedUserRole();
   buildCounterAssignedUserRole++;
   if (buildCounterAssignedUserRole < 3) {
-    o.advertiserId = "foo";
-    o.assignedUserRoleId = "foo";
-    o.partnerId = "foo";
-    o.userRole = "foo";
+    o.advertiserId = 'foo';
+    o.assignedUserRoleId = 'foo';
+    o.partnerId = 'foo';
+    o.userRole = 'foo';
   }
   buildCounterAssignedUserRole--;
   return o;
@@ -709,8 +709,8 @@ api.AudioVideoOffset buildAudioVideoOffset() {
   var o = api.AudioVideoOffset();
   buildCounterAudioVideoOffset++;
   if (buildCounterAudioVideoOffset < 3) {
-    o.percentage = "foo";
-    o.seconds = "foo";
+    o.percentage = 'foo';
+    o.seconds = 'foo';
   }
   buildCounterAudioVideoOffset--;
   return o;
@@ -730,14 +730,14 @@ api.AuditAdvertiserResponse buildAuditAdvertiserResponse() {
   var o = api.AuditAdvertiserResponse();
   buildCounterAuditAdvertiserResponse++;
   if (buildCounterAuditAdvertiserResponse < 3) {
-    o.adGroupCriteriaCount = "foo";
-    o.campaignCriteriaCount = "foo";
-    o.channelsCount = "foo";
-    o.negativeKeywordListsCount = "foo";
-    o.negativelyTargetedChannelsCount = "foo";
-    o.usedCampaignsCount = "foo";
-    o.usedInsertionOrdersCount = "foo";
-    o.usedLineItemsCount = "foo";
+    o.adGroupCriteriaCount = 'foo';
+    o.campaignCriteriaCount = 'foo';
+    o.channelsCount = 'foo';
+    o.negativeKeywordListsCount = 'foo';
+    o.negativelyTargetedChannelsCount = 'foo';
+    o.usedCampaignsCount = 'foo';
+    o.usedInsertionOrdersCount = 'foo';
+    o.usedLineItemsCount = 'foo';
   }
   buildCounterAuditAdvertiserResponse--;
   return o;
@@ -764,8 +764,8 @@ api.AuthorizedSellerStatusAssignedTargetingOptionDetails
   var o = api.AuthorizedSellerStatusAssignedTargetingOptionDetails();
   buildCounterAuthorizedSellerStatusAssignedTargetingOptionDetails++;
   if (buildCounterAuthorizedSellerStatusAssignedTargetingOptionDetails < 3) {
-    o.authorizedSellerStatus = "foo";
-    o.targetingOptionId = "foo";
+    o.authorizedSellerStatus = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterAuthorizedSellerStatusAssignedTargetingOptionDetails--;
   return o;
@@ -787,7 +787,7 @@ api.AuthorizedSellerStatusTargetingOptionDetails
   var o = api.AuthorizedSellerStatusTargetingOptionDetails();
   buildCounterAuthorizedSellerStatusTargetingOptionDetails++;
   if (buildCounterAuthorizedSellerStatusTargetingOptionDetails < 3) {
-    o.authorizedSellerStatus = "foo";
+    o.authorizedSellerStatus = 'foo';
   }
   buildCounterAuthorizedSellerStatusTargetingOptionDetails--;
   return o;
@@ -831,9 +831,9 @@ api.BrowserAssignedTargetingOptionDetails
   var o = api.BrowserAssignedTargetingOptionDetails();
   buildCounterBrowserAssignedTargetingOptionDetails++;
   if (buildCounterBrowserAssignedTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.negative = true;
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterBrowserAssignedTargetingOptionDetails--;
   return o;
@@ -855,7 +855,7 @@ api.BrowserTargetingOptionDetails buildBrowserTargetingOptionDetails() {
   var o = api.BrowserTargetingOptionDetails();
   buildCounterBrowserTargetingOptionDetails++;
   if (buildCounterBrowserTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
   }
   buildCounterBrowserTargetingOptionDetails--;
   return o;
@@ -967,8 +967,8 @@ void checkUnnamed4571(core.List<api.AssignedInventorySource> o) {
 
 core.List<core.String> buildUnnamed4572() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -984,10 +984,10 @@ api.BulkEditAssignedInventorySourcesRequest
   var o = api.BulkEditAssignedInventorySourcesRequest();
   buildCounterBulkEditAssignedInventorySourcesRequest++;
   if (buildCounterBulkEditAssignedInventorySourcesRequest < 3) {
-    o.advertiserId = "foo";
+    o.advertiserId = 'foo';
     o.createdAssignedInventorySources = buildUnnamed4571();
     o.deletedAssignedInventorySources = buildUnnamed4572();
-    o.partnerId = "foo";
+    o.partnerId = 'foo';
   }
   buildCounterBulkEditAssignedInventorySourcesRequest--;
   return o;
@@ -1054,8 +1054,8 @@ void checkUnnamed4574(core.List<api.AssignedLocation> o) {
 
 core.List<core.String> buildUnnamed4575() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1135,8 +1135,8 @@ void checkUnnamed4577(core.List<api.AssignedUserRole> o) {
 
 core.List<core.String> buildUnnamed4578() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1299,8 +1299,8 @@ void checkUnnamed4583(core.List<api.NegativeKeyword> o) {
 
 core.List<core.String> buildUnnamed4584() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1463,8 +1463,8 @@ void checkUnnamed4589(core.List<api.Site> o) {
 
 core.List<core.String> buildUnnamed4590() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1479,10 +1479,10 @@ api.BulkEditSitesRequest buildBulkEditSitesRequest() {
   var o = api.BulkEditSitesRequest();
   buildCounterBulkEditSitesRequest++;
   if (buildCounterBulkEditSitesRequest < 3) {
-    o.advertiserId = "foo";
+    o.advertiserId = 'foo';
     o.createdSites = buildUnnamed4589();
     o.deletedSites = buildUnnamed4590();
-    o.partnerId = "foo";
+    o.partnerId = 'foo';
   }
   buildCounterBulkEditSitesRequest--;
   return o;
@@ -1551,7 +1551,7 @@ api.BulkListAdvertiserAssignedTargetingOptionsResponse
   buildCounterBulkListAdvertiserAssignedTargetingOptionsResponse++;
   if (buildCounterBulkListAdvertiserAssignedTargetingOptionsResponse < 3) {
     o.assignedTargetingOptions = buildUnnamed4592();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterBulkListAdvertiserAssignedTargetingOptionsResponse--;
   return o;
@@ -1587,7 +1587,7 @@ api.BulkListLineItemAssignedTargetingOptionsResponse
   buildCounterBulkListLineItemAssignedTargetingOptionsResponse++;
   if (buildCounterBulkListLineItemAssignedTargetingOptionsResponse < 3) {
     o.assignedTargetingOptions = buildUnnamed4593();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterBulkListLineItemAssignedTargetingOptionsResponse--;
   return o;
@@ -1608,15 +1608,15 @@ api.Campaign buildCampaign() {
   var o = api.Campaign();
   buildCounterCampaign++;
   if (buildCounterCampaign < 3) {
-    o.advertiserId = "foo";
+    o.advertiserId = 'foo';
     o.campaignFlight = buildCampaignFlight();
     o.campaignGoal = buildCampaignGoal();
-    o.campaignId = "foo";
-    o.displayName = "foo";
-    o.entityStatus = "foo";
+    o.campaignId = 'foo';
+    o.displayName = 'foo';
+    o.entityStatus = 'foo';
     o.frequencyCap = buildFrequencyCap();
-    o.name = "foo";
-    o.updateTime = "foo";
+    o.name = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterCampaign--;
   return o;
@@ -1644,7 +1644,7 @@ api.CampaignFlight buildCampaignFlight() {
   buildCounterCampaignFlight++;
   if (buildCounterCampaignFlight < 3) {
     o.plannedDates = buildDateRange();
-    o.plannedSpendAmountMicros = "foo";
+    o.plannedSpendAmountMicros = 'foo';
   }
   buildCounterCampaignFlight--;
   return o;
@@ -1664,7 +1664,7 @@ api.CampaignGoal buildCampaignGoal() {
   var o = api.CampaignGoal();
   buildCounterCampaignGoal++;
   if (buildCounterCampaignGoal < 3) {
-    o.campaignGoalType = "foo";
+    o.campaignGoalType = 'foo';
     o.performanceGoal = buildPerformanceGoal();
   }
   buildCounterCampaignGoal--;
@@ -1686,9 +1686,9 @@ api.CarrierAndIspAssignedTargetingOptionDetails
   var o = api.CarrierAndIspAssignedTargetingOptionDetails();
   buildCounterCarrierAndIspAssignedTargetingOptionDetails++;
   if (buildCounterCarrierAndIspAssignedTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.negative = true;
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterCarrierAndIspAssignedTargetingOptionDetails--;
   return o;
@@ -1711,8 +1711,8 @@ api.CarrierAndIspTargetingOptionDetails
   var o = api.CarrierAndIspTargetingOptionDetails();
   buildCounterCarrierAndIspTargetingOptionDetails++;
   if (buildCounterCarrierAndIspTargetingOptionDetails < 3) {
-    o.displayName = "foo";
-    o.type = "foo";
+    o.displayName = 'foo';
+    o.type = 'foo';
   }
   buildCounterCarrierAndIspTargetingOptionDetails--;
   return o;
@@ -1734,9 +1734,9 @@ api.CategoryAssignedTargetingOptionDetails
   var o = api.CategoryAssignedTargetingOptionDetails();
   buildCounterCategoryAssignedTargetingOptionDetails++;
   if (buildCounterCategoryAssignedTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.negative = true;
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterCategoryAssignedTargetingOptionDetails--;
   return o;
@@ -1758,7 +1758,7 @@ api.CategoryTargetingOptionDetails buildCategoryTargetingOptionDetails() {
   var o = api.CategoryTargetingOptionDetails();
   buildCounterCategoryTargetingOptionDetails++;
   if (buildCounterCategoryTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
   }
   buildCounterCategoryTargetingOptionDetails--;
   return o;
@@ -1777,11 +1777,11 @@ api.Channel buildChannel() {
   var o = api.Channel();
   buildCounterChannel++;
   if (buildCounterChannel < 3) {
-    o.advertiserId = "foo";
-    o.channelId = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
-    o.partnerId = "foo";
+    o.advertiserId = 'foo';
+    o.channelId = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
+    o.partnerId = 'foo';
   }
   buildCounterChannel--;
   return o;
@@ -1805,7 +1805,7 @@ api.ChannelAssignedTargetingOptionDetails
   var o = api.ChannelAssignedTargetingOptionDetails();
   buildCounterChannelAssignedTargetingOptionDetails++;
   if (buildCounterChannelAssignedTargetingOptionDetails < 3) {
-    o.channelId = "foo";
+    o.channelId = 'foo';
     o.negative = true;
   }
   buildCounterChannelAssignedTargetingOptionDetails--;
@@ -1824,8 +1824,8 @@ void checkChannelAssignedTargetingOptionDetails(
 
 core.List<core.String> buildUnnamed4594() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1840,8 +1840,8 @@ api.CmHybridConfig buildCmHybridConfig() {
   var o = api.CmHybridConfig();
   buildCounterCmHybridConfig++;
   if (buildCounterCmHybridConfig < 3) {
-    o.cmAccountId = "foo";
-    o.cmFloodlightConfigId = "foo";
+    o.cmAccountId = 'foo';
+    o.cmFloodlightConfigId = 'foo';
     o.cmFloodlightLinkingAuthorized = true;
     o.cmSyncableSiteIds = buildUnnamed4594();
     o.dv360ToCmCostReportingEnabled = true;
@@ -1869,9 +1869,9 @@ api.CmTrackingAd buildCmTrackingAd() {
   var o = api.CmTrackingAd();
   buildCounterCmTrackingAd++;
   if (buildCounterCmTrackingAd < 3) {
-    o.cmAdId = "foo";
-    o.cmCreativeId = "foo";
-    o.cmPlacementId = "foo";
+    o.cmAdId = 'foo';
+    o.cmCreativeId = 'foo';
+    o.cmPlacementId = 'foo';
   }
   buildCounterCmTrackingAd--;
   return o;
@@ -1892,9 +1892,9 @@ api.CombinedAudience buildCombinedAudience() {
   var o = api.CombinedAudience();
   buildCounterCombinedAudience++;
   if (buildCounterCombinedAudience < 3) {
-    o.combinedAudienceId = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
+    o.combinedAudienceId = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
   }
   buildCounterCombinedAudience--;
   return o;
@@ -1947,7 +1947,7 @@ api.CombinedAudienceTargetingSetting buildCombinedAudienceTargetingSetting() {
   var o = api.CombinedAudienceTargetingSetting();
   buildCounterCombinedAudienceTargetingSetting++;
   if (buildCounterCombinedAudienceTargetingSetting < 3) {
-    o.combinedAudienceId = "foo";
+    o.combinedAudienceId = 'foo';
   }
   buildCounterCombinedAudienceTargetingSetting--;
   return o;
@@ -1968,8 +1968,8 @@ api.ContentInstreamPositionAssignedTargetingOptionDetails
   var o = api.ContentInstreamPositionAssignedTargetingOptionDetails();
   buildCounterContentInstreamPositionAssignedTargetingOptionDetails++;
   if (buildCounterContentInstreamPositionAssignedTargetingOptionDetails < 3) {
-    o.contentInstreamPosition = "foo";
-    o.targetingOptionId = "foo";
+    o.contentInstreamPosition = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterContentInstreamPositionAssignedTargetingOptionDetails--;
   return o;
@@ -1991,7 +1991,7 @@ api.ContentInstreamPositionTargetingOptionDetails
   var o = api.ContentInstreamPositionTargetingOptionDetails();
   buildCounterContentInstreamPositionTargetingOptionDetails++;
   if (buildCounterContentInstreamPositionTargetingOptionDetails < 3) {
-    o.contentInstreamPosition = "foo";
+    o.contentInstreamPosition = 'foo';
   }
   buildCounterContentInstreamPositionTargetingOptionDetails--;
   return o;
@@ -2012,8 +2012,8 @@ api.ContentOutstreamPositionAssignedTargetingOptionDetails
   var o = api.ContentOutstreamPositionAssignedTargetingOptionDetails();
   buildCounterContentOutstreamPositionAssignedTargetingOptionDetails++;
   if (buildCounterContentOutstreamPositionAssignedTargetingOptionDetails < 3) {
-    o.contentOutstreamPosition = "foo";
-    o.targetingOptionId = "foo";
+    o.contentOutstreamPosition = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterContentOutstreamPositionAssignedTargetingOptionDetails--;
   return o;
@@ -2035,7 +2035,7 @@ api.ContentOutstreamPositionTargetingOptionDetails
   var o = api.ContentOutstreamPositionTargetingOptionDetails();
   buildCounterContentOutstreamPositionTargetingOptionDetails++;
   if (buildCounterContentOutstreamPositionTargetingOptionDetails < 3) {
-    o.contentOutstreamPosition = "foo";
+    o.contentOutstreamPosition = 'foo';
   }
   buildCounterContentOutstreamPositionTargetingOptionDetails--;
   return o;
@@ -2069,7 +2069,7 @@ api.ConversionCountingConfig buildConversionCountingConfig() {
   buildCounterConversionCountingConfig++;
   if (buildCounterConversionCountingConfig < 3) {
     o.floodlightActivityConfigs = buildUnnamed4596();
-    o.postViewCountPercentageMillis = "foo";
+    o.postViewCountPercentageMillis = 'foo';
   }
   buildCounterConversionCountingConfig--;
   return o;
@@ -2089,8 +2089,8 @@ api.CounterEvent buildCounterEvent() {
   var o = api.CounterEvent();
   buildCounterCounterEvent++;
   if (buildCounterCounterEvent < 3) {
-    o.name = "foo";
-    o.reportingName = "foo";
+    o.name = 'foo';
+    o.reportingName = 'foo';
   }
   buildCounterCounterEvent--;
   return o;
@@ -2110,7 +2110,7 @@ api.CreateAssetRequest buildCreateAssetRequest() {
   var o = api.CreateAssetRequest();
   buildCounterCreateAssetRequest++;
   if (buildCounterCreateAssetRequest < 3) {
-    o.filename = "foo";
+    o.filename = 'foo';
   }
   buildCounterCreateAssetRequest--;
   return o;
@@ -2163,7 +2163,7 @@ api.CreateAssignedTargetingOptionsRequest
   buildCounterCreateAssignedTargetingOptionsRequest++;
   if (buildCounterCreateAssignedTargetingOptionsRequest < 3) {
     o.assignedTargetingOptions = buildUnnamed4597();
-    o.targetingType = "foo";
+    o.targetingType = 'foo';
   }
   buildCounterCreateAssignedTargetingOptionsRequest--;
   return o;
@@ -2184,12 +2184,12 @@ api.CreateSdfDownloadTaskRequest buildCreateSdfDownloadTaskRequest() {
   var o = api.CreateSdfDownloadTaskRequest();
   buildCounterCreateSdfDownloadTaskRequest++;
   if (buildCounterCreateSdfDownloadTaskRequest < 3) {
-    o.advertiserId = "foo";
+    o.advertiserId = 'foo';
     o.idFilter = buildIdFilter();
     o.inventorySourceFilter = buildInventorySourceFilter();
     o.parentEntityFilter = buildParentEntityFilter();
-    o.partnerId = "foo";
-    o.version = "foo";
+    o.partnerId = 'foo';
+    o.version = 'foo';
   }
   buildCounterCreateSdfDownloadTaskRequest--;
   return o;
@@ -2236,8 +2236,8 @@ void checkUnnamed4599(core.List<api.AssetAssociation> o) {
 
 core.List<core.String> buildUnnamed4600() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2262,8 +2262,8 @@ void checkUnnamed4601(core.List<api.CounterEvent> o) {
 
 core.List<core.String> buildUnnamed4602() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2288,8 +2288,8 @@ void checkUnnamed4603(core.List<api.ExitEvent> o) {
 
 core.List<core.String> buildUnnamed4604() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2327,8 +2327,8 @@ void checkUnnamed4606(core.List<api.TimerEvent> o) {
 
 core.List<core.String> buildUnnamed4607() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2357,33 +2357,33 @@ api.Creative buildCreative() {
   buildCounterCreative++;
   if (buildCounterCreative < 3) {
     o.additionalDimensions = buildUnnamed4598();
-    o.advertiserId = "foo";
-    o.appendedTag = "foo";
+    o.advertiserId = 'foo';
+    o.appendedTag = 'foo';
     o.assets = buildUnnamed4599();
-    o.cmPlacementId = "foo";
+    o.cmPlacementId = 'foo';
     o.cmTrackingAd = buildCmTrackingAd();
     o.companionCreativeIds = buildUnnamed4600();
     o.counterEvents = buildUnnamed4601();
-    o.createTime = "foo";
+    o.createTime = 'foo';
     o.creativeAttributes = buildUnnamed4602();
-    o.creativeId = "foo";
-    o.creativeType = "foo";
+    o.creativeId = 'foo';
+    o.creativeType = 'foo';
     o.dimensions = buildDimensions();
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.dynamic = true;
-    o.entityStatus = "foo";
+    o.entityStatus = 'foo';
     o.exitEvents = buildUnnamed4603();
     o.expandOnHover = true;
-    o.expandingDirection = "foo";
-    o.hostingSource = "foo";
+    o.expandingDirection = 'foo';
+    o.hostingSource = 'foo';
     o.html5Video = true;
     o.iasCampaignMonitoring = true;
-    o.integrationCode = "foo";
-    o.jsTrackerUrl = "foo";
+    o.integrationCode = 'foo';
+    o.jsTrackerUrl = 'foo';
     o.lineItemIds = buildUnnamed4604();
-    o.mediaDuration = "foo";
-    o.name = "foo";
-    o.notes = "foo";
+    o.mediaDuration = 'foo';
+    o.name = 'foo';
+    o.notes = 'foo';
     o.obaIcon = buildObaIcon();
     o.progressOffset = buildAudioVideoOffset();
     o.requireHtml5 = true;
@@ -2392,14 +2392,14 @@ api.Creative buildCreative() {
     o.reviewStatus = buildReviewStatusInfo();
     o.skipOffset = buildAudioVideoOffset();
     o.skippable = true;
-    o.thirdPartyTag = "foo";
+    o.thirdPartyTag = 'foo';
     o.thirdPartyUrls = buildUnnamed4605();
     o.timerEvents = buildUnnamed4606();
     o.trackerUrls = buildUnnamed4607();
     o.transcodes = buildUnnamed4608();
     o.universalAdId = buildUniversalAdId();
-    o.updateTime = "foo";
-    o.vastTagUrl = "foo";
+    o.updateTime = 'foo';
+    o.vastTagUrl = 'foo';
     o.vpaid = true;
   }
   buildCounterCreative--;
@@ -2463,7 +2463,7 @@ api.CreativeConfig buildCreativeConfig() {
   var o = api.CreativeConfig();
   buildCounterCreativeConfig++;
   if (buildCounterCreativeConfig < 3) {
-    o.creativeType = "foo";
+    o.creativeType = 'foo';
     o.displayCreativeConfig = buildInventorySourceDisplayCreativeConfig();
     o.videoCreativeConfig = buildInventorySourceVideoCreativeConfig();
   }
@@ -2486,13 +2486,13 @@ api.CustomBiddingAlgorithm buildCustomBiddingAlgorithm() {
   var o = api.CustomBiddingAlgorithm();
   buildCounterCustomBiddingAlgorithm++;
   if (buildCounterCustomBiddingAlgorithm < 3) {
-    o.advertiserId = "foo";
-    o.customBiddingAlgorithmId = "foo";
-    o.customBiddingAlgorithmType = "foo";
-    o.displayName = "foo";
-    o.entityStatus = "foo";
-    o.name = "foo";
-    o.partnerId = "foo";
+    o.advertiserId = 'foo';
+    o.customBiddingAlgorithmId = 'foo';
+    o.customBiddingAlgorithmType = 'foo';
+    o.displayName = 'foo';
+    o.entityStatus = 'foo';
+    o.name = 'foo';
+    o.partnerId = 'foo';
   }
   buildCounterCustomBiddingAlgorithm--;
   return o;
@@ -2517,9 +2517,9 @@ api.CustomList buildCustomList() {
   var o = api.CustomList();
   buildCounterCustomList++;
   if (buildCounterCustomList < 3) {
-    o.customListId = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
+    o.customListId = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
   }
   buildCounterCustomList--;
   return o;
@@ -2572,7 +2572,7 @@ api.CustomListTargetingSetting buildCustomListTargetingSetting() {
   var o = api.CustomListTargetingSetting();
   buildCounterCustomListTargetingSetting++;
   if (buildCounterCustomListTargetingSetting < 3) {
-    o.customListId = "foo";
+    o.customListId = 'foo';
   }
   buildCounterCustomListTargetingSetting--;
   return o;
@@ -2636,10 +2636,10 @@ api.DayAndTimeAssignedTargetingOptionDetails
   var o = api.DayAndTimeAssignedTargetingOptionDetails();
   buildCounterDayAndTimeAssignedTargetingOptionDetails++;
   if (buildCounterDayAndTimeAssignedTargetingOptionDetails < 3) {
-    o.dayOfWeek = "foo";
+    o.dayOfWeek = 'foo';
     o.endHour = 42;
     o.startHour = 42;
-    o.timeZoneResolution = "foo";
+    o.timeZoneResolution = 'foo';
   }
   buildCounterDayAndTimeAssignedTargetingOptionDetails--;
   return o;
@@ -2659,8 +2659,8 @@ void checkDayAndTimeAssignedTargetingOptionDetails(
 
 core.List<core.String> buildUnnamed4610() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2677,7 +2677,7 @@ api.DeleteAssignedTargetingOptionsRequest
   buildCounterDeleteAssignedTargetingOptionsRequest++;
   if (buildCounterDeleteAssignedTargetingOptionsRequest < 3) {
     o.assignedTargetingOptionIds = buildUnnamed4610();
-    o.targetingType = "foo";
+    o.targetingType = 'foo';
   }
   buildCounterDeleteAssignedTargetingOptionsRequest--;
   return o;
@@ -2699,9 +2699,9 @@ api.DeviceMakeModelAssignedTargetingOptionDetails
   var o = api.DeviceMakeModelAssignedTargetingOptionDetails();
   buildCounterDeviceMakeModelAssignedTargetingOptionDetails++;
   if (buildCounterDeviceMakeModelAssignedTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.negative = true;
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterDeviceMakeModelAssignedTargetingOptionDetails--;
   return o;
@@ -2724,7 +2724,7 @@ api.DeviceMakeModelTargetingOptionDetails
   var o = api.DeviceMakeModelTargetingOptionDetails();
   buildCounterDeviceMakeModelTargetingOptionDetails++;
   if (buildCounterDeviceMakeModelTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
   }
   buildCounterDeviceMakeModelTargetingOptionDetails--;
   return o;
@@ -2745,8 +2745,8 @@ api.DeviceTypeAssignedTargetingOptionDetails
   var o = api.DeviceTypeAssignedTargetingOptionDetails();
   buildCounterDeviceTypeAssignedTargetingOptionDetails++;
   if (buildCounterDeviceTypeAssignedTargetingOptionDetails < 3) {
-    o.deviceType = "foo";
-    o.targetingOptionId = "foo";
+    o.deviceType = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterDeviceTypeAssignedTargetingOptionDetails--;
   return o;
@@ -2767,7 +2767,7 @@ api.DeviceTypeTargetingOptionDetails buildDeviceTypeTargetingOptionDetails() {
   var o = api.DeviceTypeTargetingOptionDetails();
   buildCounterDeviceTypeTargetingOptionDetails++;
   if (buildCounterDeviceTypeTargetingOptionDetails < 3) {
-    o.deviceType = "foo";
+    o.deviceType = 'foo';
   }
   buildCounterDeviceTypeTargetingOptionDetails--;
   return o;
@@ -2788,8 +2788,8 @@ api.DigitalContentLabelAssignedTargetingOptionDetails
   var o = api.DigitalContentLabelAssignedTargetingOptionDetails();
   buildCounterDigitalContentLabelAssignedTargetingOptionDetails++;
   if (buildCounterDigitalContentLabelAssignedTargetingOptionDetails < 3) {
-    o.contentRatingTier = "foo";
-    o.excludedTargetingOptionId = "foo";
+    o.contentRatingTier = 'foo';
+    o.excludedTargetingOptionId = 'foo';
   }
   buildCounterDigitalContentLabelAssignedTargetingOptionDetails--;
   return o;
@@ -2811,7 +2811,7 @@ api.DigitalContentLabelTargetingOptionDetails
   var o = api.DigitalContentLabelTargetingOptionDetails();
   buildCounterDigitalContentLabelTargetingOptionDetails++;
   if (buildCounterDigitalContentLabelTargetingOptionDetails < 3) {
-    o.contentRatingTier = "foo";
+    o.contentRatingTier = 'foo';
   }
   buildCounterDigitalContentLabelTargetingOptionDetails--;
   return o;
@@ -2849,8 +2849,8 @@ void checkDimensions(api.Dimensions o) {
 
 core.List<core.String> buildUnnamed4611() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2895,7 +2895,7 @@ api.DoubleVerifyAppStarRating buildDoubleVerifyAppStarRating() {
   buildCounterDoubleVerifyAppStarRating++;
   if (buildCounterDoubleVerifyAppStarRating < 3) {
     o.avoidInsufficientStarRating = true;
-    o.avoidedStarRating = "foo";
+    o.avoidedStarRating = 'foo';
   }
   buildCounterDoubleVerifyAppStarRating--;
   return o;
@@ -2912,8 +2912,8 @@ void checkDoubleVerifyAppStarRating(api.DoubleVerifyAppStarRating o) {
 
 core.List<core.String> buildUnnamed4612() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2925,8 +2925,8 @@ void checkUnnamed4612(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4613() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2965,8 +2965,8 @@ api.DoubleVerifyDisplayViewability buildDoubleVerifyDisplayViewability() {
   var o = api.DoubleVerifyDisplayViewability();
   buildCounterDoubleVerifyDisplayViewability++;
   if (buildCounterDoubleVerifyDisplayViewability < 3) {
-    o.iab = "foo";
-    o.viewableDuring = "foo";
+    o.iab = 'foo';
+    o.viewableDuring = 'foo';
   }
   buildCounterDoubleVerifyDisplayViewability--;
   return o;
@@ -2987,7 +2987,7 @@ api.DoubleVerifyFraudInvalidTraffic buildDoubleVerifyFraudInvalidTraffic() {
   buildCounterDoubleVerifyFraudInvalidTraffic++;
   if (buildCounterDoubleVerifyFraudInvalidTraffic < 3) {
     o.avoidInsufficientOption = true;
-    o.avoidedFraudOption = "foo";
+    o.avoidedFraudOption = 'foo';
   }
   buildCounterDoubleVerifyFraudInvalidTraffic--;
   return o;
@@ -3008,9 +3008,9 @@ api.DoubleVerifyVideoViewability buildDoubleVerifyVideoViewability() {
   var o = api.DoubleVerifyVideoViewability();
   buildCounterDoubleVerifyVideoViewability++;
   if (buildCounterDoubleVerifyVideoViewability < 3) {
-    o.playerImpressionRate = "foo";
-    o.videoIab = "foo";
-    o.videoViewableRate = "foo";
+    o.playerImpressionRate = 'foo';
+    o.videoIab = 'foo';
+    o.videoViewableRate = 'foo';
   }
   buildCounterDoubleVerifyVideoViewability--;
   return o;
@@ -3047,8 +3047,8 @@ api.EnvironmentAssignedTargetingOptionDetails
   var o = api.EnvironmentAssignedTargetingOptionDetails();
   buildCounterEnvironmentAssignedTargetingOptionDetails++;
   if (buildCounterEnvironmentAssignedTargetingOptionDetails < 3) {
-    o.environment = "foo";
-    o.targetingOptionId = "foo";
+    o.environment = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterEnvironmentAssignedTargetingOptionDetails--;
   return o;
@@ -3069,7 +3069,7 @@ api.EnvironmentTargetingOptionDetails buildEnvironmentTargetingOptionDetails() {
   var o = api.EnvironmentTargetingOptionDetails();
   buildCounterEnvironmentTargetingOptionDetails++;
   if (buildCounterEnvironmentTargetingOptionDetails < 3) {
-    o.environment = "foo";
+    o.environment = 'foo';
   }
   buildCounterEnvironmentTargetingOptionDetails--;
   return o;
@@ -3090,7 +3090,7 @@ api.ExchangeAssignedTargetingOptionDetails
   var o = api.ExchangeAssignedTargetingOptionDetails();
   buildCounterExchangeAssignedTargetingOptionDetails++;
   if (buildCounterExchangeAssignedTargetingOptionDetails < 3) {
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterExchangeAssignedTargetingOptionDetails--;
   return o;
@@ -3142,10 +3142,10 @@ api.ExchangeConfigEnabledExchange buildExchangeConfigEnabledExchange() {
   var o = api.ExchangeConfigEnabledExchange();
   buildCounterExchangeConfigEnabledExchange++;
   if (buildCounterExchangeConfigEnabledExchange < 3) {
-    o.exchange = "foo";
-    o.googleAdManagerAgencyId = "foo";
-    o.googleAdManagerBuyerNetworkId = "foo";
-    o.seatId = "foo";
+    o.exchange = 'foo';
+    o.googleAdManagerAgencyId = 'foo';
+    o.googleAdManagerBuyerNetworkId = 'foo';
+    o.seatId = 'foo';
   }
   buildCounterExchangeConfigEnabledExchange--;
   return o;
@@ -3167,8 +3167,8 @@ api.ExchangeReviewStatus buildExchangeReviewStatus() {
   var o = api.ExchangeReviewStatus();
   buildCounterExchangeReviewStatus++;
   if (buildCounterExchangeReviewStatus < 3) {
-    o.exchange = "foo";
-    o.status = "foo";
+    o.exchange = 'foo';
+    o.status = 'foo';
   }
   buildCounterExchangeReviewStatus--;
   return o;
@@ -3188,7 +3188,7 @@ api.ExchangeTargetingOptionDetails buildExchangeTargetingOptionDetails() {
   var o = api.ExchangeTargetingOptionDetails();
   buildCounterExchangeTargetingOptionDetails++;
   if (buildCounterExchangeTargetingOptionDetails < 3) {
-    o.exchange = "foo";
+    o.exchange = 'foo';
   }
   buildCounterExchangeTargetingOptionDetails--;
   return o;
@@ -3207,10 +3207,10 @@ api.ExitEvent buildExitEvent() {
   var o = api.ExitEvent();
   buildCounterExitEvent++;
   if (buildCounterExitEvent < 3) {
-    o.name = "foo";
-    o.reportingName = "foo";
-    o.type = "foo";
-    o.url = "foo";
+    o.name = 'foo';
+    o.reportingName = 'foo';
+    o.type = 'foo';
+    o.url = 'foo';
   }
   buildCounterExitEvent--;
   return o;
@@ -3232,21 +3232,21 @@ api.FirstAndThirdPartyAudience buildFirstAndThirdPartyAudience() {
   var o = api.FirstAndThirdPartyAudience();
   buildCounterFirstAndThirdPartyAudience++;
   if (buildCounterFirstAndThirdPartyAudience < 3) {
-    o.activeDisplayAudienceSize = "foo";
-    o.audienceSource = "foo";
-    o.audienceType = "foo";
-    o.description = "foo";
-    o.displayAudienceSize = "foo";
-    o.displayDesktopAudienceSize = "foo";
-    o.displayMobileAppAudienceSize = "foo";
-    o.displayMobileWebAudienceSize = "foo";
-    o.displayName = "foo";
-    o.firstAndThirdPartyAudienceId = "foo";
-    o.firstAndThirdPartyAudienceType = "foo";
-    o.gmailAudienceSize = "foo";
-    o.membershipDurationDays = "foo";
-    o.name = "foo";
-    o.youtubeAudienceSize = "foo";
+    o.activeDisplayAudienceSize = 'foo';
+    o.audienceSource = 'foo';
+    o.audienceType = 'foo';
+    o.description = 'foo';
+    o.displayAudienceSize = 'foo';
+    o.displayDesktopAudienceSize = 'foo';
+    o.displayMobileAppAudienceSize = 'foo';
+    o.displayMobileWebAudienceSize = 'foo';
+    o.displayName = 'foo';
+    o.firstAndThirdPartyAudienceId = 'foo';
+    o.firstAndThirdPartyAudienceType = 'foo';
+    o.gmailAudienceSize = 'foo';
+    o.membershipDurationDays = 'foo';
+    o.name = 'foo';
+    o.youtubeAudienceSize = 'foo';
   }
   buildCounterFirstAndThirdPartyAudience--;
   return o;
@@ -3314,8 +3314,8 @@ api.FirstAndThirdPartyAudienceTargetingSetting
   var o = api.FirstAndThirdPartyAudienceTargetingSetting();
   buildCounterFirstAndThirdPartyAudienceTargetingSetting++;
   if (buildCounterFirstAndThirdPartyAudienceTargetingSetting < 3) {
-    o.firstAndThirdPartyAudienceId = "foo";
-    o.recency = "foo";
+    o.firstAndThirdPartyAudienceId = 'foo';
+    o.recency = 'foo';
   }
   buildCounterFirstAndThirdPartyAudienceTargetingSetting--;
   return o;
@@ -3336,7 +3336,7 @@ api.FixedBidStrategy buildFixedBidStrategy() {
   var o = api.FixedBidStrategy();
   buildCounterFixedBidStrategy++;
   if (buildCounterFixedBidStrategy < 3) {
-    o.bidAmountMicros = "foo";
+    o.bidAmountMicros = 'foo';
   }
   buildCounterFixedBidStrategy--;
   return o;
@@ -3352,12 +3352,12 @@ void checkFixedBidStrategy(api.FixedBidStrategy o) {
 
 core.Map<core.String, core.Object> buildUnnamed4616() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -3367,16 +3367,16 @@ core.Map<core.String, core.Object> buildUnnamed4616() {
 
 void checkUnnamed4616(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterFloodlightGroup = 0;
@@ -3386,11 +3386,11 @@ api.FloodlightGroup buildFloodlightGroup() {
   if (buildCounterFloodlightGroup < 3) {
     o.activeViewConfig = buildActiveViewVideoViewabilityMetricConfig();
     o.customVariables = buildUnnamed4616();
-    o.displayName = "foo";
-    o.floodlightGroupId = "foo";
+    o.displayName = 'foo';
+    o.floodlightGroupId = 'foo';
     o.lookbackWindow = buildLookbackWindow();
-    o.name = "foo";
-    o.webTagType = "foo";
+    o.name = 'foo';
+    o.webTagType = 'foo';
   }
   buildCounterFloodlightGroup--;
   return o;
@@ -3416,7 +3416,7 @@ api.FrequencyCap buildFrequencyCap() {
   buildCounterFrequencyCap++;
   if (buildCounterFrequencyCap < 3) {
     o.maxImpressions = 42;
-    o.timeUnit = "foo";
+    o.timeUnit = 'foo';
     o.timeUnitCount = 42;
     o.unlimited = true;
   }
@@ -3441,8 +3441,8 @@ api.GenderAssignedTargetingOptionDetails
   var o = api.GenderAssignedTargetingOptionDetails();
   buildCounterGenderAssignedTargetingOptionDetails++;
   if (buildCounterGenderAssignedTargetingOptionDetails < 3) {
-    o.gender = "foo";
-    o.targetingOptionId = "foo";
+    o.gender = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterGenderAssignedTargetingOptionDetails--;
   return o;
@@ -3463,7 +3463,7 @@ api.GenderTargetingOptionDetails buildGenderTargetingOptionDetails() {
   var o = api.GenderTargetingOptionDetails();
   buildCounterGenderTargetingOptionDetails++;
   if (buildCounterGenderTargetingOptionDetails < 3) {
-    o.gender = "foo";
+    o.gender = 'foo';
   }
   buildCounterGenderTargetingOptionDetails--;
   return o;
@@ -3483,10 +3483,10 @@ api.GeoRegionAssignedTargetingOptionDetails
   var o = api.GeoRegionAssignedTargetingOptionDetails();
   buildCounterGeoRegionAssignedTargetingOptionDetails++;
   if (buildCounterGeoRegionAssignedTargetingOptionDetails < 3) {
-    o.displayName = "foo";
-    o.geoRegionType = "foo";
+    o.displayName = 'foo';
+    o.geoRegionType = 'foo';
     o.negative = true;
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterGeoRegionAssignedTargetingOptionDetails--;
   return o;
@@ -3509,8 +3509,8 @@ api.GeoRegionTargetingOptionDetails buildGeoRegionTargetingOptionDetails() {
   var o = api.GeoRegionTargetingOptionDetails();
   buildCounterGeoRegionTargetingOptionDetails++;
   if (buildCounterGeoRegionTargetingOptionDetails < 3) {
-    o.displayName = "foo";
-    o.geoRegionType = "foo";
+    o.displayName = 'foo';
+    o.geoRegionType = 'foo';
   }
   buildCounterGeoRegionTargetingOptionDetails--;
   return o;
@@ -3531,10 +3531,10 @@ api.GoogleAudience buildGoogleAudience() {
   var o = api.GoogleAudience();
   buildCounterGoogleAudience++;
   if (buildCounterGoogleAudience < 3) {
-    o.displayName = "foo";
-    o.googleAudienceId = "foo";
-    o.googleAudienceType = "foo";
-    o.name = "foo";
+    o.displayName = 'foo';
+    o.googleAudienceId = 'foo';
+    o.googleAudienceType = 'foo';
+    o.name = 'foo';
   }
   buildCounterGoogleAudience--;
   return o;
@@ -3588,7 +3588,7 @@ api.GoogleAudienceTargetingSetting buildGoogleAudienceTargetingSetting() {
   var o = api.GoogleAudienceTargetingSetting();
   buildCounterGoogleAudienceTargetingSetting++;
   if (buildCounterGoogleAudienceTargetingSetting < 3) {
-    o.googleAudienceId = "foo";
+    o.googleAudienceId = 'foo';
   }
   buildCounterGoogleAudienceTargetingSetting--;
   return o;
@@ -3607,7 +3607,7 @@ api.GoogleBytestreamMedia buildGoogleBytestreamMedia() {
   var o = api.GoogleBytestreamMedia();
   buildCounterGoogleBytestreamMedia++;
   if (buildCounterGoogleBytestreamMedia < 3) {
-    o.resourceName = "foo";
+    o.resourceName = 'foo';
   }
   buildCounterGoogleBytestreamMedia--;
   return o;
@@ -3627,8 +3627,8 @@ api.HouseholdIncomeAssignedTargetingOptionDetails
   var o = api.HouseholdIncomeAssignedTargetingOptionDetails();
   buildCounterHouseholdIncomeAssignedTargetingOptionDetails++;
   if (buildCounterHouseholdIncomeAssignedTargetingOptionDetails < 3) {
-    o.householdIncome = "foo";
-    o.targetingOptionId = "foo";
+    o.householdIncome = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterHouseholdIncomeAssignedTargetingOptionDetails--;
   return o;
@@ -3650,7 +3650,7 @@ api.HouseholdIncomeTargetingOptionDetails
   var o = api.HouseholdIncomeTargetingOptionDetails();
   buildCounterHouseholdIncomeTargetingOptionDetails++;
   if (buildCounterHouseholdIncomeTargetingOptionDetails < 3) {
-    o.householdIncome = "foo";
+    o.householdIncome = 'foo';
   }
   buildCounterHouseholdIncomeTargetingOptionDetails--;
   return o;
@@ -3667,8 +3667,8 @@ void checkHouseholdIncomeTargetingOptionDetails(
 
 core.List<core.String> buildUnnamed4618() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3680,8 +3680,8 @@ void checkUnnamed4618(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4619() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3693,8 +3693,8 @@ void checkUnnamed4619(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4620() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3706,8 +3706,8 @@ void checkUnnamed4620(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4621() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3719,8 +3719,8 @@ void checkUnnamed4621(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4622() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3732,8 +3732,8 @@ void checkUnnamed4622(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4623() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3790,20 +3790,20 @@ api.InsertionOrder buildInsertionOrder() {
   var o = api.InsertionOrder();
   buildCounterInsertionOrder++;
   if (buildCounterInsertionOrder < 3) {
-    o.advertiserId = "foo";
+    o.advertiserId = 'foo';
     o.bidStrategy = buildBiddingStrategy();
     o.budget = buildInsertionOrderBudget();
-    o.campaignId = "foo";
-    o.displayName = "foo";
-    o.entityStatus = "foo";
+    o.campaignId = 'foo';
+    o.displayName = 'foo';
+    o.entityStatus = 'foo';
     o.frequencyCap = buildFrequencyCap();
-    o.insertionOrderId = "foo";
+    o.insertionOrderId = 'foo';
     o.integrationDetails = buildIntegrationDetails();
-    o.name = "foo";
+    o.name = 'foo';
     o.pacing = buildPacing();
     o.partnerCosts = buildUnnamed4624();
     o.performanceGoal = buildPerformanceGoal();
-    o.updateTime = "foo";
+    o.updateTime = 'foo';
   }
   buildCounterInsertionOrder--;
   return o;
@@ -3848,9 +3848,9 @@ api.InsertionOrderBudget buildInsertionOrderBudget() {
   var o = api.InsertionOrderBudget();
   buildCounterInsertionOrderBudget++;
   if (buildCounterInsertionOrderBudget < 3) {
-    o.automationType = "foo";
+    o.automationType = 'foo';
     o.budgetSegments = buildUnnamed4625();
-    o.budgetUnit = "foo";
+    o.budgetUnit = 'foo';
   }
   buildCounterInsertionOrderBudget--;
   return o;
@@ -3871,10 +3871,10 @@ api.InsertionOrderBudgetSegment buildInsertionOrderBudgetSegment() {
   var o = api.InsertionOrderBudgetSegment();
   buildCounterInsertionOrderBudgetSegment++;
   if (buildCounterInsertionOrderBudgetSegment < 3) {
-    o.budgetAmountMicros = "foo";
-    o.campaignBudgetId = "foo";
+    o.budgetAmountMicros = 'foo';
+    o.campaignBudgetId = 'foo';
     o.dateRange = buildDateRange();
-    o.description = "foo";
+    o.description = 'foo';
   }
   buildCounterInsertionOrderBudgetSegment--;
   return o;
@@ -3896,19 +3896,19 @@ api.IntegralAdScience buildIntegralAdScience() {
   var o = api.IntegralAdScience();
   buildCounterIntegralAdScience++;
   if (buildCounterIntegralAdScience < 3) {
-    o.displayViewability = "foo";
+    o.displayViewability = 'foo';
     o.excludeUnrateable = true;
-    o.excludedAdFraudRisk = "foo";
-    o.excludedAdultRisk = "foo";
-    o.excludedAlcoholRisk = "foo";
-    o.excludedDrugsRisk = "foo";
-    o.excludedGamblingRisk = "foo";
-    o.excludedHateSpeechRisk = "foo";
-    o.excludedIllegalDownloadsRisk = "foo";
-    o.excludedOffensiveLanguageRisk = "foo";
-    o.excludedViolenceRisk = "foo";
-    o.traqScoreOption = "foo";
-    o.videoViewability = "foo";
+    o.excludedAdFraudRisk = 'foo';
+    o.excludedAdultRisk = 'foo';
+    o.excludedAlcoholRisk = 'foo';
+    o.excludedDrugsRisk = 'foo';
+    o.excludedGamblingRisk = 'foo';
+    o.excludedHateSpeechRisk = 'foo';
+    o.excludedIllegalDownloadsRisk = 'foo';
+    o.excludedOffensiveLanguageRisk = 'foo';
+    o.excludedViolenceRisk = 'foo';
+    o.traqScoreOption = 'foo';
+    o.videoViewability = 'foo';
   }
   buildCounterIntegralAdScience--;
   return o;
@@ -3939,8 +3939,8 @@ api.IntegrationDetails buildIntegrationDetails() {
   var o = api.IntegrationDetails();
   buildCounterIntegrationDetails++;
   if (buildCounterIntegrationDetails < 3) {
-    o.details = "foo";
-    o.integrationCode = "foo";
+    o.details = 'foo';
+    o.integrationCode = 'foo';
   }
   buildCounterIntegrationDetails--;
   return o;
@@ -3973,20 +3973,20 @@ api.InventorySource buildInventorySource() {
   var o = api.InventorySource();
   buildCounterInventorySource++;
   if (buildCounterInventorySource < 3) {
-    o.commitment = "foo";
+    o.commitment = 'foo';
     o.creativeConfigs = buildUnnamed4626();
-    o.dealId = "foo";
-    o.deliveryMethod = "foo";
-    o.displayName = "foo";
-    o.exchange = "foo";
-    o.inventorySourceId = "foo";
-    o.inventorySourceType = "foo";
-    o.name = "foo";
-    o.publisherName = "foo";
+    o.dealId = 'foo';
+    o.deliveryMethod = 'foo';
+    o.displayName = 'foo';
+    o.exchange = 'foo';
+    o.inventorySourceId = 'foo';
+    o.inventorySourceType = 'foo';
+    o.name = 'foo';
+    o.publisherName = 'foo';
     o.rateDetails = buildRateDetails();
     o.status = buildInventorySourceStatus();
     o.timeRange = buildTimeRange();
-    o.updateTime = "foo";
+    o.updateTime = 'foo';
   }
   buildCounterInventorySource--;
   return o;
@@ -4019,7 +4019,7 @@ api.InventorySourceAssignedTargetingOptionDetails
   var o = api.InventorySourceAssignedTargetingOptionDetails();
   buildCounterInventorySourceAssignedTargetingOptionDetails++;
   if (buildCounterInventorySourceAssignedTargetingOptionDetails < 3) {
-    o.inventorySourceId = "foo";
+    o.inventorySourceId = 'foo';
   }
   buildCounterInventorySourceAssignedTargetingOptionDetails--;
   return o;
@@ -4057,8 +4057,8 @@ void checkInventorySourceDisplayCreativeConfig(
 
 core.List<core.String> buildUnnamed4627() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4092,9 +4092,9 @@ api.InventorySourceGroup buildInventorySourceGroup() {
   var o = api.InventorySourceGroup();
   buildCounterInventorySourceGroup++;
   if (buildCounterInventorySourceGroup < 3) {
-    o.displayName = "foo";
-    o.inventorySourceGroupId = "foo";
-    o.name = "foo";
+    o.displayName = 'foo';
+    o.inventorySourceGroupId = 'foo';
+    o.name = 'foo';
   }
   buildCounterInventorySourceGroup--;
   return o;
@@ -4116,7 +4116,7 @@ api.InventorySourceGroupAssignedTargetingOptionDetails
   var o = api.InventorySourceGroupAssignedTargetingOptionDetails();
   buildCounterInventorySourceGroupAssignedTargetingOptionDetails++;
   if (buildCounterInventorySourceGroupAssignedTargetingOptionDetails < 3) {
-    o.inventorySourceGroupId = "foo";
+    o.inventorySourceGroupId = 'foo';
   }
   buildCounterInventorySourceGroupAssignedTargetingOptionDetails--;
   return o;
@@ -4136,11 +4136,11 @@ api.InventorySourceStatus buildInventorySourceStatus() {
   var o = api.InventorySourceStatus();
   buildCounterInventorySourceStatus++;
   if (buildCounterInventorySourceStatus < 3) {
-    o.configStatus = "foo";
-    o.entityPauseReason = "foo";
-    o.entityStatus = "foo";
-    o.sellerPauseReason = "foo";
-    o.sellerStatus = "foo";
+    o.configStatus = 'foo';
+    o.entityPauseReason = 'foo';
+    o.entityStatus = 'foo';
+    o.sellerPauseReason = 'foo';
+    o.sellerStatus = 'foo';
   }
   buildCounterInventorySourceStatus--;
   return o;
@@ -4164,7 +4164,7 @@ api.InventorySourceVideoCreativeConfig
   var o = api.InventorySourceVideoCreativeConfig();
   buildCounterInventorySourceVideoCreativeConfig++;
   if (buildCounterInventorySourceVideoCreativeConfig < 3) {
-    o.duration = "foo";
+    o.duration = 'foo';
   }
   buildCounterInventorySourceVideoCreativeConfig--;
   return o;
@@ -4185,7 +4185,7 @@ api.KeywordAssignedTargetingOptionDetails
   var o = api.KeywordAssignedTargetingOptionDetails();
   buildCounterKeywordAssignedTargetingOptionDetails++;
   if (buildCounterKeywordAssignedTargetingOptionDetails < 3) {
-    o.keyword = "foo";
+    o.keyword = 'foo';
     o.negative = true;
   }
   buildCounterKeywordAssignedTargetingOptionDetails--;
@@ -4208,9 +4208,9 @@ api.LanguageAssignedTargetingOptionDetails
   var o = api.LanguageAssignedTargetingOptionDetails();
   buildCounterLanguageAssignedTargetingOptionDetails++;
   if (buildCounterLanguageAssignedTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.negative = true;
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterLanguageAssignedTargetingOptionDetails--;
   return o;
@@ -4232,7 +4232,7 @@ api.LanguageTargetingOptionDetails buildLanguageTargetingOptionDetails() {
   var o = api.LanguageTargetingOptionDetails();
   buildCounterLanguageTargetingOptionDetails++;
   if (buildCounterLanguageTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
   }
   buildCounterLanguageTargetingOptionDetails--;
   return o;
@@ -4248,8 +4248,8 @@ void checkLanguageTargetingOptionDetails(api.LanguageTargetingOptionDetails o) {
 
 core.List<core.String> buildUnnamed4628() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4261,8 +4261,8 @@ void checkUnnamed4628(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4629() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4287,8 +4287,8 @@ void checkUnnamed4630(core.List<api.PartnerCost> o) {
 
 core.List<core.String> buildUnnamed4631() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4303,26 +4303,26 @@ api.LineItem buildLineItem() {
   var o = api.LineItem();
   buildCounterLineItem++;
   if (buildCounterLineItem < 3) {
-    o.advertiserId = "foo";
+    o.advertiserId = 'foo';
     o.bidStrategy = buildBiddingStrategy();
     o.budget = buildLineItemBudget();
-    o.campaignId = "foo";
+    o.campaignId = 'foo';
     o.conversionCounting = buildConversionCountingConfig();
     o.creativeIds = buildUnnamed4628();
-    o.displayName = "foo";
-    o.entityStatus = "foo";
+    o.displayName = 'foo';
+    o.entityStatus = 'foo';
     o.flight = buildLineItemFlight();
     o.frequencyCap = buildFrequencyCap();
-    o.insertionOrderId = "foo";
+    o.insertionOrderId = 'foo';
     o.integrationDetails = buildIntegrationDetails();
     o.inventorySourceIds = buildUnnamed4629();
-    o.lineItemId = "foo";
-    o.lineItemType = "foo";
-    o.name = "foo";
+    o.lineItemId = 'foo';
+    o.lineItemType = 'foo';
+    o.name = 'foo';
     o.pacing = buildPacing();
     o.partnerCosts = buildUnnamed4630();
     o.partnerRevenueModel = buildPartnerRevenueModel();
-    o.updateTime = "foo";
+    o.updateTime = 'foo';
     o.warningMessages = buildUnnamed4631();
   }
   buildCounterLineItem--;
@@ -4362,9 +4362,9 @@ api.LineItemBudget buildLineItemBudget() {
   var o = api.LineItemBudget();
   buildCounterLineItemBudget++;
   if (buildCounterLineItemBudget < 3) {
-    o.budgetAllocationType = "foo";
-    o.budgetUnit = "foo";
-    o.maxAmount = "foo";
+    o.budgetAllocationType = 'foo';
+    o.budgetUnit = 'foo';
+    o.maxAmount = 'foo';
   }
   buildCounterLineItemBudget--;
   return o;
@@ -4386,7 +4386,7 @@ api.LineItemFlight buildLineItemFlight() {
   buildCounterLineItemFlight++;
   if (buildCounterLineItemFlight < 3) {
     o.dateRange = buildDateRange();
-    o.flightDateType = "foo";
+    o.flightDateType = 'foo';
   }
   buildCounterLineItemFlight--;
   return o;
@@ -4421,7 +4421,7 @@ api.ListAdvertiserAssignedTargetingOptionsResponse
   buildCounterListAdvertiserAssignedTargetingOptionsResponse++;
   if (buildCounterListAdvertiserAssignedTargetingOptionsResponse < 3) {
     o.assignedTargetingOptions = buildUnnamed4632();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListAdvertiserAssignedTargetingOptionsResponse--;
   return o;
@@ -4456,7 +4456,7 @@ api.ListAdvertisersResponse buildListAdvertisersResponse() {
   buildCounterListAdvertisersResponse++;
   if (buildCounterListAdvertisersResponse < 3) {
     o.advertisers = buildUnnamed4633();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListAdvertisersResponse--;
   return o;
@@ -4491,7 +4491,7 @@ api.ListAssignedInventorySourcesResponse
   buildCounterListAssignedInventorySourcesResponse++;
   if (buildCounterListAssignedInventorySourcesResponse < 3) {
     o.assignedInventorySources = buildUnnamed4634();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListAssignedInventorySourcesResponse--;
   return o;
@@ -4526,7 +4526,7 @@ api.ListAssignedLocationsResponse buildListAssignedLocationsResponse() {
   buildCounterListAssignedLocationsResponse++;
   if (buildCounterListAssignedLocationsResponse < 3) {
     o.assignedLocations = buildUnnamed4635();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListAssignedLocationsResponse--;
   return o;
@@ -4560,7 +4560,7 @@ api.ListCampaignsResponse buildListCampaignsResponse() {
   buildCounterListCampaignsResponse++;
   if (buildCounterListCampaignsResponse < 3) {
     o.campaigns = buildUnnamed4636();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListCampaignsResponse--;
   return o;
@@ -4594,7 +4594,7 @@ api.ListChannelsResponse buildListChannelsResponse() {
   buildCounterListChannelsResponse++;
   if (buildCounterListChannelsResponse < 3) {
     o.channels = buildUnnamed4637();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListChannelsResponse--;
   return o;
@@ -4628,7 +4628,7 @@ api.ListCombinedAudiencesResponse buildListCombinedAudiencesResponse() {
   buildCounterListCombinedAudiencesResponse++;
   if (buildCounterListCombinedAudiencesResponse < 3) {
     o.combinedAudiences = buildUnnamed4638();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListCombinedAudiencesResponse--;
   return o;
@@ -4662,7 +4662,7 @@ api.ListCreativesResponse buildListCreativesResponse() {
   buildCounterListCreativesResponse++;
   if (buildCounterListCreativesResponse < 3) {
     o.creatives = buildUnnamed4639();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListCreativesResponse--;
   return o;
@@ -4697,7 +4697,7 @@ api.ListCustomBiddingAlgorithmsResponse
   buildCounterListCustomBiddingAlgorithmsResponse++;
   if (buildCounterListCustomBiddingAlgorithmsResponse < 3) {
     o.customBiddingAlgorithms = buildUnnamed4640();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListCustomBiddingAlgorithmsResponse--;
   return o;
@@ -4732,7 +4732,7 @@ api.ListCustomListsResponse buildListCustomListsResponse() {
   buildCounterListCustomListsResponse++;
   if (buildCounterListCustomListsResponse < 3) {
     o.customLists = buildUnnamed4641();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListCustomListsResponse--;
   return o;
@@ -4767,7 +4767,7 @@ api.ListFirstAndThirdPartyAudiencesResponse
   buildCounterListFirstAndThirdPartyAudiencesResponse++;
   if (buildCounterListFirstAndThirdPartyAudiencesResponse < 3) {
     o.firstAndThirdPartyAudiences = buildUnnamed4642();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListFirstAndThirdPartyAudiencesResponse--;
   return o;
@@ -4802,7 +4802,7 @@ api.ListGoogleAudiencesResponse buildListGoogleAudiencesResponse() {
   buildCounterListGoogleAudiencesResponse++;
   if (buildCounterListGoogleAudiencesResponse < 3) {
     o.googleAudiences = buildUnnamed4643();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListGoogleAudiencesResponse--;
   return o;
@@ -4836,7 +4836,7 @@ api.ListInsertionOrdersResponse buildListInsertionOrdersResponse() {
   buildCounterListInsertionOrdersResponse++;
   if (buildCounterListInsertionOrdersResponse < 3) {
     o.insertionOrders = buildUnnamed4644();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListInsertionOrdersResponse--;
   return o;
@@ -4870,7 +4870,7 @@ api.ListInventorySourceGroupsResponse buildListInventorySourceGroupsResponse() {
   buildCounterListInventorySourceGroupsResponse++;
   if (buildCounterListInventorySourceGroupsResponse < 3) {
     o.inventorySourceGroups = buildUnnamed4645();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListInventorySourceGroupsResponse--;
   return o;
@@ -4905,7 +4905,7 @@ api.ListInventorySourcesResponse buildListInventorySourcesResponse() {
   buildCounterListInventorySourcesResponse++;
   if (buildCounterListInventorySourcesResponse < 3) {
     o.inventorySources = buildUnnamed4646();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListInventorySourcesResponse--;
   return o;
@@ -4940,7 +4940,7 @@ api.ListLineItemAssignedTargetingOptionsResponse
   buildCounterListLineItemAssignedTargetingOptionsResponse++;
   if (buildCounterListLineItemAssignedTargetingOptionsResponse < 3) {
     o.assignedTargetingOptions = buildUnnamed4647();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListLineItemAssignedTargetingOptionsResponse--;
   return o;
@@ -4975,7 +4975,7 @@ api.ListLineItemsResponse buildListLineItemsResponse() {
   buildCounterListLineItemsResponse++;
   if (buildCounterListLineItemsResponse < 3) {
     o.lineItems = buildUnnamed4648();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListLineItemsResponse--;
   return o;
@@ -5009,7 +5009,7 @@ api.ListLocationListsResponse buildListLocationListsResponse() {
   buildCounterListLocationListsResponse++;
   if (buildCounterListLocationListsResponse < 3) {
     o.locationLists = buildUnnamed4649();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListLocationListsResponse--;
   return o;
@@ -5043,7 +5043,7 @@ api.ListNegativeKeywordListsResponse buildListNegativeKeywordListsResponse() {
   buildCounterListNegativeKeywordListsResponse++;
   if (buildCounterListNegativeKeywordListsResponse < 3) {
     o.negativeKeywordLists = buildUnnamed4650();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListNegativeKeywordListsResponse--;
   return o;
@@ -5078,7 +5078,7 @@ api.ListNegativeKeywordsResponse buildListNegativeKeywordsResponse() {
   buildCounterListNegativeKeywordsResponse++;
   if (buildCounterListNegativeKeywordsResponse < 3) {
     o.negativeKeywords = buildUnnamed4651();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListNegativeKeywordsResponse--;
   return o;
@@ -5113,7 +5113,7 @@ api.ListPartnerAssignedTargetingOptionsResponse
   buildCounterListPartnerAssignedTargetingOptionsResponse++;
   if (buildCounterListPartnerAssignedTargetingOptionsResponse < 3) {
     o.assignedTargetingOptions = buildUnnamed4652();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListPartnerAssignedTargetingOptionsResponse--;
   return o;
@@ -5147,7 +5147,7 @@ api.ListPartnersResponse buildListPartnersResponse() {
   var o = api.ListPartnersResponse();
   buildCounterListPartnersResponse++;
   if (buildCounterListPartnersResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.partners = buildUnnamed4653();
   }
   buildCounterListPartnersResponse--;
@@ -5181,7 +5181,7 @@ api.ListSitesResponse buildListSitesResponse() {
   var o = api.ListSitesResponse();
   buildCounterListSitesResponse++;
   if (buildCounterListSitesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.sites = buildUnnamed4654();
   }
   buildCounterListSitesResponse--;
@@ -5215,7 +5215,7 @@ api.ListTargetingOptionsResponse buildListTargetingOptionsResponse() {
   var o = api.ListTargetingOptionsResponse();
   buildCounterListTargetingOptionsResponse++;
   if (buildCounterListTargetingOptionsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.targetingOptions = buildUnnamed4655();
   }
   buildCounterListTargetingOptionsResponse--;
@@ -5249,7 +5249,7 @@ api.ListUsersResponse buildListUsersResponse() {
   var o = api.ListUsersResponse();
   buildCounterListUsersResponse++;
   if (buildCounterListUsersResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.users = buildUnnamed4656();
   }
   buildCounterListUsersResponse--;
@@ -5270,11 +5270,11 @@ api.LocationList buildLocationList() {
   var o = api.LocationList();
   buildCounterLocationList++;
   if (buildCounterLocationList < 3) {
-    o.advertiserId = "foo";
-    o.displayName = "foo";
-    o.locationListId = "foo";
-    o.locationType = "foo";
-    o.name = "foo";
+    o.advertiserId = 'foo';
+    o.displayName = 'foo';
+    o.locationListId = 'foo';
+    o.locationType = 'foo';
+    o.name = 'foo';
   }
   buildCounterLocationList--;
   return o;
@@ -5318,9 +5318,9 @@ api.MaximizeSpendBidStrategy buildMaximizeSpendBidStrategy() {
   var o = api.MaximizeSpendBidStrategy();
   buildCounterMaximizeSpendBidStrategy++;
   if (buildCounterMaximizeSpendBidStrategy < 3) {
-    o.customBiddingAlgorithmId = "foo";
-    o.maxAverageCpmBidAmountMicros = "foo";
-    o.performanceGoalType = "foo";
+    o.customBiddingAlgorithmId = 'foo';
+    o.maxAverageCpmBidAmountMicros = 'foo';
+    o.performanceGoalType = 'foo';
   }
   buildCounterMaximizeSpendBidStrategy--;
   return o;
@@ -5362,9 +5362,9 @@ api.Money buildMoney() {
   var o = api.Money();
   buildCounterMoney++;
   if (buildCounterMoney < 3) {
-    o.currencyCode = "foo";
+    o.currencyCode = 'foo';
     o.nanos = 42;
-    o.units = "foo";
+    o.units = 'foo';
   }
   buildCounterMoney--;
   return o;
@@ -5385,8 +5385,8 @@ api.NegativeKeyword buildNegativeKeyword() {
   var o = api.NegativeKeyword();
   buildCounterNegativeKeyword++;
   if (buildCounterNegativeKeyword < 3) {
-    o.keywordValue = "foo";
-    o.name = "foo";
+    o.keywordValue = 'foo';
+    o.name = 'foo';
   }
   buildCounterNegativeKeyword--;
   return o;
@@ -5406,10 +5406,10 @@ api.NegativeKeywordList buildNegativeKeywordList() {
   var o = api.NegativeKeywordList();
   buildCounterNegativeKeywordList++;
   if (buildCounterNegativeKeywordList < 3) {
-    o.advertiserId = "foo";
-    o.displayName = "foo";
-    o.name = "foo";
-    o.negativeKeywordListId = "foo";
+    o.advertiserId = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
+    o.negativeKeywordListId = 'foo';
   }
   buildCounterNegativeKeywordList--;
   return o;
@@ -5432,7 +5432,7 @@ api.NegativeKeywordListAssignedTargetingOptionDetails
   var o = api.NegativeKeywordListAssignedTargetingOptionDetails();
   buildCounterNegativeKeywordListAssignedTargetingOptionDetails++;
   if (buildCounterNegativeKeywordListAssignedTargetingOptionDetails < 3) {
-    o.negativeKeywordListId = "foo";
+    o.negativeKeywordListId = 'foo';
   }
   buildCounterNegativeKeywordListAssignedTargetingOptionDetails--;
   return o;
@@ -5452,14 +5452,14 @@ api.ObaIcon buildObaIcon() {
   var o = api.ObaIcon();
   buildCounterObaIcon++;
   if (buildCounterObaIcon < 3) {
-    o.clickTrackingUrl = "foo";
+    o.clickTrackingUrl = 'foo';
     o.dimensions = buildDimensions();
-    o.landingPageUrl = "foo";
-    o.position = "foo";
-    o.program = "foo";
-    o.resourceMimeType = "foo";
-    o.resourceUrl = "foo";
-    o.viewTrackingUrl = "foo";
+    o.landingPageUrl = 'foo';
+    o.position = 'foo';
+    o.program = 'foo';
+    o.resourceMimeType = 'foo';
+    o.resourceUrl = 'foo';
+    o.viewTrackingUrl = 'foo';
   }
   buildCounterObaIcon--;
   return o;
@@ -5486,8 +5486,8 @@ api.OnScreenPositionAssignedTargetingOptionDetails
   var o = api.OnScreenPositionAssignedTargetingOptionDetails();
   buildCounterOnScreenPositionAssignedTargetingOptionDetails++;
   if (buildCounterOnScreenPositionAssignedTargetingOptionDetails < 3) {
-    o.onScreenPosition = "foo";
-    o.targetingOptionId = "foo";
+    o.onScreenPosition = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterOnScreenPositionAssignedTargetingOptionDetails--;
   return o;
@@ -5509,7 +5509,7 @@ api.OnScreenPositionTargetingOptionDetails
   var o = api.OnScreenPositionTargetingOptionDetails();
   buildCounterOnScreenPositionTargetingOptionDetails++;
   if (buildCounterOnScreenPositionTargetingOptionDetails < 3) {
-    o.onScreenPosition = "foo";
+    o.onScreenPosition = 'foo';
   }
   buildCounterOnScreenPositionTargetingOptionDetails--;
   return o;
@@ -5530,9 +5530,9 @@ api.OperatingSystemAssignedTargetingOptionDetails
   var o = api.OperatingSystemAssignedTargetingOptionDetails();
   buildCounterOperatingSystemAssignedTargetingOptionDetails++;
   if (buildCounterOperatingSystemAssignedTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.negative = true;
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterOperatingSystemAssignedTargetingOptionDetails--;
   return o;
@@ -5555,7 +5555,7 @@ api.OperatingSystemTargetingOptionDetails
   var o = api.OperatingSystemTargetingOptionDetails();
   buildCounterOperatingSystemTargetingOptionDetails++;
   if (buildCounterOperatingSystemTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
   }
   buildCounterOperatingSystemTargetingOptionDetails--;
   return o;
@@ -5572,12 +5572,12 @@ void checkOperatingSystemTargetingOptionDetails(
 
 core.Map<core.String, core.Object> buildUnnamed4657() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -5587,26 +5587,26 @@ core.Map<core.String, core.Object> buildUnnamed4657() {
 
 void checkUnnamed4657(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed4658() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -5616,16 +5616,16 @@ core.Map<core.String, core.Object> buildUnnamed4658() {
 
 void checkUnnamed4658(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterOperation = 0;
@@ -5636,7 +5636,7 @@ api.Operation buildOperation() {
     o.done = true;
     o.error = buildStatus();
     o.metadata = buildUnnamed4657();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed4658();
   }
   buildCounterOperation--;
@@ -5660,10 +5660,10 @@ api.Pacing buildPacing() {
   var o = api.Pacing();
   buildCounterPacing++;
   if (buildCounterPacing < 3) {
-    o.dailyMaxImpressions = "foo";
-    o.dailyMaxMicros = "foo";
-    o.pacingPeriod = "foo";
-    o.pacingType = "foo";
+    o.dailyMaxImpressions = 'foo';
+    o.dailyMaxMicros = 'foo';
+    o.pacingPeriod = 'foo';
+    o.pacingType = 'foo';
   }
   buildCounterPacing--;
   return o;
@@ -5682,8 +5682,8 @@ void checkPacing(api.Pacing o) {
 
 core.List<core.String> buildUnnamed4659() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5695,8 +5695,8 @@ void checkUnnamed4659(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4660() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -5713,7 +5713,7 @@ api.ParentEntityFilter buildParentEntityFilter() {
   if (buildCounterParentEntityFilter < 3) {
     o.fileType = buildUnnamed4659();
     o.filterIds = buildUnnamed4660();
-    o.filterType = "foo";
+    o.filterType = 'foo';
   }
   buildCounterParentEntityFilter--;
   return o;
@@ -5735,8 +5735,8 @@ api.ParentalStatusAssignedTargetingOptionDetails
   var o = api.ParentalStatusAssignedTargetingOptionDetails();
   buildCounterParentalStatusAssignedTargetingOptionDetails++;
   if (buildCounterParentalStatusAssignedTargetingOptionDetails < 3) {
-    o.parentalStatus = "foo";
-    o.targetingOptionId = "foo";
+    o.parentalStatus = 'foo';
+    o.targetingOptionId = 'foo';
   }
   buildCounterParentalStatusAssignedTargetingOptionDetails--;
   return o;
@@ -5758,7 +5758,7 @@ api.ParentalStatusTargetingOptionDetails
   var o = api.ParentalStatusTargetingOptionDetails();
   buildCounterParentalStatusTargetingOptionDetails++;
   if (buildCounterParentalStatusTargetingOptionDetails < 3) {
-    o.parentalStatus = "foo";
+    o.parentalStatus = 'foo';
   }
   buildCounterParentalStatusTargetingOptionDetails--;
   return o;
@@ -5780,13 +5780,13 @@ api.Partner buildPartner() {
   if (buildCounterPartner < 3) {
     o.adServerConfig = buildPartnerAdServerConfig();
     o.dataAccessConfig = buildPartnerDataAccessConfig();
-    o.displayName = "foo";
-    o.entityStatus = "foo";
+    o.displayName = 'foo';
+    o.entityStatus = 'foo';
     o.exchangeConfig = buildExchangeConfig();
     o.generalConfig = buildPartnerGeneralConfig();
-    o.name = "foo";
-    o.partnerId = "foo";
-    o.updateTime = "foo";
+    o.name = 'foo';
+    o.partnerId = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterPartner--;
   return o;
@@ -5832,11 +5832,11 @@ api.PartnerCost buildPartnerCost() {
   var o = api.PartnerCost();
   buildCounterPartnerCost++;
   if (buildCounterPartnerCost < 3) {
-    o.costType = "foo";
-    o.feeAmount = "foo";
-    o.feePercentageMillis = "foo";
-    o.feeType = "foo";
-    o.invoiceType = "foo";
+    o.costType = 'foo';
+    o.feeAmount = 'foo';
+    o.feePercentageMillis = 'foo';
+    o.feeType = 'foo';
+    o.invoiceType = 'foo';
   }
   buildCounterPartnerCost--;
   return o;
@@ -5878,8 +5878,8 @@ api.PartnerGeneralConfig buildPartnerGeneralConfig() {
   var o = api.PartnerGeneralConfig();
   buildCounterPartnerGeneralConfig++;
   if (buildCounterPartnerGeneralConfig < 3) {
-    o.currencyCode = "foo";
-    o.timeZone = "foo";
+    o.currencyCode = 'foo';
+    o.timeZone = 'foo';
   }
   buildCounterPartnerGeneralConfig--;
   return o;
@@ -5899,8 +5899,8 @@ api.PartnerRevenueModel buildPartnerRevenueModel() {
   var o = api.PartnerRevenueModel();
   buildCounterPartnerRevenueModel++;
   if (buildCounterPartnerRevenueModel < 3) {
-    o.markupAmount = "foo";
-    o.markupType = "foo";
+    o.markupAmount = 'foo';
+    o.markupType = 'foo';
   }
   buildCounterPartnerRevenueModel--;
   return o;
@@ -5920,10 +5920,10 @@ api.PerformanceGoal buildPerformanceGoal() {
   var o = api.PerformanceGoal();
   buildCounterPerformanceGoal++;
   if (buildCounterPerformanceGoal < 3) {
-    o.performanceGoalAmountMicros = "foo";
-    o.performanceGoalPercentageMicros = "foo";
-    o.performanceGoalString = "foo";
-    o.performanceGoalType = "foo";
+    o.performanceGoalAmountMicros = 'foo';
+    o.performanceGoalPercentageMicros = 'foo';
+    o.performanceGoalString = 'foo';
+    o.performanceGoalType = 'foo';
   }
   buildCounterPerformanceGoal--;
   return o;
@@ -5945,10 +5945,10 @@ api.PerformanceGoalBidStrategy buildPerformanceGoalBidStrategy() {
   var o = api.PerformanceGoalBidStrategy();
   buildCounterPerformanceGoalBidStrategy++;
   if (buildCounterPerformanceGoalBidStrategy < 3) {
-    o.customBiddingAlgorithmId = "foo";
-    o.maxAverageCpmBidAmountMicros = "foo";
-    o.performanceGoalAmountMicros = "foo";
-    o.performanceGoalType = "foo";
+    o.customBiddingAlgorithmId = 'foo';
+    o.maxAverageCpmBidAmountMicros = 'foo';
+    o.performanceGoalAmountMicros = 'foo';
+    o.performanceGoalType = 'foo';
   }
   buildCounterPerformanceGoalBidStrategy--;
   return o;
@@ -5971,8 +5971,8 @@ api.ProximityLocationListAssignedTargetingOptionDetails
   var o = api.ProximityLocationListAssignedTargetingOptionDetails();
   buildCounterProximityLocationListAssignedTargetingOptionDetails++;
   if (buildCounterProximityLocationListAssignedTargetingOptionDetails < 3) {
-    o.proximityLocationListId = "foo";
-    o.proximityRadiusRange = "foo";
+    o.proximityLocationListId = 'foo';
+    o.proximityRadiusRange = 'foo';
   }
   buildCounterProximityLocationListAssignedTargetingOptionDetails--;
   return o;
@@ -5993,8 +5993,8 @@ api.PublisherReviewStatus buildPublisherReviewStatus() {
   var o = api.PublisherReviewStatus();
   buildCounterPublisherReviewStatus++;
   if (buildCounterPublisherReviewStatus < 3) {
-    o.publisherName = "foo";
-    o.status = "foo";
+    o.publisherName = 'foo';
+    o.status = 'foo';
   }
   buildCounterPublisherReviewStatus--;
   return o;
@@ -6014,10 +6014,10 @@ api.RateDetails buildRateDetails() {
   var o = api.RateDetails();
   buildCounterRateDetails++;
   if (buildCounterRateDetails < 3) {
-    o.inventorySourceRateType = "foo";
+    o.inventorySourceRateType = 'foo';
     o.minimumSpend = buildMoney();
     o.rate = buildMoney();
-    o.unitsPurchased = "foo";
+    o.unitsPurchased = 'foo';
   }
   buildCounterRateDetails--;
   return o;
@@ -6041,7 +6041,7 @@ api.RegionalLocationListAssignedTargetingOptionDetails
   buildCounterRegionalLocationListAssignedTargetingOptionDetails++;
   if (buildCounterRegionalLocationListAssignedTargetingOptionDetails < 3) {
     o.negative = true;
-    o.regionalLocationListId = "foo";
+    o.regionalLocationListId = 'foo';
   }
   buildCounterRegionalLocationListAssignedTargetingOptionDetails--;
   return o;
@@ -6088,9 +6088,9 @@ api.ReviewStatusInfo buildReviewStatusInfo() {
   var o = api.ReviewStatusInfo();
   buildCounterReviewStatusInfo++;
   if (buildCounterReviewStatusInfo < 3) {
-    o.approvalStatus = "foo";
-    o.contentAndPolicyReviewStatus = "foo";
-    o.creativeAndLandingPageReviewStatus = "foo";
+    o.approvalStatus = 'foo';
+    o.contentAndPolicyReviewStatus = 'foo';
+    o.creativeAndLandingPageReviewStatus = 'foo';
     o.exchangeReviewStatuses = buildUnnamed4661();
     o.publisherReviewStatuses = buildUnnamed4662();
   }
@@ -6116,8 +6116,8 @@ api.SdfConfig buildSdfConfig() {
   var o = api.SdfConfig();
   buildCounterSdfConfig++;
   if (buildCounterSdfConfig < 3) {
-    o.adminEmail = "foo";
-    o.version = "foo";
+    o.adminEmail = 'foo';
+    o.version = 'foo';
   }
   buildCounterSdfConfig--;
   return o;
@@ -6137,7 +6137,7 @@ api.SdfDownloadTask buildSdfDownloadTask() {
   var o = api.SdfDownloadTask();
   buildCounterSdfDownloadTask++;
   if (buildCounterSdfDownloadTask < 3) {
-    o.resourceName = "foo";
+    o.resourceName = 'foo';
   }
   buildCounterSdfDownloadTask--;
   return o;
@@ -6156,9 +6156,9 @@ api.SdfDownloadTaskMetadata buildSdfDownloadTaskMetadata() {
   var o = api.SdfDownloadTaskMetadata();
   buildCounterSdfDownloadTaskMetadata++;
   if (buildCounterSdfDownloadTaskMetadata < 3) {
-    o.createTime = "foo";
-    o.endTime = "foo";
-    o.version = "foo";
+    o.createTime = 'foo';
+    o.endTime = 'foo';
+    o.version = 'foo';
   }
   buildCounterSdfDownloadTaskMetadata--;
   return o;
@@ -6180,8 +6180,8 @@ api.SensitiveCategoryAssignedTargetingOptionDetails
   var o = api.SensitiveCategoryAssignedTargetingOptionDetails();
   buildCounterSensitiveCategoryAssignedTargetingOptionDetails++;
   if (buildCounterSensitiveCategoryAssignedTargetingOptionDetails < 3) {
-    o.excludedTargetingOptionId = "foo";
-    o.sensitiveCategory = "foo";
+    o.excludedTargetingOptionId = 'foo';
+    o.sensitiveCategory = 'foo';
   }
   buildCounterSensitiveCategoryAssignedTargetingOptionDetails--;
   return o;
@@ -6203,7 +6203,7 @@ api.SensitiveCategoryTargetingOptionDetails
   var o = api.SensitiveCategoryTargetingOptionDetails();
   buildCounterSensitiveCategoryTargetingOptionDetails++;
   if (buildCounterSensitiveCategoryTargetingOptionDetails < 3) {
-    o.sensitiveCategory = "foo";
+    o.sensitiveCategory = 'foo';
   }
   buildCounterSensitiveCategoryTargetingOptionDetails--;
   return o;
@@ -6223,8 +6223,8 @@ api.Site buildSite() {
   var o = api.Site();
   buildCounterSite++;
   if (buildCounterSite < 3) {
-    o.name = "foo";
-    o.urlOrAppId = "foo";
+    o.name = 'foo';
+    o.urlOrAppId = 'foo';
   }
   buildCounterSite--;
   return o;
@@ -6241,12 +6241,12 @@ void checkSite(api.Site o) {
 
 core.Map<core.String, core.Object> buildUnnamed4663() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -6256,16 +6256,16 @@ core.Map<core.String, core.Object> buildUnnamed4663() {
 
 void checkUnnamed4663(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o["x"]) as core.Map;
+  var casted7 = (o['x']) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
-  var casted8 = (o["y"]) as core.Map;
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
+  var casted8 = (o['y']) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8["bool"], unittest.equals(true));
-  unittest.expect(casted8["string"], unittest.equals('foo'));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed4664() {
@@ -6288,7 +6288,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed4664();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -6310,7 +6310,7 @@ api.SubExchangeAssignedTargetingOptionDetails
   var o = api.SubExchangeAssignedTargetingOptionDetails();
   buildCounterSubExchangeAssignedTargetingOptionDetails++;
   if (buildCounterSubExchangeAssignedTargetingOptionDetails < 3) {
-    o.targetingOptionId = "foo";
+    o.targetingOptionId = 'foo';
   }
   buildCounterSubExchangeAssignedTargetingOptionDetails--;
   return o;
@@ -6330,7 +6330,7 @@ api.SubExchangeTargetingOptionDetails buildSubExchangeTargetingOptionDetails() {
   var o = api.SubExchangeTargetingOptionDetails();
   buildCounterSubExchangeTargetingOptionDetails++;
   if (buildCounterSubExchangeTargetingOptionDetails < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
   }
   buildCounterSubExchangeTargetingOptionDetails--;
   return o;
@@ -6371,14 +6371,14 @@ api.TargetingOption buildTargetingOption() {
     o.geoRegionDetails = buildGeoRegionTargetingOptionDetails();
     o.householdIncomeDetails = buildHouseholdIncomeTargetingOptionDetails();
     o.languageDetails = buildLanguageTargetingOptionDetails();
-    o.name = "foo";
+    o.name = 'foo';
     o.onScreenPositionDetails = buildOnScreenPositionTargetingOptionDetails();
     o.operatingSystemDetails = buildOperatingSystemTargetingOptionDetails();
     o.parentalStatusDetails = buildParentalStatusTargetingOptionDetails();
     o.sensitiveCategoryDetails = buildSensitiveCategoryTargetingOptionDetails();
     o.subExchangeDetails = buildSubExchangeTargetingOptionDetails();
-    o.targetingOptionId = "foo";
-    o.targetingType = "foo";
+    o.targetingOptionId = 'foo';
+    o.targetingType = 'foo';
     o.userRewardedContentDetails =
         buildUserRewardedContentTargetingOptionDetails();
     o.videoPlayerSizeDetails = buildVideoPlayerSizeTargetingOptionDetails();
@@ -6452,8 +6452,8 @@ api.ThirdPartyUrl buildThirdPartyUrl() {
   var o = api.ThirdPartyUrl();
   buildCounterThirdPartyUrl++;
   if (buildCounterThirdPartyUrl < 3) {
-    o.type = "foo";
-    o.url = "foo";
+    o.type = 'foo';
+    o.url = 'foo';
   }
   buildCounterThirdPartyUrl--;
   return o;
@@ -6498,8 +6498,8 @@ api.TimeRange buildTimeRange() {
   var o = api.TimeRange();
   buildCounterTimeRange++;
   if (buildCounterTimeRange < 3) {
-    o.endTime = "foo";
-    o.startTime = "foo";
+    o.endTime = 'foo';
+    o.startTime = 'foo';
   }
   buildCounterTimeRange--;
   return o;
@@ -6519,8 +6519,8 @@ api.TimerEvent buildTimerEvent() {
   var o = api.TimerEvent();
   buildCounterTimerEvent++;
   if (buildCounterTimerEvent < 3) {
-    o.name = "foo";
-    o.reportingName = "foo";
+    o.name = 'foo';
+    o.reportingName = 'foo';
   }
   buildCounterTimerEvent--;
   return o;
@@ -6540,7 +6540,7 @@ api.TrackingFloodlightActivityConfig buildTrackingFloodlightActivityConfig() {
   var o = api.TrackingFloodlightActivityConfig();
   buildCounterTrackingFloodlightActivityConfig++;
   if (buildCounterTrackingFloodlightActivityConfig < 3) {
-    o.floodlightActivityId = "foo";
+    o.floodlightActivityId = 'foo';
     o.postClickLookbackWindowDays = 42;
     o.postViewLookbackWindowDays = 42;
   }
@@ -6564,14 +6564,14 @@ api.Transcode buildTranscode() {
   var o = api.Transcode();
   buildCounterTranscode++;
   if (buildCounterTranscode < 3) {
-    o.audioBitRateKbps = "foo";
-    o.audioSampleRateHz = "foo";
-    o.bitRateKbps = "foo";
+    o.audioBitRateKbps = 'foo';
+    o.audioSampleRateHz = 'foo';
+    o.bitRateKbps = 'foo';
     o.dimensions = buildDimensions();
-    o.fileSizeBytes = "foo";
+    o.fileSizeBytes = 'foo';
     o.frameRate = 42.0;
-    o.mimeType = "foo";
-    o.name = "foo";
+    o.mimeType = 'foo';
+    o.name = 'foo';
     o.transcoded = true;
   }
   buildCounterTranscode--;
@@ -6599,8 +6599,8 @@ api.UniversalAdId buildUniversalAdId() {
   var o = api.UniversalAdId();
   buildCounterUniversalAdId++;
   if (buildCounterUniversalAdId < 3) {
-    o.id = "foo";
-    o.registry = "foo";
+    o.id = 'foo';
+    o.registry = 'foo';
   }
   buildCounterUniversalAdId--;
   return o;
@@ -6621,7 +6621,7 @@ api.UrlAssignedTargetingOptionDetails buildUrlAssignedTargetingOptionDetails() {
   buildCounterUrlAssignedTargetingOptionDetails++;
   if (buildCounterUrlAssignedTargetingOptionDetails < 3) {
     o.negative = true;
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterUrlAssignedTargetingOptionDetails--;
   return o;
@@ -6656,10 +6656,10 @@ api.User buildUser() {
   buildCounterUser++;
   if (buildCounterUser < 3) {
     o.assignedUserRoles = buildUnnamed4665();
-    o.displayName = "foo";
-    o.email = "foo";
-    o.name = "foo";
-    o.userId = "foo";
+    o.displayName = 'foo';
+    o.email = 'foo';
+    o.name = 'foo';
+    o.userId = 'foo';
   }
   buildCounterUser--;
   return o;
@@ -6683,8 +6683,8 @@ api.UserRewardedContentAssignedTargetingOptionDetails
   var o = api.UserRewardedContentAssignedTargetingOptionDetails();
   buildCounterUserRewardedContentAssignedTargetingOptionDetails++;
   if (buildCounterUserRewardedContentAssignedTargetingOptionDetails < 3) {
-    o.targetingOptionId = "foo";
-    o.userRewardedContent = "foo";
+    o.targetingOptionId = 'foo';
+    o.userRewardedContent = 'foo';
   }
   buildCounterUserRewardedContentAssignedTargetingOptionDetails--;
   return o;
@@ -6706,7 +6706,7 @@ api.UserRewardedContentTargetingOptionDetails
   var o = api.UserRewardedContentTargetingOptionDetails();
   buildCounterUserRewardedContentTargetingOptionDetails++;
   if (buildCounterUserRewardedContentTargetingOptionDetails < 3) {
-    o.userRewardedContent = "foo";
+    o.userRewardedContent = 'foo';
   }
   buildCounterUserRewardedContentTargetingOptionDetails--;
   return o;
@@ -6727,8 +6727,8 @@ api.VideoPlayerSizeAssignedTargetingOptionDetails
   var o = api.VideoPlayerSizeAssignedTargetingOptionDetails();
   buildCounterVideoPlayerSizeAssignedTargetingOptionDetails++;
   if (buildCounterVideoPlayerSizeAssignedTargetingOptionDetails < 3) {
-    o.targetingOptionId = "foo";
-    o.videoPlayerSize = "foo";
+    o.targetingOptionId = 'foo';
+    o.videoPlayerSize = 'foo';
   }
   buildCounterVideoPlayerSizeAssignedTargetingOptionDetails--;
   return o;
@@ -6750,7 +6750,7 @@ api.VideoPlayerSizeTargetingOptionDetails
   var o = api.VideoPlayerSizeTargetingOptionDetails();
   buildCounterVideoPlayerSizeTargetingOptionDetails++;
   if (buildCounterVideoPlayerSizeTargetingOptionDetails < 3) {
-    o.videoPlayerSize = "foo";
+    o.videoPlayerSize = 'foo';
   }
   buildCounterVideoPlayerSizeTargetingOptionDetails--;
   return o;
@@ -6771,8 +6771,8 @@ api.ViewabilityAssignedTargetingOptionDetails
   var o = api.ViewabilityAssignedTargetingOptionDetails();
   buildCounterViewabilityAssignedTargetingOptionDetails++;
   if (buildCounterViewabilityAssignedTargetingOptionDetails < 3) {
-    o.targetingOptionId = "foo";
-    o.viewability = "foo";
+    o.targetingOptionId = 'foo';
+    o.viewability = 'foo';
   }
   buildCounterViewabilityAssignedTargetingOptionDetails--;
   return o;
@@ -6793,7 +6793,7 @@ api.ViewabilityTargetingOptionDetails buildViewabilityTargetingOptionDetails() {
   var o = api.ViewabilityTargetingOptionDetails();
   buildCounterViewabilityTargetingOptionDetails++;
   if (buildCounterViewabilityTargetingOptionDetails < 3) {
-    o.viewability = "foo";
+    o.viewability = 'foo';
   }
   buildCounterViewabilityTargetingOptionDetails--;
   return o;
@@ -6809,104 +6809,104 @@ void checkViewabilityTargetingOptionDetails(
 }
 
 void main() {
-  unittest.group("obj-schema-ActiveViewVideoViewabilityMetricConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ActiveViewVideoViewabilityMetricConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildActiveViewVideoViewabilityMetricConfig();
       var od = api.ActiveViewVideoViewabilityMetricConfig.fromJson(o.toJson());
       checkActiveViewVideoViewabilityMetricConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Adloox", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Adloox', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdloox();
       var od = api.Adloox.fromJson(o.toJson());
       checkAdloox(od);
     });
   });
 
-  unittest.group("obj-schema-Advertiser", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Advertiser', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdvertiser();
       var od = api.Advertiser.fromJson(o.toJson());
       checkAdvertiser(od);
     });
   });
 
-  unittest.group("obj-schema-AdvertiserAdServerConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdvertiserAdServerConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdvertiserAdServerConfig();
       var od = api.AdvertiserAdServerConfig.fromJson(o.toJson());
       checkAdvertiserAdServerConfig(od);
     });
   });
 
-  unittest.group("obj-schema-AdvertiserCreativeConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdvertiserCreativeConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdvertiserCreativeConfig();
       var od = api.AdvertiserCreativeConfig.fromJson(o.toJson());
       checkAdvertiserCreativeConfig(od);
     });
   });
 
-  unittest.group("obj-schema-AdvertiserDataAccessConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdvertiserDataAccessConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdvertiserDataAccessConfig();
       var od = api.AdvertiserDataAccessConfig.fromJson(o.toJson());
       checkAdvertiserDataAccessConfig(od);
     });
   });
 
-  unittest.group("obj-schema-AdvertiserGeneralConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdvertiserGeneralConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdvertiserGeneralConfig();
       var od = api.AdvertiserGeneralConfig.fromJson(o.toJson());
       checkAdvertiserGeneralConfig(od);
     });
   });
 
-  unittest.group("obj-schema-AdvertiserSdfConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdvertiserSdfConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdvertiserSdfConfig();
       var od = api.AdvertiserSdfConfig.fromJson(o.toJson());
       checkAdvertiserSdfConfig(od);
     });
   });
 
-  unittest.group("obj-schema-AdvertiserTargetingConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AdvertiserTargetingConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdvertiserTargetingConfig();
       var od = api.AdvertiserTargetingConfig.fromJson(o.toJson());
       checkAdvertiserTargetingConfig(od);
     });
   });
 
-  unittest.group("obj-schema-AgeRangeAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AgeRangeAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAgeRangeAssignedTargetingOptionDetails();
       var od = api.AgeRangeAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkAgeRangeAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-AgeRangeTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AgeRangeTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAgeRangeTargetingOptionDetails();
       var od = api.AgeRangeTargetingOptionDetails.fromJson(o.toJson());
       checkAgeRangeTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-AppAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AppAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAppAssignedTargetingOptionDetails();
       var od = api.AppAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkAppAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-AppCategoryAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AppCategoryAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAppCategoryAssignedTargetingOptionDetails();
       var od =
           api.AppCategoryAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -6914,64 +6914,64 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-AppCategoryTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AppCategoryTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAppCategoryTargetingOptionDetails();
       var od = api.AppCategoryTargetingOptionDetails.fromJson(o.toJson());
       checkAppCategoryTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-Asset", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Asset', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
       checkAsset(od);
     });
   });
 
-  unittest.group("obj-schema-AssetAssociation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AssetAssociation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAssetAssociation();
       var od = api.AssetAssociation.fromJson(o.toJson());
       checkAssetAssociation(od);
     });
   });
 
-  unittest.group("obj-schema-AssignedInventorySource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AssignedInventorySource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAssignedInventorySource();
       var od = api.AssignedInventorySource.fromJson(o.toJson());
       checkAssignedInventorySource(od);
     });
   });
 
-  unittest.group("obj-schema-AssignedLocation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AssignedLocation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAssignedLocation();
       var od = api.AssignedLocation.fromJson(o.toJson());
       checkAssignedLocation(od);
     });
   });
 
-  unittest.group("obj-schema-AssignedTargetingOption", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AssignedTargetingOption', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAssignedTargetingOption();
       var od = api.AssignedTargetingOption.fromJson(o.toJson());
       checkAssignedTargetingOption(od);
     });
   });
 
-  unittest.group("obj-schema-AssignedUserRole", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AssignedUserRole', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAssignedUserRole();
       var od = api.AssignedUserRole.fromJson(o.toJson());
       checkAssignedUserRole(od);
     });
   });
 
-  unittest.group("obj-schema-AudienceGroupAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AudienceGroupAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAudienceGroupAssignedTargetingOptionDetails();
       var od =
           api.AudienceGroupAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -6979,16 +6979,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-AudioVideoOffset", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AudioVideoOffset', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAudioVideoOffset();
       var od = api.AudioVideoOffset.fromJson(o.toJson());
       checkAudioVideoOffset(od);
     });
   });
 
-  unittest.group("obj-schema-AuditAdvertiserResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AuditAdvertiserResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAuditAdvertiserResponse();
       var od = api.AuditAdvertiserResponse.fromJson(o.toJson());
       checkAuditAdvertiserResponse(od);
@@ -6996,8 +6996,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-AuthorizedSellerStatusAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-AuthorizedSellerStatusAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAuthorizedSellerStatusAssignedTargetingOptionDetails();
       var od =
           api.AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
@@ -7006,8 +7006,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-AuthorizedSellerStatusTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AuthorizedSellerStatusTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAuthorizedSellerStatusTargetingOptionDetails();
       var od =
           api.AuthorizedSellerStatusTargetingOptionDetails.fromJson(o.toJson());
@@ -7015,33 +7015,33 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-BiddingStrategy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BiddingStrategy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBiddingStrategy();
       var od = api.BiddingStrategy.fromJson(o.toJson());
       checkBiddingStrategy(od);
     });
   });
 
-  unittest.group("obj-schema-BrowserAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BrowserAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBrowserAssignedTargetingOptionDetails();
       var od = api.BrowserAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkBrowserAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-BrowserTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BrowserTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBrowserTargetingOptionDetails();
       var od = api.BrowserTargetingOptionDetails.fromJson(o.toJson());
       checkBrowserTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-BulkEditAdvertiserAssignedTargetingOptionsRequest",
+  unittest.group('obj-schema-BulkEditAdvertiserAssignedTargetingOptionsRequest',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditAdvertiserAssignedTargetingOptionsRequest();
       var od = api.BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(
           o.toJson());
@@ -7050,8 +7050,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-BulkEditAdvertiserAssignedTargetingOptionsResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-BulkEditAdvertiserAssignedTargetingOptionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditAdvertiserAssignedTargetingOptionsResponse();
       var od = api.BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -7059,16 +7059,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-BulkEditAssignedInventorySourcesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditAssignedInventorySourcesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedInventorySourcesRequest();
       var od = api.BulkEditAssignedInventorySourcesRequest.fromJson(o.toJson());
       checkBulkEditAssignedInventorySourcesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BulkEditAssignedInventorySourcesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditAssignedInventorySourcesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedInventorySourcesResponse();
       var od =
           api.BulkEditAssignedInventorySourcesResponse.fromJson(o.toJson());
@@ -7076,41 +7076,41 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-BulkEditAssignedLocationsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditAssignedLocationsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedLocationsRequest();
       var od = api.BulkEditAssignedLocationsRequest.fromJson(o.toJson());
       checkBulkEditAssignedLocationsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BulkEditAssignedLocationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditAssignedLocationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedLocationsResponse();
       var od = api.BulkEditAssignedLocationsResponse.fromJson(o.toJson());
       checkBulkEditAssignedLocationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-BulkEditAssignedUserRolesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditAssignedUserRolesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedUserRolesRequest();
       var od = api.BulkEditAssignedUserRolesRequest.fromJson(o.toJson());
       checkBulkEditAssignedUserRolesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BulkEditAssignedUserRolesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditAssignedUserRolesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedUserRolesResponse();
       var od = api.BulkEditAssignedUserRolesResponse.fromJson(o.toJson());
       checkBulkEditAssignedUserRolesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-BulkEditLineItemAssignedTargetingOptionsRequest",
+  unittest.group('obj-schema-BulkEditLineItemAssignedTargetingOptionsRequest',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditLineItemAssignedTargetingOptionsRequest();
       var od = api.BulkEditLineItemAssignedTargetingOptionsRequest.fromJson(
           o.toJson());
@@ -7118,9 +7118,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-BulkEditLineItemAssignedTargetingOptionsResponse",
+  unittest.group('obj-schema-BulkEditLineItemAssignedTargetingOptionsResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditLineItemAssignedTargetingOptionsResponse();
       var od = api.BulkEditLineItemAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -7128,25 +7128,25 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-BulkEditNegativeKeywordsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditNegativeKeywordsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditNegativeKeywordsRequest();
       var od = api.BulkEditNegativeKeywordsRequest.fromJson(o.toJson());
       checkBulkEditNegativeKeywordsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BulkEditNegativeKeywordsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditNegativeKeywordsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditNegativeKeywordsResponse();
       var od = api.BulkEditNegativeKeywordsResponse.fromJson(o.toJson());
       checkBulkEditNegativeKeywordsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-BulkEditPartnerAssignedTargetingOptionsRequest",
+  unittest.group('obj-schema-BulkEditPartnerAssignedTargetingOptionsRequest',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditPartnerAssignedTargetingOptionsRequest();
       var od = api.BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(
           o.toJson());
@@ -7154,9 +7154,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-BulkEditPartnerAssignedTargetingOptionsResponse",
+  unittest.group('obj-schema-BulkEditPartnerAssignedTargetingOptionsResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditPartnerAssignedTargetingOptionsResponse();
       var od = api.BulkEditPartnerAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -7164,16 +7164,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-BulkEditSitesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditSitesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditSitesRequest();
       var od = api.BulkEditSitesRequest.fromJson(o.toJson());
       checkBulkEditSitesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BulkEditSitesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulkEditSitesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkEditSitesResponse();
       var od = api.BulkEditSitesResponse.fromJson(o.toJson());
       checkBulkEditSitesResponse(od);
@@ -7181,8 +7181,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-BulkListAdvertiserAssignedTargetingOptionsResponse", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-BulkListAdvertiserAssignedTargetingOptionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkListAdvertiserAssignedTargetingOptionsResponse();
       var od = api.BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -7190,9 +7190,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-BulkListLineItemAssignedTargetingOptionsResponse",
+  unittest.group('obj-schema-BulkListLineItemAssignedTargetingOptionsResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulkListLineItemAssignedTargetingOptionsResponse();
       var od = api.BulkListLineItemAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -7200,32 +7200,32 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-Campaign", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Campaign', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCampaign();
       var od = api.Campaign.fromJson(o.toJson());
       checkCampaign(od);
     });
   });
 
-  unittest.group("obj-schema-CampaignFlight", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CampaignFlight', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCampaignFlight();
       var od = api.CampaignFlight.fromJson(o.toJson());
       checkCampaignFlight(od);
     });
   });
 
-  unittest.group("obj-schema-CampaignGoal", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CampaignGoal', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCampaignGoal();
       var od = api.CampaignGoal.fromJson(o.toJson());
       checkCampaignGoal(od);
     });
   });
 
-  unittest.group("obj-schema-CarrierAndIspAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CarrierAndIspAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCarrierAndIspAssignedTargetingOptionDetails();
       var od =
           api.CarrierAndIspAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -7233,80 +7233,80 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-CarrierAndIspTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CarrierAndIspTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCarrierAndIspTargetingOptionDetails();
       var od = api.CarrierAndIspTargetingOptionDetails.fromJson(o.toJson());
       checkCarrierAndIspTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-CategoryAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CategoryAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCategoryAssignedTargetingOptionDetails();
       var od = api.CategoryAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkCategoryAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-CategoryTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CategoryTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCategoryTargetingOptionDetails();
       var od = api.CategoryTargetingOptionDetails.fromJson(o.toJson());
       checkCategoryTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-Channel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Channel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od);
     });
   });
 
-  unittest.group("obj-schema-ChannelAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ChannelAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildChannelAssignedTargetingOptionDetails();
       var od = api.ChannelAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkChannelAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-CmHybridConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CmHybridConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCmHybridConfig();
       var od = api.CmHybridConfig.fromJson(o.toJson());
       checkCmHybridConfig(od);
     });
   });
 
-  unittest.group("obj-schema-CmTrackingAd", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CmTrackingAd', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCmTrackingAd();
       var od = api.CmTrackingAd.fromJson(o.toJson());
       checkCmTrackingAd(od);
     });
   });
 
-  unittest.group("obj-schema-CombinedAudience", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CombinedAudience', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCombinedAudience();
       var od = api.CombinedAudience.fromJson(o.toJson());
       checkCombinedAudience(od);
     });
   });
 
-  unittest.group("obj-schema-CombinedAudienceGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CombinedAudienceGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCombinedAudienceGroup();
       var od = api.CombinedAudienceGroup.fromJson(o.toJson());
       checkCombinedAudienceGroup(od);
     });
   });
 
-  unittest.group("obj-schema-CombinedAudienceTargetingSetting", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CombinedAudienceTargetingSetting', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCombinedAudienceTargetingSetting();
       var od = api.CombinedAudienceTargetingSetting.fromJson(o.toJson());
       checkCombinedAudienceTargetingSetting(od);
@@ -7314,8 +7314,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-ContentInstreamPositionAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-ContentInstreamPositionAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContentInstreamPositionAssignedTargetingOptionDetails();
       var od =
           api.ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
@@ -7324,9 +7324,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ContentInstreamPositionTargetingOptionDetails",
+  unittest.group('obj-schema-ContentInstreamPositionTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildContentInstreamPositionTargetingOptionDetails();
       var od = api.ContentInstreamPositionTargetingOptionDetails.fromJson(
           o.toJson());
@@ -7335,8 +7335,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-ContentOutstreamPositionAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-ContentOutstreamPositionAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContentOutstreamPositionAssignedTargetingOptionDetails();
       var od =
           api.ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
@@ -7345,9 +7345,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ContentOutstreamPositionTargetingOptionDetails",
+  unittest.group('obj-schema-ContentOutstreamPositionTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildContentOutstreamPositionTargetingOptionDetails();
       var od = api.ContentOutstreamPositionTargetingOptionDetails.fromJson(
           o.toJson());
@@ -7355,120 +7355,120 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ConversionCountingConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ConversionCountingConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildConversionCountingConfig();
       var od = api.ConversionCountingConfig.fromJson(o.toJson());
       checkConversionCountingConfig(od);
     });
   });
 
-  unittest.group("obj-schema-CounterEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CounterEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCounterEvent();
       var od = api.CounterEvent.fromJson(o.toJson());
       checkCounterEvent(od);
     });
   });
 
-  unittest.group("obj-schema-CreateAssetRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateAssetRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateAssetRequest();
       var od = api.CreateAssetRequest.fromJson(o.toJson());
       checkCreateAssetRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CreateAssetResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateAssetResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateAssetResponse();
       var od = api.CreateAssetResponse.fromJson(o.toJson());
       checkCreateAssetResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CreateAssignedTargetingOptionsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateAssignedTargetingOptionsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateAssignedTargetingOptionsRequest();
       var od = api.CreateAssignedTargetingOptionsRequest.fromJson(o.toJson());
       checkCreateAssignedTargetingOptionsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CreateSdfDownloadTaskRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateSdfDownloadTaskRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateSdfDownloadTaskRequest();
       var od = api.CreateSdfDownloadTaskRequest.fromJson(o.toJson());
       checkCreateSdfDownloadTaskRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Creative", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Creative', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreative();
       var od = api.Creative.fromJson(o.toJson());
       checkCreative(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeConfig();
       var od = api.CreativeConfig.fromJson(o.toJson());
       checkCreativeConfig(od);
     });
   });
 
-  unittest.group("obj-schema-CustomBiddingAlgorithm", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomBiddingAlgorithm', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomBiddingAlgorithm();
       var od = api.CustomBiddingAlgorithm.fromJson(o.toJson());
       checkCustomBiddingAlgorithm(od);
     });
   });
 
-  unittest.group("obj-schema-CustomList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomList();
       var od = api.CustomList.fromJson(o.toJson());
       checkCustomList(od);
     });
   });
 
-  unittest.group("obj-schema-CustomListGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomListGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomListGroup();
       var od = api.CustomListGroup.fromJson(o.toJson());
       checkCustomListGroup(od);
     });
   });
 
-  unittest.group("obj-schema-CustomListTargetingSetting", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomListTargetingSetting', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomListTargetingSetting();
       var od = api.CustomListTargetingSetting.fromJson(o.toJson());
       checkCustomListTargetingSetting(od);
     });
   });
 
-  unittest.group("obj-schema-Date", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Date', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od);
     });
   });
 
-  unittest.group("obj-schema-DateRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DateRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
       checkDateRange(od);
     });
   });
 
-  unittest.group("obj-schema-DayAndTimeAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DayAndTimeAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDayAndTimeAssignedTargetingOptionDetails();
       var od =
           api.DayAndTimeAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -7476,17 +7476,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-DeleteAssignedTargetingOptionsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeleteAssignedTargetingOptionsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeleteAssignedTargetingOptionsRequest();
       var od = api.DeleteAssignedTargetingOptionsRequest.fromJson(o.toJson());
       checkDeleteAssignedTargetingOptionsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeviceMakeModelAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-DeviceMakeModelAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceMakeModelAssignedTargetingOptionDetails();
       var od = api.DeviceMakeModelAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -7494,16 +7494,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-DeviceMakeModelTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeviceMakeModelTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceMakeModelTargetingOptionDetails();
       var od = api.DeviceMakeModelTargetingOptionDetails.fromJson(o.toJson());
       checkDeviceMakeModelTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-DeviceTypeAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeviceTypeAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceTypeAssignedTargetingOptionDetails();
       var od =
           api.DeviceTypeAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -7511,17 +7511,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-DeviceTypeTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeviceTypeTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceTypeTargetingOptionDetails();
       var od = api.DeviceTypeTargetingOptionDetails.fromJson(o.toJson());
       checkDeviceTypeTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-DigitalContentLabelAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-DigitalContentLabelAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildDigitalContentLabelAssignedTargetingOptionDetails();
       var od = api.DigitalContentLabelAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -7529,8 +7529,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-DigitalContentLabelTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DigitalContentLabelTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDigitalContentLabelTargetingOptionDetails();
       var od =
           api.DigitalContentLabelTargetingOptionDetails.fromJson(o.toJson());
@@ -7538,72 +7538,72 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-Dimensions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Dimensions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDimensions();
       var od = api.Dimensions.fromJson(o.toJson());
       checkDimensions(od);
     });
   });
 
-  unittest.group("obj-schema-DoubleVerify", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DoubleVerify', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDoubleVerify();
       var od = api.DoubleVerify.fromJson(o.toJson());
       checkDoubleVerify(od);
     });
   });
 
-  unittest.group("obj-schema-DoubleVerifyAppStarRating", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DoubleVerifyAppStarRating', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyAppStarRating();
       var od = api.DoubleVerifyAppStarRating.fromJson(o.toJson());
       checkDoubleVerifyAppStarRating(od);
     });
   });
 
-  unittest.group("obj-schema-DoubleVerifyBrandSafetyCategories", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DoubleVerifyBrandSafetyCategories', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyBrandSafetyCategories();
       var od = api.DoubleVerifyBrandSafetyCategories.fromJson(o.toJson());
       checkDoubleVerifyBrandSafetyCategories(od);
     });
   });
 
-  unittest.group("obj-schema-DoubleVerifyDisplayViewability", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DoubleVerifyDisplayViewability', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyDisplayViewability();
       var od = api.DoubleVerifyDisplayViewability.fromJson(o.toJson());
       checkDoubleVerifyDisplayViewability(od);
     });
   });
 
-  unittest.group("obj-schema-DoubleVerifyFraudInvalidTraffic", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DoubleVerifyFraudInvalidTraffic', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyFraudInvalidTraffic();
       var od = api.DoubleVerifyFraudInvalidTraffic.fromJson(o.toJson());
       checkDoubleVerifyFraudInvalidTraffic(od);
     });
   });
 
-  unittest.group("obj-schema-DoubleVerifyVideoViewability", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DoubleVerifyVideoViewability', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyVideoViewability();
       var od = api.DoubleVerifyVideoViewability.fromJson(o.toJson());
       checkDoubleVerifyVideoViewability(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-EnvironmentAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EnvironmentAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEnvironmentAssignedTargetingOptionDetails();
       var od =
           api.EnvironmentAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -7611,80 +7611,80 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-EnvironmentTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EnvironmentTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEnvironmentTargetingOptionDetails();
       var od = api.EnvironmentTargetingOptionDetails.fromJson(o.toJson());
       checkEnvironmentTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-ExchangeAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExchangeAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExchangeAssignedTargetingOptionDetails();
       var od = api.ExchangeAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkExchangeAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-ExchangeConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExchangeConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExchangeConfig();
       var od = api.ExchangeConfig.fromJson(o.toJson());
       checkExchangeConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ExchangeConfigEnabledExchange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExchangeConfigEnabledExchange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExchangeConfigEnabledExchange();
       var od = api.ExchangeConfigEnabledExchange.fromJson(o.toJson());
       checkExchangeConfigEnabledExchange(od);
     });
   });
 
-  unittest.group("obj-schema-ExchangeReviewStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExchangeReviewStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExchangeReviewStatus();
       var od = api.ExchangeReviewStatus.fromJson(o.toJson());
       checkExchangeReviewStatus(od);
     });
   });
 
-  unittest.group("obj-schema-ExchangeTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExchangeTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExchangeTargetingOptionDetails();
       var od = api.ExchangeTargetingOptionDetails.fromJson(o.toJson());
       checkExchangeTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-ExitEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExitEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExitEvent();
       var od = api.ExitEvent.fromJson(o.toJson());
       checkExitEvent(od);
     });
   });
 
-  unittest.group("obj-schema-FirstAndThirdPartyAudience", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FirstAndThirdPartyAudience', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFirstAndThirdPartyAudience();
       var od = api.FirstAndThirdPartyAudience.fromJson(o.toJson());
       checkFirstAndThirdPartyAudience(od);
     });
   });
 
-  unittest.group("obj-schema-FirstAndThirdPartyAudienceGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FirstAndThirdPartyAudienceGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFirstAndThirdPartyAudienceGroup();
       var od = api.FirstAndThirdPartyAudienceGroup.fromJson(o.toJson());
       checkFirstAndThirdPartyAudienceGroup(od);
     });
   });
 
-  unittest.group("obj-schema-FirstAndThirdPartyAudienceTargetingSetting", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FirstAndThirdPartyAudienceTargetingSetting', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFirstAndThirdPartyAudienceTargetingSetting();
       var od =
           api.FirstAndThirdPartyAudienceTargetingSetting.fromJson(o.toJson());
@@ -7692,97 +7692,97 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-FixedBidStrategy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FixedBidStrategy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFixedBidStrategy();
       var od = api.FixedBidStrategy.fromJson(o.toJson());
       checkFixedBidStrategy(od);
     });
   });
 
-  unittest.group("obj-schema-FloodlightGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FloodlightGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFloodlightGroup();
       var od = api.FloodlightGroup.fromJson(o.toJson());
       checkFloodlightGroup(od);
     });
   });
 
-  unittest.group("obj-schema-FrequencyCap", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FrequencyCap', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFrequencyCap();
       var od = api.FrequencyCap.fromJson(o.toJson());
       checkFrequencyCap(od);
     });
   });
 
-  unittest.group("obj-schema-GenderAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GenderAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGenderAssignedTargetingOptionDetails();
       var od = api.GenderAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkGenderAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-GenderTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GenderTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGenderTargetingOptionDetails();
       var od = api.GenderTargetingOptionDetails.fromJson(o.toJson());
       checkGenderTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-GeoRegionAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GeoRegionAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGeoRegionAssignedTargetingOptionDetails();
       var od = api.GeoRegionAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkGeoRegionAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-GeoRegionTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GeoRegionTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGeoRegionTargetingOptionDetails();
       var od = api.GeoRegionTargetingOptionDetails.fromJson(o.toJson());
       checkGeoRegionTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleAudience", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleAudience', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleAudience();
       var od = api.GoogleAudience.fromJson(o.toJson());
       checkGoogleAudience(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleAudienceGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleAudienceGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleAudienceGroup();
       var od = api.GoogleAudienceGroup.fromJson(o.toJson());
       checkGoogleAudienceGroup(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleAudienceTargetingSetting", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleAudienceTargetingSetting', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleAudienceTargetingSetting();
       var od = api.GoogleAudienceTargetingSetting.fromJson(o.toJson());
       checkGoogleAudienceTargetingSetting(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleBytestreamMedia", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleBytestreamMedia', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleBytestreamMedia();
       var od = api.GoogleBytestreamMedia.fromJson(o.toJson());
       checkGoogleBytestreamMedia(od);
     });
   });
 
-  unittest.group("obj-schema-HouseholdIncomeAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-HouseholdIncomeAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildHouseholdIncomeAssignedTargetingOptionDetails();
       var od = api.HouseholdIncomeAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -7790,73 +7790,73 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-HouseholdIncomeTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-HouseholdIncomeTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildHouseholdIncomeTargetingOptionDetails();
       var od = api.HouseholdIncomeTargetingOptionDetails.fromJson(o.toJson());
       checkHouseholdIncomeTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-IdFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IdFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIdFilter();
       var od = api.IdFilter.fromJson(o.toJson());
       checkIdFilter(od);
     });
   });
 
-  unittest.group("obj-schema-InsertionOrder", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertionOrder', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertionOrder();
       var od = api.InsertionOrder.fromJson(o.toJson());
       checkInsertionOrder(od);
     });
   });
 
-  unittest.group("obj-schema-InsertionOrderBudget", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertionOrderBudget', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertionOrderBudget();
       var od = api.InsertionOrderBudget.fromJson(o.toJson());
       checkInsertionOrderBudget(od);
     });
   });
 
-  unittest.group("obj-schema-InsertionOrderBudgetSegment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertionOrderBudgetSegment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertionOrderBudgetSegment();
       var od = api.InsertionOrderBudgetSegment.fromJson(o.toJson());
       checkInsertionOrderBudgetSegment(od);
     });
   });
 
-  unittest.group("obj-schema-IntegralAdScience", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IntegralAdScience', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIntegralAdScience();
       var od = api.IntegralAdScience.fromJson(o.toJson());
       checkIntegralAdScience(od);
     });
   });
 
-  unittest.group("obj-schema-IntegrationDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IntegrationDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIntegrationDetails();
       var od = api.IntegrationDetails.fromJson(o.toJson());
       checkIntegrationDetails(od);
     });
   });
 
-  unittest.group("obj-schema-InventorySource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InventorySource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInventorySource();
       var od = api.InventorySource.fromJson(o.toJson());
       checkInventorySource(od);
     });
   });
 
-  unittest.group("obj-schema-InventorySourceAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-InventorySourceAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildInventorySourceAssignedTargetingOptionDetails();
       var od = api.InventorySourceAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -7864,24 +7864,24 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-InventorySourceDisplayCreativeConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InventorySourceDisplayCreativeConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInventorySourceDisplayCreativeConfig();
       var od = api.InventorySourceDisplayCreativeConfig.fromJson(o.toJson());
       checkInventorySourceDisplayCreativeConfig(od);
     });
   });
 
-  unittest.group("obj-schema-InventorySourceFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InventorySourceFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInventorySourceFilter();
       var od = api.InventorySourceFilter.fromJson(o.toJson());
       checkInventorySourceFilter(od);
     });
   });
 
-  unittest.group("obj-schema-InventorySourceGroup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InventorySourceGroup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInventorySourceGroup();
       var od = api.InventorySourceGroup.fromJson(o.toJson());
       checkInventorySourceGroup(od);
@@ -7889,8 +7889,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-InventorySourceGroupAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-InventorySourceGroupAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInventorySourceGroupAssignedTargetingOptionDetails();
       var od = api.InventorySourceGroupAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -7898,73 +7898,73 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-InventorySourceStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InventorySourceStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInventorySourceStatus();
       var od = api.InventorySourceStatus.fromJson(o.toJson());
       checkInventorySourceStatus(od);
     });
   });
 
-  unittest.group("obj-schema-InventorySourceVideoCreativeConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InventorySourceVideoCreativeConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInventorySourceVideoCreativeConfig();
       var od = api.InventorySourceVideoCreativeConfig.fromJson(o.toJson());
       checkInventorySourceVideoCreativeConfig(od);
     });
   });
 
-  unittest.group("obj-schema-KeywordAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-KeywordAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildKeywordAssignedTargetingOptionDetails();
       var od = api.KeywordAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkKeywordAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-LanguageAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LanguageAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLanguageAssignedTargetingOptionDetails();
       var od = api.LanguageAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkLanguageAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-LanguageTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LanguageTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLanguageTargetingOptionDetails();
       var od = api.LanguageTargetingOptionDetails.fromJson(o.toJson());
       checkLanguageTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-LineItem", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LineItem', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLineItem();
       var od = api.LineItem.fromJson(o.toJson());
       checkLineItem(od);
     });
   });
 
-  unittest.group("obj-schema-LineItemBudget", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LineItemBudget', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLineItemBudget();
       var od = api.LineItemBudget.fromJson(o.toJson());
       checkLineItemBudget(od);
     });
   });
 
-  unittest.group("obj-schema-LineItemFlight", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LineItemFlight', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLineItemFlight();
       var od = api.LineItemFlight.fromJson(o.toJson());
       checkLineItemFlight(od);
     });
   });
 
-  unittest.group("obj-schema-ListAdvertiserAssignedTargetingOptionsResponse",
+  unittest.group('obj-schema-ListAdvertiserAssignedTargetingOptionsResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAdvertiserAssignedTargetingOptionsResponse();
       var od = api.ListAdvertiserAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -7972,120 +7972,120 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ListAdvertisersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAdvertisersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAdvertisersResponse();
       var od = api.ListAdvertisersResponse.fromJson(o.toJson());
       checkListAdvertisersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListAssignedInventorySourcesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAssignedInventorySourcesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAssignedInventorySourcesResponse();
       var od = api.ListAssignedInventorySourcesResponse.fromJson(o.toJson());
       checkListAssignedInventorySourcesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListAssignedLocationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAssignedLocationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAssignedLocationsResponse();
       var od = api.ListAssignedLocationsResponse.fromJson(o.toJson());
       checkListAssignedLocationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListCampaignsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListCampaignsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListCampaignsResponse();
       var od = api.ListCampaignsResponse.fromJson(o.toJson());
       checkListCampaignsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListChannelsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListChannelsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListChannelsResponse();
       var od = api.ListChannelsResponse.fromJson(o.toJson());
       checkListChannelsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListCombinedAudiencesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListCombinedAudiencesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListCombinedAudiencesResponse();
       var od = api.ListCombinedAudiencesResponse.fromJson(o.toJson());
       checkListCombinedAudiencesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListCreativesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListCreativesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListCreativesResponse();
       var od = api.ListCreativesResponse.fromJson(o.toJson());
       checkListCreativesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListCustomBiddingAlgorithmsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListCustomBiddingAlgorithmsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListCustomBiddingAlgorithmsResponse();
       var od = api.ListCustomBiddingAlgorithmsResponse.fromJson(o.toJson());
       checkListCustomBiddingAlgorithmsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListCustomListsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListCustomListsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListCustomListsResponse();
       var od = api.ListCustomListsResponse.fromJson(o.toJson());
       checkListCustomListsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListFirstAndThirdPartyAudiencesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListFirstAndThirdPartyAudiencesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListFirstAndThirdPartyAudiencesResponse();
       var od = api.ListFirstAndThirdPartyAudiencesResponse.fromJson(o.toJson());
       checkListFirstAndThirdPartyAudiencesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListGoogleAudiencesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListGoogleAudiencesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListGoogleAudiencesResponse();
       var od = api.ListGoogleAudiencesResponse.fromJson(o.toJson());
       checkListGoogleAudiencesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListInsertionOrdersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListInsertionOrdersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListInsertionOrdersResponse();
       var od = api.ListInsertionOrdersResponse.fromJson(o.toJson());
       checkListInsertionOrdersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListInventorySourceGroupsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListInventorySourceGroupsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListInventorySourceGroupsResponse();
       var od = api.ListInventorySourceGroupsResponse.fromJson(o.toJson());
       checkListInventorySourceGroupsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListInventorySourcesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListInventorySourcesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListInventorySourcesResponse();
       var od = api.ListInventorySourcesResponse.fromJson(o.toJson());
       checkListInventorySourcesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListLineItemAssignedTargetingOptionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListLineItemAssignedTargetingOptionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListLineItemAssignedTargetingOptionsResponse();
       var od =
           api.ListLineItemAssignedTargetingOptionsResponse.fromJson(o.toJson());
@@ -8093,40 +8093,40 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ListLineItemsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListLineItemsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListLineItemsResponse();
       var od = api.ListLineItemsResponse.fromJson(o.toJson());
       checkListLineItemsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListLocationListsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListLocationListsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListLocationListsResponse();
       var od = api.ListLocationListsResponse.fromJson(o.toJson());
       checkListLocationListsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListNegativeKeywordListsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListNegativeKeywordListsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListNegativeKeywordListsResponse();
       var od = api.ListNegativeKeywordListsResponse.fromJson(o.toJson());
       checkListNegativeKeywordListsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListNegativeKeywordsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListNegativeKeywordsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListNegativeKeywordsResponse();
       var od = api.ListNegativeKeywordsResponse.fromJson(o.toJson());
       checkListNegativeKeywordsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListPartnerAssignedTargetingOptionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListPartnerAssignedTargetingOptionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListPartnerAssignedTargetingOptionsResponse();
       var od =
           api.ListPartnerAssignedTargetingOptionsResponse.fromJson(o.toJson());
@@ -8134,97 +8134,97 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ListPartnersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListPartnersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListPartnersResponse();
       var od = api.ListPartnersResponse.fromJson(o.toJson());
       checkListPartnersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListSitesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListSitesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListSitesResponse();
       var od = api.ListSitesResponse.fromJson(o.toJson());
       checkListSitesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTargetingOptionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTargetingOptionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTargetingOptionsResponse();
       var od = api.ListTargetingOptionsResponse.fromJson(o.toJson());
       checkListTargetingOptionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListUsersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListUsersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListUsersResponse();
       var od = api.ListUsersResponse.fromJson(o.toJson());
       checkListUsersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-LocationList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LocationList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocationList();
       var od = api.LocationList.fromJson(o.toJson());
       checkLocationList(od);
     });
   });
 
-  unittest.group("obj-schema-LookbackWindow", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LookbackWindow', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLookbackWindow();
       var od = api.LookbackWindow.fromJson(o.toJson());
       checkLookbackWindow(od);
     });
   });
 
-  unittest.group("obj-schema-MaximizeSpendBidStrategy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MaximizeSpendBidStrategy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMaximizeSpendBidStrategy();
       var od = api.MaximizeSpendBidStrategy.fromJson(o.toJson());
       checkMaximizeSpendBidStrategy(od);
     });
   });
 
-  unittest.group("obj-schema-MeasurementConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MeasurementConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMeasurementConfig();
       var od = api.MeasurementConfig.fromJson(o.toJson());
       checkMeasurementConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Money", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Money', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMoney();
       var od = api.Money.fromJson(o.toJson());
       checkMoney(od);
     });
   });
 
-  unittest.group("obj-schema-NegativeKeyword", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NegativeKeyword', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNegativeKeyword();
       var od = api.NegativeKeyword.fromJson(o.toJson());
       checkNegativeKeyword(od);
     });
   });
 
-  unittest.group("obj-schema-NegativeKeywordList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NegativeKeywordList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNegativeKeywordList();
       var od = api.NegativeKeywordList.fromJson(o.toJson());
       checkNegativeKeywordList(od);
     });
   });
 
-  unittest.group("obj-schema-NegativeKeywordListAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-NegativeKeywordListAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildNegativeKeywordListAssignedTargetingOptionDetails();
       var od = api.NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -8232,17 +8232,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ObaIcon", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ObaIcon', () {
+    unittest.test('to-json--from-json', () {
       var o = buildObaIcon();
       var od = api.ObaIcon.fromJson(o.toJson());
       checkObaIcon(od);
     });
   });
 
-  unittest.group("obj-schema-OnScreenPositionAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-OnScreenPositionAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildOnScreenPositionAssignedTargetingOptionDetails();
       var od = api.OnScreenPositionAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -8250,17 +8250,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-OnScreenPositionTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OnScreenPositionTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOnScreenPositionTargetingOptionDetails();
       var od = api.OnScreenPositionTargetingOptionDetails.fromJson(o.toJson());
       checkOnScreenPositionTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-OperatingSystemAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-OperatingSystemAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperatingSystemAssignedTargetingOptionDetails();
       var od = api.OperatingSystemAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -8268,40 +8268,40 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-OperatingSystemTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OperatingSystemTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperatingSystemTargetingOptionDetails();
       var od = api.OperatingSystemTargetingOptionDetails.fromJson(o.toJson());
       checkOperatingSystemTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-Operation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Operation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
 
-  unittest.group("obj-schema-Pacing", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Pacing', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPacing();
       var od = api.Pacing.fromJson(o.toJson());
       checkPacing(od);
     });
   });
 
-  unittest.group("obj-schema-ParentEntityFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParentEntityFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParentEntityFilter();
       var od = api.ParentEntityFilter.fromJson(o.toJson());
       checkParentEntityFilter(od);
     });
   });
 
-  unittest.group("obj-schema-ParentalStatusAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParentalStatusAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParentalStatusAssignedTargetingOptionDetails();
       var od =
           api.ParentalStatusAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -8309,72 +8309,72 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ParentalStatusTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParentalStatusTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParentalStatusTargetingOptionDetails();
       var od = api.ParentalStatusTargetingOptionDetails.fromJson(o.toJson());
       checkParentalStatusTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-Partner", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Partner', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPartner();
       var od = api.Partner.fromJson(o.toJson());
       checkPartner(od);
     });
   });
 
-  unittest.group("obj-schema-PartnerAdServerConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PartnerAdServerConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPartnerAdServerConfig();
       var od = api.PartnerAdServerConfig.fromJson(o.toJson());
       checkPartnerAdServerConfig(od);
     });
   });
 
-  unittest.group("obj-schema-PartnerCost", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PartnerCost', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPartnerCost();
       var od = api.PartnerCost.fromJson(o.toJson());
       checkPartnerCost(od);
     });
   });
 
-  unittest.group("obj-schema-PartnerDataAccessConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PartnerDataAccessConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPartnerDataAccessConfig();
       var od = api.PartnerDataAccessConfig.fromJson(o.toJson());
       checkPartnerDataAccessConfig(od);
     });
   });
 
-  unittest.group("obj-schema-PartnerGeneralConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PartnerGeneralConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPartnerGeneralConfig();
       var od = api.PartnerGeneralConfig.fromJson(o.toJson());
       checkPartnerGeneralConfig(od);
     });
   });
 
-  unittest.group("obj-schema-PartnerRevenueModel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PartnerRevenueModel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPartnerRevenueModel();
       var od = api.PartnerRevenueModel.fromJson(o.toJson());
       checkPartnerRevenueModel(od);
     });
   });
 
-  unittest.group("obj-schema-PerformanceGoal", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PerformanceGoal', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPerformanceGoal();
       var od = api.PerformanceGoal.fromJson(o.toJson());
       checkPerformanceGoal(od);
     });
   });
 
-  unittest.group("obj-schema-PerformanceGoalBidStrategy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PerformanceGoalBidStrategy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPerformanceGoalBidStrategy();
       var od = api.PerformanceGoalBidStrategy.fromJson(o.toJson());
       checkPerformanceGoalBidStrategy(od);
@@ -8382,8 +8382,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-ProximityLocationListAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-ProximityLocationListAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProximityLocationListAssignedTargetingOptionDetails();
       var od = api.ProximityLocationListAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -8391,16 +8391,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-PublisherReviewStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PublisherReviewStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPublisherReviewStatus();
       var od = api.PublisherReviewStatus.fromJson(o.toJson());
       checkPublisherReviewStatus(od);
     });
   });
 
-  unittest.group("obj-schema-RateDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RateDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRateDetails();
       var od = api.RateDetails.fromJson(o.toJson());
       checkRateDetails(od);
@@ -8408,8 +8408,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-RegionalLocationListAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-RegionalLocationListAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRegionalLocationListAssignedTargetingOptionDetails();
       var od = api.RegionalLocationListAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -8417,41 +8417,41 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ReviewStatusInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReviewStatusInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReviewStatusInfo();
       var od = api.ReviewStatusInfo.fromJson(o.toJson());
       checkReviewStatusInfo(od);
     });
   });
 
-  unittest.group("obj-schema-SdfConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SdfConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSdfConfig();
       var od = api.SdfConfig.fromJson(o.toJson());
       checkSdfConfig(od);
     });
   });
 
-  unittest.group("obj-schema-SdfDownloadTask", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SdfDownloadTask', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSdfDownloadTask();
       var od = api.SdfDownloadTask.fromJson(o.toJson());
       checkSdfDownloadTask(od);
     });
   });
 
-  unittest.group("obj-schema-SdfDownloadTaskMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SdfDownloadTaskMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSdfDownloadTaskMetadata();
       var od = api.SdfDownloadTaskMetadata.fromJson(o.toJson());
       checkSdfDownloadTaskMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-SensitiveCategoryAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-SensitiveCategoryAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildSensitiveCategoryAssignedTargetingOptionDetails();
       var od = api.SensitiveCategoryAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -8459,32 +8459,32 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-SensitiveCategoryTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SensitiveCategoryTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSensitiveCategoryTargetingOptionDetails();
       var od = api.SensitiveCategoryTargetingOptionDetails.fromJson(o.toJson());
       checkSensitiveCategoryTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-Site", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Site', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSite();
       var od = api.Site.fromJson(o.toJson());
       checkSite(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-SubExchangeAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SubExchangeAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubExchangeAssignedTargetingOptionDetails();
       var od =
           api.SubExchangeAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -8492,41 +8492,41 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-SubExchangeTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SubExchangeTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubExchangeTargetingOptionDetails();
       var od = api.SubExchangeTargetingOptionDetails.fromJson(o.toJson());
       checkSubExchangeTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-TargetingOption", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TargetingOption', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTargetingOption();
       var od = api.TargetingOption.fromJson(o.toJson());
       checkTargetingOption(od);
     });
   });
 
-  unittest.group("obj-schema-ThirdPartyOnlyConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThirdPartyOnlyConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThirdPartyOnlyConfig();
       var od = api.ThirdPartyOnlyConfig.fromJson(o.toJson());
       checkThirdPartyOnlyConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ThirdPartyUrl", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ThirdPartyUrl', () {
+    unittest.test('to-json--from-json', () {
       var o = buildThirdPartyUrl();
       var od = api.ThirdPartyUrl.fromJson(o.toJson());
       checkThirdPartyUrl(od);
     });
   });
 
-  unittest.group("obj-schema-ThirdPartyVerifierAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-ThirdPartyVerifierAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildThirdPartyVerifierAssignedTargetingOptionDetails();
       var od = api.ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -8534,65 +8534,65 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-TimeRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TimeRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTimeRange();
       var od = api.TimeRange.fromJson(o.toJson());
       checkTimeRange(od);
     });
   });
 
-  unittest.group("obj-schema-TimerEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TimerEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTimerEvent();
       var od = api.TimerEvent.fromJson(o.toJson());
       checkTimerEvent(od);
     });
   });
 
-  unittest.group("obj-schema-TrackingFloodlightActivityConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TrackingFloodlightActivityConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTrackingFloodlightActivityConfig();
       var od = api.TrackingFloodlightActivityConfig.fromJson(o.toJson());
       checkTrackingFloodlightActivityConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Transcode", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Transcode', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTranscode();
       var od = api.Transcode.fromJson(o.toJson());
       checkTranscode(od);
     });
   });
 
-  unittest.group("obj-schema-UniversalAdId", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UniversalAdId', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUniversalAdId();
       var od = api.UniversalAdId.fromJson(o.toJson());
       checkUniversalAdId(od);
     });
   });
 
-  unittest.group("obj-schema-UrlAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UrlAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUrlAssignedTargetingOptionDetails();
       var od = api.UrlAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkUrlAssignedTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-User", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-User', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od);
     });
   });
 
-  unittest.group("obj-schema-UserRewardedContentAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-UserRewardedContentAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserRewardedContentAssignedTargetingOptionDetails();
       var od = api.UserRewardedContentAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -8600,8 +8600,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-UserRewardedContentTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UserRewardedContentTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserRewardedContentTargetingOptionDetails();
       var od =
           api.UserRewardedContentTargetingOptionDetails.fromJson(o.toJson());
@@ -8609,9 +8609,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-VideoPlayerSizeAssignedTargetingOptionDetails",
+  unittest.group('obj-schema-VideoPlayerSizeAssignedTargetingOptionDetails',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildVideoPlayerSizeAssignedTargetingOptionDetails();
       var od = api.VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -8619,16 +8619,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-VideoPlayerSizeTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-VideoPlayerSizeTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVideoPlayerSizeTargetingOptionDetails();
       var od = api.VideoPlayerSizeTargetingOptionDetails.fromJson(o.toJson());
       checkVideoPlayerSizeTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("obj-schema-ViewabilityAssignedTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ViewabilityAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildViewabilityAssignedTargetingOptionDetails();
       var od =
           api.ViewabilityAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -8636,21 +8636,21 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-ViewabilityTargetingOptionDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ViewabilityTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildViewabilityTargetingOptionDetails();
       var od = api.ViewabilityTargetingOptionDetails.fromJson(o.toJson());
       checkViewabilityTargetingOptionDetails(od);
     });
   });
 
-  unittest.group("resource-AdvertisersResourceApi", () {
-    unittest.test("method--audit", () {
+  unittest.group('resource-AdvertisersResourceApi', () {
+    unittest.test('method--audit', () {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
-      var arg_advertiserId = "foo";
-      var arg_readMask = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_readMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8670,8 +8670,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8683,7 +8683,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAuditAdvertiserResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8695,13 +8695,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--bulkEditAdvertiserAssignedTargetingOptions", () {
+    unittest.test('method--bulkEditAdvertiserAssignedTargetingOptions', () {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
       var arg_request =
           buildBulkEditAdvertiserAssignedTargetingOptionsRequest();
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(
@@ -8726,8 +8726,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8737,7 +8737,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildBulkEditAdvertiserAssignedTargetingOptionsResponse());
@@ -8752,15 +8752,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--bulkListAdvertiserAssignedTargetingOptions", () {
+    unittest.test('method--bulkListAdvertiserAssignedTargetingOptions', () {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
-      var arg_advertiserId = "foo";
-      var arg_orderBy = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8780,8 +8780,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8798,7 +8798,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildBulkListAdvertiserAssignedTargetingOptionsResponse());
@@ -8816,11 +8816,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
       var arg_request = buildAdvertiser();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Advertiser.fromJson(json);
         checkAdvertiser(obj);
@@ -8842,8 +8842,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8853,7 +8853,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdvertiser());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8865,11 +8865,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8889,8 +8889,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8900,7 +8900,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8912,11 +8912,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8936,8 +8936,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -8947,7 +8947,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdvertiser());
         return async.Future.value(stringResponse(200, h, resp));
@@ -8959,15 +8959,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
-      var arg_partnerId = "foo";
-      var arg_filter = "foo";
-      var arg_orderBy = "foo";
-      var arg_pageToken = "foo";
+      var arg_partnerId = 'foo';
+      var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8986,8 +8986,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9006,7 +9006,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListAdvertisersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9024,13 +9024,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
       var arg_request = buildAdvertiser();
-      var arg_advertiserId = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Advertiser.fromJson(json);
         checkAdvertiser(obj);
@@ -9053,8 +9053,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9066,7 +9066,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAdvertiser());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9080,8 +9080,8 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdvertisersAssetsResourceApi", () {
-    unittest.test("method--upload", () {
+  unittest.group('resource-AdvertisersAssetsResourceApi', () {
+    unittest.test('method--upload', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -9089,8 +9089,8 @@ void main() {
       api.AdvertisersAssetsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.assets;
       var arg_request = buildCreateAssetRequest();
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CreateAssetRequest.fromJson(json);
         checkCreateAssetRequest(obj);
@@ -9113,8 +9113,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9124,7 +9124,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreateAssetResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9137,14 +9137,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdvertisersCampaignsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AdvertisersCampaignsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersCampaignsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.campaigns;
       var arg_request = buildCampaign();
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Campaign.fromJson(json);
         checkCampaign(obj);
@@ -9167,8 +9167,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9178,7 +9178,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCampaign());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9190,13 +9190,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersCampaignsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.campaigns;
-      var arg_advertiserId = "foo";
-      var arg_campaignId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_campaignId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9216,8 +9216,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9227,7 +9227,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9239,13 +9239,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersCampaignsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.campaigns;
-      var arg_advertiserId = "foo";
-      var arg_campaignId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_campaignId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9265,8 +9265,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9276,7 +9276,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCampaign());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9288,16 +9288,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersCampaignsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.campaigns;
-      var arg_advertiserId = "foo";
-      var arg_pageToken = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9317,8 +9317,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9335,7 +9335,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListCampaignsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9352,15 +9352,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AdvertisersCampaignsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.campaigns;
       var arg_request = buildCampaign();
-      var arg_advertiserId = "foo";
-      var arg_campaignId = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_campaignId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Campaign.fromJson(json);
         checkCampaign(obj);
@@ -9383,8 +9383,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9396,7 +9396,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCampaign());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9410,15 +9410,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdvertisersChannelsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AdvertisersChannelsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersChannelsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.channels;
       var arg_request = buildChannel();
-      var arg_advertiserId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -9441,8 +9441,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9454,7 +9454,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9467,14 +9467,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersChannelsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.channels;
-      var arg_advertiserId = "foo";
-      var arg_channelId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9494,8 +9494,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9507,7 +9507,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9520,17 +9520,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersChannelsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.channels;
-      var arg_advertiserId = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9550,8 +9550,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9570,7 +9570,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListChannelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9588,16 +9588,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AdvertisersChannelsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.channels;
       var arg_request = buildChannel();
-      var arg_advertiserId = "foo";
-      var arg_channelId = "foo";
-      var arg_updateMask = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -9620,8 +9620,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9635,7 +9635,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9651,15 +9651,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdvertisersChannelsSitesResourceApi", () {
-    unittest.test("method--bulkEdit", () {
+  unittest.group('resource-AdvertisersChannelsSitesResourceApi', () {
+    unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       api.AdvertisersChannelsSitesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.channels.sites;
       var arg_request = buildBulkEditSitesRequest();
-      var arg_advertiserId = "foo";
-      var arg_channelId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BulkEditSitesRequest.fromJson(json);
         checkBulkEditSitesRequest(obj);
@@ -9674,12 +9674,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/channels/", pathOffset);
+        index = path.indexOf('/channels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/channels/"));
         pathOffset += 10;
@@ -9691,8 +9691,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9702,7 +9702,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBulkEditSitesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9715,15 +9715,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersChannelsSitesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.channels.sites;
       var arg_request = buildSite();
-      var arg_advertiserId = "foo";
-      var arg_channelId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Site.fromJson(json);
         checkSite(obj);
@@ -9738,12 +9738,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/channels/", pathOffset);
+        index = path.indexOf('/channels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/channels/"));
         pathOffset += 10;
@@ -9755,8 +9755,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9768,7 +9768,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSite());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9781,15 +9781,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersChannelsSitesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.channels.sites;
-      var arg_advertiserId = "foo";
-      var arg_channelId = "foo";
-      var arg_urlOrAppId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_urlOrAppId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9801,12 +9801,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/channels/", pathOffset);
+        index = path.indexOf('/channels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/channels/"));
         pathOffset += 10;
@@ -9818,8 +9818,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9831,7 +9831,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9844,18 +9844,18 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersChannelsSitesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.channels.sites;
-      var arg_advertiserId = "foo";
-      var arg_channelId = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_partnerId = "foo";
-      var arg_orderBy = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9875,8 +9875,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9895,7 +9895,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListSitesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9914,14 +9914,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdvertisersCreativesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AdvertisersCreativesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersCreativesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.creatives;
       var arg_request = buildCreative();
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Creative.fromJson(json);
         checkCreative(obj);
@@ -9944,8 +9944,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -9955,7 +9955,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
@@ -9967,13 +9967,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersCreativesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.creatives;
-      var arg_advertiserId = "foo";
-      var arg_creativeId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_creativeId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9993,8 +9993,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10004,7 +10004,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10016,13 +10016,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersCreativesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.creatives;
-      var arg_advertiserId = "foo";
-      var arg_creativeId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_creativeId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10042,8 +10042,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10053,7 +10053,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10065,16 +10065,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersCreativesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.creatives;
-      var arg_advertiserId = "foo";
+      var arg_advertiserId = 'foo';
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10094,8 +10094,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10112,7 +10112,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListCreativesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10129,15 +10129,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AdvertisersCreativesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.creatives;
       var arg_request = buildCreative();
-      var arg_advertiserId = "foo";
-      var arg_creativeId = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_creativeId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Creative.fromJson(json);
         checkCreative(obj);
@@ -10160,8 +10160,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10173,7 +10173,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10187,14 +10187,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdvertisersInsertionOrdersResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AdvertisersInsertionOrdersResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersInsertionOrdersResourceApi res =
           api.DisplayvideoApi(mock).advertisers.insertionOrders;
       var arg_request = buildInsertionOrder();
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.InsertionOrder.fromJson(json);
         checkInsertionOrder(obj);
@@ -10217,8 +10217,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10228,7 +10228,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildInsertionOrder());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10240,13 +10240,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersInsertionOrdersResourceApi res =
           api.DisplayvideoApi(mock).advertisers.insertionOrders;
-      var arg_advertiserId = "foo";
-      var arg_insertionOrderId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_insertionOrderId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10266,8 +10266,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10277,7 +10277,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10289,13 +10289,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersInsertionOrdersResourceApi res =
           api.DisplayvideoApi(mock).advertisers.insertionOrders;
-      var arg_advertiserId = "foo";
-      var arg_insertionOrderId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_insertionOrderId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10315,8 +10315,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10326,7 +10326,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildInsertionOrder());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10338,16 +10338,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersInsertionOrdersResourceApi res =
           api.DisplayvideoApi(mock).advertisers.insertionOrders;
-      var arg_advertiserId = "foo";
-      var arg_orderBy = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10367,8 +10367,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10385,7 +10385,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListInsertionOrdersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10402,15 +10402,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AdvertisersInsertionOrdersResourceApi res =
           api.DisplayvideoApi(mock).advertisers.insertionOrders;
       var arg_request = buildInsertionOrder();
-      var arg_advertiserId = "foo";
-      var arg_insertionOrderId = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_insertionOrderId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.InsertionOrder.fromJson(json);
         checkInsertionOrder(obj);
@@ -10433,8 +10433,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10446,7 +10446,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildInsertionOrder());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10460,15 +10460,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdvertisersLineItemsResourceApi", () {
-    unittest.test("method--bulkEditLineItemAssignedTargetingOptions", () {
+  unittest.group('resource-AdvertisersLineItemsResourceApi', () {
+    unittest.test('method--bulkEditLineItemAssignedTargetingOptions', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_request = buildBulkEditLineItemAssignedTargetingOptionsRequest();
-      var arg_advertiserId = "foo";
-      var arg_lineItemId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_lineItemId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.BulkEditLineItemAssignedTargetingOptionsRequest.fromJson(json);
@@ -10492,8 +10492,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10503,7 +10503,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildBulkEditLineItemAssignedTargetingOptionsResponse());
@@ -10518,17 +10518,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--bulkListLineItemAssignedTargetingOptions", () {
+    unittest.test('method--bulkListLineItemAssignedTargetingOptions', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.lineItems;
-      var arg_advertiserId = "foo";
-      var arg_lineItemId = "foo";
-      var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_lineItemId = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10548,8 +10548,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10566,7 +10566,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildBulkListLineItemAssignedTargetingOptionsResponse());
@@ -10585,13 +10585,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_request = buildLineItem();
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LineItem.fromJson(json);
         checkLineItem(obj);
@@ -10614,8 +10614,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10625,7 +10625,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLineItem());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10637,13 +10637,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.lineItems;
-      var arg_advertiserId = "foo";
-      var arg_lineItemId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_lineItemId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10663,8 +10663,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10674,7 +10674,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10686,13 +10686,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.lineItems;
-      var arg_advertiserId = "foo";
-      var arg_lineItemId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_lineItemId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10712,8 +10712,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10723,7 +10723,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLineItem());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10735,16 +10735,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.lineItems;
-      var arg_advertiserId = "foo";
-      var arg_orderBy = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10764,8 +10764,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10782,7 +10782,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListLineItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10799,15 +10799,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_request = buildLineItem();
-      var arg_advertiserId = "foo";
-      var arg_lineItemId = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_lineItemId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LineItem.fromJson(json);
         checkLineItem(obj);
@@ -10830,8 +10830,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10843,7 +10843,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLineItem());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10858,9 +10858,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi",
+      'resource-AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
           res = api.DisplayvideoApi(mock)
@@ -10869,10 +10869,10 @@ void main() {
               .targetingTypes
               .assignedTargetingOptions;
       var arg_request = buildAssignedTargetingOption();
-      var arg_advertiserId = "foo";
-      var arg_lineItemId = "foo";
-      var arg_targetingType = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_lineItemId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AssignedTargetingOption.fromJson(json);
         checkAssignedTargetingOption(obj);
@@ -10895,8 +10895,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10906,7 +10906,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10920,7 +10920,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
           res = api.DisplayvideoApi(mock)
@@ -10928,11 +10928,11 @@ void main() {
               .lineItems
               .targetingTypes
               .assignedTargetingOptions;
-      var arg_advertiserId = "foo";
-      var arg_lineItemId = "foo";
-      var arg_targetingType = "foo";
-      var arg_assignedTargetingOptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_lineItemId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_assignedTargetingOptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10952,8 +10952,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -10963,7 +10963,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -10977,7 +10977,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
           res = api.DisplayvideoApi(mock)
@@ -10985,11 +10985,11 @@ void main() {
               .lineItems
               .targetingTypes
               .assignedTargetingOptions;
-      var arg_advertiserId = "foo";
-      var arg_lineItemId = "foo";
-      var arg_targetingType = "foo";
-      var arg_assignedTargetingOptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_lineItemId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_assignedTargetingOptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11009,8 +11009,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11020,7 +11020,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11034,7 +11034,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
           res = api.DisplayvideoApi(mock)
@@ -11042,14 +11042,14 @@ void main() {
               .lineItems
               .targetingTypes
               .assignedTargetingOptions;
-      var arg_advertiserId = "foo";
-      var arg_lineItemId = "foo";
-      var arg_targetingType = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_lineItemId = 'foo';
+      var arg_targetingType = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11069,8 +11069,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11087,7 +11087,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildListLineItemAssignedTargetingOptionsResponse());
@@ -11106,14 +11106,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdvertisersLocationListsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AdvertisersLocationListsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersLocationListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.locationLists;
       var arg_request = buildLocationList();
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LocationList.fromJson(json);
         checkLocationList(obj);
@@ -11136,8 +11136,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11147,7 +11147,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLocationList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11159,13 +11159,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersLocationListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.locationLists;
-      var arg_advertiserId = "foo";
-      var arg_locationListId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_locationListId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11185,8 +11185,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11196,7 +11196,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLocationList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11208,16 +11208,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersLocationListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.locationLists;
-      var arg_advertiserId = "foo";
-      var arg_orderBy = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11237,8 +11237,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11255,7 +11255,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListLocationListsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11272,15 +11272,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AdvertisersLocationListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.locationLists;
       var arg_request = buildLocationList();
-      var arg_advertiserId = "foo";
-      var arg_locationListId = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_locationListId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LocationList.fromJson(json);
         checkLocationList(obj);
@@ -11303,8 +11303,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11316,7 +11316,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLocationList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11331,15 +11331,15 @@ void main() {
   });
 
   unittest.group(
-      "resource-AdvertisersLocationListsAssignedLocationsResourceApi", () {
-    unittest.test("method--bulkEdit", () {
+      'resource-AdvertisersLocationListsAssignedLocationsResourceApi', () {
+    unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       api.AdvertisersLocationListsAssignedLocationsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.locationLists.assignedLocations;
       var arg_request = buildBulkEditAssignedLocationsRequest();
-      var arg_advertiserId = "foo";
-      var arg_locationListId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_locationListId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BulkEditAssignedLocationsRequest.fromJson(json);
         checkBulkEditAssignedLocationsRequest(obj);
@@ -11354,12 +11354,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/locationLists/", pathOffset);
+        index = path.indexOf('/locationLists/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/locationLists/"));
         pathOffset += 15;
@@ -11371,8 +11371,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11382,7 +11382,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildBulkEditAssignedLocationsResponse());
@@ -11396,14 +11396,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersLocationListsAssignedLocationsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.locationLists.assignedLocations;
       var arg_request = buildAssignedLocation();
-      var arg_advertiserId = "foo";
-      var arg_locationListId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_locationListId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AssignedLocation.fromJson(json);
         checkAssignedLocation(obj);
@@ -11418,21 +11418,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/locationLists/", pathOffset);
+        index = path.indexOf('/locationLists/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/locationLists/"));
         pathOffset += 15;
-        index = path.indexOf("/assignedLocations", pathOffset);
+        index = path.indexOf('/assignedLocations', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_locationListId"));
+        unittest.expect(subPart, unittest.equals('$arg_locationListId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 18),
             unittest.equals("/assignedLocations"));
         pathOffset += 18;
@@ -11443,8 +11443,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11454,7 +11454,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAssignedLocation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11467,14 +11467,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersLocationListsAssignedLocationsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.locationLists.assignedLocations;
-      var arg_advertiserId = "foo";
-      var arg_locationListId = "foo";
-      var arg_assignedLocationId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_locationListId = 'foo';
+      var arg_assignedLocationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11486,21 +11486,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/locationLists/", pathOffset);
+        index = path.indexOf('/locationLists/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/locationLists/"));
         pathOffset += 15;
-        index = path.indexOf("/assignedLocations/", pathOffset);
+        index = path.indexOf('/assignedLocations/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_locationListId"));
+        unittest.expect(subPart, unittest.equals('$arg_locationListId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 19),
             unittest.equals("/assignedLocations/"));
         pathOffset += 19;
@@ -11512,8 +11512,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11523,7 +11523,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11536,17 +11536,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersLocationListsAssignedLocationsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.locationLists.assignedLocations;
-      var arg_advertiserId = "foo";
-      var arg_locationListId = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_orderBy = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_locationListId = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11558,21 +11558,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/locationLists/", pathOffset);
+        index = path.indexOf('/locationLists/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("/locationLists/"));
         pathOffset += 15;
-        index = path.indexOf("/assignedLocations", pathOffset);
+        index = path.indexOf('/assignedLocations', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_locationListId"));
+        unittest.expect(subPart, unittest.equals('$arg_locationListId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 18),
             unittest.equals("/assignedLocations"));
         pathOffset += 18;
@@ -11583,8 +11583,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11601,7 +11601,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListAssignedLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11619,14 +11619,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AdvertisersNegativeKeywordListsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AdvertisersNegativeKeywordListsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersNegativeKeywordListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
       var arg_request = buildNegativeKeywordList();
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.NegativeKeywordList.fromJson(json);
         checkNegativeKeywordList(obj);
@@ -11649,8 +11649,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11660,7 +11660,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildNegativeKeywordList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11672,13 +11672,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersNegativeKeywordListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
-      var arg_advertiserId = "foo";
-      var arg_negativeKeywordListId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_negativeKeywordListId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11698,8 +11698,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11709,7 +11709,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11722,13 +11722,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersNegativeKeywordListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
-      var arg_advertiserId = "foo";
-      var arg_negativeKeywordListId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_negativeKeywordListId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11748,8 +11748,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11759,7 +11759,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildNegativeKeywordList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11772,14 +11772,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersNegativeKeywordListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
-      var arg_advertiserId = "foo";
+      var arg_advertiserId = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11799,8 +11799,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11814,7 +11814,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListNegativeKeywordListsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11829,15 +11829,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AdvertisersNegativeKeywordListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
       var arg_request = buildNegativeKeywordList();
-      var arg_advertiserId = "foo";
-      var arg_negativeKeywordListId = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_negativeKeywordListId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.NegativeKeywordList.fromJson(json);
         checkNegativeKeywordList(obj);
@@ -11860,8 +11860,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11873,7 +11873,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildNegativeKeywordList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11888,9 +11888,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi",
+      'resource-AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi',
       () {
-    unittest.test("method--bulkEdit", () {
+    unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       api.AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi res =
           api.DisplayvideoApi(mock)
@@ -11898,9 +11898,9 @@ void main() {
               .negativeKeywordLists
               .negativeKeywords;
       var arg_request = buildBulkEditNegativeKeywordsRequest();
-      var arg_advertiserId = "foo";
-      var arg_negativeKeywordListId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_negativeKeywordListId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BulkEditNegativeKeywordsRequest.fromJson(json);
         checkBulkEditNegativeKeywordsRequest(obj);
@@ -11915,12 +11915,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/negativeKeywordLists/", pathOffset);
+        index = path.indexOf('/negativeKeywordLists/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("/negativeKeywordLists/"));
         pathOffset += 22;
@@ -11932,8 +11932,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11943,7 +11943,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBulkEditNegativeKeywordsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -11956,7 +11956,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi res =
           api.DisplayvideoApi(mock)
@@ -11964,9 +11964,9 @@ void main() {
               .negativeKeywordLists
               .negativeKeywords;
       var arg_request = buildNegativeKeyword();
-      var arg_advertiserId = "foo";
-      var arg_negativeKeywordListId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_negativeKeywordListId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.NegativeKeyword.fromJson(json);
         checkNegativeKeyword(obj);
@@ -11981,12 +11981,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/negativeKeywordLists/", pathOffset);
+        index = path.indexOf('/negativeKeywordLists/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("/negativeKeywordLists/"));
         pathOffset += 22;
@@ -11998,8 +11998,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12009,7 +12009,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildNegativeKeyword());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12022,17 +12022,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi res =
           api.DisplayvideoApi(mock)
               .advertisers
               .negativeKeywordLists
               .negativeKeywords;
-      var arg_advertiserId = "foo";
-      var arg_negativeKeywordListId = "foo";
-      var arg_keywordValue = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_negativeKeywordListId = 'foo';
+      var arg_keywordValue = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12044,12 +12044,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 15),
             unittest.equals("v1/advertisers/"));
         pathOffset += 15;
-        index = path.indexOf("/negativeKeywordLists/", pathOffset);
+        index = path.indexOf('/negativeKeywordLists/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("/negativeKeywordLists/"));
         pathOffset += 22;
@@ -12061,8 +12061,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12072,7 +12072,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12085,20 +12085,20 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi res =
           api.DisplayvideoApi(mock)
               .advertisers
               .negativeKeywordLists
               .negativeKeywords;
-      var arg_advertiserId = "foo";
-      var arg_negativeKeywordListId = "foo";
-      var arg_orderBy = "foo";
-      var arg_filter = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_negativeKeywordListId = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12118,8 +12118,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12136,7 +12136,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListNegativeKeywordsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12155,9 +12155,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi",
+      'resource-AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock)
@@ -12165,9 +12165,9 @@ void main() {
               .targetingTypes
               .assignedTargetingOptions;
       var arg_request = buildAssignedTargetingOption();
-      var arg_advertiserId = "foo";
-      var arg_targetingType = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AssignedTargetingOption.fromJson(json);
         checkAssignedTargetingOption(obj);
@@ -12190,8 +12190,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12201,7 +12201,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12214,17 +12214,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock)
               .advertisers
               .targetingTypes
               .assignedTargetingOptions;
-      var arg_advertiserId = "foo";
-      var arg_targetingType = "foo";
-      var arg_assignedTargetingOptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_assignedTargetingOptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12244,8 +12244,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12255,7 +12255,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12269,17 +12269,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock)
               .advertisers
               .targetingTypes
               .assignedTargetingOptions;
-      var arg_advertiserId = "foo";
-      var arg_targetingType = "foo";
-      var arg_assignedTargetingOptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_assignedTargetingOptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12299,8 +12299,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12310,7 +12310,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12324,20 +12324,20 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock)
               .advertisers
               .targetingTypes
               .assignedTargetingOptions;
-      var arg_advertiserId = "foo";
-      var arg_targetingType = "foo";
-      var arg_orderBy = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12357,8 +12357,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12375,7 +12375,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildListAdvertiserAssignedTargetingOptionsResponse());
@@ -12394,15 +12394,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-CombinedAudiencesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-CombinedAudiencesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.CombinedAudiencesResourceApi res =
           api.DisplayvideoApi(mock).combinedAudiences;
-      var arg_combinedAudienceId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_combinedAudienceId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12422,8 +12422,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12437,7 +12437,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCombinedAudience());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12452,17 +12452,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CombinedAudiencesResourceApi res =
           api.DisplayvideoApi(mock).combinedAudiences;
-      var arg_orderBy = "foo";
-      var arg_pageToken = "foo";
-      var arg_partnerId = "foo";
-      var arg_filter = "foo";
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12481,8 +12481,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12503,7 +12503,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListCombinedAudiencesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12523,15 +12523,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-CustomBiddingAlgorithmsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-CustomBiddingAlgorithmsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.CustomBiddingAlgorithmsResourceApi res =
           api.DisplayvideoApi(mock).customBiddingAlgorithms;
-      var arg_customBiddingAlgorithmId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_customBiddingAlgorithmId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12551,8 +12551,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12566,7 +12566,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomBiddingAlgorithm());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12581,17 +12581,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CustomBiddingAlgorithmsResourceApi res =
           api.DisplayvideoApi(mock).customBiddingAlgorithms;
-      var arg_partnerId = "foo";
+      var arg_partnerId = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_advertiserId = "foo";
-      var arg_filter = "foo";
-      var arg_orderBy = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12610,8 +12610,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12632,7 +12632,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildListCustomBiddingAlgorithmsResponse());
@@ -12653,13 +12653,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-CustomListsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-CustomListsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.CustomListsResourceApi res = api.DisplayvideoApi(mock).customLists;
-      var arg_customListId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_customListId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12679,8 +12679,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12692,7 +12692,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12705,15 +12705,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CustomListsResourceApi res = api.DisplayvideoApi(mock).customLists;
-      var arg_pageToken = "foo";
-      var arg_advertiserId = "foo";
+      var arg_pageToken = 'foo';
+      var arg_advertiserId = 'foo';
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12732,8 +12732,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12752,7 +12752,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListCustomListsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12771,15 +12771,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-FirstAndThirdPartyAudiencesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-FirstAndThirdPartyAudiencesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.FirstAndThirdPartyAudiencesResourceApi res =
           api.DisplayvideoApi(mock).firstAndThirdPartyAudiences;
-      var arg_firstAndThirdPartyAudienceId = "foo";
-      var arg_partnerId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_firstAndThirdPartyAudienceId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12799,8 +12799,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12814,7 +12814,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFirstAndThirdPartyAudience());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12829,17 +12829,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.FirstAndThirdPartyAudiencesResourceApi res =
           api.DisplayvideoApi(mock).firstAndThirdPartyAudiences;
-      var arg_advertiserId = "foo";
-      var arg_orderBy = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_partnerId = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_partnerId = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12858,8 +12858,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12880,7 +12880,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildListFirstAndThirdPartyAudiencesResponse());
@@ -12901,14 +12901,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-FloodlightGroupsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-FloodlightGroupsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.FloodlightGroupsResourceApi res =
           api.DisplayvideoApi(mock).floodlightGroups;
-      var arg_floodlightGroupId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_floodlightGroupId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12928,8 +12928,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12941,7 +12941,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFloodlightGroup());
         return async.Future.value(stringResponse(200, h, resp));
@@ -12954,15 +12954,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.FloodlightGroupsResourceApi res =
           api.DisplayvideoApi(mock).floodlightGroups;
       var arg_request = buildFloodlightGroup();
-      var arg_floodlightGroupId = "foo";
-      var arg_updateMask = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_floodlightGroupId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.FloodlightGroup.fromJson(json);
         checkFloodlightGroup(obj);
@@ -12979,7 +12979,7 @@ void main() {
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_floodlightGroupId"));
+        unittest.expect(subPart, unittest.equals('$arg_floodlightGroupId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -12987,8 +12987,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13002,7 +13002,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFloodlightGroup());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13018,15 +13018,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-GoogleAudiencesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-GoogleAudiencesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.GoogleAudiencesResourceApi res =
           api.DisplayvideoApi(mock).googleAudiences;
-      var arg_googleAudienceId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_googleAudienceId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13046,8 +13046,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13061,7 +13061,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleAudience());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13076,17 +13076,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.GoogleAudiencesResourceApi res =
           api.DisplayvideoApi(mock).googleAudiences;
-      var arg_advertiserId = "foo";
-      var arg_filter = "foo";
-      var arg_partnerId = "foo";
-      var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_filter = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13105,8 +13105,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13127,7 +13127,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListGoogleAudiencesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13147,15 +13147,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-InventorySourceGroupsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-InventorySourceGroupsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.InventorySourceGroupsResourceApi res =
           api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_request = buildInventorySourceGroup();
-      var arg_advertiserId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.InventorySourceGroup.fromJson(json);
         checkInventorySourceGroup(obj);
@@ -13177,8 +13177,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13192,7 +13192,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildInventorySourceGroup());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13207,14 +13207,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.InventorySourceGroupsResourceApi res =
           api.DisplayvideoApi(mock).inventorySourceGroups;
-      var arg_inventorySourceGroupId = "foo";
-      var arg_partnerId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_inventorySourceGroupId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13234,8 +13234,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13249,7 +13249,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13264,14 +13264,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.InventorySourceGroupsResourceApi res =
           api.DisplayvideoApi(mock).inventorySourceGroups;
-      var arg_inventorySourceGroupId = "foo";
-      var arg_partnerId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_inventorySourceGroupId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13291,8 +13291,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13306,7 +13306,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildInventorySourceGroup());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13321,17 +13321,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.InventorySourceGroupsResourceApi res =
           api.DisplayvideoApi(mock).inventorySourceGroups;
-      var arg_advertiserId = "foo";
-      var arg_filter = "foo";
-      var arg_orderBy = "foo";
-      var arg_pageToken = "foo";
+      var arg_advertiserId = 'foo';
+      var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13350,8 +13350,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13372,7 +13372,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildListInventorySourceGroupsResponse());
@@ -13392,16 +13392,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.InventorySourceGroupsResourceApi res =
           api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_request = buildInventorySourceGroup();
-      var arg_inventorySourceGroupId = "foo";
-      var arg_updateMask = "foo";
-      var arg_advertiserId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_inventorySourceGroupId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.InventorySourceGroup.fromJson(json);
         checkInventorySourceGroup(obj);
@@ -13419,7 +13419,7 @@ void main() {
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(
-            subPart, unittest.equals("$arg_inventorySourceGroupId"));
+            subPart, unittest.equals('$arg_inventorySourceGroupId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -13427,8 +13427,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13444,7 +13444,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildInventorySourceGroup());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13462,16 +13462,16 @@ void main() {
   });
 
   unittest.group(
-      "resource-InventorySourceGroupsAssignedInventorySourcesResourceApi", () {
-    unittest.test("method--bulkEdit", () {
+      'resource-InventorySourceGroupsAssignedInventorySourcesResourceApi', () {
+    unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       api.InventorySourceGroupsAssignedInventorySourcesResourceApi res =
           api.DisplayvideoApi(mock)
               .inventorySourceGroups
               .assignedInventorySources;
       var arg_request = buildBulkEditAssignedInventorySourcesRequest();
-      var arg_inventorySourceGroupId = "foo";
-      var arg_$fields = "foo";
+      var arg_inventorySourceGroupId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BulkEditAssignedInventorySourcesRequest.fromJson(json);
         checkBulkEditAssignedInventorySourcesRequest(obj);
@@ -13494,8 +13494,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13505,7 +13505,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildBulkEditAssignedInventorySourcesResponse());
@@ -13519,17 +13519,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.InventorySourceGroupsAssignedInventorySourcesResourceApi res =
           api.DisplayvideoApi(mock)
               .inventorySourceGroups
               .assignedInventorySources;
       var arg_request = buildAssignedInventorySource();
-      var arg_inventorySourceGroupId = "foo";
-      var arg_partnerId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_inventorySourceGroupId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AssignedInventorySource.fromJson(json);
         checkAssignedInventorySource(obj);
@@ -13552,8 +13552,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13567,7 +13567,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAssignedInventorySource());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13582,17 +13582,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.InventorySourceGroupsAssignedInventorySourcesResourceApi res =
           api.DisplayvideoApi(mock)
               .inventorySourceGroups
               .assignedInventorySources;
-      var arg_inventorySourceGroupId = "foo";
-      var arg_assignedInventorySourceId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_inventorySourceGroupId = 'foo';
+      var arg_assignedInventorySourceId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13612,8 +13612,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13627,7 +13627,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13642,20 +13642,20 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.InventorySourceGroupsAssignedInventorySourcesResourceApi res =
           api.DisplayvideoApi(mock)
               .inventorySourceGroups
               .assignedInventorySources;
-      var arg_inventorySourceGroupId = "foo";
+      var arg_inventorySourceGroupId = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
-      var arg_partnerId = "foo";
-      var arg_filter = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_filter = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13675,8 +13675,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13697,7 +13697,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildListAssignedInventorySourcesResponse());
@@ -13718,14 +13718,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-InventorySourcesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-InventorySourcesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.InventorySourcesResourceApi res =
           api.DisplayvideoApi(mock).inventorySources;
-      var arg_inventorySourceId = "foo";
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_inventorySourceId = 'foo';
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13745,8 +13745,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13758,7 +13758,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildInventorySource());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13771,17 +13771,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.InventorySourcesResourceApi res =
           api.DisplayvideoApi(mock).inventorySources;
-      var arg_partnerId = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_advertiserId = "foo";
-      var arg_orderBy = "foo";
+      var arg_partnerId = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13800,8 +13800,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13822,7 +13822,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListInventorySourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13842,15 +13842,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-MediaResourceApi", () {
-    unittest.test("method--download", () {
+  unittest.group('resource-MediaResourceApi', () {
+    unittest.test('method--download', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.MediaResourceApi res = api.DisplayvideoApi(mock).media;
-      var arg_resourceName = "foo";
-      var arg_$fields = "foo";
+      var arg_resourceName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13870,8 +13870,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13881,7 +13881,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleBytestreamMedia());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13894,13 +13894,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-PartnersResourceApi", () {
-    unittest.test("method--bulkEditPartnerAssignedTargetingOptions", () {
+  unittest.group('resource-PartnersResourceApi', () {
+    unittest.test('method--bulkEditPartnerAssignedTargetingOptions', () {
       var mock = HttpServerMock();
       api.PartnersResourceApi res = api.DisplayvideoApi(mock).partners;
       var arg_request = buildBulkEditPartnerAssignedTargetingOptionsRequest();
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(json);
@@ -13924,8 +13924,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13935,7 +13935,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildBulkEditPartnerAssignedTargetingOptionsResponse());
@@ -13949,11 +13949,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.PartnersResourceApi res = api.DisplayvideoApi(mock).partners;
-      var arg_partnerId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13973,8 +13973,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13984,7 +13984,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPartner());
         return async.Future.value(stringResponse(200, h, resp));
@@ -13996,14 +13996,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PartnersResourceApi res = api.DisplayvideoApi(mock).partners;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14022,8 +14022,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14040,7 +14040,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListPartnersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14058,15 +14058,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-PartnersChannelsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-PartnersChannelsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.PartnersChannelsResourceApi res =
           api.DisplayvideoApi(mock).partners.channels;
       var arg_request = buildChannel();
-      var arg_partnerId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -14089,8 +14089,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14102,7 +14102,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14115,14 +14115,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.PartnersChannelsResourceApi res =
           api.DisplayvideoApi(mock).partners.channels;
-      var arg_partnerId = "foo";
-      var arg_channelId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14142,8 +14142,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14155,7 +14155,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14168,17 +14168,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PartnersChannelsResourceApi res =
           api.DisplayvideoApi(mock).partners.channels;
-      var arg_partnerId = "foo";
-      var arg_orderBy = "foo";
+      var arg_partnerId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14198,8 +14198,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14218,7 +14218,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListChannelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14236,16 +14236,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.PartnersChannelsResourceApi res =
           api.DisplayvideoApi(mock).partners.channels;
       var arg_request = buildChannel();
-      var arg_partnerId = "foo";
-      var arg_channelId = "foo";
-      var arg_updateMask = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
         checkChannel(obj);
@@ -14268,8 +14268,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14283,7 +14283,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14299,15 +14299,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-PartnersChannelsSitesResourceApi", () {
-    unittest.test("method--bulkEdit", () {
+  unittest.group('resource-PartnersChannelsSitesResourceApi', () {
+    unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       api.PartnersChannelsSitesResourceApi res =
           api.DisplayvideoApi(mock).partners.channels.sites;
       var arg_request = buildBulkEditSitesRequest();
-      var arg_partnerId = "foo";
-      var arg_channelId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BulkEditSitesRequest.fromJson(json);
         checkBulkEditSitesRequest(obj);
@@ -14322,12 +14322,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/partners/"));
         pathOffset += 12;
-        index = path.indexOf("/channels/", pathOffset);
+        index = path.indexOf('/channels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_partnerId"));
+        unittest.expect(subPart, unittest.equals('$arg_partnerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/channels/"));
         pathOffset += 10;
@@ -14339,8 +14339,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14350,7 +14350,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBulkEditSitesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14363,15 +14363,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.PartnersChannelsSitesResourceApi res =
           api.DisplayvideoApi(mock).partners.channels.sites;
       var arg_request = buildSite();
-      var arg_partnerId = "foo";
-      var arg_channelId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Site.fromJson(json);
         checkSite(obj);
@@ -14386,12 +14386,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/partners/"));
         pathOffset += 12;
-        index = path.indexOf("/channels/", pathOffset);
+        index = path.indexOf('/channels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_partnerId"));
+        unittest.expect(subPart, unittest.equals('$arg_partnerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/channels/"));
         pathOffset += 10;
@@ -14403,8 +14403,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14416,7 +14416,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSite());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14429,15 +14429,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.PartnersChannelsSitesResourceApi res =
           api.DisplayvideoApi(mock).partners.channels.sites;
-      var arg_partnerId = "foo";
-      var arg_channelId = "foo";
-      var arg_urlOrAppId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_urlOrAppId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14449,12 +14449,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/partners/"));
         pathOffset += 12;
-        index = path.indexOf("/channels/", pathOffset);
+        index = path.indexOf('/channels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_partnerId"));
+        unittest.expect(subPart, unittest.equals('$arg_partnerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/channels/"));
         pathOffset += 10;
@@ -14466,8 +14466,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14479,7 +14479,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14492,18 +14492,18 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PartnersChannelsSitesResourceApi res =
           api.DisplayvideoApi(mock).partners.channels.sites;
-      var arg_partnerId = "foo";
-      var arg_channelId = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_advertiserId = "foo";
+      var arg_partnerId = 'foo';
+      var arg_channelId = 'foo';
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_advertiserId = 'foo';
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14523,8 +14523,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14543,7 +14543,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListSitesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14563,8 +14563,8 @@ void main() {
   });
 
   unittest.group(
-      "resource-PartnersTargetingTypesAssignedTargetingOptionsResourceApi", () {
-    unittest.test("method--create", () {
+      'resource-PartnersTargetingTypesAssignedTargetingOptionsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.PartnersTargetingTypesAssignedTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock)
@@ -14572,9 +14572,9 @@ void main() {
               .targetingTypes
               .assignedTargetingOptions;
       var arg_request = buildAssignedTargetingOption();
-      var arg_partnerId = "foo";
-      var arg_targetingType = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AssignedTargetingOption.fromJson(json);
         checkAssignedTargetingOption(obj);
@@ -14597,8 +14597,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14608,7 +14608,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14621,17 +14621,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.PartnersTargetingTypesAssignedTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock)
               .partners
               .targetingTypes
               .assignedTargetingOptions;
-      var arg_partnerId = "foo";
-      var arg_targetingType = "foo";
-      var arg_assignedTargetingOptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_assignedTargetingOptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14651,8 +14651,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14662,7 +14662,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14676,17 +14676,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.PartnersTargetingTypesAssignedTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock)
               .partners
               .targetingTypes
               .assignedTargetingOptions;
-      var arg_partnerId = "foo";
-      var arg_targetingType = "foo";
-      var arg_assignedTargetingOptionId = "foo";
-      var arg_$fields = "foo";
+      var arg_partnerId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_assignedTargetingOptionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14706,8 +14706,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14717,7 +14717,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14730,20 +14730,20 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PartnersTargetingTypesAssignedTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock)
               .partners
               .targetingTypes
               .assignedTargetingOptions;
-      var arg_partnerId = "foo";
-      var arg_targetingType = "foo";
-      var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
+      var arg_partnerId = 'foo';
+      var arg_targetingType = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14763,8 +14763,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14781,7 +14781,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildListPartnerAssignedTargetingOptionsResponse());
@@ -14800,13 +14800,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-SdfdownloadtasksResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-SdfdownloadtasksResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.SdfdownloadtasksResourceApi res =
           api.DisplayvideoApi(mock).sdfdownloadtasks;
       var arg_request = buildCreateSdfDownloadTaskRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CreateSdfDownloadTaskRequest.fromJson(json);
         checkCreateSdfDownloadTaskRequest(obj);
@@ -14828,8 +14828,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14839,7 +14839,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14852,13 +14852,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-SdfdownloadtasksOperationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-SdfdownloadtasksOperationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SdfdownloadtasksOperationsResourceApi res =
           api.DisplayvideoApi(mock).sdfdownloadtasks.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14878,8 +14878,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14889,7 +14889,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14902,15 +14902,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-TargetingTypesTargetingOptionsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-TargetingTypesTargetingOptionsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.TargetingTypesTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock).targetingTypes.targetingOptions;
-      var arg_targetingType = "foo";
-      var arg_targetingOptionId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_targetingType = 'foo';
+      var arg_targetingOptionId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14930,8 +14930,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14943,7 +14943,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
@@ -14956,17 +14956,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.TargetingTypesTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock).targetingTypes.targetingOptions;
-      var arg_targetingType = "foo";
-      var arg_orderBy = "foo";
-      var arg_advertiserId = "foo";
+      var arg_targetingType = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_advertiserId = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14986,8 +14986,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15006,7 +15006,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15025,13 +15025,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-UsersResourceApi", () {
-    unittest.test("method--bulkEditAssignedUserRoles", () {
+  unittest.group('resource-UsersResourceApi', () {
+    unittest.test('method--bulkEditAssignedUserRoles', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
       var arg_request = buildBulkEditAssignedUserRolesRequest();
-      var arg_userId = "foo";
-      var arg_$fields = "foo";
+      var arg_userId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BulkEditAssignedUserRolesRequest.fromJson(json);
         checkBulkEditAssignedUserRolesRequest(obj);
@@ -15054,8 +15054,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15065,7 +15065,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildBulkEditAssignedUserRolesResponse());
@@ -15079,11 +15079,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
       var arg_request = buildUser();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.User.fromJson(json);
         checkUser(obj);
@@ -15105,8 +15105,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15116,7 +15116,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15128,11 +15128,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
-      var arg_userId = "foo";
-      var arg_$fields = "foo";
+      var arg_userId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15152,8 +15152,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15163,7 +15163,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15175,11 +15175,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
-      var arg_userId = "foo";
-      var arg_$fields = "foo";
+      var arg_userId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15199,8 +15199,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15210,7 +15210,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15222,14 +15222,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15248,8 +15248,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15266,7 +15266,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListUsersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -15283,13 +15283,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
       var arg_request = buildUser();
-      var arg_userId = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_userId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.User.fromJson(json);
         checkUser(obj);
@@ -15312,8 +15312,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15325,7 +15325,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));

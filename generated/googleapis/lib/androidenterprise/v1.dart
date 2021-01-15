@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,7 +37,7 @@ const core.String USER_AGENT = 'dart-api-client androidenterprise/v1';
 class AndroidenterpriseApi {
   /// Manage corporate Android devices
   static const AndroidenterpriseScope =
-      "https://www.googleapis.com/auth/androidenterprise";
+      'https://www.googleapis.com/auth/androidenterprise';
 
   final commons.ApiRequester _requester;
 
@@ -70,8 +69,8 @@ class AndroidenterpriseApi {
   WebappsResourceApi get webapps => WebappsResourceApi(_requester);
 
   AndroidenterpriseApi(http.Client client,
-      {core.String rootUrl = "https://androidenterprise.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://androidenterprise.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -116,16 +115,16 @@ class DevicesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -140,7 +139,7 @@ class DevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -184,16 +183,16 @@ class DevicesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -205,7 +204,7 @@ class DevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -253,16 +252,16 @@ class DevicesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -275,7 +274,7 @@ class DevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -316,13 +315,13 @@ class DevicesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -333,7 +332,7 @@ class DevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -387,16 +386,16 @@ class DevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -409,7 +408,7 @@ class DevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -464,19 +463,19 @@ class DevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -488,7 +487,7 @@ class DevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -533,10 +532,10 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (notificationSetId != null) {
-      _queryParams["notificationSetId"] = [notificationSetId];
+      _queryParams['notificationSetId'] = [notificationSetId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -545,7 +544,7 @@ class EnterprisesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -589,20 +588,20 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (enterpriseToken != null) {
-      _queryParams["enterpriseToken"] = [enterpriseToken];
+      _queryParams['enterpriseToken'] = [enterpriseToken];
     }
     if (completionToken != null) {
-      _queryParams["completionToken"] = [completionToken];
+      _queryParams['completionToken'] = [completionToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/completeSignup';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -649,10 +648,10 @@ class EnterprisesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -661,7 +660,7 @@ class EnterprisesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -706,18 +705,18 @@ class EnterprisesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (token == null) {
-      throw core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError('Parameter token is required.');
     }
-    _queryParams["token"] = [token];
+    _queryParams['token'] = [token];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/enroll';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -762,17 +761,17 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (callbackUrl != null) {
-      _queryParams["callbackUrl"] = [callbackUrl];
+      _queryParams['callbackUrl'] = [callbackUrl];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/signupUrl';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -810,10 +809,10 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -821,7 +820,7 @@ class EnterprisesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -880,13 +879,13 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (keyType != null) {
-      _queryParams["keyType"] = [keyType];
+      _queryParams['keyType'] = [keyType];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -895,7 +894,7 @@ class EnterprisesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -934,10 +933,10 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -946,7 +945,7 @@ class EnterprisesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -989,18 +988,18 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (domain == null) {
-      throw core.ArgumentError("Parameter domain is required.");
+      throw core.ArgumentError('Parameter domain is required.');
     }
-    _queryParams["domain"] = [domain];
+    _queryParams['domain'] = [domain];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1062,17 +1061,17 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (requestMode != null) {
-      _queryParams["requestMode"] = [requestMode];
+      _queryParams['requestMode'] = [requestMode];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/pullNotificationSet';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1112,10 +1111,10 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1124,7 +1123,7 @@ class EnterprisesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1170,10 +1169,10 @@ class EnterprisesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1182,7 +1181,7 @@ class EnterprisesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1232,10 +1231,10 @@ class EnterprisesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1244,7 +1243,7 @@ class EnterprisesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1280,10 +1279,10 @@ class EnterprisesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1294,7 +1293,7 @@ class EnterprisesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1343,16 +1342,16 @@ class EntitlementsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (entitlementId == null) {
-      throw core.ArgumentError("Parameter entitlementId is required.");
+      throw core.ArgumentError('Parameter entitlementId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1366,7 +1365,7 @@ class EntitlementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1411,16 +1410,16 @@ class EntitlementsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (entitlementId == null) {
-      throw core.ArgumentError("Parameter entitlementId is required.");
+      throw core.ArgumentError('Parameter entitlementId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1432,7 +1431,7 @@ class EntitlementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1473,13 +1472,13 @@ class EntitlementsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1490,7 +1489,7 @@ class EntitlementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1547,19 +1546,19 @@ class EntitlementsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (entitlementId == null) {
-      throw core.ArgumentError("Parameter entitlementId is required.");
+      throw core.ArgumentError('Parameter entitlementId is required.');
     }
     if (install != null) {
-      _queryParams["install"] = ["${install}"];
+      _queryParams['install'] = ['${install}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1571,7 +1570,7 @@ class EntitlementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1619,13 +1618,13 @@ class GrouplicensesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (groupLicenseId == null) {
-      throw core.ArgumentError("Parameter groupLicenseId is required.");
+      throw core.ArgumentError('Parameter groupLicenseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1635,7 +1634,7 @@ class GrouplicensesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1674,10 +1673,10 @@ class GrouplicensesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1686,7 +1685,7 @@ class GrouplicensesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1736,13 +1735,13 @@ class GrouplicenseusersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (groupLicenseId == null) {
-      throw core.ArgumentError("Parameter groupLicenseId is required.");
+      throw core.ArgumentError('Parameter groupLicenseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1753,7 +1752,7 @@ class GrouplicenseusersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1807,19 +1806,19 @@ class InstallsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (installId == null) {
-      throw core.ArgumentError("Parameter installId is required.");
+      throw core.ArgumentError('Parameter installId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1835,7 +1834,7 @@ class InstallsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1883,19 +1882,19 @@ class InstallsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (installId == null) {
-      throw core.ArgumentError("Parameter installId is required.");
+      throw core.ArgumentError('Parameter installId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1909,7 +1908,7 @@ class InstallsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1953,16 +1952,16 @@ class InstallsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -1975,7 +1974,7 @@ class InstallsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2031,19 +2030,19 @@ class InstallsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (installId == null) {
-      throw core.ArgumentError("Parameter installId is required.");
+      throw core.ArgumentError('Parameter installId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2057,7 +2056,7 @@ class InstallsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2111,20 +2110,20 @@ class ManagedconfigurationsfordeviceResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (managedConfigurationForDeviceId == null) {
       throw core.ArgumentError(
-          "Parameter managedConfigurationForDeviceId is required.");
+          'Parameter managedConfigurationForDeviceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2140,7 +2139,7 @@ class ManagedconfigurationsfordeviceResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2188,20 +2187,20 @@ class ManagedconfigurationsfordeviceResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (managedConfigurationForDeviceId == null) {
       throw core.ArgumentError(
-          "Parameter managedConfigurationForDeviceId is required.");
+          'Parameter managedConfigurationForDeviceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2215,7 +2214,7 @@ class ManagedconfigurationsfordeviceResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2260,16 +2259,16 @@ class ManagedconfigurationsfordeviceResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2282,7 +2281,7 @@ class ManagedconfigurationsfordeviceResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2338,20 +2337,20 @@ class ManagedconfigurationsfordeviceResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deviceId == null) {
-      throw core.ArgumentError("Parameter deviceId is required.");
+      throw core.ArgumentError('Parameter deviceId is required.');
     }
     if (managedConfigurationForDeviceId == null) {
       throw core.ArgumentError(
-          "Parameter managedConfigurationForDeviceId is required.");
+          'Parameter managedConfigurationForDeviceId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2365,7 +2364,7 @@ class ManagedconfigurationsfordeviceResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2416,17 +2415,17 @@ class ManagedconfigurationsforuserResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (managedConfigurationForUserId == null) {
       throw core.ArgumentError(
-          "Parameter managedConfigurationForUserId is required.");
+          'Parameter managedConfigurationForUserId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2440,7 +2439,7 @@ class ManagedconfigurationsforuserResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2486,17 +2485,17 @@ class ManagedconfigurationsforuserResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (managedConfigurationForUserId == null) {
       throw core.ArgumentError(
-          "Parameter managedConfigurationForUserId is required.");
+          'Parameter managedConfigurationForUserId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2508,7 +2507,7 @@ class ManagedconfigurationsforuserResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2550,13 +2549,13 @@ class ManagedconfigurationsforuserResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2567,7 +2566,7 @@ class ManagedconfigurationsforuserResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2624,17 +2623,17 @@ class ManagedconfigurationsforuserResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (managedConfigurationForUserId == null) {
       throw core.ArgumentError(
-          "Parameter managedConfigurationForUserId is required.");
+          'Parameter managedConfigurationForUserId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2646,7 +2645,7 @@ class ManagedconfigurationsforuserResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2695,13 +2694,13 @@ class ManagedconfigurationssettingsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2712,7 +2711,7 @@ class ManagedconfigurationssettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2762,13 +2761,13 @@ class PermissionsResourceApi {
     core.String _body;
 
     if (permissionId == null) {
-      throw core.ArgumentError("Parameter permissionId is required.");
+      throw core.ArgumentError('Parameter permissionId is required.');
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/permissions/' +
@@ -2776,7 +2775,7 @@ class PermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2831,13 +2830,13 @@ class ProductsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2850,7 +2849,7 @@ class ProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2902,16 +2901,16 @@ class ProductsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+      _queryParams['languageCode'] = [languageCode];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2922,7 +2921,7 @@ class ProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2968,16 +2967,16 @@ class ProductsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -2987,7 +2986,7 @@ class ProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3037,16 +3036,16 @@ class ProductsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3057,7 +3056,7 @@ class ProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3098,13 +3097,13 @@ class ProductsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3115,7 +3114,7 @@ class ProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3178,25 +3177,25 @@ class ProductsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (approved != null) {
-      _queryParams["approved"] = ["${approved}"];
+      _queryParams['approved'] = ['${approved}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (token != null) {
-      _queryParams["token"] = [token];
+      _queryParams['token'] = [token];
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if (language != null) {
-      _queryParams["language"] = [language];
+      _queryParams['language'] = [language];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3205,7 +3204,7 @@ class ProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3245,13 +3244,13 @@ class ProductsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3264,7 +3263,7 @@ class ProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3313,13 +3312,13 @@ class ServiceaccountkeysResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (keyId == null) {
-      throw core.ArgumentError("Parameter keyId is required.");
+      throw core.ArgumentError('Parameter keyId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3331,7 +3330,7 @@ class ServiceaccountkeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3379,10 +3378,10 @@ class ServiceaccountkeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3391,7 +3390,7 @@ class ServiceaccountkeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3433,10 +3432,10 @@ class ServiceaccountkeysResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3445,7 +3444,7 @@ class ServiceaccountkeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3495,16 +3494,16 @@ class StorelayoutclustersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if (clusterId == null) {
-      throw core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError('Parameter clusterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3518,7 +3517,7 @@ class StorelayoutclustersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3562,16 +3561,16 @@ class StorelayoutclustersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if (clusterId == null) {
-      throw core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError('Parameter clusterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3583,7 +3582,7 @@ class StorelayoutclustersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3630,13 +3629,13 @@ class StorelayoutclustersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3647,7 +3646,7 @@ class StorelayoutclustersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3688,13 +3687,13 @@ class StorelayoutclustersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3705,7 +3704,7 @@ class StorelayoutclustersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3756,16 +3755,16 @@ class StorelayoutclustersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if (clusterId == null) {
-      throw core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError('Parameter clusterId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3777,7 +3776,7 @@ class StorelayoutclustersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3823,13 +3822,13 @@ class StorelayoutpagesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3841,7 +3840,7 @@ class StorelayoutpagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3882,13 +3881,13 @@ class StorelayoutpagesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3898,7 +3897,7 @@ class StorelayoutpagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3942,10 +3941,10 @@ class StorelayoutpagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -3954,7 +3953,7 @@ class StorelayoutpagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3992,10 +3991,10 @@ class StorelayoutpagesResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4004,7 +4003,7 @@ class StorelayoutpagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4052,13 +4051,13 @@ class StorelayoutpagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4068,7 +4067,7 @@ class StorelayoutpagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4113,13 +4112,13 @@ class UsersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4131,7 +4130,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4176,13 +4175,13 @@ class UsersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4193,7 +4192,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4234,13 +4233,13 @@ class UsersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4250,7 +4249,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4291,13 +4290,13 @@ class UsersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4308,7 +4307,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4356,10 +4355,10 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4368,7 +4367,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4412,14 +4411,14 @@ class UsersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (email == null) {
-      throw core.ArgumentError("Parameter email is required.");
+      throw core.ArgumentError('Parameter email is required.');
     }
-    _queryParams["email"] = [email];
+    _queryParams['email'] = [email];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4428,7 +4427,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4469,13 +4468,13 @@ class UsersResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4488,7 +4487,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4538,13 +4537,13 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4555,7 +4554,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4605,13 +4604,13 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4621,7 +4620,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4666,13 +4665,13 @@ class WebappsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (webAppId == null) {
-      throw core.ArgumentError("Parameter webAppId is required.");
+      throw core.ArgumentError('Parameter webAppId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4684,7 +4683,7 @@ class WebappsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4725,13 +4724,13 @@ class WebappsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (webAppId == null) {
-      throw core.ArgumentError("Parameter webAppId is required.");
+      throw core.ArgumentError('Parameter webAppId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4741,7 +4740,7 @@ class WebappsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4785,10 +4784,10 @@ class WebappsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4797,7 +4796,7 @@ class WebappsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4835,10 +4834,10 @@ class WebappsResourceApi {
     core.String _body;
 
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4847,7 +4846,7 @@ class WebappsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4894,13 +4893,13 @@ class WebappsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (enterpriseId == null) {
-      throw core.ArgumentError("Parameter enterpriseId is required.");
+      throw core.ArgumentError('Parameter enterpriseId is required.');
     }
     if (webAppId == null) {
-      throw core.ArgumentError("Parameter webAppId is required.");
+      throw core.ArgumentError('Parameter webAppId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'androidenterprise/v1/enterprises/' +
@@ -4910,7 +4909,7 @@ class WebappsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4930,8 +4929,8 @@ class Administrator {
   Administrator();
 
   Administrator.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
   }
 
@@ -4939,7 +4938,7 @@ class Administrator {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     return _json;
   }
@@ -4953,8 +4952,8 @@ class AdministratorWebToken {
   AdministratorWebToken();
 
   AdministratorWebToken.fromJson(core.Map _json) {
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
   }
 
@@ -4962,7 +4961,7 @@ class AdministratorWebToken {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     return _json;
   }
@@ -4998,31 +4997,31 @@ class AdministratorWebTokenSpec {
   AdministratorWebTokenSpec();
 
   AdministratorWebTokenSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("managedConfigurations")) {
+    if (_json.containsKey('managedConfigurations')) {
       managedConfigurations =
           AdministratorWebTokenSpecManagedConfigurations.fromJson(
-              _json["managedConfigurations"]);
+              _json['managedConfigurations']);
     }
-    if (_json.containsKey("parent")) {
-      parent = _json["parent"];
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'];
     }
-    if (_json.containsKey("permission")) {
-      permission = (_json["permission"] as core.List).cast<core.String>();
+    if (_json.containsKey('permission')) {
+      permission = (_json['permission'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("playSearch")) {
+    if (_json.containsKey('playSearch')) {
       playSearch =
-          AdministratorWebTokenSpecPlaySearch.fromJson(_json["playSearch"]);
+          AdministratorWebTokenSpecPlaySearch.fromJson(_json['playSearch']);
     }
-    if (_json.containsKey("privateApps")) {
+    if (_json.containsKey('privateApps')) {
       privateApps =
-          AdministratorWebTokenSpecPrivateApps.fromJson(_json["privateApps"]);
+          AdministratorWebTokenSpecPrivateApps.fromJson(_json['privateApps']);
     }
-    if (_json.containsKey("storeBuilder")) {
+    if (_json.containsKey('storeBuilder')) {
       storeBuilder =
-          AdministratorWebTokenSpecStoreBuilder.fromJson(_json["storeBuilder"]);
+          AdministratorWebTokenSpecStoreBuilder.fromJson(_json['storeBuilder']);
     }
-    if (_json.containsKey("webApps")) {
-      webApps = AdministratorWebTokenSpecWebApps.fromJson(_json["webApps"]);
+    if (_json.containsKey('webApps')) {
+      webApps = AdministratorWebTokenSpecWebApps.fromJson(_json['webApps']);
     }
   }
 
@@ -5030,25 +5029,25 @@ class AdministratorWebTokenSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (managedConfigurations != null) {
-      _json["managedConfigurations"] = managedConfigurations.toJson();
+      _json['managedConfigurations'] = managedConfigurations.toJson();
     }
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (permission != null) {
-      _json["permission"] = permission;
+      _json['permission'] = permission;
     }
     if (playSearch != null) {
-      _json["playSearch"] = playSearch.toJson();
+      _json['playSearch'] = playSearch.toJson();
     }
     if (privateApps != null) {
-      _json["privateApps"] = privateApps.toJson();
+      _json['privateApps'] = privateApps.toJson();
     }
     if (storeBuilder != null) {
-      _json["storeBuilder"] = storeBuilder.toJson();
+      _json['storeBuilder'] = storeBuilder.toJson();
     }
     if (webApps != null) {
-      _json["webApps"] = webApps.toJson();
+      _json['webApps'] = webApps.toJson();
     }
     return _json;
   }
@@ -5061,8 +5060,8 @@ class AdministratorWebTokenSpecManagedConfigurations {
   AdministratorWebTokenSpecManagedConfigurations();
 
   AdministratorWebTokenSpecManagedConfigurations.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
   }
 
@@ -5070,7 +5069,7 @@ class AdministratorWebTokenSpecManagedConfigurations {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     return _json;
   }
@@ -5086,11 +5085,11 @@ class AdministratorWebTokenSpecPlaySearch {
   AdministratorWebTokenSpecPlaySearch();
 
   AdministratorWebTokenSpecPlaySearch.fromJson(core.Map _json) {
-    if (_json.containsKey("approveApps")) {
-      approveApps = _json["approveApps"];
+    if (_json.containsKey('approveApps')) {
+      approveApps = _json['approveApps'];
     }
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
   }
 
@@ -5098,10 +5097,10 @@ class AdministratorWebTokenSpecPlaySearch {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (approveApps != null) {
-      _json["approveApps"] = approveApps;
+      _json['approveApps'] = approveApps;
     }
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     return _json;
   }
@@ -5114,8 +5113,8 @@ class AdministratorWebTokenSpecPrivateApps {
   AdministratorWebTokenSpecPrivateApps();
 
   AdministratorWebTokenSpecPrivateApps.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
   }
 
@@ -5123,7 +5122,7 @@ class AdministratorWebTokenSpecPrivateApps {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     return _json;
   }
@@ -5136,8 +5135,8 @@ class AdministratorWebTokenSpecStoreBuilder {
   AdministratorWebTokenSpecStoreBuilder();
 
   AdministratorWebTokenSpecStoreBuilder.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
   }
 
@@ -5145,7 +5144,7 @@ class AdministratorWebTokenSpecStoreBuilder {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     return _json;
   }
@@ -5158,8 +5157,8 @@ class AdministratorWebTokenSpecWebApps {
   AdministratorWebTokenSpecWebApps();
 
   AdministratorWebTokenSpecWebApps.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
   }
 
@@ -5167,7 +5166,7 @@ class AdministratorWebTokenSpecWebApps {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     return _json;
   }
@@ -5185,11 +5184,11 @@ class AppRestrictionsSchema {
   AppRestrictionsSchema();
 
   AppRestrictionsSchema.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("restrictions")) {
-      restrictions = (_json["restrictions"] as core.List)
+    if (_json.containsKey('restrictions')) {
+      restrictions = (_json['restrictions'] as core.List)
           .map<AppRestrictionsSchemaRestriction>(
               (value) => AppRestrictionsSchemaRestriction.fromJson(value))
           .toList();
@@ -5200,10 +5199,10 @@ class AppRestrictionsSchema {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (restrictions != null) {
-      _json["restrictions"] =
+      _json['restrictions'] =
           restrictions.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5221,8 +5220,8 @@ class AppRestrictionsSchemaChangeEvent {
   AppRestrictionsSchemaChangeEvent();
 
   AppRestrictionsSchemaChangeEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
   }
 
@@ -5230,7 +5229,7 @@ class AppRestrictionsSchemaChangeEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     return _json;
   }
@@ -5286,33 +5285,33 @@ class AppRestrictionsSchemaRestriction {
   AppRestrictionsSchemaRestriction();
 
   AppRestrictionsSchemaRestriction.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultValue")) {
+    if (_json.containsKey('defaultValue')) {
       defaultValue = AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(
-          _json["defaultValue"]);
+          _json['defaultValue']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entry")) {
-      entry = (_json["entry"] as core.List).cast<core.String>();
+    if (_json.containsKey('entry')) {
+      entry = (_json['entry'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("entryValue")) {
-      entryValue = (_json["entryValue"] as core.List).cast<core.String>();
+    if (_json.containsKey('entryValue')) {
+      entryValue = (_json['entryValue'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("nestedRestriction")) {
-      nestedRestriction = (_json["nestedRestriction"] as core.List)
+    if (_json.containsKey('nestedRestriction')) {
+      nestedRestriction = (_json['nestedRestriction'] as core.List)
           .map<AppRestrictionsSchemaRestriction>(
               (value) => AppRestrictionsSchemaRestriction.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("restrictionType")) {
-      restrictionType = _json["restrictionType"];
+    if (_json.containsKey('restrictionType')) {
+      restrictionType = _json['restrictionType'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -5320,29 +5319,29 @@ class AppRestrictionsSchemaRestriction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (defaultValue != null) {
-      _json["defaultValue"] = defaultValue.toJson();
+      _json['defaultValue'] = defaultValue.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entry != null) {
-      _json["entry"] = entry;
+      _json['entry'] = entry;
     }
     if (entryValue != null) {
-      _json["entryValue"] = entryValue;
+      _json['entryValue'] = entryValue;
     }
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (nestedRestriction != null) {
-      _json["nestedRestriction"] =
+      _json['nestedRestriction'] =
           nestedRestriction.map((value) => value.toJson()).toList();
     }
     if (restrictionType != null) {
-      _json["restrictionType"] = restrictionType;
+      _json['restrictionType'] = restrictionType;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -5381,21 +5380,21 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
   AppRestrictionsSchemaRestrictionRestrictionValue();
 
   AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("valueBool")) {
-      valueBool = _json["valueBool"];
+    if (_json.containsKey('valueBool')) {
+      valueBool = _json['valueBool'];
     }
-    if (_json.containsKey("valueInteger")) {
-      valueInteger = _json["valueInteger"];
+    if (_json.containsKey('valueInteger')) {
+      valueInteger = _json['valueInteger'];
     }
-    if (_json.containsKey("valueMultiselect")) {
+    if (_json.containsKey('valueMultiselect')) {
       valueMultiselect =
-          (_json["valueMultiselect"] as core.List).cast<core.String>();
+          (_json['valueMultiselect'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("valueString")) {
-      valueString = _json["valueString"];
+    if (_json.containsKey('valueString')) {
+      valueString = _json['valueString'];
     }
   }
 
@@ -5403,19 +5402,19 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (valueBool != null) {
-      _json["valueBool"] = valueBool;
+      _json['valueBool'] = valueBool;
     }
     if (valueInteger != null) {
-      _json["valueInteger"] = valueInteger;
+      _json['valueInteger'] = valueInteger;
     }
     if (valueMultiselect != null) {
-      _json["valueMultiselect"] = valueMultiselect;
+      _json['valueMultiselect'] = valueMultiselect;
     }
     if (valueString != null) {
-      _json["valueString"] = valueString;
+      _json['valueString'] = valueString;
     }
     return _json;
   }
@@ -5432,13 +5431,13 @@ class AppState {
   AppState();
 
   AppState.fromJson(core.Map _json) {
-    if (_json.containsKey("keyedAppState")) {
-      keyedAppState = (_json["keyedAppState"] as core.List)
+    if (_json.containsKey('keyedAppState')) {
+      keyedAppState = (_json['keyedAppState'] as core.List)
           .map<KeyedAppState>((value) => KeyedAppState.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
   }
 
@@ -5446,11 +5445,11 @@ class AppState {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (keyedAppState != null) {
-      _json["keyedAppState"] =
+      _json['keyedAppState'] =
           keyedAppState.map((value) => value.toJson()).toList();
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     return _json;
   }
@@ -5468,8 +5467,8 @@ class AppUpdateEvent {
   AppUpdateEvent();
 
   AppUpdateEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
   }
 
@@ -5477,7 +5476,7 @@ class AppUpdateEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     return _json;
   }
@@ -5512,20 +5511,20 @@ class AppVersion {
   AppVersion();
 
   AppVersion.fromJson(core.Map _json) {
-    if (_json.containsKey("isProduction")) {
-      isProduction = _json["isProduction"];
+    if (_json.containsKey('isProduction')) {
+      isProduction = _json['isProduction'];
     }
-    if (_json.containsKey("track")) {
-      track = _json["track"];
+    if (_json.containsKey('track')) {
+      track = _json['track'];
     }
-    if (_json.containsKey("trackId")) {
-      trackId = (_json["trackId"] as core.List).cast<core.String>();
+    if (_json.containsKey('trackId')) {
+      trackId = (_json['trackId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("versionCode")) {
-      versionCode = _json["versionCode"];
+    if (_json.containsKey('versionCode')) {
+      versionCode = _json['versionCode'];
     }
-    if (_json.containsKey("versionString")) {
-      versionString = _json["versionString"];
+    if (_json.containsKey('versionString')) {
+      versionString = _json['versionString'];
     }
   }
 
@@ -5533,19 +5532,19 @@ class AppVersion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (isProduction != null) {
-      _json["isProduction"] = isProduction;
+      _json['isProduction'] = isProduction;
     }
     if (track != null) {
-      _json["track"] = track;
+      _json['track'] = track;
     }
     if (trackId != null) {
-      _json["trackId"] = trackId;
+      _json['trackId'] = trackId;
     }
     if (versionCode != null) {
-      _json["versionCode"] = versionCode;
+      _json['versionCode'] = versionCode;
     }
     if (versionString != null) {
-      _json["versionString"] = versionString;
+      _json['versionString'] = versionString;
     }
     return _json;
   }
@@ -5560,8 +5559,8 @@ class ApprovalUrlInfo {
   ApprovalUrlInfo();
 
   ApprovalUrlInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("approvalUrl")) {
-      approvalUrl = _json["approvalUrl"];
+    if (_json.containsKey('approvalUrl')) {
+      approvalUrl = _json['approvalUrl'];
     }
   }
 
@@ -5569,7 +5568,7 @@ class ApprovalUrlInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (approvalUrl != null) {
-      _json["approvalUrl"] = approvalUrl;
+      _json['approvalUrl'] = approvalUrl;
     }
     return _json;
   }
@@ -5586,8 +5585,8 @@ class AuthenticationToken {
   AuthenticationToken();
 
   AuthenticationToken.fromJson(core.Map _json) {
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
   }
 
@@ -5595,7 +5594,7 @@ class AuthenticationToken {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     return _json;
   }
@@ -5629,14 +5628,14 @@ class AutoInstallConstraint {
   AutoInstallConstraint();
 
   AutoInstallConstraint.fromJson(core.Map _json) {
-    if (_json.containsKey("chargingStateConstraint")) {
-      chargingStateConstraint = _json["chargingStateConstraint"];
+    if (_json.containsKey('chargingStateConstraint')) {
+      chargingStateConstraint = _json['chargingStateConstraint'];
     }
-    if (_json.containsKey("deviceIdleStateConstraint")) {
-      deviceIdleStateConstraint = _json["deviceIdleStateConstraint"];
+    if (_json.containsKey('deviceIdleStateConstraint')) {
+      deviceIdleStateConstraint = _json['deviceIdleStateConstraint'];
     }
-    if (_json.containsKey("networkTypeConstraint")) {
-      networkTypeConstraint = _json["networkTypeConstraint"];
+    if (_json.containsKey('networkTypeConstraint')) {
+      networkTypeConstraint = _json['networkTypeConstraint'];
     }
   }
 
@@ -5644,13 +5643,13 @@ class AutoInstallConstraint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (chargingStateConstraint != null) {
-      _json["chargingStateConstraint"] = chargingStateConstraint;
+      _json['chargingStateConstraint'] = chargingStateConstraint;
     }
     if (deviceIdleStateConstraint != null) {
-      _json["deviceIdleStateConstraint"] = deviceIdleStateConstraint;
+      _json['deviceIdleStateConstraint'] = deviceIdleStateConstraint;
     }
     if (networkTypeConstraint != null) {
-      _json["networkTypeConstraint"] = networkTypeConstraint;
+      _json['networkTypeConstraint'] = networkTypeConstraint;
     }
     return _json;
   }
@@ -5686,20 +5685,20 @@ class AutoInstallPolicy {
   AutoInstallPolicy();
 
   AutoInstallPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("autoInstallConstraint")) {
-      autoInstallConstraint = (_json["autoInstallConstraint"] as core.List)
+    if (_json.containsKey('autoInstallConstraint')) {
+      autoInstallConstraint = (_json['autoInstallConstraint'] as core.List)
           .map<AutoInstallConstraint>(
               (value) => AutoInstallConstraint.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("autoInstallMode")) {
-      autoInstallMode = _json["autoInstallMode"];
+    if (_json.containsKey('autoInstallMode')) {
+      autoInstallMode = _json['autoInstallMode'];
     }
-    if (_json.containsKey("autoInstallPriority")) {
-      autoInstallPriority = _json["autoInstallPriority"];
+    if (_json.containsKey('autoInstallPriority')) {
+      autoInstallPriority = _json['autoInstallPriority'];
     }
-    if (_json.containsKey("minimumVersionCode")) {
-      minimumVersionCode = _json["minimumVersionCode"];
+    if (_json.containsKey('minimumVersionCode')) {
+      minimumVersionCode = _json['minimumVersionCode'];
     }
   }
 
@@ -5707,17 +5706,17 @@ class AutoInstallPolicy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (autoInstallConstraint != null) {
-      _json["autoInstallConstraint"] =
+      _json['autoInstallConstraint'] =
           autoInstallConstraint.map((value) => value.toJson()).toList();
     }
     if (autoInstallMode != null) {
-      _json["autoInstallMode"] = autoInstallMode;
+      _json['autoInstallMode'] = autoInstallMode;
     }
     if (autoInstallPriority != null) {
-      _json["autoInstallPriority"] = autoInstallPriority;
+      _json['autoInstallPriority'] = autoInstallPriority;
     }
     if (minimumVersionCode != null) {
-      _json["minimumVersionCode"] = minimumVersionCode;
+      _json['minimumVersionCode'] = minimumVersionCode;
     }
     return _json;
   }
@@ -5737,11 +5736,11 @@ class ConfigurationVariables {
   ConfigurationVariables();
 
   ConfigurationVariables.fromJson(core.Map _json) {
-    if (_json.containsKey("mcmId")) {
-      mcmId = _json["mcmId"];
+    if (_json.containsKey('mcmId')) {
+      mcmId = _json['mcmId'];
     }
-    if (_json.containsKey("variableSet")) {
-      variableSet = (_json["variableSet"] as core.List)
+    if (_json.containsKey('variableSet')) {
+      variableSet = (_json['variableSet'] as core.List)
           .map<VariableSet>((value) => VariableSet.fromJson(value))
           .toList();
     }
@@ -5751,10 +5750,10 @@ class ConfigurationVariables {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mcmId != null) {
-      _json["mcmId"] = mcmId;
+      _json['mcmId'] = mcmId;
     }
     if (variableSet != null) {
-      _json["variableSet"] =
+      _json['variableSet'] =
           variableSet.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5794,17 +5793,17 @@ class Device {
   Device();
 
   Device.fromJson(core.Map _json) {
-    if (_json.containsKey("androidId")) {
-      androidId = _json["androidId"];
+    if (_json.containsKey('androidId')) {
+      androidId = _json['androidId'];
     }
-    if (_json.containsKey("managementType")) {
-      managementType = _json["managementType"];
+    if (_json.containsKey('managementType')) {
+      managementType = _json['managementType'];
     }
-    if (_json.containsKey("policy")) {
-      policy = Policy.fromJson(_json["policy"]);
+    if (_json.containsKey('policy')) {
+      policy = Policy.fromJson(_json['policy']);
     }
-    if (_json.containsKey("report")) {
-      report = DeviceReport.fromJson(_json["report"]);
+    if (_json.containsKey('report')) {
+      report = DeviceReport.fromJson(_json['report']);
     }
   }
 
@@ -5812,16 +5811,16 @@ class Device {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (androidId != null) {
-      _json["androidId"] = androidId;
+      _json['androidId'] = androidId;
     }
     if (managementType != null) {
-      _json["managementType"] = managementType;
+      _json['managementType'] = managementType;
     }
     if (policy != null) {
-      _json["policy"] = policy.toJson();
+      _json['policy'] = policy.toJson();
     }
     if (report != null) {
-      _json["report"] = report.toJson();
+      _json['report'] = report.toJson();
     }
     return _json;
   }
@@ -5841,13 +5840,13 @@ class DeviceReport {
   DeviceReport();
 
   DeviceReport.fromJson(core.Map _json) {
-    if (_json.containsKey("appState")) {
-      appState = (_json["appState"] as core.List)
+    if (_json.containsKey('appState')) {
+      appState = (_json['appState'] as core.List)
           .map<AppState>((value) => AppState.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("lastUpdatedTimestampMillis")) {
-      lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
+    if (_json.containsKey('lastUpdatedTimestampMillis')) {
+      lastUpdatedTimestampMillis = _json['lastUpdatedTimestampMillis'];
     }
   }
 
@@ -5855,10 +5854,10 @@ class DeviceReport {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appState != null) {
-      _json["appState"] = appState.map((value) => value.toJson()).toList();
+      _json['appState'] = appState.map((value) => value.toJson()).toList();
     }
     if (lastUpdatedTimestampMillis != null) {
-      _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
+      _json['lastUpdatedTimestampMillis'] = lastUpdatedTimestampMillis;
     }
     return _json;
   }
@@ -5879,14 +5878,14 @@ class DeviceReportUpdateEvent {
   DeviceReportUpdateEvent();
 
   DeviceReportUpdateEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceId")) {
-      deviceId = _json["deviceId"];
+    if (_json.containsKey('deviceId')) {
+      deviceId = _json['deviceId'];
     }
-    if (_json.containsKey("report")) {
-      report = DeviceReport.fromJson(_json["report"]);
+    if (_json.containsKey('report')) {
+      report = DeviceReport.fromJson(_json['report']);
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -5894,13 +5893,13 @@ class DeviceReportUpdateEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceId != null) {
-      _json["deviceId"] = deviceId;
+      _json['deviceId'] = deviceId;
     }
     if (report != null) {
-      _json["report"] = report.toJson();
+      _json['report'] = report.toJson();
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -5921,8 +5920,8 @@ class DeviceState {
   DeviceState();
 
   DeviceState.fromJson(core.Map _json) {
-    if (_json.containsKey("accountState")) {
-      accountState = _json["accountState"];
+    if (_json.containsKey('accountState')) {
+      accountState = _json['accountState'];
     }
   }
 
@@ -5930,7 +5929,7 @@ class DeviceState {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountState != null) {
-      _json["accountState"] = accountState;
+      _json['accountState'] = accountState;
     }
     return _json;
   }
@@ -5943,8 +5942,8 @@ class DevicesListResponse {
   DevicesListResponse();
 
   DevicesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("device")) {
-      device = (_json["device"] as core.List)
+    if (_json.containsKey('device')) {
+      device = (_json['device'] as core.List)
           .map<Device>((value) => Device.fromJson(value))
           .toList();
     }
@@ -5954,7 +5953,7 @@ class DevicesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (device != null) {
-      _json["device"] = device.map((value) => value.toJson()).toList();
+      _json['device'] = device.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5989,19 +5988,19 @@ class Enterprise {
   Enterprise();
 
   Enterprise.fromJson(core.Map _json) {
-    if (_json.containsKey("administrator")) {
-      administrator = (_json["administrator"] as core.List)
+    if (_json.containsKey('administrator')) {
+      administrator = (_json['administrator'] as core.List)
           .map<Administrator>((value) => Administrator.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("primaryDomain")) {
-      primaryDomain = _json["primaryDomain"];
+    if (_json.containsKey('primaryDomain')) {
+      primaryDomain = _json['primaryDomain'];
     }
   }
 
@@ -6009,17 +6008,17 @@ class Enterprise {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (administrator != null) {
-      _json["administrator"] =
+      _json['administrator'] =
           administrator.map((value) => value.toJson()).toList();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (primaryDomain != null) {
-      _json["primaryDomain"] = primaryDomain;
+      _json['primaryDomain'] = primaryDomain;
     }
     return _json;
   }
@@ -6034,8 +6033,8 @@ class EnterpriseAccount {
   EnterpriseAccount();
 
   EnterpriseAccount.fromJson(core.Map _json) {
-    if (_json.containsKey("accountEmail")) {
-      accountEmail = _json["accountEmail"];
+    if (_json.containsKey('accountEmail')) {
+      accountEmail = _json['accountEmail'];
     }
   }
 
@@ -6043,7 +6042,7 @@ class EnterpriseAccount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountEmail != null) {
-      _json["accountEmail"] = accountEmail;
+      _json['accountEmail'] = accountEmail;
     }
     return _json;
   }
@@ -6056,8 +6055,8 @@ class EnterprisesListResponse {
   EnterprisesListResponse();
 
   EnterprisesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("enterprise")) {
-      enterprise = (_json["enterprise"] as core.List)
+    if (_json.containsKey('enterprise')) {
+      enterprise = (_json['enterprise'] as core.List)
           .map<Enterprise>((value) => Enterprise.fromJson(value))
           .toList();
     }
@@ -6067,7 +6066,7 @@ class EnterprisesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enterprise != null) {
-      _json["enterprise"] = enterprise.map((value) => value.toJson()).toList();
+      _json['enterprise'] = enterprise.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6084,11 +6083,11 @@ class EnterprisesSendTestPushNotificationResponse {
   EnterprisesSendTestPushNotificationResponse();
 
   EnterprisesSendTestPushNotificationResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("messageId")) {
-      messageId = _json["messageId"];
+    if (_json.containsKey('messageId')) {
+      messageId = _json['messageId'];
     }
-    if (_json.containsKey("topicName")) {
-      topicName = _json["topicName"];
+    if (_json.containsKey('topicName')) {
+      topicName = _json['topicName'];
     }
   }
 
@@ -6096,10 +6095,10 @@ class EnterprisesSendTestPushNotificationResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (messageId != null) {
-      _json["messageId"] = messageId;
+      _json['messageId'] = messageId;
     }
     if (topicName != null) {
-      _json["topicName"] = topicName;
+      _json['topicName'] = topicName;
     }
     return _json;
   }
@@ -6141,11 +6140,11 @@ class Entitlement {
   Entitlement();
 
   Entitlement.fromJson(core.Map _json) {
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
   }
 
@@ -6153,10 +6152,10 @@ class Entitlement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     return _json;
   }
@@ -6171,8 +6170,8 @@ class EntitlementsListResponse {
   EntitlementsListResponse();
 
   EntitlementsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("entitlement")) {
-      entitlement = (_json["entitlement"] as core.List)
+    if (_json.containsKey('entitlement')) {
+      entitlement = (_json['entitlement'] as core.List)
           .map<Entitlement>((value) => Entitlement.fromJson(value))
           .toList();
     }
@@ -6182,7 +6181,7 @@ class EntitlementsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entitlement != null) {
-      _json["entitlement"] =
+      _json['entitlement'] =
           entitlement.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6254,23 +6253,23 @@ class GroupLicense {
   GroupLicense();
 
   GroupLicense.fromJson(core.Map _json) {
-    if (_json.containsKey("acquisitionKind")) {
-      acquisitionKind = _json["acquisitionKind"];
+    if (_json.containsKey('acquisitionKind')) {
+      acquisitionKind = _json['acquisitionKind'];
     }
-    if (_json.containsKey("approval")) {
-      approval = _json["approval"];
+    if (_json.containsKey('approval')) {
+      approval = _json['approval'];
     }
-    if (_json.containsKey("numProvisioned")) {
-      numProvisioned = _json["numProvisioned"];
+    if (_json.containsKey('numProvisioned')) {
+      numProvisioned = _json['numProvisioned'];
     }
-    if (_json.containsKey("numPurchased")) {
-      numPurchased = _json["numPurchased"];
+    if (_json.containsKey('numPurchased')) {
+      numPurchased = _json['numPurchased'];
     }
-    if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+    if (_json.containsKey('permissions')) {
+      permissions = _json['permissions'];
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
   }
 
@@ -6278,22 +6277,22 @@ class GroupLicense {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acquisitionKind != null) {
-      _json["acquisitionKind"] = acquisitionKind;
+      _json['acquisitionKind'] = acquisitionKind;
     }
     if (approval != null) {
-      _json["approval"] = approval;
+      _json['approval'] = approval;
     }
     if (numProvisioned != null) {
-      _json["numProvisioned"] = numProvisioned;
+      _json['numProvisioned'] = numProvisioned;
     }
     if (numPurchased != null) {
-      _json["numPurchased"] = numPurchased;
+      _json['numPurchased'] = numPurchased;
     }
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     return _json;
   }
@@ -6306,8 +6305,8 @@ class GroupLicenseUsersListResponse {
   GroupLicenseUsersListResponse();
 
   GroupLicenseUsersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("user")) {
-      user = (_json["user"] as core.List)
+    if (_json.containsKey('user')) {
+      user = (_json['user'] as core.List)
           .map<User>((value) => User.fromJson(value))
           .toList();
     }
@@ -6317,7 +6316,7 @@ class GroupLicenseUsersListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (user != null) {
-      _json["user"] = user.map((value) => value.toJson()).toList();
+      _json['user'] = user.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6330,8 +6329,8 @@ class GroupLicensesListResponse {
   GroupLicensesListResponse();
 
   GroupLicensesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("groupLicense")) {
-      groupLicense = (_json["groupLicense"] as core.List)
+    if (_json.containsKey('groupLicense')) {
+      groupLicense = (_json['groupLicense'] as core.List)
           .map<GroupLicense>((value) => GroupLicense.fromJson(value))
           .toList();
     }
@@ -6341,7 +6340,7 @@ class GroupLicensesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (groupLicense != null) {
-      _json["groupLicense"] =
+      _json['groupLicense'] =
           groupLicense.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6387,14 +6386,14 @@ class Install {
   Install();
 
   Install.fromJson(core.Map _json) {
-    if (_json.containsKey("installState")) {
-      installState = _json["installState"];
+    if (_json.containsKey('installState')) {
+      installState = _json['installState'];
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("versionCode")) {
-      versionCode = _json["versionCode"];
+    if (_json.containsKey('versionCode')) {
+      versionCode = _json['versionCode'];
     }
   }
 
@@ -6402,13 +6401,13 @@ class Install {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (installState != null) {
-      _json["installState"] = installState;
+      _json['installState'] = installState;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (versionCode != null) {
-      _json["versionCode"] = versionCode;
+      _json['versionCode'] = versionCode;
     }
     return _json;
   }
@@ -6442,20 +6441,20 @@ class InstallFailureEvent {
   InstallFailureEvent();
 
   InstallFailureEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceId")) {
-      deviceId = _json["deviceId"];
+    if (_json.containsKey('deviceId')) {
+      deviceId = _json['deviceId'];
     }
-    if (_json.containsKey("failureDetails")) {
-      failureDetails = _json["failureDetails"];
+    if (_json.containsKey('failureDetails')) {
+      failureDetails = _json['failureDetails'];
     }
-    if (_json.containsKey("failureReason")) {
-      failureReason = _json["failureReason"];
+    if (_json.containsKey('failureReason')) {
+      failureReason = _json['failureReason'];
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -6463,19 +6462,19 @@ class InstallFailureEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceId != null) {
-      _json["deviceId"] = deviceId;
+      _json['deviceId'] = deviceId;
     }
     if (failureDetails != null) {
-      _json["failureDetails"] = failureDetails;
+      _json['failureDetails'] = failureDetails;
     }
     if (failureReason != null) {
-      _json["failureReason"] = failureReason;
+      _json['failureReason'] = failureReason;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -6489,8 +6488,8 @@ class InstallsListResponse {
   InstallsListResponse();
 
   InstallsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("install")) {
-      install = (_json["install"] as core.List)
+    if (_json.containsKey('install')) {
+      install = (_json['install'] as core.List)
           .map<Install>((value) => Install.fromJson(value))
           .toList();
     }
@@ -6500,7 +6499,7 @@ class InstallsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (install != null) {
-      _json["install"] = install.map((value) => value.toJson()).toList();
+      _json['install'] = install.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6539,20 +6538,20 @@ class KeyedAppState {
   KeyedAppState();
 
   KeyedAppState.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
-    if (_json.containsKey("severity")) {
-      severity = _json["severity"];
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'];
     }
-    if (_json.containsKey("stateTimestampMillis")) {
-      stateTimestampMillis = _json["stateTimestampMillis"];
+    if (_json.containsKey('stateTimestampMillis')) {
+      stateTimestampMillis = _json['stateTimestampMillis'];
     }
   }
 
@@ -6560,19 +6559,19 @@ class KeyedAppState {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     if (severity != null) {
-      _json["severity"] = severity;
+      _json['severity'] = severity;
     }
     if (stateTimestampMillis != null) {
-      _json["stateTimestampMillis"] = stateTimestampMillis;
+      _json['stateTimestampMillis'] = stateTimestampMillis;
     }
     return _json;
   }
@@ -6589,11 +6588,11 @@ class LocalizedText {
   LocalizedText();
 
   LocalizedText.fromJson(core.Map _json) {
-    if (_json.containsKey("locale")) {
-      locale = _json["locale"];
+    if (_json.containsKey('locale')) {
+      locale = _json['locale'];
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -6601,10 +6600,10 @@ class LocalizedText {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (locale != null) {
-      _json["locale"] = locale;
+      _json['locale'] = locale;
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -6624,11 +6623,11 @@ class MaintenanceWindow {
   MaintenanceWindow();
 
   MaintenanceWindow.fromJson(core.Map _json) {
-    if (_json.containsKey("durationMs")) {
-      durationMs = _json["durationMs"];
+    if (_json.containsKey('durationMs')) {
+      durationMs = _json['durationMs'];
     }
-    if (_json.containsKey("startTimeAfterMidnightMs")) {
-      startTimeAfterMidnightMs = _json["startTimeAfterMidnightMs"];
+    if (_json.containsKey('startTimeAfterMidnightMs')) {
+      startTimeAfterMidnightMs = _json['startTimeAfterMidnightMs'];
     }
   }
 
@@ -6636,10 +6635,10 @@ class MaintenanceWindow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (durationMs != null) {
-      _json["durationMs"] = durationMs;
+      _json['durationMs'] = durationMs;
     }
     if (startTimeAfterMidnightMs != null) {
-      _json["startTimeAfterMidnightMs"] = startTimeAfterMidnightMs;
+      _json['startTimeAfterMidnightMs'] = startTimeAfterMidnightMs;
     }
     return _json;
   }
@@ -6666,20 +6665,20 @@ class ManagedConfiguration {
   ManagedConfiguration();
 
   ManagedConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("configurationVariables")) {
+    if (_json.containsKey('configurationVariables')) {
       configurationVariables =
-          ConfigurationVariables.fromJson(_json["configurationVariables"]);
+          ConfigurationVariables.fromJson(_json['configurationVariables']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("managedProperty")) {
-      managedProperty = (_json["managedProperty"] as core.List)
+    if (_json.containsKey('managedProperty')) {
+      managedProperty = (_json['managedProperty'] as core.List)
           .map<ManagedProperty>((value) => ManagedProperty.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
   }
 
@@ -6687,17 +6686,17 @@ class ManagedConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (configurationVariables != null) {
-      _json["configurationVariables"] = configurationVariables.toJson();
+      _json['configurationVariables'] = configurationVariables.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (managedProperty != null) {
-      _json["managedProperty"] =
+      _json['managedProperty'] =
           managedProperty.map((value) => value.toJson()).toList();
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     return _json;
   }
@@ -6710,9 +6709,9 @@ class ManagedConfigurationsForDeviceListResponse {
   ManagedConfigurationsForDeviceListResponse();
 
   ManagedConfigurationsForDeviceListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("managedConfigurationForDevice")) {
+    if (_json.containsKey('managedConfigurationForDevice')) {
       managedConfigurationForDevice =
-          (_json["managedConfigurationForDevice"] as core.List)
+          (_json['managedConfigurationForDevice'] as core.List)
               .map<ManagedConfiguration>(
                   (value) => ManagedConfiguration.fromJson(value))
               .toList();
@@ -6723,7 +6722,7 @@ class ManagedConfigurationsForDeviceListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (managedConfigurationForDevice != null) {
-      _json["managedConfigurationForDevice"] =
+      _json['managedConfigurationForDevice'] =
           managedConfigurationForDevice.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6737,9 +6736,9 @@ class ManagedConfigurationsForUserListResponse {
   ManagedConfigurationsForUserListResponse();
 
   ManagedConfigurationsForUserListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("managedConfigurationForUser")) {
+    if (_json.containsKey('managedConfigurationForUser')) {
       managedConfigurationForUser =
-          (_json["managedConfigurationForUser"] as core.List)
+          (_json['managedConfigurationForUser'] as core.List)
               .map<ManagedConfiguration>(
                   (value) => ManagedConfiguration.fromJson(value))
               .toList();
@@ -6750,7 +6749,7 @@ class ManagedConfigurationsForUserListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (managedConfigurationForUser != null) {
-      _json["managedConfigurationForUser"] =
+      _json['managedConfigurationForUser'] =
           managedConfigurationForUser.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6775,14 +6774,14 @@ class ManagedConfigurationsSettings {
   ManagedConfigurationsSettings();
 
   ManagedConfigurationsSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("lastUpdatedTimestampMillis")) {
-      lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
+    if (_json.containsKey('lastUpdatedTimestampMillis')) {
+      lastUpdatedTimestampMillis = _json['lastUpdatedTimestampMillis'];
     }
-    if (_json.containsKey("mcmId")) {
-      mcmId = _json["mcmId"];
+    if (_json.containsKey('mcmId')) {
+      mcmId = _json['mcmId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -6790,13 +6789,13 @@ class ManagedConfigurationsSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lastUpdatedTimestampMillis != null) {
-      _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
+      _json['lastUpdatedTimestampMillis'] = lastUpdatedTimestampMillis;
     }
     if (mcmId != null) {
-      _json["mcmId"] = mcmId;
+      _json['mcmId'] = mcmId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -6810,9 +6809,9 @@ class ManagedConfigurationsSettingsListResponse {
   ManagedConfigurationsSettingsListResponse();
 
   ManagedConfigurationsSettingsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("managedConfigurationsSettings")) {
+    if (_json.containsKey('managedConfigurationsSettings')) {
       managedConfigurationsSettings =
-          (_json["managedConfigurationsSettings"] as core.List)
+          (_json['managedConfigurationsSettings'] as core.List)
               .map<ManagedConfigurationsSettings>(
                   (value) => ManagedConfigurationsSettings.fromJson(value))
               .toList();
@@ -6823,7 +6822,7 @@ class ManagedConfigurationsSettingsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (managedConfigurationsSettings != null) {
-      _json["managedConfigurationsSettings"] =
+      _json['managedConfigurationsSettings'] =
           managedConfigurationsSettings.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6865,30 +6864,30 @@ class ManagedProperty {
   ManagedProperty();
 
   ManagedProperty.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("valueBool")) {
-      valueBool = _json["valueBool"];
+    if (_json.containsKey('valueBool')) {
+      valueBool = _json['valueBool'];
     }
-    if (_json.containsKey("valueBundle")) {
-      valueBundle = ManagedPropertyBundle.fromJson(_json["valueBundle"]);
+    if (_json.containsKey('valueBundle')) {
+      valueBundle = ManagedPropertyBundle.fromJson(_json['valueBundle']);
     }
-    if (_json.containsKey("valueBundleArray")) {
-      valueBundleArray = (_json["valueBundleArray"] as core.List)
+    if (_json.containsKey('valueBundleArray')) {
+      valueBundleArray = (_json['valueBundleArray'] as core.List)
           .map<ManagedPropertyBundle>(
               (value) => ManagedPropertyBundle.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("valueInteger")) {
-      valueInteger = _json["valueInteger"];
+    if (_json.containsKey('valueInteger')) {
+      valueInteger = _json['valueInteger'];
     }
-    if (_json.containsKey("valueString")) {
-      valueString = _json["valueString"];
+    if (_json.containsKey('valueString')) {
+      valueString = _json['valueString'];
     }
-    if (_json.containsKey("valueStringArray")) {
+    if (_json.containsKey('valueStringArray')) {
       valueStringArray =
-          (_json["valueStringArray"] as core.List).cast<core.String>();
+          (_json['valueStringArray'] as core.List).cast<core.String>();
     }
   }
 
@@ -6896,26 +6895,26 @@ class ManagedProperty {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (valueBool != null) {
-      _json["valueBool"] = valueBool;
+      _json['valueBool'] = valueBool;
     }
     if (valueBundle != null) {
-      _json["valueBundle"] = valueBundle.toJson();
+      _json['valueBundle'] = valueBundle.toJson();
     }
     if (valueBundleArray != null) {
-      _json["valueBundleArray"] =
+      _json['valueBundleArray'] =
           valueBundleArray.map((value) => value.toJson()).toList();
     }
     if (valueInteger != null) {
-      _json["valueInteger"] = valueInteger;
+      _json['valueInteger'] = valueInteger;
     }
     if (valueString != null) {
-      _json["valueString"] = valueString;
+      _json['valueString'] = valueString;
     }
     if (valueStringArray != null) {
-      _json["valueStringArray"] = valueStringArray;
+      _json['valueStringArray'] = valueStringArray;
     }
     return _json;
   }
@@ -6929,8 +6928,8 @@ class ManagedPropertyBundle {
   ManagedPropertyBundle();
 
   ManagedPropertyBundle.fromJson(core.Map _json) {
-    if (_json.containsKey("managedProperty")) {
-      managedProperty = (_json["managedProperty"] as core.List)
+    if (_json.containsKey('managedProperty')) {
+      managedProperty = (_json['managedProperty'] as core.List)
           .map<ManagedProperty>((value) => ManagedProperty.fromJson(value))
           .toList();
     }
@@ -6940,7 +6939,7 @@ class ManagedPropertyBundle {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (managedProperty != null) {
-      _json["managedProperty"] =
+      _json['managedProperty'] =
           managedProperty.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6970,17 +6969,17 @@ class NewDeviceEvent {
   NewDeviceEvent();
 
   NewDeviceEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceId")) {
-      deviceId = _json["deviceId"];
+    if (_json.containsKey('deviceId')) {
+      deviceId = _json['deviceId'];
     }
-    if (_json.containsKey("dpcPackageName")) {
-      dpcPackageName = _json["dpcPackageName"];
+    if (_json.containsKey('dpcPackageName')) {
+      dpcPackageName = _json['dpcPackageName'];
     }
-    if (_json.containsKey("managementType")) {
-      managementType = _json["managementType"];
+    if (_json.containsKey('managementType')) {
+      managementType = _json['managementType'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -6988,16 +6987,16 @@ class NewDeviceEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceId != null) {
-      _json["deviceId"] = deviceId;
+      _json['deviceId'] = deviceId;
     }
     if (dpcPackageName != null) {
-      _json["dpcPackageName"] = dpcPackageName;
+      _json['dpcPackageName'] = dpcPackageName;
     }
     if (managementType != null) {
-      _json["managementType"] = managementType;
+      _json['managementType'] = managementType;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -7022,16 +7021,16 @@ class NewPermissionsEvent {
   NewPermissionsEvent();
 
   NewPermissionsEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("approvedPermissions")) {
+    if (_json.containsKey('approvedPermissions')) {
       approvedPermissions =
-          (_json["approvedPermissions"] as core.List).cast<core.String>();
+          (_json['approvedPermissions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("requestedPermissions")) {
+    if (_json.containsKey('requestedPermissions')) {
       requestedPermissions =
-          (_json["requestedPermissions"] as core.List).cast<core.String>();
+          (_json['requestedPermissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -7039,13 +7038,13 @@ class NewPermissionsEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (approvedPermissions != null) {
-      _json["approvedPermissions"] = approvedPermissions;
+      _json['approvedPermissions'] = approvedPermissions;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (requestedPermissions != null) {
-      _json["requestedPermissions"] = requestedPermissions;
+      _json['requestedPermissions'] = requestedPermissions;
     }
     return _json;
   }
@@ -7105,45 +7104,45 @@ class Notification {
   Notification();
 
   Notification.fromJson(core.Map _json) {
-    if (_json.containsKey("appRestrictionsSchemaChangeEvent")) {
+    if (_json.containsKey('appRestrictionsSchemaChangeEvent')) {
       appRestrictionsSchemaChangeEvent =
           AppRestrictionsSchemaChangeEvent.fromJson(
-              _json["appRestrictionsSchemaChangeEvent"]);
+              _json['appRestrictionsSchemaChangeEvent']);
     }
-    if (_json.containsKey("appUpdateEvent")) {
-      appUpdateEvent = AppUpdateEvent.fromJson(_json["appUpdateEvent"]);
+    if (_json.containsKey('appUpdateEvent')) {
+      appUpdateEvent = AppUpdateEvent.fromJson(_json['appUpdateEvent']);
     }
-    if (_json.containsKey("deviceReportUpdateEvent")) {
+    if (_json.containsKey('deviceReportUpdateEvent')) {
       deviceReportUpdateEvent =
-          DeviceReportUpdateEvent.fromJson(_json["deviceReportUpdateEvent"]);
+          DeviceReportUpdateEvent.fromJson(_json['deviceReportUpdateEvent']);
     }
-    if (_json.containsKey("enterpriseId")) {
-      enterpriseId = _json["enterpriseId"];
+    if (_json.containsKey('enterpriseId')) {
+      enterpriseId = _json['enterpriseId'];
     }
-    if (_json.containsKey("installFailureEvent")) {
+    if (_json.containsKey('installFailureEvent')) {
       installFailureEvent =
-          InstallFailureEvent.fromJson(_json["installFailureEvent"]);
+          InstallFailureEvent.fromJson(_json['installFailureEvent']);
     }
-    if (_json.containsKey("newDeviceEvent")) {
-      newDeviceEvent = NewDeviceEvent.fromJson(_json["newDeviceEvent"]);
+    if (_json.containsKey('newDeviceEvent')) {
+      newDeviceEvent = NewDeviceEvent.fromJson(_json['newDeviceEvent']);
     }
-    if (_json.containsKey("newPermissionsEvent")) {
+    if (_json.containsKey('newPermissionsEvent')) {
       newPermissionsEvent =
-          NewPermissionsEvent.fromJson(_json["newPermissionsEvent"]);
+          NewPermissionsEvent.fromJson(_json['newPermissionsEvent']);
     }
-    if (_json.containsKey("notificationType")) {
-      notificationType = _json["notificationType"];
+    if (_json.containsKey('notificationType')) {
+      notificationType = _json['notificationType'];
     }
-    if (_json.containsKey("productApprovalEvent")) {
+    if (_json.containsKey('productApprovalEvent')) {
       productApprovalEvent =
-          ProductApprovalEvent.fromJson(_json["productApprovalEvent"]);
+          ProductApprovalEvent.fromJson(_json['productApprovalEvent']);
     }
-    if (_json.containsKey("productAvailabilityChangeEvent")) {
+    if (_json.containsKey('productAvailabilityChangeEvent')) {
       productAvailabilityChangeEvent = ProductAvailabilityChangeEvent.fromJson(
-          _json["productAvailabilityChangeEvent"]);
+          _json['productAvailabilityChangeEvent']);
     }
-    if (_json.containsKey("timestampMillis")) {
-      timestampMillis = _json["timestampMillis"];
+    if (_json.containsKey('timestampMillis')) {
+      timestampMillis = _json['timestampMillis'];
     }
   }
 
@@ -7151,39 +7150,39 @@ class Notification {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appRestrictionsSchemaChangeEvent != null) {
-      _json["appRestrictionsSchemaChangeEvent"] =
+      _json['appRestrictionsSchemaChangeEvent'] =
           appRestrictionsSchemaChangeEvent.toJson();
     }
     if (appUpdateEvent != null) {
-      _json["appUpdateEvent"] = appUpdateEvent.toJson();
+      _json['appUpdateEvent'] = appUpdateEvent.toJson();
     }
     if (deviceReportUpdateEvent != null) {
-      _json["deviceReportUpdateEvent"] = deviceReportUpdateEvent.toJson();
+      _json['deviceReportUpdateEvent'] = deviceReportUpdateEvent.toJson();
     }
     if (enterpriseId != null) {
-      _json["enterpriseId"] = enterpriseId;
+      _json['enterpriseId'] = enterpriseId;
     }
     if (installFailureEvent != null) {
-      _json["installFailureEvent"] = installFailureEvent.toJson();
+      _json['installFailureEvent'] = installFailureEvent.toJson();
     }
     if (newDeviceEvent != null) {
-      _json["newDeviceEvent"] = newDeviceEvent.toJson();
+      _json['newDeviceEvent'] = newDeviceEvent.toJson();
     }
     if (newPermissionsEvent != null) {
-      _json["newPermissionsEvent"] = newPermissionsEvent.toJson();
+      _json['newPermissionsEvent'] = newPermissionsEvent.toJson();
     }
     if (notificationType != null) {
-      _json["notificationType"] = notificationType;
+      _json['notificationType'] = notificationType;
     }
     if (productApprovalEvent != null) {
-      _json["productApprovalEvent"] = productApprovalEvent.toJson();
+      _json['productApprovalEvent'] = productApprovalEvent.toJson();
     }
     if (productAvailabilityChangeEvent != null) {
-      _json["productAvailabilityChangeEvent"] =
+      _json['productAvailabilityChangeEvent'] =
           productAvailabilityChangeEvent.toJson();
     }
     if (timestampMillis != null) {
-      _json["timestampMillis"] = timestampMillis;
+      _json['timestampMillis'] = timestampMillis;
     }
     return _json;
   }
@@ -7204,13 +7203,13 @@ class NotificationSet {
   NotificationSet();
 
   NotificationSet.fromJson(core.Map _json) {
-    if (_json.containsKey("notification")) {
-      notification = (_json["notification"] as core.List)
+    if (_json.containsKey('notification')) {
+      notification = (_json['notification'] as core.List)
           .map<Notification>((value) => Notification.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("notificationSetId")) {
-      notificationSetId = _json["notificationSetId"];
+    if (_json.containsKey('notificationSetId')) {
+      notificationSetId = _json['notificationSetId'];
     }
   }
 
@@ -7218,11 +7217,11 @@ class NotificationSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (notification != null) {
-      _json["notification"] =
+      _json['notification'] =
           notification.map((value) => value.toJson()).toList();
     }
     if (notificationSetId != null) {
-      _json["notificationSetId"] = notificationSetId;
+      _json['notificationSetId'] = notificationSetId;
     }
     return _json;
   }
@@ -7246,14 +7245,14 @@ class PageInfo {
   PageInfo();
 
   PageInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("resultPerPage")) {
-      resultPerPage = _json["resultPerPage"];
+    if (_json.containsKey('resultPerPage')) {
+      resultPerPage = _json['resultPerPage'];
     }
-    if (_json.containsKey("startIndex")) {
-      startIndex = _json["startIndex"];
+    if (_json.containsKey('startIndex')) {
+      startIndex = _json['startIndex'];
     }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
+    if (_json.containsKey('totalResults')) {
+      totalResults = _json['totalResults'];
     }
   }
 
@@ -7261,13 +7260,13 @@ class PageInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resultPerPage != null) {
-      _json["resultPerPage"] = resultPerPage;
+      _json['resultPerPage'] = resultPerPage;
     }
     if (startIndex != null) {
-      _json["startIndex"] = startIndex;
+      _json['startIndex'] = startIndex;
     }
     if (totalResults != null) {
-      _json["totalResults"] = totalResults;
+      _json['totalResults'] = totalResults;
     }
     return _json;
   }
@@ -7294,14 +7293,14 @@ class Permission {
   Permission();
 
   Permission.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("permissionId")) {
-      permissionId = _json["permissionId"];
+    if (_json.containsKey('permissionId')) {
+      permissionId = _json['permissionId'];
     }
   }
 
@@ -7309,13 +7308,13 @@ class Permission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (permissionId != null) {
-      _json["permissionId"] = permissionId;
+      _json['permissionId'] = permissionId;
     }
     return _json;
   }
@@ -7371,21 +7370,21 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("autoUpdatePolicy")) {
-      autoUpdatePolicy = _json["autoUpdatePolicy"];
+    if (_json.containsKey('autoUpdatePolicy')) {
+      autoUpdatePolicy = _json['autoUpdatePolicy'];
     }
-    if (_json.containsKey("deviceReportPolicy")) {
-      deviceReportPolicy = _json["deviceReportPolicy"];
+    if (_json.containsKey('deviceReportPolicy')) {
+      deviceReportPolicy = _json['deviceReportPolicy'];
     }
-    if (_json.containsKey("maintenanceWindow")) {
+    if (_json.containsKey('maintenanceWindow')) {
       maintenanceWindow =
-          MaintenanceWindow.fromJson(_json["maintenanceWindow"]);
+          MaintenanceWindow.fromJson(_json['maintenanceWindow']);
     }
-    if (_json.containsKey("productAvailabilityPolicy")) {
-      productAvailabilityPolicy = _json["productAvailabilityPolicy"];
+    if (_json.containsKey('productAvailabilityPolicy')) {
+      productAvailabilityPolicy = _json['productAvailabilityPolicy'];
     }
-    if (_json.containsKey("productPolicy")) {
-      productPolicy = (_json["productPolicy"] as core.List)
+    if (_json.containsKey('productPolicy')) {
+      productPolicy = (_json['productPolicy'] as core.List)
           .map<ProductPolicy>((value) => ProductPolicy.fromJson(value))
           .toList();
     }
@@ -7395,19 +7394,19 @@ class Policy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (autoUpdatePolicy != null) {
-      _json["autoUpdatePolicy"] = autoUpdatePolicy;
+      _json['autoUpdatePolicy'] = autoUpdatePolicy;
     }
     if (deviceReportPolicy != null) {
-      _json["deviceReportPolicy"] = deviceReportPolicy;
+      _json['deviceReportPolicy'] = deviceReportPolicy;
     }
     if (maintenanceWindow != null) {
-      _json["maintenanceWindow"] = maintenanceWindow.toJson();
+      _json['maintenanceWindow'] = maintenanceWindow.toJson();
     }
     if (productAvailabilityPolicy != null) {
-      _json["productAvailabilityPolicy"] = productAvailabilityPolicy;
+      _json['productAvailabilityPolicy'] = productAvailabilityPolicy;
     }
     if (productPolicy != null) {
-      _json["productPolicy"] =
+      _json['productPolicy'] =
           productPolicy.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -7527,87 +7526,87 @@ class Product {
   Product();
 
   Product.fromJson(core.Map _json) {
-    if (_json.containsKey("appTracks")) {
-      appTracks = (_json["appTracks"] as core.List)
+    if (_json.containsKey('appTracks')) {
+      appTracks = (_json['appTracks'] as core.List)
           .map<TrackInfo>((value) => TrackInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("appVersion")) {
-      appVersion = (_json["appVersion"] as core.List)
+    if (_json.containsKey('appVersion')) {
+      appVersion = (_json['appVersion'] as core.List)
           .map<AppVersion>((value) => AppVersion.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("authorName")) {
-      authorName = _json["authorName"];
+    if (_json.containsKey('authorName')) {
+      authorName = _json['authorName'];
     }
-    if (_json.containsKey("availableCountries")) {
+    if (_json.containsKey('availableCountries')) {
       availableCountries =
-          (_json["availableCountries"] as core.List).cast<core.String>();
+          (_json['availableCountries'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("availableTracks")) {
+    if (_json.containsKey('availableTracks')) {
       availableTracks =
-          (_json["availableTracks"] as core.List).cast<core.String>();
+          (_json['availableTracks'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("category")) {
-      category = _json["category"];
+    if (_json.containsKey('category')) {
+      category = _json['category'];
     }
-    if (_json.containsKey("contentRating")) {
-      contentRating = _json["contentRating"];
+    if (_json.containsKey('contentRating')) {
+      contentRating = _json['contentRating'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("detailsUrl")) {
-      detailsUrl = _json["detailsUrl"];
+    if (_json.containsKey('detailsUrl')) {
+      detailsUrl = _json['detailsUrl'];
     }
-    if (_json.containsKey("distributionChannel")) {
-      distributionChannel = _json["distributionChannel"];
+    if (_json.containsKey('distributionChannel')) {
+      distributionChannel = _json['distributionChannel'];
     }
-    if (_json.containsKey("features")) {
-      features = (_json["features"] as core.List).cast<core.String>();
+    if (_json.containsKey('features')) {
+      features = (_json['features'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("iconUrl")) {
-      iconUrl = _json["iconUrl"];
+    if (_json.containsKey('iconUrl')) {
+      iconUrl = _json['iconUrl'];
     }
-    if (_json.containsKey("lastUpdatedTimestampMillis")) {
-      lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
+    if (_json.containsKey('lastUpdatedTimestampMillis')) {
+      lastUpdatedTimestampMillis = _json['lastUpdatedTimestampMillis'];
     }
-    if (_json.containsKey("minAndroidSdkVersion")) {
-      minAndroidSdkVersion = _json["minAndroidSdkVersion"];
+    if (_json.containsKey('minAndroidSdkVersion')) {
+      minAndroidSdkVersion = _json['minAndroidSdkVersion'];
     }
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List)
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List)
           .map<ProductPermission>((value) => ProductPermission.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("productPricing")) {
-      productPricing = _json["productPricing"];
+    if (_json.containsKey('productPricing')) {
+      productPricing = _json['productPricing'];
     }
-    if (_json.containsKey("recentChanges")) {
-      recentChanges = _json["recentChanges"];
+    if (_json.containsKey('recentChanges')) {
+      recentChanges = _json['recentChanges'];
     }
-    if (_json.containsKey("requiresContainerApp")) {
-      requiresContainerApp = _json["requiresContainerApp"];
+    if (_json.containsKey('requiresContainerApp')) {
+      requiresContainerApp = _json['requiresContainerApp'];
     }
-    if (_json.containsKey("screenshotUrls")) {
+    if (_json.containsKey('screenshotUrls')) {
       screenshotUrls =
-          (_json["screenshotUrls"] as core.List).cast<core.String>();
+          (_json['screenshotUrls'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("signingCertificate")) {
+    if (_json.containsKey('signingCertificate')) {
       signingCertificate =
-          ProductSigningCertificate.fromJson(_json["signingCertificate"]);
+          ProductSigningCertificate.fromJson(_json['signingCertificate']);
     }
-    if (_json.containsKey("smallIconUrl")) {
-      smallIconUrl = _json["smallIconUrl"];
+    if (_json.containsKey('smallIconUrl')) {
+      smallIconUrl = _json['smallIconUrl'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("workDetailsUrl")) {
-      workDetailsUrl = _json["workDetailsUrl"];
+    if (_json.containsKey('workDetailsUrl')) {
+      workDetailsUrl = _json['workDetailsUrl'];
     }
   }
 
@@ -7615,77 +7614,77 @@ class Product {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appTracks != null) {
-      _json["appTracks"] = appTracks.map((value) => value.toJson()).toList();
+      _json['appTracks'] = appTracks.map((value) => value.toJson()).toList();
     }
     if (appVersion != null) {
-      _json["appVersion"] = appVersion.map((value) => value.toJson()).toList();
+      _json['appVersion'] = appVersion.map((value) => value.toJson()).toList();
     }
     if (authorName != null) {
-      _json["authorName"] = authorName;
+      _json['authorName'] = authorName;
     }
     if (availableCountries != null) {
-      _json["availableCountries"] = availableCountries;
+      _json['availableCountries'] = availableCountries;
     }
     if (availableTracks != null) {
-      _json["availableTracks"] = availableTracks;
+      _json['availableTracks'] = availableTracks;
     }
     if (category != null) {
-      _json["category"] = category;
+      _json['category'] = category;
     }
     if (contentRating != null) {
-      _json["contentRating"] = contentRating;
+      _json['contentRating'] = contentRating;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (detailsUrl != null) {
-      _json["detailsUrl"] = detailsUrl;
+      _json['detailsUrl'] = detailsUrl;
     }
     if (distributionChannel != null) {
-      _json["distributionChannel"] = distributionChannel;
+      _json['distributionChannel'] = distributionChannel;
     }
     if (features != null) {
-      _json["features"] = features;
+      _json['features'] = features;
     }
     if (iconUrl != null) {
-      _json["iconUrl"] = iconUrl;
+      _json['iconUrl'] = iconUrl;
     }
     if (lastUpdatedTimestampMillis != null) {
-      _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
+      _json['lastUpdatedTimestampMillis'] = lastUpdatedTimestampMillis;
     }
     if (minAndroidSdkVersion != null) {
-      _json["minAndroidSdkVersion"] = minAndroidSdkVersion;
+      _json['minAndroidSdkVersion'] = minAndroidSdkVersion;
     }
     if (permissions != null) {
-      _json["permissions"] =
+      _json['permissions'] =
           permissions.map((value) => value.toJson()).toList();
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (productPricing != null) {
-      _json["productPricing"] = productPricing;
+      _json['productPricing'] = productPricing;
     }
     if (recentChanges != null) {
-      _json["recentChanges"] = recentChanges;
+      _json['recentChanges'] = recentChanges;
     }
     if (requiresContainerApp != null) {
-      _json["requiresContainerApp"] = requiresContainerApp;
+      _json['requiresContainerApp'] = requiresContainerApp;
     }
     if (screenshotUrls != null) {
-      _json["screenshotUrls"] = screenshotUrls;
+      _json['screenshotUrls'] = screenshotUrls;
     }
     if (signingCertificate != null) {
-      _json["signingCertificate"] = signingCertificate.toJson();
+      _json['signingCertificate'] = signingCertificate.toJson();
     }
     if (smallIconUrl != null) {
-      _json["smallIconUrl"] = smallIconUrl;
+      _json['smallIconUrl'] = smallIconUrl;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (workDetailsUrl != null) {
-      _json["workDetailsUrl"] = workDetailsUrl;
+      _json['workDetailsUrl'] = workDetailsUrl;
     }
     return _json;
   }
@@ -7708,11 +7707,11 @@ class ProductApprovalEvent {
   ProductApprovalEvent();
 
   ProductApprovalEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("approved")) {
-      approved = _json["approved"];
+    if (_json.containsKey('approved')) {
+      approved = _json['approved'];
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
   }
 
@@ -7720,10 +7719,10 @@ class ProductApprovalEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (approved != null) {
-      _json["approved"] = approved;
+      _json['approved'] = approved;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     return _json;
   }
@@ -7747,11 +7746,11 @@ class ProductAvailabilityChangeEvent {
   ProductAvailabilityChangeEvent();
 
   ProductAvailabilityChangeEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("availabilityStatus")) {
-      availabilityStatus = _json["availabilityStatus"];
+    if (_json.containsKey('availabilityStatus')) {
+      availabilityStatus = _json['availabilityStatus'];
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
   }
 
@@ -7759,10 +7758,10 @@ class ProductAvailabilityChangeEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (availabilityStatus != null) {
-      _json["availabilityStatus"] = availabilityStatus;
+      _json['availabilityStatus'] = availabilityStatus;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     return _json;
   }
@@ -7786,11 +7785,11 @@ class ProductPermission {
   ProductPermission();
 
   ProductPermission.fromJson(core.Map _json) {
-    if (_json.containsKey("permissionId")) {
-      permissionId = _json["permissionId"];
+    if (_json.containsKey('permissionId')) {
+      permissionId = _json['permissionId'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -7798,10 +7797,10 @@ class ProductPermission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissionId != null) {
-      _json["permissionId"] = permissionId;
+      _json['permissionId'] = permissionId;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -7820,13 +7819,13 @@ class ProductPermissions {
   ProductPermissions();
 
   ProductPermissions.fromJson(core.Map _json) {
-    if (_json.containsKey("permission")) {
-      permission = (_json["permission"] as core.List)
+    if (_json.containsKey('permission')) {
+      permission = (_json['permission'] as core.List)
           .map<ProductPermission>((value) => ProductPermission.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
   }
 
@@ -7834,10 +7833,10 @@ class ProductPermissions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permission != null) {
-      _json["permission"] = permission.map((value) => value.toJson()).toList();
+      _json['permission'] = permission.map((value) => value.toJson()).toList();
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     return _json;
   }
@@ -7865,22 +7864,22 @@ class ProductPolicy {
   ProductPolicy();
 
   ProductPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("autoInstallPolicy")) {
+    if (_json.containsKey('autoInstallPolicy')) {
       autoInstallPolicy =
-          AutoInstallPolicy.fromJson(_json["autoInstallPolicy"]);
+          AutoInstallPolicy.fromJson(_json['autoInstallPolicy']);
     }
-    if (_json.containsKey("managedConfiguration")) {
+    if (_json.containsKey('managedConfiguration')) {
       managedConfiguration =
-          ManagedConfiguration.fromJson(_json["managedConfiguration"]);
+          ManagedConfiguration.fromJson(_json['managedConfiguration']);
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("trackIds")) {
-      trackIds = (_json["trackIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('trackIds')) {
+      trackIds = (_json['trackIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List).cast<core.String>();
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List).cast<core.String>();
     }
   }
 
@@ -7888,19 +7887,19 @@ class ProductPolicy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (autoInstallPolicy != null) {
-      _json["autoInstallPolicy"] = autoInstallPolicy.toJson();
+      _json['autoInstallPolicy'] = autoInstallPolicy.toJson();
     }
     if (managedConfiguration != null) {
-      _json["managedConfiguration"] = managedConfiguration.toJson();
+      _json['managedConfiguration'] = managedConfiguration.toJson();
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (trackIds != null) {
-      _json["trackIds"] = trackIds;
+      _json['trackIds'] = trackIds;
     }
     if (tracks != null) {
-      _json["tracks"] = tracks;
+      _json['tracks'] = tracks;
     }
     return _json;
   }
@@ -7945,14 +7944,14 @@ class ProductSet {
   ProductSet();
 
   ProductSet.fromJson(core.Map _json) {
-    if (_json.containsKey("productId")) {
-      productId = (_json["productId"] as core.List).cast<core.String>();
+    if (_json.containsKey('productId')) {
+      productId = (_json['productId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("productSetBehavior")) {
-      productSetBehavior = _json["productSetBehavior"];
+    if (_json.containsKey('productSetBehavior')) {
+      productSetBehavior = _json['productSetBehavior'];
     }
-    if (_json.containsKey("productVisibility")) {
-      productVisibility = (_json["productVisibility"] as core.List)
+    if (_json.containsKey('productVisibility')) {
+      productVisibility = (_json['productVisibility'] as core.List)
           .map<ProductVisibility>((value) => ProductVisibility.fromJson(value))
           .toList();
     }
@@ -7962,13 +7961,13 @@ class ProductSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (productSetBehavior != null) {
-      _json["productSetBehavior"] = productSetBehavior;
+      _json['productSetBehavior'] = productSetBehavior;
     }
     if (productVisibility != null) {
-      _json["productVisibility"] =
+      _json['productVisibility'] =
           productVisibility.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -7987,11 +7986,11 @@ class ProductSigningCertificate {
   ProductSigningCertificate();
 
   ProductSigningCertificate.fromJson(core.Map _json) {
-    if (_json.containsKey("certificateHashSha1")) {
-      certificateHashSha1 = _json["certificateHashSha1"];
+    if (_json.containsKey('certificateHashSha1')) {
+      certificateHashSha1 = _json['certificateHashSha1'];
     }
-    if (_json.containsKey("certificateHashSha256")) {
-      certificateHashSha256 = _json["certificateHashSha256"];
+    if (_json.containsKey('certificateHashSha256')) {
+      certificateHashSha256 = _json['certificateHashSha256'];
     }
   }
 
@@ -7999,10 +7998,10 @@ class ProductSigningCertificate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (certificateHashSha1 != null) {
-      _json["certificateHashSha1"] = certificateHashSha1;
+      _json['certificateHashSha1'] = certificateHashSha1;
     }
     if (certificateHashSha256 != null) {
-      _json["certificateHashSha256"] = certificateHashSha256;
+      _json['certificateHashSha256'] = certificateHashSha256;
     }
     return _json;
   }
@@ -8024,14 +8023,14 @@ class ProductVisibility {
   ProductVisibility();
 
   ProductVisibility.fromJson(core.Map _json) {
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("trackIds")) {
-      trackIds = (_json["trackIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('trackIds')) {
+      trackIds = (_json['trackIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List).cast<core.String>();
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List).cast<core.String>();
     }
   }
 
@@ -8039,13 +8038,13 @@ class ProductVisibility {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (trackIds != null) {
-      _json["trackIds"] = trackIds;
+      _json['trackIds'] = trackIds;
     }
     if (tracks != null) {
-      _json["tracks"] = tracks;
+      _json['tracks'] = tracks;
     }
     return _json;
   }
@@ -8077,11 +8076,11 @@ class ProductsApproveRequest {
   ProductsApproveRequest();
 
   ProductsApproveRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("approvalUrlInfo")) {
-      approvalUrlInfo = ApprovalUrlInfo.fromJson(_json["approvalUrlInfo"]);
+    if (_json.containsKey('approvalUrlInfo')) {
+      approvalUrlInfo = ApprovalUrlInfo.fromJson(_json['approvalUrlInfo']);
     }
-    if (_json.containsKey("approvedPermissions")) {
-      approvedPermissions = _json["approvedPermissions"];
+    if (_json.containsKey('approvedPermissions')) {
+      approvedPermissions = _json['approvedPermissions'];
     }
   }
 
@@ -8089,10 +8088,10 @@ class ProductsApproveRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (approvalUrlInfo != null) {
-      _json["approvalUrlInfo"] = approvalUrlInfo.toJson();
+      _json['approvalUrlInfo'] = approvalUrlInfo.toJson();
     }
     if (approvedPermissions != null) {
-      _json["approvedPermissions"] = approvedPermissions;
+      _json['approvedPermissions'] = approvedPermissions;
     }
     return _json;
   }
@@ -8112,8 +8111,8 @@ class ProductsGenerateApprovalUrlResponse {
   ProductsGenerateApprovalUrlResponse();
 
   ProductsGenerateApprovalUrlResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -8121,7 +8120,7 @@ class ProductsGenerateApprovalUrlResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -8141,16 +8140,16 @@ class ProductsListResponse {
   ProductsListResponse();
 
   ProductsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("product")) {
-      product = (_json["product"] as core.List)
+    if (_json.containsKey('product')) {
+      product = (_json['product'] as core.List)
           .map<Product>((value) => Product.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
   }
 
@@ -8158,13 +8157,13 @@ class ProductsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (product != null) {
-      _json["product"] = product.map((value) => value.toJson()).toList();
+      _json['product'] = product.map((value) => value.toJson()).toList();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     return _json;
   }
@@ -8183,11 +8182,11 @@ class ServiceAccount {
   ServiceAccount();
 
   ServiceAccount.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = ServiceAccountKey.fromJson(_json["key"]);
+    if (_json.containsKey('key')) {
+      key = ServiceAccountKey.fromJson(_json['key']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -8195,10 +8194,10 @@ class ServiceAccount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key.toJson();
+      _json['key'] = key.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -8234,17 +8233,17 @@ class ServiceAccountKey {
   ServiceAccountKey();
 
   ServiceAccountKey.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("publicData")) {
-      publicData = _json["publicData"];
+    if (_json.containsKey('publicData')) {
+      publicData = _json['publicData'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -8252,16 +8251,16 @@ class ServiceAccountKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (publicData != null) {
-      _json["publicData"] = publicData;
+      _json['publicData'] = publicData;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -8274,8 +8273,8 @@ class ServiceAccountKeysListResponse {
   ServiceAccountKeysListResponse();
 
   ServiceAccountKeysListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("serviceAccountKey")) {
-      serviceAccountKey = (_json["serviceAccountKey"] as core.List)
+    if (_json.containsKey('serviceAccountKey')) {
+      serviceAccountKey = (_json['serviceAccountKey'] as core.List)
           .map<ServiceAccountKey>((value) => ServiceAccountKey.fromJson(value))
           .toList();
     }
@@ -8285,7 +8284,7 @@ class ServiceAccountKeysListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (serviceAccountKey != null) {
-      _json["serviceAccountKey"] =
+      _json['serviceAccountKey'] =
           serviceAccountKey.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -8309,14 +8308,14 @@ class SignupInfo {
   SignupInfo();
 
   SignupInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("completionToken")) {
-      completionToken = _json["completionToken"];
+    if (_json.containsKey('completionToken')) {
+      completionToken = _json['completionToken'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -8324,13 +8323,13 @@ class SignupInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (completionToken != null) {
-      _json["completionToken"] = completionToken;
+      _json['completionToken'] = completionToken;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -8363,19 +8362,19 @@ class StoreCluster {
   StoreCluster();
 
   StoreCluster.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("name")) {
-      name = (_json["name"] as core.List)
+    if (_json.containsKey('name')) {
+      name = (_json['name'] as core.List)
           .map<LocalizedText>((value) => LocalizedText.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("orderInPage")) {
-      orderInPage = _json["orderInPage"];
+    if (_json.containsKey('orderInPage')) {
+      orderInPage = _json['orderInPage'];
     }
-    if (_json.containsKey("productId")) {
-      productId = (_json["productId"] as core.List).cast<core.String>();
+    if (_json.containsKey('productId')) {
+      productId = (_json['productId'] as core.List).cast<core.String>();
     }
   }
 
@@ -8383,16 +8382,16 @@ class StoreCluster {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (name != null) {
-      _json["name"] = name.map((value) => value.toJson()).toList();
+      _json['name'] = name.map((value) => value.toJson()).toList();
     }
     if (orderInPage != null) {
-      _json["orderInPage"] = orderInPage;
+      _json['orderInPage'] = orderInPage;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     return _json;
   }
@@ -8419,11 +8418,11 @@ class StoreLayout {
   StoreLayout();
 
   StoreLayout.fromJson(core.Map _json) {
-    if (_json.containsKey("homepageId")) {
-      homepageId = _json["homepageId"];
+    if (_json.containsKey('homepageId')) {
+      homepageId = _json['homepageId'];
     }
-    if (_json.containsKey("storeLayoutType")) {
-      storeLayoutType = _json["storeLayoutType"];
+    if (_json.containsKey('storeLayoutType')) {
+      storeLayoutType = _json['storeLayoutType'];
     }
   }
 
@@ -8431,10 +8430,10 @@ class StoreLayout {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (homepageId != null) {
-      _json["homepageId"] = homepageId;
+      _json['homepageId'] = homepageId;
     }
     if (storeLayoutType != null) {
-      _json["storeLayoutType"] = storeLayoutType;
+      _json['storeLayoutType'] = storeLayoutType;
     }
     return _json;
   }
@@ -8447,8 +8446,8 @@ class StoreLayoutClustersListResponse {
   StoreLayoutClustersListResponse();
 
   StoreLayoutClustersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("cluster")) {
-      cluster = (_json["cluster"] as core.List)
+    if (_json.containsKey('cluster')) {
+      cluster = (_json['cluster'] as core.List)
           .map<StoreCluster>((value) => StoreCluster.fromJson(value))
           .toList();
     }
@@ -8458,7 +8457,7 @@ class StoreLayoutClustersListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cluster != null) {
-      _json["cluster"] = cluster.map((value) => value.toJson()).toList();
+      _json['cluster'] = cluster.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8471,8 +8470,8 @@ class StoreLayoutPagesListResponse {
   StoreLayoutPagesListResponse();
 
   StoreLayoutPagesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("page")) {
-      page = (_json["page"] as core.List)
+    if (_json.containsKey('page')) {
+      page = (_json['page'] as core.List)
           .map<StorePage>((value) => StorePage.fromJson(value))
           .toList();
     }
@@ -8482,7 +8481,7 @@ class StoreLayoutPagesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (page != null) {
-      _json["page"] = page.map((value) => value.toJson()).toList();
+      _json['page'] = page.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8509,14 +8508,14 @@ class StorePage {
   StorePage();
 
   StorePage.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("link")) {
-      link = (_json["link"] as core.List).cast<core.String>();
+    if (_json.containsKey('link')) {
+      link = (_json['link'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = (_json["name"] as core.List)
+    if (_json.containsKey('name')) {
+      name = (_json['name'] as core.List)
           .map<LocalizedText>((value) => LocalizedText.fromJson(value))
           .toList();
     }
@@ -8526,13 +8525,13 @@ class StorePage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (link != null) {
-      _json["link"] = link;
+      _json['link'] = link;
     }
     if (name != null) {
-      _json["name"] = name.map((value) => value.toJson()).toList();
+      _json['name'] = name.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8555,11 +8554,11 @@ class TokenPagination {
   TokenPagination();
 
   TokenPagination.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("previousPageToken")) {
-      previousPageToken = _json["previousPageToken"];
+    if (_json.containsKey('previousPageToken')) {
+      previousPageToken = _json['previousPageToken'];
     }
   }
 
@@ -8567,10 +8566,10 @@ class TokenPagination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (previousPageToken != null) {
-      _json["previousPageToken"] = previousPageToken;
+      _json['previousPageToken'] = previousPageToken;
     }
     return _json;
   }
@@ -8590,11 +8589,11 @@ class TrackInfo {
   TrackInfo();
 
   TrackInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("trackAlias")) {
-      trackAlias = _json["trackAlias"];
+    if (_json.containsKey('trackAlias')) {
+      trackAlias = _json['trackAlias'];
     }
-    if (_json.containsKey("trackId")) {
-      trackId = _json["trackId"];
+    if (_json.containsKey('trackId')) {
+      trackId = _json['trackId'];
     }
   }
 
@@ -8602,10 +8601,10 @@ class TrackInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (trackAlias != null) {
-      _json["trackAlias"] = trackAlias;
+      _json['trackAlias'] = trackAlias;
     }
     if (trackId != null) {
-      _json["trackId"] = trackId;
+      _json['trackId'] = trackId;
     }
     return _json;
   }
@@ -8662,23 +8661,23 @@ class User {
   User();
 
   User.fromJson(core.Map _json) {
-    if (_json.containsKey("accountIdentifier")) {
-      accountIdentifier = _json["accountIdentifier"];
+    if (_json.containsKey('accountIdentifier')) {
+      accountIdentifier = _json['accountIdentifier'];
     }
-    if (_json.containsKey("accountType")) {
-      accountType = _json["accountType"];
+    if (_json.containsKey('accountType')) {
+      accountType = _json['accountType'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("managementType")) {
-      managementType = _json["managementType"];
+    if (_json.containsKey('managementType')) {
+      managementType = _json['managementType'];
     }
-    if (_json.containsKey("primaryEmail")) {
-      primaryEmail = _json["primaryEmail"];
+    if (_json.containsKey('primaryEmail')) {
+      primaryEmail = _json['primaryEmail'];
     }
   }
 
@@ -8686,22 +8685,22 @@ class User {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountIdentifier != null) {
-      _json["accountIdentifier"] = accountIdentifier;
+      _json['accountIdentifier'] = accountIdentifier;
     }
     if (accountType != null) {
-      _json["accountType"] = accountType;
+      _json['accountType'] = accountType;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (managementType != null) {
-      _json["managementType"] = managementType;
+      _json['managementType'] = managementType;
     }
     if (primaryEmail != null) {
-      _json["primaryEmail"] = primaryEmail;
+      _json['primaryEmail'] = primaryEmail;
     }
     return _json;
   }
@@ -8714,8 +8713,8 @@ class UsersListResponse {
   UsersListResponse();
 
   UsersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("user")) {
-      user = (_json["user"] as core.List)
+    if (_json.containsKey('user')) {
+      user = (_json['user'] as core.List)
           .map<User>((value) => User.fromJson(value))
           .toList();
     }
@@ -8725,7 +8724,7 @@ class UsersListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (user != null) {
-      _json["user"] = user.map((value) => value.toJson()).toList();
+      _json['user'] = user.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8745,11 +8744,11 @@ class VariableSet {
   VariableSet();
 
   VariableSet.fromJson(core.Map _json) {
-    if (_json.containsKey("placeholder")) {
-      placeholder = _json["placeholder"];
+    if (_json.containsKey('placeholder')) {
+      placeholder = _json['placeholder'];
     }
-    if (_json.containsKey("userValue")) {
-      userValue = _json["userValue"];
+    if (_json.containsKey('userValue')) {
+      userValue = _json['userValue'];
     }
   }
 
@@ -8757,10 +8756,10 @@ class VariableSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (placeholder != null) {
-      _json["placeholder"] = placeholder;
+      _json['placeholder'] = placeholder;
     }
     if (userValue != null) {
-      _json["userValue"] = userValue;
+      _json['userValue'] = userValue;
     }
     return _json;
   }
@@ -8820,28 +8819,28 @@ class WebApp {
   WebApp();
 
   WebApp.fromJson(core.Map _json) {
-    if (_json.containsKey("displayMode")) {
-      displayMode = _json["displayMode"];
+    if (_json.containsKey('displayMode')) {
+      displayMode = _json['displayMode'];
     }
-    if (_json.containsKey("icons")) {
-      icons = (_json["icons"] as core.List)
+    if (_json.containsKey('icons')) {
+      icons = (_json['icons'] as core.List)
           .map<WebAppIcon>((value) => WebAppIcon.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("isPublished")) {
-      isPublished = _json["isPublished"];
+    if (_json.containsKey('isPublished')) {
+      isPublished = _json['isPublished'];
     }
-    if (_json.containsKey("startUrl")) {
-      startUrl = _json["startUrl"];
+    if (_json.containsKey('startUrl')) {
+      startUrl = _json['startUrl'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("versionCode")) {
-      versionCode = _json["versionCode"];
+    if (_json.containsKey('versionCode')) {
+      versionCode = _json['versionCode'];
     }
-    if (_json.containsKey("webAppId")) {
-      webAppId = _json["webAppId"];
+    if (_json.containsKey('webAppId')) {
+      webAppId = _json['webAppId'];
     }
   }
 
@@ -8849,25 +8848,25 @@ class WebApp {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayMode != null) {
-      _json["displayMode"] = displayMode;
+      _json['displayMode'] = displayMode;
     }
     if (icons != null) {
-      _json["icons"] = icons.map((value) => value.toJson()).toList();
+      _json['icons'] = icons.map((value) => value.toJson()).toList();
     }
     if (isPublished != null) {
-      _json["isPublished"] = isPublished;
+      _json['isPublished'] = isPublished;
     }
     if (startUrl != null) {
-      _json["startUrl"] = startUrl;
+      _json['startUrl'] = startUrl;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (versionCode != null) {
-      _json["versionCode"] = versionCode;
+      _json['versionCode'] = versionCode;
     }
     if (webAppId != null) {
-      _json["webAppId"] = webAppId;
+      _json['webAppId'] = webAppId;
     }
     return _json;
   }
@@ -8884,8 +8883,8 @@ class WebAppIcon {
   WebAppIcon();
 
   WebAppIcon.fromJson(core.Map _json) {
-    if (_json.containsKey("imageData")) {
-      imageData = _json["imageData"];
+    if (_json.containsKey('imageData')) {
+      imageData = _json['imageData'];
     }
   }
 
@@ -8893,7 +8892,7 @@ class WebAppIcon {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (imageData != null) {
-      _json["imageData"] = imageData;
+      _json['imageData'] = imageData;
     }
     return _json;
   }
@@ -8906,8 +8905,8 @@ class WebAppsListResponse {
   WebAppsListResponse();
 
   WebAppsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("webApp")) {
-      webApp = (_json["webApp"] as core.List)
+    if (_json.containsKey('webApp')) {
+      webApp = (_json['webApp'] as core.List)
           .map<WebApp>((value) => WebApp.fromJson(value))
           .toList();
     }
@@ -8917,7 +8916,7 @@ class WebAppsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (webApp != null) {
-      _json["webApp"] = webApp.map((value) => value.toJson()).toList();
+      _json['webApp'] = webApp.map((value) => value.toJson()).toList();
     }
     return _json;
   }

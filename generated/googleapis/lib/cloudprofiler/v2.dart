@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,23 +37,23 @@ const core.String USER_AGENT = 'dart-api-client cloudprofiler/v2';
 class CloudprofilerApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and write monitoring data for all of your Google and third-party
   /// Cloud and API projects
-  static const MonitoringScope = "https://www.googleapis.com/auth/monitoring";
+  static const MonitoringScope = 'https://www.googleapis.com/auth/monitoring';
 
   /// Publish metric data to your Google Cloud projects
   static const MonitoringWriteScope =
-      "https://www.googleapis.com/auth/monitoring.write";
+      'https://www.googleapis.com/auth/monitoring.write';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   CloudprofilerApi(http.Client client,
-      {core.String rootUrl = "https://cloudprofiler.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://cloudprofiler.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -118,10 +117,10 @@ class ProjectsProfilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -129,7 +128,7 @@ class ProjectsProfilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -176,10 +175,10 @@ class ProjectsProfilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' +
@@ -188,7 +187,7 @@ class ProjectsProfilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -242,20 +241,20 @@ class ProjectsProfilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -280,11 +279,11 @@ class CreateProfileRequest {
   CreateProfileRequest();
 
   CreateProfileRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deployment")) {
-      deployment = Deployment.fromJson(_json["deployment"]);
+    if (_json.containsKey('deployment')) {
+      deployment = Deployment.fromJson(_json['deployment']);
     }
-    if (_json.containsKey("profileType")) {
-      profileType = (_json["profileType"] as core.List).cast<core.String>();
+    if (_json.containsKey('profileType')) {
+      profileType = (_json['profileType'] as core.List).cast<core.String>();
     }
   }
 
@@ -292,10 +291,10 @@ class CreateProfileRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deployment != null) {
-      _json["deployment"] = deployment.toJson();
+      _json['deployment'] = deployment.toJson();
     }
     if (profileType != null) {
-      _json["profileType"] = profileType;
+      _json['profileType'] = profileType;
     }
     return _json;
   }
@@ -328,14 +327,14 @@ class Deployment {
   Deployment();
 
   Deployment.fromJson(core.Map _json) {
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
+    if (_json.containsKey('target')) {
+      target = _json['target'];
     }
   }
 
@@ -343,13 +342,13 @@ class Deployment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     if (target != null) {
-      _json["target"] = target;
+      _json['target'] = target;
     }
     return _json;
   }
@@ -384,7 +383,7 @@ class Profile {
 
   set profileBytesAsBytes(core.List<core.int> _bytes) {
     profileBytes =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Type of profile. For offline mode, this must be specified when creating
@@ -409,23 +408,23 @@ class Profile {
   Profile();
 
   Profile.fromJson(core.Map _json) {
-    if (_json.containsKey("deployment")) {
-      deployment = Deployment.fromJson(_json["deployment"]);
+    if (_json.containsKey('deployment')) {
+      deployment = Deployment.fromJson(_json['deployment']);
     }
-    if (_json.containsKey("duration")) {
-      duration = _json["duration"];
+    if (_json.containsKey('duration')) {
+      duration = _json['duration'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("profileBytes")) {
-      profileBytes = _json["profileBytes"];
+    if (_json.containsKey('profileBytes')) {
+      profileBytes = _json['profileBytes'];
     }
-    if (_json.containsKey("profileType")) {
-      profileType = _json["profileType"];
+    if (_json.containsKey('profileType')) {
+      profileType = _json['profileType'];
     }
   }
 
@@ -433,22 +432,22 @@ class Profile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deployment != null) {
-      _json["deployment"] = deployment.toJson();
+      _json['deployment'] = deployment.toJson();
     }
     if (duration != null) {
-      _json["duration"] = duration;
+      _json['duration'] = duration;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (profileBytes != null) {
-      _json["profileBytes"] = profileBytes;
+      _json['profileBytes'] = profileBytes;
     }
     if (profileType != null) {
-      _json["profileType"] = profileType;
+      _json['profileType'] = profileType;
     }
     return _json;
   }

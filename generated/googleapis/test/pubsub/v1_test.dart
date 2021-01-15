@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,8 +72,8 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.List<core.String> buildUnnamed409() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -104,8 +104,8 @@ void checkAcknowledgeRequest(api.AcknowledgeRequest o) {
 
 core.List<core.String> buildUnnamed410() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -120,10 +120,10 @@ api.Binding buildBinding() {
   var o = api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.bindingId = "foo";
+    o.bindingId = 'foo';
     o.condition = buildExpr();
     o.members = buildUnnamed410();
-    o.role = "foo";
+    o.role = 'foo';
   }
   buildCounterBinding--;
   return o;
@@ -142,15 +142,15 @@ void checkBinding(api.Binding o) {
 
 core.Map<core.String, core.String> buildUnnamed411() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed411(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterCreateSnapshotRequest = 0;
@@ -159,7 +159,7 @@ api.CreateSnapshotRequest buildCreateSnapshotRequest() {
   buildCounterCreateSnapshotRequest++;
   if (buildCounterCreateSnapshotRequest < 3) {
     o.labels = buildUnnamed411();
-    o.subscription = "foo";
+    o.subscription = 'foo';
   }
   buildCounterCreateSnapshotRequest--;
   return o;
@@ -179,7 +179,7 @@ api.DeadLetterPolicy buildDeadLetterPolicy() {
   var o = api.DeadLetterPolicy();
   buildCounterDeadLetterPolicy++;
   if (buildCounterDeadLetterPolicy < 3) {
-    o.deadLetterTopic = "foo";
+    o.deadLetterTopic = 'foo';
     o.maxDeliveryAttempts = 42;
   }
   buildCounterDeadLetterPolicy--;
@@ -230,7 +230,7 @@ api.ExpirationPolicy buildExpirationPolicy() {
   var o = api.ExpirationPolicy();
   buildCounterExpirationPolicy++;
   if (buildCounterExpirationPolicy < 3) {
-    o.ttl = "foo";
+    o.ttl = 'foo';
   }
   buildCounterExpirationPolicy--;
   return o;
@@ -249,10 +249,10 @@ api.Expr buildExpr() {
   var o = api.Expr();
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    o.description = "foo";
-    o.expression = "foo";
-    o.location = "foo";
-    o.title = "foo";
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
   }
   buildCounterExpr--;
   return o;
@@ -287,7 +287,7 @@ api.ListSnapshotsResponse buildListSnapshotsResponse() {
   var o = api.ListSnapshotsResponse();
   buildCounterListSnapshotsResponse++;
   if (buildCounterListSnapshotsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.snapshots = buildUnnamed412();
   }
   buildCounterListSnapshotsResponse--;
@@ -321,7 +321,7 @@ api.ListSubscriptionsResponse buildListSubscriptionsResponse() {
   var o = api.ListSubscriptionsResponse();
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.subscriptions = buildUnnamed413();
   }
   buildCounterListSubscriptionsResponse--;
@@ -339,8 +339,8 @@ void checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
 
 core.List<core.String> buildUnnamed414() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -355,7 +355,7 @@ api.ListTopicSnapshotsResponse buildListTopicSnapshotsResponse() {
   var o = api.ListTopicSnapshotsResponse();
   buildCounterListTopicSnapshotsResponse++;
   if (buildCounterListTopicSnapshotsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.snapshots = buildUnnamed414();
   }
   buildCounterListTopicSnapshotsResponse--;
@@ -373,8 +373,8 @@ void checkListTopicSnapshotsResponse(api.ListTopicSnapshotsResponse o) {
 
 core.List<core.String> buildUnnamed415() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -389,7 +389,7 @@ api.ListTopicSubscriptionsResponse buildListTopicSubscriptionsResponse() {
   var o = api.ListTopicSubscriptionsResponse();
   buildCounterListTopicSubscriptionsResponse++;
   if (buildCounterListTopicSubscriptionsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.subscriptions = buildUnnamed415();
   }
   buildCounterListTopicSubscriptionsResponse--;
@@ -423,7 +423,7 @@ api.ListTopicsResponse buildListTopicsResponse() {
   var o = api.ListTopicsResponse();
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.topics = buildUnnamed416();
   }
   buildCounterListTopicsResponse--;
@@ -441,8 +441,8 @@ void checkListTopicsResponse(api.ListTopicsResponse o) {
 
 core.List<core.String> buildUnnamed417() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -473,8 +473,8 @@ void checkMessageStoragePolicy(api.MessageStoragePolicy o) {
 
 core.List<core.String> buildUnnamed418() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -529,8 +529,8 @@ api.OidcToken buildOidcToken() {
   var o = api.OidcToken();
   buildCounterOidcToken++;
   if (buildCounterOidcToken < 3) {
-    o.audience = "foo";
-    o.serviceAccountEmail = "foo";
+    o.audience = 'foo';
+    o.serviceAccountEmail = 'foo';
   }
   buildCounterOidcToken--;
   return o;
@@ -564,7 +564,7 @@ api.Policy buildPolicy() {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
     o.bindings = buildUnnamed419();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.version = 42;
   }
   buildCounterPolicy--;
@@ -615,8 +615,8 @@ void checkPublishRequest(api.PublishRequest o) {
 
 core.List<core.String> buildUnnamed421() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -647,15 +647,15 @@ void checkPublishResponse(api.PublishResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed422() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed422(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterPubsubMessage = 0;
@@ -664,10 +664,10 @@ api.PubsubMessage buildPubsubMessage() {
   buildCounterPubsubMessage++;
   if (buildCounterPubsubMessage < 3) {
     o.attributes = buildUnnamed422();
-    o.data = "foo";
-    o.messageId = "foo";
-    o.orderingKey = "foo";
-    o.publishTime = "foo";
+    o.data = 'foo';
+    o.messageId = 'foo';
+    o.orderingKey = 'foo';
+    o.publishTime = 'foo';
   }
   buildCounterPubsubMessage--;
   return o;
@@ -740,15 +740,15 @@ void checkPullResponse(api.PullResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed424() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed424(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterPushConfig = 0;
@@ -758,7 +758,7 @@ api.PushConfig buildPushConfig() {
   if (buildCounterPushConfig < 3) {
     o.attributes = buildUnnamed424();
     o.oidcToken = buildOidcToken();
-    o.pushEndpoint = "foo";
+    o.pushEndpoint = 'foo';
   }
   buildCounterPushConfig--;
   return o;
@@ -779,7 +779,7 @@ api.ReceivedMessage buildReceivedMessage() {
   var o = api.ReceivedMessage();
   buildCounterReceivedMessage++;
   if (buildCounterReceivedMessage < 3) {
-    o.ackId = "foo";
+    o.ackId = 'foo';
     o.deliveryAttempt = 42;
     o.message = buildPubsubMessage();
   }
@@ -802,8 +802,8 @@ api.RetryPolicy buildRetryPolicy() {
   var o = api.RetryPolicy();
   buildCounterRetryPolicy++;
   if (buildCounterRetryPolicy < 3) {
-    o.maximumBackoff = "foo";
-    o.minimumBackoff = "foo";
+    o.maximumBackoff = 'foo';
+    o.minimumBackoff = 'foo';
   }
   buildCounterRetryPolicy--;
   return o;
@@ -823,8 +823,8 @@ api.SeekRequest buildSeekRequest() {
   var o = api.SeekRequest();
   buildCounterSeekRequest++;
   if (buildCounterSeekRequest < 3) {
-    o.snapshot = "foo";
-    o.time = "foo";
+    o.snapshot = 'foo';
+    o.time = 'foo';
   }
   buildCounterSeekRequest--;
   return o;
@@ -875,15 +875,15 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
 
 core.Map<core.String, core.String> buildUnnamed425() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed425(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterSnapshot = 0;
@@ -891,10 +891,10 @@ api.Snapshot buildSnapshot() {
   var o = api.Snapshot();
   buildCounterSnapshot++;
   if (buildCounterSnapshot < 3) {
-    o.expireTime = "foo";
+    o.expireTime = 'foo';
     o.labels = buildUnnamed425();
-    o.name = "foo";
-    o.topic = "foo";
+    o.name = 'foo';
+    o.topic = 'foo';
   }
   buildCounterSnapshot--;
   return o;
@@ -913,15 +913,15 @@ void checkSnapshot(api.Snapshot o) {
 
 core.Map<core.String, core.String> buildUnnamed426() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed426(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterSubscription = 0;
@@ -934,14 +934,14 @@ api.Subscription buildSubscription() {
     o.detached = true;
     o.enableMessageOrdering = true;
     o.expirationPolicy = buildExpirationPolicy();
-    o.filter = "foo";
+    o.filter = 'foo';
     o.labels = buildUnnamed426();
-    o.messageRetentionDuration = "foo";
-    o.name = "foo";
+    o.messageRetentionDuration = 'foo';
+    o.name = 'foo';
     o.pushConfig = buildPushConfig();
     o.retainAckedMessages = true;
     o.retryPolicy = buildRetryPolicy();
-    o.topic = "foo";
+    o.topic = 'foo';
   }
   buildCounterSubscription--;
   return o;
@@ -969,8 +969,8 @@ void checkSubscription(api.Subscription o) {
 
 core.List<core.String> buildUnnamed427() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1001,8 +1001,8 @@ void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
 
 core.List<core.String> buildUnnamed428() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1033,15 +1033,15 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed429() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed429(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterTopic = 0;
@@ -1049,10 +1049,10 @@ api.Topic buildTopic() {
   var o = api.Topic();
   buildCounterTopic++;
   if (buildCounterTopic < 3) {
-    o.kmsKeyName = "foo";
+    o.kmsKeyName = 'foo';
     o.labels = buildUnnamed429();
     o.messageStoragePolicy = buildMessageStoragePolicy();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterTopic--;
   return o;
@@ -1075,7 +1075,7 @@ api.UpdateSnapshotRequest buildUpdateSnapshotRequest() {
   buildCounterUpdateSnapshotRequest++;
   if (buildCounterUpdateSnapshotRequest < 3) {
     o.snapshot = buildSnapshot();
-    o.updateMask = "foo";
+    o.updateMask = 'foo';
   }
   buildCounterUpdateSnapshotRequest--;
   return o;
@@ -1096,7 +1096,7 @@ api.UpdateSubscriptionRequest buildUpdateSubscriptionRequest() {
   buildCounterUpdateSubscriptionRequest++;
   if (buildCounterUpdateSubscriptionRequest < 3) {
     o.subscription = buildSubscription();
-    o.updateMask = "foo";
+    o.updateMask = 'foo';
   }
   buildCounterUpdateSubscriptionRequest--;
   return o;
@@ -1117,7 +1117,7 @@ api.UpdateTopicRequest buildUpdateTopicRequest() {
   buildCounterUpdateTopicRequest++;
   if (buildCounterUpdateTopicRequest < 3) {
     o.topic = buildTopic();
-    o.updateMask = "foo";
+    o.updateMask = 'foo';
   }
   buildCounterUpdateTopicRequest--;
   return o;
@@ -1133,310 +1133,310 @@ void checkUpdateTopicRequest(api.UpdateTopicRequest o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AcknowledgeRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AcknowledgeRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAcknowledgeRequest();
       var od = api.AcknowledgeRequest.fromJson(o.toJson());
       checkAcknowledgeRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Binding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Binding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od);
     });
   });
 
-  unittest.group("obj-schema-CreateSnapshotRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateSnapshotRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateSnapshotRequest();
       var od = api.CreateSnapshotRequest.fromJson(o.toJson());
       checkCreateSnapshotRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeadLetterPolicy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeadLetterPolicy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeadLetterPolicy();
       var od = api.DeadLetterPolicy.fromJson(o.toJson());
       checkDeadLetterPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-DetachSubscriptionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DetachSubscriptionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDetachSubscriptionResponse();
       var od = api.DetachSubscriptionResponse.fromJson(o.toJson());
       checkDetachSubscriptionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-ExpirationPolicy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExpirationPolicy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExpirationPolicy();
       var od = api.ExpirationPolicy.fromJson(o.toJson());
       checkExpirationPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-Expr", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Expr', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od);
     });
   });
 
-  unittest.group("obj-schema-ListSnapshotsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListSnapshotsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListSnapshotsResponse();
       var od = api.ListSnapshotsResponse.fromJson(o.toJson());
       checkListSnapshotsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListSubscriptionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListSubscriptionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListSubscriptionsResponse();
       var od = api.ListSubscriptionsResponse.fromJson(o.toJson());
       checkListSubscriptionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTopicSnapshotsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTopicSnapshotsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTopicSnapshotsResponse();
       var od = api.ListTopicSnapshotsResponse.fromJson(o.toJson());
       checkListTopicSnapshotsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTopicSubscriptionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTopicSubscriptionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTopicSubscriptionsResponse();
       var od = api.ListTopicSubscriptionsResponse.fromJson(o.toJson());
       checkListTopicSubscriptionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTopicsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTopicsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTopicsResponse();
       var od = api.ListTopicsResponse.fromJson(o.toJson());
       checkListTopicsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-MessageStoragePolicy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MessageStoragePolicy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMessageStoragePolicy();
       var od = api.MessageStoragePolicy.fromJson(o.toJson());
       checkMessageStoragePolicy(od);
     });
   });
 
-  unittest.group("obj-schema-ModifyAckDeadlineRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ModifyAckDeadlineRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildModifyAckDeadlineRequest();
       var od = api.ModifyAckDeadlineRequest.fromJson(o.toJson());
       checkModifyAckDeadlineRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ModifyPushConfigRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ModifyPushConfigRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildModifyPushConfigRequest();
       var od = api.ModifyPushConfigRequest.fromJson(o.toJson());
       checkModifyPushConfigRequest(od);
     });
   });
 
-  unittest.group("obj-schema-OidcToken", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OidcToken', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOidcToken();
       var od = api.OidcToken.fromJson(o.toJson());
       checkOidcToken(od);
     });
   });
 
-  unittest.group("obj-schema-Policy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Policy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-PublishRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PublishRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPublishRequest();
       var od = api.PublishRequest.fromJson(o.toJson());
       checkPublishRequest(od);
     });
   });
 
-  unittest.group("obj-schema-PublishResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PublishResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPublishResponse();
       var od = api.PublishResponse.fromJson(o.toJson());
       checkPublishResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PubsubMessage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PubsubMessage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPubsubMessage();
       var od = api.PubsubMessage.fromJson(o.toJson());
       checkPubsubMessage(od);
     });
   });
 
-  unittest.group("obj-schema-PullRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PullRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPullRequest();
       var od = api.PullRequest.fromJson(o.toJson());
       checkPullRequest(od);
     });
   });
 
-  unittest.group("obj-schema-PullResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PullResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPullResponse();
       var od = api.PullResponse.fromJson(o.toJson());
       checkPullResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PushConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PushConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPushConfig();
       var od = api.PushConfig.fromJson(o.toJson());
       checkPushConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ReceivedMessage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReceivedMessage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReceivedMessage();
       var od = api.ReceivedMessage.fromJson(o.toJson());
       checkReceivedMessage(od);
     });
   });
 
-  unittest.group("obj-schema-RetryPolicy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RetryPolicy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRetryPolicy();
       var od = api.RetryPolicy.fromJson(o.toJson());
       checkRetryPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-SeekRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SeekRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSeekRequest();
       var od = api.SeekRequest.fromJson(o.toJson());
       checkSeekRequest(od);
     });
   });
 
-  unittest.group("obj-schema-SeekResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SeekResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSeekResponse();
       var od = api.SeekResponse.fromJson(o.toJson());
       checkSeekResponse(od);
     });
   });
 
-  unittest.group("obj-schema-SetIamPolicyRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SetIamPolicyRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Snapshot", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Snapshot', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSnapshot();
       var od = api.Snapshot.fromJson(o.toJson());
       checkSnapshot(od);
     });
   });
 
-  unittest.group("obj-schema-Subscription", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Subscription', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubscription();
       var od = api.Subscription.fromJson(o.toJson());
       checkSubscription(od);
     });
   });
 
-  unittest.group("obj-schema-TestIamPermissionsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestIamPermissionsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-TestIamPermissionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestIamPermissionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Topic", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Topic', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTopic();
       var od = api.Topic.fromJson(o.toJson());
       checkTopic(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateSnapshotRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateSnapshotRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateSnapshotRequest();
       var od = api.UpdateSnapshotRequest.fromJson(o.toJson());
       checkUpdateSnapshotRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateSubscriptionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateSubscriptionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateSubscriptionRequest();
       var od = api.UpdateSubscriptionRequest.fromJson(o.toJson());
       checkUpdateSubscriptionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateTopicRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateTopicRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateTopicRequest();
       var od = api.UpdateTopicRequest.fromJson(o.toJson());
       checkUpdateTopicRequest(od);
     });
   });
 
-  unittest.group("resource-ProjectsSnapshotsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsSnapshotsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsSnapshotsResourceApi res =
           api.PubsubApi(mock).projects.snapshots;
       var arg_request = buildCreateSnapshotRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CreateSnapshotRequest.fromJson(json);
         checkCreateSnapshotRequest(obj);
@@ -1459,8 +1459,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1470,7 +1470,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSnapshot());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1482,12 +1482,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsSnapshotsResourceApi res =
           api.PubsubApi(mock).projects.snapshots;
-      var arg_snapshot = "foo";
-      var arg_$fields = "foo";
+      var arg_snapshot = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1507,8 +1507,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1518,7 +1518,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1530,12 +1530,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsSnapshotsResourceApi res =
           api.PubsubApi(mock).projects.snapshots;
-      var arg_snapshot = "foo";
-      var arg_$fields = "foo";
+      var arg_snapshot = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1555,8 +1555,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1566,7 +1566,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSnapshot());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1578,13 +1578,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsSnapshotsResourceApi res =
           api.PubsubApi(mock).projects.snapshots;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1604,8 +1604,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1618,7 +1618,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1633,14 +1633,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsSnapshotsResourceApi res =
           api.PubsubApi(mock).projects.snapshots;
-      var arg_project = "foo";
-      var arg_pageToken = "foo";
+      var arg_project = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1660,8 +1660,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1675,7 +1675,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListSnapshotsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1690,13 +1690,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsSnapshotsResourceApi res =
           api.PubsubApi(mock).projects.snapshots;
       var arg_request = buildUpdateSnapshotRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UpdateSnapshotRequest.fromJson(json);
         checkUpdateSnapshotRequest(obj);
@@ -1719,8 +1719,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1730,7 +1730,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSnapshot());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1742,13 +1742,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsSnapshotsResourceApi res =
           api.PubsubApi(mock).projects.snapshots;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -1771,8 +1771,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1782,7 +1782,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1794,13 +1794,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsSnapshotsResourceApi res =
           api.PubsubApi(mock).projects.snapshots;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -1823,8 +1823,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1834,7 +1834,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1847,14 +1847,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsSubscriptionsResourceApi", () {
-    unittest.test("method--acknowledge", () {
+  unittest.group('resource-ProjectsSubscriptionsResourceApi', () {
+    unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildAcknowledgeRequest();
-      var arg_subscription = "foo";
-      var arg_$fields = "foo";
+      var arg_subscription = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AcknowledgeRequest.fromJson(json);
         checkAcknowledgeRequest(obj);
@@ -1877,8 +1877,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1888,7 +1888,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1900,13 +1900,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildSubscription();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Subscription.fromJson(json);
         checkSubscription(obj);
@@ -1929,8 +1929,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1940,7 +1940,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1952,12 +1952,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
-      var arg_subscription = "foo";
-      var arg_$fields = "foo";
+      var arg_subscription = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1977,8 +1977,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1988,7 +1988,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2000,12 +2000,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--detach", () {
+    unittest.test('method--detach', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
-      var arg_subscription = "foo";
-      var arg_$fields = "foo";
+      var arg_subscription = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2025,8 +2025,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2036,7 +2036,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDetachSubscriptionResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2048,12 +2048,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
-      var arg_subscription = "foo";
-      var arg_$fields = "foo";
+      var arg_subscription = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2073,8 +2073,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2084,7 +2084,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2096,13 +2096,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2122,8 +2122,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2136,7 +2136,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2151,14 +2151,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
-      var arg_project = "foo";
+      var arg_project = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2178,8 +2178,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2193,7 +2193,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListSubscriptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2208,13 +2208,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--modifyAckDeadline", () {
+    unittest.test('method--modifyAckDeadline', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildModifyAckDeadlineRequest();
-      var arg_subscription = "foo";
-      var arg_$fields = "foo";
+      var arg_subscription = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ModifyAckDeadlineRequest.fromJson(json);
         checkModifyAckDeadlineRequest(obj);
@@ -2237,8 +2237,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2248,7 +2248,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2261,13 +2261,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--modifyPushConfig", () {
+    unittest.test('method--modifyPushConfig', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildModifyPushConfigRequest();
-      var arg_subscription = "foo";
-      var arg_$fields = "foo";
+      var arg_subscription = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ModifyPushConfigRequest.fromJson(json);
         checkModifyPushConfigRequest(obj);
@@ -2290,8 +2290,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2301,7 +2301,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2313,13 +2313,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildUpdateSubscriptionRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UpdateSubscriptionRequest.fromJson(json);
         checkUpdateSubscriptionRequest(obj);
@@ -2342,8 +2342,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2353,7 +2353,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2365,13 +2365,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--pull", () {
+    unittest.test('method--pull', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildPullRequest();
-      var arg_subscription = "foo";
-      var arg_$fields = "foo";
+      var arg_subscription = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PullRequest.fromJson(json);
         checkPullRequest(obj);
@@ -2394,8 +2394,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2405,7 +2405,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPullResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2417,13 +2417,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--seek", () {
+    unittest.test('method--seek', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildSeekRequest();
-      var arg_subscription = "foo";
-      var arg_$fields = "foo";
+      var arg_subscription = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SeekRequest.fromJson(json);
         checkSeekRequest(obj);
@@ -2446,8 +2446,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2457,7 +2457,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSeekResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2469,13 +2469,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -2498,8 +2498,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2509,7 +2509,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2521,13 +2521,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -2550,8 +2550,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2561,7 +2561,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2574,13 +2574,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsTopicsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsTopicsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildTopic();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Topic.fromJson(json);
         checkTopic(obj);
@@ -2603,8 +2603,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2614,7 +2614,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTopic());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2626,11 +2626,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
-      var arg_topic = "foo";
-      var arg_$fields = "foo";
+      var arg_topic = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2650,8 +2650,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2661,7 +2661,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2673,11 +2673,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
-      var arg_topic = "foo";
-      var arg_$fields = "foo";
+      var arg_topic = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2697,8 +2697,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2708,7 +2708,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTopic());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2720,12 +2720,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2745,8 +2745,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2759,7 +2759,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2774,13 +2774,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
-      var arg_project = "foo";
+      var arg_project = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2800,8 +2800,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2815,7 +2815,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTopicsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2830,12 +2830,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildUpdateTopicRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UpdateTopicRequest.fromJson(json);
         checkUpdateTopicRequest(obj);
@@ -2858,8 +2858,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2869,7 +2869,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTopic());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2881,12 +2881,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--publish", () {
+    unittest.test('method--publish', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildPublishRequest();
-      var arg_topic = "foo";
-      var arg_$fields = "foo";
+      var arg_topic = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PublishRequest.fromJson(json);
         checkPublishRequest(obj);
@@ -2909,8 +2909,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2920,7 +2920,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPublishResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2932,12 +2932,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -2960,8 +2960,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2971,7 +2971,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2983,12 +2983,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -3011,8 +3011,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3022,7 +3022,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3035,15 +3035,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsTopicsSnapshotsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-ProjectsTopicsSnapshotsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsSnapshotsResourceApi res =
           api.PubsubApi(mock).projects.topics.snapshots;
-      var arg_topic = "foo";
+      var arg_topic = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3063,8 +3063,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3078,7 +3078,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTopicSnapshotsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3094,15 +3094,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsTopicsSubscriptionsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-ProjectsTopicsSubscriptionsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsTopicsSubscriptionsResourceApi res =
           api.PubsubApi(mock).projects.topics.subscriptions;
-      var arg_topic = "foo";
-      var arg_pageToken = "foo";
+      var arg_topic = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3122,8 +3122,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3137,7 +3137,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTopicSubscriptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,7 +37,7 @@ const core.String USER_AGENT = 'dart-api-client gamesManagement/v1management';
 /// from the Google Play Game service.
 class GamesManagementApi {
   /// Create, edit, and delete your Google Play Games activity
-  static const GamesScope = "https://www.googleapis.com/auth/games";
+  static const GamesScope = 'https://www.googleapis.com/auth/games';
 
   final commons.ApiRequester _requester;
 
@@ -51,8 +50,8 @@ class GamesManagementApi {
   ScoresResourceApi get scores => ScoresResourceApi(_requester);
 
   GamesManagementApi(http.Client client,
-      {core.String rootUrl = "https://gamesmanagement.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://gamesmanagement.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -92,10 +91,10 @@ class AchievementsResourceApi {
     core.String _body;
 
     if (achievementId == null) {
-      throw core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError('Parameter achievementId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1management/achievements/' +
@@ -104,7 +103,7 @@ class AchievementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -141,14 +140,14 @@ class AchievementsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1management/achievements/reset';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -182,7 +181,7 @@ class AchievementsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -191,7 +190,7 @@ class AchievementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -229,10 +228,10 @@ class AchievementsResourceApi {
     core.String _body;
 
     if (achievementId == null) {
-      throw core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError('Parameter achievementId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -243,7 +242,7 @@ class AchievementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -284,7 +283,7 @@ class AchievementsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -293,7 +292,7 @@ class AchievementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -347,16 +346,16 @@ class ApplicationsResourceApi {
     core.String _body;
 
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1management/applications/' +
@@ -365,7 +364,7 @@ class ApplicationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -409,10 +408,10 @@ class EventsResourceApi {
     core.String _body;
 
     if (eventId == null) {
-      throw core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError('Parameter eventId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -423,7 +422,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -458,7 +457,7 @@ class EventsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -467,7 +466,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -501,7 +500,7 @@ class EventsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -510,7 +509,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -548,10 +547,10 @@ class EventsResourceApi {
     core.String _body;
 
     if (eventId == null) {
-      throw core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError('Parameter eventId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -562,7 +561,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -603,7 +602,7 @@ class EventsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -612,7 +611,7 @@ class EventsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -660,13 +659,13 @@ class PlayersResourceApi {
     core.String _body;
 
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if (playerId == null) {
-      throw core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError('Parameter playerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -678,7 +677,7 @@ class PlayersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -720,13 +719,13 @@ class PlayersResourceApi {
     core.String _body;
 
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if (playerId == null) {
-      throw core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError('Parameter playerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -738,7 +737,7 @@ class PlayersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -784,10 +783,10 @@ class ScoresResourceApi {
     core.String _body;
 
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1management/leaderboards/' +
@@ -796,7 +795,7 @@ class ScoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -833,14 +832,14 @@ class ScoresResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1management/scores/reset';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -874,7 +873,7 @@ class ScoresResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -883,7 +882,7 @@ class ScoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -921,10 +920,10 @@ class ScoresResourceApi {
     core.String _body;
 
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -935,7 +934,7 @@ class ScoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -976,7 +975,7 @@ class ScoresResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -985,7 +984,7 @@ class ScoresResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1008,11 +1007,11 @@ class AchievementResetAllResponse {
   AchievementResetAllResponse();
 
   AchievementResetAllResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<AchievementResetResponse>(
               (value) => AchievementResetResponse.fromJson(value))
           .toList();
@@ -1023,10 +1022,10 @@ class AchievementResetAllResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1043,12 +1042,12 @@ class AchievementResetMultipleForAllRequest {
   AchievementResetMultipleForAllRequest();
 
   AchievementResetMultipleForAllRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("achievement_ids")) {
+    if (_json.containsKey('achievement_ids')) {
       achievementIds =
-          (_json["achievement_ids"] as core.List).cast<core.String>();
+          (_json['achievement_ids'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -1056,10 +1055,10 @@ class AchievementResetMultipleForAllRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (achievementIds != null) {
-      _json["achievement_ids"] = achievementIds;
+      _json['achievement_ids'] = achievementIds;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -1086,17 +1085,17 @@ class AchievementResetResponse {
   AchievementResetResponse();
 
   AchievementResetResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("currentState")) {
-      currentState = _json["currentState"];
+    if (_json.containsKey('currentState')) {
+      currentState = _json['currentState'];
     }
-    if (_json.containsKey("definitionId")) {
-      definitionId = _json["definitionId"];
+    if (_json.containsKey('definitionId')) {
+      definitionId = _json['definitionId'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("updateOccurred")) {
-      updateOccurred = _json["updateOccurred"];
+    if (_json.containsKey('updateOccurred')) {
+      updateOccurred = _json['updateOccurred'];
     }
   }
 
@@ -1104,16 +1103,16 @@ class AchievementResetResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentState != null) {
-      _json["currentState"] = currentState;
+      _json['currentState'] = currentState;
     }
     if (definitionId != null) {
-      _json["definitionId"] = definitionId;
+      _json['definitionId'] = definitionId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (updateOccurred != null) {
-      _json["updateOccurred"] = updateOccurred;
+      _json['updateOccurred'] = updateOccurred;
     }
     return _json;
   }
@@ -1131,11 +1130,11 @@ class EventsResetMultipleForAllRequest {
   EventsResetMultipleForAllRequest();
 
   EventsResetMultipleForAllRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("event_ids")) {
-      eventIds = (_json["event_ids"] as core.List).cast<core.String>();
+    if (_json.containsKey('event_ids')) {
+      eventIds = (_json['event_ids'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -1143,10 +1142,10 @@ class EventsResetMultipleForAllRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (eventIds != null) {
-      _json["event_ids"] = eventIds;
+      _json['event_ids'] = eventIds;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -1171,17 +1170,17 @@ class GamesPlayerExperienceInfoResource {
   GamesPlayerExperienceInfoResource();
 
   GamesPlayerExperienceInfoResource.fromJson(core.Map _json) {
-    if (_json.containsKey("currentExperiencePoints")) {
-      currentExperiencePoints = _json["currentExperiencePoints"];
+    if (_json.containsKey('currentExperiencePoints')) {
+      currentExperiencePoints = _json['currentExperiencePoints'];
     }
-    if (_json.containsKey("currentLevel")) {
-      currentLevel = GamesPlayerLevelResource.fromJson(_json["currentLevel"]);
+    if (_json.containsKey('currentLevel')) {
+      currentLevel = GamesPlayerLevelResource.fromJson(_json['currentLevel']);
     }
-    if (_json.containsKey("lastLevelUpTimestampMillis")) {
-      lastLevelUpTimestampMillis = _json["lastLevelUpTimestampMillis"];
+    if (_json.containsKey('lastLevelUpTimestampMillis')) {
+      lastLevelUpTimestampMillis = _json['lastLevelUpTimestampMillis'];
     }
-    if (_json.containsKey("nextLevel")) {
-      nextLevel = GamesPlayerLevelResource.fromJson(_json["nextLevel"]);
+    if (_json.containsKey('nextLevel')) {
+      nextLevel = GamesPlayerLevelResource.fromJson(_json['nextLevel']);
     }
   }
 
@@ -1189,16 +1188,16 @@ class GamesPlayerExperienceInfoResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentExperiencePoints != null) {
-      _json["currentExperiencePoints"] = currentExperiencePoints;
+      _json['currentExperiencePoints'] = currentExperiencePoints;
     }
     if (currentLevel != null) {
-      _json["currentLevel"] = currentLevel.toJson();
+      _json['currentLevel'] = currentLevel.toJson();
     }
     if (lastLevelUpTimestampMillis != null) {
-      _json["lastLevelUpTimestampMillis"] = lastLevelUpTimestampMillis;
+      _json['lastLevelUpTimestampMillis'] = lastLevelUpTimestampMillis;
     }
     if (nextLevel != null) {
-      _json["nextLevel"] = nextLevel.toJson();
+      _json['nextLevel'] = nextLevel.toJson();
     }
     return _json;
   }
@@ -1218,14 +1217,14 @@ class GamesPlayerLevelResource {
   GamesPlayerLevelResource();
 
   GamesPlayerLevelResource.fromJson(core.Map _json) {
-    if (_json.containsKey("level")) {
-      level = _json["level"];
+    if (_json.containsKey('level')) {
+      level = _json['level'];
     }
-    if (_json.containsKey("maxExperiencePoints")) {
-      maxExperiencePoints = _json["maxExperiencePoints"];
+    if (_json.containsKey('maxExperiencePoints')) {
+      maxExperiencePoints = _json['maxExperiencePoints'];
     }
-    if (_json.containsKey("minExperiencePoints")) {
-      minExperiencePoints = _json["minExperiencePoints"];
+    if (_json.containsKey('minExperiencePoints')) {
+      minExperiencePoints = _json['minExperiencePoints'];
     }
   }
 
@@ -1233,13 +1232,13 @@ class GamesPlayerLevelResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (level != null) {
-      _json["level"] = level;
+      _json['level'] = level;
     }
     if (maxExperiencePoints != null) {
-      _json["maxExperiencePoints"] = maxExperiencePoints;
+      _json['maxExperiencePoints'] = maxExperiencePoints;
     }
     if (minExperiencePoints != null) {
-      _json["minExperiencePoints"] = minExperiencePoints;
+      _json['minExperiencePoints'] = minExperiencePoints;
     }
     return _json;
   }
@@ -1260,14 +1259,14 @@ class HiddenPlayer {
   HiddenPlayer();
 
   HiddenPlayer.fromJson(core.Map _json) {
-    if (_json.containsKey("hiddenTimeMillis")) {
-      hiddenTimeMillis = _json["hiddenTimeMillis"];
+    if (_json.containsKey('hiddenTimeMillis')) {
+      hiddenTimeMillis = _json['hiddenTimeMillis'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("player")) {
-      player = Player.fromJson(_json["player"]);
+    if (_json.containsKey('player')) {
+      player = Player.fromJson(_json['player']);
     }
   }
 
@@ -1275,13 +1274,13 @@ class HiddenPlayer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hiddenTimeMillis != null) {
-      _json["hiddenTimeMillis"] = hiddenTimeMillis;
+      _json['hiddenTimeMillis'] = hiddenTimeMillis;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (player != null) {
-      _json["player"] = player.toJson();
+      _json['player'] = player.toJson();
     }
     return _json;
   }
@@ -1302,16 +1301,16 @@ class HiddenPlayerList {
   HiddenPlayerList();
 
   HiddenPlayerList.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<HiddenPlayer>((value) => HiddenPlayer.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1319,13 +1318,13 @@ class HiddenPlayerList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1345,11 +1344,11 @@ class PlayerName {
   PlayerName();
 
   PlayerName.fromJson(core.Map _json) {
-    if (_json.containsKey("familyName")) {
-      familyName = _json["familyName"];
+    if (_json.containsKey('familyName')) {
+      familyName = _json['familyName'];
     }
-    if (_json.containsKey("givenName")) {
-      givenName = _json["givenName"];
+    if (_json.containsKey('givenName')) {
+      givenName = _json['givenName'];
     }
   }
 
@@ -1357,10 +1356,10 @@ class PlayerName {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (familyName != null) {
-      _json["familyName"] = familyName;
+      _json['familyName'] = familyName;
     }
     if (givenName != null) {
-      _json["givenName"] = givenName;
+      _json['givenName'] = givenName;
     }
     return _json;
   }
@@ -1410,39 +1409,39 @@ class Player {
   Player();
 
   Player.fromJson(core.Map _json) {
-    if (_json.containsKey("avatarImageUrl")) {
-      avatarImageUrl = _json["avatarImageUrl"];
+    if (_json.containsKey('avatarImageUrl')) {
+      avatarImageUrl = _json['avatarImageUrl'];
     }
-    if (_json.containsKey("bannerUrlLandscape")) {
-      bannerUrlLandscape = _json["bannerUrlLandscape"];
+    if (_json.containsKey('bannerUrlLandscape')) {
+      bannerUrlLandscape = _json['bannerUrlLandscape'];
     }
-    if (_json.containsKey("bannerUrlPortrait")) {
-      bannerUrlPortrait = _json["bannerUrlPortrait"];
+    if (_json.containsKey('bannerUrlPortrait')) {
+      bannerUrlPortrait = _json['bannerUrlPortrait'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("experienceInfo")) {
+    if (_json.containsKey('experienceInfo')) {
       experienceInfo =
-          GamesPlayerExperienceInfoResource.fromJson(_json["experienceInfo"]);
+          GamesPlayerExperienceInfoResource.fromJson(_json['experienceInfo']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = PlayerName.fromJson(_json["name"]);
+    if (_json.containsKey('name')) {
+      name = PlayerName.fromJson(_json['name']);
     }
-    if (_json.containsKey("originalPlayerId")) {
-      originalPlayerId = _json["originalPlayerId"];
+    if (_json.containsKey('originalPlayerId')) {
+      originalPlayerId = _json['originalPlayerId'];
     }
-    if (_json.containsKey("playerId")) {
-      playerId = _json["playerId"];
+    if (_json.containsKey('playerId')) {
+      playerId = _json['playerId'];
     }
-    if (_json.containsKey("profileSettings")) {
-      profileSettings = ProfileSettings.fromJson(_json["profileSettings"]);
+    if (_json.containsKey('profileSettings')) {
+      profileSettings = ProfileSettings.fromJson(_json['profileSettings']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1450,37 +1449,37 @@ class Player {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (avatarImageUrl != null) {
-      _json["avatarImageUrl"] = avatarImageUrl;
+      _json['avatarImageUrl'] = avatarImageUrl;
     }
     if (bannerUrlLandscape != null) {
-      _json["bannerUrlLandscape"] = bannerUrlLandscape;
+      _json['bannerUrlLandscape'] = bannerUrlLandscape;
     }
     if (bannerUrlPortrait != null) {
-      _json["bannerUrlPortrait"] = bannerUrlPortrait;
+      _json['bannerUrlPortrait'] = bannerUrlPortrait;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (experienceInfo != null) {
-      _json["experienceInfo"] = experienceInfo.toJson();
+      _json['experienceInfo'] = experienceInfo.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name.toJson();
+      _json['name'] = name.toJson();
     }
     if (originalPlayerId != null) {
-      _json["originalPlayerId"] = originalPlayerId;
+      _json['originalPlayerId'] = originalPlayerId;
     }
     if (playerId != null) {
-      _json["playerId"] = playerId;
+      _json['playerId'] = playerId;
     }
     if (profileSettings != null) {
-      _json["profileSettings"] = profileSettings.toJson();
+      _json['profileSettings'] = profileSettings.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1498,11 +1497,11 @@ class PlayerScoreResetAllResponse {
   PlayerScoreResetAllResponse();
 
   PlayerScoreResetAllResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<PlayerScoreResetResponse>(
               (value) => PlayerScoreResetResponse.fromJson(value))
           .toList();
@@ -1513,10 +1512,10 @@ class PlayerScoreResetAllResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1539,15 +1538,15 @@ class PlayerScoreResetResponse {
   PlayerScoreResetResponse();
 
   PlayerScoreResetResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("definitionId")) {
-      definitionId = _json["definitionId"];
+    if (_json.containsKey('definitionId')) {
+      definitionId = _json['definitionId'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("resetScoreTimeSpans")) {
+    if (_json.containsKey('resetScoreTimeSpans')) {
       resetScoreTimeSpans =
-          (_json["resetScoreTimeSpans"] as core.List).cast<core.String>();
+          (_json['resetScoreTimeSpans'] as core.List).cast<core.String>();
     }
   }
 
@@ -1555,13 +1554,13 @@ class PlayerScoreResetResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (definitionId != null) {
-      _json["definitionId"] = definitionId;
+      _json['definitionId'] = definitionId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (resetScoreTimeSpans != null) {
-      _json["resetScoreTimeSpans"] = resetScoreTimeSpans;
+      _json['resetScoreTimeSpans'] = resetScoreTimeSpans;
     }
     return _json;
   }
@@ -1577,11 +1576,11 @@ class ProfileSettings {
   ProfileSettings();
 
   ProfileSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("profileVisible")) {
-      profileVisible = _json["profileVisible"];
+    if (_json.containsKey('profileVisible')) {
+      profileVisible = _json['profileVisible'];
     }
   }
 
@@ -1589,10 +1588,10 @@ class ProfileSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (profileVisible != null) {
-      _json["profileVisible"] = profileVisible;
+      _json['profileVisible'] = profileVisible;
     }
     return _json;
   }
@@ -1609,12 +1608,12 @@ class ScoresResetMultipleForAllRequest {
   ScoresResetMultipleForAllRequest();
 
   ScoresResetMultipleForAllRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("leaderboard_ids")) {
+    if (_json.containsKey('leaderboard_ids')) {
       leaderboardIds =
-          (_json["leaderboard_ids"] as core.List).cast<core.String>();
+          (_json['leaderboard_ids'] as core.List).cast<core.String>();
     }
   }
 
@@ -1622,10 +1621,10 @@ class ScoresResetMultipleForAllRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (leaderboardIds != null) {
-      _json["leaderboard_ids"] = leaderboardIds;
+      _json['leaderboard_ids'] = leaderboardIds;
     }
     return _json;
   }

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -91,10 +91,10 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1Claim
   var o = api.GoogleFactcheckingFactchecktoolsV1alpha1Claim();
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim < 3) {
-    o.claimDate = "foo";
+    o.claimDate = 'foo';
     o.claimReview = buildUnnamed6111();
-    o.claimant = "foo";
-    o.text = "foo";
+    o.claimant = 'foo';
+    o.text = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim--;
   return o;
@@ -118,10 +118,10 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor
   var o = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor < 3) {
-    o.imageUrl = "foo";
-    o.jobTitle = "foo";
-    o.name = "foo";
-    o.sameAs = "foo";
+    o.imageUrl = 'foo';
+    o.jobTitle = 'foo';
+    o.name = 'foo';
+    o.sameAs = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor--;
   return o;
@@ -146,10 +146,10 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating < 3) {
     o.bestRating = 42;
-    o.imageUrl = "foo";
-    o.ratingExplanation = "foo";
+    o.imageUrl = 'foo';
+    o.ratingExplanation = 'foo';
     o.ratingValue = 42;
-    o.textualRating = "foo";
+    o.textualRating = 'foo';
     o.worstRating = 42;
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating--;
@@ -176,12 +176,12 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview
   var o = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview();
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview < 3) {
-    o.languageCode = "foo";
+    o.languageCode = 'foo';
     o.publisher = buildGoogleFactcheckingFactchecktoolsV1alpha1Publisher();
-    o.reviewDate = "foo";
-    o.textualRating = "foo";
-    o.title = "foo";
-    o.url = "foo";
+    o.reviewDate = 'foo';
+    o.textualRating = 'foo';
+    o.title = 'foo';
+    o.url = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview--;
   return o;
@@ -209,8 +209,8 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor <
       3) {
-    o.imageUrl = "foo";
-    o.name = "foo";
+    o.imageUrl = 'foo';
+    o.name = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor--;
   return o;
@@ -229,8 +229,8 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(
 
 core.List<core.String> buildUnnamed6112() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -250,12 +250,12 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
       3) {
     o.claimAppearances = buildUnnamed6112();
     o.claimAuthor = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
-    o.claimDate = "foo";
-    o.claimFirstAppearance = "foo";
-    o.claimLocation = "foo";
-    o.claimReviewed = "foo";
+    o.claimDate = 'foo';
+    o.claimFirstAppearance = 'foo';
+    o.claimLocation = 'foo';
+    o.claimReviewed = 'foo';
     o.rating = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating();
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup--;
   return o;
@@ -306,10 +306,10 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
     o.claimReviewAuthor =
         buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
     o.claimReviewMarkups = buildUnnamed6113();
-    o.name = "foo";
-    o.pageUrl = "foo";
-    o.publishDate = "foo";
-    o.versionId = "foo";
+    o.name = 'foo';
+    o.pageUrl = 'foo';
+    o.publishDate = 'foo';
+    o.versionId = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage--;
   return o;
@@ -357,7 +357,7 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse <
       3) {
     o.claims = buildUnnamed6114();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse--;
   return o;
@@ -402,7 +402,7 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse <
       3) {
     o.claimReviewMarkupPages = buildUnnamed6115();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse--;
   return o;
@@ -426,8 +426,8 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher
   var o = api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher();
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Publisher++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Publisher < 3) {
-    o.name = "foo";
-    o.site = "foo";
+    o.name = 'foo';
+    o.site = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Publisher--;
   return o;
@@ -459,9 +459,9 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
 }
 
 void main() {
-  unittest.group("obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1Claim",
+  unittest.group('obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1Claim',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1Claim();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
           o.toJson());
@@ -470,8 +470,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
           o.toJson());
@@ -480,8 +480,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
           o.toJson());
@@ -490,8 +490,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
           o.toJson());
@@ -500,9 +500,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor",
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor
           .fromJson(o.toJson());
@@ -511,9 +511,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup",
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
           .fromJson(o.toJson());
@@ -522,9 +522,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage",
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
@@ -534,9 +534,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse",
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse();
       var od =
@@ -548,9 +548,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse",
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse();
       var od =
@@ -561,9 +561,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1Publisher",
+  unittest.group('obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1Publisher',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1Publisher();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
           o.toJson());
@@ -571,26 +571,26 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleProtobufEmpty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleProtobufEmpty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od);
     });
   });
 
-  unittest.group("resource-ClaimsResourceApi", () {
-    unittest.test("method--search", () {
+  unittest.group('resource-ClaimsResourceApi', () {
+    unittest.test('method--search', () {
       var mock = HttpServerMock();
       api.ClaimsResourceApi res = api.FactchecktoolsApi(mock).claims;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
       var arg_maxAgeDays = 42;
-      var arg_languageCode = "foo";
+      var arg_languageCode = 'foo';
       var arg_offset = 42;
-      var arg_query = "foo";
-      var arg_reviewPublisherSiteFilter = "foo";
-      var arg_$fields = "foo";
+      var arg_query = 'foo';
+      var arg_reviewPublisherSiteFilter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -609,8 +609,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -633,7 +633,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(
             buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse());
@@ -656,13 +656,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-PagesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-PagesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.PagesResourceApi res = api.FactchecktoolsApi(mock).pages;
       var arg_request =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
@@ -686,8 +686,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -697,7 +697,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(
             buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage());
@@ -711,11 +711,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.PagesResourceApi res = api.FactchecktoolsApi(mock).pages;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -735,8 +735,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -746,7 +746,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -758,11 +758,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.PagesResourceApi res = api.FactchecktoolsApi(mock).pages;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -782,8 +782,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -793,7 +793,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(
             buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage());
@@ -807,15 +807,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PagesResourceApi res = api.FactchecktoolsApi(mock).pages;
-      var arg_url = "foo";
+      var arg_url = 'foo';
       var arg_pageSize = 42;
       var arg_offset = 42;
-      var arg_organization = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_organization = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -834,8 +834,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -854,7 +854,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(
             buildGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse());
@@ -874,13 +874,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.PagesResourceApi res = api.FactchecktoolsApi(mock).pages;
       var arg_request =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
@@ -905,8 +905,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -916,7 +916,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(
             buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage());

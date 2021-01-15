@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,7 +38,7 @@ const core.String USER_AGENT = 'dart-api-client accesscontextmanager/v1';
 class AccesscontextmanagerApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -50,8 +49,8 @@ class AccesscontextmanagerApi {
       OrganizationsResourceApi(_requester);
 
   AccesscontextmanagerApi(http.Client client,
-      {core.String rootUrl = "https://accesscontextmanager.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://accesscontextmanager.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -101,14 +100,14 @@ class AccessPoliciesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/accessPolicies';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -150,17 +149,17 @@ class AccessPoliciesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -200,17 +199,17 @@ class AccessPoliciesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -257,23 +256,23 @@ class AccessPoliciesResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (parent != null) {
-      _queryParams["parent"] = [parent];
+      _queryParams['parent'] = [parent];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/accessPolicies';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -326,20 +325,20 @@ class AccessPoliciesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -395,10 +394,10 @@ class AccessPoliciesAccessLevelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -407,7 +406,7 @@ class AccessPoliciesAccessLevelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -449,17 +448,17 @@ class AccessPoliciesAccessLevelsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -513,20 +512,20 @@ class AccessPoliciesAccessLevelsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (accessLevelFormat != null) {
-      _queryParams["accessLevelFormat"] = [accessLevelFormat];
+      _queryParams['accessLevelFormat'] = [accessLevelFormat];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -584,19 +583,19 @@ class AccessPoliciesAccessLevelsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (accessLevelFormat != null) {
-      _queryParams["accessLevelFormat"] = [accessLevelFormat];
+      _queryParams['accessLevelFormat'] = [accessLevelFormat];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -605,7 +604,7 @@ class AccessPoliciesAccessLevelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -660,20 +659,20 @@ class AccessPoliciesAccessLevelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -727,10 +726,10 @@ class AccessPoliciesAccessLevelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -739,7 +738,7 @@ class AccessPoliciesAccessLevelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -803,10 +802,10 @@ class AccessPoliciesServicePerimetersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -815,7 +814,7 @@ class AccessPoliciesServicePerimetersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -864,10 +863,10 @@ class AccessPoliciesServicePerimetersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -876,7 +875,7 @@ class AccessPoliciesServicePerimetersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -918,17 +917,17 @@ class AccessPoliciesServicePerimetersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -968,17 +967,17 @@ class AccessPoliciesServicePerimetersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1026,16 +1025,16 @@ class AccessPoliciesServicePerimetersResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1044,7 +1043,7 @@ class AccessPoliciesServicePerimetersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1100,20 +1099,20 @@ class AccessPoliciesServicePerimetersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1166,10 +1165,10 @@ class AccessPoliciesServicePerimetersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1178,7 +1177,7 @@ class AccessPoliciesServicePerimetersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1237,17 +1236,17 @@ class OperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1289,17 +1288,17 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1340,17 +1339,17 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1406,26 +1405,26 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1490,10 +1489,10 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1502,7 +1501,7 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1545,17 +1544,17 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1596,17 +1595,17 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1655,16 +1654,16 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1673,7 +1672,7 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1732,20 +1731,20 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1781,20 +1780,20 @@ class AccessLevel {
   AccessLevel();
 
   AccessLevel.fromJson(core.Map _json) {
-    if (_json.containsKey("basic")) {
-      basic = BasicLevel.fromJson(_json["basic"]);
+    if (_json.containsKey('basic')) {
+      basic = BasicLevel.fromJson(_json['basic']);
     }
-    if (_json.containsKey("custom")) {
-      custom = CustomLevel.fromJson(_json["custom"]);
+    if (_json.containsKey('custom')) {
+      custom = CustomLevel.fromJson(_json['custom']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1802,19 +1801,19 @@ class AccessLevel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (basic != null) {
-      _json["basic"] = basic.toJson();
+      _json['basic'] = basic.toJson();
     }
     if (custom != null) {
-      _json["custom"] = custom.toJson();
+      _json['custom'] = custom.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1847,17 +1846,17 @@ class AccessPolicy {
   AccessPolicy();
 
   AccessPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("parent")) {
-      parent = _json["parent"];
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1865,16 +1864,16 @@ class AccessPolicy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1899,11 +1898,11 @@ class BasicLevel {
   BasicLevel();
 
   BasicLevel.fromJson(core.Map _json) {
-    if (_json.containsKey("combiningFunction")) {
-      combiningFunction = _json["combiningFunction"];
+    if (_json.containsKey('combiningFunction')) {
+      combiningFunction = _json['combiningFunction'];
     }
-    if (_json.containsKey("conditions")) {
-      conditions = (_json["conditions"] as core.List)
+    if (_json.containsKey('conditions')) {
+      conditions = (_json['conditions'] as core.List)
           .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
@@ -1913,10 +1912,10 @@ class BasicLevel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (combiningFunction != null) {
-      _json["combiningFunction"] = combiningFunction;
+      _json['combiningFunction'] = combiningFunction;
     }
     if (conditions != null) {
-      _json["conditions"] = conditions.map((value) => value.toJson()).toList();
+      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1949,8 +1948,8 @@ class CommitServicePerimetersRequest {
   CommitServicePerimetersRequest();
 
   CommitServicePerimetersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
   }
 
@@ -1958,7 +1957,7 @@ class CommitServicePerimetersRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     return _json;
   }
@@ -1973,8 +1972,8 @@ class CommitServicePerimetersResponse {
   CommitServicePerimetersResponse();
 
   CommitServicePerimetersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("servicePerimeters")) {
-      servicePerimeters = (_json["servicePerimeters"] as core.List)
+    if (_json.containsKey('servicePerimeters')) {
+      servicePerimeters = (_json['servicePerimeters'] as core.List)
           .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(value))
           .toList();
     }
@@ -1984,7 +1983,7 @@ class CommitServicePerimetersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (servicePerimeters != null) {
-      _json["servicePerimeters"] =
+      _json['servicePerimeters'] =
           servicePerimeters.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2035,24 +2034,24 @@ class Condition {
   Condition();
 
   Condition.fromJson(core.Map _json) {
-    if (_json.containsKey("devicePolicy")) {
-      devicePolicy = DevicePolicy.fromJson(_json["devicePolicy"]);
+    if (_json.containsKey('devicePolicy')) {
+      devicePolicy = DevicePolicy.fromJson(_json['devicePolicy']);
     }
-    if (_json.containsKey("ipSubnetworks")) {
-      ipSubnetworks = (_json["ipSubnetworks"] as core.List).cast<core.String>();
+    if (_json.containsKey('ipSubnetworks')) {
+      ipSubnetworks = (_json['ipSubnetworks'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List).cast<core.String>();
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("negate")) {
-      negate = _json["negate"];
+    if (_json.containsKey('negate')) {
+      negate = _json['negate'];
     }
-    if (_json.containsKey("regions")) {
-      regions = (_json["regions"] as core.List).cast<core.String>();
+    if (_json.containsKey('regions')) {
+      regions = (_json['regions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("requiredAccessLevels")) {
+    if (_json.containsKey('requiredAccessLevels')) {
       requiredAccessLevels =
-          (_json["requiredAccessLevels"] as core.List).cast<core.String>();
+          (_json['requiredAccessLevels'] as core.List).cast<core.String>();
     }
   }
 
@@ -2060,22 +2059,22 @@ class Condition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devicePolicy != null) {
-      _json["devicePolicy"] = devicePolicy.toJson();
+      _json['devicePolicy'] = devicePolicy.toJson();
     }
     if (ipSubnetworks != null) {
-      _json["ipSubnetworks"] = ipSubnetworks;
+      _json['ipSubnetworks'] = ipSubnetworks;
     }
     if (members != null) {
-      _json["members"] = members;
+      _json['members'] = members;
     }
     if (negate != null) {
-      _json["negate"] = negate;
+      _json['negate'] = negate;
     }
     if (regions != null) {
-      _json["regions"] = regions;
+      _json['regions'] = regions;
     }
     if (requiredAccessLevels != null) {
-      _json["requiredAccessLevels"] = requiredAccessLevels;
+      _json['requiredAccessLevels'] = requiredAccessLevels;
     }
     return _json;
   }
@@ -2091,8 +2090,8 @@ class CustomLevel {
   CustomLevel();
 
   CustomLevel.fromJson(core.Map _json) {
-    if (_json.containsKey("expr")) {
-      expr = Expr.fromJson(_json["expr"]);
+    if (_json.containsKey('expr')) {
+      expr = Expr.fromJson(_json['expr']);
     }
   }
 
@@ -2100,7 +2099,7 @@ class CustomLevel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expr != null) {
-      _json["expr"] = expr.toJson();
+      _json['expr'] = expr.toJson();
     }
     return _json;
   }
@@ -2139,28 +2138,28 @@ class DevicePolicy {
   DevicePolicy();
 
   DevicePolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("allowedDeviceManagementLevels")) {
+    if (_json.containsKey('allowedDeviceManagementLevels')) {
       allowedDeviceManagementLevels =
-          (_json["allowedDeviceManagementLevels"] as core.List)
+          (_json['allowedDeviceManagementLevels'] as core.List)
               .cast<core.String>();
     }
-    if (_json.containsKey("allowedEncryptionStatuses")) {
+    if (_json.containsKey('allowedEncryptionStatuses')) {
       allowedEncryptionStatuses =
-          (_json["allowedEncryptionStatuses"] as core.List).cast<core.String>();
+          (_json['allowedEncryptionStatuses'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("osConstraints")) {
-      osConstraints = (_json["osConstraints"] as core.List)
+    if (_json.containsKey('osConstraints')) {
+      osConstraints = (_json['osConstraints'] as core.List)
           .map<OsConstraint>((value) => OsConstraint.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("requireAdminApproval")) {
-      requireAdminApproval = _json["requireAdminApproval"];
+    if (_json.containsKey('requireAdminApproval')) {
+      requireAdminApproval = _json['requireAdminApproval'];
     }
-    if (_json.containsKey("requireCorpOwned")) {
-      requireCorpOwned = _json["requireCorpOwned"];
+    if (_json.containsKey('requireCorpOwned')) {
+      requireCorpOwned = _json['requireCorpOwned'];
     }
-    if (_json.containsKey("requireScreenlock")) {
-      requireScreenlock = _json["requireScreenlock"];
+    if (_json.containsKey('requireScreenlock')) {
+      requireScreenlock = _json['requireScreenlock'];
     }
   }
 
@@ -2168,23 +2167,23 @@ class DevicePolicy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowedDeviceManagementLevels != null) {
-      _json["allowedDeviceManagementLevels"] = allowedDeviceManagementLevels;
+      _json['allowedDeviceManagementLevels'] = allowedDeviceManagementLevels;
     }
     if (allowedEncryptionStatuses != null) {
-      _json["allowedEncryptionStatuses"] = allowedEncryptionStatuses;
+      _json['allowedEncryptionStatuses'] = allowedEncryptionStatuses;
     }
     if (osConstraints != null) {
-      _json["osConstraints"] =
+      _json['osConstraints'] =
           osConstraints.map((value) => value.toJson()).toList();
     }
     if (requireAdminApproval != null) {
-      _json["requireAdminApproval"] = requireAdminApproval;
+      _json['requireAdminApproval'] = requireAdminApproval;
     }
     if (requireCorpOwned != null) {
-      _json["requireCorpOwned"] = requireCorpOwned;
+      _json['requireCorpOwned'] = requireCorpOwned;
     }
     if (requireScreenlock != null) {
-      _json["requireScreenlock"] = requireScreenlock;
+      _json['requireScreenlock'] = requireScreenlock;
     }
     return _json;
   }
@@ -2243,17 +2242,17 @@ class Expr {
   Expr();
 
   Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
+    if (_json.containsKey('expression')) {
+      expression = _json['expression'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -2261,16 +2260,16 @@ class Expr {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (expression != null) {
-      _json["expression"] = expression;
+      _json['expression'] = expression;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -2304,14 +2303,14 @@ class GcpUserAccessBinding {
   GcpUserAccessBinding();
 
   GcpUserAccessBinding.fromJson(core.Map _json) {
-    if (_json.containsKey("accessLevels")) {
-      accessLevels = (_json["accessLevels"] as core.List).cast<core.String>();
+    if (_json.containsKey('accessLevels')) {
+      accessLevels = (_json['accessLevels'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("groupKey")) {
-      groupKey = _json["groupKey"];
+    if (_json.containsKey('groupKey')) {
+      groupKey = _json['groupKey'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -2319,13 +2318,13 @@ class GcpUserAccessBinding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessLevels != null) {
-      _json["accessLevels"] = accessLevels;
+      _json['accessLevels'] = accessLevels;
     }
     if (groupKey != null) {
-      _json["groupKey"] = groupKey;
+      _json['groupKey'] = groupKey;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -2343,13 +2342,13 @@ class ListAccessLevelsResponse {
   ListAccessLevelsResponse();
 
   ListAccessLevelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("accessLevels")) {
-      accessLevels = (_json["accessLevels"] as core.List)
+    if (_json.containsKey('accessLevels')) {
+      accessLevels = (_json['accessLevels'] as core.List)
           .map<AccessLevel>((value) => AccessLevel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2357,11 +2356,11 @@ class ListAccessLevelsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessLevels != null) {
-      _json["accessLevels"] =
+      _json['accessLevels'] =
           accessLevels.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2379,13 +2378,13 @@ class ListAccessPoliciesResponse {
   ListAccessPoliciesResponse();
 
   ListAccessPoliciesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("accessPolicies")) {
-      accessPolicies = (_json["accessPolicies"] as core.List)
+    if (_json.containsKey('accessPolicies')) {
+      accessPolicies = (_json['accessPolicies'] as core.List)
           .map<AccessPolicy>((value) => AccessPolicy.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2393,11 +2392,11 @@ class ListAccessPoliciesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessPolicies != null) {
-      _json["accessPolicies"] =
+      _json['accessPolicies'] =
           accessPolicies.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2414,14 +2413,14 @@ class ListGcpUserAccessBindingsResponse {
   ListGcpUserAccessBindingsResponse();
 
   ListGcpUserAccessBindingsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("gcpUserAccessBindings")) {
-      gcpUserAccessBindings = (_json["gcpUserAccessBindings"] as core.List)
+    if (_json.containsKey('gcpUserAccessBindings')) {
+      gcpUserAccessBindings = (_json['gcpUserAccessBindings'] as core.List)
           .map<GcpUserAccessBinding>(
               (value) => GcpUserAccessBinding.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2429,11 +2428,11 @@ class ListGcpUserAccessBindingsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcpUserAccessBindings != null) {
-      _json["gcpUserAccessBindings"] =
+      _json['gcpUserAccessBindings'] =
           gcpUserAccessBindings.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2450,11 +2449,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -2464,10 +2463,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2485,11 +2484,11 @@ class ListServicePerimetersResponse {
   ListServicePerimetersResponse();
 
   ListServicePerimetersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("servicePerimeters")) {
-      servicePerimeters = (_json["servicePerimeters"] as core.List)
+    if (_json.containsKey('servicePerimeters')) {
+      servicePerimeters = (_json['servicePerimeters'] as core.List)
           .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(value))
           .toList();
     }
@@ -2499,10 +2498,10 @@ class ListServicePerimetersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (servicePerimeters != null) {
-      _json["servicePerimeters"] =
+      _json['servicePerimeters'] =
           servicePerimeters.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2549,22 +2548,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -2572,19 +2571,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -2618,14 +2617,14 @@ class OsConstraint {
   OsConstraint();
 
   OsConstraint.fromJson(core.Map _json) {
-    if (_json.containsKey("minimumVersion")) {
-      minimumVersion = _json["minimumVersion"];
+    if (_json.containsKey('minimumVersion')) {
+      minimumVersion = _json['minimumVersion'];
     }
-    if (_json.containsKey("osType")) {
-      osType = _json["osType"];
+    if (_json.containsKey('osType')) {
+      osType = _json['osType'];
     }
-    if (_json.containsKey("requireVerifiedChromeOs")) {
-      requireVerifiedChromeOs = _json["requireVerifiedChromeOs"];
+    if (_json.containsKey('requireVerifiedChromeOs')) {
+      requireVerifiedChromeOs = _json['requireVerifiedChromeOs'];
     }
   }
 
@@ -2633,13 +2632,13 @@ class OsConstraint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (minimumVersion != null) {
-      _json["minimumVersion"] = minimumVersion;
+      _json['minimumVersion'] = minimumVersion;
     }
     if (osType != null) {
-      _json["osType"] = osType;
+      _json['osType'] = osType;
     }
     if (requireVerifiedChromeOs != null) {
-      _json["requireVerifiedChromeOs"] = requireVerifiedChromeOs;
+      _json['requireVerifiedChromeOs'] = requireVerifiedChromeOs;
     }
     return _json;
   }
@@ -2663,13 +2662,13 @@ class ReplaceAccessLevelsRequest {
   ReplaceAccessLevelsRequest();
 
   ReplaceAccessLevelsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("accessLevels")) {
-      accessLevels = (_json["accessLevels"] as core.List)
+    if (_json.containsKey('accessLevels')) {
+      accessLevels = (_json['accessLevels'] as core.List)
           .map<AccessLevel>((value) => AccessLevel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
   }
 
@@ -2677,11 +2676,11 @@ class ReplaceAccessLevelsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessLevels != null) {
-      _json["accessLevels"] =
+      _json['accessLevels'] =
           accessLevels.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     return _json;
   }
@@ -2696,8 +2695,8 @@ class ReplaceAccessLevelsResponse {
   ReplaceAccessLevelsResponse();
 
   ReplaceAccessLevelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("accessLevels")) {
-      accessLevels = (_json["accessLevels"] as core.List)
+    if (_json.containsKey('accessLevels')) {
+      accessLevels = (_json['accessLevels'] as core.List)
           .map<AccessLevel>((value) => AccessLevel.fromJson(value))
           .toList();
     }
@@ -2707,7 +2706,7 @@ class ReplaceAccessLevelsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessLevels != null) {
-      _json["accessLevels"] =
+      _json['accessLevels'] =
           accessLevels.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2732,11 +2731,11 @@ class ReplaceServicePerimetersRequest {
   ReplaceServicePerimetersRequest();
 
   ReplaceServicePerimetersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("servicePerimeters")) {
-      servicePerimeters = (_json["servicePerimeters"] as core.List)
+    if (_json.containsKey('servicePerimeters')) {
+      servicePerimeters = (_json['servicePerimeters'] as core.List)
           .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(value))
           .toList();
     }
@@ -2746,10 +2745,10 @@ class ReplaceServicePerimetersRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (servicePerimeters != null) {
-      _json["servicePerimeters"] =
+      _json['servicePerimeters'] =
           servicePerimeters.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2765,8 +2764,8 @@ class ReplaceServicePerimetersResponse {
   ReplaceServicePerimetersResponse();
 
   ReplaceServicePerimetersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("servicePerimeters")) {
-      servicePerimeters = (_json["servicePerimeters"] as core.List)
+    if (_json.containsKey('servicePerimeters')) {
+      servicePerimeters = (_json['servicePerimeters'] as core.List)
           .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(value))
           .toList();
     }
@@ -2776,7 +2775,7 @@ class ReplaceServicePerimetersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (servicePerimeters != null) {
-      _json["servicePerimeters"] =
+      _json['servicePerimeters'] =
           servicePerimeters.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2842,26 +2841,26 @@ class ServicePerimeter {
   ServicePerimeter();
 
   ServicePerimeter.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("perimeterType")) {
-      perimeterType = _json["perimeterType"];
+    if (_json.containsKey('perimeterType')) {
+      perimeterType = _json['perimeterType'];
     }
-    if (_json.containsKey("spec")) {
-      spec = ServicePerimeterConfig.fromJson(_json["spec"]);
+    if (_json.containsKey('spec')) {
+      spec = ServicePerimeterConfig.fromJson(_json['spec']);
     }
-    if (_json.containsKey("status")) {
-      status = ServicePerimeterConfig.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = ServicePerimeterConfig.fromJson(_json['status']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("useExplicitDryRunSpec")) {
-      useExplicitDryRunSpec = _json["useExplicitDryRunSpec"];
+    if (_json.containsKey('useExplicitDryRunSpec')) {
+      useExplicitDryRunSpec = _json['useExplicitDryRunSpec'];
     }
   }
 
@@ -2869,25 +2868,25 @@ class ServicePerimeter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (perimeterType != null) {
-      _json["perimeterType"] = perimeterType;
+      _json['perimeterType'] = perimeterType;
     }
     if (spec != null) {
-      _json["spec"] = spec.toJson();
+      _json['spec'] = spec.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (useExplicitDryRunSpec != null) {
-      _json["useExplicitDryRunSpec"] = useExplicitDryRunSpec;
+      _json['useExplicitDryRunSpec'] = useExplicitDryRunSpec;
     }
     return _json;
   }
@@ -2922,19 +2921,19 @@ class ServicePerimeterConfig {
   ServicePerimeterConfig();
 
   ServicePerimeterConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("accessLevels")) {
-      accessLevels = (_json["accessLevels"] as core.List).cast<core.String>();
+    if (_json.containsKey('accessLevels')) {
+      accessLevels = (_json['accessLevels'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("resources")) {
-      resources = (_json["resources"] as core.List).cast<core.String>();
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("restrictedServices")) {
+    if (_json.containsKey('restrictedServices')) {
       restrictedServices =
-          (_json["restrictedServices"] as core.List).cast<core.String>();
+          (_json['restrictedServices'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("vpcAccessibleServices")) {
+    if (_json.containsKey('vpcAccessibleServices')) {
       vpcAccessibleServices =
-          VpcAccessibleServices.fromJson(_json["vpcAccessibleServices"]);
+          VpcAccessibleServices.fromJson(_json['vpcAccessibleServices']);
     }
   }
 
@@ -2942,16 +2941,16 @@ class ServicePerimeterConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessLevels != null) {
-      _json["accessLevels"] = accessLevels;
+      _json['accessLevels'] = accessLevels;
     }
     if (resources != null) {
-      _json["resources"] = resources;
+      _json['resources'] = resources;
     }
     if (restrictedServices != null) {
-      _json["restrictedServices"] = restrictedServices;
+      _json['restrictedServices'] = restrictedServices;
     }
     if (vpcAccessibleServices != null) {
-      _json["vpcAccessibleServices"] = vpcAccessibleServices.toJson();
+      _json['vpcAccessibleServices'] = vpcAccessibleServices.toJson();
     }
     return _json;
   }
@@ -2982,17 +2981,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -3000,13 +2999,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -3027,12 +3026,12 @@ class VpcAccessibleServices {
   VpcAccessibleServices();
 
   VpcAccessibleServices.fromJson(core.Map _json) {
-    if (_json.containsKey("allowedServices")) {
+    if (_json.containsKey('allowedServices')) {
       allowedServices =
-          (_json["allowedServices"] as core.List).cast<core.String>();
+          (_json['allowedServices'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("enableRestriction")) {
-      enableRestriction = _json["enableRestriction"];
+    if (_json.containsKey('enableRestriction')) {
+      enableRestriction = _json['enableRestriction'];
     }
   }
 
@@ -3040,10 +3039,10 @@ class VpcAccessibleServices {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowedServices != null) {
-      _json["allowedServices"] = allowedServices;
+      _json['allowedServices'] = allowedServices;
     }
     if (enableRestriction != null) {
-      _json["enableRestriction"] = enableRestriction;
+      _json['enableRestriction'] = enableRestriction;
     }
     return _json;
   }

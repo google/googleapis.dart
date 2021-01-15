@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -36,7 +35,7 @@ const core.String USER_AGENT = 'dart-api-client homegraph/v1';
 
 class HomegraphApi {
   /// New Service: https://www.googleapis.com/auth/homegraph
-  static const HomegraphScope = "https://www.googleapis.com/auth/homegraph";
+  static const HomegraphScope = 'https://www.googleapis.com/auth/homegraph';
 
   final commons.ApiRequester _requester;
 
@@ -44,8 +43,8 @@ class HomegraphApi {
   DevicesResourceApi get devices => DevicesResourceApi(_requester);
 
   HomegraphApi(http.Client client,
-      {core.String rootUrl = "https://homegraph.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://homegraph.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -93,20 +92,20 @@ class AgentUsersResourceApi {
     core.String _body;
 
     if (agentUserId == null) {
-      throw core.ArgumentError("Parameter agentUserId is required.");
+      throw core.ArgumentError('Parameter agentUserId is required.');
     }
     if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
+      _queryParams['requestId'] = [requestId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$agentUserId');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -156,14 +155,14 @@ class DevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/devices:query';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -215,14 +214,14 @@ class DevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/devices:reportStateAndNotification';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -269,14 +268,14 @@ class DevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/devices:requestSync';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -320,14 +319,14 @@ class DevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/devices:sync';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -346,8 +345,8 @@ class AgentDeviceId {
   AgentDeviceId();
 
   AgentDeviceId.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -355,7 +354,7 @@ class AgentDeviceId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -372,11 +371,11 @@ class AgentOtherDeviceId {
   AgentOtherDeviceId();
 
   AgentOtherDeviceId.fromJson(core.Map _json) {
-    if (_json.containsKey("agentId")) {
-      agentId = _json["agentId"];
+    if (_json.containsKey('agentId')) {
+      agentId = _json['agentId'];
     }
-    if (_json.containsKey("deviceId")) {
-      deviceId = _json["deviceId"];
+    if (_json.containsKey('deviceId')) {
+      deviceId = _json['deviceId'];
     }
   }
 
@@ -384,10 +383,10 @@ class AgentOtherDeviceId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (agentId != null) {
-      _json["agentId"] = agentId;
+      _json['agentId'] = agentId;
     }
     if (deviceId != null) {
-      _json["deviceId"] = deviceId;
+      _json['deviceId'] = deviceId;
     }
     return _json;
   }
@@ -455,46 +454,46 @@ class Device {
   Device();
 
   Device.fromJson(core.Map _json) {
-    if (_json.containsKey("attributes")) {
+    if (_json.containsKey('attributes')) {
       attributes =
-          (_json["attributes"] as core.Map).cast<core.String, core.Object>();
+          (_json['attributes'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("customData")) {
+    if (_json.containsKey('customData')) {
       customData =
-          (_json["customData"] as core.Map).cast<core.String, core.Object>();
+          (_json['customData'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("deviceInfo")) {
-      deviceInfo = DeviceInfo.fromJson(_json["deviceInfo"]);
+    if (_json.containsKey('deviceInfo')) {
+      deviceInfo = DeviceInfo.fromJson(_json['deviceInfo']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("name")) {
-      name = DeviceNames.fromJson(_json["name"]);
+    if (_json.containsKey('name')) {
+      name = DeviceNames.fromJson(_json['name']);
     }
-    if (_json.containsKey("notificationSupportedByAgent")) {
-      notificationSupportedByAgent = _json["notificationSupportedByAgent"];
+    if (_json.containsKey('notificationSupportedByAgent')) {
+      notificationSupportedByAgent = _json['notificationSupportedByAgent'];
     }
-    if (_json.containsKey("otherDeviceIds")) {
-      otherDeviceIds = (_json["otherDeviceIds"] as core.List)
+    if (_json.containsKey('otherDeviceIds')) {
+      otherDeviceIds = (_json['otherDeviceIds'] as core.List)
           .map<AgentOtherDeviceId>(
               (value) => AgentOtherDeviceId.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("roomHint")) {
-      roomHint = _json["roomHint"];
+    if (_json.containsKey('roomHint')) {
+      roomHint = _json['roomHint'];
     }
-    if (_json.containsKey("structureHint")) {
-      structureHint = _json["structureHint"];
+    if (_json.containsKey('structureHint')) {
+      structureHint = _json['structureHint'];
     }
-    if (_json.containsKey("traits")) {
-      traits = (_json["traits"] as core.List).cast<core.String>();
+    if (_json.containsKey('traits')) {
+      traits = (_json['traits'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("willReportState")) {
-      willReportState = _json["willReportState"];
+    if (_json.containsKey('willReportState')) {
+      willReportState = _json['willReportState'];
     }
   }
 
@@ -502,41 +501,41 @@ class Device {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes;
+      _json['attributes'] = attributes;
     }
     if (customData != null) {
-      _json["customData"] = customData;
+      _json['customData'] = customData;
     }
     if (deviceInfo != null) {
-      _json["deviceInfo"] = deviceInfo.toJson();
+      _json['deviceInfo'] = deviceInfo.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (name != null) {
-      _json["name"] = name.toJson();
+      _json['name'] = name.toJson();
     }
     if (notificationSupportedByAgent != null) {
-      _json["notificationSupportedByAgent"] = notificationSupportedByAgent;
+      _json['notificationSupportedByAgent'] = notificationSupportedByAgent;
     }
     if (otherDeviceIds != null) {
-      _json["otherDeviceIds"] =
+      _json['otherDeviceIds'] =
           otherDeviceIds.map((value) => value.toJson()).toList();
     }
     if (roomHint != null) {
-      _json["roomHint"] = roomHint;
+      _json['roomHint'] = roomHint;
     }
     if (structureHint != null) {
-      _json["structureHint"] = structureHint;
+      _json['structureHint'] = structureHint;
     }
     if (traits != null) {
-      _json["traits"] = traits;
+      _json['traits'] = traits;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (willReportState != null) {
-      _json["willReportState"] = willReportState;
+      _json['willReportState'] = willReportState;
     }
     return _json;
   }
@@ -559,17 +558,17 @@ class DeviceInfo {
   DeviceInfo();
 
   DeviceInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("hwVersion")) {
-      hwVersion = _json["hwVersion"];
+    if (_json.containsKey('hwVersion')) {
+      hwVersion = _json['hwVersion'];
     }
-    if (_json.containsKey("manufacturer")) {
-      manufacturer = _json["manufacturer"];
+    if (_json.containsKey('manufacturer')) {
+      manufacturer = _json['manufacturer'];
     }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
-    if (_json.containsKey("swVersion")) {
-      swVersion = _json["swVersion"];
+    if (_json.containsKey('swVersion')) {
+      swVersion = _json['swVersion'];
     }
   }
 
@@ -577,16 +576,16 @@ class DeviceInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hwVersion != null) {
-      _json["hwVersion"] = hwVersion;
+      _json['hwVersion'] = hwVersion;
     }
     if (manufacturer != null) {
-      _json["manufacturer"] = manufacturer;
+      _json['manufacturer'] = manufacturer;
     }
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     if (swVersion != null) {
-      _json["swVersion"] = swVersion;
+      _json['swVersion'] = swVersion;
     }
     return _json;
   }
@@ -607,14 +606,14 @@ class DeviceNames {
   DeviceNames();
 
   DeviceNames.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultNames")) {
-      defaultNames = (_json["defaultNames"] as core.List).cast<core.String>();
+    if (_json.containsKey('defaultNames')) {
+      defaultNames = (_json['defaultNames'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("nicknames")) {
-      nicknames = (_json["nicknames"] as core.List).cast<core.String>();
+    if (_json.containsKey('nicknames')) {
+      nicknames = (_json['nicknames'] as core.List).cast<core.String>();
     }
   }
 
@@ -622,13 +621,13 @@ class DeviceNames {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (defaultNames != null) {
-      _json["defaultNames"] = defaultNames;
+      _json['defaultNames'] = defaultNames;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (nicknames != null) {
-      _json["nicknames"] = nicknames;
+      _json['nicknames'] = nicknames;
     }
     return _json;
   }
@@ -667,16 +666,16 @@ class QueryRequest {
   QueryRequest();
 
   QueryRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("agentUserId")) {
-      agentUserId = _json["agentUserId"];
+    if (_json.containsKey('agentUserId')) {
+      agentUserId = _json['agentUserId'];
     }
-    if (_json.containsKey("inputs")) {
-      inputs = (_json["inputs"] as core.List)
+    if (_json.containsKey('inputs')) {
+      inputs = (_json['inputs'] as core.List)
           .map<QueryRequestInput>((value) => QueryRequestInput.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
   }
 
@@ -684,13 +683,13 @@ class QueryRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (agentUserId != null) {
-      _json["agentUserId"] = agentUserId;
+      _json['agentUserId'] = agentUserId;
     }
     if (inputs != null) {
-      _json["inputs"] = inputs.map((value) => value.toJson()).toList();
+      _json['inputs'] = inputs.map((value) => value.toJson()).toList();
     }
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     return _json;
   }
@@ -704,8 +703,8 @@ class QueryRequestInput {
   QueryRequestInput();
 
   QueryRequestInput.fromJson(core.Map _json) {
-    if (_json.containsKey("payload")) {
-      payload = QueryRequestPayload.fromJson(_json["payload"]);
+    if (_json.containsKey('payload')) {
+      payload = QueryRequestPayload.fromJson(_json['payload']);
     }
   }
 
@@ -713,7 +712,7 @@ class QueryRequestInput {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (payload != null) {
-      _json["payload"] = payload.toJson();
+      _json['payload'] = payload.toJson();
     }
     return _json;
   }
@@ -727,8 +726,8 @@ class QueryRequestPayload {
   QueryRequestPayload();
 
   QueryRequestPayload.fromJson(core.Map _json) {
-    if (_json.containsKey("devices")) {
-      devices = (_json["devices"] as core.List)
+    if (_json.containsKey('devices')) {
+      devices = (_json['devices'] as core.List)
           .map<AgentDeviceId>((value) => AgentDeviceId.fromJson(value))
           .toList();
     }
@@ -738,7 +737,7 @@ class QueryRequestPayload {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.map((value) => value.toJson()).toList();
+      _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -762,11 +761,11 @@ class QueryResponse {
   QueryResponse();
 
   QueryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("payload")) {
-      payload = QueryResponsePayload.fromJson(_json["payload"]);
+    if (_json.containsKey('payload')) {
+      payload = QueryResponsePayload.fromJson(_json['payload']);
     }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
   }
 
@@ -774,10 +773,10 @@ class QueryResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (payload != null) {
-      _json["payload"] = payload.toJson();
+      _json['payload'] = payload.toJson();
     }
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     return _json;
   }
@@ -795,9 +794,9 @@ class QueryResponsePayload {
   QueryResponsePayload();
 
   QueryResponsePayload.fromJson(core.Map _json) {
-    if (_json.containsKey("devices")) {
+    if (_json.containsKey('devices')) {
       devices = commons.mapMap<core.Map, core.Map<core.String, core.Object>>(
-          _json["devices"].cast<core.String, core.Map>(),
+          _json['devices'].cast<core.String, core.Map>(),
           (core.Map item) =>
               (item as core.Map).cast<core.String, core.Object>());
     }
@@ -807,7 +806,7 @@ class QueryResponsePayload {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices;
+      _json['devices'] = devices;
     }
     return _json;
   }
@@ -834,12 +833,12 @@ class ReportStateAndNotificationDevice {
   ReportStateAndNotificationDevice();
 
   ReportStateAndNotificationDevice.fromJson(core.Map _json) {
-    if (_json.containsKey("notifications")) {
+    if (_json.containsKey('notifications')) {
       notifications =
-          (_json["notifications"] as core.Map).cast<core.String, core.Object>();
+          (_json['notifications'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("states")) {
-      states = (_json["states"] as core.Map).cast<core.String, core.Object>();
+    if (_json.containsKey('states')) {
+      states = (_json['states'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -847,10 +846,10 @@ class ReportStateAndNotificationDevice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (notifications != null) {
-      _json["notifications"] = notifications;
+      _json['notifications'] = notifications;
     }
     if (states != null) {
-      _json["states"] = states;
+      _json['states'] = states;
     }
     return _json;
   }
@@ -887,20 +886,20 @@ class ReportStateAndNotificationRequest {
   ReportStateAndNotificationRequest();
 
   ReportStateAndNotificationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("agentUserId")) {
-      agentUserId = _json["agentUserId"];
+    if (_json.containsKey('agentUserId')) {
+      agentUserId = _json['agentUserId'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("followUpToken")) {
-      followUpToken = _json["followUpToken"];
+    if (_json.containsKey('followUpToken')) {
+      followUpToken = _json['followUpToken'];
     }
-    if (_json.containsKey("payload")) {
-      payload = StateAndNotificationPayload.fromJson(_json["payload"]);
+    if (_json.containsKey('payload')) {
+      payload = StateAndNotificationPayload.fromJson(_json['payload']);
     }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
   }
 
@@ -908,19 +907,19 @@ class ReportStateAndNotificationRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (agentUserId != null) {
-      _json["agentUserId"] = agentUserId;
+      _json['agentUserId'] = agentUserId;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (followUpToken != null) {
-      _json["followUpToken"] = followUpToken;
+      _json['followUpToken'] = followUpToken;
     }
     if (payload != null) {
-      _json["payload"] = payload.toJson();
+      _json['payload'] = payload.toJson();
     }
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     return _json;
   }
@@ -936,8 +935,8 @@ class ReportStateAndNotificationResponse {
   ReportStateAndNotificationResponse();
 
   ReportStateAndNotificationResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
   }
 
@@ -945,7 +944,7 @@ class ReportStateAndNotificationResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     return _json;
   }
@@ -966,11 +965,11 @@ class RequestSyncDevicesRequest {
   RequestSyncDevicesRequest();
 
   RequestSyncDevicesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("agentUserId")) {
-      agentUserId = _json["agentUserId"];
+    if (_json.containsKey('agentUserId')) {
+      agentUserId = _json['agentUserId'];
     }
-    if (_json.containsKey("async")) {
-      async = _json["async"];
+    if (_json.containsKey('async')) {
+      async = _json['async'];
     }
   }
 
@@ -978,10 +977,10 @@ class RequestSyncDevicesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (agentUserId != null) {
-      _json["agentUserId"] = agentUserId;
+      _json['agentUserId'] = agentUserId;
     }
     if (async != null) {
-      _json["async"] = async;
+      _json['async'] = async;
     }
     return _json;
   }
@@ -1011,8 +1010,8 @@ class StateAndNotificationPayload {
   StateAndNotificationPayload();
 
   StateAndNotificationPayload.fromJson(core.Map _json) {
-    if (_json.containsKey("devices")) {
-      devices = ReportStateAndNotificationDevice.fromJson(_json["devices"]);
+    if (_json.containsKey('devices')) {
+      devices = ReportStateAndNotificationDevice.fromJson(_json['devices']);
     }
   }
 
@@ -1020,7 +1019,7 @@ class StateAndNotificationPayload {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.toJson();
+      _json['devices'] = devices.toJson();
     }
     return _json;
   }
@@ -1038,11 +1037,11 @@ class SyncRequest {
   SyncRequest();
 
   SyncRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("agentUserId")) {
-      agentUserId = _json["agentUserId"];
+    if (_json.containsKey('agentUserId')) {
+      agentUserId = _json['agentUserId'];
     }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
   }
 
@@ -1050,10 +1049,10 @@ class SyncRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (agentUserId != null) {
-      _json["agentUserId"] = agentUserId;
+      _json['agentUserId'] = agentUserId;
     }
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     return _json;
   }
@@ -1081,11 +1080,11 @@ class SyncResponse {
   SyncResponse();
 
   SyncResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("payload")) {
-      payload = SyncResponsePayload.fromJson(_json["payload"]);
+    if (_json.containsKey('payload')) {
+      payload = SyncResponsePayload.fromJson(_json['payload']);
     }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'];
     }
   }
 
@@ -1093,10 +1092,10 @@ class SyncResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (payload != null) {
-      _json["payload"] = payload.toJson();
+      _json['payload'] = payload.toJson();
     }
     if (requestId != null) {
-      _json["requestId"] = requestId;
+      _json['requestId'] = requestId;
     }
     return _json;
   }
@@ -1113,11 +1112,11 @@ class SyncResponsePayload {
   SyncResponsePayload();
 
   SyncResponsePayload.fromJson(core.Map _json) {
-    if (_json.containsKey("agentUserId")) {
-      agentUserId = _json["agentUserId"];
+    if (_json.containsKey('agentUserId')) {
+      agentUserId = _json['agentUserId'];
     }
-    if (_json.containsKey("devices")) {
-      devices = (_json["devices"] as core.List)
+    if (_json.containsKey('devices')) {
+      devices = (_json['devices'] as core.List)
           .map<Device>((value) => Device.fromJson(value))
           .toList();
     }
@@ -1127,10 +1126,10 @@ class SyncResponsePayload {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (agentUserId != null) {
-      _json["agentUserId"] = agentUserId;
+      _json['agentUserId'] = agentUserId;
     }
     if (devices != null) {
-      _json["devices"] = devices.map((value) => value.toJson()).toList();
+      _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
     return _json;
   }

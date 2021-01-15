@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,7 +38,7 @@ const core.String USER_AGENT = 'dart-api-client storagetransfer/v1';
 class StoragetransferApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -51,8 +50,8 @@ class StoragetransferApi {
       TransferOperationsResourceApi(_requester);
 
   StoragetransferApi(http.Client client,
-      {core.String rootUrl = "https://storagetransfer.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://storagetransfer.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -98,10 +97,10 @@ class GoogleServiceAccountsResourceApi {
     core.String _body;
 
     if (projectId == null) {
-      throw core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError('Parameter projectId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/googleServiceAccounts/' +
@@ -109,7 +108,7 @@ class GoogleServiceAccountsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -156,14 +155,14 @@ class TransferJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/transferJobs';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -206,20 +205,20 @@ class TransferJobsResourceApi {
     core.String _body;
 
     if (jobName == null) {
-      throw core.ArgumentError("Parameter jobName is required.");
+      throw core.ArgumentError('Parameter jobName is required.');
     }
     if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
+      _queryParams['projectId'] = [projectId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -270,23 +269,23 @@ class TransferJobsResourceApi {
     core.String _body;
 
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/transferJobs';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -334,17 +333,17 @@ class TransferJobsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (jobName == null) {
-      throw core.ArgumentError("Parameter jobName is required.");
+      throw core.ArgumentError('Parameter jobName is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -413,17 +412,17 @@ class TransferOperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -464,17 +463,17 @@ class TransferOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -531,26 +530,26 @@ class TransferOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -595,17 +594,17 @@ class TransferOperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -650,17 +649,17 @@ class TransferOperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -684,11 +683,11 @@ class AwsAccessKey {
   AwsAccessKey();
 
   AwsAccessKey.fromJson(core.Map _json) {
-    if (_json.containsKey("accessKeyId")) {
-      accessKeyId = _json["accessKeyId"];
+    if (_json.containsKey('accessKeyId')) {
+      accessKeyId = _json['accessKeyId'];
     }
-    if (_json.containsKey("secretAccessKey")) {
-      secretAccessKey = _json["secretAccessKey"];
+    if (_json.containsKey('secretAccessKey')) {
+      secretAccessKey = _json['secretAccessKey'];
     }
   }
 
@@ -696,10 +695,10 @@ class AwsAccessKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessKeyId != null) {
-      _json["accessKeyId"] = accessKeyId;
+      _json['accessKeyId'] = accessKeyId;
     }
     if (secretAccessKey != null) {
-      _json["secretAccessKey"] = secretAccessKey;
+      _json['secretAccessKey'] = secretAccessKey;
     }
     return _json;
   }
@@ -720,11 +719,11 @@ class AwsS3Data {
   AwsS3Data();
 
   AwsS3Data.fromJson(core.Map _json) {
-    if (_json.containsKey("awsAccessKey")) {
-      awsAccessKey = AwsAccessKey.fromJson(_json["awsAccessKey"]);
+    if (_json.containsKey('awsAccessKey')) {
+      awsAccessKey = AwsAccessKey.fromJson(_json['awsAccessKey']);
     }
-    if (_json.containsKey("bucketName")) {
-      bucketName = _json["bucketName"];
+    if (_json.containsKey('bucketName')) {
+      bucketName = _json['bucketName'];
     }
   }
 
@@ -732,10 +731,10 @@ class AwsS3Data {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (awsAccessKey != null) {
-      _json["awsAccessKey"] = awsAccessKey.toJson();
+      _json['awsAccessKey'] = awsAccessKey.toJson();
     }
     if (bucketName != null) {
-      _json["bucketName"] = bucketName;
+      _json['bucketName'] = bucketName;
     }
     return _json;
   }
@@ -762,14 +761,14 @@ class AzureBlobStorageData {
   AzureBlobStorageData();
 
   AzureBlobStorageData.fromJson(core.Map _json) {
-    if (_json.containsKey("azureCredentials")) {
-      azureCredentials = AzureCredentials.fromJson(_json["azureCredentials"]);
+    if (_json.containsKey('azureCredentials')) {
+      azureCredentials = AzureCredentials.fromJson(_json['azureCredentials']);
     }
-    if (_json.containsKey("container")) {
-      container = _json["container"];
+    if (_json.containsKey('container')) {
+      container = _json['container'];
     }
-    if (_json.containsKey("storageAccount")) {
-      storageAccount = _json["storageAccount"];
+    if (_json.containsKey('storageAccount')) {
+      storageAccount = _json['storageAccount'];
     }
   }
 
@@ -777,13 +776,13 @@ class AzureBlobStorageData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (azureCredentials != null) {
-      _json["azureCredentials"] = azureCredentials.toJson();
+      _json['azureCredentials'] = azureCredentials.toJson();
     }
     if (container != null) {
-      _json["container"] = container;
+      _json['container'] = container;
     }
     if (storageAccount != null) {
-      _json["storageAccount"] = storageAccount;
+      _json['storageAccount'] = storageAccount;
     }
     return _json;
   }
@@ -799,8 +798,8 @@ class AzureCredentials {
   AzureCredentials();
 
   AzureCredentials.fromJson(core.Map _json) {
-    if (_json.containsKey("sasToken")) {
-      sasToken = _json["sasToken"];
+    if (_json.containsKey('sasToken')) {
+      sasToken = _json['sasToken'];
     }
   }
 
@@ -808,7 +807,7 @@ class AzureCredentials {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sasToken != null) {
-      _json["sasToken"] = sasToken;
+      _json['sasToken'] = sasToken;
     }
     return _json;
   }
@@ -852,14 +851,14 @@ class Date {
   Date();
 
   Date.fromJson(core.Map _json) {
-    if (_json.containsKey("day")) {
-      day = _json["day"];
+    if (_json.containsKey('day')) {
+      day = _json['day'];
     }
-    if (_json.containsKey("month")) {
-      month = _json["month"];
+    if (_json.containsKey('month')) {
+      month = _json['month'];
     }
-    if (_json.containsKey("year")) {
-      year = _json["year"];
+    if (_json.containsKey('year')) {
+      year = _json['year'];
     }
   }
 
@@ -867,13 +866,13 @@ class Date {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (day != null) {
-      _json["day"] = day;
+      _json['day'] = day;
     }
     if (month != null) {
-      _json["month"] = month;
+      _json['month'] = month;
     }
     if (year != null) {
-      _json["year"] = year;
+      _json['year'] = year;
     }
     return _json;
   }
@@ -908,11 +907,11 @@ class ErrorLogEntry {
   ErrorLogEntry();
 
   ErrorLogEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("errorDetails")) {
-      errorDetails = (_json["errorDetails"] as core.List).cast<core.String>();
+    if (_json.containsKey('errorDetails')) {
+      errorDetails = (_json['errorDetails'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -920,10 +919,10 @@ class ErrorLogEntry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errorDetails != null) {
-      _json["errorDetails"] = errorDetails;
+      _json['errorDetails'] = errorDetails;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -1025,14 +1024,14 @@ class ErrorSummary {
   ErrorSummary();
 
   ErrorSummary.fromJson(core.Map _json) {
-    if (_json.containsKey("errorCode")) {
-      errorCode = _json["errorCode"];
+    if (_json.containsKey('errorCode')) {
+      errorCode = _json['errorCode'];
     }
-    if (_json.containsKey("errorCount")) {
-      errorCount = _json["errorCount"];
+    if (_json.containsKey('errorCount')) {
+      errorCount = _json['errorCount'];
     }
-    if (_json.containsKey("errorLogEntries")) {
-      errorLogEntries = (_json["errorLogEntries"] as core.List)
+    if (_json.containsKey('errorLogEntries')) {
+      errorLogEntries = (_json['errorLogEntries'] as core.List)
           .map<ErrorLogEntry>((value) => ErrorLogEntry.fromJson(value))
           .toList();
     }
@@ -1042,13 +1041,13 @@ class ErrorSummary {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errorCode != null) {
-      _json["errorCode"] = errorCode;
+      _json['errorCode'] = errorCode;
     }
     if (errorCount != null) {
-      _json["errorCount"] = errorCount;
+      _json['errorCount'] = errorCount;
     }
     if (errorLogEntries != null) {
-      _json["errorLogEntries"] =
+      _json['errorLogEntries'] =
           errorLogEntries.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -1067,8 +1066,8 @@ class GcsData {
   GcsData();
 
   GcsData.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketName")) {
-      bucketName = _json["bucketName"];
+    if (_json.containsKey('bucketName')) {
+      bucketName = _json['bucketName'];
     }
   }
 
@@ -1076,7 +1075,7 @@ class GcsData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketName != null) {
-      _json["bucketName"] = bucketName;
+      _json['bucketName'] = bucketName;
     }
     return _json;
   }
@@ -1090,8 +1089,8 @@ class GoogleServiceAccount {
   GoogleServiceAccount();
 
   GoogleServiceAccount.fromJson(core.Map _json) {
-    if (_json.containsKey("accountEmail")) {
-      accountEmail = _json["accountEmail"];
+    if (_json.containsKey('accountEmail')) {
+      accountEmail = _json['accountEmail'];
     }
   }
 
@@ -1099,7 +1098,7 @@ class GoogleServiceAccount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountEmail != null) {
-      _json["accountEmail"] = accountEmail;
+      _json['accountEmail'] = accountEmail;
     }
     return _json;
   }
@@ -1139,8 +1138,8 @@ class HttpData {
   HttpData();
 
   HttpData.fromJson(core.Map _json) {
-    if (_json.containsKey("listUrl")) {
-      listUrl = _json["listUrl"];
+    if (_json.containsKey('listUrl')) {
+      listUrl = _json['listUrl'];
     }
   }
 
@@ -1148,7 +1147,7 @@ class HttpData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (listUrl != null) {
-      _json["listUrl"] = listUrl;
+      _json['listUrl'] = listUrl;
     }
     return _json;
   }
@@ -1165,11 +1164,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -1179,10 +1178,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1199,11 +1198,11 @@ class ListTransferJobsResponse {
   ListTransferJobsResponse();
 
   ListTransferJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("transferJobs")) {
-      transferJobs = (_json["transferJobs"] as core.List)
+    if (_json.containsKey('transferJobs')) {
+      transferJobs = (_json['transferJobs'] as core.List)
           .map<TransferJob>((value) => TransferJob.fromJson(value))
           .toList();
     }
@@ -1213,10 +1212,10 @@ class ListTransferJobsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (transferJobs != null) {
-      _json["transferJobs"] =
+      _json['transferJobs'] =
           transferJobs.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -1255,14 +1254,14 @@ class NotificationConfig {
   NotificationConfig();
 
   NotificationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("eventTypes")) {
-      eventTypes = (_json["eventTypes"] as core.List).cast<core.String>();
+    if (_json.containsKey('eventTypes')) {
+      eventTypes = (_json['eventTypes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("payloadFormat")) {
-      payloadFormat = _json["payloadFormat"];
+    if (_json.containsKey('payloadFormat')) {
+      payloadFormat = _json['payloadFormat'];
     }
-    if (_json.containsKey("pubsubTopic")) {
-      pubsubTopic = _json["pubsubTopic"];
+    if (_json.containsKey('pubsubTopic')) {
+      pubsubTopic = _json['pubsubTopic'];
     }
   }
 
@@ -1270,13 +1269,13 @@ class NotificationConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (eventTypes != null) {
-      _json["eventTypes"] = eventTypes;
+      _json['eventTypes'] = eventTypes;
     }
     if (payloadFormat != null) {
-      _json["payloadFormat"] = payloadFormat;
+      _json['payloadFormat'] = payloadFormat;
     }
     if (pubsubTopic != null) {
-      _json["pubsubTopic"] = pubsubTopic;
+      _json['pubsubTopic'] = pubsubTopic;
     }
     return _json;
   }
@@ -1347,27 +1346,27 @@ class ObjectConditions {
   ObjectConditions();
 
   ObjectConditions.fromJson(core.Map _json) {
-    if (_json.containsKey("excludePrefixes")) {
+    if (_json.containsKey('excludePrefixes')) {
       excludePrefixes =
-          (_json["excludePrefixes"] as core.List).cast<core.String>();
+          (_json['excludePrefixes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("includePrefixes")) {
+    if (_json.containsKey('includePrefixes')) {
       includePrefixes =
-          (_json["includePrefixes"] as core.List).cast<core.String>();
+          (_json['includePrefixes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("lastModifiedBefore")) {
-      lastModifiedBefore = _json["lastModifiedBefore"];
+    if (_json.containsKey('lastModifiedBefore')) {
+      lastModifiedBefore = _json['lastModifiedBefore'];
     }
-    if (_json.containsKey("lastModifiedSince")) {
-      lastModifiedSince = _json["lastModifiedSince"];
+    if (_json.containsKey('lastModifiedSince')) {
+      lastModifiedSince = _json['lastModifiedSince'];
     }
-    if (_json.containsKey("maxTimeElapsedSinceLastModification")) {
+    if (_json.containsKey('maxTimeElapsedSinceLastModification')) {
       maxTimeElapsedSinceLastModification =
-          _json["maxTimeElapsedSinceLastModification"];
+          _json['maxTimeElapsedSinceLastModification'];
     }
-    if (_json.containsKey("minTimeElapsedSinceLastModification")) {
+    if (_json.containsKey('minTimeElapsedSinceLastModification')) {
       minTimeElapsedSinceLastModification =
-          _json["minTimeElapsedSinceLastModification"];
+          _json['minTimeElapsedSinceLastModification'];
     }
   }
 
@@ -1375,23 +1374,23 @@ class ObjectConditions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludePrefixes != null) {
-      _json["excludePrefixes"] = excludePrefixes;
+      _json['excludePrefixes'] = excludePrefixes;
     }
     if (includePrefixes != null) {
-      _json["includePrefixes"] = includePrefixes;
+      _json['includePrefixes'] = includePrefixes;
     }
     if (lastModifiedBefore != null) {
-      _json["lastModifiedBefore"] = lastModifiedBefore;
+      _json['lastModifiedBefore'] = lastModifiedBefore;
     }
     if (lastModifiedSince != null) {
-      _json["lastModifiedSince"] = lastModifiedSince;
+      _json['lastModifiedSince'] = lastModifiedSince;
     }
     if (maxTimeElapsedSinceLastModification != null) {
-      _json["maxTimeElapsedSinceLastModification"] =
+      _json['maxTimeElapsedSinceLastModification'] =
           maxTimeElapsedSinceLastModification;
     }
     if (minTimeElapsedSinceLastModification != null) {
-      _json["minTimeElapsedSinceLastModification"] =
+      _json['minTimeElapsedSinceLastModification'] =
           minTimeElapsedSinceLastModification;
     }
     return _json;
@@ -1436,22 +1435,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -1459,19 +1458,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -1539,14 +1538,14 @@ class Schedule {
   Schedule();
 
   Schedule.fromJson(core.Map _json) {
-    if (_json.containsKey("scheduleEndDate")) {
-      scheduleEndDate = Date.fromJson(_json["scheduleEndDate"]);
+    if (_json.containsKey('scheduleEndDate')) {
+      scheduleEndDate = Date.fromJson(_json['scheduleEndDate']);
     }
-    if (_json.containsKey("scheduleStartDate")) {
-      scheduleStartDate = Date.fromJson(_json["scheduleStartDate"]);
+    if (_json.containsKey('scheduleStartDate')) {
+      scheduleStartDate = Date.fromJson(_json['scheduleStartDate']);
     }
-    if (_json.containsKey("startTimeOfDay")) {
-      startTimeOfDay = TimeOfDay.fromJson(_json["startTimeOfDay"]);
+    if (_json.containsKey('startTimeOfDay')) {
+      startTimeOfDay = TimeOfDay.fromJson(_json['startTimeOfDay']);
     }
   }
 
@@ -1554,13 +1553,13 @@ class Schedule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (scheduleEndDate != null) {
-      _json["scheduleEndDate"] = scheduleEndDate.toJson();
+      _json['scheduleEndDate'] = scheduleEndDate.toJson();
     }
     if (scheduleStartDate != null) {
-      _json["scheduleStartDate"] = scheduleStartDate.toJson();
+      _json['scheduleStartDate'] = scheduleStartDate.toJson();
     }
     if (startTimeOfDay != null) {
-      _json["startTimeOfDay"] = startTimeOfDay.toJson();
+      _json['startTimeOfDay'] = startTimeOfDay.toJson();
     }
     return _json;
   }
@@ -1591,17 +1590,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -1609,13 +1608,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -1642,17 +1641,17 @@ class TimeOfDay {
   TimeOfDay();
 
   TimeOfDay.fromJson(core.Map _json) {
-    if (_json.containsKey("hours")) {
-      hours = _json["hours"];
+    if (_json.containsKey('hours')) {
+      hours = _json['hours'];
     }
-    if (_json.containsKey("minutes")) {
-      minutes = _json["minutes"];
+    if (_json.containsKey('minutes')) {
+      minutes = _json['minutes'];
     }
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'];
     }
-    if (_json.containsKey("seconds")) {
-      seconds = _json["seconds"];
+    if (_json.containsKey('seconds')) {
+      seconds = _json['seconds'];
     }
   }
 
@@ -1660,16 +1659,16 @@ class TimeOfDay {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hours != null) {
-      _json["hours"] = hours;
+      _json['hours'] = hours;
     }
     if (minutes != null) {
-      _json["minutes"] = minutes;
+      _json['minutes'] = minutes;
     }
     if (nanos != null) {
-      _json["nanos"] = nanos;
+      _json['nanos'] = nanos;
     }
     if (seconds != null) {
-      _json["seconds"] = seconds;
+      _json['seconds'] = seconds;
     }
     return _json;
   }
@@ -1736,53 +1735,53 @@ class TransferCounters {
   TransferCounters();
 
   TransferCounters.fromJson(core.Map _json) {
-    if (_json.containsKey("bytesCopiedToSink")) {
-      bytesCopiedToSink = _json["bytesCopiedToSink"];
+    if (_json.containsKey('bytesCopiedToSink')) {
+      bytesCopiedToSink = _json['bytesCopiedToSink'];
     }
-    if (_json.containsKey("bytesDeletedFromSink")) {
-      bytesDeletedFromSink = _json["bytesDeletedFromSink"];
+    if (_json.containsKey('bytesDeletedFromSink')) {
+      bytesDeletedFromSink = _json['bytesDeletedFromSink'];
     }
-    if (_json.containsKey("bytesDeletedFromSource")) {
-      bytesDeletedFromSource = _json["bytesDeletedFromSource"];
+    if (_json.containsKey('bytesDeletedFromSource')) {
+      bytesDeletedFromSource = _json['bytesDeletedFromSource'];
     }
-    if (_json.containsKey("bytesFailedToDeleteFromSink")) {
-      bytesFailedToDeleteFromSink = _json["bytesFailedToDeleteFromSink"];
+    if (_json.containsKey('bytesFailedToDeleteFromSink')) {
+      bytesFailedToDeleteFromSink = _json['bytesFailedToDeleteFromSink'];
     }
-    if (_json.containsKey("bytesFoundFromSource")) {
-      bytesFoundFromSource = _json["bytesFoundFromSource"];
+    if (_json.containsKey('bytesFoundFromSource')) {
+      bytesFoundFromSource = _json['bytesFoundFromSource'];
     }
-    if (_json.containsKey("bytesFoundOnlyFromSink")) {
-      bytesFoundOnlyFromSink = _json["bytesFoundOnlyFromSink"];
+    if (_json.containsKey('bytesFoundOnlyFromSink')) {
+      bytesFoundOnlyFromSink = _json['bytesFoundOnlyFromSink'];
     }
-    if (_json.containsKey("bytesFromSourceFailed")) {
-      bytesFromSourceFailed = _json["bytesFromSourceFailed"];
+    if (_json.containsKey('bytesFromSourceFailed')) {
+      bytesFromSourceFailed = _json['bytesFromSourceFailed'];
     }
-    if (_json.containsKey("bytesFromSourceSkippedBySync")) {
-      bytesFromSourceSkippedBySync = _json["bytesFromSourceSkippedBySync"];
+    if (_json.containsKey('bytesFromSourceSkippedBySync')) {
+      bytesFromSourceSkippedBySync = _json['bytesFromSourceSkippedBySync'];
     }
-    if (_json.containsKey("objectsCopiedToSink")) {
-      objectsCopiedToSink = _json["objectsCopiedToSink"];
+    if (_json.containsKey('objectsCopiedToSink')) {
+      objectsCopiedToSink = _json['objectsCopiedToSink'];
     }
-    if (_json.containsKey("objectsDeletedFromSink")) {
-      objectsDeletedFromSink = _json["objectsDeletedFromSink"];
+    if (_json.containsKey('objectsDeletedFromSink')) {
+      objectsDeletedFromSink = _json['objectsDeletedFromSink'];
     }
-    if (_json.containsKey("objectsDeletedFromSource")) {
-      objectsDeletedFromSource = _json["objectsDeletedFromSource"];
+    if (_json.containsKey('objectsDeletedFromSource')) {
+      objectsDeletedFromSource = _json['objectsDeletedFromSource'];
     }
-    if (_json.containsKey("objectsFailedToDeleteFromSink")) {
-      objectsFailedToDeleteFromSink = _json["objectsFailedToDeleteFromSink"];
+    if (_json.containsKey('objectsFailedToDeleteFromSink')) {
+      objectsFailedToDeleteFromSink = _json['objectsFailedToDeleteFromSink'];
     }
-    if (_json.containsKey("objectsFoundFromSource")) {
-      objectsFoundFromSource = _json["objectsFoundFromSource"];
+    if (_json.containsKey('objectsFoundFromSource')) {
+      objectsFoundFromSource = _json['objectsFoundFromSource'];
     }
-    if (_json.containsKey("objectsFoundOnlyFromSink")) {
-      objectsFoundOnlyFromSink = _json["objectsFoundOnlyFromSink"];
+    if (_json.containsKey('objectsFoundOnlyFromSink')) {
+      objectsFoundOnlyFromSink = _json['objectsFoundOnlyFromSink'];
     }
-    if (_json.containsKey("objectsFromSourceFailed")) {
-      objectsFromSourceFailed = _json["objectsFromSourceFailed"];
+    if (_json.containsKey('objectsFromSourceFailed')) {
+      objectsFromSourceFailed = _json['objectsFromSourceFailed'];
     }
-    if (_json.containsKey("objectsFromSourceSkippedBySync")) {
-      objectsFromSourceSkippedBySync = _json["objectsFromSourceSkippedBySync"];
+    if (_json.containsKey('objectsFromSourceSkippedBySync')) {
+      objectsFromSourceSkippedBySync = _json['objectsFromSourceSkippedBySync'];
     }
   }
 
@@ -1790,52 +1789,52 @@ class TransferCounters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bytesCopiedToSink != null) {
-      _json["bytesCopiedToSink"] = bytesCopiedToSink;
+      _json['bytesCopiedToSink'] = bytesCopiedToSink;
     }
     if (bytesDeletedFromSink != null) {
-      _json["bytesDeletedFromSink"] = bytesDeletedFromSink;
+      _json['bytesDeletedFromSink'] = bytesDeletedFromSink;
     }
     if (bytesDeletedFromSource != null) {
-      _json["bytesDeletedFromSource"] = bytesDeletedFromSource;
+      _json['bytesDeletedFromSource'] = bytesDeletedFromSource;
     }
     if (bytesFailedToDeleteFromSink != null) {
-      _json["bytesFailedToDeleteFromSink"] = bytesFailedToDeleteFromSink;
+      _json['bytesFailedToDeleteFromSink'] = bytesFailedToDeleteFromSink;
     }
     if (bytesFoundFromSource != null) {
-      _json["bytesFoundFromSource"] = bytesFoundFromSource;
+      _json['bytesFoundFromSource'] = bytesFoundFromSource;
     }
     if (bytesFoundOnlyFromSink != null) {
-      _json["bytesFoundOnlyFromSink"] = bytesFoundOnlyFromSink;
+      _json['bytesFoundOnlyFromSink'] = bytesFoundOnlyFromSink;
     }
     if (bytesFromSourceFailed != null) {
-      _json["bytesFromSourceFailed"] = bytesFromSourceFailed;
+      _json['bytesFromSourceFailed'] = bytesFromSourceFailed;
     }
     if (bytesFromSourceSkippedBySync != null) {
-      _json["bytesFromSourceSkippedBySync"] = bytesFromSourceSkippedBySync;
+      _json['bytesFromSourceSkippedBySync'] = bytesFromSourceSkippedBySync;
     }
     if (objectsCopiedToSink != null) {
-      _json["objectsCopiedToSink"] = objectsCopiedToSink;
+      _json['objectsCopiedToSink'] = objectsCopiedToSink;
     }
     if (objectsDeletedFromSink != null) {
-      _json["objectsDeletedFromSink"] = objectsDeletedFromSink;
+      _json['objectsDeletedFromSink'] = objectsDeletedFromSink;
     }
     if (objectsDeletedFromSource != null) {
-      _json["objectsDeletedFromSource"] = objectsDeletedFromSource;
+      _json['objectsDeletedFromSource'] = objectsDeletedFromSource;
     }
     if (objectsFailedToDeleteFromSink != null) {
-      _json["objectsFailedToDeleteFromSink"] = objectsFailedToDeleteFromSink;
+      _json['objectsFailedToDeleteFromSink'] = objectsFailedToDeleteFromSink;
     }
     if (objectsFoundFromSource != null) {
-      _json["objectsFoundFromSource"] = objectsFoundFromSource;
+      _json['objectsFoundFromSource'] = objectsFoundFromSource;
     }
     if (objectsFoundOnlyFromSink != null) {
-      _json["objectsFoundOnlyFromSink"] = objectsFoundOnlyFromSink;
+      _json['objectsFoundOnlyFromSink'] = objectsFoundOnlyFromSink;
     }
     if (objectsFromSourceFailed != null) {
-      _json["objectsFromSourceFailed"] = objectsFromSourceFailed;
+      _json['objectsFromSourceFailed'] = objectsFromSourceFailed;
     }
     if (objectsFromSourceSkippedBySync != null) {
-      _json["objectsFromSourceSkippedBySync"] = objectsFromSourceSkippedBySync;
+      _json['objectsFromSourceSkippedBySync'] = objectsFromSourceSkippedBySync;
     }
     return _json;
   }
@@ -1899,36 +1898,36 @@ class TransferJob {
   TransferJob();
 
   TransferJob.fromJson(core.Map _json) {
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("deletionTime")) {
-      deletionTime = _json["deletionTime"];
+    if (_json.containsKey('deletionTime')) {
+      deletionTime = _json['deletionTime'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("lastModificationTime")) {
-      lastModificationTime = _json["lastModificationTime"];
+    if (_json.containsKey('lastModificationTime')) {
+      lastModificationTime = _json['lastModificationTime'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notificationConfig")) {
+    if (_json.containsKey('notificationConfig')) {
       notificationConfig =
-          NotificationConfig.fromJson(_json["notificationConfig"]);
+          NotificationConfig.fromJson(_json['notificationConfig']);
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
-    if (_json.containsKey("schedule")) {
-      schedule = Schedule.fromJson(_json["schedule"]);
+    if (_json.containsKey('schedule')) {
+      schedule = Schedule.fromJson(_json['schedule']);
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("transferSpec")) {
-      transferSpec = TransferSpec.fromJson(_json["transferSpec"]);
+    if (_json.containsKey('transferSpec')) {
+      transferSpec = TransferSpec.fromJson(_json['transferSpec']);
     }
   }
 
@@ -1936,34 +1935,34 @@ class TransferJob {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (deletionTime != null) {
-      _json["deletionTime"] = deletionTime;
+      _json['deletionTime'] = deletionTime;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (lastModificationTime != null) {
-      _json["lastModificationTime"] = lastModificationTime;
+      _json['lastModificationTime'] = lastModificationTime;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notificationConfig != null) {
-      _json["notificationConfig"] = notificationConfig.toJson();
+      _json['notificationConfig'] = notificationConfig.toJson();
     }
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     if (schedule != null) {
-      _json["schedule"] = schedule.toJson();
+      _json['schedule'] = schedule.toJson();
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (transferSpec != null) {
-      _json["transferSpec"] = transferSpec.toJson();
+      _json['transferSpec'] = transferSpec.toJson();
     }
     return _json;
   }
@@ -2013,38 +2012,38 @@ class TransferOperation {
   TransferOperation();
 
   TransferOperation.fromJson(core.Map _json) {
-    if (_json.containsKey("counters")) {
-      counters = TransferCounters.fromJson(_json["counters"]);
+    if (_json.containsKey('counters')) {
+      counters = TransferCounters.fromJson(_json['counters']);
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("errorBreakdowns")) {
-      errorBreakdowns = (_json["errorBreakdowns"] as core.List)
+    if (_json.containsKey('errorBreakdowns')) {
+      errorBreakdowns = (_json['errorBreakdowns'] as core.List)
           .map<ErrorSummary>((value) => ErrorSummary.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notificationConfig")) {
+    if (_json.containsKey('notificationConfig')) {
       notificationConfig =
-          NotificationConfig.fromJson(_json["notificationConfig"]);
+          NotificationConfig.fromJson(_json['notificationConfig']);
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("transferJobName")) {
-      transferJobName = _json["transferJobName"];
+    if (_json.containsKey('transferJobName')) {
+      transferJobName = _json['transferJobName'];
     }
-    if (_json.containsKey("transferSpec")) {
-      transferSpec = TransferSpec.fromJson(_json["transferSpec"]);
+    if (_json.containsKey('transferSpec')) {
+      transferSpec = TransferSpec.fromJson(_json['transferSpec']);
     }
   }
 
@@ -2052,35 +2051,35 @@ class TransferOperation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (counters != null) {
-      _json["counters"] = counters.toJson();
+      _json['counters'] = counters.toJson();
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (errorBreakdowns != null) {
-      _json["errorBreakdowns"] =
+      _json['errorBreakdowns'] =
           errorBreakdowns.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notificationConfig != null) {
-      _json["notificationConfig"] = notificationConfig.toJson();
+      _json['notificationConfig'] = notificationConfig.toJson();
     }
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (transferJobName != null) {
-      _json["transferJobName"] = transferJobName;
+      _json['transferJobName'] = transferJobName;
     }
     if (transferSpec != null) {
-      _json["transferSpec"] = transferSpec.toJson();
+      _json['transferSpec'] = transferSpec.toJson();
     }
     return _json;
   }
@@ -2104,16 +2103,16 @@ class TransferOptions {
   TransferOptions();
 
   TransferOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("deleteObjectsFromSourceAfterTransfer")) {
+    if (_json.containsKey('deleteObjectsFromSourceAfterTransfer')) {
       deleteObjectsFromSourceAfterTransfer =
-          _json["deleteObjectsFromSourceAfterTransfer"];
+          _json['deleteObjectsFromSourceAfterTransfer'];
     }
-    if (_json.containsKey("deleteObjectsUniqueInSink")) {
-      deleteObjectsUniqueInSink = _json["deleteObjectsUniqueInSink"];
+    if (_json.containsKey('deleteObjectsUniqueInSink')) {
+      deleteObjectsUniqueInSink = _json['deleteObjectsUniqueInSink'];
     }
-    if (_json.containsKey("overwriteObjectsAlreadyExistingInSink")) {
+    if (_json.containsKey('overwriteObjectsAlreadyExistingInSink')) {
       overwriteObjectsAlreadyExistingInSink =
-          _json["overwriteObjectsAlreadyExistingInSink"];
+          _json['overwriteObjectsAlreadyExistingInSink'];
     }
   }
 
@@ -2121,14 +2120,14 @@ class TransferOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deleteObjectsFromSourceAfterTransfer != null) {
-      _json["deleteObjectsFromSourceAfterTransfer"] =
+      _json['deleteObjectsFromSourceAfterTransfer'] =
           deleteObjectsFromSourceAfterTransfer;
     }
     if (deleteObjectsUniqueInSink != null) {
-      _json["deleteObjectsUniqueInSink"] = deleteObjectsUniqueInSink;
+      _json['deleteObjectsUniqueInSink'] = deleteObjectsUniqueInSink;
     }
     if (overwriteObjectsAlreadyExistingInSink != null) {
-      _json["overwriteObjectsAlreadyExistingInSink"] =
+      _json['overwriteObjectsAlreadyExistingInSink'] =
           overwriteObjectsAlreadyExistingInSink;
     }
     return _json;
@@ -2165,27 +2164,27 @@ class TransferSpec {
   TransferSpec();
 
   TransferSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("awsS3DataSource")) {
-      awsS3DataSource = AwsS3Data.fromJson(_json["awsS3DataSource"]);
+    if (_json.containsKey('awsS3DataSource')) {
+      awsS3DataSource = AwsS3Data.fromJson(_json['awsS3DataSource']);
     }
-    if (_json.containsKey("azureBlobStorageDataSource")) {
+    if (_json.containsKey('azureBlobStorageDataSource')) {
       azureBlobStorageDataSource =
-          AzureBlobStorageData.fromJson(_json["azureBlobStorageDataSource"]);
+          AzureBlobStorageData.fromJson(_json['azureBlobStorageDataSource']);
     }
-    if (_json.containsKey("gcsDataSink")) {
-      gcsDataSink = GcsData.fromJson(_json["gcsDataSink"]);
+    if (_json.containsKey('gcsDataSink')) {
+      gcsDataSink = GcsData.fromJson(_json['gcsDataSink']);
     }
-    if (_json.containsKey("gcsDataSource")) {
-      gcsDataSource = GcsData.fromJson(_json["gcsDataSource"]);
+    if (_json.containsKey('gcsDataSource')) {
+      gcsDataSource = GcsData.fromJson(_json['gcsDataSource']);
     }
-    if (_json.containsKey("httpDataSource")) {
-      httpDataSource = HttpData.fromJson(_json["httpDataSource"]);
+    if (_json.containsKey('httpDataSource')) {
+      httpDataSource = HttpData.fromJson(_json['httpDataSource']);
     }
-    if (_json.containsKey("objectConditions")) {
-      objectConditions = ObjectConditions.fromJson(_json["objectConditions"]);
+    if (_json.containsKey('objectConditions')) {
+      objectConditions = ObjectConditions.fromJson(_json['objectConditions']);
     }
-    if (_json.containsKey("transferOptions")) {
-      transferOptions = TransferOptions.fromJson(_json["transferOptions"]);
+    if (_json.containsKey('transferOptions')) {
+      transferOptions = TransferOptions.fromJson(_json['transferOptions']);
     }
   }
 
@@ -2193,25 +2192,25 @@ class TransferSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (awsS3DataSource != null) {
-      _json["awsS3DataSource"] = awsS3DataSource.toJson();
+      _json['awsS3DataSource'] = awsS3DataSource.toJson();
     }
     if (azureBlobStorageDataSource != null) {
-      _json["azureBlobStorageDataSource"] = azureBlobStorageDataSource.toJson();
+      _json['azureBlobStorageDataSource'] = azureBlobStorageDataSource.toJson();
     }
     if (gcsDataSink != null) {
-      _json["gcsDataSink"] = gcsDataSink.toJson();
+      _json['gcsDataSink'] = gcsDataSink.toJson();
     }
     if (gcsDataSource != null) {
-      _json["gcsDataSource"] = gcsDataSource.toJson();
+      _json['gcsDataSource'] = gcsDataSource.toJson();
     }
     if (httpDataSource != null) {
-      _json["httpDataSource"] = httpDataSource.toJson();
+      _json['httpDataSource'] = httpDataSource.toJson();
     }
     if (objectConditions != null) {
-      _json["objectConditions"] = objectConditions.toJson();
+      _json['objectConditions'] = objectConditions.toJson();
     }
     if (transferOptions != null) {
-      _json["transferOptions"] = transferOptions.toJson();
+      _json['transferOptions'] = transferOptions.toJson();
     }
     return _json;
   }
@@ -2241,14 +2240,14 @@ class UpdateTransferJobRequest {
   UpdateTransferJobRequest();
 
   UpdateTransferJobRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
-    if (_json.containsKey("transferJob")) {
-      transferJob = TransferJob.fromJson(_json["transferJob"]);
+    if (_json.containsKey('transferJob')) {
+      transferJob = TransferJob.fromJson(_json['transferJob']);
     }
-    if (_json.containsKey("updateTransferJobFieldMask")) {
-      updateTransferJobFieldMask = _json["updateTransferJobFieldMask"];
+    if (_json.containsKey('updateTransferJobFieldMask')) {
+      updateTransferJobFieldMask = _json['updateTransferJobFieldMask'];
     }
   }
 
@@ -2256,13 +2255,13 @@ class UpdateTransferJobRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     if (transferJob != null) {
-      _json["transferJob"] = transferJob.toJson();
+      _json['transferJob'] = transferJob.toJson();
     }
     if (updateTransferJobFieldMask != null) {
-      _json["updateTransferJobFieldMask"] = updateTransferJobFieldMask;
+      _json['updateTransferJobFieldMask'] = updateTransferJobFieldMask;
     }
     return _json;
   }

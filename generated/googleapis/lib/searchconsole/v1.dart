@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,11 +37,11 @@ const core.String USER_AGENT = 'dart-api-client searchconsole/v1';
 /// users only) and to public information on an URL basis (anyone)
 class SearchconsoleApi {
   /// View and manage Search Console data for your verified sites
-  static const WebmastersScope = "https://www.googleapis.com/auth/webmasters";
+  static const WebmastersScope = 'https://www.googleapis.com/auth/webmasters';
 
   /// View Search Console data for your verified sites
   static const WebmastersReadonlyScope =
-      "https://www.googleapis.com/auth/webmasters.readonly";
+      'https://www.googleapis.com/auth/webmasters.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -54,8 +53,8 @@ class SearchconsoleApi {
       UrlTestingToolsResourceApi(_requester);
 
   SearchconsoleApi(http.Client client,
-      {core.String rootUrl = "https://searchconsole.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://searchconsole.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -105,10 +104,10 @@ class SearchanalyticsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (siteUrl == null) {
-      throw core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError('Parameter siteUrl is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webmasters/v3/sites/' +
@@ -117,7 +116,7 @@ class SearchanalyticsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -165,13 +164,13 @@ class SitemapsResourceApi {
     core.String _body;
 
     if (siteUrl == null) {
-      throw core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError('Parameter siteUrl is required.');
     }
     if (feedpath == null) {
-      throw core.ArgumentError("Parameter feedpath is required.");
+      throw core.ArgumentError('Parameter feedpath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -183,7 +182,7 @@ class SitemapsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -226,13 +225,13 @@ class SitemapsResourceApi {
     core.String _body;
 
     if (siteUrl == null) {
-      throw core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError('Parameter siteUrl is required.');
     }
     if (feedpath == null) {
-      throw core.ArgumentError("Parameter feedpath is required.");
+      throw core.ArgumentError('Parameter feedpath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webmasters/v3/sites/' +
@@ -242,7 +241,7 @@ class SitemapsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -287,13 +286,13 @@ class SitemapsResourceApi {
     core.String _body;
 
     if (siteUrl == null) {
-      throw core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError('Parameter siteUrl is required.');
     }
     if (sitemapIndex != null) {
-      _queryParams["sitemapIndex"] = [sitemapIndex];
+      _queryParams['sitemapIndex'] = [sitemapIndex];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webmasters/v3/sites/' +
@@ -302,7 +301,7 @@ class SitemapsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -343,13 +342,13 @@ class SitemapsResourceApi {
     core.String _body;
 
     if (siteUrl == null) {
-      throw core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError('Parameter siteUrl is required.');
     }
     if (feedpath == null) {
-      throw core.ArgumentError("Parameter feedpath is required.");
+      throw core.ArgumentError('Parameter feedpath is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -361,7 +360,7 @@ class SitemapsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -403,10 +402,10 @@ class SitesResourceApi {
     core.String _body;
 
     if (siteUrl == null) {
-      throw core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError('Parameter siteUrl is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -415,7 +414,7 @@ class SitesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -452,10 +451,10 @@ class SitesResourceApi {
     core.String _body;
 
     if (siteUrl == null) {
-      throw core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError('Parameter siteUrl is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -464,7 +463,7 @@ class SitesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -503,17 +502,17 @@ class SitesResourceApi {
     core.String _body;
 
     if (siteUrl == null) {
-      throw core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError('Parameter siteUrl is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -548,14 +547,14 @@ class SitesResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webmasters/v3/sites';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -612,14 +611,14 @@ class UrlTestingToolsMobileFriendlyTestResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/urlTestingTools/mobileFriendlyTest:run';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -641,20 +640,20 @@ class ApiDataRow {
   ApiDataRow();
 
   ApiDataRow.fromJson(core.Map _json) {
-    if (_json.containsKey("clicks")) {
-      clicks = _json["clicks"].toDouble();
+    if (_json.containsKey('clicks')) {
+      clicks = _json['clicks'].toDouble();
     }
-    if (_json.containsKey("ctr")) {
-      ctr = _json["ctr"].toDouble();
+    if (_json.containsKey('ctr')) {
+      ctr = _json['ctr'].toDouble();
     }
-    if (_json.containsKey("impressions")) {
-      impressions = _json["impressions"].toDouble();
+    if (_json.containsKey('impressions')) {
+      impressions = _json['impressions'].toDouble();
     }
-    if (_json.containsKey("keys")) {
-      keys = (_json["keys"] as core.List).cast<core.String>();
+    if (_json.containsKey('keys')) {
+      keys = (_json['keys'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("position")) {
-      position = _json["position"].toDouble();
+    if (_json.containsKey('position')) {
+      position = _json['position'].toDouble();
     }
   }
 
@@ -662,19 +661,19 @@ class ApiDataRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clicks != null) {
-      _json["clicks"] = clicks;
+      _json['clicks'] = clicks;
     }
     if (ctr != null) {
-      _json["ctr"] = ctr;
+      _json['ctr'] = ctr;
     }
     if (impressions != null) {
-      _json["impressions"] = impressions;
+      _json['impressions'] = impressions;
     }
     if (keys != null) {
-      _json["keys"] = keys;
+      _json['keys'] = keys;
     }
     if (position != null) {
-      _json["position"] = position;
+      _json['position'] = position;
     }
     return _json;
   }
@@ -707,14 +706,14 @@ class ApiDimensionFilter {
   ApiDimensionFilter();
 
   ApiDimensionFilter.fromJson(core.Map _json) {
-    if (_json.containsKey("dimension")) {
-      dimension = _json["dimension"];
+    if (_json.containsKey('dimension')) {
+      dimension = _json['dimension'];
     }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
+    if (_json.containsKey('expression')) {
+      expression = _json['expression'];
     }
-    if (_json.containsKey("operator")) {
-      operator = _json["operator"];
+    if (_json.containsKey('operator')) {
+      operator = _json['operator'];
     }
   }
 
@@ -722,13 +721,13 @@ class ApiDimensionFilter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dimension != null) {
-      _json["dimension"] = dimension;
+      _json['dimension'] = dimension;
     }
     if (expression != null) {
-      _json["expression"] = expression;
+      _json['expression'] = expression;
     }
     if (operator != null) {
-      _json["operator"] = operator;
+      _json['operator'] = operator;
     }
     return _json;
   }
@@ -749,14 +748,14 @@ class ApiDimensionFilterGroup {
   ApiDimensionFilterGroup();
 
   ApiDimensionFilterGroup.fromJson(core.Map _json) {
-    if (_json.containsKey("filters")) {
-      filters = (_json["filters"] as core.List)
+    if (_json.containsKey('filters')) {
+      filters = (_json['filters'] as core.List)
           .map<ApiDimensionFilter>(
               (value) => ApiDimensionFilter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("groupType")) {
-      groupType = _json["groupType"];
+    if (_json.containsKey('groupType')) {
+      groupType = _json['groupType'];
     }
   }
 
@@ -764,10 +763,10 @@ class ApiDimensionFilterGroup {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filters != null) {
-      _json["filters"] = filters.map((value) => value.toJson()).toList();
+      _json['filters'] = filters.map((value) => value.toJson()).toList();
     }
     if (groupType != null) {
-      _json["groupType"] = groupType;
+      _json['groupType'] = groupType;
     }
     return _json;
   }
@@ -781,8 +780,8 @@ class BlockedResource {
   BlockedResource();
 
   BlockedResource.fromJson(core.Map _json) {
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -790,7 +789,7 @@ class BlockedResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -805,7 +804,7 @@ class Image {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The mime-type of the image data.
@@ -814,11 +813,11 @@ class Image {
   Image();
 
   Image.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
   }
 
@@ -826,10 +825,10 @@ class Image {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     return _json;
   }
@@ -862,8 +861,8 @@ class MobileFriendlyIssue {
   MobileFriendlyIssue();
 
   MobileFriendlyIssue.fromJson(core.Map _json) {
-    if (_json.containsKey("rule")) {
-      rule = _json["rule"];
+    if (_json.containsKey('rule')) {
+      rule = _json['rule'];
     }
   }
 
@@ -871,7 +870,7 @@ class MobileFriendlyIssue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rule != null) {
-      _json["rule"] = rule;
+      _json['rule'] = rule;
     }
     return _json;
   }
@@ -885,8 +884,8 @@ class ResourceIssue {
   ResourceIssue();
 
   ResourceIssue.fromJson(core.Map _json) {
-    if (_json.containsKey("blockedResource")) {
-      blockedResource = BlockedResource.fromJson(_json["blockedResource"]);
+    if (_json.containsKey('blockedResource')) {
+      blockedResource = BlockedResource.fromJson(_json['blockedResource']);
     }
   }
 
@@ -894,7 +893,7 @@ class ResourceIssue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blockedResource != null) {
-      _json["blockedResource"] = blockedResource.toJson();
+      _json['blockedResource'] = blockedResource.toJson();
     }
     return _json;
   }
@@ -911,11 +910,11 @@ class RunMobileFriendlyTestRequest {
   RunMobileFriendlyTestRequest();
 
   RunMobileFriendlyTestRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("requestScreenshot")) {
-      requestScreenshot = _json["requestScreenshot"];
+    if (_json.containsKey('requestScreenshot')) {
+      requestScreenshot = _json['requestScreenshot'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -923,10 +922,10 @@ class RunMobileFriendlyTestRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (requestScreenshot != null) {
-      _json["requestScreenshot"] = requestScreenshot;
+      _json['requestScreenshot'] = requestScreenshot;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -958,25 +957,25 @@ class RunMobileFriendlyTestResponse {
   RunMobileFriendlyTestResponse();
 
   RunMobileFriendlyTestResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("mobileFriendliness")) {
-      mobileFriendliness = _json["mobileFriendliness"];
+    if (_json.containsKey('mobileFriendliness')) {
+      mobileFriendliness = _json['mobileFriendliness'];
     }
-    if (_json.containsKey("mobileFriendlyIssues")) {
-      mobileFriendlyIssues = (_json["mobileFriendlyIssues"] as core.List)
+    if (_json.containsKey('mobileFriendlyIssues')) {
+      mobileFriendlyIssues = (_json['mobileFriendlyIssues'] as core.List)
           .map<MobileFriendlyIssue>(
               (value) => MobileFriendlyIssue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("resourceIssues")) {
-      resourceIssues = (_json["resourceIssues"] as core.List)
+    if (_json.containsKey('resourceIssues')) {
+      resourceIssues = (_json['resourceIssues'] as core.List)
           .map<ResourceIssue>((value) => ResourceIssue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("screenshot")) {
-      screenshot = Image.fromJson(_json["screenshot"]);
+    if (_json.containsKey('screenshot')) {
+      screenshot = Image.fromJson(_json['screenshot']);
     }
-    if (_json.containsKey("testStatus")) {
-      testStatus = TestStatus.fromJson(_json["testStatus"]);
+    if (_json.containsKey('testStatus')) {
+      testStatus = TestStatus.fromJson(_json['testStatus']);
     }
   }
 
@@ -984,21 +983,21 @@ class RunMobileFriendlyTestResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mobileFriendliness != null) {
-      _json["mobileFriendliness"] = mobileFriendliness;
+      _json['mobileFriendliness'] = mobileFriendliness;
     }
     if (mobileFriendlyIssues != null) {
-      _json["mobileFriendlyIssues"] =
+      _json['mobileFriendlyIssues'] =
           mobileFriendlyIssues.map((value) => value.toJson()).toList();
     }
     if (resourceIssues != null) {
-      _json["resourceIssues"] =
+      _json['resourceIssues'] =
           resourceIssues.map((value) => value.toJson()).toList();
     }
     if (screenshot != null) {
-      _json["screenshot"] = screenshot.toJson();
+      _json['screenshot'] = screenshot.toJson();
     }
     if (testStatus != null) {
-      _json["testStatus"] = testStatus.toJson();
+      _json['testStatus'] = testStatus.toJson();
     }
     return _json;
   }
@@ -1062,32 +1061,32 @@ class SearchAnalyticsQueryRequest {
   SearchAnalyticsQueryRequest();
 
   SearchAnalyticsQueryRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("aggregationType")) {
-      aggregationType = _json["aggregationType"];
+    if (_json.containsKey('aggregationType')) {
+      aggregationType = _json['aggregationType'];
     }
-    if (_json.containsKey("dimensionFilterGroups")) {
-      dimensionFilterGroups = (_json["dimensionFilterGroups"] as core.List)
+    if (_json.containsKey('dimensionFilterGroups')) {
+      dimensionFilterGroups = (_json['dimensionFilterGroups'] as core.List)
           .map<ApiDimensionFilterGroup>(
               (value) => ApiDimensionFilterGroup.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("dimensions")) {
-      dimensions = (_json["dimensions"] as core.List).cast<core.String>();
+    if (_json.containsKey('dimensions')) {
+      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("endDate")) {
-      endDate = _json["endDate"];
+    if (_json.containsKey('endDate')) {
+      endDate = _json['endDate'];
     }
-    if (_json.containsKey("rowLimit")) {
-      rowLimit = _json["rowLimit"];
+    if (_json.containsKey('rowLimit')) {
+      rowLimit = _json['rowLimit'];
     }
-    if (_json.containsKey("searchType")) {
-      searchType = _json["searchType"];
+    if (_json.containsKey('searchType')) {
+      searchType = _json['searchType'];
     }
-    if (_json.containsKey("startDate")) {
-      startDate = _json["startDate"];
+    if (_json.containsKey('startDate')) {
+      startDate = _json['startDate'];
     }
-    if (_json.containsKey("startRow")) {
-      startRow = _json["startRow"];
+    if (_json.containsKey('startRow')) {
+      startRow = _json['startRow'];
     }
   }
 
@@ -1095,29 +1094,29 @@ class SearchAnalyticsQueryRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (aggregationType != null) {
-      _json["aggregationType"] = aggregationType;
+      _json['aggregationType'] = aggregationType;
     }
     if (dimensionFilterGroups != null) {
-      _json["dimensionFilterGroups"] =
+      _json['dimensionFilterGroups'] =
           dimensionFilterGroups.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] = dimensions;
+      _json['dimensions'] = dimensions;
     }
     if (endDate != null) {
-      _json["endDate"] = endDate;
+      _json['endDate'] = endDate;
     }
     if (rowLimit != null) {
-      _json["rowLimit"] = rowLimit;
+      _json['rowLimit'] = rowLimit;
     }
     if (searchType != null) {
-      _json["searchType"] = searchType;
+      _json['searchType'] = searchType;
     }
     if (startDate != null) {
-      _json["startDate"] = startDate;
+      _json['startDate'] = startDate;
     }
     if (startRow != null) {
-      _json["startRow"] = startRow;
+      _json['startRow'] = startRow;
     }
     return _json;
   }
@@ -1140,11 +1139,11 @@ class SearchAnalyticsQueryResponse {
   SearchAnalyticsQueryResponse();
 
   SearchAnalyticsQueryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("responseAggregationType")) {
-      responseAggregationType = _json["responseAggregationType"];
+    if (_json.containsKey('responseAggregationType')) {
+      responseAggregationType = _json['responseAggregationType'];
     }
-    if (_json.containsKey("rows")) {
-      rows = (_json["rows"] as core.List)
+    if (_json.containsKey('rows')) {
+      rows = (_json['rows'] as core.List)
           .map<ApiDataRow>((value) => ApiDataRow.fromJson(value))
           .toList();
     }
@@ -1154,10 +1153,10 @@ class SearchAnalyticsQueryResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responseAggregationType != null) {
-      _json["responseAggregationType"] = responseAggregationType;
+      _json['responseAggregationType'] = responseAggregationType;
     }
     if (rows != null) {
-      _json["rows"] = rows.map((value) => value.toJson()).toList();
+      _json['rows'] = rows.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1172,8 +1171,8 @@ class SitemapsListResponse {
   SitemapsListResponse();
 
   SitemapsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("sitemap")) {
-      sitemap = (_json["sitemap"] as core.List)
+    if (_json.containsKey('sitemap')) {
+      sitemap = (_json['sitemap'] as core.List)
           .map<WmxSitemap>((value) => WmxSitemap.fromJson(value))
           .toList();
     }
@@ -1183,7 +1182,7 @@ class SitemapsListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sitemap != null) {
-      _json["sitemap"] = sitemap.map((value) => value.toJson()).toList();
+      _json['sitemap'] = sitemap.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1199,8 +1198,8 @@ class SitesListResponse {
   SitesListResponse();
 
   SitesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("siteEntry")) {
-      siteEntry = (_json["siteEntry"] as core.List)
+    if (_json.containsKey('siteEntry')) {
+      siteEntry = (_json['siteEntry'] as core.List)
           .map<WmxSite>((value) => WmxSite.fromJson(value))
           .toList();
     }
@@ -1210,7 +1209,7 @@ class SitesListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (siteEntry != null) {
-      _json["siteEntry"] = siteEntry.map((value) => value.toJson()).toList();
+      _json['siteEntry'] = siteEntry.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1238,11 +1237,11 @@ class TestStatus {
   TestStatus();
 
   TestStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("details")) {
-      details = _json["details"];
+    if (_json.containsKey('details')) {
+      details = _json['details'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
   }
 
@@ -1250,10 +1249,10 @@ class TestStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     return _json;
   }
@@ -1280,11 +1279,11 @@ class WmxSite {
   WmxSite();
 
   WmxSite.fromJson(core.Map _json) {
-    if (_json.containsKey("permissionLevel")) {
-      permissionLevel = _json["permissionLevel"];
+    if (_json.containsKey('permissionLevel')) {
+      permissionLevel = _json['permissionLevel'];
     }
-    if (_json.containsKey("siteUrl")) {
-      siteUrl = _json["siteUrl"];
+    if (_json.containsKey('siteUrl')) {
+      siteUrl = _json['siteUrl'];
     }
   }
 
@@ -1292,10 +1291,10 @@ class WmxSite {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissionLevel != null) {
-      _json["permissionLevel"] = permissionLevel;
+      _json['permissionLevel'] = permissionLevel;
     }
     if (siteUrl != null) {
-      _json["siteUrl"] = siteUrl;
+      _json['siteUrl'] = siteUrl;
     }
     return _json;
   }
@@ -1346,34 +1345,34 @@ class WmxSitemap {
   WmxSitemap();
 
   WmxSitemap.fromJson(core.Map _json) {
-    if (_json.containsKey("contents")) {
-      contents = (_json["contents"] as core.List)
+    if (_json.containsKey('contents')) {
+      contents = (_json['contents'] as core.List)
           .map<WmxSitemapContent>((value) => WmxSitemapContent.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("errors")) {
-      errors = _json["errors"];
+    if (_json.containsKey('errors')) {
+      errors = _json['errors'];
     }
-    if (_json.containsKey("isPending")) {
-      isPending = _json["isPending"];
+    if (_json.containsKey('isPending')) {
+      isPending = _json['isPending'];
     }
-    if (_json.containsKey("isSitemapsIndex")) {
-      isSitemapsIndex = _json["isSitemapsIndex"];
+    if (_json.containsKey('isSitemapsIndex')) {
+      isSitemapsIndex = _json['isSitemapsIndex'];
     }
-    if (_json.containsKey("lastDownloaded")) {
-      lastDownloaded = _json["lastDownloaded"];
+    if (_json.containsKey('lastDownloaded')) {
+      lastDownloaded = _json['lastDownloaded'];
     }
-    if (_json.containsKey("lastSubmitted")) {
-      lastSubmitted = _json["lastSubmitted"];
+    if (_json.containsKey('lastSubmitted')) {
+      lastSubmitted = _json['lastSubmitted'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"];
+    if (_json.containsKey('warnings')) {
+      warnings = _json['warnings'];
     }
   }
 
@@ -1381,31 +1380,31 @@ class WmxSitemap {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contents != null) {
-      _json["contents"] = contents.map((value) => value.toJson()).toList();
+      _json['contents'] = contents.map((value) => value.toJson()).toList();
     }
     if (errors != null) {
-      _json["errors"] = errors;
+      _json['errors'] = errors;
     }
     if (isPending != null) {
-      _json["isPending"] = isPending;
+      _json['isPending'] = isPending;
     }
     if (isSitemapsIndex != null) {
-      _json["isSitemapsIndex"] = isSitemapsIndex;
+      _json['isSitemapsIndex'] = isSitemapsIndex;
     }
     if (lastDownloaded != null) {
-      _json["lastDownloaded"] = lastDownloaded;
+      _json['lastDownloaded'] = lastDownloaded;
     }
     if (lastSubmitted != null) {
-      _json["lastSubmitted"] = lastSubmitted;
+      _json['lastSubmitted'] = lastSubmitted;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (warnings != null) {
-      _json["warnings"] = warnings;
+      _json['warnings'] = warnings;
     }
     return _json;
   }
@@ -1436,14 +1435,14 @@ class WmxSitemapContent {
   WmxSitemapContent();
 
   WmxSitemapContent.fromJson(core.Map _json) {
-    if (_json.containsKey("indexed")) {
-      indexed = _json["indexed"];
+    if (_json.containsKey('indexed')) {
+      indexed = _json['indexed'];
     }
-    if (_json.containsKey("submitted")) {
-      submitted = _json["submitted"];
+    if (_json.containsKey('submitted')) {
+      submitted = _json['submitted'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -1451,13 +1450,13 @@ class WmxSitemapContent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indexed != null) {
-      _json["indexed"] = indexed;
+      _json['indexed'] = indexed;
     }
     if (submitted != null) {
-      _json["submitted"] = submitted;
+      _json['submitted'] = submitted;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }

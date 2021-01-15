@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -79,7 +79,7 @@ api.Action buildAction() {
     o.detail = buildActionDetail();
     o.target = buildTarget();
     o.timeRange = buildTimeRange();
-    o.timestamp = "foo";
+    o.timestamp = 'foo';
   }
   buildCounterAction--;
   return o;
@@ -213,7 +213,7 @@ api.ApplicationReference buildApplicationReference() {
   var o = api.ApplicationReference();
   buildCounterApplicationReference++;
   if (buildCounterApplicationReference < 3) {
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterApplicationReference--;
   return o;
@@ -233,7 +233,7 @@ api.Assignment buildAssignment() {
   buildCounterAssignment++;
   if (buildCounterAssignment < 3) {
     o.assignedUser = buildUser();
-    o.subtype = "foo";
+    o.subtype = 'foo';
   }
   buildCounterAssignment--;
   return o;
@@ -354,7 +354,7 @@ api.DataLeakPreventionChange buildDataLeakPreventionChange() {
   var o = api.DataLeakPreventionChange();
   buildCounterDataLeakPreventionChange++;
   if (buildCounterDataLeakPreventionChange < 3) {
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterDataLeakPreventionChange--;
   return o;
@@ -373,7 +373,7 @@ api.Delete buildDelete() {
   var o = api.Delete();
   buildCounterDelete++;
   if (buildCounterDelete < 3) {
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterDelete--;
   return o;
@@ -407,8 +407,8 @@ api.Domain buildDomain() {
   var o = api.Domain();
   buildCounterDomain++;
   if (buildCounterDomain < 3) {
-    o.legacyId = "foo";
-    o.name = "foo";
+    o.legacyId = 'foo';
+    o.name = 'foo';
   }
   buildCounterDomain--;
   return o;
@@ -428,9 +428,9 @@ api.Drive buildDrive() {
   var o = api.Drive();
   buildCounterDrive++;
   if (buildCounterDrive < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.root = buildDriveItem();
-    o.title = "foo";
+    o.title = 'foo';
   }
   buildCounterDrive--;
   return o;
@@ -495,7 +495,7 @@ api.DriveActivity buildDriveActivity() {
     o.primaryActionDetail = buildActionDetail();
     o.targets = buildUnnamed3872();
     o.timeRange = buildTimeRange();
-    o.timestamp = "foo";
+    o.timestamp = 'foo';
   }
   buildCounterDriveActivity--;
   return o;
@@ -534,7 +534,7 @@ api.DriveFolder buildDriveFolder() {
   var o = api.DriveFolder();
   buildCounterDriveFolder++;
   if (buildCounterDriveFolder < 3) {
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterDriveFolder--;
   return o;
@@ -557,10 +557,10 @@ api.DriveItem buildDriveItem() {
     o.driveFolder = buildDriveFolder();
     o.file = buildFile();
     o.folder = buildFolder();
-    o.mimeType = "foo";
-    o.name = "foo";
+    o.mimeType = 'foo';
+    o.name = 'foo';
     o.owner = buildOwner();
-    o.title = "foo";
+    o.title = 'foo';
   }
   buildCounterDriveItem--;
   return o;
@@ -590,8 +590,8 @@ api.DriveItemReference buildDriveItemReference() {
     o.driveFolder = buildDriveFolder();
     o.file = buildFile();
     o.folder = buildFolder();
-    o.name = "foo";
-    o.title = "foo";
+    o.name = 'foo';
+    o.title = 'foo';
   }
   buildCounterDriveItemReference--;
   return o;
@@ -615,8 +615,8 @@ api.DriveReference buildDriveReference() {
   var o = api.DriveReference();
   buildCounterDriveReference++;
   if (buildCounterDriveReference < 3) {
-    o.name = "foo";
-    o.title = "foo";
+    o.name = 'foo';
+    o.title = 'foo';
   }
   buildCounterDriveReference--;
   return o;
@@ -666,9 +666,9 @@ api.FileComment buildFileComment() {
   var o = api.FileComment();
   buildCounterFileComment++;
   if (buildCounterFileComment < 3) {
-    o.legacyCommentId = "foo";
-    o.legacyDiscussionId = "foo";
-    o.linkToDiscussion = "foo";
+    o.legacyCommentId = 'foo';
+    o.legacyDiscussionId = 'foo';
+    o.linkToDiscussion = 'foo';
     o.parent = buildDriveItem();
   }
   buildCounterFileComment--;
@@ -691,7 +691,7 @@ api.Folder buildFolder() {
   var o = api.Folder();
   buildCounterFolder++;
   if (buildCounterFolder < 3) {
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterFolder--;
   return o;
@@ -710,8 +710,8 @@ api.Group buildGroup() {
   var o = api.Group();
   buildCounterGroup++;
   if (buildCounterGroup < 3) {
-    o.email = "foo";
-    o.title = "foo";
+    o.email = 'foo';
+    o.title = 'foo';
   }
   buildCounterGroup--;
   return o;
@@ -751,7 +751,7 @@ api.KnownUser buildKnownUser() {
   buildCounterKnownUser++;
   if (buildCounterKnownUser < 3) {
     o.isCurrentUser = true;
-    o.personName = "foo";
+    o.personName = 'foo';
   }
   buildCounterKnownUser--;
   return o;
@@ -892,7 +892,7 @@ api.Permission buildPermission() {
     o.anyone = buildAnyone();
     o.domain = buildDomain();
     o.group = buildGroup();
-    o.role = "foo";
+    o.role = 'foo';
     o.user = buildUser();
   }
   buildCounterPermission--;
@@ -964,7 +964,7 @@ api.Post buildPost() {
   var o = api.Post();
   buildCounterPost++;
   if (buildCounterPost < 3) {
-    o.subtype = "foo";
+    o.subtype = 'foo';
   }
   buildCounterPost--;
   return o;
@@ -983,12 +983,12 @@ api.QueryDriveActivityRequest buildQueryDriveActivityRequest() {
   var o = api.QueryDriveActivityRequest();
   buildCounterQueryDriveActivityRequest++;
   if (buildCounterQueryDriveActivityRequest < 3) {
-    o.ancestorName = "foo";
+    o.ancestorName = 'foo';
     o.consolidationStrategy = buildConsolidationStrategy();
-    o.filter = "foo";
-    o.itemName = "foo";
+    o.filter = 'foo';
+    o.itemName = 'foo';
     o.pageSize = 42;
-    o.pageToken = "foo";
+    o.pageToken = 'foo';
   }
   buildCounterQueryDriveActivityRequest--;
   return o;
@@ -1026,7 +1026,7 @@ api.QueryDriveActivityResponse buildQueryDriveActivityResponse() {
   buildCounterQueryDriveActivityResponse++;
   if (buildCounterQueryDriveActivityResponse < 3) {
     o.activities = buildUnnamed3877();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterQueryDriveActivityResponse--;
   return o;
@@ -1046,8 +1046,8 @@ api.Rename buildRename() {
   var o = api.Rename();
   buildCounterRename++;
   if (buildCounterRename < 3) {
-    o.newTitle = "foo";
-    o.oldTitle = "foo";
+    o.newTitle = 'foo';
+    o.oldTitle = 'foo';
   }
   buildCounterRename--;
   return o;
@@ -1067,7 +1067,7 @@ api.Restore buildRestore() {
   var o = api.Restore();
   buildCounterRestore++;
   if (buildCounterRestore < 3) {
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterRestore--;
   return o;
@@ -1086,8 +1086,8 @@ api.RestrictionChange buildRestrictionChange() {
   var o = api.RestrictionChange();
   buildCounterRestrictionChange++;
   if (buildCounterRestrictionChange < 3) {
-    o.feature = "foo";
-    o.newRestriction = "foo";
+    o.feature = 'foo';
+    o.newRestriction = 'foo';
   }
   buildCounterRestrictionChange--;
   return o;
@@ -1139,7 +1139,7 @@ api.Suggestion buildSuggestion() {
   var o = api.Suggestion();
   buildCounterSuggestion++;
   if (buildCounterSuggestion < 3) {
-    o.subtype = "foo";
+    o.subtype = 'foo';
   }
   buildCounterSuggestion--;
   return o;
@@ -1158,7 +1158,7 @@ api.SystemEvent buildSystemEvent() {
   var o = api.SystemEvent();
   buildCounterSystemEvent++;
   if (buildCounterSystemEvent < 3) {
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterSystemEvent--;
   return o;
@@ -1225,9 +1225,9 @@ api.TeamDrive buildTeamDrive() {
   var o = api.TeamDrive();
   buildCounterTeamDrive++;
   if (buildCounterTeamDrive < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.root = buildDriveItem();
-    o.title = "foo";
+    o.title = 'foo';
   }
   buildCounterTeamDrive--;
   return o;
@@ -1248,8 +1248,8 @@ api.TeamDriveReference buildTeamDriveReference() {
   var o = api.TeamDriveReference();
   buildCounterTeamDriveReference++;
   if (buildCounterTeamDriveReference < 3) {
-    o.name = "foo";
-    o.title = "foo";
+    o.name = 'foo';
+    o.title = 'foo';
   }
   buildCounterTeamDriveReference--;
   return o;
@@ -1269,8 +1269,8 @@ api.TimeRange buildTimeRange() {
   var o = api.TimeRange();
   buildCounterTimeRange++;
   if (buildCounterTimeRange < 3) {
-    o.endTime = "foo";
-    o.startTime = "foo";
+    o.endTime = 'foo';
+    o.startTime = 'foo';
   }
   buildCounterTimeRange--;
   return o;
@@ -1339,444 +1339,444 @@ void checkUser(api.User o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Action", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Action', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAction();
       var od = api.Action.fromJson(o.toJson());
       checkAction(od);
     });
   });
 
-  unittest.group("obj-schema-ActionDetail", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ActionDetail', () {
+    unittest.test('to-json--from-json', () {
       var o = buildActionDetail();
       var od = api.ActionDetail.fromJson(o.toJson());
       checkActionDetail(od);
     });
   });
 
-  unittest.group("obj-schema-Actor", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Actor', () {
+    unittest.test('to-json--from-json', () {
       var o = buildActor();
       var od = api.Actor.fromJson(o.toJson());
       checkActor(od);
     });
   });
 
-  unittest.group("obj-schema-Administrator", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Administrator', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAdministrator();
       var od = api.Administrator.fromJson(o.toJson());
       checkAdministrator(od);
     });
   });
 
-  unittest.group("obj-schema-AnonymousUser", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AnonymousUser', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAnonymousUser();
       var od = api.AnonymousUser.fromJson(o.toJson());
       checkAnonymousUser(od);
     });
   });
 
-  unittest.group("obj-schema-Anyone", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Anyone', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAnyone();
       var od = api.Anyone.fromJson(o.toJson());
       checkAnyone(od);
     });
   });
 
-  unittest.group("obj-schema-ApplicationReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApplicationReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApplicationReference();
       var od = api.ApplicationReference.fromJson(o.toJson());
       checkApplicationReference(od);
     });
   });
 
-  unittest.group("obj-schema-Assignment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Assignment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAssignment();
       var od = api.Assignment.fromJson(o.toJson());
       checkAssignment(od);
     });
   });
 
-  unittest.group("obj-schema-Comment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Comment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildComment();
       var od = api.Comment.fromJson(o.toJson());
       checkComment(od);
     });
   });
 
-  unittest.group("obj-schema-ConsolidationStrategy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ConsolidationStrategy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildConsolidationStrategy();
       var od = api.ConsolidationStrategy.fromJson(o.toJson());
       checkConsolidationStrategy(od);
     });
   });
 
-  unittest.group("obj-schema-Copy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Copy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCopy();
       var od = api.Copy.fromJson(o.toJson());
       checkCopy(od);
     });
   });
 
-  unittest.group("obj-schema-Create", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Create', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreate();
       var od = api.Create.fromJson(o.toJson());
       checkCreate(od);
     });
   });
 
-  unittest.group("obj-schema-DataLeakPreventionChange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DataLeakPreventionChange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDataLeakPreventionChange();
       var od = api.DataLeakPreventionChange.fromJson(o.toJson());
       checkDataLeakPreventionChange(od);
     });
   });
 
-  unittest.group("obj-schema-Delete", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Delete', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDelete();
       var od = api.Delete.fromJson(o.toJson());
       checkDelete(od);
     });
   });
 
-  unittest.group("obj-schema-DeletedUser", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeletedUser', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeletedUser();
       var od = api.DeletedUser.fromJson(o.toJson());
       checkDeletedUser(od);
     });
   });
 
-  unittest.group("obj-schema-Domain", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Domain', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDomain();
       var od = api.Domain.fromJson(o.toJson());
       checkDomain(od);
     });
   });
 
-  unittest.group("obj-schema-Drive", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Drive', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDrive();
       var od = api.Drive.fromJson(o.toJson());
       checkDrive(od);
     });
   });
 
-  unittest.group("obj-schema-DriveActivity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveActivity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveActivity();
       var od = api.DriveActivity.fromJson(o.toJson());
       checkDriveActivity(od);
     });
   });
 
-  unittest.group("obj-schema-DriveFile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveFile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveFile();
       var od = api.DriveFile.fromJson(o.toJson());
       checkDriveFile(od);
     });
   });
 
-  unittest.group("obj-schema-DriveFolder", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveFolder', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveFolder();
       var od = api.DriveFolder.fromJson(o.toJson());
       checkDriveFolder(od);
     });
   });
 
-  unittest.group("obj-schema-DriveItem", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveItem', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveItem();
       var od = api.DriveItem.fromJson(o.toJson());
       checkDriveItem(od);
     });
   });
 
-  unittest.group("obj-schema-DriveItemReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveItemReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveItemReference();
       var od = api.DriveItemReference.fromJson(o.toJson());
       checkDriveItemReference(od);
     });
   });
 
-  unittest.group("obj-schema-DriveReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DriveReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDriveReference();
       var od = api.DriveReference.fromJson(o.toJson());
       checkDriveReference(od);
     });
   });
 
-  unittest.group("obj-schema-Edit", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Edit', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEdit();
       var od = api.Edit.fromJson(o.toJson());
       checkEdit(od);
     });
   });
 
-  unittest.group("obj-schema-File", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-File', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
       checkFile(od);
     });
   });
 
-  unittest.group("obj-schema-FileComment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileComment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileComment();
       var od = api.FileComment.fromJson(o.toJson());
       checkFileComment(od);
     });
   });
 
-  unittest.group("obj-schema-Folder", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Folder', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFolder();
       var od = api.Folder.fromJson(o.toJson());
       checkFolder(od);
     });
   });
 
-  unittest.group("obj-schema-Group", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Group', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
       checkGroup(od);
     });
   });
 
-  unittest.group("obj-schema-Impersonation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Impersonation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImpersonation();
       var od = api.Impersonation.fromJson(o.toJson());
       checkImpersonation(od);
     });
   });
 
-  unittest.group("obj-schema-KnownUser", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-KnownUser', () {
+    unittest.test('to-json--from-json', () {
       var o = buildKnownUser();
       var od = api.KnownUser.fromJson(o.toJson());
       checkKnownUser(od);
     });
   });
 
-  unittest.group("obj-schema-Legacy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Legacy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLegacy();
       var od = api.Legacy.fromJson(o.toJson());
       checkLegacy(od);
     });
   });
 
-  unittest.group("obj-schema-Move", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Move', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMove();
       var od = api.Move.fromJson(o.toJson());
       checkMove(od);
     });
   });
 
-  unittest.group("obj-schema-New", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-New', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNew();
       var od = api.New.fromJson(o.toJson());
       checkNew(od);
     });
   });
 
-  unittest.group("obj-schema-NoConsolidation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NoConsolidation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNoConsolidation();
       var od = api.NoConsolidation.fromJson(o.toJson());
       checkNoConsolidation(od);
     });
   });
 
-  unittest.group("obj-schema-Owner", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Owner', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOwner();
       var od = api.Owner.fromJson(o.toJson());
       checkOwner(od);
     });
   });
 
-  unittest.group("obj-schema-Permission", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Permission', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPermission();
       var od = api.Permission.fromJson(o.toJson());
       checkPermission(od);
     });
   });
 
-  unittest.group("obj-schema-PermissionChange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PermissionChange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPermissionChange();
       var od = api.PermissionChange.fromJson(o.toJson());
       checkPermissionChange(od);
     });
   });
 
-  unittest.group("obj-schema-Post", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Post', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPost();
       var od = api.Post.fromJson(o.toJson());
       checkPost(od);
     });
   });
 
-  unittest.group("obj-schema-QueryDriveActivityRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryDriveActivityRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryDriveActivityRequest();
       var od = api.QueryDriveActivityRequest.fromJson(o.toJson());
       checkQueryDriveActivityRequest(od);
     });
   });
 
-  unittest.group("obj-schema-QueryDriveActivityResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryDriveActivityResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryDriveActivityResponse();
       var od = api.QueryDriveActivityResponse.fromJson(o.toJson());
       checkQueryDriveActivityResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Rename", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Rename', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRename();
       var od = api.Rename.fromJson(o.toJson());
       checkRename(od);
     });
   });
 
-  unittest.group("obj-schema-Restore", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Restore', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRestore();
       var od = api.Restore.fromJson(o.toJson());
       checkRestore(od);
     });
   });
 
-  unittest.group("obj-schema-RestrictionChange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RestrictionChange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRestrictionChange();
       var od = api.RestrictionChange.fromJson(o.toJson());
       checkRestrictionChange(od);
     });
   });
 
-  unittest.group("obj-schema-SettingsChange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SettingsChange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSettingsChange();
       var od = api.SettingsChange.fromJson(o.toJson());
       checkSettingsChange(od);
     });
   });
 
-  unittest.group("obj-schema-Suggestion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Suggestion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestion();
       var od = api.Suggestion.fromJson(o.toJson());
       checkSuggestion(od);
     });
   });
 
-  unittest.group("obj-schema-SystemEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SystemEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSystemEvent();
       var od = api.SystemEvent.fromJson(o.toJson());
       checkSystemEvent(od);
     });
   });
 
-  unittest.group("obj-schema-Target", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Target', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTarget();
       var od = api.Target.fromJson(o.toJson());
       checkTarget(od);
     });
   });
 
-  unittest.group("obj-schema-TargetReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TargetReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTargetReference();
       var od = api.TargetReference.fromJson(o.toJson());
       checkTargetReference(od);
     });
   });
 
-  unittest.group("obj-schema-TeamDrive", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TeamDrive', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTeamDrive();
       var od = api.TeamDrive.fromJson(o.toJson());
       checkTeamDrive(od);
     });
   });
 
-  unittest.group("obj-schema-TeamDriveReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TeamDriveReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTeamDriveReference();
       var od = api.TeamDriveReference.fromJson(o.toJson());
       checkTeamDriveReference(od);
     });
   });
 
-  unittest.group("obj-schema-TimeRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TimeRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTimeRange();
       var od = api.TimeRange.fromJson(o.toJson());
       checkTimeRange(od);
     });
   });
 
-  unittest.group("obj-schema-UnknownUser", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UnknownUser', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUnknownUser();
       var od = api.UnknownUser.fromJson(o.toJson());
       checkUnknownUser(od);
     });
   });
 
-  unittest.group("obj-schema-Upload", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Upload', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpload();
       var od = api.Upload.fromJson(o.toJson());
       checkUpload(od);
     });
   });
 
-  unittest.group("obj-schema-User", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-User', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od);
     });
   });
 
-  unittest.group("resource-ActivityResourceApi", () {
-    unittest.test("method--query", () {
+  unittest.group('resource-ActivityResourceApi', () {
+    unittest.test('method--query', () {
       var mock = HttpServerMock();
       api.ActivityResourceApi res = api.DriveactivityApi(mock).activity;
       var arg_request = buildQueryDriveActivityRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.QueryDriveActivityRequest.fromJson(json);
         checkQueryDriveActivityRequest(obj);
@@ -1798,8 +1798,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1809,7 +1809,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildQueryDriveActivityResponse());
         return async.Future.value(stringResponse(200, h, resp));

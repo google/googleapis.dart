@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,18 +38,18 @@ const core.String USER_AGENT = 'dart-api-client firestore/v1';
 class FirestoreApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and manage your Google Cloud Datastore data
-  static const DatastoreScope = "https://www.googleapis.com/auth/datastore";
+  static const DatastoreScope = 'https://www.googleapis.com/auth/datastore';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   FirestoreApi(http.Client client,
-      {core.String rootUrl = "https://firestore.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://firestore.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -122,10 +121,10 @@ class ProjectsDatabasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -134,7 +133,7 @@ class ProjectsDatabasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -184,10 +183,10 @@ class ProjectsDatabasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -196,7 +195,7 @@ class ProjectsDatabasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -257,17 +256,17 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -325,26 +324,26 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/fields';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -422,20 +421,20 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -492,10 +491,10 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -503,7 +502,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -544,17 +543,17 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -595,17 +594,17 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -657,19 +656,19 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -677,7 +676,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -732,10 +731,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -744,7 +743,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -795,10 +794,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -807,7 +806,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -853,10 +852,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -865,7 +864,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -911,10 +910,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -923,7 +922,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -982,19 +981,19 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (collectionId == null) {
-      throw core.ArgumentError("Parameter collectionId is required.");
+      throw core.ArgumentError('Parameter collectionId is required.');
     }
     if (documentId != null) {
-      _queryParams["documentId"] = [documentId];
+      _queryParams['documentId'] = [documentId];
     }
     if (mask_fieldPaths != null) {
-      _queryParams["mask.fieldPaths"] = mask_fieldPaths;
+      _queryParams['mask.fieldPaths'] = mask_fieldPaths;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1004,7 +1003,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1054,23 +1053,23 @@ class ProjectsDatabasesDocumentsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (currentDocument_exists != null) {
-      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
+      _queryParams['currentDocument.exists'] = ['${currentDocument_exists}'];
     }
     if (currentDocument_updateTime != null) {
-      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
+      _queryParams['currentDocument.updateTime'] = [currentDocument_updateTime];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1123,26 +1122,26 @@ class ProjectsDatabasesDocumentsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (mask_fieldPaths != null) {
-      _queryParams["mask.fieldPaths"] = mask_fieldPaths;
+      _queryParams['mask.fieldPaths'] = mask_fieldPaths;
     }
     if (transaction != null) {
-      _queryParams["transaction"] = [transaction];
+      _queryParams['transaction'] = [transaction];
     }
     if (readTime != null) {
-      _queryParams["readTime"] = [readTime];
+      _queryParams['readTime'] = [readTime];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1219,34 +1218,34 @@ class ProjectsDatabasesDocumentsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (collectionId == null) {
-      throw core.ArgumentError("Parameter collectionId is required.");
+      throw core.ArgumentError('Parameter collectionId is required.');
     }
     if (mask_fieldPaths != null) {
-      _queryParams["mask.fieldPaths"] = mask_fieldPaths;
+      _queryParams['mask.fieldPaths'] = mask_fieldPaths;
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (readTime != null) {
-      _queryParams["readTime"] = [readTime];
+      _queryParams['readTime'] = [readTime];
     }
     if (showMissing != null) {
-      _queryParams["showMissing"] = ["${showMissing}"];
+      _queryParams['showMissing'] = ['${showMissing}'];
     }
     if (transaction != null) {
-      _queryParams["transaction"] = [transaction];
+      _queryParams['transaction'] = [transaction];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1256,7 +1255,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1305,10 +1304,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1317,7 +1316,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1363,10 +1362,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1375,7 +1374,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1426,10 +1425,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1438,7 +1437,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1501,29 +1500,29 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (currentDocument_exists != null) {
-      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
+      _queryParams['currentDocument.exists'] = ['${currentDocument_exists}'];
     }
     if (updateMask_fieldPaths != null) {
-      _queryParams["updateMask.fieldPaths"] = updateMask_fieldPaths;
+      _queryParams['updateMask.fieldPaths'] = updateMask_fieldPaths;
     }
     if (mask_fieldPaths != null) {
-      _queryParams["mask.fieldPaths"] = mask_fieldPaths;
+      _queryParams['mask.fieldPaths'] = mask_fieldPaths;
     }
     if (currentDocument_updateTime != null) {
-      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
+      _queryParams['currentDocument.updateTime'] = [currentDocument_updateTime];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1569,10 +1568,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1581,7 +1580,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1631,10 +1630,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1642,7 +1641,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1689,10 +1688,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError('Parameter database is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1701,7 +1700,7 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1762,17 +1761,17 @@ class ProjectsDatabasesOperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1815,17 +1814,17 @@ class ProjectsDatabasesOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1867,17 +1866,17 @@ class ProjectsDatabasesOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1933,19 +1932,19 @@ class ProjectsDatabasesOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1953,7 +1952,7 @@ class ProjectsDatabasesOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2000,17 +1999,17 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2058,19 +2057,19 @@ class ProjectsLocationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2078,7 +2077,7 @@ class ProjectsLocationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2097,8 +2096,8 @@ class ArrayValue {
   ArrayValue();
 
   ArrayValue.fromJson(core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List)
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List)
           .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
@@ -2108,7 +2107,7 @@ class ArrayValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values.map((value) => value.toJson()).toList();
+      _json['values'] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2143,26 +2142,26 @@ class BatchGetDocumentsRequest {
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   BatchGetDocumentsRequest();
 
   BatchGetDocumentsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("documents")) {
-      documents = (_json["documents"] as core.List).cast<core.String>();
+    if (_json.containsKey('documents')) {
+      documents = (_json['documents'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("mask")) {
-      mask = DocumentMask.fromJson(_json["mask"]);
+    if (_json.containsKey('mask')) {
+      mask = DocumentMask.fromJson(_json['mask']);
     }
-    if (_json.containsKey("newTransaction")) {
-      newTransaction = TransactionOptions.fromJson(_json["newTransaction"]);
+    if (_json.containsKey('newTransaction')) {
+      newTransaction = TransactionOptions.fromJson(_json['newTransaction']);
     }
-    if (_json.containsKey("readTime")) {
-      readTime = _json["readTime"];
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'];
     }
-    if (_json.containsKey("transaction")) {
-      transaction = _json["transaction"];
+    if (_json.containsKey('transaction')) {
+      transaction = _json['transaction'];
     }
   }
 
@@ -2170,19 +2169,19 @@ class BatchGetDocumentsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (documents != null) {
-      _json["documents"] = documents;
+      _json['documents'] = documents;
     }
     if (mask != null) {
-      _json["mask"] = mask.toJson();
+      _json['mask'] = mask.toJson();
     }
     if (newTransaction != null) {
-      _json["newTransaction"] = newTransaction.toJson();
+      _json['newTransaction'] = newTransaction.toJson();
     }
     if (readTime != null) {
-      _json["readTime"] = readTime;
+      _json['readTime'] = readTime;
     }
     if (transaction != null) {
-      _json["transaction"] = transaction;
+      _json['transaction'] = transaction;
     }
     return _json;
   }
@@ -2211,23 +2210,23 @@ class BatchGetDocumentsResponse {
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   BatchGetDocumentsResponse();
 
   BatchGetDocumentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("found")) {
-      found = Document.fromJson(_json["found"]);
+    if (_json.containsKey('found')) {
+      found = Document.fromJson(_json['found']);
     }
-    if (_json.containsKey("missing")) {
-      missing = _json["missing"];
+    if (_json.containsKey('missing')) {
+      missing = _json['missing'];
     }
-    if (_json.containsKey("readTime")) {
-      readTime = _json["readTime"];
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'];
     }
-    if (_json.containsKey("transaction")) {
-      transaction = _json["transaction"];
+    if (_json.containsKey('transaction')) {
+      transaction = _json['transaction'];
     }
   }
 
@@ -2235,16 +2234,16 @@ class BatchGetDocumentsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (found != null) {
-      _json["found"] = found.toJson();
+      _json['found'] = found.toJson();
     }
     if (missing != null) {
-      _json["missing"] = missing;
+      _json['missing'] = missing;
     }
     if (readTime != null) {
-      _json["readTime"] = readTime;
+      _json['readTime'] = readTime;
     }
     if (transaction != null) {
-      _json["transaction"] = transaction;
+      _json['transaction'] = transaction;
     }
     return _json;
   }
@@ -2263,11 +2262,11 @@ class BatchWriteRequest {
   BatchWriteRequest();
 
   BatchWriteRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("writes")) {
-      writes = (_json["writes"] as core.List)
+    if (_json.containsKey('writes')) {
+      writes = (_json['writes'] as core.List)
           .map<Write>((value) => Write.fromJson(value))
           .toList();
     }
@@ -2277,10 +2276,10 @@ class BatchWriteRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (writes != null) {
-      _json["writes"] = writes.map((value) => value.toJson()).toList();
+      _json['writes'] = writes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2299,13 +2298,13 @@ class BatchWriteResponse {
   BatchWriteResponse();
 
   BatchWriteResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("status")) {
-      status = (_json["status"] as core.List)
+    if (_json.containsKey('status')) {
+      status = (_json['status'] as core.List)
           .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("writeResults")) {
-      writeResults = (_json["writeResults"] as core.List)
+    if (_json.containsKey('writeResults')) {
+      writeResults = (_json['writeResults'] as core.List)
           .map<WriteResult>((value) => WriteResult.fromJson(value))
           .toList();
     }
@@ -2315,10 +2314,10 @@ class BatchWriteResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (status != null) {
-      _json["status"] = status.map((value) => value.toJson()).toList();
+      _json['status'] = status.map((value) => value.toJson()).toList();
     }
     if (writeResults != null) {
-      _json["writeResults"] =
+      _json['writeResults'] =
           writeResults.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2333,8 +2332,8 @@ class BeginTransactionRequest {
   BeginTransactionRequest();
 
   BeginTransactionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("options")) {
-      options = TransactionOptions.fromJson(_json["options"]);
+    if (_json.containsKey('options')) {
+      options = TransactionOptions.fromJson(_json['options']);
     }
   }
 
@@ -2342,7 +2341,7 @@ class BeginTransactionRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = options.toJson();
+      _json['options'] = options.toJson();
     }
     return _json;
   }
@@ -2357,14 +2356,14 @@ class BeginTransactionResponse {
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   BeginTransactionResponse();
 
   BeginTransactionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("transaction")) {
-      transaction = _json["transaction"];
+    if (_json.containsKey('transaction')) {
+      transaction = _json['transaction'];
     }
   }
 
@@ -2372,7 +2371,7 @@ class BeginTransactionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (transaction != null) {
-      _json["transaction"] = transaction;
+      _json['transaction'] = transaction;
     }
     return _json;
   }
@@ -2391,11 +2390,11 @@ class CollectionSelector {
   CollectionSelector();
 
   CollectionSelector.fromJson(core.Map _json) {
-    if (_json.containsKey("allDescendants")) {
-      allDescendants = _json["allDescendants"];
+    if (_json.containsKey('allDescendants')) {
+      allDescendants = _json['allDescendants'];
     }
-    if (_json.containsKey("collectionId")) {
-      collectionId = _json["collectionId"];
+    if (_json.containsKey('collectionId')) {
+      collectionId = _json['collectionId'];
     }
   }
 
@@ -2403,10 +2402,10 @@ class CollectionSelector {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allDescendants != null) {
-      _json["allDescendants"] = allDescendants;
+      _json['allDescendants'] = allDescendants;
     }
     if (collectionId != null) {
-      _json["collectionId"] = collectionId;
+      _json['collectionId'] = collectionId;
     }
     return _json;
   }
@@ -2421,7 +2420,7 @@ class CommitRequest {
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The writes to apply. Always executed atomically and in order.
@@ -2430,11 +2429,11 @@ class CommitRequest {
   CommitRequest();
 
   CommitRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("transaction")) {
-      transaction = _json["transaction"];
+    if (_json.containsKey('transaction')) {
+      transaction = _json['transaction'];
     }
-    if (_json.containsKey("writes")) {
-      writes = (_json["writes"] as core.List)
+    if (_json.containsKey('writes')) {
+      writes = (_json['writes'] as core.List)
           .map<Write>((value) => Write.fromJson(value))
           .toList();
     }
@@ -2444,10 +2443,10 @@ class CommitRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (transaction != null) {
-      _json["transaction"] = transaction;
+      _json['transaction'] = transaction;
     }
     if (writes != null) {
-      _json["writes"] = writes.map((value) => value.toJson()).toList();
+      _json['writes'] = writes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2466,11 +2465,11 @@ class CommitResponse {
   CommitResponse();
 
   CommitResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("commitTime")) {
-      commitTime = _json["commitTime"];
+    if (_json.containsKey('commitTime')) {
+      commitTime = _json['commitTime'];
     }
-    if (_json.containsKey("writeResults")) {
-      writeResults = (_json["writeResults"] as core.List)
+    if (_json.containsKey('writeResults')) {
+      writeResults = (_json['writeResults'] as core.List)
           .map<WriteResult>((value) => WriteResult.fromJson(value))
           .toList();
     }
@@ -2480,10 +2479,10 @@ class CommitResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (commitTime != null) {
-      _json["commitTime"] = commitTime;
+      _json['commitTime'] = commitTime;
     }
     if (writeResults != null) {
-      _json["writeResults"] =
+      _json['writeResults'] =
           writeResults.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2505,13 +2504,13 @@ class CompositeFilter {
   CompositeFilter();
 
   CompositeFilter.fromJson(core.Map _json) {
-    if (_json.containsKey("filters")) {
-      filters = (_json["filters"] as core.List)
+    if (_json.containsKey('filters')) {
+      filters = (_json['filters'] as core.List)
           .map<Filter>((value) => Filter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("op")) {
-      op = _json["op"];
+    if (_json.containsKey('op')) {
+      op = _json['op'];
     }
   }
 
@@ -2519,10 +2518,10 @@ class CompositeFilter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filters != null) {
-      _json["filters"] = filters.map((value) => value.toJson()).toList();
+      _json['filters'] = filters.map((value) => value.toJson()).toList();
     }
     if (op != null) {
-      _json["op"] = op;
+      _json['op'] = op;
     }
     return _json;
   }
@@ -2542,11 +2541,11 @@ class Cursor {
   Cursor();
 
   Cursor.fromJson(core.Map _json) {
-    if (_json.containsKey("before")) {
-      before = _json["before"];
+    if (_json.containsKey('before')) {
+      before = _json['before'];
     }
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List)
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List)
           .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
@@ -2556,10 +2555,10 @@ class Cursor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (before != null) {
-      _json["before"] = before;
+      _json['before'] = before;
     }
     if (values != null) {
-      _json["values"] = values.map((value) => value.toJson()).toList();
+      _json['values'] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2603,19 +2602,19 @@ class Document {
   Document();
 
   Document.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("fields")) {
+    if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, Value>(
-          _json["fields"].cast<core.String, core.Map>(),
+          _json['fields'].cast<core.String, core.Map>(),
           (core.Map item) => Value.fromJson(item));
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -2623,18 +2622,18 @@ class Document {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (fields != null) {
-      _json["fields"] =
+      _json['fields'] =
           commons.mapMap<Value, core.Map<core.String, core.Object>>(
               fields, (Value item) => item.toJson());
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -2658,15 +2657,15 @@ class DocumentChange {
   DocumentChange();
 
   DocumentChange.fromJson(core.Map _json) {
-    if (_json.containsKey("document")) {
-      document = Document.fromJson(_json["document"]);
+    if (_json.containsKey('document')) {
+      document = Document.fromJson(_json['document']);
     }
-    if (_json.containsKey("removedTargetIds")) {
+    if (_json.containsKey('removedTargetIds')) {
       removedTargetIds =
-          (_json["removedTargetIds"] as core.List).cast<core.int>();
+          (_json['removedTargetIds'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("targetIds")) {
-      targetIds = (_json["targetIds"] as core.List).cast<core.int>();
+    if (_json.containsKey('targetIds')) {
+      targetIds = (_json['targetIds'] as core.List).cast<core.int>();
     }
   }
 
@@ -2674,13 +2673,13 @@ class DocumentChange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = document.toJson();
+      _json['document'] = document.toJson();
     }
     if (removedTargetIds != null) {
-      _json["removedTargetIds"] = removedTargetIds;
+      _json['removedTargetIds'] = removedTargetIds;
     }
     if (targetIds != null) {
-      _json["targetIds"] = targetIds;
+      _json['targetIds'] = targetIds;
     }
     return _json;
   }
@@ -2704,15 +2703,15 @@ class DocumentDelete {
   DocumentDelete();
 
   DocumentDelete.fromJson(core.Map _json) {
-    if (_json.containsKey("document")) {
-      document = _json["document"];
+    if (_json.containsKey('document')) {
+      document = _json['document'];
     }
-    if (_json.containsKey("readTime")) {
-      readTime = _json["readTime"];
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'];
     }
-    if (_json.containsKey("removedTargetIds")) {
+    if (_json.containsKey('removedTargetIds')) {
       removedTargetIds =
-          (_json["removedTargetIds"] as core.List).cast<core.int>();
+          (_json['removedTargetIds'] as core.List).cast<core.int>();
     }
   }
 
@@ -2720,13 +2719,13 @@ class DocumentDelete {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = document;
+      _json['document'] = document;
     }
     if (readTime != null) {
-      _json["readTime"] = readTime;
+      _json['readTime'] = readTime;
     }
     if (removedTargetIds != null) {
-      _json["removedTargetIds"] = removedTargetIds;
+      _json['removedTargetIds'] = removedTargetIds;
     }
     return _json;
   }
@@ -2744,8 +2743,8 @@ class DocumentMask {
   DocumentMask();
 
   DocumentMask.fromJson(core.Map _json) {
-    if (_json.containsKey("fieldPaths")) {
-      fieldPaths = (_json["fieldPaths"] as core.List).cast<core.String>();
+    if (_json.containsKey('fieldPaths')) {
+      fieldPaths = (_json['fieldPaths'] as core.List).cast<core.String>();
     }
   }
 
@@ -2753,7 +2752,7 @@ class DocumentMask {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fieldPaths != null) {
-      _json["fieldPaths"] = fieldPaths;
+      _json['fieldPaths'] = fieldPaths;
     }
     return _json;
   }
@@ -2779,15 +2778,15 @@ class DocumentRemove {
   DocumentRemove();
 
   DocumentRemove.fromJson(core.Map _json) {
-    if (_json.containsKey("document")) {
-      document = _json["document"];
+    if (_json.containsKey('document')) {
+      document = _json['document'];
     }
-    if (_json.containsKey("readTime")) {
-      readTime = _json["readTime"];
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'];
     }
-    if (_json.containsKey("removedTargetIds")) {
+    if (_json.containsKey('removedTargetIds')) {
       removedTargetIds =
-          (_json["removedTargetIds"] as core.List).cast<core.int>();
+          (_json['removedTargetIds'] as core.List).cast<core.int>();
     }
   }
 
@@ -2795,13 +2794,13 @@ class DocumentRemove {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = document;
+      _json['document'] = document;
     }
     if (readTime != null) {
-      _json["readTime"] = readTime;
+      _json['readTime'] = readTime;
     }
     if (removedTargetIds != null) {
-      _json["removedTargetIds"] = removedTargetIds;
+      _json['removedTargetIds'] = removedTargetIds;
     }
     return _json;
   }
@@ -2819,11 +2818,11 @@ class DocumentTransform {
   DocumentTransform();
 
   DocumentTransform.fromJson(core.Map _json) {
-    if (_json.containsKey("document")) {
-      document = _json["document"];
+    if (_json.containsKey('document')) {
+      document = _json['document'];
     }
-    if (_json.containsKey("fieldTransforms")) {
-      fieldTransforms = (_json["fieldTransforms"] as core.List)
+    if (_json.containsKey('fieldTransforms')) {
+      fieldTransforms = (_json['fieldTransforms'] as core.List)
           .map<FieldTransform>((value) => FieldTransform.fromJson(value))
           .toList();
     }
@@ -2833,10 +2832,10 @@ class DocumentTransform {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = document;
+      _json['document'] = document;
     }
     if (fieldTransforms != null) {
-      _json["fieldTransforms"] =
+      _json['fieldTransforms'] =
           fieldTransforms.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2854,8 +2853,8 @@ class DocumentsTarget {
   DocumentsTarget();
 
   DocumentsTarget.fromJson(core.Map _json) {
-    if (_json.containsKey("documents")) {
-      documents = (_json["documents"] as core.List).cast<core.String>();
+    if (_json.containsKey('documents')) {
+      documents = (_json['documents'] as core.List).cast<core.String>();
     }
   }
 
@@ -2863,7 +2862,7 @@ class DocumentsTarget {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (documents != null) {
-      _json["documents"] = documents;
+      _json['documents'] = documents;
     }
     return _json;
   }
@@ -2899,11 +2898,11 @@ class ExistenceFilter {
   ExistenceFilter();
 
   ExistenceFilter.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("targetId")) {
-      targetId = _json["targetId"];
+    if (_json.containsKey('targetId')) {
+      targetId = _json['targetId'];
     }
   }
 
@@ -2911,10 +2910,10 @@ class ExistenceFilter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (targetId != null) {
-      _json["targetId"] = targetId;
+      _json['targetId'] = targetId;
     }
     return _json;
   }
@@ -2961,14 +2960,14 @@ class FieldFilter {
   FieldFilter();
 
   FieldFilter.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = FieldReference.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = FieldReference.fromJson(_json['field']);
     }
-    if (_json.containsKey("op")) {
-      op = _json["op"];
+    if (_json.containsKey('op')) {
+      op = _json['op'];
     }
-    if (_json.containsKey("value")) {
-      value = Value.fromJson(_json["value"]);
+    if (_json.containsKey('value')) {
+      value = Value.fromJson(_json['value']);
     }
   }
 
@@ -2976,13 +2975,13 @@ class FieldFilter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     if (op != null) {
-      _json["op"] = op;
+      _json['op'] = op;
     }
     if (value != null) {
-      _json["value"] = value.toJson();
+      _json['value'] = value.toJson();
     }
     return _json;
   }
@@ -2995,8 +2994,8 @@ class FieldReference {
   FieldReference();
 
   FieldReference.fromJson(core.Map _json) {
-    if (_json.containsKey("fieldPath")) {
-      fieldPath = _json["fieldPath"];
+    if (_json.containsKey('fieldPath')) {
+      fieldPath = _json['fieldPath'];
     }
   }
 
@@ -3004,7 +3003,7 @@ class FieldReference {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fieldPath != null) {
-      _json["fieldPath"] = fieldPath;
+      _json['fieldPath'] = fieldPath;
     }
     return _json;
   }
@@ -3080,27 +3079,27 @@ class FieldTransform {
   FieldTransform();
 
   FieldTransform.fromJson(core.Map _json) {
-    if (_json.containsKey("appendMissingElements")) {
+    if (_json.containsKey('appendMissingElements')) {
       appendMissingElements =
-          ArrayValue.fromJson(_json["appendMissingElements"]);
+          ArrayValue.fromJson(_json['appendMissingElements']);
     }
-    if (_json.containsKey("fieldPath")) {
-      fieldPath = _json["fieldPath"];
+    if (_json.containsKey('fieldPath')) {
+      fieldPath = _json['fieldPath'];
     }
-    if (_json.containsKey("increment")) {
-      increment = Value.fromJson(_json["increment"]);
+    if (_json.containsKey('increment')) {
+      increment = Value.fromJson(_json['increment']);
     }
-    if (_json.containsKey("maximum")) {
-      maximum = Value.fromJson(_json["maximum"]);
+    if (_json.containsKey('maximum')) {
+      maximum = Value.fromJson(_json['maximum']);
     }
-    if (_json.containsKey("minimum")) {
-      minimum = Value.fromJson(_json["minimum"]);
+    if (_json.containsKey('minimum')) {
+      minimum = Value.fromJson(_json['minimum']);
     }
-    if (_json.containsKey("removeAllFromArray")) {
-      removeAllFromArray = ArrayValue.fromJson(_json["removeAllFromArray"]);
+    if (_json.containsKey('removeAllFromArray')) {
+      removeAllFromArray = ArrayValue.fromJson(_json['removeAllFromArray']);
     }
-    if (_json.containsKey("setToServerValue")) {
-      setToServerValue = _json["setToServerValue"];
+    if (_json.containsKey('setToServerValue')) {
+      setToServerValue = _json['setToServerValue'];
     }
   }
 
@@ -3108,25 +3107,25 @@ class FieldTransform {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appendMissingElements != null) {
-      _json["appendMissingElements"] = appendMissingElements.toJson();
+      _json['appendMissingElements'] = appendMissingElements.toJson();
     }
     if (fieldPath != null) {
-      _json["fieldPath"] = fieldPath;
+      _json['fieldPath'] = fieldPath;
     }
     if (increment != null) {
-      _json["increment"] = increment.toJson();
+      _json['increment'] = increment.toJson();
     }
     if (maximum != null) {
-      _json["maximum"] = maximum.toJson();
+      _json['maximum'] = maximum.toJson();
     }
     if (minimum != null) {
-      _json["minimum"] = minimum.toJson();
+      _json['minimum'] = minimum.toJson();
     }
     if (removeAllFromArray != null) {
-      _json["removeAllFromArray"] = removeAllFromArray.toJson();
+      _json['removeAllFromArray'] = removeAllFromArray.toJson();
     }
     if (setToServerValue != null) {
-      _json["setToServerValue"] = setToServerValue;
+      _json['setToServerValue'] = setToServerValue;
     }
     return _json;
   }
@@ -3146,14 +3145,14 @@ class Filter {
   Filter();
 
   Filter.fromJson(core.Map _json) {
-    if (_json.containsKey("compositeFilter")) {
-      compositeFilter = CompositeFilter.fromJson(_json["compositeFilter"]);
+    if (_json.containsKey('compositeFilter')) {
+      compositeFilter = CompositeFilter.fromJson(_json['compositeFilter']);
     }
-    if (_json.containsKey("fieldFilter")) {
-      fieldFilter = FieldFilter.fromJson(_json["fieldFilter"]);
+    if (_json.containsKey('fieldFilter')) {
+      fieldFilter = FieldFilter.fromJson(_json['fieldFilter']);
     }
-    if (_json.containsKey("unaryFilter")) {
-      unaryFilter = UnaryFilter.fromJson(_json["unaryFilter"]);
+    if (_json.containsKey('unaryFilter')) {
+      unaryFilter = UnaryFilter.fromJson(_json['unaryFilter']);
     }
   }
 
@@ -3161,13 +3160,13 @@ class Filter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (compositeFilter != null) {
-      _json["compositeFilter"] = compositeFilter.toJson();
+      _json['compositeFilter'] = compositeFilter.toJson();
     }
     if (fieldFilter != null) {
-      _json["fieldFilter"] = fieldFilter.toJson();
+      _json['fieldFilter'] = fieldFilter.toJson();
     }
     if (unaryFilter != null) {
-      _json["unaryFilter"] = unaryFilter.toJson();
+      _json['unaryFilter'] = unaryFilter.toJson();
     }
     return _json;
   }
@@ -3214,28 +3213,28 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
   GoogleFirestoreAdminV1ExportDocumentsMetadata();
 
   GoogleFirestoreAdminV1ExportDocumentsMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("collectionIds")) {
-      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('collectionIds')) {
+      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("operationState")) {
-      operationState = _json["operationState"];
+    if (_json.containsKey('operationState')) {
+      operationState = _json['operationState'];
     }
-    if (_json.containsKey("outputUriPrefix")) {
-      outputUriPrefix = _json["outputUriPrefix"];
+    if (_json.containsKey('outputUriPrefix')) {
+      outputUriPrefix = _json['outputUriPrefix'];
     }
-    if (_json.containsKey("progressBytes")) {
+    if (_json.containsKey('progressBytes')) {
       progressBytes =
-          GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json['progressBytes']);
     }
-    if (_json.containsKey("progressDocuments")) {
+    if (_json.containsKey('progressDocuments')) {
       progressDocuments =
-          GoogleFirestoreAdminV1Progress.fromJson(_json["progressDocuments"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -3243,25 +3242,25 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (collectionIds != null) {
-      _json["collectionIds"] = collectionIds;
+      _json['collectionIds'] = collectionIds;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (operationState != null) {
-      _json["operationState"] = operationState;
+      _json['operationState'] = operationState;
     }
     if (outputUriPrefix != null) {
-      _json["outputUriPrefix"] = outputUriPrefix;
+      _json['outputUriPrefix'] = outputUriPrefix;
     }
     if (progressBytes != null) {
-      _json["progressBytes"] = progressBytes.toJson();
+      _json['progressBytes'] = progressBytes.toJson();
     }
     if (progressDocuments != null) {
-      _json["progressDocuments"] = progressDocuments.toJson();
+      _json['progressDocuments'] = progressDocuments.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -3285,11 +3284,11 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   GoogleFirestoreAdminV1ExportDocumentsRequest();
 
   GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("collectionIds")) {
-      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('collectionIds')) {
+      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("outputUriPrefix")) {
-      outputUriPrefix = _json["outputUriPrefix"];
+    if (_json.containsKey('outputUriPrefix')) {
+      outputUriPrefix = _json['outputUriPrefix'];
     }
   }
 
@@ -3297,10 +3296,10 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (collectionIds != null) {
-      _json["collectionIds"] = collectionIds;
+      _json['collectionIds'] = collectionIds;
     }
     if (outputUriPrefix != null) {
-      _json["outputUriPrefix"] = outputUriPrefix;
+      _json['outputUriPrefix'] = outputUriPrefix;
     }
     return _json;
   }
@@ -3316,8 +3315,8 @@ class GoogleFirestoreAdminV1ExportDocumentsResponse {
   GoogleFirestoreAdminV1ExportDocumentsResponse();
 
   GoogleFirestoreAdminV1ExportDocumentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("outputUriPrefix")) {
-      outputUriPrefix = _json["outputUriPrefix"];
+    if (_json.containsKey('outputUriPrefix')) {
+      outputUriPrefix = _json['outputUriPrefix'];
     }
   }
 
@@ -3325,7 +3324,7 @@ class GoogleFirestoreAdminV1ExportDocumentsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputUriPrefix != null) {
-      _json["outputUriPrefix"] = outputUriPrefix;
+      _json['outputUriPrefix'] = outputUriPrefix;
     }
     return _json;
   }
@@ -3364,12 +3363,12 @@ class GoogleFirestoreAdminV1Field {
   GoogleFirestoreAdminV1Field();
 
   GoogleFirestoreAdminV1Field.fromJson(core.Map _json) {
-    if (_json.containsKey("indexConfig")) {
+    if (_json.containsKey('indexConfig')) {
       indexConfig =
-          GoogleFirestoreAdminV1IndexConfig.fromJson(_json["indexConfig"]);
+          GoogleFirestoreAdminV1IndexConfig.fromJson(_json['indexConfig']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -3377,10 +3376,10 @@ class GoogleFirestoreAdminV1Field {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indexConfig != null) {
-      _json["indexConfig"] = indexConfig.toJson();
+      _json['indexConfig'] = indexConfig.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -3428,31 +3427,31 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
   GoogleFirestoreAdminV1FieldOperationMetadata();
 
   GoogleFirestoreAdminV1FieldOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("field")) {
-      field = _json["field"];
+    if (_json.containsKey('field')) {
+      field = _json['field'];
     }
-    if (_json.containsKey("indexConfigDeltas")) {
-      indexConfigDeltas = (_json["indexConfigDeltas"] as core.List)
+    if (_json.containsKey('indexConfigDeltas')) {
+      indexConfigDeltas = (_json['indexConfigDeltas'] as core.List)
           .map<GoogleFirestoreAdminV1IndexConfigDelta>(
               (value) => GoogleFirestoreAdminV1IndexConfigDelta.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("progressBytes")) {
+    if (_json.containsKey('progressBytes')) {
       progressBytes =
-          GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json['progressBytes']);
     }
-    if (_json.containsKey("progressDocuments")) {
+    if (_json.containsKey('progressDocuments')) {
       progressDocuments =
-          GoogleFirestoreAdminV1Progress.fromJson(_json["progressDocuments"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -3460,26 +3459,26 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (field != null) {
-      _json["field"] = field;
+      _json['field'] = field;
     }
     if (indexConfigDeltas != null) {
-      _json["indexConfigDeltas"] =
+      _json['indexConfigDeltas'] =
           indexConfigDeltas.map((value) => value.toJson()).toList();
     }
     if (progressBytes != null) {
-      _json["progressBytes"] = progressBytes.toJson();
+      _json['progressBytes'] = progressBytes.toJson();
     }
     if (progressDocuments != null) {
-      _json["progressDocuments"] = progressDocuments.toJson();
+      _json['progressDocuments'] = progressDocuments.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -3526,28 +3525,28 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
   GoogleFirestoreAdminV1ImportDocumentsMetadata();
 
   GoogleFirestoreAdminV1ImportDocumentsMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("collectionIds")) {
-      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('collectionIds')) {
+      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("inputUriPrefix")) {
-      inputUriPrefix = _json["inputUriPrefix"];
+    if (_json.containsKey('inputUriPrefix')) {
+      inputUriPrefix = _json['inputUriPrefix'];
     }
-    if (_json.containsKey("operationState")) {
-      operationState = _json["operationState"];
+    if (_json.containsKey('operationState')) {
+      operationState = _json['operationState'];
     }
-    if (_json.containsKey("progressBytes")) {
+    if (_json.containsKey('progressBytes')) {
       progressBytes =
-          GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json['progressBytes']);
     }
-    if (_json.containsKey("progressDocuments")) {
+    if (_json.containsKey('progressDocuments')) {
       progressDocuments =
-          GoogleFirestoreAdminV1Progress.fromJson(_json["progressDocuments"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -3555,25 +3554,25 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (collectionIds != null) {
-      _json["collectionIds"] = collectionIds;
+      _json['collectionIds'] = collectionIds;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (inputUriPrefix != null) {
-      _json["inputUriPrefix"] = inputUriPrefix;
+      _json['inputUriPrefix'] = inputUriPrefix;
     }
     if (operationState != null) {
-      _json["operationState"] = operationState;
+      _json['operationState'] = operationState;
     }
     if (progressBytes != null) {
-      _json["progressBytes"] = progressBytes.toJson();
+      _json['progressBytes'] = progressBytes.toJson();
     }
     if (progressDocuments != null) {
-      _json["progressDocuments"] = progressDocuments.toJson();
+      _json['progressDocuments'] = progressDocuments.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -3593,11 +3592,11 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
   GoogleFirestoreAdminV1ImportDocumentsRequest();
 
   GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("collectionIds")) {
-      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('collectionIds')) {
+      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("inputUriPrefix")) {
-      inputUriPrefix = _json["inputUriPrefix"];
+    if (_json.containsKey('inputUriPrefix')) {
+      inputUriPrefix = _json['inputUriPrefix'];
     }
   }
 
@@ -3605,10 +3604,10 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (collectionIds != null) {
-      _json["collectionIds"] = collectionIds;
+      _json['collectionIds'] = collectionIds;
     }
     if (inputUriPrefix != null) {
-      _json["inputUriPrefix"] = inputUriPrefix;
+      _json['inputUriPrefix'] = inputUriPrefix;
     }
     return _json;
   }
@@ -3671,20 +3670,20 @@ class GoogleFirestoreAdminV1Index {
   GoogleFirestoreAdminV1Index();
 
   GoogleFirestoreAdminV1Index.fromJson(core.Map _json) {
-    if (_json.containsKey("fields")) {
-      fields = (_json["fields"] as core.List)
+    if (_json.containsKey('fields')) {
+      fields = (_json['fields'] as core.List)
           .map<GoogleFirestoreAdminV1IndexField>(
               (value) => GoogleFirestoreAdminV1IndexField.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("queryScope")) {
-      queryScope = _json["queryScope"];
+    if (_json.containsKey('queryScope')) {
+      queryScope = _json['queryScope'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -3692,16 +3691,16 @@ class GoogleFirestoreAdminV1Index {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fields != null) {
-      _json["fields"] = fields.map((value) => value.toJson()).toList();
+      _json['fields'] = fields.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (queryScope != null) {
-      _json["queryScope"] = queryScope;
+      _json['queryScope'] = queryScope;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -3732,20 +3731,20 @@ class GoogleFirestoreAdminV1IndexConfig {
   GoogleFirestoreAdminV1IndexConfig();
 
   GoogleFirestoreAdminV1IndexConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("ancestorField")) {
-      ancestorField = _json["ancestorField"];
+    if (_json.containsKey('ancestorField')) {
+      ancestorField = _json['ancestorField'];
     }
-    if (_json.containsKey("indexes")) {
-      indexes = (_json["indexes"] as core.List)
+    if (_json.containsKey('indexes')) {
+      indexes = (_json['indexes'] as core.List)
           .map<GoogleFirestoreAdminV1Index>(
               (value) => GoogleFirestoreAdminV1Index.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("reverting")) {
-      reverting = _json["reverting"];
+    if (_json.containsKey('reverting')) {
+      reverting = _json['reverting'];
     }
-    if (_json.containsKey("usesAncestorConfig")) {
-      usesAncestorConfig = _json["usesAncestorConfig"];
+    if (_json.containsKey('usesAncestorConfig')) {
+      usesAncestorConfig = _json['usesAncestorConfig'];
     }
   }
 
@@ -3753,16 +3752,16 @@ class GoogleFirestoreAdminV1IndexConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ancestorField != null) {
-      _json["ancestorField"] = ancestorField;
+      _json['ancestorField'] = ancestorField;
     }
     if (indexes != null) {
-      _json["indexes"] = indexes.map((value) => value.toJson()).toList();
+      _json['indexes'] = indexes.map((value) => value.toJson()).toList();
     }
     if (reverting != null) {
-      _json["reverting"] = reverting;
+      _json['reverting'] = reverting;
     }
     if (usesAncestorConfig != null) {
-      _json["usesAncestorConfig"] = usesAncestorConfig;
+      _json['usesAncestorConfig'] = usesAncestorConfig;
     }
     return _json;
   }
@@ -3784,11 +3783,11 @@ class GoogleFirestoreAdminV1IndexConfigDelta {
   GoogleFirestoreAdminV1IndexConfigDelta();
 
   GoogleFirestoreAdminV1IndexConfigDelta.fromJson(core.Map _json) {
-    if (_json.containsKey("changeType")) {
-      changeType = _json["changeType"];
+    if (_json.containsKey('changeType')) {
+      changeType = _json['changeType'];
     }
-    if (_json.containsKey("index")) {
-      index = GoogleFirestoreAdminV1Index.fromJson(_json["index"]);
+    if (_json.containsKey('index')) {
+      index = GoogleFirestoreAdminV1Index.fromJson(_json['index']);
     }
   }
 
@@ -3796,10 +3795,10 @@ class GoogleFirestoreAdminV1IndexConfigDelta {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (changeType != null) {
-      _json["changeType"] = changeType;
+      _json['changeType'] = changeType;
     }
     if (index != null) {
-      _json["index"] = index.toJson();
+      _json['index'] = index.toJson();
     }
     return _json;
   }
@@ -3830,14 +3829,14 @@ class GoogleFirestoreAdminV1IndexField {
   GoogleFirestoreAdminV1IndexField();
 
   GoogleFirestoreAdminV1IndexField.fromJson(core.Map _json) {
-    if (_json.containsKey("arrayConfig")) {
-      arrayConfig = _json["arrayConfig"];
+    if (_json.containsKey('arrayConfig')) {
+      arrayConfig = _json['arrayConfig'];
     }
-    if (_json.containsKey("fieldPath")) {
-      fieldPath = _json["fieldPath"];
+    if (_json.containsKey('fieldPath')) {
+      fieldPath = _json['fieldPath'];
     }
-    if (_json.containsKey("order")) {
-      order = _json["order"];
+    if (_json.containsKey('order')) {
+      order = _json['order'];
     }
   }
 
@@ -3845,13 +3844,13 @@ class GoogleFirestoreAdminV1IndexField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (arrayConfig != null) {
-      _json["arrayConfig"] = arrayConfig;
+      _json['arrayConfig'] = arrayConfig;
     }
     if (fieldPath != null) {
-      _json["fieldPath"] = fieldPath;
+      _json['fieldPath'] = fieldPath;
     }
     if (order != null) {
-      _json["order"] = order;
+      _json['order'] = order;
     }
     return _json;
   }
@@ -3896,25 +3895,25 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
   GoogleFirestoreAdminV1IndexOperationMetadata();
 
   GoogleFirestoreAdminV1IndexOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("index")) {
-      index = _json["index"];
+    if (_json.containsKey('index')) {
+      index = _json['index'];
     }
-    if (_json.containsKey("progressBytes")) {
+    if (_json.containsKey('progressBytes')) {
       progressBytes =
-          GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json['progressBytes']);
     }
-    if (_json.containsKey("progressDocuments")) {
+    if (_json.containsKey('progressDocuments')) {
       progressDocuments =
-          GoogleFirestoreAdminV1Progress.fromJson(_json["progressDocuments"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -3922,22 +3921,22 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (index != null) {
-      _json["index"] = index;
+      _json['index'] = index;
     }
     if (progressBytes != null) {
-      _json["progressBytes"] = progressBytes.toJson();
+      _json['progressBytes'] = progressBytes.toJson();
     }
     if (progressDocuments != null) {
-      _json["progressDocuments"] = progressDocuments.toJson();
+      _json['progressDocuments'] = progressDocuments.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -3955,14 +3954,14 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
   GoogleFirestoreAdminV1ListFieldsResponse();
 
   GoogleFirestoreAdminV1ListFieldsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("fields")) {
-      fields = (_json["fields"] as core.List)
+    if (_json.containsKey('fields')) {
+      fields = (_json['fields'] as core.List)
           .map<GoogleFirestoreAdminV1Field>(
               (value) => GoogleFirestoreAdminV1Field.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -3970,10 +3969,10 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fields != null) {
-      _json["fields"] = fields.map((value) => value.toJson()).toList();
+      _json['fields'] = fields.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -3991,14 +3990,14 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
   GoogleFirestoreAdminV1ListIndexesResponse();
 
   GoogleFirestoreAdminV1ListIndexesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("indexes")) {
-      indexes = (_json["indexes"] as core.List)
+    if (_json.containsKey('indexes')) {
+      indexes = (_json['indexes'] as core.List)
           .map<GoogleFirestoreAdminV1Index>(
               (value) => GoogleFirestoreAdminV1Index.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4006,10 +4005,10 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indexes != null) {
-      _json["indexes"] = indexes.map((value) => value.toJson()).toList();
+      _json['indexes'] = indexes.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4040,11 +4039,11 @@ class GoogleFirestoreAdminV1Progress {
   GoogleFirestoreAdminV1Progress();
 
   GoogleFirestoreAdminV1Progress.fromJson(core.Map _json) {
-    if (_json.containsKey("completedWork")) {
-      completedWork = _json["completedWork"];
+    if (_json.containsKey('completedWork')) {
+      completedWork = _json['completedWork'];
     }
-    if (_json.containsKey("estimatedWork")) {
-      estimatedWork = _json["estimatedWork"];
+    if (_json.containsKey('estimatedWork')) {
+      estimatedWork = _json['estimatedWork'];
     }
   }
 
@@ -4052,10 +4051,10 @@ class GoogleFirestoreAdminV1Progress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (completedWork != null) {
-      _json["completedWork"] = completedWork;
+      _json['completedWork'] = completedWork;
     }
     if (estimatedWork != null) {
-      _json["estimatedWork"] = estimatedWork;
+      _json['estimatedWork'] = estimatedWork;
     }
     return _json;
   }
@@ -4085,11 +4084,11 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse();
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<GoogleLongrunningOperation>(
               (value) => GoogleLongrunningOperation.fromJson(value))
           .toList();
@@ -4100,10 +4099,10 @@ class GoogleLongrunningListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4149,22 +4148,22 @@ class GoogleLongrunningOperation {
   GoogleLongrunningOperation();
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -4172,19 +4171,19 @@ class GoogleLongrunningOperation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -4204,11 +4203,11 @@ class LatLng {
   LatLng();
 
   LatLng.fromJson(core.Map _json) {
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
   }
 
@@ -4216,10 +4215,10 @@ class LatLng {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     return _json;
   }
@@ -4236,11 +4235,11 @@ class ListCollectionIdsRequest {
   ListCollectionIdsRequest();
 
   ListCollectionIdsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("pageSize")) {
-      pageSize = _json["pageSize"];
+    if (_json.containsKey('pageSize')) {
+      pageSize = _json['pageSize'];
     }
-    if (_json.containsKey("pageToken")) {
-      pageToken = _json["pageToken"];
+    if (_json.containsKey('pageToken')) {
+      pageToken = _json['pageToken'];
     }
   }
 
@@ -4248,10 +4247,10 @@ class ListCollectionIdsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageSize != null) {
-      _json["pageSize"] = pageSize;
+      _json['pageSize'] = pageSize;
     }
     if (pageToken != null) {
-      _json["pageToken"] = pageToken;
+      _json['pageToken'] = pageToken;
     }
     return _json;
   }
@@ -4268,11 +4267,11 @@ class ListCollectionIdsResponse {
   ListCollectionIdsResponse();
 
   ListCollectionIdsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("collectionIds")) {
-      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('collectionIds')) {
+      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4280,10 +4279,10 @@ class ListCollectionIdsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (collectionIds != null) {
-      _json["collectionIds"] = collectionIds;
+      _json['collectionIds'] = collectionIds;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4300,13 +4299,13 @@ class ListDocumentsResponse {
   ListDocumentsResponse();
 
   ListDocumentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("documents")) {
-      documents = (_json["documents"] as core.List)
+    if (_json.containsKey('documents')) {
+      documents = (_json['documents'] as core.List)
           .map<Document>((value) => Document.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4314,10 +4313,10 @@ class ListDocumentsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (documents != null) {
-      _json["documents"] = documents.map((value) => value.toJson()).toList();
+      _json['documents'] = documents.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4334,13 +4333,13 @@ class ListLocationsResponse {
   ListLocationsResponse();
 
   ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4348,10 +4347,10 @@ class ListLocationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4371,14 +4370,14 @@ class ListenRequest {
   ListenRequest();
 
   ListenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("addTarget")) {
-      addTarget = Target.fromJson(_json["addTarget"]);
+    if (_json.containsKey('addTarget')) {
+      addTarget = Target.fromJson(_json['addTarget']);
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("removeTarget")) {
-      removeTarget = _json["removeTarget"];
+    if (_json.containsKey('removeTarget')) {
+      removeTarget = _json['removeTarget'];
     }
   }
 
@@ -4386,13 +4385,13 @@ class ListenRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addTarget != null) {
-      _json["addTarget"] = addTarget.toJson();
+      _json['addTarget'] = addTarget.toJson();
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (removeTarget != null) {
-      _json["removeTarget"] = removeTarget;
+      _json['removeTarget'] = removeTarget;
     }
     return _json;
   }
@@ -4421,20 +4420,20 @@ class ListenResponse {
   ListenResponse();
 
   ListenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("documentChange")) {
-      documentChange = DocumentChange.fromJson(_json["documentChange"]);
+    if (_json.containsKey('documentChange')) {
+      documentChange = DocumentChange.fromJson(_json['documentChange']);
     }
-    if (_json.containsKey("documentDelete")) {
-      documentDelete = DocumentDelete.fromJson(_json["documentDelete"]);
+    if (_json.containsKey('documentDelete')) {
+      documentDelete = DocumentDelete.fromJson(_json['documentDelete']);
     }
-    if (_json.containsKey("documentRemove")) {
-      documentRemove = DocumentRemove.fromJson(_json["documentRemove"]);
+    if (_json.containsKey('documentRemove')) {
+      documentRemove = DocumentRemove.fromJson(_json['documentRemove']);
     }
-    if (_json.containsKey("filter")) {
-      filter = ExistenceFilter.fromJson(_json["filter"]);
+    if (_json.containsKey('filter')) {
+      filter = ExistenceFilter.fromJson(_json['filter']);
     }
-    if (_json.containsKey("targetChange")) {
-      targetChange = TargetChange.fromJson(_json["targetChange"]);
+    if (_json.containsKey('targetChange')) {
+      targetChange = TargetChange.fromJson(_json['targetChange']);
     }
   }
 
@@ -4442,19 +4441,19 @@ class ListenResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (documentChange != null) {
-      _json["documentChange"] = documentChange.toJson();
+      _json['documentChange'] = documentChange.toJson();
     }
     if (documentDelete != null) {
-      _json["documentDelete"] = documentDelete.toJson();
+      _json['documentDelete'] = documentDelete.toJson();
     }
     if (documentRemove != null) {
-      _json["documentRemove"] = documentRemove.toJson();
+      _json['documentRemove'] = documentRemove.toJson();
     }
     if (filter != null) {
-      _json["filter"] = filter.toJson();
+      _json['filter'] = filter.toJson();
     }
     if (targetChange != null) {
-      _json["targetChange"] = targetChange.toJson();
+      _json['targetChange'] = targetChange.toJson();
     }
     return _json;
   }
@@ -4487,21 +4486,21 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4509,19 +4508,19 @@ class Location {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4538,9 +4537,9 @@ class MapValue {
   MapValue();
 
   MapValue.fromJson(core.Map _json) {
-    if (_json.containsKey("fields")) {
+    if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, Value>(
-          _json["fields"].cast<core.String, core.Map>(),
+          _json['fields'].cast<core.String, core.Map>(),
           (core.Map item) => Value.fromJson(item));
     }
   }
@@ -4549,7 +4548,7 @@ class MapValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fields != null) {
-      _json["fields"] =
+      _json['fields'] =
           commons.mapMap<Value, core.Map<core.String, core.Object>>(
               fields, (Value item) => item.toJson());
     }
@@ -4572,11 +4571,11 @@ class Order {
   Order();
 
   Order.fromJson(core.Map _json) {
-    if (_json.containsKey("direction")) {
-      direction = _json["direction"];
+    if (_json.containsKey('direction')) {
+      direction = _json['direction'];
     }
-    if (_json.containsKey("field")) {
-      field = FieldReference.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = FieldReference.fromJson(_json['field']);
     }
   }
 
@@ -4584,10 +4583,10 @@ class Order {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (direction != null) {
-      _json["direction"] = direction;
+      _json['direction'] = direction;
     }
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     return _json;
   }
@@ -4630,17 +4629,17 @@ class PartitionQueryRequest {
   PartitionQueryRequest();
 
   PartitionQueryRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("pageSize")) {
-      pageSize = _json["pageSize"];
+    if (_json.containsKey('pageSize')) {
+      pageSize = _json['pageSize'];
     }
-    if (_json.containsKey("pageToken")) {
-      pageToken = _json["pageToken"];
+    if (_json.containsKey('pageToken')) {
+      pageToken = _json['pageToken'];
     }
-    if (_json.containsKey("partitionCount")) {
-      partitionCount = _json["partitionCount"];
+    if (_json.containsKey('partitionCount')) {
+      partitionCount = _json['partitionCount'];
     }
-    if (_json.containsKey("structuredQuery")) {
-      structuredQuery = StructuredQuery.fromJson(_json["structuredQuery"]);
+    if (_json.containsKey('structuredQuery')) {
+      structuredQuery = StructuredQuery.fromJson(_json['structuredQuery']);
     }
   }
 
@@ -4648,16 +4647,16 @@ class PartitionQueryRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageSize != null) {
-      _json["pageSize"] = pageSize;
+      _json['pageSize'] = pageSize;
     }
     if (pageToken != null) {
-      _json["pageToken"] = pageToken;
+      _json['pageToken'] = pageToken;
     }
     if (partitionCount != null) {
-      _json["partitionCount"] = partitionCount;
+      _json['partitionCount'] = partitionCount;
     }
     if (structuredQuery != null) {
-      _json["structuredQuery"] = structuredQuery.toJson();
+      _json['structuredQuery'] = structuredQuery.toJson();
     }
     return _json;
   }
@@ -4685,11 +4684,11 @@ class PartitionQueryResponse {
   PartitionQueryResponse();
 
   PartitionQueryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("partitions")) {
-      partitions = (_json["partitions"] as core.List)
+    if (_json.containsKey('partitions')) {
+      partitions = (_json['partitions'] as core.List)
           .map<Cursor>((value) => Cursor.fromJson(value))
           .toList();
     }
@@ -4699,10 +4698,10 @@ class PartitionQueryResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (partitions != null) {
-      _json["partitions"] = partitions.map((value) => value.toJson()).toList();
+      _json['partitions'] = partitions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4721,11 +4720,11 @@ class Precondition {
   Precondition();
 
   Precondition.fromJson(core.Map _json) {
-    if (_json.containsKey("exists")) {
-      exists = _json["exists"];
+    if (_json.containsKey('exists')) {
+      exists = _json['exists'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -4733,10 +4732,10 @@ class Precondition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exists != null) {
-      _json["exists"] = exists;
+      _json['exists'] = exists;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -4751,8 +4750,8 @@ class Projection {
   Projection();
 
   Projection.fromJson(core.Map _json) {
-    if (_json.containsKey("fields")) {
-      fields = (_json["fields"] as core.List)
+    if (_json.containsKey('fields')) {
+      fields = (_json['fields'] as core.List)
           .map<FieldReference>((value) => FieldReference.fromJson(value))
           .toList();
     }
@@ -4762,7 +4761,7 @@ class Projection {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fields != null) {
-      _json["fields"] = fields.map((value) => value.toJson()).toList();
+      _json['fields'] = fields.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4783,11 +4782,11 @@ class QueryTarget {
   QueryTarget();
 
   QueryTarget.fromJson(core.Map _json) {
-    if (_json.containsKey("parent")) {
-      parent = _json["parent"];
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'];
     }
-    if (_json.containsKey("structuredQuery")) {
-      structuredQuery = StructuredQuery.fromJson(_json["structuredQuery"]);
+    if (_json.containsKey('structuredQuery')) {
+      structuredQuery = StructuredQuery.fromJson(_json['structuredQuery']);
     }
   }
 
@@ -4795,10 +4794,10 @@ class QueryTarget {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (structuredQuery != null) {
-      _json["structuredQuery"] = structuredQuery.toJson();
+      _json['structuredQuery'] = structuredQuery.toJson();
     }
     return _json;
   }
@@ -4812,8 +4811,8 @@ class ReadOnly {
   ReadOnly();
 
   ReadOnly.fromJson(core.Map _json) {
-    if (_json.containsKey("readTime")) {
-      readTime = _json["readTime"];
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'];
     }
   }
 
@@ -4821,7 +4820,7 @@ class ReadOnly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (readTime != null) {
-      _json["readTime"] = readTime;
+      _json['readTime'] = readTime;
     }
     return _json;
   }
@@ -4836,14 +4835,14 @@ class ReadWrite {
 
   set retryTransactionAsBytes(core.List<core.int> _bytes) {
     retryTransaction =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   ReadWrite();
 
   ReadWrite.fromJson(core.Map _json) {
-    if (_json.containsKey("retryTransaction")) {
-      retryTransaction = _json["retryTransaction"];
+    if (_json.containsKey('retryTransaction')) {
+      retryTransaction = _json['retryTransaction'];
     }
   }
 
@@ -4851,7 +4850,7 @@ class ReadWrite {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (retryTransaction != null) {
-      _json["retryTransaction"] = retryTransaction;
+      _json['retryTransaction'] = retryTransaction;
     }
     return _json;
   }
@@ -4866,14 +4865,14 @@ class RollbackRequest {
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   RollbackRequest();
 
   RollbackRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("transaction")) {
-      transaction = _json["transaction"];
+    if (_json.containsKey('transaction')) {
+      transaction = _json['transaction'];
     }
   }
 
@@ -4881,7 +4880,7 @@ class RollbackRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (transaction != null) {
-      _json["transaction"] = transaction;
+      _json['transaction'] = transaction;
     }
     return _json;
   }
@@ -4908,23 +4907,23 @@ class RunQueryRequest {
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   RunQueryRequest();
 
   RunQueryRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("newTransaction")) {
-      newTransaction = TransactionOptions.fromJson(_json["newTransaction"]);
+    if (_json.containsKey('newTransaction')) {
+      newTransaction = TransactionOptions.fromJson(_json['newTransaction']);
     }
-    if (_json.containsKey("readTime")) {
-      readTime = _json["readTime"];
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'];
     }
-    if (_json.containsKey("structuredQuery")) {
-      structuredQuery = StructuredQuery.fromJson(_json["structuredQuery"]);
+    if (_json.containsKey('structuredQuery')) {
+      structuredQuery = StructuredQuery.fromJson(_json['structuredQuery']);
     }
-    if (_json.containsKey("transaction")) {
-      transaction = _json["transaction"];
+    if (_json.containsKey('transaction')) {
+      transaction = _json['transaction'];
     }
   }
 
@@ -4932,16 +4931,16 @@ class RunQueryRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (newTransaction != null) {
-      _json["newTransaction"] = newTransaction.toJson();
+      _json['newTransaction'] = newTransaction.toJson();
     }
     if (readTime != null) {
-      _json["readTime"] = readTime;
+      _json['readTime'] = readTime;
     }
     if (structuredQuery != null) {
-      _json["structuredQuery"] = structuredQuery.toJson();
+      _json['structuredQuery'] = structuredQuery.toJson();
     }
     if (transaction != null) {
-      _json["transaction"] = transaction;
+      _json['transaction'] = transaction;
     }
     return _json;
   }
@@ -4973,23 +4972,23 @@ class RunQueryResponse {
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   RunQueryResponse();
 
   RunQueryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("document")) {
-      document = Document.fromJson(_json["document"]);
+    if (_json.containsKey('document')) {
+      document = Document.fromJson(_json['document']);
     }
-    if (_json.containsKey("readTime")) {
-      readTime = _json["readTime"];
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'];
     }
-    if (_json.containsKey("skippedResults")) {
-      skippedResults = _json["skippedResults"];
+    if (_json.containsKey('skippedResults')) {
+      skippedResults = _json['skippedResults'];
     }
-    if (_json.containsKey("transaction")) {
-      transaction = _json["transaction"];
+    if (_json.containsKey('transaction')) {
+      transaction = _json['transaction'];
     }
   }
 
@@ -4997,16 +4996,16 @@ class RunQueryResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = document.toJson();
+      _json['document'] = document.toJson();
     }
     if (readTime != null) {
-      _json["readTime"] = readTime;
+      _json['readTime'] = readTime;
     }
     if (skippedResults != null) {
-      _json["skippedResults"] = skippedResults;
+      _json['skippedResults'] = skippedResults;
     }
     if (transaction != null) {
-      _json["transaction"] = transaction;
+      _json['transaction'] = transaction;
     }
     return _json;
   }
@@ -5037,17 +5036,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -5055,13 +5054,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -5108,34 +5107,34 @@ class StructuredQuery {
   StructuredQuery();
 
   StructuredQuery.fromJson(core.Map _json) {
-    if (_json.containsKey("endAt")) {
-      endAt = Cursor.fromJson(_json["endAt"]);
+    if (_json.containsKey('endAt')) {
+      endAt = Cursor.fromJson(_json['endAt']);
     }
-    if (_json.containsKey("from")) {
-      from = (_json["from"] as core.List)
+    if (_json.containsKey('from')) {
+      from = (_json['from'] as core.List)
           .map<CollectionSelector>(
               (value) => CollectionSelector.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("limit")) {
-      limit = _json["limit"];
+    if (_json.containsKey('limit')) {
+      limit = _json['limit'];
     }
-    if (_json.containsKey("offset")) {
-      offset = _json["offset"];
+    if (_json.containsKey('offset')) {
+      offset = _json['offset'];
     }
-    if (_json.containsKey("orderBy")) {
-      orderBy = (_json["orderBy"] as core.List)
+    if (_json.containsKey('orderBy')) {
+      orderBy = (_json['orderBy'] as core.List)
           .map<Order>((value) => Order.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("select")) {
-      select = Projection.fromJson(_json["select"]);
+    if (_json.containsKey('select')) {
+      select = Projection.fromJson(_json['select']);
     }
-    if (_json.containsKey("startAt")) {
-      startAt = Cursor.fromJson(_json["startAt"]);
+    if (_json.containsKey('startAt')) {
+      startAt = Cursor.fromJson(_json['startAt']);
     }
-    if (_json.containsKey("where")) {
-      where = Filter.fromJson(_json["where"]);
+    if (_json.containsKey('where')) {
+      where = Filter.fromJson(_json['where']);
     }
   }
 
@@ -5143,28 +5142,28 @@ class StructuredQuery {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endAt != null) {
-      _json["endAt"] = endAt.toJson();
+      _json['endAt'] = endAt.toJson();
     }
     if (from != null) {
-      _json["from"] = from.map((value) => value.toJson()).toList();
+      _json['from'] = from.map((value) => value.toJson()).toList();
     }
     if (limit != null) {
-      _json["limit"] = limit;
+      _json['limit'] = limit;
     }
     if (offset != null) {
-      _json["offset"] = offset;
+      _json['offset'] = offset;
     }
     if (orderBy != null) {
-      _json["orderBy"] = orderBy.map((value) => value.toJson()).toList();
+      _json['orderBy'] = orderBy.map((value) => value.toJson()).toList();
     }
     if (select != null) {
-      _json["select"] = select.toJson();
+      _json['select'] = select.toJson();
     }
     if (startAt != null) {
-      _json["startAt"] = startAt.toJson();
+      _json['startAt'] = startAt.toJson();
     }
     if (where != null) {
-      _json["where"] = where.toJson();
+      _json['where'] = where.toJson();
     }
     return _json;
   }
@@ -5193,7 +5192,7 @@ class Target {
 
   set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The target ID that identifies the target on the stream. Must be a positive
@@ -5203,23 +5202,23 @@ class Target {
   Target();
 
   Target.fromJson(core.Map _json) {
-    if (_json.containsKey("documents")) {
-      documents = DocumentsTarget.fromJson(_json["documents"]);
+    if (_json.containsKey('documents')) {
+      documents = DocumentsTarget.fromJson(_json['documents']);
     }
-    if (_json.containsKey("once")) {
-      once = _json["once"];
+    if (_json.containsKey('once')) {
+      once = _json['once'];
     }
-    if (_json.containsKey("query")) {
-      query = QueryTarget.fromJson(_json["query"]);
+    if (_json.containsKey('query')) {
+      query = QueryTarget.fromJson(_json['query']);
     }
-    if (_json.containsKey("readTime")) {
-      readTime = _json["readTime"];
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'];
     }
-    if (_json.containsKey("resumeToken")) {
-      resumeToken = _json["resumeToken"];
+    if (_json.containsKey('resumeToken')) {
+      resumeToken = _json['resumeToken'];
     }
-    if (_json.containsKey("targetId")) {
-      targetId = _json["targetId"];
+    if (_json.containsKey('targetId')) {
+      targetId = _json['targetId'];
     }
   }
 
@@ -5227,22 +5226,22 @@ class Target {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (documents != null) {
-      _json["documents"] = documents.toJson();
+      _json['documents'] = documents.toJson();
     }
     if (once != null) {
-      _json["once"] = once;
+      _json['once'] = once;
     }
     if (query != null) {
-      _json["query"] = query.toJson();
+      _json['query'] = query.toJson();
     }
     if (readTime != null) {
-      _json["readTime"] = readTime;
+      _json['readTime'] = readTime;
     }
     if (resumeToken != null) {
-      _json["resumeToken"] = resumeToken;
+      _json['resumeToken'] = resumeToken;
     }
     if (targetId != null) {
-      _json["targetId"] = targetId;
+      _json['targetId'] = targetId;
     }
     return _json;
   }
@@ -5270,7 +5269,7 @@ class TargetChange {
 
   set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The type of change that occurred.
@@ -5297,20 +5296,20 @@ class TargetChange {
   TargetChange();
 
   TargetChange.fromJson(core.Map _json) {
-    if (_json.containsKey("cause")) {
-      cause = Status.fromJson(_json["cause"]);
+    if (_json.containsKey('cause')) {
+      cause = Status.fromJson(_json['cause']);
     }
-    if (_json.containsKey("readTime")) {
-      readTime = _json["readTime"];
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'];
     }
-    if (_json.containsKey("resumeToken")) {
-      resumeToken = _json["resumeToken"];
+    if (_json.containsKey('resumeToken')) {
+      resumeToken = _json['resumeToken'];
     }
-    if (_json.containsKey("targetChangeType")) {
-      targetChangeType = _json["targetChangeType"];
+    if (_json.containsKey('targetChangeType')) {
+      targetChangeType = _json['targetChangeType'];
     }
-    if (_json.containsKey("targetIds")) {
-      targetIds = (_json["targetIds"] as core.List).cast<core.int>();
+    if (_json.containsKey('targetIds')) {
+      targetIds = (_json['targetIds'] as core.List).cast<core.int>();
     }
   }
 
@@ -5318,19 +5317,19 @@ class TargetChange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cause != null) {
-      _json["cause"] = cause.toJson();
+      _json['cause'] = cause.toJson();
     }
     if (readTime != null) {
-      _json["readTime"] = readTime;
+      _json['readTime'] = readTime;
     }
     if (resumeToken != null) {
-      _json["resumeToken"] = resumeToken;
+      _json['resumeToken'] = resumeToken;
     }
     if (targetChangeType != null) {
-      _json["targetChangeType"] = targetChangeType;
+      _json['targetChangeType'] = targetChangeType;
     }
     if (targetIds != null) {
-      _json["targetIds"] = targetIds;
+      _json['targetIds'] = targetIds;
     }
     return _json;
   }
@@ -5347,11 +5346,11 @@ class TransactionOptions {
   TransactionOptions();
 
   TransactionOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("readOnly")) {
-      readOnly = ReadOnly.fromJson(_json["readOnly"]);
+    if (_json.containsKey('readOnly')) {
+      readOnly = ReadOnly.fromJson(_json['readOnly']);
     }
-    if (_json.containsKey("readWrite")) {
-      readWrite = ReadWrite.fromJson(_json["readWrite"]);
+    if (_json.containsKey('readWrite')) {
+      readWrite = ReadWrite.fromJson(_json['readWrite']);
     }
   }
 
@@ -5359,10 +5358,10 @@ class TransactionOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (readOnly != null) {
-      _json["readOnly"] = readOnly.toJson();
+      _json['readOnly'] = readOnly.toJson();
     }
     if (readWrite != null) {
-      _json["readWrite"] = readWrite.toJson();
+      _json['readWrite'] = readWrite.toJson();
     }
     return _json;
   }
@@ -5389,11 +5388,11 @@ class UnaryFilter {
   UnaryFilter();
 
   UnaryFilter.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = FieldReference.fromJson(_json["field"]);
+    if (_json.containsKey('field')) {
+      field = FieldReference.fromJson(_json['field']);
     }
-    if (_json.containsKey("op")) {
-      op = _json["op"];
+    if (_json.containsKey('op')) {
+      op = _json['op'];
     }
   }
 
@@ -5401,10 +5400,10 @@ class UnaryFilter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.toJson();
+      _json['field'] = field.toJson();
     }
     if (op != null) {
-      _json["op"] = op;
+      _json['op'] = op;
     }
     return _json;
   }
@@ -5427,7 +5426,7 @@ class Value {
 
   set bytesValueAsBytes(core.List<core.int> _bytes) {
     bytesValue =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A double value.
@@ -5463,38 +5462,38 @@ class Value {
   Value();
 
   Value.fromJson(core.Map _json) {
-    if (_json.containsKey("arrayValue")) {
-      arrayValue = ArrayValue.fromJson(_json["arrayValue"]);
+    if (_json.containsKey('arrayValue')) {
+      arrayValue = ArrayValue.fromJson(_json['arrayValue']);
     }
-    if (_json.containsKey("booleanValue")) {
-      booleanValue = _json["booleanValue"];
+    if (_json.containsKey('booleanValue')) {
+      booleanValue = _json['booleanValue'];
     }
-    if (_json.containsKey("bytesValue")) {
-      bytesValue = _json["bytesValue"];
+    if (_json.containsKey('bytesValue')) {
+      bytesValue = _json['bytesValue'];
     }
-    if (_json.containsKey("doubleValue")) {
-      doubleValue = _json["doubleValue"].toDouble();
+    if (_json.containsKey('doubleValue')) {
+      doubleValue = _json['doubleValue'].toDouble();
     }
-    if (_json.containsKey("geoPointValue")) {
-      geoPointValue = LatLng.fromJson(_json["geoPointValue"]);
+    if (_json.containsKey('geoPointValue')) {
+      geoPointValue = LatLng.fromJson(_json['geoPointValue']);
     }
-    if (_json.containsKey("integerValue")) {
-      integerValue = _json["integerValue"];
+    if (_json.containsKey('integerValue')) {
+      integerValue = _json['integerValue'];
     }
-    if (_json.containsKey("mapValue")) {
-      mapValue = MapValue.fromJson(_json["mapValue"]);
+    if (_json.containsKey('mapValue')) {
+      mapValue = MapValue.fromJson(_json['mapValue']);
     }
-    if (_json.containsKey("nullValue")) {
-      nullValue = _json["nullValue"];
+    if (_json.containsKey('nullValue')) {
+      nullValue = _json['nullValue'];
     }
-    if (_json.containsKey("referenceValue")) {
-      referenceValue = _json["referenceValue"];
+    if (_json.containsKey('referenceValue')) {
+      referenceValue = _json['referenceValue'];
     }
-    if (_json.containsKey("stringValue")) {
-      stringValue = _json["stringValue"];
+    if (_json.containsKey('stringValue')) {
+      stringValue = _json['stringValue'];
     }
-    if (_json.containsKey("timestampValue")) {
-      timestampValue = _json["timestampValue"];
+    if (_json.containsKey('timestampValue')) {
+      timestampValue = _json['timestampValue'];
     }
   }
 
@@ -5502,37 +5501,37 @@ class Value {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (arrayValue != null) {
-      _json["arrayValue"] = arrayValue.toJson();
+      _json['arrayValue'] = arrayValue.toJson();
     }
     if (booleanValue != null) {
-      _json["booleanValue"] = booleanValue;
+      _json['booleanValue'] = booleanValue;
     }
     if (bytesValue != null) {
-      _json["bytesValue"] = bytesValue;
+      _json['bytesValue'] = bytesValue;
     }
     if (doubleValue != null) {
-      _json["doubleValue"] = doubleValue;
+      _json['doubleValue'] = doubleValue;
     }
     if (geoPointValue != null) {
-      _json["geoPointValue"] = geoPointValue.toJson();
+      _json['geoPointValue'] = geoPointValue.toJson();
     }
     if (integerValue != null) {
-      _json["integerValue"] = integerValue;
+      _json['integerValue'] = integerValue;
     }
     if (mapValue != null) {
-      _json["mapValue"] = mapValue.toJson();
+      _json['mapValue'] = mapValue.toJson();
     }
     if (nullValue != null) {
-      _json["nullValue"] = nullValue;
+      _json['nullValue'] = nullValue;
     }
     if (referenceValue != null) {
-      _json["referenceValue"] = referenceValue;
+      _json['referenceValue'] = referenceValue;
     }
     if (stringValue != null) {
-      _json["stringValue"] = stringValue;
+      _json['stringValue'] = stringValue;
     }
     if (timestampValue != null) {
-      _json["timestampValue"] = timestampValue;
+      _json['timestampValue'] = timestampValue;
     }
     return _json;
   }
@@ -5572,23 +5571,23 @@ class Write {
   Write();
 
   Write.fromJson(core.Map _json) {
-    if (_json.containsKey("currentDocument")) {
-      currentDocument = Precondition.fromJson(_json["currentDocument"]);
+    if (_json.containsKey('currentDocument')) {
+      currentDocument = Precondition.fromJson(_json['currentDocument']);
     }
-    if (_json.containsKey("delete")) {
-      delete = _json["delete"];
+    if (_json.containsKey('delete')) {
+      delete = _json['delete'];
     }
-    if (_json.containsKey("transform")) {
-      transform = DocumentTransform.fromJson(_json["transform"]);
+    if (_json.containsKey('transform')) {
+      transform = DocumentTransform.fromJson(_json['transform']);
     }
-    if (_json.containsKey("update")) {
-      update = Document.fromJson(_json["update"]);
+    if (_json.containsKey('update')) {
+      update = Document.fromJson(_json['update']);
     }
-    if (_json.containsKey("updateMask")) {
-      updateMask = DocumentMask.fromJson(_json["updateMask"]);
+    if (_json.containsKey('updateMask')) {
+      updateMask = DocumentMask.fromJson(_json['updateMask']);
     }
-    if (_json.containsKey("updateTransforms")) {
-      updateTransforms = (_json["updateTransforms"] as core.List)
+    if (_json.containsKey('updateTransforms')) {
+      updateTransforms = (_json['updateTransforms'] as core.List)
           .map<FieldTransform>((value) => FieldTransform.fromJson(value))
           .toList();
     }
@@ -5598,22 +5597,22 @@ class Write {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currentDocument != null) {
-      _json["currentDocument"] = currentDocument.toJson();
+      _json['currentDocument'] = currentDocument.toJson();
     }
     if (delete != null) {
-      _json["delete"] = delete;
+      _json['delete'] = delete;
     }
     if (transform != null) {
-      _json["transform"] = transform.toJson();
+      _json['transform'] = transform.toJson();
     }
     if (update != null) {
-      _json["update"] = update.toJson();
+      _json['update'] = update.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = updateMask.toJson();
+      _json['updateMask'] = updateMask.toJson();
     }
     if (updateTransforms != null) {
-      _json["updateTransforms"] =
+      _json['updateTransforms'] =
           updateTransforms.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5648,7 +5647,7 @@ class WriteRequest {
 
   set streamTokenAsBytes(core.List<core.int> _bytes) {
     streamToken =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The writes to apply. Always executed atomically and in order. This must be
@@ -5659,17 +5658,17 @@ class WriteRequest {
   WriteRequest();
 
   WriteRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("streamId")) {
-      streamId = _json["streamId"];
+    if (_json.containsKey('streamId')) {
+      streamId = _json['streamId'];
     }
-    if (_json.containsKey("streamToken")) {
-      streamToken = _json["streamToken"];
+    if (_json.containsKey('streamToken')) {
+      streamToken = _json['streamToken'];
     }
-    if (_json.containsKey("writes")) {
-      writes = (_json["writes"] as core.List)
+    if (_json.containsKey('writes')) {
+      writes = (_json['writes'] as core.List)
           .map<Write>((value) => Write.fromJson(value))
           .toList();
     }
@@ -5679,16 +5678,16 @@ class WriteRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (streamId != null) {
-      _json["streamId"] = streamId;
+      _json['streamId'] = streamId;
     }
     if (streamToken != null) {
-      _json["streamToken"] = streamToken;
+      _json['streamToken'] = streamToken;
     }
     if (writes != null) {
-      _json["writes"] = writes.map((value) => value.toJson()).toList();
+      _json['writes'] = writes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5713,7 +5712,7 @@ class WriteResponse {
 
   set streamTokenAsBytes(core.List<core.int> _bytes) {
     streamToken =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The result of applying the writes. This i-th write result corresponds to
@@ -5723,17 +5722,17 @@ class WriteResponse {
   WriteResponse();
 
   WriteResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("commitTime")) {
-      commitTime = _json["commitTime"];
+    if (_json.containsKey('commitTime')) {
+      commitTime = _json['commitTime'];
     }
-    if (_json.containsKey("streamId")) {
-      streamId = _json["streamId"];
+    if (_json.containsKey('streamId')) {
+      streamId = _json['streamId'];
     }
-    if (_json.containsKey("streamToken")) {
-      streamToken = _json["streamToken"];
+    if (_json.containsKey('streamToken')) {
+      streamToken = _json['streamToken'];
     }
-    if (_json.containsKey("writeResults")) {
-      writeResults = (_json["writeResults"] as core.List)
+    if (_json.containsKey('writeResults')) {
+      writeResults = (_json['writeResults'] as core.List)
           .map<WriteResult>((value) => WriteResult.fromJson(value))
           .toList();
     }
@@ -5743,16 +5742,16 @@ class WriteResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (commitTime != null) {
-      _json["commitTime"] = commitTime;
+      _json['commitTime'] = commitTime;
     }
     if (streamId != null) {
-      _json["streamId"] = streamId;
+      _json['streamId'] = streamId;
     }
     if (streamToken != null) {
-      _json["streamToken"] = streamToken;
+      _json['streamToken'] = streamToken;
     }
     if (writeResults != null) {
-      _json["writeResults"] =
+      _json['writeResults'] =
           writeResults.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5773,13 +5772,13 @@ class WriteResult {
   WriteResult();
 
   WriteResult.fromJson(core.Map _json) {
-    if (_json.containsKey("transformResults")) {
-      transformResults = (_json["transformResults"] as core.List)
+    if (_json.containsKey('transformResults')) {
+      transformResults = (_json['transformResults'] as core.List)
           .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -5787,11 +5786,11 @@ class WriteResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (transformResults != null) {
-      _json["transformResults"] =
+      _json['transformResults'] =
           transformResults.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -41,8 +40,8 @@ class WebfontsApi {
   WebfontsResourceApi get webfonts => WebfontsResourceApi(_requester);
 
   WebfontsApi(http.Client client,
-      {core.String rootUrl = "https://webfonts.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://webfonts.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -88,17 +87,17 @@ class WebfontsResourceApi {
     core.String _body;
 
     if (sort != null) {
-      _queryParams["sort"] = [sort];
+      _queryParams['sort'] = [sort];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/webfonts';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -139,29 +138,29 @@ class Webfont {
   Webfont();
 
   Webfont.fromJson(core.Map _json) {
-    if (_json.containsKey("category")) {
-      category = _json["category"];
+    if (_json.containsKey('category')) {
+      category = _json['category'];
     }
-    if (_json.containsKey("family")) {
-      family = _json["family"];
+    if (_json.containsKey('family')) {
+      family = _json['family'];
     }
-    if (_json.containsKey("files")) {
-      files = (_json["files"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('files')) {
+      files = (_json['files'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("lastModified")) {
-      lastModified = _json["lastModified"];
+    if (_json.containsKey('lastModified')) {
+      lastModified = _json['lastModified'];
     }
-    if (_json.containsKey("subsets")) {
-      subsets = (_json["subsets"] as core.List).cast<core.String>();
+    if (_json.containsKey('subsets')) {
+      subsets = (_json['subsets'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("variants")) {
-      variants = (_json["variants"] as core.List).cast<core.String>();
+    if (_json.containsKey('variants')) {
+      variants = (_json['variants'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -169,28 +168,28 @@ class Webfont {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (category != null) {
-      _json["category"] = category;
+      _json['category'] = category;
     }
     if (family != null) {
-      _json["family"] = family;
+      _json['family'] = family;
     }
     if (files != null) {
-      _json["files"] = files;
+      _json['files'] = files;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (lastModified != null) {
-      _json["lastModified"] = lastModified;
+      _json['lastModified'] = lastModified;
     }
     if (subsets != null) {
-      _json["subsets"] = subsets;
+      _json['subsets'] = subsets;
     }
     if (variants != null) {
-      _json["variants"] = variants;
+      _json['variants'] = variants;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -208,13 +207,13 @@ class WebfontList {
   WebfontList();
 
   WebfontList.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Webfont>((value) => Webfont.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -222,10 +221,10 @@ class WebfontList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }

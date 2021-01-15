@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -76,8 +76,8 @@ api.AccountBidderLocation buildAccountBidderLocation() {
   buildCounterAccountBidderLocation++;
   if (buildCounterAccountBidderLocation < 3) {
     o.maximumQps = 42;
-    o.region = "foo";
-    o.url = "foo";
+    o.region = 'foo';
+    o.url = 'foo';
   }
   buildCounterAccountBidderLocation--;
   return o;
@@ -112,10 +112,10 @@ api.Account buildAccount() {
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
     o.bidderLocation = buildUnnamed1680();
-    o.cookieMatchingNid = "foo";
-    o.cookieMatchingUrl = "foo";
+    o.cookieMatchingNid = 'foo';
+    o.cookieMatchingUrl = 'foo';
     o.id = 42;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.maximumActiveCreatives = 42;
     o.maximumTotalQps = 42;
     o.numberActiveCreatives = 42;
@@ -158,7 +158,7 @@ api.AccountsList buildAccountsList() {
   buildCounterAccountsList++;
   if (buildCounterAccountsList < 3) {
     o.items = buildUnnamed1681();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterAccountsList--;
   return o;
@@ -175,8 +175,8 @@ void checkAccountsList(api.AccountsList o) {
 
 core.List<core.String> buildUnnamed1682() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -192,9 +192,9 @@ api.BillingInfo buildBillingInfo() {
   buildCounterBillingInfo++;
   if (buildCounterBillingInfo < 3) {
     o.accountId = 42;
-    o.accountName = "foo";
+    o.accountName = 'foo';
     o.billingId = buildUnnamed1682();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterBillingInfo--;
   return o;
@@ -230,7 +230,7 @@ api.BillingInfoList buildBillingInfoList() {
   buildCounterBillingInfoList++;
   if (buildCounterBillingInfoList < 3) {
     o.items = buildUnnamed1683();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterBillingInfoList--;
   return o;
@@ -250,12 +250,12 @@ api.Budget buildBudget() {
   var o = api.Budget();
   buildCounterBudget++;
   if (buildCounterBudget < 3) {
-    o.accountId = "foo";
-    o.billingId = "foo";
-    o.budgetAmount = "foo";
-    o.currencyCode = "foo";
-    o.id = "foo";
-    o.kind = "foo";
+    o.accountId = 'foo';
+    o.billingId = 'foo';
+    o.budgetAmount = 'foo';
+    o.currencyCode = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
   }
   buildCounterBudget--;
   return o;
@@ -276,8 +276,8 @@ void checkBudget(api.Budget o) {
 
 core.List<core.String> buildUnnamed1684() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -310,8 +310,8 @@ void checkCreativeAdTechnologyProviders(api.CreativeAdTechnologyProviders o) {
 
 core.List<core.String> buildUnnamed1685() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -336,8 +336,8 @@ void checkUnnamed1686(core.List<core.int> o) {
 
 core.List<core.String> buildUnnamed1687() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -349,8 +349,8 @@ void checkUnnamed1687(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1688() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -366,7 +366,7 @@ api.CreativeCorrections buildCreativeCorrections() {
   buildCounterCreativeCorrections++;
   if (buildCounterCreativeCorrections < 3) {
     o.details = buildUnnamed1688();
-    o.reason = "foo";
+    o.reason = 'foo';
   }
   buildCounterCreativeCorrections--;
   return o;
@@ -396,8 +396,8 @@ void checkUnnamed1689(core.List<api.CreativeCorrections> o) {
 
 core.List<core.String> buildUnnamed1690() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -413,7 +413,7 @@ api.CreativeDisapprovalReasons buildCreativeDisapprovalReasons() {
   buildCounterCreativeDisapprovalReasons++;
   if (buildCounterCreativeDisapprovalReasons < 3) {
     o.details = buildUnnamed1690();
-    o.reason = "foo";
+    o.reason = 'foo';
   }
   buildCounterCreativeDisapprovalReasons--;
   return o;
@@ -446,7 +446,7 @@ api.CreativeFilteringReasonsReasons buildCreativeFilteringReasonsReasons() {
   var o = api.CreativeFilteringReasonsReasons();
   buildCounterCreativeFilteringReasonsReasons++;
   if (buildCounterCreativeFilteringReasonsReasons < 3) {
-    o.filteringCount = "foo";
+    o.filteringCount = 'foo';
     o.filteringStatus = 42;
   }
   buildCounterCreativeFilteringReasonsReasons--;
@@ -481,7 +481,7 @@ api.CreativeFilteringReasons buildCreativeFilteringReasons() {
   var o = api.CreativeFilteringReasons();
   buildCounterCreativeFilteringReasons++;
   if (buildCounterCreativeFilteringReasons < 3) {
-    o.date = "foo";
+    o.date = 'foo';
     o.reasons = buildUnnamed1692();
   }
   buildCounterCreativeFilteringReasons--;
@@ -499,8 +499,8 @@ void checkCreativeFilteringReasons(api.CreativeFilteringReasons o) {
 
 core.List<core.String> buildUnnamed1693() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -516,7 +516,7 @@ api.CreativeNativeAdAppIcon buildCreativeNativeAdAppIcon() {
   buildCounterCreativeNativeAdAppIcon++;
   if (buildCounterCreativeNativeAdAppIcon < 3) {
     o.height = 42;
-    o.url = "foo";
+    o.url = 'foo';
     o.width = 42;
   }
   buildCounterCreativeNativeAdAppIcon--;
@@ -539,7 +539,7 @@ api.CreativeNativeAdImage buildCreativeNativeAdImage() {
   buildCounterCreativeNativeAdImage++;
   if (buildCounterCreativeNativeAdImage < 3) {
     o.height = 42;
-    o.url = "foo";
+    o.url = 'foo';
     o.width = 42;
   }
   buildCounterCreativeNativeAdImage--;
@@ -558,8 +558,8 @@ void checkCreativeNativeAdImage(api.CreativeNativeAdImage o) {
 
 core.List<core.String> buildUnnamed1694() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -575,7 +575,7 @@ api.CreativeNativeAdLogo buildCreativeNativeAdLogo() {
   buildCounterCreativeNativeAdLogo++;
   if (buildCounterCreativeNativeAdLogo < 3) {
     o.height = 42;
-    o.url = "foo";
+    o.url = 'foo';
     o.width = 42;
   }
   buildCounterCreativeNativeAdLogo--;
@@ -597,16 +597,16 @@ api.CreativeNativeAd buildCreativeNativeAd() {
   var o = api.CreativeNativeAd();
   buildCounterCreativeNativeAd++;
   if (buildCounterCreativeNativeAd < 3) {
-    o.advertiser = "foo";
+    o.advertiser = 'foo';
     o.appIcon = buildCreativeNativeAdAppIcon();
-    o.body = "foo";
-    o.callToAction = "foo";
-    o.clickTrackingUrl = "foo";
-    o.headline = "foo";
+    o.body = 'foo';
+    o.callToAction = 'foo';
+    o.clickTrackingUrl = 'foo';
+    o.headline = 'foo';
     o.image = buildCreativeNativeAdImage();
     o.impressionTrackingUrl = buildUnnamed1694();
     o.logo = buildCreativeNativeAdLogo();
-    o.price = "foo";
+    o.price = 'foo';
     o.starRating = 42.0;
   }
   buildCounterCreativeNativeAd--;
@@ -688,30 +688,30 @@ api.Creative buildCreative() {
   var o = api.Creative();
   buildCounterCreative++;
   if (buildCounterCreative < 3) {
-    o.HTMLSnippet = "foo";
+    o.HTMLSnippet = 'foo';
     o.accountId = 42;
     o.adTechnologyProviders = buildCreativeAdTechnologyProviders();
     o.advertiserId = buildUnnamed1685();
-    o.advertiserName = "foo";
-    o.agencyId = "foo";
+    o.advertiserName = 'foo';
+    o.agencyId = 'foo';
     o.apiUploadTimestamp = core.DateTime.parse("2002-02-27T14:01:02");
     o.attribute = buildUnnamed1686();
-    o.buyerCreativeId = "foo";
+    o.buyerCreativeId = 'foo';
     o.clickThroughUrl = buildUnnamed1687();
     o.corrections = buildUnnamed1689();
     o.disapprovalReasons = buildUnnamed1691();
     o.filteringReasons = buildCreativeFilteringReasons();
     o.height = 42;
     o.impressionTrackingUrl = buildUnnamed1693();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.nativeAd = buildCreativeNativeAd();
     o.productCategories = buildUnnamed1695();
     o.restrictedCategories = buildUnnamed1696();
     o.sensitiveCategories = buildUnnamed1697();
-    o.status = "foo";
+    o.status = 'foo';
     o.vendorType = buildUnnamed1698();
     o.version = 42;
-    o.videoURL = "foo";
+    o.videoURL = 'foo';
     o.width = 42;
   }
   buildCounterCreative--;
@@ -770,8 +770,8 @@ api.CreativesList buildCreativesList() {
   buildCounterCreativesList++;
   if (buildCounterCreativesList < 3) {
     o.items = buildUnnamed1699();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterCreativesList--;
   return o;
@@ -793,20 +793,20 @@ api.DirectDeal buildDirectDeal() {
   buildCounterDirectDeal++;
   if (buildCounterDirectDeal < 3) {
     o.accountId = 42;
-    o.advertiser = "foo";
+    o.advertiser = 'foo';
     o.allowsAlcohol = true;
-    o.buyerAccountId = "foo";
-    o.currencyCode = "foo";
-    o.dealTier = "foo";
-    o.endTime = "foo";
-    o.fixedCpm = "foo";
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
-    o.privateExchangeMinCpm = "foo";
+    o.buyerAccountId = 'foo';
+    o.currencyCode = 'foo';
+    o.dealTier = 'foo';
+    o.endTime = 'foo';
+    o.fixedCpm = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
+    o.privateExchangeMinCpm = 'foo';
     o.publisherBlocksOverriden = true;
-    o.sellerNetwork = "foo";
-    o.startTime = "foo";
+    o.sellerNetwork = 'foo';
+    o.startTime = 'foo';
   }
   buildCounterDirectDeal--;
   return o;
@@ -853,7 +853,7 @@ api.DirectDealsList buildDirectDealsList() {
   buildCounterDirectDealsList++;
   if (buildCounterDirectDealsList < 3) {
     o.directDeals = buildUnnamed1700();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterDirectDealsList--;
   return o;
@@ -887,14 +887,14 @@ void checkUnnamed1701(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o[1]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.List<core.Object> buildUnnamed1702() {
@@ -916,14 +916,14 @@ void checkUnnamed1702(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o[0]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
   var casted4 = (o[1]) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.List<core.Object> buildUnnamed1703() {
@@ -945,14 +945,14 @@ void checkUnnamed1703(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o[0]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
   var casted6 = (o[1]) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.List<core.Object> buildUnnamed1704() {
@@ -974,14 +974,14 @@ void checkUnnamed1704(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o[0]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
   var casted8 = (o[1]) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8["bool"], unittest.equals(true));
-  unittest.expect(casted8["string"], unittest.equals('foo'));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterPerformanceReport = 0;
@@ -997,7 +997,7 @@ api.PerformanceReport buildPerformanceReport() {
     o.filteredBidRate = 42.0;
     o.hostedMatchStatusRate = buildUnnamed1704();
     o.inventoryMatchRate = 42.0;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.latency50thPercentile = 42.0;
     o.latency85thPercentile = 42.0;
     o.latency95thPercentile = 42.0;
@@ -1007,9 +1007,9 @@ api.PerformanceReport buildPerformanceReport() {
     o.pixelMatchResponses = 42.0;
     o.quotaConfiguredLimit = 42.0;
     o.quotaThrottledLimit = 42.0;
-    o.region = "foo";
+    o.region = 'foo';
     o.successfulRequestRate = 42.0;
-    o.timestamp = "foo";
+    o.timestamp = 'foo';
     o.unsuccessfulRequestRate = 42.0;
   }
   buildCounterPerformanceReport--;
@@ -1063,7 +1063,7 @@ api.PerformanceReportList buildPerformanceReportList() {
   var o = api.PerformanceReportList();
   buildCounterPerformanceReportList++;
   if (buildCounterPerformanceReportList < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.performanceReport = buildUnnamed1705();
   }
   buildCounterPerformanceReportList--;
@@ -1081,8 +1081,8 @@ void checkPerformanceReportList(api.PerformanceReportList o) {
 
 core.List<core.String> buildUnnamed1706() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1097,8 +1097,8 @@ api.PretargetingConfigDimensions buildPretargetingConfigDimensions() {
   var o = api.PretargetingConfigDimensions();
   buildCounterPretargetingConfigDimensions++;
   if (buildCounterPretargetingConfigDimensions < 3) {
-    o.height = "foo";
-    o.width = "foo";
+    o.height = 'foo';
+    o.width = 'foo';
   }
   buildCounterPretargetingConfigDimensions--;
   return o;
@@ -1128,8 +1128,8 @@ void checkUnnamed1707(core.List<api.PretargetingConfigDimensions> o) {
 
 core.List<core.String> buildUnnamed1708() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1141,8 +1141,8 @@ void checkUnnamed1708(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1709() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1158,8 +1158,8 @@ api.PretargetingConfigExcludedPlacements
   var o = api.PretargetingConfigExcludedPlacements();
   buildCounterPretargetingConfigExcludedPlacements++;
   if (buildCounterPretargetingConfigExcludedPlacements < 3) {
-    o.token = "foo";
-    o.type = "foo";
+    o.token = 'foo';
+    o.type = 'foo';
   }
   buildCounterPretargetingConfigExcludedPlacements--;
   return o;
@@ -1190,8 +1190,8 @@ void checkUnnamed1710(core.List<api.PretargetingConfigExcludedPlacements> o) {
 
 core.List<core.String> buildUnnamed1711() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1203,8 +1203,8 @@ void checkUnnamed1711(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1712() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1216,8 +1216,8 @@ void checkUnnamed1712(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1713() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1229,8 +1229,8 @@ void checkUnnamed1713(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1714() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1242,8 +1242,8 @@ void checkUnnamed1714(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1715() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1255,8 +1255,8 @@ void checkUnnamed1715(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1716() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1268,8 +1268,8 @@ void checkUnnamed1716(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1717() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1284,8 +1284,8 @@ api.PretargetingConfigPlacements buildPretargetingConfigPlacements() {
   var o = api.PretargetingConfigPlacements();
   buildCounterPretargetingConfigPlacements++;
   if (buildCounterPretargetingConfigPlacements < 3) {
-    o.token = "foo";
-    o.type = "foo";
+    o.token = 'foo';
+    o.type = 'foo';
   }
   buildCounterPretargetingConfigPlacements--;
   return o;
@@ -1315,8 +1315,8 @@ void checkUnnamed1718(core.List<api.PretargetingConfigPlacements> o) {
 
 core.List<core.String> buildUnnamed1719() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1328,8 +1328,8 @@ void checkUnnamed1719(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1720() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1341,8 +1341,8 @@ void checkUnnamed1720(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1721() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1354,8 +1354,8 @@ void checkUnnamed1721(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1722() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1367,8 +1367,8 @@ void checkUnnamed1722(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1723() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1383,9 +1383,9 @@ api.PretargetingConfig buildPretargetingConfig() {
   var o = api.PretargetingConfig();
   buildCounterPretargetingConfig++;
   if (buildCounterPretargetingConfig < 3) {
-    o.billingId = "foo";
-    o.configId = "foo";
-    o.configName = "foo";
+    o.billingId = 'foo';
+    o.configId = 'foo';
+    o.configName = 'foo';
     o.creativeType = buildUnnamed1706();
     o.dimensions = buildUnnamed1707();
     o.excludedContentLabels = buildUnnamed1708();
@@ -1395,9 +1395,9 @@ api.PretargetingConfig buildPretargetingConfig() {
     o.excludedVerticals = buildUnnamed1712();
     o.geoCriteriaIds = buildUnnamed1713();
     o.isActive = true;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.languages = buildUnnamed1714();
-    o.maximumQps = "foo";
+    o.maximumQps = 'foo';
     o.mobileCarriers = buildUnnamed1715();
     o.mobileDevices = buildUnnamed1716();
     o.mobileOperatingSystemVersions = buildUnnamed1717();
@@ -1462,7 +1462,7 @@ api.PretargetingConfigList buildPretargetingConfigList() {
   buildCounterPretargetingConfigList++;
   if (buildCounterPretargetingConfigList < 3) {
     o.items = buildUnnamed1724();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterPretargetingConfigList--;
   return o;
@@ -1492,8 +1492,8 @@ void checkUnnamed1725(core.List<core.int> o) {
 
 core.List<core.String> buildUnnamed1726() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1504,220 +1504,220 @@ void checkUnnamed1726(core.List<core.String> o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AccountBidderLocation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AccountBidderLocation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccountBidderLocation();
       var od = api.AccountBidderLocation.fromJson(o.toJson());
       checkAccountBidderLocation(od);
     });
   });
 
-  unittest.group("obj-schema-Account", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Account', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od);
     });
   });
 
-  unittest.group("obj-schema-AccountsList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AccountsList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccountsList();
       var od = api.AccountsList.fromJson(o.toJson());
       checkAccountsList(od);
     });
   });
 
-  unittest.group("obj-schema-BillingInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BillingInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBillingInfo();
       var od = api.BillingInfo.fromJson(o.toJson());
       checkBillingInfo(od);
     });
   });
 
-  unittest.group("obj-schema-BillingInfoList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BillingInfoList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBillingInfoList();
       var od = api.BillingInfoList.fromJson(o.toJson());
       checkBillingInfoList(od);
     });
   });
 
-  unittest.group("obj-schema-Budget", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Budget', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBudget();
       var od = api.Budget.fromJson(o.toJson());
       checkBudget(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeAdTechnologyProviders", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeAdTechnologyProviders', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeAdTechnologyProviders();
       var od = api.CreativeAdTechnologyProviders.fromJson(o.toJson());
       checkCreativeAdTechnologyProviders(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeCorrections", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeCorrections', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeCorrections();
       var od = api.CreativeCorrections.fromJson(o.toJson());
       checkCreativeCorrections(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeDisapprovalReasons", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeDisapprovalReasons', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeDisapprovalReasons();
       var od = api.CreativeDisapprovalReasons.fromJson(o.toJson());
       checkCreativeDisapprovalReasons(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeFilteringReasonsReasons", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeFilteringReasonsReasons', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeFilteringReasonsReasons();
       var od = api.CreativeFilteringReasonsReasons.fromJson(o.toJson());
       checkCreativeFilteringReasonsReasons(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeFilteringReasons", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeFilteringReasons', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeFilteringReasons();
       var od = api.CreativeFilteringReasons.fromJson(o.toJson());
       checkCreativeFilteringReasons(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeNativeAdAppIcon", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeNativeAdAppIcon', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeNativeAdAppIcon();
       var od = api.CreativeNativeAdAppIcon.fromJson(o.toJson());
       checkCreativeNativeAdAppIcon(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeNativeAdImage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeNativeAdImage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeNativeAdImage();
       var od = api.CreativeNativeAdImage.fromJson(o.toJson());
       checkCreativeNativeAdImage(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeNativeAdLogo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeNativeAdLogo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeNativeAdLogo();
       var od = api.CreativeNativeAdLogo.fromJson(o.toJson());
       checkCreativeNativeAdLogo(od);
     });
   });
 
-  unittest.group("obj-schema-CreativeNativeAd", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativeNativeAd', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativeNativeAd();
       var od = api.CreativeNativeAd.fromJson(o.toJson());
       checkCreativeNativeAd(od);
     });
   });
 
-  unittest.group("obj-schema-Creative", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Creative', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreative();
       var od = api.Creative.fromJson(o.toJson());
       checkCreative(od);
     });
   });
 
-  unittest.group("obj-schema-CreativesList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreativesList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreativesList();
       var od = api.CreativesList.fromJson(o.toJson());
       checkCreativesList(od);
     });
   });
 
-  unittest.group("obj-schema-DirectDeal", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DirectDeal', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDirectDeal();
       var od = api.DirectDeal.fromJson(o.toJson());
       checkDirectDeal(od);
     });
   });
 
-  unittest.group("obj-schema-DirectDealsList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DirectDealsList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDirectDealsList();
       var od = api.DirectDealsList.fromJson(o.toJson());
       checkDirectDealsList(od);
     });
   });
 
-  unittest.group("obj-schema-PerformanceReport", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PerformanceReport', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPerformanceReport();
       var od = api.PerformanceReport.fromJson(o.toJson());
       checkPerformanceReport(od);
     });
   });
 
-  unittest.group("obj-schema-PerformanceReportList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PerformanceReportList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPerformanceReportList();
       var od = api.PerformanceReportList.fromJson(o.toJson());
       checkPerformanceReportList(od);
     });
   });
 
-  unittest.group("obj-schema-PretargetingConfigDimensions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PretargetingConfigDimensions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfigDimensions();
       var od = api.PretargetingConfigDimensions.fromJson(o.toJson());
       checkPretargetingConfigDimensions(od);
     });
   });
 
-  unittest.group("obj-schema-PretargetingConfigExcludedPlacements", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PretargetingConfigExcludedPlacements', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfigExcludedPlacements();
       var od = api.PretargetingConfigExcludedPlacements.fromJson(o.toJson());
       checkPretargetingConfigExcludedPlacements(od);
     });
   });
 
-  unittest.group("obj-schema-PretargetingConfigPlacements", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PretargetingConfigPlacements', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfigPlacements();
       var od = api.PretargetingConfigPlacements.fromJson(o.toJson());
       checkPretargetingConfigPlacements(od);
     });
   });
 
-  unittest.group("obj-schema-PretargetingConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PretargetingConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfig();
       var od = api.PretargetingConfig.fromJson(o.toJson());
       checkPretargetingConfig(od);
     });
   });
 
-  unittest.group("obj-schema-PretargetingConfigList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PretargetingConfigList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfigList();
       var od = api.PretargetingConfigList.fromJson(o.toJson());
       checkPretargetingConfigList(od);
     });
   });
 
-  unittest.group("resource-AccountsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AccountsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.AdexchangebuyerApi(mock).accounts;
       var arg_id = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1734,7 +1734,7 @@ void main() {
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(subPart, unittest.equals('$arg_id'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1742,8 +1742,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1753,7 +1753,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1765,10 +1765,10 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.AdexchangebuyerApi(mock).accounts;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1790,8 +1790,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1801,7 +1801,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccountsList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1811,12 +1811,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.AdexchangebuyerApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_id = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Account.fromJson(json);
         checkAccount(obj);
@@ -1836,7 +1836,7 @@ void main() {
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(subPart, unittest.equals('$arg_id'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1844,8 +1844,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1855,7 +1855,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1867,12 +1867,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.AdexchangebuyerApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_id = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Account.fromJson(json);
         checkAccount(obj);
@@ -1892,7 +1892,7 @@ void main() {
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(subPart, unittest.equals('$arg_id'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1900,8 +1900,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1911,7 +1911,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1924,12 +1924,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-BillingInfoResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-BillingInfoResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.BillingInfoResourceApi res = api.AdexchangebuyerApi(mock).billingInfo;
       var arg_accountId = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1946,7 +1946,7 @@ void main() {
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1954,8 +1954,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1965,7 +1965,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBillingInfo());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1977,10 +1977,10 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.BillingInfoResourceApi res = api.AdexchangebuyerApi(mock).billingInfo;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2002,8 +2002,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2013,7 +2013,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBillingInfoList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2024,13 +2024,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-BudgetResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-BudgetResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.BudgetResourceApi res = api.AdexchangebuyerApi(mock).budget;
-      var arg_accountId = "foo";
-      var arg_billingId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_billingId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2045,18 +2045,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("billinginfo/"));
         pathOffset += 12;
-        index = path.indexOf("/", pathOffset);
+        index = path.indexOf('/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_billingId"));
+        unittest.expect(subPart, unittest.equals('$arg_billingId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2064,8 +2064,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2075,7 +2075,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBudget());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2087,13 +2087,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.BudgetResourceApi res = api.AdexchangebuyerApi(mock).budget;
       var arg_request = buildBudget();
-      var arg_accountId = "foo";
-      var arg_billingId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_billingId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Budget.fromJson(json);
         checkBudget(obj);
@@ -2111,18 +2111,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("billinginfo/"));
         pathOffset += 12;
-        index = path.indexOf("/", pathOffset);
+        index = path.indexOf('/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_billingId"));
+        unittest.expect(subPart, unittest.equals('$arg_billingId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2130,8 +2130,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2141,7 +2141,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBudget());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2154,13 +2154,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.BudgetResourceApi res = api.AdexchangebuyerApi(mock).budget;
       var arg_request = buildBudget();
-      var arg_accountId = "foo";
-      var arg_billingId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_billingId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Budget.fromJson(json);
         checkBudget(obj);
@@ -2178,18 +2178,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("billinginfo/"));
         pathOffset += 12;
-        index = path.indexOf("/", pathOffset);
+        index = path.indexOf('/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_billingId"));
+        unittest.expect(subPart, unittest.equals('$arg_billingId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2197,8 +2197,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2208,7 +2208,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBudget());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2222,13 +2222,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-CreativesResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-CreativesResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.CreativesResourceApi res = api.AdexchangebuyerApi(mock).creatives;
       var arg_accountId = 42;
-      var arg_buyerCreativeId = "foo";
-      var arg_$fields = "foo";
+      var arg_buyerCreativeId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2243,18 +2243,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("creatives/"));
         pathOffset += 10;
-        index = path.indexOf("/", pathOffset);
+        index = path.indexOf('/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_buyerCreativeId"));
+        unittest.expect(subPart, unittest.equals('$arg_buyerCreativeId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2262,8 +2262,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2273,7 +2273,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2285,11 +2285,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.CreativesResourceApi res = api.AdexchangebuyerApi(mock).creatives;
       var arg_request = buildCreative();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Creative.fromJson(json);
         checkCreative(obj);
@@ -2314,8 +2314,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2325,7 +2325,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2337,15 +2337,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CreativesResourceApi res = api.AdexchangebuyerApi(mock).creatives;
       var arg_accountId = buildUnnamed1725();
       var arg_buyerCreativeId = buildUnnamed1726();
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_statusFilter = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_statusFilter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2367,8 +2367,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2388,7 +2388,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreativesList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2407,12 +2407,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-DirectDealsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-DirectDealsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.DirectDealsResourceApi res = api.AdexchangebuyerApi(mock).directDeals;
-      var arg_id = "foo";
-      var arg_$fields = "foo";
+      var arg_id = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2429,7 +2429,7 @@ void main() {
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(subPart, unittest.equals('$arg_id'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2437,8 +2437,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2448,7 +2448,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDirectDeal());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2460,10 +2460,10 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.DirectDealsResourceApi res = api.AdexchangebuyerApi(mock).directDeals;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2485,8 +2485,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2496,7 +2496,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDirectDealsList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2507,17 +2507,17 @@ void main() {
     });
   });
 
-  unittest.group("resource-PerformanceReportResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-PerformanceReportResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PerformanceReportResourceApi res =
           api.AdexchangebuyerApi(mock).performanceReport;
-      var arg_accountId = "foo";
-      var arg_endDateTime = "foo";
-      var arg_startDateTime = "foo";
+      var arg_accountId = 'foo';
+      var arg_endDateTime = 'foo';
+      var arg_startDateTime = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2539,8 +2539,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2560,7 +2560,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPerformanceReportList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2576,14 +2576,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-PretargetingConfigResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-PretargetingConfigResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.PretargetingConfigResourceApi res =
           api.AdexchangebuyerApi(mock).pretargetingConfig;
-      var arg_accountId = "foo";
-      var arg_configId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_configId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2598,18 +2598,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 20),
             unittest.equals("pretargetingconfigs/"));
         pathOffset += 20;
-        index = path.indexOf("/", pathOffset);
+        index = path.indexOf('/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_configId"));
+        unittest.expect(subPart, unittest.equals('$arg_configId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2617,8 +2617,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2628,9 +2628,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2638,13 +2638,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.PretargetingConfigResourceApi res =
           api.AdexchangebuyerApi(mock).pretargetingConfig;
-      var arg_accountId = "foo";
-      var arg_configId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_configId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2659,18 +2659,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 20),
             unittest.equals("pretargetingconfigs/"));
         pathOffset += 20;
-        index = path.indexOf("/", pathOffset);
+        index = path.indexOf('/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_configId"));
+        unittest.expect(subPart, unittest.equals('$arg_configId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2678,8 +2678,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2689,7 +2689,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2701,13 +2701,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.PretargetingConfigResourceApi res =
           api.AdexchangebuyerApi(mock).pretargetingConfig;
       var arg_request = buildPretargetingConfig();
-      var arg_accountId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PretargetingConfig.fromJson(json);
         checkPretargetingConfig(obj);
@@ -2727,7 +2727,7 @@ void main() {
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2735,8 +2735,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2746,7 +2746,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2758,12 +2758,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PretargetingConfigResourceApi res =
           api.AdexchangebuyerApi(mock).pretargetingConfig;
-      var arg_accountId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2780,7 +2780,7 @@ void main() {
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2788,8 +2788,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2799,7 +2799,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPretargetingConfigList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2811,14 +2811,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.PretargetingConfigResourceApi res =
           api.AdexchangebuyerApi(mock).pretargetingConfig;
       var arg_request = buildPretargetingConfig();
-      var arg_accountId = "foo";
-      var arg_configId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_configId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PretargetingConfig.fromJson(json);
         checkPretargetingConfig(obj);
@@ -2836,18 +2836,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 20),
             unittest.equals("pretargetingconfigs/"));
         pathOffset += 20;
-        index = path.indexOf("/", pathOffset);
+        index = path.indexOf('/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_configId"));
+        unittest.expect(subPart, unittest.equals('$arg_configId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2855,8 +2855,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2866,7 +2866,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2878,14 +2878,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.PretargetingConfigResourceApi res =
           api.AdexchangebuyerApi(mock).pretargetingConfig;
       var arg_request = buildPretargetingConfig();
-      var arg_accountId = "foo";
-      var arg_configId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_configId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PretargetingConfig.fromJson(json);
         checkPretargetingConfig(obj);
@@ -2903,18 +2903,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 20),
             unittest.equals("pretargetingconfigs/"));
         pathOffset += 20;
-        index = path.indexOf("/", pathOffset);
+        index = path.indexOf('/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_configId"));
+        unittest.expect(subPart, unittest.equals('$arg_configId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2922,8 +2922,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2933,7 +2933,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));

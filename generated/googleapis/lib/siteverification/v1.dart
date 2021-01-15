@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,19 +37,19 @@ const core.String USER_AGENT = 'dart-api-client siteVerification/v1';
 class SiteVerificationApi {
   /// Manage the list of sites and domains you control
   static const SiteverificationScope =
-      "https://www.googleapis.com/auth/siteverification";
+      'https://www.googleapis.com/auth/siteverification';
 
   /// Manage your new site verifications with Google
   static const SiteverificationVerifyOnlyScope =
-      "https://www.googleapis.com/auth/siteverification.verify_only";
+      'https://www.googleapis.com/auth/siteverification.verify_only';
 
   final commons.ApiRequester _requester;
 
   WebResourceResourceApi get webResource => WebResourceResourceApi(_requester);
 
   SiteVerificationApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "siteVerification/v1/"})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = 'siteVerification/v1/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -86,10 +85,10 @@ class WebResourceResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -98,7 +97,7 @@ class WebResourceResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -136,17 +135,17 @@ class WebResourceResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -188,14 +187,14 @@ class WebResourceResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'token';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -240,18 +239,18 @@ class WebResourceResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (verificationMethod == null) {
-      throw core.ArgumentError("Parameter verificationMethod is required.");
+      throw core.ArgumentError('Parameter verificationMethod is required.');
     }
-    _queryParams["verificationMethod"] = [verificationMethod];
+    _queryParams['verificationMethod'] = [verificationMethod];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webResource';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -287,14 +286,14 @@ class WebResourceResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webResource';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -340,17 +339,17 @@ class WebResourceResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -395,17 +394,17 @@ class WebResourceResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -430,11 +429,11 @@ class SiteVerificationWebResourceGettokenRequestSite {
   SiteVerificationWebResourceGettokenRequestSite();
 
   SiteVerificationWebResourceGettokenRequestSite.fromJson(core.Map _json) {
-    if (_json.containsKey("identifier")) {
-      identifier = _json["identifier"];
+    if (_json.containsKey('identifier')) {
+      identifier = _json['identifier'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -442,10 +441,10 @@ class SiteVerificationWebResourceGettokenRequestSite {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (identifier != null) {
-      _json["identifier"] = identifier;
+      _json['identifier'] = identifier;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -462,12 +461,12 @@ class SiteVerificationWebResourceGettokenRequest {
   SiteVerificationWebResourceGettokenRequest();
 
   SiteVerificationWebResourceGettokenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("site")) {
+    if (_json.containsKey('site')) {
       site = SiteVerificationWebResourceGettokenRequestSite.fromJson(
-          _json["site"]);
+          _json['site']);
     }
-    if (_json.containsKey("verificationMethod")) {
-      verificationMethod = _json["verificationMethod"];
+    if (_json.containsKey('verificationMethod')) {
+      verificationMethod = _json['verificationMethod'];
     }
   }
 
@@ -475,10 +474,10 @@ class SiteVerificationWebResourceGettokenRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (site != null) {
-      _json["site"] = site.toJson();
+      _json['site'] = site.toJson();
     }
     if (verificationMethod != null) {
-      _json["verificationMethod"] = verificationMethod;
+      _json['verificationMethod'] = verificationMethod;
     }
     return _json;
   }
@@ -499,11 +498,11 @@ class SiteVerificationWebResourceGettokenResponse {
   SiteVerificationWebResourceGettokenResponse();
 
   SiteVerificationWebResourceGettokenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("method")) {
-      method = _json["method"];
+    if (_json.containsKey('method')) {
+      method = _json['method'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
   }
 
@@ -511,10 +510,10 @@ class SiteVerificationWebResourceGettokenResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (method != null) {
-      _json["method"] = method;
+      _json['method'] = method;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     return _json;
   }
@@ -527,8 +526,8 @@ class SiteVerificationWebResourceListResponse {
   SiteVerificationWebResourceListResponse();
 
   SiteVerificationWebResourceListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<SiteVerificationWebResourceResource>(
               (value) => SiteVerificationWebResourceResource.fromJson(value))
           .toList();
@@ -539,7 +538,7 @@ class SiteVerificationWebResourceListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -557,11 +556,11 @@ class SiteVerificationWebResourceResourceSite {
   SiteVerificationWebResourceResourceSite();
 
   SiteVerificationWebResourceResourceSite.fromJson(core.Map _json) {
-    if (_json.containsKey("identifier")) {
-      identifier = _json["identifier"];
+    if (_json.containsKey('identifier')) {
+      identifier = _json['identifier'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -569,10 +568,10 @@ class SiteVerificationWebResourceResourceSite {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (identifier != null) {
-      _json["identifier"] = identifier;
+      _json['identifier'] = identifier;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -592,14 +591,14 @@ class SiteVerificationWebResourceResource {
   SiteVerificationWebResourceResource();
 
   SiteVerificationWebResourceResource.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("owners")) {
-      owners = (_json["owners"] as core.List).cast<core.String>();
+    if (_json.containsKey('owners')) {
+      owners = (_json['owners'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("site")) {
-      site = SiteVerificationWebResourceResourceSite.fromJson(_json["site"]);
+    if (_json.containsKey('site')) {
+      site = SiteVerificationWebResourceResourceSite.fromJson(_json['site']);
     }
   }
 
@@ -607,13 +606,13 @@ class SiteVerificationWebResourceResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (owners != null) {
-      _json["owners"] = owners;
+      _json['owners'] = owners;
     }
     if (site != null) {
-      _json["site"] = site.toJson();
+      _json['site'] = site.toJson();
     }
     return _json;
   }

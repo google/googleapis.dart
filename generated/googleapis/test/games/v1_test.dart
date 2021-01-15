@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,19 +75,19 @@ api.AchievementDefinition buildAchievementDefinition() {
   var o = api.AchievementDefinition();
   buildCounterAchievementDefinition++;
   if (buildCounterAchievementDefinition < 3) {
-    o.achievementType = "foo";
-    o.description = "foo";
-    o.experiencePoints = "foo";
-    o.formattedTotalSteps = "foo";
-    o.id = "foo";
-    o.initialState = "foo";
+    o.achievementType = 'foo';
+    o.description = 'foo';
+    o.experiencePoints = 'foo';
+    o.formattedTotalSteps = 'foo';
+    o.id = 'foo';
+    o.initialState = 'foo';
     o.isRevealedIconUrlDefault = true;
     o.isUnlockedIconUrlDefault = true;
-    o.kind = "foo";
-    o.name = "foo";
-    o.revealedIconUrl = "foo";
+    o.kind = 'foo';
+    o.name = 'foo';
+    o.revealedIconUrl = 'foo';
     o.totalSteps = 42;
-    o.unlockedIconUrl = "foo";
+    o.unlockedIconUrl = 'foo';
   }
   buildCounterAchievementDefinition--;
   return o;
@@ -133,8 +133,8 @@ api.AchievementDefinitionsListResponse
   buildCounterAchievementDefinitionsListResponse++;
   if (buildCounterAchievementDefinitionsListResponse < 3) {
     o.items = buildUnnamed2709();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterAchievementDefinitionsListResponse--;
   return o;
@@ -157,7 +157,7 @@ api.AchievementIncrementResponse buildAchievementIncrementResponse() {
   buildCounterAchievementIncrementResponse++;
   if (buildCounterAchievementIncrementResponse < 3) {
     o.currentSteps = 42;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.newlyUnlocked = true;
   }
   buildCounterAchievementIncrementResponse--;
@@ -179,8 +179,8 @@ api.AchievementRevealResponse buildAchievementRevealResponse() {
   var o = api.AchievementRevealResponse();
   buildCounterAchievementRevealResponse++;
   if (buildCounterAchievementRevealResponse < 3) {
-    o.currentState = "foo";
-    o.kind = "foo";
+    o.currentState = 'foo';
+    o.kind = 'foo';
   }
   buildCounterAchievementRevealResponse--;
   return o;
@@ -202,7 +202,7 @@ api.AchievementSetStepsAtLeastResponse
   buildCounterAchievementSetStepsAtLeastResponse++;
   if (buildCounterAchievementSetStepsAtLeastResponse < 3) {
     o.currentSteps = 42;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.newlyUnlocked = true;
   }
   buildCounterAchievementSetStepsAtLeastResponse--;
@@ -225,7 +225,7 @@ api.AchievementUnlockResponse buildAchievementUnlockResponse() {
   var o = api.AchievementUnlockResponse();
   buildCounterAchievementUnlockResponse++;
   if (buildCounterAchievementUnlockResponse < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.newlyUnlocked = true;
   }
   buildCounterAchievementUnlockResponse--;
@@ -259,7 +259,7 @@ api.AchievementUpdateMultipleRequest buildAchievementUpdateMultipleRequest() {
   var o = api.AchievementUpdateMultipleRequest();
   buildCounterAchievementUpdateMultipleRequest++;
   if (buildCounterAchievementUpdateMultipleRequest < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.updates = buildUnnamed2710();
   }
   buildCounterAchievementUpdateMultipleRequest--;
@@ -294,7 +294,7 @@ api.AchievementUpdateMultipleResponse buildAchievementUpdateMultipleResponse() {
   var o = api.AchievementUpdateMultipleResponse();
   buildCounterAchievementUpdateMultipleResponse++;
   if (buildCounterAchievementUpdateMultipleResponse < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.updatedAchievements = buildUnnamed2711();
   }
   buildCounterAchievementUpdateMultipleResponse--;
@@ -316,11 +316,11 @@ api.AchievementUpdateRequest buildAchievementUpdateRequest() {
   var o = api.AchievementUpdateRequest();
   buildCounterAchievementUpdateRequest++;
   if (buildCounterAchievementUpdateRequest < 3) {
-    o.achievementId = "foo";
+    o.achievementId = 'foo';
     o.incrementPayload = buildGamesAchievementIncrement();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.setStepsAtLeastPayload = buildGamesAchievementSetStepsAtLeast();
-    o.updateType = "foo";
+    o.updateType = 'foo';
   }
   buildCounterAchievementUpdateRequest--;
   return o;
@@ -343,10 +343,10 @@ api.AchievementUpdateResponse buildAchievementUpdateResponse() {
   var o = api.AchievementUpdateResponse();
   buildCounterAchievementUpdateResponse++;
   if (buildCounterAchievementUpdateResponse < 3) {
-    o.achievementId = "foo";
-    o.currentState = "foo";
+    o.achievementId = 'foo';
+    o.currentState = 'foo';
     o.currentSteps = 42;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.newlyUnlocked = true;
     o.updateOccurred = true;
   }
@@ -382,8 +382,8 @@ void checkUnnamed2712(core.List<api.ImageAsset> o) {
 
 core.List<core.String> buildUnnamed2713() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -413,17 +413,17 @@ api.Application buildApplication() {
   if (buildCounterApplication < 3) {
     o.achievementCount = 42;
     o.assets = buildUnnamed2712();
-    o.author = "foo";
+    o.author = 'foo';
     o.category = buildApplicationCategory();
-    o.description = "foo";
+    o.description = 'foo';
     o.enabledFeatures = buildUnnamed2713();
-    o.id = "foo";
+    o.id = 'foo';
     o.instances = buildUnnamed2714();
-    o.kind = "foo";
-    o.lastUpdatedTimestamp = "foo";
+    o.kind = 'foo';
+    o.lastUpdatedTimestamp = 'foo';
     o.leaderboardCount = 42;
-    o.name = "foo";
-    o.themeColor = "foo";
+    o.name = 'foo';
+    o.themeColor = 'foo';
   }
   buildCounterApplication--;
   return o;
@@ -454,9 +454,9 @@ api.ApplicationCategory buildApplicationCategory() {
   var o = api.ApplicationCategory();
   buildCounterApplicationCategory++;
   if (buildCounterApplicationCategory < 3) {
-    o.kind = "foo";
-    o.primary = "foo";
-    o.secondary = "foo";
+    o.kind = 'foo';
+    o.primary = 'foo';
+    o.secondary = 'foo';
   }
   buildCounterApplicationCategory--;
   return o;
@@ -477,9 +477,9 @@ api.ApplicationVerifyResponse buildApplicationVerifyResponse() {
   var o = api.ApplicationVerifyResponse();
   buildCounterApplicationVerifyResponse++;
   if (buildCounterApplicationVerifyResponse < 3) {
-    o.alternatePlayerId = "foo";
-    o.kind = "foo";
-    o.playerId = "foo";
+    o.alternatePlayerId = 'foo';
+    o.kind = 'foo';
+    o.playerId = 'foo';
   }
   buildCounterApplicationVerifyResponse--;
   return o;
@@ -500,9 +500,9 @@ api.Category buildCategory() {
   var o = api.Category();
   buildCounterCategory++;
   if (buildCounterCategory < 3) {
-    o.category = "foo";
-    o.experiencePoints = "foo";
-    o.kind = "foo";
+    o.category = 'foo';
+    o.experiencePoints = 'foo';
+    o.kind = 'foo';
   }
   buildCounterCategory--;
   return o;
@@ -537,8 +537,8 @@ api.CategoryListResponse buildCategoryListResponse() {
   buildCounterCategoryListResponse++;
   if (buildCounterCategoryListResponse < 3) {
     o.items = buildUnnamed2715();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterCategoryListResponse--;
   return o;
@@ -559,8 +559,8 @@ api.EventBatchRecordFailure buildEventBatchRecordFailure() {
   var o = api.EventBatchRecordFailure();
   buildCounterEventBatchRecordFailure++;
   if (buildCounterEventBatchRecordFailure < 3) {
-    o.failureCause = "foo";
-    o.kind = "foo";
+    o.failureCause = 'foo';
+    o.kind = 'foo';
     o.range = buildEventPeriodRange();
   }
   buildCounterEventBatchRecordFailure--;
@@ -582,8 +582,8 @@ api.EventChild buildEventChild() {
   var o = api.EventChild();
   buildCounterEventChild++;
   if (buildCounterEventChild < 3) {
-    o.childId = "foo";
-    o.kind = "foo";
+    o.childId = 'foo';
+    o.kind = 'foo';
   }
   buildCounterEventChild--;
   return o;
@@ -617,13 +617,13 @@ api.EventDefinition buildEventDefinition() {
   buildCounterEventDefinition++;
   if (buildCounterEventDefinition < 3) {
     o.childEvents = buildUnnamed2716();
-    o.description = "foo";
-    o.displayName = "foo";
-    o.id = "foo";
-    o.imageUrl = "foo";
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.id = 'foo';
+    o.imageUrl = 'foo';
     o.isDefaultImageUrl = true;
-    o.kind = "foo";
-    o.visibility = "foo";
+    o.kind = 'foo';
+    o.visibility = 'foo';
   }
   buildCounterEventDefinition--;
   return o;
@@ -663,8 +663,8 @@ api.EventDefinitionListResponse buildEventDefinitionListResponse() {
   buildCounterEventDefinitionListResponse++;
   if (buildCounterEventDefinitionListResponse < 3) {
     o.items = buildUnnamed2717();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterEventDefinitionListResponse--;
   return o;
@@ -685,9 +685,9 @@ api.EventPeriodRange buildEventPeriodRange() {
   var o = api.EventPeriodRange();
   buildCounterEventPeriodRange++;
   if (buildCounterEventPeriodRange < 3) {
-    o.kind = "foo";
-    o.periodEndMillis = "foo";
-    o.periodStartMillis = "foo";
+    o.kind = 'foo';
+    o.periodEndMillis = 'foo';
+    o.periodStartMillis = 'foo';
   }
   buildCounterEventPeriodRange--;
   return o;
@@ -721,7 +721,7 @@ api.EventPeriodUpdate buildEventPeriodUpdate() {
   var o = api.EventPeriodUpdate();
   buildCounterEventPeriodUpdate++;
   if (buildCounterEventPeriodUpdate < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.timePeriod = buildEventPeriodRange();
     o.updates = buildUnnamed2718();
   }
@@ -744,9 +744,9 @@ api.EventRecordFailure buildEventRecordFailure() {
   var o = api.EventRecordFailure();
   buildCounterEventRecordFailure++;
   if (buildCounterEventRecordFailure < 3) {
-    o.eventId = "foo";
-    o.failureCause = "foo";
-    o.kind = "foo";
+    o.eventId = 'foo';
+    o.failureCause = 'foo';
+    o.kind = 'foo';
   }
   buildCounterEventRecordFailure--;
   return o;
@@ -780,9 +780,9 @@ api.EventRecordRequest buildEventRecordRequest() {
   var o = api.EventRecordRequest();
   buildCounterEventRecordRequest++;
   if (buildCounterEventRecordRequest < 3) {
-    o.currentTimeMillis = "foo";
-    o.kind = "foo";
-    o.requestId = "foo";
+    o.currentTimeMillis = 'foo';
+    o.kind = 'foo';
+    o.requestId = 'foo';
     o.timePeriods = buildUnnamed2719();
   }
   buildCounterEventRecordRequest--;
@@ -805,9 +805,9 @@ api.EventUpdateRequest buildEventUpdateRequest() {
   var o = api.EventUpdateRequest();
   buildCounterEventUpdateRequest++;
   if (buildCounterEventUpdateRequest < 3) {
-    o.definitionId = "foo";
-    o.kind = "foo";
-    o.updateCount = "foo";
+    o.definitionId = 'foo';
+    o.kind = 'foo';
+    o.updateCount = 'foo';
   }
   buildCounterEventUpdateRequest--;
   return o;
@@ -869,7 +869,7 @@ api.EventUpdateResponse buildEventUpdateResponse() {
   if (buildCounterEventUpdateResponse < 3) {
     o.batchFailures = buildUnnamed2720();
     o.eventFailures = buildUnnamed2721();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.playerEvents = buildUnnamed2722();
   }
   buildCounterEventUpdateResponse--;
@@ -892,8 +892,8 @@ api.GamesAchievementIncrement buildGamesAchievementIncrement() {
   var o = api.GamesAchievementIncrement();
   buildCounterGamesAchievementIncrement++;
   if (buildCounterGamesAchievementIncrement < 3) {
-    o.kind = "foo";
-    o.requestId = "foo";
+    o.kind = 'foo';
+    o.requestId = 'foo';
     o.steps = 42;
   }
   buildCounterGamesAchievementIncrement--;
@@ -915,7 +915,7 @@ api.GamesAchievementSetStepsAtLeast buildGamesAchievementSetStepsAtLeast() {
   var o = api.GamesAchievementSetStepsAtLeast();
   buildCounterGamesAchievementSetStepsAtLeast++;
   if (buildCounterGamesAchievementSetStepsAtLeast < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.steps = 42;
   }
   buildCounterGamesAchievementSetStepsAtLeast--;
@@ -938,9 +938,9 @@ api.ImageAsset buildImageAsset() {
   buildCounterImageAsset++;
   if (buildCounterImageAsset < 3) {
     o.height = 42;
-    o.kind = "foo";
-    o.name = "foo";
-    o.url = "foo";
+    o.kind = 'foo';
+    o.name = 'foo';
+    o.url = 'foo';
     o.width = 42;
   }
   buildCounterImageAsset--;
@@ -964,12 +964,12 @@ api.Instance buildInstance() {
   var o = api.Instance();
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
-    o.acquisitionUri = "foo";
+    o.acquisitionUri = 'foo';
     o.androidInstance = buildInstanceAndroidDetails();
     o.iosInstance = buildInstanceIosDetails();
-    o.kind = "foo";
-    o.name = "foo";
-    o.platformType = "foo";
+    o.kind = 'foo';
+    o.name = 'foo';
+    o.platformType = 'foo';
     o.realtimePlay = true;
     o.turnBasedPlay = true;
     o.webInstance = buildInstanceWebDetails();
@@ -1000,8 +1000,8 @@ api.InstanceAndroidDetails buildInstanceAndroidDetails() {
   buildCounterInstanceAndroidDetails++;
   if (buildCounterInstanceAndroidDetails < 3) {
     o.enablePiracyCheck = true;
-    o.kind = "foo";
-    o.packageName = "foo";
+    o.kind = 'foo';
+    o.packageName = 'foo';
     o.preferred = true;
   }
   buildCounterInstanceAndroidDetails--;
@@ -1024,9 +1024,9 @@ api.InstanceIosDetails buildInstanceIosDetails() {
   var o = api.InstanceIosDetails();
   buildCounterInstanceIosDetails++;
   if (buildCounterInstanceIosDetails < 3) {
-    o.bundleIdentifier = "foo";
-    o.itunesAppId = "foo";
-    o.kind = "foo";
+    o.bundleIdentifier = 'foo';
+    o.itunesAppId = 'foo';
+    o.kind = 'foo';
     o.preferredForIpad = true;
     o.preferredForIphone = true;
     o.supportIpad = true;
@@ -1055,8 +1055,8 @@ api.InstanceWebDetails buildInstanceWebDetails() {
   var o = api.InstanceWebDetails();
   buildCounterInstanceWebDetails++;
   if (buildCounterInstanceWebDetails < 3) {
-    o.kind = "foo";
-    o.launchUrl = "foo";
+    o.kind = 'foo';
+    o.launchUrl = 'foo';
     o.preferred = true;
   }
   buildCounterInstanceWebDetails--;
@@ -1078,12 +1078,12 @@ api.Leaderboard buildLeaderboard() {
   var o = api.Leaderboard();
   buildCounterLeaderboard++;
   if (buildCounterLeaderboard < 3) {
-    o.iconUrl = "foo";
-    o.id = "foo";
+    o.iconUrl = 'foo';
+    o.id = 'foo';
     o.isIconUrlDefault = true;
-    o.kind = "foo";
-    o.name = "foo";
-    o.order = "foo";
+    o.kind = 'foo';
+    o.name = 'foo';
+    o.order = 'foo';
   }
   buildCounterLeaderboard--;
   return o;
@@ -1107,15 +1107,15 @@ api.LeaderboardEntry buildLeaderboardEntry() {
   var o = api.LeaderboardEntry();
   buildCounterLeaderboardEntry++;
   if (buildCounterLeaderboardEntry < 3) {
-    o.formattedScore = "foo";
-    o.formattedScoreRank = "foo";
-    o.kind = "foo";
+    o.formattedScore = 'foo';
+    o.formattedScoreRank = 'foo';
+    o.kind = 'foo';
     o.player = buildPlayer();
-    o.scoreRank = "foo";
-    o.scoreTag = "foo";
-    o.scoreValue = "foo";
-    o.timeSpan = "foo";
-    o.writeTimestampMillis = "foo";
+    o.scoreRank = 'foo';
+    o.scoreTag = 'foo';
+    o.scoreValue = 'foo';
+    o.timeSpan = 'foo';
+    o.writeTimestampMillis = 'foo';
   }
   buildCounterLeaderboardEntry--;
   return o;
@@ -1156,8 +1156,8 @@ api.LeaderboardListResponse buildLeaderboardListResponse() {
   buildCounterLeaderboardListResponse++;
   if (buildCounterLeaderboardListResponse < 3) {
     o.items = buildUnnamed2723();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterLeaderboardListResponse--;
   return o;
@@ -1178,11 +1178,11 @@ api.LeaderboardScoreRank buildLeaderboardScoreRank() {
   var o = api.LeaderboardScoreRank();
   buildCounterLeaderboardScoreRank++;
   if (buildCounterLeaderboardScoreRank < 3) {
-    o.formattedNumScores = "foo";
-    o.formattedRank = "foo";
-    o.kind = "foo";
-    o.numScores = "foo";
-    o.rank = "foo";
+    o.formattedNumScores = 'foo';
+    o.formattedRank = 'foo';
+    o.kind = 'foo';
+    o.numScores = 'foo';
+    o.rank = 'foo';
   }
   buildCounterLeaderboardScoreRank--;
   return o;
@@ -1219,11 +1219,11 @@ api.LeaderboardScores buildLeaderboardScores() {
   buildCounterLeaderboardScores++;
   if (buildCounterLeaderboardScores < 3) {
     o.items = buildUnnamed2724();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
-    o.numScores = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
+    o.numScores = 'foo';
     o.playerScore = buildLeaderboardEntry();
-    o.prevPageToken = "foo";
+    o.prevPageToken = 'foo';
   }
   buildCounterLeaderboardScores--;
   return o;
@@ -1261,7 +1261,7 @@ api.MetagameConfig buildMetagameConfig() {
   buildCounterMetagameConfig++;
   if (buildCounterMetagameConfig < 3) {
     o.currentVersion = 42;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.playerLevels = buildUnnamed2725();
   }
   buildCounterMetagameConfig--;
@@ -1283,8 +1283,8 @@ api.PlayerName buildPlayerName() {
   var o = api.PlayerName();
   buildCounterPlayerName++;
   if (buildCounterPlayerName < 3) {
-    o.familyName = "foo";
-    o.givenName = "foo";
+    o.familyName = 'foo';
+    o.givenName = 'foo';
   }
   buildCounterPlayerName--;
   return o;
@@ -1304,18 +1304,18 @@ api.Player buildPlayer() {
   var o = api.Player();
   buildCounterPlayer++;
   if (buildCounterPlayer < 3) {
-    o.avatarImageUrl = "foo";
-    o.bannerUrlLandscape = "foo";
-    o.bannerUrlPortrait = "foo";
-    o.displayName = "foo";
+    o.avatarImageUrl = 'foo';
+    o.bannerUrlLandscape = 'foo';
+    o.bannerUrlPortrait = 'foo';
+    o.displayName = 'foo';
     o.experienceInfo = buildPlayerExperienceInfo();
-    o.friendStatus = "foo";
-    o.kind = "foo";
+    o.friendStatus = 'foo';
+    o.kind = 'foo';
     o.name = buildPlayerName();
-    o.originalPlayerId = "foo";
-    o.playerId = "foo";
+    o.originalPlayerId = 'foo';
+    o.playerId = 'foo';
     o.profileSettings = buildProfileSettings();
-    o.title = "foo";
+    o.title = 'foo';
   }
   buildCounterPlayer--;
   return o;
@@ -1345,13 +1345,13 @@ api.PlayerAchievement buildPlayerAchievement() {
   var o = api.PlayerAchievement();
   buildCounterPlayerAchievement++;
   if (buildCounterPlayerAchievement < 3) {
-    o.achievementState = "foo";
+    o.achievementState = 'foo';
     o.currentSteps = 42;
-    o.experiencePoints = "foo";
-    o.formattedCurrentStepsString = "foo";
-    o.id = "foo";
-    o.kind = "foo";
-    o.lastUpdatedTimestamp = "foo";
+    o.experiencePoints = 'foo';
+    o.formattedCurrentStepsString = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.lastUpdatedTimestamp = 'foo';
   }
   buildCounterPlayerAchievement--;
   return o;
@@ -1390,8 +1390,8 @@ api.PlayerAchievementListResponse buildPlayerAchievementListResponse() {
   buildCounterPlayerAchievementListResponse++;
   if (buildCounterPlayerAchievementListResponse < 3) {
     o.items = buildUnnamed2726();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterPlayerAchievementListResponse--;
   return o;
@@ -1412,11 +1412,11 @@ api.PlayerEvent buildPlayerEvent() {
   var o = api.PlayerEvent();
   buildCounterPlayerEvent++;
   if (buildCounterPlayerEvent < 3) {
-    o.definitionId = "foo";
-    o.formattedNumEvents = "foo";
-    o.kind = "foo";
-    o.numEvents = "foo";
-    o.playerId = "foo";
+    o.definitionId = 'foo';
+    o.formattedNumEvents = 'foo';
+    o.kind = 'foo';
+    o.numEvents = 'foo';
+    o.playerId = 'foo';
   }
   buildCounterPlayerEvent--;
   return o;
@@ -1453,8 +1453,8 @@ api.PlayerEventListResponse buildPlayerEventListResponse() {
   buildCounterPlayerEventListResponse++;
   if (buildCounterPlayerEventListResponse < 3) {
     o.items = buildUnnamed2727();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterPlayerEventListResponse--;
   return o;
@@ -1475,10 +1475,10 @@ api.PlayerExperienceInfo buildPlayerExperienceInfo() {
   var o = api.PlayerExperienceInfo();
   buildCounterPlayerExperienceInfo++;
   if (buildCounterPlayerExperienceInfo < 3) {
-    o.currentExperiencePoints = "foo";
+    o.currentExperiencePoints = 'foo';
     o.currentLevel = buildPlayerLevel();
-    o.kind = "foo";
-    o.lastLevelUpTimestampMillis = "foo";
+    o.kind = 'foo';
+    o.lastLevelUpTimestampMillis = 'foo';
     o.nextLevel = buildPlayerLevel();
   }
   buildCounterPlayerExperienceInfo--;
@@ -1503,15 +1503,15 @@ api.PlayerLeaderboardScore buildPlayerLeaderboardScore() {
   buildCounterPlayerLeaderboardScore++;
   if (buildCounterPlayerLeaderboardScore < 3) {
     o.friendsRank = buildLeaderboardScoreRank();
-    o.kind = "foo";
-    o.leaderboardId = "foo";
+    o.kind = 'foo';
+    o.leaderboardId = 'foo';
     o.publicRank = buildLeaderboardScoreRank();
-    o.scoreString = "foo";
-    o.scoreTag = "foo";
-    o.scoreValue = "foo";
+    o.scoreString = 'foo';
+    o.scoreTag = 'foo';
+    o.scoreValue = 'foo';
     o.socialRank = buildLeaderboardScoreRank();
-    o.timeSpan = "foo";
-    o.writeTimestamp = "foo";
+    o.timeSpan = 'foo';
+    o.writeTimestamp = 'foo';
   }
   buildCounterPlayerLeaderboardScore--;
   return o;
@@ -1554,8 +1554,8 @@ api.PlayerLeaderboardScoreListResponse
   buildCounterPlayerLeaderboardScoreListResponse++;
   if (buildCounterPlayerLeaderboardScoreListResponse < 3) {
     o.items = buildUnnamed2728();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
     o.player = buildPlayer();
   }
   buildCounterPlayerLeaderboardScoreListResponse--;
@@ -1579,10 +1579,10 @@ api.PlayerLevel buildPlayerLevel() {
   var o = api.PlayerLevel();
   buildCounterPlayerLevel++;
   if (buildCounterPlayerLevel < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.level = 42;
-    o.maxExperiencePoints = "foo";
-    o.minExperiencePoints = "foo";
+    o.maxExperiencePoints = 'foo';
+    o.minExperiencePoints = 'foo';
   }
   buildCounterPlayerLevel--;
   return o;
@@ -1618,8 +1618,8 @@ api.PlayerListResponse buildPlayerListResponse() {
   buildCounterPlayerListResponse++;
   if (buildCounterPlayerListResponse < 3) {
     o.items = buildUnnamed2729();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterPlayerListResponse--;
   return o;
@@ -1640,11 +1640,11 @@ api.PlayerScore buildPlayerScore() {
   var o = api.PlayerScore();
   buildCounterPlayerScore++;
   if (buildCounterPlayerScore < 3) {
-    o.formattedScore = "foo";
-    o.kind = "foo";
-    o.score = "foo";
-    o.scoreTag = "foo";
-    o.timeSpan = "foo";
+    o.formattedScore = 'foo';
+    o.kind = 'foo';
+    o.score = 'foo';
+    o.scoreTag = 'foo';
+    o.timeSpan = 'foo';
   }
   buildCounterPlayerScore--;
   return o;
@@ -1680,7 +1680,7 @@ api.PlayerScoreListResponse buildPlayerScoreListResponse() {
   var o = api.PlayerScoreListResponse();
   buildCounterPlayerScoreListResponse++;
   if (buildCounterPlayerScoreListResponse < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.submittedScores = buildUnnamed2730();
   }
   buildCounterPlayerScoreListResponse--;
@@ -1698,8 +1698,8 @@ void checkPlayerScoreListResponse(api.PlayerScoreListResponse o) {
 
 core.List<core.String> buildUnnamed2731() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1728,10 +1728,10 @@ api.PlayerScoreResponse buildPlayerScoreResponse() {
   buildCounterPlayerScoreResponse++;
   if (buildCounterPlayerScoreResponse < 3) {
     o.beatenScoreTimeSpans = buildUnnamed2731();
-    o.formattedScore = "foo";
-    o.kind = "foo";
-    o.leaderboardId = "foo";
-    o.scoreTag = "foo";
+    o.formattedScore = 'foo';
+    o.kind = 'foo';
+    o.leaderboardId = 'foo';
+    o.scoreTag = 'foo';
     o.unbeatenScores = buildUnnamed2732();
   }
   buildCounterPlayerScoreResponse--;
@@ -1769,7 +1769,7 @@ api.PlayerScoreSubmissionList buildPlayerScoreSubmissionList() {
   var o = api.PlayerScoreSubmissionList();
   buildCounterPlayerScoreSubmissionList++;
   if (buildCounterPlayerScoreSubmissionList < 3) {
-    o.kind = "foo";
+    o.kind = 'foo';
     o.scores = buildUnnamed2733();
   }
   buildCounterPlayerScoreSubmissionList--;
@@ -1790,8 +1790,8 @@ api.ProfileSettings buildProfileSettings() {
   var o = api.ProfileSettings();
   buildCounterProfileSettings++;
   if (buildCounterProfileSettings < 3) {
-    o.friendsListVisibility = "foo";
-    o.kind = "foo";
+    o.friendsListVisibility = 'foo';
+    o.kind = 'foo';
     o.profileVisible = true;
   }
   buildCounterProfileSettings--;
@@ -1813,9 +1813,9 @@ api.RevisionCheckResponse buildRevisionCheckResponse() {
   var o = api.RevisionCheckResponse();
   buildCounterRevisionCheckResponse++;
   if (buildCounterRevisionCheckResponse < 3) {
-    o.apiVersion = "foo";
-    o.kind = "foo";
-    o.revisionStatus = "foo";
+    o.apiVersion = 'foo';
+    o.kind = 'foo';
+    o.revisionStatus = 'foo';
   }
   buildCounterRevisionCheckResponse--;
   return o;
@@ -1836,11 +1836,11 @@ api.ScoreSubmission buildScoreSubmission() {
   var o = api.ScoreSubmission();
   buildCounterScoreSubmission++;
   if (buildCounterScoreSubmission < 3) {
-    o.kind = "foo";
-    o.leaderboardId = "foo";
-    o.score = "foo";
-    o.scoreTag = "foo";
-    o.signature = "foo";
+    o.kind = 'foo';
+    o.leaderboardId = 'foo';
+    o.score = 'foo';
+    o.scoreTag = 'foo';
+    o.signature = 'foo';
   }
   buildCounterScoreSubmission--;
   return o;
@@ -1864,16 +1864,16 @@ api.Snapshot buildSnapshot() {
   buildCounterSnapshot++;
   if (buildCounterSnapshot < 3) {
     o.coverImage = buildSnapshotImage();
-    o.description = "foo";
-    o.driveId = "foo";
-    o.durationMillis = "foo";
-    o.id = "foo";
-    o.kind = "foo";
-    o.lastModifiedMillis = "foo";
-    o.progressValue = "foo";
-    o.title = "foo";
-    o.type = "foo";
-    o.uniqueName = "foo";
+    o.description = 'foo';
+    o.driveId = 'foo';
+    o.durationMillis = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.lastModifiedMillis = 'foo';
+    o.progressValue = 'foo';
+    o.title = 'foo';
+    o.type = 'foo';
+    o.uniqueName = 'foo';
   }
   buildCounterSnapshot--;
   return o;
@@ -1903,9 +1903,9 @@ api.SnapshotImage buildSnapshotImage() {
   buildCounterSnapshotImage++;
   if (buildCounterSnapshotImage < 3) {
     o.height = 42;
-    o.kind = "foo";
-    o.mimeType = "foo";
-    o.url = "foo";
+    o.kind = 'foo';
+    o.mimeType = 'foo';
+    o.url = 'foo';
     o.width = 42;
   }
   buildCounterSnapshotImage--;
@@ -1943,8 +1943,8 @@ api.SnapshotListResponse buildSnapshotListResponse() {
   buildCounterSnapshotListResponse++;
   if (buildCounterSnapshotListResponse < 3) {
     o.items = buildUnnamed2734();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterSnapshotListResponse--;
   return o;
@@ -1969,7 +1969,7 @@ api.StatsResponse buildStatsResponse() {
     o.churnProbability = 42.0;
     o.daysSinceLastPlayed = 42;
     o.highSpenderProbability = 42.0;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.numPurchases = 42;
     o.numSessions = 42;
     o.numSessionsPercentile = 42.0;
@@ -2000,495 +2000,495 @@ void checkStatsResponse(api.StatsResponse o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AchievementDefinition", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementDefinition', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementDefinition();
       var od = api.AchievementDefinition.fromJson(o.toJson());
       checkAchievementDefinition(od);
     });
   });
 
-  unittest.group("obj-schema-AchievementDefinitionsListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementDefinitionsListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementDefinitionsListResponse();
       var od = api.AchievementDefinitionsListResponse.fromJson(o.toJson());
       checkAchievementDefinitionsListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AchievementIncrementResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementIncrementResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementIncrementResponse();
       var od = api.AchievementIncrementResponse.fromJson(o.toJson());
       checkAchievementIncrementResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AchievementRevealResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementRevealResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementRevealResponse();
       var od = api.AchievementRevealResponse.fromJson(o.toJson());
       checkAchievementRevealResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AchievementSetStepsAtLeastResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementSetStepsAtLeastResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementSetStepsAtLeastResponse();
       var od = api.AchievementSetStepsAtLeastResponse.fromJson(o.toJson());
       checkAchievementSetStepsAtLeastResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AchievementUnlockResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementUnlockResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementUnlockResponse();
       var od = api.AchievementUnlockResponse.fromJson(o.toJson());
       checkAchievementUnlockResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AchievementUpdateMultipleRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementUpdateMultipleRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementUpdateMultipleRequest();
       var od = api.AchievementUpdateMultipleRequest.fromJson(o.toJson());
       checkAchievementUpdateMultipleRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AchievementUpdateMultipleResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementUpdateMultipleResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementUpdateMultipleResponse();
       var od = api.AchievementUpdateMultipleResponse.fromJson(o.toJson());
       checkAchievementUpdateMultipleResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AchievementUpdateRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementUpdateRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementUpdateRequest();
       var od = api.AchievementUpdateRequest.fromJson(o.toJson());
       checkAchievementUpdateRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AchievementUpdateResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AchievementUpdateResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAchievementUpdateResponse();
       var od = api.AchievementUpdateResponse.fromJson(o.toJson());
       checkAchievementUpdateResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Application", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Application', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApplication();
       var od = api.Application.fromJson(o.toJson());
       checkApplication(od);
     });
   });
 
-  unittest.group("obj-schema-ApplicationCategory", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApplicationCategory', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApplicationCategory();
       var od = api.ApplicationCategory.fromJson(o.toJson());
       checkApplicationCategory(od);
     });
   });
 
-  unittest.group("obj-schema-ApplicationVerifyResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApplicationVerifyResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApplicationVerifyResponse();
       var od = api.ApplicationVerifyResponse.fromJson(o.toJson());
       checkApplicationVerifyResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Category", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Category', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCategory();
       var od = api.Category.fromJson(o.toJson());
       checkCategory(od);
     });
   });
 
-  unittest.group("obj-schema-CategoryListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CategoryListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCategoryListResponse();
       var od = api.CategoryListResponse.fromJson(o.toJson());
       checkCategoryListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-EventBatchRecordFailure", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventBatchRecordFailure', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventBatchRecordFailure();
       var od = api.EventBatchRecordFailure.fromJson(o.toJson());
       checkEventBatchRecordFailure(od);
     });
   });
 
-  unittest.group("obj-schema-EventChild", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventChild', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventChild();
       var od = api.EventChild.fromJson(o.toJson());
       checkEventChild(od);
     });
   });
 
-  unittest.group("obj-schema-EventDefinition", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventDefinition', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventDefinition();
       var od = api.EventDefinition.fromJson(o.toJson());
       checkEventDefinition(od);
     });
   });
 
-  unittest.group("obj-schema-EventDefinitionListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventDefinitionListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventDefinitionListResponse();
       var od = api.EventDefinitionListResponse.fromJson(o.toJson());
       checkEventDefinitionListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-EventPeriodRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventPeriodRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventPeriodRange();
       var od = api.EventPeriodRange.fromJson(o.toJson());
       checkEventPeriodRange(od);
     });
   });
 
-  unittest.group("obj-schema-EventPeriodUpdate", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventPeriodUpdate', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventPeriodUpdate();
       var od = api.EventPeriodUpdate.fromJson(o.toJson());
       checkEventPeriodUpdate(od);
     });
   });
 
-  unittest.group("obj-schema-EventRecordFailure", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventRecordFailure', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventRecordFailure();
       var od = api.EventRecordFailure.fromJson(o.toJson());
       checkEventRecordFailure(od);
     });
   });
 
-  unittest.group("obj-schema-EventRecordRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventRecordRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventRecordRequest();
       var od = api.EventRecordRequest.fromJson(o.toJson());
       checkEventRecordRequest(od);
     });
   });
 
-  unittest.group("obj-schema-EventUpdateRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventUpdateRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventUpdateRequest();
       var od = api.EventUpdateRequest.fromJson(o.toJson());
       checkEventUpdateRequest(od);
     });
   });
 
-  unittest.group("obj-schema-EventUpdateResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EventUpdateResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEventUpdateResponse();
       var od = api.EventUpdateResponse.fromJson(o.toJson());
       checkEventUpdateResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GamesAchievementIncrement", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GamesAchievementIncrement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGamesAchievementIncrement();
       var od = api.GamesAchievementIncrement.fromJson(o.toJson());
       checkGamesAchievementIncrement(od);
     });
   });
 
-  unittest.group("obj-schema-GamesAchievementSetStepsAtLeast", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GamesAchievementSetStepsAtLeast', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGamesAchievementSetStepsAtLeast();
       var od = api.GamesAchievementSetStepsAtLeast.fromJson(o.toJson());
       checkGamesAchievementSetStepsAtLeast(od);
     });
   });
 
-  unittest.group("obj-schema-ImageAsset", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImageAsset', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImageAsset();
       var od = api.ImageAsset.fromJson(o.toJson());
       checkImageAsset(od);
     });
   });
 
-  unittest.group("obj-schema-Instance", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Instance', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
       checkInstance(od);
     });
   });
 
-  unittest.group("obj-schema-InstanceAndroidDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InstanceAndroidDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInstanceAndroidDetails();
       var od = api.InstanceAndroidDetails.fromJson(o.toJson());
       checkInstanceAndroidDetails(od);
     });
   });
 
-  unittest.group("obj-schema-InstanceIosDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InstanceIosDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInstanceIosDetails();
       var od = api.InstanceIosDetails.fromJson(o.toJson());
       checkInstanceIosDetails(od);
     });
   });
 
-  unittest.group("obj-schema-InstanceWebDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InstanceWebDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInstanceWebDetails();
       var od = api.InstanceWebDetails.fromJson(o.toJson());
       checkInstanceWebDetails(od);
     });
   });
 
-  unittest.group("obj-schema-Leaderboard", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Leaderboard', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLeaderboard();
       var od = api.Leaderboard.fromJson(o.toJson());
       checkLeaderboard(od);
     });
   });
 
-  unittest.group("obj-schema-LeaderboardEntry", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LeaderboardEntry', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLeaderboardEntry();
       var od = api.LeaderboardEntry.fromJson(o.toJson());
       checkLeaderboardEntry(od);
     });
   });
 
-  unittest.group("obj-schema-LeaderboardListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LeaderboardListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLeaderboardListResponse();
       var od = api.LeaderboardListResponse.fromJson(o.toJson());
       checkLeaderboardListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-LeaderboardScoreRank", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LeaderboardScoreRank', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLeaderboardScoreRank();
       var od = api.LeaderboardScoreRank.fromJson(o.toJson());
       checkLeaderboardScoreRank(od);
     });
   });
 
-  unittest.group("obj-schema-LeaderboardScores", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LeaderboardScores', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLeaderboardScores();
       var od = api.LeaderboardScores.fromJson(o.toJson());
       checkLeaderboardScores(od);
     });
   });
 
-  unittest.group("obj-schema-MetagameConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MetagameConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMetagameConfig();
       var od = api.MetagameConfig.fromJson(o.toJson());
       checkMetagameConfig(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerName", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerName', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerName();
       var od = api.PlayerName.fromJson(o.toJson());
       checkPlayerName(od);
     });
   });
 
-  unittest.group("obj-schema-Player", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Player', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayer();
       var od = api.Player.fromJson(o.toJson());
       checkPlayer(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerAchievement", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerAchievement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerAchievement();
       var od = api.PlayerAchievement.fromJson(o.toJson());
       checkPlayerAchievement(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerAchievementListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerAchievementListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerAchievementListResponse();
       var od = api.PlayerAchievementListResponse.fromJson(o.toJson());
       checkPlayerAchievementListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerEvent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerEvent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerEvent();
       var od = api.PlayerEvent.fromJson(o.toJson());
       checkPlayerEvent(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerEventListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerEventListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerEventListResponse();
       var od = api.PlayerEventListResponse.fromJson(o.toJson());
       checkPlayerEventListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerExperienceInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerExperienceInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerExperienceInfo();
       var od = api.PlayerExperienceInfo.fromJson(o.toJson());
       checkPlayerExperienceInfo(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerLeaderboardScore", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerLeaderboardScore', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerLeaderboardScore();
       var od = api.PlayerLeaderboardScore.fromJson(o.toJson());
       checkPlayerLeaderboardScore(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerLeaderboardScoreListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerLeaderboardScoreListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerLeaderboardScoreListResponse();
       var od = api.PlayerLeaderboardScoreListResponse.fromJson(o.toJson());
       checkPlayerLeaderboardScoreListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerLevel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerLevel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerLevel();
       var od = api.PlayerLevel.fromJson(o.toJson());
       checkPlayerLevel(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerListResponse();
       var od = api.PlayerListResponse.fromJson(o.toJson());
       checkPlayerListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerScore", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerScore', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerScore();
       var od = api.PlayerScore.fromJson(o.toJson());
       checkPlayerScore(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerScoreListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerScoreListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerScoreListResponse();
       var od = api.PlayerScoreListResponse.fromJson(o.toJson());
       checkPlayerScoreListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerScoreResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerScoreResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerScoreResponse();
       var od = api.PlayerScoreResponse.fromJson(o.toJson());
       checkPlayerScoreResponse(od);
     });
   });
 
-  unittest.group("obj-schema-PlayerScoreSubmissionList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PlayerScoreSubmissionList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPlayerScoreSubmissionList();
       var od = api.PlayerScoreSubmissionList.fromJson(o.toJson());
       checkPlayerScoreSubmissionList(od);
     });
   });
 
-  unittest.group("obj-schema-ProfileSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ProfileSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProfileSettings();
       var od = api.ProfileSettings.fromJson(o.toJson());
       checkProfileSettings(od);
     });
   });
 
-  unittest.group("obj-schema-RevisionCheckResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RevisionCheckResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevisionCheckResponse();
       var od = api.RevisionCheckResponse.fromJson(o.toJson());
       checkRevisionCheckResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ScoreSubmission", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ScoreSubmission', () {
+    unittest.test('to-json--from-json', () {
       var o = buildScoreSubmission();
       var od = api.ScoreSubmission.fromJson(o.toJson());
       checkScoreSubmission(od);
     });
   });
 
-  unittest.group("obj-schema-Snapshot", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Snapshot', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSnapshot();
       var od = api.Snapshot.fromJson(o.toJson());
       checkSnapshot(od);
     });
   });
 
-  unittest.group("obj-schema-SnapshotImage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SnapshotImage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSnapshotImage();
       var od = api.SnapshotImage.fromJson(o.toJson());
       checkSnapshotImage(od);
     });
   });
 
-  unittest.group("obj-schema-SnapshotListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SnapshotListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSnapshotListResponse();
       var od = api.SnapshotListResponse.fromJson(o.toJson());
       checkSnapshotListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-StatsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StatsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatsResponse();
       var od = api.StatsResponse.fromJson(o.toJson());
       checkStatsResponse(od);
     });
   });
 
-  unittest.group("resource-AchievementDefinitionsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-AchievementDefinitionsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AchievementDefinitionsResourceApi res =
           api.GamesApi(mock).achievementDefinitions;
       var arg_maxResults = 42;
-      var arg_language = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_language = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2507,8 +2507,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2524,7 +2524,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildAchievementDefinitionsListResponse());
@@ -2542,14 +2542,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AchievementsResourceApi", () {
-    unittest.test("method--increment", () {
+  unittest.group('resource-AchievementsResourceApi', () {
+    unittest.test('method--increment', () {
       var mock = HttpServerMock();
       api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
-      var arg_achievementId = "foo";
+      var arg_achievementId = 'foo';
       var arg_stepsToIncrement = 42;
-      var arg_requestId = "foo";
-      var arg_$fields = "foo";
+      var arg_requestId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2561,12 +2561,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("games/v1/achievements/"));
         pathOffset += 22;
-        index = path.indexOf("/increment", pathOffset);
+        index = path.indexOf('/increment', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_achievementId"));
+        unittest.expect(subPart, unittest.equals('$arg_achievementId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/increment"));
         pathOffset += 10;
@@ -2577,8 +2577,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2592,7 +2592,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAchievementIncrementResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2605,15 +2605,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
-      var arg_playerId = "foo";
-      var arg_state = "foo";
+      var arg_playerId = 'foo';
+      var arg_state = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2625,12 +2625,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 17),
             unittest.equals("games/v1/players/"));
         pathOffset += 17;
-        index = path.indexOf("/achievements", pathOffset);
+        index = path.indexOf('/achievements', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_playerId"));
+        unittest.expect(subPart, unittest.equals('$arg_playerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/achievements"));
         pathOffset += 13;
@@ -2641,8 +2641,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2659,7 +2659,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPlayerAchievementListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2676,11 +2676,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--reveal", () {
+    unittest.test('method--reveal', () {
       var mock = HttpServerMock();
       api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
-      var arg_achievementId = "foo";
-      var arg_$fields = "foo";
+      var arg_achievementId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2692,12 +2692,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("games/v1/achievements/"));
         pathOffset += 22;
-        index = path.indexOf("/reveal", pathOffset);
+        index = path.indexOf('/reveal', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_achievementId"));
+        unittest.expect(subPart, unittest.equals('$arg_achievementId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/reveal"));
         pathOffset += 7;
@@ -2708,8 +2708,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2719,7 +2719,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAchievementRevealResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2731,12 +2731,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--setStepsAtLeast", () {
+    unittest.test('method--setStepsAtLeast', () {
       var mock = HttpServerMock();
       api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
-      var arg_achievementId = "foo";
+      var arg_achievementId = 'foo';
       var arg_steps = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2748,12 +2748,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("games/v1/achievements/"));
         pathOffset += 22;
-        index = path.indexOf("/setStepsAtLeast", pathOffset);
+        index = path.indexOf('/setStepsAtLeast', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_achievementId"));
+        unittest.expect(subPart, unittest.equals('$arg_achievementId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 16),
             unittest.equals("/setStepsAtLeast"));
         pathOffset += 16;
@@ -2764,8 +2764,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2777,7 +2777,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildAchievementSetStepsAtLeastResponse());
@@ -2790,11 +2790,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--unlock", () {
+    unittest.test('method--unlock', () {
       var mock = HttpServerMock();
       api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
-      var arg_achievementId = "foo";
-      var arg_$fields = "foo";
+      var arg_achievementId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2806,12 +2806,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("games/v1/achievements/"));
         pathOffset += 22;
-        index = path.indexOf("/unlock", pathOffset);
+        index = path.indexOf('/unlock', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_achievementId"));
+        unittest.expect(subPart, unittest.equals('$arg_achievementId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/unlock"));
         pathOffset += 7;
@@ -2822,8 +2822,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2833,7 +2833,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAchievementUnlockResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2845,11 +2845,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateMultiple", () {
+    unittest.test('method--updateMultiple', () {
       var mock = HttpServerMock();
       api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
       var arg_request = buildAchievementUpdateMultipleRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AchievementUpdateMultipleRequest.fromJson(json);
         checkAchievementUpdateMultipleRequest(obj);
@@ -2871,8 +2871,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2882,7 +2882,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildAchievementUpdateMultipleResponse());
@@ -2896,14 +2896,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ApplicationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ApplicationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ApplicationsResourceApi res = api.GamesApi(mock).applications;
-      var arg_applicationId = "foo";
-      var arg_language = "foo";
-      var arg_platformType = "foo";
-      var arg_$fields = "foo";
+      var arg_applicationId = 'foo';
+      var arg_language = 'foo';
+      var arg_platformType = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2917,7 +2917,7 @@ void main() {
         pathOffset += 22;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_applicationId"));
+        unittest.expect(subPart, unittest.equals('$arg_applicationId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2925,8 +2925,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2940,7 +2940,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApplication());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2955,10 +2955,10 @@ void main() {
       })));
     });
 
-    unittest.test("method--played", () {
+    unittest.test('method--played', () {
       var mock = HttpServerMock();
       api.ApplicationsResourceApi res = api.GamesApi(mock).applications;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2977,8 +2977,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2988,19 +2988,19 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.played($fields: arg_$fields).then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--verify", () {
+    unittest.test('method--verify', () {
       var mock = HttpServerMock();
       api.ApplicationsResourceApi res = api.GamesApi(mock).applications;
-      var arg_applicationId = "foo";
-      var arg_$fields = "foo";
+      var arg_applicationId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3012,12 +3012,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("games/v1/applications/"));
         pathOffset += 22;
-        index = path.indexOf("/verify", pathOffset);
+        index = path.indexOf('/verify', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_applicationId"));
+        unittest.expect(subPart, unittest.equals('$arg_applicationId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/verify"));
         pathOffset += 7;
@@ -3028,8 +3028,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3039,7 +3039,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildApplicationVerifyResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3052,14 +3052,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-EventsResourceApi", () {
-    unittest.test("method--listByPlayer", () {
+  unittest.group('resource-EventsResourceApi', () {
+    unittest.test('method--listByPlayer', () {
       var mock = HttpServerMock();
       api.EventsResourceApi res = api.GamesApi(mock).events;
-      var arg_pageToken = "foo";
-      var arg_language = "foo";
+      var arg_pageToken = 'foo';
+      var arg_language = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3078,8 +3078,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3095,7 +3095,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPlayerEventListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3111,13 +3111,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--listDefinitions", () {
+    unittest.test('method--listDefinitions', () {
       var mock = HttpServerMock();
       api.EventsResourceApi res = api.GamesApi(mock).events;
-      var arg_language = "foo";
-      var arg_pageToken = "foo";
+      var arg_language = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3136,8 +3136,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3153,7 +3153,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEventDefinitionListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3169,12 +3169,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--record", () {
+    unittest.test('method--record', () {
       var mock = HttpServerMock();
       api.EventsResourceApi res = api.GamesApi(mock).events;
       var arg_request = buildEventRecordRequest();
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.EventRecordRequest.fromJson(json);
         checkEventRecordRequest(obj);
@@ -3196,8 +3196,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3209,7 +3209,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEventUpdateResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3222,13 +3222,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-LeaderboardsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-LeaderboardsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.LeaderboardsResourceApi res = api.GamesApi(mock).leaderboards;
-      var arg_leaderboardId = "foo";
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_leaderboardId = 'foo';
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3242,7 +3242,7 @@ void main() {
         pathOffset += 22;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_leaderboardId"));
+        unittest.expect(subPart, unittest.equals('$arg_leaderboardId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3250,8 +3250,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3263,7 +3263,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLeaderboard());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3275,13 +3275,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.LeaderboardsResourceApi res = api.GamesApi(mock).leaderboards;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3300,8 +3300,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3317,7 +3317,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLeaderboardListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3334,11 +3334,11 @@ void main() {
     });
   });
 
-  unittest.group("resource-MetagameResourceApi", () {
-    unittest.test("method--getMetagameConfig", () {
+  unittest.group('resource-MetagameResourceApi', () {
+    unittest.test('method--getMetagameConfig', () {
       var mock = HttpServerMock();
       api.MetagameResourceApi res = api.GamesApi(mock).metagame;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3357,8 +3357,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3368,7 +3368,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildMetagameConfig());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3380,15 +3380,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--listCategoriesByPlayer", () {
+    unittest.test('method--listCategoriesByPlayer', () {
       var mock = HttpServerMock();
       api.MetagameResourceApi res = api.GamesApi(mock).metagame;
-      var arg_playerId = "foo";
-      var arg_collection = "foo";
-      var arg_language = "foo";
+      var arg_playerId = 'foo';
+      var arg_collection = 'foo';
+      var arg_language = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3400,18 +3400,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 17),
             unittest.equals("games/v1/players/"));
         pathOffset += 17;
-        index = path.indexOf("/categories/", pathOffset);
+        index = path.indexOf('/categories/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_playerId"));
+        unittest.expect(subPart, unittest.equals('$arg_playerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/categories/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_collection"));
+        unittest.expect(subPart, unittest.equals('$arg_collection'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3419,8 +3419,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3436,7 +3436,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCategoryListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3453,13 +3453,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-PlayersResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-PlayersResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.PlayersResourceApi res = api.GamesApi(mock).players;
-      var arg_playerId = "foo";
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_playerId = 'foo';
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3473,7 +3473,7 @@ void main() {
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_playerId"));
+        unittest.expect(subPart, unittest.equals('$arg_playerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3481,8 +3481,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3494,7 +3494,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPlayer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3506,14 +3506,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PlayersResourceApi res = api.GamesApi(mock).players;
-      var arg_collection = "foo";
-      var arg_pageToken = "foo";
+      var arg_collection = 'foo';
+      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3527,7 +3527,7 @@ void main() {
         pathOffset += 28;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_collection"));
+        unittest.expect(subPart, unittest.equals('$arg_collection'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3535,8 +3535,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3552,7 +3552,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPlayerListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3569,12 +3569,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-RevisionsResourceApi", () {
-    unittest.test("method--check", () {
+  unittest.group('resource-RevisionsResourceApi', () {
+    unittest.test('method--check', () {
       var mock = HttpServerMock();
       api.RevisionsResourceApi res = api.GamesApi(mock).revisions;
-      var arg_clientRevision = "foo";
-      var arg_$fields = "foo";
+      var arg_clientRevision = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3593,8 +3593,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3606,7 +3606,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevisionCheckResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3619,18 +3619,18 @@ void main() {
     });
   });
 
-  unittest.group("resource-ScoresResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ScoresResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ScoresResourceApi res = api.GamesApi(mock).scores;
-      var arg_playerId = "foo";
-      var arg_leaderboardId = "foo";
-      var arg_timeSpan = "foo";
+      var arg_playerId = 'foo';
+      var arg_leaderboardId = 'foo';
+      var arg_timeSpan = 'foo';
       var arg_maxResults = 42;
-      var arg_includeRankType = "foo";
-      var arg_pageToken = "foo";
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_includeRankType = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3642,27 +3642,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 17),
             unittest.equals("games/v1/players/"));
         pathOffset += 17;
-        index = path.indexOf("/leaderboards/", pathOffset);
+        index = path.indexOf('/leaderboards/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_playerId"));
+        unittest.expect(subPart, unittest.equals('$arg_playerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/leaderboards/"));
         pathOffset += 14;
-        index = path.indexOf("/scores/", pathOffset);
+        index = path.indexOf('/scores/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_leaderboardId"));
+        unittest.expect(subPart, unittest.equals('$arg_leaderboardId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/scores/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_timeSpan"));
+        unittest.expect(subPart, unittest.equals('$arg_timeSpan'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3670,8 +3670,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3689,7 +3689,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildPlayerLeaderboardScoreListResponse());
@@ -3707,16 +3707,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ScoresResourceApi res = api.GamesApi(mock).scores;
-      var arg_leaderboardId = "foo";
-      var arg_collection = "foo";
-      var arg_timeSpan = "foo";
-      var arg_pageToken = "foo";
-      var arg_language = "foo";
+      var arg_leaderboardId = 'foo';
+      var arg_collection = 'foo';
+      var arg_timeSpan = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_language = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3728,18 +3728,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("games/v1/leaderboards/"));
         pathOffset += 22;
-        index = path.indexOf("/scores/", pathOffset);
+        index = path.indexOf('/scores/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_leaderboardId"));
+        unittest.expect(subPart, unittest.equals('$arg_leaderboardId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/scores/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_collection"));
+        unittest.expect(subPart, unittest.equals('$arg_collection'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3747,8 +3747,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3766,7 +3766,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLeaderboardScores());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3782,18 +3782,18 @@ void main() {
       })));
     });
 
-    unittest.test("method--listWindow", () {
+    unittest.test('method--listWindow', () {
       var mock = HttpServerMock();
       api.ScoresResourceApi res = api.GamesApi(mock).scores;
-      var arg_leaderboardId = "foo";
-      var arg_collection = "foo";
-      var arg_timeSpan = "foo";
-      var arg_pageToken = "foo";
+      var arg_leaderboardId = 'foo';
+      var arg_collection = 'foo';
+      var arg_timeSpan = 'foo';
+      var arg_pageToken = 'foo';
       var arg_resultsAbove = 42;
       var arg_returnTopIfAbsent = true;
-      var arg_language = "foo";
+      var arg_language = 'foo';
       var arg_maxResults = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3805,18 +3805,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("games/v1/leaderboards/"));
         pathOffset += 22;
-        index = path.indexOf("/window/", pathOffset);
+        index = path.indexOf('/window/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_leaderboardId"));
+        unittest.expect(subPart, unittest.equals('$arg_leaderboardId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/window/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_collection"));
+        unittest.expect(subPart, unittest.equals('$arg_collection'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3824,8 +3824,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3847,7 +3847,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLeaderboardScores());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3865,14 +3865,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--submit", () {
+    unittest.test('method--submit', () {
       var mock = HttpServerMock();
       api.ScoresResourceApi res = api.GamesApi(mock).scores;
-      var arg_leaderboardId = "foo";
-      var arg_score = "foo";
-      var arg_scoreTag = "foo";
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_leaderboardId = 'foo';
+      var arg_score = 'foo';
+      var arg_scoreTag = 'foo';
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3884,12 +3884,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 22),
             unittest.equals("games/v1/leaderboards/"));
         pathOffset += 22;
-        index = path.indexOf("/scores", pathOffset);
+        index = path.indexOf('/scores', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_leaderboardId"));
+        unittest.expect(subPart, unittest.equals('$arg_leaderboardId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/scores"));
         pathOffset += 7;
@@ -3900,8 +3900,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3916,7 +3916,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPlayerScoreResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3931,12 +3931,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--submitMultiple", () {
+    unittest.test('method--submitMultiple', () {
       var mock = HttpServerMock();
       api.ScoresResourceApi res = api.GamesApi(mock).scores;
       var arg_request = buildPlayerScoreSubmissionList();
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PlayerScoreSubmissionList.fromJson(json);
         checkPlayerScoreSubmissionList(obj);
@@ -3958,8 +3958,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3971,7 +3971,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPlayerScoreListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3985,13 +3985,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-SnapshotsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-SnapshotsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.SnapshotsResourceApi res = api.GamesApi(mock).snapshots;
-      var arg_snapshotId = "foo";
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_snapshotId = 'foo';
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4005,7 +4005,7 @@ void main() {
         pathOffset += 19;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_snapshotId"));
+        unittest.expect(subPart, unittest.equals('$arg_snapshotId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4013,8 +4013,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4026,7 +4026,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSnapshot());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4038,14 +4038,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SnapshotsResourceApi res = api.GamesApi(mock).snapshots;
-      var arg_playerId = "foo";
+      var arg_playerId = 'foo';
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
-      var arg_language = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_language = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4057,12 +4057,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 17),
             unittest.equals("games/v1/players/"));
         pathOffset += 17;
-        index = path.indexOf("/snapshots", pathOffset);
+        index = path.indexOf('/snapshots', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_playerId"));
+        unittest.expect(subPart, unittest.equals('$arg_playerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/snapshots"));
         pathOffset += 10;
@@ -4073,8 +4073,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4090,7 +4090,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSnapshotListResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4107,11 +4107,11 @@ void main() {
     });
   });
 
-  unittest.group("resource-StatsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-StatsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.StatsResourceApi res = api.GamesApi(mock).stats;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4130,8 +4130,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4141,7 +4141,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));

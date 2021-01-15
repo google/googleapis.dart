@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,40 +38,40 @@ const core.String USER_AGENT = 'dart-api-client tagmanager/v2';
 class TagmanagerApi {
   /// Delete your Google Tag Manager containers
   static const TagmanagerDeleteContainersScope =
-      "https://www.googleapis.com/auth/tagmanager.delete.containers";
+      'https://www.googleapis.com/auth/tagmanager.delete.containers';
 
   /// Manage your Google Tag Manager container and its subcomponents, excluding
   /// versioning and publishing
   static const TagmanagerEditContainersScope =
-      "https://www.googleapis.com/auth/tagmanager.edit.containers";
+      'https://www.googleapis.com/auth/tagmanager.edit.containers';
 
   /// Manage your Google Tag Manager container versions
   static const TagmanagerEditContainerversionsScope =
-      "https://www.googleapis.com/auth/tagmanager.edit.containerversions";
+      'https://www.googleapis.com/auth/tagmanager.edit.containerversions';
 
   /// View and manage your Google Tag Manager accounts
   static const TagmanagerManageAccountsScope =
-      "https://www.googleapis.com/auth/tagmanager.manage.accounts";
+      'https://www.googleapis.com/auth/tagmanager.manage.accounts';
 
   /// Manage user permissions of your Google Tag Manager account and container
   static const TagmanagerManageUsersScope =
-      "https://www.googleapis.com/auth/tagmanager.manage.users";
+      'https://www.googleapis.com/auth/tagmanager.manage.users';
 
   /// Publish your Google Tag Manager container versions
   static const TagmanagerPublishScope =
-      "https://www.googleapis.com/auth/tagmanager.publish";
+      'https://www.googleapis.com/auth/tagmanager.publish';
 
   /// View your Google Tag Manager container and its subcomponents
   static const TagmanagerReadonlyScope =
-      "https://www.googleapis.com/auth/tagmanager.readonly";
+      'https://www.googleapis.com/auth/tagmanager.readonly';
 
   final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
   TagmanagerApi(http.Client client,
-      {core.String rootUrl = "https://tagmanager.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://tagmanager.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -116,17 +115,17 @@ class AccountsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -164,17 +163,17 @@ class AccountsResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/accounts';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -223,20 +222,20 @@ class AccountsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -298,10 +297,10 @@ class AccountsContainersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -310,7 +309,7 @@ class AccountsContainersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -348,10 +347,10 @@ class AccountsContainersResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -360,7 +359,7 @@ class AccountsContainersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -400,17 +399,17 @@ class AccountsContainersResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -453,13 +452,13 @@ class AccountsContainersResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -468,7 +467,7 @@ class AccountsContainersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -518,20 +517,20 @@ class AccountsContainersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -584,10 +583,10 @@ class AccountsContainersEnvironmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -596,7 +595,7 @@ class AccountsContainersEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -635,10 +634,10 @@ class AccountsContainersEnvironmentsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -647,7 +646,7 @@ class AccountsContainersEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -688,17 +687,17 @@ class AccountsContainersEnvironmentsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -741,13 +740,13 @@ class AccountsContainersEnvironmentsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -756,7 +755,7 @@ class AccountsContainersEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -803,10 +802,10 @@ class AccountsContainersEnvironmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -815,7 +814,7 @@ class AccountsContainersEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -866,20 +865,20 @@ class AccountsContainersEnvironmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -926,10 +925,10 @@ class AccountsContainersVersionHeadersResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -938,7 +937,7 @@ class AccountsContainersVersionHeadersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -984,16 +983,16 @@ class AccountsContainersVersionHeadersResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
+      _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1002,7 +1001,7 @@ class AccountsContainersVersionHeadersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1049,10 +1048,10 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1061,7 +1060,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1106,20 +1105,20 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (containerVersionId != null) {
-      _queryParams["containerVersionId"] = [containerVersionId];
+      _queryParams['containerVersionId'] = [containerVersionId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1159,10 +1158,10 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1171,7 +1170,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1216,13 +1215,13 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1231,7 +1230,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1274,10 +1273,10 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1286,7 +1285,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1327,10 +1326,10 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1339,7 +1338,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1390,20 +1389,20 @@ class AccountsContainersVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1472,10 +1471,10 @@ class AccountsContainersWorkspacesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1484,7 +1483,7 @@ class AccountsContainersWorkspacesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1533,10 +1532,10 @@ class AccountsContainersWorkspacesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1545,7 +1544,7 @@ class AccountsContainersWorkspacesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1585,10 +1584,10 @@ class AccountsContainersWorkspacesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1597,7 +1596,7 @@ class AccountsContainersWorkspacesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1638,17 +1637,17 @@ class AccountsContainersWorkspacesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1689,10 +1688,10 @@ class AccountsContainersWorkspacesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1701,7 +1700,7 @@ class AccountsContainersWorkspacesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1744,13 +1743,13 @@ class AccountsContainersWorkspacesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1759,7 +1758,7 @@ class AccountsContainersWorkspacesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1801,10 +1800,10 @@ class AccountsContainersWorkspacesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1813,7 +1812,7 @@ class AccountsContainersWorkspacesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1863,13 +1862,13 @@ class AccountsContainersWorkspacesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1880,7 +1879,7 @@ class AccountsContainersWorkspacesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1923,10 +1922,10 @@ class AccountsContainersWorkspacesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -1935,7 +1934,7 @@ class AccountsContainersWorkspacesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1986,20 +1985,20 @@ class AccountsContainersWorkspacesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2051,13 +2050,13 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (type != null) {
-      _queryParams["type"] = type;
+      _queryParams['type'] = type;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -2066,7 +2065,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2109,13 +2108,13 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (type != null) {
-      _queryParams["type"] = type;
+      _queryParams['type'] = type;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2124,7 +2123,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2168,13 +2167,13 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -2183,7 +2182,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2339,13 +2338,13 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (type != null) {
-      _queryParams["type"] = [type];
+      _queryParams['type'] = [type];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -2354,7 +2353,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2409,10 +2408,10 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -2421,7 +2420,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2460,10 +2459,10 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2472,7 +2471,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2516,13 +2515,13 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -2531,7 +2530,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2572,17 +2571,17 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2626,13 +2625,13 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -2641,7 +2640,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2695,19 +2694,19 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (variableId != null) {
-      _queryParams["variableId"] = variableId;
+      _queryParams['variableId'] = variableId;
     }
     if (triggerId != null) {
-      _queryParams["triggerId"] = triggerId;
+      _queryParams['triggerId'] = triggerId;
     }
     if (tagId != null) {
-      _queryParams["tagId"] = tagId;
+      _queryParams['tagId'] = tagId;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2718,7 +2717,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2763,13 +2762,13 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -2778,7 +2777,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2829,20 +2828,20 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2896,10 +2895,10 @@ class AccountsContainersWorkspacesTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -2908,7 +2907,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2947,10 +2946,10 @@ class AccountsContainersWorkspacesTagsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2959,7 +2958,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3000,17 +2999,17 @@ class AccountsContainersWorkspacesTagsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3054,13 +3053,13 @@ class AccountsContainersWorkspacesTagsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -3069,7 +3068,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3114,13 +3113,13 @@ class AccountsContainersWorkspacesTagsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -3129,7 +3128,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3180,20 +3179,20 @@ class AccountsContainersWorkspacesTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3247,10 +3246,10 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -3259,7 +3258,7 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3298,10 +3297,10 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3310,7 +3309,7 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3351,17 +3350,17 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3405,13 +3404,13 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -3420,7 +3419,7 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3465,13 +3464,13 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -3480,7 +3479,7 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3531,20 +3530,20 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3598,10 +3597,10 @@ class AccountsContainersWorkspacesTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -3610,7 +3609,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3649,10 +3648,10 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3661,7 +3660,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3702,17 +3701,17 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3756,13 +3755,13 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -3771,7 +3770,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3816,13 +3815,13 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -3831,7 +3830,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3882,20 +3881,20 @@ class AccountsContainersWorkspacesTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3949,10 +3948,10 @@ class AccountsContainersWorkspacesVariablesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -3961,7 +3960,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4000,10 +3999,10 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4012,7 +4011,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4053,17 +4052,17 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4107,13 +4106,13 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -4122,7 +4121,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4167,13 +4166,13 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -4182,7 +4181,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4233,20 +4232,20 @@ class AccountsContainersWorkspacesVariablesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4300,10 +4299,10 @@ class AccountsContainersWorkspacesZonesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -4312,7 +4311,7 @@ class AccountsContainersWorkspacesZonesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4351,10 +4350,10 @@ class AccountsContainersWorkspacesZonesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4363,7 +4362,7 @@ class AccountsContainersWorkspacesZonesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4404,17 +4403,17 @@ class AccountsContainersWorkspacesZonesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4458,13 +4457,13 @@ class AccountsContainersWorkspacesZonesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -4473,7 +4472,7 @@ class AccountsContainersWorkspacesZonesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4518,13 +4517,13 @@ class AccountsContainersWorkspacesZonesResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -4533,7 +4532,7 @@ class AccountsContainersWorkspacesZonesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4584,20 +4583,20 @@ class AccountsContainersWorkspacesZonesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4649,10 +4648,10 @@ class AccountsUserPermissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -4661,7 +4660,7 @@ class AccountsUserPermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4700,10 +4699,10 @@ class AccountsUserPermissionsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4712,7 +4711,7 @@ class AccountsUserPermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4752,17 +4751,17 @@ class AccountsUserPermissionsResourceApi {
     core.String _body;
 
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4806,13 +4805,13 @@ class AccountsUserPermissionsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' +
@@ -4821,7 +4820,7 @@ class AccountsUserPermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4867,17 +4866,17 @@ class AccountsUserPermissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4918,23 +4917,23 @@ class Account {
   Account();
 
   Account.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("shareData")) {
-      shareData = _json["shareData"];
+    if (_json.containsKey('shareData')) {
+      shareData = _json['shareData'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
   }
 
@@ -4942,22 +4941,22 @@ class Account {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (shareData != null) {
-      _json["shareData"] = shareData;
+      _json['shareData'] = shareData;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     return _json;
   }
@@ -4978,8 +4977,8 @@ class AccountAccess {
   AccountAccess();
 
   AccountAccess.fromJson(core.Map _json) {
-    if (_json.containsKey("permission")) {
-      permission = _json["permission"];
+    if (_json.containsKey('permission')) {
+      permission = _json['permission'];
     }
   }
 
@@ -4987,7 +4986,7 @@ class AccountAccess {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permission != null) {
-      _json["permission"] = permission;
+      _json['permission'] = permission;
     }
     return _json;
   }
@@ -5134,23 +5133,23 @@ class BuiltInVariable {
   BuiltInVariable();
 
   BuiltInVariable.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
   }
 
@@ -5158,22 +5157,22 @@ class BuiltInVariable {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     return _json;
   }
@@ -5228,43 +5227,43 @@ class Client {
   Client();
 
   Client.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
+    if (_json.containsKey('clientId')) {
+      clientId = _json['clientId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parentFolderId")) {
-      parentFolderId = _json["parentFolderId"];
+    if (_json.containsKey('parentFolderId')) {
+      parentFolderId = _json['parentFolderId'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("priority")) {
-      priority = _json["priority"];
+    if (_json.containsKey('priority')) {
+      priority = _json['priority'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
   }
 
@@ -5272,40 +5271,40 @@ class Client {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (clientId != null) {
-      _json["clientId"] = clientId;
+      _json['clientId'] = clientId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
-      _json["parentFolderId"] = parentFolderId;
+      _json['parentFolderId'] = parentFolderId;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (priority != null) {
-      _json["priority"] = priority;
+      _json['priority'] = priority;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     return _json;
   }
@@ -5347,13 +5346,13 @@ class Condition {
   Condition();
 
   Condition.fromJson(core.Map _json) {
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -5361,10 +5360,10 @@ class Condition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -5413,35 +5412,35 @@ class Container {
   Container();
 
   Container.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("domainName")) {
-      domainName = (_json["domainName"] as core.List).cast<core.String>();
+    if (_json.containsKey('domainName')) {
+      domainName = (_json['domainName'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("publicId")) {
-      publicId = _json["publicId"];
+    if (_json.containsKey('publicId')) {
+      publicId = _json['publicId'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("usageContext")) {
-      usageContext = (_json["usageContext"] as core.List).cast<core.String>();
+    if (_json.containsKey('usageContext')) {
+      usageContext = (_json['usageContext'] as core.List).cast<core.String>();
     }
   }
 
@@ -5449,34 +5448,34 @@ class Container {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (domainName != null) {
-      _json["domainName"] = domainName;
+      _json['domainName'] = domainName;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (publicId != null) {
-      _json["publicId"] = publicId;
+      _json['publicId'] = publicId;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (usageContext != null) {
-      _json["usageContext"] = usageContext;
+      _json['usageContext'] = usageContext;
     }
     return _json;
   }
@@ -5503,11 +5502,11 @@ class ContainerAccess {
   ContainerAccess();
 
   ContainerAccess.fromJson(core.Map _json) {
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("permission")) {
-      permission = _json["permission"];
+    if (_json.containsKey('permission')) {
+      permission = _json['permission'];
     }
   }
 
@@ -5515,10 +5514,10 @@ class ContainerAccess {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (permission != null) {
-      _json["permission"] = permission;
+      _json['permission'] = permission;
     }
     return _json;
   }
@@ -5586,73 +5585,73 @@ class ContainerVersion {
   ContainerVersion();
 
   ContainerVersion.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("builtInVariable")) {
-      builtInVariable = (_json["builtInVariable"] as core.List)
+    if (_json.containsKey('builtInVariable')) {
+      builtInVariable = (_json['builtInVariable'] as core.List)
           .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("client")) {
-      client = (_json["client"] as core.List)
+    if (_json.containsKey('client')) {
+      client = (_json['client'] as core.List)
           .map<Client>((value) => Client.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("container")) {
-      container = Container.fromJson(_json["container"]);
+    if (_json.containsKey('container')) {
+      container = Container.fromJson(_json['container']);
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("containerVersionId")) {
-      containerVersionId = _json["containerVersionId"];
+    if (_json.containsKey('containerVersionId')) {
+      containerVersionId = _json['containerVersionId'];
     }
-    if (_json.containsKey("customTemplate")) {
-      customTemplate = (_json["customTemplate"] as core.List)
+    if (_json.containsKey('customTemplate')) {
+      customTemplate = (_json['customTemplate'] as core.List)
           .map<CustomTemplate>((value) => CustomTemplate.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("folder")) {
-      folder = (_json["folder"] as core.List)
+    if (_json.containsKey('folder')) {
+      folder = (_json['folder'] as core.List)
           .map<Folder>((value) => Folder.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("tag")) {
-      tag = (_json["tag"] as core.List)
+    if (_json.containsKey('tag')) {
+      tag = (_json['tag'] as core.List)
           .map<Tag>((value) => Tag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("trigger")) {
-      trigger = (_json["trigger"] as core.List)
+    if (_json.containsKey('trigger')) {
+      trigger = (_json['trigger'] as core.List)
           .map<Trigger>((value) => Trigger.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("variable")) {
-      variable = (_json["variable"] as core.List)
+    if (_json.containsKey('variable')) {
+      variable = (_json['variable'] as core.List)
           .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("zone")) {
-      zone = (_json["zone"] as core.List)
+    if (_json.containsKey('zone')) {
+      zone = (_json['zone'] as core.List)
           .map<Zone>((value) => Zone.fromJson(value))
           .toList();
     }
@@ -5662,60 +5661,60 @@ class ContainerVersion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (builtInVariable != null) {
-      _json["builtInVariable"] =
+      _json['builtInVariable'] =
           builtInVariable.map((value) => value.toJson()).toList();
     }
     if (client != null) {
-      _json["client"] = client.map((value) => value.toJson()).toList();
+      _json['client'] = client.map((value) => value.toJson()).toList();
     }
     if (container != null) {
-      _json["container"] = container.toJson();
+      _json['container'] = container.toJson();
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (containerVersionId != null) {
-      _json["containerVersionId"] = containerVersionId;
+      _json['containerVersionId'] = containerVersionId;
     }
     if (customTemplate != null) {
-      _json["customTemplate"] =
+      _json['customTemplate'] =
           customTemplate.map((value) => value.toJson()).toList();
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (folder != null) {
-      _json["folder"] = folder.map((value) => value.toJson()).toList();
+      _json['folder'] = folder.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (tag != null) {
-      _json["tag"] = tag.map((value) => value.toJson()).toList();
+      _json['tag'] = tag.map((value) => value.toJson()).toList();
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (trigger != null) {
-      _json["trigger"] = trigger.map((value) => value.toJson()).toList();
+      _json['trigger'] = trigger.map((value) => value.toJson()).toList();
     }
     if (variable != null) {
-      _json["variable"] = variable.map((value) => value.toJson()).toList();
+      _json['variable'] = variable.map((value) => value.toJson()).toList();
     }
     if (zone != null) {
-      _json["zone"] = zone.map((value) => value.toJson()).toList();
+      _json['zone'] = zone.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5765,44 +5764,44 @@ class ContainerVersionHeader {
   ContainerVersionHeader();
 
   ContainerVersionHeader.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("containerVersionId")) {
-      containerVersionId = _json["containerVersionId"];
+    if (_json.containsKey('containerVersionId')) {
+      containerVersionId = _json['containerVersionId'];
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("numCustomTemplates")) {
-      numCustomTemplates = _json["numCustomTemplates"];
+    if (_json.containsKey('numCustomTemplates')) {
+      numCustomTemplates = _json['numCustomTemplates'];
     }
-    if (_json.containsKey("numMacros")) {
-      numMacros = _json["numMacros"];
+    if (_json.containsKey('numMacros')) {
+      numMacros = _json['numMacros'];
     }
-    if (_json.containsKey("numRules")) {
-      numRules = _json["numRules"];
+    if (_json.containsKey('numRules')) {
+      numRules = _json['numRules'];
     }
-    if (_json.containsKey("numTags")) {
-      numTags = _json["numTags"];
+    if (_json.containsKey('numTags')) {
+      numTags = _json['numTags'];
     }
-    if (_json.containsKey("numTriggers")) {
-      numTriggers = _json["numTriggers"];
+    if (_json.containsKey('numTriggers')) {
+      numTriggers = _json['numTriggers'];
     }
-    if (_json.containsKey("numVariables")) {
-      numVariables = _json["numVariables"];
+    if (_json.containsKey('numVariables')) {
+      numVariables = _json['numVariables'];
     }
-    if (_json.containsKey("numZones")) {
-      numZones = _json["numZones"];
+    if (_json.containsKey('numZones')) {
+      numZones = _json['numZones'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
   }
 
@@ -5810,43 +5809,43 @@ class ContainerVersionHeader {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (containerVersionId != null) {
-      _json["containerVersionId"] = containerVersionId;
+      _json['containerVersionId'] = containerVersionId;
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (numCustomTemplates != null) {
-      _json["numCustomTemplates"] = numCustomTemplates;
+      _json['numCustomTemplates'] = numCustomTemplates;
     }
     if (numMacros != null) {
-      _json["numMacros"] = numMacros;
+      _json['numMacros'] = numMacros;
     }
     if (numRules != null) {
-      _json["numRules"] = numRules;
+      _json['numRules'] = numRules;
     }
     if (numTags != null) {
-      _json["numTags"] = numTags;
+      _json['numTags'] = numTags;
     }
     if (numTriggers != null) {
-      _json["numTriggers"] = numTriggers;
+      _json['numTriggers'] = numTriggers;
     }
     if (numVariables != null) {
-      _json["numVariables"] = numVariables;
+      _json['numVariables'] = numVariables;
     }
     if (numZones != null) {
-      _json["numZones"] = numZones;
+      _json['numZones'] = numZones;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     return _json;
   }
@@ -5859,8 +5858,8 @@ class CreateBuiltInVariableResponse {
   CreateBuiltInVariableResponse();
 
   CreateBuiltInVariableResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("builtInVariable")) {
-      builtInVariable = (_json["builtInVariable"] as core.List)
+    if (_json.containsKey('builtInVariable')) {
+      builtInVariable = (_json['builtInVariable'] as core.List)
           .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(value))
           .toList();
     }
@@ -5870,7 +5869,7 @@ class CreateBuiltInVariableResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (builtInVariable != null) {
-      _json["builtInVariable"] =
+      _json['builtInVariable'] =
           builtInVariable.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5888,11 +5887,11 @@ class CreateContainerVersionRequestVersionOptions {
   CreateContainerVersionRequestVersionOptions();
 
   CreateContainerVersionRequestVersionOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
   }
 
@@ -5900,10 +5899,10 @@ class CreateContainerVersionRequestVersionOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     return _json;
   }
@@ -5929,17 +5928,17 @@ class CreateContainerVersionResponse {
   CreateContainerVersionResponse();
 
   CreateContainerVersionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("compilerError")) {
-      compilerError = _json["compilerError"];
+    if (_json.containsKey('compilerError')) {
+      compilerError = _json['compilerError'];
     }
-    if (_json.containsKey("containerVersion")) {
-      containerVersion = ContainerVersion.fromJson(_json["containerVersion"]);
+    if (_json.containsKey('containerVersion')) {
+      containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
     }
-    if (_json.containsKey("newWorkspacePath")) {
-      newWorkspacePath = _json["newWorkspacePath"];
+    if (_json.containsKey('newWorkspacePath')) {
+      newWorkspacePath = _json['newWorkspacePath'];
     }
-    if (_json.containsKey("syncStatus")) {
-      syncStatus = SyncStatus.fromJson(_json["syncStatus"]);
+    if (_json.containsKey('syncStatus')) {
+      syncStatus = SyncStatus.fromJson(_json['syncStatus']);
     }
   }
 
@@ -5947,16 +5946,16 @@ class CreateContainerVersionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (compilerError != null) {
-      _json["compilerError"] = compilerError;
+      _json['compilerError'] = compilerError;
     }
     if (containerVersion != null) {
-      _json["containerVersion"] = containerVersion.toJson();
+      _json['containerVersion'] = containerVersion.toJson();
     }
     if (newWorkspacePath != null) {
-      _json["newWorkspacePath"] = newWorkspacePath;
+      _json['newWorkspacePath'] = newWorkspacePath;
     }
     if (syncStatus != null) {
-      _json["syncStatus"] = syncStatus.toJson();
+      _json['syncStatus'] = syncStatus.toJson();
     }
     return _json;
   }
@@ -5998,35 +5997,35 @@ class CustomTemplate {
   CustomTemplate();
 
   CustomTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("galleryReference")) {
-      galleryReference = GalleryReference.fromJson(_json["galleryReference"]);
+    if (_json.containsKey('galleryReference')) {
+      galleryReference = GalleryReference.fromJson(_json['galleryReference']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("templateData")) {
-      templateData = _json["templateData"];
+    if (_json.containsKey('templateData')) {
+      templateData = _json['templateData'];
     }
-    if (_json.containsKey("templateId")) {
-      templateId = _json["templateId"];
+    if (_json.containsKey('templateId')) {
+      templateId = _json['templateId'];
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
   }
 
@@ -6034,34 +6033,34 @@ class CustomTemplate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (galleryReference != null) {
-      _json["galleryReference"] = galleryReference.toJson();
+      _json['galleryReference'] = galleryReference.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (templateData != null) {
-      _json["templateData"] = templateData;
+      _json['templateData'] = templateData;
     }
     if (templateId != null) {
-      _json["templateId"] = templateId;
+      _json['templateId'] = templateId;
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     return _json;
   }
@@ -6094,20 +6093,20 @@ class Entity {
   Entity();
 
   Entity.fromJson(core.Map _json) {
-    if (_json.containsKey("changeStatus")) {
-      changeStatus = _json["changeStatus"];
+    if (_json.containsKey('changeStatus')) {
+      changeStatus = _json['changeStatus'];
     }
-    if (_json.containsKey("folder")) {
-      folder = Folder.fromJson(_json["folder"]);
+    if (_json.containsKey('folder')) {
+      folder = Folder.fromJson(_json['folder']);
     }
-    if (_json.containsKey("tag")) {
-      tag = Tag.fromJson(_json["tag"]);
+    if (_json.containsKey('tag')) {
+      tag = Tag.fromJson(_json['tag']);
     }
-    if (_json.containsKey("trigger")) {
-      trigger = Trigger.fromJson(_json["trigger"]);
+    if (_json.containsKey('trigger')) {
+      trigger = Trigger.fromJson(_json['trigger']);
     }
-    if (_json.containsKey("variable")) {
-      variable = Variable.fromJson(_json["variable"]);
+    if (_json.containsKey('variable')) {
+      variable = Variable.fromJson(_json['variable']);
     }
   }
 
@@ -6115,19 +6114,19 @@ class Entity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (changeStatus != null) {
-      _json["changeStatus"] = changeStatus;
+      _json['changeStatus'] = changeStatus;
     }
     if (folder != null) {
-      _json["folder"] = folder.toJson();
+      _json['folder'] = folder.toJson();
     }
     if (tag != null) {
-      _json["tag"] = tag.toJson();
+      _json['tag'] = tag.toJson();
     }
     if (trigger != null) {
-      _json["trigger"] = trigger.toJson();
+      _json['trigger'] = trigger.toJson();
     }
     if (variable != null) {
-      _json["variable"] = variable.toJson();
+      _json['variable'] = variable.toJson();
     }
     return _json;
   }
@@ -6200,50 +6199,50 @@ class Environment {
   Environment();
 
   Environment.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("authorizationCode")) {
-      authorizationCode = _json["authorizationCode"];
+    if (_json.containsKey('authorizationCode')) {
+      authorizationCode = _json['authorizationCode'];
     }
-    if (_json.containsKey("authorizationTimestamp")) {
-      authorizationTimestamp = _json["authorizationTimestamp"];
+    if (_json.containsKey('authorizationTimestamp')) {
+      authorizationTimestamp = _json['authorizationTimestamp'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("containerVersionId")) {
-      containerVersionId = _json["containerVersionId"];
+    if (_json.containsKey('containerVersionId')) {
+      containerVersionId = _json['containerVersionId'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("enableDebug")) {
-      enableDebug = _json["enableDebug"];
+    if (_json.containsKey('enableDebug')) {
+      enableDebug = _json['enableDebug'];
     }
-    if (_json.containsKey("environmentId")) {
-      environmentId = _json["environmentId"];
+    if (_json.containsKey('environmentId')) {
+      environmentId = _json['environmentId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
   }
 
@@ -6251,49 +6250,49 @@ class Environment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (authorizationCode != null) {
-      _json["authorizationCode"] = authorizationCode;
+      _json['authorizationCode'] = authorizationCode;
     }
     if (authorizationTimestamp != null) {
-      _json["authorizationTimestamp"] = authorizationTimestamp;
+      _json['authorizationTimestamp'] = authorizationTimestamp;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (containerVersionId != null) {
-      _json["containerVersionId"] = containerVersionId;
+      _json['containerVersionId'] = containerVersionId;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (enableDebug != null) {
-      _json["enableDebug"] = enableDebug;
+      _json['enableDebug'] = enableDebug;
     }
     if (environmentId != null) {
-      _json["environmentId"] = environmentId;
+      _json['environmentId'] = environmentId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     return _json;
   }
@@ -6336,32 +6335,32 @@ class Folder {
   Folder();
 
   Folder.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("folderId")) {
-      folderId = _json["folderId"];
+    if (_json.containsKey('folderId')) {
+      folderId = _json['folderId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
   }
 
@@ -6369,31 +6368,31 @@ class Folder {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (folderId != null) {
-      _json["folderId"] = folderId;
+      _json['folderId'] = folderId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     return _json;
   }
@@ -6416,21 +6415,21 @@ class FolderEntities {
   FolderEntities();
 
   FolderEntities.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("tag")) {
-      tag = (_json["tag"] as core.List)
+    if (_json.containsKey('tag')) {
+      tag = (_json['tag'] as core.List)
           .map<Tag>((value) => Tag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("trigger")) {
-      trigger = (_json["trigger"] as core.List)
+    if (_json.containsKey('trigger')) {
+      trigger = (_json['trigger'] as core.List)
           .map<Trigger>((value) => Trigger.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("variable")) {
-      variable = (_json["variable"] as core.List)
+    if (_json.containsKey('variable')) {
+      variable = (_json['variable'] as core.List)
           .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
@@ -6440,16 +6439,16 @@ class FolderEntities {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (tag != null) {
-      _json["tag"] = tag.map((value) => value.toJson()).toList();
+      _json['tag'] = tag.map((value) => value.toJson()).toList();
     }
     if (trigger != null) {
-      _json["trigger"] = trigger.map((value) => value.toJson()).toList();
+      _json['trigger'] = trigger.map((value) => value.toJson()).toList();
     }
     if (variable != null) {
-      _json["variable"] = variable.map((value) => value.toJson()).toList();
+      _json['variable'] = variable.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6481,23 +6480,23 @@ class GalleryReference {
   GalleryReference();
 
   GalleryReference.fromJson(core.Map _json) {
-    if (_json.containsKey("host")) {
-      host = _json["host"];
+    if (_json.containsKey('host')) {
+      host = _json['host'];
     }
-    if (_json.containsKey("isModified")) {
-      isModified = _json["isModified"];
+    if (_json.containsKey('isModified')) {
+      isModified = _json['isModified'];
     }
-    if (_json.containsKey("owner")) {
-      owner = _json["owner"];
+    if (_json.containsKey('owner')) {
+      owner = _json['owner'];
     }
-    if (_json.containsKey("repository")) {
-      repository = _json["repository"];
+    if (_json.containsKey('repository')) {
+      repository = _json['repository'];
     }
-    if (_json.containsKey("signature")) {
-      signature = _json["signature"];
+    if (_json.containsKey('signature')) {
+      signature = _json['signature'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -6505,22 +6504,22 @@ class GalleryReference {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (host != null) {
-      _json["host"] = host;
+      _json['host'] = host;
     }
     if (isModified != null) {
-      _json["isModified"] = isModified;
+      _json['isModified'] = isModified;
     }
     if (owner != null) {
-      _json["owner"] = owner;
+      _json['owner'] = owner;
     }
     if (repository != null) {
-      _json["repository"] = repository;
+      _json['repository'] = repository;
     }
     if (signature != null) {
-      _json["signature"] = signature;
+      _json['signature'] = signature;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -6538,13 +6537,13 @@ class GetWorkspaceStatusResponse {
   GetWorkspaceStatusResponse();
 
   GetWorkspaceStatusResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("mergeConflict")) {
-      mergeConflict = (_json["mergeConflict"] as core.List)
+    if (_json.containsKey('mergeConflict')) {
+      mergeConflict = (_json['mergeConflict'] as core.List)
           .map<MergeConflict>((value) => MergeConflict.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("workspaceChange")) {
-      workspaceChange = (_json["workspaceChange"] as core.List)
+    if (_json.containsKey('workspaceChange')) {
+      workspaceChange = (_json['workspaceChange'] as core.List)
           .map<Entity>((value) => Entity.fromJson(value))
           .toList();
     }
@@ -6554,11 +6553,11 @@ class GetWorkspaceStatusResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mergeConflict != null) {
-      _json["mergeConflict"] =
+      _json['mergeConflict'] =
           mergeConflict.map((value) => value.toJson()).toList();
     }
     if (workspaceChange != null) {
-      _json["workspaceChange"] =
+      _json['workspaceChange'] =
           workspaceChange.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6576,13 +6575,13 @@ class ListAccountsResponse {
   ListAccountsResponse();
 
   ListAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("account")) {
-      account = (_json["account"] as core.List)
+    if (_json.containsKey('account')) {
+      account = (_json['account'] as core.List)
           .map<Account>((value) => Account.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6590,10 +6589,10 @@ class ListAccountsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (account != null) {
-      _json["account"] = account.map((value) => value.toJson()).toList();
+      _json['account'] = account.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6610,14 +6609,14 @@ class ListContainerVersionsResponse {
   ListContainerVersionsResponse();
 
   ListContainerVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("containerVersionHeader")) {
-      containerVersionHeader = (_json["containerVersionHeader"] as core.List)
+    if (_json.containsKey('containerVersionHeader')) {
+      containerVersionHeader = (_json['containerVersionHeader'] as core.List)
           .map<ContainerVersionHeader>(
               (value) => ContainerVersionHeader.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6625,11 +6624,11 @@ class ListContainerVersionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (containerVersionHeader != null) {
-      _json["containerVersionHeader"] =
+      _json['containerVersionHeader'] =
           containerVersionHeader.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6646,13 +6645,13 @@ class ListContainersResponse {
   ListContainersResponse();
 
   ListContainersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("container")) {
-      container = (_json["container"] as core.List)
+    if (_json.containsKey('container')) {
+      container = (_json['container'] as core.List)
           .map<Container>((value) => Container.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6660,10 +6659,10 @@ class ListContainersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (container != null) {
-      _json["container"] = container.map((value) => value.toJson()).toList();
+      _json['container'] = container.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6680,13 +6679,13 @@ class ListEnabledBuiltInVariablesResponse {
   ListEnabledBuiltInVariablesResponse();
 
   ListEnabledBuiltInVariablesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("builtInVariable")) {
-      builtInVariable = (_json["builtInVariable"] as core.List)
+    if (_json.containsKey('builtInVariable')) {
+      builtInVariable = (_json['builtInVariable'] as core.List)
           .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6694,11 +6693,11 @@ class ListEnabledBuiltInVariablesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (builtInVariable != null) {
-      _json["builtInVariable"] =
+      _json['builtInVariable'] =
           builtInVariable.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6715,13 +6714,13 @@ class ListEnvironmentsResponse {
   ListEnvironmentsResponse();
 
   ListEnvironmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("environment")) {
-      environment = (_json["environment"] as core.List)
+    if (_json.containsKey('environment')) {
+      environment = (_json['environment'] as core.List)
           .map<Environment>((value) => Environment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6729,11 +6728,11 @@ class ListEnvironmentsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (environment != null) {
-      _json["environment"] =
+      _json['environment'] =
           environment.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6750,13 +6749,13 @@ class ListFoldersResponse {
   ListFoldersResponse();
 
   ListFoldersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("folder")) {
-      folder = (_json["folder"] as core.List)
+    if (_json.containsKey('folder')) {
+      folder = (_json['folder'] as core.List)
           .map<Folder>((value) => Folder.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6764,10 +6763,10 @@ class ListFoldersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (folder != null) {
-      _json["folder"] = folder.map((value) => value.toJson()).toList();
+      _json['folder'] = folder.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6784,11 +6783,11 @@ class ListTagsResponse {
   ListTagsResponse();
 
   ListTagsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("tag")) {
-      tag = (_json["tag"] as core.List)
+    if (_json.containsKey('tag')) {
+      tag = (_json['tag'] as core.List)
           .map<Tag>((value) => Tag.fromJson(value))
           .toList();
     }
@@ -6798,10 +6797,10 @@ class ListTagsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (tag != null) {
-      _json["tag"] = tag.map((value) => value.toJson()).toList();
+      _json['tag'] = tag.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6817,11 +6816,11 @@ class ListTemplatesResponse {
   ListTemplatesResponse();
 
   ListTemplatesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("template")) {
-      template = (_json["template"] as core.List)
+    if (_json.containsKey('template')) {
+      template = (_json['template'] as core.List)
           .map<CustomTemplate>((value) => CustomTemplate.fromJson(value))
           .toList();
     }
@@ -6831,10 +6830,10 @@ class ListTemplatesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (template != null) {
-      _json["template"] = template.map((value) => value.toJson()).toList();
+      _json['template'] = template.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6851,11 +6850,11 @@ class ListTriggersResponse {
   ListTriggersResponse();
 
   ListTriggersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("trigger")) {
-      trigger = (_json["trigger"] as core.List)
+    if (_json.containsKey('trigger')) {
+      trigger = (_json['trigger'] as core.List)
           .map<Trigger>((value) => Trigger.fromJson(value))
           .toList();
     }
@@ -6865,10 +6864,10 @@ class ListTriggersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (trigger != null) {
-      _json["trigger"] = trigger.map((value) => value.toJson()).toList();
+      _json['trigger'] = trigger.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6885,11 +6884,11 @@ class ListUserPermissionsResponse {
   ListUserPermissionsResponse();
 
   ListUserPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("userPermission")) {
-      userPermission = (_json["userPermission"] as core.List)
+    if (_json.containsKey('userPermission')) {
+      userPermission = (_json['userPermission'] as core.List)
           .map<UserPermission>((value) => UserPermission.fromJson(value))
           .toList();
     }
@@ -6899,10 +6898,10 @@ class ListUserPermissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (userPermission != null) {
-      _json["userPermission"] =
+      _json['userPermission'] =
           userPermission.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6920,11 +6919,11 @@ class ListVariablesResponse {
   ListVariablesResponse();
 
   ListVariablesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("variable")) {
-      variable = (_json["variable"] as core.List)
+    if (_json.containsKey('variable')) {
+      variable = (_json['variable'] as core.List)
           .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
@@ -6934,10 +6933,10 @@ class ListVariablesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (variable != null) {
-      _json["variable"] = variable.map((value) => value.toJson()).toList();
+      _json['variable'] = variable.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6954,11 +6953,11 @@ class ListWorkspacesResponse {
   ListWorkspacesResponse();
 
   ListWorkspacesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("workspace")) {
-      workspace = (_json["workspace"] as core.List)
+    if (_json.containsKey('workspace')) {
+      workspace = (_json['workspace'] as core.List)
           .map<Workspace>((value) => Workspace.fromJson(value))
           .toList();
     }
@@ -6968,10 +6967,10 @@ class ListWorkspacesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (workspace != null) {
-      _json["workspace"] = workspace.map((value) => value.toJson()).toList();
+      _json['workspace'] = workspace.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6987,11 +6986,11 @@ class ListZonesResponse {
   ListZonesResponse();
 
   ListZonesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("zone")) {
-      zone = (_json["zone"] as core.List)
+    if (_json.containsKey('zone')) {
+      zone = (_json['zone'] as core.List)
           .map<Zone>((value) => Zone.fromJson(value))
           .toList();
     }
@@ -7001,10 +7000,10 @@ class ListZonesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (zone != null) {
-      _json["zone"] = zone.map((value) => value.toJson()).toList();
+      _json['zone'] = zone.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7025,11 +7024,11 @@ class MergeConflict {
   MergeConflict();
 
   MergeConflict.fromJson(core.Map _json) {
-    if (_json.containsKey("entityInBaseVersion")) {
-      entityInBaseVersion = Entity.fromJson(_json["entityInBaseVersion"]);
+    if (_json.containsKey('entityInBaseVersion')) {
+      entityInBaseVersion = Entity.fromJson(_json['entityInBaseVersion']);
     }
-    if (_json.containsKey("entityInWorkspace")) {
-      entityInWorkspace = Entity.fromJson(_json["entityInWorkspace"]);
+    if (_json.containsKey('entityInWorkspace')) {
+      entityInWorkspace = Entity.fromJson(_json['entityInWorkspace']);
     }
   }
 
@@ -7037,10 +7036,10 @@ class MergeConflict {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entityInBaseVersion != null) {
-      _json["entityInBaseVersion"] = entityInBaseVersion.toJson();
+      _json['entityInBaseVersion'] = entityInBaseVersion.toJson();
     }
     if (entityInWorkspace != null) {
-      _json["entityInWorkspace"] = entityInWorkspace.toJson();
+      _json['entityInWorkspace'] = entityInWorkspace.toJson();
     }
     return _json;
   }
@@ -7115,24 +7114,24 @@ class Parameter {
   Parameter();
 
   Parameter.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("list")) {
-      list = (_json["list"] as core.List)
+    if (_json.containsKey('list')) {
+      list = (_json['list'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("map")) {
-      map = (_json["map"] as core.List)
+    if (_json.containsKey('map')) {
+      map = (_json['map'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -7140,19 +7139,19 @@ class Parameter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (list != null) {
-      _json["list"] = list.map((value) => value.toJson()).toList();
+      _json['list'] = list.map((value) => value.toJson()).toList();
     }
     if (map != null) {
-      _json["map"] = map.map((value) => value.toJson()).toList();
+      _json['map'] = map.map((value) => value.toJson()).toList();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -7169,11 +7168,11 @@ class PublishContainerVersionResponse {
   PublishContainerVersionResponse();
 
   PublishContainerVersionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("compilerError")) {
-      compilerError = _json["compilerError"];
+    if (_json.containsKey('compilerError')) {
+      compilerError = _json['compilerError'];
     }
-    if (_json.containsKey("containerVersion")) {
-      containerVersion = ContainerVersion.fromJson(_json["containerVersion"]);
+    if (_json.containsKey('containerVersion')) {
+      containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
     }
   }
 
@@ -7181,10 +7180,10 @@ class PublishContainerVersionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (compilerError != null) {
-      _json["compilerError"] = compilerError;
+      _json['compilerError'] = compilerError;
     }
     if (containerVersion != null) {
-      _json["containerVersion"] = containerVersion.toJson();
+      _json['containerVersion'] = containerVersion.toJson();
     }
     return _json;
   }
@@ -7205,14 +7204,14 @@ class QuickPreviewResponse {
   QuickPreviewResponse();
 
   QuickPreviewResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("compilerError")) {
-      compilerError = _json["compilerError"];
+    if (_json.containsKey('compilerError')) {
+      compilerError = _json['compilerError'];
     }
-    if (_json.containsKey("containerVersion")) {
-      containerVersion = ContainerVersion.fromJson(_json["containerVersion"]);
+    if (_json.containsKey('containerVersion')) {
+      containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
     }
-    if (_json.containsKey("syncStatus")) {
-      syncStatus = SyncStatus.fromJson(_json["syncStatus"]);
+    if (_json.containsKey('syncStatus')) {
+      syncStatus = SyncStatus.fromJson(_json['syncStatus']);
     }
   }
 
@@ -7220,13 +7219,13 @@ class QuickPreviewResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (compilerError != null) {
-      _json["compilerError"] = compilerError;
+      _json['compilerError'] = compilerError;
     }
     if (containerVersion != null) {
-      _json["containerVersion"] = containerVersion.toJson();
+      _json['containerVersion'] = containerVersion.toJson();
     }
     if (syncStatus != null) {
-      _json["syncStatus"] = syncStatus.toJson();
+      _json['syncStatus'] = syncStatus.toJson();
     }
     return _json;
   }
@@ -7240,8 +7239,8 @@ class RevertBuiltInVariableResponse {
   RevertBuiltInVariableResponse();
 
   RevertBuiltInVariableResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
   }
 
@@ -7249,7 +7248,7 @@ class RevertBuiltInVariableResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     return _json;
   }
@@ -7265,8 +7264,8 @@ class RevertFolderResponse {
   RevertFolderResponse();
 
   RevertFolderResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("folder")) {
-      folder = Folder.fromJson(_json["folder"]);
+    if (_json.containsKey('folder')) {
+      folder = Folder.fromJson(_json['folder']);
     }
   }
 
@@ -7274,7 +7273,7 @@ class RevertFolderResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (folder != null) {
-      _json["folder"] = folder.toJson();
+      _json['folder'] = folder.toJson();
     }
     return _json;
   }
@@ -7290,8 +7289,8 @@ class RevertTagResponse {
   RevertTagResponse();
 
   RevertTagResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("tag")) {
-      tag = Tag.fromJson(_json["tag"]);
+    if (_json.containsKey('tag')) {
+      tag = Tag.fromJson(_json['tag']);
     }
   }
 
@@ -7299,7 +7298,7 @@ class RevertTagResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (tag != null) {
-      _json["tag"] = tag.toJson();
+      _json['tag'] = tag.toJson();
     }
     return _json;
   }
@@ -7315,8 +7314,8 @@ class RevertTemplateResponse {
   RevertTemplateResponse();
 
   RevertTemplateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("template")) {
-      template = CustomTemplate.fromJson(_json["template"]);
+    if (_json.containsKey('template')) {
+      template = CustomTemplate.fromJson(_json['template']);
     }
   }
 
@@ -7324,7 +7323,7 @@ class RevertTemplateResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (template != null) {
-      _json["template"] = template.toJson();
+      _json['template'] = template.toJson();
     }
     return _json;
   }
@@ -7340,8 +7339,8 @@ class RevertTriggerResponse {
   RevertTriggerResponse();
 
   RevertTriggerResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("trigger")) {
-      trigger = Trigger.fromJson(_json["trigger"]);
+    if (_json.containsKey('trigger')) {
+      trigger = Trigger.fromJson(_json['trigger']);
     }
   }
 
@@ -7349,7 +7348,7 @@ class RevertTriggerResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (trigger != null) {
-      _json["trigger"] = trigger.toJson();
+      _json['trigger'] = trigger.toJson();
     }
     return _json;
   }
@@ -7365,8 +7364,8 @@ class RevertVariableResponse {
   RevertVariableResponse();
 
   RevertVariableResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("variable")) {
-      variable = Variable.fromJson(_json["variable"]);
+    if (_json.containsKey('variable')) {
+      variable = Variable.fromJson(_json['variable']);
     }
   }
 
@@ -7374,7 +7373,7 @@ class RevertVariableResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (variable != null) {
-      _json["variable"] = variable.toJson();
+      _json['variable'] = variable.toJson();
     }
     return _json;
   }
@@ -7390,8 +7389,8 @@ class RevertZoneResponse {
   RevertZoneResponse();
 
   RevertZoneResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("zone")) {
-      zone = Zone.fromJson(_json["zone"]);
+    if (_json.containsKey('zone')) {
+      zone = Zone.fromJson(_json['zone']);
     }
   }
 
@@ -7399,7 +7398,7 @@ class RevertZoneResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (zone != null) {
-      _json["zone"] = zone.toJson();
+      _json['zone'] = zone.toJson();
     }
     return _json;
   }
@@ -7419,11 +7418,11 @@ class SetupTag {
   SetupTag();
 
   SetupTag.fromJson(core.Map _json) {
-    if (_json.containsKey("stopOnSetupFailure")) {
-      stopOnSetupFailure = _json["stopOnSetupFailure"];
+    if (_json.containsKey('stopOnSetupFailure')) {
+      stopOnSetupFailure = _json['stopOnSetupFailure'];
     }
-    if (_json.containsKey("tagName")) {
-      tagName = _json["tagName"];
+    if (_json.containsKey('tagName')) {
+      tagName = _json['tagName'];
     }
   }
 
@@ -7431,10 +7430,10 @@ class SetupTag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (stopOnSetupFailure != null) {
-      _json["stopOnSetupFailure"] = stopOnSetupFailure;
+      _json['stopOnSetupFailure'] = stopOnSetupFailure;
     }
     if (tagName != null) {
-      _json["tagName"] = tagName;
+      _json['tagName'] = tagName;
     }
     return _json;
   }
@@ -7451,11 +7450,11 @@ class SyncStatus {
   SyncStatus();
 
   SyncStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("mergeConflict")) {
-      mergeConflict = _json["mergeConflict"];
+    if (_json.containsKey('mergeConflict')) {
+      mergeConflict = _json['mergeConflict'];
     }
-    if (_json.containsKey("syncError")) {
-      syncError = _json["syncError"];
+    if (_json.containsKey('syncError')) {
+      syncError = _json['syncError'];
     }
   }
 
@@ -7463,10 +7462,10 @@ class SyncStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mergeConflict != null) {
-      _json["mergeConflict"] = mergeConflict;
+      _json['mergeConflict'] = mergeConflict;
     }
     if (syncError != null) {
-      _json["syncError"] = syncError;
+      _json['syncError'] = syncError;
     }
     return _json;
   }
@@ -7486,13 +7485,13 @@ class SyncWorkspaceResponse {
   SyncWorkspaceResponse();
 
   SyncWorkspaceResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("mergeConflict")) {
-      mergeConflict = (_json["mergeConflict"] as core.List)
+    if (_json.containsKey('mergeConflict')) {
+      mergeConflict = (_json['mergeConflict'] as core.List)
           .map<MergeConflict>((value) => MergeConflict.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("syncStatus")) {
-      syncStatus = SyncStatus.fromJson(_json["syncStatus"]);
+    if (_json.containsKey('syncStatus')) {
+      syncStatus = SyncStatus.fromJson(_json['syncStatus']);
     }
   }
 
@@ -7500,11 +7499,11 @@ class SyncWorkspaceResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mergeConflict != null) {
-      _json["mergeConflict"] =
+      _json['mergeConflict'] =
           mergeConflict.map((value) => value.toJson()).toList();
     }
     if (syncStatus != null) {
-      _json["syncStatus"] = syncStatus.toJson();
+      _json['syncStatus'] = syncStatus.toJson();
     }
     return _json;
   }
@@ -7641,92 +7640,92 @@ class Tag {
   Tag();
 
   Tag.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("blockingRuleId")) {
+    if (_json.containsKey('blockingRuleId')) {
       blockingRuleId =
-          (_json["blockingRuleId"] as core.List).cast<core.String>();
+          (_json['blockingRuleId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("blockingTriggerId")) {
+    if (_json.containsKey('blockingTriggerId')) {
       blockingTriggerId =
-          (_json["blockingTriggerId"] as core.List).cast<core.String>();
+          (_json['blockingTriggerId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("firingRuleId")) {
-      firingRuleId = (_json["firingRuleId"] as core.List).cast<core.String>();
+    if (_json.containsKey('firingRuleId')) {
+      firingRuleId = (_json['firingRuleId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("firingTriggerId")) {
+    if (_json.containsKey('firingTriggerId')) {
       firingTriggerId =
-          (_json["firingTriggerId"] as core.List).cast<core.String>();
+          (_json['firingTriggerId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("liveOnly")) {
-      liveOnly = _json["liveOnly"];
+    if (_json.containsKey('liveOnly')) {
+      liveOnly = _json['liveOnly'];
     }
-    if (_json.containsKey("monitoringMetadata")) {
-      monitoringMetadata = Parameter.fromJson(_json["monitoringMetadata"]);
+    if (_json.containsKey('monitoringMetadata')) {
+      monitoringMetadata = Parameter.fromJson(_json['monitoringMetadata']);
     }
-    if (_json.containsKey("monitoringMetadataTagNameKey")) {
-      monitoringMetadataTagNameKey = _json["monitoringMetadataTagNameKey"];
+    if (_json.containsKey('monitoringMetadataTagNameKey')) {
+      monitoringMetadataTagNameKey = _json['monitoringMetadataTagNameKey'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parentFolderId")) {
-      parentFolderId = _json["parentFolderId"];
+    if (_json.containsKey('parentFolderId')) {
+      parentFolderId = _json['parentFolderId'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("paused")) {
-      paused = _json["paused"];
+    if (_json.containsKey('paused')) {
+      paused = _json['paused'];
     }
-    if (_json.containsKey("priority")) {
-      priority = Parameter.fromJson(_json["priority"]);
+    if (_json.containsKey('priority')) {
+      priority = Parameter.fromJson(_json['priority']);
     }
-    if (_json.containsKey("scheduleEndMs")) {
-      scheduleEndMs = _json["scheduleEndMs"];
+    if (_json.containsKey('scheduleEndMs')) {
+      scheduleEndMs = _json['scheduleEndMs'];
     }
-    if (_json.containsKey("scheduleStartMs")) {
-      scheduleStartMs = _json["scheduleStartMs"];
+    if (_json.containsKey('scheduleStartMs')) {
+      scheduleStartMs = _json['scheduleStartMs'];
     }
-    if (_json.containsKey("setupTag")) {
-      setupTag = (_json["setupTag"] as core.List)
+    if (_json.containsKey('setupTag')) {
+      setupTag = (_json['setupTag'] as core.List)
           .map<SetupTag>((value) => SetupTag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tagFiringOption")) {
-      tagFiringOption = _json["tagFiringOption"];
+    if (_json.containsKey('tagFiringOption')) {
+      tagFiringOption = _json['tagFiringOption'];
     }
-    if (_json.containsKey("tagId")) {
-      tagId = _json["tagId"];
+    if (_json.containsKey('tagId')) {
+      tagId = _json['tagId'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("teardownTag")) {
-      teardownTag = (_json["teardownTag"] as core.List)
+    if (_json.containsKey('teardownTag')) {
+      teardownTag = (_json['teardownTag'] as core.List)
           .map<TeardownTag>((value) => TeardownTag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
   }
 
@@ -7734,83 +7733,83 @@ class Tag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (blockingRuleId != null) {
-      _json["blockingRuleId"] = blockingRuleId;
+      _json['blockingRuleId'] = blockingRuleId;
     }
     if (blockingTriggerId != null) {
-      _json["blockingTriggerId"] = blockingTriggerId;
+      _json['blockingTriggerId'] = blockingTriggerId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (firingRuleId != null) {
-      _json["firingRuleId"] = firingRuleId;
+      _json['firingRuleId'] = firingRuleId;
     }
     if (firingTriggerId != null) {
-      _json["firingTriggerId"] = firingTriggerId;
+      _json['firingTriggerId'] = firingTriggerId;
     }
     if (liveOnly != null) {
-      _json["liveOnly"] = liveOnly;
+      _json['liveOnly'] = liveOnly;
     }
     if (monitoringMetadata != null) {
-      _json["monitoringMetadata"] = monitoringMetadata.toJson();
+      _json['monitoringMetadata'] = monitoringMetadata.toJson();
     }
     if (monitoringMetadataTagNameKey != null) {
-      _json["monitoringMetadataTagNameKey"] = monitoringMetadataTagNameKey;
+      _json['monitoringMetadataTagNameKey'] = monitoringMetadataTagNameKey;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
-      _json["parentFolderId"] = parentFolderId;
+      _json['parentFolderId'] = parentFolderId;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (paused != null) {
-      _json["paused"] = paused;
+      _json['paused'] = paused;
     }
     if (priority != null) {
-      _json["priority"] = priority.toJson();
+      _json['priority'] = priority.toJson();
     }
     if (scheduleEndMs != null) {
-      _json["scheduleEndMs"] = scheduleEndMs;
+      _json['scheduleEndMs'] = scheduleEndMs;
     }
     if (scheduleStartMs != null) {
-      _json["scheduleStartMs"] = scheduleStartMs;
+      _json['scheduleStartMs'] = scheduleStartMs;
     }
     if (setupTag != null) {
-      _json["setupTag"] = setupTag.map((value) => value.toJson()).toList();
+      _json['setupTag'] = setupTag.map((value) => value.toJson()).toList();
     }
     if (tagFiringOption != null) {
-      _json["tagFiringOption"] = tagFiringOption;
+      _json['tagFiringOption'] = tagFiringOption;
     }
     if (tagId != null) {
-      _json["tagId"] = tagId;
+      _json['tagId'] = tagId;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (teardownTag != null) {
-      _json["teardownTag"] =
+      _json['teardownTag'] =
           teardownTag.map((value) => value.toJson()).toList();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     return _json;
   }
@@ -7830,11 +7829,11 @@ class TeardownTag {
   TeardownTag();
 
   TeardownTag.fromJson(core.Map _json) {
-    if (_json.containsKey("stopTeardownOnFailure")) {
-      stopTeardownOnFailure = _json["stopTeardownOnFailure"];
+    if (_json.containsKey('stopTeardownOnFailure')) {
+      stopTeardownOnFailure = _json['stopTeardownOnFailure'];
     }
-    if (_json.containsKey("tagName")) {
-      tagName = _json["tagName"];
+    if (_json.containsKey('tagName')) {
+      tagName = _json['tagName'];
     }
   }
 
@@ -7842,10 +7841,10 @@ class TeardownTag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (stopTeardownOnFailure != null) {
-      _json["stopTeardownOnFailure"] = stopTeardownOnFailure;
+      _json['stopTeardownOnFailure'] = stopTeardownOnFailure;
     }
     if (tagName != null) {
-      _json["tagName"] = tagName;
+      _json['tagName'] = tagName;
     }
     return _json;
   }
@@ -8061,114 +8060,114 @@ class Trigger {
   Trigger();
 
   Trigger.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("autoEventFilter")) {
-      autoEventFilter = (_json["autoEventFilter"] as core.List)
+    if (_json.containsKey('autoEventFilter')) {
+      autoEventFilter = (_json['autoEventFilter'] as core.List)
           .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("checkValidation")) {
-      checkValidation = Parameter.fromJson(_json["checkValidation"]);
+    if (_json.containsKey('checkValidation')) {
+      checkValidation = Parameter.fromJson(_json['checkValidation']);
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("continuousTimeMinMilliseconds")) {
+    if (_json.containsKey('continuousTimeMinMilliseconds')) {
       continuousTimeMinMilliseconds =
-          Parameter.fromJson(_json["continuousTimeMinMilliseconds"]);
+          Parameter.fromJson(_json['continuousTimeMinMilliseconds']);
     }
-    if (_json.containsKey("customEventFilter")) {
-      customEventFilter = (_json["customEventFilter"] as core.List)
+    if (_json.containsKey('customEventFilter')) {
+      customEventFilter = (_json['customEventFilter'] as core.List)
           .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("eventName")) {
-      eventName = Parameter.fromJson(_json["eventName"]);
+    if (_json.containsKey('eventName')) {
+      eventName = Parameter.fromJson(_json['eventName']);
     }
-    if (_json.containsKey("filter")) {
-      filter = (_json["filter"] as core.List)
+    if (_json.containsKey('filter')) {
+      filter = (_json['filter'] as core.List)
           .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("horizontalScrollPercentageList")) {
+    if (_json.containsKey('horizontalScrollPercentageList')) {
       horizontalScrollPercentageList =
-          Parameter.fromJson(_json["horizontalScrollPercentageList"]);
+          Parameter.fromJson(_json['horizontalScrollPercentageList']);
     }
-    if (_json.containsKey("interval")) {
-      interval = Parameter.fromJson(_json["interval"]);
+    if (_json.containsKey('interval')) {
+      interval = Parameter.fromJson(_json['interval']);
     }
-    if (_json.containsKey("intervalSeconds")) {
-      intervalSeconds = Parameter.fromJson(_json["intervalSeconds"]);
+    if (_json.containsKey('intervalSeconds')) {
+      intervalSeconds = Parameter.fromJson(_json['intervalSeconds']);
     }
-    if (_json.containsKey("limit")) {
-      limit = Parameter.fromJson(_json["limit"]);
+    if (_json.containsKey('limit')) {
+      limit = Parameter.fromJson(_json['limit']);
     }
-    if (_json.containsKey("maxTimerLengthSeconds")) {
+    if (_json.containsKey('maxTimerLengthSeconds')) {
       maxTimerLengthSeconds =
-          Parameter.fromJson(_json["maxTimerLengthSeconds"]);
+          Parameter.fromJson(_json['maxTimerLengthSeconds']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parentFolderId")) {
-      parentFolderId = _json["parentFolderId"];
+    if (_json.containsKey('parentFolderId')) {
+      parentFolderId = _json['parentFolderId'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("selector")) {
-      selector = Parameter.fromJson(_json["selector"]);
+    if (_json.containsKey('selector')) {
+      selector = Parameter.fromJson(_json['selector']);
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("totalTimeMinMilliseconds")) {
+    if (_json.containsKey('totalTimeMinMilliseconds')) {
       totalTimeMinMilliseconds =
-          Parameter.fromJson(_json["totalTimeMinMilliseconds"]);
+          Parameter.fromJson(_json['totalTimeMinMilliseconds']);
     }
-    if (_json.containsKey("triggerId")) {
-      triggerId = _json["triggerId"];
+    if (_json.containsKey('triggerId')) {
+      triggerId = _json['triggerId'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("uniqueTriggerId")) {
-      uniqueTriggerId = Parameter.fromJson(_json["uniqueTriggerId"]);
+    if (_json.containsKey('uniqueTriggerId')) {
+      uniqueTriggerId = Parameter.fromJson(_json['uniqueTriggerId']);
     }
-    if (_json.containsKey("verticalScrollPercentageList")) {
+    if (_json.containsKey('verticalScrollPercentageList')) {
       verticalScrollPercentageList =
-          Parameter.fromJson(_json["verticalScrollPercentageList"]);
+          Parameter.fromJson(_json['verticalScrollPercentageList']);
     }
-    if (_json.containsKey("visibilitySelector")) {
-      visibilitySelector = Parameter.fromJson(_json["visibilitySelector"]);
+    if (_json.containsKey('visibilitySelector')) {
+      visibilitySelector = Parameter.fromJson(_json['visibilitySelector']);
     }
-    if (_json.containsKey("visiblePercentageMax")) {
-      visiblePercentageMax = Parameter.fromJson(_json["visiblePercentageMax"]);
+    if (_json.containsKey('visiblePercentageMax')) {
+      visiblePercentageMax = Parameter.fromJson(_json['visiblePercentageMax']);
     }
-    if (_json.containsKey("visiblePercentageMin")) {
-      visiblePercentageMin = Parameter.fromJson(_json["visiblePercentageMin"]);
+    if (_json.containsKey('visiblePercentageMin')) {
+      visiblePercentageMin = Parameter.fromJson(_json['visiblePercentageMin']);
     }
-    if (_json.containsKey("waitForTags")) {
-      waitForTags = Parameter.fromJson(_json["waitForTags"]);
+    if (_json.containsKey('waitForTags')) {
+      waitForTags = Parameter.fromJson(_json['waitForTags']);
     }
-    if (_json.containsKey("waitForTagsTimeout")) {
-      waitForTagsTimeout = Parameter.fromJson(_json["waitForTagsTimeout"]);
+    if (_json.containsKey('waitForTagsTimeout')) {
+      waitForTagsTimeout = Parameter.fromJson(_json['waitForTagsTimeout']);
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
   }
 
@@ -8176,105 +8175,105 @@ class Trigger {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (autoEventFilter != null) {
-      _json["autoEventFilter"] =
+      _json['autoEventFilter'] =
           autoEventFilter.map((value) => value.toJson()).toList();
     }
     if (checkValidation != null) {
-      _json["checkValidation"] = checkValidation.toJson();
+      _json['checkValidation'] = checkValidation.toJson();
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (continuousTimeMinMilliseconds != null) {
-      _json["continuousTimeMinMilliseconds"] =
+      _json['continuousTimeMinMilliseconds'] =
           continuousTimeMinMilliseconds.toJson();
     }
     if (customEventFilter != null) {
-      _json["customEventFilter"] =
+      _json['customEventFilter'] =
           customEventFilter.map((value) => value.toJson()).toList();
     }
     if (eventName != null) {
-      _json["eventName"] = eventName.toJson();
+      _json['eventName'] = eventName.toJson();
     }
     if (filter != null) {
-      _json["filter"] = filter.map((value) => value.toJson()).toList();
+      _json['filter'] = filter.map((value) => value.toJson()).toList();
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (horizontalScrollPercentageList != null) {
-      _json["horizontalScrollPercentageList"] =
+      _json['horizontalScrollPercentageList'] =
           horizontalScrollPercentageList.toJson();
     }
     if (interval != null) {
-      _json["interval"] = interval.toJson();
+      _json['interval'] = interval.toJson();
     }
     if (intervalSeconds != null) {
-      _json["intervalSeconds"] = intervalSeconds.toJson();
+      _json['intervalSeconds'] = intervalSeconds.toJson();
     }
     if (limit != null) {
-      _json["limit"] = limit.toJson();
+      _json['limit'] = limit.toJson();
     }
     if (maxTimerLengthSeconds != null) {
-      _json["maxTimerLengthSeconds"] = maxTimerLengthSeconds.toJson();
+      _json['maxTimerLengthSeconds'] = maxTimerLengthSeconds.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
-      _json["parentFolderId"] = parentFolderId;
+      _json['parentFolderId'] = parentFolderId;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (selector != null) {
-      _json["selector"] = selector.toJson();
+      _json['selector'] = selector.toJson();
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (totalTimeMinMilliseconds != null) {
-      _json["totalTimeMinMilliseconds"] = totalTimeMinMilliseconds.toJson();
+      _json['totalTimeMinMilliseconds'] = totalTimeMinMilliseconds.toJson();
     }
     if (triggerId != null) {
-      _json["triggerId"] = triggerId;
+      _json['triggerId'] = triggerId;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (uniqueTriggerId != null) {
-      _json["uniqueTriggerId"] = uniqueTriggerId.toJson();
+      _json['uniqueTriggerId'] = uniqueTriggerId.toJson();
     }
     if (verticalScrollPercentageList != null) {
-      _json["verticalScrollPercentageList"] =
+      _json['verticalScrollPercentageList'] =
           verticalScrollPercentageList.toJson();
     }
     if (visibilitySelector != null) {
-      _json["visibilitySelector"] = visibilitySelector.toJson();
+      _json['visibilitySelector'] = visibilitySelector.toJson();
     }
     if (visiblePercentageMax != null) {
-      _json["visiblePercentageMax"] = visiblePercentageMax.toJson();
+      _json['visiblePercentageMax'] = visiblePercentageMax.toJson();
     }
     if (visiblePercentageMin != null) {
-      _json["visiblePercentageMin"] = visiblePercentageMin.toJson();
+      _json['visiblePercentageMin'] = visiblePercentageMin.toJson();
     }
     if (waitForTags != null) {
-      _json["waitForTags"] = waitForTags.toJson();
+      _json['waitForTags'] = waitForTags.toJson();
     }
     if (waitForTagsTimeout != null) {
-      _json["waitForTagsTimeout"] = waitForTagsTimeout.toJson();
+      _json['waitForTagsTimeout'] = waitForTagsTimeout.toJson();
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     return _json;
   }
@@ -8304,22 +8303,22 @@ class UserPermission {
   UserPermission();
 
   UserPermission.fromJson(core.Map _json) {
-    if (_json.containsKey("accountAccess")) {
-      accountAccess = AccountAccess.fromJson(_json["accountAccess"]);
+    if (_json.containsKey('accountAccess')) {
+      accountAccess = AccountAccess.fromJson(_json['accountAccess']);
     }
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerAccess")) {
-      containerAccess = (_json["containerAccess"] as core.List)
+    if (_json.containsKey('containerAccess')) {
+      containerAccess = (_json['containerAccess'] as core.List)
           .map<ContainerAccess>((value) => ContainerAccess.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("emailAddress")) {
-      emailAddress = _json["emailAddress"];
+    if (_json.containsKey('emailAddress')) {
+      emailAddress = _json['emailAddress'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
   }
 
@@ -8327,20 +8326,20 @@ class UserPermission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountAccess != null) {
-      _json["accountAccess"] = accountAccess.toJson();
+      _json['accountAccess'] = accountAccess.toJson();
     }
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerAccess != null) {
-      _json["containerAccess"] =
+      _json['containerAccess'] =
           containerAccess.map((value) => value.toJson()).toList();
     }
     if (emailAddress != null) {
-      _json["emailAddress"] = emailAddress;
+      _json['emailAddress'] = emailAddress;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     return _json;
   }
@@ -8424,60 +8423,60 @@ class Variable {
   Variable();
 
   Variable.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("disablingTriggerId")) {
+    if (_json.containsKey('disablingTriggerId')) {
       disablingTriggerId =
-          (_json["disablingTriggerId"] as core.List).cast<core.String>();
+          (_json['disablingTriggerId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("enablingTriggerId")) {
+    if (_json.containsKey('enablingTriggerId')) {
       enablingTriggerId =
-          (_json["enablingTriggerId"] as core.List).cast<core.String>();
+          (_json['enablingTriggerId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("formatValue")) {
-      formatValue = VariableFormatValue.fromJson(_json["formatValue"]);
+    if (_json.containsKey('formatValue')) {
+      formatValue = VariableFormatValue.fromJson(_json['formatValue']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parentFolderId")) {
-      parentFolderId = _json["parentFolderId"];
+    if (_json.containsKey('parentFolderId')) {
+      parentFolderId = _json['parentFolderId'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("scheduleEndMs")) {
-      scheduleEndMs = _json["scheduleEndMs"];
+    if (_json.containsKey('scheduleEndMs')) {
+      scheduleEndMs = _json['scheduleEndMs'];
     }
-    if (_json.containsKey("scheduleStartMs")) {
-      scheduleStartMs = _json["scheduleStartMs"];
+    if (_json.containsKey('scheduleStartMs')) {
+      scheduleStartMs = _json['scheduleStartMs'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("variableId")) {
-      variableId = _json["variableId"];
+    if (_json.containsKey('variableId')) {
+      variableId = _json['variableId'];
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
   }
 
@@ -8485,55 +8484,55 @@ class Variable {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (disablingTriggerId != null) {
-      _json["disablingTriggerId"] = disablingTriggerId;
+      _json['disablingTriggerId'] = disablingTriggerId;
     }
     if (enablingTriggerId != null) {
-      _json["enablingTriggerId"] = enablingTriggerId;
+      _json['enablingTriggerId'] = enablingTriggerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (formatValue != null) {
-      _json["formatValue"] = formatValue.toJson();
+      _json['formatValue'] = formatValue.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
-      _json["parentFolderId"] = parentFolderId;
+      _json['parentFolderId'] = parentFolderId;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (scheduleEndMs != null) {
-      _json["scheduleEndMs"] = scheduleEndMs;
+      _json['scheduleEndMs'] = scheduleEndMs;
     }
     if (scheduleStartMs != null) {
-      _json["scheduleStartMs"] = scheduleStartMs;
+      _json['scheduleStartMs'] = scheduleStartMs;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (variableId != null) {
-      _json["variableId"] = variableId;
+      _json['variableId'] = variableId;
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     return _json;
   }
@@ -8563,21 +8562,21 @@ class VariableFormatValue {
   VariableFormatValue();
 
   VariableFormatValue.fromJson(core.Map _json) {
-    if (_json.containsKey("caseConversionType")) {
-      caseConversionType = _json["caseConversionType"];
+    if (_json.containsKey('caseConversionType')) {
+      caseConversionType = _json['caseConversionType'];
     }
-    if (_json.containsKey("convertFalseToValue")) {
-      convertFalseToValue = Parameter.fromJson(_json["convertFalseToValue"]);
+    if (_json.containsKey('convertFalseToValue')) {
+      convertFalseToValue = Parameter.fromJson(_json['convertFalseToValue']);
     }
-    if (_json.containsKey("convertNullToValue")) {
-      convertNullToValue = Parameter.fromJson(_json["convertNullToValue"]);
+    if (_json.containsKey('convertNullToValue')) {
+      convertNullToValue = Parameter.fromJson(_json['convertNullToValue']);
     }
-    if (_json.containsKey("convertTrueToValue")) {
-      convertTrueToValue = Parameter.fromJson(_json["convertTrueToValue"]);
+    if (_json.containsKey('convertTrueToValue')) {
+      convertTrueToValue = Parameter.fromJson(_json['convertTrueToValue']);
     }
-    if (_json.containsKey("convertUndefinedToValue")) {
+    if (_json.containsKey('convertUndefinedToValue')) {
       convertUndefinedToValue =
-          Parameter.fromJson(_json["convertUndefinedToValue"]);
+          Parameter.fromJson(_json['convertUndefinedToValue']);
     }
   }
 
@@ -8585,19 +8584,19 @@ class VariableFormatValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (caseConversionType != null) {
-      _json["caseConversionType"] = caseConversionType;
+      _json['caseConversionType'] = caseConversionType;
     }
     if (convertFalseToValue != null) {
-      _json["convertFalseToValue"] = convertFalseToValue.toJson();
+      _json['convertFalseToValue'] = convertFalseToValue.toJson();
     }
     if (convertNullToValue != null) {
-      _json["convertNullToValue"] = convertNullToValue.toJson();
+      _json['convertNullToValue'] = convertNullToValue.toJson();
     }
     if (convertTrueToValue != null) {
-      _json["convertTrueToValue"] = convertTrueToValue.toJson();
+      _json['convertTrueToValue'] = convertTrueToValue.toJson();
     }
     if (convertUndefinedToValue != null) {
-      _json["convertUndefinedToValue"] = convertUndefinedToValue.toJson();
+      _json['convertUndefinedToValue'] = convertUndefinedToValue.toJson();
     }
     return _json;
   }
@@ -8637,29 +8636,29 @@ class Workspace {
   Workspace();
 
   Workspace.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
   }
 
@@ -8667,28 +8666,28 @@ class Workspace {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     return _json;
   }
@@ -8736,44 +8735,44 @@ class Zone {
   Zone();
 
   Zone.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("boundary")) {
-      boundary = ZoneBoundary.fromJson(_json["boundary"]);
+    if (_json.containsKey('boundary')) {
+      boundary = ZoneBoundary.fromJson(_json['boundary']);
     }
-    if (_json.containsKey("childContainer")) {
-      childContainer = (_json["childContainer"] as core.List)
+    if (_json.containsKey('childContainer')) {
+      childContainer = (_json['childContainer'] as core.List)
           .map<ZoneChildContainer>(
               (value) => ZoneChildContainer.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
+    if (_json.containsKey('path')) {
+      path = _json['path'];
     }
-    if (_json.containsKey("tagManagerUrl")) {
-      tagManagerUrl = _json["tagManagerUrl"];
+    if (_json.containsKey('tagManagerUrl')) {
+      tagManagerUrl = _json['tagManagerUrl'];
     }
-    if (_json.containsKey("typeRestriction")) {
-      typeRestriction = ZoneTypeRestriction.fromJson(_json["typeRestriction"]);
+    if (_json.containsKey('typeRestriction')) {
+      typeRestriction = ZoneTypeRestriction.fromJson(_json['typeRestriction']);
     }
-    if (_json.containsKey("workspaceId")) {
-      workspaceId = _json["workspaceId"];
+    if (_json.containsKey('workspaceId')) {
+      workspaceId = _json['workspaceId'];
     }
-    if (_json.containsKey("zoneId")) {
-      zoneId = _json["zoneId"];
+    if (_json.containsKey('zoneId')) {
+      zoneId = _json['zoneId'];
     }
   }
 
@@ -8781,41 +8780,41 @@ class Zone {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (boundary != null) {
-      _json["boundary"] = boundary.toJson();
+      _json['boundary'] = boundary.toJson();
     }
     if (childContainer != null) {
-      _json["childContainer"] =
+      _json['childContainer'] =
           childContainer.map((value) => value.toJson()).toList();
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (path != null) {
-      _json["path"] = path;
+      _json['path'] = path;
     }
     if (tagManagerUrl != null) {
-      _json["tagManagerUrl"] = tagManagerUrl;
+      _json['tagManagerUrl'] = tagManagerUrl;
     }
     if (typeRestriction != null) {
-      _json["typeRestriction"] = typeRestriction.toJson();
+      _json['typeRestriction'] = typeRestriction.toJson();
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = workspaceId;
+      _json['workspaceId'] = workspaceId;
     }
     if (zoneId != null) {
-      _json["zoneId"] = zoneId;
+      _json['zoneId'] = zoneId;
     }
     return _json;
   }
@@ -8833,14 +8832,14 @@ class ZoneBoundary {
   ZoneBoundary();
 
   ZoneBoundary.fromJson(core.Map _json) {
-    if (_json.containsKey("condition")) {
-      condition = (_json["condition"] as core.List)
+    if (_json.containsKey('condition')) {
+      condition = (_json['condition'] as core.List)
           .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("customEvaluationTriggerId")) {
+    if (_json.containsKey('customEvaluationTriggerId')) {
       customEvaluationTriggerId =
-          (_json["customEvaluationTriggerId"] as core.List).cast<core.String>();
+          (_json['customEvaluationTriggerId'] as core.List).cast<core.String>();
     }
   }
 
@@ -8848,10 +8847,10 @@ class ZoneBoundary {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = condition.map((value) => value.toJson()).toList();
+      _json['condition'] = condition.map((value) => value.toJson()).toList();
     }
     if (customEvaluationTriggerId != null) {
-      _json["customEvaluationTriggerId"] = customEvaluationTriggerId;
+      _json['customEvaluationTriggerId'] = customEvaluationTriggerId;
     }
     return _json;
   }
@@ -8868,11 +8867,11 @@ class ZoneChildContainer {
   ZoneChildContainer();
 
   ZoneChildContainer.fromJson(core.Map _json) {
-    if (_json.containsKey("nickname")) {
-      nickname = _json["nickname"];
+    if (_json.containsKey('nickname')) {
+      nickname = _json['nickname'];
     }
-    if (_json.containsKey("publicId")) {
-      publicId = _json["publicId"];
+    if (_json.containsKey('publicId')) {
+      publicId = _json['publicId'];
     }
   }
 
@@ -8880,10 +8879,10 @@ class ZoneChildContainer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nickname != null) {
-      _json["nickname"] = nickname;
+      _json['nickname'] = nickname;
     }
     if (publicId != null) {
-      _json["publicId"] = publicId;
+      _json['publicId'] = publicId;
     }
     return _json;
   }
@@ -8900,12 +8899,12 @@ class ZoneTypeRestriction {
   ZoneTypeRestriction();
 
   ZoneTypeRestriction.fromJson(core.Map _json) {
-    if (_json.containsKey("enable")) {
-      enable = _json["enable"];
+    if (_json.containsKey('enable')) {
+      enable = _json['enable'];
     }
-    if (_json.containsKey("whitelistedTypeId")) {
+    if (_json.containsKey('whitelistedTypeId')) {
       whitelistedTypeId =
-          (_json["whitelistedTypeId"] as core.List).cast<core.String>();
+          (_json['whitelistedTypeId'] as core.List).cast<core.String>();
     }
   }
 
@@ -8913,10 +8912,10 @@ class ZoneTypeRestriction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enable != null) {
-      _json["enable"] = enable;
+      _json['enable'] = enable;
     }
     if (whitelistedTypeId != null) {
-      _json["whitelistedTypeId"] = whitelistedTypeId;
+      _json['whitelistedTypeId'] = whitelistedTypeId;
     }
     return _json;
   }

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -46,15 +45,15 @@ const core.String USER_AGENT = 'dart-api-client playcustomapp/v1';
 class PlaycustomappApi {
   /// View and manage your Google Play Developer account
   static const AndroidpublisherScope =
-      "https://www.googleapis.com/auth/androidpublisher";
+      'https://www.googleapis.com/auth/androidpublisher';
 
   final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
   PlaycustomappApi(http.Client client,
-      {core.String rootUrl = "https://playcustomapp.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://playcustomapp.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -111,10 +110,10 @@ class AccountsCustomAppsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (account == null) {
-      throw core.ArgumentError("Parameter account is required.");
+      throw core.ArgumentError('Parameter account is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -132,7 +131,7 @@ class AccountsCustomAppsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -158,14 +157,14 @@ class CustomApp {
   CustomApp();
 
   CustomApp.fromJson(core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("packageName")) {
-      packageName = _json["packageName"];
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -173,13 +172,13 @@ class CustomApp {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (packageName != null) {
-      _json["packageName"] = packageName;
+      _json['packageName'] = packageName;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }

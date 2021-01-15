@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,7 +36,7 @@ const core.String USER_AGENT = 'dart-api-client sasportal/v1alpha1';
 class SasportalApi {
   /// View your email address
   static const UserinfoEmailScope =
-      "https://www.googleapis.com/auth/userinfo.email";
+      'https://www.googleapis.com/auth/userinfo.email';
 
   final commons.ApiRequester _requester;
 
@@ -48,8 +47,8 @@ class SasportalApi {
   PoliciesResourceApi get policies => PoliciesResourceApi(_requester);
 
   SasportalApi(http.Client client,
-      {core.String rootUrl = "https://sasportal.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://sasportal.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -94,17 +93,17 @@ class CustomersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -147,20 +146,20 @@ class CustomersResourceApi {
     core.String _body;
 
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/customers';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -209,20 +208,20 @@ class CustomersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -277,10 +276,10 @@ class CustomersDeploymentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -288,7 +287,7 @@ class CustomersDeploymentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -340,10 +339,10 @@ class CustomersDeploymentsDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -352,7 +351,7 @@ class CustomersDeploymentsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -397,10 +396,10 @@ class CustomersDeploymentsDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -409,7 +408,7 @@ class CustomersDeploymentsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -461,19 +460,19 @@ class CustomersDeploymentsDevicesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -482,7 +481,7 @@ class CustomersDeploymentsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -535,10 +534,10 @@ class CustomersDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -547,7 +546,7 @@ class CustomersDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -593,10 +592,10 @@ class CustomersDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -605,7 +604,7 @@ class CustomersDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -650,10 +649,10 @@ class CustomersDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -662,7 +661,7 @@ class CustomersDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -701,17 +700,17 @@ class CustomersDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -750,17 +749,17 @@ class CustomersDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -812,19 +811,19 @@ class CustomersDevicesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -833,7 +832,7 @@ class CustomersDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -879,10 +878,10 @@ class CustomersDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -890,7 +889,7 @@ class CustomersDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -938,20 +937,20 @@ class CustomersDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -996,10 +995,10 @@ class CustomersDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -1008,7 +1007,7 @@ class CustomersDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1053,10 +1052,10 @@ class CustomersDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -1065,7 +1064,7 @@ class CustomersDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1120,10 +1119,10 @@ class CustomersNodesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -1132,7 +1131,7 @@ class CustomersNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1171,17 +1170,17 @@ class CustomersNodesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1220,17 +1219,17 @@ class CustomersNodesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1276,16 +1275,16 @@ class CustomersNodesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -1294,7 +1293,7 @@ class CustomersNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1339,10 +1338,10 @@ class CustomersNodesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1350,7 +1349,7 @@ class CustomersNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1398,20 +1397,20 @@ class CustomersNodesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1464,10 +1463,10 @@ class CustomersNodesNodesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -1476,7 +1475,7 @@ class CustomersNodesNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1522,16 +1521,16 @@ class CustomersNodesNodesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -1540,7 +1539,7 @@ class CustomersNodesNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1595,17 +1594,17 @@ class DeploymentsDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1644,17 +1643,17 @@ class DeploymentsDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1699,10 +1698,10 @@ class DeploymentsDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1710,7 +1709,7 @@ class DeploymentsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1758,20 +1757,20 @@ class DeploymentsDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1816,10 +1815,10 @@ class DeploymentsDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -1828,7 +1827,7 @@ class DeploymentsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1873,10 +1872,10 @@ class DeploymentsDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -1885,7 +1884,7 @@ class DeploymentsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1932,14 +1931,14 @@ class InstallerResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/installer:generateSecret';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1981,14 +1980,14 @@ class InstallerResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/installer:validate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2039,17 +2038,17 @@ class NodesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2104,10 +2103,10 @@ class NodesDeploymentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2115,7 +2114,7 @@ class NodesDeploymentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2167,10 +2166,10 @@ class NodesDeploymentsDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2179,7 +2178,7 @@ class NodesDeploymentsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2224,10 +2223,10 @@ class NodesDeploymentsDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2236,7 +2235,7 @@ class NodesDeploymentsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2288,19 +2287,19 @@ class NodesDeploymentsDevicesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2309,7 +2308,7 @@ class NodesDeploymentsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2361,10 +2360,10 @@ class NodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2373,7 +2372,7 @@ class NodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2419,10 +2418,10 @@ class NodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2431,7 +2430,7 @@ class NodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2476,10 +2475,10 @@ class NodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2488,7 +2487,7 @@ class NodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2527,17 +2526,17 @@ class NodesDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2576,17 +2575,17 @@ class NodesDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2638,19 +2637,19 @@ class NodesDevicesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2659,7 +2658,7 @@ class NodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2705,10 +2704,10 @@ class NodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2716,7 +2715,7 @@ class NodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2764,20 +2763,20 @@ class NodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2822,10 +2821,10 @@ class NodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2834,7 +2833,7 @@ class NodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2879,10 +2878,10 @@ class NodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2891,7 +2890,7 @@ class NodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2948,10 +2947,10 @@ class NodesNodesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -2960,7 +2959,7 @@ class NodesNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2999,17 +2998,17 @@ class NodesNodesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3048,17 +3047,17 @@ class NodesNodesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3104,16 +3103,16 @@ class NodesNodesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -3122,7 +3121,7 @@ class NodesNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3167,10 +3166,10 @@ class NodesNodesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -3178,7 +3177,7 @@ class NodesNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3226,20 +3225,20 @@ class NodesNodesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3291,10 +3290,10 @@ class NodesNodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -3303,7 +3302,7 @@ class NodesNodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3349,10 +3348,10 @@ class NodesNodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -3361,7 +3360,7 @@ class NodesNodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3406,10 +3405,10 @@ class NodesNodesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -3418,7 +3417,7 @@ class NodesNodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3470,19 +3469,19 @@ class NodesNodesDevicesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -3491,7 +3490,7 @@ class NodesNodesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3544,10 +3543,10 @@ class NodesNodesNodesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -3556,7 +3555,7 @@ class NodesNodesNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3602,16 +3601,16 @@ class NodesNodesNodesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/' +
@@ -3620,7 +3619,7 @@ class NodesNodesNodesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3668,14 +3667,14 @@ class PoliciesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/policies:get';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3717,14 +3716,14 @@ class PoliciesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/policies:set';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3765,14 +3764,14 @@ class PoliciesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1alpha1/policies:test';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3798,11 +3797,11 @@ class SasPortalAssignment {
   SasPortalAssignment();
 
   SasPortalAssignment.fromJson(core.Map _json) {
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List).cast<core.String>();
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -3810,10 +3809,10 @@ class SasPortalAssignment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (members != null) {
-      _json["members"] = members;
+      _json['members'] = members;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -3829,8 +3828,8 @@ class SasPortalBulkCreateDeviceRequest {
   SasPortalBulkCreateDeviceRequest();
 
   SasPortalBulkCreateDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("csv")) {
-      csv = _json["csv"];
+    if (_json.containsKey('csv')) {
+      csv = _json['csv'];
     }
   }
 
@@ -3838,7 +3837,7 @@ class SasPortalBulkCreateDeviceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (csv != null) {
-      _json["csv"] = csv;
+      _json['csv'] = csv;
     }
     return _json;
   }
@@ -3852,8 +3851,8 @@ class SasPortalBulkCreateDeviceResponse {
   SasPortalBulkCreateDeviceResponse();
 
   SasPortalBulkCreateDeviceResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("devices")) {
-      devices = (_json["devices"] as core.List)
+    if (_json.containsKey('devices')) {
+      devices = (_json['devices'] as core.List)
           .map<SasPortalDevice>((value) => SasPortalDevice.fromJson(value))
           .toList();
     }
@@ -3863,7 +3862,7 @@ class SasPortalBulkCreateDeviceResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.map((value) => value.toJson()).toList();
+      _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3879,7 +3878,7 @@ class SasPortalCreateSignedDeviceRequest {
 
   set encodedDeviceAsBytes(core.List<core.int> _bytes) {
     encodedDevice =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Required. Unique installer id (cpiId) from the Certified Professional
@@ -3889,11 +3888,11 @@ class SasPortalCreateSignedDeviceRequest {
   SasPortalCreateSignedDeviceRequest();
 
   SasPortalCreateSignedDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("encodedDevice")) {
-      encodedDevice = _json["encodedDevice"];
+    if (_json.containsKey('encodedDevice')) {
+      encodedDevice = _json['encodedDevice'];
     }
-    if (_json.containsKey("installerId")) {
-      installerId = _json["installerId"];
+    if (_json.containsKey('installerId')) {
+      installerId = _json['installerId'];
     }
   }
 
@@ -3901,10 +3900,10 @@ class SasPortalCreateSignedDeviceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (encodedDevice != null) {
-      _json["encodedDevice"] = encodedDevice;
+      _json['encodedDevice'] = encodedDevice;
     }
     if (installerId != null) {
-      _json["installerId"] = installerId;
+      _json['installerId'] = installerId;
     }
     return _json;
   }
@@ -3924,14 +3923,14 @@ class SasPortalCustomer {
   SasPortalCustomer();
 
   SasPortalCustomer.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("sasUserIds")) {
-      sasUserIds = (_json["sasUserIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('sasUserIds')) {
+      sasUserIds = (_json['sasUserIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -3939,13 +3938,13 @@ class SasPortalCustomer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (sasUserIds != null) {
-      _json["sasUserIds"] = sasUserIds;
+      _json['sasUserIds'] = sasUserIds;
     }
     return _json;
   }
@@ -3989,37 +3988,37 @@ class SasPortalDevice {
   SasPortalDevice();
 
   SasPortalDevice.fromJson(core.Map _json) {
-    if (_json.containsKey("activeConfig")) {
-      activeConfig = SasPortalDeviceConfig.fromJson(_json["activeConfig"]);
+    if (_json.containsKey('activeConfig')) {
+      activeConfig = SasPortalDeviceConfig.fromJson(_json['activeConfig']);
     }
-    if (_json.containsKey("deviceMetadata")) {
+    if (_json.containsKey('deviceMetadata')) {
       deviceMetadata =
-          SasPortalDeviceMetadata.fromJson(_json["deviceMetadata"]);
+          SasPortalDeviceMetadata.fromJson(_json['deviceMetadata']);
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("fccId")) {
-      fccId = _json["fccId"];
+    if (_json.containsKey('fccId')) {
+      fccId = _json['fccId'];
     }
-    if (_json.containsKey("grants")) {
-      grants = (_json["grants"] as core.List)
+    if (_json.containsKey('grants')) {
+      grants = (_json['grants'] as core.List)
           .map<SasPortalDeviceGrant>(
               (value) => SasPortalDeviceGrant.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("preloadedConfig")) {
+    if (_json.containsKey('preloadedConfig')) {
       preloadedConfig =
-          SasPortalDeviceConfig.fromJson(_json["preloadedConfig"]);
+          SasPortalDeviceConfig.fromJson(_json['preloadedConfig']);
     }
-    if (_json.containsKey("serialNumber")) {
-      serialNumber = _json["serialNumber"];
+    if (_json.containsKey('serialNumber')) {
+      serialNumber = _json['serialNumber'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
   }
 
@@ -4027,31 +4026,31 @@ class SasPortalDevice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activeConfig != null) {
-      _json["activeConfig"] = activeConfig.toJson();
+      _json['activeConfig'] = activeConfig.toJson();
     }
     if (deviceMetadata != null) {
-      _json["deviceMetadata"] = deviceMetadata.toJson();
+      _json['deviceMetadata'] = deviceMetadata.toJson();
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (fccId != null) {
-      _json["fccId"] = fccId;
+      _json['fccId'] = fccId;
     }
     if (grants != null) {
-      _json["grants"] = grants.map((value) => value.toJson()).toList();
+      _json['grants'] = grants.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (preloadedConfig != null) {
-      _json["preloadedConfig"] = preloadedConfig.toJson();
+      _json['preloadedConfig'] = preloadedConfig.toJson();
     }
     if (serialNumber != null) {
-      _json["serialNumber"] = serialNumber;
+      _json['serialNumber'] = serialNumber;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     return _json;
   }
@@ -4081,11 +4080,11 @@ class SasPortalDeviceAirInterface {
   SasPortalDeviceAirInterface();
 
   SasPortalDeviceAirInterface.fromJson(core.Map _json) {
-    if (_json.containsKey("radioTechnology")) {
-      radioTechnology = _json["radioTechnology"];
+    if (_json.containsKey('radioTechnology')) {
+      radioTechnology = _json['radioTechnology'];
     }
-    if (_json.containsKey("supportedSpec")) {
-      supportedSpec = _json["supportedSpec"];
+    if (_json.containsKey('supportedSpec')) {
+      supportedSpec = _json['supportedSpec'];
     }
   }
 
@@ -4093,10 +4092,10 @@ class SasPortalDeviceAirInterface {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (radioTechnology != null) {
-      _json["radioTechnology"] = radioTechnology;
+      _json['radioTechnology'] = radioTechnology;
     }
     if (supportedSpec != null) {
-      _json["supportedSpec"] = supportedSpec;
+      _json['supportedSpec'] = supportedSpec;
     }
     return _json;
   }
@@ -4145,38 +4144,38 @@ class SasPortalDeviceConfig {
   SasPortalDeviceConfig();
 
   SasPortalDeviceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("airInterface")) {
+    if (_json.containsKey('airInterface')) {
       airInterface =
-          SasPortalDeviceAirInterface.fromJson(_json["airInterface"]);
+          SasPortalDeviceAirInterface.fromJson(_json['airInterface']);
     }
-    if (_json.containsKey("callSign")) {
-      callSign = _json["callSign"];
+    if (_json.containsKey('callSign')) {
+      callSign = _json['callSign'];
     }
-    if (_json.containsKey("category")) {
-      category = _json["category"];
+    if (_json.containsKey('category')) {
+      category = _json['category'];
     }
-    if (_json.containsKey("installationParams")) {
+    if (_json.containsKey('installationParams')) {
       installationParams =
-          SasPortalInstallationParams.fromJson(_json["installationParams"]);
+          SasPortalInstallationParams.fromJson(_json['installationParams']);
     }
-    if (_json.containsKey("isSigned")) {
-      isSigned = _json["isSigned"];
+    if (_json.containsKey('isSigned')) {
+      isSigned = _json['isSigned'];
     }
-    if (_json.containsKey("measurementCapabilities")) {
+    if (_json.containsKey('measurementCapabilities')) {
       measurementCapabilities =
-          (_json["measurementCapabilities"] as core.List).cast<core.String>();
+          (_json['measurementCapabilities'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("model")) {
-      model = SasPortalDeviceModel.fromJson(_json["model"]);
+    if (_json.containsKey('model')) {
+      model = SasPortalDeviceModel.fromJson(_json['model']);
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -4184,34 +4183,34 @@ class SasPortalDeviceConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (airInterface != null) {
-      _json["airInterface"] = airInterface.toJson();
+      _json['airInterface'] = airInterface.toJson();
     }
     if (callSign != null) {
-      _json["callSign"] = callSign;
+      _json['callSign'] = callSign;
     }
     if (category != null) {
-      _json["category"] = category;
+      _json['category'] = category;
     }
     if (installationParams != null) {
-      _json["installationParams"] = installationParams.toJson();
+      _json['installationParams'] = installationParams.toJson();
     }
     if (isSigned != null) {
-      _json["isSigned"] = isSigned;
+      _json['isSigned'] = isSigned;
     }
     if (measurementCapabilities != null) {
-      _json["measurementCapabilities"] = measurementCapabilities;
+      _json['measurementCapabilities'] = measurementCapabilities;
     }
     if (model != null) {
-      _json["model"] = model.toJson();
+      _json['model'] = model.toJson();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -4263,34 +4262,34 @@ class SasPortalDeviceGrant {
   SasPortalDeviceGrant();
 
   SasPortalDeviceGrant.fromJson(core.Map _json) {
-    if (_json.containsKey("channelType")) {
-      channelType = _json["channelType"];
+    if (_json.containsKey('channelType')) {
+      channelType = _json['channelType'];
     }
-    if (_json.containsKey("expireTime")) {
-      expireTime = _json["expireTime"];
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'];
     }
-    if (_json.containsKey("frequencyRange")) {
+    if (_json.containsKey('frequencyRange')) {
       frequencyRange =
-          SasPortalFrequencyRange.fromJson(_json["frequencyRange"]);
+          SasPortalFrequencyRange.fromJson(_json['frequencyRange']);
     }
-    if (_json.containsKey("grantId")) {
-      grantId = _json["grantId"];
+    if (_json.containsKey('grantId')) {
+      grantId = _json['grantId'];
     }
-    if (_json.containsKey("maxEirp")) {
-      maxEirp = _json["maxEirp"].toDouble();
+    if (_json.containsKey('maxEirp')) {
+      maxEirp = _json['maxEirp'].toDouble();
     }
-    if (_json.containsKey("moveList")) {
-      moveList = (_json["moveList"] as core.List)
+    if (_json.containsKey('moveList')) {
+      moveList = (_json['moveList'] as core.List)
           .map<SasPortalDpaMoveList>(
               (value) => SasPortalDpaMoveList.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("suspensionReason")) {
+    if (_json.containsKey('suspensionReason')) {
       suspensionReason =
-          (_json["suspensionReason"] as core.List).cast<core.String>();
+          (_json['suspensionReason'] as core.List).cast<core.String>();
     }
   }
 
@@ -4298,28 +4297,28 @@ class SasPortalDeviceGrant {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelType != null) {
-      _json["channelType"] = channelType;
+      _json['channelType'] = channelType;
     }
     if (expireTime != null) {
-      _json["expireTime"] = expireTime;
+      _json['expireTime'] = expireTime;
     }
     if (frequencyRange != null) {
-      _json["frequencyRange"] = frequencyRange.toJson();
+      _json['frequencyRange'] = frequencyRange.toJson();
     }
     if (grantId != null) {
-      _json["grantId"] = grantId;
+      _json['grantId'] = grantId;
     }
     if (maxEirp != null) {
-      _json["maxEirp"] = maxEirp;
+      _json['maxEirp'] = maxEirp;
     }
     if (moveList != null) {
-      _json["moveList"] = moveList.map((value) => value.toJson()).toList();
+      _json['moveList'] = moveList.map((value) => value.toJson()).toList();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (suspensionReason != null) {
-      _json["suspensionReason"] = suspensionReason;
+      _json['suspensionReason'] = suspensionReason;
     }
     return _json;
   }
@@ -4358,20 +4357,20 @@ class SasPortalDeviceModel {
   SasPortalDeviceModel();
 
   SasPortalDeviceModel.fromJson(core.Map _json) {
-    if (_json.containsKey("firmwareVersion")) {
-      firmwareVersion = _json["firmwareVersion"];
+    if (_json.containsKey('firmwareVersion')) {
+      firmwareVersion = _json['firmwareVersion'];
     }
-    if (_json.containsKey("hardwareVersion")) {
-      hardwareVersion = _json["hardwareVersion"];
+    if (_json.containsKey('hardwareVersion')) {
+      hardwareVersion = _json['hardwareVersion'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("softwareVersion")) {
-      softwareVersion = _json["softwareVersion"];
+    if (_json.containsKey('softwareVersion')) {
+      softwareVersion = _json['softwareVersion'];
     }
-    if (_json.containsKey("vendor")) {
-      vendor = _json["vendor"];
+    if (_json.containsKey('vendor')) {
+      vendor = _json['vendor'];
     }
   }
 
@@ -4379,19 +4378,19 @@ class SasPortalDeviceModel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (firmwareVersion != null) {
-      _json["firmwareVersion"] = firmwareVersion;
+      _json['firmwareVersion'] = firmwareVersion;
     }
     if (hardwareVersion != null) {
-      _json["hardwareVersion"] = hardwareVersion;
+      _json['hardwareVersion'] = hardwareVersion;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (softwareVersion != null) {
-      _json["softwareVersion"] = softwareVersion;
+      _json['softwareVersion'] = softwareVersion;
     }
     if (vendor != null) {
-      _json["vendor"] = vendor;
+      _json['vendor'] = vendor;
     }
     return _json;
   }
@@ -4408,12 +4407,12 @@ class SasPortalDpaMoveList {
   SasPortalDpaMoveList();
 
   SasPortalDpaMoveList.fromJson(core.Map _json) {
-    if (_json.containsKey("dpaId")) {
-      dpaId = _json["dpaId"];
+    if (_json.containsKey('dpaId')) {
+      dpaId = _json['dpaId'];
     }
-    if (_json.containsKey("frequencyRange")) {
+    if (_json.containsKey('frequencyRange')) {
       frequencyRange =
-          SasPortalFrequencyRange.fromJson(_json["frequencyRange"]);
+          SasPortalFrequencyRange.fromJson(_json['frequencyRange']);
     }
   }
 
@@ -4421,10 +4420,10 @@ class SasPortalDpaMoveList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dpaId != null) {
-      _json["dpaId"] = dpaId;
+      _json['dpaId'] = dpaId;
     }
     if (frequencyRange != null) {
-      _json["frequencyRange"] = frequencyRange.toJson();
+      _json['frequencyRange'] = frequencyRange.toJson();
     }
     return _json;
   }
@@ -4458,11 +4457,11 @@ class SasPortalFrequencyRange {
   SasPortalFrequencyRange();
 
   SasPortalFrequencyRange.fromJson(core.Map _json) {
-    if (_json.containsKey("highFrequencyMhz")) {
-      highFrequencyMhz = _json["highFrequencyMhz"].toDouble();
+    if (_json.containsKey('highFrequencyMhz')) {
+      highFrequencyMhz = _json['highFrequencyMhz'].toDouble();
     }
-    if (_json.containsKey("lowFrequencyMhz")) {
-      lowFrequencyMhz = _json["lowFrequencyMhz"].toDouble();
+    if (_json.containsKey('lowFrequencyMhz')) {
+      lowFrequencyMhz = _json['lowFrequencyMhz'].toDouble();
     }
   }
 
@@ -4470,10 +4469,10 @@ class SasPortalFrequencyRange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (highFrequencyMhz != null) {
-      _json["highFrequencyMhz"] = highFrequencyMhz;
+      _json['highFrequencyMhz'] = highFrequencyMhz;
     }
     if (lowFrequencyMhz != null) {
-      _json["lowFrequencyMhz"] = lowFrequencyMhz;
+      _json['lowFrequencyMhz'] = lowFrequencyMhz;
     }
     return _json;
   }
@@ -4501,8 +4500,8 @@ class SasPortalGenerateSecretResponse {
   SasPortalGenerateSecretResponse();
 
   SasPortalGenerateSecretResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("secret")) {
-      secret = _json["secret"];
+    if (_json.containsKey('secret')) {
+      secret = _json['secret'];
     }
   }
 
@@ -4510,7 +4509,7 @@ class SasPortalGenerateSecretResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (secret != null) {
-      _json["secret"] = secret;
+      _json['secret'] = secret;
     }
     return _json;
   }
@@ -4524,8 +4523,8 @@ class SasPortalGetPolicyRequest {
   SasPortalGetPolicyRequest();
 
   SasPortalGetPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = _json["resource"];
+    if (_json.containsKey('resource')) {
+      resource = _json['resource'];
     }
   }
 
@@ -4533,7 +4532,7 @@ class SasPortalGetPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resource != null) {
-      _json["resource"] = resource;
+      _json['resource'] = resource;
     }
     return _json;
   }
@@ -4620,47 +4619,47 @@ class SasPortalInstallationParams {
   SasPortalInstallationParams();
 
   SasPortalInstallationParams.fromJson(core.Map _json) {
-    if (_json.containsKey("antennaAzimuth")) {
-      antennaAzimuth = _json["antennaAzimuth"];
+    if (_json.containsKey('antennaAzimuth')) {
+      antennaAzimuth = _json['antennaAzimuth'];
     }
-    if (_json.containsKey("antennaBeamwidth")) {
-      antennaBeamwidth = _json["antennaBeamwidth"];
+    if (_json.containsKey('antennaBeamwidth')) {
+      antennaBeamwidth = _json['antennaBeamwidth'];
     }
-    if (_json.containsKey("antennaDowntilt")) {
-      antennaDowntilt = _json["antennaDowntilt"];
+    if (_json.containsKey('antennaDowntilt')) {
+      antennaDowntilt = _json['antennaDowntilt'];
     }
-    if (_json.containsKey("antennaGain")) {
-      antennaGain = _json["antennaGain"];
+    if (_json.containsKey('antennaGain')) {
+      antennaGain = _json['antennaGain'];
     }
-    if (_json.containsKey("antennaModel")) {
-      antennaModel = _json["antennaModel"];
+    if (_json.containsKey('antennaModel')) {
+      antennaModel = _json['antennaModel'];
     }
-    if (_json.containsKey("cpeCbsdIndication")) {
-      cpeCbsdIndication = _json["cpeCbsdIndication"];
+    if (_json.containsKey('cpeCbsdIndication')) {
+      cpeCbsdIndication = _json['cpeCbsdIndication'];
     }
-    if (_json.containsKey("eirpCapability")) {
-      eirpCapability = _json["eirpCapability"];
+    if (_json.containsKey('eirpCapability')) {
+      eirpCapability = _json['eirpCapability'];
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"].toDouble();
+    if (_json.containsKey('height')) {
+      height = _json['height'].toDouble();
     }
-    if (_json.containsKey("heightType")) {
-      heightType = _json["heightType"];
+    if (_json.containsKey('heightType')) {
+      heightType = _json['heightType'];
     }
-    if (_json.containsKey("horizontalAccuracy")) {
-      horizontalAccuracy = _json["horizontalAccuracy"].toDouble();
+    if (_json.containsKey('horizontalAccuracy')) {
+      horizontalAccuracy = _json['horizontalAccuracy'].toDouble();
     }
-    if (_json.containsKey("indoorDeployment")) {
-      indoorDeployment = _json["indoorDeployment"];
+    if (_json.containsKey('indoorDeployment')) {
+      indoorDeployment = _json['indoorDeployment'];
     }
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
-    if (_json.containsKey("verticalAccuracy")) {
-      verticalAccuracy = _json["verticalAccuracy"].toDouble();
+    if (_json.containsKey('verticalAccuracy')) {
+      verticalAccuracy = _json['verticalAccuracy'].toDouble();
     }
   }
 
@@ -4668,46 +4667,46 @@ class SasPortalInstallationParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (antennaAzimuth != null) {
-      _json["antennaAzimuth"] = antennaAzimuth;
+      _json['antennaAzimuth'] = antennaAzimuth;
     }
     if (antennaBeamwidth != null) {
-      _json["antennaBeamwidth"] = antennaBeamwidth;
+      _json['antennaBeamwidth'] = antennaBeamwidth;
     }
     if (antennaDowntilt != null) {
-      _json["antennaDowntilt"] = antennaDowntilt;
+      _json['antennaDowntilt'] = antennaDowntilt;
     }
     if (antennaGain != null) {
-      _json["antennaGain"] = antennaGain;
+      _json['antennaGain'] = antennaGain;
     }
     if (antennaModel != null) {
-      _json["antennaModel"] = antennaModel;
+      _json['antennaModel'] = antennaModel;
     }
     if (cpeCbsdIndication != null) {
-      _json["cpeCbsdIndication"] = cpeCbsdIndication;
+      _json['cpeCbsdIndication'] = cpeCbsdIndication;
     }
     if (eirpCapability != null) {
-      _json["eirpCapability"] = eirpCapability;
+      _json['eirpCapability'] = eirpCapability;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (heightType != null) {
-      _json["heightType"] = heightType;
+      _json['heightType'] = heightType;
     }
     if (horizontalAccuracy != null) {
-      _json["horizontalAccuracy"] = horizontalAccuracy;
+      _json['horizontalAccuracy'] = horizontalAccuracy;
     }
     if (indoorDeployment != null) {
-      _json["indoorDeployment"] = indoorDeployment;
+      _json['indoorDeployment'] = indoorDeployment;
     }
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     if (verticalAccuracy != null) {
-      _json["verticalAccuracy"] = verticalAccuracy;
+      _json['verticalAccuracy'] = verticalAccuracy;
     }
     return _json;
   }
@@ -4726,13 +4725,13 @@ class SasPortalListCustomersResponse {
   SasPortalListCustomersResponse();
 
   SasPortalListCustomersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("customers")) {
-      customers = (_json["customers"] as core.List)
+    if (_json.containsKey('customers')) {
+      customers = (_json['customers'] as core.List)
           .map<SasPortalCustomer>((value) => SasPortalCustomer.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4740,10 +4739,10 @@ class SasPortalListCustomersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customers != null) {
-      _json["customers"] = customers.map((value) => value.toJson()).toList();
+      _json['customers'] = customers.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4762,13 +4761,13 @@ class SasPortalListDevicesResponse {
   SasPortalListDevicesResponse();
 
   SasPortalListDevicesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("devices")) {
-      devices = (_json["devices"] as core.List)
+    if (_json.containsKey('devices')) {
+      devices = (_json['devices'] as core.List)
           .map<SasPortalDevice>((value) => SasPortalDevice.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4776,10 +4775,10 @@ class SasPortalListDevicesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.map((value) => value.toJson()).toList();
+      _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4798,11 +4797,11 @@ class SasPortalListNodesResponse {
   SasPortalListNodesResponse();
 
   SasPortalListNodesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("nodes")) {
-      nodes = (_json["nodes"] as core.List)
+    if (_json.containsKey('nodes')) {
+      nodes = (_json['nodes'] as core.List)
           .map<SasPortalNode>((value) => SasPortalNode.fromJson(value))
           .toList();
     }
@@ -4812,10 +4811,10 @@ class SasPortalListNodesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (nodes != null) {
-      _json["nodes"] = nodes.map((value) => value.toJson()).toList();
+      _json['nodes'] = nodes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4830,8 +4829,8 @@ class SasPortalMoveDeploymentRequest {
   SasPortalMoveDeploymentRequest();
 
   SasPortalMoveDeploymentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("destination")) {
-      destination = _json["destination"];
+    if (_json.containsKey('destination')) {
+      destination = _json['destination'];
     }
   }
 
@@ -4839,7 +4838,7 @@ class SasPortalMoveDeploymentRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (destination != null) {
-      _json["destination"] = destination;
+      _json['destination'] = destination;
     }
     return _json;
   }
@@ -4854,8 +4853,8 @@ class SasPortalMoveDeviceRequest {
   SasPortalMoveDeviceRequest();
 
   SasPortalMoveDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("destination")) {
-      destination = _json["destination"];
+    if (_json.containsKey('destination')) {
+      destination = _json['destination'];
     }
   }
 
@@ -4863,7 +4862,7 @@ class SasPortalMoveDeviceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (destination != null) {
-      _json["destination"] = destination;
+      _json['destination'] = destination;
     }
     return _json;
   }
@@ -4878,8 +4877,8 @@ class SasPortalMoveNodeRequest {
   SasPortalMoveNodeRequest();
 
   SasPortalMoveNodeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("destination")) {
-      destination = _json["destination"];
+    if (_json.containsKey('destination')) {
+      destination = _json['destination'];
     }
   }
 
@@ -4887,7 +4886,7 @@ class SasPortalMoveNodeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (destination != null) {
-      _json["destination"] = destination;
+      _json['destination'] = destination;
     }
     return _json;
   }
@@ -4907,14 +4906,14 @@ class SasPortalNode {
   SasPortalNode();
 
   SasPortalNode.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("sasUserIds")) {
-      sasUserIds = (_json["sasUserIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('sasUserIds')) {
+      sasUserIds = (_json['sasUserIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -4922,13 +4921,13 @@ class SasPortalNode {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (sasUserIds != null) {
-      _json["sasUserIds"] = sasUserIds;
+      _json['sasUserIds'] = sasUserIds;
     }
     return _json;
   }
@@ -4974,22 +4973,22 @@ class SasPortalOperation {
   SasPortalOperation();
 
   SasPortalOperation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = SasPortalStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = SasPortalStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -4997,19 +4996,19 @@ class SasPortalOperation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -5033,20 +5032,20 @@ class SasPortalPolicy {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SasPortalPolicy();
 
   SasPortalPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("assignments")) {
-      assignments = (_json["assignments"] as core.List)
+    if (_json.containsKey('assignments')) {
+      assignments = (_json['assignments'] as core.List)
           .map<SasPortalAssignment>(
               (value) => SasPortalAssignment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
   }
 
@@ -5054,11 +5053,11 @@ class SasPortalPolicy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (assignments != null) {
-      _json["assignments"] =
+      _json['assignments'] =
           assignments.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     return _json;
   }
@@ -5076,11 +5075,11 @@ class SasPortalSetPolicyRequest {
   SasPortalSetPolicyRequest();
 
   SasPortalSetPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("policy")) {
-      policy = SasPortalPolicy.fromJson(_json["policy"]);
+    if (_json.containsKey('policy')) {
+      policy = SasPortalPolicy.fromJson(_json['policy']);
     }
-    if (_json.containsKey("resource")) {
-      resource = _json["resource"];
+    if (_json.containsKey('resource')) {
+      resource = _json['resource'];
     }
   }
 
@@ -5088,10 +5087,10 @@ class SasPortalSetPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = policy.toJson();
+      _json['policy'] = policy.toJson();
     }
     if (resource != null) {
-      _json["resource"] = resource;
+      _json['resource'] = resource;
     }
     return _json;
   }
@@ -5106,8 +5105,8 @@ class SasPortalSignDeviceRequest {
   SasPortalSignDeviceRequest();
 
   SasPortalSignDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("device")) {
-      device = SasPortalDevice.fromJson(_json["device"]);
+    if (_json.containsKey('device')) {
+      device = SasPortalDevice.fromJson(_json['device']);
     }
   }
 
@@ -5115,7 +5114,7 @@ class SasPortalSignDeviceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (device != null) {
-      _json["device"] = device.toJson();
+      _json['device'] = device.toJson();
     }
     return _json;
   }
@@ -5146,17 +5145,17 @@ class SasPortalStatus {
   SasPortalStatus();
 
   SasPortalStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -5164,13 +5163,13 @@ class SasPortalStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -5187,11 +5186,11 @@ class SasPortalTestPermissionsRequest {
   SasPortalTestPermissionsRequest();
 
   SasPortalTestPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("resource")) {
-      resource = _json["resource"];
+    if (_json.containsKey('resource')) {
+      resource = _json['resource'];
     }
   }
 
@@ -5199,10 +5198,10 @@ class SasPortalTestPermissionsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     if (resource != null) {
-      _json["resource"] = resource;
+      _json['resource'] = resource;
     }
     return _json;
   }
@@ -5216,8 +5215,8 @@ class SasPortalTestPermissionsResponse {
   SasPortalTestPermissionsResponse();
 
   SasPortalTestPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -5225,7 +5224,7 @@ class SasPortalTestPermissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -5241,7 +5240,7 @@ class SasPortalUpdateSignedDeviceRequest {
 
   set encodedDeviceAsBytes(core.List<core.int> _bytes) {
     encodedDevice =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Required. Unique installer ID (CPI ID) from the Certified Professional
@@ -5251,11 +5250,11 @@ class SasPortalUpdateSignedDeviceRequest {
   SasPortalUpdateSignedDeviceRequest();
 
   SasPortalUpdateSignedDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("encodedDevice")) {
-      encodedDevice = _json["encodedDevice"];
+    if (_json.containsKey('encodedDevice')) {
+      encodedDevice = _json['encodedDevice'];
     }
-    if (_json.containsKey("installerId")) {
-      installerId = _json["installerId"];
+    if (_json.containsKey('installerId')) {
+      installerId = _json['installerId'];
     }
   }
 
@@ -5263,10 +5262,10 @@ class SasPortalUpdateSignedDeviceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (encodedDevice != null) {
-      _json["encodedDevice"] = encodedDevice;
+      _json['encodedDevice'] = encodedDevice;
     }
     if (installerId != null) {
-      _json["installerId"] = installerId;
+      _json['installerId'] = installerId;
     }
     return _json;
   }
@@ -5288,14 +5287,14 @@ class SasPortalValidateInstallerRequest {
   SasPortalValidateInstallerRequest();
 
   SasPortalValidateInstallerRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("encodedSecret")) {
-      encodedSecret = _json["encodedSecret"];
+    if (_json.containsKey('encodedSecret')) {
+      encodedSecret = _json['encodedSecret'];
     }
-    if (_json.containsKey("installerId")) {
-      installerId = _json["installerId"];
+    if (_json.containsKey('installerId')) {
+      installerId = _json['installerId'];
     }
-    if (_json.containsKey("secret")) {
-      secret = _json["secret"];
+    if (_json.containsKey('secret')) {
+      secret = _json['secret'];
     }
   }
 
@@ -5303,13 +5302,13 @@ class SasPortalValidateInstallerRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (encodedSecret != null) {
-      _json["encodedSecret"] = encodedSecret;
+      _json['encodedSecret'] = encodedSecret;
     }
     if (installerId != null) {
-      _json["installerId"] = installerId;
+      _json['installerId'] = installerId;
     }
     if (secret != null) {
-      _json["secret"] = secret;
+      _json['secret'] = secret;
     }
     return _json;
   }

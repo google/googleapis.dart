@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -48,7 +47,7 @@ const core.String USER_AGENT = 'dart-api-client doubleclicksearch/v2';
 class DoubleclicksearchApi {
   /// View and manage your advertising data in DoubleClick Search
   static const DoubleclicksearchScope =
-      "https://www.googleapis.com/auth/doubleclicksearch";
+      'https://www.googleapis.com/auth/doubleclicksearch';
 
   final commons.ApiRequester _requester;
 
@@ -58,8 +57,8 @@ class DoubleclicksearchApi {
       SavedColumnsResourceApi(_requester);
 
   DoubleclicksearchApi(http.Client client,
-      {core.String rootUrl = "https://doubleclicksearch.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://doubleclicksearch.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -133,44 +132,44 @@ class ConversionResourceApi {
     core.String _body;
 
     if (agencyId == null) {
-      throw core.ArgumentError("Parameter agencyId is required.");
+      throw core.ArgumentError('Parameter agencyId is required.');
     }
     if (advertiserId == null) {
-      throw core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError('Parameter advertiserId is required.');
     }
     if (engineAccountId == null) {
-      throw core.ArgumentError("Parameter engineAccountId is required.");
+      throw core.ArgumentError('Parameter engineAccountId is required.');
     }
     if (endDate == null) {
-      throw core.ArgumentError("Parameter endDate is required.");
+      throw core.ArgumentError('Parameter endDate is required.');
     }
-    _queryParams["endDate"] = ["${endDate}"];
+    _queryParams['endDate'] = ['${endDate}'];
     if (rowCount == null) {
-      throw core.ArgumentError("Parameter rowCount is required.");
+      throw core.ArgumentError('Parameter rowCount is required.');
     }
-    _queryParams["rowCount"] = ["${rowCount}"];
+    _queryParams['rowCount'] = ['${rowCount}'];
     if (startDate == null) {
-      throw core.ArgumentError("Parameter startDate is required.");
+      throw core.ArgumentError('Parameter startDate is required.');
     }
-    _queryParams["startDate"] = ["${startDate}"];
+    _queryParams['startDate'] = ['${startDate}'];
     if (startRow == null) {
-      throw core.ArgumentError("Parameter startRow is required.");
+      throw core.ArgumentError('Parameter startRow is required.');
     }
-    _queryParams["startRow"] = ["${startRow}"];
+    _queryParams['startRow'] = ['${startRow}'];
     if (adGroupId != null) {
-      _queryParams["adGroupId"] = [adGroupId];
+      _queryParams['adGroupId'] = [adGroupId];
     }
     if (criterionId != null) {
-      _queryParams["criterionId"] = [criterionId];
+      _queryParams['criterionId'] = [criterionId];
     }
     if (campaignId != null) {
-      _queryParams["campaignId"] = [campaignId];
+      _queryParams['campaignId'] = [campaignId];
     }
     if (adId != null) {
-      _queryParams["adId"] = [adId];
+      _queryParams['adId'] = [adId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'doubleclicksearch/v2/agency/' +
@@ -183,7 +182,7 @@ class ConversionResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -224,14 +223,14 @@ class ConversionResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'doubleclicksearch/v2/conversion';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -272,14 +271,14 @@ class ConversionResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'doubleclicksearch/v2/conversion';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -321,14 +320,14 @@ class ConversionResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'doubleclicksearch/v2/conversion/updateAvailability';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -375,14 +374,14 @@ class ReportsResourceApi {
       _body = convert.json.encode(request_1.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'doubleclicksearch/v2/reports/generate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -420,10 +419,10 @@ class ReportsResourceApi {
     core.String _body;
 
     if (reportId == null) {
-      throw core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError('Parameter reportId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'doubleclicksearch/v2/reports/' +
@@ -431,7 +430,7 @@ class ReportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -475,13 +474,13 @@ class ReportsResourceApi {
     core.String _body;
 
     if (reportId == null) {
-      throw core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError('Parameter reportId is required.');
     }
     if (reportFragment == null) {
-      throw core.ArgumentError("Parameter reportFragment is required.");
+      throw core.ArgumentError('Parameter reportFragment is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -493,7 +492,7 @@ class ReportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -539,14 +538,14 @@ class ReportsResourceApi {
       _body = convert.json.encode(request_1.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'doubleclicksearch/v2/reports';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -593,13 +592,13 @@ class SavedColumnsResourceApi {
     core.String _body;
 
     if (agencyId == null) {
-      throw core.ArgumentError("Parameter agencyId is required.");
+      throw core.ArgumentError('Parameter agencyId is required.');
     }
     if (advertiserId == null) {
-      throw core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError('Parameter advertiserId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'doubleclicksearch/v2/agency/' +
@@ -610,7 +609,7 @@ class SavedColumnsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -647,23 +646,23 @@ class Availability {
   Availability();
 
   Availability.fromJson(core.Map _json) {
-    if (_json.containsKey("advertiserId")) {
-      advertiserId = _json["advertiserId"];
+    if (_json.containsKey('advertiserId')) {
+      advertiserId = _json['advertiserId'];
     }
-    if (_json.containsKey("agencyId")) {
-      agencyId = _json["agencyId"];
+    if (_json.containsKey('agencyId')) {
+      agencyId = _json['agencyId'];
     }
-    if (_json.containsKey("availabilityTimestamp")) {
-      availabilityTimestamp = _json["availabilityTimestamp"];
+    if (_json.containsKey('availabilityTimestamp')) {
+      availabilityTimestamp = _json['availabilityTimestamp'];
     }
-    if (_json.containsKey("segmentationId")) {
-      segmentationId = _json["segmentationId"];
+    if (_json.containsKey('segmentationId')) {
+      segmentationId = _json['segmentationId'];
     }
-    if (_json.containsKey("segmentationName")) {
-      segmentationName = _json["segmentationName"];
+    if (_json.containsKey('segmentationName')) {
+      segmentationName = _json['segmentationName'];
     }
-    if (_json.containsKey("segmentationType")) {
-      segmentationType = _json["segmentationType"];
+    if (_json.containsKey('segmentationType')) {
+      segmentationType = _json['segmentationType'];
     }
   }
 
@@ -671,22 +670,22 @@ class Availability {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (advertiserId != null) {
-      _json["advertiserId"] = advertiserId;
+      _json['advertiserId'] = advertiserId;
     }
     if (agencyId != null) {
-      _json["agencyId"] = agencyId;
+      _json['agencyId'] = agencyId;
     }
     if (availabilityTimestamp != null) {
-      _json["availabilityTimestamp"] = availabilityTimestamp;
+      _json['availabilityTimestamp'] = availabilityTimestamp;
     }
     if (segmentationId != null) {
-      _json["segmentationId"] = segmentationId;
+      _json['segmentationId'] = segmentationId;
     }
     if (segmentationName != null) {
-      _json["segmentationName"] = segmentationName;
+      _json['segmentationName'] = segmentationName;
     }
     if (segmentationType != null) {
-      _json["segmentationType"] = segmentationType;
+      _json['segmentationType'] = segmentationType;
     }
     return _json;
   }
@@ -819,108 +818,108 @@ class Conversion {
   Conversion();
 
   Conversion.fromJson(core.Map _json) {
-    if (_json.containsKey("adGroupId")) {
-      adGroupId = _json["adGroupId"];
+    if (_json.containsKey('adGroupId')) {
+      adGroupId = _json['adGroupId'];
     }
-    if (_json.containsKey("adId")) {
-      adId = _json["adId"];
+    if (_json.containsKey('adId')) {
+      adId = _json['adId'];
     }
-    if (_json.containsKey("advertiserId")) {
-      advertiserId = _json["advertiserId"];
+    if (_json.containsKey('advertiserId')) {
+      advertiserId = _json['advertiserId'];
     }
-    if (_json.containsKey("agencyId")) {
-      agencyId = _json["agencyId"];
+    if (_json.containsKey('agencyId')) {
+      agencyId = _json['agencyId'];
     }
-    if (_json.containsKey("attributionModel")) {
-      attributionModel = _json["attributionModel"];
+    if (_json.containsKey('attributionModel')) {
+      attributionModel = _json['attributionModel'];
     }
-    if (_json.containsKey("campaignId")) {
-      campaignId = _json["campaignId"];
+    if (_json.containsKey('campaignId')) {
+      campaignId = _json['campaignId'];
     }
-    if (_json.containsKey("channel")) {
-      channel = _json["channel"];
+    if (_json.containsKey('channel')) {
+      channel = _json['channel'];
     }
-    if (_json.containsKey("clickId")) {
-      clickId = _json["clickId"];
+    if (_json.containsKey('clickId')) {
+      clickId = _json['clickId'];
     }
-    if (_json.containsKey("conversionId")) {
-      conversionId = _json["conversionId"];
+    if (_json.containsKey('conversionId')) {
+      conversionId = _json['conversionId'];
     }
-    if (_json.containsKey("conversionModifiedTimestamp")) {
-      conversionModifiedTimestamp = _json["conversionModifiedTimestamp"];
+    if (_json.containsKey('conversionModifiedTimestamp')) {
+      conversionModifiedTimestamp = _json['conversionModifiedTimestamp'];
     }
-    if (_json.containsKey("conversionTimestamp")) {
-      conversionTimestamp = _json["conversionTimestamp"];
+    if (_json.containsKey('conversionTimestamp')) {
+      conversionTimestamp = _json['conversionTimestamp'];
     }
-    if (_json.containsKey("countMillis")) {
-      countMillis = _json["countMillis"];
+    if (_json.containsKey('countMillis')) {
+      countMillis = _json['countMillis'];
     }
-    if (_json.containsKey("criterionId")) {
-      criterionId = _json["criterionId"];
+    if (_json.containsKey('criterionId')) {
+      criterionId = _json['criterionId'];
     }
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
-    if (_json.containsKey("customDimension")) {
-      customDimension = (_json["customDimension"] as core.List)
+    if (_json.containsKey('customDimension')) {
+      customDimension = (_json['customDimension'] as core.List)
           .map<CustomDimension>((value) => CustomDimension.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("customMetric")) {
-      customMetric = (_json["customMetric"] as core.List)
+    if (_json.containsKey('customMetric')) {
+      customMetric = (_json['customMetric'] as core.List)
           .map<CustomMetric>((value) => CustomMetric.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("deviceType")) {
-      deviceType = _json["deviceType"];
+    if (_json.containsKey('deviceType')) {
+      deviceType = _json['deviceType'];
     }
-    if (_json.containsKey("dsConversionId")) {
-      dsConversionId = _json["dsConversionId"];
+    if (_json.containsKey('dsConversionId')) {
+      dsConversionId = _json['dsConversionId'];
     }
-    if (_json.containsKey("engineAccountId")) {
-      engineAccountId = _json["engineAccountId"];
+    if (_json.containsKey('engineAccountId')) {
+      engineAccountId = _json['engineAccountId'];
     }
-    if (_json.containsKey("floodlightOrderId")) {
-      floodlightOrderId = _json["floodlightOrderId"];
+    if (_json.containsKey('floodlightOrderId')) {
+      floodlightOrderId = _json['floodlightOrderId'];
     }
-    if (_json.containsKey("inventoryAccountId")) {
-      inventoryAccountId = _json["inventoryAccountId"];
+    if (_json.containsKey('inventoryAccountId')) {
+      inventoryAccountId = _json['inventoryAccountId'];
     }
-    if (_json.containsKey("productCountry")) {
-      productCountry = _json["productCountry"];
+    if (_json.containsKey('productCountry')) {
+      productCountry = _json['productCountry'];
     }
-    if (_json.containsKey("productGroupId")) {
-      productGroupId = _json["productGroupId"];
+    if (_json.containsKey('productGroupId')) {
+      productGroupId = _json['productGroupId'];
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("productLanguage")) {
-      productLanguage = _json["productLanguage"];
+    if (_json.containsKey('productLanguage')) {
+      productLanguage = _json['productLanguage'];
     }
-    if (_json.containsKey("quantityMillis")) {
-      quantityMillis = _json["quantityMillis"];
+    if (_json.containsKey('quantityMillis')) {
+      quantityMillis = _json['quantityMillis'];
     }
-    if (_json.containsKey("revenueMicros")) {
-      revenueMicros = _json["revenueMicros"];
+    if (_json.containsKey('revenueMicros')) {
+      revenueMicros = _json['revenueMicros'];
     }
-    if (_json.containsKey("segmentationId")) {
-      segmentationId = _json["segmentationId"];
+    if (_json.containsKey('segmentationId')) {
+      segmentationId = _json['segmentationId'];
     }
-    if (_json.containsKey("segmentationName")) {
-      segmentationName = _json["segmentationName"];
+    if (_json.containsKey('segmentationName')) {
+      segmentationName = _json['segmentationName'];
     }
-    if (_json.containsKey("segmentationType")) {
-      segmentationType = _json["segmentationType"];
+    if (_json.containsKey('segmentationType')) {
+      segmentationType = _json['segmentationType'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("storeId")) {
-      storeId = _json["storeId"];
+    if (_json.containsKey('storeId')) {
+      storeId = _json['storeId'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -928,105 +927,105 @@ class Conversion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adGroupId != null) {
-      _json["adGroupId"] = adGroupId;
+      _json['adGroupId'] = adGroupId;
     }
     if (adId != null) {
-      _json["adId"] = adId;
+      _json['adId'] = adId;
     }
     if (advertiserId != null) {
-      _json["advertiserId"] = advertiserId;
+      _json['advertiserId'] = advertiserId;
     }
     if (agencyId != null) {
-      _json["agencyId"] = agencyId;
+      _json['agencyId'] = agencyId;
     }
     if (attributionModel != null) {
-      _json["attributionModel"] = attributionModel;
+      _json['attributionModel'] = attributionModel;
     }
     if (campaignId != null) {
-      _json["campaignId"] = campaignId;
+      _json['campaignId'] = campaignId;
     }
     if (channel != null) {
-      _json["channel"] = channel;
+      _json['channel'] = channel;
     }
     if (clickId != null) {
-      _json["clickId"] = clickId;
+      _json['clickId'] = clickId;
     }
     if (conversionId != null) {
-      _json["conversionId"] = conversionId;
+      _json['conversionId'] = conversionId;
     }
     if (conversionModifiedTimestamp != null) {
-      _json["conversionModifiedTimestamp"] = conversionModifiedTimestamp;
+      _json['conversionModifiedTimestamp'] = conversionModifiedTimestamp;
     }
     if (conversionTimestamp != null) {
-      _json["conversionTimestamp"] = conversionTimestamp;
+      _json['conversionTimestamp'] = conversionTimestamp;
     }
     if (countMillis != null) {
-      _json["countMillis"] = countMillis;
+      _json['countMillis'] = countMillis;
     }
     if (criterionId != null) {
-      _json["criterionId"] = criterionId;
+      _json['criterionId'] = criterionId;
     }
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     if (customDimension != null) {
-      _json["customDimension"] =
+      _json['customDimension'] =
           customDimension.map((value) => value.toJson()).toList();
     }
     if (customMetric != null) {
-      _json["customMetric"] =
+      _json['customMetric'] =
           customMetric.map((value) => value.toJson()).toList();
     }
     if (deviceType != null) {
-      _json["deviceType"] = deviceType;
+      _json['deviceType'] = deviceType;
     }
     if (dsConversionId != null) {
-      _json["dsConversionId"] = dsConversionId;
+      _json['dsConversionId'] = dsConversionId;
     }
     if (engineAccountId != null) {
-      _json["engineAccountId"] = engineAccountId;
+      _json['engineAccountId'] = engineAccountId;
     }
     if (floodlightOrderId != null) {
-      _json["floodlightOrderId"] = floodlightOrderId;
+      _json['floodlightOrderId'] = floodlightOrderId;
     }
     if (inventoryAccountId != null) {
-      _json["inventoryAccountId"] = inventoryAccountId;
+      _json['inventoryAccountId'] = inventoryAccountId;
     }
     if (productCountry != null) {
-      _json["productCountry"] = productCountry;
+      _json['productCountry'] = productCountry;
     }
     if (productGroupId != null) {
-      _json["productGroupId"] = productGroupId;
+      _json['productGroupId'] = productGroupId;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (productLanguage != null) {
-      _json["productLanguage"] = productLanguage;
+      _json['productLanguage'] = productLanguage;
     }
     if (quantityMillis != null) {
-      _json["quantityMillis"] = quantityMillis;
+      _json['quantityMillis'] = quantityMillis;
     }
     if (revenueMicros != null) {
-      _json["revenueMicros"] = revenueMicros;
+      _json['revenueMicros'] = revenueMicros;
     }
     if (segmentationId != null) {
-      _json["segmentationId"] = segmentationId;
+      _json['segmentationId'] = segmentationId;
     }
     if (segmentationName != null) {
-      _json["segmentationName"] = segmentationName;
+      _json['segmentationName'] = segmentationName;
     }
     if (segmentationType != null) {
-      _json["segmentationType"] = segmentationType;
+      _json['segmentationType'] = segmentationType;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (storeId != null) {
-      _json["storeId"] = storeId;
+      _json['storeId'] = storeId;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1044,13 +1043,13 @@ class ConversionList {
   ConversionList();
 
   ConversionList.fromJson(core.Map _json) {
-    if (_json.containsKey("conversion")) {
-      conversion = (_json["conversion"] as core.List)
+    if (_json.containsKey('conversion')) {
+      conversion = (_json['conversion'] as core.List)
           .map<Conversion>((value) => Conversion.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -1058,10 +1057,10 @@ class ConversionList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (conversion != null) {
-      _json["conversion"] = conversion.map((value) => value.toJson()).toList();
+      _json['conversion'] = conversion.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -1078,11 +1077,11 @@ class CustomDimension {
   CustomDimension();
 
   CustomDimension.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -1090,10 +1089,10 @@ class CustomDimension {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -1110,11 +1109,11 @@ class CustomMetric {
   CustomMetric();
 
   CustomMetric.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"].toDouble();
+    if (_json.containsKey('value')) {
+      value = _json['value'].toDouble();
     }
   }
 
@@ -1122,10 +1121,10 @@ class CustomMetric {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -1141,11 +1140,11 @@ class ReportFiles {
   ReportFiles();
 
   ReportFiles.fromJson(core.Map _json) {
-    if (_json.containsKey("byteCount")) {
-      byteCount = _json["byteCount"];
+    if (_json.containsKey('byteCount')) {
+      byteCount = _json['byteCount'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -1153,10 +1152,10 @@ class ReportFiles {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (byteCount != null) {
-      _json["byteCount"] = byteCount;
+      _json['byteCount'] = byteCount;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -1204,36 +1203,36 @@ class Report {
   Report();
 
   Report.fromJson(core.Map _json) {
-    if (_json.containsKey("files")) {
-      files = (_json["files"] as core.List)
+    if (_json.containsKey('files')) {
+      files = (_json['files'] as core.List)
           .map<ReportFiles>((value) => ReportFiles.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("isReportReady")) {
-      isReportReady = _json["isReportReady"];
+    if (_json.containsKey('isReportReady')) {
+      isReportReady = _json['isReportReady'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("request")) {
-      request = ReportRequest.fromJson(_json["request"]);
+    if (_json.containsKey('request')) {
+      request = ReportRequest.fromJson(_json['request']);
     }
-    if (_json.containsKey("rowCount")) {
-      rowCount = _json["rowCount"];
+    if (_json.containsKey('rowCount')) {
+      rowCount = _json['rowCount'];
     }
-    if (_json.containsKey("rows")) {
-      rows = (_json["rows"] as core.List)
+    if (_json.containsKey('rows')) {
+      rows = (_json['rows'] as core.List)
           .map<ReportRow>((value) => ReportRow.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("statisticsCurrencyCode")) {
-      statisticsCurrencyCode = _json["statisticsCurrencyCode"];
+    if (_json.containsKey('statisticsCurrencyCode')) {
+      statisticsCurrencyCode = _json['statisticsCurrencyCode'];
     }
-    if (_json.containsKey("statisticsTimeZone")) {
-      statisticsTimeZone = _json["statisticsTimeZone"];
+    if (_json.containsKey('statisticsTimeZone')) {
+      statisticsTimeZone = _json['statisticsTimeZone'];
     }
   }
 
@@ -1241,31 +1240,31 @@ class Report {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (files != null) {
-      _json["files"] = files.map((value) => value.toJson()).toList();
+      _json['files'] = files.map((value) => value.toJson()).toList();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (isReportReady != null) {
-      _json["isReportReady"] = isReportReady;
+      _json['isReportReady'] = isReportReady;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (request != null) {
-      _json["request"] = request.toJson();
+      _json['request'] = request.toJson();
     }
     if (rowCount != null) {
-      _json["rowCount"] = rowCount;
+      _json['rowCount'] = rowCount;
     }
     if (rows != null) {
-      _json["rows"] = rows;
+      _json['rows'] = rows;
     }
     if (statisticsCurrencyCode != null) {
-      _json["statisticsCurrencyCode"] = statisticsCurrencyCode;
+      _json['statisticsCurrencyCode'] = statisticsCurrencyCode;
     }
     if (statisticsTimeZone != null) {
-      _json["statisticsTimeZone"] = statisticsTimeZone;
+      _json['statisticsTimeZone'] = statisticsTimeZone;
     }
     return _json;
   }
@@ -1328,35 +1327,35 @@ class ReportApiColumnSpec {
   ReportApiColumnSpec();
 
   ReportApiColumnSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("columnName")) {
-      columnName = _json["columnName"];
+    if (_json.containsKey('columnName')) {
+      columnName = _json['columnName'];
     }
-    if (_json.containsKey("customDimensionName")) {
-      customDimensionName = _json["customDimensionName"];
+    if (_json.containsKey('customDimensionName')) {
+      customDimensionName = _json['customDimensionName'];
     }
-    if (_json.containsKey("customMetricName")) {
-      customMetricName = _json["customMetricName"];
+    if (_json.containsKey('customMetricName')) {
+      customMetricName = _json['customMetricName'];
     }
-    if (_json.containsKey("endDate")) {
-      endDate = _json["endDate"];
+    if (_json.containsKey('endDate')) {
+      endDate = _json['endDate'];
     }
-    if (_json.containsKey("groupByColumn")) {
-      groupByColumn = _json["groupByColumn"];
+    if (_json.containsKey('groupByColumn')) {
+      groupByColumn = _json['groupByColumn'];
     }
-    if (_json.containsKey("headerText")) {
-      headerText = _json["headerText"];
+    if (_json.containsKey('headerText')) {
+      headerText = _json['headerText'];
     }
-    if (_json.containsKey("platformSource")) {
-      platformSource = _json["platformSource"];
+    if (_json.containsKey('platformSource')) {
+      platformSource = _json['platformSource'];
     }
-    if (_json.containsKey("productReportPerspective")) {
-      productReportPerspective = _json["productReportPerspective"];
+    if (_json.containsKey('productReportPerspective')) {
+      productReportPerspective = _json['productReportPerspective'];
     }
-    if (_json.containsKey("savedColumnName")) {
-      savedColumnName = _json["savedColumnName"];
+    if (_json.containsKey('savedColumnName')) {
+      savedColumnName = _json['savedColumnName'];
     }
-    if (_json.containsKey("startDate")) {
-      startDate = _json["startDate"];
+    if (_json.containsKey('startDate')) {
+      startDate = _json['startDate'];
     }
   }
 
@@ -1364,34 +1363,34 @@ class ReportApiColumnSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (columnName != null) {
-      _json["columnName"] = columnName;
+      _json['columnName'] = columnName;
     }
     if (customDimensionName != null) {
-      _json["customDimensionName"] = customDimensionName;
+      _json['customDimensionName'] = customDimensionName;
     }
     if (customMetricName != null) {
-      _json["customMetricName"] = customMetricName;
+      _json['customMetricName'] = customMetricName;
     }
     if (endDate != null) {
-      _json["endDate"] = endDate;
+      _json['endDate'] = endDate;
     }
     if (groupByColumn != null) {
-      _json["groupByColumn"] = groupByColumn;
+      _json['groupByColumn'] = groupByColumn;
     }
     if (headerText != null) {
-      _json["headerText"] = headerText;
+      _json['headerText'] = headerText;
     }
     if (platformSource != null) {
-      _json["platformSource"] = platformSource;
+      _json['platformSource'] = platformSource;
     }
     if (productReportPerspective != null) {
-      _json["productReportPerspective"] = productReportPerspective;
+      _json['productReportPerspective'] = productReportPerspective;
     }
     if (savedColumnName != null) {
-      _json["savedColumnName"] = savedColumnName;
+      _json['savedColumnName'] = savedColumnName;
     }
     if (startDate != null) {
-      _json["startDate"] = startDate;
+      _json['startDate'] = startDate;
     }
     return _json;
   }
@@ -1416,14 +1415,14 @@ class ReportRequestFilters {
   ReportRequestFilters();
 
   ReportRequestFilters.fromJson(core.Map _json) {
-    if (_json.containsKey("column")) {
-      column = ReportApiColumnSpec.fromJson(_json["column"]);
+    if (_json.containsKey('column')) {
+      column = ReportApiColumnSpec.fromJson(_json['column']);
     }
-    if (_json.containsKey("operator")) {
-      operator = _json["operator"];
+    if (_json.containsKey('operator')) {
+      operator = _json['operator'];
     }
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List).cast<core.Object>();
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List).cast<core.Object>();
     }
   }
 
@@ -1431,13 +1430,13 @@ class ReportRequestFilters {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (column != null) {
-      _json["column"] = column.toJson();
+      _json['column'] = column.toJson();
     }
     if (operator != null) {
-      _json["operator"] = operator;
+      _json['operator'] = operator;
     }
     if (values != null) {
-      _json["values"] = values;
+      _json['values'] = values;
     }
     return _json;
   }
@@ -1454,11 +1453,11 @@ class ReportRequestOrderBy {
   ReportRequestOrderBy();
 
   ReportRequestOrderBy.fromJson(core.Map _json) {
-    if (_json.containsKey("column")) {
-      column = ReportApiColumnSpec.fromJson(_json["column"]);
+    if (_json.containsKey('column')) {
+      column = ReportApiColumnSpec.fromJson(_json['column']);
     }
-    if (_json.containsKey("sortOrder")) {
-      sortOrder = _json["sortOrder"];
+    if (_json.containsKey('sortOrder')) {
+      sortOrder = _json['sortOrder'];
     }
   }
 
@@ -1466,10 +1465,10 @@ class ReportRequestOrderBy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (column != null) {
-      _json["column"] = column.toJson();
+      _json['column'] = column.toJson();
     }
     if (sortOrder != null) {
-      _json["sortOrder"] = sortOrder;
+      _json['sortOrder'] = sortOrder;
     }
     return _json;
   }
@@ -1503,26 +1502,26 @@ class ReportRequestReportScope {
   ReportRequestReportScope();
 
   ReportRequestReportScope.fromJson(core.Map _json) {
-    if (_json.containsKey("adGroupId")) {
-      adGroupId = _json["adGroupId"];
+    if (_json.containsKey('adGroupId')) {
+      adGroupId = _json['adGroupId'];
     }
-    if (_json.containsKey("adId")) {
-      adId = _json["adId"];
+    if (_json.containsKey('adId')) {
+      adId = _json['adId'];
     }
-    if (_json.containsKey("advertiserId")) {
-      advertiserId = _json["advertiserId"];
+    if (_json.containsKey('advertiserId')) {
+      advertiserId = _json['advertiserId'];
     }
-    if (_json.containsKey("agencyId")) {
-      agencyId = _json["agencyId"];
+    if (_json.containsKey('agencyId')) {
+      agencyId = _json['agencyId'];
     }
-    if (_json.containsKey("campaignId")) {
-      campaignId = _json["campaignId"];
+    if (_json.containsKey('campaignId')) {
+      campaignId = _json['campaignId'];
     }
-    if (_json.containsKey("engineAccountId")) {
-      engineAccountId = _json["engineAccountId"];
+    if (_json.containsKey('engineAccountId')) {
+      engineAccountId = _json['engineAccountId'];
     }
-    if (_json.containsKey("keywordId")) {
-      keywordId = _json["keywordId"];
+    if (_json.containsKey('keywordId')) {
+      keywordId = _json['keywordId'];
     }
   }
 
@@ -1530,25 +1529,25 @@ class ReportRequestReportScope {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adGroupId != null) {
-      _json["adGroupId"] = adGroupId;
+      _json['adGroupId'] = adGroupId;
     }
     if (adId != null) {
-      _json["adId"] = adId;
+      _json['adId'] = adId;
     }
     if (advertiserId != null) {
-      _json["advertiserId"] = advertiserId;
+      _json['advertiserId'] = advertiserId;
     }
     if (agencyId != null) {
-      _json["agencyId"] = agencyId;
+      _json['agencyId'] = agencyId;
     }
     if (campaignId != null) {
-      _json["campaignId"] = campaignId;
+      _json['campaignId'] = campaignId;
     }
     if (engineAccountId != null) {
-      _json["engineAccountId"] = engineAccountId;
+      _json['engineAccountId'] = engineAccountId;
     }
     if (keywordId != null) {
-      _json["keywordId"] = keywordId;
+      _json['keywordId'] = keywordId;
     }
     return _json;
   }
@@ -1574,18 +1573,18 @@ class ReportRequestTimeRange {
   ReportRequestTimeRange();
 
   ReportRequestTimeRange.fromJson(core.Map _json) {
-    if (_json.containsKey("changedAttributesSinceTimestamp")) {
+    if (_json.containsKey('changedAttributesSinceTimestamp')) {
       changedAttributesSinceTimestamp =
-          _json["changedAttributesSinceTimestamp"];
+          _json['changedAttributesSinceTimestamp'];
     }
-    if (_json.containsKey("changedMetricsSinceTimestamp")) {
-      changedMetricsSinceTimestamp = _json["changedMetricsSinceTimestamp"];
+    if (_json.containsKey('changedMetricsSinceTimestamp')) {
+      changedMetricsSinceTimestamp = _json['changedMetricsSinceTimestamp'];
     }
-    if (_json.containsKey("endDate")) {
-      endDate = _json["endDate"];
+    if (_json.containsKey('endDate')) {
+      endDate = _json['endDate'];
     }
-    if (_json.containsKey("startDate")) {
-      startDate = _json["startDate"];
+    if (_json.containsKey('startDate')) {
+      startDate = _json['startDate'];
     }
   }
 
@@ -1593,17 +1592,17 @@ class ReportRequestTimeRange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (changedAttributesSinceTimestamp != null) {
-      _json["changedAttributesSinceTimestamp"] =
+      _json['changedAttributesSinceTimestamp'] =
           changedAttributesSinceTimestamp;
     }
     if (changedMetricsSinceTimestamp != null) {
-      _json["changedMetricsSinceTimestamp"] = changedMetricsSinceTimestamp;
+      _json['changedMetricsSinceTimestamp'] = changedMetricsSinceTimestamp;
     }
     if (endDate != null) {
-      _json["endDate"] = endDate;
+      _json['endDate'] = endDate;
     }
     if (startDate != null) {
-      _json["startDate"] = startDate;
+      _json['startDate'] = startDate;
     }
     return _json;
   }
@@ -1683,56 +1682,56 @@ class ReportRequest {
   ReportRequest();
 
   ReportRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("columns")) {
-      columns = (_json["columns"] as core.List)
+    if (_json.containsKey('columns')) {
+      columns = (_json['columns'] as core.List)
           .map<ReportApiColumnSpec>(
               (value) => ReportApiColumnSpec.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("downloadFormat")) {
-      downloadFormat = _json["downloadFormat"];
+    if (_json.containsKey('downloadFormat')) {
+      downloadFormat = _json['downloadFormat'];
     }
-    if (_json.containsKey("filters")) {
-      filters = (_json["filters"] as core.List)
+    if (_json.containsKey('filters')) {
+      filters = (_json['filters'] as core.List)
           .map<ReportRequestFilters>(
               (value) => ReportRequestFilters.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("includeDeletedEntities")) {
-      includeDeletedEntities = _json["includeDeletedEntities"];
+    if (_json.containsKey('includeDeletedEntities')) {
+      includeDeletedEntities = _json['includeDeletedEntities'];
     }
-    if (_json.containsKey("includeRemovedEntities")) {
-      includeRemovedEntities = _json["includeRemovedEntities"];
+    if (_json.containsKey('includeRemovedEntities')) {
+      includeRemovedEntities = _json['includeRemovedEntities'];
     }
-    if (_json.containsKey("maxRowsPerFile")) {
-      maxRowsPerFile = _json["maxRowsPerFile"];
+    if (_json.containsKey('maxRowsPerFile')) {
+      maxRowsPerFile = _json['maxRowsPerFile'];
     }
-    if (_json.containsKey("orderBy")) {
-      orderBy = (_json["orderBy"] as core.List)
+    if (_json.containsKey('orderBy')) {
+      orderBy = (_json['orderBy'] as core.List)
           .map<ReportRequestOrderBy>(
               (value) => ReportRequestOrderBy.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("reportScope")) {
-      reportScope = ReportRequestReportScope.fromJson(_json["reportScope"]);
+    if (_json.containsKey('reportScope')) {
+      reportScope = ReportRequestReportScope.fromJson(_json['reportScope']);
     }
-    if (_json.containsKey("reportType")) {
-      reportType = _json["reportType"];
+    if (_json.containsKey('reportType')) {
+      reportType = _json['reportType'];
     }
-    if (_json.containsKey("rowCount")) {
-      rowCount = _json["rowCount"];
+    if (_json.containsKey('rowCount')) {
+      rowCount = _json['rowCount'];
     }
-    if (_json.containsKey("startRow")) {
-      startRow = _json["startRow"];
+    if (_json.containsKey('startRow')) {
+      startRow = _json['startRow'];
     }
-    if (_json.containsKey("statisticsCurrency")) {
-      statisticsCurrency = _json["statisticsCurrency"];
+    if (_json.containsKey('statisticsCurrency')) {
+      statisticsCurrency = _json['statisticsCurrency'];
     }
-    if (_json.containsKey("timeRange")) {
-      timeRange = ReportRequestTimeRange.fromJson(_json["timeRange"]);
+    if (_json.containsKey('timeRange')) {
+      timeRange = ReportRequestTimeRange.fromJson(_json['timeRange']);
     }
-    if (_json.containsKey("verifySingleTimeZone")) {
-      verifySingleTimeZone = _json["verifySingleTimeZone"];
+    if (_json.containsKey('verifySingleTimeZone')) {
+      verifySingleTimeZone = _json['verifySingleTimeZone'];
     }
   }
 
@@ -1740,46 +1739,46 @@ class ReportRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (columns != null) {
-      _json["columns"] = columns.map((value) => value.toJson()).toList();
+      _json['columns'] = columns.map((value) => value.toJson()).toList();
     }
     if (downloadFormat != null) {
-      _json["downloadFormat"] = downloadFormat;
+      _json['downloadFormat'] = downloadFormat;
     }
     if (filters != null) {
-      _json["filters"] = filters.map((value) => value.toJson()).toList();
+      _json['filters'] = filters.map((value) => value.toJson()).toList();
     }
     if (includeDeletedEntities != null) {
-      _json["includeDeletedEntities"] = includeDeletedEntities;
+      _json['includeDeletedEntities'] = includeDeletedEntities;
     }
     if (includeRemovedEntities != null) {
-      _json["includeRemovedEntities"] = includeRemovedEntities;
+      _json['includeRemovedEntities'] = includeRemovedEntities;
     }
     if (maxRowsPerFile != null) {
-      _json["maxRowsPerFile"] = maxRowsPerFile;
+      _json['maxRowsPerFile'] = maxRowsPerFile;
     }
     if (orderBy != null) {
-      _json["orderBy"] = orderBy.map((value) => value.toJson()).toList();
+      _json['orderBy'] = orderBy.map((value) => value.toJson()).toList();
     }
     if (reportScope != null) {
-      _json["reportScope"] = reportScope.toJson();
+      _json['reportScope'] = reportScope.toJson();
     }
     if (reportType != null) {
-      _json["reportType"] = reportType;
+      _json['reportType'] = reportType;
     }
     if (rowCount != null) {
-      _json["rowCount"] = rowCount;
+      _json['rowCount'] = rowCount;
     }
     if (startRow != null) {
-      _json["startRow"] = startRow;
+      _json['startRow'] = startRow;
     }
     if (statisticsCurrency != null) {
-      _json["statisticsCurrency"] = statisticsCurrency;
+      _json['statisticsCurrency'] = statisticsCurrency;
     }
     if (timeRange != null) {
-      _json["timeRange"] = timeRange.toJson();
+      _json['timeRange'] = timeRange.toJson();
     }
     if (verifySingleTimeZone != null) {
-      _json["verifySingleTimeZone"] = verifySingleTimeZone;
+      _json['verifySingleTimeZone'] = verifySingleTimeZone;
     }
     return _json;
   }
@@ -1838,14 +1837,14 @@ class SavedColumn {
   SavedColumn();
 
   SavedColumn.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("savedColumnName")) {
-      savedColumnName = _json["savedColumnName"];
+    if (_json.containsKey('savedColumnName')) {
+      savedColumnName = _json['savedColumnName'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -1853,13 +1852,13 @@ class SavedColumn {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (savedColumnName != null) {
-      _json["savedColumnName"] = savedColumnName;
+      _json['savedColumnName'] = savedColumnName;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1880,13 +1879,13 @@ class SavedColumnList {
   SavedColumnList();
 
   SavedColumnList.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<SavedColumn>((value) => SavedColumn.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -1894,10 +1893,10 @@ class SavedColumnList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -1911,8 +1910,8 @@ class UpdateAvailabilityRequest {
   UpdateAvailabilityRequest();
 
   UpdateAvailabilityRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("availabilities")) {
-      availabilities = (_json["availabilities"] as core.List)
+    if (_json.containsKey('availabilities')) {
+      availabilities = (_json['availabilities'] as core.List)
           .map<Availability>((value) => Availability.fromJson(value))
           .toList();
     }
@@ -1922,7 +1921,7 @@ class UpdateAvailabilityRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (availabilities != null) {
-      _json["availabilities"] =
+      _json['availabilities'] =
           availabilities.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -1937,8 +1936,8 @@ class UpdateAvailabilityResponse {
   UpdateAvailabilityResponse();
 
   UpdateAvailabilityResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("availabilities")) {
-      availabilities = (_json["availabilities"] as core.List)
+    if (_json.containsKey('availabilities')) {
+      availabilities = (_json['availabilities'] as core.List)
           .map<Availability>((value) => Availability.fromJson(value))
           .toList();
     }
@@ -1948,7 +1947,7 @@ class UpdateAvailabilityResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (availabilities != null) {
-      _json["availabilities"] =
+      _json['availabilities'] =
           availabilities.map((value) => value.toJson()).toList();
     }
     return _json;

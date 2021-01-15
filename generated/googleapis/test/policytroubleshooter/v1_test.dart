@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -76,9 +76,9 @@ api.GoogleCloudPolicytroubleshooterV1AccessTuple
   var o = api.GoogleCloudPolicytroubleshooterV1AccessTuple();
   buildCounterGoogleCloudPolicytroubleshooterV1AccessTuple++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1AccessTuple < 3) {
-    o.fullResourceName = "foo";
-    o.permission = "foo";
-    o.principal = "foo";
+    o.fullResourceName = 'foo';
+    o.permission = 'foo';
+    o.principal = 'foo';
   }
   buildCounterGoogleCloudPolicytroubleshooterV1AccessTuple--;
   return o;
@@ -100,9 +100,9 @@ core.Map<core.String,
     buildUnnamed571() {
   var o = <core.String,
       api.GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>{};
-  o["x"] =
+  o['x'] =
       buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership();
-  o["y"] =
+  o['y'] =
       buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership();
   return o;
 }
@@ -113,9 +113,9 @@ void checkUnnamed571(
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership(
-      o["x"]);
+      o['x']);
   checkGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership(
-      o["y"]);
+      o['y']);
 }
 
 core.int buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanation = 0;
@@ -124,13 +124,13 @@ api.GoogleCloudPolicytroubleshooterV1BindingExplanation
   var o = api.GoogleCloudPolicytroubleshooterV1BindingExplanation();
   buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanation++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanation < 3) {
-    o.access = "foo";
+    o.access = 'foo';
     o.condition = buildGoogleTypeExpr();
     o.memberships = buildUnnamed571();
-    o.relevance = "foo";
-    o.role = "foo";
-    o.rolePermission = "foo";
-    o.rolePermissionRelevance = "foo";
+    o.relevance = 'foo';
+    o.role = 'foo';
+    o.rolePermission = 'foo';
+    o.rolePermissionRelevance = 'foo';
   }
   buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanation--;
   return o;
@@ -161,8 +161,8 @@ api.GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
   buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership <
       3) {
-    o.membership = "foo";
-    o.relevance = "foo";
+    o.membership = 'foo';
+    o.relevance = 'foo';
   }
   buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership--;
   return o;
@@ -201,11 +201,11 @@ api.GoogleCloudPolicytroubleshooterV1ExplainedPolicy
   var o = api.GoogleCloudPolicytroubleshooterV1ExplainedPolicy();
   buildCounterGoogleCloudPolicytroubleshooterV1ExplainedPolicy++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1ExplainedPolicy < 3) {
-    o.access = "foo";
+    o.access = 'foo';
     o.bindingExplanations = buildUnnamed572();
-    o.fullResourceName = "foo";
+    o.fullResourceName = 'foo';
     o.policy = buildGoogleIamV1Policy();
-    o.relevance = "foo";
+    o.relevance = 'foo';
   }
   buildCounterGoogleCloudPolicytroubleshooterV1ExplainedPolicy--;
   return o;
@@ -273,7 +273,7 @@ api.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse
   buildCounterGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse <
       3) {
-    o.access = "foo";
+    o.access = 'foo';
     o.explainedPolicies = buildUnnamed573();
   }
   buildCounterGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse--;
@@ -310,7 +310,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
     o.auditLogConfigs = buildUnnamed574();
-    o.service = "foo";
+    o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
   return o;
@@ -327,8 +327,8 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
 
 core.List<core.String> buildUnnamed575() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -344,7 +344,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
     o.exemptedMembers = buildUnnamed575();
-    o.logType = "foo";
+    o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
   return o;
@@ -361,8 +361,8 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
 
 core.List<core.String> buildUnnamed576() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -379,7 +379,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
     o.members = buildUnnamed576();
-    o.role = "foo";
+    o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
   return o;
@@ -428,7 +428,7 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   if (buildCounterGoogleIamV1Policy < 3) {
     o.auditConfigs = buildUnnamed577();
     o.bindings = buildUnnamed578();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.version = 42;
   }
   buildCounterGoogleIamV1Policy--;
@@ -451,10 +451,10 @@ api.GoogleTypeExpr buildGoogleTypeExpr() {
   var o = api.GoogleTypeExpr();
   buildCounterGoogleTypeExpr++;
   if (buildCounterGoogleTypeExpr < 3) {
-    o.description = "foo";
-    o.expression = "foo";
-    o.location = "foo";
-    o.title = "foo";
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
   }
   buildCounterGoogleTypeExpr--;
   return o;
@@ -472,8 +472,8 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
 }
 
 void main() {
-  unittest.group("obj-schema-GoogleCloudPolicytroubleshooterV1AccessTuple", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudPolicytroubleshooterV1AccessTuple', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudPolicytroubleshooterV1AccessTuple();
       var od =
           api.GoogleCloudPolicytroubleshooterV1AccessTuple.fromJson(o.toJson());
@@ -482,8 +482,8 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudPolicytroubleshooterV1BindingExplanation", () {
-    unittest.test("to-json--from-json", () {
+      'obj-schema-GoogleCloudPolicytroubleshooterV1BindingExplanation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudPolicytroubleshooterV1BindingExplanation();
       var od = api.GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(
           o.toJson());
@@ -492,9 +492,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership",
+      'obj-schema-GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership();
       var od =
@@ -505,9 +505,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudPolicytroubleshooterV1ExplainedPolicy",
+  unittest.group('obj-schema-GoogleCloudPolicytroubleshooterV1ExplainedPolicy',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudPolicytroubleshooterV1ExplainedPolicy();
       var od = api.GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
           o.toJson());
@@ -516,9 +516,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest",
+      'obj-schema-GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest();
       var od = api.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest
@@ -528,9 +528,9 @@ void main() {
   });
 
   unittest.group(
-      "obj-schema-GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse",
+      'obj-schema-GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o =
           buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse();
       var od =
@@ -540,53 +540,53 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1AuditConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1AuditConfig();
       var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1AuditLogConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1AuditLogConfig();
       var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditLogConfig(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1Binding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1Binding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1Binding();
       var od = api.GoogleIamV1Binding.fromJson(o.toJson());
       checkGoogleIamV1Binding(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleIamV1Policy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleIamV1Policy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleIamV1Policy();
       var od = api.GoogleIamV1Policy.fromJson(o.toJson());
       checkGoogleIamV1Policy(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleTypeExpr", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleTypeExpr', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleTypeExpr();
       var od = api.GoogleTypeExpr.fromJson(o.toJson());
       checkGoogleTypeExpr(od);
     });
   });
 
-  unittest.group("resource-IamResourceApi", () {
-    unittest.test("method--troubleshoot", () {
+  unittest.group('resource-IamResourceApi', () {
+    unittest.test('method--troubleshoot', () {
       var mock = HttpServerMock();
       api.IamResourceApi res = api.PolicytroubleshooterApi(mock).iam;
       var arg_request =
           buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest
@@ -610,8 +610,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -621,7 +621,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(
             buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse());

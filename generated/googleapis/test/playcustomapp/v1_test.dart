@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,9 +75,9 @@ api.CustomApp buildCustomApp() {
   var o = api.CustomApp();
   buildCounterCustomApp++;
   if (buildCounterCustomApp < 3) {
-    o.languageCode = "foo";
-    o.packageName = "foo";
-    o.title = "foo";
+    o.languageCode = 'foo';
+    o.packageName = 'foo';
+    o.title = 'foo';
   }
   buildCounterCustomApp--;
   return o;
@@ -94,16 +94,16 @@ void checkCustomApp(api.CustomApp o) {
 }
 
 void main() {
-  unittest.group("obj-schema-CustomApp", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomApp', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomApp();
       var od = api.CustomApp.fromJson(o.toJson());
       checkCustomApp(od);
     });
   });
 
-  unittest.group("resource-AccountsCustomAppsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsCustomAppsResourceApi', () {
+    unittest.test('method--create', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -111,8 +111,8 @@ void main() {
       api.AccountsCustomAppsResourceApi res =
           api.PlaycustomappApi(mock).accounts.customApps;
       var arg_request = buildCustomApp();
-      var arg_account = "foo";
-      var arg_$fields = "foo";
+      var arg_account = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CustomApp.fromJson(json);
         checkCustomApp(obj);
@@ -127,12 +127,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 26),
             unittest.equals("playcustomapp/v1/accounts/"));
         pathOffset += 26;
-        index = path.indexOf("/customApps", pathOffset);
+        index = path.indexOf('/customApps', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_account"));
+        unittest.expect(subPart, unittest.equals('$arg_account'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/customApps"));
         pathOffset += 11;
@@ -143,8 +143,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -154,7 +154,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomApp());
         return async.Future.value(stringResponse(200, h, resp));

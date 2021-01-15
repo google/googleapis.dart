@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,11 +36,11 @@ const core.String USER_AGENT = 'dart-api-client reseller/v1';
 /// Creates and manages your customers and their subscriptions.
 class ResellerApi {
   /// Manage users on your domain
-  static const AppsOrderScope = "https://www.googleapis.com/auth/apps.order";
+  static const AppsOrderScope = 'https://www.googleapis.com/auth/apps.order';
 
   /// Manage users on your domain
   static const AppsOrderReadonlyScope =
-      "https://www.googleapis.com/auth/apps.order.readonly";
+      'https://www.googleapis.com/auth/apps.order.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -52,8 +51,8 @@ class ResellerApi {
       SubscriptionsResourceApi(_requester);
 
   ResellerApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "apps/reseller/v1/"})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = 'apps/reseller/v1/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -94,17 +93,17 @@ class CustomersResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -153,17 +152,17 @@ class CustomersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerAuthToken != null) {
-      _queryParams["customerAuthToken"] = [customerAuthToken];
+      _queryParams['customerAuthToken'] = [customerAuthToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -211,17 +210,17 @@ class CustomersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -268,17 +267,17 @@ class CustomersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -319,14 +318,14 @@ class ResellernotifyResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'resellernotify/getwatchdetails';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -366,17 +365,17 @@ class ResellernotifyResourceApi {
     core.String _body;
 
     if (serviceAccountEmailAddress != null) {
-      _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
+      _queryParams['serviceAccountEmailAddress'] = [serviceAccountEmailAddress];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'resellernotify/register';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -415,17 +414,17 @@ class ResellernotifyResourceApi {
     core.String _body;
 
     if (serviceAccountEmailAddress != null) {
-      _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
+      _queryParams['serviceAccountEmailAddress'] = [serviceAccountEmailAddress];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'resellernotify/unregister';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -479,13 +478,13 @@ class SubscriptionsResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' +
@@ -496,7 +495,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -552,13 +551,13 @@ class SubscriptionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' +
@@ -569,7 +568,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -624,13 +623,13 @@ class SubscriptionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' +
@@ -641,7 +640,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -695,13 +694,13 @@ class SubscriptionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' +
@@ -712,7 +711,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -770,17 +769,17 @@ class SubscriptionsResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if (deletionType == null) {
-      throw core.ArgumentError("Parameter deletionType is required.");
+      throw core.ArgumentError('Parameter deletionType is required.');
     }
-    _queryParams["deletionType"] = [deletionType];
+    _queryParams['deletionType'] = [deletionType];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -792,7 +791,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -840,13 +839,13 @@ class SubscriptionsResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' +
@@ -856,7 +855,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -911,13 +910,13 @@ class SubscriptionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (customerAuthToken != null) {
-      _queryParams["customerAuthToken"] = [customerAuthToken];
+      _queryParams['customerAuthToken'] = [customerAuthToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' +
@@ -926,7 +925,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -996,29 +995,29 @@ class SubscriptionsResourceApi {
     core.String _body;
 
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (customerNamePrefix != null) {
-      _queryParams["customerNamePrefix"] = [customerNamePrefix];
+      _queryParams['customerNamePrefix'] = [customerNamePrefix];
     }
     if (customerAuthToken != null) {
-      _queryParams["customerAuthToken"] = [customerAuthToken];
+      _queryParams['customerAuthToken'] = [customerAuthToken];
     }
     if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+      _queryParams['customerId'] = [customerId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'subscriptions';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1067,13 +1066,13 @@ class SubscriptionsResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' +
@@ -1084,7 +1083,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1132,13 +1131,13 @@ class SubscriptionsResourceApi {
     core.String _body;
 
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
     if (subscriptionId == null) {
-      throw core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError('Parameter subscriptionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'customers/' +
@@ -1149,7 +1148,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1199,35 +1198,35 @@ class Address {
   Address();
 
   Address.fromJson(core.Map _json) {
-    if (_json.containsKey("addressLine1")) {
-      addressLine1 = _json["addressLine1"];
+    if (_json.containsKey('addressLine1')) {
+      addressLine1 = _json['addressLine1'];
     }
-    if (_json.containsKey("addressLine2")) {
-      addressLine2 = _json["addressLine2"];
+    if (_json.containsKey('addressLine2')) {
+      addressLine2 = _json['addressLine2'];
     }
-    if (_json.containsKey("addressLine3")) {
-      addressLine3 = _json["addressLine3"];
+    if (_json.containsKey('addressLine3')) {
+      addressLine3 = _json['addressLine3'];
     }
-    if (_json.containsKey("contactName")) {
-      contactName = _json["contactName"];
+    if (_json.containsKey('contactName')) {
+      contactName = _json['contactName'];
     }
-    if (_json.containsKey("countryCode")) {
-      countryCode = _json["countryCode"];
+    if (_json.containsKey('countryCode')) {
+      countryCode = _json['countryCode'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("locality")) {
-      locality = _json["locality"];
+    if (_json.containsKey('locality')) {
+      locality = _json['locality'];
     }
-    if (_json.containsKey("organizationName")) {
-      organizationName = _json["organizationName"];
+    if (_json.containsKey('organizationName')) {
+      organizationName = _json['organizationName'];
     }
-    if (_json.containsKey("postalCode")) {
-      postalCode = _json["postalCode"];
+    if (_json.containsKey('postalCode')) {
+      postalCode = _json['postalCode'];
     }
-    if (_json.containsKey("region")) {
-      region = _json["region"];
+    if (_json.containsKey('region')) {
+      region = _json['region'];
     }
   }
 
@@ -1235,34 +1234,34 @@ class Address {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addressLine1 != null) {
-      _json["addressLine1"] = addressLine1;
+      _json['addressLine1'] = addressLine1;
     }
     if (addressLine2 != null) {
-      _json["addressLine2"] = addressLine2;
+      _json['addressLine2'] = addressLine2;
     }
     if (addressLine3 != null) {
-      _json["addressLine3"] = addressLine3;
+      _json['addressLine3'] = addressLine3;
     }
     if (contactName != null) {
-      _json["contactName"] = contactName;
+      _json['contactName'] = contactName;
     }
     if (countryCode != null) {
-      _json["countryCode"] = countryCode;
+      _json['countryCode'] = countryCode;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (locality != null) {
-      _json["locality"] = locality;
+      _json['locality'] = locality;
     }
     if (organizationName != null) {
-      _json["organizationName"] = organizationName;
+      _json['organizationName'] = organizationName;
     }
     if (postalCode != null) {
-      _json["postalCode"] = postalCode;
+      _json['postalCode'] = postalCode;
     }
     if (region != null) {
-      _json["region"] = region;
+      _json['region'] = region;
     }
     return _json;
   }
@@ -1309,20 +1308,20 @@ class ChangePlanRequest {
   ChangePlanRequest();
 
   ChangePlanRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("dealCode")) {
-      dealCode = _json["dealCode"];
+    if (_json.containsKey('dealCode')) {
+      dealCode = _json['dealCode'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("planName")) {
-      planName = _json["planName"];
+    if (_json.containsKey('planName')) {
+      planName = _json['planName'];
     }
-    if (_json.containsKey("purchaseOrderId")) {
-      purchaseOrderId = _json["purchaseOrderId"];
+    if (_json.containsKey('purchaseOrderId')) {
+      purchaseOrderId = _json['purchaseOrderId'];
     }
-    if (_json.containsKey("seats")) {
-      seats = Seats.fromJson(_json["seats"]);
+    if (_json.containsKey('seats')) {
+      seats = Seats.fromJson(_json['seats']);
     }
   }
 
@@ -1330,19 +1329,19 @@ class ChangePlanRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dealCode != null) {
-      _json["dealCode"] = dealCode;
+      _json['dealCode'] = dealCode;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (planName != null) {
-      _json["planName"] = planName;
+      _json['planName'] = planName;
     }
     if (purchaseOrderId != null) {
-      _json["purchaseOrderId"] = purchaseOrderId;
+      _json['purchaseOrderId'] = purchaseOrderId;
     }
     if (seats != null) {
-      _json["seats"] = seats.toJson();
+      _json['seats'] = seats.toJson();
     }
     return _json;
   }
@@ -1390,29 +1389,29 @@ class Customer {
   Customer();
 
   Customer.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateEmail")) {
-      alternateEmail = _json["alternateEmail"];
+    if (_json.containsKey('alternateEmail')) {
+      alternateEmail = _json['alternateEmail'];
     }
-    if (_json.containsKey("customerDomain")) {
-      customerDomain = _json["customerDomain"];
+    if (_json.containsKey('customerDomain')) {
+      customerDomain = _json['customerDomain'];
     }
-    if (_json.containsKey("customerDomainVerified")) {
-      customerDomainVerified = _json["customerDomainVerified"];
+    if (_json.containsKey('customerDomainVerified')) {
+      customerDomainVerified = _json['customerDomainVerified'];
     }
-    if (_json.containsKey("customerId")) {
-      customerId = _json["customerId"];
+    if (_json.containsKey('customerId')) {
+      customerId = _json['customerId'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'];
     }
-    if (_json.containsKey("postalAddress")) {
-      postalAddress = Address.fromJson(_json["postalAddress"]);
+    if (_json.containsKey('postalAddress')) {
+      postalAddress = Address.fromJson(_json['postalAddress']);
     }
-    if (_json.containsKey("resourceUiUrl")) {
-      resourceUiUrl = _json["resourceUiUrl"];
+    if (_json.containsKey('resourceUiUrl')) {
+      resourceUiUrl = _json['resourceUiUrl'];
     }
   }
 
@@ -1420,28 +1419,28 @@ class Customer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateEmail != null) {
-      _json["alternateEmail"] = alternateEmail;
+      _json['alternateEmail'] = alternateEmail;
     }
     if (customerDomain != null) {
-      _json["customerDomain"] = customerDomain;
+      _json['customerDomain'] = customerDomain;
     }
     if (customerDomainVerified != null) {
-      _json["customerDomainVerified"] = customerDomainVerified;
+      _json['customerDomainVerified'] = customerDomainVerified;
     }
     if (customerId != null) {
-      _json["customerId"] = customerId;
+      _json['customerId'] = customerId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (phoneNumber != null) {
-      _json["phoneNumber"] = phoneNumber;
+      _json['phoneNumber'] = phoneNumber;
     }
     if (postalAddress != null) {
-      _json["postalAddress"] = postalAddress.toJson();
+      _json['postalAddress'] = postalAddress.toJson();
     }
     if (resourceUiUrl != null) {
-      _json["resourceUiUrl"] = resourceUiUrl;
+      _json['resourceUiUrl'] = resourceUiUrl;
     }
     return _json;
   }
@@ -1461,11 +1460,11 @@ class RenewalSettings {
   RenewalSettings();
 
   RenewalSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("renewalType")) {
-      renewalType = _json["renewalType"];
+    if (_json.containsKey('renewalType')) {
+      renewalType = _json['renewalType'];
     }
   }
 
@@ -1473,10 +1472,10 @@ class RenewalSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (renewalType != null) {
-      _json["renewalType"] = renewalType;
+      _json['renewalType'] = renewalType;
     }
     return _json;
   }
@@ -1493,13 +1492,13 @@ class ResellernotifyGetwatchdetailsResponse {
   ResellernotifyGetwatchdetailsResponse();
 
   ResellernotifyGetwatchdetailsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("serviceAccountEmailAddresses")) {
+    if (_json.containsKey('serviceAccountEmailAddresses')) {
       serviceAccountEmailAddresses =
-          (_json["serviceAccountEmailAddresses"] as core.List)
+          (_json['serviceAccountEmailAddresses'] as core.List)
               .cast<core.String>();
     }
-    if (_json.containsKey("topicName")) {
-      topicName = _json["topicName"];
+    if (_json.containsKey('topicName')) {
+      topicName = _json['topicName'];
     }
   }
 
@@ -1507,10 +1506,10 @@ class ResellernotifyGetwatchdetailsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (serviceAccountEmailAddresses != null) {
-      _json["serviceAccountEmailAddresses"] = serviceAccountEmailAddresses;
+      _json['serviceAccountEmailAddresses'] = serviceAccountEmailAddresses;
     }
     if (topicName != null) {
-      _json["topicName"] = topicName;
+      _json['topicName'] = topicName;
     }
     return _json;
   }
@@ -1524,8 +1523,8 @@ class ResellernotifyResource {
   ResellernotifyResource();
 
   ResellernotifyResource.fromJson(core.Map _json) {
-    if (_json.containsKey("topicName")) {
-      topicName = _json["topicName"];
+    if (_json.containsKey('topicName')) {
+      topicName = _json['topicName'];
     }
   }
 
@@ -1533,7 +1532,7 @@ class ResellernotifyResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (topicName != null) {
-      _json["topicName"] = topicName;
+      _json['topicName'] = topicName;
     }
     return _json;
   }
@@ -1571,17 +1570,17 @@ class Seats {
   Seats();
 
   Seats.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("licensedNumberOfSeats")) {
-      licensedNumberOfSeats = _json["licensedNumberOfSeats"];
+    if (_json.containsKey('licensedNumberOfSeats')) {
+      licensedNumberOfSeats = _json['licensedNumberOfSeats'];
     }
-    if (_json.containsKey("maximumNumberOfSeats")) {
-      maximumNumberOfSeats = _json["maximumNumberOfSeats"];
+    if (_json.containsKey('maximumNumberOfSeats')) {
+      maximumNumberOfSeats = _json['maximumNumberOfSeats'];
     }
-    if (_json.containsKey("numberOfSeats")) {
-      numberOfSeats = _json["numberOfSeats"];
+    if (_json.containsKey('numberOfSeats')) {
+      numberOfSeats = _json['numberOfSeats'];
     }
   }
 
@@ -1589,16 +1588,16 @@ class Seats {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (licensedNumberOfSeats != null) {
-      _json["licensedNumberOfSeats"] = licensedNumberOfSeats;
+      _json['licensedNumberOfSeats'] = licensedNumberOfSeats;
     }
     if (maximumNumberOfSeats != null) {
-      _json["maximumNumberOfSeats"] = maximumNumberOfSeats;
+      _json['maximumNumberOfSeats'] = maximumNumberOfSeats;
     }
     if (numberOfSeats != null) {
-      _json["numberOfSeats"] = numberOfSeats;
+      _json['numberOfSeats'] = numberOfSeats;
     }
     return _json;
   }
@@ -1619,11 +1618,11 @@ class SubscriptionPlanCommitmentInterval {
   SubscriptionPlanCommitmentInterval();
 
   SubscriptionPlanCommitmentInterval.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -1631,10 +1630,10 @@ class SubscriptionPlanCommitmentInterval {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -1677,15 +1676,15 @@ class SubscriptionPlan {
   SubscriptionPlan();
 
   SubscriptionPlan.fromJson(core.Map _json) {
-    if (_json.containsKey("commitmentInterval")) {
+    if (_json.containsKey('commitmentInterval')) {
       commitmentInterval = SubscriptionPlanCommitmentInterval.fromJson(
-          _json["commitmentInterval"]);
+          _json['commitmentInterval']);
     }
-    if (_json.containsKey("isCommitmentPlan")) {
-      isCommitmentPlan = _json["isCommitmentPlan"];
+    if (_json.containsKey('isCommitmentPlan')) {
+      isCommitmentPlan = _json['isCommitmentPlan'];
     }
-    if (_json.containsKey("planName")) {
-      planName = _json["planName"];
+    if (_json.containsKey('planName')) {
+      planName = _json['planName'];
     }
   }
 
@@ -1693,13 +1692,13 @@ class SubscriptionPlan {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (commitmentInterval != null) {
-      _json["commitmentInterval"] = commitmentInterval.toJson();
+      _json['commitmentInterval'] = commitmentInterval.toJson();
     }
     if (isCommitmentPlan != null) {
-      _json["isCommitmentPlan"] = isCommitmentPlan;
+      _json['isCommitmentPlan'] = isCommitmentPlan;
     }
     if (planName != null) {
-      _json["planName"] = planName;
+      _json['planName'] = planName;
     }
     return _json;
   }
@@ -1721,11 +1720,11 @@ class SubscriptionTransferInfo {
   SubscriptionTransferInfo();
 
   SubscriptionTransferInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("minimumTransferableSeats")) {
-      minimumTransferableSeats = _json["minimumTransferableSeats"];
+    if (_json.containsKey('minimumTransferableSeats')) {
+      minimumTransferableSeats = _json['minimumTransferableSeats'];
     }
-    if (_json.containsKey("transferabilityExpirationTime")) {
-      transferabilityExpirationTime = _json["transferabilityExpirationTime"];
+    if (_json.containsKey('transferabilityExpirationTime')) {
+      transferabilityExpirationTime = _json['transferabilityExpirationTime'];
     }
   }
 
@@ -1733,10 +1732,10 @@ class SubscriptionTransferInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (minimumTransferableSeats != null) {
-      _json["minimumTransferableSeats"] = minimumTransferableSeats;
+      _json['minimumTransferableSeats'] = minimumTransferableSeats;
     }
     if (transferabilityExpirationTime != null) {
-      _json["transferabilityExpirationTime"] = transferabilityExpirationTime;
+      _json['transferabilityExpirationTime'] = transferabilityExpirationTime;
     }
     return _json;
   }
@@ -1757,11 +1756,11 @@ class SubscriptionTrialSettings {
   SubscriptionTrialSettings();
 
   SubscriptionTrialSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("isInTrial")) {
-      isInTrial = _json["isInTrial"];
+    if (_json.containsKey('isInTrial')) {
+      isInTrial = _json['isInTrial'];
     }
-    if (_json.containsKey("trialEndTime")) {
-      trialEndTime = _json["trialEndTime"];
+    if (_json.containsKey('trialEndTime')) {
+      trialEndTime = _json['trialEndTime'];
     }
   }
 
@@ -1769,10 +1768,10 @@ class SubscriptionTrialSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (isInTrial != null) {
-      _json["isInTrial"] = isInTrial;
+      _json['isInTrial'] = isInTrial;
     }
     if (trialEndTime != null) {
-      _json["trialEndTime"] = trialEndTime;
+      _json['trialEndTime'] = trialEndTime;
     }
     return _json;
   }
@@ -1879,61 +1878,61 @@ class Subscription {
   Subscription();
 
   Subscription.fromJson(core.Map _json) {
-    if (_json.containsKey("billingMethod")) {
-      billingMethod = _json["billingMethod"];
+    if (_json.containsKey('billingMethod')) {
+      billingMethod = _json['billingMethod'];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("customerDomain")) {
-      customerDomain = _json["customerDomain"];
+    if (_json.containsKey('customerDomain')) {
+      customerDomain = _json['customerDomain'];
     }
-    if (_json.containsKey("customerId")) {
-      customerId = _json["customerId"];
+    if (_json.containsKey('customerId')) {
+      customerId = _json['customerId'];
     }
-    if (_json.containsKey("dealCode")) {
-      dealCode = _json["dealCode"];
+    if (_json.containsKey('dealCode')) {
+      dealCode = _json['dealCode'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("plan")) {
-      plan = SubscriptionPlan.fromJson(_json["plan"]);
+    if (_json.containsKey('plan')) {
+      plan = SubscriptionPlan.fromJson(_json['plan']);
     }
-    if (_json.containsKey("purchaseOrderId")) {
-      purchaseOrderId = _json["purchaseOrderId"];
+    if (_json.containsKey('purchaseOrderId')) {
+      purchaseOrderId = _json['purchaseOrderId'];
     }
-    if (_json.containsKey("renewalSettings")) {
-      renewalSettings = RenewalSettings.fromJson(_json["renewalSettings"]);
+    if (_json.containsKey('renewalSettings')) {
+      renewalSettings = RenewalSettings.fromJson(_json['renewalSettings']);
     }
-    if (_json.containsKey("resourceUiUrl")) {
-      resourceUiUrl = _json["resourceUiUrl"];
+    if (_json.containsKey('resourceUiUrl')) {
+      resourceUiUrl = _json['resourceUiUrl'];
     }
-    if (_json.containsKey("seats")) {
-      seats = Seats.fromJson(_json["seats"]);
+    if (_json.containsKey('seats')) {
+      seats = Seats.fromJson(_json['seats']);
     }
-    if (_json.containsKey("skuId")) {
-      skuId = _json["skuId"];
+    if (_json.containsKey('skuId')) {
+      skuId = _json['skuId'];
     }
-    if (_json.containsKey("skuName")) {
-      skuName = _json["skuName"];
+    if (_json.containsKey('skuName')) {
+      skuName = _json['skuName'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("subscriptionId")) {
-      subscriptionId = _json["subscriptionId"];
+    if (_json.containsKey('subscriptionId')) {
+      subscriptionId = _json['subscriptionId'];
     }
-    if (_json.containsKey("suspensionReasons")) {
+    if (_json.containsKey('suspensionReasons')) {
       suspensionReasons =
-          (_json["suspensionReasons"] as core.List).cast<core.String>();
+          (_json['suspensionReasons'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("transferInfo")) {
-      transferInfo = SubscriptionTransferInfo.fromJson(_json["transferInfo"]);
+    if (_json.containsKey('transferInfo')) {
+      transferInfo = SubscriptionTransferInfo.fromJson(_json['transferInfo']);
     }
-    if (_json.containsKey("trialSettings")) {
+    if (_json.containsKey('trialSettings')) {
       trialSettings =
-          SubscriptionTrialSettings.fromJson(_json["trialSettings"]);
+          SubscriptionTrialSettings.fromJson(_json['trialSettings']);
     }
   }
 
@@ -1941,58 +1940,58 @@ class Subscription {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (billingMethod != null) {
-      _json["billingMethod"] = billingMethod;
+      _json['billingMethod'] = billingMethod;
     }
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (customerDomain != null) {
-      _json["customerDomain"] = customerDomain;
+      _json['customerDomain'] = customerDomain;
     }
     if (customerId != null) {
-      _json["customerId"] = customerId;
+      _json['customerId'] = customerId;
     }
     if (dealCode != null) {
-      _json["dealCode"] = dealCode;
+      _json['dealCode'] = dealCode;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (plan != null) {
-      _json["plan"] = plan.toJson();
+      _json['plan'] = plan.toJson();
     }
     if (purchaseOrderId != null) {
-      _json["purchaseOrderId"] = purchaseOrderId;
+      _json['purchaseOrderId'] = purchaseOrderId;
     }
     if (renewalSettings != null) {
-      _json["renewalSettings"] = renewalSettings.toJson();
+      _json['renewalSettings'] = renewalSettings.toJson();
     }
     if (resourceUiUrl != null) {
-      _json["resourceUiUrl"] = resourceUiUrl;
+      _json['resourceUiUrl'] = resourceUiUrl;
     }
     if (seats != null) {
-      _json["seats"] = seats.toJson();
+      _json['seats'] = seats.toJson();
     }
     if (skuId != null) {
-      _json["skuId"] = skuId;
+      _json['skuId'] = skuId;
     }
     if (skuName != null) {
-      _json["skuName"] = skuName;
+      _json['skuName'] = skuName;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (subscriptionId != null) {
-      _json["subscriptionId"] = subscriptionId;
+      _json['subscriptionId'] = subscriptionId;
     }
     if (suspensionReasons != null) {
-      _json["suspensionReasons"] = suspensionReasons;
+      _json['suspensionReasons'] = suspensionReasons;
     }
     if (transferInfo != null) {
-      _json["transferInfo"] = transferInfo.toJson();
+      _json['transferInfo'] = transferInfo.toJson();
     }
     if (trialSettings != null) {
-      _json["trialSettings"] = trialSettings.toJson();
+      _json['trialSettings'] = trialSettings.toJson();
     }
     return _json;
   }
@@ -2014,14 +2013,14 @@ class Subscriptions {
   Subscriptions();
 
   Subscriptions.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("subscriptions")) {
-      subscriptions = (_json["subscriptions"] as core.List)
+    if (_json.containsKey('subscriptions')) {
+      subscriptions = (_json['subscriptions'] as core.List)
           .map<Subscription>((value) => Subscription.fromJson(value))
           .toList();
     }
@@ -2031,13 +2030,13 @@ class Subscriptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (subscriptions != null) {
-      _json["subscriptions"] =
+      _json['subscriptions'] =
           subscriptions.map((value) => value.toJson()).toList();
     }
     return _json;

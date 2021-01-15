@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,9 +75,9 @@ api.Account buildAccount() {
   var o = api.Account();
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    o.accountId = "foo";
-    o.fingerprint = "foo";
-    o.name = "foo";
+    o.accountId = 'foo';
+    o.fingerprint = 'foo';
+    o.name = 'foo';
     o.shareData = true;
   }
   buildCounterAccount--;
@@ -97,8 +97,8 @@ void checkAccount(api.Account o) {
 
 core.List<core.String> buildUnnamed1852() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -146,7 +146,7 @@ api.Condition buildCondition() {
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
     o.parameter = buildUnnamed1853();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterCondition--;
   return o;
@@ -163,8 +163,8 @@ void checkCondition(api.Condition o) {
 
 core.List<core.String> buildUnnamed1854() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -176,8 +176,8 @@ void checkUnnamed1854(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1855() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -189,8 +189,8 @@ void checkUnnamed1855(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1856() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -205,16 +205,16 @@ api.Container buildContainer() {
   var o = api.Container();
   buildCounterContainer++;
   if (buildCounterContainer < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
     o.domainName = buildUnnamed1854();
     o.enabledBuiltInVariable = buildUnnamed1855();
-    o.fingerprint = "foo";
-    o.name = "foo";
-    o.notes = "foo";
-    o.publicId = "foo";
-    o.timeZoneCountryId = "foo";
-    o.timeZoneId = "foo";
+    o.fingerprint = 'foo';
+    o.name = 'foo';
+    o.notes = 'foo';
+    o.publicId = 'foo';
+    o.timeZoneCountryId = 'foo';
+    o.timeZoneId = 'foo';
     o.usageContext = buildUnnamed1856();
   }
   buildCounterContainer--;
@@ -241,8 +241,8 @@ void checkContainer(api.Container o) {
 
 core.List<core.String> buildUnnamed1857() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -257,7 +257,7 @@ api.ContainerAccess buildContainerAccess() {
   var o = api.ContainerAccess();
   buildCounterContainerAccess++;
   if (buildCounterContainerAccess < 3) {
-    o.containerId = "foo";
+    o.containerId = 'foo';
     o.permission = buildUnnamed1857();
   }
   buildCounterContainerAccess--;
@@ -356,16 +356,16 @@ api.ContainerVersion buildContainerVersion() {
   var o = api.ContainerVersion();
   buildCounterContainerVersion++;
   if (buildCounterContainerVersion < 3) {
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.container = buildContainer();
-    o.containerId = "foo";
-    o.containerVersionId = "foo";
+    o.containerId = 'foo';
+    o.containerVersionId = 'foo';
     o.deleted = true;
-    o.fingerprint = "foo";
+    o.fingerprint = 'foo';
     o.folder = buildUnnamed1858();
     o.macro = buildUnnamed1859();
-    o.name = "foo";
-    o.notes = "foo";
+    o.name = 'foo';
+    o.notes = 'foo';
     o.rule = buildUnnamed1860();
     o.tag = buildUnnamed1861();
     o.trigger = buildUnnamed1862();
@@ -401,16 +401,16 @@ api.ContainerVersionHeader buildContainerVersionHeader() {
   var o = api.ContainerVersionHeader();
   buildCounterContainerVersionHeader++;
   if (buildCounterContainerVersionHeader < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
-    o.containerVersionId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
+    o.containerVersionId = 'foo';
     o.deleted = true;
-    o.name = "foo";
-    o.numMacros = "foo";
-    o.numRules = "foo";
-    o.numTags = "foo";
-    o.numTriggers = "foo";
-    o.numVariables = "foo";
+    o.name = 'foo';
+    o.numMacros = 'foo';
+    o.numRules = 'foo';
+    o.numTags = 'foo';
+    o.numTriggers = 'foo';
+    o.numVariables = 'foo';
   }
   buildCounterContainerVersionHeader--;
   return o;
@@ -439,8 +439,8 @@ api.CreateContainerVersionRequestVersionOptions
   var o = api.CreateContainerVersionRequestVersionOptions();
   buildCounterCreateContainerVersionRequestVersionOptions++;
   if (buildCounterCreateContainerVersionRequestVersionOptions < 3) {
-    o.name = "foo";
-    o.notes = "foo";
+    o.name = 'foo';
+    o.notes = 'foo';
     o.quickPreview = true;
   }
   buildCounterCreateContainerVersionRequestVersionOptions--;
@@ -484,18 +484,18 @@ api.Environment buildEnvironment() {
   var o = api.Environment();
   buildCounterEnvironment++;
   if (buildCounterEnvironment < 3) {
-    o.accountId = "foo";
-    o.authorizationCode = "foo";
-    o.authorizationTimestampMs = "foo";
-    o.containerId = "foo";
-    o.containerVersionId = "foo";
-    o.description = "foo";
+    o.accountId = 'foo';
+    o.authorizationCode = 'foo';
+    o.authorizationTimestampMs = 'foo';
+    o.containerId = 'foo';
+    o.containerVersionId = 'foo';
+    o.description = 'foo';
     o.enableDebug = true;
-    o.environmentId = "foo";
-    o.fingerprint = "foo";
-    o.name = "foo";
-    o.type = "foo";
-    o.url = "foo";
+    o.environmentId = 'foo';
+    o.fingerprint = 'foo';
+    o.name = 'foo';
+    o.type = 'foo';
+    o.url = 'foo';
   }
   buildCounterEnvironment--;
   return o;
@@ -525,11 +525,11 @@ api.Folder buildFolder() {
   var o = api.Folder();
   buildCounterFolder++;
   if (buildCounterFolder < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
-    o.fingerprint = "foo";
-    o.folderId = "foo";
-    o.name = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
+    o.fingerprint = 'foo';
+    o.folderId = 'foo';
+    o.name = 'foo';
   }
   buildCounterFolder--;
   return o;
@@ -914,8 +914,8 @@ void checkListVariablesResponse(api.ListVariablesResponse o) {
 
 core.List<core.String> buildUnnamed1877() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -927,8 +927,8 @@ void checkUnnamed1877(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1878() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -956,19 +956,19 @@ api.Macro buildMacro() {
   var o = api.Macro();
   buildCounterMacro++;
   if (buildCounterMacro < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
     o.disablingRuleId = buildUnnamed1877();
     o.enablingRuleId = buildUnnamed1878();
-    o.fingerprint = "foo";
-    o.macroId = "foo";
-    o.name = "foo";
-    o.notes = "foo";
+    o.fingerprint = 'foo';
+    o.macroId = 'foo';
+    o.name = 'foo';
+    o.notes = 'foo';
     o.parameter = buildUnnamed1879();
-    o.parentFolderId = "foo";
-    o.scheduleEndMs = "foo";
-    o.scheduleStartMs = "foo";
-    o.type = "foo";
+    o.parentFolderId = 'foo';
+    o.scheduleEndMs = 'foo';
+    o.scheduleStartMs = 'foo';
+    o.type = 'foo';
   }
   buildCounterMacro--;
   return o;
@@ -1025,11 +1025,11 @@ api.Parameter buildParameter() {
   var o = api.Parameter();
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
-    o.key = "foo";
+    o.key = 'foo';
     o.list = buildUnnamed1880();
     o.map = buildUnnamed1881();
-    o.type = "foo";
-    o.value = "foo";
+    o.type = 'foo';
+    o.value = 'foo';
   }
   buildCounterParameter--;
   return o;
@@ -1087,13 +1087,13 @@ api.Rule buildRule() {
   var o = api.Rule();
   buildCounterRule++;
   if (buildCounterRule < 3) {
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.condition = buildUnnamed1882();
-    o.containerId = "foo";
-    o.fingerprint = "foo";
-    o.name = "foo";
-    o.notes = "foo";
-    o.ruleId = "foo";
+    o.containerId = 'foo';
+    o.fingerprint = 'foo';
+    o.name = 'foo';
+    o.notes = 'foo';
+    o.ruleId = 'foo';
   }
   buildCounterRule--;
   return o;
@@ -1119,7 +1119,7 @@ api.SetupTag buildSetupTag() {
   buildCounterSetupTag++;
   if (buildCounterSetupTag < 3) {
     o.stopOnSetupFailure = true;
-    o.tagName = "foo";
+    o.tagName = 'foo';
   }
   buildCounterSetupTag--;
   return o;
@@ -1136,8 +1136,8 @@ void checkSetupTag(api.SetupTag o) {
 
 core.List<core.String> buildUnnamed1883() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1149,8 +1149,8 @@ void checkUnnamed1883(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1884() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1162,8 +1162,8 @@ void checkUnnamed1884(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1885() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1175,8 +1175,8 @@ void checkUnnamed1885(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1886() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1230,27 +1230,27 @@ api.Tag buildTag() {
   var o = api.Tag();
   buildCounterTag++;
   if (buildCounterTag < 3) {
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.blockingRuleId = buildUnnamed1883();
     o.blockingTriggerId = buildUnnamed1884();
-    o.containerId = "foo";
-    o.fingerprint = "foo";
+    o.containerId = 'foo';
+    o.fingerprint = 'foo';
     o.firingRuleId = buildUnnamed1885();
     o.firingTriggerId = buildUnnamed1886();
     o.liveOnly = true;
-    o.name = "foo";
-    o.notes = "foo";
+    o.name = 'foo';
+    o.notes = 'foo';
     o.parameter = buildUnnamed1887();
-    o.parentFolderId = "foo";
+    o.parentFolderId = 'foo';
     o.paused = true;
     o.priority = buildParameter();
-    o.scheduleEndMs = "foo";
-    o.scheduleStartMs = "foo";
+    o.scheduleEndMs = 'foo';
+    o.scheduleStartMs = 'foo';
     o.setupTag = buildUnnamed1888();
-    o.tagFiringOption = "foo";
-    o.tagId = "foo";
+    o.tagFiringOption = 'foo';
+    o.tagId = 'foo';
     o.teardownTag = buildUnnamed1889();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterTag--;
   return o;
@@ -1290,7 +1290,7 @@ api.TeardownTag buildTeardownTag() {
   buildCounterTeardownTag++;
   if (buildCounterTeardownTag < 3) {
     o.stopTeardownOnFailure = true;
-    o.tagName = "foo";
+    o.tagName = 'foo';
   }
   buildCounterTeardownTag--;
   return o;
@@ -1362,27 +1362,27 @@ api.Trigger buildTrigger() {
   var o = api.Trigger();
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.autoEventFilter = buildUnnamed1890();
     o.checkValidation = buildParameter();
-    o.containerId = "foo";
+    o.containerId = 'foo';
     o.continuousTimeMinMilliseconds = buildParameter();
     o.customEventFilter = buildUnnamed1891();
     o.eventName = buildParameter();
     o.filter = buildUnnamed1892();
-    o.fingerprint = "foo";
+    o.fingerprint = 'foo';
     o.horizontalScrollPercentageList = buildParameter();
     o.interval = buildParameter();
     o.intervalSeconds = buildParameter();
     o.limit = buildParameter();
     o.maxTimerLengthSeconds = buildParameter();
-    o.name = "foo";
+    o.name = 'foo';
     o.parameter = buildUnnamed1893();
-    o.parentFolderId = "foo";
+    o.parentFolderId = 'foo';
     o.selector = buildParameter();
     o.totalTimeMinMilliseconds = buildParameter();
-    o.triggerId = "foo";
-    o.type = "foo";
+    o.triggerId = 'foo';
+    o.type = 'foo';
     o.uniqueTriggerId = buildParameter();
     o.verticalScrollPercentageList = buildParameter();
     o.visibilitySelector = buildParameter();
@@ -1449,10 +1449,10 @@ api.UserAccess buildUserAccess() {
   buildCounterUserAccess++;
   if (buildCounterUserAccess < 3) {
     o.accountAccess = buildAccountAccess();
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.containerAccess = buildUnnamed1894();
-    o.emailAddress = "foo";
-    o.permissionId = "foo";
+    o.emailAddress = 'foo';
+    o.permissionId = 'foo';
   }
   buildCounterUserAccess--;
   return o;
@@ -1472,8 +1472,8 @@ void checkUserAccess(api.UserAccess o) {
 
 core.List<core.String> buildUnnamed1895() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1485,8 +1485,8 @@ void checkUnnamed1895(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1896() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1514,19 +1514,19 @@ api.Variable buildVariable() {
   var o = api.Variable();
   buildCounterVariable++;
   if (buildCounterVariable < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
     o.disablingTriggerId = buildUnnamed1895();
     o.enablingTriggerId = buildUnnamed1896();
-    o.fingerprint = "foo";
-    o.name = "foo";
-    o.notes = "foo";
+    o.fingerprint = 'foo';
+    o.name = 'foo';
+    o.notes = 'foo';
     o.parameter = buildUnnamed1897();
-    o.parentFolderId = "foo";
-    o.scheduleEndMs = "foo";
-    o.scheduleStartMs = "foo";
-    o.type = "foo";
-    o.variableId = "foo";
+    o.parentFolderId = 'foo';
+    o.scheduleEndMs = 'foo';
+    o.scheduleStartMs = 'foo';
+    o.type = 'foo';
+    o.variableId = 'foo';
   }
   buildCounterVariable--;
   return o;
@@ -1554,8 +1554,8 @@ void checkVariable(api.Variable o) {
 
 core.List<core.String> buildUnnamed1898() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1567,8 +1567,8 @@ void checkUnnamed1898(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1899() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1580,8 +1580,8 @@ void checkUnnamed1899(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1900() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1592,64 +1592,64 @@ void checkUnnamed1900(core.List<core.String> o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Account", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Account', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od);
     });
   });
 
-  unittest.group("obj-schema-AccountAccess", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AccountAccess', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccountAccess();
       var od = api.AccountAccess.fromJson(o.toJson());
       checkAccountAccess(od);
     });
   });
 
-  unittest.group("obj-schema-Condition", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Condition', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCondition();
       var od = api.Condition.fromJson(o.toJson());
       checkCondition(od);
     });
   });
 
-  unittest.group("obj-schema-Container", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Container', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainer();
       var od = api.Container.fromJson(o.toJson());
       checkContainer(od);
     });
   });
 
-  unittest.group("obj-schema-ContainerAccess", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContainerAccess', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainerAccess();
       var od = api.ContainerAccess.fromJson(o.toJson());
       checkContainerAccess(od);
     });
   });
 
-  unittest.group("obj-schema-ContainerVersion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContainerVersion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainerVersion();
       var od = api.ContainerVersion.fromJson(o.toJson());
       checkContainerVersion(od);
     });
   });
 
-  unittest.group("obj-schema-ContainerVersionHeader", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContainerVersionHeader', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainerVersionHeader();
       var od = api.ContainerVersionHeader.fromJson(o.toJson());
       checkContainerVersionHeader(od);
     });
   });
 
-  unittest.group("obj-schema-CreateContainerVersionRequestVersionOptions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateContainerVersionRequestVersionOptions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateContainerVersionRequestVersionOptions();
       var od =
           api.CreateContainerVersionRequestVersionOptions.fromJson(o.toJson());
@@ -1657,196 +1657,196 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-CreateContainerVersionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateContainerVersionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateContainerVersionResponse();
       var od = api.CreateContainerVersionResponse.fromJson(o.toJson());
       checkCreateContainerVersionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Environment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Environment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
       checkEnvironment(od);
     });
   });
 
-  unittest.group("obj-schema-Folder", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Folder', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFolder();
       var od = api.Folder.fromJson(o.toJson());
       checkFolder(od);
     });
   });
 
-  unittest.group("obj-schema-FolderEntities", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FolderEntities', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFolderEntities();
       var od = api.FolderEntities.fromJson(o.toJson());
       checkFolderEntities(od);
     });
   });
 
-  unittest.group("obj-schema-ListAccountUsersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAccountUsersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAccountUsersResponse();
       var od = api.ListAccountUsersResponse.fromJson(o.toJson());
       checkListAccountUsersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListAccountsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAccountsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAccountsResponse();
       var od = api.ListAccountsResponse.fromJson(o.toJson());
       checkListAccountsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListContainerVersionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListContainerVersionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListContainerVersionsResponse();
       var od = api.ListContainerVersionsResponse.fromJson(o.toJson());
       checkListContainerVersionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListContainersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListContainersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListContainersResponse();
       var od = api.ListContainersResponse.fromJson(o.toJson());
       checkListContainersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListEnvironmentsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListEnvironmentsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListEnvironmentsResponse();
       var od = api.ListEnvironmentsResponse.fromJson(o.toJson());
       checkListEnvironmentsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListFoldersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListFoldersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListFoldersResponse();
       var od = api.ListFoldersResponse.fromJson(o.toJson());
       checkListFoldersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTagsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTagsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTagsResponse();
       var od = api.ListTagsResponse.fromJson(o.toJson());
       checkListTagsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTriggersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTriggersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTriggersResponse();
       var od = api.ListTriggersResponse.fromJson(o.toJson());
       checkListTriggersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListVariablesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListVariablesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListVariablesResponse();
       var od = api.ListVariablesResponse.fromJson(o.toJson());
       checkListVariablesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Macro", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Macro', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMacro();
       var od = api.Macro.fromJson(o.toJson());
       checkMacro(od);
     });
   });
 
-  unittest.group("obj-schema-Parameter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Parameter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParameter();
       var od = api.Parameter.fromJson(o.toJson());
       checkParameter(od);
     });
   });
 
-  unittest.group("obj-schema-PublishContainerVersionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PublishContainerVersionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPublishContainerVersionResponse();
       var od = api.PublishContainerVersionResponse.fromJson(o.toJson());
       checkPublishContainerVersionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Rule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Rule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRule();
       var od = api.Rule.fromJson(o.toJson());
       checkRule(od);
     });
   });
 
-  unittest.group("obj-schema-SetupTag", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SetupTag', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSetupTag();
       var od = api.SetupTag.fromJson(o.toJson());
       checkSetupTag(od);
     });
   });
 
-  unittest.group("obj-schema-Tag", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Tag', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTag();
       var od = api.Tag.fromJson(o.toJson());
       checkTag(od);
     });
   });
 
-  unittest.group("obj-schema-TeardownTag", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TeardownTag', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTeardownTag();
       var od = api.TeardownTag.fromJson(o.toJson());
       checkTeardownTag(od);
     });
   });
 
-  unittest.group("obj-schema-Trigger", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Trigger', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTrigger();
       var od = api.Trigger.fromJson(o.toJson());
       checkTrigger(od);
     });
   });
 
-  unittest.group("obj-schema-UserAccess", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UserAccess', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserAccess();
       var od = api.UserAccess.fromJson(o.toJson());
       checkUserAccess(od);
     });
   });
 
-  unittest.group("obj-schema-Variable", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Variable', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVariable();
       var od = api.Variable.fromJson(o.toJson());
       checkVariable(od);
     });
   });
 
-  unittest.group("resource-AccountsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AccountsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.TagmanagerApi(mock).accounts;
-      var arg_accountId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1860,7 +1860,7 @@ void main() {
         pathOffset += 23;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1868,8 +1868,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1879,7 +1879,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1891,10 +1891,10 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.TagmanagerApi(mock).accounts;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1913,8 +1913,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1924,7 +1924,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1934,13 +1934,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.TagmanagerApi(mock).accounts;
       var arg_request = buildAccount();
-      var arg_accountId = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Account.fromJson(json);
         checkAccount(obj);
@@ -1957,7 +1957,7 @@ void main() {
         pathOffset += 23;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1965,8 +1965,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1978,7 +1978,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1992,14 +1992,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
-      var arg_accountId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Container.fromJson(json);
         checkContainer(obj);
@@ -2014,12 +2014,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers", pathOffset);
+        index = path.indexOf('/containers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/containers"));
         pathOffset += 11;
@@ -2030,8 +2030,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2041,7 +2041,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2053,13 +2053,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2071,18 +2071,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2090,8 +2090,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2101,9 +2101,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2111,13 +2111,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2129,18 +2129,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2148,8 +2148,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2159,7 +2159,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2171,12 +2171,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
-      var arg_accountId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2188,12 +2188,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers", pathOffset);
+        index = path.indexOf('/containers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/containers"));
         pathOffset += 11;
@@ -2204,8 +2204,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2215,7 +2215,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListContainersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2227,15 +2227,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Container.fromJson(json);
         checkContainer(obj);
@@ -2250,18 +2250,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2269,8 +2269,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2282,7 +2282,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2296,15 +2296,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersEnvironmentsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersEnvironmentsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Environment.fromJson(json);
         checkEnvironment(obj);
@@ -2319,21 +2319,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/environments", pathOffset);
+        index = path.indexOf('/environments', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/environments"));
         pathOffset += 13;
@@ -2344,8 +2344,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2355,7 +2355,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2368,14 +2368,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_environmentId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_environmentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2387,27 +2387,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/environments/", pathOffset);
+        index = path.indexOf('/environments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/environments/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_environmentId"));
+        unittest.expect(subPart, unittest.equals('$arg_environmentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2415,8 +2415,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2426,9 +2426,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2437,14 +2437,14 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_environmentId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_environmentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2456,27 +2456,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/environments/", pathOffset);
+        index = path.indexOf('/environments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/environments/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_environmentId"));
+        unittest.expect(subPart, unittest.equals('$arg_environmentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2484,8 +2484,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2495,7 +2495,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2508,13 +2508,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2526,21 +2526,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/environments", pathOffset);
+        index = path.indexOf('/environments', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/environments"));
         pathOffset += 13;
@@ -2551,8 +2551,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2562,7 +2562,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListEnvironmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2574,16 +2574,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_environmentId = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_environmentId = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Environment.fromJson(json);
         checkEnvironment(obj);
@@ -2598,27 +2598,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/environments/", pathOffset);
+        index = path.indexOf('/environments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/environments/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_environmentId"));
+        unittest.expect(subPart, unittest.equals('$arg_environmentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2626,8 +2626,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2639,7 +2639,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2654,15 +2654,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersFoldersResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersFoldersResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.folders;
       var arg_request = buildFolder();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Folder.fromJson(json);
         checkFolder(obj);
@@ -2677,21 +2677,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/folders", pathOffset);
+        index = path.indexOf('/folders', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/folders"));
         pathOffset += 8;
@@ -2702,8 +2702,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2713,7 +2713,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2726,14 +2726,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.folders;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_folderId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_folderId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2745,27 +2745,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/folders/", pathOffset);
+        index = path.indexOf('/folders/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/folders/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_folderId"));
+        unittest.expect(subPart, unittest.equals('$arg_folderId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2773,8 +2773,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2784,9 +2784,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2795,14 +2795,14 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.folders;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_folderId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_folderId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2814,27 +2814,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/folders/", pathOffset);
+        index = path.indexOf('/folders/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/folders/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_folderId"));
+        unittest.expect(subPart, unittest.equals('$arg_folderId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2842,8 +2842,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2853,7 +2853,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2866,13 +2866,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.folders;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2884,21 +2884,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/folders", pathOffset);
+        index = path.indexOf('/folders', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/folders"));
         pathOffset += 8;
@@ -2909,8 +2909,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2920,7 +2920,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListFoldersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2932,16 +2932,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.folders;
       var arg_request = buildFolder();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_folderId = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_folderId = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Folder.fromJson(json);
         checkFolder(obj);
@@ -2956,27 +2956,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/folders/", pathOffset);
+        index = path.indexOf('/folders/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/folders/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_folderId"));
+        unittest.expect(subPart, unittest.equals('$arg_folderId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2984,8 +2984,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2997,7 +2997,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3011,15 +3011,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersFoldersEntitiesResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-AccountsContainersFoldersEntitiesResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersFoldersEntitiesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.folders.entities;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_folderId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_folderId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3031,30 +3031,30 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/folders/", pathOffset);
+        index = path.indexOf('/folders/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/folders/"));
         pathOffset += 9;
-        index = path.indexOf("/entities", pathOffset);
+        index = path.indexOf('/entities', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_folderId"));
+        unittest.expect(subPart, unittest.equals('$arg_folderId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/entities"));
         pathOffset += 9;
@@ -3065,8 +3065,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3076,7 +3076,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFolderEntities());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3090,19 +3090,19 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersMoveFoldersResourceApi", () {
-    unittest.test("method--update", () {
+  unittest.group('resource-AccountsContainersMoveFoldersResourceApi', () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersMoveFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.moveFolders;
       var arg_request = buildFolder();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_folderId = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_folderId = 'foo';
       var arg_variableId = buildUnnamed1898();
       var arg_tagId = buildUnnamed1899();
       var arg_triggerId = buildUnnamed1900();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Folder.fromJson(json);
         checkFolder(obj);
@@ -3117,27 +3117,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/move_folders/", pathOffset);
+        index = path.indexOf('/move_folders/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/move_folders/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_folderId"));
+        unittest.expect(subPart, unittest.equals('$arg_folderId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3145,8 +3145,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3160,9 +3160,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3176,16 +3176,16 @@ void main() {
   });
 
   unittest.group(
-      "resource-AccountsContainersReauthorizeEnvironmentsResourceApi", () {
-    unittest.test("method--update", () {
+      'resource-AccountsContainersReauthorizeEnvironmentsResourceApi', () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersReauthorizeEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.reauthorizeEnvironments;
       var arg_request = buildEnvironment();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_environmentId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_environmentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Environment.fromJson(json);
         checkEnvironment(obj);
@@ -3200,27 +3200,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/reauthorize_environments/", pathOffset);
+        index = path.indexOf('/reauthorize_environments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 26),
             unittest.equals("/reauthorize_environments/"));
         pathOffset += 26;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_environmentId"));
+        unittest.expect(subPart, unittest.equals('$arg_environmentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3228,8 +3228,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3239,7 +3239,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3254,15 +3254,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersTagsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersTagsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.tags;
       var arg_request = buildTag();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Tag.fromJson(json);
         checkTag(obj);
@@ -3277,21 +3277,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/tags", pathOffset);
+        index = path.indexOf('/tags', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/tags"));
         pathOffset += 5;
@@ -3302,8 +3302,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3313,7 +3313,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTag());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3326,14 +3326,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.tags;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_tagId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_tagId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3345,27 +3345,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/tags/", pathOffset);
+        index = path.indexOf('/tags/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/tags/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_tagId"));
+        unittest.expect(subPart, unittest.equals('$arg_tagId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3373,8 +3373,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3384,9 +3384,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3395,14 +3395,14 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.tags;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_tagId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_tagId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3414,27 +3414,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/tags/", pathOffset);
+        index = path.indexOf('/tags/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/tags/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_tagId"));
+        unittest.expect(subPart, unittest.equals('$arg_tagId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3442,8 +3442,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3453,7 +3453,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTag());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3465,13 +3465,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.tags;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3483,21 +3483,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/tags", pathOffset);
+        index = path.indexOf('/tags', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 5),
             unittest.equals("/tags"));
         pathOffset += 5;
@@ -3508,8 +3508,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3519,7 +3519,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTagsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3531,16 +3531,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.tags;
       var arg_request = buildTag();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_tagId = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_tagId = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Tag.fromJson(json);
         checkTag(obj);
@@ -3555,27 +3555,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/tags/", pathOffset);
+        index = path.indexOf('/tags/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 6),
             unittest.equals("/tags/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_tagId"));
+        unittest.expect(subPart, unittest.equals('$arg_tagId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3583,8 +3583,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3596,7 +3596,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTag());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3610,15 +3610,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersTriggersResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersTriggersResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.triggers;
       var arg_request = buildTrigger();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Trigger.fromJson(json);
         checkTrigger(obj);
@@ -3633,21 +3633,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/triggers", pathOffset);
+        index = path.indexOf('/triggers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/triggers"));
         pathOffset += 9;
@@ -3658,8 +3658,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3669,7 +3669,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3682,14 +3682,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.triggers;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_triggerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_triggerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3701,27 +3701,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/triggers/", pathOffset);
+        index = path.indexOf('/triggers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/triggers/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_triggerId"));
+        unittest.expect(subPart, unittest.equals('$arg_triggerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3729,8 +3729,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3740,9 +3740,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3751,14 +3751,14 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.triggers;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_triggerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_triggerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3770,27 +3770,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/triggers/", pathOffset);
+        index = path.indexOf('/triggers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/triggers/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_triggerId"));
+        unittest.expect(subPart, unittest.equals('$arg_triggerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3798,8 +3798,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3809,7 +3809,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3822,13 +3822,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.triggers;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3840,21 +3840,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/triggers", pathOffset);
+        index = path.indexOf('/triggers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/triggers"));
         pathOffset += 9;
@@ -3865,8 +3865,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3876,7 +3876,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTriggersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3888,16 +3888,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.triggers;
       var arg_request = buildTrigger();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_triggerId = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_triggerId = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Trigger.fromJson(json);
         checkTrigger(obj);
@@ -3912,27 +3912,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/triggers/", pathOffset);
+        index = path.indexOf('/triggers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/triggers/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_triggerId"));
+        unittest.expect(subPart, unittest.equals('$arg_triggerId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3940,8 +3940,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3953,7 +3953,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3967,15 +3967,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersVariablesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersVariablesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.variables;
       var arg_request = buildVariable();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Variable.fromJson(json);
         checkVariable(obj);
@@ -3990,21 +3990,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/variables", pathOffset);
+        index = path.indexOf('/variables', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/variables"));
         pathOffset += 10;
@@ -4015,8 +4015,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4026,7 +4026,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVariable());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4039,14 +4039,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.variables;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_variableId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_variableId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4058,27 +4058,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/variables/", pathOffset);
+        index = path.indexOf('/variables/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/variables/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_variableId"));
+        unittest.expect(subPart, unittest.equals('$arg_variableId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4086,8 +4086,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4097,9 +4097,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4108,14 +4108,14 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.variables;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_variableId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_variableId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4127,27 +4127,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/variables/", pathOffset);
+        index = path.indexOf('/variables/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/variables/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_variableId"));
+        unittest.expect(subPart, unittest.equals('$arg_variableId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4155,8 +4155,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4166,7 +4166,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVariable());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4179,13 +4179,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.variables;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4197,21 +4197,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/variables", pathOffset);
+        index = path.indexOf('/variables', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/variables"));
         pathOffset += 10;
@@ -4222,8 +4222,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4233,7 +4233,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListVariablesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4245,16 +4245,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.variables;
       var arg_request = buildVariable();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_variableId = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_variableId = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Variable.fromJson(json);
         checkVariable(obj);
@@ -4269,27 +4269,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/variables/", pathOffset);
+        index = path.indexOf('/variables/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/variables/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_variableId"));
+        unittest.expect(subPart, unittest.equals('$arg_variableId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4297,8 +4297,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4310,7 +4310,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVariable());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4324,15 +4324,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersVersionsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersVersionsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_request = buildCreateContainerVersionRequestVersionOptions();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.CreateContainerVersionRequestVersionOptions.fromJson(json);
@@ -4348,21 +4348,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/versions", pathOffset);
+        index = path.indexOf('/versions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/versions"));
         pathOffset += 9;
@@ -4373,8 +4373,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4384,7 +4384,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreateContainerVersionResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4397,14 +4397,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_containerVersionId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_containerVersionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4416,27 +4416,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/versions/", pathOffset);
+        index = path.indexOf('/versions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/versions/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_containerVersionId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerVersionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4444,8 +4444,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4455,9 +4455,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4466,14 +4466,14 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_containerVersionId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_containerVersionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4485,27 +4485,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/versions/", pathOffset);
+        index = path.indexOf('/versions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/versions/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_containerVersionId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerVersionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4513,8 +4513,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4524,7 +4524,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4537,15 +4537,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
       var arg_includeDeleted = true;
       var arg_headers = true;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4557,21 +4557,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/versions", pathOffset);
+        index = path.indexOf('/versions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/versions"));
         pathOffset += 9;
@@ -4582,8 +4582,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4597,7 +4597,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListContainerVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4612,15 +4612,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--publish", () {
+    unittest.test('method--publish', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_containerVersionId = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_containerVersionId = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4632,30 +4632,30 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/versions/", pathOffset);
+        index = path.indexOf('/versions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/versions/"));
         pathOffset += 10;
-        index = path.indexOf("/publish", pathOffset);
+        index = path.indexOf('/publish', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerVersionId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerVersionId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/publish"));
         pathOffset += 8;
@@ -4666,8 +4666,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4679,7 +4679,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPublishContainerVersionResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4692,14 +4692,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--restore", () {
+    unittest.test('method--restore', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_containerVersionId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_containerVersionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4711,30 +4711,30 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/versions/", pathOffset);
+        index = path.indexOf('/versions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/versions/"));
         pathOffset += 10;
-        index = path.indexOf("/restore", pathOffset);
+        index = path.indexOf('/restore', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerVersionId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerVersionId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/restore"));
         pathOffset += 8;
@@ -4745,8 +4745,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4756,7 +4756,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4769,14 +4769,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--undelete", () {
+    unittest.test('method--undelete', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_containerVersionId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_containerVersionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4788,30 +4788,30 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/versions/", pathOffset);
+        index = path.indexOf('/versions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/versions/"));
         pathOffset += 10;
-        index = path.indexOf("/undelete", pathOffset);
+        index = path.indexOf('/undelete', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerVersionId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerVersionId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/undelete"));
         pathOffset += 9;
@@ -4822,8 +4822,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4833,7 +4833,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4846,16 +4846,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_request = buildContainerVersion();
-      var arg_accountId = "foo";
-      var arg_containerId = "foo";
-      var arg_containerVersionId = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_containerId = 'foo';
+      var arg_containerVersionId = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ContainerVersion.fromJson(json);
         checkContainerVersion(obj);
@@ -4870,27 +4870,27 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/containers/", pathOffset);
+        index = path.indexOf('/containers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/containers/"));
         pathOffset += 12;
-        index = path.indexOf("/versions/", pathOffset);
+        index = path.indexOf('/versions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 10),
             unittest.equals("/versions/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_containerVersionId"));
+        unittest.expect(subPart, unittest.equals('$arg_containerVersionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4898,8 +4898,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4911,7 +4911,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4926,14 +4926,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsPermissionsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsPermissionsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.permissions;
       var arg_request = buildUserAccess();
-      var arg_accountId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UserAccess.fromJson(json);
         checkUserAccess(obj);
@@ -4948,12 +4948,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/permissions", pathOffset);
+        index = path.indexOf('/permissions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/permissions"));
         pathOffset += 12;
@@ -4964,8 +4964,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4975,7 +4975,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUserAccess());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4987,13 +4987,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.permissions;
-      var arg_accountId = "foo";
-      var arg_permissionId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_permissionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5005,18 +5005,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/permissions/", pathOffset);
+        index = path.indexOf('/permissions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/permissions/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_permissionId"));
+        unittest.expect(subPart, unittest.equals('$arg_permissionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5024,8 +5024,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5035,9 +5035,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5045,13 +5045,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.permissions;
-      var arg_accountId = "foo";
-      var arg_permissionId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_permissionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5063,18 +5063,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/permissions/", pathOffset);
+        index = path.indexOf('/permissions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/permissions/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_permissionId"));
+        unittest.expect(subPart, unittest.equals('$arg_permissionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5082,8 +5082,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5093,7 +5093,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUserAccess());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5105,12 +5105,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.permissions;
-      var arg_accountId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5122,12 +5122,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/permissions", pathOffset);
+        index = path.indexOf('/permissions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/permissions"));
         pathOffset += 12;
@@ -5138,8 +5138,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5149,7 +5149,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListAccountUsersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5161,14 +5161,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.permissions;
       var arg_request = buildUserAccess();
-      var arg_accountId = "foo";
-      var arg_permissionId = "foo";
-      var arg_$fields = "foo";
+      var arg_accountId = 'foo';
+      var arg_permissionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UserAccess.fromJson(json);
         checkUserAccess(obj);
@@ -5183,18 +5183,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 23),
             unittest.equals("tagmanager/v1/accounts/"));
         pathOffset += 23;
-        index = path.indexOf("/permissions/", pathOffset);
+        index = path.indexOf('/permissions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(subPart, unittest.equals('$arg_accountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/permissions/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_permissionId"));
+        unittest.expect(subPart, unittest.equals('$arg_permissionId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5202,8 +5202,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5213,7 +5213,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUserAccess());
         return async.Future.value(stringResponse(200, h, resp));

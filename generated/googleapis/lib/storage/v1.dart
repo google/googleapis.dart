@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -46,23 +45,23 @@ const core.String USER_AGENT = 'dart-api-client storage/v1';
 class StorageApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// View your data across Google Cloud Platform services
   static const CloudPlatformReadOnlyScope =
-      "https://www.googleapis.com/auth/cloud-platform.read-only";
+      'https://www.googleapis.com/auth/cloud-platform.read-only';
 
   /// Manage your data and permissions in Google Cloud Storage
   static const DevstorageFullControlScope =
-      "https://www.googleapis.com/auth/devstorage.full_control";
+      'https://www.googleapis.com/auth/devstorage.full_control';
 
   /// View your data in Google Cloud Storage
   static const DevstorageReadOnlyScope =
-      "https://www.googleapis.com/auth/devstorage.read_only";
+      'https://www.googleapis.com/auth/devstorage.read_only';
 
   /// Manage your data in Google Cloud Storage
   static const DevstorageReadWriteScope =
-      "https://www.googleapis.com/auth/devstorage.read_write";
+      'https://www.googleapis.com/auth/devstorage.read_write';
 
   final commons.ApiRequester _requester;
 
@@ -80,8 +79,8 @@ class StorageApi {
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   StorageApi(http.Client client,
-      {core.String rootUrl = "https://storage.googleapis.com/",
-      core.String servicePath = "storage/v1/"})
+      {core.String rootUrl = 'https://storage.googleapis.com/',
+      core.String servicePath = 'storage/v1/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -132,19 +131,19 @@ class BucketAccessControlsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -156,7 +155,7 @@ class BucketAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -207,19 +206,19 @@ class BucketAccessControlsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -229,7 +228,7 @@ class BucketAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -281,23 +280,23 @@ class BucketAccessControlsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -343,23 +342,23 @@ class BucketAccessControlsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -416,19 +415,19 @@ class BucketAccessControlsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -438,7 +437,7 @@ class BucketAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -495,19 +494,19 @@ class BucketAccessControlsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -517,7 +516,7 @@ class BucketAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -575,22 +574,22 @@ class BucketsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -599,7 +598,7 @@ class BucketsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -661,32 +660,32 @@ class BucketsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -737,28 +736,28 @@ class BucketsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (optionsRequestedPolicyVersion != null) {
-      _queryParams["optionsRequestedPolicyVersion"] = [
-        "${optionsRequestedPolicyVersion}"
+      _queryParams['optionsRequestedPolicyVersion'] = [
+        '${optionsRequestedPolicyVersion}'
       ];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -847,33 +846,33 @@ class BucketsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
-    _queryParams["project"] = [project];
+    _queryParams['project'] = [project];
     if (predefinedAcl != null) {
-      _queryParams["predefinedAcl"] = [predefinedAcl];
+      _queryParams['predefinedAcl'] = [predefinedAcl];
     }
     if (predefinedDefaultObjectAcl != null) {
-      _queryParams["predefinedDefaultObjectAcl"] = [predefinedDefaultObjectAcl];
+      _queryParams['predefinedDefaultObjectAcl'] = [predefinedDefaultObjectAcl];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -935,36 +934,36 @@ class BucketsResourceApi {
     core.String _body;
 
     if (project == null) {
-      throw core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError('Parameter project is required.');
     }
-    _queryParams["project"] = [project];
+    _queryParams['project'] = [project];
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (prefix != null) {
-      _queryParams["prefix"] = [prefix];
+      _queryParams['prefix'] = [prefix];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1014,20 +1013,20 @@ class BucketsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (ifMetagenerationMatch == null) {
-      throw core.ArgumentError("Parameter ifMetagenerationMatch is required.");
+      throw core.ArgumentError('Parameter ifMetagenerationMatch is required.');
     }
-    _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+    _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -1036,7 +1035,7 @@ class BucketsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1135,38 +1134,38 @@ class BucketsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (predefinedAcl != null) {
-      _queryParams["predefinedAcl"] = [predefinedAcl];
+      _queryParams['predefinedAcl'] = [predefinedAcl];
     }
     if (predefinedDefaultObjectAcl != null) {
-      _queryParams["predefinedDefaultObjectAcl"] = [predefinedDefaultObjectAcl];
+      _queryParams['predefinedDefaultObjectAcl'] = [predefinedDefaultObjectAcl];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1218,23 +1217,23 @@ class BucketsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1284,20 +1283,20 @@ class BucketsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (permissions == null || permissions.isEmpty) {
-      throw core.ArgumentError("Parameter permissions is required.");
+      throw core.ArgumentError('Parameter permissions is required.');
     }
-    _queryParams["permissions"] = permissions;
+    _queryParams['permissions'] = permissions;
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -1306,7 +1305,7 @@ class BucketsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1405,38 +1404,38 @@ class BucketsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (predefinedAcl != null) {
-      _queryParams["predefinedAcl"] = [predefinedAcl];
+      _queryParams['predefinedAcl'] = [predefinedAcl];
     }
     if (predefinedDefaultObjectAcl != null) {
-      _queryParams["predefinedDefaultObjectAcl"] = [predefinedDefaultObjectAcl];
+      _queryParams['predefinedDefaultObjectAcl'] = [predefinedDefaultObjectAcl];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1481,7 +1480,7 @@ class ChannelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1490,7 +1489,7 @@ class ChannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1547,19 +1546,19 @@ class DefaultObjectAccessControlsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1571,7 +1570,7 @@ class DefaultObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1623,19 +1622,19 @@ class DefaultObjectAccessControlsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -1645,7 +1644,7 @@ class DefaultObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1697,16 +1696,16 @@ class DefaultObjectAccessControlsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1714,7 +1713,7 @@ class DefaultObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1768,22 +1767,22 @@ class DefaultObjectAccessControlsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1791,7 +1790,7 @@ class DefaultObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1848,19 +1847,19 @@ class DefaultObjectAccessControlsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -1870,7 +1869,7 @@ class DefaultObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1927,19 +1926,19 @@ class DefaultObjectAccessControlsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -1949,7 +1948,7 @@ class DefaultObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2002,19 +2001,19 @@ class NotificationsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (notification == null) {
-      throw core.ArgumentError("Parameter notification is required.");
+      throw core.ArgumentError('Parameter notification is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2026,7 +2025,7 @@ class NotificationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2075,19 +2074,19 @@ class NotificationsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (notification == null) {
-      throw core.ArgumentError("Parameter notification is required.");
+      throw core.ArgumentError('Parameter notification is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -2097,7 +2096,7 @@ class NotificationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2149,16 +2148,16 @@ class NotificationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -2167,7 +2166,7 @@ class NotificationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2213,16 +2212,16 @@ class NotificationsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -2231,7 +2230,7 @@ class NotificationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2296,25 +2295,25 @@ class ObjectAccessControlsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2328,7 +2327,7 @@ class ObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2387,25 +2386,25 @@ class ObjectAccessControlsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -2417,7 +2416,7 @@ class ObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2477,22 +2476,22 @@ class ObjectAccessControlsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -2503,7 +2502,7 @@ class ObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2557,22 +2556,22 @@ class ObjectAccessControlsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -2583,7 +2582,7 @@ class ObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2648,25 +2647,25 @@ class ObjectAccessControlsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -2678,7 +2677,7 @@ class ObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2743,25 +2742,25 @@ class ObjectAccessControlsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (entity == null) {
-      throw core.ArgumentError("Parameter entity is required.");
+      throw core.ArgumentError('Parameter entity is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -2773,7 +2772,7 @@ class ObjectAccessControlsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2868,31 +2867,31 @@ class ObjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (destinationBucket == null) {
-      throw core.ArgumentError("Parameter destinationBucket is required.");
+      throw core.ArgumentError('Parameter destinationBucket is required.');
     }
     if (destinationObject == null) {
-      throw core.ArgumentError("Parameter destinationObject is required.");
+      throw core.ArgumentError('Parameter destinationObject is required.');
     }
     if (destinationPredefinedAcl != null) {
-      _queryParams["destinationPredefinedAcl"] = [destinationPredefinedAcl];
+      _queryParams['destinationPredefinedAcl'] = [destinationPredefinedAcl];
     }
     if (ifGenerationMatch != null) {
-      _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
+      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (kmsKeyName != null) {
-      _queryParams["kmsKeyName"] = [kmsKeyName];
+      _queryParams['kmsKeyName'] = [kmsKeyName];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -2903,7 +2902,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3042,65 +3041,65 @@ class ObjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (sourceBucket == null) {
-      throw core.ArgumentError("Parameter sourceBucket is required.");
+      throw core.ArgumentError('Parameter sourceBucket is required.');
     }
     if (sourceObject == null) {
-      throw core.ArgumentError("Parameter sourceObject is required.");
+      throw core.ArgumentError('Parameter sourceObject is required.');
     }
     if (destinationBucket == null) {
-      throw core.ArgumentError("Parameter destinationBucket is required.");
+      throw core.ArgumentError('Parameter destinationBucket is required.');
     }
     if (destinationObject == null) {
-      throw core.ArgumentError("Parameter destinationObject is required.");
+      throw core.ArgumentError('Parameter destinationObject is required.');
     }
     if (destinationKmsKeyName != null) {
-      _queryParams["destinationKmsKeyName"] = [destinationKmsKeyName];
+      _queryParams['destinationKmsKeyName'] = [destinationKmsKeyName];
     }
     if (destinationPredefinedAcl != null) {
-      _queryParams["destinationPredefinedAcl"] = [destinationPredefinedAcl];
+      _queryParams['destinationPredefinedAcl'] = [destinationPredefinedAcl];
     }
     if (ifGenerationMatch != null) {
-      _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
+      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
     }
     if (ifGenerationNotMatch != null) {
-      _queryParams["ifGenerationNotMatch"] = [ifGenerationNotMatch];
+      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (ifSourceGenerationMatch != null) {
-      _queryParams["ifSourceGenerationMatch"] = [ifSourceGenerationMatch];
+      _queryParams['ifSourceGenerationMatch'] = [ifSourceGenerationMatch];
     }
     if (ifSourceGenerationNotMatch != null) {
-      _queryParams["ifSourceGenerationNotMatch"] = [ifSourceGenerationNotMatch];
+      _queryParams['ifSourceGenerationNotMatch'] = [ifSourceGenerationNotMatch];
     }
     if (ifSourceMetagenerationMatch != null) {
-      _queryParams["ifSourceMetagenerationMatch"] = [
+      _queryParams['ifSourceMetagenerationMatch'] = [
         ifSourceMetagenerationMatch
       ];
     }
     if (ifSourceMetagenerationNotMatch != null) {
-      _queryParams["ifSourceMetagenerationNotMatch"] = [
+      _queryParams['ifSourceMetagenerationNotMatch'] = [
         ifSourceMetagenerationNotMatch
       ];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (sourceGeneration != null) {
-      _queryParams["sourceGeneration"] = [sourceGeneration];
+      _queryParams['sourceGeneration'] = [sourceGeneration];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -3114,7 +3113,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3186,34 +3185,34 @@ class ObjectsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (ifGenerationMatch != null) {
-      _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
+      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
     }
     if (ifGenerationNotMatch != null) {
-      _queryParams["ifGenerationNotMatch"] = [ifGenerationNotMatch];
+      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3225,7 +3224,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3313,37 +3312,37 @@ class ObjectsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (ifGenerationMatch != null) {
-      _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
+      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
     }
     if (ifGenerationNotMatch != null) {
-      _queryParams["ifGenerationNotMatch"] = [ifGenerationNotMatch];
+      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -3355,7 +3354,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3414,22 +3413,22 @@ class ObjectsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -3440,7 +3439,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3562,43 +3561,43 @@ class ObjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (contentEncoding != null) {
-      _queryParams["contentEncoding"] = [contentEncoding];
+      _queryParams['contentEncoding'] = [contentEncoding];
     }
     if (ifGenerationMatch != null) {
-      _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
+      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
     }
     if (ifGenerationNotMatch != null) {
-      _queryParams["ifGenerationNotMatch"] = [ifGenerationNotMatch];
+      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (kmsKeyName != null) {
-      _queryParams["kmsKeyName"] = [kmsKeyName];
+      _queryParams['kmsKeyName'] = [kmsKeyName];
     }
     if (name != null) {
-      _queryParams["name"] = [name];
+      _queryParams['name'] = [name];
     }
     if (predefinedAcl != null) {
-      _queryParams["predefinedAcl"] = [predefinedAcl];
+      _queryParams['predefinedAcl'] = [predefinedAcl];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -3618,7 +3617,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3710,52 +3709,52 @@ class ObjectsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (delimiter != null) {
-      _queryParams["delimiter"] = [delimiter];
+      _queryParams['delimiter'] = [delimiter];
     }
     if (endOffset != null) {
-      _queryParams["endOffset"] = [endOffset];
+      _queryParams['endOffset'] = [endOffset];
     }
     if (includeTrailingDelimiter != null) {
-      _queryParams["includeTrailingDelimiter"] = [
-        "${includeTrailingDelimiter}"
+      _queryParams['includeTrailingDelimiter'] = [
+        '${includeTrailingDelimiter}'
       ];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (prefix != null) {
-      _queryParams["prefix"] = [prefix];
+      _queryParams['prefix'] = [prefix];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (startOffset != null) {
-      _queryParams["startOffset"] = [startOffset];
+      _queryParams['startOffset'] = [startOffset];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if (versions != null) {
-      _queryParams["versions"] = ["${versions}"];
+      _queryParams['versions'] = ['${versions}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3856,40 +3855,40 @@ class ObjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (ifGenerationMatch != null) {
-      _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
+      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
     }
     if (ifGenerationNotMatch != null) {
-      _queryParams["ifGenerationNotMatch"] = [ifGenerationNotMatch];
+      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (predefinedAcl != null) {
-      _queryParams["predefinedAcl"] = [predefinedAcl];
+      _queryParams['predefinedAcl'] = [predefinedAcl];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -3899,7 +3898,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4052,71 +4051,71 @@ class ObjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (sourceBucket == null) {
-      throw core.ArgumentError("Parameter sourceBucket is required.");
+      throw core.ArgumentError('Parameter sourceBucket is required.');
     }
     if (sourceObject == null) {
-      throw core.ArgumentError("Parameter sourceObject is required.");
+      throw core.ArgumentError('Parameter sourceObject is required.');
     }
     if (destinationBucket == null) {
-      throw core.ArgumentError("Parameter destinationBucket is required.");
+      throw core.ArgumentError('Parameter destinationBucket is required.');
     }
     if (destinationObject == null) {
-      throw core.ArgumentError("Parameter destinationObject is required.");
+      throw core.ArgumentError('Parameter destinationObject is required.');
     }
     if (destinationKmsKeyName != null) {
-      _queryParams["destinationKmsKeyName"] = [destinationKmsKeyName];
+      _queryParams['destinationKmsKeyName'] = [destinationKmsKeyName];
     }
     if (destinationPredefinedAcl != null) {
-      _queryParams["destinationPredefinedAcl"] = [destinationPredefinedAcl];
+      _queryParams['destinationPredefinedAcl'] = [destinationPredefinedAcl];
     }
     if (ifGenerationMatch != null) {
-      _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
+      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
     }
     if (ifGenerationNotMatch != null) {
-      _queryParams["ifGenerationNotMatch"] = [ifGenerationNotMatch];
+      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (ifSourceGenerationMatch != null) {
-      _queryParams["ifSourceGenerationMatch"] = [ifSourceGenerationMatch];
+      _queryParams['ifSourceGenerationMatch'] = [ifSourceGenerationMatch];
     }
     if (ifSourceGenerationNotMatch != null) {
-      _queryParams["ifSourceGenerationNotMatch"] = [ifSourceGenerationNotMatch];
+      _queryParams['ifSourceGenerationNotMatch'] = [ifSourceGenerationNotMatch];
     }
     if (ifSourceMetagenerationMatch != null) {
-      _queryParams["ifSourceMetagenerationMatch"] = [
+      _queryParams['ifSourceMetagenerationMatch'] = [
         ifSourceMetagenerationMatch
       ];
     }
     if (ifSourceMetagenerationNotMatch != null) {
-      _queryParams["ifSourceMetagenerationNotMatch"] = [
+      _queryParams['ifSourceMetagenerationNotMatch'] = [
         ifSourceMetagenerationNotMatch
       ];
     }
     if (maxBytesRewrittenPerCall != null) {
-      _queryParams["maxBytesRewrittenPerCall"] = [maxBytesRewrittenPerCall];
+      _queryParams['maxBytesRewrittenPerCall'] = [maxBytesRewrittenPerCall];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (rewriteToken != null) {
-      _queryParams["rewriteToken"] = [rewriteToken];
+      _queryParams['rewriteToken'] = [rewriteToken];
     }
     if (sourceGeneration != null) {
-      _queryParams["sourceGeneration"] = [sourceGeneration];
+      _queryParams['sourceGeneration'] = [sourceGeneration];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -4130,7 +4129,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4190,22 +4189,22 @@ class ObjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -4216,7 +4215,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4274,26 +4273,26 @@ class ObjectsResourceApi {
     core.String _body;
 
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (permissions == null || permissions.isEmpty) {
-      throw core.ArgumentError("Parameter permissions is required.");
+      throw core.ArgumentError('Parameter permissions is required.');
     }
-    _queryParams["permissions"] = permissions;
+    _queryParams['permissions'] = permissions;
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -4304,7 +4303,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4405,40 +4404,40 @@ class ObjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (object == null) {
-      throw core.ArgumentError("Parameter object is required.");
+      throw core.ArgumentError('Parameter object is required.');
     }
     if (generation != null) {
-      _queryParams["generation"] = [generation];
+      _queryParams['generation'] = [generation];
     }
     if (ifGenerationMatch != null) {
-      _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
+      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
     }
     if (ifGenerationNotMatch != null) {
-      _queryParams["ifGenerationNotMatch"] = [ifGenerationNotMatch];
+      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
     }
     if (ifMetagenerationMatch != null) {
-      _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
     if (ifMetagenerationNotMatch != null) {
-      _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
     }
     if (predefinedAcl != null) {
-      _queryParams["predefinedAcl"] = [predefinedAcl];
+      _queryParams['predefinedAcl'] = [predefinedAcl];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' +
@@ -4448,7 +4447,7 @@ class ObjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4546,52 +4545,52 @@ class ObjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (bucket == null) {
-      throw core.ArgumentError("Parameter bucket is required.");
+      throw core.ArgumentError('Parameter bucket is required.');
     }
     if (delimiter != null) {
-      _queryParams["delimiter"] = [delimiter];
+      _queryParams['delimiter'] = [delimiter];
     }
     if (endOffset != null) {
-      _queryParams["endOffset"] = [endOffset];
+      _queryParams['endOffset'] = [endOffset];
     }
     if (includeTrailingDelimiter != null) {
-      _queryParams["includeTrailingDelimiter"] = [
-        "${includeTrailingDelimiter}"
+      _queryParams['includeTrailingDelimiter'] = [
+        '${includeTrailingDelimiter}'
       ];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (prefix != null) {
-      _queryParams["prefix"] = [prefix];
+      _queryParams['prefix'] = [prefix];
     }
     if (projection != null) {
-      _queryParams["projection"] = [projection];
+      _queryParams['projection'] = [projection];
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (startOffset != null) {
-      _queryParams["startOffset"] = [startOffset];
+      _queryParams['startOffset'] = [startOffset];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if (versions != null) {
-      _queryParams["versions"] = ["${versions}"];
+      _queryParams['versions'] = ['${versions}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/watch';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4653,17 +4652,17 @@ class ProjectsHmacKeysResourceApi {
     core.String _body;
 
     if (projectId == null) {
-      throw core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError('Parameter projectId is required.');
     }
     if (serviceAccountEmail == null) {
-      throw core.ArgumentError("Parameter serviceAccountEmail is required.");
+      throw core.ArgumentError('Parameter serviceAccountEmail is required.');
     }
-    _queryParams["serviceAccountEmail"] = [serviceAccountEmail];
+    _queryParams['serviceAccountEmail'] = [serviceAccountEmail];
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -4671,7 +4670,7 @@ class ProjectsHmacKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4713,16 +4712,16 @@ class ProjectsHmacKeysResourceApi {
     core.String _body;
 
     if (projectId == null) {
-      throw core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError('Parameter projectId is required.');
     }
     if (accessId == null) {
-      throw core.ArgumentError("Parameter accessId is required.");
+      throw core.ArgumentError('Parameter accessId is required.');
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4734,7 +4733,7 @@ class ProjectsHmacKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4778,16 +4777,16 @@ class ProjectsHmacKeysResourceApi {
     core.String _body;
 
     if (projectId == null) {
-      throw core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError('Parameter projectId is required.');
     }
     if (accessId == null) {
-      throw core.ArgumentError("Parameter accessId is required.");
+      throw core.ArgumentError('Parameter accessId is required.');
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'projects/' +
@@ -4797,7 +4796,7 @@ class ProjectsHmacKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4857,25 +4856,25 @@ class ProjectsHmacKeysResourceApi {
     core.String _body;
 
     if (projectId == null) {
-      throw core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError('Parameter projectId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (serviceAccountEmail != null) {
-      _queryParams["serviceAccountEmail"] = [serviceAccountEmail];
+      _queryParams['serviceAccountEmail'] = [serviceAccountEmail];
     }
     if (showDeletedKeys != null) {
-      _queryParams["showDeletedKeys"] = ["${showDeletedKeys}"];
+      _queryParams['showDeletedKeys'] = ['${showDeletedKeys}'];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -4883,7 +4882,7 @@ class ProjectsHmacKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4934,16 +4933,16 @@ class ProjectsHmacKeysResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError('Parameter projectId is required.');
     }
     if (accessId == null) {
-      throw core.ArgumentError("Parameter accessId is required.");
+      throw core.ArgumentError('Parameter accessId is required.');
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'projects/' +
@@ -4953,7 +4952,7 @@ class ProjectsHmacKeysResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5006,16 +5005,16 @@ class ProjectsServiceAccountResourceApi {
     core.String _body;
 
     if (projectId == null) {
-      throw core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError('Parameter projectId is required.');
     }
     if (provisionalUserProject != null) {
-      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+      _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
     if (userProject != null) {
-      _queryParams["userProject"] = [userProject];
+      _queryParams['userProject'] = [userProject];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'projects/' +
@@ -5024,7 +5023,7 @@ class ProjectsServiceAccountResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5043,8 +5042,8 @@ class BucketBilling {
   BucketBilling();
 
   BucketBilling.fromJson(core.Map _json) {
-    if (_json.containsKey("requesterPays")) {
-      requesterPays = _json["requesterPays"];
+    if (_json.containsKey('requesterPays')) {
+      requesterPays = _json['requesterPays'];
     }
   }
 
@@ -5052,7 +5051,7 @@ class BucketBilling {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (requesterPays != null) {
-      _json["requesterPays"] = requesterPays;
+      _json['requesterPays'] = requesterPays;
     }
     return _json;
   }
@@ -5079,18 +5078,18 @@ class BucketCors {
   BucketCors();
 
   BucketCors.fromJson(core.Map _json) {
-    if (_json.containsKey("maxAgeSeconds")) {
-      maxAgeSeconds = _json["maxAgeSeconds"];
+    if (_json.containsKey('maxAgeSeconds')) {
+      maxAgeSeconds = _json['maxAgeSeconds'];
     }
-    if (_json.containsKey("method")) {
-      method = (_json["method"] as core.List).cast<core.String>();
+    if (_json.containsKey('method')) {
+      method = (_json['method'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("origin")) {
-      origin = (_json["origin"] as core.List).cast<core.String>();
+    if (_json.containsKey('origin')) {
+      origin = (_json['origin'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("responseHeader")) {
+    if (_json.containsKey('responseHeader')) {
       responseHeader =
-          (_json["responseHeader"] as core.List).cast<core.String>();
+          (_json['responseHeader'] as core.List).cast<core.String>();
     }
   }
 
@@ -5098,16 +5097,16 @@ class BucketCors {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxAgeSeconds != null) {
-      _json["maxAgeSeconds"] = maxAgeSeconds;
+      _json['maxAgeSeconds'] = maxAgeSeconds;
     }
     if (method != null) {
-      _json["method"] = method;
+      _json['method'] = method;
     }
     if (origin != null) {
-      _json["origin"] = origin;
+      _json['origin'] = origin;
     }
     if (responseHeader != null) {
-      _json["responseHeader"] = responseHeader;
+      _json['responseHeader'] = responseHeader;
     }
     return _json;
   }
@@ -5122,8 +5121,8 @@ class BucketEncryption {
   BucketEncryption();
 
   BucketEncryption.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultKmsKeyName")) {
-      defaultKmsKeyName = _json["defaultKmsKeyName"];
+    if (_json.containsKey('defaultKmsKeyName')) {
+      defaultKmsKeyName = _json['defaultKmsKeyName'];
     }
   }
 
@@ -5131,7 +5130,7 @@ class BucketEncryption {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (defaultKmsKeyName != null) {
-      _json["defaultKmsKeyName"] = defaultKmsKeyName;
+      _json['defaultKmsKeyName'] = defaultKmsKeyName;
     }
     return _json;
   }
@@ -5155,11 +5154,11 @@ class BucketIamConfigurationBucketPolicyOnly {
   BucketIamConfigurationBucketPolicyOnly();
 
   BucketIamConfigurationBucketPolicyOnly.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
-    if (_json.containsKey("lockedTime")) {
-      lockedTime = core.DateTime.parse(_json["lockedTime"]);
+    if (_json.containsKey('lockedTime')) {
+      lockedTime = core.DateTime.parse(_json['lockedTime']);
     }
   }
 
@@ -5167,10 +5166,10 @@ class BucketIamConfigurationBucketPolicyOnly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     if (lockedTime != null) {
-      _json["lockedTime"] = (lockedTime).toIso8601String();
+      _json['lockedTime'] = (lockedTime).toIso8601String();
     }
     return _json;
   }
@@ -5191,11 +5190,11 @@ class BucketIamConfigurationUniformBucketLevelAccess {
   BucketIamConfigurationUniformBucketLevelAccess();
 
   BucketIamConfigurationUniformBucketLevelAccess.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
-    if (_json.containsKey("lockedTime")) {
-      lockedTime = core.DateTime.parse(_json["lockedTime"]);
+    if (_json.containsKey('lockedTime')) {
+      lockedTime = core.DateTime.parse(_json['lockedTime']);
     }
   }
 
@@ -5203,10 +5202,10 @@ class BucketIamConfigurationUniformBucketLevelAccess {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     if (lockedTime != null) {
-      _json["lockedTime"] = (lockedTime).toIso8601String();
+      _json['lockedTime'] = (lockedTime).toIso8601String();
     }
     return _json;
   }
@@ -5227,14 +5226,14 @@ class BucketIamConfiguration {
   BucketIamConfiguration();
 
   BucketIamConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("bucketPolicyOnly")) {
+    if (_json.containsKey('bucketPolicyOnly')) {
       bucketPolicyOnly = BucketIamConfigurationBucketPolicyOnly.fromJson(
-          _json["bucketPolicyOnly"]);
+          _json['bucketPolicyOnly']);
     }
-    if (_json.containsKey("uniformBucketLevelAccess")) {
+    if (_json.containsKey('uniformBucketLevelAccess')) {
       uniformBucketLevelAccess =
           BucketIamConfigurationUniformBucketLevelAccess.fromJson(
-              _json["uniformBucketLevelAccess"]);
+              _json['uniformBucketLevelAccess']);
     }
   }
 
@@ -5242,10 +5241,10 @@ class BucketIamConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucketPolicyOnly != null) {
-      _json["bucketPolicyOnly"] = bucketPolicyOnly.toJson();
+      _json['bucketPolicyOnly'] = bucketPolicyOnly.toJson();
     }
     if (uniformBucketLevelAccess != null) {
-      _json["uniformBucketLevelAccess"] = uniformBucketLevelAccess.toJson();
+      _json['uniformBucketLevelAccess'] = uniformBucketLevelAccess.toJson();
     }
     return _json;
   }
@@ -5264,11 +5263,11 @@ class BucketLifecycleRuleAction {
   BucketLifecycleRuleAction();
 
   BucketLifecycleRuleAction.fromJson(core.Map _json) {
-    if (_json.containsKey("storageClass")) {
-      storageClass = _json["storageClass"];
+    if (_json.containsKey('storageClass')) {
+      storageClass = _json['storageClass'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -5276,10 +5275,10 @@ class BucketLifecycleRuleAction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (storageClass != null) {
-      _json["storageClass"] = storageClass;
+      _json['storageClass'] = storageClass;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -5345,36 +5344,36 @@ class BucketLifecycleRuleCondition {
   BucketLifecycleRuleCondition();
 
   BucketLifecycleRuleCondition.fromJson(core.Map _json) {
-    if (_json.containsKey("age")) {
-      age = _json["age"];
+    if (_json.containsKey('age')) {
+      age = _json['age'];
     }
-    if (_json.containsKey("createdBefore")) {
-      createdBefore = core.DateTime.parse(_json["createdBefore"]);
+    if (_json.containsKey('createdBefore')) {
+      createdBefore = core.DateTime.parse(_json['createdBefore']);
     }
-    if (_json.containsKey("customTimeBefore")) {
-      customTimeBefore = core.DateTime.parse(_json["customTimeBefore"]);
+    if (_json.containsKey('customTimeBefore')) {
+      customTimeBefore = core.DateTime.parse(_json['customTimeBefore']);
     }
-    if (_json.containsKey("daysSinceCustomTime")) {
-      daysSinceCustomTime = _json["daysSinceCustomTime"];
+    if (_json.containsKey('daysSinceCustomTime')) {
+      daysSinceCustomTime = _json['daysSinceCustomTime'];
     }
-    if (_json.containsKey("daysSinceNoncurrentTime")) {
-      daysSinceNoncurrentTime = _json["daysSinceNoncurrentTime"];
+    if (_json.containsKey('daysSinceNoncurrentTime')) {
+      daysSinceNoncurrentTime = _json['daysSinceNoncurrentTime'];
     }
-    if (_json.containsKey("isLive")) {
-      isLive = _json["isLive"];
+    if (_json.containsKey('isLive')) {
+      isLive = _json['isLive'];
     }
-    if (_json.containsKey("matchesPattern")) {
-      matchesPattern = _json["matchesPattern"];
+    if (_json.containsKey('matchesPattern')) {
+      matchesPattern = _json['matchesPattern'];
     }
-    if (_json.containsKey("matchesStorageClass")) {
+    if (_json.containsKey('matchesStorageClass')) {
       matchesStorageClass =
-          (_json["matchesStorageClass"] as core.List).cast<core.String>();
+          (_json['matchesStorageClass'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("noncurrentTimeBefore")) {
-      noncurrentTimeBefore = core.DateTime.parse(_json["noncurrentTimeBefore"]);
+    if (_json.containsKey('noncurrentTimeBefore')) {
+      noncurrentTimeBefore = core.DateTime.parse(_json['noncurrentTimeBefore']);
     }
-    if (_json.containsKey("numNewerVersions")) {
-      numNewerVersions = _json["numNewerVersions"];
+    if (_json.containsKey('numNewerVersions')) {
+      numNewerVersions = _json['numNewerVersions'];
     }
   }
 
@@ -5382,37 +5381,37 @@ class BucketLifecycleRuleCondition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (age != null) {
-      _json["age"] = age;
+      _json['age'] = age;
     }
     if (createdBefore != null) {
-      _json["createdBefore"] =
+      _json['createdBefore'] =
           "${(createdBefore).year.toString().padLeft(4, '0')}-${(createdBefore).month.toString().padLeft(2, '0')}-${(createdBefore).day.toString().padLeft(2, '0')}";
     }
     if (customTimeBefore != null) {
-      _json["customTimeBefore"] =
+      _json['customTimeBefore'] =
           "${(customTimeBefore).year.toString().padLeft(4, '0')}-${(customTimeBefore).month.toString().padLeft(2, '0')}-${(customTimeBefore).day.toString().padLeft(2, '0')}";
     }
     if (daysSinceCustomTime != null) {
-      _json["daysSinceCustomTime"] = daysSinceCustomTime;
+      _json['daysSinceCustomTime'] = daysSinceCustomTime;
     }
     if (daysSinceNoncurrentTime != null) {
-      _json["daysSinceNoncurrentTime"] = daysSinceNoncurrentTime;
+      _json['daysSinceNoncurrentTime'] = daysSinceNoncurrentTime;
     }
     if (isLive != null) {
-      _json["isLive"] = isLive;
+      _json['isLive'] = isLive;
     }
     if (matchesPattern != null) {
-      _json["matchesPattern"] = matchesPattern;
+      _json['matchesPattern'] = matchesPattern;
     }
     if (matchesStorageClass != null) {
-      _json["matchesStorageClass"] = matchesStorageClass;
+      _json['matchesStorageClass'] = matchesStorageClass;
     }
     if (noncurrentTimeBefore != null) {
-      _json["noncurrentTimeBefore"] =
+      _json['noncurrentTimeBefore'] =
           "${(noncurrentTimeBefore).year.toString().padLeft(4, '0')}-${(noncurrentTimeBefore).month.toString().padLeft(2, '0')}-${(noncurrentTimeBefore).day.toString().padLeft(2, '0')}";
     }
     if (numNewerVersions != null) {
-      _json["numNewerVersions"] = numNewerVersions;
+      _json['numNewerVersions'] = numNewerVersions;
     }
     return _json;
   }
@@ -5428,11 +5427,11 @@ class BucketLifecycleRule {
   BucketLifecycleRule();
 
   BucketLifecycleRule.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = BucketLifecycleRuleAction.fromJson(_json["action"]);
+    if (_json.containsKey('action')) {
+      action = BucketLifecycleRuleAction.fromJson(_json['action']);
     }
-    if (_json.containsKey("condition")) {
-      condition = BucketLifecycleRuleCondition.fromJson(_json["condition"]);
+    if (_json.containsKey('condition')) {
+      condition = BucketLifecycleRuleCondition.fromJson(_json['condition']);
     }
   }
 
@@ -5440,10 +5439,10 @@ class BucketLifecycleRule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (action != null) {
-      _json["action"] = action.toJson();
+      _json['action'] = action.toJson();
     }
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     return _json;
   }
@@ -5459,8 +5458,8 @@ class BucketLifecycle {
   BucketLifecycle();
 
   BucketLifecycle.fromJson(core.Map _json) {
-    if (_json.containsKey("rule")) {
-      rule = (_json["rule"] as core.List)
+    if (_json.containsKey('rule')) {
+      rule = (_json['rule'] as core.List)
           .map<BucketLifecycleRule>(
               (value) => BucketLifecycleRule.fromJson(value))
           .toList();
@@ -5471,7 +5470,7 @@ class BucketLifecycle {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rule != null) {
-      _json["rule"] = rule.map((value) => value.toJson()).toList();
+      _json['rule'] = rule.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5489,11 +5488,11 @@ class BucketLogging {
   BucketLogging();
 
   BucketLogging.fromJson(core.Map _json) {
-    if (_json.containsKey("logBucket")) {
-      logBucket = _json["logBucket"];
+    if (_json.containsKey('logBucket')) {
+      logBucket = _json['logBucket'];
     }
-    if (_json.containsKey("logObjectPrefix")) {
-      logObjectPrefix = _json["logObjectPrefix"];
+    if (_json.containsKey('logObjectPrefix')) {
+      logObjectPrefix = _json['logObjectPrefix'];
     }
   }
 
@@ -5501,10 +5500,10 @@ class BucketLogging {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (logBucket != null) {
-      _json["logBucket"] = logBucket;
+      _json['logBucket'] = logBucket;
     }
     if (logObjectPrefix != null) {
-      _json["logObjectPrefix"] = logObjectPrefix;
+      _json['logObjectPrefix'] = logObjectPrefix;
     }
     return _json;
   }
@@ -5521,11 +5520,11 @@ class BucketOwner {
   BucketOwner();
 
   BucketOwner.fromJson(core.Map _json) {
-    if (_json.containsKey("entity")) {
-      entity = _json["entity"];
+    if (_json.containsKey('entity')) {
+      entity = _json['entity'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
   }
 
@@ -5533,10 +5532,10 @@ class BucketOwner {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entity != null) {
-      _json["entity"] = entity;
+      _json['entity'] = entity;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     return _json;
   }
@@ -5568,14 +5567,14 @@ class BucketRetentionPolicy {
   BucketRetentionPolicy();
 
   BucketRetentionPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("effectiveTime")) {
-      effectiveTime = core.DateTime.parse(_json["effectiveTime"]);
+    if (_json.containsKey('effectiveTime')) {
+      effectiveTime = core.DateTime.parse(_json['effectiveTime']);
     }
-    if (_json.containsKey("isLocked")) {
-      isLocked = _json["isLocked"];
+    if (_json.containsKey('isLocked')) {
+      isLocked = _json['isLocked'];
     }
-    if (_json.containsKey("retentionPeriod")) {
-      retentionPeriod = _json["retentionPeriod"];
+    if (_json.containsKey('retentionPeriod')) {
+      retentionPeriod = _json['retentionPeriod'];
     }
   }
 
@@ -5583,13 +5582,13 @@ class BucketRetentionPolicy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (effectiveTime != null) {
-      _json["effectiveTime"] = (effectiveTime).toIso8601String();
+      _json['effectiveTime'] = (effectiveTime).toIso8601String();
     }
     if (isLocked != null) {
-      _json["isLocked"] = isLocked;
+      _json['isLocked'] = isLocked;
     }
     if (retentionPeriod != null) {
-      _json["retentionPeriod"] = retentionPeriod;
+      _json['retentionPeriod'] = retentionPeriod;
     }
     return _json;
   }
@@ -5603,8 +5602,8 @@ class BucketVersioning {
   BucketVersioning();
 
   BucketVersioning.fromJson(core.Map _json) {
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
   }
 
@@ -5612,7 +5611,7 @@ class BucketVersioning {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     return _json;
   }
@@ -5636,11 +5635,11 @@ class BucketWebsite {
   BucketWebsite();
 
   BucketWebsite.fromJson(core.Map _json) {
-    if (_json.containsKey("mainPageSuffix")) {
-      mainPageSuffix = _json["mainPageSuffix"];
+    if (_json.containsKey('mainPageSuffix')) {
+      mainPageSuffix = _json['mainPageSuffix'];
     }
-    if (_json.containsKey("notFoundPage")) {
-      notFoundPage = _json["notFoundPage"];
+    if (_json.containsKey('notFoundPage')) {
+      notFoundPage = _json['notFoundPage'];
     }
   }
 
@@ -5648,10 +5647,10 @@ class BucketWebsite {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mainPageSuffix != null) {
-      _json["mainPageSuffix"] = mainPageSuffix;
+      _json['mainPageSuffix'] = mainPageSuffix;
     }
     if (notFoundPage != null) {
-      _json["notFoundPage"] = notFoundPage;
+      _json['notFoundPage'] = notFoundPage;
     }
     return _json;
   }
@@ -5780,96 +5779,96 @@ class Bucket {
   Bucket();
 
   Bucket.fromJson(core.Map _json) {
-    if (_json.containsKey("acl")) {
-      acl = (_json["acl"] as core.List)
+    if (_json.containsKey('acl')) {
+      acl = (_json['acl'] as core.List)
           .map<BucketAccessControl>(
               (value) => BucketAccessControl.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("billing")) {
-      billing = BucketBilling.fromJson(_json["billing"]);
+    if (_json.containsKey('billing')) {
+      billing = BucketBilling.fromJson(_json['billing']);
     }
-    if (_json.containsKey("cors")) {
-      cors = (_json["cors"] as core.List)
+    if (_json.containsKey('cors')) {
+      cors = (_json['cors'] as core.List)
           .map<BucketCors>((value) => BucketCors.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("defaultEventBasedHold")) {
-      defaultEventBasedHold = _json["defaultEventBasedHold"];
+    if (_json.containsKey('defaultEventBasedHold')) {
+      defaultEventBasedHold = _json['defaultEventBasedHold'];
     }
-    if (_json.containsKey("defaultObjectAcl")) {
-      defaultObjectAcl = (_json["defaultObjectAcl"] as core.List)
+    if (_json.containsKey('defaultObjectAcl')) {
+      defaultObjectAcl = (_json['defaultObjectAcl'] as core.List)
           .map<ObjectAccessControl>(
               (value) => ObjectAccessControl.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("encryption")) {
-      encryption = BucketEncryption.fromJson(_json["encryption"]);
+    if (_json.containsKey('encryption')) {
+      encryption = BucketEncryption.fromJson(_json['encryption']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("iamConfiguration")) {
+    if (_json.containsKey('iamConfiguration')) {
       iamConfiguration =
-          BucketIamConfiguration.fromJson(_json["iamConfiguration"]);
+          BucketIamConfiguration.fromJson(_json['iamConfiguration']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("lifecycle")) {
-      lifecycle = BucketLifecycle.fromJson(_json["lifecycle"]);
+    if (_json.containsKey('lifecycle')) {
+      lifecycle = BucketLifecycle.fromJson(_json['lifecycle']);
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("locationType")) {
-      locationType = _json["locationType"];
+    if (_json.containsKey('locationType')) {
+      locationType = _json['locationType'];
     }
-    if (_json.containsKey("logging")) {
-      logging = BucketLogging.fromJson(_json["logging"]);
+    if (_json.containsKey('logging')) {
+      logging = BucketLogging.fromJson(_json['logging']);
     }
-    if (_json.containsKey("metageneration")) {
-      metageneration = _json["metageneration"];
+    if (_json.containsKey('metageneration')) {
+      metageneration = _json['metageneration'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("owner")) {
-      owner = BucketOwner.fromJson(_json["owner"]);
+    if (_json.containsKey('owner')) {
+      owner = BucketOwner.fromJson(_json['owner']);
     }
-    if (_json.containsKey("projectNumber")) {
-      projectNumber = _json["projectNumber"];
+    if (_json.containsKey('projectNumber')) {
+      projectNumber = _json['projectNumber'];
     }
-    if (_json.containsKey("retentionPolicy")) {
+    if (_json.containsKey('retentionPolicy')) {
       retentionPolicy =
-          BucketRetentionPolicy.fromJson(_json["retentionPolicy"]);
+          BucketRetentionPolicy.fromJson(_json['retentionPolicy']);
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("storageClass")) {
-      storageClass = _json["storageClass"];
+    if (_json.containsKey('storageClass')) {
+      storageClass = _json['storageClass'];
     }
-    if (_json.containsKey("timeCreated")) {
-      timeCreated = core.DateTime.parse(_json["timeCreated"]);
+    if (_json.containsKey('timeCreated')) {
+      timeCreated = core.DateTime.parse(_json['timeCreated']);
     }
-    if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+    if (_json.containsKey('updated')) {
+      updated = core.DateTime.parse(_json['updated']);
     }
-    if (_json.containsKey("versioning")) {
-      versioning = BucketVersioning.fromJson(_json["versioning"]);
+    if (_json.containsKey('versioning')) {
+      versioning = BucketVersioning.fromJson(_json['versioning']);
     }
-    if (_json.containsKey("website")) {
-      website = BucketWebsite.fromJson(_json["website"]);
+    if (_json.containsKey('website')) {
+      website = BucketWebsite.fromJson(_json['website']);
     }
-    if (_json.containsKey("zoneAffinity")) {
-      zoneAffinity = (_json["zoneAffinity"] as core.List).cast<core.String>();
+    if (_json.containsKey('zoneAffinity')) {
+      zoneAffinity = (_json['zoneAffinity'] as core.List).cast<core.String>();
     }
   }
 
@@ -5877,86 +5876,86 @@ class Bucket {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acl != null) {
-      _json["acl"] = acl.map((value) => value.toJson()).toList();
+      _json['acl'] = acl.map((value) => value.toJson()).toList();
     }
     if (billing != null) {
-      _json["billing"] = billing.toJson();
+      _json['billing'] = billing.toJson();
     }
     if (cors != null) {
-      _json["cors"] = cors.map((value) => value.toJson()).toList();
+      _json['cors'] = cors.map((value) => value.toJson()).toList();
     }
     if (defaultEventBasedHold != null) {
-      _json["defaultEventBasedHold"] = defaultEventBasedHold;
+      _json['defaultEventBasedHold'] = defaultEventBasedHold;
     }
     if (defaultObjectAcl != null) {
-      _json["defaultObjectAcl"] =
+      _json['defaultObjectAcl'] =
           defaultObjectAcl.map((value) => value.toJson()).toList();
     }
     if (encryption != null) {
-      _json["encryption"] = encryption.toJson();
+      _json['encryption'] = encryption.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (iamConfiguration != null) {
-      _json["iamConfiguration"] = iamConfiguration.toJson();
+      _json['iamConfiguration'] = iamConfiguration.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (lifecycle != null) {
-      _json["lifecycle"] = lifecycle.toJson();
+      _json['lifecycle'] = lifecycle.toJson();
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (locationType != null) {
-      _json["locationType"] = locationType;
+      _json['locationType'] = locationType;
     }
     if (logging != null) {
-      _json["logging"] = logging.toJson();
+      _json['logging'] = logging.toJson();
     }
     if (metageneration != null) {
-      _json["metageneration"] = metageneration;
+      _json['metageneration'] = metageneration;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (owner != null) {
-      _json["owner"] = owner.toJson();
+      _json['owner'] = owner.toJson();
     }
     if (projectNumber != null) {
-      _json["projectNumber"] = projectNumber;
+      _json['projectNumber'] = projectNumber;
     }
     if (retentionPolicy != null) {
-      _json["retentionPolicy"] = retentionPolicy.toJson();
+      _json['retentionPolicy'] = retentionPolicy.toJson();
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (storageClass != null) {
-      _json["storageClass"] = storageClass;
+      _json['storageClass'] = storageClass;
     }
     if (timeCreated != null) {
-      _json["timeCreated"] = (timeCreated).toIso8601String();
+      _json['timeCreated'] = (timeCreated).toIso8601String();
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json['updated'] = (updated).toIso8601String();
     }
     if (versioning != null) {
-      _json["versioning"] = versioning.toJson();
+      _json['versioning'] = versioning.toJson();
     }
     if (website != null) {
-      _json["website"] = website.toJson();
+      _json['website'] = website.toJson();
     }
     if (zoneAffinity != null) {
-      _json["zoneAffinity"] = zoneAffinity;
+      _json['zoneAffinity'] = zoneAffinity;
     }
     return _json;
   }
@@ -5973,11 +5972,11 @@ class BucketAccessControlProjectTeam {
   BucketAccessControlProjectTeam();
 
   BucketAccessControlProjectTeam.fromJson(core.Map _json) {
-    if (_json.containsKey("projectNumber")) {
-      projectNumber = _json["projectNumber"];
+    if (_json.containsKey('projectNumber')) {
+      projectNumber = _json['projectNumber'];
     }
-    if (_json.containsKey("team")) {
-      team = _json["team"];
+    if (_json.containsKey('team')) {
+      team = _json['team'];
     }
   }
 
@@ -5985,10 +5984,10 @@ class BucketAccessControlProjectTeam {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (projectNumber != null) {
-      _json["projectNumber"] = projectNumber;
+      _json['projectNumber'] = projectNumber;
     }
     if (team != null) {
-      _json["team"] = team;
+      _json['team'] = team;
     }
     return _json;
   }
@@ -6046,39 +6045,39 @@ class BucketAccessControl {
   BucketAccessControl();
 
   BucketAccessControl.fromJson(core.Map _json) {
-    if (_json.containsKey("bucket")) {
-      bucket = _json["bucket"];
+    if (_json.containsKey('bucket')) {
+      bucket = _json['bucket'];
     }
-    if (_json.containsKey("domain")) {
-      domain = _json["domain"];
+    if (_json.containsKey('domain')) {
+      domain = _json['domain'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("entity")) {
-      entity = _json["entity"];
+    if (_json.containsKey('entity')) {
+      entity = _json['entity'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("projectTeam")) {
+    if (_json.containsKey('projectTeam')) {
       projectTeam =
-          BucketAccessControlProjectTeam.fromJson(_json["projectTeam"]);
+          BucketAccessControlProjectTeam.fromJson(_json['projectTeam']);
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
   }
 
@@ -6086,37 +6085,37 @@ class BucketAccessControl {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucket != null) {
-      _json["bucket"] = bucket;
+      _json['bucket'] = bucket;
     }
     if (domain != null) {
-      _json["domain"] = domain;
+      _json['domain'] = domain;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (entity != null) {
-      _json["entity"] = entity;
+      _json['entity'] = entity;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (projectTeam != null) {
-      _json["projectTeam"] = projectTeam.toJson();
+      _json['projectTeam'] = projectTeam.toJson();
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     return _json;
   }
@@ -6134,14 +6133,14 @@ class BucketAccessControls {
   BucketAccessControls();
 
   BucketAccessControls.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<BucketAccessControl>(
               (value) => BucketAccessControl.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -6149,10 +6148,10 @@ class BucketAccessControls {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -6174,16 +6173,16 @@ class Buckets {
   Buckets();
 
   Buckets.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Bucket>((value) => Bucket.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6191,13 +6190,13 @@ class Buckets {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6242,35 +6241,35 @@ class Channel {
   Channel();
 
   Channel.fromJson(core.Map _json) {
-    if (_json.containsKey("address")) {
-      address = _json["address"];
+    if (_json.containsKey('address')) {
+      address = _json['address'];
     }
-    if (_json.containsKey("expiration")) {
-      expiration = _json["expiration"];
+    if (_json.containsKey('expiration')) {
+      expiration = _json['expiration'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("params")) {
-      params = (_json["params"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('params')) {
+      params = (_json['params'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("payload")) {
-      payload = _json["payload"];
+    if (_json.containsKey('payload')) {
+      payload = _json['payload'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = _json["resourceId"];
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'];
     }
-    if (_json.containsKey("resourceUri")) {
-      resourceUri = _json["resourceUri"];
+    if (_json.containsKey('resourceUri')) {
+      resourceUri = _json['resourceUri'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -6278,34 +6277,34 @@ class Channel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (address != null) {
-      _json["address"] = address;
+      _json['address'] = address;
     }
     if (expiration != null) {
-      _json["expiration"] = expiration;
+      _json['expiration'] = expiration;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (params != null) {
-      _json["params"] = params;
+      _json['params'] = params;
     }
     if (payload != null) {
-      _json["payload"] = payload;
+      _json['payload'] = payload;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId;
+      _json['resourceId'] = resourceId;
     }
     if (resourceUri != null) {
-      _json["resourceUri"] = resourceUri;
+      _json['resourceUri'] = resourceUri;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -6321,8 +6320,8 @@ class ComposeRequestSourceObjectsObjectPreconditions {
   ComposeRequestSourceObjectsObjectPreconditions();
 
   ComposeRequestSourceObjectsObjectPreconditions.fromJson(core.Map _json) {
-    if (_json.containsKey("ifGenerationMatch")) {
-      ifGenerationMatch = _json["ifGenerationMatch"];
+    if (_json.containsKey('ifGenerationMatch')) {
+      ifGenerationMatch = _json['ifGenerationMatch'];
     }
   }
 
@@ -6330,7 +6329,7 @@ class ComposeRequestSourceObjectsObjectPreconditions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ifGenerationMatch != null) {
-      _json["ifGenerationMatch"] = ifGenerationMatch;
+      _json['ifGenerationMatch'] = ifGenerationMatch;
     }
     return _json;
   }
@@ -6350,16 +6349,16 @@ class ComposeRequestSourceObjects {
   ComposeRequestSourceObjects();
 
   ComposeRequestSourceObjects.fromJson(core.Map _json) {
-    if (_json.containsKey("generation")) {
-      generation = _json["generation"];
+    if (_json.containsKey('generation')) {
+      generation = _json['generation'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("objectPreconditions")) {
+    if (_json.containsKey('objectPreconditions')) {
       objectPreconditions =
           ComposeRequestSourceObjectsObjectPreconditions.fromJson(
-              _json["objectPreconditions"]);
+              _json['objectPreconditions']);
     }
   }
 
@@ -6367,13 +6366,13 @@ class ComposeRequestSourceObjects {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (generation != null) {
-      _json["generation"] = generation;
+      _json['generation'] = generation;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (objectPreconditions != null) {
-      _json["objectPreconditions"] = objectPreconditions.toJson();
+      _json['objectPreconditions'] = objectPreconditions.toJson();
     }
     return _json;
   }
@@ -6393,14 +6392,14 @@ class ComposeRequest {
   ComposeRequest();
 
   ComposeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("destination")) {
-      destination = Object.fromJson(_json["destination"]);
+    if (_json.containsKey('destination')) {
+      destination = Object.fromJson(_json['destination']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("sourceObjects")) {
-      sourceObjects = (_json["sourceObjects"] as core.List)
+    if (_json.containsKey('sourceObjects')) {
+      sourceObjects = (_json['sourceObjects'] as core.List)
           .map<ComposeRequestSourceObjects>(
               (value) => ComposeRequestSourceObjects.fromJson(value))
           .toList();
@@ -6411,13 +6410,13 @@ class ComposeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (destination != null) {
-      _json["destination"] = destination.toJson();
+      _json['destination'] = destination.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (sourceObjects != null) {
-      _json["sourceObjects"] =
+      _json['sourceObjects'] =
           sourceObjects.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6448,17 +6447,17 @@ class Expr {
   Expr();
 
   Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
+    if (_json.containsKey('expression')) {
+      expression = _json['expression'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -6466,16 +6465,16 @@ class Expr {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (expression != null) {
-      _json["expression"] = expression;
+      _json['expression'] = expression;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -6496,14 +6495,14 @@ class HmacKey {
   HmacKey();
 
   HmacKey.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("metadata")) {
-      metadata = HmacKeyMetadata.fromJson(_json["metadata"]);
+    if (_json.containsKey('metadata')) {
+      metadata = HmacKeyMetadata.fromJson(_json['metadata']);
     }
-    if (_json.containsKey("secret")) {
-      secret = _json["secret"];
+    if (_json.containsKey('secret')) {
+      secret = _json['secret'];
     }
   }
 
@@ -6511,13 +6510,13 @@ class HmacKey {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata.toJson();
+      _json['metadata'] = metadata.toJson();
     }
     if (secret != null) {
-      _json["secret"] = secret;
+      _json['secret'] = secret;
     }
     return _json;
   }
@@ -6559,35 +6558,35 @@ class HmacKeyMetadata {
   HmacKeyMetadata();
 
   HmacKeyMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("accessId")) {
-      accessId = _json["accessId"];
+    if (_json.containsKey('accessId')) {
+      accessId = _json['accessId'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("serviceAccountEmail")) {
-      serviceAccountEmail = _json["serviceAccountEmail"];
+    if (_json.containsKey('serviceAccountEmail')) {
+      serviceAccountEmail = _json['serviceAccountEmail'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("timeCreated")) {
-      timeCreated = core.DateTime.parse(_json["timeCreated"]);
+    if (_json.containsKey('timeCreated')) {
+      timeCreated = core.DateTime.parse(_json['timeCreated']);
     }
-    if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+    if (_json.containsKey('updated')) {
+      updated = core.DateTime.parse(_json['updated']);
     }
   }
 
@@ -6595,34 +6594,34 @@ class HmacKeyMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessId != null) {
-      _json["accessId"] = accessId;
+      _json['accessId'] = accessId;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (serviceAccountEmail != null) {
-      _json["serviceAccountEmail"] = serviceAccountEmail;
+      _json['serviceAccountEmail'] = serviceAccountEmail;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (timeCreated != null) {
-      _json["timeCreated"] = (timeCreated).toIso8601String();
+      _json['timeCreated'] = (timeCreated).toIso8601String();
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json['updated'] = (updated).toIso8601String();
     }
     return _json;
   }
@@ -6644,16 +6643,16 @@ class HmacKeysMetadata {
   HmacKeysMetadata();
 
   HmacKeysMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<HmacKeyMetadata>((value) => HmacKeyMetadata.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6661,13 +6660,13 @@ class HmacKeysMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6710,33 +6709,33 @@ class Notification {
   Notification();
 
   Notification.fromJson(core.Map _json) {
-    if (_json.containsKey("custom_attributes")) {
-      customAttributes = (_json["custom_attributes"] as core.Map)
+    if (_json.containsKey('custom_attributes')) {
+      customAttributes = (_json['custom_attributes'] as core.Map)
           .cast<core.String, core.String>();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("event_types")) {
-      eventTypes = (_json["event_types"] as core.List).cast<core.String>();
+    if (_json.containsKey('event_types')) {
+      eventTypes = (_json['event_types'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("object_name_prefix")) {
-      objectNamePrefix = _json["object_name_prefix"];
+    if (_json.containsKey('object_name_prefix')) {
+      objectNamePrefix = _json['object_name_prefix'];
     }
-    if (_json.containsKey("payload_format")) {
-      payloadFormat = _json["payload_format"];
+    if (_json.containsKey('payload_format')) {
+      payloadFormat = _json['payload_format'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("topic")) {
-      topic = _json["topic"];
+    if (_json.containsKey('topic')) {
+      topic = _json['topic'];
     }
   }
 
@@ -6744,31 +6743,31 @@ class Notification {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customAttributes != null) {
-      _json["custom_attributes"] = customAttributes;
+      _json['custom_attributes'] = customAttributes;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventTypes != null) {
-      _json["event_types"] = eventTypes;
+      _json['event_types'] = eventTypes;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (objectNamePrefix != null) {
-      _json["object_name_prefix"] = objectNamePrefix;
+      _json['object_name_prefix'] = objectNamePrefix;
     }
     if (payloadFormat != null) {
-      _json["payload_format"] = payloadFormat;
+      _json['payload_format'] = payloadFormat;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (topic != null) {
-      _json["topic"] = topic;
+      _json['topic'] = topic;
     }
     return _json;
   }
@@ -6786,13 +6785,13 @@ class Notifications {
   Notifications();
 
   Notifications.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Notification>((value) => Notification.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -6800,10 +6799,10 @@ class Notifications {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -6821,11 +6820,11 @@ class ObjectCustomerEncryption {
   ObjectCustomerEncryption();
 
   ObjectCustomerEncryption.fromJson(core.Map _json) {
-    if (_json.containsKey("encryptionAlgorithm")) {
-      encryptionAlgorithm = _json["encryptionAlgorithm"];
+    if (_json.containsKey('encryptionAlgorithm')) {
+      encryptionAlgorithm = _json['encryptionAlgorithm'];
     }
-    if (_json.containsKey("keySha256")) {
-      keySha256 = _json["keySha256"];
+    if (_json.containsKey('keySha256')) {
+      keySha256 = _json['keySha256'];
     }
   }
 
@@ -6833,10 +6832,10 @@ class ObjectCustomerEncryption {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (encryptionAlgorithm != null) {
-      _json["encryptionAlgorithm"] = encryptionAlgorithm;
+      _json['encryptionAlgorithm'] = encryptionAlgorithm;
     }
     if (keySha256 != null) {
-      _json["keySha256"] = keySha256;
+      _json['keySha256'] = keySha256;
     }
     return _json;
   }
@@ -6853,11 +6852,11 @@ class ObjectOwner {
   ObjectOwner();
 
   ObjectOwner.fromJson(core.Map _json) {
-    if (_json.containsKey("entity")) {
-      entity = _json["entity"];
+    if (_json.containsKey('entity')) {
+      entity = _json['entity'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
   }
 
@@ -6865,10 +6864,10 @@ class ObjectOwner {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entity != null) {
-      _json["entity"] = entity;
+      _json['entity'] = entity;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     return _json;
   }
@@ -7011,108 +7010,108 @@ class Object {
   Object();
 
   Object.fromJson(core.Map _json) {
-    if (_json.containsKey("acl")) {
-      acl = (_json["acl"] as core.List)
+    if (_json.containsKey('acl')) {
+      acl = (_json['acl'] as core.List)
           .map<ObjectAccessControl>(
               (value) => ObjectAccessControl.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("bucket")) {
-      bucket = _json["bucket"];
+    if (_json.containsKey('bucket')) {
+      bucket = _json['bucket'];
     }
-    if (_json.containsKey("cacheControl")) {
-      cacheControl = _json["cacheControl"];
+    if (_json.containsKey('cacheControl')) {
+      cacheControl = _json['cacheControl'];
     }
-    if (_json.containsKey("componentCount")) {
-      componentCount = _json["componentCount"];
+    if (_json.containsKey('componentCount')) {
+      componentCount = _json['componentCount'];
     }
-    if (_json.containsKey("contentDisposition")) {
-      contentDisposition = _json["contentDisposition"];
+    if (_json.containsKey('contentDisposition')) {
+      contentDisposition = _json['contentDisposition'];
     }
-    if (_json.containsKey("contentEncoding")) {
-      contentEncoding = _json["contentEncoding"];
+    if (_json.containsKey('contentEncoding')) {
+      contentEncoding = _json['contentEncoding'];
     }
-    if (_json.containsKey("contentLanguage")) {
-      contentLanguage = _json["contentLanguage"];
+    if (_json.containsKey('contentLanguage')) {
+      contentLanguage = _json['contentLanguage'];
     }
-    if (_json.containsKey("contentType")) {
-      contentType = _json["contentType"];
+    if (_json.containsKey('contentType')) {
+      contentType = _json['contentType'];
     }
-    if (_json.containsKey("crc32c")) {
-      crc32c = _json["crc32c"];
+    if (_json.containsKey('crc32c')) {
+      crc32c = _json['crc32c'];
     }
-    if (_json.containsKey("customTime")) {
-      customTime = core.DateTime.parse(_json["customTime"]);
+    if (_json.containsKey('customTime')) {
+      customTime = core.DateTime.parse(_json['customTime']);
     }
-    if (_json.containsKey("customerEncryption")) {
+    if (_json.containsKey('customerEncryption')) {
       customerEncryption =
-          ObjectCustomerEncryption.fromJson(_json["customerEncryption"]);
+          ObjectCustomerEncryption.fromJson(_json['customerEncryption']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventBasedHold")) {
-      eventBasedHold = _json["eventBasedHold"];
+    if (_json.containsKey('eventBasedHold')) {
+      eventBasedHold = _json['eventBasedHold'];
     }
-    if (_json.containsKey("generation")) {
-      generation = _json["generation"];
+    if (_json.containsKey('generation')) {
+      generation = _json['generation'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("kmsKeyName")) {
-      kmsKeyName = _json["kmsKeyName"];
+    if (_json.containsKey('kmsKeyName')) {
+      kmsKeyName = _json['kmsKeyName'];
     }
-    if (_json.containsKey("md5Hash")) {
-      md5Hash = _json["md5Hash"];
+    if (_json.containsKey('md5Hash')) {
+      md5Hash = _json['md5Hash'];
     }
-    if (_json.containsKey("mediaLink")) {
-      mediaLink = _json["mediaLink"];
+    if (_json.containsKey('mediaLink')) {
+      mediaLink = _json['mediaLink'];
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.String>();
+          (_json['metadata'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("metageneration")) {
-      metageneration = _json["metageneration"];
+    if (_json.containsKey('metageneration')) {
+      metageneration = _json['metageneration'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("owner")) {
-      owner = ObjectOwner.fromJson(_json["owner"]);
+    if (_json.containsKey('owner')) {
+      owner = ObjectOwner.fromJson(_json['owner']);
     }
-    if (_json.containsKey("retentionExpirationTime")) {
+    if (_json.containsKey('retentionExpirationTime')) {
       retentionExpirationTime =
-          core.DateTime.parse(_json["retentionExpirationTime"]);
+          core.DateTime.parse(_json['retentionExpirationTime']);
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
-    if (_json.containsKey("storageClass")) {
-      storageClass = _json["storageClass"];
+    if (_json.containsKey('storageClass')) {
+      storageClass = _json['storageClass'];
     }
-    if (_json.containsKey("temporaryHold")) {
-      temporaryHold = _json["temporaryHold"];
+    if (_json.containsKey('temporaryHold')) {
+      temporaryHold = _json['temporaryHold'];
     }
-    if (_json.containsKey("timeCreated")) {
-      timeCreated = core.DateTime.parse(_json["timeCreated"]);
+    if (_json.containsKey('timeCreated')) {
+      timeCreated = core.DateTime.parse(_json['timeCreated']);
     }
-    if (_json.containsKey("timeDeleted")) {
-      timeDeleted = core.DateTime.parse(_json["timeDeleted"]);
+    if (_json.containsKey('timeDeleted')) {
+      timeDeleted = core.DateTime.parse(_json['timeDeleted']);
     }
-    if (_json.containsKey("timeStorageClassUpdated")) {
+    if (_json.containsKey('timeStorageClassUpdated')) {
       timeStorageClassUpdated =
-          core.DateTime.parse(_json["timeStorageClassUpdated"]);
+          core.DateTime.parse(_json['timeStorageClassUpdated']);
     }
-    if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+    if (_json.containsKey('updated')) {
+      updated = core.DateTime.parse(_json['updated']);
     }
   }
 
@@ -7120,102 +7119,102 @@ class Object {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acl != null) {
-      _json["acl"] = acl.map((value) => value.toJson()).toList();
+      _json['acl'] = acl.map((value) => value.toJson()).toList();
     }
     if (bucket != null) {
-      _json["bucket"] = bucket;
+      _json['bucket'] = bucket;
     }
     if (cacheControl != null) {
-      _json["cacheControl"] = cacheControl;
+      _json['cacheControl'] = cacheControl;
     }
     if (componentCount != null) {
-      _json["componentCount"] = componentCount;
+      _json['componentCount'] = componentCount;
     }
     if (contentDisposition != null) {
-      _json["contentDisposition"] = contentDisposition;
+      _json['contentDisposition'] = contentDisposition;
     }
     if (contentEncoding != null) {
-      _json["contentEncoding"] = contentEncoding;
+      _json['contentEncoding'] = contentEncoding;
     }
     if (contentLanguage != null) {
-      _json["contentLanguage"] = contentLanguage;
+      _json['contentLanguage'] = contentLanguage;
     }
     if (contentType != null) {
-      _json["contentType"] = contentType;
+      _json['contentType'] = contentType;
     }
     if (crc32c != null) {
-      _json["crc32c"] = crc32c;
+      _json['crc32c'] = crc32c;
     }
     if (customTime != null) {
-      _json["customTime"] = (customTime).toIso8601String();
+      _json['customTime'] = (customTime).toIso8601String();
     }
     if (customerEncryption != null) {
-      _json["customerEncryption"] = customerEncryption.toJson();
+      _json['customerEncryption'] = customerEncryption.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventBasedHold != null) {
-      _json["eventBasedHold"] = eventBasedHold;
+      _json['eventBasedHold'] = eventBasedHold;
     }
     if (generation != null) {
-      _json["generation"] = generation;
+      _json['generation'] = generation;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (kmsKeyName != null) {
-      _json["kmsKeyName"] = kmsKeyName;
+      _json['kmsKeyName'] = kmsKeyName;
     }
     if (md5Hash != null) {
-      _json["md5Hash"] = md5Hash;
+      _json['md5Hash'] = md5Hash;
     }
     if (mediaLink != null) {
-      _json["mediaLink"] = mediaLink;
+      _json['mediaLink'] = mediaLink;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (metageneration != null) {
-      _json["metageneration"] = metageneration;
+      _json['metageneration'] = metageneration;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (owner != null) {
-      _json["owner"] = owner.toJson();
+      _json['owner'] = owner.toJson();
     }
     if (retentionExpirationTime != null) {
-      _json["retentionExpirationTime"] =
+      _json['retentionExpirationTime'] =
           (retentionExpirationTime).toIso8601String();
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     if (storageClass != null) {
-      _json["storageClass"] = storageClass;
+      _json['storageClass'] = storageClass;
     }
     if (temporaryHold != null) {
-      _json["temporaryHold"] = temporaryHold;
+      _json['temporaryHold'] = temporaryHold;
     }
     if (timeCreated != null) {
-      _json["timeCreated"] = (timeCreated).toIso8601String();
+      _json['timeCreated'] = (timeCreated).toIso8601String();
     }
     if (timeDeleted != null) {
-      _json["timeDeleted"] = (timeDeleted).toIso8601String();
+      _json['timeDeleted'] = (timeDeleted).toIso8601String();
     }
     if (timeStorageClassUpdated != null) {
-      _json["timeStorageClassUpdated"] =
+      _json['timeStorageClassUpdated'] =
           (timeStorageClassUpdated).toIso8601String();
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json['updated'] = (updated).toIso8601String();
     }
     return _json;
   }
@@ -7232,11 +7231,11 @@ class ObjectAccessControlProjectTeam {
   ObjectAccessControlProjectTeam();
 
   ObjectAccessControlProjectTeam.fromJson(core.Map _json) {
-    if (_json.containsKey("projectNumber")) {
-      projectNumber = _json["projectNumber"];
+    if (_json.containsKey('projectNumber')) {
+      projectNumber = _json['projectNumber'];
     }
-    if (_json.containsKey("team")) {
-      team = _json["team"];
+    if (_json.containsKey('team')) {
+      team = _json['team'];
     }
   }
 
@@ -7244,10 +7243,10 @@ class ObjectAccessControlProjectTeam {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (projectNumber != null) {
-      _json["projectNumber"] = projectNumber;
+      _json['projectNumber'] = projectNumber;
     }
     if (team != null) {
-      _json["team"] = team;
+      _json['team'] = team;
     }
     return _json;
   }
@@ -7311,45 +7310,45 @@ class ObjectAccessControl {
   ObjectAccessControl();
 
   ObjectAccessControl.fromJson(core.Map _json) {
-    if (_json.containsKey("bucket")) {
-      bucket = _json["bucket"];
+    if (_json.containsKey('bucket')) {
+      bucket = _json['bucket'];
     }
-    if (_json.containsKey("domain")) {
-      domain = _json["domain"];
+    if (_json.containsKey('domain')) {
+      domain = _json['domain'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("entity")) {
-      entity = _json["entity"];
+    if (_json.containsKey('entity')) {
+      entity = _json['entity'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("generation")) {
-      generation = _json["generation"];
+    if (_json.containsKey('generation')) {
+      generation = _json['generation'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("object")) {
-      object = _json["object"];
+    if (_json.containsKey('object')) {
+      object = _json['object'];
     }
-    if (_json.containsKey("projectTeam")) {
+    if (_json.containsKey('projectTeam')) {
       projectTeam =
-          ObjectAccessControlProjectTeam.fromJson(_json["projectTeam"]);
+          ObjectAccessControlProjectTeam.fromJson(_json['projectTeam']);
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
   }
 
@@ -7357,43 +7356,43 @@ class ObjectAccessControl {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bucket != null) {
-      _json["bucket"] = bucket;
+      _json['bucket'] = bucket;
     }
     if (domain != null) {
-      _json["domain"] = domain;
+      _json['domain'] = domain;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (entity != null) {
-      _json["entity"] = entity;
+      _json['entity'] = entity;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (generation != null) {
-      _json["generation"] = generation;
+      _json['generation'] = generation;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (object != null) {
-      _json["object"] = object;
+      _json['object'] = object;
     }
     if (projectTeam != null) {
-      _json["projectTeam"] = projectTeam.toJson();
+      _json['projectTeam'] = projectTeam.toJson();
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     return _json;
   }
@@ -7411,14 +7410,14 @@ class ObjectAccessControls {
   ObjectAccessControls();
 
   ObjectAccessControls.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<ObjectAccessControl>(
               (value) => ObjectAccessControl.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -7426,10 +7425,10 @@ class ObjectAccessControls {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -7455,19 +7454,19 @@ class Objects {
   Objects();
 
   Objects.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Object>((value) => Object.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("prefixes")) {
-      prefixes = (_json["prefixes"] as core.List).cast<core.String>();
+    if (_json.containsKey('prefixes')) {
+      prefixes = (_json['prefixes'] as core.List).cast<core.String>();
     }
   }
 
@@ -7475,16 +7474,16 @@ class Objects {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (prefixes != null) {
-      _json["prefixes"] = prefixes;
+      _json['prefixes'] = prefixes;
     }
     return _json;
   }
@@ -7549,14 +7548,14 @@ class PolicyBindings {
   PolicyBindings();
 
   PolicyBindings.fromJson(core.Map _json) {
-    if (_json.containsKey("condition")) {
-      condition = Expr.fromJson(_json["condition"]);
+    if (_json.containsKey('condition')) {
+      condition = Expr.fromJson(_json['condition']);
     }
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List).cast<core.String>();
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -7564,13 +7563,13 @@ class PolicyBindings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     if (members != null) {
-      _json["members"] = members;
+      _json['members'] = members;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -7588,7 +7587,7 @@ class Policy {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The kind of item this is. For policies, this is always storage#policy.
@@ -7610,22 +7609,22 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("bindings")) {
-      bindings = (_json["bindings"] as core.List)
+    if (_json.containsKey('bindings')) {
+      bindings = (_json['bindings'] as core.List)
           .map<PolicyBindings>((value) => PolicyBindings.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = _json["resourceId"];
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -7633,19 +7632,19 @@ class Policy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
+      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId;
+      _json['resourceId'] = resourceId;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -7680,23 +7679,23 @@ class RewriteResponse {
   RewriteResponse();
 
   RewriteResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("objectSize")) {
-      objectSize = _json["objectSize"];
+    if (_json.containsKey('objectSize')) {
+      objectSize = _json['objectSize'];
     }
-    if (_json.containsKey("resource")) {
-      resource = Object.fromJson(_json["resource"]);
+    if (_json.containsKey('resource')) {
+      resource = Object.fromJson(_json['resource']);
     }
-    if (_json.containsKey("rewriteToken")) {
-      rewriteToken = _json["rewriteToken"];
+    if (_json.containsKey('rewriteToken')) {
+      rewriteToken = _json['rewriteToken'];
     }
-    if (_json.containsKey("totalBytesRewritten")) {
-      totalBytesRewritten = _json["totalBytesRewritten"];
+    if (_json.containsKey('totalBytesRewritten')) {
+      totalBytesRewritten = _json['totalBytesRewritten'];
     }
   }
 
@@ -7704,22 +7703,22 @@ class RewriteResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (objectSize != null) {
-      _json["objectSize"] = objectSize;
+      _json['objectSize'] = objectSize;
     }
     if (resource != null) {
-      _json["resource"] = resource.toJson();
+      _json['resource'] = resource.toJson();
     }
     if (rewriteToken != null) {
-      _json["rewriteToken"] = rewriteToken;
+      _json['rewriteToken'] = rewriteToken;
     }
     if (totalBytesRewritten != null) {
-      _json["totalBytesRewritten"] = totalBytesRewritten;
+      _json['totalBytesRewritten'] = totalBytesRewritten;
     }
     return _json;
   }
@@ -7737,11 +7736,11 @@ class ServiceAccount {
   ServiceAccount();
 
   ServiceAccount.fromJson(core.Map _json) {
-    if (_json.containsKey("email_address")) {
-      emailAddress = _json["email_address"];
+    if (_json.containsKey('email_address')) {
+      emailAddress = _json['email_address'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -7749,10 +7748,10 @@ class ServiceAccount {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (emailAddress != null) {
-      _json["email_address"] = emailAddress;
+      _json['email_address'] = emailAddress;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -7785,11 +7784,11 @@ class TestIamPermissionsResponse {
   TestIamPermissionsResponse();
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -7797,10 +7796,10 @@ class TestIamPermissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }

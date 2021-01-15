@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -94,10 +94,10 @@ api.AndroidDevice buildAndroidDevice() {
   var o = api.AndroidDevice();
   buildCounterAndroidDevice++;
   if (buildCounterAndroidDevice < 3) {
-    o.androidModelId = "foo";
-    o.androidVersionId = "foo";
-    o.locale = "foo";
-    o.orientation = "foo";
+    o.androidModelId = 'foo';
+    o.androidVersionId = 'foo';
+    o.locale = 'foo';
+    o.orientation = 'foo';
   }
   buildCounterAndroidDevice--;
   return o;
@@ -197,8 +197,8 @@ void checkAndroidDeviceList(api.AndroidDeviceList o) {
 
 core.List<core.String> buildUnnamed86() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -215,12 +215,12 @@ api.AndroidInstrumentationTest buildAndroidInstrumentationTest() {
   if (buildCounterAndroidInstrumentationTest < 3) {
     o.appApk = buildFileReference();
     o.appBundle = buildAppBundle();
-    o.appPackageId = "foo";
-    o.orchestratorOption = "foo";
+    o.appPackageId = 'foo';
+    o.orchestratorOption = 'foo';
     o.shardingOption = buildShardingOption();
     o.testApk = buildFileReference();
-    o.testPackageId = "foo";
-    o.testRunnerClass = "foo";
+    o.testPackageId = 'foo';
+    o.testRunnerClass = 'foo';
     o.testTargets = buildUnnamed86();
   }
   buildCounterAndroidInstrumentationTest--;
@@ -245,8 +245,8 @@ void checkAndroidInstrumentationTest(api.AndroidInstrumentationTest o) {
 
 core.List<core.String> buildUnnamed87() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -258,8 +258,8 @@ void checkUnnamed87(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed88() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -271,8 +271,8 @@ void checkUnnamed88(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed89() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -284,8 +284,8 @@ void checkUnnamed89(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed90() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -322,8 +322,8 @@ void checkAndroidMatrix(api.AndroidMatrix o) {
 
 core.List<core.String> buildUnnamed91() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -335,8 +335,8 @@ void checkUnnamed91(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed92() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -348,8 +348,8 @@ void checkUnnamed92(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed93() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -364,21 +364,21 @@ api.AndroidModel buildAndroidModel() {
   var o = api.AndroidModel();
   buildCounterAndroidModel++;
   if (buildCounterAndroidModel < 3) {
-    o.brand = "foo";
-    o.codename = "foo";
-    o.form = "foo";
-    o.formFactor = "foo";
-    o.id = "foo";
+    o.brand = 'foo';
+    o.codename = 'foo';
+    o.form = 'foo';
+    o.formFactor = 'foo';
+    o.id = 'foo';
     o.lowFpsVideoRecording = true;
-    o.manufacturer = "foo";
-    o.name = "foo";
+    o.manufacturer = 'foo';
+    o.name = 'foo';
     o.screenDensity = 42;
     o.screenX = 42;
     o.screenY = 42;
     o.supportedAbis = buildUnnamed91();
     o.supportedVersionIds = buildUnnamed92();
     o.tags = buildUnnamed93();
-    o.thumbnailUrl = "foo";
+    o.thumbnailUrl = 'foo';
   }
   buildCounterAndroidModel--;
   return o;
@@ -439,8 +439,8 @@ api.AndroidRoboTest buildAndroidRoboTest() {
   if (buildCounterAndroidRoboTest < 3) {
     o.appApk = buildFileReference();
     o.appBundle = buildAppBundle();
-    o.appInitialActivity = "foo";
-    o.appPackageId = "foo";
+    o.appInitialActivity = 'foo';
+    o.appPackageId = 'foo';
     o.maxDepth = 42;
     o.maxSteps = 42;
     o.roboDirectives = buildUnnamed94();
@@ -516,8 +516,8 @@ void checkAndroidRuntimeConfiguration(api.AndroidRuntimeConfiguration o) {
 
 core.List<core.String> buildUnnamed98() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -547,7 +547,7 @@ api.AndroidTestLoop buildAndroidTestLoop() {
   if (buildCounterAndroidTestLoop < 3) {
     o.appApk = buildFileReference();
     o.appBundle = buildAppBundle();
-    o.appPackageId = "foo";
+    o.appPackageId = 'foo';
     o.scenarioLabels = buildUnnamed98();
     o.scenarios = buildUnnamed99();
   }
@@ -569,8 +569,8 @@ void checkAndroidTestLoop(api.AndroidTestLoop o) {
 
 core.List<core.String> buildUnnamed100() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -586,12 +586,12 @@ api.AndroidVersion buildAndroidVersion() {
   buildCounterAndroidVersion++;
   if (buildCounterAndroidVersion < 3) {
     o.apiLevel = 42;
-    o.codeName = "foo";
+    o.codeName = 'foo';
     o.distribution = buildDistribution();
-    o.id = "foo";
+    o.id = 'foo';
     o.releaseDate = buildDate();
     o.tags = buildUnnamed100();
-    o.versionString = "foo";
+    o.versionString = 'foo';
   }
   buildCounterAndroidVersion--;
   return o;
@@ -617,7 +617,7 @@ api.Apk buildApk() {
   buildCounterApk++;
   if (buildCounterApk < 3) {
     o.location = buildFileReference();
-    o.packageName = "foo";
+    o.packageName = 'foo';
   }
   buildCounterApk--;
   return o;
@@ -669,11 +669,11 @@ api.ApkManifest buildApkManifest() {
   var o = api.ApkManifest();
   buildCounterApkManifest++;
   if (buildCounterApkManifest < 3) {
-    o.applicationLabel = "foo";
+    o.applicationLabel = 'foo';
     o.intentFilters = buildUnnamed101();
     o.maxSdkVersion = 42;
     o.minSdkVersion = 42;
-    o.packageName = "foo";
+    o.packageName = 'foo';
     o.targetSdkVersion = 42;
   }
   buildCounterApkManifest--;
@@ -717,7 +717,7 @@ api.CancelTestMatrixResponse buildCancelTestMatrixResponse() {
   var o = api.CancelTestMatrixResponse();
   buildCounterCancelTestMatrixResponse++;
   if (buildCounterCancelTestMatrixResponse < 3) {
-    o.testState = "foo";
+    o.testState = 'foo';
   }
   buildCounterCancelTestMatrixResponse--;
   return o;
@@ -750,7 +750,7 @@ api.ClientInfo buildClientInfo() {
   buildCounterClientInfo++;
   if (buildCounterClientInfo < 3) {
     o.clientInfoDetails = buildUnnamed102();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterClientInfo--;
   return o;
@@ -770,8 +770,8 @@ api.ClientInfoDetail buildClientInfoDetail() {
   var o = api.ClientInfoDetail();
   buildCounterClientInfoDetail++;
   if (buildCounterClientInfoDetail < 3) {
-    o.key = "foo";
-    o.value = "foo";
+    o.key = 'foo';
+    o.value = 'foo';
   }
   buildCounterClientInfoDetail--;
   return o;
@@ -836,8 +836,8 @@ api.DeviceIpBlock buildDeviceIpBlock() {
   buildCounterDeviceIpBlock++;
   if (buildCounterDeviceIpBlock < 3) {
     o.addedDate = buildDate();
-    o.block = "foo";
-    o.form = "foo";
+    o.block = 'foo';
+    o.form = 'foo';
   }
   buildCounterDeviceIpBlock--;
   return o;
@@ -891,7 +891,7 @@ api.Distribution buildDistribution() {
   buildCounterDistribution++;
   if (buildCounterDistribution < 3) {
     o.marketShare = 42.0;
-    o.measurementTime = "foo";
+    o.measurementTime = 'foo';
   }
   buildCounterDistribution--;
   return o;
@@ -955,8 +955,8 @@ api.EnvironmentVariable buildEnvironmentVariable() {
   var o = api.EnvironmentVariable();
   buildCounterEnvironmentVariable++;
   if (buildCounterEnvironmentVariable < 3) {
-    o.key = "foo";
-    o.value = "foo";
+    o.key = 'foo';
+    o.value = 'foo';
   }
   buildCounterEnvironmentVariable--;
   return o;
@@ -976,7 +976,7 @@ api.FileReference buildFileReference() {
   var o = api.FileReference();
   buildCounterFileReference++;
   if (buildCounterFileReference < 3) {
-    o.gcsPath = "foo";
+    o.gcsPath = 'foo';
   }
   buildCounterFileReference--;
   return o;
@@ -1029,7 +1029,7 @@ api.GoogleCloudStorage buildGoogleCloudStorage() {
   var o = api.GoogleCloudStorage();
   buildCounterGoogleCloudStorage++;
   if (buildCounterGoogleCloudStorage < 3) {
-    o.gcsPath = "foo";
+    o.gcsPath = 'foo';
   }
   buildCounterGoogleCloudStorage--;
   return o;
@@ -1045,8 +1045,8 @@ void checkGoogleCloudStorage(api.GoogleCloudStorage o) {
 
 core.List<core.String> buildUnnamed104() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1058,8 +1058,8 @@ void checkUnnamed104(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed105() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1076,7 +1076,7 @@ api.IntentFilter buildIntentFilter() {
   if (buildCounterIntentFilter < 3) {
     o.actionNames = buildUnnamed104();
     o.categoryNames = buildUnnamed105();
-    o.mimeType = "foo";
+    o.mimeType = 'foo';
   }
   buildCounterIntentFilter--;
   return o;
@@ -1097,10 +1097,10 @@ api.IosDevice buildIosDevice() {
   var o = api.IosDevice();
   buildCounterIosDevice++;
   if (buildCounterIosDevice < 3) {
-    o.iosModelId = "foo";
-    o.iosVersionId = "foo";
-    o.locale = "foo";
-    o.orientation = "foo";
+    o.iosModelId = 'foo';
+    o.iosVersionId = 'foo';
+    o.locale = 'foo';
+    o.orientation = 'foo';
   }
   buildCounterIosDevice--;
   return o;
@@ -1186,9 +1186,9 @@ api.IosDeviceFile buildIosDeviceFile() {
   var o = api.IosDeviceFile();
   buildCounterIosDeviceFile++;
   if (buildCounterIosDeviceFile < 3) {
-    o.bundleId = "foo";
+    o.bundleId = 'foo';
     o.content = buildFileReference();
-    o.devicePath = "foo";
+    o.devicePath = 'foo';
   }
   buildCounterIosDeviceFile--;
   return o;
@@ -1238,8 +1238,8 @@ void checkIosDeviceList(api.IosDeviceList o) {
 
 core.List<core.String> buildUnnamed110() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1251,8 +1251,8 @@ void checkUnnamed110(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed111() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1264,8 +1264,8 @@ void checkUnnamed111(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed112() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1281,9 +1281,9 @@ api.IosModel buildIosModel() {
   buildCounterIosModel++;
   if (buildCounterIosModel < 3) {
     o.deviceCapabilities = buildUnnamed110();
-    o.formFactor = "foo";
-    o.id = "foo";
-    o.name = "foo";
+    o.formFactor = 'foo';
+    o.id = 'foo';
+    o.name = 'foo';
     o.screenDensity = 42;
     o.screenX = 42;
     o.screenY = 42;
@@ -1375,7 +1375,7 @@ api.IosTestLoop buildIosTestLoop() {
   var o = api.IosTestLoop();
   buildCounterIosTestLoop++;
   if (buildCounterIosTestLoop < 3) {
-    o.appBundleId = "foo";
+    o.appBundleId = 'foo';
     o.appIpa = buildFileReference();
     o.scenarios = buildUnnamed115();
   }
@@ -1438,7 +1438,7 @@ api.IosTestSetup buildIosTestSetup() {
   buildCounterIosTestSetup++;
   if (buildCounterIosTestSetup < 3) {
     o.additionalIpas = buildUnnamed116();
-    o.networkProfile = "foo";
+    o.networkProfile = 'foo';
     o.pullDirectories = buildUnnamed117();
     o.pushFiles = buildUnnamed118();
   }
@@ -1459,8 +1459,8 @@ void checkIosTestSetup(api.IosTestSetup o) {
 
 core.List<core.String> buildUnnamed119() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1472,8 +1472,8 @@ void checkUnnamed119(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed120() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1488,7 +1488,7 @@ api.IosVersion buildIosVersion() {
   var o = api.IosVersion();
   buildCounterIosVersion++;
   if (buildCounterIosVersion < 3) {
-    o.id = "foo";
+    o.id = 'foo';
     o.majorVersion = 42;
     o.minorVersion = 42;
     o.supportedXcodeVersionIds = buildUnnamed119();
@@ -1515,10 +1515,10 @@ api.IosXcTest buildIosXcTest() {
   var o = api.IosXcTest();
   buildCounterIosXcTest++;
   if (buildCounterIosXcTest < 3) {
-    o.appBundleId = "foo";
+    o.appBundleId = 'foo';
     o.testSpecialEntitlements = true;
     o.testsZip = buildFileReference();
-    o.xcodeVersion = "foo";
+    o.xcodeVersion = 'foo';
     o.xctestrun = buildFileReference();
   }
   buildCounterIosXcTest--;
@@ -1554,8 +1554,8 @@ void checkLauncherActivityIntent(api.LauncherActivityIntent o) {
 
 core.List<core.String> buildUnnamed121() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1570,9 +1570,9 @@ api.Locale buildLocale() {
   var o = api.Locale();
   buildCounterLocale++;
   if (buildCounterLocale < 3) {
-    o.id = "foo";
-    o.name = "foo";
-    o.region = "foo";
+    o.id = 'foo';
+    o.name = 'foo';
+    o.region = 'foo';
     o.tags = buildUnnamed121();
   }
   buildCounterLocale--;
@@ -1628,7 +1628,7 @@ api.NetworkConfiguration buildNetworkConfiguration() {
   buildCounterNetworkConfiguration++;
   if (buildCounterNetworkConfiguration < 3) {
     o.downRule = buildTrafficRule();
-    o.id = "foo";
+    o.id = 'foo';
     o.upRule = buildTrafficRule();
   }
   buildCounterNetworkConfiguration--;
@@ -1683,7 +1683,7 @@ api.ObbFile buildObbFile() {
   buildCounterObbFile++;
   if (buildCounterObbFile < 3) {
     o.obb = buildFileReference();
-    o.obbFileName = "foo";
+    o.obbFileName = 'foo';
   }
   buildCounterObbFile--;
   return o;
@@ -1700,8 +1700,8 @@ void checkObbFile(api.ObbFile o) {
 
 core.List<core.String> buildUnnamed124() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1716,8 +1716,8 @@ api.Orientation buildOrientation() {
   var o = api.Orientation();
   buildCounterOrientation++;
   if (buildCounterOrientation < 3) {
-    o.id = "foo";
-    o.name = "foo";
+    o.id = 'foo';
+    o.name = 'foo';
     o.tags = buildUnnamed124();
   }
   buildCounterOrientation--;
@@ -1739,7 +1739,7 @@ api.ProvidedSoftwareCatalog buildProvidedSoftwareCatalog() {
   var o = api.ProvidedSoftwareCatalog();
   buildCounterProvidedSoftwareCatalog++;
   if (buildCounterProvidedSoftwareCatalog < 3) {
-    o.orchestratorVersion = "foo";
+    o.orchestratorVersion = 'foo';
   }
   buildCounterProvidedSoftwareCatalog--;
   return o;
@@ -1759,7 +1759,7 @@ api.RegularFile buildRegularFile() {
   buildCounterRegularFile++;
   if (buildCounterRegularFile < 3) {
     o.content = buildFileReference();
-    o.devicePath = "foo";
+    o.devicePath = 'foo';
   }
   buildCounterRegularFile--;
   return o;
@@ -1780,7 +1780,7 @@ api.ResultStorage buildResultStorage() {
   buildCounterResultStorage++;
   if (buildCounterResultStorage < 3) {
     o.googleCloudStorage = buildGoogleCloudStorage();
-    o.resultsUrl = "foo";
+    o.resultsUrl = 'foo';
     o.toolResultsExecution = buildToolResultsExecution();
     o.toolResultsHistory = buildToolResultsHistory();
   }
@@ -1804,9 +1804,9 @@ api.RoboDirective buildRoboDirective() {
   var o = api.RoboDirective();
   buildCounterRoboDirective++;
   if (buildCounterRoboDirective < 3) {
-    o.actionType = "foo";
-    o.inputText = "foo";
-    o.resourceName = "foo";
+    o.actionType = 'foo';
+    o.inputText = 'foo';
+    o.resourceName = 'foo';
   }
   buildCounterRoboDirective--;
   return o;
@@ -1829,7 +1829,7 @@ api.RoboStartingIntent buildRoboStartingIntent() {
   if (buildCounterRoboStartingIntent < 3) {
     o.launcherActivity = buildLauncherActivityIntent();
     o.startActivity = buildStartActivityIntent();
-    o.timeout = "foo";
+    o.timeout = 'foo';
   }
   buildCounterRoboStartingIntent--;
   return o;
@@ -1891,8 +1891,8 @@ void checkShardingOption(api.ShardingOption o) {
 
 core.List<core.String> buildUnnamed125() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1907,9 +1907,9 @@ api.StartActivityIntent buildStartActivityIntent() {
   var o = api.StartActivityIntent();
   buildCounterStartActivityIntent++;
   if (buildCounterStartActivityIntent < 3) {
-    o.action = "foo";
+    o.action = 'foo';
     o.categories = buildUnnamed125();
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterStartActivityIntent--;
   return o;
@@ -1946,8 +1946,8 @@ void checkSystraceSetup(api.SystraceSetup o) {
 
 core.List<core.String> buildUnnamed126() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1962,7 +1962,7 @@ api.TestDetails buildTestDetails() {
   var o = api.TestDetails();
   buildCounterTestDetails++;
   if (buildCounterTestDetails < 3) {
-    o.errorMessage = "foo";
+    o.errorMessage = 'foo';
     o.progressMessages = buildUnnamed126();
   }
   buildCounterTestDetails--;
@@ -2011,14 +2011,14 @@ api.TestExecution buildTestExecution() {
   buildCounterTestExecution++;
   if (buildCounterTestExecution < 3) {
     o.environment = buildEnvironment();
-    o.id = "foo";
-    o.matrixId = "foo";
-    o.projectId = "foo";
+    o.id = 'foo';
+    o.matrixId = 'foo';
+    o.projectId = 'foo';
     o.shard = buildShard();
-    o.state = "foo";
+    o.state = 'foo';
     o.testDetails = buildTestDetails();
     o.testSpecification = buildTestSpecification();
-    o.timestamp = "foo";
+    o.timestamp = 'foo';
     o.toolResultsStep = buildToolResultsStep();
   }
   buildCounterTestExecution--;
@@ -2063,15 +2063,15 @@ api.TestMatrix buildTestMatrix() {
     o.clientInfo = buildClientInfo();
     o.environmentMatrix = buildEnvironmentMatrix();
     o.flakyTestAttempts = 42;
-    o.invalidMatrixDetails = "foo";
-    o.outcomeSummary = "foo";
-    o.projectId = "foo";
+    o.invalidMatrixDetails = 'foo';
+    o.outcomeSummary = 'foo';
+    o.projectId = 'foo';
     o.resultStorage = buildResultStorage();
-    o.state = "foo";
+    o.state = 'foo';
     o.testExecutions = buildUnnamed127();
-    o.testMatrixId = "foo";
+    o.testMatrixId = 'foo';
     o.testSpecification = buildTestSpecification();
-    o.timestamp = "foo";
+    o.timestamp = 'foo';
   }
   buildCounterTestMatrix--;
   return o;
@@ -2111,8 +2111,8 @@ void checkUnnamed128(core.List<api.Apk> o) {
 
 core.List<core.String> buildUnnamed129() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2159,7 +2159,7 @@ api.TestSetup buildTestSetup() {
     o.dontAutograntPermissions = true;
     o.environmentVariables = buildUnnamed130();
     o.filesToPush = buildUnnamed131();
-    o.networkProfile = "foo";
+    o.networkProfile = 'foo';
     o.systrace = buildSystraceSetup();
   }
   buildCounterTestSetup--;
@@ -2195,7 +2195,7 @@ api.TestSpecification buildTestSpecification() {
     o.iosTestSetup = buildIosTestSetup();
     o.iosXcTest = buildIosXcTest();
     o.testSetup = buildTestSetup();
-    o.testTimeout = "foo";
+    o.testTimeout = 'foo';
   }
   buildCounterTestSpecification--;
   return o;
@@ -2220,8 +2220,8 @@ void checkTestSpecification(api.TestSpecification o) {
 
 core.List<core.String> buildUnnamed132() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2255,9 +2255,9 @@ api.ToolResultsExecution buildToolResultsExecution() {
   var o = api.ToolResultsExecution();
   buildCounterToolResultsExecution++;
   if (buildCounterToolResultsExecution < 3) {
-    o.executionId = "foo";
-    o.historyId = "foo";
-    o.projectId = "foo";
+    o.executionId = 'foo';
+    o.historyId = 'foo';
+    o.projectId = 'foo';
   }
   buildCounterToolResultsExecution--;
   return o;
@@ -2278,8 +2278,8 @@ api.ToolResultsHistory buildToolResultsHistory() {
   var o = api.ToolResultsHistory();
   buildCounterToolResultsHistory++;
   if (buildCounterToolResultsHistory < 3) {
-    o.historyId = "foo";
-    o.projectId = "foo";
+    o.historyId = 'foo';
+    o.projectId = 'foo';
   }
   buildCounterToolResultsHistory--;
   return o;
@@ -2299,10 +2299,10 @@ api.ToolResultsStep buildToolResultsStep() {
   var o = api.ToolResultsStep();
   buildCounterToolResultsStep++;
   if (buildCounterToolResultsStep < 3) {
-    o.executionId = "foo";
-    o.historyId = "foo";
-    o.projectId = "foo";
-    o.stepId = "foo";
+    o.executionId = 'foo';
+    o.historyId = 'foo';
+    o.projectId = 'foo';
+    o.stepId = 'foo';
   }
   buildCounterToolResultsStep--;
   return o;
@@ -2326,7 +2326,7 @@ api.TrafficRule buildTrafficRule() {
   if (buildCounterTrafficRule < 3) {
     o.bandwidth = 42.0;
     o.burst = 42.0;
-    o.delay = "foo";
+    o.delay = 'foo';
     o.packetDuplicationRatio = 42.0;
     o.packetLossRatio = 42.0;
   }
@@ -2367,8 +2367,8 @@ void checkUniformSharding(api.UniformSharding o) {
 
 core.List<core.String> buildUnnamed133() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2384,7 +2384,7 @@ api.XcodeVersion buildXcodeVersion() {
   buildCounterXcodeVersion++;
   if (buildCounterXcodeVersion < 3) {
     o.tags = buildUnnamed133();
-    o.version = "foo";
+    o.version = 'foo';
   }
   buildCounterXcodeVersion--;
   return o;
@@ -2400,573 +2400,573 @@ void checkXcodeVersion(api.XcodeVersion o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Account", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Account', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidDevice", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidDevice', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidDevice();
       var od = api.AndroidDevice.fromJson(o.toJson());
       checkAndroidDevice(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidDeviceCatalog", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidDeviceCatalog', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidDeviceCatalog();
       var od = api.AndroidDeviceCatalog.fromJson(o.toJson());
       checkAndroidDeviceCatalog(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidDeviceList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidDeviceList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidDeviceList();
       var od = api.AndroidDeviceList.fromJson(o.toJson());
       checkAndroidDeviceList(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidInstrumentationTest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidInstrumentationTest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidInstrumentationTest();
       var od = api.AndroidInstrumentationTest.fromJson(o.toJson());
       checkAndroidInstrumentationTest(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidMatrix", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidMatrix', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidMatrix();
       var od = api.AndroidMatrix.fromJson(o.toJson());
       checkAndroidMatrix(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidModel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidModel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidModel();
       var od = api.AndroidModel.fromJson(o.toJson());
       checkAndroidModel(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidRoboTest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidRoboTest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidRoboTest();
       var od = api.AndroidRoboTest.fromJson(o.toJson());
       checkAndroidRoboTest(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidRuntimeConfiguration", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidRuntimeConfiguration', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidRuntimeConfiguration();
       var od = api.AndroidRuntimeConfiguration.fromJson(o.toJson());
       checkAndroidRuntimeConfiguration(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidTestLoop", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidTestLoop', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidTestLoop();
       var od = api.AndroidTestLoop.fromJson(o.toJson());
       checkAndroidTestLoop(od);
     });
   });
 
-  unittest.group("obj-schema-AndroidVersion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidVersion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidVersion();
       var od = api.AndroidVersion.fromJson(o.toJson());
       checkAndroidVersion(od);
     });
   });
 
-  unittest.group("obj-schema-Apk", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Apk', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApk();
       var od = api.Apk.fromJson(o.toJson());
       checkApk(od);
     });
   });
 
-  unittest.group("obj-schema-ApkDetail", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApkDetail', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApkDetail();
       var od = api.ApkDetail.fromJson(o.toJson());
       checkApkDetail(od);
     });
   });
 
-  unittest.group("obj-schema-ApkManifest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ApkManifest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildApkManifest();
       var od = api.ApkManifest.fromJson(o.toJson());
       checkApkManifest(od);
     });
   });
 
-  unittest.group("obj-schema-AppBundle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AppBundle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAppBundle();
       var od = api.AppBundle.fromJson(o.toJson());
       checkAppBundle(od);
     });
   });
 
-  unittest.group("obj-schema-CancelTestMatrixResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CancelTestMatrixResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCancelTestMatrixResponse();
       var od = api.CancelTestMatrixResponse.fromJson(o.toJson());
       checkCancelTestMatrixResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ClientInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ClientInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildClientInfo();
       var od = api.ClientInfo.fromJson(o.toJson());
       checkClientInfo(od);
     });
   });
 
-  unittest.group("obj-schema-ClientInfoDetail", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ClientInfoDetail', () {
+    unittest.test('to-json--from-json', () {
       var o = buildClientInfoDetail();
       var od = api.ClientInfoDetail.fromJson(o.toJson());
       checkClientInfoDetail(od);
     });
   });
 
-  unittest.group("obj-schema-Date", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Date', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od);
     });
   });
 
-  unittest.group("obj-schema-DeviceFile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeviceFile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceFile();
       var od = api.DeviceFile.fromJson(o.toJson());
       checkDeviceFile(od);
     });
   });
 
-  unittest.group("obj-schema-DeviceIpBlock", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeviceIpBlock', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceIpBlock();
       var od = api.DeviceIpBlock.fromJson(o.toJson());
       checkDeviceIpBlock(od);
     });
   });
 
-  unittest.group("obj-schema-DeviceIpBlockCatalog", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeviceIpBlockCatalog', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceIpBlockCatalog();
       var od = api.DeviceIpBlockCatalog.fromJson(o.toJson());
       checkDeviceIpBlockCatalog(od);
     });
   });
 
-  unittest.group("obj-schema-Distribution", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Distribution', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDistribution();
       var od = api.Distribution.fromJson(o.toJson());
       checkDistribution(od);
     });
   });
 
-  unittest.group("obj-schema-Environment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Environment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
       checkEnvironment(od);
     });
   });
 
-  unittest.group("obj-schema-EnvironmentMatrix", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EnvironmentMatrix', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEnvironmentMatrix();
       var od = api.EnvironmentMatrix.fromJson(o.toJson());
       checkEnvironmentMatrix(od);
     });
   });
 
-  unittest.group("obj-schema-EnvironmentVariable", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EnvironmentVariable', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEnvironmentVariable();
       var od = api.EnvironmentVariable.fromJson(o.toJson());
       checkEnvironmentVariable(od);
     });
   });
 
-  unittest.group("obj-schema-FileReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FileReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFileReference();
       var od = api.FileReference.fromJson(o.toJson());
       checkFileReference(od);
     });
   });
 
-  unittest.group("obj-schema-GetApkDetailsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GetApkDetailsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGetApkDetailsResponse();
       var od = api.GetApkDetailsResponse.fromJson(o.toJson());
       checkGetApkDetailsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleAuto", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleAuto', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleAuto();
       var od = api.GoogleAuto.fromJson(o.toJson());
       checkGoogleAuto(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleCloudStorage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleCloudStorage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudStorage();
       var od = api.GoogleCloudStorage.fromJson(o.toJson());
       checkGoogleCloudStorage(od);
     });
   });
 
-  unittest.group("obj-schema-IntentFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IntentFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIntentFilter();
       var od = api.IntentFilter.fromJson(o.toJson());
       checkIntentFilter(od);
     });
   });
 
-  unittest.group("obj-schema-IosDevice", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosDevice', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosDevice();
       var od = api.IosDevice.fromJson(o.toJson());
       checkIosDevice(od);
     });
   });
 
-  unittest.group("obj-schema-IosDeviceCatalog", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosDeviceCatalog', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosDeviceCatalog();
       var od = api.IosDeviceCatalog.fromJson(o.toJson());
       checkIosDeviceCatalog(od);
     });
   });
 
-  unittest.group("obj-schema-IosDeviceFile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosDeviceFile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosDeviceFile();
       var od = api.IosDeviceFile.fromJson(o.toJson());
       checkIosDeviceFile(od);
     });
   });
 
-  unittest.group("obj-schema-IosDeviceList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosDeviceList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosDeviceList();
       var od = api.IosDeviceList.fromJson(o.toJson());
       checkIosDeviceList(od);
     });
   });
 
-  unittest.group("obj-schema-IosModel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosModel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosModel();
       var od = api.IosModel.fromJson(o.toJson());
       checkIosModel(od);
     });
   });
 
-  unittest.group("obj-schema-IosRuntimeConfiguration", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosRuntimeConfiguration', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosRuntimeConfiguration();
       var od = api.IosRuntimeConfiguration.fromJson(o.toJson());
       checkIosRuntimeConfiguration(od);
     });
   });
 
-  unittest.group("obj-schema-IosTestLoop", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosTestLoop', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosTestLoop();
       var od = api.IosTestLoop.fromJson(o.toJson());
       checkIosTestLoop(od);
     });
   });
 
-  unittest.group("obj-schema-IosTestSetup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosTestSetup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosTestSetup();
       var od = api.IosTestSetup.fromJson(o.toJson());
       checkIosTestSetup(od);
     });
   });
 
-  unittest.group("obj-schema-IosVersion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosVersion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosVersion();
       var od = api.IosVersion.fromJson(o.toJson());
       checkIosVersion(od);
     });
   });
 
-  unittest.group("obj-schema-IosXcTest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-IosXcTest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildIosXcTest();
       var od = api.IosXcTest.fromJson(o.toJson());
       checkIosXcTest(od);
     });
   });
 
-  unittest.group("obj-schema-LauncherActivityIntent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LauncherActivityIntent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLauncherActivityIntent();
       var od = api.LauncherActivityIntent.fromJson(o.toJson());
       checkLauncherActivityIntent(od);
     });
   });
 
-  unittest.group("obj-schema-Locale", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Locale', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocale();
       var od = api.Locale.fromJson(o.toJson());
       checkLocale(od);
     });
   });
 
-  unittest.group("obj-schema-ManualSharding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ManualSharding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildManualSharding();
       var od = api.ManualSharding.fromJson(o.toJson());
       checkManualSharding(od);
     });
   });
 
-  unittest.group("obj-schema-NetworkConfiguration", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NetworkConfiguration', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNetworkConfiguration();
       var od = api.NetworkConfiguration.fromJson(o.toJson());
       checkNetworkConfiguration(od);
     });
   });
 
-  unittest.group("obj-schema-NetworkConfigurationCatalog", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NetworkConfigurationCatalog', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNetworkConfigurationCatalog();
       var od = api.NetworkConfigurationCatalog.fromJson(o.toJson());
       checkNetworkConfigurationCatalog(od);
     });
   });
 
-  unittest.group("obj-schema-ObbFile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ObbFile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildObbFile();
       var od = api.ObbFile.fromJson(o.toJson());
       checkObbFile(od);
     });
   });
 
-  unittest.group("obj-schema-Orientation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Orientation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOrientation();
       var od = api.Orientation.fromJson(o.toJson());
       checkOrientation(od);
     });
   });
 
-  unittest.group("obj-schema-ProvidedSoftwareCatalog", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ProvidedSoftwareCatalog', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProvidedSoftwareCatalog();
       var od = api.ProvidedSoftwareCatalog.fromJson(o.toJson());
       checkProvidedSoftwareCatalog(od);
     });
   });
 
-  unittest.group("obj-schema-RegularFile", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RegularFile', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRegularFile();
       var od = api.RegularFile.fromJson(o.toJson());
       checkRegularFile(od);
     });
   });
 
-  unittest.group("obj-schema-ResultStorage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResultStorage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResultStorage();
       var od = api.ResultStorage.fromJson(o.toJson());
       checkResultStorage(od);
     });
   });
 
-  unittest.group("obj-schema-RoboDirective", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RoboDirective', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRoboDirective();
       var od = api.RoboDirective.fromJson(o.toJson());
       checkRoboDirective(od);
     });
   });
 
-  unittest.group("obj-schema-RoboStartingIntent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RoboStartingIntent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRoboStartingIntent();
       var od = api.RoboStartingIntent.fromJson(o.toJson());
       checkRoboStartingIntent(od);
     });
   });
 
-  unittest.group("obj-schema-Shard", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Shard', () {
+    unittest.test('to-json--from-json', () {
       var o = buildShard();
       var od = api.Shard.fromJson(o.toJson());
       checkShard(od);
     });
   });
 
-  unittest.group("obj-schema-ShardingOption", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ShardingOption', () {
+    unittest.test('to-json--from-json', () {
       var o = buildShardingOption();
       var od = api.ShardingOption.fromJson(o.toJson());
       checkShardingOption(od);
     });
   });
 
-  unittest.group("obj-schema-StartActivityIntent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StartActivityIntent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStartActivityIntent();
       var od = api.StartActivityIntent.fromJson(o.toJson());
       checkStartActivityIntent(od);
     });
   });
 
-  unittest.group("obj-schema-SystraceSetup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SystraceSetup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSystraceSetup();
       var od = api.SystraceSetup.fromJson(o.toJson());
       checkSystraceSetup(od);
     });
   });
 
-  unittest.group("obj-schema-TestDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestDetails();
       var od = api.TestDetails.fromJson(o.toJson());
       checkTestDetails(od);
     });
   });
 
-  unittest.group("obj-schema-TestEnvironmentCatalog", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestEnvironmentCatalog', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestEnvironmentCatalog();
       var od = api.TestEnvironmentCatalog.fromJson(o.toJson());
       checkTestEnvironmentCatalog(od);
     });
   });
 
-  unittest.group("obj-schema-TestExecution", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestExecution', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestExecution();
       var od = api.TestExecution.fromJson(o.toJson());
       checkTestExecution(od);
     });
   });
 
-  unittest.group("obj-schema-TestMatrix", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestMatrix', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestMatrix();
       var od = api.TestMatrix.fromJson(o.toJson());
       checkTestMatrix(od);
     });
   });
 
-  unittest.group("obj-schema-TestSetup", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestSetup', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestSetup();
       var od = api.TestSetup.fromJson(o.toJson());
       checkTestSetup(od);
     });
   });
 
-  unittest.group("obj-schema-TestSpecification", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestSpecification', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestSpecification();
       var od = api.TestSpecification.fromJson(o.toJson());
       checkTestSpecification(od);
     });
   });
 
-  unittest.group("obj-schema-TestTargetsForShard", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestTargetsForShard', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestTargetsForShard();
       var od = api.TestTargetsForShard.fromJson(o.toJson());
       checkTestTargetsForShard(od);
     });
   });
 
-  unittest.group("obj-schema-ToolResultsExecution", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ToolResultsExecution', () {
+    unittest.test('to-json--from-json', () {
       var o = buildToolResultsExecution();
       var od = api.ToolResultsExecution.fromJson(o.toJson());
       checkToolResultsExecution(od);
     });
   });
 
-  unittest.group("obj-schema-ToolResultsHistory", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ToolResultsHistory', () {
+    unittest.test('to-json--from-json', () {
       var o = buildToolResultsHistory();
       var od = api.ToolResultsHistory.fromJson(o.toJson());
       checkToolResultsHistory(od);
     });
   });
 
-  unittest.group("obj-schema-ToolResultsStep", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ToolResultsStep', () {
+    unittest.test('to-json--from-json', () {
       var o = buildToolResultsStep();
       var od = api.ToolResultsStep.fromJson(o.toJson());
       checkToolResultsStep(od);
     });
   });
 
-  unittest.group("obj-schema-TrafficRule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TrafficRule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTrafficRule();
       var od = api.TrafficRule.fromJson(o.toJson());
       checkTrafficRule(od);
     });
   });
 
-  unittest.group("obj-schema-UniformSharding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UniformSharding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUniformSharding();
       var od = api.UniformSharding.fromJson(o.toJson());
       checkUniformSharding(od);
     });
   });
 
-  unittest.group("obj-schema-XcodeVersion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-XcodeVersion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildXcodeVersion();
       var od = api.XcodeVersion.fromJson(o.toJson());
       checkXcodeVersion(od);
     });
   });
 
-  unittest.group("resource-ApplicationDetailServiceResourceApi", () {
-    unittest.test("method--getApkDetails", () {
+  unittest.group('resource-ApplicationDetailServiceResourceApi', () {
+    unittest.test('method--getApkDetails', () {
       var mock = HttpServerMock();
       api.ApplicationDetailServiceResourceApi res =
           api.TestingApi(mock).applicationDetailService;
       var arg_request = buildFileReference();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.FileReference.fromJson(json);
         checkFileReference(obj);
@@ -2988,8 +2988,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2999,7 +2999,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGetApkDetailsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3012,14 +3012,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsTestMatricesResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-ProjectsTestMatricesResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.ProjectsTestMatricesResourceApi res =
           api.TestingApi(mock).projects.testMatrices;
-      var arg_projectId = "foo";
-      var arg_testMatrixId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_testMatrixId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3031,21 +3031,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf("/testMatrices/", pathOffset);
+        index = path.indexOf('/testMatrices/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/testMatrices/"));
         pathOffset += 14;
-        index = path.indexOf(":cancel", pathOffset);
+        index = path.indexOf(':cancel', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_testMatrixId"));
+        unittest.expect(subPart, unittest.equals('$arg_testMatrixId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals(":cancel"));
         pathOffset += 7;
@@ -3056,8 +3056,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3067,7 +3067,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCancelTestMatrixResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3079,14 +3079,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsTestMatricesResourceApi res =
           api.TestingApi(mock).projects.testMatrices;
       var arg_request = buildTestMatrix();
-      var arg_projectId = "foo";
-      var arg_requestId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_requestId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestMatrix.fromJson(json);
         checkTestMatrix(obj);
@@ -3101,12 +3101,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf("/testMatrices", pathOffset);
+        index = path.indexOf('/testMatrices', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/testMatrices"));
         pathOffset += 13;
@@ -3117,8 +3117,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3130,7 +3130,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestMatrix());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3143,13 +3143,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsTestMatricesResourceApi res =
           api.TestingApi(mock).projects.testMatrices;
-      var arg_projectId = "foo";
-      var arg_testMatrixId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_testMatrixId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3161,18 +3161,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf("/testMatrices/", pathOffset);
+        index = path.indexOf('/testMatrices/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 14),
             unittest.equals("/testMatrices/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_testMatrixId"));
+        unittest.expect(subPart, unittest.equals('$arg_testMatrixId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3180,8 +3180,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3191,7 +3191,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestMatrix());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3204,14 +3204,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-TestEnvironmentCatalogResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-TestEnvironmentCatalogResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.TestEnvironmentCatalogResourceApi res =
           api.TestingApi(mock).testEnvironmentCatalog;
-      var arg_environmentType = "foo";
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_environmentType = 'foo';
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3225,7 +3225,7 @@ void main() {
         pathOffset += 26;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_environmentType"));
+        unittest.expect(subPart, unittest.equals('$arg_environmentType'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3233,8 +3233,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3246,7 +3246,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestEnvironmentCatalog());
         return async.Future.value(stringResponse(200, h, resp));

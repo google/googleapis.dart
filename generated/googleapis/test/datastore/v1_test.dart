@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -190,7 +190,7 @@ api.BeginTransactionResponse buildBeginTransactionResponse() {
   var o = api.BeginTransactionResponse();
   buildCounterBeginTransactionResponse++;
   if (buildCounterBeginTransactionResponse < 3) {
-    o.transaction = "foo";
+    o.transaction = 'foo';
   }
   buildCounterBeginTransactionResponse--;
   return o;
@@ -222,9 +222,9 @@ api.CommitRequest buildCommitRequest() {
   var o = api.CommitRequest();
   buildCounterCommitRequest++;
   if (buildCounterCommitRequest < 3) {
-    o.mode = "foo";
+    o.mode = 'foo';
     o.mutations = buildUnnamed3();
-    o.transaction = "foo";
+    o.transaction = 'foo';
   }
   buildCounterCommitRequest--;
   return o;
@@ -293,7 +293,7 @@ api.CompositeFilter buildCompositeFilter() {
   buildCounterCompositeFilter++;
   if (buildCounterCompositeFilter < 3) {
     o.filters = buildUnnamed5();
-    o.op = "foo";
+    o.op = 'foo';
   }
   buildCounterCompositeFilter--;
   return o;
@@ -325,15 +325,15 @@ void checkEmpty(api.Empty o) {
 
 core.Map<core.String, api.Value> buildUnnamed6() {
   var o = <core.String, api.Value>{};
-  o["x"] = buildValue();
-  o["y"] = buildValue();
+  o['x'] = buildValue();
+  o['y'] = buildValue();
   return o;
 }
 
 void checkUnnamed6(core.Map<core.String, api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o["x"]);
-  checkValue(o["y"]);
+  checkValue(o['x']);
+  checkValue(o['y']);
 }
 
 core.int buildCounterEntity = 0;
@@ -362,9 +362,9 @@ api.EntityResult buildEntityResult() {
   var o = api.EntityResult();
   buildCounterEntityResult++;
   if (buildCounterEntityResult < 3) {
-    o.cursor = "foo";
+    o.cursor = 'foo';
     o.entity = buildEntity();
-    o.version = "foo";
+    o.version = 'foo';
   }
   buildCounterEntityResult--;
   return o;
@@ -403,15 +403,15 @@ void checkFilter(api.Filter o) {
 
 core.Map<core.String, core.String> buildUnnamed7() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed7(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleDatastoreAdminV1CommonMetadata = 0;
@@ -420,11 +420,11 @@ api.GoogleDatastoreAdminV1CommonMetadata
   var o = api.GoogleDatastoreAdminV1CommonMetadata();
   buildCounterGoogleDatastoreAdminV1CommonMetadata++;
   if (buildCounterGoogleDatastoreAdminV1CommonMetadata < 3) {
-    o.endTime = "foo";
+    o.endTime = 'foo';
     o.labels = buildUnnamed7();
-    o.operationType = "foo";
-    o.startTime = "foo";
-    o.state = "foo";
+    o.operationType = 'foo';
+    o.startTime = 'foo';
+    o.state = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1CommonMetadata--;
   return o;
@@ -445,8 +445,8 @@ void checkGoogleDatastoreAdminV1CommonMetadata(
 
 core.List<core.String> buildUnnamed8() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -458,8 +458,8 @@ void checkUnnamed8(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed9() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -500,7 +500,7 @@ api.GoogleDatastoreAdminV1ExportEntitiesMetadata
   if (buildCounterGoogleDatastoreAdminV1ExportEntitiesMetadata < 3) {
     o.common = buildGoogleDatastoreAdminV1CommonMetadata();
     o.entityFilter = buildGoogleDatastoreAdminV1EntityFilter();
-    o.outputUrlPrefix = "foo";
+    o.outputUrlPrefix = 'foo';
     o.progressBytes = buildGoogleDatastoreAdminV1Progress();
     o.progressEntities = buildGoogleDatastoreAdminV1Progress();
   }
@@ -523,15 +523,15 @@ void checkGoogleDatastoreAdminV1ExportEntitiesMetadata(
 
 core.Map<core.String, core.String> buildUnnamed10() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed10(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleDatastoreAdminV1ExportEntitiesRequest = 0;
@@ -542,7 +542,7 @@ api.GoogleDatastoreAdminV1ExportEntitiesRequest
   if (buildCounterGoogleDatastoreAdminV1ExportEntitiesRequest < 3) {
     o.entityFilter = buildGoogleDatastoreAdminV1EntityFilter();
     o.labels = buildUnnamed10();
-    o.outputUrlPrefix = "foo";
+    o.outputUrlPrefix = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1ExportEntitiesRequest--;
   return o;
@@ -565,7 +565,7 @@ api.GoogleDatastoreAdminV1ExportEntitiesResponse
   var o = api.GoogleDatastoreAdminV1ExportEntitiesResponse();
   buildCounterGoogleDatastoreAdminV1ExportEntitiesResponse++;
   if (buildCounterGoogleDatastoreAdminV1ExportEntitiesResponse < 3) {
-    o.outputUrl = "foo";
+    o.outputUrl = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1ExportEntitiesResponse--;
   return o;
@@ -588,7 +588,7 @@ api.GoogleDatastoreAdminV1ImportEntitiesMetadata
   if (buildCounterGoogleDatastoreAdminV1ImportEntitiesMetadata < 3) {
     o.common = buildGoogleDatastoreAdminV1CommonMetadata();
     o.entityFilter = buildGoogleDatastoreAdminV1EntityFilter();
-    o.inputUrl = "foo";
+    o.inputUrl = 'foo';
     o.progressBytes = buildGoogleDatastoreAdminV1Progress();
     o.progressEntities = buildGoogleDatastoreAdminV1Progress();
   }
@@ -611,15 +611,15 @@ void checkGoogleDatastoreAdminV1ImportEntitiesMetadata(
 
 core.Map<core.String, core.String> buildUnnamed11() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest = 0;
@@ -629,7 +629,7 @@ api.GoogleDatastoreAdminV1ImportEntitiesRequest
   buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest++;
   if (buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest < 3) {
     o.entityFilter = buildGoogleDatastoreAdminV1EntityFilter();
-    o.inputUrl = "foo";
+    o.inputUrl = 'foo';
     o.labels = buildUnnamed11();
   }
   buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest--;
@@ -665,12 +665,12 @@ api.GoogleDatastoreAdminV1Index buildGoogleDatastoreAdminV1Index() {
   var o = api.GoogleDatastoreAdminV1Index();
   buildCounterGoogleDatastoreAdminV1Index++;
   if (buildCounterGoogleDatastoreAdminV1Index < 3) {
-    o.ancestor = "foo";
-    o.indexId = "foo";
-    o.kind = "foo";
-    o.projectId = "foo";
+    o.ancestor = 'foo';
+    o.indexId = 'foo';
+    o.kind = 'foo';
+    o.projectId = 'foo';
     o.properties = buildUnnamed12();
-    o.state = "foo";
+    o.state = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1Index--;
   return o;
@@ -696,7 +696,7 @@ api.GoogleDatastoreAdminV1IndexOperationMetadata
   buildCounterGoogleDatastoreAdminV1IndexOperationMetadata++;
   if (buildCounterGoogleDatastoreAdminV1IndexOperationMetadata < 3) {
     o.common = buildGoogleDatastoreAdminV1CommonMetadata();
-    o.indexId = "foo";
+    o.indexId = 'foo';
     o.progressEntities = buildGoogleDatastoreAdminV1Progress();
   }
   buildCounterGoogleDatastoreAdminV1IndexOperationMetadata--;
@@ -720,8 +720,8 @@ api.GoogleDatastoreAdminV1IndexedProperty
   var o = api.GoogleDatastoreAdminV1IndexedProperty();
   buildCounterGoogleDatastoreAdminV1IndexedProperty++;
   if (buildCounterGoogleDatastoreAdminV1IndexedProperty < 3) {
-    o.direction = "foo";
-    o.name = "foo";
+    o.direction = 'foo';
+    o.name = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1IndexedProperty--;
   return o;
@@ -757,7 +757,7 @@ api.GoogleDatastoreAdminV1ListIndexesResponse
   buildCounterGoogleDatastoreAdminV1ListIndexesResponse++;
   if (buildCounterGoogleDatastoreAdminV1ListIndexesResponse < 3) {
     o.indexes = buildUnnamed13();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1ListIndexesResponse--;
   return o;
@@ -778,8 +778,8 @@ api.GoogleDatastoreAdminV1Progress buildGoogleDatastoreAdminV1Progress() {
   var o = api.GoogleDatastoreAdminV1Progress();
   buildCounterGoogleDatastoreAdminV1Progress++;
   if (buildCounterGoogleDatastoreAdminV1Progress < 3) {
-    o.workCompleted = "foo";
-    o.workEstimated = "foo";
+    o.workCompleted = 'foo';
+    o.workEstimated = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1Progress--;
   return o;
@@ -796,15 +796,15 @@ void checkGoogleDatastoreAdminV1Progress(api.GoogleDatastoreAdminV1Progress o) {
 
 core.Map<core.String, core.String> buildUnnamed14() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed14(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleDatastoreAdminV1beta1CommonMetadata = 0;
@@ -813,11 +813,11 @@ api.GoogleDatastoreAdminV1beta1CommonMetadata
   var o = api.GoogleDatastoreAdminV1beta1CommonMetadata();
   buildCounterGoogleDatastoreAdminV1beta1CommonMetadata++;
   if (buildCounterGoogleDatastoreAdminV1beta1CommonMetadata < 3) {
-    o.endTime = "foo";
+    o.endTime = 'foo';
     o.labels = buildUnnamed14();
-    o.operationType = "foo";
-    o.startTime = "foo";
-    o.state = "foo";
+    o.operationType = 'foo';
+    o.startTime = 'foo';
+    o.state = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1beta1CommonMetadata--;
   return o;
@@ -838,8 +838,8 @@ void checkGoogleDatastoreAdminV1beta1CommonMetadata(
 
 core.List<core.String> buildUnnamed15() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -851,8 +851,8 @@ void checkUnnamed15(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed16() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -893,7 +893,7 @@ api.GoogleDatastoreAdminV1beta1ExportEntitiesMetadata
   if (buildCounterGoogleDatastoreAdminV1beta1ExportEntitiesMetadata < 3) {
     o.common = buildGoogleDatastoreAdminV1beta1CommonMetadata();
     o.entityFilter = buildGoogleDatastoreAdminV1beta1EntityFilter();
-    o.outputUrlPrefix = "foo";
+    o.outputUrlPrefix = 'foo';
     o.progressBytes = buildGoogleDatastoreAdminV1beta1Progress();
     o.progressEntities = buildGoogleDatastoreAdminV1beta1Progress();
   }
@@ -920,7 +920,7 @@ api.GoogleDatastoreAdminV1beta1ExportEntitiesResponse
   var o = api.GoogleDatastoreAdminV1beta1ExportEntitiesResponse();
   buildCounterGoogleDatastoreAdminV1beta1ExportEntitiesResponse++;
   if (buildCounterGoogleDatastoreAdminV1beta1ExportEntitiesResponse < 3) {
-    o.outputUrl = "foo";
+    o.outputUrl = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1beta1ExportEntitiesResponse--;
   return o;
@@ -943,7 +943,7 @@ api.GoogleDatastoreAdminV1beta1ImportEntitiesMetadata
   if (buildCounterGoogleDatastoreAdminV1beta1ImportEntitiesMetadata < 3) {
     o.common = buildGoogleDatastoreAdminV1beta1CommonMetadata();
     o.entityFilter = buildGoogleDatastoreAdminV1beta1EntityFilter();
-    o.inputUrl = "foo";
+    o.inputUrl = 'foo';
     o.progressBytes = buildGoogleDatastoreAdminV1beta1Progress();
     o.progressEntities = buildGoogleDatastoreAdminV1beta1Progress();
   }
@@ -970,8 +970,8 @@ api.GoogleDatastoreAdminV1beta1Progress
   var o = api.GoogleDatastoreAdminV1beta1Progress();
   buildCounterGoogleDatastoreAdminV1beta1Progress++;
   if (buildCounterGoogleDatastoreAdminV1beta1Progress < 3) {
-    o.workCompleted = "foo";
-    o.workEstimated = "foo";
+    o.workCompleted = 'foo';
+    o.workEstimated = 'foo';
   }
   buildCounterGoogleDatastoreAdminV1beta1Progress--;
   return o;
@@ -1006,7 +1006,7 @@ api.GoogleLongrunningListOperationsResponse
   var o = api.GoogleLongrunningListOperationsResponse();
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed17();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
@@ -1025,12 +1025,12 @@ void checkGoogleLongrunningListOperationsResponse(
 
 core.Map<core.String, core.Object> buildUnnamed18() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1040,26 +1040,26 @@ core.Map<core.String, core.Object> buildUnnamed18() {
 
 void checkUnnamed18(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed19() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1069,16 +1069,16 @@ core.Map<core.String, core.Object> buildUnnamed19() {
 
 void checkUnnamed19(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -1089,7 +1089,7 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
     o.done = true;
     o.error = buildStatus();
     o.metadata = buildUnnamed18();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed19();
   }
   buildCounterGoogleLongrunningOperation--;
@@ -1110,15 +1110,15 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
 
 core.Map<core.String, api.GqlQueryParameter> buildUnnamed20() {
   var o = <core.String, api.GqlQueryParameter>{};
-  o["x"] = buildGqlQueryParameter();
-  o["y"] = buildGqlQueryParameter();
+  o['x'] = buildGqlQueryParameter();
+  o['y'] = buildGqlQueryParameter();
   return o;
 }
 
 void checkUnnamed20(core.Map<core.String, api.GqlQueryParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGqlQueryParameter(o["x"]);
-  checkGqlQueryParameter(o["y"]);
+  checkGqlQueryParameter(o['x']);
+  checkGqlQueryParameter(o['y']);
 }
 
 core.List<api.GqlQueryParameter> buildUnnamed21() {
@@ -1142,7 +1142,7 @@ api.GqlQuery buildGqlQuery() {
     o.allowLiterals = true;
     o.namedBindings = buildUnnamed20();
     o.positionalBindings = buildUnnamed21();
-    o.queryString = "foo";
+    o.queryString = 'foo';
   }
   buildCounterGqlQuery--;
   return o;
@@ -1164,7 +1164,7 @@ api.GqlQueryParameter buildGqlQueryParameter() {
   var o = api.GqlQueryParameter();
   buildCounterGqlQueryParameter++;
   if (buildCounterGqlQueryParameter < 3) {
-    o.cursor = "foo";
+    o.cursor = 'foo';
     o.value = buildValue();
   }
   buildCounterGqlQueryParameter--;
@@ -1219,7 +1219,7 @@ api.KindExpression buildKindExpression() {
   var o = api.KindExpression();
   buildCounterKindExpression++;
   if (buildCounterKindExpression < 3) {
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterKindExpression--;
   return o;
@@ -1355,7 +1355,7 @@ api.Mutation buildMutation() {
   var o = api.Mutation();
   buildCounterMutation++;
   if (buildCounterMutation < 3) {
-    o.baseVersion = "foo";
+    o.baseVersion = 'foo';
     o.delete = buildKey();
     o.insert = buildEntity();
     o.update = buildEntity();
@@ -1384,7 +1384,7 @@ api.MutationResult buildMutationResult() {
   if (buildCounterMutationResult < 3) {
     o.conflictDetected = true;
     o.key = buildKey();
-    o.version = "foo";
+    o.version = 'foo';
   }
   buildCounterMutationResult--;
   return o;
@@ -1405,8 +1405,8 @@ api.PartitionId buildPartitionId() {
   var o = api.PartitionId();
   buildCounterPartitionId++;
   if (buildCounterPartitionId < 3) {
-    o.namespaceId = "foo";
-    o.projectId = "foo";
+    o.namespaceId = 'foo';
+    o.projectId = 'foo';
   }
   buildCounterPartitionId--;
   return o;
@@ -1426,9 +1426,9 @@ api.PathElement buildPathElement() {
   var o = api.PathElement();
   buildCounterPathElement++;
   if (buildCounterPathElement < 3) {
-    o.id = "foo";
-    o.kind = "foo";
-    o.name = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.name = 'foo';
   }
   buildCounterPathElement--;
   return o;
@@ -1468,7 +1468,7 @@ api.PropertyFilter buildPropertyFilter() {
   var o = api.PropertyFilter();
   buildCounterPropertyFilter++;
   if (buildCounterPropertyFilter < 3) {
-    o.op = "foo";
+    o.op = 'foo';
     o.property = buildPropertyReference();
     o.value = buildValue();
   }
@@ -1491,7 +1491,7 @@ api.PropertyOrder buildPropertyOrder() {
   var o = api.PropertyOrder();
   buildCounterPropertyOrder++;
   if (buildCounterPropertyOrder < 3) {
-    o.direction = "foo";
+    o.direction = 'foo';
     o.property = buildPropertyReference();
   }
   buildCounterPropertyOrder--;
@@ -1512,7 +1512,7 @@ api.PropertyReference buildPropertyReference() {
   var o = api.PropertyReference();
   buildCounterPropertyReference++;
   if (buildCounterPropertyReference < 3) {
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterPropertyReference--;
   return o;
@@ -1584,14 +1584,14 @@ api.Query buildQuery() {
   buildCounterQuery++;
   if (buildCounterQuery < 3) {
     o.distinctOn = buildUnnamed27();
-    o.endCursor = "foo";
+    o.endCursor = 'foo';
     o.filter = buildFilter();
     o.kind = buildUnnamed28();
     o.limit = 42;
     o.offset = 42;
     o.order = buildUnnamed29();
     o.projection = buildUnnamed30();
-    o.startCursor = "foo";
+    o.startCursor = 'foo';
   }
   buildCounterQuery--;
   return o;
@@ -1631,13 +1631,13 @@ api.QueryResultBatch buildQueryResultBatch() {
   var o = api.QueryResultBatch();
   buildCounterQueryResultBatch++;
   if (buildCounterQueryResultBatch < 3) {
-    o.endCursor = "foo";
-    o.entityResultType = "foo";
+    o.endCursor = 'foo';
+    o.entityResultType = 'foo';
     o.entityResults = buildUnnamed31();
-    o.moreResults = "foo";
-    o.skippedCursor = "foo";
+    o.moreResults = 'foo';
+    o.skippedCursor = 'foo';
     o.skippedResults = 42;
-    o.snapshotVersion = "foo";
+    o.snapshotVersion = 'foo';
   }
   buildCounterQueryResultBatch--;
   return o;
@@ -1677,8 +1677,8 @@ api.ReadOptions buildReadOptions() {
   var o = api.ReadOptions();
   buildCounterReadOptions++;
   if (buildCounterReadOptions < 3) {
-    o.readConsistency = "foo";
-    o.transaction = "foo";
+    o.readConsistency = 'foo';
+    o.transaction = 'foo';
   }
   buildCounterReadOptions--;
   return o;
@@ -1698,7 +1698,7 @@ api.ReadWrite buildReadWrite() {
   var o = api.ReadWrite();
   buildCounterReadWrite++;
   if (buildCounterReadWrite < 3) {
-    o.previousTransaction = "foo";
+    o.previousTransaction = 'foo';
   }
   buildCounterReadWrite--;
   return o;
@@ -1730,7 +1730,7 @@ api.ReserveIdsRequest buildReserveIdsRequest() {
   var o = api.ReserveIdsRequest();
   buildCounterReserveIdsRequest++;
   if (buildCounterReserveIdsRequest < 3) {
-    o.databaseId = "foo";
+    o.databaseId = 'foo';
     o.keys = buildUnnamed32();
   }
   buildCounterReserveIdsRequest--;
@@ -1766,7 +1766,7 @@ api.RollbackRequest buildRollbackRequest() {
   var o = api.RollbackRequest();
   buildCounterRollbackRequest++;
   if (buildCounterRollbackRequest < 3) {
-    o.transaction = "foo";
+    o.transaction = 'foo';
   }
   buildCounterRollbackRequest--;
   return o;
@@ -1843,12 +1843,12 @@ void checkRunQueryResponse(api.RunQueryResponse o) {
 
 core.Map<core.String, core.Object> buildUnnamed33() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -1858,16 +1858,16 @@ core.Map<core.String, core.Object> buildUnnamed33() {
 
 void checkUnnamed33(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed34() {
@@ -1890,7 +1890,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed34();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -1933,18 +1933,18 @@ api.Value buildValue() {
   buildCounterValue++;
   if (buildCounterValue < 3) {
     o.arrayValue = buildArrayValue();
-    o.blobValue = "foo";
+    o.blobValue = 'foo';
     o.booleanValue = true;
     o.doubleValue = 42.0;
     o.entityValue = buildEntity();
     o.excludeFromIndexes = true;
     o.geoPointValue = buildLatLng();
-    o.integerValue = "foo";
+    o.integerValue = 'foo';
     o.keyValue = buildKey();
     o.meaning = 42;
-    o.nullValue = "foo";
-    o.stringValue = "foo";
-    o.timestampValue = "foo";
+    o.nullValue = 'foo';
+    o.stringValue = 'foo';
+    o.timestampValue = 'foo';
   }
   buildCounterValue--;
   return o;
@@ -1971,120 +1971,120 @@ void checkValue(api.Value o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AllocateIdsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AllocateIdsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAllocateIdsRequest();
       var od = api.AllocateIdsRequest.fromJson(o.toJson());
       checkAllocateIdsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AllocateIdsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AllocateIdsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAllocateIdsResponse();
       var od = api.AllocateIdsResponse.fromJson(o.toJson());
       checkAllocateIdsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ArrayValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ArrayValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildArrayValue();
       var od = api.ArrayValue.fromJson(o.toJson());
       checkArrayValue(od);
     });
   });
 
-  unittest.group("obj-schema-BeginTransactionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BeginTransactionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBeginTransactionRequest();
       var od = api.BeginTransactionRequest.fromJson(o.toJson());
       checkBeginTransactionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BeginTransactionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BeginTransactionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBeginTransactionResponse();
       var od = api.BeginTransactionResponse.fromJson(o.toJson());
       checkBeginTransactionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CommitRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommitRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommitRequest();
       var od = api.CommitRequest.fromJson(o.toJson());
       checkCommitRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CommitResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommitResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommitResponse();
       var od = api.CommitResponse.fromJson(o.toJson());
       checkCommitResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CompositeFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CompositeFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCompositeFilter();
       var od = api.CompositeFilter.fromJson(o.toJson());
       checkCompositeFilter(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-Entity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Entity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEntity();
       var od = api.Entity.fromJson(o.toJson());
       checkEntity(od);
     });
   });
 
-  unittest.group("obj-schema-EntityResult", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EntityResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEntityResult();
       var od = api.EntityResult.fromJson(o.toJson());
       checkEntityResult(od);
     });
   });
 
-  unittest.group("obj-schema-Filter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Filter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
       checkFilter(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1CommonMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1CommonMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1CommonMetadata();
       var od = api.GoogleDatastoreAdminV1CommonMetadata.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1CommonMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1EntityFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1EntityFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1EntityFilter();
       var od = api.GoogleDatastoreAdminV1EntityFilter.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1EntityFilter(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1ExportEntitiesMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1ExportEntitiesMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1ExportEntitiesMetadata();
       var od =
           api.GoogleDatastoreAdminV1ExportEntitiesMetadata.fromJson(o.toJson());
@@ -2092,8 +2092,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1ExportEntitiesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1ExportEntitiesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1ExportEntitiesRequest();
       var od =
           api.GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(o.toJson());
@@ -2101,8 +2101,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1ExportEntitiesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1ExportEntitiesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1ExportEntitiesResponse();
       var od =
           api.GoogleDatastoreAdminV1ExportEntitiesResponse.fromJson(o.toJson());
@@ -2110,8 +2110,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1ImportEntitiesMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1ImportEntitiesMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1ImportEntitiesMetadata();
       var od =
           api.GoogleDatastoreAdminV1ImportEntitiesMetadata.fromJson(o.toJson());
@@ -2119,8 +2119,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1ImportEntitiesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1ImportEntitiesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1ImportEntitiesRequest();
       var od =
           api.GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(o.toJson());
@@ -2128,16 +2128,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1Index", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1Index', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1Index();
       var od = api.GoogleDatastoreAdminV1Index.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1Index(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1IndexOperationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1IndexOperationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1IndexOperationMetadata();
       var od =
           api.GoogleDatastoreAdminV1IndexOperationMetadata.fromJson(o.toJson());
@@ -2145,16 +2145,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1IndexedProperty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1IndexedProperty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1IndexedProperty();
       var od = api.GoogleDatastoreAdminV1IndexedProperty.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1IndexedProperty(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1ListIndexesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1ListIndexesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1ListIndexesResponse();
       var od =
           api.GoogleDatastoreAdminV1ListIndexesResponse.fromJson(o.toJson());
@@ -2162,16 +2162,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1Progress", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1Progress', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1Progress();
       var od = api.GoogleDatastoreAdminV1Progress.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1Progress(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1beta1CommonMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1beta1CommonMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1beta1CommonMetadata();
       var od =
           api.GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(o.toJson());
@@ -2179,17 +2179,17 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1beta1EntityFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1beta1EntityFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1beta1EntityFilter();
       var od = api.GoogleDatastoreAdminV1beta1EntityFilter.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1beta1EntityFilter(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1beta1ExportEntitiesMetadata",
+  unittest.group('obj-schema-GoogleDatastoreAdminV1beta1ExportEntitiesMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1beta1ExportEntitiesMetadata();
       var od = api.GoogleDatastoreAdminV1beta1ExportEntitiesMetadata.fromJson(
           o.toJson());
@@ -2197,9 +2197,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1beta1ExportEntitiesResponse",
+  unittest.group('obj-schema-GoogleDatastoreAdminV1beta1ExportEntitiesResponse',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1beta1ExportEntitiesResponse();
       var od = api.GoogleDatastoreAdminV1beta1ExportEntitiesResponse.fromJson(
           o.toJson());
@@ -2207,9 +2207,9 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1beta1ImportEntitiesMetadata",
+  unittest.group('obj-schema-GoogleDatastoreAdminV1beta1ImportEntitiesMetadata',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1beta1ImportEntitiesMetadata();
       var od = api.GoogleDatastoreAdminV1beta1ImportEntitiesMetadata.fromJson(
           o.toJson());
@@ -2217,269 +2217,269 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleDatastoreAdminV1beta1Progress", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleDatastoreAdminV1beta1Progress', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1beta1Progress();
       var od = api.GoogleDatastoreAdminV1beta1Progress.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1beta1Progress(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningListOperationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GoogleLongrunningOperation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GoogleLongrunningOperation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od);
     });
   });
 
-  unittest.group("obj-schema-GqlQuery", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GqlQuery', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGqlQuery();
       var od = api.GqlQuery.fromJson(o.toJson());
       checkGqlQuery(od);
     });
   });
 
-  unittest.group("obj-schema-GqlQueryParameter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GqlQueryParameter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGqlQueryParameter();
       var od = api.GqlQueryParameter.fromJson(o.toJson());
       checkGqlQueryParameter(od);
     });
   });
 
-  unittest.group("obj-schema-Key", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Key', () {
+    unittest.test('to-json--from-json', () {
       var o = buildKey();
       var od = api.Key.fromJson(o.toJson());
       checkKey(od);
     });
   });
 
-  unittest.group("obj-schema-KindExpression", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-KindExpression', () {
+    unittest.test('to-json--from-json', () {
       var o = buildKindExpression();
       var od = api.KindExpression.fromJson(o.toJson());
       checkKindExpression(od);
     });
   });
 
-  unittest.group("obj-schema-LatLng", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LatLng', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
       checkLatLng(od);
     });
   });
 
-  unittest.group("obj-schema-LookupRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LookupRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLookupRequest();
       var od = api.LookupRequest.fromJson(o.toJson());
       checkLookupRequest(od);
     });
   });
 
-  unittest.group("obj-schema-LookupResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LookupResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLookupResponse();
       var od = api.LookupResponse.fromJson(o.toJson());
       checkLookupResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Mutation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Mutation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMutation();
       var od = api.Mutation.fromJson(o.toJson());
       checkMutation(od);
     });
   });
 
-  unittest.group("obj-schema-MutationResult", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MutationResult', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMutationResult();
       var od = api.MutationResult.fromJson(o.toJson());
       checkMutationResult(od);
     });
   });
 
-  unittest.group("obj-schema-PartitionId", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PartitionId', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPartitionId();
       var od = api.PartitionId.fromJson(o.toJson());
       checkPartitionId(od);
     });
   });
 
-  unittest.group("obj-schema-PathElement", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PathElement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPathElement();
       var od = api.PathElement.fromJson(o.toJson());
       checkPathElement(od);
     });
   });
 
-  unittest.group("obj-schema-Projection", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Projection', () {
+    unittest.test('to-json--from-json', () {
       var o = buildProjection();
       var od = api.Projection.fromJson(o.toJson());
       checkProjection(od);
     });
   });
 
-  unittest.group("obj-schema-PropertyFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PropertyFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPropertyFilter();
       var od = api.PropertyFilter.fromJson(o.toJson());
       checkPropertyFilter(od);
     });
   });
 
-  unittest.group("obj-schema-PropertyOrder", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PropertyOrder', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPropertyOrder();
       var od = api.PropertyOrder.fromJson(o.toJson());
       checkPropertyOrder(od);
     });
   });
 
-  unittest.group("obj-schema-PropertyReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PropertyReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPropertyReference();
       var od = api.PropertyReference.fromJson(o.toJson());
       checkPropertyReference(od);
     });
   });
 
-  unittest.group("obj-schema-Query", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Query', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQuery();
       var od = api.Query.fromJson(o.toJson());
       checkQuery(od);
     });
   });
 
-  unittest.group("obj-schema-QueryResultBatch", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryResultBatch', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryResultBatch();
       var od = api.QueryResultBatch.fromJson(o.toJson());
       checkQueryResultBatch(od);
     });
   });
 
-  unittest.group("obj-schema-ReadOnly", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReadOnly', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReadOnly();
       var od = api.ReadOnly.fromJson(o.toJson());
       checkReadOnly(od);
     });
   });
 
-  unittest.group("obj-schema-ReadOptions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReadOptions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReadOptions();
       var od = api.ReadOptions.fromJson(o.toJson());
       checkReadOptions(od);
     });
   });
 
-  unittest.group("obj-schema-ReadWrite", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReadWrite', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReadWrite();
       var od = api.ReadWrite.fromJson(o.toJson());
       checkReadWrite(od);
     });
   });
 
-  unittest.group("obj-schema-ReserveIdsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReserveIdsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReserveIdsRequest();
       var od = api.ReserveIdsRequest.fromJson(o.toJson());
       checkReserveIdsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ReserveIdsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReserveIdsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReserveIdsResponse();
       var od = api.ReserveIdsResponse.fromJson(o.toJson());
       checkReserveIdsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RollbackRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RollbackRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRollbackRequest();
       var od = api.RollbackRequest.fromJson(o.toJson());
       checkRollbackRequest(od);
     });
   });
 
-  unittest.group("obj-schema-RollbackResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RollbackResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRollbackResponse();
       var od = api.RollbackResponse.fromJson(o.toJson());
       checkRollbackResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RunQueryRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RunQueryRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRunQueryRequest();
       var od = api.RunQueryRequest.fromJson(o.toJson());
       checkRunQueryRequest(od);
     });
   });
 
-  unittest.group("obj-schema-RunQueryResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RunQueryResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRunQueryResponse();
       var od = api.RunQueryResponse.fromJson(o.toJson());
       checkRunQueryResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-TransactionOptions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TransactionOptions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTransactionOptions();
       var od = api.TransactionOptions.fromJson(o.toJson());
       checkTransactionOptions(od);
     });
   });
 
-  unittest.group("obj-schema-Value", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Value', () {
+    unittest.test('to-json--from-json', () {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
       checkValue(od);
     });
   });
 
-  unittest.group("resource-ProjectsResourceApi", () {
-    unittest.test("method--allocateIds", () {
+  unittest.group('resource-ProjectsResourceApi', () {
+    unittest.test('method--allocateIds', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DatastoreApi(mock).projects;
       var arg_request = buildAllocateIdsRequest();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AllocateIdsRequest.fromJson(json);
         checkAllocateIdsRequest(obj);
@@ -2494,12 +2494,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf(":allocateIds", pathOffset);
+        index = path.indexOf(':allocateIds', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals(":allocateIds"));
         pathOffset += 12;
@@ -2510,8 +2510,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2521,7 +2521,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAllocateIdsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2533,12 +2533,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--beginTransaction", () {
+    unittest.test('method--beginTransaction', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DatastoreApi(mock).projects;
       var arg_request = buildBeginTransactionRequest();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BeginTransactionRequest.fromJson(json);
         checkBeginTransactionRequest(obj);
@@ -2553,12 +2553,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf(":beginTransaction", pathOffset);
+        index = path.indexOf(':beginTransaction', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 17),
             unittest.equals(":beginTransaction"));
         pathOffset += 17;
@@ -2569,8 +2569,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2580,7 +2580,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBeginTransactionResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2592,12 +2592,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--commit", () {
+    unittest.test('method--commit', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DatastoreApi(mock).projects;
       var arg_request = buildCommitRequest();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CommitRequest.fromJson(json);
         checkCommitRequest(obj);
@@ -2612,12 +2612,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf(":commit", pathOffset);
+        index = path.indexOf(':commit', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals(":commit"));
         pathOffset += 7;
@@ -2628,8 +2628,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2639,7 +2639,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCommitResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2651,12 +2651,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--export", () {
+    unittest.test('method--export', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DatastoreApi(mock).projects;
       var arg_request = buildGoogleDatastoreAdminV1ExportEntitiesRequest();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(json);
@@ -2672,12 +2672,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf(":export", pathOffset);
+        index = path.indexOf(':export', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals(":export"));
         pathOffset += 7;
@@ -2688,8 +2688,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2699,7 +2699,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2711,12 +2711,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--import", () {
+    unittest.test('method--import', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DatastoreApi(mock).projects;
       var arg_request = buildGoogleDatastoreAdminV1ImportEntitiesRequest();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(json);
@@ -2732,12 +2732,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf(":import", pathOffset);
+        index = path.indexOf(':import', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals(":import"));
         pathOffset += 7;
@@ -2748,8 +2748,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2759,7 +2759,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2771,12 +2771,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--lookup", () {
+    unittest.test('method--lookup', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DatastoreApi(mock).projects;
       var arg_request = buildLookupRequest();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LookupRequest.fromJson(json);
         checkLookupRequest(obj);
@@ -2791,12 +2791,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf(":lookup", pathOffset);
+        index = path.indexOf(':lookup', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals(":lookup"));
         pathOffset += 7;
@@ -2807,8 +2807,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2818,7 +2818,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLookupResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2830,12 +2830,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--reserveIds", () {
+    unittest.test('method--reserveIds', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DatastoreApi(mock).projects;
       var arg_request = buildReserveIdsRequest();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ReserveIdsRequest.fromJson(json);
         checkReserveIdsRequest(obj);
@@ -2850,12 +2850,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf(":reserveIds", pathOffset);
+        index = path.indexOf(':reserveIds', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals(":reserveIds"));
         pathOffset += 11;
@@ -2866,8 +2866,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2877,7 +2877,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildReserveIdsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2889,12 +2889,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--rollback", () {
+    unittest.test('method--rollback', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DatastoreApi(mock).projects;
       var arg_request = buildRollbackRequest();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RollbackRequest.fromJson(json);
         checkRollbackRequest(obj);
@@ -2909,12 +2909,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf(":rollback", pathOffset);
+        index = path.indexOf(':rollback', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals(":rollback"));
         pathOffset += 9;
@@ -2925,8 +2925,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2936,7 +2936,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRollbackResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2948,12 +2948,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--runQuery", () {
+    unittest.test('method--runQuery', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DatastoreApi(mock).projects;
       var arg_request = buildRunQueryRequest();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RunQueryRequest.fromJson(json);
         checkRunQueryRequest(obj);
@@ -2968,12 +2968,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf(":runQuery", pathOffset);
+        index = path.indexOf(':runQuery', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals(":runQuery"));
         pathOffset += 9;
@@ -2984,8 +2984,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2995,7 +2995,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRunQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3008,14 +3008,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsIndexesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsIndexesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsIndexesResourceApi res =
           api.DatastoreApi(mock).projects.indexes;
       var arg_request = buildGoogleDatastoreAdminV1Index();
-      var arg_projectId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleDatastoreAdminV1Index.fromJson(json);
         checkGoogleDatastoreAdminV1Index(obj);
@@ -3030,12 +3030,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf("/indexes", pathOffset);
+        index = path.indexOf('/indexes', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/indexes"));
         pathOffset += 8;
@@ -3046,8 +3046,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3057,7 +3057,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3069,13 +3069,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsIndexesResourceApi res =
           api.DatastoreApi(mock).projects.indexes;
-      var arg_projectId = "foo";
-      var arg_indexId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_indexId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3087,18 +3087,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf("/indexes/", pathOffset);
+        index = path.indexOf('/indexes/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/indexes/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_indexId"));
+        unittest.expect(subPart, unittest.equals('$arg_indexId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3106,8 +3106,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3117,7 +3117,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3129,13 +3129,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsIndexesResourceApi res =
           api.DatastoreApi(mock).projects.indexes;
-      var arg_projectId = "foo";
-      var arg_indexId = "foo";
-      var arg_$fields = "foo";
+      var arg_projectId = 'foo';
+      var arg_indexId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3147,18 +3147,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf("/indexes/", pathOffset);
+        index = path.indexOf('/indexes/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 9),
             unittest.equals("/indexes/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_indexId"));
+        unittest.expect(subPart, unittest.equals('$arg_indexId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3166,8 +3166,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3177,7 +3177,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleDatastoreAdminV1Index());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3189,15 +3189,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsIndexesResourceApi res =
           api.DatastoreApi(mock).projects.indexes;
-      var arg_projectId = "foo";
+      var arg_projectId = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3209,12 +3209,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("v1/projects/"));
         pathOffset += 12;
-        index = path.indexOf("/indexes", pathOffset);
+        index = path.indexOf('/indexes', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(subPart, unittest.equals('$arg_projectId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/indexes"));
         pathOffset += 8;
@@ -3225,8 +3225,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3241,7 +3241,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildGoogleDatastoreAdminV1ListIndexesResponse());
@@ -3259,13 +3259,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsOperationsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-ProjectsOperationsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.DatastoreApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3285,8 +3285,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3296,7 +3296,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3308,12 +3308,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.DatastoreApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3333,8 +3333,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3344,7 +3344,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3356,12 +3356,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.DatastoreApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3381,8 +3381,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3392,7 +3392,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3404,15 +3404,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsOperationsResourceApi res =
           api.DatastoreApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3432,8 +3432,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3448,7 +3448,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());

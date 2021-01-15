@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -77,9 +77,9 @@ api.AccessLevel buildAccessLevel() {
   if (buildCounterAccessLevel < 3) {
     o.basic = buildBasicLevel();
     o.custom = buildCustomLevel();
-    o.description = "foo";
-    o.name = "foo";
-    o.title = "foo";
+    o.description = 'foo';
+    o.name = 'foo';
+    o.title = 'foo';
   }
   buildCounterAccessLevel--;
   return o;
@@ -102,10 +102,10 @@ api.AccessPolicy buildAccessPolicy() {
   var o = api.AccessPolicy();
   buildCounterAccessPolicy++;
   if (buildCounterAccessPolicy < 3) {
-    o.etag = "foo";
-    o.name = "foo";
-    o.parent = "foo";
-    o.title = "foo";
+    o.etag = 'foo';
+    o.name = 'foo';
+    o.parent = 'foo';
+    o.title = 'foo';
   }
   buildCounterAccessPolicy--;
   return o;
@@ -140,7 +140,7 @@ api.BasicLevel buildBasicLevel() {
   var o = api.BasicLevel();
   buildCounterBasicLevel++;
   if (buildCounterBasicLevel < 3) {
-    o.combiningFunction = "foo";
+    o.combiningFunction = 'foo';
     o.conditions = buildUnnamed5518();
   }
   buildCounterBasicLevel--;
@@ -176,7 +176,7 @@ api.CommitServicePerimetersRequest buildCommitServicePerimetersRequest() {
   var o = api.CommitServicePerimetersRequest();
   buildCounterCommitServicePerimetersRequest++;
   if (buildCounterCommitServicePerimetersRequest < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
   }
   buildCounterCommitServicePerimetersRequest--;
   return o;
@@ -225,8 +225,8 @@ void checkCommitServicePerimetersResponse(
 
 core.List<core.String> buildUnnamed5520() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -238,8 +238,8 @@ void checkUnnamed5520(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5521() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -251,8 +251,8 @@ void checkUnnamed5521(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5522() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -264,8 +264,8 @@ void checkUnnamed5522(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5523() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -325,8 +325,8 @@ void checkCustomLevel(api.CustomLevel o) {
 
 core.List<core.String> buildUnnamed5524() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -338,8 +338,8 @@ void checkUnnamed5524(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5525() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -411,10 +411,10 @@ api.Expr buildExpr() {
   var o = api.Expr();
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    o.description = "foo";
-    o.expression = "foo";
-    o.location = "foo";
-    o.title = "foo";
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
   }
   buildCounterExpr--;
   return o;
@@ -433,8 +433,8 @@ void checkExpr(api.Expr o) {
 
 core.List<core.String> buildUnnamed5527() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -450,8 +450,8 @@ api.GcpUserAccessBinding buildGcpUserAccessBinding() {
   buildCounterGcpUserAccessBinding++;
   if (buildCounterGcpUserAccessBinding < 3) {
     o.accessLevels = buildUnnamed5527();
-    o.groupKey = "foo";
-    o.name = "foo";
+    o.groupKey = 'foo';
+    o.name = 'foo';
   }
   buildCounterGcpUserAccessBinding--;
   return o;
@@ -486,7 +486,7 @@ api.ListAccessLevelsResponse buildListAccessLevelsResponse() {
   buildCounterListAccessLevelsResponse++;
   if (buildCounterListAccessLevelsResponse < 3) {
     o.accessLevels = buildUnnamed5528();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListAccessLevelsResponse--;
   return o;
@@ -520,7 +520,7 @@ api.ListAccessPoliciesResponse buildListAccessPoliciesResponse() {
   buildCounterListAccessPoliciesResponse++;
   if (buildCounterListAccessPoliciesResponse < 3) {
     o.accessPolicies = buildUnnamed5529();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListAccessPoliciesResponse--;
   return o;
@@ -554,7 +554,7 @@ api.ListGcpUserAccessBindingsResponse buildListGcpUserAccessBindingsResponse() {
   buildCounterListGcpUserAccessBindingsResponse++;
   if (buildCounterListGcpUserAccessBindingsResponse < 3) {
     o.gcpUserAccessBindings = buildUnnamed5530();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListGcpUserAccessBindingsResponse--;
   return o;
@@ -588,7 +588,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   var o = api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.operations = buildUnnamed5531();
   }
   buildCounterListOperationsResponse--;
@@ -622,7 +622,7 @@ api.ListServicePerimetersResponse buildListServicePerimetersResponse() {
   var o = api.ListServicePerimetersResponse();
   buildCounterListServicePerimetersResponse++;
   if (buildCounterListServicePerimetersResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.servicePerimeters = buildUnnamed5532();
   }
   buildCounterListServicePerimetersResponse--;
@@ -640,12 +640,12 @@ void checkListServicePerimetersResponse(api.ListServicePerimetersResponse o) {
 
 core.Map<core.String, core.Object> buildUnnamed5533() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -655,26 +655,26 @@ core.Map<core.String, core.Object> buildUnnamed5533() {
 
 void checkUnnamed5533(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed5534() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -684,16 +684,16 @@ core.Map<core.String, core.Object> buildUnnamed5534() {
 
 void checkUnnamed5534(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterOperation = 0;
@@ -704,7 +704,7 @@ api.Operation buildOperation() {
     o.done = true;
     o.error = buildStatus();
     o.metadata = buildUnnamed5533();
-    o.name = "foo";
+    o.name = 'foo';
     o.response = buildUnnamed5534();
   }
   buildCounterOperation--;
@@ -728,8 +728,8 @@ api.OsConstraint buildOsConstraint() {
   var o = api.OsConstraint();
   buildCounterOsConstraint++;
   if (buildCounterOsConstraint < 3) {
-    o.minimumVersion = "foo";
-    o.osType = "foo";
+    o.minimumVersion = 'foo';
+    o.osType = 'foo';
     o.requireVerifiedChromeOs = true;
   }
   buildCounterOsConstraint--;
@@ -765,7 +765,7 @@ api.ReplaceAccessLevelsRequest buildReplaceAccessLevelsRequest() {
   buildCounterReplaceAccessLevelsRequest++;
   if (buildCounterReplaceAccessLevelsRequest < 3) {
     o.accessLevels = buildUnnamed5535();
-    o.etag = "foo";
+    o.etag = 'foo';
   }
   buildCounterReplaceAccessLevelsRequest--;
   return o;
@@ -830,7 +830,7 @@ api.ReplaceServicePerimetersRequest buildReplaceServicePerimetersRequest() {
   var o = api.ReplaceServicePerimetersRequest();
   buildCounterReplaceServicePerimetersRequest++;
   if (buildCounterReplaceServicePerimetersRequest < 3) {
-    o.etag = "foo";
+    o.etag = 'foo';
     o.servicePerimeters = buildUnnamed5537();
   }
   buildCounterReplaceServicePerimetersRequest--;
@@ -885,12 +885,12 @@ api.ServicePerimeter buildServicePerimeter() {
   var o = api.ServicePerimeter();
   buildCounterServicePerimeter++;
   if (buildCounterServicePerimeter < 3) {
-    o.description = "foo";
-    o.name = "foo";
-    o.perimeterType = "foo";
+    o.description = 'foo';
+    o.name = 'foo';
+    o.perimeterType = 'foo';
     o.spec = buildServicePerimeterConfig();
     o.status = buildServicePerimeterConfig();
-    o.title = "foo";
+    o.title = 'foo';
     o.useExplicitDryRunSpec = true;
   }
   buildCounterServicePerimeter--;
@@ -913,8 +913,8 @@ void checkServicePerimeter(api.ServicePerimeter o) {
 
 core.List<core.String> buildUnnamed5539() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -926,8 +926,8 @@ void checkUnnamed5539(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5540() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -939,8 +939,8 @@ void checkUnnamed5540(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5541() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -977,12 +977,12 @@ void checkServicePerimeterConfig(api.ServicePerimeterConfig o) {
 
 core.Map<core.String, core.Object> buildUnnamed5542() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -992,16 +992,16 @@ core.Map<core.String, core.Object> buildUnnamed5542() {
 
 void checkUnnamed5542(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed5543() {
@@ -1024,7 +1024,7 @@ api.Status buildStatus() {
   if (buildCounterStatus < 3) {
     o.code = 42;
     o.details = buildUnnamed5543();
-    o.message = "foo";
+    o.message = 'foo';
   }
   buildCounterStatus--;
   return o;
@@ -1042,8 +1042,8 @@ void checkStatus(api.Status o) {
 
 core.List<core.String> buildUnnamed5544() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1075,229 +1075,229 @@ void checkVpcAccessibleServices(api.VpcAccessibleServices o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AccessLevel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AccessLevel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccessLevel();
       var od = api.AccessLevel.fromJson(o.toJson());
       checkAccessLevel(od);
     });
   });
 
-  unittest.group("obj-schema-AccessPolicy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AccessPolicy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccessPolicy();
       var od = api.AccessPolicy.fromJson(o.toJson());
       checkAccessPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-BasicLevel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BasicLevel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBasicLevel();
       var od = api.BasicLevel.fromJson(o.toJson());
       checkBasicLevel(od);
     });
   });
 
-  unittest.group("obj-schema-CancelOperationRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CancelOperationRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CommitServicePerimetersRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommitServicePerimetersRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommitServicePerimetersRequest();
       var od = api.CommitServicePerimetersRequest.fromJson(o.toJson());
       checkCommitServicePerimetersRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CommitServicePerimetersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CommitServicePerimetersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCommitServicePerimetersResponse();
       var od = api.CommitServicePerimetersResponse.fromJson(o.toJson());
       checkCommitServicePerimetersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Condition", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Condition', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCondition();
       var od = api.Condition.fromJson(o.toJson());
       checkCondition(od);
     });
   });
 
-  unittest.group("obj-schema-CustomLevel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomLevel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomLevel();
       var od = api.CustomLevel.fromJson(o.toJson());
       checkCustomLevel(od);
     });
   });
 
-  unittest.group("obj-schema-DevicePolicy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DevicePolicy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDevicePolicy();
       var od = api.DevicePolicy.fromJson(o.toJson());
       checkDevicePolicy(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-Expr", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Expr', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od);
     });
   });
 
-  unittest.group("obj-schema-GcpUserAccessBinding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GcpUserAccessBinding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGcpUserAccessBinding();
       var od = api.GcpUserAccessBinding.fromJson(o.toJson());
       checkGcpUserAccessBinding(od);
     });
   });
 
-  unittest.group("obj-schema-ListAccessLevelsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAccessLevelsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAccessLevelsResponse();
       var od = api.ListAccessLevelsResponse.fromJson(o.toJson());
       checkListAccessLevelsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListAccessPoliciesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAccessPoliciesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAccessPoliciesResponse();
       var od = api.ListAccessPoliciesResponse.fromJson(o.toJson());
       checkListAccessPoliciesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListGcpUserAccessBindingsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListGcpUserAccessBindingsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListGcpUserAccessBindingsResponse();
       var od = api.ListGcpUserAccessBindingsResponse.fromJson(o.toJson());
       checkListGcpUserAccessBindingsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListOperationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListOperationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListServicePerimetersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListServicePerimetersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListServicePerimetersResponse();
       var od = api.ListServicePerimetersResponse.fromJson(o.toJson());
       checkListServicePerimetersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Operation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Operation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
 
-  unittest.group("obj-schema-OsConstraint", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OsConstraint', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOsConstraint();
       var od = api.OsConstraint.fromJson(o.toJson());
       checkOsConstraint(od);
     });
   });
 
-  unittest.group("obj-schema-ReplaceAccessLevelsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReplaceAccessLevelsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReplaceAccessLevelsRequest();
       var od = api.ReplaceAccessLevelsRequest.fromJson(o.toJson());
       checkReplaceAccessLevelsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ReplaceAccessLevelsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReplaceAccessLevelsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReplaceAccessLevelsResponse();
       var od = api.ReplaceAccessLevelsResponse.fromJson(o.toJson());
       checkReplaceAccessLevelsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ReplaceServicePerimetersRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReplaceServicePerimetersRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReplaceServicePerimetersRequest();
       var od = api.ReplaceServicePerimetersRequest.fromJson(o.toJson());
       checkReplaceServicePerimetersRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ReplaceServicePerimetersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReplaceServicePerimetersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReplaceServicePerimetersResponse();
       var od = api.ReplaceServicePerimetersResponse.fromJson(o.toJson());
       checkReplaceServicePerimetersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ServicePerimeter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ServicePerimeter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildServicePerimeter();
       var od = api.ServicePerimeter.fromJson(o.toJson());
       checkServicePerimeter(od);
     });
   });
 
-  unittest.group("obj-schema-ServicePerimeterConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ServicePerimeterConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildServicePerimeterConfig();
       var od = api.ServicePerimeterConfig.fromJson(o.toJson());
       checkServicePerimeterConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Status", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
-  unittest.group("obj-schema-VpcAccessibleServices", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-VpcAccessibleServices', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVpcAccessibleServices();
       var od = api.VpcAccessibleServices.fromJson(o.toJson());
       checkVpcAccessibleServices(od);
     });
   });
 
-  unittest.group("resource-AccessPoliciesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccessPoliciesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccessPoliciesResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies;
       var arg_request = buildAccessPolicy();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AccessPolicy.fromJson(json);
         checkAccessPolicy(obj);
@@ -1319,8 +1319,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1330,7 +1330,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1342,12 +1342,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccessPoliciesResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1367,8 +1367,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1378,7 +1378,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1390,12 +1390,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccessPoliciesResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1415,8 +1415,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1426,7 +1426,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccessPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1438,14 +1438,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccessPoliciesResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies;
-      var arg_pageToken = "foo";
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1464,8 +1464,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1480,7 +1480,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListAccessPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1496,14 +1496,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AccessPoliciesResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies;
       var arg_request = buildAccessPolicy();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AccessPolicy.fromJson(json);
         checkAccessPolicy(obj);
@@ -1526,8 +1526,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1539,7 +1539,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1553,14 +1553,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccessPoliciesAccessLevelsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccessPoliciesAccessLevelsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccessPoliciesAccessLevelsResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
       var arg_request = buildAccessLevel();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AccessLevel.fromJson(json);
         checkAccessLevel(obj);
@@ -1583,8 +1583,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1594,7 +1594,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1606,12 +1606,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccessPoliciesAccessLevelsResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1631,8 +1631,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1642,7 +1642,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1654,13 +1654,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccessPoliciesAccessLevelsResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
-      var arg_name = "foo";
-      var arg_accessLevelFormat = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_accessLevelFormat = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1680,8 +1680,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1693,7 +1693,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccessLevel());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1706,15 +1706,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccessPoliciesAccessLevelsResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
-      var arg_parent = "foo";
-      var arg_accessLevelFormat = "foo";
+      var arg_parent = 'foo';
+      var arg_accessLevelFormat = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1734,8 +1734,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1751,7 +1751,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListAccessLevelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1767,14 +1767,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AccessPoliciesAccessLevelsResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
       var arg_request = buildAccessLevel();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AccessLevel.fromJson(json);
         checkAccessLevel(obj);
@@ -1797,8 +1797,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1810,7 +1810,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1823,13 +1823,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--replaceAll", () {
+    unittest.test('method--replaceAll', () {
       var mock = HttpServerMock();
       api.AccessPoliciesAccessLevelsResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
       var arg_request = buildReplaceAccessLevelsRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ReplaceAccessLevelsRequest.fromJson(json);
         checkReplaceAccessLevelsRequest(obj);
@@ -1852,8 +1852,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1863,7 +1863,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1876,14 +1876,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccessPoliciesServicePerimetersResourceApi", () {
-    unittest.test("method--commit", () {
+  unittest.group('resource-AccessPoliciesServicePerimetersResourceApi', () {
+    unittest.test('method--commit', () {
       var mock = HttpServerMock();
       api.AccessPoliciesServicePerimetersResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
       var arg_request = buildCommitServicePerimetersRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CommitServicePerimetersRequest.fromJson(json);
         checkCommitServicePerimetersRequest(obj);
@@ -1906,8 +1906,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1917,7 +1917,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1929,13 +1929,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccessPoliciesServicePerimetersResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
       var arg_request = buildServicePerimeter();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ServicePerimeter.fromJson(json);
         checkServicePerimeter(obj);
@@ -1958,8 +1958,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1969,7 +1969,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1981,12 +1981,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccessPoliciesServicePerimetersResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2006,8 +2006,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2017,7 +2017,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2029,12 +2029,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccessPoliciesServicePerimetersResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2054,8 +2054,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2065,7 +2065,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildServicePerimeter());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2077,14 +2077,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccessPoliciesServicePerimetersResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2104,8 +2104,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2119,7 +2119,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListServicePerimetersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2134,14 +2134,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.AccessPoliciesServicePerimetersResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
       var arg_request = buildServicePerimeter();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ServicePerimeter.fromJson(json);
         checkServicePerimeter(obj);
@@ -2164,8 +2164,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2177,7 +2177,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2190,13 +2190,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--replaceAll", () {
+    unittest.test('method--replaceAll', () {
       var mock = HttpServerMock();
       api.AccessPoliciesServicePerimetersResourceApi res =
           api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
       var arg_request = buildReplaceServicePerimetersRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ReplaceServicePerimetersRequest.fromJson(json);
         checkReplaceServicePerimetersRequest(obj);
@@ -2219,8 +2219,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2230,7 +2230,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2243,14 +2243,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OperationsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-OperationsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.OperationsResourceApi res =
           api.AccesscontextmanagerApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CancelOperationRequest.fromJson(json);
         checkCancelOperationRequest(obj);
@@ -2273,8 +2273,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2284,7 +2284,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2296,12 +2296,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OperationsResourceApi res =
           api.AccesscontextmanagerApi(mock).operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2321,8 +2321,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2332,7 +2332,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2344,12 +2344,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OperationsResourceApi res =
           api.AccesscontextmanagerApi(mock).operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2369,8 +2369,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2380,7 +2380,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2392,15 +2392,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OperationsResourceApi res =
           api.AccesscontextmanagerApi(mock).operations;
-      var arg_name = "foo";
-      var arg_pageToken = "foo";
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2420,8 +2420,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2436,7 +2436,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2453,14 +2453,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-OrganizationsGcpUserAccessBindingsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-OrganizationsGcpUserAccessBindingsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.OrganizationsGcpUserAccessBindingsResourceApi res =
           api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
       var arg_request = buildGcpUserAccessBinding();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GcpUserAccessBinding.fromJson(json);
         checkGcpUserAccessBinding(obj);
@@ -2483,8 +2483,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2494,7 +2494,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2506,12 +2506,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.OrganizationsGcpUserAccessBindingsResourceApi res =
           api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2531,8 +2531,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2542,7 +2542,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2554,12 +2554,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.OrganizationsGcpUserAccessBindingsResourceApi res =
           api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2579,8 +2579,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2590,7 +2590,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGcpUserAccessBinding());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2602,14 +2602,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OrganizationsGcpUserAccessBindingsResourceApi res =
           api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2629,8 +2629,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2644,7 +2644,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildListGcpUserAccessBindingsResponse());
@@ -2660,14 +2660,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.OrganizationsGcpUserAccessBindingsResourceApi res =
           api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
       var arg_request = buildGcpUserAccessBinding();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GcpUserAccessBinding.fromJson(json);
         checkGcpUserAccessBinding(obj);
@@ -2690,8 +2690,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2703,7 +2703,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));

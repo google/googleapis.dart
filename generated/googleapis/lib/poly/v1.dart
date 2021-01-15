@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -44,8 +43,8 @@ class PolyApi {
   UsersResourceApi get users => UsersResourceApi(_requester);
 
   PolyApi(http.Client client,
-      {core.String rootUrl = "https://poly.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://poly.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -87,17 +86,17 @@ class AssetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -184,38 +183,38 @@ class AssetsResourceApi {
     core.String _body;
 
     if (maxComplexity != null) {
-      _queryParams["maxComplexity"] = [maxComplexity];
+      _queryParams['maxComplexity'] = [maxComplexity];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (keywords != null) {
-      _queryParams["keywords"] = [keywords];
+      _queryParams['keywords'] = [keywords];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (curated != null) {
-      _queryParams["curated"] = ["${curated}"];
+      _queryParams['curated'] = ['${curated}'];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (category != null) {
-      _queryParams["category"] = [category];
+      _queryParams['category'] = [category];
     }
     if (format != null) {
-      _queryParams["format"] = [format];
+      _queryParams['format'] = [format];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/assets';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -310,32 +309,32 @@ class UsersAssetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (format != null) {
-      _queryParams["format"] = [format];
+      _queryParams['format'] = [format];
     }
     if (visibility != null) {
-      _queryParams["visibility"] = [visibility];
+      _queryParams['visibility'] = [visibility];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/assets';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -408,22 +407,22 @@ class UsersLikedassetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (format != null) {
-      _queryParams["format"] = [format];
+      _queryParams['format'] = [format];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -431,7 +430,7 @@ class UsersLikedassetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -526,50 +525,50 @@ class Asset {
   Asset();
 
   Asset.fromJson(core.Map _json) {
-    if (_json.containsKey("authorName")) {
-      authorName = _json["authorName"];
+    if (_json.containsKey('authorName')) {
+      authorName = _json['authorName'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("formats")) {
-      formats = (_json["formats"] as core.List)
+    if (_json.containsKey('formats')) {
+      formats = (_json['formats'] as core.List)
           .map<Format>((value) => Format.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("isCurated")) {
-      isCurated = _json["isCurated"];
+    if (_json.containsKey('isCurated')) {
+      isCurated = _json['isCurated'];
     }
-    if (_json.containsKey("license")) {
-      license = _json["license"];
+    if (_json.containsKey('license')) {
+      license = _json['license'];
     }
-    if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+    if (_json.containsKey('metadata')) {
+      metadata = _json['metadata'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("presentationParams")) {
+    if (_json.containsKey('presentationParams')) {
       presentationParams =
-          PresentationParams.fromJson(_json["presentationParams"]);
+          PresentationParams.fromJson(_json['presentationParams']);
     }
-    if (_json.containsKey("remixInfo")) {
-      remixInfo = RemixInfo.fromJson(_json["remixInfo"]);
+    if (_json.containsKey('remixInfo')) {
+      remixInfo = RemixInfo.fromJson(_json['remixInfo']);
     }
-    if (_json.containsKey("thumbnail")) {
-      thumbnail = File.fromJson(_json["thumbnail"]);
+    if (_json.containsKey('thumbnail')) {
+      thumbnail = File.fromJson(_json['thumbnail']);
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
-    if (_json.containsKey("visibility")) {
-      visibility = _json["visibility"];
+    if (_json.containsKey('visibility')) {
+      visibility = _json['visibility'];
     }
   }
 
@@ -577,46 +576,46 @@ class Asset {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (authorName != null) {
-      _json["authorName"] = authorName;
+      _json['authorName'] = authorName;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (formats != null) {
-      _json["formats"] = formats.map((value) => value.toJson()).toList();
+      _json['formats'] = formats.map((value) => value.toJson()).toList();
     }
     if (isCurated != null) {
-      _json["isCurated"] = isCurated;
+      _json['isCurated'] = isCurated;
     }
     if (license != null) {
-      _json["license"] = license;
+      _json['license'] = license;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (presentationParams != null) {
-      _json["presentationParams"] = presentationParams.toJson();
+      _json['presentationParams'] = presentationParams.toJson();
     }
     if (remixInfo != null) {
-      _json["remixInfo"] = remixInfo.toJson();
+      _json['remixInfo'] = remixInfo.toJson();
     }
     if (thumbnail != null) {
-      _json["thumbnail"] = thumbnail.toJson();
+      _json['thumbnail'] = thumbnail.toJson();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     if (visibility != null) {
-      _json["visibility"] = visibility;
+      _json['visibility'] = visibility;
     }
     return _json;
   }
@@ -670,17 +669,17 @@ class AssetImportMessage {
   AssetImportMessage();
 
   AssetImportMessage.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("filePath")) {
-      filePath = _json["filePath"];
+    if (_json.containsKey('filePath')) {
+      filePath = _json['filePath'];
     }
-    if (_json.containsKey("imageError")) {
-      imageError = ImageError.fromJson(_json["imageError"]);
+    if (_json.containsKey('imageError')) {
+      imageError = ImageError.fromJson(_json['imageError']);
     }
-    if (_json.containsKey("objParseError")) {
-      objParseError = ObjParseError.fromJson(_json["objParseError"]);
+    if (_json.containsKey('objParseError')) {
+      objParseError = ObjParseError.fromJson(_json['objParseError']);
     }
   }
 
@@ -688,16 +687,16 @@ class AssetImportMessage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (filePath != null) {
-      _json["filePath"] = filePath;
+      _json['filePath'] = filePath;
     }
     if (imageError != null) {
-      _json["imageError"] = imageError.toJson();
+      _json['imageError'] = imageError.toJson();
     }
     if (objParseError != null) {
-      _json["objParseError"] = objParseError.toJson();
+      _json['objParseError'] = objParseError.toJson();
     }
     return _json;
   }
@@ -723,14 +722,14 @@ class File {
   File();
 
   File.fromJson(core.Map _json) {
-    if (_json.containsKey("contentType")) {
-      contentType = _json["contentType"];
+    if (_json.containsKey('contentType')) {
+      contentType = _json['contentType'];
     }
-    if (_json.containsKey("relativePath")) {
-      relativePath = _json["relativePath"];
+    if (_json.containsKey('relativePath')) {
+      relativePath = _json['relativePath'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -738,13 +737,13 @@ class File {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentType != null) {
-      _json["contentType"] = contentType;
+      _json['contentType'] = contentType;
     }
     if (relativePath != null) {
-      _json["relativePath"] = relativePath;
+      _json['relativePath'] = relativePath;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -780,19 +779,19 @@ class Format {
   Format();
 
   Format.fromJson(core.Map _json) {
-    if (_json.containsKey("formatComplexity")) {
-      formatComplexity = FormatComplexity.fromJson(_json["formatComplexity"]);
+    if (_json.containsKey('formatComplexity')) {
+      formatComplexity = FormatComplexity.fromJson(_json['formatComplexity']);
     }
-    if (_json.containsKey("formatType")) {
-      formatType = _json["formatType"];
+    if (_json.containsKey('formatType')) {
+      formatType = _json['formatType'];
     }
-    if (_json.containsKey("resources")) {
-      resources = (_json["resources"] as core.List)
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List)
           .map<File>((value) => File.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("root")) {
-      root = File.fromJson(_json["root"]);
+    if (_json.containsKey('root')) {
+      root = File.fromJson(_json['root']);
     }
   }
 
@@ -800,16 +799,16 @@ class Format {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (formatComplexity != null) {
-      _json["formatComplexity"] = formatComplexity.toJson();
+      _json['formatComplexity'] = formatComplexity.toJson();
     }
     if (formatType != null) {
-      _json["formatType"] = formatType;
+      _json['formatType'] = formatType;
     }
     if (resources != null) {
-      _json["resources"] = resources.map((value) => value.toJson()).toList();
+      _json['resources'] = resources.map((value) => value.toJson()).toList();
     }
     if (root != null) {
-      _json["root"] = root.toJson();
+      _json['root'] = root.toJson();
     }
     return _json;
   }
@@ -830,11 +829,11 @@ class FormatComplexity {
   FormatComplexity();
 
   FormatComplexity.fromJson(core.Map _json) {
-    if (_json.containsKey("lodHint")) {
-      lodHint = _json["lodHint"];
+    if (_json.containsKey('lodHint')) {
+      lodHint = _json['lodHint'];
     }
-    if (_json.containsKey("triangleCount")) {
-      triangleCount = _json["triangleCount"];
+    if (_json.containsKey('triangleCount')) {
+      triangleCount = _json['triangleCount'];
     }
   }
 
@@ -842,10 +841,10 @@ class FormatComplexity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lodHint != null) {
-      _json["lodHint"] = lodHint;
+      _json['lodHint'] = lodHint;
     }
     if (triangleCount != null) {
-      _json["triangleCount"] = triangleCount;
+      _json['triangleCount'] = triangleCount;
     }
     return _json;
   }
@@ -868,11 +867,11 @@ class ImageError {
   ImageError();
 
   ImageError.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("filePath")) {
-      filePath = _json["filePath"];
+    if (_json.containsKey('filePath')) {
+      filePath = _json['filePath'];
     }
   }
 
@@ -880,10 +879,10 @@ class ImageError {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (filePath != null) {
-      _json["filePath"] = filePath;
+      _json['filePath'] = filePath;
     }
     return _json;
   }
@@ -906,16 +905,16 @@ class ListAssetsResponse {
   ListAssetsResponse();
 
   ListAssetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("assets")) {
-      assets = (_json["assets"] as core.List)
+    if (_json.containsKey('assets')) {
+      assets = (_json['assets'] as core.List)
           .map<Asset>((value) => Asset.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalSize")) {
-      totalSize = _json["totalSize"];
+    if (_json.containsKey('totalSize')) {
+      totalSize = _json['totalSize'];
     }
   }
 
@@ -923,13 +922,13 @@ class ListAssetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (assets != null) {
-      _json["assets"] = assets.map((value) => value.toJson()).toList();
+      _json['assets'] = assets.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalSize != null) {
-      _json["totalSize"] = totalSize;
+      _json['totalSize'] = totalSize;
     }
     return _json;
   }
@@ -952,16 +951,16 @@ class ListLikedAssetsResponse {
   ListLikedAssetsResponse();
 
   ListLikedAssetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("assets")) {
-      assets = (_json["assets"] as core.List)
+    if (_json.containsKey('assets')) {
+      assets = (_json['assets'] as core.List)
           .map<Asset>((value) => Asset.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalSize")) {
-      totalSize = _json["totalSize"];
+    if (_json.containsKey('totalSize')) {
+      totalSize = _json['totalSize'];
     }
   }
 
@@ -969,13 +968,13 @@ class ListLikedAssetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (assets != null) {
-      _json["assets"] = assets.map((value) => value.toJson()).toList();
+      _json['assets'] = assets.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalSize != null) {
-      _json["totalSize"] = totalSize;
+      _json['totalSize'] = totalSize;
     }
     return _json;
   }
@@ -998,14 +997,14 @@ class ListUserAssetsResponse {
   ListUserAssetsResponse();
 
   ListUserAssetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("totalSize")) {
-      totalSize = _json["totalSize"];
+    if (_json.containsKey('totalSize')) {
+      totalSize = _json['totalSize'];
     }
-    if (_json.containsKey("userAssets")) {
-      userAssets = (_json["userAssets"] as core.List)
+    if (_json.containsKey('userAssets')) {
+      userAssets = (_json['userAssets'] as core.List)
           .map<UserAsset>((value) => UserAsset.fromJson(value))
           .toList();
     }
@@ -1015,13 +1014,13 @@ class ListUserAssetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (totalSize != null) {
-      _json["totalSize"] = totalSize;
+      _json['totalSize'] = totalSize;
     }
     if (userAssets != null) {
-      _json["userAssets"] = userAssets.map((value) => value.toJson()).toList();
+      _json['userAssets'] = userAssets.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1094,23 +1093,23 @@ class ObjParseError {
   ObjParseError();
 
   ObjParseError.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("endIndex")) {
-      endIndex = _json["endIndex"];
+    if (_json.containsKey('endIndex')) {
+      endIndex = _json['endIndex'];
     }
-    if (_json.containsKey("filePath")) {
-      filePath = _json["filePath"];
+    if (_json.containsKey('filePath')) {
+      filePath = _json['filePath'];
     }
-    if (_json.containsKey("line")) {
-      line = _json["line"];
+    if (_json.containsKey('line')) {
+      line = _json['line'];
     }
-    if (_json.containsKey("lineNumber")) {
-      lineNumber = _json["lineNumber"];
+    if (_json.containsKey('lineNumber')) {
+      lineNumber = _json['lineNumber'];
     }
-    if (_json.containsKey("startIndex")) {
-      startIndex = _json["startIndex"];
+    if (_json.containsKey('startIndex')) {
+      startIndex = _json['startIndex'];
     }
   }
 
@@ -1118,22 +1117,22 @@ class ObjParseError {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (endIndex != null) {
-      _json["endIndex"] = endIndex;
+      _json['endIndex'] = endIndex;
     }
     if (filePath != null) {
-      _json["filePath"] = filePath;
+      _json['filePath'] = filePath;
     }
     if (line != null) {
-      _json["line"] = line;
+      _json['line'] = line;
     }
     if (lineNumber != null) {
-      _json["lineNumber"] = lineNumber;
+      _json['lineNumber'] = lineNumber;
     }
     if (startIndex != null) {
-      _json["startIndex"] = startIndex;
+      _json['startIndex'] = startIndex;
     }
     return _json;
   }
@@ -1180,14 +1179,14 @@ class PresentationParams {
   PresentationParams();
 
   PresentationParams.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundColor")) {
-      backgroundColor = _json["backgroundColor"];
+    if (_json.containsKey('backgroundColor')) {
+      backgroundColor = _json['backgroundColor'];
     }
-    if (_json.containsKey("colorSpace")) {
-      colorSpace = _json["colorSpace"];
+    if (_json.containsKey('colorSpace')) {
+      colorSpace = _json['colorSpace'];
     }
-    if (_json.containsKey("orientingRotation")) {
-      orientingRotation = Quaternion.fromJson(_json["orientingRotation"]);
+    if (_json.containsKey('orientingRotation')) {
+      orientingRotation = Quaternion.fromJson(_json['orientingRotation']);
     }
   }
 
@@ -1195,13 +1194,13 @@ class PresentationParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundColor != null) {
-      _json["backgroundColor"] = backgroundColor;
+      _json['backgroundColor'] = backgroundColor;
     }
     if (colorSpace != null) {
-      _json["colorSpace"] = colorSpace;
+      _json['colorSpace'] = colorSpace;
     }
     if (orientingRotation != null) {
-      _json["orientingRotation"] = orientingRotation.toJson();
+      _json['orientingRotation'] = orientingRotation.toJson();
     }
     return _json;
   }
@@ -1226,17 +1225,17 @@ class Quaternion {
   Quaternion();
 
   Quaternion.fromJson(core.Map _json) {
-    if (_json.containsKey("w")) {
-      w = _json["w"].toDouble();
+    if (_json.containsKey('w')) {
+      w = _json['w'].toDouble();
     }
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
-    if (_json.containsKey("z")) {
-      z = _json["z"].toDouble();
+    if (_json.containsKey('z')) {
+      z = _json['z'].toDouble();
     }
   }
 
@@ -1244,16 +1243,16 @@ class Quaternion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (w != null) {
-      _json["w"] = w;
+      _json['w'] = w;
     }
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     if (z != null) {
-      _json["z"] = z;
+      _json['z'] = z;
     }
     return _json;
   }
@@ -1269,8 +1268,8 @@ class RemixInfo {
   RemixInfo();
 
   RemixInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("sourceAsset")) {
-      sourceAsset = (_json["sourceAsset"] as core.List).cast<core.String>();
+    if (_json.containsKey('sourceAsset')) {
+      sourceAsset = (_json['sourceAsset'] as core.List).cast<core.String>();
     }
   }
 
@@ -1278,7 +1277,7 @@ class RemixInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sourceAsset != null) {
-      _json["sourceAsset"] = sourceAsset;
+      _json['sourceAsset'] = sourceAsset;
     }
     return _json;
   }
@@ -1306,20 +1305,20 @@ class StartAssetImportResponse {
   StartAssetImportResponse();
 
   StartAssetImportResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("assetId")) {
-      assetId = _json["assetId"];
+    if (_json.containsKey('assetId')) {
+      assetId = _json['assetId'];
     }
-    if (_json.containsKey("assetImportId")) {
-      assetImportId = _json["assetImportId"];
+    if (_json.containsKey('assetImportId')) {
+      assetImportId = _json['assetImportId'];
     }
-    if (_json.containsKey("assetImportMessages")) {
-      assetImportMessages = (_json["assetImportMessages"] as core.List)
+    if (_json.containsKey('assetImportMessages')) {
+      assetImportMessages = (_json['assetImportMessages'] as core.List)
           .map<AssetImportMessage>(
               (value) => AssetImportMessage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("publishUrl")) {
-      publishUrl = _json["publishUrl"];
+    if (_json.containsKey('publishUrl')) {
+      publishUrl = _json['publishUrl'];
     }
   }
 
@@ -1327,17 +1326,17 @@ class StartAssetImportResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (assetId != null) {
-      _json["assetId"] = assetId;
+      _json['assetId'] = assetId;
     }
     if (assetImportId != null) {
-      _json["assetImportId"] = assetImportId;
+      _json['assetImportId'] = assetImportId;
     }
     if (assetImportMessages != null) {
-      _json["assetImportMessages"] =
+      _json['assetImportMessages'] =
           assetImportMessages.map((value) => value.toJson()).toList();
     }
     if (publishUrl != null) {
-      _json["publishUrl"] = publishUrl;
+      _json['publishUrl'] = publishUrl;
     }
     return _json;
   }
@@ -1351,8 +1350,8 @@ class UserAsset {
   UserAsset();
 
   UserAsset.fromJson(core.Map _json) {
-    if (_json.containsKey("asset")) {
-      asset = Asset.fromJson(_json["asset"]);
+    if (_json.containsKey('asset')) {
+      asset = Asset.fromJson(_json['asset']);
     }
   }
 
@@ -1360,7 +1359,7 @@ class UserAsset {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (asset != null) {
-      _json["asset"] = asset.toJson();
+      _json['asset'] = asset.toJson();
     }
     return _json;
   }

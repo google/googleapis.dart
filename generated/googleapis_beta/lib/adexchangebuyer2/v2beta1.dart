@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,7 +39,7 @@ const core.String USER_AGENT = 'dart-api-client adexchangebuyer2/v2beta1';
 class Adexchangebuyer2Api {
   /// Manage your Ad Exchange buyer account configuration
   static const AdexchangeBuyerScope =
-      "https://www.googleapis.com/auth/adexchange.buyer";
+      'https://www.googleapis.com/auth/adexchange.buyer';
 
   final commons.ApiRequester _requester;
 
@@ -48,8 +47,8 @@ class Adexchangebuyer2Api {
   BiddersResourceApi get bidders => BiddersResourceApi(_requester);
 
   Adexchangebuyer2Api(http.Client client,
-      {core.String rootUrl = "https://adexchangebuyer.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://adexchangebuyer.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -119,10 +118,10 @@ class AccountsClientsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -131,7 +130,7 @@ class AccountsClientsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -174,13 +173,13 @@ class AccountsClientsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (clientAccountId == null) {
-      throw core.ArgumentError("Parameter clientAccountId is required.");
+      throw core.ArgumentError('Parameter clientAccountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -190,7 +189,7 @@ class AccountsClientsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -243,19 +242,19 @@ class AccountsClientsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (partnerClientId != null) {
-      _queryParams["partnerClientId"] = [partnerClientId];
+      _queryParams['partnerClientId'] = [partnerClientId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -264,7 +263,7 @@ class AccountsClientsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -314,13 +313,13 @@ class AccountsClientsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (clientAccountId == null) {
-      throw core.ArgumentError("Parameter clientAccountId is required.");
+      throw core.ArgumentError('Parameter clientAccountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -330,7 +329,7 @@ class AccountsClientsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -387,13 +386,13 @@ class AccountsClientsInvitationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (clientAccountId == null) {
-      throw core.ArgumentError("Parameter clientAccountId is required.");
+      throw core.ArgumentError('Parameter clientAccountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -404,7 +403,7 @@ class AccountsClientsInvitationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -451,16 +450,16 @@ class AccountsClientsInvitationsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (clientAccountId == null) {
-      throw core.ArgumentError("Parameter clientAccountId is required.");
+      throw core.ArgumentError('Parameter clientAccountId is required.');
     }
     if (invitationId == null) {
-      throw core.ArgumentError("Parameter invitationId is required.");
+      throw core.ArgumentError('Parameter invitationId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -472,7 +471,7 @@ class AccountsClientsInvitationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -528,19 +527,19 @@ class AccountsClientsInvitationsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (clientAccountId == null) {
-      throw core.ArgumentError("Parameter clientAccountId is required.");
+      throw core.ArgumentError('Parameter clientAccountId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -551,7 +550,7 @@ class AccountsClientsInvitationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -605,16 +604,16 @@ class AccountsClientsUsersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (clientAccountId == null) {
-      throw core.ArgumentError("Parameter clientAccountId is required.");
+      throw core.ArgumentError('Parameter clientAccountId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -626,7 +625,7 @@ class AccountsClientsUsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -681,19 +680,19 @@ class AccountsClientsUsersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (clientAccountId == null) {
-      throw core.ArgumentError("Parameter clientAccountId is required.");
+      throw core.ArgumentError('Parameter clientAccountId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -704,7 +703,7 @@ class AccountsClientsUsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -757,16 +756,16 @@ class AccountsClientsUsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (clientAccountId == null) {
-      throw core.ArgumentError("Parameter clientAccountId is required.");
+      throw core.ArgumentError('Parameter clientAccountId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -778,7 +777,7 @@ class AccountsClientsUsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -846,13 +845,13 @@ class AccountsCreativesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (duplicateIdMode != null) {
-      _queryParams["duplicateIdMode"] = [duplicateIdMode];
+      _queryParams['duplicateIdMode'] = [duplicateIdMode];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -861,7 +860,7 @@ class AccountsCreativesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -902,13 +901,13 @@ class AccountsCreativesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (creativeId == null) {
-      throw core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError('Parameter creativeId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -918,7 +917,7 @@ class AccountsCreativesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -980,19 +979,19 @@ class AccountsCreativesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1001,7 +1000,7 @@ class AccountsCreativesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1050,13 +1049,13 @@ class AccountsCreativesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (creativeId == null) {
-      throw core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError('Parameter creativeId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1067,7 +1066,7 @@ class AccountsCreativesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1116,13 +1115,13 @@ class AccountsCreativesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (creativeId == null) {
-      throw core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError('Parameter creativeId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1132,7 +1131,7 @@ class AccountsCreativesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1183,13 +1182,13 @@ class AccountsCreativesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (creativeId == null) {
-      throw core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError('Parameter creativeId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1200,7 +1199,7 @@ class AccountsCreativesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1254,13 +1253,13 @@ class AccountsCreativesDealAssociationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (creativeId == null) {
-      throw core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError('Parameter creativeId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1271,7 +1270,7 @@ class AccountsCreativesDealAssociationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1333,22 +1332,22 @@ class AccountsCreativesDealAssociationsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (creativeId == null) {
-      throw core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError('Parameter creativeId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (query != null) {
-      _queryParams["query"] = [query];
+      _queryParams['query'] = [query];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1359,7 +1358,7 @@ class AccountsCreativesDealAssociationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1407,13 +1406,13 @@ class AccountsCreativesDealAssociationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (creativeId == null) {
-      throw core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError('Parameter creativeId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1424,7 +1423,7 @@ class AccountsCreativesDealAssociationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1496,22 +1495,22 @@ class AccountsFinalizedProposalsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filterSyntax != null) {
-      _queryParams["filterSyntax"] = [filterSyntax];
+      _queryParams['filterSyntax'] = [filterSyntax];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1520,7 +1519,7 @@ class AccountsFinalizedProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1568,13 +1567,13 @@ class AccountsProductsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1584,7 +1583,7 @@ class AccountsProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1636,19 +1635,19 @@ class AccountsProductsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1657,7 +1656,7 @@ class AccountsProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1714,13 +1713,13 @@ class AccountsProposalsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (proposalId == null) {
-      throw core.ArgumentError("Parameter proposalId is required.");
+      throw core.ArgumentError('Parameter proposalId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1731,7 +1730,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1780,13 +1779,13 @@ class AccountsProposalsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (proposalId == null) {
-      throw core.ArgumentError("Parameter proposalId is required.");
+      throw core.ArgumentError('Parameter proposalId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1797,7 +1796,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1846,13 +1845,13 @@ class AccountsProposalsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (proposalId == null) {
-      throw core.ArgumentError("Parameter proposalId is required.");
+      throw core.ArgumentError('Parameter proposalId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1863,7 +1862,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1915,13 +1914,13 @@ class AccountsProposalsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (proposalId == null) {
-      throw core.ArgumentError("Parameter proposalId is required.");
+      throw core.ArgumentError('Parameter proposalId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1932,7 +1931,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1977,10 +1976,10 @@ class AccountsProposalsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1989,7 +1988,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2031,13 +2030,13 @@ class AccountsProposalsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (proposalId == null) {
-      throw core.ArgumentError("Parameter proposalId is required.");
+      throw core.ArgumentError('Parameter proposalId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -2047,7 +2046,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2115,22 +2114,22 @@ class AccountsProposalsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filterSyntax != null) {
-      _queryParams["filterSyntax"] = [filterSyntax];
+      _queryParams['filterSyntax'] = [filterSyntax];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -2139,7 +2138,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2190,13 +2189,13 @@ class AccountsProposalsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (proposalId == null) {
-      throw core.ArgumentError("Parameter proposalId is required.");
+      throw core.ArgumentError('Parameter proposalId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -2207,7 +2206,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2259,13 +2258,13 @@ class AccountsProposalsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (proposalId == null) {
-      throw core.ArgumentError("Parameter proposalId is required.");
+      throw core.ArgumentError('Parameter proposalId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -2276,7 +2275,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2332,13 +2331,13 @@ class AccountsProposalsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (proposalId == null) {
-      throw core.ArgumentError("Parameter proposalId is required.");
+      throw core.ArgumentError('Parameter proposalId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -2348,7 +2347,7 @@ class AccountsProposalsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2396,13 +2395,13 @@ class AccountsPublisherProfilesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (publisherProfileId == null) {
-      throw core.ArgumentError("Parameter publisherProfileId is required.");
+      throw core.ArgumentError('Parameter publisherProfileId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -2412,7 +2411,7 @@ class AccountsPublisherProfilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2456,16 +2455,16 @@ class AccountsPublisherProfilesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -2474,7 +2473,7 @@ class AccountsPublisherProfilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2580,13 +2579,13 @@ class BiddersAccountsFilterSetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (ownerName == null) {
-      throw core.ArgumentError("Parameter ownerName is required.");
+      throw core.ArgumentError('Parameter ownerName is required.');
     }
     if (isTransient != null) {
-      _queryParams["isTransient"] = ["${isTransient}"];
+      _queryParams['isTransient'] = ['${isTransient}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -2595,7 +2594,7 @@ class BiddersAccountsFilterSetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2640,17 +2639,17 @@ class BiddersAccountsFilterSetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2695,17 +2694,17 @@ class BiddersAccountsFilterSetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2759,16 +2758,16 @@ class BiddersAccountsFilterSetsResourceApi {
     core.String _body;
 
     if (ownerName == null) {
-      throw core.ArgumentError("Parameter ownerName is required.");
+      throw core.ArgumentError('Parameter ownerName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -2777,7 +2776,7 @@ class BiddersAccountsFilterSetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2839,16 +2838,16 @@ class BiddersAccountsFilterSetsBidMetricsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -2857,7 +2856,7 @@ class BiddersAccountsFilterSetsBidMetricsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2921,16 +2920,16 @@ class BiddersAccountsFilterSetsBidResponseErrorsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -2939,7 +2938,7 @@ class BiddersAccountsFilterSetsBidResponseErrorsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3005,16 +3004,16 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3023,7 +3022,7 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3088,16 +3087,16 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3106,7 +3105,7 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3175,16 +3174,16 @@ class BiddersAccountsFilterSetsFilteredBidsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3193,7 +3192,7 @@ class BiddersAccountsFilterSetsFilteredBidsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3262,19 +3261,19 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (creativeStatusId == null) {
-      throw core.ArgumentError("Parameter creativeStatusId is required.");
+      throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3285,7 +3284,7 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3357,19 +3356,19 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (creativeStatusId == null) {
-      throw core.ArgumentError("Parameter creativeStatusId is required.");
+      throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3380,7 +3379,7 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3444,16 +3443,16 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3462,7 +3461,7 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3526,16 +3525,16 @@ class BiddersAccountsFilterSetsLosingBidsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3544,7 +3543,7 @@ class BiddersAccountsFilterSetsLosingBidsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3608,16 +3607,16 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3626,7 +3625,7 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3709,13 +3708,13 @@ class BiddersFilterSetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (ownerName == null) {
-      throw core.ArgumentError("Parameter ownerName is required.");
+      throw core.ArgumentError('Parameter ownerName is required.');
     }
     if (isTransient != null) {
-      _queryParams["isTransient"] = ["${isTransient}"];
+      _queryParams['isTransient'] = ['${isTransient}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3724,7 +3723,7 @@ class BiddersFilterSetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3769,17 +3768,17 @@ class BiddersFilterSetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3824,17 +3823,17 @@ class BiddersFilterSetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3888,16 +3887,16 @@ class BiddersFilterSetsResourceApi {
     core.String _body;
 
     if (ownerName == null) {
-      throw core.ArgumentError("Parameter ownerName is required.");
+      throw core.ArgumentError('Parameter ownerName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3906,7 +3905,7 @@ class BiddersFilterSetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3968,16 +3967,16 @@ class BiddersFilterSetsBidMetricsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -3986,7 +3985,7 @@ class BiddersFilterSetsBidMetricsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4049,16 +4048,16 @@ class BiddersFilterSetsBidResponseErrorsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -4067,7 +4066,7 @@ class BiddersFilterSetsBidResponseErrorsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4133,16 +4132,16 @@ class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -4151,7 +4150,7 @@ class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4215,16 +4214,16 @@ class BiddersFilterSetsFilteredBidRequestsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -4233,7 +4232,7 @@ class BiddersFilterSetsFilteredBidRequestsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4302,16 +4301,16 @@ class BiddersFilterSetsFilteredBidsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -4320,7 +4319,7 @@ class BiddersFilterSetsFilteredBidsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4388,19 +4387,19 @@ class BiddersFilterSetsFilteredBidsCreativesResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (creativeStatusId == null) {
-      throw core.ArgumentError("Parameter creativeStatusId is required.");
+      throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -4411,7 +4410,7 @@ class BiddersFilterSetsFilteredBidsCreativesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4482,19 +4481,19 @@ class BiddersFilterSetsFilteredBidsDetailsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (creativeStatusId == null) {
-      throw core.ArgumentError("Parameter creativeStatusId is required.");
+      throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -4505,7 +4504,7 @@ class BiddersFilterSetsFilteredBidsDetailsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4568,16 +4567,16 @@ class BiddersFilterSetsImpressionMetricsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -4586,7 +4585,7 @@ class BiddersFilterSetsImpressionMetricsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4650,16 +4649,16 @@ class BiddersFilterSetsLosingBidsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -4668,7 +4667,7 @@ class BiddersFilterSetsLosingBidsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4732,16 +4731,16 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
     core.String _body;
 
     if (filterSetName == null) {
-      throw core.ArgumentError("Parameter filterSetName is required.");
+      throw core.ArgumentError('Parameter filterSetName is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -4750,7 +4749,7 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4779,11 +4778,11 @@ class AbsoluteDateRange {
   AbsoluteDateRange();
 
   AbsoluteDateRange.fromJson(core.Map _json) {
-    if (_json.containsKey("endDate")) {
-      endDate = Date.fromJson(_json["endDate"]);
+    if (_json.containsKey('endDate')) {
+      endDate = Date.fromJson(_json['endDate']);
     }
-    if (_json.containsKey("startDate")) {
-      startDate = Date.fromJson(_json["startDate"]);
+    if (_json.containsKey('startDate')) {
+      startDate = Date.fromJson(_json['startDate']);
     }
   }
 
@@ -4791,10 +4790,10 @@ class AbsoluteDateRange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endDate != null) {
-      _json["endDate"] = endDate.toJson();
+      _json['endDate'] = endDate.toJson();
     }
     if (startDate != null) {
-      _json["startDate"] = startDate.toJson();
+      _json['startDate'] = startDate.toJson();
     }
     return _json;
   }
@@ -4808,8 +4807,8 @@ class AcceptProposalRequest {
   AcceptProposalRequest();
 
   AcceptProposalRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("proposalRevision")) {
-      proposalRevision = _json["proposalRevision"];
+    if (_json.containsKey('proposalRevision')) {
+      proposalRevision = _json['proposalRevision'];
     }
   }
 
@@ -4817,7 +4816,7 @@ class AcceptProposalRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (proposalRevision != null) {
-      _json["proposalRevision"] = proposalRevision;
+      _json['proposalRevision'] = proposalRevision;
     }
     return _json;
   }
@@ -4846,14 +4845,14 @@ class AdSize {
   AdSize();
 
   AdSize.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("sizeType")) {
-      sizeType = _json["sizeType"];
+    if (_json.containsKey('sizeType')) {
+      sizeType = _json['sizeType'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -4861,13 +4860,13 @@ class AdSize {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (sizeType != null) {
-      _json["sizeType"] = sizeType;
+      _json['sizeType'] = sizeType;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -4900,12 +4899,12 @@ class AdTechnologyProviders {
   AdTechnologyProviders();
 
   AdTechnologyProviders.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedProviderIds")) {
+    if (_json.containsKey('detectedProviderIds')) {
       detectedProviderIds =
-          (_json["detectedProviderIds"] as core.List).cast<core.String>();
+          (_json['detectedProviderIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("hasUnidentifiedProvider")) {
-      hasUnidentifiedProvider = _json["hasUnidentifiedProvider"];
+    if (_json.containsKey('hasUnidentifiedProvider')) {
+      hasUnidentifiedProvider = _json['hasUnidentifiedProvider'];
     }
   }
 
@@ -4913,10 +4912,10 @@ class AdTechnologyProviders {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedProviderIds != null) {
-      _json["detectedProviderIds"] = detectedProviderIds;
+      _json['detectedProviderIds'] = detectedProviderIds;
     }
     if (hasUnidentifiedProvider != null) {
-      _json["hasUnidentifiedProvider"] = hasUnidentifiedProvider;
+      _json['hasUnidentifiedProvider'] = hasUnidentifiedProvider;
     }
     return _json;
   }
@@ -4930,8 +4929,8 @@ class AddDealAssociationRequest {
   AddDealAssociationRequest();
 
   AddDealAssociationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("association")) {
-      association = CreativeDealAssociation.fromJson(_json["association"]);
+    if (_json.containsKey('association')) {
+      association = CreativeDealAssociation.fromJson(_json['association']);
     }
   }
 
@@ -4939,7 +4938,7 @@ class AddDealAssociationRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (association != null) {
-      _json["association"] = association.toJson();
+      _json['association'] = association.toJson();
     }
     return _json;
   }
@@ -4953,8 +4952,8 @@ class AddNoteRequest {
   AddNoteRequest();
 
   AddNoteRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("note")) {
-      note = Note.fromJson(_json["note"]);
+    if (_json.containsKey('note')) {
+      note = Note.fromJson(_json['note']);
     }
   }
 
@@ -4962,7 +4961,7 @@ class AddNoteRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (note != null) {
-      _json["note"] = note.toJson();
+      _json['note'] = note.toJson();
     }
     return _json;
   }
@@ -4976,8 +4975,8 @@ class AppContext {
   AppContext();
 
   AppContext.fromJson(core.Map _json) {
-    if (_json.containsKey("appTypes")) {
-      appTypes = (_json["appTypes"] as core.List).cast<core.String>();
+    if (_json.containsKey('appTypes')) {
+      appTypes = (_json['appTypes'] as core.List).cast<core.String>();
     }
   }
 
@@ -4985,7 +4984,7 @@ class AppContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (appTypes != null) {
-      _json["appTypes"] = appTypes;
+      _json['appTypes'] = appTypes;
     }
     return _json;
   }
@@ -4999,8 +4998,8 @@ class AuctionContext {
   AuctionContext();
 
   AuctionContext.fromJson(core.Map _json) {
-    if (_json.containsKey("auctionTypes")) {
-      auctionTypes = (_json["auctionTypes"] as core.List).cast<core.String>();
+    if (_json.containsKey('auctionTypes')) {
+      auctionTypes = (_json['auctionTypes'] as core.List).cast<core.String>();
     }
   }
 
@@ -5008,7 +5007,7 @@ class AuctionContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auctionTypes != null) {
-      _json["auctionTypes"] = auctionTypes;
+      _json['auctionTypes'] = auctionTypes;
     }
     return _json;
   }
@@ -5048,30 +5047,30 @@ class BidMetricsRow {
   BidMetricsRow();
 
   BidMetricsRow.fromJson(core.Map _json) {
-    if (_json.containsKey("bids")) {
-      bids = MetricValue.fromJson(_json["bids"]);
+    if (_json.containsKey('bids')) {
+      bids = MetricValue.fromJson(_json['bids']);
     }
-    if (_json.containsKey("bidsInAuction")) {
-      bidsInAuction = MetricValue.fromJson(_json["bidsInAuction"]);
+    if (_json.containsKey('bidsInAuction')) {
+      bidsInAuction = MetricValue.fromJson(_json['bidsInAuction']);
     }
-    if (_json.containsKey("billedImpressions")) {
-      billedImpressions = MetricValue.fromJson(_json["billedImpressions"]);
+    if (_json.containsKey('billedImpressions')) {
+      billedImpressions = MetricValue.fromJson(_json['billedImpressions']);
     }
-    if (_json.containsKey("impressionsWon")) {
-      impressionsWon = MetricValue.fromJson(_json["impressionsWon"]);
+    if (_json.containsKey('impressionsWon')) {
+      impressionsWon = MetricValue.fromJson(_json['impressionsWon']);
     }
-    if (_json.containsKey("measurableImpressions")) {
+    if (_json.containsKey('measurableImpressions')) {
       measurableImpressions =
-          MetricValue.fromJson(_json["measurableImpressions"]);
+          MetricValue.fromJson(_json['measurableImpressions']);
     }
-    if (_json.containsKey("reachedQueries")) {
-      reachedQueries = MetricValue.fromJson(_json["reachedQueries"]);
+    if (_json.containsKey('reachedQueries')) {
+      reachedQueries = MetricValue.fromJson(_json['reachedQueries']);
     }
-    if (_json.containsKey("rowDimensions")) {
-      rowDimensions = RowDimensions.fromJson(_json["rowDimensions"]);
+    if (_json.containsKey('rowDimensions')) {
+      rowDimensions = RowDimensions.fromJson(_json['rowDimensions']);
     }
-    if (_json.containsKey("viewableImpressions")) {
-      viewableImpressions = MetricValue.fromJson(_json["viewableImpressions"]);
+    if (_json.containsKey('viewableImpressions')) {
+      viewableImpressions = MetricValue.fromJson(_json['viewableImpressions']);
     }
   }
 
@@ -5079,28 +5078,28 @@ class BidMetricsRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bids != null) {
-      _json["bids"] = bids.toJson();
+      _json['bids'] = bids.toJson();
     }
     if (bidsInAuction != null) {
-      _json["bidsInAuction"] = bidsInAuction.toJson();
+      _json['bidsInAuction'] = bidsInAuction.toJson();
     }
     if (billedImpressions != null) {
-      _json["billedImpressions"] = billedImpressions.toJson();
+      _json['billedImpressions'] = billedImpressions.toJson();
     }
     if (impressionsWon != null) {
-      _json["impressionsWon"] = impressionsWon.toJson();
+      _json['impressionsWon'] = impressionsWon.toJson();
     }
     if (measurableImpressions != null) {
-      _json["measurableImpressions"] = measurableImpressions.toJson();
+      _json['measurableImpressions'] = measurableImpressions.toJson();
     }
     if (reachedQueries != null) {
-      _json["reachedQueries"] = reachedQueries.toJson();
+      _json['reachedQueries'] = reachedQueries.toJson();
     }
     if (rowDimensions != null) {
-      _json["rowDimensions"] = rowDimensions.toJson();
+      _json['rowDimensions'] = rowDimensions.toJson();
     }
     if (viewableImpressions != null) {
-      _json["viewableImpressions"] = viewableImpressions.toJson();
+      _json['viewableImpressions'] = viewableImpressions.toJson();
     }
     return _json;
   }
@@ -5137,14 +5136,14 @@ class BidResponseWithoutBidsStatusRow {
   BidResponseWithoutBidsStatusRow();
 
   BidResponseWithoutBidsStatusRow.fromJson(core.Map _json) {
-    if (_json.containsKey("impressionCount")) {
-      impressionCount = MetricValue.fromJson(_json["impressionCount"]);
+    if (_json.containsKey('impressionCount')) {
+      impressionCount = MetricValue.fromJson(_json['impressionCount']);
     }
-    if (_json.containsKey("rowDimensions")) {
-      rowDimensions = RowDimensions.fromJson(_json["rowDimensions"]);
+    if (_json.containsKey('rowDimensions')) {
+      rowDimensions = RowDimensions.fromJson(_json['rowDimensions']);
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
   }
 
@@ -5152,13 +5151,13 @@ class BidResponseWithoutBidsStatusRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (impressionCount != null) {
-      _json["impressionCount"] = impressionCount.toJson();
+      _json['impressionCount'] = impressionCount.toJson();
     }
     if (rowDimensions != null) {
-      _json["rowDimensions"] = rowDimensions.toJson();
+      _json['rowDimensions'] = rowDimensions.toJson();
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     return _json;
   }
@@ -5173,8 +5172,8 @@ class Buyer {
   Buyer();
 
   Buyer.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
   }
 
@@ -5182,7 +5181,7 @@ class Buyer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     return _json;
   }
@@ -5206,14 +5205,14 @@ class CalloutStatusRow {
   CalloutStatusRow();
 
   CalloutStatusRow.fromJson(core.Map _json) {
-    if (_json.containsKey("calloutStatusId")) {
-      calloutStatusId = _json["calloutStatusId"];
+    if (_json.containsKey('calloutStatusId')) {
+      calloutStatusId = _json['calloutStatusId'];
     }
-    if (_json.containsKey("impressionCount")) {
-      impressionCount = MetricValue.fromJson(_json["impressionCount"]);
+    if (_json.containsKey('impressionCount')) {
+      impressionCount = MetricValue.fromJson(_json['impressionCount']);
     }
-    if (_json.containsKey("rowDimensions")) {
-      rowDimensions = RowDimensions.fromJson(_json["rowDimensions"]);
+    if (_json.containsKey('rowDimensions')) {
+      rowDimensions = RowDimensions.fromJson(_json['rowDimensions']);
     }
   }
 
@@ -5221,13 +5220,13 @@ class CalloutStatusRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (calloutStatusId != null) {
-      _json["calloutStatusId"] = calloutStatusId;
+      _json['calloutStatusId'] = calloutStatusId;
     }
     if (impressionCount != null) {
-      _json["impressionCount"] = impressionCount.toJson();
+      _json['impressionCount'] = impressionCount.toJson();
     }
     if (rowDimensions != null) {
-      _json["rowDimensions"] = rowDimensions.toJson();
+      _json['rowDimensions'] = rowDimensions.toJson();
     }
     return _json;
   }
@@ -5335,32 +5334,32 @@ class Client {
   Client();
 
   Client.fromJson(core.Map _json) {
-    if (_json.containsKey("clientAccountId")) {
-      clientAccountId = _json["clientAccountId"];
+    if (_json.containsKey('clientAccountId')) {
+      clientAccountId = _json['clientAccountId'];
     }
-    if (_json.containsKey("clientName")) {
-      clientName = _json["clientName"];
+    if (_json.containsKey('clientName')) {
+      clientName = _json['clientName'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("entityName")) {
-      entityName = _json["entityName"];
+    if (_json.containsKey('entityName')) {
+      entityName = _json['entityName'];
     }
-    if (_json.containsKey("entityType")) {
-      entityType = _json["entityType"];
+    if (_json.containsKey('entityType')) {
+      entityType = _json['entityType'];
     }
-    if (_json.containsKey("partnerClientId")) {
-      partnerClientId = _json["partnerClientId"];
+    if (_json.containsKey('partnerClientId')) {
+      partnerClientId = _json['partnerClientId'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("visibleToSeller")) {
-      visibleToSeller = _json["visibleToSeller"];
+    if (_json.containsKey('visibleToSeller')) {
+      visibleToSeller = _json['visibleToSeller'];
     }
   }
 
@@ -5368,31 +5367,31 @@ class Client {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientAccountId != null) {
-      _json["clientAccountId"] = clientAccountId;
+      _json['clientAccountId'] = clientAccountId;
     }
     if (clientName != null) {
-      _json["clientName"] = clientName;
+      _json['clientName'] = clientName;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (entityName != null) {
-      _json["entityName"] = entityName;
+      _json['entityName'] = entityName;
     }
     if (entityType != null) {
-      _json["entityType"] = entityType;
+      _json['entityType'] = entityType;
     }
     if (partnerClientId != null) {
-      _json["partnerClientId"] = partnerClientId;
+      _json['partnerClientId'] = partnerClientId;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (visibleToSeller != null) {
-      _json["visibleToSeller"] = visibleToSeller;
+      _json['visibleToSeller'] = visibleToSeller;
     }
     return _json;
   }
@@ -5430,17 +5429,17 @@ class ClientUser {
   ClientUser();
 
   ClientUser.fromJson(core.Map _json) {
-    if (_json.containsKey("clientAccountId")) {
-      clientAccountId = _json["clientAccountId"];
+    if (_json.containsKey('clientAccountId')) {
+      clientAccountId = _json['clientAccountId'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -5448,16 +5447,16 @@ class ClientUser {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientAccountId != null) {
-      _json["clientAccountId"] = clientAccountId;
+      _json['clientAccountId'] = clientAccountId;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -5481,14 +5480,14 @@ class ClientUserInvitation {
   ClientUserInvitation();
 
   ClientUserInvitation.fromJson(core.Map _json) {
-    if (_json.containsKey("clientAccountId")) {
-      clientAccountId = _json["clientAccountId"];
+    if (_json.containsKey('clientAccountId')) {
+      clientAccountId = _json['clientAccountId'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("invitationId")) {
-      invitationId = _json["invitationId"];
+    if (_json.containsKey('invitationId')) {
+      invitationId = _json['invitationId'];
     }
   }
 
@@ -5496,13 +5495,13 @@ class ClientUserInvitation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientAccountId != null) {
-      _json["clientAccountId"] = clientAccountId;
+      _json['clientAccountId'] = clientAccountId;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (invitationId != null) {
-      _json["invitationId"] = invitationId;
+      _json['invitationId'] = invitationId;
     }
     return _json;
   }
@@ -5532,11 +5531,11 @@ class ContactInformation {
   ContactInformation();
 
   ContactInformation.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -5544,10 +5543,10 @@ class ContactInformation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -5592,16 +5591,16 @@ class Correction {
   Correction();
 
   Correction.fromJson(core.Map _json) {
-    if (_json.containsKey("contexts")) {
-      contexts = (_json["contexts"] as core.List)
+    if (_json.containsKey('contexts')) {
+      contexts = (_json['contexts'] as core.List)
           .map<ServingContext>((value) => ServingContext.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List).cast<core.String>();
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -5609,13 +5608,13 @@ class Correction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contexts != null) {
-      _json["contexts"] = contexts.map((value) => value.toJson()).toList();
+      _json['contexts'] = contexts.map((value) => value.toJson()).toList();
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -5752,98 +5751,98 @@ class Creative {
   Creative();
 
   Creative.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("adChoicesDestinationUrl")) {
-      adChoicesDestinationUrl = _json["adChoicesDestinationUrl"];
+    if (_json.containsKey('adChoicesDestinationUrl')) {
+      adChoicesDestinationUrl = _json['adChoicesDestinationUrl'];
     }
-    if (_json.containsKey("adTechnologyProviders")) {
+    if (_json.containsKey('adTechnologyProviders')) {
       adTechnologyProviders =
-          AdTechnologyProviders.fromJson(_json["adTechnologyProviders"]);
+          AdTechnologyProviders.fromJson(_json['adTechnologyProviders']);
     }
-    if (_json.containsKey("advertiserName")) {
-      advertiserName = _json["advertiserName"];
+    if (_json.containsKey('advertiserName')) {
+      advertiserName = _json['advertiserName'];
     }
-    if (_json.containsKey("agencyId")) {
-      agencyId = _json["agencyId"];
+    if (_json.containsKey('agencyId')) {
+      agencyId = _json['agencyId'];
     }
-    if (_json.containsKey("apiUpdateTime")) {
-      apiUpdateTime = _json["apiUpdateTime"];
+    if (_json.containsKey('apiUpdateTime')) {
+      apiUpdateTime = _json['apiUpdateTime'];
     }
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List).cast<core.String>();
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("clickThroughUrls")) {
+    if (_json.containsKey('clickThroughUrls')) {
       clickThroughUrls =
-          (_json["clickThroughUrls"] as core.List).cast<core.String>();
+          (_json['clickThroughUrls'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("corrections")) {
-      corrections = (_json["corrections"] as core.List)
+    if (_json.containsKey('corrections')) {
+      corrections = (_json['corrections'] as core.List)
           .map<Correction>((value) => Correction.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("creativeId")) {
-      creativeId = _json["creativeId"];
+    if (_json.containsKey('creativeId')) {
+      creativeId = _json['creativeId'];
     }
-    if (_json.containsKey("dealsStatus")) {
-      dealsStatus = _json["dealsStatus"];
+    if (_json.containsKey('dealsStatus')) {
+      dealsStatus = _json['dealsStatus'];
     }
-    if (_json.containsKey("declaredClickThroughUrls")) {
+    if (_json.containsKey('declaredClickThroughUrls')) {
       declaredClickThroughUrls =
-          (_json["declaredClickThroughUrls"] as core.List).cast<core.String>();
+          (_json['declaredClickThroughUrls'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("detectedAdvertiserIds")) {
+    if (_json.containsKey('detectedAdvertiserIds')) {
       detectedAdvertiserIds =
-          (_json["detectedAdvertiserIds"] as core.List).cast<core.String>();
+          (_json['detectedAdvertiserIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("detectedDomains")) {
+    if (_json.containsKey('detectedDomains')) {
       detectedDomains =
-          (_json["detectedDomains"] as core.List).cast<core.String>();
+          (_json['detectedDomains'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("detectedLanguages")) {
+    if (_json.containsKey('detectedLanguages')) {
       detectedLanguages =
-          (_json["detectedLanguages"] as core.List).cast<core.String>();
+          (_json['detectedLanguages'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("detectedProductCategories")) {
+    if (_json.containsKey('detectedProductCategories')) {
       detectedProductCategories =
-          (_json["detectedProductCategories"] as core.List).cast<core.int>();
+          (_json['detectedProductCategories'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("detectedSensitiveCategories")) {
+    if (_json.containsKey('detectedSensitiveCategories')) {
       detectedSensitiveCategories =
-          (_json["detectedSensitiveCategories"] as core.List).cast<core.int>();
+          (_json['detectedSensitiveCategories'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("html")) {
-      html = HtmlContent.fromJson(_json["html"]);
+    if (_json.containsKey('html')) {
+      html = HtmlContent.fromJson(_json['html']);
     }
-    if (_json.containsKey("impressionTrackingUrls")) {
+    if (_json.containsKey('impressionTrackingUrls')) {
       impressionTrackingUrls =
-          (_json["impressionTrackingUrls"] as core.List).cast<core.String>();
+          (_json['impressionTrackingUrls'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("native")) {
-      native = NativeContent.fromJson(_json["native"]);
+    if (_json.containsKey('native')) {
+      native = NativeContent.fromJson(_json['native']);
     }
-    if (_json.containsKey("openAuctionStatus")) {
-      openAuctionStatus = _json["openAuctionStatus"];
+    if (_json.containsKey('openAuctionStatus')) {
+      openAuctionStatus = _json['openAuctionStatus'];
     }
-    if (_json.containsKey("restrictedCategories")) {
+    if (_json.containsKey('restrictedCategories')) {
       restrictedCategories =
-          (_json["restrictedCategories"] as core.List).cast<core.String>();
+          (_json['restrictedCategories'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("servingRestrictions")) {
-      servingRestrictions = (_json["servingRestrictions"] as core.List)
+    if (_json.containsKey('servingRestrictions')) {
+      servingRestrictions = (_json['servingRestrictions'] as core.List)
           .map<ServingRestriction>(
               (value) => ServingRestriction.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("vendorIds")) {
-      vendorIds = (_json["vendorIds"] as core.List).cast<core.int>();
+    if (_json.containsKey('vendorIds')) {
+      vendorIds = (_json['vendorIds'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
-    if (_json.containsKey("video")) {
-      video = VideoContent.fromJson(_json["video"]);
+    if (_json.containsKey('video')) {
+      video = VideoContent.fromJson(_json['video']);
     }
   }
 
@@ -5851,84 +5850,84 @@ class Creative {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (adChoicesDestinationUrl != null) {
-      _json["adChoicesDestinationUrl"] = adChoicesDestinationUrl;
+      _json['adChoicesDestinationUrl'] = adChoicesDestinationUrl;
     }
     if (adTechnologyProviders != null) {
-      _json["adTechnologyProviders"] = adTechnologyProviders.toJson();
+      _json['adTechnologyProviders'] = adTechnologyProviders.toJson();
     }
     if (advertiserName != null) {
-      _json["advertiserName"] = advertiserName;
+      _json['advertiserName'] = advertiserName;
     }
     if (agencyId != null) {
-      _json["agencyId"] = agencyId;
+      _json['agencyId'] = agencyId;
     }
     if (apiUpdateTime != null) {
-      _json["apiUpdateTime"] = apiUpdateTime;
+      _json['apiUpdateTime'] = apiUpdateTime;
     }
     if (attributes != null) {
-      _json["attributes"] = attributes;
+      _json['attributes'] = attributes;
     }
     if (clickThroughUrls != null) {
-      _json["clickThroughUrls"] = clickThroughUrls;
+      _json['clickThroughUrls'] = clickThroughUrls;
     }
     if (corrections != null) {
-      _json["corrections"] =
+      _json['corrections'] =
           corrections.map((value) => value.toJson()).toList();
     }
     if (creativeId != null) {
-      _json["creativeId"] = creativeId;
+      _json['creativeId'] = creativeId;
     }
     if (dealsStatus != null) {
-      _json["dealsStatus"] = dealsStatus;
+      _json['dealsStatus'] = dealsStatus;
     }
     if (declaredClickThroughUrls != null) {
-      _json["declaredClickThroughUrls"] = declaredClickThroughUrls;
+      _json['declaredClickThroughUrls'] = declaredClickThroughUrls;
     }
     if (detectedAdvertiserIds != null) {
-      _json["detectedAdvertiserIds"] = detectedAdvertiserIds;
+      _json['detectedAdvertiserIds'] = detectedAdvertiserIds;
     }
     if (detectedDomains != null) {
-      _json["detectedDomains"] = detectedDomains;
+      _json['detectedDomains'] = detectedDomains;
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] = detectedLanguages;
+      _json['detectedLanguages'] = detectedLanguages;
     }
     if (detectedProductCategories != null) {
-      _json["detectedProductCategories"] = detectedProductCategories;
+      _json['detectedProductCategories'] = detectedProductCategories;
     }
     if (detectedSensitiveCategories != null) {
-      _json["detectedSensitiveCategories"] = detectedSensitiveCategories;
+      _json['detectedSensitiveCategories'] = detectedSensitiveCategories;
     }
     if (html != null) {
-      _json["html"] = html.toJson();
+      _json['html'] = html.toJson();
     }
     if (impressionTrackingUrls != null) {
-      _json["impressionTrackingUrls"] = impressionTrackingUrls;
+      _json['impressionTrackingUrls'] = impressionTrackingUrls;
     }
     if (native != null) {
-      _json["native"] = native.toJson();
+      _json['native'] = native.toJson();
     }
     if (openAuctionStatus != null) {
-      _json["openAuctionStatus"] = openAuctionStatus;
+      _json['openAuctionStatus'] = openAuctionStatus;
     }
     if (restrictedCategories != null) {
-      _json["restrictedCategories"] = restrictedCategories;
+      _json['restrictedCategories'] = restrictedCategories;
     }
     if (servingRestrictions != null) {
-      _json["servingRestrictions"] =
+      _json['servingRestrictions'] =
           servingRestrictions.map((value) => value.toJson()).toList();
     }
     if (vendorIds != null) {
-      _json["vendorIds"] = vendorIds;
+      _json['vendorIds'] = vendorIds;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     if (video != null) {
-      _json["video"] = video.toJson();
+      _json['video'] = video.toJson();
     }
     return _json;
   }
@@ -5948,14 +5947,14 @@ class CreativeDealAssociation {
   CreativeDealAssociation();
 
   CreativeDealAssociation.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("creativeId")) {
-      creativeId = _json["creativeId"];
+    if (_json.containsKey('creativeId')) {
+      creativeId = _json['creativeId'];
     }
-    if (_json.containsKey("dealsId")) {
-      dealsId = _json["dealsId"];
+    if (_json.containsKey('dealsId')) {
+      dealsId = _json['dealsId'];
     }
   }
 
@@ -5963,13 +5962,13 @@ class CreativeDealAssociation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (creativeId != null) {
-      _json["creativeId"] = creativeId;
+      _json['creativeId'] = creativeId;
     }
     if (dealsId != null) {
-      _json["dealsId"] = dealsId;
+      _json['dealsId'] = dealsId;
     }
     return _json;
   }
@@ -6005,17 +6004,17 @@ class CreativeRestrictions {
   CreativeRestrictions();
 
   CreativeRestrictions.fromJson(core.Map _json) {
-    if (_json.containsKey("creativeFormat")) {
-      creativeFormat = _json["creativeFormat"];
+    if (_json.containsKey('creativeFormat')) {
+      creativeFormat = _json['creativeFormat'];
     }
-    if (_json.containsKey("creativeSpecifications")) {
-      creativeSpecifications = (_json["creativeSpecifications"] as core.List)
+    if (_json.containsKey('creativeSpecifications')) {
+      creativeSpecifications = (_json['creativeSpecifications'] as core.List)
           .map<CreativeSpecification>(
               (value) => CreativeSpecification.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("skippableAdType")) {
-      skippableAdType = _json["skippableAdType"];
+    if (_json.containsKey('skippableAdType')) {
+      skippableAdType = _json['skippableAdType'];
     }
   }
 
@@ -6023,14 +6022,14 @@ class CreativeRestrictions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creativeFormat != null) {
-      _json["creativeFormat"] = creativeFormat;
+      _json['creativeFormat'] = creativeFormat;
     }
     if (creativeSpecifications != null) {
-      _json["creativeSpecifications"] =
+      _json['creativeSpecifications'] =
           creativeSpecifications.map((value) => value.toJson()).toList();
     }
     if (skippableAdType != null) {
-      _json["skippableAdType"] = skippableAdType;
+      _json['skippableAdType'] = skippableAdType;
     }
     return _json;
   }
@@ -6092,26 +6091,26 @@ class CreativeSize {
   CreativeSize();
 
   CreativeSize.fromJson(core.Map _json) {
-    if (_json.containsKey("allowedFormats")) {
+    if (_json.containsKey('allowedFormats')) {
       allowedFormats =
-          (_json["allowedFormats"] as core.List).cast<core.String>();
+          (_json['allowedFormats'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("companionSizes")) {
-      companionSizes = (_json["companionSizes"] as core.List)
+    if (_json.containsKey('companionSizes')) {
+      companionSizes = (_json['companionSizes'] as core.List)
           .map<Size>((value) => Size.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("creativeSizeType")) {
-      creativeSizeType = _json["creativeSizeType"];
+    if (_json.containsKey('creativeSizeType')) {
+      creativeSizeType = _json['creativeSizeType'];
     }
-    if (_json.containsKey("nativeTemplate")) {
-      nativeTemplate = _json["nativeTemplate"];
+    if (_json.containsKey('nativeTemplate')) {
+      nativeTemplate = _json['nativeTemplate'];
     }
-    if (_json.containsKey("size")) {
-      size = Size.fromJson(_json["size"]);
+    if (_json.containsKey('size')) {
+      size = Size.fromJson(_json['size']);
     }
-    if (_json.containsKey("skippableAdType")) {
-      skippableAdType = _json["skippableAdType"];
+    if (_json.containsKey('skippableAdType')) {
+      skippableAdType = _json['skippableAdType'];
     }
   }
 
@@ -6119,23 +6118,23 @@ class CreativeSize {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowedFormats != null) {
-      _json["allowedFormats"] = allowedFormats;
+      _json['allowedFormats'] = allowedFormats;
     }
     if (companionSizes != null) {
-      _json["companionSizes"] =
+      _json['companionSizes'] =
           companionSizes.map((value) => value.toJson()).toList();
     }
     if (creativeSizeType != null) {
-      _json["creativeSizeType"] = creativeSizeType;
+      _json['creativeSizeType'] = creativeSizeType;
     }
     if (nativeTemplate != null) {
-      _json["nativeTemplate"] = nativeTemplate;
+      _json['nativeTemplate'] = nativeTemplate;
     }
     if (size != null) {
-      _json["size"] = size.toJson();
+      _json['size'] = size.toJson();
     }
     if (skippableAdType != null) {
-      _json["skippableAdType"] = skippableAdType;
+      _json['skippableAdType'] = skippableAdType;
     }
     return _json;
   }
@@ -6153,13 +6152,13 @@ class CreativeSpecification {
   CreativeSpecification();
 
   CreativeSpecification.fromJson(core.Map _json) {
-    if (_json.containsKey("creativeCompanionSizes")) {
-      creativeCompanionSizes = (_json["creativeCompanionSizes"] as core.List)
+    if (_json.containsKey('creativeCompanionSizes')) {
+      creativeCompanionSizes = (_json['creativeCompanionSizes'] as core.List)
           .map<AdSize>((value) => AdSize.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("creativeSize")) {
-      creativeSize = AdSize.fromJson(_json["creativeSize"]);
+    if (_json.containsKey('creativeSize')) {
+      creativeSize = AdSize.fromJson(_json['creativeSize']);
     }
   }
 
@@ -6167,11 +6166,11 @@ class CreativeSpecification {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creativeCompanionSizes != null) {
-      _json["creativeCompanionSizes"] =
+      _json['creativeCompanionSizes'] =
           creativeCompanionSizes.map((value) => value.toJson()).toList();
     }
     if (creativeSize != null) {
-      _json["creativeSize"] = creativeSize.toJson();
+      _json['creativeSize'] = creativeSize.toJson();
     }
     return _json;
   }
@@ -6194,14 +6193,14 @@ class CreativeStatusRow {
   CreativeStatusRow();
 
   CreativeStatusRow.fromJson(core.Map _json) {
-    if (_json.containsKey("bidCount")) {
-      bidCount = MetricValue.fromJson(_json["bidCount"]);
+    if (_json.containsKey('bidCount')) {
+      bidCount = MetricValue.fromJson(_json['bidCount']);
     }
-    if (_json.containsKey("creativeStatusId")) {
-      creativeStatusId = _json["creativeStatusId"];
+    if (_json.containsKey('creativeStatusId')) {
+      creativeStatusId = _json['creativeStatusId'];
     }
-    if (_json.containsKey("rowDimensions")) {
-      rowDimensions = RowDimensions.fromJson(_json["rowDimensions"]);
+    if (_json.containsKey('rowDimensions')) {
+      rowDimensions = RowDimensions.fromJson(_json['rowDimensions']);
     }
   }
 
@@ -6209,13 +6208,13 @@ class CreativeStatusRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bidCount != null) {
-      _json["bidCount"] = bidCount.toJson();
+      _json['bidCount'] = bidCount.toJson();
     }
     if (creativeStatusId != null) {
-      _json["creativeStatusId"] = creativeStatusId;
+      _json['creativeStatusId'] = creativeStatusId;
     }
     if (rowDimensions != null) {
-      _json["rowDimensions"] = rowDimensions.toJson();
+      _json['rowDimensions'] = rowDimensions.toJson();
     }
     return _json;
   }
@@ -6233,13 +6232,13 @@ class CriteriaTargeting {
   CriteriaTargeting();
 
   CriteriaTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("excludedCriteriaIds")) {
+    if (_json.containsKey('excludedCriteriaIds')) {
       excludedCriteriaIds =
-          (_json["excludedCriteriaIds"] as core.List).cast<core.String>();
+          (_json['excludedCriteriaIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("targetedCriteriaIds")) {
+    if (_json.containsKey('targetedCriteriaIds')) {
       targetedCriteriaIds =
-          (_json["targetedCriteriaIds"] as core.List).cast<core.String>();
+          (_json['targetedCriteriaIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -6247,10 +6246,10 @@ class CriteriaTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludedCriteriaIds != null) {
-      _json["excludedCriteriaIds"] = excludedCriteriaIds;
+      _json['excludedCriteriaIds'] = excludedCriteriaIds;
     }
     if (targetedCriteriaIds != null) {
-      _json["targetedCriteriaIds"] = targetedCriteriaIds;
+      _json['targetedCriteriaIds'] = targetedCriteriaIds;
     }
     return _json;
   }
@@ -6281,14 +6280,14 @@ class Date {
   Date();
 
   Date.fromJson(core.Map _json) {
-    if (_json.containsKey("day")) {
-      day = _json["day"];
+    if (_json.containsKey('day')) {
+      day = _json['day'];
     }
-    if (_json.containsKey("month")) {
-      month = _json["month"];
+    if (_json.containsKey('month')) {
+      month = _json['month'];
     }
-    if (_json.containsKey("year")) {
-      year = _json["year"];
+    if (_json.containsKey('year')) {
+      year = _json['year'];
     }
   }
 
@@ -6296,13 +6295,13 @@ class Date {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (day != null) {
-      _json["day"] = day;
+      _json['day'] = day;
     }
     if (month != null) {
-      _json["month"] = month;
+      _json['month'] = month;
     }
     if (year != null) {
-      _json["year"] = year;
+      _json['year'] = year;
     }
     return _json;
   }
@@ -6337,14 +6336,14 @@ class DayPart {
   DayPart();
 
   DayPart.fromJson(core.Map _json) {
-    if (_json.containsKey("dayOfWeek")) {
-      dayOfWeek = _json["dayOfWeek"];
+    if (_json.containsKey('dayOfWeek')) {
+      dayOfWeek = _json['dayOfWeek'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = TimeOfDay.fromJson(_json["endTime"]);
+    if (_json.containsKey('endTime')) {
+      endTime = TimeOfDay.fromJson(_json['endTime']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = TimeOfDay.fromJson(_json["startTime"]);
+    if (_json.containsKey('startTime')) {
+      startTime = TimeOfDay.fromJson(_json['startTime']);
     }
   }
 
@@ -6352,13 +6351,13 @@ class DayPart {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dayOfWeek != null) {
-      _json["dayOfWeek"] = dayOfWeek;
+      _json['dayOfWeek'] = dayOfWeek;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime.toJson();
+      _json['endTime'] = endTime.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime.toJson();
+      _json['startTime'] = startTime.toJson();
     }
     return _json;
   }
@@ -6380,13 +6379,13 @@ class DayPartTargeting {
   DayPartTargeting();
 
   DayPartTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("dayParts")) {
-      dayParts = (_json["dayParts"] as core.List)
+    if (_json.containsKey('dayParts')) {
+      dayParts = (_json['dayParts'] as core.List)
           .map<DayPart>((value) => DayPart.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("timeZoneType")) {
-      timeZoneType = _json["timeZoneType"];
+    if (_json.containsKey('timeZoneType')) {
+      timeZoneType = _json['timeZoneType'];
     }
   }
 
@@ -6394,10 +6393,10 @@ class DayPartTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dayParts != null) {
-      _json["dayParts"] = dayParts.map((value) => value.toJson()).toList();
+      _json['dayParts'] = dayParts.map((value) => value.toJson()).toList();
     }
     if (timeZoneType != null) {
-      _json["timeZoneType"] = timeZoneType;
+      _json['timeZoneType'] = timeZoneType;
     }
     return _json;
   }
@@ -6532,87 +6531,87 @@ class Deal {
   Deal();
 
   Deal.fromJson(core.Map _json) {
-    if (_json.containsKey("availableEndTime")) {
-      availableEndTime = _json["availableEndTime"];
+    if (_json.containsKey('availableEndTime')) {
+      availableEndTime = _json['availableEndTime'];
     }
-    if (_json.containsKey("availableStartTime")) {
-      availableStartTime = _json["availableStartTime"];
+    if (_json.containsKey('availableStartTime')) {
+      availableStartTime = _json['availableStartTime'];
     }
-    if (_json.containsKey("buyerPrivateData")) {
-      buyerPrivateData = PrivateData.fromJson(_json["buyerPrivateData"]);
+    if (_json.containsKey('buyerPrivateData')) {
+      buyerPrivateData = PrivateData.fromJson(_json['buyerPrivateData']);
     }
-    if (_json.containsKey("createProductId")) {
-      createProductId = _json["createProductId"];
+    if (_json.containsKey('createProductId')) {
+      createProductId = _json['createProductId'];
     }
-    if (_json.containsKey("createProductRevision")) {
-      createProductRevision = _json["createProductRevision"];
+    if (_json.containsKey('createProductRevision')) {
+      createProductRevision = _json['createProductRevision'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("creativePreApprovalPolicy")) {
-      creativePreApprovalPolicy = _json["creativePreApprovalPolicy"];
+    if (_json.containsKey('creativePreApprovalPolicy')) {
+      creativePreApprovalPolicy = _json['creativePreApprovalPolicy'];
     }
-    if (_json.containsKey("creativeRestrictions")) {
+    if (_json.containsKey('creativeRestrictions')) {
       creativeRestrictions =
-          CreativeRestrictions.fromJson(_json["creativeRestrictions"]);
+          CreativeRestrictions.fromJson(_json['creativeRestrictions']);
     }
-    if (_json.containsKey("creativeSafeFrameCompatibility")) {
-      creativeSafeFrameCompatibility = _json["creativeSafeFrameCompatibility"];
+    if (_json.containsKey('creativeSafeFrameCompatibility')) {
+      creativeSafeFrameCompatibility = _json['creativeSafeFrameCompatibility'];
     }
-    if (_json.containsKey("dealId")) {
-      dealId = _json["dealId"];
+    if (_json.containsKey('dealId')) {
+      dealId = _json['dealId'];
     }
-    if (_json.containsKey("dealServingMetadata")) {
+    if (_json.containsKey('dealServingMetadata')) {
       dealServingMetadata =
-          DealServingMetadata.fromJson(_json["dealServingMetadata"]);
+          DealServingMetadata.fromJson(_json['dealServingMetadata']);
     }
-    if (_json.containsKey("dealTerms")) {
-      dealTerms = DealTerms.fromJson(_json["dealTerms"]);
+    if (_json.containsKey('dealTerms')) {
+      dealTerms = DealTerms.fromJson(_json['dealTerms']);
     }
-    if (_json.containsKey("deliveryControl")) {
-      deliveryControl = DeliveryControl.fromJson(_json["deliveryControl"]);
+    if (_json.containsKey('deliveryControl')) {
+      deliveryControl = DeliveryControl.fromJson(_json['deliveryControl']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("externalDealId")) {
-      externalDealId = _json["externalDealId"];
+    if (_json.containsKey('externalDealId')) {
+      externalDealId = _json['externalDealId'];
     }
-    if (_json.containsKey("isSetupComplete")) {
-      isSetupComplete = _json["isSetupComplete"];
+    if (_json.containsKey('isSetupComplete')) {
+      isSetupComplete = _json['isSetupComplete'];
     }
-    if (_json.containsKey("programmaticCreativeSource")) {
-      programmaticCreativeSource = _json["programmaticCreativeSource"];
+    if (_json.containsKey('programmaticCreativeSource')) {
+      programmaticCreativeSource = _json['programmaticCreativeSource'];
     }
-    if (_json.containsKey("proposalId")) {
-      proposalId = _json["proposalId"];
+    if (_json.containsKey('proposalId')) {
+      proposalId = _json['proposalId'];
     }
-    if (_json.containsKey("sellerContacts")) {
-      sellerContacts = (_json["sellerContacts"] as core.List)
+    if (_json.containsKey('sellerContacts')) {
+      sellerContacts = (_json['sellerContacts'] as core.List)
           .map<ContactInformation>(
               (value) => ContactInformation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("syndicationProduct")) {
-      syndicationProduct = _json["syndicationProduct"];
+    if (_json.containsKey('syndicationProduct')) {
+      syndicationProduct = _json['syndicationProduct'];
     }
-    if (_json.containsKey("targeting")) {
-      targeting = MarketplaceTargeting.fromJson(_json["targeting"]);
+    if (_json.containsKey('targeting')) {
+      targeting = MarketplaceTargeting.fromJson(_json['targeting']);
     }
-    if (_json.containsKey("targetingCriterion")) {
-      targetingCriterion = (_json["targetingCriterion"] as core.List)
+    if (_json.containsKey('targetingCriterion')) {
+      targetingCriterion = (_json['targetingCriterion'] as core.List)
           .map<TargetingCriteria>((value) => TargetingCriteria.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
-    if (_json.containsKey("webPropertyCode")) {
-      webPropertyCode = _json["webPropertyCode"];
+    if (_json.containsKey('webPropertyCode')) {
+      webPropertyCode = _json['webPropertyCode'];
     }
   }
 
@@ -6620,81 +6619,81 @@ class Deal {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (availableEndTime != null) {
-      _json["availableEndTime"] = availableEndTime;
+      _json['availableEndTime'] = availableEndTime;
     }
     if (availableStartTime != null) {
-      _json["availableStartTime"] = availableStartTime;
+      _json['availableStartTime'] = availableStartTime;
     }
     if (buyerPrivateData != null) {
-      _json["buyerPrivateData"] = buyerPrivateData.toJson();
+      _json['buyerPrivateData'] = buyerPrivateData.toJson();
     }
     if (createProductId != null) {
-      _json["createProductId"] = createProductId;
+      _json['createProductId'] = createProductId;
     }
     if (createProductRevision != null) {
-      _json["createProductRevision"] = createProductRevision;
+      _json['createProductRevision'] = createProductRevision;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (creativePreApprovalPolicy != null) {
-      _json["creativePreApprovalPolicy"] = creativePreApprovalPolicy;
+      _json['creativePreApprovalPolicy'] = creativePreApprovalPolicy;
     }
     if (creativeRestrictions != null) {
-      _json["creativeRestrictions"] = creativeRestrictions.toJson();
+      _json['creativeRestrictions'] = creativeRestrictions.toJson();
     }
     if (creativeSafeFrameCompatibility != null) {
-      _json["creativeSafeFrameCompatibility"] = creativeSafeFrameCompatibility;
+      _json['creativeSafeFrameCompatibility'] = creativeSafeFrameCompatibility;
     }
     if (dealId != null) {
-      _json["dealId"] = dealId;
+      _json['dealId'] = dealId;
     }
     if (dealServingMetadata != null) {
-      _json["dealServingMetadata"] = dealServingMetadata.toJson();
+      _json['dealServingMetadata'] = dealServingMetadata.toJson();
     }
     if (dealTerms != null) {
-      _json["dealTerms"] = dealTerms.toJson();
+      _json['dealTerms'] = dealTerms.toJson();
     }
     if (deliveryControl != null) {
-      _json["deliveryControl"] = deliveryControl.toJson();
+      _json['deliveryControl'] = deliveryControl.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (externalDealId != null) {
-      _json["externalDealId"] = externalDealId;
+      _json['externalDealId'] = externalDealId;
     }
     if (isSetupComplete != null) {
-      _json["isSetupComplete"] = isSetupComplete;
+      _json['isSetupComplete'] = isSetupComplete;
     }
     if (programmaticCreativeSource != null) {
-      _json["programmaticCreativeSource"] = programmaticCreativeSource;
+      _json['programmaticCreativeSource'] = programmaticCreativeSource;
     }
     if (proposalId != null) {
-      _json["proposalId"] = proposalId;
+      _json['proposalId'] = proposalId;
     }
     if (sellerContacts != null) {
-      _json["sellerContacts"] =
+      _json['sellerContacts'] =
           sellerContacts.map((value) => value.toJson()).toList();
     }
     if (syndicationProduct != null) {
-      _json["syndicationProduct"] = syndicationProduct;
+      _json['syndicationProduct'] = syndicationProduct;
     }
     if (targeting != null) {
-      _json["targeting"] = targeting.toJson();
+      _json['targeting'] = targeting.toJson();
     }
     if (targetingCriterion != null) {
-      _json["targetingCriterion"] =
+      _json['targetingCriterion'] =
           targetingCriterion.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     if (webPropertyCode != null) {
-      _json["webPropertyCode"] = webPropertyCode;
+      _json['webPropertyCode'] = webPropertyCode;
     }
     return _json;
   }
@@ -6726,20 +6725,20 @@ class DealPauseStatus {
   DealPauseStatus();
 
   DealPauseStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("buyerPauseReason")) {
-      buyerPauseReason = _json["buyerPauseReason"];
+    if (_json.containsKey('buyerPauseReason')) {
+      buyerPauseReason = _json['buyerPauseReason'];
     }
-    if (_json.containsKey("firstPausedBy")) {
-      firstPausedBy = _json["firstPausedBy"];
+    if (_json.containsKey('firstPausedBy')) {
+      firstPausedBy = _json['firstPausedBy'];
     }
-    if (_json.containsKey("hasBuyerPaused")) {
-      hasBuyerPaused = _json["hasBuyerPaused"];
+    if (_json.containsKey('hasBuyerPaused')) {
+      hasBuyerPaused = _json['hasBuyerPaused'];
     }
-    if (_json.containsKey("hasSellerPaused")) {
-      hasSellerPaused = _json["hasSellerPaused"];
+    if (_json.containsKey('hasSellerPaused')) {
+      hasSellerPaused = _json['hasSellerPaused'];
     }
-    if (_json.containsKey("sellerPauseReason")) {
-      sellerPauseReason = _json["sellerPauseReason"];
+    if (_json.containsKey('sellerPauseReason')) {
+      sellerPauseReason = _json['sellerPauseReason'];
     }
   }
 
@@ -6747,19 +6746,19 @@ class DealPauseStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (buyerPauseReason != null) {
-      _json["buyerPauseReason"] = buyerPauseReason;
+      _json['buyerPauseReason'] = buyerPauseReason;
     }
     if (firstPausedBy != null) {
-      _json["firstPausedBy"] = firstPausedBy;
+      _json['firstPausedBy'] = firstPausedBy;
     }
     if (hasBuyerPaused != null) {
-      _json["hasBuyerPaused"] = hasBuyerPaused;
+      _json['hasBuyerPaused'] = hasBuyerPaused;
     }
     if (hasSellerPaused != null) {
-      _json["hasSellerPaused"] = hasSellerPaused;
+      _json['hasSellerPaused'] = hasSellerPaused;
     }
     if (sellerPauseReason != null) {
-      _json["sellerPauseReason"] = sellerPauseReason;
+      _json['sellerPauseReason'] = sellerPauseReason;
     }
     return _json;
   }
@@ -6773,8 +6772,8 @@ class DealServingMetadata {
   DealServingMetadata();
 
   DealServingMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("dealPauseStatus")) {
-      dealPauseStatus = DealPauseStatus.fromJson(_json["dealPauseStatus"]);
+    if (_json.containsKey('dealPauseStatus')) {
+      dealPauseStatus = DealPauseStatus.fromJson(_json['dealPauseStatus']);
     }
   }
 
@@ -6782,7 +6781,7 @@ class DealServingMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dealPauseStatus != null) {
-      _json["dealPauseStatus"] = dealPauseStatus.toJson();
+      _json['dealPauseStatus'] = dealPauseStatus.toJson();
     }
     return _json;
   }
@@ -6830,32 +6829,32 @@ class DealTerms {
   DealTerms();
 
   DealTerms.fromJson(core.Map _json) {
-    if (_json.containsKey("brandingType")) {
-      brandingType = _json["brandingType"];
+    if (_json.containsKey('brandingType')) {
+      brandingType = _json['brandingType'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("estimatedGrossSpend")) {
-      estimatedGrossSpend = Price.fromJson(_json["estimatedGrossSpend"]);
+    if (_json.containsKey('estimatedGrossSpend')) {
+      estimatedGrossSpend = Price.fromJson(_json['estimatedGrossSpend']);
     }
-    if (_json.containsKey("estimatedImpressionsPerDay")) {
-      estimatedImpressionsPerDay = _json["estimatedImpressionsPerDay"];
+    if (_json.containsKey('estimatedImpressionsPerDay')) {
+      estimatedImpressionsPerDay = _json['estimatedImpressionsPerDay'];
     }
-    if (_json.containsKey("guaranteedFixedPriceTerms")) {
+    if (_json.containsKey('guaranteedFixedPriceTerms')) {
       guaranteedFixedPriceTerms = GuaranteedFixedPriceTerms.fromJson(
-          _json["guaranteedFixedPriceTerms"]);
+          _json['guaranteedFixedPriceTerms']);
     }
-    if (_json.containsKey("nonGuaranteedAuctionTerms")) {
+    if (_json.containsKey('nonGuaranteedAuctionTerms')) {
       nonGuaranteedAuctionTerms = NonGuaranteedAuctionTerms.fromJson(
-          _json["nonGuaranteedAuctionTerms"]);
+          _json['nonGuaranteedAuctionTerms']);
     }
-    if (_json.containsKey("nonGuaranteedFixedPriceTerms")) {
+    if (_json.containsKey('nonGuaranteedFixedPriceTerms')) {
       nonGuaranteedFixedPriceTerms = NonGuaranteedFixedPriceTerms.fromJson(
-          _json["nonGuaranteedFixedPriceTerms"]);
+          _json['nonGuaranteedFixedPriceTerms']);
     }
-    if (_json.containsKey("sellerTimeZone")) {
-      sellerTimeZone = _json["sellerTimeZone"];
+    if (_json.containsKey('sellerTimeZone')) {
+      sellerTimeZone = _json['sellerTimeZone'];
     }
   }
 
@@ -6863,29 +6862,29 @@ class DealTerms {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (brandingType != null) {
-      _json["brandingType"] = brandingType;
+      _json['brandingType'] = brandingType;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (estimatedGrossSpend != null) {
-      _json["estimatedGrossSpend"] = estimatedGrossSpend.toJson();
+      _json['estimatedGrossSpend'] = estimatedGrossSpend.toJson();
     }
     if (estimatedImpressionsPerDay != null) {
-      _json["estimatedImpressionsPerDay"] = estimatedImpressionsPerDay;
+      _json['estimatedImpressionsPerDay'] = estimatedImpressionsPerDay;
     }
     if (guaranteedFixedPriceTerms != null) {
-      _json["guaranteedFixedPriceTerms"] = guaranteedFixedPriceTerms.toJson();
+      _json['guaranteedFixedPriceTerms'] = guaranteedFixedPriceTerms.toJson();
     }
     if (nonGuaranteedAuctionTerms != null) {
-      _json["nonGuaranteedAuctionTerms"] = nonGuaranteedAuctionTerms.toJson();
+      _json['nonGuaranteedAuctionTerms'] = nonGuaranteedAuctionTerms.toJson();
     }
     if (nonGuaranteedFixedPriceTerms != null) {
-      _json["nonGuaranteedFixedPriceTerms"] =
+      _json['nonGuaranteedFixedPriceTerms'] =
           nonGuaranteedFixedPriceTerms.toJson();
     }
     if (sellerTimeZone != null) {
-      _json["sellerTimeZone"] = sellerTimeZone;
+      _json['sellerTimeZone'] = sellerTimeZone;
     }
     return _json;
   }
@@ -6917,14 +6916,14 @@ class DeliveryControl {
   DeliveryControl();
 
   DeliveryControl.fromJson(core.Map _json) {
-    if (_json.containsKey("creativeBlockingLevel")) {
-      creativeBlockingLevel = _json["creativeBlockingLevel"];
+    if (_json.containsKey('creativeBlockingLevel')) {
+      creativeBlockingLevel = _json['creativeBlockingLevel'];
     }
-    if (_json.containsKey("deliveryRateType")) {
-      deliveryRateType = _json["deliveryRateType"];
+    if (_json.containsKey('deliveryRateType')) {
+      deliveryRateType = _json['deliveryRateType'];
     }
-    if (_json.containsKey("frequencyCaps")) {
-      frequencyCaps = (_json["frequencyCaps"] as core.List)
+    if (_json.containsKey('frequencyCaps')) {
+      frequencyCaps = (_json['frequencyCaps'] as core.List)
           .map<FrequencyCap>((value) => FrequencyCap.fromJson(value))
           .toList();
     }
@@ -6934,13 +6933,13 @@ class DeliveryControl {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creativeBlockingLevel != null) {
-      _json["creativeBlockingLevel"] = creativeBlockingLevel;
+      _json['creativeBlockingLevel'] = creativeBlockingLevel;
     }
     if (deliveryRateType != null) {
-      _json["deliveryRateType"] = deliveryRateType;
+      _json['deliveryRateType'] = deliveryRateType;
     }
     if (frequencyCaps != null) {
-      _json["frequencyCaps"] =
+      _json['frequencyCaps'] =
           frequencyCaps.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -7112,11 +7111,11 @@ class Disapproval {
   Disapproval();
 
   Disapproval.fromJson(core.Map _json) {
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List).cast<core.String>();
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
   }
 
@@ -7124,10 +7123,10 @@ class Disapproval {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     return _json;
   }
@@ -7250,53 +7249,53 @@ class FilterSet {
   FilterSet();
 
   FilterSet.fromJson(core.Map _json) {
-    if (_json.containsKey("absoluteDateRange")) {
+    if (_json.containsKey('absoluteDateRange')) {
       absoluteDateRange =
-          AbsoluteDateRange.fromJson(_json["absoluteDateRange"]);
+          AbsoluteDateRange.fromJson(_json['absoluteDateRange']);
     }
-    if (_json.containsKey("breakdownDimensions")) {
+    if (_json.containsKey('breakdownDimensions')) {
       breakdownDimensions =
-          (_json["breakdownDimensions"] as core.List).cast<core.String>();
+          (_json['breakdownDimensions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("creativeId")) {
-      creativeId = _json["creativeId"];
+    if (_json.containsKey('creativeId')) {
+      creativeId = _json['creativeId'];
     }
-    if (_json.containsKey("dealId")) {
-      dealId = _json["dealId"];
+    if (_json.containsKey('dealId')) {
+      dealId = _json['dealId'];
     }
-    if (_json.containsKey("environment")) {
-      environment = _json["environment"];
+    if (_json.containsKey('environment')) {
+      environment = _json['environment'];
     }
-    if (_json.containsKey("format")) {
-      format = _json["format"];
+    if (_json.containsKey('format')) {
+      format = _json['format'];
     }
-    if (_json.containsKey("formats")) {
-      formats = (_json["formats"] as core.List).cast<core.String>();
+    if (_json.containsKey('formats')) {
+      formats = (_json['formats'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("platforms")) {
-      platforms = (_json["platforms"] as core.List).cast<core.String>();
+    if (_json.containsKey('platforms')) {
+      platforms = (_json['platforms'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("publisherIdentifiers")) {
+    if (_json.containsKey('publisherIdentifiers')) {
       publisherIdentifiers =
-          (_json["publisherIdentifiers"] as core.List).cast<core.String>();
+          (_json['publisherIdentifiers'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("realtimeTimeRange")) {
+    if (_json.containsKey('realtimeTimeRange')) {
       realtimeTimeRange =
-          RealtimeTimeRange.fromJson(_json["realtimeTimeRange"]);
+          RealtimeTimeRange.fromJson(_json['realtimeTimeRange']);
     }
-    if (_json.containsKey("relativeDateRange")) {
+    if (_json.containsKey('relativeDateRange')) {
       relativeDateRange =
-          RelativeDateRange.fromJson(_json["relativeDateRange"]);
+          RelativeDateRange.fromJson(_json['relativeDateRange']);
     }
-    if (_json.containsKey("sellerNetworkIds")) {
+    if (_json.containsKey('sellerNetworkIds')) {
       sellerNetworkIds =
-          (_json["sellerNetworkIds"] as core.List).cast<core.int>();
+          (_json['sellerNetworkIds'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("timeSeriesGranularity")) {
-      timeSeriesGranularity = _json["timeSeriesGranularity"];
+    if (_json.containsKey('timeSeriesGranularity')) {
+      timeSeriesGranularity = _json['timeSeriesGranularity'];
     }
   }
 
@@ -7304,46 +7303,46 @@ class FilterSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (absoluteDateRange != null) {
-      _json["absoluteDateRange"] = absoluteDateRange.toJson();
+      _json['absoluteDateRange'] = absoluteDateRange.toJson();
     }
     if (breakdownDimensions != null) {
-      _json["breakdownDimensions"] = breakdownDimensions;
+      _json['breakdownDimensions'] = breakdownDimensions;
     }
     if (creativeId != null) {
-      _json["creativeId"] = creativeId;
+      _json['creativeId'] = creativeId;
     }
     if (dealId != null) {
-      _json["dealId"] = dealId;
+      _json['dealId'] = dealId;
     }
     if (environment != null) {
-      _json["environment"] = environment;
+      _json['environment'] = environment;
     }
     if (format != null) {
-      _json["format"] = format;
+      _json['format'] = format;
     }
     if (formats != null) {
-      _json["formats"] = formats;
+      _json['formats'] = formats;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (platforms != null) {
-      _json["platforms"] = platforms;
+      _json['platforms'] = platforms;
     }
     if (publisherIdentifiers != null) {
-      _json["publisherIdentifiers"] = publisherIdentifiers;
+      _json['publisherIdentifiers'] = publisherIdentifiers;
     }
     if (realtimeTimeRange != null) {
-      _json["realtimeTimeRange"] = realtimeTimeRange.toJson();
+      _json['realtimeTimeRange'] = realtimeTimeRange.toJson();
     }
     if (relativeDateRange != null) {
-      _json["relativeDateRange"] = relativeDateRange.toJson();
+      _json['relativeDateRange'] = relativeDateRange.toJson();
     }
     if (sellerNetworkIds != null) {
-      _json["sellerNetworkIds"] = sellerNetworkIds;
+      _json['sellerNetworkIds'] = sellerNetworkIds;
     }
     if (timeSeriesGranularity != null) {
-      _json["timeSeriesGranularity"] = timeSeriesGranularity;
+      _json['timeSeriesGranularity'] = timeSeriesGranularity;
     }
     return _json;
   }
@@ -7364,14 +7363,14 @@ class FilteredBidCreativeRow {
   FilteredBidCreativeRow();
 
   FilteredBidCreativeRow.fromJson(core.Map _json) {
-    if (_json.containsKey("bidCount")) {
-      bidCount = MetricValue.fromJson(_json["bidCount"]);
+    if (_json.containsKey('bidCount')) {
+      bidCount = MetricValue.fromJson(_json['bidCount']);
     }
-    if (_json.containsKey("creativeId")) {
-      creativeId = _json["creativeId"];
+    if (_json.containsKey('creativeId')) {
+      creativeId = _json['creativeId'];
     }
-    if (_json.containsKey("rowDimensions")) {
-      rowDimensions = RowDimensions.fromJson(_json["rowDimensions"]);
+    if (_json.containsKey('rowDimensions')) {
+      rowDimensions = RowDimensions.fromJson(_json['rowDimensions']);
     }
   }
 
@@ -7379,13 +7378,13 @@ class FilteredBidCreativeRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bidCount != null) {
-      _json["bidCount"] = bidCount.toJson();
+      _json['bidCount'] = bidCount.toJson();
     }
     if (creativeId != null) {
-      _json["creativeId"] = creativeId;
+      _json['creativeId'] = creativeId;
     }
     if (rowDimensions != null) {
-      _json["rowDimensions"] = rowDimensions.toJson();
+      _json['rowDimensions'] = rowDimensions.toJson();
     }
     return _json;
   }
@@ -7416,17 +7415,17 @@ class FilteredBidDetailRow {
   FilteredBidDetailRow();
 
   FilteredBidDetailRow.fromJson(core.Map _json) {
-    if (_json.containsKey("bidCount")) {
-      bidCount = MetricValue.fromJson(_json["bidCount"]);
+    if (_json.containsKey('bidCount')) {
+      bidCount = MetricValue.fromJson(_json['bidCount']);
     }
-    if (_json.containsKey("detail")) {
-      detail = _json["detail"];
+    if (_json.containsKey('detail')) {
+      detail = _json['detail'];
     }
-    if (_json.containsKey("detailId")) {
-      detailId = _json["detailId"];
+    if (_json.containsKey('detailId')) {
+      detailId = _json['detailId'];
     }
-    if (_json.containsKey("rowDimensions")) {
-      rowDimensions = RowDimensions.fromJson(_json["rowDimensions"]);
+    if (_json.containsKey('rowDimensions')) {
+      rowDimensions = RowDimensions.fromJson(_json['rowDimensions']);
     }
   }
 
@@ -7434,16 +7433,16 @@ class FilteredBidDetailRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bidCount != null) {
-      _json["bidCount"] = bidCount.toJson();
+      _json['bidCount'] = bidCount.toJson();
     }
     if (detail != null) {
-      _json["detail"] = detail;
+      _json['detail'] = detail;
     }
     if (detailId != null) {
-      _json["detailId"] = detailId;
+      _json['detailId'] = detailId;
     }
     if (rowDimensions != null) {
-      _json["rowDimensions"] = rowDimensions.toJson();
+      _json['rowDimensions'] = rowDimensions.toJson();
     }
     return _json;
   }
@@ -7465,13 +7464,13 @@ class FirstPartyMobileApplicationTargeting {
   FirstPartyMobileApplicationTargeting();
 
   FirstPartyMobileApplicationTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("excludedAppIds")) {
+    if (_json.containsKey('excludedAppIds')) {
       excludedAppIds =
-          (_json["excludedAppIds"] as core.List).cast<core.String>();
+          (_json['excludedAppIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("targetedAppIds")) {
+    if (_json.containsKey('targetedAppIds')) {
       targetedAppIds =
-          (_json["targetedAppIds"] as core.List).cast<core.String>();
+          (_json['targetedAppIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -7479,10 +7478,10 @@ class FirstPartyMobileApplicationTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludedAppIds != null) {
-      _json["excludedAppIds"] = excludedAppIds;
+      _json['excludedAppIds'] = excludedAppIds;
     }
     if (targetedAppIds != null) {
-      _json["targetedAppIds"] = targetedAppIds;
+      _json['targetedAppIds'] = targetedAppIds;
     }
     return _json;
   }
@@ -7515,14 +7514,14 @@ class FrequencyCap {
   FrequencyCap();
 
   FrequencyCap.fromJson(core.Map _json) {
-    if (_json.containsKey("maxImpressions")) {
-      maxImpressions = _json["maxImpressions"];
+    if (_json.containsKey('maxImpressions')) {
+      maxImpressions = _json['maxImpressions'];
     }
-    if (_json.containsKey("numTimeUnits")) {
-      numTimeUnits = _json["numTimeUnits"];
+    if (_json.containsKey('numTimeUnits')) {
+      numTimeUnits = _json['numTimeUnits'];
     }
-    if (_json.containsKey("timeUnitType")) {
-      timeUnitType = _json["timeUnitType"];
+    if (_json.containsKey('timeUnitType')) {
+      timeUnitType = _json['timeUnitType'];
     }
   }
 
@@ -7530,13 +7529,13 @@ class FrequencyCap {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxImpressions != null) {
-      _json["maxImpressions"] = maxImpressions;
+      _json['maxImpressions'] = maxImpressions;
     }
     if (numTimeUnits != null) {
-      _json["numTimeUnits"] = numTimeUnits;
+      _json['numTimeUnits'] = numTimeUnits;
     }
     if (timeUnitType != null) {
-      _json["timeUnitType"] = timeUnitType;
+      _json['timeUnitType'] = timeUnitType;
     }
     return _json;
   }
@@ -7560,19 +7559,19 @@ class GuaranteedFixedPriceTerms {
   GuaranteedFixedPriceTerms();
 
   GuaranteedFixedPriceTerms.fromJson(core.Map _json) {
-    if (_json.containsKey("fixedPrices")) {
-      fixedPrices = (_json["fixedPrices"] as core.List)
+    if (_json.containsKey('fixedPrices')) {
+      fixedPrices = (_json['fixedPrices'] as core.List)
           .map<PricePerBuyer>((value) => PricePerBuyer.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("guaranteedImpressions")) {
-      guaranteedImpressions = _json["guaranteedImpressions"];
+    if (_json.containsKey('guaranteedImpressions')) {
+      guaranteedImpressions = _json['guaranteedImpressions'];
     }
-    if (_json.containsKey("guaranteedLooks")) {
-      guaranteedLooks = _json["guaranteedLooks"];
+    if (_json.containsKey('guaranteedLooks')) {
+      guaranteedLooks = _json['guaranteedLooks'];
     }
-    if (_json.containsKey("minimumDailyLooks")) {
-      minimumDailyLooks = _json["minimumDailyLooks"];
+    if (_json.containsKey('minimumDailyLooks')) {
+      minimumDailyLooks = _json['minimumDailyLooks'];
     }
   }
 
@@ -7580,17 +7579,17 @@ class GuaranteedFixedPriceTerms {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fixedPrices != null) {
-      _json["fixedPrices"] =
+      _json['fixedPrices'] =
           fixedPrices.map((value) => value.toJson()).toList();
     }
     if (guaranteedImpressions != null) {
-      _json["guaranteedImpressions"] = guaranteedImpressions;
+      _json['guaranteedImpressions'] = guaranteedImpressions;
     }
     if (guaranteedLooks != null) {
-      _json["guaranteedLooks"] = guaranteedLooks;
+      _json['guaranteedLooks'] = guaranteedLooks;
     }
     if (minimumDailyLooks != null) {
-      _json["minimumDailyLooks"] = minimumDailyLooks;
+      _json['minimumDailyLooks'] = minimumDailyLooks;
     }
     return _json;
   }
@@ -7610,14 +7609,14 @@ class HtmlContent {
   HtmlContent();
 
   HtmlContent.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = _json["snippet"];
+    if (_json.containsKey('snippet')) {
+      snippet = _json['snippet'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -7625,13 +7624,13 @@ class HtmlContent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet;
+      _json['snippet'] = snippet;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -7652,14 +7651,14 @@ class Image {
   Image();
 
   Image.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -7667,13 +7666,13 @@ class Image {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -7708,24 +7707,24 @@ class ImpressionMetricsRow {
   ImpressionMetricsRow();
 
   ImpressionMetricsRow.fromJson(core.Map _json) {
-    if (_json.containsKey("availableImpressions")) {
+    if (_json.containsKey('availableImpressions')) {
       availableImpressions =
-          MetricValue.fromJson(_json["availableImpressions"]);
+          MetricValue.fromJson(_json['availableImpressions']);
     }
-    if (_json.containsKey("bidRequests")) {
-      bidRequests = MetricValue.fromJson(_json["bidRequests"]);
+    if (_json.containsKey('bidRequests')) {
+      bidRequests = MetricValue.fromJson(_json['bidRequests']);
     }
-    if (_json.containsKey("inventoryMatches")) {
-      inventoryMatches = MetricValue.fromJson(_json["inventoryMatches"]);
+    if (_json.containsKey('inventoryMatches')) {
+      inventoryMatches = MetricValue.fromJson(_json['inventoryMatches']);
     }
-    if (_json.containsKey("responsesWithBids")) {
-      responsesWithBids = MetricValue.fromJson(_json["responsesWithBids"]);
+    if (_json.containsKey('responsesWithBids')) {
+      responsesWithBids = MetricValue.fromJson(_json['responsesWithBids']);
     }
-    if (_json.containsKey("rowDimensions")) {
-      rowDimensions = RowDimensions.fromJson(_json["rowDimensions"]);
+    if (_json.containsKey('rowDimensions')) {
+      rowDimensions = RowDimensions.fromJson(_json['rowDimensions']);
     }
-    if (_json.containsKey("successfulResponses")) {
-      successfulResponses = MetricValue.fromJson(_json["successfulResponses"]);
+    if (_json.containsKey('successfulResponses')) {
+      successfulResponses = MetricValue.fromJson(_json['successfulResponses']);
     }
   }
 
@@ -7733,22 +7732,22 @@ class ImpressionMetricsRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (availableImpressions != null) {
-      _json["availableImpressions"] = availableImpressions.toJson();
+      _json['availableImpressions'] = availableImpressions.toJson();
     }
     if (bidRequests != null) {
-      _json["bidRequests"] = bidRequests.toJson();
+      _json['bidRequests'] = bidRequests.toJson();
     }
     if (inventoryMatches != null) {
-      _json["inventoryMatches"] = inventoryMatches.toJson();
+      _json['inventoryMatches'] = inventoryMatches.toJson();
     }
     if (responsesWithBids != null) {
-      _json["responsesWithBids"] = responsesWithBids.toJson();
+      _json['responsesWithBids'] = responsesWithBids.toJson();
     }
     if (rowDimensions != null) {
-      _json["rowDimensions"] = rowDimensions.toJson();
+      _json['rowDimensions'] = rowDimensions.toJson();
     }
     if (successfulResponses != null) {
-      _json["successfulResponses"] = successfulResponses.toJson();
+      _json['successfulResponses'] = successfulResponses.toJson();
     }
     return _json;
   }
@@ -7768,13 +7767,13 @@ class InventorySizeTargeting {
   InventorySizeTargeting();
 
   InventorySizeTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("excludedInventorySizes")) {
-      excludedInventorySizes = (_json["excludedInventorySizes"] as core.List)
+    if (_json.containsKey('excludedInventorySizes')) {
+      excludedInventorySizes = (_json['excludedInventorySizes'] as core.List)
           .map<AdSize>((value) => AdSize.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("targetedInventorySizes")) {
-      targetedInventorySizes = (_json["targetedInventorySizes"] as core.List)
+    if (_json.containsKey('targetedInventorySizes')) {
+      targetedInventorySizes = (_json['targetedInventorySizes'] as core.List)
           .map<AdSize>((value) => AdSize.fromJson(value))
           .toList();
     }
@@ -7784,11 +7783,11 @@ class InventorySizeTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludedInventorySizes != null) {
-      _json["excludedInventorySizes"] =
+      _json['excludedInventorySizes'] =
           excludedInventorySizes.map((value) => value.toJson()).toList();
     }
     if (targetedInventorySizes != null) {
-      _json["targetedInventorySizes"] =
+      _json['targetedInventorySizes'] =
           targetedInventorySizes.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -7809,13 +7808,13 @@ class ListBidMetricsResponse {
   ListBidMetricsResponse();
 
   ListBidMetricsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("bidMetricsRows")) {
-      bidMetricsRows = (_json["bidMetricsRows"] as core.List)
+    if (_json.containsKey('bidMetricsRows')) {
+      bidMetricsRows = (_json['bidMetricsRows'] as core.List)
           .map<BidMetricsRow>((value) => BidMetricsRow.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7823,11 +7822,11 @@ class ListBidMetricsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bidMetricsRows != null) {
-      _json["bidMetricsRows"] =
+      _json['bidMetricsRows'] =
           bidMetricsRows.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7847,13 +7846,13 @@ class ListBidResponseErrorsResponse {
   ListBidResponseErrorsResponse();
 
   ListBidResponseErrorsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("calloutStatusRows")) {
-      calloutStatusRows = (_json["calloutStatusRows"] as core.List)
+    if (_json.containsKey('calloutStatusRows')) {
+      calloutStatusRows = (_json['calloutStatusRows'] as core.List)
           .map<CalloutStatusRow>((value) => CalloutStatusRow.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7861,11 +7860,11 @@ class ListBidResponseErrorsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (calloutStatusRows != null) {
-      _json["calloutStatusRows"] =
+      _json['calloutStatusRows'] =
           calloutStatusRows.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7887,15 +7886,15 @@ class ListBidResponsesWithoutBidsResponse {
   ListBidResponsesWithoutBidsResponse();
 
   ListBidResponsesWithoutBidsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("bidResponseWithoutBidsStatusRows")) {
+    if (_json.containsKey('bidResponseWithoutBidsStatusRows')) {
       bidResponseWithoutBidsStatusRows =
-          (_json["bidResponseWithoutBidsStatusRows"] as core.List)
+          (_json['bidResponseWithoutBidsStatusRows'] as core.List)
               .map<BidResponseWithoutBidsStatusRow>(
                   (value) => BidResponseWithoutBidsStatusRow.fromJson(value))
               .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7903,13 +7902,13 @@ class ListBidResponsesWithoutBidsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bidResponseWithoutBidsStatusRows != null) {
-      _json["bidResponseWithoutBidsStatusRows"] =
+      _json['bidResponseWithoutBidsStatusRows'] =
           bidResponseWithoutBidsStatusRows
               .map((value) => value.toJson())
               .toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7927,14 +7926,14 @@ class ListClientUserInvitationsResponse {
   ListClientUserInvitationsResponse();
 
   ListClientUserInvitationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("invitations")) {
-      invitations = (_json["invitations"] as core.List)
+    if (_json.containsKey('invitations')) {
+      invitations = (_json['invitations'] as core.List)
           .map<ClientUserInvitation>(
               (value) => ClientUserInvitation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -7942,11 +7941,11 @@ class ListClientUserInvitationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (invitations != null) {
-      _json["invitations"] =
+      _json['invitations'] =
           invitations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -7964,11 +7963,11 @@ class ListClientUsersResponse {
   ListClientUsersResponse();
 
   ListClientUsersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("users")) {
-      users = (_json["users"] as core.List)
+    if (_json.containsKey('users')) {
+      users = (_json['users'] as core.List)
           .map<ClientUser>((value) => ClientUser.fromJson(value))
           .toList();
     }
@@ -7978,10 +7977,10 @@ class ListClientUsersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (users != null) {
-      _json["users"] = users.map((value) => value.toJson()).toList();
+      _json['users'] = users.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7999,13 +7998,13 @@ class ListClientsResponse {
   ListClientsResponse();
 
   ListClientsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("clients")) {
-      clients = (_json["clients"] as core.List)
+    if (_json.containsKey('clients')) {
+      clients = (_json['clients'] as core.List)
           .map<Client>((value) => Client.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8013,10 +8012,10 @@ class ListClientsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clients != null) {
-      _json["clients"] = clients.map((value) => value.toJson()).toList();
+      _json['clients'] = clients.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8038,14 +8037,14 @@ class ListCreativeStatusBreakdownByCreativeResponse {
   ListCreativeStatusBreakdownByCreativeResponse();
 
   ListCreativeStatusBreakdownByCreativeResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("filteredBidCreativeRows")) {
-      filteredBidCreativeRows = (_json["filteredBidCreativeRows"] as core.List)
+    if (_json.containsKey('filteredBidCreativeRows')) {
+      filteredBidCreativeRows = (_json['filteredBidCreativeRows'] as core.List)
           .map<FilteredBidCreativeRow>(
               (value) => FilteredBidCreativeRow.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8053,11 +8052,11 @@ class ListCreativeStatusBreakdownByCreativeResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filteredBidCreativeRows != null) {
-      _json["filteredBidCreativeRows"] =
+      _json['filteredBidCreativeRows'] =
           filteredBidCreativeRows.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8100,17 +8099,17 @@ class ListCreativeStatusBreakdownByDetailResponse {
   ListCreativeStatusBreakdownByDetailResponse();
 
   ListCreativeStatusBreakdownByDetailResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("detailType")) {
-      detailType = _json["detailType"];
+    if (_json.containsKey('detailType')) {
+      detailType = _json['detailType'];
     }
-    if (_json.containsKey("filteredBidDetailRows")) {
-      filteredBidDetailRows = (_json["filteredBidDetailRows"] as core.List)
+    if (_json.containsKey('filteredBidDetailRows')) {
+      filteredBidDetailRows = (_json['filteredBidDetailRows'] as core.List)
           .map<FilteredBidDetailRow>(
               (value) => FilteredBidDetailRow.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8118,14 +8117,14 @@ class ListCreativeStatusBreakdownByDetailResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detailType != null) {
-      _json["detailType"] = detailType;
+      _json['detailType'] = detailType;
     }
     if (filteredBidDetailRows != null) {
-      _json["filteredBidDetailRows"] =
+      _json['filteredBidDetailRows'] =
           filteredBidDetailRows.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8144,13 +8143,13 @@ class ListCreativesResponse {
   ListCreativesResponse();
 
   ListCreativesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("creatives")) {
-      creatives = (_json["creatives"] as core.List)
+    if (_json.containsKey('creatives')) {
+      creatives = (_json['creatives'] as core.List)
           .map<Creative>((value) => Creative.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8158,10 +8157,10 @@ class ListCreativesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creatives != null) {
-      _json["creatives"] = creatives.map((value) => value.toJson()).toList();
+      _json['creatives'] = creatives.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8180,14 +8179,14 @@ class ListDealAssociationsResponse {
   ListDealAssociationsResponse();
 
   ListDealAssociationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("associations")) {
-      associations = (_json["associations"] as core.List)
+    if (_json.containsKey('associations')) {
+      associations = (_json['associations'] as core.List)
           .map<CreativeDealAssociation>(
               (value) => CreativeDealAssociation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8195,11 +8194,11 @@ class ListDealAssociationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (associations != null) {
-      _json["associations"] =
+      _json['associations'] =
           associations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8218,13 +8217,13 @@ class ListFilterSetsResponse {
   ListFilterSetsResponse();
 
   ListFilterSetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("filterSets")) {
-      filterSets = (_json["filterSets"] as core.List)
+    if (_json.containsKey('filterSets')) {
+      filterSets = (_json['filterSets'] as core.List)
           .map<FilterSet>((value) => FilterSet.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8232,10 +8231,10 @@ class ListFilterSetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filterSets != null) {
-      _json["filterSets"] = filterSets.map((value) => value.toJson()).toList();
+      _json['filterSets'] = filterSets.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8256,13 +8255,13 @@ class ListFilteredBidRequestsResponse {
   ListFilteredBidRequestsResponse();
 
   ListFilteredBidRequestsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("calloutStatusRows")) {
-      calloutStatusRows = (_json["calloutStatusRows"] as core.List)
+    if (_json.containsKey('calloutStatusRows')) {
+      calloutStatusRows = (_json['calloutStatusRows'] as core.List)
           .map<CalloutStatusRow>((value) => CalloutStatusRow.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8270,11 +8269,11 @@ class ListFilteredBidRequestsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (calloutStatusRows != null) {
-      _json["calloutStatusRows"] =
+      _json['calloutStatusRows'] =
           calloutStatusRows.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8295,13 +8294,13 @@ class ListFilteredBidsResponse {
   ListFilteredBidsResponse();
 
   ListFilteredBidsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("creativeStatusRows")) {
-      creativeStatusRows = (_json["creativeStatusRows"] as core.List)
+    if (_json.containsKey('creativeStatusRows')) {
+      creativeStatusRows = (_json['creativeStatusRows'] as core.List)
           .map<CreativeStatusRow>((value) => CreativeStatusRow.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8309,11 +8308,11 @@ class ListFilteredBidsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creativeStatusRows != null) {
-      _json["creativeStatusRows"] =
+      _json['creativeStatusRows'] =
           creativeStatusRows.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8333,14 +8332,14 @@ class ListImpressionMetricsResponse {
   ListImpressionMetricsResponse();
 
   ListImpressionMetricsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("impressionMetricsRows")) {
-      impressionMetricsRows = (_json["impressionMetricsRows"] as core.List)
+    if (_json.containsKey('impressionMetricsRows')) {
+      impressionMetricsRows = (_json['impressionMetricsRows'] as core.List)
           .map<ImpressionMetricsRow>(
               (value) => ImpressionMetricsRow.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8348,11 +8347,11 @@ class ListImpressionMetricsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (impressionMetricsRows != null) {
-      _json["impressionMetricsRows"] =
+      _json['impressionMetricsRows'] =
           impressionMetricsRows.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8372,13 +8371,13 @@ class ListLosingBidsResponse {
   ListLosingBidsResponse();
 
   ListLosingBidsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("creativeStatusRows")) {
-      creativeStatusRows = (_json["creativeStatusRows"] as core.List)
+    if (_json.containsKey('creativeStatusRows')) {
+      creativeStatusRows = (_json['creativeStatusRows'] as core.List)
           .map<CreativeStatusRow>((value) => CreativeStatusRow.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -8386,11 +8385,11 @@ class ListLosingBidsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creativeStatusRows != null) {
-      _json["creativeStatusRows"] =
+      _json['creativeStatusRows'] =
           creativeStatusRows.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -8411,12 +8410,12 @@ class ListNonBillableWinningBidsResponse {
   ListNonBillableWinningBidsResponse();
 
   ListNonBillableWinningBidsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("nonBillableWinningBidStatusRows")) {
+    if (_json.containsKey('nonBillableWinningBidStatusRows')) {
       nonBillableWinningBidStatusRows =
-          (_json["nonBillableWinningBidStatusRows"] as core.List)
+          (_json['nonBillableWinningBidStatusRows'] as core.List)
               .map<NonBillableWinningBidStatusRow>(
                   (value) => NonBillableWinningBidStatusRow.fromJson(value))
               .toList();
@@ -8427,10 +8426,10 @@ class ListNonBillableWinningBidsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (nonBillableWinningBidStatusRows != null) {
-      _json["nonBillableWinningBidStatusRows"] = nonBillableWinningBidStatusRows
+      _json['nonBillableWinningBidStatusRows'] = nonBillableWinningBidStatusRows
           .map((value) => value.toJson())
           .toList();
     }
@@ -8449,11 +8448,11 @@ class ListProductsResponse {
   ListProductsResponse();
 
   ListProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("products")) {
-      products = (_json["products"] as core.List)
+    if (_json.containsKey('products')) {
+      products = (_json['products'] as core.List)
           .map<Product>((value) => Product.fromJson(value))
           .toList();
     }
@@ -8463,10 +8462,10 @@ class ListProductsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (products != null) {
-      _json["products"] = products.map((value) => value.toJson()).toList();
+      _json['products'] = products.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8483,11 +8482,11 @@ class ListProposalsResponse {
   ListProposalsResponse();
 
   ListProposalsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("proposals")) {
-      proposals = (_json["proposals"] as core.List)
+    if (_json.containsKey('proposals')) {
+      proposals = (_json['proposals'] as core.List)
           .map<Proposal>((value) => Proposal.fromJson(value))
           .toList();
     }
@@ -8497,10 +8496,10 @@ class ListProposalsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (proposals != null) {
-      _json["proposals"] = proposals.map((value) => value.toJson()).toList();
+      _json['proposals'] = proposals.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8517,11 +8516,11 @@ class ListPublisherProfilesResponse {
   ListPublisherProfilesResponse();
 
   ListPublisherProfilesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("publisherProfiles")) {
-      publisherProfiles = (_json["publisherProfiles"] as core.List)
+    if (_json.containsKey('publisherProfiles')) {
+      publisherProfiles = (_json['publisherProfiles'] as core.List)
           .map<PublisherProfile>((value) => PublisherProfile.fromJson(value))
           .toList();
     }
@@ -8531,10 +8530,10 @@ class ListPublisherProfilesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (publisherProfiles != null) {
-      _json["publisherProfiles"] =
+      _json['publisherProfiles'] =
           publisherProfiles.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -8551,8 +8550,8 @@ class LocationContext {
   LocationContext();
 
   LocationContext.fromJson(core.Map _json) {
-    if (_json.containsKey("geoCriteriaIds")) {
-      geoCriteriaIds = (_json["geoCriteriaIds"] as core.List).cast<core.int>();
+    if (_json.containsKey('geoCriteriaIds')) {
+      geoCriteriaIds = (_json['geoCriteriaIds'] as core.List).cast<core.int>();
     }
   }
 
@@ -8560,7 +8559,7 @@ class LocationContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (geoCriteriaIds != null) {
-      _json["geoCriteriaIds"] = geoCriteriaIds;
+      _json['geoCriteriaIds'] = geoCriteriaIds;
     }
     return _json;
   }
@@ -8589,23 +8588,23 @@ class MarketplaceTargeting {
   MarketplaceTargeting();
 
   MarketplaceTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("geoTargeting")) {
-      geoTargeting = CriteriaTargeting.fromJson(_json["geoTargeting"]);
+    if (_json.containsKey('geoTargeting')) {
+      geoTargeting = CriteriaTargeting.fromJson(_json['geoTargeting']);
     }
-    if (_json.containsKey("inventorySizeTargeting")) {
+    if (_json.containsKey('inventorySizeTargeting')) {
       inventorySizeTargeting =
-          InventorySizeTargeting.fromJson(_json["inventorySizeTargeting"]);
+          InventorySizeTargeting.fromJson(_json['inventorySizeTargeting']);
     }
-    if (_json.containsKey("placementTargeting")) {
+    if (_json.containsKey('placementTargeting')) {
       placementTargeting =
-          PlacementTargeting.fromJson(_json["placementTargeting"]);
+          PlacementTargeting.fromJson(_json['placementTargeting']);
     }
-    if (_json.containsKey("technologyTargeting")) {
+    if (_json.containsKey('technologyTargeting')) {
       technologyTargeting =
-          TechnologyTargeting.fromJson(_json["technologyTargeting"]);
+          TechnologyTargeting.fromJson(_json['technologyTargeting']);
     }
-    if (_json.containsKey("videoTargeting")) {
-      videoTargeting = VideoTargeting.fromJson(_json["videoTargeting"]);
+    if (_json.containsKey('videoTargeting')) {
+      videoTargeting = VideoTargeting.fromJson(_json['videoTargeting']);
     }
   }
 
@@ -8613,19 +8612,19 @@ class MarketplaceTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (geoTargeting != null) {
-      _json["geoTargeting"] = geoTargeting.toJson();
+      _json['geoTargeting'] = geoTargeting.toJson();
     }
     if (inventorySizeTargeting != null) {
-      _json["inventorySizeTargeting"] = inventorySizeTargeting.toJson();
+      _json['inventorySizeTargeting'] = inventorySizeTargeting.toJson();
     }
     if (placementTargeting != null) {
-      _json["placementTargeting"] = placementTargeting.toJson();
+      _json['placementTargeting'] = placementTargeting.toJson();
     }
     if (technologyTargeting != null) {
-      _json["technologyTargeting"] = technologyTargeting.toJson();
+      _json['technologyTargeting'] = technologyTargeting.toJson();
     }
     if (videoTargeting != null) {
-      _json["videoTargeting"] = videoTargeting.toJson();
+      _json['videoTargeting'] = videoTargeting.toJson();
     }
     return _json;
   }
@@ -8648,11 +8647,11 @@ class MetricValue {
   MetricValue();
 
   MetricValue.fromJson(core.Map _json) {
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
-    if (_json.containsKey("variance")) {
-      variance = _json["variance"];
+    if (_json.containsKey('variance')) {
+      variance = _json['variance'];
     }
   }
 
@@ -8660,10 +8659,10 @@ class MetricValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     if (variance != null) {
-      _json["variance"] = variance;
+      _json['variance'] = variance;
     }
     return _json;
   }
@@ -8678,9 +8677,9 @@ class MobileApplicationTargeting {
   MobileApplicationTargeting();
 
   MobileApplicationTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("firstPartyTargeting")) {
+    if (_json.containsKey('firstPartyTargeting')) {
       firstPartyTargeting = FirstPartyMobileApplicationTargeting.fromJson(
-          _json["firstPartyTargeting"]);
+          _json['firstPartyTargeting']);
     }
   }
 
@@ -8688,7 +8687,7 @@ class MobileApplicationTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (firstPartyTargeting != null) {
-      _json["firstPartyTargeting"] = firstPartyTargeting.toJson();
+      _json['firstPartyTargeting'] = firstPartyTargeting.toJson();
     }
     return _json;
   }
@@ -8714,14 +8713,14 @@ class Money {
   Money();
 
   Money.fromJson(core.Map _json) {
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'];
     }
-    if (_json.containsKey("units")) {
-      units = _json["units"];
+    if (_json.containsKey('units')) {
+      units = _json['units'];
     }
   }
 
@@ -8729,13 +8728,13 @@ class Money {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     if (nanos != null) {
-      _json["nanos"] = nanos;
+      _json['nanos'] = nanos;
     }
     if (units != null) {
-      _json["units"] = units;
+      _json['units'] = units;
     }
     return _json;
   }
@@ -8785,44 +8784,44 @@ class NativeContent {
   NativeContent();
 
   NativeContent.fromJson(core.Map _json) {
-    if (_json.containsKey("advertiserName")) {
-      advertiserName = _json["advertiserName"];
+    if (_json.containsKey('advertiserName')) {
+      advertiserName = _json['advertiserName'];
     }
-    if (_json.containsKey("appIcon")) {
-      appIcon = Image.fromJson(_json["appIcon"]);
+    if (_json.containsKey('appIcon')) {
+      appIcon = Image.fromJson(_json['appIcon']);
     }
-    if (_json.containsKey("body")) {
-      body = _json["body"];
+    if (_json.containsKey('body')) {
+      body = _json['body'];
     }
-    if (_json.containsKey("callToAction")) {
-      callToAction = _json["callToAction"];
+    if (_json.containsKey('callToAction')) {
+      callToAction = _json['callToAction'];
     }
-    if (_json.containsKey("clickLinkUrl")) {
-      clickLinkUrl = _json["clickLinkUrl"];
+    if (_json.containsKey('clickLinkUrl')) {
+      clickLinkUrl = _json['clickLinkUrl'];
     }
-    if (_json.containsKey("clickTrackingUrl")) {
-      clickTrackingUrl = _json["clickTrackingUrl"];
+    if (_json.containsKey('clickTrackingUrl')) {
+      clickTrackingUrl = _json['clickTrackingUrl'];
     }
-    if (_json.containsKey("headline")) {
-      headline = _json["headline"];
+    if (_json.containsKey('headline')) {
+      headline = _json['headline'];
     }
-    if (_json.containsKey("image")) {
-      image = Image.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = Image.fromJson(_json['image']);
     }
-    if (_json.containsKey("logo")) {
-      logo = Image.fromJson(_json["logo"]);
+    if (_json.containsKey('logo')) {
+      logo = Image.fromJson(_json['logo']);
     }
-    if (_json.containsKey("priceDisplayText")) {
-      priceDisplayText = _json["priceDisplayText"];
+    if (_json.containsKey('priceDisplayText')) {
+      priceDisplayText = _json['priceDisplayText'];
     }
-    if (_json.containsKey("starRating")) {
-      starRating = _json["starRating"].toDouble();
+    if (_json.containsKey('starRating')) {
+      starRating = _json['starRating'].toDouble();
     }
-    if (_json.containsKey("storeUrl")) {
-      storeUrl = _json["storeUrl"];
+    if (_json.containsKey('storeUrl')) {
+      storeUrl = _json['storeUrl'];
     }
-    if (_json.containsKey("videoUrl")) {
-      videoUrl = _json["videoUrl"];
+    if (_json.containsKey('videoUrl')) {
+      videoUrl = _json['videoUrl'];
     }
   }
 
@@ -8830,43 +8829,43 @@ class NativeContent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (advertiserName != null) {
-      _json["advertiserName"] = advertiserName;
+      _json['advertiserName'] = advertiserName;
     }
     if (appIcon != null) {
-      _json["appIcon"] = appIcon.toJson();
+      _json['appIcon'] = appIcon.toJson();
     }
     if (body != null) {
-      _json["body"] = body;
+      _json['body'] = body;
     }
     if (callToAction != null) {
-      _json["callToAction"] = callToAction;
+      _json['callToAction'] = callToAction;
     }
     if (clickLinkUrl != null) {
-      _json["clickLinkUrl"] = clickLinkUrl;
+      _json['clickLinkUrl'] = clickLinkUrl;
     }
     if (clickTrackingUrl != null) {
-      _json["clickTrackingUrl"] = clickTrackingUrl;
+      _json['clickTrackingUrl'] = clickTrackingUrl;
     }
     if (headline != null) {
-      _json["headline"] = headline;
+      _json['headline'] = headline;
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (logo != null) {
-      _json["logo"] = logo.toJson();
+      _json['logo'] = logo.toJson();
     }
     if (priceDisplayText != null) {
-      _json["priceDisplayText"] = priceDisplayText;
+      _json['priceDisplayText'] = priceDisplayText;
     }
     if (starRating != null) {
-      _json["starRating"] = starRating;
+      _json['starRating'] = starRating;
     }
     if (storeUrl != null) {
-      _json["storeUrl"] = storeUrl;
+      _json['storeUrl'] = storeUrl;
     }
     if (videoUrl != null) {
-      _json["videoUrl"] = videoUrl;
+      _json['videoUrl'] = videoUrl;
     }
     return _json;
   }
@@ -8898,14 +8897,14 @@ class NonBillableWinningBidStatusRow {
   NonBillableWinningBidStatusRow();
 
   NonBillableWinningBidStatusRow.fromJson(core.Map _json) {
-    if (_json.containsKey("bidCount")) {
-      bidCount = MetricValue.fromJson(_json["bidCount"]);
+    if (_json.containsKey('bidCount')) {
+      bidCount = MetricValue.fromJson(_json['bidCount']);
     }
-    if (_json.containsKey("rowDimensions")) {
-      rowDimensions = RowDimensions.fromJson(_json["rowDimensions"]);
+    if (_json.containsKey('rowDimensions')) {
+      rowDimensions = RowDimensions.fromJson(_json['rowDimensions']);
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
   }
 
@@ -8913,13 +8912,13 @@ class NonBillableWinningBidStatusRow {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bidCount != null) {
-      _json["bidCount"] = bidCount.toJson();
+      _json['bidCount'] = bidCount.toJson();
     }
     if (rowDimensions != null) {
-      _json["rowDimensions"] = rowDimensions.toJson();
+      _json['rowDimensions'] = rowDimensions.toJson();
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     return _json;
   }
@@ -8938,11 +8937,11 @@ class NonGuaranteedAuctionTerms {
   NonGuaranteedAuctionTerms();
 
   NonGuaranteedAuctionTerms.fromJson(core.Map _json) {
-    if (_json.containsKey("autoOptimizePrivateAuction")) {
-      autoOptimizePrivateAuction = _json["autoOptimizePrivateAuction"];
+    if (_json.containsKey('autoOptimizePrivateAuction')) {
+      autoOptimizePrivateAuction = _json['autoOptimizePrivateAuction'];
     }
-    if (_json.containsKey("reservePricesPerBuyer")) {
-      reservePricesPerBuyer = (_json["reservePricesPerBuyer"] as core.List)
+    if (_json.containsKey('reservePricesPerBuyer')) {
+      reservePricesPerBuyer = (_json['reservePricesPerBuyer'] as core.List)
           .map<PricePerBuyer>((value) => PricePerBuyer.fromJson(value))
           .toList();
     }
@@ -8952,10 +8951,10 @@ class NonGuaranteedAuctionTerms {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (autoOptimizePrivateAuction != null) {
-      _json["autoOptimizePrivateAuction"] = autoOptimizePrivateAuction;
+      _json['autoOptimizePrivateAuction'] = autoOptimizePrivateAuction;
     }
     if (reservePricesPerBuyer != null) {
-      _json["reservePricesPerBuyer"] =
+      _json['reservePricesPerBuyer'] =
           reservePricesPerBuyer.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -8971,8 +8970,8 @@ class NonGuaranteedFixedPriceTerms {
   NonGuaranteedFixedPriceTerms();
 
   NonGuaranteedFixedPriceTerms.fromJson(core.Map _json) {
-    if (_json.containsKey("fixedPrices")) {
-      fixedPrices = (_json["fixedPrices"] as core.List)
+    if (_json.containsKey('fixedPrices')) {
+      fixedPrices = (_json['fixedPrices'] as core.List)
           .map<PricePerBuyer>((value) => PricePerBuyer.fromJson(value))
           .toList();
     }
@@ -8982,7 +8981,7 @@ class NonGuaranteedFixedPriceTerms {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fixedPrices != null) {
-      _json["fixedPrices"] =
+      _json['fixedPrices'] =
           fixedPrices.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -9016,20 +9015,20 @@ class Note {
   Note();
 
   Note.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("creatorRole")) {
-      creatorRole = _json["creatorRole"];
+    if (_json.containsKey('creatorRole')) {
+      creatorRole = _json['creatorRole'];
     }
-    if (_json.containsKey("note")) {
-      note = _json["note"];
+    if (_json.containsKey('note')) {
+      note = _json['note'];
     }
-    if (_json.containsKey("noteId")) {
-      noteId = _json["noteId"];
+    if (_json.containsKey('noteId')) {
+      noteId = _json['noteId'];
     }
-    if (_json.containsKey("proposalRevision")) {
-      proposalRevision = _json["proposalRevision"];
+    if (_json.containsKey('proposalRevision')) {
+      proposalRevision = _json['proposalRevision'];
     }
   }
 
@@ -9037,19 +9036,19 @@ class Note {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (creatorRole != null) {
-      _json["creatorRole"] = creatorRole;
+      _json['creatorRole'] = creatorRole;
     }
     if (note != null) {
-      _json["note"] = note;
+      _json['note'] = note;
     }
     if (noteId != null) {
-      _json["noteId"] = noteId;
+      _json['noteId'] = noteId;
     }
     if (proposalRevision != null) {
-      _json["proposalRevision"] = proposalRevision;
+      _json['proposalRevision'] = proposalRevision;
     }
     return _json;
   }
@@ -9066,13 +9065,13 @@ class OperatingSystemTargeting {
   OperatingSystemTargeting();
 
   OperatingSystemTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("operatingSystemCriteria")) {
+    if (_json.containsKey('operatingSystemCriteria')) {
       operatingSystemCriteria =
-          CriteriaTargeting.fromJson(_json["operatingSystemCriteria"]);
+          CriteriaTargeting.fromJson(_json['operatingSystemCriteria']);
     }
-    if (_json.containsKey("operatingSystemVersionCriteria")) {
+    if (_json.containsKey('operatingSystemVersionCriteria')) {
       operatingSystemVersionCriteria =
-          CriteriaTargeting.fromJson(_json["operatingSystemVersionCriteria"]);
+          CriteriaTargeting.fromJson(_json['operatingSystemVersionCriteria']);
     }
   }
 
@@ -9080,10 +9079,10 @@ class OperatingSystemTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (operatingSystemCriteria != null) {
-      _json["operatingSystemCriteria"] = operatingSystemCriteria.toJson();
+      _json['operatingSystemCriteria'] = operatingSystemCriteria.toJson();
     }
     if (operatingSystemVersionCriteria != null) {
-      _json["operatingSystemVersionCriteria"] =
+      _json['operatingSystemVersionCriteria'] =
           operatingSystemVersionCriteria.toJson();
     }
     return _json;
@@ -9100,8 +9099,8 @@ class PauseProposalRequest {
   PauseProposalRequest();
 
   PauseProposalRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
   }
 
@@ -9109,7 +9108,7 @@ class PauseProposalRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     return _json;
   }
@@ -9129,12 +9128,12 @@ class PlacementTargeting {
   PlacementTargeting();
 
   PlacementTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("mobileApplicationTargeting")) {
+    if (_json.containsKey('mobileApplicationTargeting')) {
       mobileApplicationTargeting = MobileApplicationTargeting.fromJson(
-          _json["mobileApplicationTargeting"]);
+          _json['mobileApplicationTargeting']);
     }
-    if (_json.containsKey("urlTargeting")) {
-      urlTargeting = UrlTargeting.fromJson(_json["urlTargeting"]);
+    if (_json.containsKey('urlTargeting')) {
+      urlTargeting = UrlTargeting.fromJson(_json['urlTargeting']);
     }
   }
 
@@ -9142,10 +9141,10 @@ class PlacementTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mobileApplicationTargeting != null) {
-      _json["mobileApplicationTargeting"] = mobileApplicationTargeting.toJson();
+      _json['mobileApplicationTargeting'] = mobileApplicationTargeting.toJson();
     }
     if (urlTargeting != null) {
-      _json["urlTargeting"] = urlTargeting.toJson();
+      _json['urlTargeting'] = urlTargeting.toJson();
     }
     return _json;
   }
@@ -9159,8 +9158,8 @@ class PlatformContext {
   PlatformContext();
 
   PlatformContext.fromJson(core.Map _json) {
-    if (_json.containsKey("platforms")) {
-      platforms = (_json["platforms"] as core.List).cast<core.String>();
+    if (_json.containsKey('platforms')) {
+      platforms = (_json['platforms'] as core.List).cast<core.String>();
     }
   }
 
@@ -9168,7 +9167,7 @@ class PlatformContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (platforms != null) {
-      _json["platforms"] = platforms;
+      _json['platforms'] = platforms;
     }
     return _json;
   }
@@ -9191,11 +9190,11 @@ class Price {
   Price();
 
   Price.fromJson(core.Map _json) {
-    if (_json.containsKey("amount")) {
-      amount = Money.fromJson(_json["amount"]);
+    if (_json.containsKey('amount')) {
+      amount = Money.fromJson(_json['amount']);
     }
-    if (_json.containsKey("pricingType")) {
-      pricingType = _json["pricingType"];
+    if (_json.containsKey('pricingType')) {
+      pricingType = _json['pricingType'];
     }
   }
 
@@ -9203,10 +9202,10 @@ class Price {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amount != null) {
-      _json["amount"] = amount.toJson();
+      _json['amount'] = amount.toJson();
     }
     if (pricingType != null) {
-      _json["pricingType"] = pricingType;
+      _json['pricingType'] = pricingType;
     }
     return _json;
   }
@@ -9234,14 +9233,14 @@ class PricePerBuyer {
   PricePerBuyer();
 
   PricePerBuyer.fromJson(core.Map _json) {
-    if (_json.containsKey("advertiserIds")) {
-      advertiserIds = (_json["advertiserIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('advertiserIds')) {
+      advertiserIds = (_json['advertiserIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("buyer")) {
-      buyer = Buyer.fromJson(_json["buyer"]);
+    if (_json.containsKey('buyer')) {
+      buyer = Buyer.fromJson(_json['buyer']);
     }
-    if (_json.containsKey("price")) {
-      price = Price.fromJson(_json["price"]);
+    if (_json.containsKey('price')) {
+      price = Price.fromJson(_json['price']);
     }
   }
 
@@ -9249,13 +9248,13 @@ class PricePerBuyer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (advertiserIds != null) {
-      _json["advertiserIds"] = advertiserIds;
+      _json['advertiserIds'] = advertiserIds;
     }
     if (buyer != null) {
-      _json["buyer"] = buyer.toJson();
+      _json['buyer'] = buyer.toJson();
     }
     if (price != null) {
-      _json["price"] = price.toJson();
+      _json['price'] = price.toJson();
     }
     return _json;
   }
@@ -9271,8 +9270,8 @@ class PrivateData {
   PrivateData();
 
   PrivateData.fromJson(core.Map _json) {
-    if (_json.containsKey("referenceId")) {
-      referenceId = _json["referenceId"];
+    if (_json.containsKey('referenceId')) {
+      referenceId = _json['referenceId'];
     }
   }
 
@@ -9280,7 +9279,7 @@ class PrivateData {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (referenceId != null) {
-      _json["referenceId"] = referenceId;
+      _json['referenceId'] = referenceId;
     }
     return _json;
   }
@@ -9357,55 +9356,55 @@ class Product {
   Product();
 
   Product.fromJson(core.Map _json) {
-    if (_json.containsKey("availableEndTime")) {
-      availableEndTime = _json["availableEndTime"];
+    if (_json.containsKey('availableEndTime')) {
+      availableEndTime = _json['availableEndTime'];
     }
-    if (_json.containsKey("availableStartTime")) {
-      availableStartTime = _json["availableStartTime"];
+    if (_json.containsKey('availableStartTime')) {
+      availableStartTime = _json['availableStartTime'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("creatorContacts")) {
-      creatorContacts = (_json["creatorContacts"] as core.List)
+    if (_json.containsKey('creatorContacts')) {
+      creatorContacts = (_json['creatorContacts'] as core.List)
           .map<ContactInformation>(
               (value) => ContactInformation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("hasCreatorSignedOff")) {
-      hasCreatorSignedOff = _json["hasCreatorSignedOff"];
+    if (_json.containsKey('hasCreatorSignedOff')) {
+      hasCreatorSignedOff = _json['hasCreatorSignedOff'];
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("productRevision")) {
-      productRevision = _json["productRevision"];
+    if (_json.containsKey('productRevision')) {
+      productRevision = _json['productRevision'];
     }
-    if (_json.containsKey("publisherProfileId")) {
-      publisherProfileId = _json["publisherProfileId"];
+    if (_json.containsKey('publisherProfileId')) {
+      publisherProfileId = _json['publisherProfileId'];
     }
-    if (_json.containsKey("seller")) {
-      seller = Seller.fromJson(_json["seller"]);
+    if (_json.containsKey('seller')) {
+      seller = Seller.fromJson(_json['seller']);
     }
-    if (_json.containsKey("syndicationProduct")) {
-      syndicationProduct = _json["syndicationProduct"];
+    if (_json.containsKey('syndicationProduct')) {
+      syndicationProduct = _json['syndicationProduct'];
     }
-    if (_json.containsKey("targetingCriterion")) {
-      targetingCriterion = (_json["targetingCriterion"] as core.List)
+    if (_json.containsKey('targetingCriterion')) {
+      targetingCriterion = (_json['targetingCriterion'] as core.List)
           .map<TargetingCriteria>((value) => TargetingCriteria.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("terms")) {
-      terms = DealTerms.fromJson(_json["terms"]);
+    if (_json.containsKey('terms')) {
+      terms = DealTerms.fromJson(_json['terms']);
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
-    if (_json.containsKey("webPropertyCode")) {
-      webPropertyCode = _json["webPropertyCode"];
+    if (_json.containsKey('webPropertyCode')) {
+      webPropertyCode = _json['webPropertyCode'];
     }
   }
 
@@ -9413,51 +9412,51 @@ class Product {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (availableEndTime != null) {
-      _json["availableEndTime"] = availableEndTime;
+      _json['availableEndTime'] = availableEndTime;
     }
     if (availableStartTime != null) {
-      _json["availableStartTime"] = availableStartTime;
+      _json['availableStartTime'] = availableStartTime;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (creatorContacts != null) {
-      _json["creatorContacts"] =
+      _json['creatorContacts'] =
           creatorContacts.map((value) => value.toJson()).toList();
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (hasCreatorSignedOff != null) {
-      _json["hasCreatorSignedOff"] = hasCreatorSignedOff;
+      _json['hasCreatorSignedOff'] = hasCreatorSignedOff;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (productRevision != null) {
-      _json["productRevision"] = productRevision;
+      _json['productRevision'] = productRevision;
     }
     if (publisherProfileId != null) {
-      _json["publisherProfileId"] = publisherProfileId;
+      _json['publisherProfileId'] = publisherProfileId;
     }
     if (seller != null) {
-      _json["seller"] = seller.toJson();
+      _json['seller'] = seller.toJson();
     }
     if (syndicationProduct != null) {
-      _json["syndicationProduct"] = syndicationProduct;
+      _json['syndicationProduct'] = syndicationProduct;
     }
     if (targetingCriterion != null) {
-      _json["targetingCriterion"] =
+      _json['targetingCriterion'] =
           targetingCriterion.map((value) => value.toJson()).toList();
     }
     if (terms != null) {
-      _json["terms"] = terms.toJson();
+      _json['terms'] = terms.toJson();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     if (webPropertyCode != null) {
-      _json["webPropertyCode"] = webPropertyCode;
+      _json['webPropertyCode'] = webPropertyCode;
     }
     return _json;
   }
@@ -9562,69 +9561,69 @@ class Proposal {
   Proposal();
 
   Proposal.fromJson(core.Map _json) {
-    if (_json.containsKey("billedBuyer")) {
-      billedBuyer = Buyer.fromJson(_json["billedBuyer"]);
+    if (_json.containsKey('billedBuyer')) {
+      billedBuyer = Buyer.fromJson(_json['billedBuyer']);
     }
-    if (_json.containsKey("buyer")) {
-      buyer = Buyer.fromJson(_json["buyer"]);
+    if (_json.containsKey('buyer')) {
+      buyer = Buyer.fromJson(_json['buyer']);
     }
-    if (_json.containsKey("buyerContacts")) {
-      buyerContacts = (_json["buyerContacts"] as core.List)
+    if (_json.containsKey('buyerContacts')) {
+      buyerContacts = (_json['buyerContacts'] as core.List)
           .map<ContactInformation>(
               (value) => ContactInformation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("buyerPrivateData")) {
-      buyerPrivateData = PrivateData.fromJson(_json["buyerPrivateData"]);
+    if (_json.containsKey('buyerPrivateData')) {
+      buyerPrivateData = PrivateData.fromJson(_json['buyerPrivateData']);
     }
-    if (_json.containsKey("deals")) {
-      deals = (_json["deals"] as core.List)
+    if (_json.containsKey('deals')) {
+      deals = (_json['deals'] as core.List)
           .map<Deal>((value) => Deal.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("isRenegotiating")) {
-      isRenegotiating = _json["isRenegotiating"];
+    if (_json.containsKey('isRenegotiating')) {
+      isRenegotiating = _json['isRenegotiating'];
     }
-    if (_json.containsKey("isSetupComplete")) {
-      isSetupComplete = _json["isSetupComplete"];
+    if (_json.containsKey('isSetupComplete')) {
+      isSetupComplete = _json['isSetupComplete'];
     }
-    if (_json.containsKey("lastUpdaterOrCommentorRole")) {
-      lastUpdaterOrCommentorRole = _json["lastUpdaterOrCommentorRole"];
+    if (_json.containsKey('lastUpdaterOrCommentorRole')) {
+      lastUpdaterOrCommentorRole = _json['lastUpdaterOrCommentorRole'];
     }
-    if (_json.containsKey("notes")) {
-      notes = (_json["notes"] as core.List)
+    if (_json.containsKey('notes')) {
+      notes = (_json['notes'] as core.List)
           .map<Note>((value) => Note.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("originatorRole")) {
-      originatorRole = _json["originatorRole"];
+    if (_json.containsKey('originatorRole')) {
+      originatorRole = _json['originatorRole'];
     }
-    if (_json.containsKey("privateAuctionId")) {
-      privateAuctionId = _json["privateAuctionId"];
+    if (_json.containsKey('privateAuctionId')) {
+      privateAuctionId = _json['privateAuctionId'];
     }
-    if (_json.containsKey("proposalId")) {
-      proposalId = _json["proposalId"];
+    if (_json.containsKey('proposalId')) {
+      proposalId = _json['proposalId'];
     }
-    if (_json.containsKey("proposalRevision")) {
-      proposalRevision = _json["proposalRevision"];
+    if (_json.containsKey('proposalRevision')) {
+      proposalRevision = _json['proposalRevision'];
     }
-    if (_json.containsKey("proposalState")) {
-      proposalState = _json["proposalState"];
+    if (_json.containsKey('proposalState')) {
+      proposalState = _json['proposalState'];
     }
-    if (_json.containsKey("seller")) {
-      seller = Seller.fromJson(_json["seller"]);
+    if (_json.containsKey('seller')) {
+      seller = Seller.fromJson(_json['seller']);
     }
-    if (_json.containsKey("sellerContacts")) {
-      sellerContacts = (_json["sellerContacts"] as core.List)
+    if (_json.containsKey('sellerContacts')) {
+      sellerContacts = (_json['sellerContacts'] as core.List)
           .map<ContactInformation>(
               (value) => ContactInformation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -9632,60 +9631,60 @@ class Proposal {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (billedBuyer != null) {
-      _json["billedBuyer"] = billedBuyer.toJson();
+      _json['billedBuyer'] = billedBuyer.toJson();
     }
     if (buyer != null) {
-      _json["buyer"] = buyer.toJson();
+      _json['buyer'] = buyer.toJson();
     }
     if (buyerContacts != null) {
-      _json["buyerContacts"] =
+      _json['buyerContacts'] =
           buyerContacts.map((value) => value.toJson()).toList();
     }
     if (buyerPrivateData != null) {
-      _json["buyerPrivateData"] = buyerPrivateData.toJson();
+      _json['buyerPrivateData'] = buyerPrivateData.toJson();
     }
     if (deals != null) {
-      _json["deals"] = deals.map((value) => value.toJson()).toList();
+      _json['deals'] = deals.map((value) => value.toJson()).toList();
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (isRenegotiating != null) {
-      _json["isRenegotiating"] = isRenegotiating;
+      _json['isRenegotiating'] = isRenegotiating;
     }
     if (isSetupComplete != null) {
-      _json["isSetupComplete"] = isSetupComplete;
+      _json['isSetupComplete'] = isSetupComplete;
     }
     if (lastUpdaterOrCommentorRole != null) {
-      _json["lastUpdaterOrCommentorRole"] = lastUpdaterOrCommentorRole;
+      _json['lastUpdaterOrCommentorRole'] = lastUpdaterOrCommentorRole;
     }
     if (notes != null) {
-      _json["notes"] = notes.map((value) => value.toJson()).toList();
+      _json['notes'] = notes.map((value) => value.toJson()).toList();
     }
     if (originatorRole != null) {
-      _json["originatorRole"] = originatorRole;
+      _json['originatorRole'] = originatorRole;
     }
     if (privateAuctionId != null) {
-      _json["privateAuctionId"] = privateAuctionId;
+      _json['privateAuctionId'] = privateAuctionId;
     }
     if (proposalId != null) {
-      _json["proposalId"] = proposalId;
+      _json['proposalId'] = proposalId;
     }
     if (proposalRevision != null) {
-      _json["proposalRevision"] = proposalRevision;
+      _json['proposalRevision'] = proposalRevision;
     }
     if (proposalState != null) {
-      _json["proposalState"] = proposalState;
+      _json['proposalState'] = proposalState;
     }
     if (seller != null) {
-      _json["seller"] = seller.toJson();
+      _json['seller'] = seller.toJson();
     }
     if (sellerContacts != null) {
-      _json["sellerContacts"] =
+      _json['sellerContacts'] =
           sellerContacts.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -9764,53 +9763,53 @@ class PublisherProfile {
   PublisherProfile();
 
   PublisherProfile.fromJson(core.Map _json) {
-    if (_json.containsKey("audienceDescription")) {
-      audienceDescription = _json["audienceDescription"];
+    if (_json.containsKey('audienceDescription')) {
+      audienceDescription = _json['audienceDescription'];
     }
-    if (_json.containsKey("buyerPitchStatement")) {
-      buyerPitchStatement = _json["buyerPitchStatement"];
+    if (_json.containsKey('buyerPitchStatement')) {
+      buyerPitchStatement = _json['buyerPitchStatement'];
     }
-    if (_json.containsKey("directDealsContact")) {
-      directDealsContact = _json["directDealsContact"];
+    if (_json.containsKey('directDealsContact')) {
+      directDealsContact = _json['directDealsContact'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("domains")) {
-      domains = (_json["domains"] as core.List).cast<core.String>();
+    if (_json.containsKey('domains')) {
+      domains = (_json['domains'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("googlePlusUrl")) {
-      googlePlusUrl = _json["googlePlusUrl"];
+    if (_json.containsKey('googlePlusUrl')) {
+      googlePlusUrl = _json['googlePlusUrl'];
     }
-    if (_json.containsKey("isParent")) {
-      isParent = _json["isParent"];
+    if (_json.containsKey('isParent')) {
+      isParent = _json['isParent'];
     }
-    if (_json.containsKey("logoUrl")) {
-      logoUrl = _json["logoUrl"];
+    if (_json.containsKey('logoUrl')) {
+      logoUrl = _json['logoUrl'];
     }
-    if (_json.containsKey("mediaKitUrl")) {
-      mediaKitUrl = _json["mediaKitUrl"];
+    if (_json.containsKey('mediaKitUrl')) {
+      mediaKitUrl = _json['mediaKitUrl'];
     }
-    if (_json.containsKey("overview")) {
-      overview = _json["overview"];
+    if (_json.containsKey('overview')) {
+      overview = _json['overview'];
     }
-    if (_json.containsKey("programmaticDealsContact")) {
-      programmaticDealsContact = _json["programmaticDealsContact"];
+    if (_json.containsKey('programmaticDealsContact')) {
+      programmaticDealsContact = _json['programmaticDealsContact'];
     }
-    if (_json.containsKey("publisherProfileId")) {
-      publisherProfileId = _json["publisherProfileId"];
+    if (_json.containsKey('publisherProfileId')) {
+      publisherProfileId = _json['publisherProfileId'];
     }
-    if (_json.containsKey("rateCardInfoUrl")) {
-      rateCardInfoUrl = _json["rateCardInfoUrl"];
+    if (_json.containsKey('rateCardInfoUrl')) {
+      rateCardInfoUrl = _json['rateCardInfoUrl'];
     }
-    if (_json.containsKey("samplePageUrl")) {
-      samplePageUrl = _json["samplePageUrl"];
+    if (_json.containsKey('samplePageUrl')) {
+      samplePageUrl = _json['samplePageUrl'];
     }
-    if (_json.containsKey("seller")) {
-      seller = Seller.fromJson(_json["seller"]);
+    if (_json.containsKey('seller')) {
+      seller = Seller.fromJson(_json['seller']);
     }
-    if (_json.containsKey("topHeadlines")) {
-      topHeadlines = (_json["topHeadlines"] as core.List).cast<core.String>();
+    if (_json.containsKey('topHeadlines')) {
+      topHeadlines = (_json['topHeadlines'] as core.List).cast<core.String>();
     }
   }
 
@@ -9818,52 +9817,52 @@ class PublisherProfile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audienceDescription != null) {
-      _json["audienceDescription"] = audienceDescription;
+      _json['audienceDescription'] = audienceDescription;
     }
     if (buyerPitchStatement != null) {
-      _json["buyerPitchStatement"] = buyerPitchStatement;
+      _json['buyerPitchStatement'] = buyerPitchStatement;
     }
     if (directDealsContact != null) {
-      _json["directDealsContact"] = directDealsContact;
+      _json['directDealsContact'] = directDealsContact;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (domains != null) {
-      _json["domains"] = domains;
+      _json['domains'] = domains;
     }
     if (googlePlusUrl != null) {
-      _json["googlePlusUrl"] = googlePlusUrl;
+      _json['googlePlusUrl'] = googlePlusUrl;
     }
     if (isParent != null) {
-      _json["isParent"] = isParent;
+      _json['isParent'] = isParent;
     }
     if (logoUrl != null) {
-      _json["logoUrl"] = logoUrl;
+      _json['logoUrl'] = logoUrl;
     }
     if (mediaKitUrl != null) {
-      _json["mediaKitUrl"] = mediaKitUrl;
+      _json['mediaKitUrl'] = mediaKitUrl;
     }
     if (overview != null) {
-      _json["overview"] = overview;
+      _json['overview'] = overview;
     }
     if (programmaticDealsContact != null) {
-      _json["programmaticDealsContact"] = programmaticDealsContact;
+      _json['programmaticDealsContact'] = programmaticDealsContact;
     }
     if (publisherProfileId != null) {
-      _json["publisherProfileId"] = publisherProfileId;
+      _json['publisherProfileId'] = publisherProfileId;
     }
     if (rateCardInfoUrl != null) {
-      _json["rateCardInfoUrl"] = rateCardInfoUrl;
+      _json['rateCardInfoUrl'] = rateCardInfoUrl;
     }
     if (samplePageUrl != null) {
-      _json["samplePageUrl"] = samplePageUrl;
+      _json['samplePageUrl'] = samplePageUrl;
     }
     if (seller != null) {
-      _json["seller"] = seller.toJson();
+      _json['seller'] = seller.toJson();
     }
     if (topHeadlines != null) {
-      _json["topHeadlines"] = topHeadlines;
+      _json['topHeadlines'] = topHeadlines;
     }
     return _json;
   }
@@ -9879,8 +9878,8 @@ class RealtimeTimeRange {
   RealtimeTimeRange();
 
   RealtimeTimeRange.fromJson(core.Map _json) {
-    if (_json.containsKey("startTimestamp")) {
-      startTimestamp = _json["startTimestamp"];
+    if (_json.containsKey('startTimestamp')) {
+      startTimestamp = _json['startTimestamp'];
     }
   }
 
@@ -9888,7 +9887,7 @@ class RealtimeTimeRange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (startTimestamp != null) {
-      _json["startTimestamp"] = startTimestamp;
+      _json['startTimestamp'] = startTimestamp;
     }
     return _json;
   }
@@ -9910,11 +9909,11 @@ class RelativeDateRange {
   RelativeDateRange();
 
   RelativeDateRange.fromJson(core.Map _json) {
-    if (_json.containsKey("durationDays")) {
-      durationDays = _json["durationDays"];
+    if (_json.containsKey('durationDays')) {
+      durationDays = _json['durationDays'];
     }
-    if (_json.containsKey("offsetDays")) {
-      offsetDays = _json["offsetDays"];
+    if (_json.containsKey('offsetDays')) {
+      offsetDays = _json['offsetDays'];
     }
   }
 
@@ -9922,10 +9921,10 @@ class RelativeDateRange {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (durationDays != null) {
-      _json["durationDays"] = durationDays;
+      _json['durationDays'] = durationDays;
     }
     if (offsetDays != null) {
-      _json["offsetDays"] = offsetDays;
+      _json['offsetDays'] = offsetDays;
     }
     return _json;
   }
@@ -9939,8 +9938,8 @@ class RemoveDealAssociationRequest {
   RemoveDealAssociationRequest();
 
   RemoveDealAssociationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("association")) {
-      association = CreativeDealAssociation.fromJson(_json["association"]);
+    if (_json.containsKey('association')) {
+      association = CreativeDealAssociation.fromJson(_json['association']);
     }
   }
 
@@ -9948,7 +9947,7 @@ class RemoveDealAssociationRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (association != null) {
-      _json["association"] = association.toJson();
+      _json['association'] = association.toJson();
     }
     return _json;
   }
@@ -9982,11 +9981,11 @@ class RowDimensions {
   RowDimensions();
 
   RowDimensions.fromJson(core.Map _json) {
-    if (_json.containsKey("publisherIdentifier")) {
-      publisherIdentifier = _json["publisherIdentifier"];
+    if (_json.containsKey('publisherIdentifier')) {
+      publisherIdentifier = _json['publisherIdentifier'];
     }
-    if (_json.containsKey("timeInterval")) {
-      timeInterval = TimeInterval.fromJson(_json["timeInterval"]);
+    if (_json.containsKey('timeInterval')) {
+      timeInterval = TimeInterval.fromJson(_json['timeInterval']);
     }
   }
 
@@ -9994,10 +9993,10 @@ class RowDimensions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (publisherIdentifier != null) {
-      _json["publisherIdentifier"] = publisherIdentifier;
+      _json['publisherIdentifier'] = publisherIdentifier;
     }
     if (timeInterval != null) {
-      _json["timeInterval"] = timeInterval.toJson();
+      _json['timeInterval'] = timeInterval.toJson();
     }
     return _json;
   }
@@ -10011,8 +10010,8 @@ class SecurityContext {
   SecurityContext();
 
   SecurityContext.fromJson(core.Map _json) {
-    if (_json.containsKey("securities")) {
-      securities = (_json["securities"] as core.List).cast<core.String>();
+    if (_json.containsKey('securities')) {
+      securities = (_json['securities'] as core.List).cast<core.String>();
     }
   }
 
@@ -10020,7 +10019,7 @@ class SecurityContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (securities != null) {
-      _json["securities"] = securities;
+      _json['securities'] = securities;
     }
     return _json;
   }
@@ -10039,11 +10038,11 @@ class Seller {
   Seller();
 
   Seller.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("subAccountId")) {
-      subAccountId = _json["subAccountId"];
+    if (_json.containsKey('subAccountId')) {
+      subAccountId = _json['subAccountId'];
     }
   }
 
@@ -10051,10 +10050,10 @@ class Seller {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (subAccountId != null) {
-      _json["subAccountId"] = subAccountId;
+      _json['subAccountId'] = subAccountId;
     }
     return _json;
   }
@@ -10086,23 +10085,23 @@ class ServingContext {
   ServingContext();
 
   ServingContext.fromJson(core.Map _json) {
-    if (_json.containsKey("all")) {
-      all = _json["all"];
+    if (_json.containsKey('all')) {
+      all = _json['all'];
     }
-    if (_json.containsKey("appType")) {
-      appType = AppContext.fromJson(_json["appType"]);
+    if (_json.containsKey('appType')) {
+      appType = AppContext.fromJson(_json['appType']);
     }
-    if (_json.containsKey("auctionType")) {
-      auctionType = AuctionContext.fromJson(_json["auctionType"]);
+    if (_json.containsKey('auctionType')) {
+      auctionType = AuctionContext.fromJson(_json['auctionType']);
     }
-    if (_json.containsKey("location")) {
-      location = LocationContext.fromJson(_json["location"]);
+    if (_json.containsKey('location')) {
+      location = LocationContext.fromJson(_json['location']);
     }
-    if (_json.containsKey("platform")) {
-      platform = PlatformContext.fromJson(_json["platform"]);
+    if (_json.containsKey('platform')) {
+      platform = PlatformContext.fromJson(_json['platform']);
     }
-    if (_json.containsKey("securityType")) {
-      securityType = SecurityContext.fromJson(_json["securityType"]);
+    if (_json.containsKey('securityType')) {
+      securityType = SecurityContext.fromJson(_json['securityType']);
     }
   }
 
@@ -10110,22 +10109,22 @@ class ServingContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (all != null) {
-      _json["all"] = all;
+      _json['all'] = all;
     }
     if (appType != null) {
-      _json["appType"] = appType.toJson();
+      _json['appType'] = appType.toJson();
     }
     if (auctionType != null) {
-      _json["auctionType"] = auctionType.toJson();
+      _json['auctionType'] = auctionType.toJson();
     }
     if (location != null) {
-      _json["location"] = location.toJson();
+      _json['location'] = location.toJson();
     }
     if (platform != null) {
-      _json["platform"] = platform.toJson();
+      _json['platform'] = platform.toJson();
     }
     if (securityType != null) {
-      _json["securityType"] = securityType.toJson();
+      _json['securityType'] = securityType.toJson();
     }
     return _json;
   }
@@ -10159,21 +10158,21 @@ class ServingRestriction {
   ServingRestriction();
 
   ServingRestriction.fromJson(core.Map _json) {
-    if (_json.containsKey("contexts")) {
-      contexts = (_json["contexts"] as core.List)
+    if (_json.containsKey('contexts')) {
+      contexts = (_json['contexts'] as core.List)
           .map<ServingContext>((value) => ServingContext.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("disapproval")) {
-      disapproval = Disapproval.fromJson(_json["disapproval"]);
+    if (_json.containsKey('disapproval')) {
+      disapproval = Disapproval.fromJson(_json['disapproval']);
     }
-    if (_json.containsKey("disapprovalReasons")) {
-      disapprovalReasons = (_json["disapprovalReasons"] as core.List)
+    if (_json.containsKey('disapprovalReasons')) {
+      disapprovalReasons = (_json['disapprovalReasons'] as core.List)
           .map<Disapproval>((value) => Disapproval.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
   }
 
@@ -10181,17 +10180,17 @@ class ServingRestriction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contexts != null) {
-      _json["contexts"] = contexts.map((value) => value.toJson()).toList();
+      _json['contexts'] = contexts.map((value) => value.toJson()).toList();
     }
     if (disapproval != null) {
-      _json["disapproval"] = disapproval.toJson();
+      _json['disapproval'] = disapproval.toJson();
     }
     if (disapprovalReasons != null) {
-      _json["disapprovalReasons"] =
+      _json['disapprovalReasons'] =
           disapprovalReasons.map((value) => value.toJson()).toList();
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     return _json;
   }
@@ -10209,11 +10208,11 @@ class Size {
   Size();
 
   Size.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -10221,10 +10220,10 @@ class Size {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -10264,18 +10263,18 @@ class TargetingCriteria {
   TargetingCriteria();
 
   TargetingCriteria.fromJson(core.Map _json) {
-    if (_json.containsKey("exclusions")) {
-      exclusions = (_json["exclusions"] as core.List)
+    if (_json.containsKey('exclusions')) {
+      exclusions = (_json['exclusions'] as core.List)
           .map<TargetingValue>((value) => TargetingValue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("inclusions")) {
-      inclusions = (_json["inclusions"] as core.List)
+    if (_json.containsKey('inclusions')) {
+      inclusions = (_json['inclusions'] as core.List)
           .map<TargetingValue>((value) => TargetingValue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
   }
 
@@ -10283,13 +10282,13 @@ class TargetingCriteria {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (exclusions != null) {
-      _json["exclusions"] = exclusions.map((value) => value.toJson()).toList();
+      _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
     }
     if (inclusions != null) {
-      _json["inclusions"] = inclusions.map((value) => value.toJson()).toList();
+      _json['inclusions'] = inclusions.map((value) => value.toJson()).toList();
     }
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     return _json;
   }
@@ -10315,18 +10314,18 @@ class TargetingValue {
   TargetingValue();
 
   TargetingValue.fromJson(core.Map _json) {
-    if (_json.containsKey("creativeSizeValue")) {
-      creativeSizeValue = CreativeSize.fromJson(_json["creativeSizeValue"]);
+    if (_json.containsKey('creativeSizeValue')) {
+      creativeSizeValue = CreativeSize.fromJson(_json['creativeSizeValue']);
     }
-    if (_json.containsKey("dayPartTargetingValue")) {
+    if (_json.containsKey('dayPartTargetingValue')) {
       dayPartTargetingValue =
-          DayPartTargeting.fromJson(_json["dayPartTargetingValue"]);
+          DayPartTargeting.fromJson(_json['dayPartTargetingValue']);
     }
-    if (_json.containsKey("longValue")) {
-      longValue = _json["longValue"];
+    if (_json.containsKey('longValue')) {
+      longValue = _json['longValue'];
     }
-    if (_json.containsKey("stringValue")) {
-      stringValue = _json["stringValue"];
+    if (_json.containsKey('stringValue')) {
+      stringValue = _json['stringValue'];
     }
   }
 
@@ -10334,16 +10333,16 @@ class TargetingValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creativeSizeValue != null) {
-      _json["creativeSizeValue"] = creativeSizeValue.toJson();
+      _json['creativeSizeValue'] = creativeSizeValue.toJson();
     }
     if (dayPartTargetingValue != null) {
-      _json["dayPartTargetingValue"] = dayPartTargetingValue.toJson();
+      _json['dayPartTargetingValue'] = dayPartTargetingValue.toJson();
     }
     if (longValue != null) {
-      _json["longValue"] = longValue;
+      _json['longValue'] = longValue;
     }
     if (stringValue != null) {
-      _json["stringValue"] = stringValue;
+      _json['stringValue'] = stringValue;
     }
     return _json;
   }
@@ -10363,17 +10362,17 @@ class TechnologyTargeting {
   TechnologyTargeting();
 
   TechnologyTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceCapabilityTargeting")) {
+    if (_json.containsKey('deviceCapabilityTargeting')) {
       deviceCapabilityTargeting =
-          CriteriaTargeting.fromJson(_json["deviceCapabilityTargeting"]);
+          CriteriaTargeting.fromJson(_json['deviceCapabilityTargeting']);
     }
-    if (_json.containsKey("deviceCategoryTargeting")) {
+    if (_json.containsKey('deviceCategoryTargeting')) {
       deviceCategoryTargeting =
-          CriteriaTargeting.fromJson(_json["deviceCategoryTargeting"]);
+          CriteriaTargeting.fromJson(_json['deviceCategoryTargeting']);
     }
-    if (_json.containsKey("operatingSystemTargeting")) {
+    if (_json.containsKey('operatingSystemTargeting')) {
       operatingSystemTargeting =
-          OperatingSystemTargeting.fromJson(_json["operatingSystemTargeting"]);
+          OperatingSystemTargeting.fromJson(_json['operatingSystemTargeting']);
     }
   }
 
@@ -10381,13 +10380,13 @@ class TechnologyTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceCapabilityTargeting != null) {
-      _json["deviceCapabilityTargeting"] = deviceCapabilityTargeting.toJson();
+      _json['deviceCapabilityTargeting'] = deviceCapabilityTargeting.toJson();
     }
     if (deviceCategoryTargeting != null) {
-      _json["deviceCategoryTargeting"] = deviceCategoryTargeting.toJson();
+      _json['deviceCategoryTargeting'] = deviceCategoryTargeting.toJson();
     }
     if (operatingSystemTargeting != null) {
-      _json["operatingSystemTargeting"] = operatingSystemTargeting.toJson();
+      _json['operatingSystemTargeting'] = operatingSystemTargeting.toJson();
     }
     return _json;
   }
@@ -10406,11 +10405,11 @@ class TimeInterval {
   TimeInterval();
 
   TimeInterval.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -10418,10 +10417,10 @@ class TimeInterval {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -10448,17 +10447,17 @@ class TimeOfDay {
   TimeOfDay();
 
   TimeOfDay.fromJson(core.Map _json) {
-    if (_json.containsKey("hours")) {
-      hours = _json["hours"];
+    if (_json.containsKey('hours')) {
+      hours = _json['hours'];
     }
-    if (_json.containsKey("minutes")) {
-      minutes = _json["minutes"];
+    if (_json.containsKey('minutes')) {
+      minutes = _json['minutes'];
     }
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'];
     }
-    if (_json.containsKey("seconds")) {
-      seconds = _json["seconds"];
+    if (_json.containsKey('seconds')) {
+      seconds = _json['seconds'];
     }
   }
 
@@ -10466,16 +10465,16 @@ class TimeOfDay {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hours != null) {
-      _json["hours"] = hours;
+      _json['hours'] = hours;
     }
     if (minutes != null) {
-      _json["minutes"] = minutes;
+      _json['minutes'] = minutes;
     }
     if (nanos != null) {
-      _json["nanos"] = nanos;
+      _json['nanos'] = nanos;
     }
     if (seconds != null) {
-      _json["seconds"] = seconds;
+      _json['seconds'] = seconds;
     }
     return _json;
   }
@@ -10495,11 +10494,11 @@ class UrlTargeting {
   UrlTargeting();
 
   UrlTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("excludedUrls")) {
-      excludedUrls = (_json["excludedUrls"] as core.List).cast<core.String>();
+    if (_json.containsKey('excludedUrls')) {
+      excludedUrls = (_json['excludedUrls'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("targetedUrls")) {
-      targetedUrls = (_json["targetedUrls"] as core.List).cast<core.String>();
+    if (_json.containsKey('targetedUrls')) {
+      targetedUrls = (_json['targetedUrls'] as core.List).cast<core.String>();
     }
   }
 
@@ -10507,10 +10506,10 @@ class UrlTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludedUrls != null) {
-      _json["excludedUrls"] = excludedUrls;
+      _json['excludedUrls'] = excludedUrls;
     }
     if (targetedUrls != null) {
-      _json["targetedUrls"] = targetedUrls;
+      _json['targetedUrls'] = targetedUrls;
     }
     return _json;
   }
@@ -10528,11 +10527,11 @@ class VideoContent {
   VideoContent();
 
   VideoContent.fromJson(core.Map _json) {
-    if (_json.containsKey("videoUrl")) {
-      videoUrl = _json["videoUrl"];
+    if (_json.containsKey('videoUrl')) {
+      videoUrl = _json['videoUrl'];
     }
-    if (_json.containsKey("videoVastXml")) {
-      videoVastXml = _json["videoVastXml"];
+    if (_json.containsKey('videoVastXml')) {
+      videoVastXml = _json['videoVastXml'];
     }
   }
 
@@ -10540,10 +10539,10 @@ class VideoContent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (videoUrl != null) {
-      _json["videoUrl"] = videoUrl;
+      _json['videoUrl'] = videoUrl;
     }
     if (videoVastXml != null) {
-      _json["videoVastXml"] = videoVastXml;
+      _json['videoVastXml'] = videoVastXml;
     }
     return _json;
   }
@@ -10563,13 +10562,13 @@ class VideoTargeting {
   VideoTargeting();
 
   VideoTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("excludedPositionTypes")) {
+    if (_json.containsKey('excludedPositionTypes')) {
       excludedPositionTypes =
-          (_json["excludedPositionTypes"] as core.List).cast<core.String>();
+          (_json['excludedPositionTypes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("targetedPositionTypes")) {
+    if (_json.containsKey('targetedPositionTypes')) {
       targetedPositionTypes =
-          (_json["targetedPositionTypes"] as core.List).cast<core.String>();
+          (_json['targetedPositionTypes'] as core.List).cast<core.String>();
     }
   }
 
@@ -10577,10 +10576,10 @@ class VideoTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludedPositionTypes != null) {
-      _json["excludedPositionTypes"] = excludedPositionTypes;
+      _json['excludedPositionTypes'] = excludedPositionTypes;
     }
     if (targetedPositionTypes != null) {
-      _json["targetedPositionTypes"] = targetedPositionTypes;
+      _json['targetedPositionTypes'] = targetedPositionTypes;
     }
     return _json;
   }
@@ -10597,8 +10596,8 @@ class WatchCreativeRequest {
   WatchCreativeRequest();
 
   WatchCreativeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("topic")) {
-      topic = _json["topic"];
+    if (_json.containsKey('topic')) {
+      topic = _json['topic'];
     }
   }
 
@@ -10606,7 +10605,7 @@ class WatchCreativeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (topic != null) {
-      _json["topic"] = topic;
+      _json['topic'] = topic;
     }
     return _json;
   }

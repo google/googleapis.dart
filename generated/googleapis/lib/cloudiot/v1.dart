@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,18 +38,18 @@ const core.String USER_AGENT = 'dart-api-client cloudiot/v1';
 class CloudiotApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// Register and manage devices in the Google Cloud IoT service
-  static const CloudiotScope = "https://www.googleapis.com/auth/cloudiot";
+  static const CloudiotScope = 'https://www.googleapis.com/auth/cloudiot';
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   CloudiotApi(http.Client client,
-      {core.String rootUrl = "https://cloudiot.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://cloudiot.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -122,10 +121,10 @@ class ProjectsLocationsRegistriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -134,7 +133,7 @@ class ProjectsLocationsRegistriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -181,10 +180,10 @@ class ProjectsLocationsRegistriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -193,7 +192,7 @@ class ProjectsLocationsRegistriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -234,17 +233,17 @@ class ProjectsLocationsRegistriesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -285,17 +284,17 @@ class ProjectsLocationsRegistriesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -344,10 +343,10 @@ class ProjectsLocationsRegistriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -356,7 +355,7 @@ class ProjectsLocationsRegistriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -408,16 +407,16 @@ class ProjectsLocationsRegistriesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -426,7 +425,7 @@ class ProjectsLocationsRegistriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -481,20 +480,20 @@ class ProjectsLocationsRegistriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -543,10 +542,10 @@ class ProjectsLocationsRegistriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -555,7 +554,7 @@ class ProjectsLocationsRegistriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -605,10 +604,10 @@ class ProjectsLocationsRegistriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -617,7 +616,7 @@ class ProjectsLocationsRegistriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -664,10 +663,10 @@ class ProjectsLocationsRegistriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -676,7 +675,7 @@ class ProjectsLocationsRegistriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -739,10 +738,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -750,7 +749,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -793,17 +792,17 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -850,20 +849,20 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (fieldMask != null) {
-      _queryParams["fieldMask"] = [fieldMask];
+      _queryParams['fieldMask'] = [fieldMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -953,40 +952,40 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (gatewayListOptions_gatewayType != null) {
-      _queryParams["gatewayListOptions.gatewayType"] = [
+      _queryParams['gatewayListOptions.gatewayType'] = [
         gatewayListOptions_gatewayType
       ];
     }
     if (fieldMask != null) {
-      _queryParams["fieldMask"] = [fieldMask];
+      _queryParams['fieldMask'] = [fieldMask];
     }
     if (gatewayListOptions_associationsDeviceId != null) {
-      _queryParams["gatewayListOptions.associationsDeviceId"] = [
+      _queryParams['gatewayListOptions.associationsDeviceId'] = [
         gatewayListOptions_associationsDeviceId
       ];
     }
     if (gatewayListOptions_associationsGatewayId != null) {
-      _queryParams["gatewayListOptions.associationsGatewayId"] = [
+      _queryParams['gatewayListOptions.associationsGatewayId'] = [
         gatewayListOptions_associationsGatewayId
       ];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
+      _queryParams['deviceNumIds'] = deviceNumIds;
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (deviceIds != null) {
-      _queryParams["deviceIds"] = deviceIds;
+      _queryParams['deviceIds'] = deviceIds;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -994,7 +993,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1045,10 +1044,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1057,7 +1056,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1113,20 +1112,20 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1186,10 +1185,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1198,7 +1197,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1256,13 +1255,13 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (numVersions != null) {
-      _queryParams["numVersions"] = ["${numVersions}"];
+      _queryParams['numVersions'] = ['${numVersions}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1271,7 +1270,7 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1329,20 +1328,20 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (numStates != null) {
-      _queryParams["numStates"] = ["${numStates}"];
+      _queryParams['numStates'] = ['${numStates}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/states';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1401,10 +1400,10 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1413,7 +1412,7 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1462,10 +1461,10 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1474,7 +1473,7 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1524,10 +1523,10 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1536,7 +1535,7 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1634,40 +1633,40 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (gatewayListOptions_associationsGatewayId != null) {
-      _queryParams["gatewayListOptions.associationsGatewayId"] = [
+      _queryParams['gatewayListOptions.associationsGatewayId'] = [
         gatewayListOptions_associationsGatewayId
       ];
     }
     if (gatewayListOptions_gatewayType != null) {
-      _queryParams["gatewayListOptions.gatewayType"] = [
+      _queryParams['gatewayListOptions.gatewayType'] = [
         gatewayListOptions_gatewayType
       ];
     }
     if (deviceIds != null) {
-      _queryParams["deviceIds"] = deviceIds;
+      _queryParams['deviceIds'] = deviceIds;
     }
     if (gatewayListOptions_associationsDeviceId != null) {
-      _queryParams["gatewayListOptions.associationsDeviceId"] = [
+      _queryParams['gatewayListOptions.associationsDeviceId'] = [
         gatewayListOptions_associationsDeviceId
       ];
     }
     if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
+      _queryParams['deviceNumIds'] = deviceNumIds;
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (fieldMask != null) {
-      _queryParams["fieldMask"] = [fieldMask];
+      _queryParams['fieldMask'] = [fieldMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1675,7 +1674,7 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1700,11 +1699,11 @@ class BindDeviceToGatewayRequest {
   BindDeviceToGatewayRequest();
 
   BindDeviceToGatewayRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceId")) {
-      deviceId = _json["deviceId"];
+    if (_json.containsKey('deviceId')) {
+      deviceId = _json['deviceId'];
     }
-    if (_json.containsKey("gatewayId")) {
-      gatewayId = _json["gatewayId"];
+    if (_json.containsKey('gatewayId')) {
+      gatewayId = _json['gatewayId'];
     }
   }
 
@@ -1712,10 +1711,10 @@ class BindDeviceToGatewayRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceId != null) {
-      _json["deviceId"] = deviceId;
+      _json['deviceId'] = deviceId;
     }
     if (gatewayId != null) {
-      _json["gatewayId"] = gatewayId;
+      _json['gatewayId'] = gatewayId;
     }
     return _json;
   }
@@ -1787,17 +1786,17 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
+    if (_json.containsKey('bindingId')) {
+      bindingId = _json['bindingId'];
     }
-    if (_json.containsKey("condition")) {
-      condition = Expr.fromJson(_json["condition"]);
+    if (_json.containsKey('condition')) {
+      condition = Expr.fromJson(_json['condition']);
     }
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List).cast<core.String>();
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -1805,16 +1804,16 @@ class Binding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bindingId != null) {
-      _json["bindingId"] = bindingId;
+      _json['bindingId'] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     if (members != null) {
-      _json["members"] = members;
+      _json['members'] = members;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -1926,59 +1925,59 @@ class Device {
   Device();
 
   Device.fromJson(core.Map _json) {
-    if (_json.containsKey("blocked")) {
-      blocked = _json["blocked"];
+    if (_json.containsKey('blocked')) {
+      blocked = _json['blocked'];
     }
-    if (_json.containsKey("config")) {
-      config = DeviceConfig.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = DeviceConfig.fromJson(_json['config']);
     }
-    if (_json.containsKey("credentials")) {
-      credentials = (_json["credentials"] as core.List)
+    if (_json.containsKey('credentials')) {
+      credentials = (_json['credentials'] as core.List)
           .map<DeviceCredential>((value) => DeviceCredential.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("gatewayConfig")) {
-      gatewayConfig = GatewayConfig.fromJson(_json["gatewayConfig"]);
+    if (_json.containsKey('gatewayConfig')) {
+      gatewayConfig = GatewayConfig.fromJson(_json['gatewayConfig']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("lastConfigAckTime")) {
-      lastConfigAckTime = _json["lastConfigAckTime"];
+    if (_json.containsKey('lastConfigAckTime')) {
+      lastConfigAckTime = _json['lastConfigAckTime'];
     }
-    if (_json.containsKey("lastConfigSendTime")) {
-      lastConfigSendTime = _json["lastConfigSendTime"];
+    if (_json.containsKey('lastConfigSendTime')) {
+      lastConfigSendTime = _json['lastConfigSendTime'];
     }
-    if (_json.containsKey("lastErrorStatus")) {
-      lastErrorStatus = Status.fromJson(_json["lastErrorStatus"]);
+    if (_json.containsKey('lastErrorStatus')) {
+      lastErrorStatus = Status.fromJson(_json['lastErrorStatus']);
     }
-    if (_json.containsKey("lastErrorTime")) {
-      lastErrorTime = _json["lastErrorTime"];
+    if (_json.containsKey('lastErrorTime')) {
+      lastErrorTime = _json['lastErrorTime'];
     }
-    if (_json.containsKey("lastEventTime")) {
-      lastEventTime = _json["lastEventTime"];
+    if (_json.containsKey('lastEventTime')) {
+      lastEventTime = _json['lastEventTime'];
     }
-    if (_json.containsKey("lastHeartbeatTime")) {
-      lastHeartbeatTime = _json["lastHeartbeatTime"];
+    if (_json.containsKey('lastHeartbeatTime')) {
+      lastHeartbeatTime = _json['lastHeartbeatTime'];
     }
-    if (_json.containsKey("lastStateTime")) {
-      lastStateTime = _json["lastStateTime"];
+    if (_json.containsKey('lastStateTime')) {
+      lastStateTime = _json['lastStateTime'];
     }
-    if (_json.containsKey("logLevel")) {
-      logLevel = _json["logLevel"];
+    if (_json.containsKey('logLevel')) {
+      logLevel = _json['logLevel'];
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.String>();
+          (_json['metadata'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("numId")) {
-      numId = _json["numId"];
+    if (_json.containsKey('numId')) {
+      numId = _json['numId'];
     }
-    if (_json.containsKey("state")) {
-      state = DeviceState.fromJson(_json["state"]);
+    if (_json.containsKey('state')) {
+      state = DeviceState.fromJson(_json['state']);
     }
   }
 
@@ -1986,56 +1985,56 @@ class Device {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blocked != null) {
-      _json["blocked"] = blocked;
+      _json['blocked'] = blocked;
     }
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     if (credentials != null) {
-      _json["credentials"] =
+      _json['credentials'] =
           credentials.map((value) => value.toJson()).toList();
     }
     if (gatewayConfig != null) {
-      _json["gatewayConfig"] = gatewayConfig.toJson();
+      _json['gatewayConfig'] = gatewayConfig.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (lastConfigAckTime != null) {
-      _json["lastConfigAckTime"] = lastConfigAckTime;
+      _json['lastConfigAckTime'] = lastConfigAckTime;
     }
     if (lastConfigSendTime != null) {
-      _json["lastConfigSendTime"] = lastConfigSendTime;
+      _json['lastConfigSendTime'] = lastConfigSendTime;
     }
     if (lastErrorStatus != null) {
-      _json["lastErrorStatus"] = lastErrorStatus.toJson();
+      _json['lastErrorStatus'] = lastErrorStatus.toJson();
     }
     if (lastErrorTime != null) {
-      _json["lastErrorTime"] = lastErrorTime;
+      _json['lastErrorTime'] = lastErrorTime;
     }
     if (lastEventTime != null) {
-      _json["lastEventTime"] = lastEventTime;
+      _json['lastEventTime'] = lastEventTime;
     }
     if (lastHeartbeatTime != null) {
-      _json["lastHeartbeatTime"] = lastHeartbeatTime;
+      _json['lastHeartbeatTime'] = lastHeartbeatTime;
     }
     if (lastStateTime != null) {
-      _json["lastStateTime"] = lastStateTime;
+      _json['lastStateTime'] = lastStateTime;
     }
     if (logLevel != null) {
-      _json["logLevel"] = logLevel;
+      _json['logLevel'] = logLevel;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (numId != null) {
-      _json["numId"] = numId;
+      _json['numId'] = numId;
     }
     if (state != null) {
-      _json["state"] = state.toJson();
+      _json['state'] = state.toJson();
     }
     return _json;
   }
@@ -2050,7 +2049,7 @@ class DeviceConfig {
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// [Output only] The time at which this configuration version was updated in
@@ -2077,17 +2076,17 @@ class DeviceConfig {
   DeviceConfig();
 
   DeviceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("binaryData")) {
-      binaryData = _json["binaryData"];
+    if (_json.containsKey('binaryData')) {
+      binaryData = _json['binaryData'];
     }
-    if (_json.containsKey("cloudUpdateTime")) {
-      cloudUpdateTime = _json["cloudUpdateTime"];
+    if (_json.containsKey('cloudUpdateTime')) {
+      cloudUpdateTime = _json['cloudUpdateTime'];
     }
-    if (_json.containsKey("deviceAckTime")) {
-      deviceAckTime = _json["deviceAckTime"];
+    if (_json.containsKey('deviceAckTime')) {
+      deviceAckTime = _json['deviceAckTime'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -2095,16 +2094,16 @@ class DeviceConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (binaryData != null) {
-      _json["binaryData"] = binaryData;
+      _json['binaryData'] = binaryData;
     }
     if (cloudUpdateTime != null) {
-      _json["cloudUpdateTime"] = cloudUpdateTime;
+      _json['cloudUpdateTime'] = cloudUpdateTime;
     }
     if (deviceAckTime != null) {
-      _json["deviceAckTime"] = deviceAckTime;
+      _json['deviceAckTime'] = deviceAckTime;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -2132,11 +2131,11 @@ class DeviceCredential {
   DeviceCredential();
 
   DeviceCredential.fromJson(core.Map _json) {
-    if (_json.containsKey("expirationTime")) {
-      expirationTime = _json["expirationTime"];
+    if (_json.containsKey('expirationTime')) {
+      expirationTime = _json['expirationTime'];
     }
-    if (_json.containsKey("publicKey")) {
-      publicKey = PublicKeyCredential.fromJson(_json["publicKey"]);
+    if (_json.containsKey('publicKey')) {
+      publicKey = PublicKeyCredential.fromJson(_json['publicKey']);
     }
   }
 
@@ -2144,10 +2143,10 @@ class DeviceCredential {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expirationTime != null) {
-      _json["expirationTime"] = expirationTime;
+      _json['expirationTime'] = expirationTime;
     }
     if (publicKey != null) {
-      _json["publicKey"] = publicKey.toJson();
+      _json['publicKey'] = publicKey.toJson();
     }
     return _json;
   }
@@ -2215,37 +2214,37 @@ class DeviceRegistry {
   DeviceRegistry();
 
   DeviceRegistry.fromJson(core.Map _json) {
-    if (_json.containsKey("credentials")) {
-      credentials = (_json["credentials"] as core.List)
+    if (_json.containsKey('credentials')) {
+      credentials = (_json['credentials'] as core.List)
           .map<RegistryCredential>(
               (value) => RegistryCredential.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("eventNotificationConfigs")) {
+    if (_json.containsKey('eventNotificationConfigs')) {
       eventNotificationConfigs =
-          (_json["eventNotificationConfigs"] as core.List)
+          (_json['eventNotificationConfigs'] as core.List)
               .map<EventNotificationConfig>(
                   (value) => EventNotificationConfig.fromJson(value))
               .toList();
     }
-    if (_json.containsKey("httpConfig")) {
-      httpConfig = HttpConfig.fromJson(_json["httpConfig"]);
+    if (_json.containsKey('httpConfig')) {
+      httpConfig = HttpConfig.fromJson(_json['httpConfig']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("logLevel")) {
-      logLevel = _json["logLevel"];
+    if (_json.containsKey('logLevel')) {
+      logLevel = _json['logLevel'];
     }
-    if (_json.containsKey("mqttConfig")) {
-      mqttConfig = MqttConfig.fromJson(_json["mqttConfig"]);
+    if (_json.containsKey('mqttConfig')) {
+      mqttConfig = MqttConfig.fromJson(_json['mqttConfig']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("stateNotificationConfig")) {
+    if (_json.containsKey('stateNotificationConfig')) {
       stateNotificationConfig =
-          StateNotificationConfig.fromJson(_json["stateNotificationConfig"]);
+          StateNotificationConfig.fromJson(_json['stateNotificationConfig']);
     }
   }
 
@@ -2253,30 +2252,30 @@ class DeviceRegistry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (credentials != null) {
-      _json["credentials"] =
+      _json['credentials'] =
           credentials.map((value) => value.toJson()).toList();
     }
     if (eventNotificationConfigs != null) {
-      _json["eventNotificationConfigs"] =
+      _json['eventNotificationConfigs'] =
           eventNotificationConfigs.map((value) => value.toJson()).toList();
     }
     if (httpConfig != null) {
-      _json["httpConfig"] = httpConfig.toJson();
+      _json['httpConfig'] = httpConfig.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (logLevel != null) {
-      _json["logLevel"] = logLevel;
+      _json['logLevel'] = logLevel;
     }
     if (mqttConfig != null) {
-      _json["mqttConfig"] = mqttConfig.toJson();
+      _json['mqttConfig'] = mqttConfig.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (stateNotificationConfig != null) {
-      _json["stateNotificationConfig"] = stateNotificationConfig.toJson();
+      _json['stateNotificationConfig'] = stateNotificationConfig.toJson();
     }
     return _json;
   }
@@ -2291,7 +2290,7 @@ class DeviceState {
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// [Output only] The time at which this state version was updated in Cloud
@@ -2301,11 +2300,11 @@ class DeviceState {
   DeviceState();
 
   DeviceState.fromJson(core.Map _json) {
-    if (_json.containsKey("binaryData")) {
-      binaryData = _json["binaryData"];
+    if (_json.containsKey('binaryData')) {
+      binaryData = _json['binaryData'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -2313,10 +2312,10 @@ class DeviceState {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (binaryData != null) {
-      _json["binaryData"] = binaryData;
+      _json['binaryData'] = binaryData;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -2354,11 +2353,11 @@ class EventNotificationConfig {
   EventNotificationConfig();
 
   EventNotificationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("pubsubTopicName")) {
-      pubsubTopicName = _json["pubsubTopicName"];
+    if (_json.containsKey('pubsubTopicName')) {
+      pubsubTopicName = _json['pubsubTopicName'];
     }
-    if (_json.containsKey("subfolderMatches")) {
-      subfolderMatches = _json["subfolderMatches"];
+    if (_json.containsKey('subfolderMatches')) {
+      subfolderMatches = _json['subfolderMatches'];
     }
   }
 
@@ -2366,10 +2365,10 @@ class EventNotificationConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pubsubTopicName != null) {
-      _json["pubsubTopicName"] = pubsubTopicName;
+      _json['pubsubTopicName'] = pubsubTopicName;
     }
     if (subfolderMatches != null) {
-      _json["subfolderMatches"] = subfolderMatches;
+      _json['subfolderMatches'] = subfolderMatches;
     }
     return _json;
   }
@@ -2411,17 +2410,17 @@ class Expr {
   Expr();
 
   Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
+    if (_json.containsKey('expression')) {
+      expression = _json['expression'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -2429,16 +2428,16 @@ class Expr {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (expression != null) {
-      _json["expression"] = expression;
+      _json['expression'] = expression;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -2478,17 +2477,17 @@ class GatewayConfig {
   GatewayConfig();
 
   GatewayConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("gatewayAuthMethod")) {
-      gatewayAuthMethod = _json["gatewayAuthMethod"];
+    if (_json.containsKey('gatewayAuthMethod')) {
+      gatewayAuthMethod = _json['gatewayAuthMethod'];
     }
-    if (_json.containsKey("gatewayType")) {
-      gatewayType = _json["gatewayType"];
+    if (_json.containsKey('gatewayType')) {
+      gatewayType = _json['gatewayType'];
     }
-    if (_json.containsKey("lastAccessedGatewayId")) {
-      lastAccessedGatewayId = _json["lastAccessedGatewayId"];
+    if (_json.containsKey('lastAccessedGatewayId')) {
+      lastAccessedGatewayId = _json['lastAccessedGatewayId'];
     }
-    if (_json.containsKey("lastAccessedGatewayTime")) {
-      lastAccessedGatewayTime = _json["lastAccessedGatewayTime"];
+    if (_json.containsKey('lastAccessedGatewayTime')) {
+      lastAccessedGatewayTime = _json['lastAccessedGatewayTime'];
     }
   }
 
@@ -2496,16 +2495,16 @@ class GatewayConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gatewayAuthMethod != null) {
-      _json["gatewayAuthMethod"] = gatewayAuthMethod;
+      _json['gatewayAuthMethod'] = gatewayAuthMethod;
     }
     if (gatewayType != null) {
-      _json["gatewayType"] = gatewayType;
+      _json['gatewayType'] = gatewayType;
     }
     if (lastAccessedGatewayId != null) {
-      _json["lastAccessedGatewayId"] = lastAccessedGatewayId;
+      _json['lastAccessedGatewayId'] = lastAccessedGatewayId;
     }
     if (lastAccessedGatewayTime != null) {
-      _json["lastAccessedGatewayTime"] = lastAccessedGatewayTime;
+      _json['lastAccessedGatewayTime'] = lastAccessedGatewayTime;
     }
     return _json;
   }
@@ -2520,8 +2519,8 @@ class GetIamPolicyRequest {
   GetIamPolicyRequest();
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("options")) {
-      options = GetPolicyOptions.fromJson(_json["options"]);
+    if (_json.containsKey('options')) {
+      options = GetPolicyOptions.fromJson(_json['options']);
     }
   }
 
@@ -2529,7 +2528,7 @@ class GetIamPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = options.toJson();
+      _json['options'] = options.toJson();
     }
     return _json;
   }
@@ -2549,8 +2548,8 @@ class GetPolicyOptions {
   GetPolicyOptions();
 
   GetPolicyOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("requestedPolicyVersion")) {
-      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    if (_json.containsKey('requestedPolicyVersion')) {
+      requestedPolicyVersion = _json['requestedPolicyVersion'];
     }
   }
 
@@ -2558,7 +2557,7 @@ class GetPolicyOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
-      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+      _json['requestedPolicyVersion'] = requestedPolicyVersion;
     }
     return _json;
   }
@@ -2579,8 +2578,8 @@ class HttpConfig {
   HttpConfig();
 
   HttpConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("httpEnabledState")) {
-      httpEnabledState = _json["httpEnabledState"];
+    if (_json.containsKey('httpEnabledState')) {
+      httpEnabledState = _json['httpEnabledState'];
     }
   }
 
@@ -2588,7 +2587,7 @@ class HttpConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (httpEnabledState != null) {
-      _json["httpEnabledState"] = httpEnabledState;
+      _json['httpEnabledState'] = httpEnabledState;
     }
     return _json;
   }
@@ -2603,8 +2602,8 @@ class ListDeviceConfigVersionsResponse {
   ListDeviceConfigVersionsResponse();
 
   ListDeviceConfigVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceConfigs")) {
-      deviceConfigs = (_json["deviceConfigs"] as core.List)
+    if (_json.containsKey('deviceConfigs')) {
+      deviceConfigs = (_json['deviceConfigs'] as core.List)
           .map<DeviceConfig>((value) => DeviceConfig.fromJson(value))
           .toList();
     }
@@ -2614,7 +2613,7 @@ class ListDeviceConfigVersionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceConfigs != null) {
-      _json["deviceConfigs"] =
+      _json['deviceConfigs'] =
           deviceConfigs.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2634,13 +2633,13 @@ class ListDeviceRegistriesResponse {
   ListDeviceRegistriesResponse();
 
   ListDeviceRegistriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceRegistries")) {
-      deviceRegistries = (_json["deviceRegistries"] as core.List)
+    if (_json.containsKey('deviceRegistries')) {
+      deviceRegistries = (_json['deviceRegistries'] as core.List)
           .map<DeviceRegistry>((value) => DeviceRegistry.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2648,11 +2647,11 @@ class ListDeviceRegistriesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceRegistries != null) {
-      _json["deviceRegistries"] =
+      _json['deviceRegistries'] =
           deviceRegistries.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2667,8 +2666,8 @@ class ListDeviceStatesResponse {
   ListDeviceStatesResponse();
 
   ListDeviceStatesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceStates")) {
-      deviceStates = (_json["deviceStates"] as core.List)
+    if (_json.containsKey('deviceStates')) {
+      deviceStates = (_json['deviceStates'] as core.List)
           .map<DeviceState>((value) => DeviceState.fromJson(value))
           .toList();
     }
@@ -2678,7 +2677,7 @@ class ListDeviceStatesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceStates != null) {
-      _json["deviceStates"] =
+      _json['deviceStates'] =
           deviceStates.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2697,13 +2696,13 @@ class ListDevicesResponse {
   ListDevicesResponse();
 
   ListDevicesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("devices")) {
-      devices = (_json["devices"] as core.List)
+    if (_json.containsKey('devices')) {
+      devices = (_json['devices'] as core.List)
           .map<Device>((value) => Device.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2711,10 +2710,10 @@ class ListDevicesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.map((value) => value.toJson()).toList();
+      _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2729,7 +2728,7 @@ class ModifyCloudToDeviceConfigRequest {
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The version number to update. If this value is zero, it will not check the
@@ -2742,11 +2741,11 @@ class ModifyCloudToDeviceConfigRequest {
   ModifyCloudToDeviceConfigRequest();
 
   ModifyCloudToDeviceConfigRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("binaryData")) {
-      binaryData = _json["binaryData"];
+    if (_json.containsKey('binaryData')) {
+      binaryData = _json['binaryData'];
     }
-    if (_json.containsKey("versionToUpdate")) {
-      versionToUpdate = _json["versionToUpdate"];
+    if (_json.containsKey('versionToUpdate')) {
+      versionToUpdate = _json['versionToUpdate'];
     }
   }
 
@@ -2754,10 +2753,10 @@ class ModifyCloudToDeviceConfigRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (binaryData != null) {
-      _json["binaryData"] = binaryData;
+      _json['binaryData'] = binaryData;
     }
     if (versionToUpdate != null) {
-      _json["versionToUpdate"] = versionToUpdate;
+      _json['versionToUpdate'] = versionToUpdate;
     }
     return _json;
   }
@@ -2777,8 +2776,8 @@ class MqttConfig {
   MqttConfig();
 
   MqttConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("mqttEnabledState")) {
-      mqttEnabledState = _json["mqttEnabledState"];
+    if (_json.containsKey('mqttEnabledState')) {
+      mqttEnabledState = _json['mqttEnabledState'];
     }
   }
 
@@ -2786,7 +2785,7 @@ class MqttConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (mqttEnabledState != null) {
-      _json["mqttEnabledState"] = mqttEnabledState;
+      _json['mqttEnabledState'] = mqttEnabledState;
     }
     return _json;
   }
@@ -2843,7 +2842,7 @@ class Policy {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
@@ -2866,16 +2865,16 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("bindings")) {
-      bindings = (_json["bindings"] as core.List)
+    if (_json.containsKey('bindings')) {
+      bindings = (_json['bindings'] as core.List)
           .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -2883,13 +2882,13 @@ class Policy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
+      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -2915,14 +2914,14 @@ class PublicKeyCertificate {
   PublicKeyCertificate();
 
   PublicKeyCertificate.fromJson(core.Map _json) {
-    if (_json.containsKey("certificate")) {
-      certificate = _json["certificate"];
+    if (_json.containsKey('certificate')) {
+      certificate = _json['certificate'];
     }
-    if (_json.containsKey("format")) {
-      format = _json["format"];
+    if (_json.containsKey('format')) {
+      format = _json['format'];
     }
-    if (_json.containsKey("x509Details")) {
-      x509Details = X509CertificateDetails.fromJson(_json["x509Details"]);
+    if (_json.containsKey('x509Details')) {
+      x509Details = X509CertificateDetails.fromJson(_json['x509Details']);
     }
   }
 
@@ -2930,13 +2929,13 @@ class PublicKeyCertificate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (certificate != null) {
-      _json["certificate"] = certificate;
+      _json['certificate'] = certificate;
     }
     if (format != null) {
-      _json["format"] = format;
+      _json['format'] = format;
     }
     if (x509Details != null) {
-      _json["x509Details"] = x509Details.toJson();
+      _json['x509Details'] = x509Details.toJson();
     }
     return _json;
   }
@@ -2972,11 +2971,11 @@ class PublicKeyCredential {
   PublicKeyCredential();
 
   PublicKeyCredential.fromJson(core.Map _json) {
-    if (_json.containsKey("format")) {
-      format = _json["format"];
+    if (_json.containsKey('format')) {
+      format = _json['format'];
     }
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
   }
 
@@ -2984,10 +2983,10 @@ class PublicKeyCredential {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (format != null) {
-      _json["format"] = format;
+      _json['format'] = format;
     }
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     return _json;
   }
@@ -3001,9 +3000,9 @@ class RegistryCredential {
   RegistryCredential();
 
   RegistryCredential.fromJson(core.Map _json) {
-    if (_json.containsKey("publicKeyCertificate")) {
+    if (_json.containsKey('publicKeyCertificate')) {
       publicKeyCertificate =
-          PublicKeyCertificate.fromJson(_json["publicKeyCertificate"]);
+          PublicKeyCertificate.fromJson(_json['publicKeyCertificate']);
     }
   }
 
@@ -3011,7 +3010,7 @@ class RegistryCredential {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (publicKeyCertificate != null) {
-      _json["publicKeyCertificate"] = publicKeyCertificate.toJson();
+      _json['publicKeyCertificate'] = publicKeyCertificate.toJson();
     }
     return _json;
   }
@@ -3026,7 +3025,7 @@ class SendCommandToDeviceRequest {
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Optional subfolder for the command. If empty, the command will be
@@ -3040,11 +3039,11 @@ class SendCommandToDeviceRequest {
   SendCommandToDeviceRequest();
 
   SendCommandToDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("binaryData")) {
-      binaryData = _json["binaryData"];
+    if (_json.containsKey('binaryData')) {
+      binaryData = _json['binaryData'];
     }
-    if (_json.containsKey("subfolder")) {
-      subfolder = _json["subfolder"];
+    if (_json.containsKey('subfolder')) {
+      subfolder = _json['subfolder'];
     }
   }
 
@@ -3052,10 +3051,10 @@ class SendCommandToDeviceRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (binaryData != null) {
-      _json["binaryData"] = binaryData;
+      _json['binaryData'] = binaryData;
     }
     if (subfolder != null) {
-      _json["subfolder"] = subfolder;
+      _json['subfolder'] = subfolder;
     }
     return _json;
   }
@@ -3085,8 +3084,8 @@ class SetIamPolicyRequest {
   SetIamPolicyRequest();
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("policy")) {
-      policy = Policy.fromJson(_json["policy"]);
+    if (_json.containsKey('policy')) {
+      policy = Policy.fromJson(_json['policy']);
     }
   }
 
@@ -3094,7 +3093,7 @@ class SetIamPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = policy.toJson();
+      _json['policy'] = policy.toJson();
     }
     return _json;
   }
@@ -3109,8 +3108,8 @@ class StateNotificationConfig {
   StateNotificationConfig();
 
   StateNotificationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("pubsubTopicName")) {
-      pubsubTopicName = _json["pubsubTopicName"];
+    if (_json.containsKey('pubsubTopicName')) {
+      pubsubTopicName = _json['pubsubTopicName'];
     }
   }
 
@@ -3118,7 +3117,7 @@ class StateNotificationConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pubsubTopicName != null) {
-      _json["pubsubTopicName"] = pubsubTopicName;
+      _json['pubsubTopicName'] = pubsubTopicName;
     }
     return _json;
   }
@@ -3149,17 +3148,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -3167,13 +3166,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -3190,8 +3189,8 @@ class TestIamPermissionsRequest {
   TestIamPermissionsRequest();
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -3199,7 +3198,7 @@ class TestIamPermissionsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -3214,8 +3213,8 @@ class TestIamPermissionsResponse {
   TestIamPermissionsResponse();
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -3223,7 +3222,7 @@ class TestIamPermissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -3243,11 +3242,11 @@ class UnbindDeviceFromGatewayRequest {
   UnbindDeviceFromGatewayRequest();
 
   UnbindDeviceFromGatewayRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceId")) {
-      deviceId = _json["deviceId"];
+    if (_json.containsKey('deviceId')) {
+      deviceId = _json['deviceId'];
     }
-    if (_json.containsKey("gatewayId")) {
-      gatewayId = _json["gatewayId"];
+    if (_json.containsKey('gatewayId')) {
+      gatewayId = _json['gatewayId'];
     }
   }
 
@@ -3255,10 +3254,10 @@ class UnbindDeviceFromGatewayRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceId != null) {
-      _json["deviceId"] = deviceId;
+      _json['deviceId'] = deviceId;
     }
     if (gatewayId != null) {
-      _json["gatewayId"] = gatewayId;
+      _json['gatewayId'] = gatewayId;
     }
     return _json;
   }
@@ -3300,23 +3299,23 @@ class X509CertificateDetails {
   X509CertificateDetails();
 
   X509CertificateDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("expiryTime")) {
-      expiryTime = _json["expiryTime"];
+    if (_json.containsKey('expiryTime')) {
+      expiryTime = _json['expiryTime'];
     }
-    if (_json.containsKey("issuer")) {
-      issuer = _json["issuer"];
+    if (_json.containsKey('issuer')) {
+      issuer = _json['issuer'];
     }
-    if (_json.containsKey("publicKeyType")) {
-      publicKeyType = _json["publicKeyType"];
+    if (_json.containsKey('publicKeyType')) {
+      publicKeyType = _json['publicKeyType'];
     }
-    if (_json.containsKey("signatureAlgorithm")) {
-      signatureAlgorithm = _json["signatureAlgorithm"];
+    if (_json.containsKey('signatureAlgorithm')) {
+      signatureAlgorithm = _json['signatureAlgorithm'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("subject")) {
-      subject = _json["subject"];
+    if (_json.containsKey('subject')) {
+      subject = _json['subject'];
     }
   }
 
@@ -3324,22 +3323,22 @@ class X509CertificateDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expiryTime != null) {
-      _json["expiryTime"] = expiryTime;
+      _json['expiryTime'] = expiryTime;
     }
     if (issuer != null) {
-      _json["issuer"] = issuer;
+      _json['issuer'] = issuer;
     }
     if (publicKeyType != null) {
-      _json["publicKeyType"] = publicKeyType;
+      _json['publicKeyType'] = publicKeyType;
     }
     if (signatureAlgorithm != null) {
-      _json["signatureAlgorithm"] = signatureAlgorithm;
+      _json['signatureAlgorithm'] = signatureAlgorithm;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (subject != null) {
-      _json["subject"] = subject;
+      _json['subject'] = subject;
     }
     return _json;
   }

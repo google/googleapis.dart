@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -94,9 +94,9 @@ api.UrlNotification buildUrlNotification() {
   var o = api.UrlNotification();
   buildCounterUrlNotification++;
   if (buildCounterUrlNotification < 3) {
-    o.notifyTime = "foo";
-    o.type = "foo";
-    o.url = "foo";
+    o.notifyTime = 'foo';
+    o.type = 'foo';
+    o.url = 'foo';
   }
   buildCounterUrlNotification--;
   return o;
@@ -119,7 +119,7 @@ api.UrlNotificationMetadata buildUrlNotificationMetadata() {
   if (buildCounterUrlNotificationMetadata < 3) {
     o.latestRemove = buildUrlNotification();
     o.latestUpdate = buildUrlNotification();
-    o.url = "foo";
+    o.url = 'foo';
   }
   buildCounterUrlNotificationMetadata--;
   return o;
@@ -136,37 +136,37 @@ void checkUrlNotificationMetadata(api.UrlNotificationMetadata o) {
 }
 
 void main() {
-  unittest.group("obj-schema-PublishUrlNotificationResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PublishUrlNotificationResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPublishUrlNotificationResponse();
       var od = api.PublishUrlNotificationResponse.fromJson(o.toJson());
       checkPublishUrlNotificationResponse(od);
     });
   });
 
-  unittest.group("obj-schema-UrlNotification", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UrlNotification', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUrlNotification();
       var od = api.UrlNotification.fromJson(o.toJson());
       checkUrlNotification(od);
     });
   });
 
-  unittest.group("obj-schema-UrlNotificationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UrlNotificationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUrlNotificationMetadata();
       var od = api.UrlNotificationMetadata.fromJson(o.toJson());
       checkUrlNotificationMetadata(od);
     });
   });
 
-  unittest.group("resource-UrlNotificationsResourceApi", () {
-    unittest.test("method--getMetadata", () {
+  unittest.group('resource-UrlNotificationsResourceApi', () {
+    unittest.test('method--getMetadata', () {
       var mock = HttpServerMock();
       api.UrlNotificationsResourceApi res =
           api.IndexingApi(mock).urlNotifications;
-      var arg_url = "foo";
-      var arg_$fields = "foo";
+      var arg_url = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -185,8 +185,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -197,7 +197,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUrlNotificationMetadata());
         return async.Future.value(stringResponse(200, h, resp));
@@ -209,12 +209,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--publish", () {
+    unittest.test('method--publish', () {
       var mock = HttpServerMock();
       api.UrlNotificationsResourceApi res =
           api.IndexingApi(mock).urlNotifications;
       var arg_request = buildUrlNotification();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UrlNotification.fromJson(json);
         checkUrlNotification(obj);
@@ -236,8 +236,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -247,7 +247,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPublishUrlNotificationResponse());
         return async.Future.value(stringResponse(200, h, resp));

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -76,7 +76,7 @@ api.AndroidAppAsset buildAndroidAppAsset() {
   buildCounterAndroidAppAsset++;
   if (buildCounterAndroidAppAsset < 3) {
     o.certificate = buildCertificateInfo();
-    o.packageName = "foo";
+    o.packageName = 'foo';
   }
   buildCounterAndroidAppAsset--;
   return o;
@@ -117,7 +117,7 @@ api.CertificateInfo buildCertificateInfo() {
   var o = api.CertificateInfo();
   buildCounterCertificateInfo++;
   if (buildCounterCertificateInfo < 3) {
-    o.sha256Fingerprint = "foo";
+    o.sha256Fingerprint = 'foo';
   }
   buildCounterCertificateInfo--;
   return o;
@@ -133,8 +133,8 @@ void checkCertificateInfo(api.CertificateInfo o) {
 
 core.List<core.String> buildUnnamed2772() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -149,10 +149,10 @@ api.CheckResponse buildCheckResponse() {
   var o = api.CheckResponse();
   buildCounterCheckResponse++;
   if (buildCounterCheckResponse < 3) {
-    o.debugString = "foo";
+    o.debugString = 'foo';
     o.errorCode = buildUnnamed2772();
     o.linked = true;
-    o.maxAge = "foo";
+    o.maxAge = 'foo';
   }
   buildCounterCheckResponse--;
   return o;
@@ -171,8 +171,8 @@ void checkCheckResponse(api.CheckResponse o) {
 
 core.List<core.String> buildUnnamed2773() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -200,9 +200,9 @@ api.ListResponse buildListResponse() {
   var o = api.ListResponse();
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    o.debugString = "foo";
+    o.debugString = 'foo';
     o.errorCode = buildUnnamed2773();
-    o.maxAge = "foo";
+    o.maxAge = 'foo';
     o.statements = buildUnnamed2774();
   }
   buildCounterListResponse--;
@@ -225,7 +225,7 @@ api.Statement buildStatement() {
   var o = api.Statement();
   buildCounterStatement++;
   if (buildCounterStatement < 3) {
-    o.relation = "foo";
+    o.relation = 'foo';
     o.source = buildAsset();
     o.target = buildAsset();
   }
@@ -248,7 +248,7 @@ api.WebAsset buildWebAsset() {
   var o = api.WebAsset();
   buildCounterWebAsset++;
   if (buildCounterWebAsset < 3) {
-    o.site = "foo";
+    o.site = 'foo';
   }
   buildCounterWebAsset--;
   return o;
@@ -263,74 +263,74 @@ void checkWebAsset(api.WebAsset o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AndroidAppAsset", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AndroidAppAsset', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAndroidAppAsset();
       var od = api.AndroidAppAsset.fromJson(o.toJson());
       checkAndroidAppAsset(od);
     });
   });
 
-  unittest.group("obj-schema-Asset", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Asset', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
       checkAsset(od);
     });
   });
 
-  unittest.group("obj-schema-CertificateInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CertificateInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCertificateInfo();
       var od = api.CertificateInfo.fromJson(o.toJson());
       checkCertificateInfo(od);
     });
   });
 
-  unittest.group("obj-schema-CheckResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CheckResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCheckResponse();
       var od = api.CheckResponse.fromJson(o.toJson());
       checkCheckResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListResponse();
       var od = api.ListResponse.fromJson(o.toJson());
       checkListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Statement", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Statement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStatement();
       var od = api.Statement.fromJson(o.toJson());
       checkStatement(od);
     });
   });
 
-  unittest.group("obj-schema-WebAsset", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WebAsset', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWebAsset();
       var od = api.WebAsset.fromJson(o.toJson());
       checkWebAsset(od);
     });
   });
 
-  unittest.group("resource-AssetlinksResourceApi", () {
-    unittest.test("method--check", () {
+  unittest.group('resource-AssetlinksResourceApi', () {
+    unittest.test('method--check', () {
       var mock = HttpServerMock();
       api.AssetlinksResourceApi res = api.DigitalassetlinksApi(mock).assetlinks;
-      var arg_source_web_site = "foo";
-      var arg_target_androidApp_packageName = "foo";
-      var arg_source_androidApp_certificate_sha256Fingerprint = "foo";
-      var arg_relation = "foo";
-      var arg_target_androidApp_certificate_sha256Fingerprint = "foo";
-      var arg_target_web_site = "foo";
-      var arg_source_androidApp_packageName = "foo";
-      var arg_$fields = "foo";
+      var arg_source_web_site = 'foo';
+      var arg_target_androidApp_packageName = 'foo';
+      var arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
+      var arg_relation = 'foo';
+      var arg_target_androidApp_certificate_sha256Fingerprint = 'foo';
+      var arg_target_web_site = 'foo';
+      var arg_source_androidApp_packageName = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -349,8 +349,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -378,7 +378,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCheckResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -401,15 +401,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-StatementsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-StatementsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.StatementsResourceApi res = api.DigitalassetlinksApi(mock).statements;
-      var arg_source_web_site = "foo";
-      var arg_source_androidApp_packageName = "foo";
-      var arg_relation = "foo";
-      var arg_source_androidApp_certificate_sha256Fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_source_web_site = 'foo';
+      var arg_source_androidApp_packageName = 'foo';
+      var arg_relation = 'foo';
+      var arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -428,8 +428,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -449,7 +449,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListResponse());
         return async.Future.value(stringResponse(200, h, resp));

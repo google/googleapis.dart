@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,8 +75,8 @@ api.AsymmetricDecryptRequest buildAsymmetricDecryptRequest() {
   var o = api.AsymmetricDecryptRequest();
   buildCounterAsymmetricDecryptRequest++;
   if (buildCounterAsymmetricDecryptRequest < 3) {
-    o.ciphertext = "foo";
-    o.ciphertextCrc32c = "foo";
+    o.ciphertext = 'foo';
+    o.ciphertextCrc32c = 'foo';
   }
   buildCounterAsymmetricDecryptRequest--;
   return o;
@@ -96,8 +96,8 @@ api.AsymmetricDecryptResponse buildAsymmetricDecryptResponse() {
   var o = api.AsymmetricDecryptResponse();
   buildCounterAsymmetricDecryptResponse++;
   if (buildCounterAsymmetricDecryptResponse < 3) {
-    o.plaintext = "foo";
-    o.plaintextCrc32c = "foo";
+    o.plaintext = 'foo';
+    o.plaintextCrc32c = 'foo';
     o.verifiedCiphertextCrc32c = true;
   }
   buildCounterAsymmetricDecryptResponse--;
@@ -120,7 +120,7 @@ api.AsymmetricSignRequest buildAsymmetricSignRequest() {
   buildCounterAsymmetricSignRequest++;
   if (buildCounterAsymmetricSignRequest < 3) {
     o.digest = buildDigest();
-    o.digestCrc32c = "foo";
+    o.digestCrc32c = 'foo';
   }
   buildCounterAsymmetricSignRequest--;
   return o;
@@ -140,9 +140,9 @@ api.AsymmetricSignResponse buildAsymmetricSignResponse() {
   var o = api.AsymmetricSignResponse();
   buildCounterAsymmetricSignResponse++;
   if (buildCounterAsymmetricSignResponse < 3) {
-    o.name = "foo";
-    o.signature = "foo";
-    o.signatureCrc32c = "foo";
+    o.name = 'foo';
+    o.signature = 'foo';
+    o.signatureCrc32c = 'foo';
     o.verifiedDigestCrc32c = true;
   }
   buildCounterAsymmetricSignResponse--;
@@ -179,7 +179,7 @@ api.AuditConfig buildAuditConfig() {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
     o.auditLogConfigs = buildUnnamed4708();
-    o.service = "foo";
+    o.service = 'foo';
   }
   buildCounterAuditConfig--;
   return o;
@@ -196,8 +196,8 @@ void checkAuditConfig(api.AuditConfig o) {
 
 core.List<core.String> buildUnnamed4709() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -213,7 +213,7 @@ api.AuditLogConfig buildAuditLogConfig() {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
     o.exemptedMembers = buildUnnamed4709();
-    o.logType = "foo";
+    o.logType = 'foo';
   }
   buildCounterAuditLogConfig--;
   return o;
@@ -230,8 +230,8 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
 
 core.List<core.String> buildUnnamed4710() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -246,10 +246,10 @@ api.Binding buildBinding() {
   var o = api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.bindingId = "foo";
+    o.bindingId = 'foo';
     o.condition = buildExpr();
     o.members = buildUnnamed4710();
-    o.role = "foo";
+    o.role = 'foo';
   }
   buildCounterBinding--;
   return o;
@@ -268,8 +268,8 @@ void checkBinding(api.Binding o) {
 
 core.List<core.String> buildUnnamed4711() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -281,8 +281,8 @@ void checkUnnamed4711(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4712() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -294,8 +294,8 @@ void checkUnnamed4712(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4713() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -330,15 +330,15 @@ void checkCertificateChains(api.CertificateChains o) {
 
 core.Map<core.String, core.String> buildUnnamed4714() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed4714(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterCryptoKey = 0;
@@ -346,13 +346,13 @@ api.CryptoKey buildCryptoKey() {
   var o = api.CryptoKey();
   buildCounterCryptoKey++;
   if (buildCounterCryptoKey < 3) {
-    o.createTime = "foo";
+    o.createTime = 'foo';
     o.labels = buildUnnamed4714();
-    o.name = "foo";
-    o.nextRotationTime = "foo";
+    o.name = 'foo';
+    o.nextRotationTime = 'foo';
     o.primary = buildCryptoKeyVersion();
-    o.purpose = "foo";
-    o.rotationPeriod = "foo";
+    o.purpose = 'foo';
+    o.rotationPeriod = 'foo';
     o.versionTemplate = buildCryptoKeyVersionTemplate();
   }
   buildCounterCryptoKey--;
@@ -379,19 +379,19 @@ api.CryptoKeyVersion buildCryptoKeyVersion() {
   var o = api.CryptoKeyVersion();
   buildCounterCryptoKeyVersion++;
   if (buildCounterCryptoKeyVersion < 3) {
-    o.algorithm = "foo";
+    o.algorithm = 'foo';
     o.attestation = buildKeyOperationAttestation();
-    o.createTime = "foo";
-    o.destroyEventTime = "foo";
-    o.destroyTime = "foo";
+    o.createTime = 'foo';
+    o.destroyEventTime = 'foo';
+    o.destroyTime = 'foo';
     o.externalProtectionLevelOptions = buildExternalProtectionLevelOptions();
-    o.generateTime = "foo";
-    o.importFailureReason = "foo";
-    o.importJob = "foo";
-    o.importTime = "foo";
-    o.name = "foo";
-    o.protectionLevel = "foo";
-    o.state = "foo";
+    o.generateTime = 'foo';
+    o.importFailureReason = 'foo';
+    o.importJob = 'foo';
+    o.importTime = 'foo';
+    o.name = 'foo';
+    o.protectionLevel = 'foo';
+    o.state = 'foo';
   }
   buildCounterCryptoKeyVersion--;
   return o;
@@ -422,8 +422,8 @@ api.CryptoKeyVersionTemplate buildCryptoKeyVersionTemplate() {
   var o = api.CryptoKeyVersionTemplate();
   buildCounterCryptoKeyVersionTemplate++;
   if (buildCounterCryptoKeyVersionTemplate < 3) {
-    o.algorithm = "foo";
-    o.protectionLevel = "foo";
+    o.algorithm = 'foo';
+    o.protectionLevel = 'foo';
   }
   buildCounterCryptoKeyVersionTemplate--;
   return o;
@@ -443,10 +443,10 @@ api.DecryptRequest buildDecryptRequest() {
   var o = api.DecryptRequest();
   buildCounterDecryptRequest++;
   if (buildCounterDecryptRequest < 3) {
-    o.additionalAuthenticatedData = "foo";
-    o.additionalAuthenticatedDataCrc32c = "foo";
-    o.ciphertext = "foo";
-    o.ciphertextCrc32c = "foo";
+    o.additionalAuthenticatedData = 'foo';
+    o.additionalAuthenticatedDataCrc32c = 'foo';
+    o.ciphertext = 'foo';
+    o.ciphertextCrc32c = 'foo';
   }
   buildCounterDecryptRequest--;
   return o;
@@ -469,8 +469,8 @@ api.DecryptResponse buildDecryptResponse() {
   var o = api.DecryptResponse();
   buildCounterDecryptResponse++;
   if (buildCounterDecryptResponse < 3) {
-    o.plaintext = "foo";
-    o.plaintextCrc32c = "foo";
+    o.plaintext = 'foo';
+    o.plaintextCrc32c = 'foo';
   }
   buildCounterDecryptResponse--;
   return o;
@@ -505,9 +505,9 @@ api.Digest buildDigest() {
   var o = api.Digest();
   buildCounterDigest++;
   if (buildCounterDigest < 3) {
-    o.sha256 = "foo";
-    o.sha384 = "foo";
-    o.sha512 = "foo";
+    o.sha256 = 'foo';
+    o.sha384 = 'foo';
+    o.sha512 = 'foo';
   }
   buildCounterDigest--;
   return o;
@@ -528,10 +528,10 @@ api.EncryptRequest buildEncryptRequest() {
   var o = api.EncryptRequest();
   buildCounterEncryptRequest++;
   if (buildCounterEncryptRequest < 3) {
-    o.additionalAuthenticatedData = "foo";
-    o.additionalAuthenticatedDataCrc32c = "foo";
-    o.plaintext = "foo";
-    o.plaintextCrc32c = "foo";
+    o.additionalAuthenticatedData = 'foo';
+    o.additionalAuthenticatedDataCrc32c = 'foo';
+    o.plaintext = 'foo';
+    o.plaintextCrc32c = 'foo';
   }
   buildCounterEncryptRequest--;
   return o;
@@ -554,9 +554,9 @@ api.EncryptResponse buildEncryptResponse() {
   var o = api.EncryptResponse();
   buildCounterEncryptResponse++;
   if (buildCounterEncryptResponse < 3) {
-    o.ciphertext = "foo";
-    o.ciphertextCrc32c = "foo";
-    o.name = "foo";
+    o.ciphertext = 'foo';
+    o.ciphertextCrc32c = 'foo';
+    o.name = 'foo';
     o.verifiedAdditionalAuthenticatedDataCrc32c = true;
     o.verifiedPlaintextCrc32c = true;
   }
@@ -582,10 +582,10 @@ api.Expr buildExpr() {
   var o = api.Expr();
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    o.description = "foo";
-    o.expression = "foo";
-    o.location = "foo";
-    o.title = "foo";
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
   }
   buildCounterExpr--;
   return o;
@@ -607,7 +607,7 @@ api.ExternalProtectionLevelOptions buildExternalProtectionLevelOptions() {
   var o = api.ExternalProtectionLevelOptions();
   buildCounterExternalProtectionLevelOptions++;
   if (buildCounterExternalProtectionLevelOptions < 3) {
-    o.externalKeyUri = "foo";
+    o.externalKeyUri = 'foo';
   }
   buildCounterExternalProtectionLevelOptions--;
   return o;
@@ -626,9 +626,9 @@ api.ImportCryptoKeyVersionRequest buildImportCryptoKeyVersionRequest() {
   var o = api.ImportCryptoKeyVersionRequest();
   buildCounterImportCryptoKeyVersionRequest++;
   if (buildCounterImportCryptoKeyVersionRequest < 3) {
-    o.algorithm = "foo";
-    o.importJob = "foo";
-    o.rsaAesWrappedKey = "foo";
+    o.algorithm = 'foo';
+    o.importJob = 'foo';
+    o.rsaAesWrappedKey = 'foo';
   }
   buildCounterImportCryptoKeyVersionRequest--;
   return o;
@@ -650,15 +650,15 @@ api.ImportJob buildImportJob() {
   buildCounterImportJob++;
   if (buildCounterImportJob < 3) {
     o.attestation = buildKeyOperationAttestation();
-    o.createTime = "foo";
-    o.expireEventTime = "foo";
-    o.expireTime = "foo";
-    o.generateTime = "foo";
-    o.importMethod = "foo";
-    o.name = "foo";
-    o.protectionLevel = "foo";
+    o.createTime = 'foo';
+    o.expireEventTime = 'foo';
+    o.expireTime = 'foo';
+    o.generateTime = 'foo';
+    o.importMethod = 'foo';
+    o.name = 'foo';
+    o.protectionLevel = 'foo';
     o.publicKey = buildWrappingPublicKey();
-    o.state = "foo";
+    o.state = 'foo';
   }
   buildCounterImportJob--;
   return o;
@@ -687,8 +687,8 @@ api.KeyOperationAttestation buildKeyOperationAttestation() {
   buildCounterKeyOperationAttestation++;
   if (buildCounterKeyOperationAttestation < 3) {
     o.certChains = buildCertificateChains();
-    o.content = "foo";
-    o.format = "foo";
+    o.content = 'foo';
+    o.format = 'foo';
   }
   buildCounterKeyOperationAttestation--;
   return o;
@@ -709,8 +709,8 @@ api.KeyRing buildKeyRing() {
   var o = api.KeyRing();
   buildCounterKeyRing++;
   if (buildCounterKeyRing < 3) {
-    o.createTime = "foo";
-    o.name = "foo";
+    o.createTime = 'foo';
+    o.name = 'foo';
   }
   buildCounterKeyRing--;
   return o;
@@ -744,7 +744,7 @@ api.ListCryptoKeyVersionsResponse buildListCryptoKeyVersionsResponse() {
   buildCounterListCryptoKeyVersionsResponse++;
   if (buildCounterListCryptoKeyVersionsResponse < 3) {
     o.cryptoKeyVersions = buildUnnamed4715();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
   buildCounterListCryptoKeyVersionsResponse--;
@@ -780,7 +780,7 @@ api.ListCryptoKeysResponse buildListCryptoKeysResponse() {
   buildCounterListCryptoKeysResponse++;
   if (buildCounterListCryptoKeysResponse < 3) {
     o.cryptoKeys = buildUnnamed4716();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
   buildCounterListCryptoKeysResponse--;
@@ -816,7 +816,7 @@ api.ListImportJobsResponse buildListImportJobsResponse() {
   buildCounterListImportJobsResponse++;
   if (buildCounterListImportJobsResponse < 3) {
     o.importJobs = buildUnnamed4717();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
   buildCounterListImportJobsResponse--;
@@ -852,7 +852,7 @@ api.ListKeyRingsResponse buildListKeyRingsResponse() {
   buildCounterListKeyRingsResponse++;
   if (buildCounterListKeyRingsResponse < 3) {
     o.keyRings = buildUnnamed4718();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
   buildCounterListKeyRingsResponse--;
@@ -888,7 +888,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
     o.locations = buildUnnamed4719();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
   return o;
@@ -905,25 +905,25 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
 
 core.Map<core.String, core.String> buildUnnamed4720() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed4720(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed4721() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -933,16 +933,16 @@ core.Map<core.String, core.Object> buildUnnamed4721() {
 
 void checkUnnamed4721(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterLocation = 0;
@@ -950,11 +950,11 @@ api.Location buildLocation() {
   var o = api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.displayName = "foo";
+    o.displayName = 'foo';
     o.labels = buildUnnamed4720();
-    o.locationId = "foo";
+    o.locationId = 'foo';
     o.metadata = buildUnnamed4721();
-    o.name = "foo";
+    o.name = 'foo';
   }
   buildCounterLocation--;
   return o;
@@ -1026,7 +1026,7 @@ api.Policy buildPolicy() {
   if (buildCounterPolicy < 3) {
     o.auditConfigs = buildUnnamed4722();
     o.bindings = buildUnnamed4723();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.version = 42;
   }
   buildCounterPolicy--;
@@ -1049,10 +1049,10 @@ api.PublicKey buildPublicKey() {
   var o = api.PublicKey();
   buildCounterPublicKey++;
   if (buildCounterPublicKey < 3) {
-    o.algorithm = "foo";
-    o.name = "foo";
-    o.pem = "foo";
-    o.pemCrc32c = "foo";
+    o.algorithm = 'foo';
+    o.name = 'foo';
+    o.pem = 'foo';
+    o.pemCrc32c = 'foo';
   }
   buildCounterPublicKey--;
   return o;
@@ -1090,7 +1090,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     o.policy = buildPolicy();
-    o.updateMask = "foo";
+    o.updateMask = 'foo';
   }
   buildCounterSetIamPolicyRequest--;
   return o;
@@ -1107,8 +1107,8 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
 
 core.List<core.String> buildUnnamed4724() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1139,8 +1139,8 @@ void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
 
 core.List<core.String> buildUnnamed4725() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1175,7 +1175,7 @@ api.UpdateCryptoKeyPrimaryVersionRequest
   var o = api.UpdateCryptoKeyPrimaryVersionRequest();
   buildCounterUpdateCryptoKeyPrimaryVersionRequest++;
   if (buildCounterUpdateCryptoKeyPrimaryVersionRequest < 3) {
-    o.cryptoKeyVersionId = "foo";
+    o.cryptoKeyVersionId = 'foo';
   }
   buildCounterUpdateCryptoKeyPrimaryVersionRequest--;
   return o;
@@ -1195,7 +1195,7 @@ api.WrappingPublicKey buildWrappingPublicKey() {
   var o = api.WrappingPublicKey();
   buildCounterWrappingPublicKey++;
   if (buildCounterWrappingPublicKey < 3) {
-    o.pem = "foo";
+    o.pem = 'foo';
   }
   buildCounterWrappingPublicKey--;
   return o;
@@ -1210,317 +1210,317 @@ void checkWrappingPublicKey(api.WrappingPublicKey o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AsymmetricDecryptRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsymmetricDecryptRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsymmetricDecryptRequest();
       var od = api.AsymmetricDecryptRequest.fromJson(o.toJson());
       checkAsymmetricDecryptRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AsymmetricDecryptResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsymmetricDecryptResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsymmetricDecryptResponse();
       var od = api.AsymmetricDecryptResponse.fromJson(o.toJson());
       checkAsymmetricDecryptResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AsymmetricSignRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsymmetricSignRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsymmetricSignRequest();
       var od = api.AsymmetricSignRequest.fromJson(o.toJson());
       checkAsymmetricSignRequest(od);
     });
   });
 
-  unittest.group("obj-schema-AsymmetricSignResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AsymmetricSignResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsymmetricSignResponse();
       var od = api.AsymmetricSignResponse.fromJson(o.toJson());
       checkAsymmetricSignResponse(od);
     });
   });
 
-  unittest.group("obj-schema-AuditConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AuditConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od);
     });
   });
 
-  unittest.group("obj-schema-AuditLogConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AuditLogConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od);
     });
   });
 
-  unittest.group("obj-schema-Binding", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Binding', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od);
     });
   });
 
-  unittest.group("obj-schema-CertificateChains", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CertificateChains', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCertificateChains();
       var od = api.CertificateChains.fromJson(o.toJson());
       checkCertificateChains(od);
     });
   });
 
-  unittest.group("obj-schema-CryptoKey", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CryptoKey', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCryptoKey();
       var od = api.CryptoKey.fromJson(o.toJson());
       checkCryptoKey(od);
     });
   });
 
-  unittest.group("obj-schema-CryptoKeyVersion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CryptoKeyVersion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCryptoKeyVersion();
       var od = api.CryptoKeyVersion.fromJson(o.toJson());
       checkCryptoKeyVersion(od);
     });
   });
 
-  unittest.group("obj-schema-CryptoKeyVersionTemplate", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CryptoKeyVersionTemplate', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCryptoKeyVersionTemplate();
       var od = api.CryptoKeyVersionTemplate.fromJson(o.toJson());
       checkCryptoKeyVersionTemplate(od);
     });
   });
 
-  unittest.group("obj-schema-DecryptRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DecryptRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDecryptRequest();
       var od = api.DecryptRequest.fromJson(o.toJson());
       checkDecryptRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DecryptResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DecryptResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDecryptResponse();
       var od = api.DecryptResponse.fromJson(o.toJson());
       checkDecryptResponse(od);
     });
   });
 
-  unittest.group("obj-schema-DestroyCryptoKeyVersionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DestroyCryptoKeyVersionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDestroyCryptoKeyVersionRequest();
       var od = api.DestroyCryptoKeyVersionRequest.fromJson(o.toJson());
       checkDestroyCryptoKeyVersionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Digest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Digest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDigest();
       var od = api.Digest.fromJson(o.toJson());
       checkDigest(od);
     });
   });
 
-  unittest.group("obj-schema-EncryptRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EncryptRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEncryptRequest();
       var od = api.EncryptRequest.fromJson(o.toJson());
       checkEncryptRequest(od);
     });
   });
 
-  unittest.group("obj-schema-EncryptResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EncryptResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEncryptResponse();
       var od = api.EncryptResponse.fromJson(o.toJson());
       checkEncryptResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Expr", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Expr', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od);
     });
   });
 
-  unittest.group("obj-schema-ExternalProtectionLevelOptions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExternalProtectionLevelOptions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExternalProtectionLevelOptions();
       var od = api.ExternalProtectionLevelOptions.fromJson(o.toJson());
       checkExternalProtectionLevelOptions(od);
     });
   });
 
-  unittest.group("obj-schema-ImportCryptoKeyVersionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportCryptoKeyVersionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportCryptoKeyVersionRequest();
       var od = api.ImportCryptoKeyVersionRequest.fromJson(o.toJson());
       checkImportCryptoKeyVersionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ImportJob", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImportJob', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImportJob();
       var od = api.ImportJob.fromJson(o.toJson());
       checkImportJob(od);
     });
   });
 
-  unittest.group("obj-schema-KeyOperationAttestation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-KeyOperationAttestation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildKeyOperationAttestation();
       var od = api.KeyOperationAttestation.fromJson(o.toJson());
       checkKeyOperationAttestation(od);
     });
   });
 
-  unittest.group("obj-schema-KeyRing", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-KeyRing', () {
+    unittest.test('to-json--from-json', () {
       var o = buildKeyRing();
       var od = api.KeyRing.fromJson(o.toJson());
       checkKeyRing(od);
     });
   });
 
-  unittest.group("obj-schema-ListCryptoKeyVersionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListCryptoKeyVersionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListCryptoKeyVersionsResponse();
       var od = api.ListCryptoKeyVersionsResponse.fromJson(o.toJson());
       checkListCryptoKeyVersionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListCryptoKeysResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListCryptoKeysResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListCryptoKeysResponse();
       var od = api.ListCryptoKeysResponse.fromJson(o.toJson());
       checkListCryptoKeysResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListImportJobsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListImportJobsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListImportJobsResponse();
       var od = api.ListImportJobsResponse.fromJson(o.toJson());
       checkListImportJobsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListKeyRingsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListKeyRingsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListKeyRingsResponse();
       var od = api.ListKeyRingsResponse.fromJson(o.toJson());
       checkListKeyRingsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListLocationsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListLocationsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Location", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Location', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od);
     });
   });
 
-  unittest.group("obj-schema-LocationMetadata", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LocationMetadata', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocationMetadata();
       var od = api.LocationMetadata.fromJson(o.toJson());
       checkLocationMetadata(od);
     });
   });
 
-  unittest.group("obj-schema-Policy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Policy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od);
     });
   });
 
-  unittest.group("obj-schema-PublicKey", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PublicKey', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPublicKey();
       var od = api.PublicKey.fromJson(o.toJson());
       checkPublicKey(od);
     });
   });
 
-  unittest.group("obj-schema-RestoreCryptoKeyVersionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RestoreCryptoKeyVersionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRestoreCryptoKeyVersionRequest();
       var od = api.RestoreCryptoKeyVersionRequest.fromJson(o.toJson());
       checkRestoreCryptoKeyVersionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-SetIamPolicyRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SetIamPolicyRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od);
     });
   });
 
-  unittest.group("obj-schema-TestIamPermissionsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestIamPermissionsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-TestIamPermissionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TestIamPermissionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateCryptoKeyPrimaryVersionRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateCryptoKeyPrimaryVersionRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateCryptoKeyPrimaryVersionRequest();
       var od = api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(o.toJson());
       checkUpdateCryptoKeyPrimaryVersionRequest(od);
     });
   });
 
-  unittest.group("obj-schema-WrappingPublicKey", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WrappingPublicKey', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWrappingPublicKey();
       var od = api.WrappingPublicKey.fromJson(o.toJson());
       checkWrappingPublicKey(od);
     });
   });
 
-  unittest.group("resource-ProjectsLocationsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ProjectsLocationsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
           api.CloudkmsApi(mock).projects.locations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1540,8 +1540,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1551,7 +1551,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1563,15 +1563,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
           api.CloudkmsApi(mock).projects.locations;
-      var arg_name = "foo";
+      var arg_name = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1591,8 +1591,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1607,7 +1607,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1624,15 +1624,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsKeyRingsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsLocationsKeyRingsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings;
       var arg_request = buildKeyRing();
-      var arg_parent = "foo";
-      var arg_keyRingId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_keyRingId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.KeyRing.fromJson(json);
         checkKeyRing(obj);
@@ -1655,8 +1655,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1668,7 +1668,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildKeyRing());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1681,12 +1681,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1706,8 +1706,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1717,7 +1717,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildKeyRing());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1729,13 +1729,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1755,8 +1755,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1769,7 +1769,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1784,16 +1784,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings;
-      var arg_parent = "foo";
-      var arg_orderBy = "foo";
+      var arg_parent = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1813,8 +1813,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1831,7 +1831,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListKeyRingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1848,13 +1848,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -1877,8 +1877,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1888,7 +1888,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1900,13 +1900,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -1929,8 +1929,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1940,7 +1940,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1953,16 +1953,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsKeyRingsCryptoKeysResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsLocationsKeyRingsCryptoKeysResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildCryptoKey();
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_skipInitialVersionCreation = true;
-      var arg_cryptoKeyId = "foo";
-      var arg_$fields = "foo";
+      var arg_cryptoKeyId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CryptoKey.fromJson(json);
         checkCryptoKey(obj);
@@ -1985,8 +1985,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2000,7 +2000,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKey());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2015,13 +2015,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--decrypt", () {
+    unittest.test('method--decrypt', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildDecryptRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DecryptRequest.fromJson(json);
         checkDecryptRequest(obj);
@@ -2044,8 +2044,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2055,7 +2055,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDecryptResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2067,13 +2067,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--encrypt", () {
+    unittest.test('method--encrypt', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildEncryptRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.EncryptRequest.fromJson(json);
         checkEncryptRequest(obj);
@@ -2096,8 +2096,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2107,7 +2107,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEncryptResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2119,12 +2119,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2144,8 +2144,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2155,7 +2155,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKey());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2167,13 +2167,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2193,8 +2193,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2207,7 +2207,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2222,17 +2222,17 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
-      var arg_parent = "foo";
-      var arg_versionView = "foo";
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
+      var arg_parent = 'foo';
+      var arg_versionView = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2252,8 +2252,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2272,7 +2272,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListCryptoKeysResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2290,14 +2290,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildCryptoKey();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CryptoKey.fromJson(json);
         checkCryptoKey(obj);
@@ -2320,8 +2320,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2333,7 +2333,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKey());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2346,13 +2346,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -2375,8 +2375,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2386,7 +2386,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2398,13 +2398,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -2427,8 +2427,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2438,7 +2438,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2450,13 +2450,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--updatePrimaryVersion", () {
+    unittest.test('method--updatePrimaryVersion', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildUpdateCryptoKeyPrimaryVersionRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(json);
         checkUpdateCryptoKeyPrimaryVersionRequest(obj);
@@ -2479,8 +2479,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2490,7 +2490,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKey());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2504,9 +2504,9 @@ void main() {
   });
 
   unittest.group(
-      "resource-ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi",
+      'resource-ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi',
       () {
-    unittest.test("method--asymmetricDecrypt", () {
+    unittest.test('method--asymmetricDecrypt', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -2516,8 +2516,8 @@ void main() {
               .cryptoKeys
               .cryptoKeyVersions;
       var arg_request = buildAsymmetricDecryptRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AsymmetricDecryptRequest.fromJson(json);
         checkAsymmetricDecryptRequest(obj);
@@ -2540,8 +2540,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2551,7 +2551,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAsymmetricDecryptResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2563,7 +2563,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--asymmetricSign", () {
+    unittest.test('method--asymmetricSign', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -2573,8 +2573,8 @@ void main() {
               .cryptoKeys
               .cryptoKeyVersions;
       var arg_request = buildAsymmetricSignRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AsymmetricSignRequest.fromJson(json);
         checkAsymmetricSignRequest(obj);
@@ -2597,8 +2597,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2608,7 +2608,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAsymmetricSignResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2620,7 +2620,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -2630,8 +2630,8 @@ void main() {
               .cryptoKeys
               .cryptoKeyVersions;
       var arg_request = buildCryptoKeyVersion();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CryptoKeyVersion.fromJson(json);
         checkCryptoKeyVersion(obj);
@@ -2654,8 +2654,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2665,7 +2665,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2677,7 +2677,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--destroy", () {
+    unittest.test('method--destroy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -2687,8 +2687,8 @@ void main() {
               .cryptoKeys
               .cryptoKeyVersions;
       var arg_request = buildDestroyCryptoKeyVersionRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DestroyCryptoKeyVersionRequest.fromJson(json);
         checkDestroyCryptoKeyVersionRequest(obj);
@@ -2711,8 +2711,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2722,7 +2722,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2734,7 +2734,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -2743,8 +2743,8 @@ void main() {
               .keyRings
               .cryptoKeys
               .cryptoKeyVersions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2764,8 +2764,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2775,7 +2775,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2787,7 +2787,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--getPublicKey", () {
+    unittest.test('method--getPublicKey', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -2796,8 +2796,8 @@ void main() {
               .keyRings
               .cryptoKeys
               .cryptoKeyVersions;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2817,8 +2817,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2828,7 +2828,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPublicKey());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2840,7 +2840,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--import", () {
+    unittest.test('method--import', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -2850,8 +2850,8 @@ void main() {
               .cryptoKeys
               .cryptoKeyVersions;
       var arg_request = buildImportCryptoKeyVersionRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ImportCryptoKeyVersionRequest.fromJson(json);
         checkImportCryptoKeyVersionRequest(obj);
@@ -2874,8 +2874,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2885,7 +2885,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2897,7 +2897,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -2906,13 +2906,13 @@ void main() {
               .keyRings
               .cryptoKeys
               .cryptoKeyVersions;
-      var arg_parent = "foo";
-      var arg_filter = "foo";
+      var arg_parent = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
-      var arg_view = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_view = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2932,8 +2932,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2951,7 +2951,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListCryptoKeyVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2969,7 +2969,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -2979,9 +2979,9 @@ void main() {
               .cryptoKeys
               .cryptoKeyVersions;
       var arg_request = buildCryptoKeyVersion();
-      var arg_name = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CryptoKeyVersion.fromJson(json);
         checkCryptoKeyVersion(obj);
@@ -3004,8 +3004,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3017,7 +3017,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3030,7 +3030,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--restore", () {
+    unittest.test('method--restore', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
           api.CloudkmsApi(mock)
@@ -3040,8 +3040,8 @@ void main() {
               .cryptoKeys
               .cryptoKeyVersions;
       var arg_request = buildRestoreCryptoKeyVersionRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RestoreCryptoKeyVersionRequest.fromJson(json);
         checkRestoreCryptoKeyVersionRequest(obj);
@@ -3064,8 +3064,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3075,7 +3075,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3088,15 +3088,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsLocationsKeyRingsImportJobsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsLocationsKeyRingsImportJobsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
       var arg_request = buildImportJob();
-      var arg_parent = "foo";
-      var arg_importJobId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_importJobId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ImportJob.fromJson(json);
         checkImportJob(obj);
@@ -3119,8 +3119,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3132,7 +3132,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildImportJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3145,12 +3145,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3170,8 +3170,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3181,7 +3181,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildImportJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3193,13 +3193,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--getIamPolicy", () {
+    unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
-      var arg_resource = "foo";
+      var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3219,8 +3219,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3233,7 +3233,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3248,16 +3248,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3277,8 +3277,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3295,7 +3295,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListImportJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3312,13 +3312,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--setIamPolicy", () {
+    unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
       var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
@@ -3341,8 +3341,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3352,7 +3352,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3364,13 +3364,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--testIamPermissions", () {
+    unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
           api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
       var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = "foo";
-      var arg_$fields = "foo";
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
@@ -3393,8 +3393,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3404,7 +3404,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,12 +75,12 @@ api.Availability buildAvailability() {
   var o = api.Availability();
   buildCounterAvailability++;
   if (buildCounterAvailability < 3) {
-    o.advertiserId = "foo";
-    o.agencyId = "foo";
-    o.availabilityTimestamp = "foo";
-    o.segmentationId = "foo";
-    o.segmentationName = "foo";
-    o.segmentationType = "foo";
+    o.advertiserId = 'foo';
+    o.agencyId = 'foo';
+    o.availabilityTimestamp = 'foo';
+    o.segmentationId = 'foo';
+    o.segmentationName = 'foo';
+    o.segmentationType = 'foo';
   }
   buildCounterAvailability--;
   return o;
@@ -130,39 +130,39 @@ api.Conversion buildConversion() {
   var o = api.Conversion();
   buildCounterConversion++;
   if (buildCounterConversion < 3) {
-    o.adGroupId = "foo";
-    o.adId = "foo";
-    o.advertiserId = "foo";
-    o.agencyId = "foo";
-    o.attributionModel = "foo";
-    o.campaignId = "foo";
-    o.channel = "foo";
-    o.clickId = "foo";
-    o.conversionId = "foo";
-    o.conversionModifiedTimestamp = "foo";
-    o.conversionTimestamp = "foo";
-    o.countMillis = "foo";
-    o.criterionId = "foo";
-    o.currencyCode = "foo";
+    o.adGroupId = 'foo';
+    o.adId = 'foo';
+    o.advertiserId = 'foo';
+    o.agencyId = 'foo';
+    o.attributionModel = 'foo';
+    o.campaignId = 'foo';
+    o.channel = 'foo';
+    o.clickId = 'foo';
+    o.conversionId = 'foo';
+    o.conversionModifiedTimestamp = 'foo';
+    o.conversionTimestamp = 'foo';
+    o.countMillis = 'foo';
+    o.criterionId = 'foo';
+    o.currencyCode = 'foo';
     o.customDimension = buildUnnamed1384();
     o.customMetric = buildUnnamed1385();
-    o.deviceType = "foo";
-    o.dsConversionId = "foo";
-    o.engineAccountId = "foo";
-    o.floodlightOrderId = "foo";
-    o.inventoryAccountId = "foo";
-    o.productCountry = "foo";
-    o.productGroupId = "foo";
-    o.productId = "foo";
-    o.productLanguage = "foo";
-    o.quantityMillis = "foo";
-    o.revenueMicros = "foo";
-    o.segmentationId = "foo";
-    o.segmentationName = "foo";
-    o.segmentationType = "foo";
-    o.state = "foo";
-    o.storeId = "foo";
-    o.type = "foo";
+    o.deviceType = 'foo';
+    o.dsConversionId = 'foo';
+    o.engineAccountId = 'foo';
+    o.floodlightOrderId = 'foo';
+    o.inventoryAccountId = 'foo';
+    o.productCountry = 'foo';
+    o.productGroupId = 'foo';
+    o.productId = 'foo';
+    o.productLanguage = 'foo';
+    o.quantityMillis = 'foo';
+    o.revenueMicros = 'foo';
+    o.segmentationId = 'foo';
+    o.segmentationName = 'foo';
+    o.segmentationType = 'foo';
+    o.state = 'foo';
+    o.storeId = 'foo';
+    o.type = 'foo';
   }
   buildCounterConversion--;
   return o;
@@ -227,7 +227,7 @@ api.ConversionList buildConversionList() {
   buildCounterConversionList++;
   if (buildCounterConversionList < 3) {
     o.conversion = buildUnnamed1386();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterConversionList--;
   return o;
@@ -247,8 +247,8 @@ api.CustomDimension buildCustomDimension() {
   var o = api.CustomDimension();
   buildCounterCustomDimension++;
   if (buildCounterCustomDimension < 3) {
-    o.name = "foo";
-    o.value = "foo";
+    o.name = 'foo';
+    o.value = 'foo';
   }
   buildCounterCustomDimension--;
   return o;
@@ -268,7 +268,7 @@ api.CustomMetric buildCustomMetric() {
   var o = api.CustomMetric();
   buildCounterCustomMetric++;
   if (buildCounterCustomMetric < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.value = 42.0;
   }
   buildCounterCustomMetric--;
@@ -289,8 +289,8 @@ api.ReportFiles buildReportFiles() {
   var o = api.ReportFiles();
   buildCounterReportFiles++;
   if (buildCounterReportFiles < 3) {
-    o.byteCount = "foo";
-    o.url = "foo";
+    o.byteCount = 'foo';
+    o.url = 'foo';
   }
   buildCounterReportFiles--;
   return o;
@@ -337,14 +337,14 @@ api.Report buildReport() {
   buildCounterReport++;
   if (buildCounterReport < 3) {
     o.files = buildUnnamed1387();
-    o.id = "foo";
+    o.id = 'foo';
     o.isReportReady = true;
-    o.kind = "foo";
+    o.kind = 'foo';
     o.request = buildReportRequest();
     o.rowCount = 42;
     o.rows = buildUnnamed1388();
-    o.statisticsCurrencyCode = "foo";
-    o.statisticsTimeZone = "foo";
+    o.statisticsCurrencyCode = 'foo';
+    o.statisticsTimeZone = 'foo';
   }
   buildCounterReport--;
   return o;
@@ -371,16 +371,16 @@ api.ReportApiColumnSpec buildReportApiColumnSpec() {
   var o = api.ReportApiColumnSpec();
   buildCounterReportApiColumnSpec++;
   if (buildCounterReportApiColumnSpec < 3) {
-    o.columnName = "foo";
-    o.customDimensionName = "foo";
-    o.customMetricName = "foo";
-    o.endDate = "foo";
+    o.columnName = 'foo';
+    o.customDimensionName = 'foo';
+    o.customMetricName = 'foo';
+    o.endDate = 'foo';
     o.groupByColumn = true;
-    o.headerText = "foo";
-    o.platformSource = "foo";
-    o.productReportPerspective = "foo";
-    o.savedColumnName = "foo";
-    o.startDate = "foo";
+    o.headerText = 'foo';
+    o.platformSource = 'foo';
+    o.productReportPerspective = 'foo';
+    o.savedColumnName = 'foo';
+    o.startDate = 'foo';
   }
   buildCounterReportApiColumnSpec--;
   return o;
@@ -435,14 +435,14 @@ void checkUnnamed1390(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o[1]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterReportRequestFilters = 0;
@@ -451,7 +451,7 @@ api.ReportRequestFilters buildReportRequestFilters() {
   buildCounterReportRequestFilters++;
   if (buildCounterReportRequestFilters < 3) {
     o.column = buildReportApiColumnSpec();
-    o.operator = "foo";
+    o.operator = 'foo';
     o.values = buildUnnamed1390();
   }
   buildCounterReportRequestFilters--;
@@ -487,7 +487,7 @@ api.ReportRequestOrderBy buildReportRequestOrderBy() {
   buildCounterReportRequestOrderBy++;
   if (buildCounterReportRequestOrderBy < 3) {
     o.column = buildReportApiColumnSpec();
-    o.sortOrder = "foo";
+    o.sortOrder = 'foo';
   }
   buildCounterReportRequestOrderBy--;
   return o;
@@ -520,13 +520,13 @@ api.ReportRequestReportScope buildReportRequestReportScope() {
   var o = api.ReportRequestReportScope();
   buildCounterReportRequestReportScope++;
   if (buildCounterReportRequestReportScope < 3) {
-    o.adGroupId = "foo";
-    o.adId = "foo";
-    o.advertiserId = "foo";
-    o.agencyId = "foo";
-    o.campaignId = "foo";
-    o.engineAccountId = "foo";
-    o.keywordId = "foo";
+    o.adGroupId = 'foo';
+    o.adId = 'foo';
+    o.advertiserId = 'foo';
+    o.agencyId = 'foo';
+    o.campaignId = 'foo';
+    o.engineAccountId = 'foo';
+    o.keywordId = 'foo';
   }
   buildCounterReportRequestReportScope--;
   return o;
@@ -551,10 +551,10 @@ api.ReportRequestTimeRange buildReportRequestTimeRange() {
   var o = api.ReportRequestTimeRange();
   buildCounterReportRequestTimeRange++;
   if (buildCounterReportRequestTimeRange < 3) {
-    o.changedAttributesSinceTimestamp = "foo";
-    o.changedMetricsSinceTimestamp = "foo";
-    o.endDate = "foo";
-    o.startDate = "foo";
+    o.changedAttributesSinceTimestamp = 'foo';
+    o.changedMetricsSinceTimestamp = 'foo';
+    o.endDate = 'foo';
+    o.startDate = 'foo';
   }
   buildCounterReportRequestTimeRange--;
   return o;
@@ -577,17 +577,17 @@ api.ReportRequest buildReportRequest() {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
     o.columns = buildUnnamed1389();
-    o.downloadFormat = "foo";
+    o.downloadFormat = 'foo';
     o.filters = buildUnnamed1391();
     o.includeDeletedEntities = true;
     o.includeRemovedEntities = true;
     o.maxRowsPerFile = 42;
     o.orderBy = buildUnnamed1392();
     o.reportScope = buildReportRequestReportScope();
-    o.reportType = "foo";
+    o.reportType = 'foo';
     o.rowCount = 42;
     o.startRow = 42;
-    o.statisticsCurrency = "foo";
+    o.statisticsCurrency = 'foo';
     o.timeRange = buildReportRequestTimeRange();
     o.verifySingleTimeZone = true;
   }
@@ -635,14 +635,14 @@ void checkReportRow(api.ReportRow o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["a"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
   var casted4 = (o["b"]) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterSavedColumn = 0;
@@ -650,9 +650,9 @@ api.SavedColumn buildSavedColumn() {
   var o = api.SavedColumn();
   buildCounterSavedColumn++;
   if (buildCounterSavedColumn < 3) {
-    o.kind = "foo";
-    o.savedColumnName = "foo";
-    o.type = "foo";
+    o.kind = 'foo';
+    o.savedColumnName = 'foo';
+    o.type = 'foo';
   }
   buildCounterSavedColumn--;
   return o;
@@ -687,7 +687,7 @@ api.SavedColumnList buildSavedColumnList() {
   buildCounterSavedColumnList++;
   if (buildCounterSavedColumnList < 3) {
     o.items = buildUnnamed1393();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterSavedColumnList--;
   return o;
@@ -767,166 +767,166 @@ void checkUpdateAvailabilityResponse(api.UpdateAvailabilityResponse o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Availability", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Availability', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAvailability();
       var od = api.Availability.fromJson(o.toJson());
       checkAvailability(od);
     });
   });
 
-  unittest.group("obj-schema-Conversion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Conversion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildConversion();
       var od = api.Conversion.fromJson(o.toJson());
       checkConversion(od);
     });
   });
 
-  unittest.group("obj-schema-ConversionList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ConversionList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildConversionList();
       var od = api.ConversionList.fromJson(o.toJson());
       checkConversionList(od);
     });
   });
 
-  unittest.group("obj-schema-CustomDimension", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomDimension', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomDimension();
       var od = api.CustomDimension.fromJson(o.toJson());
       checkCustomDimension(od);
     });
   });
 
-  unittest.group("obj-schema-CustomMetric", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomMetric', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomMetric();
       var od = api.CustomMetric.fromJson(o.toJson());
       checkCustomMetric(od);
     });
   });
 
-  unittest.group("obj-schema-ReportFiles", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportFiles', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportFiles();
       var od = api.ReportFiles.fromJson(o.toJson());
       checkReportFiles(od);
     });
   });
 
-  unittest.group("obj-schema-Report", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Report', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
       checkReport(od);
     });
   });
 
-  unittest.group("obj-schema-ReportApiColumnSpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportApiColumnSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportApiColumnSpec();
       var od = api.ReportApiColumnSpec.fromJson(o.toJson());
       checkReportApiColumnSpec(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRequestFilters", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRequestFilters', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRequestFilters();
       var od = api.ReportRequestFilters.fromJson(o.toJson());
       checkReportRequestFilters(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRequestOrderBy", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRequestOrderBy', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRequestOrderBy();
       var od = api.ReportRequestOrderBy.fromJson(o.toJson());
       checkReportRequestOrderBy(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRequestReportScope", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRequestReportScope', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRequestReportScope();
       var od = api.ReportRequestReportScope.fromJson(o.toJson());
       checkReportRequestReportScope(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRequestTimeRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRequestTimeRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRequestTimeRange();
       var od = api.ReportRequestTimeRange.fromJson(o.toJson());
       checkReportRequestTimeRange(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRequest();
       var od = api.ReportRequest.fromJson(o.toJson());
       checkReportRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRow", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRow', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
       checkReportRow(od);
     });
   });
 
-  unittest.group("obj-schema-SavedColumn", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SavedColumn', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSavedColumn();
       var od = api.SavedColumn.fromJson(o.toJson());
       checkSavedColumn(od);
     });
   });
 
-  unittest.group("obj-schema-SavedColumnList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SavedColumnList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSavedColumnList();
       var od = api.SavedColumnList.fromJson(o.toJson());
       checkSavedColumnList(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateAvailabilityRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateAvailabilityRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateAvailabilityRequest();
       var od = api.UpdateAvailabilityRequest.fromJson(o.toJson());
       checkUpdateAvailabilityRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateAvailabilityResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateAvailabilityResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateAvailabilityResponse();
       var od = api.UpdateAvailabilityResponse.fromJson(o.toJson());
       checkUpdateAvailabilityResponse(od);
     });
   });
 
-  unittest.group("resource-ConversionResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-ConversionResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ConversionResourceApi res = api.DoubleclicksearchApi(mock).conversion;
-      var arg_agencyId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_engineAccountId = "foo";
+      var arg_agencyId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_engineAccountId = 'foo';
       var arg_endDate = 42;
       var arg_rowCount = 42;
       var arg_startDate = 42;
       var arg_startRow = 42;
-      var arg_adGroupId = "foo";
-      var arg_criterionId = "foo";
-      var arg_campaignId = "foo";
-      var arg_adId = "foo";
-      var arg_$fields = "foo";
+      var arg_adGroupId = 'foo';
+      var arg_criterionId = 'foo';
+      var arg_campaignId = 'foo';
+      var arg_adId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -938,30 +938,30 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 28),
             unittest.equals("doubleclicksearch/v2/agency/"));
         pathOffset += 28;
-        index = path.indexOf("/advertiser/", pathOffset);
+        index = path.indexOf('/advertiser/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_agencyId"));
+        unittest.expect(subPart, unittest.equals('$arg_agencyId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/advertiser/"));
         pathOffset += 12;
-        index = path.indexOf("/engine/", pathOffset);
+        index = path.indexOf('/engine/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 8),
             unittest.equals("/engine/"));
         pathOffset += 8;
-        index = path.indexOf("/conversion", pathOffset);
+        index = path.indexOf('/conversion', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_engineAccountId"));
+        unittest.expect(subPart, unittest.equals('$arg_engineAccountId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 11),
             unittest.equals("/conversion"));
         pathOffset += 11;
@@ -972,8 +972,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -998,7 +998,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildConversionList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1016,11 +1016,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.ConversionResourceApi res = api.DoubleclicksearchApi(mock).conversion;
       var arg_request = buildConversionList();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ConversionList.fromJson(json);
         checkConversionList(obj);
@@ -1042,8 +1042,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1053,7 +1053,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildConversionList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1065,11 +1065,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.ConversionResourceApi res = api.DoubleclicksearchApi(mock).conversion;
       var arg_request = buildConversionList();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ConversionList.fromJson(json);
         checkConversionList(obj);
@@ -1091,8 +1091,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1102,7 +1102,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildConversionList());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1114,11 +1114,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--updateAvailability", () {
+    unittest.test('method--updateAvailability', () {
       var mock = HttpServerMock();
       api.ConversionResourceApi res = api.DoubleclicksearchApi(mock).conversion;
       var arg_request = buildUpdateAvailabilityRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UpdateAvailabilityRequest.fromJson(json);
         checkUpdateAvailabilityRequest(obj);
@@ -1142,8 +1142,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1153,7 +1153,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUpdateAvailabilityResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1166,12 +1166,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-ReportsResourceApi", () {
-    unittest.test("method--generate", () {
+  unittest.group('resource-ReportsResourceApi', () {
+    unittest.test('method--generate', () {
       var mock = HttpServerMock();
       api.ReportsResourceApi res = api.DoubleclicksearchApi(mock).reports;
       var arg_request_1 = buildReportRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ReportRequest.fromJson(json);
         checkReportRequest(obj);
@@ -1193,8 +1193,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1204,7 +1204,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildReport());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1216,11 +1216,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ReportsResourceApi res = api.DoubleclicksearchApi(mock).reports;
-      var arg_reportId = "foo";
-      var arg_$fields = "foo";
+      var arg_reportId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1234,7 +1234,7 @@ void main() {
         pathOffset += 29;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_reportId"));
+        unittest.expect(subPart, unittest.equals('$arg_reportId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1242,8 +1242,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1253,7 +1253,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildReport());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1265,15 +1265,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--getFile", () {
+    unittest.test('method--getFile', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
       api.ReportsResourceApi res = api.DoubleclicksearchApi(mock).reports;
-      var arg_reportId = "foo";
+      var arg_reportId = 'foo';
       var arg_reportFragment = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1285,18 +1285,18 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 29),
             unittest.equals("doubleclicksearch/v2/reports/"));
         pathOffset += 29;
-        index = path.indexOf("/files/", pathOffset);
+        index = path.indexOf('/files/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_reportId"));
+        unittest.expect(subPart, unittest.equals('$arg_reportId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 7),
             unittest.equals("/files/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_reportFragment"));
+        unittest.expect(subPart, unittest.equals('$arg_reportFragment'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1304,8 +1304,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1315,9 +1315,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -1325,11 +1325,11 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--request", () {
+    unittest.test('method--request', () {
       var mock = HttpServerMock();
       api.ReportsResourceApi res = api.DoubleclicksearchApi(mock).reports;
       var arg_request_1 = buildReportRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ReportRequest.fromJson(json);
         checkReportRequest(obj);
@@ -1351,8 +1351,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1362,7 +1362,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildReport());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1375,14 +1375,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-SavedColumnsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-SavedColumnsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SavedColumnsResourceApi res =
           api.DoubleclicksearchApi(mock).savedColumns;
-      var arg_agencyId = "foo";
-      var arg_advertiserId = "foo";
-      var arg_$fields = "foo";
+      var arg_agencyId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1394,21 +1394,21 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 28),
             unittest.equals("doubleclicksearch/v2/agency/"));
         pathOffset += 28;
-        index = path.indexOf("/advertiser/", pathOffset);
+        index = path.indexOf('/advertiser/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_agencyId"));
+        unittest.expect(subPart, unittest.equals('$arg_agencyId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals("/advertiser/"));
         pathOffset += 12;
-        index = path.indexOf("/savedcolumns", pathOffset);
+        index = path.indexOf('/savedcolumns', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_advertiserId"));
+        unittest.expect(subPart, unittest.equals('$arg_advertiserId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("/savedcolumns"));
         pathOffset += 13;
@@ -1419,8 +1419,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1430,7 +1430,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSavedColumnList());
         return async.Future.value(stringResponse(200, h, resp));

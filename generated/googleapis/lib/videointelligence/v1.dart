@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,7 +39,7 @@ const core.String USER_AGENT = 'dart-api-client videointelligence/v1';
 class VideointelligenceApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -49,8 +48,8 @@ class VideointelligenceApi {
   VideosResourceApi get videos => VideosResourceApi(_requester);
 
   VideointelligenceApi(http.Client client,
-      {core.String rootUrl = "https://videointelligence.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://videointelligence.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -128,10 +127,10 @@ class OperationsProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/operations/' +
@@ -140,7 +139,7 @@ class OperationsProjectsLocationsOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -183,17 +182,17 @@ class OperationsProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -235,17 +234,17 @@ class OperationsProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -327,17 +326,17 @@ class ProjectsLocationsCorporaOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -396,17 +395,17 @@ class ProjectsLocationsCorpuraOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -467,17 +466,17 @@ class ProjectsLocationsOperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -520,17 +519,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -572,17 +571,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -638,19 +637,19 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -658,7 +657,7 @@ class ProjectsLocationsOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -709,14 +708,14 @@ class VideosResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/videos:annotate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -738,8 +737,8 @@ class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
   GoogleCloudVideointelligenceV1AnnotateVideoProgress();
 
   GoogleCloudVideointelligenceV1AnnotateVideoProgress.fromJson(core.Map _json) {
-    if (_json.containsKey("annotationProgress")) {
-      annotationProgress = (_json["annotationProgress"] as core.List)
+    if (_json.containsKey('annotationProgress')) {
+      annotationProgress = (_json['annotationProgress'] as core.List)
           .map<GoogleCloudVideointelligenceV1VideoAnnotationProgress>((value) =>
               GoogleCloudVideointelligenceV1VideoAnnotationProgress.fromJson(
                   value))
@@ -751,7 +750,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationProgress != null) {
-      _json["annotationProgress"] =
+      _json['annotationProgress'] =
           annotationProgress.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -771,7 +770,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
 
   set inputContentAsBytes(core.List<core.int> _bytes) {
     inputContent =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Input video location. Currently, only [Cloud
@@ -806,24 +805,24 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
   GoogleCloudVideointelligenceV1AnnotateVideoRequest();
 
   GoogleCloudVideointelligenceV1AnnotateVideoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("features")) {
-      features = (_json["features"] as core.List).cast<core.String>();
+    if (_json.containsKey('features')) {
+      features = (_json['features'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("inputContent")) {
-      inputContent = _json["inputContent"];
+    if (_json.containsKey('inputContent')) {
+      inputContent = _json['inputContent'];
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("locationId")) {
-      locationId = _json["locationId"];
+    if (_json.containsKey('locationId')) {
+      locationId = _json['locationId'];
     }
-    if (_json.containsKey("outputUri")) {
-      outputUri = _json["outputUri"];
+    if (_json.containsKey('outputUri')) {
+      outputUri = _json['outputUri'];
     }
-    if (_json.containsKey("videoContext")) {
+    if (_json.containsKey('videoContext')) {
       videoContext = GoogleCloudVideointelligenceV1VideoContext.fromJson(
-          _json["videoContext"]);
+          _json['videoContext']);
     }
   }
 
@@ -831,22 +830,22 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (features != null) {
-      _json["features"] = features;
+      _json['features'] = features;
     }
     if (inputContent != null) {
-      _json["inputContent"] = inputContent;
+      _json['inputContent'] = inputContent;
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (locationId != null) {
-      _json["locationId"] = locationId;
+      _json['locationId'] = locationId;
     }
     if (outputUri != null) {
-      _json["outputUri"] = outputUri;
+      _json['outputUri'] = outputUri;
     }
     if (videoContext != null) {
-      _json["videoContext"] = videoContext.toJson();
+      _json['videoContext'] = videoContext.toJson();
     }
     return _json;
   }
@@ -863,8 +862,8 @@ class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
   GoogleCloudVideointelligenceV1AnnotateVideoResponse();
 
   GoogleCloudVideointelligenceV1AnnotateVideoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("annotationResults")) {
-      annotationResults = (_json["annotationResults"] as core.List)
+    if (_json.containsKey('annotationResults')) {
+      annotationResults = (_json['annotationResults'] as core.List)
           .map<GoogleCloudVideointelligenceV1VideoAnnotationResults>((value) =>
               GoogleCloudVideointelligenceV1VideoAnnotationResults.fromJson(
                   value))
@@ -876,7 +875,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationResults != null) {
-      _json["annotationResults"] =
+      _json['annotationResults'] =
           annotationResults.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -899,14 +898,14 @@ class GoogleCloudVideointelligenceV1DetectedAttribute {
   GoogleCloudVideointelligenceV1DetectedAttribute();
 
   GoogleCloudVideointelligenceV1DetectedAttribute.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -914,13 +913,13 @@ class GoogleCloudVideointelligenceV1DetectedAttribute {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -942,15 +941,15 @@ class GoogleCloudVideointelligenceV1DetectedLandmark {
   GoogleCloudVideointelligenceV1DetectedLandmark();
 
   GoogleCloudVideointelligenceV1DetectedLandmark.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("point")) {
+    if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1NormalizedVertex.fromJson(
-          _json["point"]);
+          _json['point']);
     }
   }
 
@@ -958,13 +957,13 @@ class GoogleCloudVideointelligenceV1DetectedLandmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (point != null) {
-      _json["point"] = point.toJson();
+      _json['point'] = point.toJson();
     }
     return _json;
   }
@@ -985,14 +984,14 @@ class GoogleCloudVideointelligenceV1Entity {
   GoogleCloudVideointelligenceV1Entity();
 
   GoogleCloudVideointelligenceV1Entity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -1000,13 +999,13 @@ class GoogleCloudVideointelligenceV1Entity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -1026,15 +1025,15 @@ class GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
 
   GoogleCloudVideointelligenceV1ExplicitContentAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1ExplicitContentFrame>((value) =>
               GoogleCloudVideointelligenceV1ExplicitContentFrame.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -1042,10 +1041,10 @@ class GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -1061,8 +1060,8 @@ class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
 
   GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig.fromJson(
       core.Map _json) {
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
   }
 
@@ -1070,7 +1069,7 @@ class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     return _json;
   }
@@ -1095,11 +1094,11 @@ class GoogleCloudVideointelligenceV1ExplicitContentFrame {
   GoogleCloudVideointelligenceV1ExplicitContentFrame();
 
   GoogleCloudVideointelligenceV1ExplicitContentFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("pornographyLikelihood")) {
-      pornographyLikelihood = _json["pornographyLikelihood"];
+    if (_json.containsKey('pornographyLikelihood')) {
+      pornographyLikelihood = _json['pornographyLikelihood'];
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -1107,10 +1106,10 @@ class GoogleCloudVideointelligenceV1ExplicitContentFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pornographyLikelihood != null) {
-      _json["pornographyLikelihood"] = pornographyLikelihood;
+      _json['pornographyLikelihood'] = pornographyLikelihood;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -1138,29 +1137,29 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
   GoogleCloudVideointelligenceV1LabelAnnotation();
 
   GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("categoryEntities")) {
-      categoryEntities = (_json["categoryEntities"] as core.List)
+    if (_json.containsKey('categoryEntities')) {
+      categoryEntities = (_json['categoryEntities'] as core.List)
           .map<GoogleCloudVideointelligenceV1Entity>(
               (value) => GoogleCloudVideointelligenceV1Entity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("entity")) {
-      entity = GoogleCloudVideointelligenceV1Entity.fromJson(_json["entity"]);
+    if (_json.containsKey('entity')) {
+      entity = GoogleCloudVideointelligenceV1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelFrame>((value) =>
               GoogleCloudVideointelligenceV1LabelFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelSegment>((value) =>
               GoogleCloudVideointelligenceV1LabelSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -1168,20 +1167,20 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoryEntities != null) {
-      _json["categoryEntities"] =
+      _json['categoryEntities'] =
           categoryEntities.map((value) => value.toJson()).toList();
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -1227,20 +1226,20 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
   GoogleCloudVideointelligenceV1LabelDetectionConfig();
 
   GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("frameConfidenceThreshold")) {
-      frameConfidenceThreshold = _json["frameConfidenceThreshold"].toDouble();
+    if (_json.containsKey('frameConfidenceThreshold')) {
+      frameConfidenceThreshold = _json['frameConfidenceThreshold'].toDouble();
     }
-    if (_json.containsKey("labelDetectionMode")) {
-      labelDetectionMode = _json["labelDetectionMode"];
+    if (_json.containsKey('labelDetectionMode')) {
+      labelDetectionMode = _json['labelDetectionMode'];
     }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
-    if (_json.containsKey("stationaryCamera")) {
-      stationaryCamera = _json["stationaryCamera"];
+    if (_json.containsKey('stationaryCamera')) {
+      stationaryCamera = _json['stationaryCamera'];
     }
-    if (_json.containsKey("videoConfidenceThreshold")) {
-      videoConfidenceThreshold = _json["videoConfidenceThreshold"].toDouble();
+    if (_json.containsKey('videoConfidenceThreshold')) {
+      videoConfidenceThreshold = _json['videoConfidenceThreshold'].toDouble();
     }
   }
 
@@ -1248,19 +1247,19 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (frameConfidenceThreshold != null) {
-      _json["frameConfidenceThreshold"] = frameConfidenceThreshold;
+      _json['frameConfidenceThreshold'] = frameConfidenceThreshold;
     }
     if (labelDetectionMode != null) {
-      _json["labelDetectionMode"] = labelDetectionMode;
+      _json['labelDetectionMode'] = labelDetectionMode;
     }
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     if (stationaryCamera != null) {
-      _json["stationaryCamera"] = stationaryCamera;
+      _json['stationaryCamera'] = stationaryCamera;
     }
     if (videoConfidenceThreshold != null) {
-      _json["videoConfidenceThreshold"] = videoConfidenceThreshold;
+      _json['videoConfidenceThreshold'] = videoConfidenceThreshold;
     }
     return _json;
   }
@@ -1278,11 +1277,11 @@ class GoogleCloudVideointelligenceV1LabelFrame {
   GoogleCloudVideointelligenceV1LabelFrame();
 
   GoogleCloudVideointelligenceV1LabelFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -1290,10 +1289,10 @@ class GoogleCloudVideointelligenceV1LabelFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -1310,12 +1309,12 @@ class GoogleCloudVideointelligenceV1LabelSegment {
   GoogleCloudVideointelligenceV1LabelSegment();
 
   GoogleCloudVideointelligenceV1LabelSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment =
-          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json["segment"]);
+          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json['segment']);
     }
   }
 
@@ -1323,10 +1322,10 @@ class GoogleCloudVideointelligenceV1LabelSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -1350,17 +1349,17 @@ class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
 
   GoogleCloudVideointelligenceV1LogoRecognitionAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("entity")) {
-      entity = GoogleCloudVideointelligenceV1Entity.fromJson(_json["entity"]);
+    if (_json.containsKey('entity')) {
+      entity = GoogleCloudVideointelligenceV1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List)
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List)
           .map<GoogleCloudVideointelligenceV1Track>(
               (value) => GoogleCloudVideointelligenceV1Track.fromJson(value))
           .toList();
@@ -1371,13 +1370,13 @@ class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (tracks != null) {
-      _json["tracks"] = tracks.map((value) => value.toJson()).toList();
+      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1401,17 +1400,17 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
   GoogleCloudVideointelligenceV1NormalizedBoundingBox();
 
   GoogleCloudVideointelligenceV1NormalizedBoundingBox.fromJson(core.Map _json) {
-    if (_json.containsKey("bottom")) {
-      bottom = _json["bottom"].toDouble();
+    if (_json.containsKey('bottom')) {
+      bottom = _json['bottom'].toDouble();
     }
-    if (_json.containsKey("left")) {
-      left = _json["left"].toDouble();
+    if (_json.containsKey('left')) {
+      left = _json['left'].toDouble();
     }
-    if (_json.containsKey("right")) {
-      right = _json["right"].toDouble();
+    if (_json.containsKey('right')) {
+      right = _json['right'].toDouble();
     }
-    if (_json.containsKey("top")) {
-      top = _json["top"].toDouble();
+    if (_json.containsKey('top')) {
+      top = _json['top'].toDouble();
     }
   }
 
@@ -1419,16 +1418,16 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bottom != null) {
-      _json["bottom"] = bottom;
+      _json['bottom'] = bottom;
     }
     if (left != null) {
-      _json["left"] = left;
+      _json['left'] = left;
     }
     if (right != null) {
-      _json["right"] = right;
+      _json['right'] = right;
     }
     if (top != null) {
-      _json["top"] = top;
+      _json['top'] = top;
     }
     return _json;
   }
@@ -1450,8 +1449,8 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
 
   GoogleCloudVideointelligenceV1NormalizedBoundingPoly.fromJson(
       core.Map _json) {
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudVideointelligenceV1NormalizedVertex>((value) =>
               GoogleCloudVideointelligenceV1NormalizedVertex.fromJson(value))
           .toList();
@@ -1462,7 +1461,7 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1480,11 +1479,11 @@ class GoogleCloudVideointelligenceV1NormalizedVertex {
   GoogleCloudVideointelligenceV1NormalizedVertex();
 
   GoogleCloudVideointelligenceV1NormalizedVertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -1492,10 +1491,10 @@ class GoogleCloudVideointelligenceV1NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -1533,27 +1532,27 @@ class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
 
   GoogleCloudVideointelligenceV1ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("entity")) {
-      entity = GoogleCloudVideointelligenceV1Entity.fromJson(_json["entity"]);
+    if (_json.containsKey('entity')) {
+      entity = GoogleCloudVideointelligenceV1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1ObjectTrackingFrame>((value) =>
               GoogleCloudVideointelligenceV1ObjectTrackingFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment =
-          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json["segment"]);
+          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json['segment']);
     }
-    if (_json.containsKey("trackId")) {
-      trackId = _json["trackId"];
+    if (_json.containsKey('trackId')) {
+      trackId = _json['trackId'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -1561,22 +1560,22 @@ class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (trackId != null) {
-      _json["trackId"] = trackId;
+      _json['trackId'] = trackId;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -1591,8 +1590,8 @@ class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
   GoogleCloudVideointelligenceV1ObjectTrackingConfig();
 
   GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
   }
 
@@ -1600,7 +1599,7 @@ class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     return _json;
   }
@@ -1618,13 +1617,13 @@ class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
   GoogleCloudVideointelligenceV1ObjectTrackingFrame();
 
   GoogleCloudVideointelligenceV1ObjectTrackingFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -1632,10 +1631,10 @@ class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -1651,8 +1650,8 @@ class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
 
   GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
       core.Map _json) {
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
   }
 
@@ -1660,7 +1659,7 @@ class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     return _json;
   }
@@ -1680,8 +1679,8 @@ class GoogleCloudVideointelligenceV1SpeechContext {
   GoogleCloudVideointelligenceV1SpeechContext();
 
   GoogleCloudVideointelligenceV1SpeechContext.fromJson(core.Map _json) {
-    if (_json.containsKey("phrases")) {
-      phrases = (_json["phrases"] as core.List).cast<core.String>();
+    if (_json.containsKey('phrases')) {
+      phrases = (_json['phrases'] as core.List).cast<core.String>();
     }
   }
 
@@ -1689,7 +1688,7 @@ class GoogleCloudVideointelligenceV1SpeechContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (phrases != null) {
-      _json["phrases"] = phrases;
+      _json['phrases'] = phrases;
     }
     return _json;
   }
@@ -1717,14 +1716,14 @@ class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
 
   GoogleCloudVideointelligenceV1SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("transcript")) {
-      transcript = _json["transcript"];
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'];
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<GoogleCloudVideointelligenceV1WordInfo>(
               (value) => GoogleCloudVideointelligenceV1WordInfo.fromJson(value))
           .toList();
@@ -1735,13 +1734,13 @@ class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (transcript != null) {
-      _json["transcript"] = transcript;
+      _json['transcript'] = transcript;
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1764,16 +1763,16 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
   GoogleCloudVideointelligenceV1SpeechTranscription();
 
   GoogleCloudVideointelligenceV1SpeechTranscription.fromJson(core.Map _json) {
-    if (_json.containsKey("alternatives")) {
-      alternatives = (_json["alternatives"] as core.List)
+    if (_json.containsKey('alternatives')) {
+      alternatives = (_json['alternatives'] as core.List)
           .map<GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>(
               (value) =>
                   GoogleCloudVideointelligenceV1SpeechRecognitionAlternative
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -1781,11 +1780,11 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternatives != null) {
-      _json["alternatives"] =
+      _json['alternatives'] =
           alternatives.map((value) => value.toJson()).toList();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -1850,32 +1849,32 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
 
   GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
       core.Map _json) {
-    if (_json.containsKey("audioTracks")) {
-      audioTracks = (_json["audioTracks"] as core.List).cast<core.int>();
+    if (_json.containsKey('audioTracks')) {
+      audioTracks = (_json['audioTracks'] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("diarizationSpeakerCount")) {
-      diarizationSpeakerCount = _json["diarizationSpeakerCount"];
+    if (_json.containsKey('diarizationSpeakerCount')) {
+      diarizationSpeakerCount = _json['diarizationSpeakerCount'];
     }
-    if (_json.containsKey("enableAutomaticPunctuation")) {
-      enableAutomaticPunctuation = _json["enableAutomaticPunctuation"];
+    if (_json.containsKey('enableAutomaticPunctuation')) {
+      enableAutomaticPunctuation = _json['enableAutomaticPunctuation'];
     }
-    if (_json.containsKey("enableSpeakerDiarization")) {
-      enableSpeakerDiarization = _json["enableSpeakerDiarization"];
+    if (_json.containsKey('enableSpeakerDiarization')) {
+      enableSpeakerDiarization = _json['enableSpeakerDiarization'];
     }
-    if (_json.containsKey("enableWordConfidence")) {
-      enableWordConfidence = _json["enableWordConfidence"];
+    if (_json.containsKey('enableWordConfidence')) {
+      enableWordConfidence = _json['enableWordConfidence'];
     }
-    if (_json.containsKey("filterProfanity")) {
-      filterProfanity = _json["filterProfanity"];
+    if (_json.containsKey('filterProfanity')) {
+      filterProfanity = _json['filterProfanity'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("maxAlternatives")) {
-      maxAlternatives = _json["maxAlternatives"];
+    if (_json.containsKey('maxAlternatives')) {
+      maxAlternatives = _json['maxAlternatives'];
     }
-    if (_json.containsKey("speechContexts")) {
-      speechContexts = (_json["speechContexts"] as core.List)
+    if (_json.containsKey('speechContexts')) {
+      speechContexts = (_json['speechContexts'] as core.List)
           .map<GoogleCloudVideointelligenceV1SpeechContext>((value) =>
               GoogleCloudVideointelligenceV1SpeechContext.fromJson(value))
           .toList();
@@ -1886,31 +1885,31 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audioTracks != null) {
-      _json["audioTracks"] = audioTracks;
+      _json['audioTracks'] = audioTracks;
     }
     if (diarizationSpeakerCount != null) {
-      _json["diarizationSpeakerCount"] = diarizationSpeakerCount;
+      _json['diarizationSpeakerCount'] = diarizationSpeakerCount;
     }
     if (enableAutomaticPunctuation != null) {
-      _json["enableAutomaticPunctuation"] = enableAutomaticPunctuation;
+      _json['enableAutomaticPunctuation'] = enableAutomaticPunctuation;
     }
     if (enableSpeakerDiarization != null) {
-      _json["enableSpeakerDiarization"] = enableSpeakerDiarization;
+      _json['enableSpeakerDiarization'] = enableSpeakerDiarization;
     }
     if (enableWordConfidence != null) {
-      _json["enableWordConfidence"] = enableWordConfidence;
+      _json['enableWordConfidence'] = enableWordConfidence;
     }
     if (filterProfanity != null) {
-      _json["filterProfanity"] = filterProfanity;
+      _json['filterProfanity'] = filterProfanity;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (maxAlternatives != null) {
-      _json["maxAlternatives"] = maxAlternatives;
+      _json['maxAlternatives'] = maxAlternatives;
     }
     if (speechContexts != null) {
-      _json["speechContexts"] =
+      _json['speechContexts'] =
           speechContexts.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -1933,17 +1932,17 @@ class GoogleCloudVideointelligenceV1TextAnnotation {
   GoogleCloudVideointelligenceV1TextAnnotation();
 
   GoogleCloudVideointelligenceV1TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1TextSegment>((value) =>
               GoogleCloudVideointelligenceV1TextSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -1951,13 +1950,13 @@ class GoogleCloudVideointelligenceV1TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -1978,11 +1977,11 @@ class GoogleCloudVideointelligenceV1TextDetectionConfig {
   GoogleCloudVideointelligenceV1TextDetectionConfig();
 
   GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("languageHints")) {
-      languageHints = (_json["languageHints"] as core.List).cast<core.String>();
+    if (_json.containsKey('languageHints')) {
+      languageHints = (_json['languageHints'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
   }
 
@@ -1990,10 +1989,10 @@ class GoogleCloudVideointelligenceV1TextDetectionConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageHints != null) {
-      _json["languageHints"] = languageHints;
+      _json['languageHints'] = languageHints;
     }
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     return _json;
   }
@@ -2012,13 +2011,13 @@ class GoogleCloudVideointelligenceV1TextFrame {
   GoogleCloudVideointelligenceV1TextFrame();
 
   GoogleCloudVideointelligenceV1TextFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("rotatedBoundingBox")) {
+    if (_json.containsKey('rotatedBoundingBox')) {
       rotatedBoundingBox =
           GoogleCloudVideointelligenceV1NormalizedBoundingPoly.fromJson(
-              _json["rotatedBoundingBox"]);
+              _json['rotatedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -2026,10 +2025,10 @@ class GoogleCloudVideointelligenceV1TextFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rotatedBoundingBox != null) {
-      _json["rotatedBoundingBox"] = rotatedBoundingBox.toJson();
+      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -2050,18 +2049,18 @@ class GoogleCloudVideointelligenceV1TextSegment {
   GoogleCloudVideointelligenceV1TextSegment();
 
   GoogleCloudVideointelligenceV1TextSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1TextFrame>((value) =>
               GoogleCloudVideointelligenceV1TextFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment =
-          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json["segment"]);
+          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json['segment']);
     }
   }
 
@@ -2069,13 +2068,13 @@ class GoogleCloudVideointelligenceV1TextSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -2100,25 +2099,25 @@ class GoogleCloudVideointelligenceV1TimestampedObject {
   GoogleCloudVideointelligenceV1TimestampedObject();
 
   GoogleCloudVideointelligenceV1TimestampedObject.fromJson(core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1DetectedAttribute>((value) =>
               GoogleCloudVideointelligenceV1DetectedAttribute.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVideointelligenceV1DetectedLandmark>((value) =>
               GoogleCloudVideointelligenceV1DetectedLandmark.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -2126,16 +2125,16 @@ class GoogleCloudVideointelligenceV1TimestampedObject {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -2158,21 +2157,21 @@ class GoogleCloudVideointelligenceV1Track {
   GoogleCloudVideointelligenceV1Track();
 
   GoogleCloudVideointelligenceV1Track.fromJson(core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1DetectedAttribute>((value) =>
               GoogleCloudVideointelligenceV1DetectedAttribute.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment =
-          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json["segment"]);
+          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json['segment']);
     }
-    if (_json.containsKey("timestampedObjects")) {
-      timestampedObjects = (_json["timestampedObjects"] as core.List)
+    if (_json.containsKey('timestampedObjects')) {
+      timestampedObjects = (_json['timestampedObjects'] as core.List)
           .map<GoogleCloudVideointelligenceV1TimestampedObject>((value) =>
               GoogleCloudVideointelligenceV1TimestampedObject.fromJson(value))
           .toList();
@@ -2183,16 +2182,16 @@ class GoogleCloudVideointelligenceV1Track {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (timestampedObjects != null) {
-      _json["timestampedObjects"] =
+      _json['timestampedObjects'] =
           timestampedObjects.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2236,24 +2235,24 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
 
   GoogleCloudVideointelligenceV1VideoAnnotationProgress.fromJson(
       core.Map _json) {
-    if (_json.containsKey("feature")) {
-      feature = _json["feature"];
+    if (_json.containsKey('feature')) {
+      feature = _json['feature'];
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("progressPercent")) {
-      progressPercent = _json["progressPercent"];
+    if (_json.containsKey('progressPercent')) {
+      progressPercent = _json['progressPercent'];
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment =
-          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json["segment"]);
+          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json['segment']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -2261,22 +2260,22 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (feature != null) {
-      _json["feature"] = feature;
+      _json['feature'] = feature;
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (progressPercent != null) {
-      _json["progressPercent"] = progressPercent;
+      _json['progressPercent'] = progressPercent;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -2352,82 +2351,82 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
 
   GoogleCloudVideointelligenceV1VideoAnnotationResults.fromJson(
       core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("explicitAnnotation")) {
+    if (_json.containsKey('explicitAnnotation')) {
       explicitAnnotation =
           GoogleCloudVideointelligenceV1ExplicitContentAnnotation.fromJson(
-              _json["explicitAnnotation"]);
+              _json['explicitAnnotation']);
     }
-    if (_json.containsKey("frameLabelAnnotations")) {
-      frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
+    if (_json.containsKey('frameLabelAnnotations')) {
+      frameLabelAnnotations = (_json['frameLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("logoRecognitionAnnotations")) {
-      logoRecognitionAnnotations = (_json["logoRecognitionAnnotations"]
+    if (_json.containsKey('logoRecognitionAnnotations')) {
+      logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1LogoRecognitionAnnotation>(
               (value) => GoogleCloudVideointelligenceV1LogoRecognitionAnnotation
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>(
               (value) => GoogleCloudVideointelligenceV1ObjectTrackingAnnotation
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment =
-          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json["segment"]);
+          GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json['segment']);
     }
-    if (_json.containsKey("segmentLabelAnnotations")) {
-      segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
+    if (_json.containsKey('segmentLabelAnnotations')) {
+      segmentLabelAnnotations = (_json['segmentLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+    if (_json.containsKey('segmentPresenceLabelAnnotations')) {
       segmentPresenceLabelAnnotations =
-          (_json["segmentPresenceLabelAnnotations"] as core.List)
+          (_json['segmentPresenceLabelAnnotations'] as core.List)
               .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
                   GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
               .toList();
     }
-    if (_json.containsKey("shotAnnotations")) {
-      shotAnnotations = (_json["shotAnnotations"] as core.List)
+    if (_json.containsKey('shotAnnotations')) {
+      shotAnnotations = (_json['shotAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shotLabelAnnotations")) {
-      shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+    if (_json.containsKey('shotLabelAnnotations')) {
+      shotLabelAnnotations = (_json['shotLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shotPresenceLabelAnnotations")) {
+    if (_json.containsKey('shotPresenceLabelAnnotations')) {
       shotPresenceLabelAnnotations =
-          (_json["shotPresenceLabelAnnotations"] as core.List)
+          (_json['shotPresenceLabelAnnotations'] as core.List)
               .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
                   GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
               .toList();
     }
-    if (_json.containsKey("speechTranscriptions")) {
-      speechTranscriptions = (_json["speechTranscriptions"] as core.List)
+    if (_json.containsKey('speechTranscriptions')) {
+      speechTranscriptions = (_json['speechTranscriptions'] as core.List)
           .map<GoogleCloudVideointelligenceV1SpeechTranscription>((value) =>
               GoogleCloudVideointelligenceV1SpeechTranscription.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1TextAnnotation>((value) =>
               GoogleCloudVideointelligenceV1TextAnnotation.fromJson(value))
           .toList();
@@ -2438,56 +2437,56 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (explicitAnnotation != null) {
-      _json["explicitAnnotation"] = explicitAnnotation.toJson();
+      _json['explicitAnnotation'] = explicitAnnotation.toJson();
     }
     if (frameLabelAnnotations != null) {
-      _json["frameLabelAnnotations"] =
+      _json['frameLabelAnnotations'] =
           frameLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (logoRecognitionAnnotations != null) {
-      _json["logoRecognitionAnnotations"] =
+      _json['logoRecognitionAnnotations'] =
           logoRecognitionAnnotations.map((value) => value.toJson()).toList();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (segmentLabelAnnotations != null) {
-      _json["segmentLabelAnnotations"] =
+      _json['segmentLabelAnnotations'] =
           segmentLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (segmentPresenceLabelAnnotations != null) {
-      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
           .map((value) => value.toJson())
           .toList();
     }
     if (shotAnnotations != null) {
-      _json["shotAnnotations"] =
+      _json['shotAnnotations'] =
           shotAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotLabelAnnotations != null) {
-      _json["shotLabelAnnotations"] =
+      _json['shotLabelAnnotations'] =
           shotLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotPresenceLabelAnnotations != null) {
-      _json["shotPresenceLabelAnnotations"] =
+      _json['shotPresenceLabelAnnotations'] =
           shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (speechTranscriptions != null) {
-      _json["speechTranscriptions"] =
+      _json['speechTranscriptions'] =
           speechTranscriptions.map((value) => value.toJson()).toList();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2525,41 +2524,41 @@ class GoogleCloudVideointelligenceV1VideoContext {
   GoogleCloudVideointelligenceV1VideoContext();
 
   GoogleCloudVideointelligenceV1VideoContext.fromJson(core.Map _json) {
-    if (_json.containsKey("explicitContentDetectionConfig")) {
+    if (_json.containsKey('explicitContentDetectionConfig')) {
       explicitContentDetectionConfig =
           GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig.fromJson(
-              _json["explicitContentDetectionConfig"]);
+              _json['explicitContentDetectionConfig']);
     }
-    if (_json.containsKey("labelDetectionConfig")) {
+    if (_json.containsKey('labelDetectionConfig')) {
       labelDetectionConfig =
           GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(
-              _json["labelDetectionConfig"]);
+              _json['labelDetectionConfig']);
     }
-    if (_json.containsKey("objectTrackingConfig")) {
+    if (_json.containsKey('objectTrackingConfig')) {
       objectTrackingConfig =
           GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(
-              _json["objectTrackingConfig"]);
+              _json['objectTrackingConfig']);
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shotChangeDetectionConfig")) {
+    if (_json.containsKey('shotChangeDetectionConfig')) {
       shotChangeDetectionConfig =
           GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
-              _json["shotChangeDetectionConfig"]);
+              _json['shotChangeDetectionConfig']);
     }
-    if (_json.containsKey("speechTranscriptionConfig")) {
+    if (_json.containsKey('speechTranscriptionConfig')) {
       speechTranscriptionConfig =
           GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
-              _json["speechTranscriptionConfig"]);
+              _json['speechTranscriptionConfig']);
     }
-    if (_json.containsKey("textDetectionConfig")) {
+    if (_json.containsKey('textDetectionConfig')) {
       textDetectionConfig =
           GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(
-              _json["textDetectionConfig"]);
+              _json['textDetectionConfig']);
     }
   }
 
@@ -2567,26 +2566,26 @@ class GoogleCloudVideointelligenceV1VideoContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (explicitContentDetectionConfig != null) {
-      _json["explicitContentDetectionConfig"] =
+      _json['explicitContentDetectionConfig'] =
           explicitContentDetectionConfig.toJson();
     }
     if (labelDetectionConfig != null) {
-      _json["labelDetectionConfig"] = labelDetectionConfig.toJson();
+      _json['labelDetectionConfig'] = labelDetectionConfig.toJson();
     }
     if (objectTrackingConfig != null) {
-      _json["objectTrackingConfig"] = objectTrackingConfig.toJson();
+      _json['objectTrackingConfig'] = objectTrackingConfig.toJson();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (shotChangeDetectionConfig != null) {
-      _json["shotChangeDetectionConfig"] = shotChangeDetectionConfig.toJson();
+      _json['shotChangeDetectionConfig'] = shotChangeDetectionConfig.toJson();
     }
     if (speechTranscriptionConfig != null) {
-      _json["speechTranscriptionConfig"] = speechTranscriptionConfig.toJson();
+      _json['speechTranscriptionConfig'] = speechTranscriptionConfig.toJson();
     }
     if (textDetectionConfig != null) {
-      _json["textDetectionConfig"] = textDetectionConfig.toJson();
+      _json['textDetectionConfig'] = textDetectionConfig.toJson();
     }
     return _json;
   }
@@ -2605,11 +2604,11 @@ class GoogleCloudVideointelligenceV1VideoSegment {
   GoogleCloudVideointelligenceV1VideoSegment();
 
   GoogleCloudVideointelligenceV1VideoSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("endTimeOffset")) {
-      endTimeOffset = _json["endTimeOffset"];
+    if (_json.containsKey('endTimeOffset')) {
+      endTimeOffset = _json['endTimeOffset'];
     }
-    if (_json.containsKey("startTimeOffset")) {
-      startTimeOffset = _json["startTimeOffset"];
+    if (_json.containsKey('startTimeOffset')) {
+      startTimeOffset = _json['startTimeOffset'];
     }
   }
 
@@ -2617,10 +2616,10 @@ class GoogleCloudVideointelligenceV1VideoSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTimeOffset != null) {
-      _json["endTimeOffset"] = endTimeOffset;
+      _json['endTimeOffset'] = endTimeOffset;
     }
     if (startTimeOffset != null) {
-      _json["startTimeOffset"] = startTimeOffset;
+      _json['startTimeOffset'] = startTimeOffset;
     }
     return _json;
   }
@@ -2663,20 +2662,20 @@ class GoogleCloudVideointelligenceV1WordInfo {
   GoogleCloudVideointelligenceV1WordInfo();
 
   GoogleCloudVideointelligenceV1WordInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("speakerTag")) {
-      speakerTag = _json["speakerTag"];
+    if (_json.containsKey('speakerTag')) {
+      speakerTag = _json['speakerTag'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("word")) {
-      word = _json["word"];
+    if (_json.containsKey('word')) {
+      word = _json['word'];
     }
   }
 
@@ -2684,19 +2683,19 @@ class GoogleCloudVideointelligenceV1WordInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (speakerTag != null) {
-      _json["speakerTag"] = speakerTag;
+      _json['speakerTag'] = speakerTag;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (word != null) {
-      _json["word"] = word;
+      _json['word'] = word;
     }
     return _json;
   }
@@ -2714,8 +2713,8 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress {
 
   GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress.fromJson(
       core.Map _json) {
-    if (_json.containsKey("annotationProgress")) {
-      annotationProgress = (_json["annotationProgress"] as core.List)
+    if (_json.containsKey('annotationProgress')) {
+      annotationProgress = (_json['annotationProgress'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress>(
               (value) =>
                   GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
@@ -2728,7 +2727,7 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationProgress != null) {
-      _json["annotationProgress"] =
+      _json['annotationProgress'] =
           annotationProgress.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2747,8 +2746,8 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
 
   GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("annotationResults")) {
-      annotationResults = (_json["annotationResults"] as core.List)
+    if (_json.containsKey('annotationResults')) {
+      annotationResults = (_json['annotationResults'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2VideoAnnotationResults>(
               (value) =>
                   GoogleCloudVideointelligenceV1beta2VideoAnnotationResults
@@ -2761,7 +2760,7 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationResults != null) {
-      _json["annotationResults"] =
+      _json['annotationResults'] =
           annotationResults.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2785,14 +2784,14 @@ class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
 
   GoogleCloudVideointelligenceV1beta2DetectedAttribute.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -2800,13 +2799,13 @@ class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -2828,15 +2827,15 @@ class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
   GoogleCloudVideointelligenceV1beta2DetectedLandmark();
 
   GoogleCloudVideointelligenceV1beta2DetectedLandmark.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("point")) {
+    if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(
-          _json["point"]);
+          _json['point']);
     }
   }
 
@@ -2844,13 +2843,13 @@ class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (point != null) {
-      _json["point"] = point.toJson();
+      _json['point'] = point.toJson();
     }
     return _json;
   }
@@ -2871,14 +2870,14 @@ class GoogleCloudVideointelligenceV1beta2Entity {
   GoogleCloudVideointelligenceV1beta2Entity();
 
   GoogleCloudVideointelligenceV1beta2Entity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -2886,13 +2885,13 @@ class GoogleCloudVideointelligenceV1beta2Entity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -2912,15 +2911,15 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation {
 
   GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2ExplicitContentFrame>(
               (value) => GoogleCloudVideointelligenceV1beta2ExplicitContentFrame
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -2928,10 +2927,10 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -2957,11 +2956,11 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame {
 
   GoogleCloudVideointelligenceV1beta2ExplicitContentFrame.fromJson(
       core.Map _json) {
-    if (_json.containsKey("pornographyLikelihood")) {
-      pornographyLikelihood = _json["pornographyLikelihood"];
+    if (_json.containsKey('pornographyLikelihood')) {
+      pornographyLikelihood = _json['pornographyLikelihood'];
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -2969,10 +2968,10 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pornographyLikelihood != null) {
-      _json["pornographyLikelihood"] = pornographyLikelihood;
+      _json['pornographyLikelihood'] = pornographyLikelihood;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -3000,30 +2999,30 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
   GoogleCloudVideointelligenceV1beta2LabelAnnotation();
 
   GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("categoryEntities")) {
-      categoryEntities = (_json["categoryEntities"] as core.List)
+    if (_json.containsKey('categoryEntities')) {
+      categoryEntities = (_json['categoryEntities'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2Entity>((value) =>
               GoogleCloudVideointelligenceV1beta2Entity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1beta2Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1beta2Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelFrame>((value) =>
               GoogleCloudVideointelligenceV1beta2LabelFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelSegment>((value) =>
               GoogleCloudVideointelligenceV1beta2LabelSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -3031,20 +3030,20 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoryEntities != null) {
-      _json["categoryEntities"] =
+      _json['categoryEntities'] =
           categoryEntities.map((value) => value.toJson()).toList();
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -3062,11 +3061,11 @@ class GoogleCloudVideointelligenceV1beta2LabelFrame {
   GoogleCloudVideointelligenceV1beta2LabelFrame();
 
   GoogleCloudVideointelligenceV1beta2LabelFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -3074,10 +3073,10 @@ class GoogleCloudVideointelligenceV1beta2LabelFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -3094,12 +3093,12 @@ class GoogleCloudVideointelligenceV1beta2LabelSegment {
   GoogleCloudVideointelligenceV1beta2LabelSegment();
 
   GoogleCloudVideointelligenceV1beta2LabelSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
   }
 
@@ -3107,10 +3106,10 @@ class GoogleCloudVideointelligenceV1beta2LabelSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -3134,18 +3133,18 @@ class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation {
 
   GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1beta2Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1beta2Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List)
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2Track>((value) =>
               GoogleCloudVideointelligenceV1beta2Track.fromJson(value))
           .toList();
@@ -3156,13 +3155,13 @@ class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (tracks != null) {
-      _json["tracks"] = tracks.map((value) => value.toJson()).toList();
+      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3187,17 +3186,17 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
 
   GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox.fromJson(
       core.Map _json) {
-    if (_json.containsKey("bottom")) {
-      bottom = _json["bottom"].toDouble();
+    if (_json.containsKey('bottom')) {
+      bottom = _json['bottom'].toDouble();
     }
-    if (_json.containsKey("left")) {
-      left = _json["left"].toDouble();
+    if (_json.containsKey('left')) {
+      left = _json['left'].toDouble();
     }
-    if (_json.containsKey("right")) {
-      right = _json["right"].toDouble();
+    if (_json.containsKey('right')) {
+      right = _json['right'].toDouble();
     }
-    if (_json.containsKey("top")) {
-      top = _json["top"].toDouble();
+    if (_json.containsKey('top')) {
+      top = _json['top'].toDouble();
     }
   }
 
@@ -3205,16 +3204,16 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bottom != null) {
-      _json["bottom"] = bottom;
+      _json['bottom'] = bottom;
     }
     if (left != null) {
-      _json["left"] = left;
+      _json['left'] = left;
     }
     if (right != null) {
-      _json["right"] = right;
+      _json['right'] = right;
     }
     if (top != null) {
-      _json["top"] = top;
+      _json['top'] = top;
     }
     return _json;
   }
@@ -3236,8 +3235,8 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
 
   GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly.fromJson(
       core.Map _json) {
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2NormalizedVertex>((value) =>
               GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(
                   value))
@@ -3249,7 +3248,7 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3267,11 +3266,11 @@ class GoogleCloudVideointelligenceV1beta2NormalizedVertex {
   GoogleCloudVideointelligenceV1beta2NormalizedVertex();
 
   GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -3279,10 +3278,10 @@ class GoogleCloudVideointelligenceV1beta2NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -3320,29 +3319,29 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
 
   GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1beta2Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1beta2Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame>(
               (value) => GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("trackId")) {
-      trackId = _json["trackId"];
+    if (_json.containsKey('trackId')) {
+      trackId = _json['trackId'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -3350,22 +3349,22 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (trackId != null) {
-      _json["trackId"] = trackId;
+      _json['trackId'] = trackId;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -3385,13 +3384,13 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
 
   GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame.fromJson(
       core.Map _json) {
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -3399,10 +3398,10 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -3430,14 +3429,14 @@ class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
 
   GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("transcript")) {
-      transcript = _json["transcript"];
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'];
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2WordInfo>((value) =>
               GoogleCloudVideointelligenceV1beta2WordInfo.fromJson(value))
           .toList();
@@ -3448,13 +3447,13 @@ class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (transcript != null) {
-      _json["transcript"] = transcript;
+      _json['transcript'] = transcript;
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3478,16 +3477,16 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
 
   GoogleCloudVideointelligenceV1beta2SpeechTranscription.fromJson(
       core.Map _json) {
-    if (_json.containsKey("alternatives")) {
-      alternatives = (_json["alternatives"] as core.List)
+    if (_json.containsKey('alternatives')) {
+      alternatives = (_json['alternatives'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>(
               (value) =>
                   GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -3495,11 +3494,11 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternatives != null) {
-      _json["alternatives"] =
+      _json['alternatives'] =
           alternatives.map((value) => value.toJson()).toList();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -3521,17 +3520,17 @@ class GoogleCloudVideointelligenceV1beta2TextAnnotation {
   GoogleCloudVideointelligenceV1beta2TextAnnotation();
 
   GoogleCloudVideointelligenceV1beta2TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2TextSegment>((value) =>
               GoogleCloudVideointelligenceV1beta2TextSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -3539,13 +3538,13 @@ class GoogleCloudVideointelligenceV1beta2TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -3564,13 +3563,13 @@ class GoogleCloudVideointelligenceV1beta2TextFrame {
   GoogleCloudVideointelligenceV1beta2TextFrame();
 
   GoogleCloudVideointelligenceV1beta2TextFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("rotatedBoundingBox")) {
+    if (_json.containsKey('rotatedBoundingBox')) {
       rotatedBoundingBox =
           GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly.fromJson(
-              _json["rotatedBoundingBox"]);
+              _json['rotatedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -3578,10 +3577,10 @@ class GoogleCloudVideointelligenceV1beta2TextFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rotatedBoundingBox != null) {
-      _json["rotatedBoundingBox"] = rotatedBoundingBox.toJson();
+      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -3602,18 +3601,18 @@ class GoogleCloudVideointelligenceV1beta2TextSegment {
   GoogleCloudVideointelligenceV1beta2TextSegment();
 
   GoogleCloudVideointelligenceV1beta2TextSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2TextFrame>((value) =>
               GoogleCloudVideointelligenceV1beta2TextFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
   }
 
@@ -3621,13 +3620,13 @@ class GoogleCloudVideointelligenceV1beta2TextSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -3654,27 +3653,27 @@ class GoogleCloudVideointelligenceV1beta2TimestampedObject {
 
   GoogleCloudVideointelligenceV1beta2TimestampedObject.fromJson(
       core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2DetectedAttribute>((value) =>
               GoogleCloudVideointelligenceV1beta2DetectedAttribute.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2DetectedLandmark>((value) =>
               GoogleCloudVideointelligenceV1beta2DetectedLandmark.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -3682,16 +3681,16 @@ class GoogleCloudVideointelligenceV1beta2TimestampedObject {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -3715,22 +3714,22 @@ class GoogleCloudVideointelligenceV1beta2Track {
   GoogleCloudVideointelligenceV1beta2Track();
 
   GoogleCloudVideointelligenceV1beta2Track.fromJson(core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2DetectedAttribute>((value) =>
               GoogleCloudVideointelligenceV1beta2DetectedAttribute.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("timestampedObjects")) {
-      timestampedObjects = (_json["timestampedObjects"] as core.List)
+    if (_json.containsKey('timestampedObjects')) {
+      timestampedObjects = (_json['timestampedObjects'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2TimestampedObject>((value) =>
               GoogleCloudVideointelligenceV1beta2TimestampedObject.fromJson(
                   value))
@@ -3742,16 +3741,16 @@ class GoogleCloudVideointelligenceV1beta2Track {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (timestampedObjects != null) {
-      _json["timestampedObjects"] =
+      _json['timestampedObjects'] =
           timestampedObjects.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -3795,24 +3794,24 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
 
   GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress.fromJson(
       core.Map _json) {
-    if (_json.containsKey("feature")) {
-      feature = _json["feature"];
+    if (_json.containsKey('feature')) {
+      feature = _json['feature'];
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("progressPercent")) {
-      progressPercent = _json["progressPercent"];
+    if (_json.containsKey('progressPercent')) {
+      progressPercent = _json['progressPercent'];
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -3820,22 +3819,22 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (feature != null) {
-      _json["feature"] = feature;
+      _json['feature'] = feature;
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (progressPercent != null) {
-      _json["progressPercent"] = progressPercent;
+      _json['progressPercent'] = progressPercent;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -3913,26 +3912,26 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
 
   GoogleCloudVideointelligenceV1beta2VideoAnnotationResults.fromJson(
       core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("explicitAnnotation")) {
+    if (_json.containsKey('explicitAnnotation')) {
       explicitAnnotation =
           GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation.fromJson(
-              _json["explicitAnnotation"]);
+              _json['explicitAnnotation']);
     }
-    if (_json.containsKey("frameLabelAnnotations")) {
-      frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
+    if (_json.containsKey('frameLabelAnnotations')) {
+      frameLabelAnnotations = (_json['frameLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("logoRecognitionAnnotations")) {
-      logoRecognitionAnnotations = (_json["logoRecognitionAnnotations"]
+    if (_json.containsKey('logoRecognitionAnnotations')) {
+      logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation>(
               (value) =>
@@ -3940,63 +3939,63 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>(
               (value) =>
                   GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("segmentLabelAnnotations")) {
-      segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
+    if (_json.containsKey('segmentLabelAnnotations')) {
+      segmentLabelAnnotations = (_json['segmentLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+    if (_json.containsKey('segmentPresenceLabelAnnotations')) {
       segmentPresenceLabelAnnotations =
-          (_json["segmentPresenceLabelAnnotations"] as core.List)
+          (_json['segmentPresenceLabelAnnotations'] as core.List)
               .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>(
                   (value) => GoogleCloudVideointelligenceV1beta2LabelAnnotation
                       .fromJson(value))
               .toList();
     }
-    if (_json.containsKey("shotAnnotations")) {
-      shotAnnotations = (_json["shotAnnotations"] as core.List)
+    if (_json.containsKey('shotAnnotations')) {
+      shotAnnotations = (_json['shotAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shotLabelAnnotations")) {
-      shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+    if (_json.containsKey('shotLabelAnnotations')) {
+      shotLabelAnnotations = (_json['shotLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("shotPresenceLabelAnnotations")) {
-      shotPresenceLabelAnnotations = (_json["shotPresenceLabelAnnotations"]
+    if (_json.containsKey('shotPresenceLabelAnnotations')) {
+      shotPresenceLabelAnnotations = (_json['shotPresenceLabelAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("speechTranscriptions")) {
-      speechTranscriptions = (_json["speechTranscriptions"] as core.List)
+    if (_json.containsKey('speechTranscriptions')) {
+      speechTranscriptions = (_json['speechTranscriptions'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2SpeechTranscription>(
               (value) => GoogleCloudVideointelligenceV1beta2SpeechTranscription
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2TextAnnotation>((value) =>
               GoogleCloudVideointelligenceV1beta2TextAnnotation.fromJson(value))
           .toList();
@@ -4007,56 +4006,56 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (explicitAnnotation != null) {
-      _json["explicitAnnotation"] = explicitAnnotation.toJson();
+      _json['explicitAnnotation'] = explicitAnnotation.toJson();
     }
     if (frameLabelAnnotations != null) {
-      _json["frameLabelAnnotations"] =
+      _json['frameLabelAnnotations'] =
           frameLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (logoRecognitionAnnotations != null) {
-      _json["logoRecognitionAnnotations"] =
+      _json['logoRecognitionAnnotations'] =
           logoRecognitionAnnotations.map((value) => value.toJson()).toList();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (segmentLabelAnnotations != null) {
-      _json["segmentLabelAnnotations"] =
+      _json['segmentLabelAnnotations'] =
           segmentLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (segmentPresenceLabelAnnotations != null) {
-      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
           .map((value) => value.toJson())
           .toList();
     }
     if (shotAnnotations != null) {
-      _json["shotAnnotations"] =
+      _json['shotAnnotations'] =
           shotAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotLabelAnnotations != null) {
-      _json["shotLabelAnnotations"] =
+      _json['shotLabelAnnotations'] =
           shotLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotPresenceLabelAnnotations != null) {
-      _json["shotPresenceLabelAnnotations"] =
+      _json['shotPresenceLabelAnnotations'] =
           shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (speechTranscriptions != null) {
-      _json["speechTranscriptions"] =
+      _json['speechTranscriptions'] =
           speechTranscriptions.map((value) => value.toJson()).toList();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4076,11 +4075,11 @@ class GoogleCloudVideointelligenceV1beta2VideoSegment {
   GoogleCloudVideointelligenceV1beta2VideoSegment();
 
   GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("endTimeOffset")) {
-      endTimeOffset = _json["endTimeOffset"];
+    if (_json.containsKey('endTimeOffset')) {
+      endTimeOffset = _json['endTimeOffset'];
     }
-    if (_json.containsKey("startTimeOffset")) {
-      startTimeOffset = _json["startTimeOffset"];
+    if (_json.containsKey('startTimeOffset')) {
+      startTimeOffset = _json['startTimeOffset'];
     }
   }
 
@@ -4088,10 +4087,10 @@ class GoogleCloudVideointelligenceV1beta2VideoSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTimeOffset != null) {
-      _json["endTimeOffset"] = endTimeOffset;
+      _json['endTimeOffset'] = endTimeOffset;
     }
     if (startTimeOffset != null) {
-      _json["startTimeOffset"] = startTimeOffset;
+      _json['startTimeOffset'] = startTimeOffset;
     }
     return _json;
   }
@@ -4134,20 +4133,20 @@ class GoogleCloudVideointelligenceV1beta2WordInfo {
   GoogleCloudVideointelligenceV1beta2WordInfo();
 
   GoogleCloudVideointelligenceV1beta2WordInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("speakerTag")) {
-      speakerTag = _json["speakerTag"];
+    if (_json.containsKey('speakerTag')) {
+      speakerTag = _json['speakerTag'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("word")) {
-      word = _json["word"];
+    if (_json.containsKey('word')) {
+      word = _json['word'];
     }
   }
 
@@ -4155,19 +4154,19 @@ class GoogleCloudVideointelligenceV1beta2WordInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (speakerTag != null) {
-      _json["speakerTag"] = speakerTag;
+      _json['speakerTag'] = speakerTag;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (word != null) {
-      _json["word"] = word;
+      _json['word'] = word;
     }
     return _json;
   }
@@ -4185,8 +4184,8 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress {
 
   GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress.fromJson(
       core.Map _json) {
-    if (_json.containsKey("annotationProgress")) {
-      annotationProgress = (_json["annotationProgress"] as core.List)
+    if (_json.containsKey('annotationProgress')) {
+      annotationProgress = (_json['annotationProgress'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress>(
               (value) =>
                   GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
@@ -4199,7 +4198,7 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationProgress != null) {
-      _json["annotationProgress"] =
+      _json['annotationProgress'] =
           annotationProgress.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4218,8 +4217,8 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse {
 
   GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("annotationResults")) {
-      annotationResults = (_json["annotationResults"] as core.List)
+    if (_json.containsKey('annotationResults')) {
+      annotationResults = (_json['annotationResults'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults>(
               (value) =>
                   GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults
@@ -4232,7 +4231,7 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationResults != null) {
-      _json["annotationResults"] =
+      _json['annotationResults'] =
           annotationResults.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4256,14 +4255,14 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
 
   GoogleCloudVideointelligenceV1p1beta1DetectedAttribute.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -4271,13 +4270,13 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -4300,15 +4299,15 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
 
   GoogleCloudVideointelligenceV1p1beta1DetectedLandmark.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("point")) {
+    if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1p1beta1NormalizedVertex.fromJson(
-          _json["point"]);
+          _json['point']);
     }
   }
 
@@ -4316,13 +4315,13 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (point != null) {
-      _json["point"] = point.toJson();
+      _json['point'] = point.toJson();
     }
     return _json;
   }
@@ -4343,14 +4342,14 @@ class GoogleCloudVideointelligenceV1p1beta1Entity {
   GoogleCloudVideointelligenceV1p1beta1Entity();
 
   GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -4358,13 +4357,13 @@ class GoogleCloudVideointelligenceV1p1beta1Entity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -4384,16 +4383,16 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation {
 
   GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame>(
               (value) =>
                   GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -4401,10 +4400,10 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -4430,11 +4429,11 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame {
 
   GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame.fromJson(
       core.Map _json) {
-    if (_json.containsKey("pornographyLikelihood")) {
-      pornographyLikelihood = _json["pornographyLikelihood"];
+    if (_json.containsKey('pornographyLikelihood')) {
+      pornographyLikelihood = _json['pornographyLikelihood'];
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -4442,10 +4441,10 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pornographyLikelihood != null) {
-      _json["pornographyLikelihood"] = pornographyLikelihood;
+      _json['pornographyLikelihood'] = pornographyLikelihood;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -4474,30 +4473,30 @@ class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
 
   GoogleCloudVideointelligenceV1p1beta1LabelAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("categoryEntities")) {
-      categoryEntities = (_json["categoryEntities"] as core.List)
+    if (_json.containsKey('categoryEntities')) {
+      categoryEntities = (_json['categoryEntities'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1Entity>((value) =>
               GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LabelFrame>((value) =>
               GoogleCloudVideointelligenceV1p1beta1LabelFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LabelSegment>((value) =>
               GoogleCloudVideointelligenceV1p1beta1LabelSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -4505,20 +4504,20 @@ class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoryEntities != null) {
-      _json["categoryEntities"] =
+      _json['categoryEntities'] =
           categoryEntities.map((value) => value.toJson()).toList();
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -4536,11 +4535,11 @@ class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
   GoogleCloudVideointelligenceV1p1beta1LabelFrame();
 
   GoogleCloudVideointelligenceV1p1beta1LabelFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -4548,10 +4547,10 @@ class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -4568,12 +4567,12 @@ class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
   GoogleCloudVideointelligenceV1p1beta1LabelSegment();
 
   GoogleCloudVideointelligenceV1p1beta1LabelSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
   }
 
@@ -4581,10 +4580,10 @@ class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -4608,18 +4607,18 @@ class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation {
 
   GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List)
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1Track>((value) =>
               GoogleCloudVideointelligenceV1p1beta1Track.fromJson(value))
           .toList();
@@ -4630,13 +4629,13 @@ class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (tracks != null) {
-      _json["tracks"] = tracks.map((value) => value.toJson()).toList();
+      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4661,17 +4660,17 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
 
   GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox.fromJson(
       core.Map _json) {
-    if (_json.containsKey("bottom")) {
-      bottom = _json["bottom"].toDouble();
+    if (_json.containsKey('bottom')) {
+      bottom = _json['bottom'].toDouble();
     }
-    if (_json.containsKey("left")) {
-      left = _json["left"].toDouble();
+    if (_json.containsKey('left')) {
+      left = _json['left'].toDouble();
     }
-    if (_json.containsKey("right")) {
-      right = _json["right"].toDouble();
+    if (_json.containsKey('right')) {
+      right = _json['right'].toDouble();
     }
-    if (_json.containsKey("top")) {
-      top = _json["top"].toDouble();
+    if (_json.containsKey('top')) {
+      top = _json['top'].toDouble();
     }
   }
 
@@ -4679,16 +4678,16 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bottom != null) {
-      _json["bottom"] = bottom;
+      _json['bottom'] = bottom;
     }
     if (left != null) {
-      _json["left"] = left;
+      _json['left'] = left;
     }
     if (right != null) {
-      _json["right"] = right;
+      _json['right'] = right;
     }
     if (top != null) {
-      _json["top"] = top;
+      _json['top'] = top;
     }
     return _json;
   }
@@ -4710,8 +4709,8 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
 
   GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly.fromJson(
       core.Map _json) {
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1NormalizedVertex>((value) =>
               GoogleCloudVideointelligenceV1p1beta1NormalizedVertex.fromJson(
                   value))
@@ -4723,7 +4722,7 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4742,11 +4741,11 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedVertex {
 
   GoogleCloudVideointelligenceV1p1beta1NormalizedVertex.fromJson(
       core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -4754,10 +4753,10 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -4795,30 +4794,30 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
 
   GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame>(
               (value) =>
                   GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("trackId")) {
-      trackId = _json["trackId"];
+    if (_json.containsKey('trackId')) {
+      trackId = _json['trackId'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -4826,22 +4825,22 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (trackId != null) {
-      _json["trackId"] = trackId;
+      _json['trackId'] = trackId;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -4861,13 +4860,13 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
 
   GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame.fromJson(
       core.Map _json) {
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -4875,10 +4874,10 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -4906,14 +4905,14 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
 
   GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("transcript")) {
-      transcript = _json["transcript"];
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'];
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1WordInfo>((value) =>
               GoogleCloudVideointelligenceV1p1beta1WordInfo.fromJson(value))
           .toList();
@@ -4924,13 +4923,13 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (transcript != null) {
-      _json["transcript"] = transcript;
+      _json['transcript'] = transcript;
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4954,16 +4953,16 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
 
   GoogleCloudVideointelligenceV1p1beta1SpeechTranscription.fromJson(
       core.Map _json) {
-    if (_json.containsKey("alternatives")) {
-      alternatives = (_json["alternatives"] as core.List)
+    if (_json.containsKey('alternatives')) {
+      alternatives = (_json['alternatives'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>(
               (value) =>
                   GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -4971,11 +4970,11 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternatives != null) {
-      _json["alternatives"] =
+      _json['alternatives'] =
           alternatives.map((value) => value.toJson()).toList();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -4997,17 +4996,17 @@ class GoogleCloudVideointelligenceV1p1beta1TextAnnotation {
   GoogleCloudVideointelligenceV1p1beta1TextAnnotation();
 
   GoogleCloudVideointelligenceV1p1beta1TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1TextSegment>((value) =>
               GoogleCloudVideointelligenceV1p1beta1TextSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -5015,13 +5014,13 @@ class GoogleCloudVideointelligenceV1p1beta1TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -5041,13 +5040,13 @@ class GoogleCloudVideointelligenceV1p1beta1TextFrame {
   GoogleCloudVideointelligenceV1p1beta1TextFrame();
 
   GoogleCloudVideointelligenceV1p1beta1TextFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("rotatedBoundingBox")) {
+    if (_json.containsKey('rotatedBoundingBox')) {
       rotatedBoundingBox =
           GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly.fromJson(
-              _json["rotatedBoundingBox"]);
+              _json['rotatedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -5055,10 +5054,10 @@ class GoogleCloudVideointelligenceV1p1beta1TextFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rotatedBoundingBox != null) {
-      _json["rotatedBoundingBox"] = rotatedBoundingBox.toJson();
+      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -5079,18 +5078,18 @@ class GoogleCloudVideointelligenceV1p1beta1TextSegment {
   GoogleCloudVideointelligenceV1p1beta1TextSegment();
 
   GoogleCloudVideointelligenceV1p1beta1TextSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1TextFrame>((value) =>
               GoogleCloudVideointelligenceV1p1beta1TextFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
   }
 
@@ -5098,13 +5097,13 @@ class GoogleCloudVideointelligenceV1p1beta1TextSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -5131,27 +5130,27 @@ class GoogleCloudVideointelligenceV1p1beta1TimestampedObject {
 
   GoogleCloudVideointelligenceV1p1beta1TimestampedObject.fromJson(
       core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1DetectedAttribute>(
               (value) => GoogleCloudVideointelligenceV1p1beta1DetectedAttribute
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1DetectedLandmark>((value) =>
               GoogleCloudVideointelligenceV1p1beta1DetectedLandmark.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -5159,16 +5158,16 @@ class GoogleCloudVideointelligenceV1p1beta1TimestampedObject {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -5192,22 +5191,22 @@ class GoogleCloudVideointelligenceV1p1beta1Track {
   GoogleCloudVideointelligenceV1p1beta1Track();
 
   GoogleCloudVideointelligenceV1p1beta1Track.fromJson(core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1DetectedAttribute>(
               (value) => GoogleCloudVideointelligenceV1p1beta1DetectedAttribute
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("timestampedObjects")) {
-      timestampedObjects = (_json["timestampedObjects"] as core.List)
+    if (_json.containsKey('timestampedObjects')) {
+      timestampedObjects = (_json['timestampedObjects'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1TimestampedObject>(
               (value) => GoogleCloudVideointelligenceV1p1beta1TimestampedObject
                   .fromJson(value))
@@ -5219,16 +5218,16 @@ class GoogleCloudVideointelligenceV1p1beta1Track {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (timestampedObjects != null) {
-      _json["timestampedObjects"] =
+      _json['timestampedObjects'] =
           timestampedObjects.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5272,24 +5271,24 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
 
   GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress.fromJson(
       core.Map _json) {
-    if (_json.containsKey("feature")) {
-      feature = _json["feature"];
+    if (_json.containsKey('feature')) {
+      feature = _json['feature'];
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("progressPercent")) {
-      progressPercent = _json["progressPercent"];
+    if (_json.containsKey('progressPercent')) {
+      progressPercent = _json['progressPercent'];
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -5297,22 +5296,22 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (feature != null) {
-      _json["feature"] = feature;
+      _json['feature'] = feature;
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (progressPercent != null) {
-      _json["progressPercent"] = progressPercent;
+      _json['progressPercent'] = progressPercent;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -5391,26 +5390,26 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
 
   GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults.fromJson(
       core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("explicitAnnotation")) {
+    if (_json.containsKey('explicitAnnotation')) {
       explicitAnnotation =
           GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation
-              .fromJson(_json["explicitAnnotation"]);
+              .fromJson(_json['explicitAnnotation']);
     }
-    if (_json.containsKey("frameLabelAnnotations")) {
-      frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
+    if (_json.containsKey('frameLabelAnnotations')) {
+      frameLabelAnnotations = (_json['frameLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p1beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("logoRecognitionAnnotations")) {
-      logoRecognitionAnnotations = (_json["logoRecognitionAnnotations"]
+    if (_json.containsKey('logoRecognitionAnnotations')) {
+      logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation>(
               (value) =>
@@ -5418,65 +5417,65 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>(
               (value) =>
                   GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("segmentLabelAnnotations")) {
-      segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
+    if (_json.containsKey('segmentLabelAnnotations')) {
+      segmentLabelAnnotations = (_json['segmentLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p1beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+    if (_json.containsKey('segmentPresenceLabelAnnotations')) {
       segmentPresenceLabelAnnotations =
-          (_json["segmentPresenceLabelAnnotations"] as core.List)
+          (_json['segmentPresenceLabelAnnotations'] as core.List)
               .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>(
                   (value) =>
                       GoogleCloudVideointelligenceV1p1beta1LabelAnnotation
                           .fromJson(value))
               .toList();
     }
-    if (_json.containsKey("shotAnnotations")) {
-      shotAnnotations = (_json["shotAnnotations"] as core.List)
+    if (_json.containsKey('shotAnnotations')) {
+      shotAnnotations = (_json['shotAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shotLabelAnnotations")) {
-      shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+    if (_json.containsKey('shotLabelAnnotations')) {
+      shotLabelAnnotations = (_json['shotLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p1beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("shotPresenceLabelAnnotations")) {
-      shotPresenceLabelAnnotations = (_json["shotPresenceLabelAnnotations"]
+    if (_json.containsKey('shotPresenceLabelAnnotations')) {
+      shotPresenceLabelAnnotations = (_json['shotPresenceLabelAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p1beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("speechTranscriptions")) {
-      speechTranscriptions = (_json["speechTranscriptions"] as core.List)
+    if (_json.containsKey('speechTranscriptions')) {
+      speechTranscriptions = (_json['speechTranscriptions'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1SpeechTranscription>(
               (value) =>
                   GoogleCloudVideointelligenceV1p1beta1SpeechTranscription
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1TextAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p1beta1TextAnnotation.fromJson(
                   value))
@@ -5488,56 +5487,56 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (explicitAnnotation != null) {
-      _json["explicitAnnotation"] = explicitAnnotation.toJson();
+      _json['explicitAnnotation'] = explicitAnnotation.toJson();
     }
     if (frameLabelAnnotations != null) {
-      _json["frameLabelAnnotations"] =
+      _json['frameLabelAnnotations'] =
           frameLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (logoRecognitionAnnotations != null) {
-      _json["logoRecognitionAnnotations"] =
+      _json['logoRecognitionAnnotations'] =
           logoRecognitionAnnotations.map((value) => value.toJson()).toList();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (segmentLabelAnnotations != null) {
-      _json["segmentLabelAnnotations"] =
+      _json['segmentLabelAnnotations'] =
           segmentLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (segmentPresenceLabelAnnotations != null) {
-      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
           .map((value) => value.toJson())
           .toList();
     }
     if (shotAnnotations != null) {
-      _json["shotAnnotations"] =
+      _json['shotAnnotations'] =
           shotAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotLabelAnnotations != null) {
-      _json["shotLabelAnnotations"] =
+      _json['shotLabelAnnotations'] =
           shotLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotPresenceLabelAnnotations != null) {
-      _json["shotPresenceLabelAnnotations"] =
+      _json['shotPresenceLabelAnnotations'] =
           shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (speechTranscriptions != null) {
-      _json["speechTranscriptions"] =
+      _json['speechTranscriptions'] =
           speechTranscriptions.map((value) => value.toJson()).toList();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5557,11 +5556,11 @@ class GoogleCloudVideointelligenceV1p1beta1VideoSegment {
   GoogleCloudVideointelligenceV1p1beta1VideoSegment();
 
   GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("endTimeOffset")) {
-      endTimeOffset = _json["endTimeOffset"];
+    if (_json.containsKey('endTimeOffset')) {
+      endTimeOffset = _json['endTimeOffset'];
     }
-    if (_json.containsKey("startTimeOffset")) {
-      startTimeOffset = _json["startTimeOffset"];
+    if (_json.containsKey('startTimeOffset')) {
+      startTimeOffset = _json['startTimeOffset'];
     }
   }
 
@@ -5569,10 +5568,10 @@ class GoogleCloudVideointelligenceV1p1beta1VideoSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTimeOffset != null) {
-      _json["endTimeOffset"] = endTimeOffset;
+      _json['endTimeOffset'] = endTimeOffset;
     }
     if (startTimeOffset != null) {
-      _json["startTimeOffset"] = startTimeOffset;
+      _json['startTimeOffset'] = startTimeOffset;
     }
     return _json;
   }
@@ -5615,20 +5614,20 @@ class GoogleCloudVideointelligenceV1p1beta1WordInfo {
   GoogleCloudVideointelligenceV1p1beta1WordInfo();
 
   GoogleCloudVideointelligenceV1p1beta1WordInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("speakerTag")) {
-      speakerTag = _json["speakerTag"];
+    if (_json.containsKey('speakerTag')) {
+      speakerTag = _json['speakerTag'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("word")) {
-      word = _json["word"];
+    if (_json.containsKey('word')) {
+      word = _json['word'];
     }
   }
 
@@ -5636,19 +5635,19 @@ class GoogleCloudVideointelligenceV1p1beta1WordInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (speakerTag != null) {
-      _json["speakerTag"] = speakerTag;
+      _json['speakerTag'] = speakerTag;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (word != null) {
-      _json["word"] = word;
+      _json['word'] = word;
     }
     return _json;
   }
@@ -5666,8 +5665,8 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress {
 
   GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress.fromJson(
       core.Map _json) {
-    if (_json.containsKey("annotationProgress")) {
-      annotationProgress = (_json["annotationProgress"] as core.List)
+    if (_json.containsKey('annotationProgress')) {
+      annotationProgress = (_json['annotationProgress'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress>(
               (value) =>
                   GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress
@@ -5680,7 +5679,7 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationProgress != null) {
-      _json["annotationProgress"] =
+      _json['annotationProgress'] =
           annotationProgress.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5699,8 +5698,8 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse {
 
   GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("annotationResults")) {
-      annotationResults = (_json["annotationResults"] as core.List)
+    if (_json.containsKey('annotationResults')) {
+      annotationResults = (_json['annotationResults'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults>(
               (value) =>
                   GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults
@@ -5713,7 +5712,7 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationResults != null) {
-      _json["annotationResults"] =
+      _json['annotationResults'] =
           annotationResults.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5737,14 +5736,14 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
 
   GoogleCloudVideointelligenceV1p2beta1DetectedAttribute.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -5752,13 +5751,13 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -5781,15 +5780,15 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
 
   GoogleCloudVideointelligenceV1p2beta1DetectedLandmark.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("point")) {
+    if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1p2beta1NormalizedVertex.fromJson(
-          _json["point"]);
+          _json['point']);
     }
   }
 
@@ -5797,13 +5796,13 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (point != null) {
-      _json["point"] = point.toJson();
+      _json['point'] = point.toJson();
     }
     return _json;
   }
@@ -5824,14 +5823,14 @@ class GoogleCloudVideointelligenceV1p2beta1Entity {
   GoogleCloudVideointelligenceV1p2beta1Entity();
 
   GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -5839,13 +5838,13 @@ class GoogleCloudVideointelligenceV1p2beta1Entity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -5865,16 +5864,16 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation {
 
   GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame>(
               (value) =>
                   GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -5882,10 +5881,10 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -5911,11 +5910,11 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame {
 
   GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame.fromJson(
       core.Map _json) {
-    if (_json.containsKey("pornographyLikelihood")) {
-      pornographyLikelihood = _json["pornographyLikelihood"];
+    if (_json.containsKey('pornographyLikelihood')) {
+      pornographyLikelihood = _json['pornographyLikelihood'];
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -5923,10 +5922,10 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pornographyLikelihood != null) {
-      _json["pornographyLikelihood"] = pornographyLikelihood;
+      _json['pornographyLikelihood'] = pornographyLikelihood;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -5955,30 +5954,30 @@ class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
 
   GoogleCloudVideointelligenceV1p2beta1LabelAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("categoryEntities")) {
-      categoryEntities = (_json["categoryEntities"] as core.List)
+    if (_json.containsKey('categoryEntities')) {
+      categoryEntities = (_json['categoryEntities'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1Entity>((value) =>
               GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LabelFrame>((value) =>
               GoogleCloudVideointelligenceV1p2beta1LabelFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LabelSegment>((value) =>
               GoogleCloudVideointelligenceV1p2beta1LabelSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -5986,20 +5985,20 @@ class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoryEntities != null) {
-      _json["categoryEntities"] =
+      _json['categoryEntities'] =
           categoryEntities.map((value) => value.toJson()).toList();
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -6017,11 +6016,11 @@ class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
   GoogleCloudVideointelligenceV1p2beta1LabelFrame();
 
   GoogleCloudVideointelligenceV1p2beta1LabelFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -6029,10 +6028,10 @@ class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -6049,12 +6048,12 @@ class GoogleCloudVideointelligenceV1p2beta1LabelSegment {
   GoogleCloudVideointelligenceV1p2beta1LabelSegment();
 
   GoogleCloudVideointelligenceV1p2beta1LabelSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
   }
 
@@ -6062,10 +6061,10 @@ class GoogleCloudVideointelligenceV1p2beta1LabelSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -6089,18 +6088,18 @@ class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation {
 
   GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List)
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1Track>((value) =>
               GoogleCloudVideointelligenceV1p2beta1Track.fromJson(value))
           .toList();
@@ -6111,13 +6110,13 @@ class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (tracks != null) {
-      _json["tracks"] = tracks.map((value) => value.toJson()).toList();
+      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6142,17 +6141,17 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox {
 
   GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox.fromJson(
       core.Map _json) {
-    if (_json.containsKey("bottom")) {
-      bottom = _json["bottom"].toDouble();
+    if (_json.containsKey('bottom')) {
+      bottom = _json['bottom'].toDouble();
     }
-    if (_json.containsKey("left")) {
-      left = _json["left"].toDouble();
+    if (_json.containsKey('left')) {
+      left = _json['left'].toDouble();
     }
-    if (_json.containsKey("right")) {
-      right = _json["right"].toDouble();
+    if (_json.containsKey('right')) {
+      right = _json['right'].toDouble();
     }
-    if (_json.containsKey("top")) {
-      top = _json["top"].toDouble();
+    if (_json.containsKey('top')) {
+      top = _json['top'].toDouble();
     }
   }
 
@@ -6160,16 +6159,16 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bottom != null) {
-      _json["bottom"] = bottom;
+      _json['bottom'] = bottom;
     }
     if (left != null) {
-      _json["left"] = left;
+      _json['left'] = left;
     }
     if (right != null) {
-      _json["right"] = right;
+      _json['right'] = right;
     }
     if (top != null) {
-      _json["top"] = top;
+      _json['top'] = top;
     }
     return _json;
   }
@@ -6191,8 +6190,8 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly {
 
   GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly.fromJson(
       core.Map _json) {
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1NormalizedVertex>((value) =>
               GoogleCloudVideointelligenceV1p2beta1NormalizedVertex.fromJson(
                   value))
@@ -6204,7 +6203,7 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6223,11 +6222,11 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex {
 
   GoogleCloudVideointelligenceV1p2beta1NormalizedVertex.fromJson(
       core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -6235,10 +6234,10 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -6276,30 +6275,30 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
 
   GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame>(
               (value) =>
                   GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("trackId")) {
-      trackId = _json["trackId"];
+    if (_json.containsKey('trackId')) {
+      trackId = _json['trackId'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -6307,22 +6306,22 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (trackId != null) {
-      _json["trackId"] = trackId;
+      _json['trackId'] = trackId;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -6342,13 +6341,13 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
 
   GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame.fromJson(
       core.Map _json) {
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -6356,10 +6355,10 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -6387,14 +6386,14 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
 
   GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("transcript")) {
-      transcript = _json["transcript"];
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'];
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1WordInfo>((value) =>
               GoogleCloudVideointelligenceV1p2beta1WordInfo.fromJson(value))
           .toList();
@@ -6405,13 +6404,13 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (transcript != null) {
-      _json["transcript"] = transcript;
+      _json['transcript'] = transcript;
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6435,16 +6434,16 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
 
   GoogleCloudVideointelligenceV1p2beta1SpeechTranscription.fromJson(
       core.Map _json) {
-    if (_json.containsKey("alternatives")) {
-      alternatives = (_json["alternatives"] as core.List)
+    if (_json.containsKey('alternatives')) {
+      alternatives = (_json['alternatives'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>(
               (value) =>
                   GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -6452,11 +6451,11 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternatives != null) {
-      _json["alternatives"] =
+      _json['alternatives'] =
           alternatives.map((value) => value.toJson()).toList();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -6478,17 +6477,17 @@ class GoogleCloudVideointelligenceV1p2beta1TextAnnotation {
   GoogleCloudVideointelligenceV1p2beta1TextAnnotation();
 
   GoogleCloudVideointelligenceV1p2beta1TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1TextSegment>((value) =>
               GoogleCloudVideointelligenceV1p2beta1TextSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -6496,13 +6495,13 @@ class GoogleCloudVideointelligenceV1p2beta1TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -6522,13 +6521,13 @@ class GoogleCloudVideointelligenceV1p2beta1TextFrame {
   GoogleCloudVideointelligenceV1p2beta1TextFrame();
 
   GoogleCloudVideointelligenceV1p2beta1TextFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("rotatedBoundingBox")) {
+    if (_json.containsKey('rotatedBoundingBox')) {
       rotatedBoundingBox =
           GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly.fromJson(
-              _json["rotatedBoundingBox"]);
+              _json['rotatedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -6536,10 +6535,10 @@ class GoogleCloudVideointelligenceV1p2beta1TextFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rotatedBoundingBox != null) {
-      _json["rotatedBoundingBox"] = rotatedBoundingBox.toJson();
+      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -6560,18 +6559,18 @@ class GoogleCloudVideointelligenceV1p2beta1TextSegment {
   GoogleCloudVideointelligenceV1p2beta1TextSegment();
 
   GoogleCloudVideointelligenceV1p2beta1TextSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1TextFrame>((value) =>
               GoogleCloudVideointelligenceV1p2beta1TextFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
   }
 
@@ -6579,13 +6578,13 @@ class GoogleCloudVideointelligenceV1p2beta1TextSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -6612,27 +6611,27 @@ class GoogleCloudVideointelligenceV1p2beta1TimestampedObject {
 
   GoogleCloudVideointelligenceV1p2beta1TimestampedObject.fromJson(
       core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1DetectedAttribute>(
               (value) => GoogleCloudVideointelligenceV1p2beta1DetectedAttribute
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1DetectedLandmark>((value) =>
               GoogleCloudVideointelligenceV1p2beta1DetectedLandmark.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -6640,16 +6639,16 @@ class GoogleCloudVideointelligenceV1p2beta1TimestampedObject {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -6673,22 +6672,22 @@ class GoogleCloudVideointelligenceV1p2beta1Track {
   GoogleCloudVideointelligenceV1p2beta1Track();
 
   GoogleCloudVideointelligenceV1p2beta1Track.fromJson(core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1DetectedAttribute>(
               (value) => GoogleCloudVideointelligenceV1p2beta1DetectedAttribute
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("timestampedObjects")) {
-      timestampedObjects = (_json["timestampedObjects"] as core.List)
+    if (_json.containsKey('timestampedObjects')) {
+      timestampedObjects = (_json['timestampedObjects'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1TimestampedObject>(
               (value) => GoogleCloudVideointelligenceV1p2beta1TimestampedObject
                   .fromJson(value))
@@ -6700,16 +6699,16 @@ class GoogleCloudVideointelligenceV1p2beta1Track {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (timestampedObjects != null) {
-      _json["timestampedObjects"] =
+      _json['timestampedObjects'] =
           timestampedObjects.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6753,24 +6752,24 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
 
   GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress.fromJson(
       core.Map _json) {
-    if (_json.containsKey("feature")) {
-      feature = _json["feature"];
+    if (_json.containsKey('feature')) {
+      feature = _json['feature'];
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("progressPercent")) {
-      progressPercent = _json["progressPercent"];
+    if (_json.containsKey('progressPercent')) {
+      progressPercent = _json['progressPercent'];
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -6778,22 +6777,22 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (feature != null) {
-      _json["feature"] = feature;
+      _json['feature'] = feature;
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (progressPercent != null) {
-      _json["progressPercent"] = progressPercent;
+      _json['progressPercent'] = progressPercent;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -6872,26 +6871,26 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
 
   GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults.fromJson(
       core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("explicitAnnotation")) {
+    if (_json.containsKey('explicitAnnotation')) {
       explicitAnnotation =
           GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation
-              .fromJson(_json["explicitAnnotation"]);
+              .fromJson(_json['explicitAnnotation']);
     }
-    if (_json.containsKey("frameLabelAnnotations")) {
-      frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
+    if (_json.containsKey('frameLabelAnnotations')) {
+      frameLabelAnnotations = (_json['frameLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p2beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("logoRecognitionAnnotations")) {
-      logoRecognitionAnnotations = (_json["logoRecognitionAnnotations"]
+    if (_json.containsKey('logoRecognitionAnnotations')) {
+      logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation>(
               (value) =>
@@ -6899,65 +6898,65 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>(
               (value) =>
                   GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("segmentLabelAnnotations")) {
-      segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
+    if (_json.containsKey('segmentLabelAnnotations')) {
+      segmentLabelAnnotations = (_json['segmentLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p2beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+    if (_json.containsKey('segmentPresenceLabelAnnotations')) {
       segmentPresenceLabelAnnotations =
-          (_json["segmentPresenceLabelAnnotations"] as core.List)
+          (_json['segmentPresenceLabelAnnotations'] as core.List)
               .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>(
                   (value) =>
                       GoogleCloudVideointelligenceV1p2beta1LabelAnnotation
                           .fromJson(value))
               .toList();
     }
-    if (_json.containsKey("shotAnnotations")) {
-      shotAnnotations = (_json["shotAnnotations"] as core.List)
+    if (_json.containsKey('shotAnnotations')) {
+      shotAnnotations = (_json['shotAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shotLabelAnnotations")) {
-      shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+    if (_json.containsKey('shotLabelAnnotations')) {
+      shotLabelAnnotations = (_json['shotLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p2beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("shotPresenceLabelAnnotations")) {
-      shotPresenceLabelAnnotations = (_json["shotPresenceLabelAnnotations"]
+    if (_json.containsKey('shotPresenceLabelAnnotations')) {
+      shotPresenceLabelAnnotations = (_json['shotPresenceLabelAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p2beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("speechTranscriptions")) {
-      speechTranscriptions = (_json["speechTranscriptions"] as core.List)
+    if (_json.containsKey('speechTranscriptions')) {
+      speechTranscriptions = (_json['speechTranscriptions'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1SpeechTranscription>(
               (value) =>
                   GoogleCloudVideointelligenceV1p2beta1SpeechTranscription
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1TextAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p2beta1TextAnnotation.fromJson(
                   value))
@@ -6969,56 +6968,56 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (explicitAnnotation != null) {
-      _json["explicitAnnotation"] = explicitAnnotation.toJson();
+      _json['explicitAnnotation'] = explicitAnnotation.toJson();
     }
     if (frameLabelAnnotations != null) {
-      _json["frameLabelAnnotations"] =
+      _json['frameLabelAnnotations'] =
           frameLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (logoRecognitionAnnotations != null) {
-      _json["logoRecognitionAnnotations"] =
+      _json['logoRecognitionAnnotations'] =
           logoRecognitionAnnotations.map((value) => value.toJson()).toList();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (segmentLabelAnnotations != null) {
-      _json["segmentLabelAnnotations"] =
+      _json['segmentLabelAnnotations'] =
           segmentLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (segmentPresenceLabelAnnotations != null) {
-      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
           .map((value) => value.toJson())
           .toList();
     }
     if (shotAnnotations != null) {
-      _json["shotAnnotations"] =
+      _json['shotAnnotations'] =
           shotAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotLabelAnnotations != null) {
-      _json["shotLabelAnnotations"] =
+      _json['shotLabelAnnotations'] =
           shotLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotPresenceLabelAnnotations != null) {
-      _json["shotPresenceLabelAnnotations"] =
+      _json['shotPresenceLabelAnnotations'] =
           shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (speechTranscriptions != null) {
-      _json["speechTranscriptions"] =
+      _json['speechTranscriptions'] =
           speechTranscriptions.map((value) => value.toJson()).toList();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -7038,11 +7037,11 @@ class GoogleCloudVideointelligenceV1p2beta1VideoSegment {
   GoogleCloudVideointelligenceV1p2beta1VideoSegment();
 
   GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("endTimeOffset")) {
-      endTimeOffset = _json["endTimeOffset"];
+    if (_json.containsKey('endTimeOffset')) {
+      endTimeOffset = _json['endTimeOffset'];
     }
-    if (_json.containsKey("startTimeOffset")) {
-      startTimeOffset = _json["startTimeOffset"];
+    if (_json.containsKey('startTimeOffset')) {
+      startTimeOffset = _json['startTimeOffset'];
     }
   }
 
@@ -7050,10 +7049,10 @@ class GoogleCloudVideointelligenceV1p2beta1VideoSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTimeOffset != null) {
-      _json["endTimeOffset"] = endTimeOffset;
+      _json['endTimeOffset'] = endTimeOffset;
     }
     if (startTimeOffset != null) {
-      _json["startTimeOffset"] = startTimeOffset;
+      _json['startTimeOffset'] = startTimeOffset;
     }
     return _json;
   }
@@ -7096,20 +7095,20 @@ class GoogleCloudVideointelligenceV1p2beta1WordInfo {
   GoogleCloudVideointelligenceV1p2beta1WordInfo();
 
   GoogleCloudVideointelligenceV1p2beta1WordInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("speakerTag")) {
-      speakerTag = _json["speakerTag"];
+    if (_json.containsKey('speakerTag')) {
+      speakerTag = _json['speakerTag'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("word")) {
-      word = _json["word"];
+    if (_json.containsKey('word')) {
+      word = _json['word'];
     }
   }
 
@@ -7117,19 +7116,19 @@ class GoogleCloudVideointelligenceV1p2beta1WordInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (speakerTag != null) {
-      _json["speakerTag"] = speakerTag;
+      _json['speakerTag'] = speakerTag;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (word != null) {
-      _json["word"] = word;
+      _json['word'] = word;
     }
     return _json;
   }
@@ -7147,8 +7146,8 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress {
 
   GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress.fromJson(
       core.Map _json) {
-    if (_json.containsKey("annotationProgress")) {
-      annotationProgress = (_json["annotationProgress"] as core.List)
+    if (_json.containsKey('annotationProgress')) {
+      annotationProgress = (_json['annotationProgress'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>(
               (value) =>
                   GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress
@@ -7161,7 +7160,7 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationProgress != null) {
-      _json["annotationProgress"] =
+      _json['annotationProgress'] =
           annotationProgress.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -7180,8 +7179,8 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse {
 
   GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("annotationResults")) {
-      annotationResults = (_json["annotationResults"] as core.List)
+    if (_json.containsKey('annotationResults')) {
+      annotationResults = (_json['annotationResults'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>(
               (value) =>
                   GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults
@@ -7194,7 +7193,7 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationResults != null) {
-      _json["annotationResults"] =
+      _json['annotationResults'] =
           annotationResults.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -7219,14 +7218,14 @@ class GoogleCloudVideointelligenceV1p3beta1Celebrity {
   GoogleCloudVideointelligenceV1p3beta1Celebrity();
 
   GoogleCloudVideointelligenceV1p3beta1Celebrity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -7234,13 +7233,13 @@ class GoogleCloudVideointelligenceV1p3beta1Celebrity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -7260,15 +7259,15 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation {
 
   GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("celebrityTracks")) {
-      celebrityTracks = (_json["celebrityTracks"] as core.List)
+    if (_json.containsKey('celebrityTracks')) {
+      celebrityTracks = (_json['celebrityTracks'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1CelebrityTrack>((value) =>
               GoogleCloudVideointelligenceV1p3beta1CelebrityTrack.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -7276,11 +7275,11 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (celebrityTracks != null) {
-      _json["celebrityTracks"] =
+      _json['celebrityTracks'] =
           celebrityTracks.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -7299,17 +7298,17 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
   GoogleCloudVideointelligenceV1p3beta1CelebrityTrack();
 
   GoogleCloudVideointelligenceV1p3beta1CelebrityTrack.fromJson(core.Map _json) {
-    if (_json.containsKey("celebrities")) {
-      celebrities = (_json["celebrities"] as core.List)
+    if (_json.containsKey('celebrities')) {
+      celebrities = (_json['celebrities'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity>(
               (value) =>
                   GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("faceTrack")) {
+    if (_json.containsKey('faceTrack')) {
       faceTrack = GoogleCloudVideointelligenceV1p3beta1Track.fromJson(
-          _json["faceTrack"]);
+          _json['faceTrack']);
     }
   }
 
@@ -7317,11 +7316,11 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (celebrities != null) {
-      _json["celebrities"] =
+      _json['celebrities'] =
           celebrities.map((value) => value.toJson()).toList();
     }
     if (faceTrack != null) {
-      _json["faceTrack"] = faceTrack.toJson();
+      _json['faceTrack'] = faceTrack.toJson();
     }
     return _json;
   }
@@ -7344,14 +7343,14 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
 
   GoogleCloudVideointelligenceV1p3beta1DetectedAttribute.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -7359,13 +7358,13 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -7388,15 +7387,15 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
 
   GoogleCloudVideointelligenceV1p3beta1DetectedLandmark.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("point")) {
+    if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1p3beta1NormalizedVertex.fromJson(
-          _json["point"]);
+          _json['point']);
     }
   }
 
@@ -7404,13 +7403,13 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (point != null) {
-      _json["point"] = point.toJson();
+      _json['point'] = point.toJson();
     }
     return _json;
   }
@@ -7431,14 +7430,14 @@ class GoogleCloudVideointelligenceV1p3beta1Entity {
   GoogleCloudVideointelligenceV1p3beta1Entity();
 
   GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -7446,13 +7445,13 @@ class GoogleCloudVideointelligenceV1p3beta1Entity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -7472,16 +7471,16 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation {
 
   GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame>(
               (value) =>
                   GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -7489,10 +7488,10 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -7518,11 +7517,11 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame {
 
   GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame.fromJson(
       core.Map _json) {
-    if (_json.containsKey("pornographyLikelihood")) {
-      pornographyLikelihood = _json["pornographyLikelihood"];
+    if (_json.containsKey('pornographyLikelihood')) {
+      pornographyLikelihood = _json['pornographyLikelihood'];
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -7530,10 +7529,10 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pornographyLikelihood != null) {
-      _json["pornographyLikelihood"] = pornographyLikelihood;
+      _json['pornographyLikelihood'] = pornographyLikelihood;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -7547,7 +7546,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
 
   set thumbnailAsBytes(core.List<core.int> _bytes) {
     thumbnail =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The face tracks with attributes.
@@ -7560,17 +7559,17 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
 
   GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("thumbnail")) {
-      thumbnail = _json["thumbnail"];
+    if (_json.containsKey('thumbnail')) {
+      thumbnail = _json['thumbnail'];
     }
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List)
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1Track>((value) =>
               GoogleCloudVideointelligenceV1p3beta1Track.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -7578,13 +7577,13 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (thumbnail != null) {
-      _json["thumbnail"] = thumbnail;
+      _json['thumbnail'] = thumbnail;
     }
     if (tracks != null) {
-      _json["tracks"] = tracks.map((value) => value.toJson()).toList();
+      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -7613,30 +7612,30 @@ class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
 
   GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("categoryEntities")) {
-      categoryEntities = (_json["categoryEntities"] as core.List)
+    if (_json.containsKey('categoryEntities')) {
+      categoryEntities = (_json['categoryEntities'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1Entity>((value) =>
               GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LabelFrame>((value) =>
               GoogleCloudVideointelligenceV1p3beta1LabelFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LabelSegment>((value) =>
               GoogleCloudVideointelligenceV1p3beta1LabelSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -7644,20 +7643,20 @@ class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoryEntities != null) {
-      _json["categoryEntities"] =
+      _json['categoryEntities'] =
           categoryEntities.map((value) => value.toJson()).toList();
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -7675,11 +7674,11 @@ class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
   GoogleCloudVideointelligenceV1p3beta1LabelFrame();
 
   GoogleCloudVideointelligenceV1p3beta1LabelFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -7687,10 +7686,10 @@ class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -7707,12 +7706,12 @@ class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
   GoogleCloudVideointelligenceV1p3beta1LabelSegment();
 
   GoogleCloudVideointelligenceV1p3beta1LabelSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
   }
 
@@ -7720,10 +7719,10 @@ class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -7747,18 +7746,18 @@ class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
 
   GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List)
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1Track>((value) =>
               GoogleCloudVideointelligenceV1p3beta1Track.fromJson(value))
           .toList();
@@ -7769,13 +7768,13 @@ class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (tracks != null) {
-      _json["tracks"] = tracks.map((value) => value.toJson()).toList();
+      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7800,17 +7799,17 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
 
   GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox.fromJson(
       core.Map _json) {
-    if (_json.containsKey("bottom")) {
-      bottom = _json["bottom"].toDouble();
+    if (_json.containsKey('bottom')) {
+      bottom = _json['bottom'].toDouble();
     }
-    if (_json.containsKey("left")) {
-      left = _json["left"].toDouble();
+    if (_json.containsKey('left')) {
+      left = _json['left'].toDouble();
     }
-    if (_json.containsKey("right")) {
-      right = _json["right"].toDouble();
+    if (_json.containsKey('right')) {
+      right = _json['right'].toDouble();
     }
-    if (_json.containsKey("top")) {
-      top = _json["top"].toDouble();
+    if (_json.containsKey('top')) {
+      top = _json['top'].toDouble();
     }
   }
 
@@ -7818,16 +7817,16 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bottom != null) {
-      _json["bottom"] = bottom;
+      _json['bottom'] = bottom;
     }
     if (left != null) {
-      _json["left"] = left;
+      _json['left'] = left;
     }
     if (right != null) {
-      _json["right"] = right;
+      _json['right'] = right;
     }
     if (top != null) {
-      _json["top"] = top;
+      _json['top'] = top;
     }
     return _json;
   }
@@ -7849,8 +7848,8 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
 
   GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly.fromJson(
       core.Map _json) {
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1NormalizedVertex>((value) =>
               GoogleCloudVideointelligenceV1p3beta1NormalizedVertex.fromJson(
                   value))
@@ -7862,7 +7861,7 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7881,11 +7880,11 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex {
 
   GoogleCloudVideointelligenceV1p3beta1NormalizedVertex.fromJson(
       core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -7893,10 +7892,10 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -7934,30 +7933,30 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
 
   GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("entity")) {
+    if (_json.containsKey('entity')) {
       entity =
-          GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(_json["entity"]);
+          GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(_json['entity']);
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame>(
               (value) =>
                   GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("trackId")) {
-      trackId = _json["trackId"];
+    if (_json.containsKey('trackId')) {
+      trackId = _json['trackId'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -7965,22 +7964,22 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (trackId != null) {
-      _json["trackId"] = trackId;
+      _json['trackId'] = trackId;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -8000,13 +7999,13 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame {
 
   GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame.fromJson(
       core.Map _json) {
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -8014,10 +8013,10 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -8035,14 +8034,14 @@ class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation {
 
   GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("tracks")) {
-      tracks = (_json["tracks"] as core.List)
+    if (_json.containsKey('tracks')) {
+      tracks = (_json['tracks'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1Track>((value) =>
               GoogleCloudVideointelligenceV1p3beta1Track.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -8050,10 +8049,10 @@ class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (tracks != null) {
-      _json["tracks"] = tracks.map((value) => value.toJson()).toList();
+      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -8071,12 +8070,12 @@ class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
 
   GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity.fromJson(
       core.Map _json) {
-    if (_json.containsKey("celebrity")) {
+    if (_json.containsKey('celebrity')) {
       celebrity = GoogleCloudVideointelligenceV1p3beta1Celebrity.fromJson(
-          _json["celebrity"]);
+          _json['celebrity']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
   }
 
@@ -8084,10 +8083,10 @@ class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (celebrity != null) {
-      _json["celebrity"] = celebrity.toJson();
+      _json['celebrity'] = celebrity.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     return _json;
   }
@@ -8115,14 +8114,14 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
 
   GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("transcript")) {
-      transcript = _json["transcript"];
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'];
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1WordInfo>((value) =>
               GoogleCloudVideointelligenceV1p3beta1WordInfo.fromJson(value))
           .toList();
@@ -8133,13 +8132,13 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (transcript != null) {
-      _json["transcript"] = transcript;
+      _json['transcript'] = transcript;
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8163,16 +8162,16 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
 
   GoogleCloudVideointelligenceV1p3beta1SpeechTranscription.fromJson(
       core.Map _json) {
-    if (_json.containsKey("alternatives")) {
-      alternatives = (_json["alternatives"] as core.List)
+    if (_json.containsKey('alternatives')) {
+      alternatives = (_json['alternatives'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>(
               (value) =>
                   GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -8180,11 +8179,11 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternatives != null) {
-      _json["alternatives"] =
+      _json['alternatives'] =
           alternatives.map((value) => value.toJson()).toList();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -8211,16 +8210,16 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse {
 
   GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("annotationResults")) {
+    if (_json.containsKey('annotationResults')) {
       annotationResults =
           GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults
-              .fromJson(_json["annotationResults"]);
+              .fromJson(_json['annotationResults']);
     }
-    if (_json.containsKey("annotationResultsUri")) {
-      annotationResultsUri = _json["annotationResultsUri"];
+    if (_json.containsKey('annotationResultsUri')) {
+      annotationResultsUri = _json['annotationResultsUri'];
     }
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
   }
 
@@ -8228,13 +8227,13 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (annotationResults != null) {
-      _json["annotationResults"] = annotationResults.toJson();
+      _json['annotationResults'] = annotationResults.toJson();
     }
     if (annotationResultsUri != null) {
-      _json["annotationResultsUri"] = annotationResultsUri;
+      _json['annotationResultsUri'] = annotationResultsUri;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     return _json;
   }
@@ -8262,28 +8261,28 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
 
   GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults.fromJson(
       core.Map _json) {
-    if (_json.containsKey("explicitAnnotation")) {
+    if (_json.containsKey('explicitAnnotation')) {
       explicitAnnotation =
           GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
-              .fromJson(_json["explicitAnnotation"]);
+              .fromJson(_json['explicitAnnotation']);
     }
-    if (_json.containsKey("labelAnnotations")) {
-      labelAnnotations = (_json["labelAnnotations"] as core.List)
+    if (_json.containsKey('labelAnnotations')) {
+      labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>(
               (value) =>
                   GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shotAnnotations")) {
-      shotAnnotations = (_json["shotAnnotations"] as core.List)
+    if (_json.containsKey('shotAnnotations')) {
+      shotAnnotations = (_json['shotAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(value))
           .toList();
@@ -8294,18 +8293,18 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (explicitAnnotation != null) {
-      _json["explicitAnnotation"] = explicitAnnotation.toJson();
+      _json['explicitAnnotation'] = explicitAnnotation.toJson();
     }
     if (labelAnnotations != null) {
-      _json["labelAnnotations"] =
+      _json['labelAnnotations'] =
           labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotAnnotations != null) {
-      _json["shotAnnotations"] =
+      _json['shotAnnotations'] =
           shotAnnotations.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -8328,17 +8327,17 @@ class GoogleCloudVideointelligenceV1p3beta1TextAnnotation {
   GoogleCloudVideointelligenceV1p3beta1TextAnnotation();
 
   GoogleCloudVideointelligenceV1p3beta1TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
+    if (_json.containsKey('segments')) {
+      segments = (_json['segments'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1TextSegment>((value) =>
               GoogleCloudVideointelligenceV1p3beta1TextSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -8346,13 +8345,13 @@ class GoogleCloudVideointelligenceV1p3beta1TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (segments != null) {
-      _json["segments"] = segments.map((value) => value.toJson()).toList();
+      _json['segments'] = segments.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -8372,13 +8371,13 @@ class GoogleCloudVideointelligenceV1p3beta1TextFrame {
   GoogleCloudVideointelligenceV1p3beta1TextFrame();
 
   GoogleCloudVideointelligenceV1p3beta1TextFrame.fromJson(core.Map _json) {
-    if (_json.containsKey("rotatedBoundingBox")) {
+    if (_json.containsKey('rotatedBoundingBox')) {
       rotatedBoundingBox =
           GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly.fromJson(
-              _json["rotatedBoundingBox"]);
+              _json['rotatedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -8386,10 +8385,10 @@ class GoogleCloudVideointelligenceV1p3beta1TextFrame {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rotatedBoundingBox != null) {
-      _json["rotatedBoundingBox"] = rotatedBoundingBox.toJson();
+      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -8410,18 +8409,18 @@ class GoogleCloudVideointelligenceV1p3beta1TextSegment {
   GoogleCloudVideointelligenceV1p3beta1TextSegment();
 
   GoogleCloudVideointelligenceV1p3beta1TextSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("frames")) {
-      frames = (_json["frames"] as core.List)
+    if (_json.containsKey('frames')) {
+      frames = (_json['frames'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1TextFrame>((value) =>
               GoogleCloudVideointelligenceV1p3beta1TextFrame.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
   }
 
@@ -8429,13 +8428,13 @@ class GoogleCloudVideointelligenceV1p3beta1TextSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (frames != null) {
-      _json["frames"] = frames.map((value) => value.toJson()).toList();
+      _json['frames'] = frames.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     return _json;
   }
@@ -8462,27 +8461,27 @@ class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
 
   GoogleCloudVideointelligenceV1p3beta1TimestampedObject.fromJson(
       core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>(
               (value) => GoogleCloudVideointelligenceV1p3beta1DetectedAttribute
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1DetectedLandmark>((value) =>
               GoogleCloudVideointelligenceV1p3beta1DetectedLandmark.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("normalizedBoundingBox")) {
+    if (_json.containsKey('normalizedBoundingBox')) {
       normalizedBoundingBox =
           GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox.fromJson(
-              _json["normalizedBoundingBox"]);
+              _json['normalizedBoundingBox']);
     }
-    if (_json.containsKey("timeOffset")) {
-      timeOffset = _json["timeOffset"];
+    if (_json.containsKey('timeOffset')) {
+      timeOffset = _json['timeOffset'];
     }
   }
 
@@ -8490,16 +8489,16 @@ class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (normalizedBoundingBox != null) {
-      _json["normalizedBoundingBox"] = normalizedBoundingBox.toJson();
+      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
     }
     if (timeOffset != null) {
-      _json["timeOffset"] = timeOffset;
+      _json['timeOffset'] = timeOffset;
     }
     return _json;
   }
@@ -8523,22 +8522,22 @@ class GoogleCloudVideointelligenceV1p3beta1Track {
   GoogleCloudVideointelligenceV1p3beta1Track();
 
   GoogleCloudVideointelligenceV1p3beta1Track.fromJson(core.Map _json) {
-    if (_json.containsKey("attributes")) {
-      attributes = (_json["attributes"] as core.List)
+    if (_json.containsKey('attributes')) {
+      attributes = (_json['attributes'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>(
               (value) => GoogleCloudVideointelligenceV1p3beta1DetectedAttribute
                   .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("timestampedObjects")) {
-      timestampedObjects = (_json["timestampedObjects"] as core.List)
+    if (_json.containsKey('timestampedObjects')) {
+      timestampedObjects = (_json['timestampedObjects'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1TimestampedObject>(
               (value) => GoogleCloudVideointelligenceV1p3beta1TimestampedObject
                   .fromJson(value))
@@ -8550,16 +8549,16 @@ class GoogleCloudVideointelligenceV1p3beta1Track {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
+      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (timestampedObjects != null) {
-      _json["timestampedObjects"] =
+      _json['timestampedObjects'] =
           timestampedObjects.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -8606,24 +8605,24 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
 
   GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress.fromJson(
       core.Map _json) {
-    if (_json.containsKey("feature")) {
-      feature = _json["feature"];
+    if (_json.containsKey('feature')) {
+      feature = _json['feature'];
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("progressPercent")) {
-      progressPercent = _json["progressPercent"];
+    if (_json.containsKey('progressPercent')) {
+      progressPercent = _json['progressPercent'];
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -8631,22 +8630,22 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (feature != null) {
-      _json["feature"] = feature;
+      _json['feature'] = feature;
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (progressPercent != null) {
-      _json["progressPercent"] = progressPercent;
+      _json['progressPercent'] = progressPercent;
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -8737,21 +8736,21 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
 
   GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults.fromJson(
       core.Map _json) {
-    if (_json.containsKey("celebrityRecognitionAnnotations")) {
+    if (_json.containsKey('celebrityRecognitionAnnotations')) {
       celebrityRecognitionAnnotations =
           GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation
-              .fromJson(_json["celebrityRecognitionAnnotations"]);
+              .fromJson(_json['celebrityRecognitionAnnotations']);
     }
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("explicitAnnotation")) {
+    if (_json.containsKey('explicitAnnotation')) {
       explicitAnnotation =
           GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
-              .fromJson(_json["explicitAnnotation"]);
+              .fromJson(_json['explicitAnnotation']);
     }
-    if (_json.containsKey("faceDetectionAnnotations")) {
-      faceDetectionAnnotations = (_json["faceDetectionAnnotations"]
+    if (_json.containsKey('faceDetectionAnnotations')) {
+      faceDetectionAnnotations = (_json['faceDetectionAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>(
               (value) =>
@@ -8759,18 +8758,18 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("frameLabelAnnotations")) {
-      frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
+    if (_json.containsKey('frameLabelAnnotations')) {
+      frameLabelAnnotations = (_json['frameLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("inputUri")) {
-      inputUri = _json["inputUri"];
+    if (_json.containsKey('inputUri')) {
+      inputUri = _json['inputUri'];
     }
-    if (_json.containsKey("logoRecognitionAnnotations")) {
-      logoRecognitionAnnotations = (_json["logoRecognitionAnnotations"]
+    if (_json.containsKey('logoRecognitionAnnotations')) {
+      logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation>(
               (value) =>
@@ -8778,16 +8777,16 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>(
               (value) =>
                   GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("personDetectionAnnotations")) {
-      personDetectionAnnotations = (_json["personDetectionAnnotations"]
+    if (_json.containsKey('personDetectionAnnotations')) {
+      personDetectionAnnotations = (_json['personDetectionAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation>(
               (value) =>
@@ -8795,57 +8794,57 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("segment")) {
+    if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
-          _json["segment"]);
+          _json['segment']);
     }
-    if (_json.containsKey("segmentLabelAnnotations")) {
-      segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
+    if (_json.containsKey('segmentLabelAnnotations')) {
+      segmentLabelAnnotations = (_json['segmentLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+    if (_json.containsKey('segmentPresenceLabelAnnotations')) {
       segmentPresenceLabelAnnotations =
-          (_json["segmentPresenceLabelAnnotations"] as core.List)
+          (_json['segmentPresenceLabelAnnotations'] as core.List)
               .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>(
                   (value) =>
                       GoogleCloudVideointelligenceV1p3beta1LabelAnnotation
                           .fromJson(value))
               .toList();
     }
-    if (_json.containsKey("shotAnnotations")) {
-      shotAnnotations = (_json["shotAnnotations"] as core.List)
+    if (_json.containsKey('shotAnnotations')) {
+      shotAnnotations = (_json['shotAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1VideoSegment>((value) =>
               GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("shotLabelAnnotations")) {
-      shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+    if (_json.containsKey('shotLabelAnnotations')) {
+      shotLabelAnnotations = (_json['shotLabelAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("shotPresenceLabelAnnotations")) {
-      shotPresenceLabelAnnotations = (_json["shotPresenceLabelAnnotations"]
+    if (_json.containsKey('shotPresenceLabelAnnotations')) {
+      shotPresenceLabelAnnotations = (_json['shotPresenceLabelAnnotations']
               as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("speechTranscriptions")) {
-      speechTranscriptions = (_json["speechTranscriptions"] as core.List)
+    if (_json.containsKey('speechTranscriptions')) {
+      speechTranscriptions = (_json['speechTranscriptions'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1SpeechTranscription>(
               (value) =>
                   GoogleCloudVideointelligenceV1p3beta1SpeechTranscription
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1TextAnnotation>((value) =>
               GoogleCloudVideointelligenceV1p3beta1TextAnnotation.fromJson(
                   value))
@@ -8857,68 +8856,68 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (celebrityRecognitionAnnotations != null) {
-      _json["celebrityRecognitionAnnotations"] =
+      _json['celebrityRecognitionAnnotations'] =
           celebrityRecognitionAnnotations.toJson();
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (explicitAnnotation != null) {
-      _json["explicitAnnotation"] = explicitAnnotation.toJson();
+      _json['explicitAnnotation'] = explicitAnnotation.toJson();
     }
     if (faceDetectionAnnotations != null) {
-      _json["faceDetectionAnnotations"] =
+      _json['faceDetectionAnnotations'] =
           faceDetectionAnnotations.map((value) => value.toJson()).toList();
     }
     if (frameLabelAnnotations != null) {
-      _json["frameLabelAnnotations"] =
+      _json['frameLabelAnnotations'] =
           frameLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (inputUri != null) {
-      _json["inputUri"] = inputUri;
+      _json['inputUri'] = inputUri;
     }
     if (logoRecognitionAnnotations != null) {
-      _json["logoRecognitionAnnotations"] =
+      _json['logoRecognitionAnnotations'] =
           logoRecognitionAnnotations.map((value) => value.toJson()).toList();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (personDetectionAnnotations != null) {
-      _json["personDetectionAnnotations"] =
+      _json['personDetectionAnnotations'] =
           personDetectionAnnotations.map((value) => value.toJson()).toList();
     }
     if (segment != null) {
-      _json["segment"] = segment.toJson();
+      _json['segment'] = segment.toJson();
     }
     if (segmentLabelAnnotations != null) {
-      _json["segmentLabelAnnotations"] =
+      _json['segmentLabelAnnotations'] =
           segmentLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (segmentPresenceLabelAnnotations != null) {
-      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
           .map((value) => value.toJson())
           .toList();
     }
     if (shotAnnotations != null) {
-      _json["shotAnnotations"] =
+      _json['shotAnnotations'] =
           shotAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotLabelAnnotations != null) {
-      _json["shotLabelAnnotations"] =
+      _json['shotLabelAnnotations'] =
           shotLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (shotPresenceLabelAnnotations != null) {
-      _json["shotPresenceLabelAnnotations"] =
+      _json['shotPresenceLabelAnnotations'] =
           shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
     }
     if (speechTranscriptions != null) {
-      _json["speechTranscriptions"] =
+      _json['speechTranscriptions'] =
           speechTranscriptions.map((value) => value.toJson()).toList();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -8938,11 +8937,11 @@ class GoogleCloudVideointelligenceV1p3beta1VideoSegment {
   GoogleCloudVideointelligenceV1p3beta1VideoSegment();
 
   GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("endTimeOffset")) {
-      endTimeOffset = _json["endTimeOffset"];
+    if (_json.containsKey('endTimeOffset')) {
+      endTimeOffset = _json['endTimeOffset'];
     }
-    if (_json.containsKey("startTimeOffset")) {
-      startTimeOffset = _json["startTimeOffset"];
+    if (_json.containsKey('startTimeOffset')) {
+      startTimeOffset = _json['startTimeOffset'];
     }
   }
 
@@ -8950,10 +8949,10 @@ class GoogleCloudVideointelligenceV1p3beta1VideoSegment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTimeOffset != null) {
-      _json["endTimeOffset"] = endTimeOffset;
+      _json['endTimeOffset'] = endTimeOffset;
     }
     if (startTimeOffset != null) {
-      _json["startTimeOffset"] = startTimeOffset;
+      _json['startTimeOffset'] = startTimeOffset;
     }
     return _json;
   }
@@ -8996,20 +8995,20 @@ class GoogleCloudVideointelligenceV1p3beta1WordInfo {
   GoogleCloudVideointelligenceV1p3beta1WordInfo();
 
   GoogleCloudVideointelligenceV1p3beta1WordInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("speakerTag")) {
-      speakerTag = _json["speakerTag"];
+    if (_json.containsKey('speakerTag')) {
+      speakerTag = _json['speakerTag'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("word")) {
-      word = _json["word"];
+    if (_json.containsKey('word')) {
+      word = _json['word'];
     }
   }
 
@@ -9017,19 +9016,19 @@ class GoogleCloudVideointelligenceV1p3beta1WordInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (speakerTag != null) {
-      _json["speakerTag"] = speakerTag;
+      _json['speakerTag'] = speakerTag;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (word != null) {
-      _json["word"] = word;
+      _json['word'] = word;
     }
     return _json;
   }
@@ -9059,11 +9058,11 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse();
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<GoogleLongrunningOperation>(
               (value) => GoogleLongrunningOperation.fromJson(value))
           .toList();
@@ -9074,10 +9073,10 @@ class GoogleLongrunningListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9123,22 +9122,22 @@ class GoogleLongrunningOperation {
   GoogleLongrunningOperation();
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = GoogleRpcStatus.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -9146,19 +9145,19 @@ class GoogleLongrunningOperation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -9206,17 +9205,17 @@ class GoogleRpcStatus {
   GoogleRpcStatus();
 
   GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -9224,13 +9223,13 @@ class GoogleRpcStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -76,8 +76,8 @@ api.SiteVerificationWebResourceGettokenRequestSite
   var o = api.SiteVerificationWebResourceGettokenRequestSite();
   buildCounterSiteVerificationWebResourceGettokenRequestSite++;
   if (buildCounterSiteVerificationWebResourceGettokenRequestSite < 3) {
-    o.identifier = "foo";
-    o.type = "foo";
+    o.identifier = 'foo';
+    o.type = 'foo';
   }
   buildCounterSiteVerificationWebResourceGettokenRequestSite--;
   return o;
@@ -100,7 +100,7 @@ api.SiteVerificationWebResourceGettokenRequest
   buildCounterSiteVerificationWebResourceGettokenRequest++;
   if (buildCounterSiteVerificationWebResourceGettokenRequest < 3) {
     o.site = buildSiteVerificationWebResourceGettokenRequestSite();
-    o.verificationMethod = "foo";
+    o.verificationMethod = 'foo';
   }
   buildCounterSiteVerificationWebResourceGettokenRequest--;
   return o;
@@ -122,8 +122,8 @@ api.SiteVerificationWebResourceGettokenResponse
   var o = api.SiteVerificationWebResourceGettokenResponse();
   buildCounterSiteVerificationWebResourceGettokenResponse++;
   if (buildCounterSiteVerificationWebResourceGettokenResponse < 3) {
-    o.method = "foo";
-    o.token = "foo";
+    o.method = 'foo';
+    o.token = 'foo';
   }
   buildCounterSiteVerificationWebResourceGettokenResponse--;
   return o;
@@ -175,8 +175,8 @@ void checkSiteVerificationWebResourceListResponse(
 
 core.List<core.String> buildUnnamed4337() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -192,8 +192,8 @@ api.SiteVerificationWebResourceResourceSite
   var o = api.SiteVerificationWebResourceResourceSite();
   buildCounterSiteVerificationWebResourceResourceSite++;
   if (buildCounterSiteVerificationWebResourceResourceSite < 3) {
-    o.identifier = "foo";
-    o.type = "foo";
+    o.identifier = 'foo';
+    o.type = 'foo';
   }
   buildCounterSiteVerificationWebResourceResourceSite--;
   return o;
@@ -215,7 +215,7 @@ api.SiteVerificationWebResourceResource
   var o = api.SiteVerificationWebResourceResource();
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
-    o.id = "foo";
+    o.id = 'foo';
     o.owners = buildUnnamed4337();
     o.site = buildSiteVerificationWebResourceResourceSite();
   }
@@ -235,9 +235,9 @@ void checkSiteVerificationWebResourceResource(
 }
 
 void main() {
-  unittest.group("obj-schema-SiteVerificationWebResourceGettokenRequestSite",
+  unittest.group('obj-schema-SiteVerificationWebResourceGettokenRequestSite',
       () {
-    unittest.test("to-json--from-json", () {
+    unittest.test('to-json--from-json', () {
       var o = buildSiteVerificationWebResourceGettokenRequestSite();
       var od = api.SiteVerificationWebResourceGettokenRequestSite.fromJson(
           o.toJson());
@@ -245,8 +245,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-SiteVerificationWebResourceGettokenRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SiteVerificationWebResourceGettokenRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSiteVerificationWebResourceGettokenRequest();
       var od =
           api.SiteVerificationWebResourceGettokenRequest.fromJson(o.toJson());
@@ -254,8 +254,8 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-SiteVerificationWebResourceGettokenResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SiteVerificationWebResourceGettokenResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSiteVerificationWebResourceGettokenResponse();
       var od =
           api.SiteVerificationWebResourceGettokenResponse.fromJson(o.toJson());
@@ -263,37 +263,37 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-SiteVerificationWebResourceListResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SiteVerificationWebResourceListResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSiteVerificationWebResourceListResponse();
       var od = api.SiteVerificationWebResourceListResponse.fromJson(o.toJson());
       checkSiteVerificationWebResourceListResponse(od);
     });
   });
 
-  unittest.group("obj-schema-SiteVerificationWebResourceResourceSite", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SiteVerificationWebResourceResourceSite', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSiteVerificationWebResourceResourceSite();
       var od = api.SiteVerificationWebResourceResourceSite.fromJson(o.toJson());
       checkSiteVerificationWebResourceResourceSite(od);
     });
   });
 
-  unittest.group("obj-schema-SiteVerificationWebResourceResource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SiteVerificationWebResourceResource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSiteVerificationWebResourceResource();
       var od = api.SiteVerificationWebResourceResource.fromJson(o.toJson());
       checkSiteVerificationWebResourceResource(od);
     });
   });
 
-  unittest.group("resource-WebResourceResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-WebResourceResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.WebResourceResourceApi res =
           api.SiteVerificationApi(mock).webResource;
-      var arg_id = "foo";
-      var arg_$fields = "foo";
+      var arg_id = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -310,7 +310,7 @@ void main() {
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(subPart, unittest.equals('$arg_id'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -318,8 +318,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -329,9 +329,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -339,12 +339,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.WebResourceResourceApi res =
           api.SiteVerificationApi(mock).webResource;
-      var arg_id = "foo";
-      var arg_$fields = "foo";
+      var arg_id = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -361,7 +361,7 @@ void main() {
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(subPart, unittest.equals('$arg_id'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -369,8 +369,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -380,7 +380,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceResource());
@@ -393,12 +393,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getToken", () {
+    unittest.test('method--getToken', () {
       var mock = HttpServerMock();
       api.WebResourceResourceApi res =
           api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceGettokenRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SiteVerificationWebResourceGettokenRequest.fromJson(json);
         checkSiteVerificationWebResourceGettokenRequest(obj);
@@ -423,8 +423,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -434,7 +434,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json
             .encode(buildSiteVerificationWebResourceGettokenResponse());
@@ -447,13 +447,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.WebResourceResourceApi res =
           api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
-      var arg_verificationMethod = "foo";
-      var arg_$fields = "foo";
+      var arg_verificationMethod = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
@@ -478,8 +478,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -491,7 +491,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceResource());
@@ -504,11 +504,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.WebResourceResourceApi res =
           api.SiteVerificationApi(mock).webResource;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -530,8 +530,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -541,7 +541,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceListResponse());
@@ -552,13 +552,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--patch", () {
+    unittest.test('method--patch', () {
       var mock = HttpServerMock();
       api.WebResourceResourceApi res =
           api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
-      var arg_id = "foo";
-      var arg_$fields = "foo";
+      var arg_id = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
@@ -578,7 +578,7 @@ void main() {
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(subPart, unittest.equals('$arg_id'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -586,8 +586,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -597,7 +597,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceResource());
@@ -610,13 +610,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.WebResourceResourceApi res =
           api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
-      var arg_id = "foo";
-      var arg_$fields = "foo";
+      var arg_id = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
@@ -636,7 +636,7 @@ void main() {
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(subPart, unittest.equals('$arg_id'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -644,8 +644,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -655,7 +655,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceResource());

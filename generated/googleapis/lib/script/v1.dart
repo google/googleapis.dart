@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -37,71 +36,71 @@ const core.String USER_AGENT = 'dart-api-client script/v1';
 /// Manages and executes Google Apps Script projects.
 class ScriptApi {
   /// Read, compose, send, and permanently delete all your email from Gmail
-  static const MailGoogleComScope = "https://mail.google.com/";
+  static const MailGoogleComScope = 'https://mail.google.com/';
 
   /// See, edit, share, and permanently delete all the calendars you can access
   /// using Google Calendar
   static const WwwGoogleComCalendarFeedsScope =
-      "https://www.google.com/calendar/feeds";
+      'https://www.google.com/calendar/feeds';
 
   /// See, edit, download, and permanently delete your contacts
-  static const WwwGoogleComM8FeedsScope = "https://www.google.com/m8/feeds";
+  static const WwwGoogleComM8FeedsScope = 'https://www.google.com/m8/feeds';
 
   /// View and manage the provisioning of groups on your domain
   static const AdminDirectoryGroupScope =
-      "https://www.googleapis.com/auth/admin.directory.group";
+      'https://www.googleapis.com/auth/admin.directory.group';
 
   /// View and manage the provisioning of users on your domain
   static const AdminDirectoryUserScope =
-      "https://www.googleapis.com/auth/admin.directory.user";
+      'https://www.googleapis.com/auth/admin.directory.user';
 
   /// View and manage your Google Docs documents
-  static const DocumentsScope = "https://www.googleapis.com/auth/documents";
+  static const DocumentsScope = 'https://www.googleapis.com/auth/documents';
 
   /// See, edit, create, and delete all of your Google Drive files
-  static const DriveScope = "https://www.googleapis.com/auth/drive";
+  static const DriveScope = 'https://www.googleapis.com/auth/drive';
 
   /// View and manage your forms in Google Drive
-  static const FormsScope = "https://www.googleapis.com/auth/forms";
+  static const FormsScope = 'https://www.googleapis.com/auth/forms';
 
   /// View and manage forms that this application has been installed in
   static const FormsCurrentonlyScope =
-      "https://www.googleapis.com/auth/forms.currentonly";
+      'https://www.googleapis.com/auth/forms.currentonly';
 
   /// View and manage your Google Groups
-  static const GroupsScope = "https://www.googleapis.com/auth/groups";
+  static const GroupsScope = 'https://www.googleapis.com/auth/groups';
 
   /// Create and update Google Apps Script deployments
   static const ScriptDeploymentsScope =
-      "https://www.googleapis.com/auth/script.deployments";
+      'https://www.googleapis.com/auth/script.deployments';
 
   /// View Google Apps Script deployments
   static const ScriptDeploymentsReadonlyScope =
-      "https://www.googleapis.com/auth/script.deployments.readonly";
+      'https://www.googleapis.com/auth/script.deployments.readonly';
 
   /// View Google Apps Script project's metrics
   static const ScriptMetricsScope =
-      "https://www.googleapis.com/auth/script.metrics";
+      'https://www.googleapis.com/auth/script.metrics';
 
   /// View Google Apps Script processes
   static const ScriptProcessesScope =
-      "https://www.googleapis.com/auth/script.processes";
+      'https://www.googleapis.com/auth/script.processes';
 
   /// Create and update Google Apps Script projects
   static const ScriptProjectsScope =
-      "https://www.googleapis.com/auth/script.projects";
+      'https://www.googleapis.com/auth/script.projects';
 
   /// View Google Apps Script projects
   static const ScriptProjectsReadonlyScope =
-      "https://www.googleapis.com/auth/script.projects.readonly";
+      'https://www.googleapis.com/auth/script.projects.readonly';
 
   /// See, edit, create, and delete your spreadsheets in Google Drive
   static const SpreadsheetsScope =
-      "https://www.googleapis.com/auth/spreadsheets";
+      'https://www.googleapis.com/auth/spreadsheets';
 
   /// View your email address
   static const UserinfoEmailScope =
-      "https://www.googleapis.com/auth/userinfo.email";
+      'https://www.googleapis.com/auth/userinfo.email';
 
   final commons.ApiRequester _requester;
 
@@ -110,8 +109,8 @@ class ScriptApi {
   ScriptsResourceApi get scripts => ScriptsResourceApi(_requester);
 
   ScriptApi(http.Client client,
-      {core.String rootUrl = "https://script.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://script.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -196,56 +195,56 @@ class ProcessesResourceApi {
     core.String _body;
 
     if (userProcessFilter_types != null) {
-      _queryParams["userProcessFilter.types"] = userProcessFilter_types;
+      _queryParams['userProcessFilter.types'] = userProcessFilter_types;
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (userProcessFilter_startTime != null) {
-      _queryParams["userProcessFilter.startTime"] = [
+      _queryParams['userProcessFilter.startTime'] = [
         userProcessFilter_startTime
       ];
     }
     if (userProcessFilter_functionName != null) {
-      _queryParams["userProcessFilter.functionName"] = [
+      _queryParams['userProcessFilter.functionName'] = [
         userProcessFilter_functionName
       ];
     }
     if (userProcessFilter_projectName != null) {
-      _queryParams["userProcessFilter.projectName"] = [
+      _queryParams['userProcessFilter.projectName'] = [
         userProcessFilter_projectName
       ];
     }
     if (userProcessFilter_endTime != null) {
-      _queryParams["userProcessFilter.endTime"] = [userProcessFilter_endTime];
+      _queryParams['userProcessFilter.endTime'] = [userProcessFilter_endTime];
     }
     if (userProcessFilter_statuses != null) {
-      _queryParams["userProcessFilter.statuses"] = userProcessFilter_statuses;
+      _queryParams['userProcessFilter.statuses'] = userProcessFilter_statuses;
     }
     if (userProcessFilter_scriptId != null) {
-      _queryParams["userProcessFilter.scriptId"] = [userProcessFilter_scriptId];
+      _queryParams['userProcessFilter.scriptId'] = [userProcessFilter_scriptId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (userProcessFilter_userAccessLevels != null) {
-      _queryParams["userProcessFilter.userAccessLevels"] =
+      _queryParams['userProcessFilter.userAccessLevels'] =
           userProcessFilter_userAccessLevels;
     }
     if (userProcessFilter_deploymentId != null) {
-      _queryParams["userProcessFilter.deploymentId"] = [
+      _queryParams['userProcessFilter.deploymentId'] = [
         userProcessFilter_deploymentId
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/processes';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -324,54 +323,54 @@ class ProcessesResourceApi {
     core.String _body;
 
     if (scriptProcessFilter_startTime != null) {
-      _queryParams["scriptProcessFilter.startTime"] = [
+      _queryParams['scriptProcessFilter.startTime'] = [
         scriptProcessFilter_startTime
       ];
     }
     if (scriptProcessFilter_functionName != null) {
-      _queryParams["scriptProcessFilter.functionName"] = [
+      _queryParams['scriptProcessFilter.functionName'] = [
         scriptProcessFilter_functionName
       ];
     }
     if (scriptId != null) {
-      _queryParams["scriptId"] = [scriptId];
+      _queryParams['scriptId'] = [scriptId];
     }
     if (scriptProcessFilter_statuses != null) {
-      _queryParams["scriptProcessFilter.statuses"] =
+      _queryParams['scriptProcessFilter.statuses'] =
           scriptProcessFilter_statuses;
     }
     if (scriptProcessFilter_types != null) {
-      _queryParams["scriptProcessFilter.types"] = scriptProcessFilter_types;
+      _queryParams['scriptProcessFilter.types'] = scriptProcessFilter_types;
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (scriptProcessFilter_deploymentId != null) {
-      _queryParams["scriptProcessFilter.deploymentId"] = [
+      _queryParams['scriptProcessFilter.deploymentId'] = [
         scriptProcessFilter_deploymentId
       ];
     }
     if (scriptProcessFilter_userAccessLevels != null) {
-      _queryParams["scriptProcessFilter.userAccessLevels"] =
+      _queryParams['scriptProcessFilter.userAccessLevels'] =
           scriptProcessFilter_userAccessLevels;
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (scriptProcessFilter_endTime != null) {
-      _queryParams["scriptProcessFilter.endTime"] = [
+      _queryParams['scriptProcessFilter.endTime'] = [
         scriptProcessFilter_endTime
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/processes:listScriptProcesses';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -424,14 +423,14 @@ class ProjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -469,17 +468,17 @@ class ProjectsResourceApi {
     core.String _body;
 
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$scriptId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -522,13 +521,13 @@ class ProjectsResourceApi {
     core.String _body;
 
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if (versionNumber != null) {
-      _queryParams["versionNumber"] = ["${versionNumber}"];
+      _queryParams['versionNumber'] = ['${versionNumber}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -537,7 +536,7 @@ class ProjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -589,16 +588,16 @@ class ProjectsResourceApi {
     core.String _body;
 
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if (metricsGranularity != null) {
-      _queryParams["metricsGranularity"] = [metricsGranularity];
+      _queryParams['metricsGranularity'] = [metricsGranularity];
     }
     if (metricsFilter_deploymentId != null) {
-      _queryParams["metricsFilter.deploymentId"] = [metricsFilter_deploymentId];
+      _queryParams['metricsFilter.deploymentId'] = [metricsFilter_deploymentId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -607,7 +606,7 @@ class ProjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -655,10 +654,10 @@ class ProjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -667,7 +666,7 @@ class ProjectsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -718,10 +717,10 @@ class ProjectsDeploymentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -730,7 +729,7 @@ class ProjectsDeploymentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -771,13 +770,13 @@ class ProjectsDeploymentsResourceApi {
     core.String _body;
 
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if (deploymentId == null) {
-      throw core.ArgumentError("Parameter deploymentId is required.");
+      throw core.ArgumentError('Parameter deploymentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -787,7 +786,7 @@ class ProjectsDeploymentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -828,13 +827,13 @@ class ProjectsDeploymentsResourceApi {
     core.String _body;
 
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if (deploymentId == null) {
-      throw core.ArgumentError("Parameter deploymentId is required.");
+      throw core.ArgumentError('Parameter deploymentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -844,7 +843,7 @@ class ProjectsDeploymentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -891,16 +890,16 @@ class ProjectsDeploymentsResourceApi {
     core.String _body;
 
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -909,7 +908,7 @@ class ProjectsDeploymentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -956,13 +955,13 @@ class ProjectsDeploymentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if (deploymentId == null) {
-      throw core.ArgumentError("Parameter deploymentId is required.");
+      throw core.ArgumentError('Parameter deploymentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -972,7 +971,7 @@ class ProjectsDeploymentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1024,10 +1023,10 @@ class ProjectsVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1036,7 +1035,7 @@ class ProjectsVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1077,13 +1076,13 @@ class ProjectsVersionsResourceApi {
     core.String _body;
 
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if (versionNumber == null) {
-      throw core.ArgumentError("Parameter versionNumber is required.");
+      throw core.ArgumentError('Parameter versionNumber is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1093,7 +1092,7 @@ class ProjectsVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1140,16 +1139,16 @@ class ProjectsVersionsResourceApi {
     core.String _body;
 
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1158,7 +1157,7 @@ class ProjectsVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1221,17 +1220,17 @@ class ScriptsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError('Parameter scriptId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/scripts/' + commons.Escaper.ecapeVariable('$scriptId') + ':run';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1255,13 +1254,13 @@ class Content {
   Content();
 
   Content.fromJson(core.Map _json) {
-    if (_json.containsKey("files")) {
-      files = (_json["files"] as core.List)
+    if (_json.containsKey('files')) {
+      files = (_json['files'] as core.List)
           .map<File>((value) => File.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("scriptId")) {
-      scriptId = _json["scriptId"];
+    if (_json.containsKey('scriptId')) {
+      scriptId = _json['scriptId'];
     }
   }
 
@@ -1269,10 +1268,10 @@ class Content {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (files != null) {
-      _json["files"] = files.map((value) => value.toJson()).toList();
+      _json['files'] = files.map((value) => value.toJson()).toList();
     }
     if (scriptId != null) {
-      _json["scriptId"] = scriptId;
+      _json['scriptId'] = scriptId;
     }
     return _json;
   }
@@ -1291,11 +1290,11 @@ class CreateProjectRequest {
   CreateProjectRequest();
 
   CreateProjectRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("parentId")) {
-      parentId = _json["parentId"];
+    if (_json.containsKey('parentId')) {
+      parentId = _json['parentId'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1303,10 +1302,10 @@ class CreateProjectRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parentId != null) {
-      _json["parentId"] = parentId;
+      _json['parentId'] = parentId;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1329,19 +1328,19 @@ class Deployment {
   Deployment();
 
   Deployment.fromJson(core.Map _json) {
-    if (_json.containsKey("deploymentConfig")) {
-      deploymentConfig = DeploymentConfig.fromJson(_json["deploymentConfig"]);
+    if (_json.containsKey('deploymentConfig')) {
+      deploymentConfig = DeploymentConfig.fromJson(_json['deploymentConfig']);
     }
-    if (_json.containsKey("deploymentId")) {
-      deploymentId = _json["deploymentId"];
+    if (_json.containsKey('deploymentId')) {
+      deploymentId = _json['deploymentId'];
     }
-    if (_json.containsKey("entryPoints")) {
-      entryPoints = (_json["entryPoints"] as core.List)
+    if (_json.containsKey('entryPoints')) {
+      entryPoints = (_json['entryPoints'] as core.List)
           .map<EntryPoint>((value) => EntryPoint.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -1349,17 +1348,17 @@ class Deployment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deploymentConfig != null) {
-      _json["deploymentConfig"] = deploymentConfig.toJson();
+      _json['deploymentConfig'] = deploymentConfig.toJson();
     }
     if (deploymentId != null) {
-      _json["deploymentId"] = deploymentId;
+      _json['deploymentId'] = deploymentId;
     }
     if (entryPoints != null) {
-      _json["entryPoints"] =
+      _json['entryPoints'] =
           entryPoints.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -1382,17 +1381,17 @@ class DeploymentConfig {
   DeploymentConfig();
 
   DeploymentConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("manifestFileName")) {
-      manifestFileName = _json["manifestFileName"];
+    if (_json.containsKey('manifestFileName')) {
+      manifestFileName = _json['manifestFileName'];
     }
-    if (_json.containsKey("scriptId")) {
-      scriptId = _json["scriptId"];
+    if (_json.containsKey('scriptId')) {
+      scriptId = _json['scriptId'];
     }
-    if (_json.containsKey("versionNumber")) {
-      versionNumber = _json["versionNumber"];
+    if (_json.containsKey('versionNumber')) {
+      versionNumber = _json['versionNumber'];
     }
   }
 
@@ -1400,16 +1399,16 @@ class DeploymentConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (manifestFileName != null) {
-      _json["manifestFileName"] = manifestFileName;
+      _json['manifestFileName'] = manifestFileName;
     }
     if (scriptId != null) {
-      _json["scriptId"] = scriptId;
+      _json['scriptId'] = scriptId;
     }
     if (versionNumber != null) {
-      _json["versionNumber"] = versionNumber;
+      _json['versionNumber'] = versionNumber;
     }
     return _json;
   }
@@ -1454,18 +1453,18 @@ class EntryPoint {
   EntryPoint();
 
   EntryPoint.fromJson(core.Map _json) {
-    if (_json.containsKey("addOn")) {
-      addOn = GoogleAppsScriptTypeAddOnEntryPoint.fromJson(_json["addOn"]);
+    if (_json.containsKey('addOn')) {
+      addOn = GoogleAppsScriptTypeAddOnEntryPoint.fromJson(_json['addOn']);
     }
-    if (_json.containsKey("entryPointType")) {
-      entryPointType = _json["entryPointType"];
+    if (_json.containsKey('entryPointType')) {
+      entryPointType = _json['entryPointType'];
     }
-    if (_json.containsKey("executionApi")) {
+    if (_json.containsKey('executionApi')) {
       executionApi = GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
-          _json["executionApi"]);
+          _json['executionApi']);
     }
-    if (_json.containsKey("webApp")) {
-      webApp = GoogleAppsScriptTypeWebAppEntryPoint.fromJson(_json["webApp"]);
+    if (_json.containsKey('webApp')) {
+      webApp = GoogleAppsScriptTypeWebAppEntryPoint.fromJson(_json['webApp']);
     }
   }
 
@@ -1473,16 +1472,16 @@ class EntryPoint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addOn != null) {
-      _json["addOn"] = addOn.toJson();
+      _json['addOn'] = addOn.toJson();
     }
     if (entryPointType != null) {
-      _json["entryPointType"] = entryPointType;
+      _json['entryPointType'] = entryPointType;
     }
     if (executionApi != null) {
-      _json["executionApi"] = executionApi.toJson();
+      _json['executionApi'] = executionApi.toJson();
     }
     if (webApp != null) {
-      _json["webApp"] = webApp.toJson();
+      _json['webApp'] = webApp.toJson();
     }
     return _json;
   }
@@ -1497,8 +1496,8 @@ class ExecuteStreamResponse {
   ExecuteStreamResponse();
 
   ExecuteStreamResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("result")) {
-      result = ScriptExecutionResult.fromJson(_json["result"]);
+    if (_json.containsKey('result')) {
+      result = ScriptExecutionResult.fromJson(_json['result']);
     }
   }
 
@@ -1506,7 +1505,7 @@ class ExecuteStreamResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (result != null) {
-      _json["result"] = result.toJson();
+      _json['result'] = result.toJson();
     }
     return _json;
   }
@@ -1534,15 +1533,15 @@ class ExecutionError {
   ExecutionError();
 
   ExecutionError.fromJson(core.Map _json) {
-    if (_json.containsKey("errorMessage")) {
-      errorMessage = _json["errorMessage"];
+    if (_json.containsKey('errorMessage')) {
+      errorMessage = _json['errorMessage'];
     }
-    if (_json.containsKey("errorType")) {
-      errorType = _json["errorType"];
+    if (_json.containsKey('errorType')) {
+      errorType = _json['errorType'];
     }
-    if (_json.containsKey("scriptStackTraceElements")) {
+    if (_json.containsKey('scriptStackTraceElements')) {
       scriptStackTraceElements =
-          (_json["scriptStackTraceElements"] as core.List)
+          (_json['scriptStackTraceElements'] as core.List)
               .map<ScriptStackTraceElement>(
                   (value) => ScriptStackTraceElement.fromJson(value))
               .toList();
@@ -1553,13 +1552,13 @@ class ExecutionError {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (errorMessage != null) {
-      _json["errorMessage"] = errorMessage;
+      _json['errorMessage'] = errorMessage;
     }
     if (errorType != null) {
-      _json["errorType"] = errorType;
+      _json['errorType'] = errorType;
     }
     if (scriptStackTraceElements != null) {
-      _json["scriptStackTraceElements"] =
+      _json['scriptStackTraceElements'] =
           scriptStackTraceElements.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -1607,17 +1606,17 @@ class ExecutionRequest {
   ExecutionRequest();
 
   ExecutionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("devMode")) {
-      devMode = _json["devMode"];
+    if (_json.containsKey('devMode')) {
+      devMode = _json['devMode'];
     }
-    if (_json.containsKey("function")) {
-      function = _json["function"];
+    if (_json.containsKey('function')) {
+      function = _json['function'];
     }
-    if (_json.containsKey("parameters")) {
-      parameters = (_json["parameters"] as core.List).cast<core.Object>();
+    if (_json.containsKey('parameters')) {
+      parameters = (_json['parameters'] as core.List).cast<core.Object>();
     }
-    if (_json.containsKey("sessionState")) {
-      sessionState = _json["sessionState"];
+    if (_json.containsKey('sessionState')) {
+      sessionState = _json['sessionState'];
     }
   }
 
@@ -1625,16 +1624,16 @@ class ExecutionRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (devMode != null) {
-      _json["devMode"] = devMode;
+      _json['devMode'] = devMode;
     }
     if (function != null) {
-      _json["function"] = function;
+      _json['function'] = function;
     }
     if (parameters != null) {
-      _json["parameters"] = parameters;
+      _json['parameters'] = parameters;
     }
     if (sessionState != null) {
-      _json["sessionState"] = sessionState;
+      _json['sessionState'] = sessionState;
     }
     return _json;
   }
@@ -1657,8 +1656,8 @@ class ExecutionResponse {
   ExecutionResponse();
 
   ExecutionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("result")) {
-      result = _json["result"];
+    if (_json.containsKey('result')) {
+      result = _json['result'];
     }
   }
 
@@ -1666,7 +1665,7 @@ class ExecutionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (result != null) {
-      _json["result"] = result;
+      _json['result'] = result;
     }
     return _json;
   }
@@ -1712,28 +1711,28 @@ class File {
   File();
 
   File.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("functionSet")) {
+    if (_json.containsKey('functionSet')) {
       functionSet =
-          GoogleAppsScriptTypeFunctionSet.fromJson(_json["functionSet"]);
+          GoogleAppsScriptTypeFunctionSet.fromJson(_json['functionSet']);
     }
-    if (_json.containsKey("lastModifyUser")) {
+    if (_json.containsKey('lastModifyUser')) {
       lastModifyUser =
-          GoogleAppsScriptTypeUser.fromJson(_json["lastModifyUser"]);
+          GoogleAppsScriptTypeUser.fromJson(_json['lastModifyUser']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("source")) {
-      source = _json["source"];
+    if (_json.containsKey('source')) {
+      source = _json['source'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -1741,25 +1740,25 @@ class File {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (functionSet != null) {
-      _json["functionSet"] = functionSet.toJson();
+      _json['functionSet'] = functionSet.toJson();
     }
     if (lastModifyUser != null) {
-      _json["lastModifyUser"] = lastModifyUser.toJson();
+      _json['lastModifyUser'] = lastModifyUser.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (source != null) {
-      _json["source"] = source;
+      _json['source'] = source;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -1792,23 +1791,23 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
   GoogleAppsScriptTypeAddOnEntryPoint();
 
   GoogleAppsScriptTypeAddOnEntryPoint.fromJson(core.Map _json) {
-    if (_json.containsKey("addOnType")) {
-      addOnType = _json["addOnType"];
+    if (_json.containsKey('addOnType')) {
+      addOnType = _json['addOnType'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("helpUrl")) {
-      helpUrl = _json["helpUrl"];
+    if (_json.containsKey('helpUrl')) {
+      helpUrl = _json['helpUrl'];
     }
-    if (_json.containsKey("postInstallTipUrl")) {
-      postInstallTipUrl = _json["postInstallTipUrl"];
+    if (_json.containsKey('postInstallTipUrl')) {
+      postInstallTipUrl = _json['postInstallTipUrl'];
     }
-    if (_json.containsKey("reportIssueUrl")) {
-      reportIssueUrl = _json["reportIssueUrl"];
+    if (_json.containsKey('reportIssueUrl')) {
+      reportIssueUrl = _json['reportIssueUrl'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -1816,22 +1815,22 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addOnType != null) {
-      _json["addOnType"] = addOnType;
+      _json['addOnType'] = addOnType;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (helpUrl != null) {
-      _json["helpUrl"] = helpUrl;
+      _json['helpUrl'] = helpUrl;
     }
     if (postInstallTipUrl != null) {
-      _json["postInstallTipUrl"] = postInstallTipUrl;
+      _json['postInstallTipUrl'] = postInstallTipUrl;
     }
     if (reportIssueUrl != null) {
-      _json["reportIssueUrl"] = reportIssueUrl;
+      _json['reportIssueUrl'] = reportIssueUrl;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -1855,8 +1854,8 @@ class GoogleAppsScriptTypeExecutionApiConfig {
   GoogleAppsScriptTypeExecutionApiConfig();
 
   GoogleAppsScriptTypeExecutionApiConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("access")) {
-      access = _json["access"];
+    if (_json.containsKey('access')) {
+      access = _json['access'];
     }
   }
 
@@ -1864,7 +1863,7 @@ class GoogleAppsScriptTypeExecutionApiConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (access != null) {
-      _json["access"] = access;
+      _json['access'] = access;
     }
     return _json;
   }
@@ -1878,9 +1877,9 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
   GoogleAppsScriptTypeExecutionApiEntryPoint();
 
   GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(core.Map _json) {
-    if (_json.containsKey("entryPointConfig")) {
+    if (_json.containsKey('entryPointConfig')) {
       entryPointConfig = GoogleAppsScriptTypeExecutionApiConfig.fromJson(
-          _json["entryPointConfig"]);
+          _json['entryPointConfig']);
     }
   }
 
@@ -1888,7 +1887,7 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entryPointConfig != null) {
-      _json["entryPointConfig"] = entryPointConfig.toJson();
+      _json['entryPointConfig'] = entryPointConfig.toJson();
     }
     return _json;
   }
@@ -1902,8 +1901,8 @@ class GoogleAppsScriptTypeFunction {
   GoogleAppsScriptTypeFunction();
 
   GoogleAppsScriptTypeFunction.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -1911,7 +1910,7 @@ class GoogleAppsScriptTypeFunction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -1925,8 +1924,8 @@ class GoogleAppsScriptTypeFunctionSet {
   GoogleAppsScriptTypeFunctionSet();
 
   GoogleAppsScriptTypeFunctionSet.fromJson(core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List)
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List)
           .map<GoogleAppsScriptTypeFunction>(
               (value) => GoogleAppsScriptTypeFunction.fromJson(value))
           .toList();
@@ -1937,7 +1936,7 @@ class GoogleAppsScriptTypeFunctionSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values.map((value) => value.toJson()).toList();
+      _json['values'] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2000,26 +1999,26 @@ class GoogleAppsScriptTypeProcess {
   GoogleAppsScriptTypeProcess();
 
   GoogleAppsScriptTypeProcess.fromJson(core.Map _json) {
-    if (_json.containsKey("duration")) {
-      duration = _json["duration"];
+    if (_json.containsKey('duration')) {
+      duration = _json['duration'];
     }
-    if (_json.containsKey("functionName")) {
-      functionName = _json["functionName"];
+    if (_json.containsKey('functionName')) {
+      functionName = _json['functionName'];
     }
-    if (_json.containsKey("processStatus")) {
-      processStatus = _json["processStatus"];
+    if (_json.containsKey('processStatus')) {
+      processStatus = _json['processStatus'];
     }
-    if (_json.containsKey("processType")) {
-      processType = _json["processType"];
+    if (_json.containsKey('processType')) {
+      processType = _json['processType'];
     }
-    if (_json.containsKey("projectName")) {
-      projectName = _json["projectName"];
+    if (_json.containsKey('projectName')) {
+      projectName = _json['projectName'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("userAccessLevel")) {
-      userAccessLevel = _json["userAccessLevel"];
+    if (_json.containsKey('userAccessLevel')) {
+      userAccessLevel = _json['userAccessLevel'];
     }
   }
 
@@ -2027,25 +2026,25 @@ class GoogleAppsScriptTypeProcess {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (duration != null) {
-      _json["duration"] = duration;
+      _json['duration'] = duration;
     }
     if (functionName != null) {
-      _json["functionName"] = functionName;
+      _json['functionName'] = functionName;
     }
     if (processStatus != null) {
-      _json["processStatus"] = processStatus;
+      _json['processStatus'] = processStatus;
     }
     if (processType != null) {
-      _json["processType"] = processType;
+      _json['processType'] = processType;
     }
     if (projectName != null) {
-      _json["projectName"] = projectName;
+      _json['projectName'] = projectName;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (userAccessLevel != null) {
-      _json["userAccessLevel"] = userAccessLevel;
+      _json['userAccessLevel'] = userAccessLevel;
     }
     return _json;
   }
@@ -2068,17 +2067,17 @@ class GoogleAppsScriptTypeUser {
   GoogleAppsScriptTypeUser();
 
   GoogleAppsScriptTypeUser.fromJson(core.Map _json) {
-    if (_json.containsKey("domain")) {
-      domain = _json["domain"];
+    if (_json.containsKey('domain')) {
+      domain = _json['domain'];
     }
-    if (_json.containsKey("email")) {
-      email = _json["email"];
+    if (_json.containsKey('email')) {
+      email = _json['email'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
   }
 
@@ -2086,16 +2085,16 @@ class GoogleAppsScriptTypeUser {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (domain != null) {
-      _json["domain"] = domain;
+      _json['domain'] = domain;
     }
     if (email != null) {
-      _json["email"] = email;
+      _json['email'] = email;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     return _json;
   }
@@ -2127,11 +2126,11 @@ class GoogleAppsScriptTypeWebAppConfig {
   GoogleAppsScriptTypeWebAppConfig();
 
   GoogleAppsScriptTypeWebAppConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("access")) {
-      access = _json["access"];
+    if (_json.containsKey('access')) {
+      access = _json['access'];
     }
-    if (_json.containsKey("executeAs")) {
-      executeAs = _json["executeAs"];
+    if (_json.containsKey('executeAs')) {
+      executeAs = _json['executeAs'];
     }
   }
 
@@ -2139,10 +2138,10 @@ class GoogleAppsScriptTypeWebAppConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (access != null) {
-      _json["access"] = access;
+      _json['access'] = access;
     }
     if (executeAs != null) {
-      _json["executeAs"] = executeAs;
+      _json['executeAs'] = executeAs;
     }
     return _json;
   }
@@ -2159,12 +2158,12 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
   GoogleAppsScriptTypeWebAppEntryPoint();
 
   GoogleAppsScriptTypeWebAppEntryPoint.fromJson(core.Map _json) {
-    if (_json.containsKey("entryPointConfig")) {
+    if (_json.containsKey('entryPointConfig')) {
       entryPointConfig =
-          GoogleAppsScriptTypeWebAppConfig.fromJson(_json["entryPointConfig"]);
+          GoogleAppsScriptTypeWebAppConfig.fromJson(_json['entryPointConfig']);
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -2172,10 +2171,10 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entryPointConfig != null) {
-      _json["entryPointConfig"] = entryPointConfig.toJson();
+      _json['entryPointConfig'] = entryPointConfig.toJson();
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -2193,13 +2192,13 @@ class ListDeploymentsResponse {
   ListDeploymentsResponse();
 
   ListDeploymentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deployments")) {
-      deployments = (_json["deployments"] as core.List)
+    if (_json.containsKey('deployments')) {
+      deployments = (_json['deployments'] as core.List)
           .map<Deployment>((value) => Deployment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -2207,11 +2206,11 @@ class ListDeploymentsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deployments != null) {
-      _json["deployments"] =
+      _json['deployments'] =
           deployments.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -2229,11 +2228,11 @@ class ListScriptProcessesResponse {
   ListScriptProcessesResponse();
 
   ListScriptProcessesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("processes")) {
-      processes = (_json["processes"] as core.List)
+    if (_json.containsKey('processes')) {
+      processes = (_json['processes'] as core.List)
           .map<GoogleAppsScriptTypeProcess>(
               (value) => GoogleAppsScriptTypeProcess.fromJson(value))
           .toList();
@@ -2244,10 +2243,10 @@ class ListScriptProcessesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (processes != null) {
-      _json["processes"] = processes.map((value) => value.toJson()).toList();
+      _json['processes'] = processes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2265,11 +2264,11 @@ class ListUserProcessesResponse {
   ListUserProcessesResponse();
 
   ListUserProcessesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("processes")) {
-      processes = (_json["processes"] as core.List)
+    if (_json.containsKey('processes')) {
+      processes = (_json['processes'] as core.List)
           .map<GoogleAppsScriptTypeProcess>(
               (value) => GoogleAppsScriptTypeProcess.fromJson(value))
           .toList();
@@ -2280,10 +2279,10 @@ class ListUserProcessesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (processes != null) {
-      _json["processes"] = processes.map((value) => value.toJson()).toList();
+      _json['processes'] = processes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2297,8 +2296,8 @@ class ListValue {
   ListValue();
 
   ListValue.fromJson(core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List)
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List)
           .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
@@ -2308,7 +2307,7 @@ class ListValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values.map((value) => value.toJson()).toList();
+      _json['values'] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2326,11 +2325,11 @@ class ListVersionsResponse {
   ListVersionsResponse();
 
   ListVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("versions")) {
-      versions = (_json["versions"] as core.List)
+    if (_json.containsKey('versions')) {
+      versions = (_json['versions'] as core.List)
           .map<Version>((value) => Version.fromJson(value))
           .toList();
     }
@@ -2340,10 +2339,10 @@ class ListVersionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (versions != null) {
-      _json["versions"] = versions.map((value) => value.toJson()).toList();
+      _json['versions'] = versions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2364,18 +2363,18 @@ class Metrics {
   Metrics();
 
   Metrics.fromJson(core.Map _json) {
-    if (_json.containsKey("activeUsers")) {
-      activeUsers = (_json["activeUsers"] as core.List)
+    if (_json.containsKey('activeUsers')) {
+      activeUsers = (_json['activeUsers'] as core.List)
           .map<MetricsValue>((value) => MetricsValue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("failedExecutions")) {
-      failedExecutions = (_json["failedExecutions"] as core.List)
+    if (_json.containsKey('failedExecutions')) {
+      failedExecutions = (_json['failedExecutions'] as core.List)
           .map<MetricsValue>((value) => MetricsValue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("totalExecutions")) {
-      totalExecutions = (_json["totalExecutions"] as core.List)
+    if (_json.containsKey('totalExecutions')) {
+      totalExecutions = (_json['totalExecutions'] as core.List)
           .map<MetricsValue>((value) => MetricsValue.fromJson(value))
           .toList();
     }
@@ -2385,15 +2384,15 @@ class Metrics {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activeUsers != null) {
-      _json["activeUsers"] =
+      _json['activeUsers'] =
           activeUsers.map((value) => value.toJson()).toList();
     }
     if (failedExecutions != null) {
-      _json["failedExecutions"] =
+      _json['failedExecutions'] =
           failedExecutions.map((value) => value.toJson()).toList();
     }
     if (totalExecutions != null) {
-      _json["totalExecutions"] =
+      _json['totalExecutions'] =
           totalExecutions.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -2414,14 +2413,14 @@ class MetricsValue {
   MetricsValue();
 
   MetricsValue.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -2429,13 +2428,13 @@ class MetricsValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -2480,15 +2479,15 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -2496,13 +2495,13 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -2536,27 +2535,27 @@ class Project {
   Project();
 
   Project.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("creator")) {
-      creator = GoogleAppsScriptTypeUser.fromJson(_json["creator"]);
+    if (_json.containsKey('creator')) {
+      creator = GoogleAppsScriptTypeUser.fromJson(_json['creator']);
     }
-    if (_json.containsKey("lastModifyUser")) {
+    if (_json.containsKey('lastModifyUser')) {
       lastModifyUser =
-          GoogleAppsScriptTypeUser.fromJson(_json["lastModifyUser"]);
+          GoogleAppsScriptTypeUser.fromJson(_json['lastModifyUser']);
     }
-    if (_json.containsKey("parentId")) {
-      parentId = _json["parentId"];
+    if (_json.containsKey('parentId')) {
+      parentId = _json['parentId'];
     }
-    if (_json.containsKey("scriptId")) {
-      scriptId = _json["scriptId"];
+    if (_json.containsKey('scriptId')) {
+      scriptId = _json['scriptId'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -2564,25 +2563,25 @@ class Project {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (creator != null) {
-      _json["creator"] = creator.toJson();
+      _json['creator'] = creator.toJson();
     }
     if (lastModifyUser != null) {
-      _json["lastModifyUser"] = lastModifyUser.toJson();
+      _json['lastModifyUser'] = lastModifyUser.toJson();
     }
     if (parentId != null) {
-      _json["parentId"] = parentId;
+      _json['parentId'] = parentId;
     }
     if (scriptId != null) {
-      _json["scriptId"] = scriptId;
+      _json['scriptId'] = scriptId;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -2596,8 +2595,8 @@ class ScriptExecutionResult {
   ScriptExecutionResult();
 
   ScriptExecutionResult.fromJson(core.Map _json) {
-    if (_json.containsKey("returnValue")) {
-      returnValue = Value.fromJson(_json["returnValue"]);
+    if (_json.containsKey('returnValue')) {
+      returnValue = Value.fromJson(_json['returnValue']);
     }
   }
 
@@ -2605,7 +2604,7 @@ class ScriptExecutionResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (returnValue != null) {
-      _json["returnValue"] = returnValue.toJson();
+      _json['returnValue'] = returnValue.toJson();
     }
     return _json;
   }
@@ -2622,11 +2621,11 @@ class ScriptStackTraceElement {
   ScriptStackTraceElement();
 
   ScriptStackTraceElement.fromJson(core.Map _json) {
-    if (_json.containsKey("function")) {
-      function = _json["function"];
+    if (_json.containsKey('function')) {
+      function = _json['function'];
     }
-    if (_json.containsKey("lineNumber")) {
-      lineNumber = _json["lineNumber"];
+    if (_json.containsKey('lineNumber')) {
+      lineNumber = _json['lineNumber'];
     }
   }
 
@@ -2634,10 +2633,10 @@ class ScriptStackTraceElement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (function != null) {
-      _json["function"] = function;
+      _json['function'] = function;
     }
     if (lineNumber != null) {
-      _json["lineNumber"] = lineNumber;
+      _json['lineNumber'] = lineNumber;
     }
     return _json;
   }
@@ -2667,17 +2666,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -2685,13 +2684,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -2706,9 +2705,9 @@ class Struct {
   Struct();
 
   Struct.fromJson(core.Map _json) {
-    if (_json.containsKey("fields")) {
+    if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, Value>(
-          _json["fields"].cast<core.String, core.Map>(),
+          _json['fields'].cast<core.String, core.Map>(),
           (core.Map item) => Value.fromJson(item));
     }
   }
@@ -2717,7 +2716,7 @@ class Struct {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fields != null) {
-      _json["fields"] =
+      _json['fields'] =
           commons.mapMap<Value, core.Map<core.String, core.Object>>(
               fields, (Value item) => item.toJson());
     }
@@ -2733,8 +2732,8 @@ class UpdateDeploymentRequest {
   UpdateDeploymentRequest();
 
   UpdateDeploymentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deploymentConfig")) {
-      deploymentConfig = DeploymentConfig.fromJson(_json["deploymentConfig"]);
+    if (_json.containsKey('deploymentConfig')) {
+      deploymentConfig = DeploymentConfig.fromJson(_json['deploymentConfig']);
     }
   }
 
@@ -2742,7 +2741,7 @@ class UpdateDeploymentRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deploymentConfig != null) {
-      _json["deploymentConfig"] = deploymentConfig.toJson();
+      _json['deploymentConfig'] = deploymentConfig.toJson();
     }
     return _json;
   }
@@ -2761,7 +2760,7 @@ class Value {
 
   set bytesValueAsBytes(core.List<core.int> _bytes) {
     bytesValue =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Represents a date in ms since the epoch.
@@ -2793,33 +2792,33 @@ class Value {
   Value();
 
   Value.fromJson(core.Map _json) {
-    if (_json.containsKey("boolValue")) {
-      boolValue = _json["boolValue"];
+    if (_json.containsKey('boolValue')) {
+      boolValue = _json['boolValue'];
     }
-    if (_json.containsKey("bytesValue")) {
-      bytesValue = _json["bytesValue"];
+    if (_json.containsKey('bytesValue')) {
+      bytesValue = _json['bytesValue'];
     }
-    if (_json.containsKey("dateValue")) {
-      dateValue = _json["dateValue"];
+    if (_json.containsKey('dateValue')) {
+      dateValue = _json['dateValue'];
     }
-    if (_json.containsKey("listValue")) {
-      listValue = ListValue.fromJson(_json["listValue"]);
+    if (_json.containsKey('listValue')) {
+      listValue = ListValue.fromJson(_json['listValue']);
     }
-    if (_json.containsKey("nullValue")) {
-      nullValue = _json["nullValue"];
+    if (_json.containsKey('nullValue')) {
+      nullValue = _json['nullValue'];
     }
-    if (_json.containsKey("numberValue")) {
-      numberValue = _json["numberValue"].toDouble();
+    if (_json.containsKey('numberValue')) {
+      numberValue = _json['numberValue'].toDouble();
     }
-    if (_json.containsKey("protoValue")) {
+    if (_json.containsKey('protoValue')) {
       protoValue =
-          (_json["protoValue"] as core.Map).cast<core.String, core.Object>();
+          (_json['protoValue'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("stringValue")) {
-      stringValue = _json["stringValue"];
+    if (_json.containsKey('stringValue')) {
+      stringValue = _json['stringValue'];
     }
-    if (_json.containsKey("structValue")) {
-      structValue = Struct.fromJson(_json["structValue"]);
+    if (_json.containsKey('structValue')) {
+      structValue = Struct.fromJson(_json['structValue']);
     }
   }
 
@@ -2827,31 +2826,31 @@ class Value {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boolValue != null) {
-      _json["boolValue"] = boolValue;
+      _json['boolValue'] = boolValue;
     }
     if (bytesValue != null) {
-      _json["bytesValue"] = bytesValue;
+      _json['bytesValue'] = bytesValue;
     }
     if (dateValue != null) {
-      _json["dateValue"] = dateValue;
+      _json['dateValue'] = dateValue;
     }
     if (listValue != null) {
-      _json["listValue"] = listValue.toJson();
+      _json['listValue'] = listValue.toJson();
     }
     if (nullValue != null) {
-      _json["nullValue"] = nullValue;
+      _json['nullValue'] = nullValue;
     }
     if (numberValue != null) {
-      _json["numberValue"] = numberValue;
+      _json['numberValue'] = numberValue;
     }
     if (protoValue != null) {
-      _json["protoValue"] = protoValue;
+      _json['protoValue'] = protoValue;
     }
     if (stringValue != null) {
-      _json["stringValue"] = stringValue;
+      _json['stringValue'] = stringValue;
     }
     if (structValue != null) {
-      _json["structValue"] = structValue.toJson();
+      _json['structValue'] = structValue.toJson();
     }
     return _json;
   }
@@ -2877,17 +2876,17 @@ class Version {
   Version();
 
   Version.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("scriptId")) {
-      scriptId = _json["scriptId"];
+    if (_json.containsKey('scriptId')) {
+      scriptId = _json['scriptId'];
     }
-    if (_json.containsKey("versionNumber")) {
-      versionNumber = _json["versionNumber"];
+    if (_json.containsKey('versionNumber')) {
+      versionNumber = _json['versionNumber'];
     }
   }
 
@@ -2895,16 +2894,16 @@ class Version {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (scriptId != null) {
-      _json["scriptId"] = scriptId;
+      _json['scriptId'] = scriptId;
     }
     if (versionNumber != null) {
-      _json["versionNumber"] = versionNumber;
+      _json['versionNumber'] = versionNumber;
     }
     return _json;
   }

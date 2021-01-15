@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,7 +38,7 @@ const core.String USER_AGENT = 'dart-api-client licensing/v1';
 class LicensingApi {
   /// View and manage G Suite licenses for your domain
   static const AppsLicensingScope =
-      "https://www.googleapis.com/auth/apps.licensing";
+      'https://www.googleapis.com/auth/apps.licensing';
 
   final commons.ApiRequester _requester;
 
@@ -47,8 +46,8 @@ class LicensingApi {
       LicenseAssignmentsResourceApi(_requester);
 
   LicensingApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -97,16 +96,16 @@ class LicenseAssignmentsResourceApi {
     core.String _body;
 
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (skuId == null) {
-      throw core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError('Parameter skuId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -120,7 +119,7 @@ class LicenseAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -170,16 +169,16 @@ class LicenseAssignmentsResourceApi {
     core.String _body;
 
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (skuId == null) {
-      throw core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError('Parameter skuId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'apps/licensing/v1/product/' +
@@ -191,7 +190,7 @@ class LicenseAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -240,13 +239,13 @@ class LicenseAssignmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (skuId == null) {
-      throw core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError('Parameter skuId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'apps/licensing/v1/product/' +
@@ -257,7 +256,7 @@ class LicenseAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -313,20 +312,20 @@ class LicenseAssignmentsResourceApi {
     core.String _body;
 
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
-    _queryParams["customerId"] = [customerId];
+    _queryParams['customerId'] = [customerId];
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'apps/licensing/v1/product/' +
@@ -335,7 +334,7 @@ class LicenseAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -395,23 +394,23 @@ class LicenseAssignmentsResourceApi {
     core.String _body;
 
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (skuId == null) {
-      throw core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError('Parameter skuId is required.');
     }
     if (customerId == null) {
-      throw core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError('Parameter customerId is required.');
     }
-    _queryParams["customerId"] = [customerId];
+    _queryParams['customerId'] = [customerId];
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'apps/licensing/v1/product/' +
@@ -422,7 +421,7 @@ class LicenseAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -478,16 +477,16 @@ class LicenseAssignmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (skuId == null) {
-      throw core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError('Parameter skuId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'apps/licensing/v1/product/' +
@@ -499,7 +498,7 @@ class LicenseAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -555,16 +554,16 @@ class LicenseAssignmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (productId == null) {
-      throw core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError('Parameter productId is required.');
     }
     if (skuId == null) {
-      throw core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError('Parameter skuId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'apps/licensing/v1/product/' +
@@ -576,7 +575,7 @@ class LicenseAssignmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -622,29 +621,29 @@ class LicenseAssignment {
   LicenseAssignment();
 
   LicenseAssignment.fromJson(core.Map _json) {
-    if (_json.containsKey("etags")) {
-      etags = _json["etags"];
+    if (_json.containsKey('etags')) {
+      etags = _json['etags'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'];
     }
-    if (_json.containsKey("productName")) {
-      productName = _json["productName"];
+    if (_json.containsKey('productName')) {
+      productName = _json['productName'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("skuId")) {
-      skuId = _json["skuId"];
+    if (_json.containsKey('skuId')) {
+      skuId = _json['skuId'];
     }
-    if (_json.containsKey("skuName")) {
-      skuName = _json["skuName"];
+    if (_json.containsKey('skuName')) {
+      skuName = _json['skuName'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -652,28 +651,28 @@ class LicenseAssignment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etags != null) {
-      _json["etags"] = etags;
+      _json['etags'] = etags;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (productId != null) {
-      _json["productId"] = productId;
+      _json['productId'] = productId;
     }
     if (productName != null) {
-      _json["productName"] = productName;
+      _json['productName'] = productName;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (skuId != null) {
-      _json["skuId"] = skuId;
+      _json['skuId'] = skuId;
     }
     if (skuName != null) {
-      _json["skuName"] = skuName;
+      _json['skuName'] = skuName;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -687,8 +686,8 @@ class LicenseAssignmentInsert {
   LicenseAssignmentInsert();
 
   LicenseAssignmentInsert.fromJson(core.Map _json) {
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -696,7 +695,7 @@ class LicenseAssignmentInsert {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -721,19 +720,19 @@ class LicenseAssignmentList {
   LicenseAssignmentList();
 
   LicenseAssignmentList.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<LicenseAssignment>((value) => LicenseAssignment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -741,16 +740,16 @@ class LicenseAssignmentList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }

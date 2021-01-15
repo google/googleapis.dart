@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,12 +75,12 @@ api.Tokeninfo buildTokeninfo() {
   var o = api.Tokeninfo();
   buildCounterTokeninfo++;
   if (buildCounterTokeninfo < 3) {
-    o.audience = "foo";
-    o.email = "foo";
+    o.audience = 'foo';
+    o.email = 'foo';
     o.expiresIn = 42;
-    o.issuedTo = "foo";
-    o.scope = "foo";
-    o.userId = "foo";
+    o.issuedTo = 'foo';
+    o.scope = 'foo';
+    o.userId = 'foo';
     o.verifiedEmail = true;
   }
   buildCounterTokeninfo--;
@@ -106,16 +106,16 @@ api.Userinfo buildUserinfo() {
   var o = api.Userinfo();
   buildCounterUserinfo++;
   if (buildCounterUserinfo < 3) {
-    o.email = "foo";
-    o.familyName = "foo";
-    o.gender = "foo";
-    o.givenName = "foo";
-    o.hd = "foo";
-    o.id = "foo";
-    o.link = "foo";
-    o.locale = "foo";
-    o.name = "foo";
-    o.picture = "foo";
+    o.email = 'foo';
+    o.familyName = 'foo';
+    o.gender = 'foo';
+    o.givenName = 'foo';
+    o.hd = 'foo';
+    o.id = 'foo';
+    o.link = 'foo';
+    o.locale = 'foo';
+    o.name = 'foo';
+    o.picture = 'foo';
     o.verifiedEmail = true;
   }
   buildCounterUserinfo--;
@@ -141,29 +141,29 @@ void checkUserinfo(api.Userinfo o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Tokeninfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Tokeninfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTokeninfo();
       var od = api.Tokeninfo.fromJson(o.toJson());
       checkTokeninfo(od);
     });
   });
 
-  unittest.group("obj-schema-Userinfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Userinfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserinfo();
       var od = api.Userinfo.fromJson(o.toJson());
       checkUserinfo(od);
     });
   });
 
-  unittest.group("resource-Oauth2Api", () {
-    unittest.test("method--tokeninfo", () {
+  unittest.group('resource-Oauth2Api', () {
+    unittest.test('method--tokeninfo', () {
       var mock = HttpServerMock();
       api.Oauth2Api res = api.Oauth2Api(mock);
-      var arg_accessToken = "foo";
-      var arg_idToken = "foo";
-      var arg_$fields = "foo";
+      var arg_accessToken = 'foo';
+      var arg_idToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -182,8 +182,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -197,7 +197,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTokeninfo());
         return async.Future.value(stringResponse(200, h, resp));
@@ -213,11 +213,11 @@ void main() {
     });
   });
 
-  unittest.group("resource-UserinfoResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-UserinfoResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.UserinfoResourceApi res = api.Oauth2Api(mock).userinfo;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -236,8 +236,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -247,7 +247,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUserinfo());
         return async.Future.value(stringResponse(200, h, resp));
@@ -258,11 +258,11 @@ void main() {
     });
   });
 
-  unittest.group("resource-UserinfoV2MeResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-UserinfoV2MeResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.UserinfoV2MeResourceApi res = api.Oauth2Api(mock).userinfo.v2.me;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -281,8 +281,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -292,7 +292,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUserinfo());
         return async.Future.value(stringResponse(200, h, resp));

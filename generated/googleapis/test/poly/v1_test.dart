@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -88,20 +88,20 @@ api.Asset buildAsset() {
   var o = api.Asset();
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    o.authorName = "foo";
-    o.createTime = "foo";
-    o.description = "foo";
-    o.displayName = "foo";
+    o.authorName = 'foo';
+    o.createTime = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
     o.formats = buildUnnamed4329();
     o.isCurated = true;
-    o.license = "foo";
-    o.metadata = "foo";
-    o.name = "foo";
+    o.license = 'foo';
+    o.metadata = 'foo';
+    o.name = 'foo';
     o.presentationParams = buildPresentationParams();
     o.remixInfo = buildRemixInfo();
     o.thumbnail = buildFile();
-    o.updateTime = "foo";
-    o.visibility = "foo";
+    o.updateTime = 'foo';
+    o.visibility = 'foo';
   }
   buildCounterAsset--;
   return o;
@@ -133,8 +133,8 @@ api.AssetImportMessage buildAssetImportMessage() {
   var o = api.AssetImportMessage();
   buildCounterAssetImportMessage++;
   if (buildCounterAssetImportMessage < 3) {
-    o.code = "foo";
-    o.filePath = "foo";
+    o.code = 'foo';
+    o.filePath = 'foo';
     o.imageError = buildImageError();
     o.objParseError = buildObjParseError();
   }
@@ -158,9 +158,9 @@ api.File buildFile() {
   var o = api.File();
   buildCounterFile++;
   if (buildCounterFile < 3) {
-    o.contentType = "foo";
-    o.relativePath = "foo";
-    o.url = "foo";
+    o.contentType = 'foo';
+    o.relativePath = 'foo';
+    o.url = 'foo';
   }
   buildCounterFile--;
   return o;
@@ -195,7 +195,7 @@ api.Format buildFormat() {
   buildCounterFormat++;
   if (buildCounterFormat < 3) {
     o.formatComplexity = buildFormatComplexity();
-    o.formatType = "foo";
+    o.formatType = 'foo';
     o.resources = buildUnnamed4330();
     o.root = buildFile();
   }
@@ -220,7 +220,7 @@ api.FormatComplexity buildFormatComplexity() {
   buildCounterFormatComplexity++;
   if (buildCounterFormatComplexity < 3) {
     o.lodHint = 42;
-    o.triangleCount = "foo";
+    o.triangleCount = 'foo';
   }
   buildCounterFormatComplexity--;
   return o;
@@ -240,8 +240,8 @@ api.ImageError buildImageError() {
   var o = api.ImageError();
   buildCounterImageError++;
   if (buildCounterImageError < 3) {
-    o.code = "foo";
-    o.filePath = "foo";
+    o.code = 'foo';
+    o.filePath = 'foo';
   }
   buildCounterImageError--;
   return o;
@@ -275,7 +275,7 @@ api.ListAssetsResponse buildListAssetsResponse() {
   buildCounterListAssetsResponse++;
   if (buildCounterListAssetsResponse < 3) {
     o.assets = buildUnnamed4331();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
   buildCounterListAssetsResponse--;
@@ -311,7 +311,7 @@ api.ListLikedAssetsResponse buildListLikedAssetsResponse() {
   buildCounterListLikedAssetsResponse++;
   if (buildCounterListLikedAssetsResponse < 3) {
     o.assets = buildUnnamed4332();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
   buildCounterListLikedAssetsResponse--;
@@ -346,7 +346,7 @@ api.ListUserAssetsResponse buildListUserAssetsResponse() {
   var o = api.ListUserAssetsResponse();
   buildCounterListUserAssetsResponse++;
   if (buildCounterListUserAssetsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.totalSize = 42;
     o.userAssets = buildUnnamed4333();
   }
@@ -369,10 +369,10 @@ api.ObjParseError buildObjParseError() {
   var o = api.ObjParseError();
   buildCounterObjParseError++;
   if (buildCounterObjParseError < 3) {
-    o.code = "foo";
+    o.code = 'foo';
     o.endIndex = 42;
-    o.filePath = "foo";
-    o.line = "foo";
+    o.filePath = 'foo';
+    o.line = 'foo';
     o.lineNumber = 42;
     o.startIndex = 42;
   }
@@ -398,8 +398,8 @@ api.PresentationParams buildPresentationParams() {
   var o = api.PresentationParams();
   buildCounterPresentationParams++;
   if (buildCounterPresentationParams < 3) {
-    o.backgroundColor = "foo";
-    o.colorSpace = "foo";
+    o.backgroundColor = 'foo';
+    o.colorSpace = 'foo';
     o.orientingRotation = buildQuaternion();
   }
   buildCounterPresentationParams--;
@@ -443,8 +443,8 @@ void checkQuaternion(api.Quaternion o) {
 
 core.List<core.String> buildUnnamed4334() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -491,10 +491,10 @@ api.StartAssetImportResponse buildStartAssetImportResponse() {
   var o = api.StartAssetImportResponse();
   buildCounterStartAssetImportResponse++;
   if (buildCounterStartAssetImportResponse < 3) {
-    o.assetId = "foo";
-    o.assetImportId = "foo";
+    o.assetId = 'foo';
+    o.assetImportId = 'foo';
     o.assetImportMessages = buildUnnamed4335();
-    o.publishUrl = "foo";
+    o.publishUrl = 'foo';
   }
   buildCounterStartAssetImportResponse--;
   return o;
@@ -531,132 +531,132 @@ void checkUserAsset(api.UserAsset o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Asset", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Asset', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
       checkAsset(od);
     });
   });
 
-  unittest.group("obj-schema-AssetImportMessage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AssetImportMessage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAssetImportMessage();
       var od = api.AssetImportMessage.fromJson(o.toJson());
       checkAssetImportMessage(od);
     });
   });
 
-  unittest.group("obj-schema-File", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-File', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
       checkFile(od);
     });
   });
 
-  unittest.group("obj-schema-Format", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Format', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFormat();
       var od = api.Format.fromJson(o.toJson());
       checkFormat(od);
     });
   });
 
-  unittest.group("obj-schema-FormatComplexity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FormatComplexity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFormatComplexity();
       var od = api.FormatComplexity.fromJson(o.toJson());
       checkFormatComplexity(od);
     });
   });
 
-  unittest.group("obj-schema-ImageError", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImageError', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImageError();
       var od = api.ImageError.fromJson(o.toJson());
       checkImageError(od);
     });
   });
 
-  unittest.group("obj-schema-ListAssetsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAssetsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAssetsResponse();
       var od = api.ListAssetsResponse.fromJson(o.toJson());
       checkListAssetsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListLikedAssetsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListLikedAssetsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListLikedAssetsResponse();
       var od = api.ListLikedAssetsResponse.fromJson(o.toJson());
       checkListLikedAssetsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListUserAssetsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListUserAssetsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListUserAssetsResponse();
       var od = api.ListUserAssetsResponse.fromJson(o.toJson());
       checkListUserAssetsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ObjParseError", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ObjParseError', () {
+    unittest.test('to-json--from-json', () {
       var o = buildObjParseError();
       var od = api.ObjParseError.fromJson(o.toJson());
       checkObjParseError(od);
     });
   });
 
-  unittest.group("obj-schema-PresentationParams", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PresentationParams', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPresentationParams();
       var od = api.PresentationParams.fromJson(o.toJson());
       checkPresentationParams(od);
     });
   });
 
-  unittest.group("obj-schema-Quaternion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Quaternion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQuaternion();
       var od = api.Quaternion.fromJson(o.toJson());
       checkQuaternion(od);
     });
   });
 
-  unittest.group("obj-schema-RemixInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RemixInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRemixInfo();
       var od = api.RemixInfo.fromJson(o.toJson());
       checkRemixInfo(od);
     });
   });
 
-  unittest.group("obj-schema-StartAssetImportResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StartAssetImportResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStartAssetImportResponse();
       var od = api.StartAssetImportResponse.fromJson(o.toJson());
       checkStartAssetImportResponse(od);
     });
   });
 
-  unittest.group("obj-schema-UserAsset", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UserAsset', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserAsset();
       var od = api.UserAsset.fromJson(o.toJson());
       checkUserAsset(od);
     });
   });
 
-  unittest.group("resource-AssetsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AssetsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AssetsResourceApi res = api.PolyApi(mock).assets;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -676,8 +676,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -687,7 +687,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAsset());
         return async.Future.value(stringResponse(200, h, resp));
@@ -699,18 +699,18 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AssetsResourceApi res = api.PolyApi(mock).assets;
-      var arg_maxComplexity = "foo";
+      var arg_maxComplexity = 'foo';
       var arg_pageSize = 42;
-      var arg_keywords = "foo";
-      var arg_pageToken = "foo";
+      var arg_keywords = 'foo';
+      var arg_pageToken = 'foo';
       var arg_curated = true;
-      var arg_orderBy = "foo";
-      var arg_category = "foo";
-      var arg_format = "foo";
-      var arg_$fields = "foo";
+      var arg_orderBy = 'foo';
+      var arg_category = 'foo';
+      var arg_format = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -729,8 +729,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -755,7 +755,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -777,17 +777,17 @@ void main() {
     });
   });
 
-  unittest.group("resource-UsersAssetsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-UsersAssetsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.UsersAssetsResourceApi res = api.PolyApi(mock).users.assets;
-      var arg_name = "foo";
-      var arg_orderBy = "foo";
-      var arg_format = "foo";
-      var arg_visibility = "foo";
-      var arg_pageToken = "foo";
+      var arg_name = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_format = 'foo';
+      var arg_visibility = 'foo';
+      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -807,8 +807,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -827,7 +827,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListUserAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -846,16 +846,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-UsersLikedassetsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-UsersLikedassetsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.UsersLikedassetsResourceApi res = api.PolyApi(mock).users.likedassets;
-      var arg_name = "foo";
-      var arg_pageToken = "foo";
-      var arg_format = "foo";
-      var arg_orderBy = "foo";
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_format = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -875,8 +875,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -893,7 +893,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListLikedAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,11 +37,11 @@ const core.String USER_AGENT = 'dart-api-client blogger/v3';
 /// blog.
 class BloggerApi {
   /// Manage your Blogger account
-  static const BloggerScope = "https://www.googleapis.com/auth/blogger";
+  static const BloggerScope = 'https://www.googleapis.com/auth/blogger';
 
   /// View your Blogger account
   static const BloggerReadonlyScope =
-      "https://www.googleapis.com/auth/blogger.readonly";
+      'https://www.googleapis.com/auth/blogger.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -58,8 +57,8 @@ class BloggerApi {
   UsersResourceApi get users => UsersResourceApi(_requester);
 
   BloggerApi(http.Client client,
-      {core.String rootUrl = "https://blogger.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://blogger.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -103,16 +102,16 @@ class BlogUserInfosResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (maxPosts != null) {
-      _queryParams["maxPosts"] = ["${maxPosts}"];
+      _queryParams['maxPosts'] = ['${maxPosts}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/users/' +
@@ -122,7 +121,7 @@ class BlogUserInfosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -177,23 +176,23 @@ class BlogsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (maxPosts != null) {
-      _queryParams["maxPosts"] = ["${maxPosts}"];
+      _queryParams['maxPosts'] = ['${maxPosts}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -239,21 +238,21 @@ class BlogsResourceApi {
     core.String _body;
 
     if (url == null) {
-      throw core.ArgumentError("Parameter url is required.");
+      throw core.ArgumentError('Parameter url is required.');
     }
-    _queryParams["url"] = [url];
+    _queryParams['url'] = [url];
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/byurl';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -308,29 +307,29 @@ class BlogsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (role != null) {
-      _queryParams["role"] = role;
+      _queryParams['role'] = role;
     }
     if (status != null) {
-      _queryParams["status"] = status;
+      _queryParams['status'] = status;
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (fetchUserInfo != null) {
-      _queryParams["fetchUserInfo"] = ["${fetchUserInfo}"];
+      _queryParams['fetchUserInfo'] = ['${fetchUserInfo}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -380,16 +379,16 @@ class CommentsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -402,7 +401,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -444,16 +443,16 @@ class CommentsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -467,7 +466,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -519,19 +518,19 @@ class CommentsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -543,7 +542,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -615,34 +614,34 @@ class CommentsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
+      _queryParams['fetchBodies'] = ['${fetchBodies}'];
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (startDate != null) {
-      _queryParams["startDate"] = [startDate];
+      _queryParams['startDate'] = [startDate];
     }
     if (status != null) {
-      _queryParams["status"] = [status];
+      _queryParams['status'] = [status];
     }
     if (endDate != null) {
-      _queryParams["endDate"] = [endDate];
+      _queryParams['endDate'] = [endDate];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -653,7 +652,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -709,35 +708,35 @@ class CommentsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
+      _queryParams['fetchBodies'] = ['${fetchBodies}'];
     }
     if (endDate != null) {
-      _queryParams["endDate"] = [endDate];
+      _queryParams['endDate'] = [endDate];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (startDate != null) {
-      _queryParams["startDate"] = [startDate];
+      _queryParams['startDate'] = [startDate];
     }
     if (status != null) {
-      _queryParams["status"] = status;
+      _queryParams['status'] = status;
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -781,16 +780,16 @@ class CommentsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -803,7 +802,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -847,16 +846,16 @@ class CommentsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (commentId == null) {
-      throw core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError('Parameter commentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -869,7 +868,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -916,13 +915,13 @@ class PageViewsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (range != null) {
-      _queryParams["range"] = range;
+      _queryParams['range'] = range;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -930,7 +929,7 @@ class PageViewsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -975,13 +974,13 @@ class PagesResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -993,7 +992,7 @@ class PagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1042,16 +1041,16 @@ class PagesResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -1061,7 +1060,7 @@ class PagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1108,20 +1107,20 @@ class PagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (isDraft != null) {
-      _queryParams["isDraft"] = ["${isDraft}"];
+      _queryParams['isDraft'] = ['${isDraft}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1179,32 +1178,32 @@ class PagesResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
+      _queryParams['fetchBodies'] = ['${fetchBodies}'];
     }
     if (status != null) {
-      _queryParams["status"] = status;
+      _queryParams['status'] = status;
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1257,19 +1256,19 @@ class PagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if (publish_1 != null) {
-      _queryParams["publish"] = ["${publish_1}"];
+      _queryParams['publish'] = ['${publish_1}'];
     }
     if (revert_1 != null) {
-      _queryParams["revert"] = ["${revert_1}"];
+      _queryParams['revert'] = ['${revert_1}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -1279,7 +1278,7 @@ class PagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1320,13 +1319,13 @@ class PagesResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -1337,7 +1336,7 @@ class PagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1378,13 +1377,13 @@ class PagesResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -1395,7 +1394,7 @@ class PagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1448,19 +1447,19 @@ class PagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (pageId == null) {
-      throw core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError('Parameter pageId is required.');
     }
     if (revert_1 != null) {
-      _queryParams["revert"] = ["${revert_1}"];
+      _queryParams['revert'] = ['${revert_1}'];
     }
     if (publish_1 != null) {
-      _queryParams["publish"] = ["${publish_1}"];
+      _queryParams['publish'] = ['${publish_1}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -1470,7 +1469,7 @@ class PagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1523,19 +1522,19 @@ class PostUserInfosResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (maxComments != null) {
-      _queryParams["maxComments"] = ["${maxComments}"];
+      _queryParams['maxComments'] = ['${maxComments}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/users/' +
@@ -1547,7 +1546,7 @@ class PostUserInfosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1624,40 +1623,40 @@ class PostUserInfosResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
+      _queryParams['fetchBodies'] = ['${fetchBodies}'];
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (startDate != null) {
-      _queryParams["startDate"] = [startDate];
+      _queryParams['startDate'] = [startDate];
     }
     if (labels != null) {
-      _queryParams["labels"] = [labels];
+      _queryParams['labels'] = [labels];
     }
     if (endDate != null) {
-      _queryParams["endDate"] = [endDate];
+      _queryParams['endDate'] = [endDate];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (status != null) {
-      _queryParams["status"] = status;
+      _queryParams['status'] = status;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/users/' +
@@ -1668,7 +1667,7 @@ class PostUserInfosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1713,13 +1712,13 @@ class PostsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1731,7 +1730,7 @@ class PostsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1789,25 +1788,25 @@ class PostsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (maxComments != null) {
-      _queryParams["maxComments"] = ["${maxComments}"];
+      _queryParams['maxComments'] = ['${maxComments}'];
     }
     if (fetchBody != null) {
-      _queryParams["fetchBody"] = ["${fetchBody}"];
+      _queryParams['fetchBody'] = ['${fetchBody}'];
     }
     if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
+      _queryParams['fetchImages'] = ['${fetchImages}'];
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -1817,7 +1816,7 @@ class PostsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1869,20 +1868,20 @@ class PostsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (path == null) {
-      throw core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError('Parameter path is required.');
     }
-    _queryParams["path"] = [path];
+    _queryParams['path'] = [path];
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (maxComments != null) {
-      _queryParams["maxComments"] = ["${maxComments}"];
+      _queryParams['maxComments'] = ['${maxComments}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -1891,7 +1890,7 @@ class PostsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1944,26 +1943,26 @@ class PostsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (isDraft != null) {
-      _queryParams["isDraft"] = ["${isDraft}"];
+      _queryParams['isDraft'] = ['${isDraft}'];
     }
     if (fetchBody != null) {
-      _queryParams["fetchBody"] = ["${fetchBody}"];
+      _queryParams['fetchBody'] = ['${fetchBody}'];
     }
     if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
+      _queryParams['fetchImages'] = ['${fetchImages}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2040,47 +2039,47 @@ class PostsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
+      _queryParams['fetchBodies'] = ['${fetchBodies}'];
     }
     if (endDate != null) {
-      _queryParams["endDate"] = [endDate];
+      _queryParams['endDate'] = [endDate];
     }
     if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams['view'] = [view];
     }
     if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
+      _queryParams['fetchImages'] = ['${fetchImages}'];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (startDate != null) {
-      _queryParams["startDate"] = [startDate];
+      _queryParams['startDate'] = [startDate];
     }
     if (status != null) {
-      _queryParams["status"] = status;
+      _queryParams['status'] = status;
     }
     if (labels != null) {
-      _queryParams["labels"] = [labels];
+      _queryParams['labels'] = [labels];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2142,28 +2141,28 @@ class PostsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (publish_1 != null) {
-      _queryParams["publish"] = ["${publish_1}"];
+      _queryParams['publish'] = ['${publish_1}'];
     }
     if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
+      _queryParams['fetchImages'] = ['${fetchImages}'];
     }
     if (maxComments != null) {
-      _queryParams["maxComments"] = ["${maxComments}"];
+      _queryParams['maxComments'] = ['${maxComments}'];
     }
     if (fetchBody != null) {
-      _queryParams["fetchBody"] = ["${fetchBody}"];
+      _queryParams['fetchBody'] = ['${fetchBody}'];
     }
     if (revert_1 != null) {
-      _queryParams["revert"] = ["${revert_1}"];
+      _queryParams['revert'] = ['${revert_1}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -2173,7 +2172,7 @@ class PostsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2217,16 +2216,16 @@ class PostsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (publishDate != null) {
-      _queryParams["publishDate"] = [publishDate];
+      _queryParams['publishDate'] = [publishDate];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -2237,7 +2236,7 @@ class PostsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2278,13 +2277,13 @@ class PostsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -2295,7 +2294,7 @@ class PostsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2346,20 +2345,20 @@ class PostsResourceApi {
     core.String _body;
 
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (q == null) {
-      throw core.ArgumentError("Parameter q is required.");
+      throw core.ArgumentError('Parameter q is required.');
     }
-    _queryParams["q"] = [q];
+    _queryParams['q'] = [q];
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
+      _queryParams['fetchBodies'] = ['${fetchBodies}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -2368,7 +2367,7 @@ class PostsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2430,28 +2429,28 @@ class PostsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError('Parameter blogId is required.');
     }
     if (postId == null) {
-      throw core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError('Parameter postId is required.');
     }
     if (publish_1 != null) {
-      _queryParams["publish"] = ["${publish_1}"];
+      _queryParams['publish'] = ['${publish_1}'];
     }
     if (revert_1 != null) {
-      _queryParams["revert"] = ["${revert_1}"];
+      _queryParams['revert'] = ['${revert_1}'];
     }
     if (maxComments != null) {
-      _queryParams["maxComments"] = ["${maxComments}"];
+      _queryParams['maxComments'] = ['${maxComments}'];
     }
     if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
+      _queryParams['fetchImages'] = ['${fetchImages}'];
     }
     if (fetchBody != null) {
-      _queryParams["fetchBody"] = ["${fetchBody}"];
+      _queryParams['fetchBody'] = ['${fetchBody}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/blogs/' +
@@ -2461,7 +2460,7 @@ class PostsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2505,17 +2504,17 @@ class UsersResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2540,14 +2539,14 @@ class BlogLocale {
   BlogLocale();
 
   BlogLocale.fromJson(core.Map _json) {
-    if (_json.containsKey("country")) {
-      country = _json["country"];
+    if (_json.containsKey('country')) {
+      country = _json['country'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("variant")) {
-      variant = _json["variant"];
+    if (_json.containsKey('variant')) {
+      variant = _json['variant'];
     }
   }
 
@@ -2555,13 +2554,13 @@ class BlogLocale {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (country != null) {
-      _json["country"] = country;
+      _json['country'] = country;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (variant != null) {
-      _json["variant"] = variant;
+      _json['variant'] = variant;
     }
     return _json;
   }
@@ -2578,11 +2577,11 @@ class BlogPages {
   BlogPages();
 
   BlogPages.fromJson(core.Map _json) {
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("totalItems")) {
-      totalItems = _json["totalItems"];
+    if (_json.containsKey('totalItems')) {
+      totalItems = _json['totalItems'];
     }
   }
 
@@ -2590,10 +2589,10 @@ class BlogPages {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (totalItems != null) {
-      _json["totalItems"] = totalItems;
+      _json['totalItems'] = totalItems;
     }
     return _json;
   }
@@ -2613,16 +2612,16 @@ class BlogPosts {
   BlogPosts();
 
   BlogPosts.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Post>((value) => Post.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("totalItems")) {
-      totalItems = _json["totalItems"];
+    if (_json.containsKey('totalItems')) {
+      totalItems = _json['totalItems'];
     }
   }
 
@@ -2630,13 +2629,13 @@ class BlogPosts {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (totalItems != null) {
-      _json["totalItems"] = totalItems;
+      _json['totalItems'] = totalItems;
     }
     return _json;
   }
@@ -2688,44 +2687,44 @@ class Blog {
   Blog();
 
   Blog.fromJson(core.Map _json) {
-    if (_json.containsKey("customMetaData")) {
-      customMetaData = _json["customMetaData"];
+    if (_json.containsKey('customMetaData')) {
+      customMetaData = _json['customMetaData'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("locale")) {
-      locale = BlogLocale.fromJson(_json["locale"]);
+    if (_json.containsKey('locale')) {
+      locale = BlogLocale.fromJson(_json['locale']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("pages")) {
-      pages = BlogPages.fromJson(_json["pages"]);
+    if (_json.containsKey('pages')) {
+      pages = BlogPages.fromJson(_json['pages']);
     }
-    if (_json.containsKey("posts")) {
-      posts = BlogPosts.fromJson(_json["posts"]);
+    if (_json.containsKey('posts')) {
+      posts = BlogPosts.fromJson(_json['posts']);
     }
-    if (_json.containsKey("published")) {
-      published = _json["published"];
+    if (_json.containsKey('published')) {
+      published = _json['published'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -2733,43 +2732,43 @@ class Blog {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (customMetaData != null) {
-      _json["customMetaData"] = customMetaData;
+      _json['customMetaData'] = customMetaData;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (locale != null) {
-      _json["locale"] = locale.toJson();
+      _json['locale'] = locale.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (pages != null) {
-      _json["pages"] = pages.toJson();
+      _json['pages'] = pages.toJson();
     }
     if (posts != null) {
-      _json["posts"] = posts.toJson();
+      _json['posts'] = posts.toJson();
     }
     if (published != null) {
-      _json["published"] = published;
+      _json['published'] = published;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -2788,18 +2787,18 @@ class BlogList {
   BlogList();
 
   BlogList.fromJson(core.Map _json) {
-    if (_json.containsKey("blogUserInfos")) {
-      blogUserInfos = (_json["blogUserInfos"] as core.List)
+    if (_json.containsKey('blogUserInfos')) {
+      blogUserInfos = (_json['blogUserInfos'] as core.List)
           .map<BlogUserInfo>((value) => BlogUserInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Blog>((value) => Blog.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -2807,14 +2806,14 @@ class BlogList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blogUserInfos != null) {
-      _json["blogUserInfos"] =
+      _json['blogUserInfos'] =
           blogUserInfos.map((value) => value.toJson()).toList();
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -2848,23 +2847,23 @@ class BlogPerUserInfo {
   BlogPerUserInfo();
 
   BlogPerUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("blogId")) {
-      blogId = _json["blogId"];
+    if (_json.containsKey('blogId')) {
+      blogId = _json['blogId'];
     }
-    if (_json.containsKey("hasAdminAccess")) {
-      hasAdminAccess = _json["hasAdminAccess"];
+    if (_json.containsKey('hasAdminAccess')) {
+      hasAdminAccess = _json['hasAdminAccess'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("photosAlbumKey")) {
-      photosAlbumKey = _json["photosAlbumKey"];
+    if (_json.containsKey('photosAlbumKey')) {
+      photosAlbumKey = _json['photosAlbumKey'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -2872,22 +2871,22 @@ class BlogPerUserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blogId != null) {
-      _json["blogId"] = blogId;
+      _json['blogId'] = blogId;
     }
     if (hasAdminAccess != null) {
-      _json["hasAdminAccess"] = hasAdminAccess;
+      _json['hasAdminAccess'] = hasAdminAccess;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (photosAlbumKey != null) {
-      _json["photosAlbumKey"] = photosAlbumKey;
+      _json['photosAlbumKey'] = photosAlbumKey;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -2906,14 +2905,14 @@ class BlogUserInfo {
   BlogUserInfo();
 
   BlogUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("blog")) {
-      blog = Blog.fromJson(_json["blog"]);
+    if (_json.containsKey('blog')) {
+      blog = Blog.fromJson(_json['blog']);
     }
-    if (_json.containsKey("blog_user_info")) {
-      blogUserInfo = BlogPerUserInfo.fromJson(_json["blog_user_info"]);
+    if (_json.containsKey('blog_user_info')) {
+      blogUserInfo = BlogPerUserInfo.fromJson(_json['blog_user_info']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -2921,13 +2920,13 @@ class BlogUserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blog != null) {
-      _json["blog"] = blog.toJson();
+      _json['blog'] = blog.toJson();
     }
     if (blogUserInfo != null) {
-      _json["blog_user_info"] = blogUserInfo.toJson();
+      _json['blog_user_info'] = blogUserInfo.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -2941,8 +2940,8 @@ class CommentAuthorImage {
   CommentAuthorImage();
 
   CommentAuthorImage.fromJson(core.Map _json) {
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -2950,7 +2949,7 @@ class CommentAuthorImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -2973,17 +2972,17 @@ class CommentAuthor {
   CommentAuthor();
 
   CommentAuthor.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("image")) {
-      image = CommentAuthorImage.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = CommentAuthorImage.fromJson(_json['image']);
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -2991,16 +2990,16 @@ class CommentAuthor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3014,8 +3013,8 @@ class CommentBlog {
   CommentBlog();
 
   CommentBlog.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -3023,7 +3022,7 @@ class CommentBlog {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -3037,8 +3036,8 @@ class CommentInReplyTo {
   CommentInReplyTo();
 
   CommentInReplyTo.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -3046,7 +3045,7 @@ class CommentInReplyTo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -3060,8 +3059,8 @@ class CommentPost {
   CommentPost();
 
   CommentPost.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -3069,7 +3068,7 @@ class CommentPost {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -3117,38 +3116,38 @@ class Comment {
   Comment();
 
   Comment.fromJson(core.Map _json) {
-    if (_json.containsKey("author")) {
-      author = CommentAuthor.fromJson(_json["author"]);
+    if (_json.containsKey('author')) {
+      author = CommentAuthor.fromJson(_json['author']);
     }
-    if (_json.containsKey("blog")) {
-      blog = CommentBlog.fromJson(_json["blog"]);
+    if (_json.containsKey('blog')) {
+      blog = CommentBlog.fromJson(_json['blog']);
     }
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("inReplyTo")) {
-      inReplyTo = CommentInReplyTo.fromJson(_json["inReplyTo"]);
+    if (_json.containsKey('inReplyTo')) {
+      inReplyTo = CommentInReplyTo.fromJson(_json['inReplyTo']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("post")) {
-      post = CommentPost.fromJson(_json["post"]);
+    if (_json.containsKey('post')) {
+      post = CommentPost.fromJson(_json['post']);
     }
-    if (_json.containsKey("published")) {
-      published = _json["published"];
+    if (_json.containsKey('published')) {
+      published = _json['published'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
   }
 
@@ -3156,37 +3155,37 @@ class Comment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = author.toJson();
+      _json['author'] = author.toJson();
     }
     if (blog != null) {
-      _json["blog"] = blog.toJson();
+      _json['blog'] = blog.toJson();
     }
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (inReplyTo != null) {
-      _json["inReplyTo"] = inReplyTo.toJson();
+      _json['inReplyTo'] = inReplyTo.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (post != null) {
-      _json["post"] = post.toJson();
+      _json['post'] = post.toJson();
     }
     if (published != null) {
-      _json["published"] = published;
+      _json['published'] = published;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     return _json;
   }
@@ -3211,22 +3210,22 @@ class CommentList {
   CommentList();
 
   CommentList.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
   }
 
@@ -3234,19 +3233,19 @@ class CommentList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     return _json;
   }
@@ -3260,8 +3259,8 @@ class PageAuthorImage {
   PageAuthorImage();
 
   PageAuthorImage.fromJson(core.Map _json) {
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3269,7 +3268,7 @@ class PageAuthorImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3292,17 +3291,17 @@ class PageAuthor {
   PageAuthor();
 
   PageAuthor.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("image")) {
-      image = PageAuthorImage.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = PageAuthorImage.fromJson(_json['image']);
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3310,16 +3309,16 @@ class PageAuthor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3333,8 +3332,8 @@ class PageBlog {
   PageBlog();
 
   PageBlog.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -3342,7 +3341,7 @@ class PageBlog {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -3392,41 +3391,41 @@ class Page {
   Page();
 
   Page.fromJson(core.Map _json) {
-    if (_json.containsKey("author")) {
-      author = PageAuthor.fromJson(_json["author"]);
+    if (_json.containsKey('author')) {
+      author = PageAuthor.fromJson(_json['author']);
     }
-    if (_json.containsKey("blog")) {
-      blog = PageBlog.fromJson(_json["blog"]);
+    if (_json.containsKey('blog')) {
+      blog = PageBlog.fromJson(_json['blog']);
     }
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("published")) {
-      published = _json["published"];
+    if (_json.containsKey('published')) {
+      published = _json['published'];
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3434,40 +3433,40 @@ class Page {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = author.toJson();
+      _json['author'] = author.toJson();
     }
     if (blog != null) {
-      _json["blog"] = blog.toJson();
+      _json['blog'] = blog.toJson();
     }
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (published != null) {
-      _json["published"] = published;
+      _json['published'] = published;
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3489,19 +3488,19 @@ class PageList {
   PageList();
 
   PageList.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Page>((value) => Page.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -3509,16 +3508,16 @@ class PageList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -3538,11 +3537,11 @@ class PageviewsCounts {
   PageviewsCounts();
 
   PageviewsCounts.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
+    if (_json.containsKey('count')) {
+      count = _json['count'];
     }
-    if (_json.containsKey("timeRange")) {
-      timeRange = _json["timeRange"];
+    if (_json.containsKey('timeRange')) {
+      timeRange = _json['timeRange'];
     }
   }
 
@@ -3550,10 +3549,10 @@ class PageviewsCounts {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (count != null) {
-      _json["count"] = count;
+      _json['count'] = count;
     }
     if (timeRange != null) {
-      _json["timeRange"] = timeRange;
+      _json['timeRange'] = timeRange;
     }
     return _json;
   }
@@ -3572,16 +3571,16 @@ class Pageviews {
   Pageviews();
 
   Pageviews.fromJson(core.Map _json) {
-    if (_json.containsKey("blogId")) {
-      blogId = _json["blogId"];
+    if (_json.containsKey('blogId')) {
+      blogId = _json['blogId'];
     }
-    if (_json.containsKey("counts")) {
-      counts = (_json["counts"] as core.List)
+    if (_json.containsKey('counts')) {
+      counts = (_json['counts'] as core.List)
           .map<PageviewsCounts>((value) => PageviewsCounts.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -3589,13 +3588,13 @@ class Pageviews {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blogId != null) {
-      _json["blogId"] = blogId;
+      _json['blogId'] = blogId;
     }
     if (counts != null) {
-      _json["counts"] = counts.map((value) => value.toJson()).toList();
+      _json['counts'] = counts.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -3609,8 +3608,8 @@ class PostAuthorImage {
   PostAuthorImage();
 
   PostAuthorImage.fromJson(core.Map _json) {
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3618,7 +3617,7 @@ class PostAuthorImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3641,17 +3640,17 @@ class PostAuthor {
   PostAuthor();
 
   PostAuthor.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("image")) {
-      image = PostAuthorImage.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = PostAuthorImage.fromJson(_json['image']);
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3659,16 +3658,16 @@ class PostAuthor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3682,8 +3681,8 @@ class PostBlog {
   PostBlog();
 
   PostBlog.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -3691,7 +3690,7 @@ class PostBlog {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -3703,8 +3702,8 @@ class PostImages {
   PostImages();
 
   PostImages.fromJson(core.Map _json) {
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3712,7 +3711,7 @@ class PostImages {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3735,17 +3734,17 @@ class PostLocation {
   PostLocation();
 
   PostLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("lat")) {
-      lat = _json["lat"].toDouble();
+    if (_json.containsKey('lat')) {
+      lat = _json['lat'].toDouble();
     }
-    if (_json.containsKey("lng")) {
-      lng = _json["lng"].toDouble();
+    if (_json.containsKey('lng')) {
+      lng = _json['lng'].toDouble();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("span")) {
-      span = _json["span"];
+    if (_json.containsKey('span')) {
+      span = _json['span'];
     }
   }
 
@@ -3753,16 +3752,16 @@ class PostLocation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lat != null) {
-      _json["lat"] = lat;
+      _json['lat'] = lat;
     }
     if (lng != null) {
-      _json["lng"] = lng;
+      _json['lng'] = lng;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (span != null) {
-      _json["span"] = span;
+      _json['span'] = span;
     }
     return _json;
   }
@@ -3782,16 +3781,16 @@ class PostReplies {
   PostReplies();
 
   PostReplies.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("totalItems")) {
-      totalItems = _json["totalItems"];
+    if (_json.containsKey('totalItems')) {
+      totalItems = _json['totalItems'];
     }
   }
 
@@ -3799,13 +3798,13 @@ class PostReplies {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (totalItems != null) {
-      _json["totalItems"] = totalItems;
+      _json['totalItems'] = totalItems;
     }
     return _json;
   }
@@ -3880,64 +3879,64 @@ class Post {
   Post();
 
   Post.fromJson(core.Map _json) {
-    if (_json.containsKey("author")) {
-      author = PostAuthor.fromJson(_json["author"]);
+    if (_json.containsKey('author')) {
+      author = PostAuthor.fromJson(_json['author']);
     }
-    if (_json.containsKey("blog")) {
-      blog = PostBlog.fromJson(_json["blog"]);
+    if (_json.containsKey('blog')) {
+      blog = PostBlog.fromJson(_json['blog']);
     }
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("customMetaData")) {
-      customMetaData = _json["customMetaData"];
+    if (_json.containsKey('customMetaData')) {
+      customMetaData = _json['customMetaData'];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("images")) {
-      images = (_json["images"] as core.List)
+    if (_json.containsKey('images')) {
+      images = (_json['images'] as core.List)
           .map<PostImages>((value) => PostImages.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.List).cast<core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("location")) {
-      location = PostLocation.fromJson(_json["location"]);
+    if (_json.containsKey('location')) {
+      location = PostLocation.fromJson(_json['location']);
     }
-    if (_json.containsKey("published")) {
-      published = _json["published"];
+    if (_json.containsKey('published')) {
+      published = _json['published'];
     }
-    if (_json.containsKey("readerComments")) {
-      readerComments = _json["readerComments"];
+    if (_json.containsKey('readerComments')) {
+      readerComments = _json['readerComments'];
     }
-    if (_json.containsKey("replies")) {
-      replies = PostReplies.fromJson(_json["replies"]);
+    if (_json.containsKey('replies')) {
+      replies = PostReplies.fromJson(_json['replies']);
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("titleLink")) {
-      titleLink = _json["titleLink"];
+    if (_json.containsKey('titleLink')) {
+      titleLink = _json['titleLink'];
     }
-    if (_json.containsKey("updated")) {
-      updated = _json["updated"];
+    if (_json.containsKey('updated')) {
+      updated = _json['updated'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3945,61 +3944,61 @@ class Post {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = author.toJson();
+      _json['author'] = author.toJson();
     }
     if (blog != null) {
-      _json["blog"] = blog.toJson();
+      _json['blog'] = blog.toJson();
     }
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (customMetaData != null) {
-      _json["customMetaData"] = customMetaData;
+      _json['customMetaData'] = customMetaData;
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (images != null) {
-      _json["images"] = images.map((value) => value.toJson()).toList();
+      _json['images'] = images.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (location != null) {
-      _json["location"] = location.toJson();
+      _json['location'] = location.toJson();
     }
     if (published != null) {
-      _json["published"] = published;
+      _json['published'] = published;
     }
     if (readerComments != null) {
-      _json["readerComments"] = readerComments;
+      _json['readerComments'] = readerComments;
     }
     if (replies != null) {
-      _json["replies"] = replies.toJson();
+      _json['replies'] = replies.toJson();
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (titleLink != null) {
-      _json["titleLink"] = titleLink;
+      _json['titleLink'] = titleLink;
     }
     if (updated != null) {
-      _json["updated"] = updated;
+      _json['updated'] = updated;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -4024,22 +4023,22 @@ class PostList {
   PostList();
 
   PostList.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Post>((value) => Post.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
   }
 
@@ -4047,19 +4046,19 @@ class PostList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     return _json;
   }
@@ -4084,20 +4083,20 @@ class PostPerUserInfo {
   PostPerUserInfo();
 
   PostPerUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("blogId")) {
-      blogId = _json["blogId"];
+    if (_json.containsKey('blogId')) {
+      blogId = _json['blogId'];
     }
-    if (_json.containsKey("hasEditAccess")) {
-      hasEditAccess = _json["hasEditAccess"];
+    if (_json.containsKey('hasEditAccess')) {
+      hasEditAccess = _json['hasEditAccess'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("postId")) {
-      postId = _json["postId"];
+    if (_json.containsKey('postId')) {
+      postId = _json['postId'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -4105,19 +4104,19 @@ class PostPerUserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blogId != null) {
-      _json["blogId"] = blogId;
+      _json['blogId'] = blogId;
     }
     if (hasEditAccess != null) {
-      _json["hasEditAccess"] = hasEditAccess;
+      _json['hasEditAccess'] = hasEditAccess;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (postId != null) {
-      _json["postId"] = postId;
+      _json['postId'] = postId;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -4136,14 +4135,14 @@ class PostUserInfo {
   PostUserInfo();
 
   PostUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("post")) {
-      post = Post.fromJson(_json["post"]);
+    if (_json.containsKey('post')) {
+      post = Post.fromJson(_json['post']);
     }
-    if (_json.containsKey("post_user_info")) {
-      postUserInfo = PostPerUserInfo.fromJson(_json["post_user_info"]);
+    if (_json.containsKey('post_user_info')) {
+      postUserInfo = PostPerUserInfo.fromJson(_json['post_user_info']);
     }
   }
 
@@ -4151,13 +4150,13 @@ class PostUserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (post != null) {
-      _json["post"] = post.toJson();
+      _json['post'] = post.toJson();
     }
     if (postUserInfo != null) {
-      _json["post_user_info"] = postUserInfo.toJson();
+      _json['post_user_info'] = postUserInfo.toJson();
     }
     return _json;
   }
@@ -4176,16 +4175,16 @@ class PostUserInfosList {
   PostUserInfosList();
 
   PostUserInfosList.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<PostUserInfo>((value) => PostUserInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4193,13 +4192,13 @@ class PostUserInfosList {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4213,8 +4212,8 @@ class UserBlogs {
   UserBlogs();
 
   UserBlogs.fromJson(core.Map _json) {
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
   }
 
@@ -4222,7 +4221,7 @@ class UserBlogs {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     return _json;
   }
@@ -4242,14 +4241,14 @@ class UserLocale {
   UserLocale();
 
   UserLocale.fromJson(core.Map _json) {
-    if (_json.containsKey("country")) {
-      country = _json["country"];
+    if (_json.containsKey('country')) {
+      country = _json['country'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("variant")) {
-      variant = _json["variant"];
+    if (_json.containsKey('variant')) {
+      variant = _json['variant'];
     }
   }
 
@@ -4257,13 +4256,13 @@ class UserLocale {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (country != null) {
-      _json["country"] = country;
+      _json['country'] = country;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (variant != null) {
-      _json["variant"] = variant;
+      _json['variant'] = variant;
     }
     return _json;
   }
@@ -4300,32 +4299,32 @@ class User {
   User();
 
   User.fromJson(core.Map _json) {
-    if (_json.containsKey("about")) {
-      about = _json["about"];
+    if (_json.containsKey('about')) {
+      about = _json['about'];
     }
-    if (_json.containsKey("blogs")) {
-      blogs = UserBlogs.fromJson(_json["blogs"]);
+    if (_json.containsKey('blogs')) {
+      blogs = UserBlogs.fromJson(_json['blogs']);
     }
-    if (_json.containsKey("created")) {
-      created = _json["created"];
+    if (_json.containsKey('created')) {
+      created = _json['created'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("locale")) {
-      locale = UserLocale.fromJson(_json["locale"]);
+    if (_json.containsKey('locale')) {
+      locale = UserLocale.fromJson(_json['locale']);
     }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -4333,31 +4332,31 @@ class User {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (about != null) {
-      _json["about"] = about;
+      _json['about'] = about;
     }
     if (blogs != null) {
-      _json["blogs"] = blogs.toJson();
+      _json['blogs'] = blogs.toJson();
     }
     if (created != null) {
-      _json["created"] = created;
+      _json['created'] = created;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (locale != null) {
-      _json["locale"] = locale.toJson();
+      _json['locale'] = locale.toJson();
     }
     if (selfLink != null) {
-      _json["selfLink"] = selfLink;
+      _json['selfLink'] = selfLink;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }

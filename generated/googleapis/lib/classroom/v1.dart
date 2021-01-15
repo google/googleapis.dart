@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,94 +37,94 @@ const core.String USER_AGENT = 'dart-api-client classroom/v1';
 class ClassroomApi {
   /// View and manage announcements in Google Classroom
   static const ClassroomAnnouncementsScope =
-      "https://www.googleapis.com/auth/classroom.announcements";
+      'https://www.googleapis.com/auth/classroom.announcements';
 
   /// View announcements in Google Classroom
   static const ClassroomAnnouncementsReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.announcements.readonly";
+      'https://www.googleapis.com/auth/classroom.announcements.readonly';
 
   /// Manage your Google Classroom classes
   static const ClassroomCoursesScope =
-      "https://www.googleapis.com/auth/classroom.courses";
+      'https://www.googleapis.com/auth/classroom.courses';
 
   /// View your Google Classroom classes
   static const ClassroomCoursesReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.courses.readonly";
+      'https://www.googleapis.com/auth/classroom.courses.readonly';
 
   /// Manage your course work and view your grades in Google Classroom
   static const ClassroomCourseworkMeScope =
-      "https://www.googleapis.com/auth/classroom.coursework.me";
+      'https://www.googleapis.com/auth/classroom.coursework.me';
 
   /// View your course work and grades in Google Classroom
   static const ClassroomCourseworkMeReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.coursework.me.readonly";
+      'https://www.googleapis.com/auth/classroom.coursework.me.readonly';
 
   /// Manage course work and grades for students in the Google Classroom classes
   /// you teach and view the course work and grades for classes you administer
   static const ClassroomCourseworkStudentsScope =
-      "https://www.googleapis.com/auth/classroom.coursework.students";
+      'https://www.googleapis.com/auth/classroom.coursework.students';
 
   /// View course work and grades for students in the Google Classroom classes
   /// you teach or administer
   static const ClassroomCourseworkStudentsReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.coursework.students.readonly";
+      'https://www.googleapis.com/auth/classroom.coursework.students.readonly';
 
   /// See, edit, and create classwork materials in Google Classroom
   static const ClassroomCourseworkmaterialsScope =
-      "https://www.googleapis.com/auth/classroom.courseworkmaterials";
+      'https://www.googleapis.com/auth/classroom.courseworkmaterials';
 
   /// See all classwork materials for your Google Classroom classes
   static const ClassroomCourseworkmaterialsReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly";
+      'https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly';
 
   /// View your Google Classroom guardians
   static const ClassroomGuardianlinksMeReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly";
+      'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly';
 
   /// View and manage guardians for students in your Google Classroom classes
   static const ClassroomGuardianlinksStudentsScope =
-      "https://www.googleapis.com/auth/classroom.guardianlinks.students";
+      'https://www.googleapis.com/auth/classroom.guardianlinks.students';
 
   /// View guardians for students in your Google Classroom classes
   static const ClassroomGuardianlinksStudentsReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.guardianlinks.students.readonly";
+      'https://www.googleapis.com/auth/classroom.guardianlinks.students.readonly';
 
   /// View the email addresses of people in your classes
   static const ClassroomProfileEmailsScope =
-      "https://www.googleapis.com/auth/classroom.profile.emails";
+      'https://www.googleapis.com/auth/classroom.profile.emails';
 
   /// View the profile photos of people in your classes
   static const ClassroomProfilePhotosScope =
-      "https://www.googleapis.com/auth/classroom.profile.photos";
+      'https://www.googleapis.com/auth/classroom.profile.photos';
 
   /// Receive notifications about your Google Classroom data
   static const ClassroomPushNotificationsScope =
-      "https://www.googleapis.com/auth/classroom.push-notifications";
+      'https://www.googleapis.com/auth/classroom.push-notifications';
 
   /// Manage your Google Classroom class rosters
   static const ClassroomRostersScope =
-      "https://www.googleapis.com/auth/classroom.rosters";
+      'https://www.googleapis.com/auth/classroom.rosters';
 
   /// View your Google Classroom class rosters
   static const ClassroomRostersReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.rosters.readonly";
+      'https://www.googleapis.com/auth/classroom.rosters.readonly';
 
   /// View your course work and grades in Google Classroom
   static const ClassroomStudentSubmissionsMeReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.student-submissions.me.readonly";
+      'https://www.googleapis.com/auth/classroom.student-submissions.me.readonly';
 
   /// View course work and grades for students in the Google Classroom classes
   /// you teach or administer
   static const ClassroomStudentSubmissionsStudentsReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.student-submissions.students.readonly";
+      'https://www.googleapis.com/auth/classroom.student-submissions.students.readonly';
 
   /// See, create, and edit topics in Google Classroom
   static const ClassroomTopicsScope =
-      "https://www.googleapis.com/auth/classroom.topics";
+      'https://www.googleapis.com/auth/classroom.topics';
 
   /// View topics in Google Classroom
   static const ClassroomTopicsReadonlyScope =
-      "https://www.googleapis.com/auth/classroom.topics.readonly";
+      'https://www.googleapis.com/auth/classroom.topics.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -137,8 +136,8 @@ class ClassroomApi {
       UserProfilesResourceApi(_requester);
 
   ClassroomApi(http.Client client,
-      {core.String rootUrl = "https://classroom.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://classroom.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -200,14 +199,14 @@ class CoursesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -249,17 +248,17 @@ class CoursesResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -301,17 +300,17 @@ class CoursesResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -379,29 +378,29 @@ class CoursesResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (studentId != null) {
-      _queryParams["studentId"] = [studentId];
+      _queryParams['studentId'] = [studentId];
     }
     if (teacherId != null) {
-      _queryParams["teacherId"] = [teacherId];
+      _queryParams['teacherId'] = [teacherId];
     }
     if (courseStates != null) {
-      _queryParams["courseStates"] = courseStates;
+      _queryParams['courseStates'] = courseStates;
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -462,20 +461,20 @@ class CoursesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -524,17 +523,17 @@ class CoursesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -591,10 +590,10 @@ class CoursesAliasesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -602,7 +601,7 @@ class CoursesAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -650,13 +649,13 @@ class CoursesAliasesResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (alias == null) {
-      throw core.ArgumentError("Parameter alias is required.");
+      throw core.ArgumentError('Parameter alias is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -666,7 +665,7 @@ class CoursesAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -719,16 +718,16 @@ class CoursesAliasesResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -736,7 +735,7 @@ class CoursesAliasesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -794,10 +793,10 @@ class CoursesAnnouncementsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -806,7 +805,7 @@ class CoursesAnnouncementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -857,13 +856,13 @@ class CoursesAnnouncementsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -873,7 +872,7 @@ class CoursesAnnouncementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -919,13 +918,13 @@ class CoursesAnnouncementsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -935,7 +934,7 @@ class CoursesAnnouncementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1003,22 +1002,22 @@ class CoursesAnnouncementsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (announcementStates != null) {
-      _queryParams["announcementStates"] = announcementStates;
+      _queryParams['announcementStates'] = announcementStates;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1027,7 +1026,7 @@ class CoursesAnnouncementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1081,13 +1080,13 @@ class CoursesAnnouncementsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1098,7 +1097,7 @@ class CoursesAnnouncementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1162,16 +1161,16 @@ class CoursesAnnouncementsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1181,7 +1180,7 @@ class CoursesAnnouncementsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1247,10 +1246,10 @@ class CoursesCourseWorkResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1259,7 +1258,7 @@ class CoursesCourseWorkResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1310,13 +1309,13 @@ class CoursesCourseWorkResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1326,7 +1325,7 @@ class CoursesCourseWorkResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1372,13 +1371,13 @@ class CoursesCourseWorkResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1388,7 +1387,7 @@ class CoursesCourseWorkResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1456,22 +1455,22 @@ class CoursesCourseWorkResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (courseWorkStates != null) {
-      _queryParams["courseWorkStates"] = courseWorkStates;
+      _queryParams['courseWorkStates'] = courseWorkStates;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1480,7 +1479,7 @@ class CoursesCourseWorkResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1533,13 +1532,13 @@ class CoursesCourseWorkResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1550,7 +1549,7 @@ class CoursesCourseWorkResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1621,16 +1620,16 @@ class CoursesCourseWorkResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1640,7 +1639,7 @@ class CoursesCourseWorkResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1696,16 +1695,16 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (courseWorkId == null) {
-      throw core.ArgumentError("Parameter courseWorkId is required.");
+      throw core.ArgumentError('Parameter courseWorkId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1717,7 +1716,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1801,28 +1800,28 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (courseWorkId == null) {
-      throw core.ArgumentError("Parameter courseWorkId is required.");
+      throw core.ArgumentError('Parameter courseWorkId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (userId != null) {
-      _queryParams["userId"] = [userId];
+      _queryParams['userId'] = [userId];
     }
     if (states != null) {
-      _queryParams["states"] = states;
+      _queryParams['states'] = states;
     }
     if (late != null) {
-      _queryParams["late"] = [late];
+      _queryParams['late'] = [late];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1833,7 +1832,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1895,16 +1894,16 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (courseWorkId == null) {
-      throw core.ArgumentError("Parameter courseWorkId is required.");
+      throw core.ArgumentError('Parameter courseWorkId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1917,7 +1916,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1984,19 +1983,19 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (courseWorkId == null) {
-      throw core.ArgumentError("Parameter courseWorkId is required.");
+      throw core.ArgumentError('Parameter courseWorkId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2008,7 +2007,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2072,16 +2071,16 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (courseWorkId == null) {
-      throw core.ArgumentError("Parameter courseWorkId is required.");
+      throw core.ArgumentError('Parameter courseWorkId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2094,7 +2093,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2158,16 +2157,16 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (courseWorkId == null) {
-      throw core.ArgumentError("Parameter courseWorkId is required.");
+      throw core.ArgumentError('Parameter courseWorkId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2180,7 +2179,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2242,16 +2241,16 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (courseWorkId == null) {
-      throw core.ArgumentError("Parameter courseWorkId is required.");
+      throw core.ArgumentError('Parameter courseWorkId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2264,7 +2263,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2323,10 +2322,10 @@ class CoursesCourseWorkMaterialsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2335,7 +2334,7 @@ class CoursesCourseWorkMaterialsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2386,13 +2385,13 @@ class CoursesCourseWorkMaterialsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2402,7 +2401,7 @@ class CoursesCourseWorkMaterialsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2448,13 +2447,13 @@ class CoursesCourseWorkMaterialsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2464,7 +2463,7 @@ class CoursesCourseWorkMaterialsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2542,28 +2541,28 @@ class CoursesCourseWorkMaterialsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (materialLink != null) {
-      _queryParams["materialLink"] = [materialLink];
+      _queryParams['materialLink'] = [materialLink];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+      _queryParams['orderBy'] = [orderBy];
     }
     if (courseWorkMaterialStates != null) {
-      _queryParams["courseWorkMaterialStates"] = courseWorkMaterialStates;
+      _queryParams['courseWorkMaterialStates'] = courseWorkMaterialStates;
     }
     if (materialDriveId != null) {
-      _queryParams["materialDriveId"] = [materialDriveId];
+      _queryParams['materialDriveId'] = [materialDriveId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2572,7 +2571,7 @@ class CoursesCourseWorkMaterialsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2637,16 +2636,16 @@ class CoursesCourseWorkMaterialsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2656,7 +2655,7 @@ class CoursesCourseWorkMaterialsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2720,13 +2719,13 @@ class CoursesStudentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (enrollmentCode != null) {
-      _queryParams["enrollmentCode"] = [enrollmentCode];
+      _queryParams['enrollmentCode'] = [enrollmentCode];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2735,7 +2734,7 @@ class CoursesStudentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2784,13 +2783,13 @@ class CoursesStudentsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2800,7 +2799,7 @@ class CoursesStudentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2849,13 +2848,13 @@ class CoursesStudentsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2865,7 +2864,7 @@ class CoursesStudentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2917,16 +2916,16 @@ class CoursesStudentsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2935,7 +2934,7 @@ class CoursesStudentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2993,10 +2992,10 @@ class CoursesTeachersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -3005,7 +3004,7 @@ class CoursesTeachersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3055,13 +3054,13 @@ class CoursesTeachersResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -3071,7 +3070,7 @@ class CoursesTeachersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3120,13 +3119,13 @@ class CoursesTeachersResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -3136,7 +3135,7 @@ class CoursesTeachersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3188,16 +3187,16 @@ class CoursesTeachersResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -3206,7 +3205,7 @@ class CoursesTeachersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3261,10 +3260,10 @@ class CoursesTopicsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -3272,7 +3271,7 @@ class CoursesTopicsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3318,13 +3317,13 @@ class CoursesTopicsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -3334,7 +3333,7 @@ class CoursesTopicsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3379,13 +3378,13 @@ class CoursesTopicsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -3395,7 +3394,7 @@ class CoursesTopicsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3449,16 +3448,16 @@ class CoursesTopicsResourceApi {
     core.String _body;
 
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -3466,7 +3465,7 @@ class CoursesTopicsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3527,16 +3526,16 @@ class CoursesTopicsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (courseId == null) {
-      throw core.ArgumentError("Parameter courseId is required.");
+      throw core.ArgumentError('Parameter courseId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -3546,7 +3545,7 @@ class CoursesTopicsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3598,17 +3597,17 @@ class InvitationsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id') + ':accept';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3657,14 +3656,14 @@ class InvitationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/invitations';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3705,17 +3704,17 @@ class InvitationsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3756,17 +3755,17 @@ class InvitationsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3826,26 +3825,26 @@ class InvitationsResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (userId != null) {
-      _queryParams["userId"] = [userId];
+      _queryParams['userId'] = [userId];
     }
     if (courseId != null) {
-      _queryParams["courseId"] = [courseId];
+      _queryParams['courseId'] = [courseId];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/invitations';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3913,14 +3912,14 @@ class RegistrationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/registrations';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3960,10 +3959,10 @@ class RegistrationsResourceApi {
     core.String _body;
 
     if (registrationId == null) {
-      throw core.ArgumentError("Parameter registrationId is required.");
+      throw core.ArgumentError('Parameter registrationId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -3971,7 +3970,7 @@ class RegistrationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4026,17 +4025,17 @@ class UserProfilesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$userId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4110,10 +4109,10 @@ class UserProfilesGuardianInvitationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (studentId == null) {
-      throw core.ArgumentError("Parameter studentId is required.");
+      throw core.ArgumentError('Parameter studentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -4122,7 +4121,7 @@ class UserProfilesGuardianInvitationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4174,13 +4173,13 @@ class UserProfilesGuardianInvitationsResourceApi {
     core.String _body;
 
     if (studentId == null) {
-      throw core.ArgumentError("Parameter studentId is required.");
+      throw core.ArgumentError('Parameter studentId is required.');
     }
     if (invitationId == null) {
-      throw core.ArgumentError("Parameter invitationId is required.");
+      throw core.ArgumentError('Parameter invitationId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -4190,7 +4189,7 @@ class UserProfilesGuardianInvitationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4264,22 +4263,22 @@ class UserProfilesGuardianInvitationsResourceApi {
     core.String _body;
 
     if (studentId == null) {
-      throw core.ArgumentError("Parameter studentId is required.");
+      throw core.ArgumentError('Parameter studentId is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (invitedEmailAddress != null) {
-      _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
+      _queryParams['invitedEmailAddress'] = [invitedEmailAddress];
     }
     if (states != null) {
-      _queryParams["states"] = states;
+      _queryParams['states'] = states;
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -4288,7 +4287,7 @@ class UserProfilesGuardianInvitationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4356,16 +4355,16 @@ class UserProfilesGuardianInvitationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (studentId == null) {
-      throw core.ArgumentError("Parameter studentId is required.");
+      throw core.ArgumentError('Parameter studentId is required.');
     }
     if (invitationId == null) {
-      throw core.ArgumentError("Parameter invitationId is required.");
+      throw core.ArgumentError('Parameter invitationId is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -4375,7 +4374,7 @@ class UserProfilesGuardianInvitationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4436,13 +4435,13 @@ class UserProfilesGuardiansResourceApi {
     core.String _body;
 
     if (studentId == null) {
-      throw core.ArgumentError("Parameter studentId is required.");
+      throw core.ArgumentError('Parameter studentId is required.');
     }
     if (guardianId == null) {
-      throw core.ArgumentError("Parameter guardianId is required.");
+      throw core.ArgumentError('Parameter guardianId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -4452,7 +4451,7 @@ class UserProfilesGuardiansResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4505,13 +4504,13 @@ class UserProfilesGuardiansResourceApi {
     core.String _body;
 
     if (studentId == null) {
-      throw core.ArgumentError("Parameter studentId is required.");
+      throw core.ArgumentError('Parameter studentId is required.');
     }
     if (guardianId == null) {
-      throw core.ArgumentError("Parameter guardianId is required.");
+      throw core.ArgumentError('Parameter guardianId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -4521,7 +4520,7 @@ class UserProfilesGuardiansResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4595,19 +4594,19 @@ class UserProfilesGuardiansResourceApi {
     core.String _body;
 
     if (studentId == null) {
-      throw core.ArgumentError("Parameter studentId is required.");
+      throw core.ArgumentError('Parameter studentId is required.');
     }
     if (invitedEmailAddress != null) {
-      _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
+      _queryParams['invitedEmailAddress'] = [invitedEmailAddress];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -4616,7 +4615,7 @@ class UserProfilesGuardiansResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4693,44 +4692,44 @@ class Announcement {
   Announcement();
 
   Announcement.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateLink")) {
-      alternateLink = _json["alternateLink"];
+    if (_json.containsKey('alternateLink')) {
+      alternateLink = _json['alternateLink'];
     }
-    if (_json.containsKey("assigneeMode")) {
-      assigneeMode = _json["assigneeMode"];
+    if (_json.containsKey('assigneeMode')) {
+      assigneeMode = _json['assigneeMode'];
     }
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("creatorUserId")) {
-      creatorUserId = _json["creatorUserId"];
+    if (_json.containsKey('creatorUserId')) {
+      creatorUserId = _json['creatorUserId'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("individualStudentsOptions")) {
+    if (_json.containsKey('individualStudentsOptions')) {
       individualStudentsOptions = IndividualStudentsOptions.fromJson(
-          _json["individualStudentsOptions"]);
+          _json['individualStudentsOptions']);
     }
-    if (_json.containsKey("materials")) {
-      materials = (_json["materials"] as core.List)
+    if (_json.containsKey('materials')) {
+      materials = (_json['materials'] as core.List)
           .map<Material>((value) => Material.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("scheduledTime")) {
-      scheduledTime = _json["scheduledTime"];
+    if (_json.containsKey('scheduledTime')) {
+      scheduledTime = _json['scheduledTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -4738,40 +4737,40 @@ class Announcement {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateLink != null) {
-      _json["alternateLink"] = alternateLink;
+      _json['alternateLink'] = alternateLink;
     }
     if (assigneeMode != null) {
-      _json["assigneeMode"] = assigneeMode;
+      _json['assigneeMode'] = assigneeMode;
     }
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (creatorUserId != null) {
-      _json["creatorUserId"] = creatorUserId;
+      _json['creatorUserId'] = creatorUserId;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (individualStudentsOptions != null) {
-      _json["individualStudentsOptions"] = individualStudentsOptions.toJson();
+      _json['individualStudentsOptions'] = individualStudentsOptions.toJson();
     }
     if (materials != null) {
-      _json["materials"] = materials.map((value) => value.toJson()).toList();
+      _json['materials'] = materials.map((value) => value.toJson()).toList();
     }
     if (scheduledTime != null) {
-      _json["scheduledTime"] = scheduledTime;
+      _json['scheduledTime'] = scheduledTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -4786,8 +4785,8 @@ class Assignment {
   Assignment();
 
   Assignment.fromJson(core.Map _json) {
-    if (_json.containsKey("studentWorkFolder")) {
-      studentWorkFolder = DriveFolder.fromJson(_json["studentWorkFolder"]);
+    if (_json.containsKey('studentWorkFolder')) {
+      studentWorkFolder = DriveFolder.fromJson(_json['studentWorkFolder']);
     }
   }
 
@@ -4795,7 +4794,7 @@ class Assignment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (studentWorkFolder != null) {
-      _json["studentWorkFolder"] = studentWorkFolder.toJson();
+      _json['studentWorkFolder'] = studentWorkFolder.toJson();
     }
     return _json;
   }
@@ -4814,8 +4813,8 @@ class AssignmentSubmission {
   AssignmentSubmission();
 
   AssignmentSubmission.fromJson(core.Map _json) {
-    if (_json.containsKey("attachments")) {
-      attachments = (_json["attachments"] as core.List)
+    if (_json.containsKey('attachments')) {
+      attachments = (_json['attachments'] as core.List)
           .map<Attachment>((value) => Attachment.fromJson(value))
           .toList();
     }
@@ -4825,7 +4824,7 @@ class AssignmentSubmission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attachments != null) {
-      _json["attachments"] =
+      _json['attachments'] =
           attachments.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4850,17 +4849,17 @@ class Attachment {
   Attachment();
 
   Attachment.fromJson(core.Map _json) {
-    if (_json.containsKey("driveFile")) {
-      driveFile = DriveFile.fromJson(_json["driveFile"]);
+    if (_json.containsKey('driveFile')) {
+      driveFile = DriveFile.fromJson(_json['driveFile']);
     }
-    if (_json.containsKey("form")) {
-      form = Form.fromJson(_json["form"]);
+    if (_json.containsKey('form')) {
+      form = Form.fromJson(_json['form']);
     }
-    if (_json.containsKey("link")) {
-      link = Link.fromJson(_json["link"]);
+    if (_json.containsKey('link')) {
+      link = Link.fromJson(_json['link']);
     }
-    if (_json.containsKey("youTubeVideo")) {
-      youTubeVideo = YouTubeVideo.fromJson(_json["youTubeVideo"]);
+    if (_json.containsKey('youTubeVideo')) {
+      youTubeVideo = YouTubeVideo.fromJson(_json['youTubeVideo']);
     }
   }
 
@@ -4868,16 +4867,16 @@ class Attachment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (driveFile != null) {
-      _json["driveFile"] = driveFile.toJson();
+      _json['driveFile'] = driveFile.toJson();
     }
     if (form != null) {
-      _json["form"] = form.toJson();
+      _json['form'] = form.toJson();
     }
     if (link != null) {
-      _json["link"] = link.toJson();
+      _json['link'] = link.toJson();
     }
     if (youTubeVideo != null) {
-      _json["youTubeVideo"] = youTubeVideo.toJson();
+      _json['youTubeVideo'] = youTubeVideo.toJson();
     }
     return _json;
   }
@@ -4895,8 +4894,8 @@ class CloudPubsubTopic {
   CloudPubsubTopic();
 
   CloudPubsubTopic.fromJson(core.Map _json) {
-    if (_json.containsKey("topicName")) {
-      topicName = _json["topicName"];
+    if (_json.containsKey('topicName')) {
+      topicName = _json['topicName'];
     }
   }
 
@@ -4904,7 +4903,7 @@ class CloudPubsubTopic {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (topicName != null) {
-      _json["topicName"] = topicName;
+      _json['topicName'] = topicName;
     }
     return _json;
   }
@@ -5020,61 +5019,61 @@ class Course {
   Course();
 
   Course.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateLink")) {
-      alternateLink = _json["alternateLink"];
+    if (_json.containsKey('alternateLink')) {
+      alternateLink = _json['alternateLink'];
     }
-    if (_json.containsKey("calendarId")) {
-      calendarId = _json["calendarId"];
+    if (_json.containsKey('calendarId')) {
+      calendarId = _json['calendarId'];
     }
-    if (_json.containsKey("courseGroupEmail")) {
-      courseGroupEmail = _json["courseGroupEmail"];
+    if (_json.containsKey('courseGroupEmail')) {
+      courseGroupEmail = _json['courseGroupEmail'];
     }
-    if (_json.containsKey("courseMaterialSets")) {
-      courseMaterialSets = (_json["courseMaterialSets"] as core.List)
+    if (_json.containsKey('courseMaterialSets')) {
+      courseMaterialSets = (_json['courseMaterialSets'] as core.List)
           .map<CourseMaterialSet>((value) => CourseMaterialSet.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("courseState")) {
-      courseState = _json["courseState"];
+    if (_json.containsKey('courseState')) {
+      courseState = _json['courseState'];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("descriptionHeading")) {
-      descriptionHeading = _json["descriptionHeading"];
+    if (_json.containsKey('descriptionHeading')) {
+      descriptionHeading = _json['descriptionHeading'];
     }
-    if (_json.containsKey("enrollmentCode")) {
-      enrollmentCode = _json["enrollmentCode"];
+    if (_json.containsKey('enrollmentCode')) {
+      enrollmentCode = _json['enrollmentCode'];
     }
-    if (_json.containsKey("guardiansEnabled")) {
-      guardiansEnabled = _json["guardiansEnabled"];
+    if (_json.containsKey('guardiansEnabled')) {
+      guardiansEnabled = _json['guardiansEnabled'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("ownerId")) {
-      ownerId = _json["ownerId"];
+    if (_json.containsKey('ownerId')) {
+      ownerId = _json['ownerId'];
     }
-    if (_json.containsKey("room")) {
-      room = _json["room"];
+    if (_json.containsKey('room')) {
+      room = _json['room'];
     }
-    if (_json.containsKey("section")) {
-      section = _json["section"];
+    if (_json.containsKey('section')) {
+      section = _json['section'];
     }
-    if (_json.containsKey("teacherFolder")) {
-      teacherFolder = DriveFolder.fromJson(_json["teacherFolder"]);
+    if (_json.containsKey('teacherFolder')) {
+      teacherFolder = DriveFolder.fromJson(_json['teacherFolder']);
     }
-    if (_json.containsKey("teacherGroupEmail")) {
-      teacherGroupEmail = _json["teacherGroupEmail"];
+    if (_json.containsKey('teacherGroupEmail')) {
+      teacherGroupEmail = _json['teacherGroupEmail'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -5082,59 +5081,59 @@ class Course {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateLink != null) {
-      _json["alternateLink"] = alternateLink;
+      _json['alternateLink'] = alternateLink;
     }
     if (calendarId != null) {
-      _json["calendarId"] = calendarId;
+      _json['calendarId'] = calendarId;
     }
     if (courseGroupEmail != null) {
-      _json["courseGroupEmail"] = courseGroupEmail;
+      _json['courseGroupEmail'] = courseGroupEmail;
     }
     if (courseMaterialSets != null) {
-      _json["courseMaterialSets"] =
+      _json['courseMaterialSets'] =
           courseMaterialSets.map((value) => value.toJson()).toList();
     }
     if (courseState != null) {
-      _json["courseState"] = courseState;
+      _json['courseState'] = courseState;
     }
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (descriptionHeading != null) {
-      _json["descriptionHeading"] = descriptionHeading;
+      _json['descriptionHeading'] = descriptionHeading;
     }
     if (enrollmentCode != null) {
-      _json["enrollmentCode"] = enrollmentCode;
+      _json['enrollmentCode'] = enrollmentCode;
     }
     if (guardiansEnabled != null) {
-      _json["guardiansEnabled"] = guardiansEnabled;
+      _json['guardiansEnabled'] = guardiansEnabled;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (ownerId != null) {
-      _json["ownerId"] = ownerId;
+      _json['ownerId'] = ownerId;
     }
     if (room != null) {
-      _json["room"] = room;
+      _json['room'] = room;
     }
     if (section != null) {
-      _json["section"] = section;
+      _json['section'] = section;
     }
     if (teacherFolder != null) {
-      _json["teacherFolder"] = teacherFolder.toJson();
+      _json['teacherFolder'] = teacherFolder.toJson();
     }
     if (teacherGroupEmail != null) {
-      _json["teacherGroupEmail"] = teacherGroupEmail;
+      _json['teacherGroupEmail'] = teacherGroupEmail;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -5161,8 +5160,8 @@ class CourseAlias {
   CourseAlias();
 
   CourseAlias.fromJson(core.Map _json) {
-    if (_json.containsKey("alias")) {
-      alias = _json["alias"];
+    if (_json.containsKey('alias')) {
+      alias = _json['alias'];
     }
   }
 
@@ -5170,7 +5169,7 @@ class CourseAlias {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alias != null) {
-      _json["alias"] = alias;
+      _json['alias'] = alias;
     }
     return _json;
   }
@@ -5193,17 +5192,17 @@ class CourseMaterial {
   CourseMaterial();
 
   CourseMaterial.fromJson(core.Map _json) {
-    if (_json.containsKey("driveFile")) {
-      driveFile = DriveFile.fromJson(_json["driveFile"]);
+    if (_json.containsKey('driveFile')) {
+      driveFile = DriveFile.fromJson(_json['driveFile']);
     }
-    if (_json.containsKey("form")) {
-      form = Form.fromJson(_json["form"]);
+    if (_json.containsKey('form')) {
+      form = Form.fromJson(_json['form']);
     }
-    if (_json.containsKey("link")) {
-      link = Link.fromJson(_json["link"]);
+    if (_json.containsKey('link')) {
+      link = Link.fromJson(_json['link']);
     }
-    if (_json.containsKey("youTubeVideo")) {
-      youTubeVideo = YouTubeVideo.fromJson(_json["youTubeVideo"]);
+    if (_json.containsKey('youTubeVideo')) {
+      youTubeVideo = YouTubeVideo.fromJson(_json['youTubeVideo']);
     }
   }
 
@@ -5211,16 +5210,16 @@ class CourseMaterial {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (driveFile != null) {
-      _json["driveFile"] = driveFile.toJson();
+      _json['driveFile'] = driveFile.toJson();
     }
     if (form != null) {
-      _json["form"] = form.toJson();
+      _json['form'] = form.toJson();
     }
     if (link != null) {
-      _json["link"] = link.toJson();
+      _json['link'] = link.toJson();
     }
     if (youTubeVideo != null) {
-      _json["youTubeVideo"] = youTubeVideo.toJson();
+      _json['youTubeVideo'] = youTubeVideo.toJson();
     }
     return _json;
   }
@@ -5239,13 +5238,13 @@ class CourseMaterialSet {
   CourseMaterialSet();
 
   CourseMaterialSet.fromJson(core.Map _json) {
-    if (_json.containsKey("materials")) {
-      materials = (_json["materials"] as core.List)
+    if (_json.containsKey('materials')) {
+      materials = (_json['materials'] as core.List)
           .map<CourseMaterial>((value) => CourseMaterial.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -5253,10 +5252,10 @@ class CourseMaterialSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (materials != null) {
-      _json["materials"] = materials.map((value) => value.toJson()).toList();
+      _json['materials'] = materials.map((value) => value.toJson()).toList();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -5270,8 +5269,8 @@ class CourseRosterChangesInfo {
   CourseRosterChangesInfo();
 
   CourseRosterChangesInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
   }
 
@@ -5279,7 +5278,7 @@ class CourseRosterChangesInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     return _json;
   }
@@ -5405,75 +5404,75 @@ class CourseWork {
   CourseWork();
 
   CourseWork.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateLink")) {
-      alternateLink = _json["alternateLink"];
+    if (_json.containsKey('alternateLink')) {
+      alternateLink = _json['alternateLink'];
     }
-    if (_json.containsKey("assigneeMode")) {
-      assigneeMode = _json["assigneeMode"];
+    if (_json.containsKey('assigneeMode')) {
+      assigneeMode = _json['assigneeMode'];
     }
-    if (_json.containsKey("assignment")) {
-      assignment = Assignment.fromJson(_json["assignment"]);
+    if (_json.containsKey('assignment')) {
+      assignment = Assignment.fromJson(_json['assignment']);
     }
-    if (_json.containsKey("associatedWithDeveloper")) {
-      associatedWithDeveloper = _json["associatedWithDeveloper"];
+    if (_json.containsKey('associatedWithDeveloper')) {
+      associatedWithDeveloper = _json['associatedWithDeveloper'];
     }
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("creatorUserId")) {
-      creatorUserId = _json["creatorUserId"];
+    if (_json.containsKey('creatorUserId')) {
+      creatorUserId = _json['creatorUserId'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("dueDate")) {
-      dueDate = Date.fromJson(_json["dueDate"]);
+    if (_json.containsKey('dueDate')) {
+      dueDate = Date.fromJson(_json['dueDate']);
     }
-    if (_json.containsKey("dueTime")) {
-      dueTime = TimeOfDay.fromJson(_json["dueTime"]);
+    if (_json.containsKey('dueTime')) {
+      dueTime = TimeOfDay.fromJson(_json['dueTime']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("individualStudentsOptions")) {
+    if (_json.containsKey('individualStudentsOptions')) {
       individualStudentsOptions = IndividualStudentsOptions.fromJson(
-          _json["individualStudentsOptions"]);
+          _json['individualStudentsOptions']);
     }
-    if (_json.containsKey("materials")) {
-      materials = (_json["materials"] as core.List)
+    if (_json.containsKey('materials')) {
+      materials = (_json['materials'] as core.List)
           .map<Material>((value) => Material.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("maxPoints")) {
-      maxPoints = _json["maxPoints"].toDouble();
+    if (_json.containsKey('maxPoints')) {
+      maxPoints = _json['maxPoints'].toDouble();
     }
-    if (_json.containsKey("multipleChoiceQuestion")) {
+    if (_json.containsKey('multipleChoiceQuestion')) {
       multipleChoiceQuestion =
-          MultipleChoiceQuestion.fromJson(_json["multipleChoiceQuestion"]);
+          MultipleChoiceQuestion.fromJson(_json['multipleChoiceQuestion']);
     }
-    if (_json.containsKey("scheduledTime")) {
-      scheduledTime = _json["scheduledTime"];
+    if (_json.containsKey('scheduledTime')) {
+      scheduledTime = _json['scheduledTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("submissionModificationMode")) {
-      submissionModificationMode = _json["submissionModificationMode"];
+    if (_json.containsKey('submissionModificationMode')) {
+      submissionModificationMode = _json['submissionModificationMode'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("topicId")) {
-      topicId = _json["topicId"];
+    if (_json.containsKey('topicId')) {
+      topicId = _json['topicId'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
-    if (_json.containsKey("workType")) {
-      workType = _json["workType"];
+    if (_json.containsKey('workType')) {
+      workType = _json['workType'];
     }
   }
 
@@ -5481,70 +5480,70 @@ class CourseWork {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateLink != null) {
-      _json["alternateLink"] = alternateLink;
+      _json['alternateLink'] = alternateLink;
     }
     if (assigneeMode != null) {
-      _json["assigneeMode"] = assigneeMode;
+      _json['assigneeMode'] = assigneeMode;
     }
     if (assignment != null) {
-      _json["assignment"] = assignment.toJson();
+      _json['assignment'] = assignment.toJson();
     }
     if (associatedWithDeveloper != null) {
-      _json["associatedWithDeveloper"] = associatedWithDeveloper;
+      _json['associatedWithDeveloper'] = associatedWithDeveloper;
     }
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (creatorUserId != null) {
-      _json["creatorUserId"] = creatorUserId;
+      _json['creatorUserId'] = creatorUserId;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (dueDate != null) {
-      _json["dueDate"] = dueDate.toJson();
+      _json['dueDate'] = dueDate.toJson();
     }
     if (dueTime != null) {
-      _json["dueTime"] = dueTime.toJson();
+      _json['dueTime'] = dueTime.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (individualStudentsOptions != null) {
-      _json["individualStudentsOptions"] = individualStudentsOptions.toJson();
+      _json['individualStudentsOptions'] = individualStudentsOptions.toJson();
     }
     if (materials != null) {
-      _json["materials"] = materials.map((value) => value.toJson()).toList();
+      _json['materials'] = materials.map((value) => value.toJson()).toList();
     }
     if (maxPoints != null) {
-      _json["maxPoints"] = maxPoints;
+      _json['maxPoints'] = maxPoints;
     }
     if (multipleChoiceQuestion != null) {
-      _json["multipleChoiceQuestion"] = multipleChoiceQuestion.toJson();
+      _json['multipleChoiceQuestion'] = multipleChoiceQuestion.toJson();
     }
     if (scheduledTime != null) {
-      _json["scheduledTime"] = scheduledTime;
+      _json['scheduledTime'] = scheduledTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (submissionModificationMode != null) {
-      _json["submissionModificationMode"] = submissionModificationMode;
+      _json['submissionModificationMode'] = submissionModificationMode;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (topicId != null) {
-      _json["topicId"] = topicId;
+      _json['topicId'] = topicId;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     if (workType != null) {
-      _json["workType"] = workType;
+      _json['workType'] = workType;
     }
     return _json;
   }
@@ -5558,8 +5557,8 @@ class CourseWorkChangesInfo {
   CourseWorkChangesInfo();
 
   CourseWorkChangesInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
   }
 
@@ -5567,7 +5566,7 @@ class CourseWorkChangesInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     return _json;
   }
@@ -5650,50 +5649,50 @@ class CourseWorkMaterial {
   CourseWorkMaterial();
 
   CourseWorkMaterial.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateLink")) {
-      alternateLink = _json["alternateLink"];
+    if (_json.containsKey('alternateLink')) {
+      alternateLink = _json['alternateLink'];
     }
-    if (_json.containsKey("assigneeMode")) {
-      assigneeMode = _json["assigneeMode"];
+    if (_json.containsKey('assigneeMode')) {
+      assigneeMode = _json['assigneeMode'];
     }
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("creatorUserId")) {
-      creatorUserId = _json["creatorUserId"];
+    if (_json.containsKey('creatorUserId')) {
+      creatorUserId = _json['creatorUserId'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("individualStudentsOptions")) {
+    if (_json.containsKey('individualStudentsOptions')) {
       individualStudentsOptions = IndividualStudentsOptions.fromJson(
-          _json["individualStudentsOptions"]);
+          _json['individualStudentsOptions']);
     }
-    if (_json.containsKey("materials")) {
-      materials = (_json["materials"] as core.List)
+    if (_json.containsKey('materials')) {
+      materials = (_json['materials'] as core.List)
           .map<Material>((value) => Material.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("scheduledTime")) {
-      scheduledTime = _json["scheduledTime"];
+    if (_json.containsKey('scheduledTime')) {
+      scheduledTime = _json['scheduledTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("topicId")) {
-      topicId = _json["topicId"];
+    if (_json.containsKey('topicId')) {
+      topicId = _json['topicId'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -5701,46 +5700,46 @@ class CourseWorkMaterial {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateLink != null) {
-      _json["alternateLink"] = alternateLink;
+      _json['alternateLink'] = alternateLink;
     }
     if (assigneeMode != null) {
-      _json["assigneeMode"] = assigneeMode;
+      _json['assigneeMode'] = assigneeMode;
     }
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (creatorUserId != null) {
-      _json["creatorUserId"] = creatorUserId;
+      _json['creatorUserId'] = creatorUserId;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (individualStudentsOptions != null) {
-      _json["individualStudentsOptions"] = individualStudentsOptions.toJson();
+      _json['individualStudentsOptions'] = individualStudentsOptions.toJson();
     }
     if (materials != null) {
-      _json["materials"] = materials.map((value) => value.toJson()).toList();
+      _json['materials'] = materials.map((value) => value.toJson()).toList();
     }
     if (scheduledTime != null) {
-      _json["scheduledTime"] = scheduledTime;
+      _json['scheduledTime'] = scheduledTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (topicId != null) {
-      _json["topicId"] = topicId;
+      _json['topicId'] = topicId;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -5771,14 +5770,14 @@ class Date {
   Date();
 
   Date.fromJson(core.Map _json) {
-    if (_json.containsKey("day")) {
-      day = _json["day"];
+    if (_json.containsKey('day')) {
+      day = _json['day'];
     }
-    if (_json.containsKey("month")) {
-      month = _json["month"];
+    if (_json.containsKey('month')) {
+      month = _json['month'];
     }
-    if (_json.containsKey("year")) {
-      year = _json["year"];
+    if (_json.containsKey('year')) {
+      year = _json['year'];
     }
   }
 
@@ -5786,13 +5785,13 @@ class Date {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (day != null) {
-      _json["day"] = day;
+      _json['day'] = day;
     }
     if (month != null) {
-      _json["month"] = month;
+      _json['month'] = month;
     }
     if (year != null) {
-      _json["year"] = year;
+      _json['year'] = year;
     }
     return _json;
   }
@@ -5815,17 +5814,17 @@ class DriveFile {
   DriveFile();
 
   DriveFile.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateLink")) {
-      alternateLink = _json["alternateLink"];
+    if (_json.containsKey('alternateLink')) {
+      alternateLink = _json['alternateLink'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("thumbnailUrl")) {
-      thumbnailUrl = _json["thumbnailUrl"];
+    if (_json.containsKey('thumbnailUrl')) {
+      thumbnailUrl = _json['thumbnailUrl'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -5833,16 +5832,16 @@ class DriveFile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateLink != null) {
-      _json["alternateLink"] = alternateLink;
+      _json['alternateLink'] = alternateLink;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (thumbnailUrl != null) {
-      _json["thumbnailUrl"] = thumbnailUrl;
+      _json['thumbnailUrl'] = thumbnailUrl;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -5862,14 +5861,14 @@ class DriveFolder {
   DriveFolder();
 
   DriveFolder.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateLink")) {
-      alternateLink = _json["alternateLink"];
+    if (_json.containsKey('alternateLink')) {
+      alternateLink = _json['alternateLink'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -5877,13 +5876,13 @@ class DriveFolder {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateLink != null) {
-      _json["alternateLink"] = alternateLink;
+      _json['alternateLink'] = alternateLink;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -5942,16 +5941,16 @@ class Feed {
   Feed();
 
   Feed.fromJson(core.Map _json) {
-    if (_json.containsKey("courseRosterChangesInfo")) {
+    if (_json.containsKey('courseRosterChangesInfo')) {
       courseRosterChangesInfo =
-          CourseRosterChangesInfo.fromJson(_json["courseRosterChangesInfo"]);
+          CourseRosterChangesInfo.fromJson(_json['courseRosterChangesInfo']);
     }
-    if (_json.containsKey("courseWorkChangesInfo")) {
+    if (_json.containsKey('courseWorkChangesInfo')) {
       courseWorkChangesInfo =
-          CourseWorkChangesInfo.fromJson(_json["courseWorkChangesInfo"]);
+          CourseWorkChangesInfo.fromJson(_json['courseWorkChangesInfo']);
     }
-    if (_json.containsKey("feedType")) {
-      feedType = _json["feedType"];
+    if (_json.containsKey('feedType')) {
+      feedType = _json['feedType'];
     }
   }
 
@@ -5959,13 +5958,13 @@ class Feed {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courseRosterChangesInfo != null) {
-      _json["courseRosterChangesInfo"] = courseRosterChangesInfo.toJson();
+      _json['courseRosterChangesInfo'] = courseRosterChangesInfo.toJson();
     }
     if (courseWorkChangesInfo != null) {
-      _json["courseWorkChangesInfo"] = courseWorkChangesInfo.toJson();
+      _json['courseWorkChangesInfo'] = courseWorkChangesInfo.toJson();
     }
     if (feedType != null) {
-      _json["feedType"] = feedType;
+      _json['feedType'] = feedType;
     }
     return _json;
   }
@@ -5990,17 +5989,17 @@ class Form {
   Form();
 
   Form.fromJson(core.Map _json) {
-    if (_json.containsKey("formUrl")) {
-      formUrl = _json["formUrl"];
+    if (_json.containsKey('formUrl')) {
+      formUrl = _json['formUrl'];
     }
-    if (_json.containsKey("responseUrl")) {
-      responseUrl = _json["responseUrl"];
+    if (_json.containsKey('responseUrl')) {
+      responseUrl = _json['responseUrl'];
     }
-    if (_json.containsKey("thumbnailUrl")) {
-      thumbnailUrl = _json["thumbnailUrl"];
+    if (_json.containsKey('thumbnailUrl')) {
+      thumbnailUrl = _json['thumbnailUrl'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -6008,16 +6007,16 @@ class Form {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (formUrl != null) {
-      _json["formUrl"] = formUrl;
+      _json['formUrl'] = formUrl;
     }
     if (responseUrl != null) {
-      _json["responseUrl"] = responseUrl;
+      _json['responseUrl'] = responseUrl;
     }
     if (thumbnailUrl != null) {
-      _json["thumbnailUrl"] = thumbnailUrl;
+      _json['thumbnailUrl'] = thumbnailUrl;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -6035,8 +6034,8 @@ class GlobalPermission {
   GlobalPermission();
 
   GlobalPermission.fromJson(core.Map _json) {
-    if (_json.containsKey("permission")) {
-      permission = _json["permission"];
+    if (_json.containsKey('permission')) {
+      permission = _json['permission'];
     }
   }
 
@@ -6044,7 +6043,7 @@ class GlobalPermission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permission != null) {
-      _json["permission"] = permission;
+      _json['permission'] = permission;
     }
     return _json;
   }
@@ -6078,20 +6077,20 @@ class GradeHistory {
   GradeHistory();
 
   GradeHistory.fromJson(core.Map _json) {
-    if (_json.containsKey("actorUserId")) {
-      actorUserId = _json["actorUserId"];
+    if (_json.containsKey('actorUserId')) {
+      actorUserId = _json['actorUserId'];
     }
-    if (_json.containsKey("gradeChangeType")) {
-      gradeChangeType = _json["gradeChangeType"];
+    if (_json.containsKey('gradeChangeType')) {
+      gradeChangeType = _json['gradeChangeType'];
     }
-    if (_json.containsKey("gradeTimestamp")) {
-      gradeTimestamp = _json["gradeTimestamp"];
+    if (_json.containsKey('gradeTimestamp')) {
+      gradeTimestamp = _json['gradeTimestamp'];
     }
-    if (_json.containsKey("maxPoints")) {
-      maxPoints = _json["maxPoints"].toDouble();
+    if (_json.containsKey('maxPoints')) {
+      maxPoints = _json['maxPoints'].toDouble();
     }
-    if (_json.containsKey("pointsEarned")) {
-      pointsEarned = _json["pointsEarned"].toDouble();
+    if (_json.containsKey('pointsEarned')) {
+      pointsEarned = _json['pointsEarned'].toDouble();
     }
   }
 
@@ -6099,19 +6098,19 @@ class GradeHistory {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actorUserId != null) {
-      _json["actorUserId"] = actorUserId;
+      _json['actorUserId'] = actorUserId;
     }
     if (gradeChangeType != null) {
-      _json["gradeChangeType"] = gradeChangeType;
+      _json['gradeChangeType'] = gradeChangeType;
     }
     if (gradeTimestamp != null) {
-      _json["gradeTimestamp"] = gradeTimestamp;
+      _json['gradeTimestamp'] = gradeTimestamp;
     }
     if (maxPoints != null) {
-      _json["maxPoints"] = maxPoints;
+      _json['maxPoints'] = maxPoints;
     }
     if (pointsEarned != null) {
-      _json["pointsEarned"] = pointsEarned;
+      _json['pointsEarned'] = pointsEarned;
     }
     return _json;
   }
@@ -6136,17 +6135,17 @@ class Guardian {
   Guardian();
 
   Guardian.fromJson(core.Map _json) {
-    if (_json.containsKey("guardianId")) {
-      guardianId = _json["guardianId"];
+    if (_json.containsKey('guardianId')) {
+      guardianId = _json['guardianId'];
     }
-    if (_json.containsKey("guardianProfile")) {
-      guardianProfile = UserProfile.fromJson(_json["guardianProfile"]);
+    if (_json.containsKey('guardianProfile')) {
+      guardianProfile = UserProfile.fromJson(_json['guardianProfile']);
     }
-    if (_json.containsKey("invitedEmailAddress")) {
-      invitedEmailAddress = _json["invitedEmailAddress"];
+    if (_json.containsKey('invitedEmailAddress')) {
+      invitedEmailAddress = _json['invitedEmailAddress'];
     }
-    if (_json.containsKey("studentId")) {
-      studentId = _json["studentId"];
+    if (_json.containsKey('studentId')) {
+      studentId = _json['studentId'];
     }
   }
 
@@ -6154,16 +6153,16 @@ class Guardian {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (guardianId != null) {
-      _json["guardianId"] = guardianId;
+      _json['guardianId'] = guardianId;
     }
     if (guardianProfile != null) {
-      _json["guardianProfile"] = guardianProfile.toJson();
+      _json['guardianProfile'] = guardianProfile.toJson();
     }
     if (invitedEmailAddress != null) {
-      _json["invitedEmailAddress"] = invitedEmailAddress;
+      _json['invitedEmailAddress'] = invitedEmailAddress;
     }
     if (studentId != null) {
-      _json["studentId"] = studentId;
+      _json['studentId'] = studentId;
     }
     return _json;
   }
@@ -6196,20 +6195,20 @@ class GuardianInvitation {
   GuardianInvitation();
 
   GuardianInvitation.fromJson(core.Map _json) {
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("invitationId")) {
-      invitationId = _json["invitationId"];
+    if (_json.containsKey('invitationId')) {
+      invitationId = _json['invitationId'];
     }
-    if (_json.containsKey("invitedEmailAddress")) {
-      invitedEmailAddress = _json["invitedEmailAddress"];
+    if (_json.containsKey('invitedEmailAddress')) {
+      invitedEmailAddress = _json['invitedEmailAddress'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("studentId")) {
-      studentId = _json["studentId"];
+    if (_json.containsKey('studentId')) {
+      studentId = _json['studentId'];
     }
   }
 
@@ -6217,19 +6216,19 @@ class GuardianInvitation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (invitationId != null) {
-      _json["invitationId"] = invitationId;
+      _json['invitationId'] = invitationId;
     }
     if (invitedEmailAddress != null) {
-      _json["invitedEmailAddress"] = invitedEmailAddress;
+      _json['invitedEmailAddress'] = invitedEmailAddress;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (studentId != null) {
-      _json["studentId"] = studentId;
+      _json['studentId'] = studentId;
     }
     return _json;
   }
@@ -6245,8 +6244,8 @@ class IndividualStudentsOptions {
   IndividualStudentsOptions();
 
   IndividualStudentsOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("studentIds")) {
-      studentIds = (_json["studentIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('studentIds')) {
+      studentIds = (_json['studentIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -6254,7 +6253,7 @@ class IndividualStudentsOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (studentIds != null) {
-      _json["studentIds"] = studentIds;
+      _json['studentIds'] = studentIds;
     }
     return _json;
   }
@@ -6285,17 +6284,17 @@ class Invitation {
   Invitation();
 
   Invitation.fromJson(core.Map _json) {
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -6303,16 +6302,16 @@ class Invitation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -6333,14 +6332,14 @@ class Link {
   Link();
 
   Link.fromJson(core.Map _json) {
-    if (_json.containsKey("thumbnailUrl")) {
-      thumbnailUrl = _json["thumbnailUrl"];
+    if (_json.containsKey('thumbnailUrl')) {
+      thumbnailUrl = _json['thumbnailUrl'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -6348,13 +6347,13 @@ class Link {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (thumbnailUrl != null) {
-      _json["thumbnailUrl"] = thumbnailUrl;
+      _json['thumbnailUrl'] = thumbnailUrl;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -6372,13 +6371,13 @@ class ListAnnouncementsResponse {
   ListAnnouncementsResponse();
 
   ListAnnouncementsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("announcements")) {
-      announcements = (_json["announcements"] as core.List)
+    if (_json.containsKey('announcements')) {
+      announcements = (_json['announcements'] as core.List)
           .map<Announcement>((value) => Announcement.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6386,11 +6385,11 @@ class ListAnnouncementsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (announcements != null) {
-      _json["announcements"] =
+      _json['announcements'] =
           announcements.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6408,13 +6407,13 @@ class ListCourseAliasesResponse {
   ListCourseAliasesResponse();
 
   ListCourseAliasesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("aliases")) {
-      aliases = (_json["aliases"] as core.List)
+    if (_json.containsKey('aliases')) {
+      aliases = (_json['aliases'] as core.List)
           .map<CourseAlias>((value) => CourseAlias.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6422,10 +6421,10 @@ class ListCourseAliasesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (aliases != null) {
-      _json["aliases"] = aliases.map((value) => value.toJson()).toList();
+      _json['aliases'] = aliases.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6443,14 +6442,14 @@ class ListCourseWorkMaterialResponse {
   ListCourseWorkMaterialResponse();
 
   ListCourseWorkMaterialResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("courseWorkMaterial")) {
-      courseWorkMaterial = (_json["courseWorkMaterial"] as core.List)
+    if (_json.containsKey('courseWorkMaterial')) {
+      courseWorkMaterial = (_json['courseWorkMaterial'] as core.List)
           .map<CourseWorkMaterial>(
               (value) => CourseWorkMaterial.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6458,11 +6457,11 @@ class ListCourseWorkMaterialResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courseWorkMaterial != null) {
-      _json["courseWorkMaterial"] =
+      _json['courseWorkMaterial'] =
           courseWorkMaterial.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6480,13 +6479,13 @@ class ListCourseWorkResponse {
   ListCourseWorkResponse();
 
   ListCourseWorkResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("courseWork")) {
-      courseWork = (_json["courseWork"] as core.List)
+    if (_json.containsKey('courseWork')) {
+      courseWork = (_json['courseWork'] as core.List)
           .map<CourseWork>((value) => CourseWork.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6494,10 +6493,10 @@ class ListCourseWorkResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courseWork != null) {
-      _json["courseWork"] = courseWork.map((value) => value.toJson()).toList();
+      _json['courseWork'] = courseWork.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6515,13 +6514,13 @@ class ListCoursesResponse {
   ListCoursesResponse();
 
   ListCoursesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("courses")) {
-      courses = (_json["courses"] as core.List)
+    if (_json.containsKey('courses')) {
+      courses = (_json['courses'] as core.List)
           .map<Course>((value) => Course.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6529,10 +6528,10 @@ class ListCoursesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courses != null) {
-      _json["courses"] = courses.map((value) => value.toJson()).toList();
+      _json['courses'] = courses.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6550,14 +6549,14 @@ class ListGuardianInvitationsResponse {
   ListGuardianInvitationsResponse();
 
   ListGuardianInvitationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("guardianInvitations")) {
-      guardianInvitations = (_json["guardianInvitations"] as core.List)
+    if (_json.containsKey('guardianInvitations')) {
+      guardianInvitations = (_json['guardianInvitations'] as core.List)
           .map<GuardianInvitation>(
               (value) => GuardianInvitation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6565,11 +6564,11 @@ class ListGuardianInvitationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (guardianInvitations != null) {
-      _json["guardianInvitations"] =
+      _json['guardianInvitations'] =
           guardianInvitations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6588,13 +6587,13 @@ class ListGuardiansResponse {
   ListGuardiansResponse();
 
   ListGuardiansResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("guardians")) {
-      guardians = (_json["guardians"] as core.List)
+    if (_json.containsKey('guardians')) {
+      guardians = (_json['guardians'] as core.List)
           .map<Guardian>((value) => Guardian.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6602,10 +6601,10 @@ class ListGuardiansResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (guardians != null) {
-      _json["guardians"] = guardians.map((value) => value.toJson()).toList();
+      _json['guardians'] = guardians.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6623,13 +6622,13 @@ class ListInvitationsResponse {
   ListInvitationsResponse();
 
   ListInvitationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("invitations")) {
-      invitations = (_json["invitations"] as core.List)
+    if (_json.containsKey('invitations')) {
+      invitations = (_json['invitations'] as core.List)
           .map<Invitation>((value) => Invitation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -6637,11 +6636,11 @@ class ListInvitationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (invitations != null) {
-      _json["invitations"] =
+      _json['invitations'] =
           invitations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -6659,11 +6658,11 @@ class ListStudentSubmissionsResponse {
   ListStudentSubmissionsResponse();
 
   ListStudentSubmissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("studentSubmissions")) {
-      studentSubmissions = (_json["studentSubmissions"] as core.List)
+    if (_json.containsKey('studentSubmissions')) {
+      studentSubmissions = (_json['studentSubmissions'] as core.List)
           .map<StudentSubmission>((value) => StudentSubmission.fromJson(value))
           .toList();
     }
@@ -6673,10 +6672,10 @@ class ListStudentSubmissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (studentSubmissions != null) {
-      _json["studentSubmissions"] =
+      _json['studentSubmissions'] =
           studentSubmissions.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6695,11 +6694,11 @@ class ListStudentsResponse {
   ListStudentsResponse();
 
   ListStudentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("students")) {
-      students = (_json["students"] as core.List)
+    if (_json.containsKey('students')) {
+      students = (_json['students'] as core.List)
           .map<Student>((value) => Student.fromJson(value))
           .toList();
     }
@@ -6709,10 +6708,10 @@ class ListStudentsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (students != null) {
-      _json["students"] = students.map((value) => value.toJson()).toList();
+      _json['students'] = students.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6730,11 +6729,11 @@ class ListTeachersResponse {
   ListTeachersResponse();
 
   ListTeachersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("teachers")) {
-      teachers = (_json["teachers"] as core.List)
+    if (_json.containsKey('teachers')) {
+      teachers = (_json['teachers'] as core.List)
           .map<Teacher>((value) => Teacher.fromJson(value))
           .toList();
     }
@@ -6744,10 +6743,10 @@ class ListTeachersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (teachers != null) {
-      _json["teachers"] = teachers.map((value) => value.toJson()).toList();
+      _json['teachers'] = teachers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6765,11 +6764,11 @@ class ListTopicResponse {
   ListTopicResponse();
 
   ListTopicResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("topic")) {
-      topic = (_json["topic"] as core.List)
+    if (_json.containsKey('topic')) {
+      topic = (_json['topic'] as core.List)
           .map<Topic>((value) => Topic.fromJson(value))
           .toList();
     }
@@ -6779,10 +6778,10 @@ class ListTopicResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (topic != null) {
-      _json["topic"] = topic.map((value) => value.toJson()).toList();
+      _json['topic'] = topic.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6807,17 +6806,17 @@ class Material {
   Material();
 
   Material.fromJson(core.Map _json) {
-    if (_json.containsKey("driveFile")) {
-      driveFile = SharedDriveFile.fromJson(_json["driveFile"]);
+    if (_json.containsKey('driveFile')) {
+      driveFile = SharedDriveFile.fromJson(_json['driveFile']);
     }
-    if (_json.containsKey("form")) {
-      form = Form.fromJson(_json["form"]);
+    if (_json.containsKey('form')) {
+      form = Form.fromJson(_json['form']);
     }
-    if (_json.containsKey("link")) {
-      link = Link.fromJson(_json["link"]);
+    if (_json.containsKey('link')) {
+      link = Link.fromJson(_json['link']);
     }
-    if (_json.containsKey("youtubeVideo")) {
-      youtubeVideo = YouTubeVideo.fromJson(_json["youtubeVideo"]);
+    if (_json.containsKey('youtubeVideo')) {
+      youtubeVideo = YouTubeVideo.fromJson(_json['youtubeVideo']);
     }
   }
 
@@ -6825,16 +6824,16 @@ class Material {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (driveFile != null) {
-      _json["driveFile"] = driveFile.toJson();
+      _json['driveFile'] = driveFile.toJson();
     }
     if (form != null) {
-      _json["form"] = form.toJson();
+      _json['form'] = form.toJson();
     }
     if (link != null) {
-      _json["link"] = link.toJson();
+      _json['link'] = link.toJson();
     }
     if (youtubeVideo != null) {
-      _json["youtubeVideo"] = youtubeVideo.toJson();
+      _json['youtubeVideo'] = youtubeVideo.toJson();
     }
     return _json;
   }
@@ -6858,13 +6857,13 @@ class ModifyAnnouncementAssigneesRequest {
   ModifyAnnouncementAssigneesRequest();
 
   ModifyAnnouncementAssigneesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("assigneeMode")) {
-      assigneeMode = _json["assigneeMode"];
+    if (_json.containsKey('assigneeMode')) {
+      assigneeMode = _json['assigneeMode'];
     }
-    if (_json.containsKey("modifyIndividualStudentsOptions")) {
+    if (_json.containsKey('modifyIndividualStudentsOptions')) {
       modifyIndividualStudentsOptions =
           ModifyIndividualStudentsOptions.fromJson(
-              _json["modifyIndividualStudentsOptions"]);
+              _json['modifyIndividualStudentsOptions']);
     }
   }
 
@@ -6872,10 +6871,10 @@ class ModifyAnnouncementAssigneesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (assigneeMode != null) {
-      _json["assigneeMode"] = assigneeMode;
+      _json['assigneeMode'] = assigneeMode;
     }
     if (modifyIndividualStudentsOptions != null) {
-      _json["modifyIndividualStudentsOptions"] =
+      _json['modifyIndividualStudentsOptions'] =
           modifyIndividualStudentsOptions.toJson();
     }
     return _json;
@@ -6891,8 +6890,8 @@ class ModifyAttachmentsRequest {
   ModifyAttachmentsRequest();
 
   ModifyAttachmentsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("addAttachments")) {
-      addAttachments = (_json["addAttachments"] as core.List)
+    if (_json.containsKey('addAttachments')) {
+      addAttachments = (_json['addAttachments'] as core.List)
           .map<Attachment>((value) => Attachment.fromJson(value))
           .toList();
     }
@@ -6902,7 +6901,7 @@ class ModifyAttachmentsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addAttachments != null) {
-      _json["addAttachments"] =
+      _json['addAttachments'] =
           addAttachments.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6927,13 +6926,13 @@ class ModifyCourseWorkAssigneesRequest {
   ModifyCourseWorkAssigneesRequest();
 
   ModifyCourseWorkAssigneesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("assigneeMode")) {
-      assigneeMode = _json["assigneeMode"];
+    if (_json.containsKey('assigneeMode')) {
+      assigneeMode = _json['assigneeMode'];
     }
-    if (_json.containsKey("modifyIndividualStudentsOptions")) {
+    if (_json.containsKey('modifyIndividualStudentsOptions')) {
       modifyIndividualStudentsOptions =
           ModifyIndividualStudentsOptions.fromJson(
-              _json["modifyIndividualStudentsOptions"]);
+              _json['modifyIndividualStudentsOptions']);
     }
   }
 
@@ -6941,10 +6940,10 @@ class ModifyCourseWorkAssigneesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (assigneeMode != null) {
-      _json["assigneeMode"] = assigneeMode;
+      _json['assigneeMode'] = assigneeMode;
     }
     if (modifyIndividualStudentsOptions != null) {
-      _json["modifyIndividualStudentsOptions"] =
+      _json['modifyIndividualStudentsOptions'] =
           modifyIndividualStudentsOptions.toJson();
     }
     return _json;
@@ -6965,12 +6964,12 @@ class ModifyIndividualStudentsOptions {
   ModifyIndividualStudentsOptions();
 
   ModifyIndividualStudentsOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("addStudentIds")) {
-      addStudentIds = (_json["addStudentIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('addStudentIds')) {
+      addStudentIds = (_json['addStudentIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("removeStudentIds")) {
+    if (_json.containsKey('removeStudentIds')) {
       removeStudentIds =
-          (_json["removeStudentIds"] as core.List).cast<core.String>();
+          (_json['removeStudentIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -6978,10 +6977,10 @@ class ModifyIndividualStudentsOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addStudentIds != null) {
-      _json["addStudentIds"] = addStudentIds;
+      _json['addStudentIds'] = addStudentIds;
     }
     if (removeStudentIds != null) {
-      _json["removeStudentIds"] = removeStudentIds;
+      _json['removeStudentIds'] = removeStudentIds;
     }
     return _json;
   }
@@ -6995,8 +6994,8 @@ class MultipleChoiceQuestion {
   MultipleChoiceQuestion();
 
   MultipleChoiceQuestion.fromJson(core.Map _json) {
-    if (_json.containsKey("choices")) {
-      choices = (_json["choices"] as core.List).cast<core.String>();
+    if (_json.containsKey('choices')) {
+      choices = (_json['choices'] as core.List).cast<core.String>();
     }
   }
 
@@ -7004,7 +7003,7 @@ class MultipleChoiceQuestion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (choices != null) {
-      _json["choices"] = choices;
+      _json['choices'] = choices;
     }
     return _json;
   }
@@ -7018,8 +7017,8 @@ class MultipleChoiceSubmission {
   MultipleChoiceSubmission();
 
   MultipleChoiceSubmission.fromJson(core.Map _json) {
-    if (_json.containsKey("answer")) {
-      answer = _json["answer"];
+    if (_json.containsKey('answer')) {
+      answer = _json['answer'];
     }
   }
 
@@ -7027,7 +7026,7 @@ class MultipleChoiceSubmission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (answer != null) {
-      _json["answer"] = answer;
+      _json['answer'] = answer;
     }
     return _json;
   }
@@ -7048,14 +7047,14 @@ class Name {
   Name();
 
   Name.fromJson(core.Map _json) {
-    if (_json.containsKey("familyName")) {
-      familyName = _json["familyName"];
+    if (_json.containsKey('familyName')) {
+      familyName = _json['familyName'];
     }
-    if (_json.containsKey("fullName")) {
-      fullName = _json["fullName"];
+    if (_json.containsKey('fullName')) {
+      fullName = _json['fullName'];
     }
-    if (_json.containsKey("givenName")) {
-      givenName = _json["givenName"];
+    if (_json.containsKey('givenName')) {
+      givenName = _json['givenName'];
     }
   }
 
@@ -7063,13 +7062,13 @@ class Name {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (familyName != null) {
-      _json["familyName"] = familyName;
+      _json['familyName'] = familyName;
     }
     if (fullName != null) {
-      _json["fullName"] = fullName;
+      _json['fullName'] = fullName;
     }
     if (givenName != null) {
-      _json["givenName"] = givenName;
+      _json['givenName'] = givenName;
     }
     return _json;
   }
@@ -7108,17 +7107,17 @@ class Registration {
   Registration();
 
   Registration.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudPubsubTopic")) {
-      cloudPubsubTopic = CloudPubsubTopic.fromJson(_json["cloudPubsubTopic"]);
+    if (_json.containsKey('cloudPubsubTopic')) {
+      cloudPubsubTopic = CloudPubsubTopic.fromJson(_json['cloudPubsubTopic']);
     }
-    if (_json.containsKey("expiryTime")) {
-      expiryTime = _json["expiryTime"];
+    if (_json.containsKey('expiryTime')) {
+      expiryTime = _json['expiryTime'];
     }
-    if (_json.containsKey("feed")) {
-      feed = Feed.fromJson(_json["feed"]);
+    if (_json.containsKey('feed')) {
+      feed = Feed.fromJson(_json['feed']);
     }
-    if (_json.containsKey("registrationId")) {
-      registrationId = _json["registrationId"];
+    if (_json.containsKey('registrationId')) {
+      registrationId = _json['registrationId'];
     }
   }
 
@@ -7126,16 +7125,16 @@ class Registration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cloudPubsubTopic != null) {
-      _json["cloudPubsubTopic"] = cloudPubsubTopic.toJson();
+      _json['cloudPubsubTopic'] = cloudPubsubTopic.toJson();
     }
     if (expiryTime != null) {
-      _json["expiryTime"] = expiryTime;
+      _json['expiryTime'] = expiryTime;
     }
     if (feed != null) {
-      _json["feed"] = feed.toJson();
+      _json['feed'] = feed.toJson();
     }
     if (registrationId != null) {
-      _json["registrationId"] = registrationId;
+      _json['registrationId'] = registrationId;
     }
     return _json;
   }
@@ -7171,11 +7170,11 @@ class SharedDriveFile {
   SharedDriveFile();
 
   SharedDriveFile.fromJson(core.Map _json) {
-    if (_json.containsKey("driveFile")) {
-      driveFile = DriveFile.fromJson(_json["driveFile"]);
+    if (_json.containsKey('driveFile')) {
+      driveFile = DriveFile.fromJson(_json['driveFile']);
     }
-    if (_json.containsKey("shareMode")) {
-      shareMode = _json["shareMode"];
+    if (_json.containsKey('shareMode')) {
+      shareMode = _json['shareMode'];
     }
   }
 
@@ -7183,10 +7182,10 @@ class SharedDriveFile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (driveFile != null) {
-      _json["driveFile"] = driveFile.toJson();
+      _json['driveFile'] = driveFile.toJson();
     }
     if (shareMode != null) {
-      _json["shareMode"] = shareMode;
+      _json['shareMode'] = shareMode;
     }
     return _json;
   }
@@ -7200,8 +7199,8 @@ class ShortAnswerSubmission {
   ShortAnswerSubmission();
 
   ShortAnswerSubmission.fromJson(core.Map _json) {
-    if (_json.containsKey("answer")) {
-      answer = _json["answer"];
+    if (_json.containsKey('answer')) {
+      answer = _json['answer'];
     }
   }
 
@@ -7209,7 +7208,7 @@ class ShortAnswerSubmission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (answer != null) {
-      _json["answer"] = answer;
+      _json['answer'] = answer;
     }
     return _json;
   }
@@ -7242,14 +7241,14 @@ class StateHistory {
   StateHistory();
 
   StateHistory.fromJson(core.Map _json) {
-    if (_json.containsKey("actorUserId")) {
-      actorUserId = _json["actorUserId"];
+    if (_json.containsKey('actorUserId')) {
+      actorUserId = _json['actorUserId'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("stateTimestamp")) {
-      stateTimestamp = _json["stateTimestamp"];
+    if (_json.containsKey('stateTimestamp')) {
+      stateTimestamp = _json['stateTimestamp'];
     }
   }
 
@@ -7257,13 +7256,13 @@ class StateHistory {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actorUserId != null) {
-      _json["actorUserId"] = actorUserId;
+      _json['actorUserId'] = actorUserId;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (stateTimestamp != null) {
-      _json["stateTimestamp"] = stateTimestamp;
+      _json['stateTimestamp'] = stateTimestamp;
     }
     return _json;
   }
@@ -7290,17 +7289,17 @@ class Student {
   Student();
 
   Student.fromJson(core.Map _json) {
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
-    if (_json.containsKey("profile")) {
-      profile = UserProfile.fromJson(_json["profile"]);
+    if (_json.containsKey('profile')) {
+      profile = UserProfile.fromJson(_json['profile']);
     }
-    if (_json.containsKey("studentWorkFolder")) {
-      studentWorkFolder = DriveFolder.fromJson(_json["studentWorkFolder"]);
+    if (_json.containsKey('studentWorkFolder')) {
+      studentWorkFolder = DriveFolder.fromJson(_json['studentWorkFolder']);
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -7308,16 +7307,16 @@ class Student {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     if (profile != null) {
-      _json["profile"] = profile.toJson();
+      _json['profile'] = profile.toJson();
     }
     if (studentWorkFolder != null) {
-      _json["studentWorkFolder"] = studentWorkFolder.toJson();
+      _json['studentWorkFolder'] = studentWorkFolder.toJson();
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -7410,61 +7409,61 @@ class StudentSubmission {
   StudentSubmission();
 
   StudentSubmission.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateLink")) {
-      alternateLink = _json["alternateLink"];
+    if (_json.containsKey('alternateLink')) {
+      alternateLink = _json['alternateLink'];
     }
-    if (_json.containsKey("assignedGrade")) {
-      assignedGrade = _json["assignedGrade"].toDouble();
+    if (_json.containsKey('assignedGrade')) {
+      assignedGrade = _json['assignedGrade'].toDouble();
     }
-    if (_json.containsKey("assignmentSubmission")) {
+    if (_json.containsKey('assignmentSubmission')) {
       assignmentSubmission =
-          AssignmentSubmission.fromJson(_json["assignmentSubmission"]);
+          AssignmentSubmission.fromJson(_json['assignmentSubmission']);
     }
-    if (_json.containsKey("associatedWithDeveloper")) {
-      associatedWithDeveloper = _json["associatedWithDeveloper"];
+    if (_json.containsKey('associatedWithDeveloper')) {
+      associatedWithDeveloper = _json['associatedWithDeveloper'];
     }
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
-    if (_json.containsKey("courseWorkId")) {
-      courseWorkId = _json["courseWorkId"];
+    if (_json.containsKey('courseWorkId')) {
+      courseWorkId = _json['courseWorkId'];
     }
-    if (_json.containsKey("courseWorkType")) {
-      courseWorkType = _json["courseWorkType"];
+    if (_json.containsKey('courseWorkType')) {
+      courseWorkType = _json['courseWorkType'];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("draftGrade")) {
-      draftGrade = _json["draftGrade"].toDouble();
+    if (_json.containsKey('draftGrade')) {
+      draftGrade = _json['draftGrade'].toDouble();
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("late")) {
-      late = _json["late"];
+    if (_json.containsKey('late')) {
+      late = _json['late'];
     }
-    if (_json.containsKey("multipleChoiceSubmission")) {
+    if (_json.containsKey('multipleChoiceSubmission')) {
       multipleChoiceSubmission =
-          MultipleChoiceSubmission.fromJson(_json["multipleChoiceSubmission"]);
+          MultipleChoiceSubmission.fromJson(_json['multipleChoiceSubmission']);
     }
-    if (_json.containsKey("shortAnswerSubmission")) {
+    if (_json.containsKey('shortAnswerSubmission')) {
       shortAnswerSubmission =
-          ShortAnswerSubmission.fromJson(_json["shortAnswerSubmission"]);
+          ShortAnswerSubmission.fromJson(_json['shortAnswerSubmission']);
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("submissionHistory")) {
-      submissionHistory = (_json["submissionHistory"] as core.List)
+    if (_json.containsKey('submissionHistory')) {
+      submissionHistory = (_json['submissionHistory'] as core.List)
           .map<SubmissionHistory>((value) => SubmissionHistory.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -7472,56 +7471,56 @@ class StudentSubmission {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateLink != null) {
-      _json["alternateLink"] = alternateLink;
+      _json['alternateLink'] = alternateLink;
     }
     if (assignedGrade != null) {
-      _json["assignedGrade"] = assignedGrade;
+      _json['assignedGrade'] = assignedGrade;
     }
     if (assignmentSubmission != null) {
-      _json["assignmentSubmission"] = assignmentSubmission.toJson();
+      _json['assignmentSubmission'] = assignmentSubmission.toJson();
     }
     if (associatedWithDeveloper != null) {
-      _json["associatedWithDeveloper"] = associatedWithDeveloper;
+      _json['associatedWithDeveloper'] = associatedWithDeveloper;
     }
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     if (courseWorkId != null) {
-      _json["courseWorkId"] = courseWorkId;
+      _json['courseWorkId'] = courseWorkId;
     }
     if (courseWorkType != null) {
-      _json["courseWorkType"] = courseWorkType;
+      _json['courseWorkType'] = courseWorkType;
     }
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (draftGrade != null) {
-      _json["draftGrade"] = draftGrade;
+      _json['draftGrade'] = draftGrade;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (late != null) {
-      _json["late"] = late;
+      _json['late'] = late;
     }
     if (multipleChoiceSubmission != null) {
-      _json["multipleChoiceSubmission"] = multipleChoiceSubmission.toJson();
+      _json['multipleChoiceSubmission'] = multipleChoiceSubmission.toJson();
     }
     if (shortAnswerSubmission != null) {
-      _json["shortAnswerSubmission"] = shortAnswerSubmission.toJson();
+      _json['shortAnswerSubmission'] = shortAnswerSubmission.toJson();
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (submissionHistory != null) {
-      _json["submissionHistory"] =
+      _json['submissionHistory'] =
           submissionHistory.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -7539,11 +7538,11 @@ class SubmissionHistory {
   SubmissionHistory();
 
   SubmissionHistory.fromJson(core.Map _json) {
-    if (_json.containsKey("gradeHistory")) {
-      gradeHistory = GradeHistory.fromJson(_json["gradeHistory"]);
+    if (_json.containsKey('gradeHistory')) {
+      gradeHistory = GradeHistory.fromJson(_json['gradeHistory']);
     }
-    if (_json.containsKey("stateHistory")) {
-      stateHistory = StateHistory.fromJson(_json["stateHistory"]);
+    if (_json.containsKey('stateHistory')) {
+      stateHistory = StateHistory.fromJson(_json['stateHistory']);
     }
   }
 
@@ -7551,10 +7550,10 @@ class SubmissionHistory {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gradeHistory != null) {
-      _json["gradeHistory"] = gradeHistory.toJson();
+      _json['gradeHistory'] = gradeHistory.toJson();
     }
     if (stateHistory != null) {
-      _json["stateHistory"] = stateHistory.toJson();
+      _json['stateHistory'] = stateHistory.toJson();
     }
     return _json;
   }
@@ -7577,14 +7576,14 @@ class Teacher {
   Teacher();
 
   Teacher.fromJson(core.Map _json) {
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
-    if (_json.containsKey("profile")) {
-      profile = UserProfile.fromJson(_json["profile"]);
+    if (_json.containsKey('profile')) {
+      profile = UserProfile.fromJson(_json['profile']);
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -7592,13 +7591,13 @@ class Teacher {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     if (profile != null) {
-      _json["profile"] = profile.toJson();
+      _json['profile'] = profile.toJson();
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }
@@ -7625,17 +7624,17 @@ class TimeOfDay {
   TimeOfDay();
 
   TimeOfDay.fromJson(core.Map _json) {
-    if (_json.containsKey("hours")) {
-      hours = _json["hours"];
+    if (_json.containsKey('hours')) {
+      hours = _json['hours'];
     }
-    if (_json.containsKey("minutes")) {
-      minutes = _json["minutes"];
+    if (_json.containsKey('minutes')) {
+      minutes = _json['minutes'];
     }
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'];
     }
-    if (_json.containsKey("seconds")) {
-      seconds = _json["seconds"];
+    if (_json.containsKey('seconds')) {
+      seconds = _json['seconds'];
     }
   }
 
@@ -7643,16 +7642,16 @@ class TimeOfDay {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hours != null) {
-      _json["hours"] = hours;
+      _json['hours'] = hours;
     }
     if (minutes != null) {
-      _json["minutes"] = minutes;
+      _json['minutes'] = minutes;
     }
     if (nanos != null) {
-      _json["nanos"] = nanos;
+      _json['nanos'] = nanos;
     }
     if (seconds != null) {
-      _json["seconds"] = seconds;
+      _json['seconds'] = seconds;
     }
     return _json;
   }
@@ -7679,17 +7678,17 @@ class Topic {
   Topic();
 
   Topic.fromJson(core.Map _json) {
-    if (_json.containsKey("courseId")) {
-      courseId = _json["courseId"];
+    if (_json.containsKey('courseId')) {
+      courseId = _json['courseId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("topicId")) {
-      topicId = _json["topicId"];
+    if (_json.containsKey('topicId')) {
+      topicId = _json['topicId'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -7697,16 +7696,16 @@ class Topic {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (courseId != null) {
-      _json["courseId"] = courseId;
+      _json['courseId'] = courseId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (topicId != null) {
-      _json["topicId"] = topicId;
+      _json['topicId'] = topicId;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -7751,25 +7750,25 @@ class UserProfile {
   UserProfile();
 
   UserProfile.fromJson(core.Map _json) {
-    if (_json.containsKey("emailAddress")) {
-      emailAddress = _json["emailAddress"];
+    if (_json.containsKey('emailAddress')) {
+      emailAddress = _json['emailAddress'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("name")) {
-      name = Name.fromJson(_json["name"]);
+    if (_json.containsKey('name')) {
+      name = Name.fromJson(_json['name']);
     }
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List)
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List)
           .map<GlobalPermission>((value) => GlobalPermission.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("photoUrl")) {
-      photoUrl = _json["photoUrl"];
+    if (_json.containsKey('photoUrl')) {
+      photoUrl = _json['photoUrl'];
     }
-    if (_json.containsKey("verifiedTeacher")) {
-      verifiedTeacher = _json["verifiedTeacher"];
+    if (_json.containsKey('verifiedTeacher')) {
+      verifiedTeacher = _json['verifiedTeacher'];
     }
   }
 
@@ -7777,23 +7776,23 @@ class UserProfile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (emailAddress != null) {
-      _json["emailAddress"] = emailAddress;
+      _json['emailAddress'] = emailAddress;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (name != null) {
-      _json["name"] = name.toJson();
+      _json['name'] = name.toJson();
     }
     if (permissions != null) {
-      _json["permissions"] =
+      _json['permissions'] =
           permissions.map((value) => value.toJson()).toList();
     }
     if (photoUrl != null) {
-      _json["photoUrl"] = photoUrl;
+      _json['photoUrl'] = photoUrl;
     }
     if (verifiedTeacher != null) {
-      _json["verifiedTeacher"] = verifiedTeacher;
+      _json['verifiedTeacher'] = verifiedTeacher;
     }
     return _json;
   }
@@ -7816,17 +7815,17 @@ class YouTubeVideo {
   YouTubeVideo();
 
   YouTubeVideo.fromJson(core.Map _json) {
-    if (_json.containsKey("alternateLink")) {
-      alternateLink = _json["alternateLink"];
+    if (_json.containsKey('alternateLink')) {
+      alternateLink = _json['alternateLink'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("thumbnailUrl")) {
-      thumbnailUrl = _json["thumbnailUrl"];
+    if (_json.containsKey('thumbnailUrl')) {
+      thumbnailUrl = _json['thumbnailUrl'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -7834,16 +7833,16 @@ class YouTubeVideo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternateLink != null) {
-      _json["alternateLink"] = alternateLink;
+      _json['alternateLink'] = alternateLink;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (thumbnailUrl != null) {
-      _json["thumbnailUrl"] = thumbnailUrl;
+      _json['thumbnailUrl'] = thumbnailUrl;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }

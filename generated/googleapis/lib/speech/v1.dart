@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,7 +37,7 @@ const core.String USER_AGENT = 'dart-api-client speech/v1';
 class SpeechApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -47,8 +46,8 @@ class SpeechApi {
   SpeechResourceApi get speech => SpeechResourceApi(_requester);
 
   SpeechApi(http.Client client,
-      {core.String rootUrl = "https://speech.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://speech.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -89,17 +88,17 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -154,26 +153,26 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name != null) {
-      _queryParams["name"] = [name];
+      _queryParams['name'] = [name];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/operations';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -241,17 +240,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -307,19 +306,19 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -327,7 +326,7 @@ class ProjectsLocationsOperationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -379,14 +378,14 @@ class SpeechResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/speech:longrunningrecognize';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -428,14 +427,14 @@ class SpeechResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/speech:recognize';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -457,11 +456,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -471,10 +470,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -501,17 +500,17 @@ class LongRunningRecognizeMetadata {
   LongRunningRecognizeMetadata();
 
   LongRunningRecognizeMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("lastUpdateTime")) {
-      lastUpdateTime = _json["lastUpdateTime"];
+    if (_json.containsKey('lastUpdateTime')) {
+      lastUpdateTime = _json['lastUpdateTime'];
     }
-    if (_json.containsKey("progressPercent")) {
-      progressPercent = _json["progressPercent"];
+    if (_json.containsKey('progressPercent')) {
+      progressPercent = _json['progressPercent'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -519,16 +518,16 @@ class LongRunningRecognizeMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lastUpdateTime != null) {
-      _json["lastUpdateTime"] = lastUpdateTime;
+      _json['lastUpdateTime'] = lastUpdateTime;
     }
     if (progressPercent != null) {
-      _json["progressPercent"] = progressPercent;
+      _json['progressPercent'] = progressPercent;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -547,11 +546,11 @@ class LongRunningRecognizeRequest {
   LongRunningRecognizeRequest();
 
   LongRunningRecognizeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("audio")) {
-      audio = RecognitionAudio.fromJson(_json["audio"]);
+    if (_json.containsKey('audio')) {
+      audio = RecognitionAudio.fromJson(_json['audio']);
     }
-    if (_json.containsKey("config")) {
-      config = RecognitionConfig.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = RecognitionConfig.fromJson(_json['config']);
     }
   }
 
@@ -559,10 +558,10 @@ class LongRunningRecognizeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audio != null) {
-      _json["audio"] = audio.toJson();
+      _json['audio'] = audio.toJson();
     }
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     return _json;
   }
@@ -581,8 +580,8 @@ class LongRunningRecognizeResponse {
   LongRunningRecognizeResponse();
 
   LongRunningRecognizeResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<SpeechRecognitionResult>(
               (value) => SpeechRecognitionResult.fromJson(value))
           .toList();
@@ -593,7 +592,7 @@ class LongRunningRecognizeResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -639,22 +638,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -662,19 +661,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -693,7 +692,7 @@ class RecognitionAudio {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// URI that points to a file that contains audio data bytes as specified in
@@ -708,11 +707,11 @@ class RecognitionAudio {
   RecognitionAudio();
 
   RecognitionAudio.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -720,10 +719,10 @@ class RecognitionAudio {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -866,51 +865,51 @@ class RecognitionConfig {
   RecognitionConfig();
 
   RecognitionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("audioChannelCount")) {
-      audioChannelCount = _json["audioChannelCount"];
+    if (_json.containsKey('audioChannelCount')) {
+      audioChannelCount = _json['audioChannelCount'];
     }
-    if (_json.containsKey("diarizationConfig")) {
+    if (_json.containsKey('diarizationConfig')) {
       diarizationConfig =
-          SpeakerDiarizationConfig.fromJson(_json["diarizationConfig"]);
+          SpeakerDiarizationConfig.fromJson(_json['diarizationConfig']);
     }
-    if (_json.containsKey("enableAutomaticPunctuation")) {
-      enableAutomaticPunctuation = _json["enableAutomaticPunctuation"];
+    if (_json.containsKey('enableAutomaticPunctuation')) {
+      enableAutomaticPunctuation = _json['enableAutomaticPunctuation'];
     }
-    if (_json.containsKey("enableSeparateRecognitionPerChannel")) {
+    if (_json.containsKey('enableSeparateRecognitionPerChannel')) {
       enableSeparateRecognitionPerChannel =
-          _json["enableSeparateRecognitionPerChannel"];
+          _json['enableSeparateRecognitionPerChannel'];
     }
-    if (_json.containsKey("enableWordTimeOffsets")) {
-      enableWordTimeOffsets = _json["enableWordTimeOffsets"];
+    if (_json.containsKey('enableWordTimeOffsets')) {
+      enableWordTimeOffsets = _json['enableWordTimeOffsets'];
     }
-    if (_json.containsKey("encoding")) {
-      encoding = _json["encoding"];
+    if (_json.containsKey('encoding')) {
+      encoding = _json['encoding'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("maxAlternatives")) {
-      maxAlternatives = _json["maxAlternatives"];
+    if (_json.containsKey('maxAlternatives')) {
+      maxAlternatives = _json['maxAlternatives'];
     }
-    if (_json.containsKey("metadata")) {
-      metadata = RecognitionMetadata.fromJson(_json["metadata"]);
+    if (_json.containsKey('metadata')) {
+      metadata = RecognitionMetadata.fromJson(_json['metadata']);
     }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
-    if (_json.containsKey("profanityFilter")) {
-      profanityFilter = _json["profanityFilter"];
+    if (_json.containsKey('profanityFilter')) {
+      profanityFilter = _json['profanityFilter'];
     }
-    if (_json.containsKey("sampleRateHertz")) {
-      sampleRateHertz = _json["sampleRateHertz"];
+    if (_json.containsKey('sampleRateHertz')) {
+      sampleRateHertz = _json['sampleRateHertz'];
     }
-    if (_json.containsKey("speechContexts")) {
-      speechContexts = (_json["speechContexts"] as core.List)
+    if (_json.containsKey('speechContexts')) {
+      speechContexts = (_json['speechContexts'] as core.List)
           .map<SpeechContext>((value) => SpeechContext.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("useEnhanced")) {
-      useEnhanced = _json["useEnhanced"];
+    if (_json.containsKey('useEnhanced')) {
+      useEnhanced = _json['useEnhanced'];
     }
   }
 
@@ -918,48 +917,48 @@ class RecognitionConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audioChannelCount != null) {
-      _json["audioChannelCount"] = audioChannelCount;
+      _json['audioChannelCount'] = audioChannelCount;
     }
     if (diarizationConfig != null) {
-      _json["diarizationConfig"] = diarizationConfig.toJson();
+      _json['diarizationConfig'] = diarizationConfig.toJson();
     }
     if (enableAutomaticPunctuation != null) {
-      _json["enableAutomaticPunctuation"] = enableAutomaticPunctuation;
+      _json['enableAutomaticPunctuation'] = enableAutomaticPunctuation;
     }
     if (enableSeparateRecognitionPerChannel != null) {
-      _json["enableSeparateRecognitionPerChannel"] =
+      _json['enableSeparateRecognitionPerChannel'] =
           enableSeparateRecognitionPerChannel;
     }
     if (enableWordTimeOffsets != null) {
-      _json["enableWordTimeOffsets"] = enableWordTimeOffsets;
+      _json['enableWordTimeOffsets'] = enableWordTimeOffsets;
     }
     if (encoding != null) {
-      _json["encoding"] = encoding;
+      _json['encoding'] = encoding;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (maxAlternatives != null) {
-      _json["maxAlternatives"] = maxAlternatives;
+      _json['maxAlternatives'] = maxAlternatives;
     }
     if (metadata != null) {
-      _json["metadata"] = metadata.toJson();
+      _json['metadata'] = metadata.toJson();
     }
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     if (profanityFilter != null) {
-      _json["profanityFilter"] = profanityFilter;
+      _json['profanityFilter'] = profanityFilter;
     }
     if (sampleRateHertz != null) {
-      _json["sampleRateHertz"] = sampleRateHertz;
+      _json['sampleRateHertz'] = sampleRateHertz;
     }
     if (speechContexts != null) {
-      _json["speechContexts"] =
+      _json['speechContexts'] =
           speechContexts.map((value) => value.toJson()).toList();
     }
     if (useEnhanced != null) {
-      _json["useEnhanced"] = useEnhanced;
+      _json['useEnhanced'] = useEnhanced;
     }
     return _json;
   }
@@ -1041,29 +1040,29 @@ class RecognitionMetadata {
   RecognitionMetadata();
 
   RecognitionMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("audioTopic")) {
-      audioTopic = _json["audioTopic"];
+    if (_json.containsKey('audioTopic')) {
+      audioTopic = _json['audioTopic'];
     }
-    if (_json.containsKey("industryNaicsCodeOfAudio")) {
-      industryNaicsCodeOfAudio = _json["industryNaicsCodeOfAudio"];
+    if (_json.containsKey('industryNaicsCodeOfAudio')) {
+      industryNaicsCodeOfAudio = _json['industryNaicsCodeOfAudio'];
     }
-    if (_json.containsKey("interactionType")) {
-      interactionType = _json["interactionType"];
+    if (_json.containsKey('interactionType')) {
+      interactionType = _json['interactionType'];
     }
-    if (_json.containsKey("microphoneDistance")) {
-      microphoneDistance = _json["microphoneDistance"];
+    if (_json.containsKey('microphoneDistance')) {
+      microphoneDistance = _json['microphoneDistance'];
     }
-    if (_json.containsKey("originalMediaType")) {
-      originalMediaType = _json["originalMediaType"];
+    if (_json.containsKey('originalMediaType')) {
+      originalMediaType = _json['originalMediaType'];
     }
-    if (_json.containsKey("originalMimeType")) {
-      originalMimeType = _json["originalMimeType"];
+    if (_json.containsKey('originalMimeType')) {
+      originalMimeType = _json['originalMimeType'];
     }
-    if (_json.containsKey("recordingDeviceName")) {
-      recordingDeviceName = _json["recordingDeviceName"];
+    if (_json.containsKey('recordingDeviceName')) {
+      recordingDeviceName = _json['recordingDeviceName'];
     }
-    if (_json.containsKey("recordingDeviceType")) {
-      recordingDeviceType = _json["recordingDeviceType"];
+    if (_json.containsKey('recordingDeviceType')) {
+      recordingDeviceType = _json['recordingDeviceType'];
     }
   }
 
@@ -1071,28 +1070,28 @@ class RecognitionMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audioTopic != null) {
-      _json["audioTopic"] = audioTopic;
+      _json['audioTopic'] = audioTopic;
     }
     if (industryNaicsCodeOfAudio != null) {
-      _json["industryNaicsCodeOfAudio"] = industryNaicsCodeOfAudio;
+      _json['industryNaicsCodeOfAudio'] = industryNaicsCodeOfAudio;
     }
     if (interactionType != null) {
-      _json["interactionType"] = interactionType;
+      _json['interactionType'] = interactionType;
     }
     if (microphoneDistance != null) {
-      _json["microphoneDistance"] = microphoneDistance;
+      _json['microphoneDistance'] = microphoneDistance;
     }
     if (originalMediaType != null) {
-      _json["originalMediaType"] = originalMediaType;
+      _json['originalMediaType'] = originalMediaType;
     }
     if (originalMimeType != null) {
-      _json["originalMimeType"] = originalMimeType;
+      _json['originalMimeType'] = originalMimeType;
     }
     if (recordingDeviceName != null) {
-      _json["recordingDeviceName"] = recordingDeviceName;
+      _json['recordingDeviceName'] = recordingDeviceName;
     }
     if (recordingDeviceType != null) {
-      _json["recordingDeviceType"] = recordingDeviceType;
+      _json['recordingDeviceType'] = recordingDeviceType;
     }
     return _json;
   }
@@ -1110,11 +1109,11 @@ class RecognizeRequest {
   RecognizeRequest();
 
   RecognizeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("audio")) {
-      audio = RecognitionAudio.fromJson(_json["audio"]);
+    if (_json.containsKey('audio')) {
+      audio = RecognitionAudio.fromJson(_json['audio']);
     }
-    if (_json.containsKey("config")) {
-      config = RecognitionConfig.fromJson(_json["config"]);
+    if (_json.containsKey('config')) {
+      config = RecognitionConfig.fromJson(_json['config']);
     }
   }
 
@@ -1122,10 +1121,10 @@ class RecognizeRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audio != null) {
-      _json["audio"] = audio.toJson();
+      _json['audio'] = audio.toJson();
     }
     if (config != null) {
-      _json["config"] = config.toJson();
+      _json['config'] = config.toJson();
     }
     return _json;
   }
@@ -1142,8 +1141,8 @@ class RecognizeResponse {
   RecognizeResponse();
 
   RecognizeResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<SpeechRecognitionResult>(
               (value) => SpeechRecognitionResult.fromJson(value))
           .toList();
@@ -1154,7 +1153,7 @@ class RecognizeResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1183,17 +1182,17 @@ class SpeakerDiarizationConfig {
   SpeakerDiarizationConfig();
 
   SpeakerDiarizationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("enableSpeakerDiarization")) {
-      enableSpeakerDiarization = _json["enableSpeakerDiarization"];
+    if (_json.containsKey('enableSpeakerDiarization')) {
+      enableSpeakerDiarization = _json['enableSpeakerDiarization'];
     }
-    if (_json.containsKey("maxSpeakerCount")) {
-      maxSpeakerCount = _json["maxSpeakerCount"];
+    if (_json.containsKey('maxSpeakerCount')) {
+      maxSpeakerCount = _json['maxSpeakerCount'];
     }
-    if (_json.containsKey("minSpeakerCount")) {
-      minSpeakerCount = _json["minSpeakerCount"];
+    if (_json.containsKey('minSpeakerCount')) {
+      minSpeakerCount = _json['minSpeakerCount'];
     }
-    if (_json.containsKey("speakerTag")) {
-      speakerTag = _json["speakerTag"];
+    if (_json.containsKey('speakerTag')) {
+      speakerTag = _json['speakerTag'];
     }
   }
 
@@ -1201,16 +1200,16 @@ class SpeakerDiarizationConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enableSpeakerDiarization != null) {
-      _json["enableSpeakerDiarization"] = enableSpeakerDiarization;
+      _json['enableSpeakerDiarization'] = enableSpeakerDiarization;
     }
     if (maxSpeakerCount != null) {
-      _json["maxSpeakerCount"] = maxSpeakerCount;
+      _json['maxSpeakerCount'] = maxSpeakerCount;
     }
     if (minSpeakerCount != null) {
-      _json["minSpeakerCount"] = minSpeakerCount;
+      _json['minSpeakerCount'] = minSpeakerCount;
     }
     if (speakerTag != null) {
-      _json["speakerTag"] = speakerTag;
+      _json['speakerTag'] = speakerTag;
     }
     return _json;
   }
@@ -1235,8 +1234,8 @@ class SpeechContext {
   SpeechContext();
 
   SpeechContext.fromJson(core.Map _json) {
-    if (_json.containsKey("phrases")) {
-      phrases = (_json["phrases"] as core.List).cast<core.String>();
+    if (_json.containsKey('phrases')) {
+      phrases = (_json['phrases'] as core.List).cast<core.String>();
     }
   }
 
@@ -1244,7 +1243,7 @@ class SpeechContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (phrases != null) {
-      _json["phrases"] = phrases;
+      _json['phrases'] = phrases;
     }
     return _json;
   }
@@ -1271,14 +1270,14 @@ class SpeechRecognitionAlternative {
   SpeechRecognitionAlternative();
 
   SpeechRecognitionAlternative.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("transcript")) {
-      transcript = _json["transcript"];
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'];
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<WordInfo>((value) => WordInfo.fromJson(value))
           .toList();
     }
@@ -1288,13 +1287,13 @@ class SpeechRecognitionAlternative {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (transcript != null) {
-      _json["transcript"] = transcript;
+      _json['transcript'] = transcript;
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1316,14 +1315,14 @@ class SpeechRecognitionResult {
   SpeechRecognitionResult();
 
   SpeechRecognitionResult.fromJson(core.Map _json) {
-    if (_json.containsKey("alternatives")) {
-      alternatives = (_json["alternatives"] as core.List)
+    if (_json.containsKey('alternatives')) {
+      alternatives = (_json['alternatives'] as core.List)
           .map<SpeechRecognitionAlternative>(
               (value) => SpeechRecognitionAlternative.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("channelTag")) {
-      channelTag = _json["channelTag"];
+    if (_json.containsKey('channelTag')) {
+      channelTag = _json['channelTag'];
     }
   }
 
@@ -1331,11 +1330,11 @@ class SpeechRecognitionResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alternatives != null) {
-      _json["alternatives"] =
+      _json['alternatives'] =
           alternatives.map((value) => value.toJson()).toList();
     }
     if (channelTag != null) {
-      _json["channelTag"] = channelTag;
+      _json['channelTag'] = channelTag;
     }
     return _json;
   }
@@ -1366,17 +1365,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -1384,13 +1383,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -1423,17 +1422,17 @@ class WordInfo {
   WordInfo();
 
   WordInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("speakerTag")) {
-      speakerTag = _json["speakerTag"];
+    if (_json.containsKey('speakerTag')) {
+      speakerTag = _json['speakerTag'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
-    if (_json.containsKey("word")) {
-      word = _json["word"];
+    if (_json.containsKey('word')) {
+      word = _json['word'];
     }
   }
 
@@ -1441,16 +1440,16 @@ class WordInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (speakerTag != null) {
-      _json["speakerTag"] = speakerTag;
+      _json['speakerTag'] = speakerTag;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     if (word != null) {
-      _json["word"] = word;
+      _json['word'] = word;
     }
     return _json;
   }

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,10 +75,10 @@ api.PromotionBodyLines buildPromotionBodyLines() {
   var o = api.PromotionBodyLines();
   buildCounterPromotionBodyLines++;
   if (buildCounterPromotionBodyLines < 3) {
-    o.htmlTitle = "foo";
-    o.link = "foo";
-    o.title = "foo";
-    o.url = "foo";
+    o.htmlTitle = 'foo';
+    o.link = 'foo';
+    o.title = 'foo';
+    o.url = 'foo';
   }
   buildCounterPromotionBodyLines--;
   return o;
@@ -114,7 +114,7 @@ api.PromotionImage buildPromotionImage() {
   buildCounterPromotionImage++;
   if (buildCounterPromotionImage < 3) {
     o.height = 42;
-    o.source = "foo";
+    o.source = 'foo';
     o.width = 42;
   }
   buildCounterPromotionImage--;
@@ -137,11 +137,11 @@ api.Promotion buildPromotion() {
   buildCounterPromotion++;
   if (buildCounterPromotion < 3) {
     o.bodyLines = buildUnnamed3956();
-    o.displayLink = "foo";
-    o.htmlTitle = "foo";
+    o.displayLink = 'foo';
+    o.htmlTitle = 'foo';
     o.image = buildPromotionImage();
-    o.link = "foo";
-    o.title = "foo";
+    o.link = 'foo';
+    o.title = 'foo';
   }
   buildCounterPromotion--;
   return o;
@@ -166,10 +166,10 @@ api.ResultImage buildResultImage() {
   buildCounterResultImage++;
   if (buildCounterResultImage < 3) {
     o.byteSize = 42;
-    o.contextLink = "foo";
+    o.contextLink = 'foo';
     o.height = 42;
     o.thumbnailHeight = 42;
-    o.thumbnailLink = "foo";
+    o.thumbnailLink = 'foo';
     o.thumbnailWidth = 42;
     o.width = 42;
   }
@@ -196,9 +196,9 @@ api.ResultLabels buildResultLabels() {
   var o = api.ResultLabels();
   buildCounterResultLabels++;
   if (buildCounterResultLabels < 3) {
-    o.displayName = "foo";
-    o.labelWithOp = "foo";
-    o.name = "foo";
+    o.displayName = 'foo';
+    o.labelWithOp = 'foo';
+    o.name = 'foo';
   }
   buildCounterResultLabels--;
   return o;
@@ -229,12 +229,12 @@ void checkUnnamed3957(core.List<api.ResultLabels> o) {
 
 core.Map<core.String, core.Object> buildUnnamed3958() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -244,16 +244,16 @@ core.Map<core.String, core.Object> buildUnnamed3958() {
 
 void checkUnnamed3958(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterResult = 0;
@@ -261,21 +261,21 @@ api.Result buildResult() {
   var o = api.Result();
   buildCounterResult++;
   if (buildCounterResult < 3) {
-    o.cacheId = "foo";
-    o.displayLink = "foo";
-    o.fileFormat = "foo";
-    o.formattedUrl = "foo";
-    o.htmlFormattedUrl = "foo";
-    o.htmlSnippet = "foo";
-    o.htmlTitle = "foo";
+    o.cacheId = 'foo';
+    o.displayLink = 'foo';
+    o.fileFormat = 'foo';
+    o.formattedUrl = 'foo';
+    o.htmlFormattedUrl = 'foo';
+    o.htmlSnippet = 'foo';
+    o.htmlTitle = 'foo';
     o.image = buildResultImage();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.labels = buildUnnamed3957();
-    o.link = "foo";
-    o.mime = "foo";
+    o.link = 'foo';
+    o.mime = 'foo';
     o.pagemap = buildUnnamed3958();
-    o.snippet = "foo";
-    o.title = "foo";
+    o.snippet = 'foo';
+    o.title = 'foo';
   }
   buildCounterResult--;
   return o;
@@ -305,12 +305,12 @@ void checkResult(api.Result o) {
 
 core.Map<core.String, core.Object> buildUnnamed3959() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -320,16 +320,16 @@ core.Map<core.String, core.Object> buildUnnamed3959() {
 
 void checkUnnamed3959(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.List<api.Result> buildUnnamed3960() {
@@ -364,41 +364,41 @@ api.SearchQueriesNextPage buildSearchQueriesNextPage() {
   buildCounterSearchQueriesNextPage++;
   if (buildCounterSearchQueriesNextPage < 3) {
     o.count = 42;
-    o.cr = "foo";
-    o.cx = "foo";
-    o.dateRestrict = "foo";
-    o.disableCnTwTranslation = "foo";
-    o.exactTerms = "foo";
-    o.excludeTerms = "foo";
-    o.fileType = "foo";
-    o.filter = "foo";
-    o.gl = "foo";
-    o.googleHost = "foo";
-    o.highRange = "foo";
-    o.hl = "foo";
-    o.hq = "foo";
-    o.imgColorType = "foo";
-    o.imgDominantColor = "foo";
-    o.imgSize = "foo";
-    o.imgType = "foo";
-    o.inputEncoding = "foo";
-    o.language = "foo";
-    o.linkSite = "foo";
-    o.lowRange = "foo";
-    o.orTerms = "foo";
-    o.outputEncoding = "foo";
-    o.relatedSite = "foo";
-    o.rights = "foo";
-    o.safe = "foo";
-    o.searchTerms = "foo";
-    o.searchType = "foo";
-    o.siteSearch = "foo";
-    o.siteSearchFilter = "foo";
-    o.sort = "foo";
+    o.cr = 'foo';
+    o.cx = 'foo';
+    o.dateRestrict = 'foo';
+    o.disableCnTwTranslation = 'foo';
+    o.exactTerms = 'foo';
+    o.excludeTerms = 'foo';
+    o.fileType = 'foo';
+    o.filter = 'foo';
+    o.gl = 'foo';
+    o.googleHost = 'foo';
+    o.highRange = 'foo';
+    o.hl = 'foo';
+    o.hq = 'foo';
+    o.imgColorType = 'foo';
+    o.imgDominantColor = 'foo';
+    o.imgSize = 'foo';
+    o.imgType = 'foo';
+    o.inputEncoding = 'foo';
+    o.language = 'foo';
+    o.linkSite = 'foo';
+    o.lowRange = 'foo';
+    o.orTerms = 'foo';
+    o.outputEncoding = 'foo';
+    o.relatedSite = 'foo';
+    o.rights = 'foo';
+    o.safe = 'foo';
+    o.searchTerms = 'foo';
+    o.searchType = 'foo';
+    o.siteSearch = 'foo';
+    o.siteSearchFilter = 'foo';
+    o.sort = 'foo';
     o.startIndex = 42;
     o.startPage = 42;
-    o.title = "foo";
-    o.totalResults = "foo";
+    o.title = 'foo';
+    o.totalResults = 'foo';
   }
   buildCounterSearchQueriesNextPage--;
   return o;
@@ -466,41 +466,41 @@ api.SearchQueriesPreviousPage buildSearchQueriesPreviousPage() {
   buildCounterSearchQueriesPreviousPage++;
   if (buildCounterSearchQueriesPreviousPage < 3) {
     o.count = 42;
-    o.cr = "foo";
-    o.cx = "foo";
-    o.dateRestrict = "foo";
-    o.disableCnTwTranslation = "foo";
-    o.exactTerms = "foo";
-    o.excludeTerms = "foo";
-    o.fileType = "foo";
-    o.filter = "foo";
-    o.gl = "foo";
-    o.googleHost = "foo";
-    o.highRange = "foo";
-    o.hl = "foo";
-    o.hq = "foo";
-    o.imgColorType = "foo";
-    o.imgDominantColor = "foo";
-    o.imgSize = "foo";
-    o.imgType = "foo";
-    o.inputEncoding = "foo";
-    o.language = "foo";
-    o.linkSite = "foo";
-    o.lowRange = "foo";
-    o.orTerms = "foo";
-    o.outputEncoding = "foo";
-    o.relatedSite = "foo";
-    o.rights = "foo";
-    o.safe = "foo";
-    o.searchTerms = "foo";
-    o.searchType = "foo";
-    o.siteSearch = "foo";
-    o.siteSearchFilter = "foo";
-    o.sort = "foo";
+    o.cr = 'foo';
+    o.cx = 'foo';
+    o.dateRestrict = 'foo';
+    o.disableCnTwTranslation = 'foo';
+    o.exactTerms = 'foo';
+    o.excludeTerms = 'foo';
+    o.fileType = 'foo';
+    o.filter = 'foo';
+    o.gl = 'foo';
+    o.googleHost = 'foo';
+    o.highRange = 'foo';
+    o.hl = 'foo';
+    o.hq = 'foo';
+    o.imgColorType = 'foo';
+    o.imgDominantColor = 'foo';
+    o.imgSize = 'foo';
+    o.imgType = 'foo';
+    o.inputEncoding = 'foo';
+    o.language = 'foo';
+    o.linkSite = 'foo';
+    o.lowRange = 'foo';
+    o.orTerms = 'foo';
+    o.outputEncoding = 'foo';
+    o.relatedSite = 'foo';
+    o.rights = 'foo';
+    o.safe = 'foo';
+    o.searchTerms = 'foo';
+    o.searchType = 'foo';
+    o.siteSearch = 'foo';
+    o.siteSearchFilter = 'foo';
+    o.sort = 'foo';
     o.startIndex = 42;
     o.startPage = 42;
-    o.title = "foo";
-    o.totalResults = "foo";
+    o.title = 'foo';
+    o.totalResults = 'foo';
   }
   buildCounterSearchQueriesPreviousPage--;
   return o;
@@ -568,41 +568,41 @@ api.SearchQueriesRequest buildSearchQueriesRequest() {
   buildCounterSearchQueriesRequest++;
   if (buildCounterSearchQueriesRequest < 3) {
     o.count = 42;
-    o.cr = "foo";
-    o.cx = "foo";
-    o.dateRestrict = "foo";
-    o.disableCnTwTranslation = "foo";
-    o.exactTerms = "foo";
-    o.excludeTerms = "foo";
-    o.fileType = "foo";
-    o.filter = "foo";
-    o.gl = "foo";
-    o.googleHost = "foo";
-    o.highRange = "foo";
-    o.hl = "foo";
-    o.hq = "foo";
-    o.imgColorType = "foo";
-    o.imgDominantColor = "foo";
-    o.imgSize = "foo";
-    o.imgType = "foo";
-    o.inputEncoding = "foo";
-    o.language = "foo";
-    o.linkSite = "foo";
-    o.lowRange = "foo";
-    o.orTerms = "foo";
-    o.outputEncoding = "foo";
-    o.relatedSite = "foo";
-    o.rights = "foo";
-    o.safe = "foo";
-    o.searchTerms = "foo";
-    o.searchType = "foo";
-    o.siteSearch = "foo";
-    o.siteSearchFilter = "foo";
-    o.sort = "foo";
+    o.cr = 'foo';
+    o.cx = 'foo';
+    o.dateRestrict = 'foo';
+    o.disableCnTwTranslation = 'foo';
+    o.exactTerms = 'foo';
+    o.excludeTerms = 'foo';
+    o.fileType = 'foo';
+    o.filter = 'foo';
+    o.gl = 'foo';
+    o.googleHost = 'foo';
+    o.highRange = 'foo';
+    o.hl = 'foo';
+    o.hq = 'foo';
+    o.imgColorType = 'foo';
+    o.imgDominantColor = 'foo';
+    o.imgSize = 'foo';
+    o.imgType = 'foo';
+    o.inputEncoding = 'foo';
+    o.language = 'foo';
+    o.linkSite = 'foo';
+    o.lowRange = 'foo';
+    o.orTerms = 'foo';
+    o.outputEncoding = 'foo';
+    o.relatedSite = 'foo';
+    o.rights = 'foo';
+    o.safe = 'foo';
+    o.searchTerms = 'foo';
+    o.searchType = 'foo';
+    o.siteSearch = 'foo';
+    o.siteSearchFilter = 'foo';
+    o.sort = 'foo';
     o.startIndex = 42;
     o.startPage = 42;
-    o.title = "foo";
-    o.totalResults = "foo";
+    o.title = 'foo';
+    o.totalResults = 'foo';
   }
   buildCounterSearchQueriesRequest--;
   return o;
@@ -692,10 +692,10 @@ api.SearchSearchInformation buildSearchSearchInformation() {
   var o = api.SearchSearchInformation();
   buildCounterSearchSearchInformation++;
   if (buildCounterSearchSearchInformation < 3) {
-    o.formattedSearchTime = "foo";
-    o.formattedTotalResults = "foo";
+    o.formattedSearchTime = 'foo';
+    o.formattedTotalResults = 'foo';
     o.searchTime = 42.0;
-    o.totalResults = "foo";
+    o.totalResults = 'foo';
   }
   buildCounterSearchSearchInformation--;
   return o;
@@ -717,8 +717,8 @@ api.SearchSpelling buildSearchSpelling() {
   var o = api.SearchSpelling();
   buildCounterSearchSpelling++;
   if (buildCounterSearchSpelling < 3) {
-    o.correctedQuery = "foo";
-    o.htmlCorrectedQuery = "foo";
+    o.correctedQuery = 'foo';
+    o.htmlCorrectedQuery = 'foo';
   }
   buildCounterSearchSpelling--;
   return o;
@@ -738,8 +738,8 @@ api.SearchUrl buildSearchUrl() {
   var o = api.SearchUrl();
   buildCounterSearchUrl++;
   if (buildCounterSearchUrl < 3) {
-    o.template = "foo";
-    o.type = "foo";
+    o.template = 'foo';
+    o.type = 'foo';
   }
   buildCounterSearchUrl--;
   return o;
@@ -761,7 +761,7 @@ api.Search buildSearch() {
   if (buildCounterSearch < 3) {
     o.context = buildUnnamed3959();
     o.items = buildUnnamed3960();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.promotions = buildUnnamed3961();
     o.queries = buildSearchQueries();
     o.searchInformation = buildSearchSearchInformation();
@@ -788,154 +788,154 @@ void checkSearch(api.Search o) {
 }
 
 void main() {
-  unittest.group("obj-schema-PromotionBodyLines", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PromotionBodyLines', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPromotionBodyLines();
       var od = api.PromotionBodyLines.fromJson(o.toJson());
       checkPromotionBodyLines(od);
     });
   });
 
-  unittest.group("obj-schema-PromotionImage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PromotionImage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPromotionImage();
       var od = api.PromotionImage.fromJson(o.toJson());
       checkPromotionImage(od);
     });
   });
 
-  unittest.group("obj-schema-Promotion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Promotion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPromotion();
       var od = api.Promotion.fromJson(o.toJson());
       checkPromotion(od);
     });
   });
 
-  unittest.group("obj-schema-ResultImage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResultImage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResultImage();
       var od = api.ResultImage.fromJson(o.toJson());
       checkResultImage(od);
     });
   });
 
-  unittest.group("obj-schema-ResultLabels", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResultLabels', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResultLabels();
       var od = api.ResultLabels.fromJson(o.toJson());
       checkResultLabels(od);
     });
   });
 
-  unittest.group("obj-schema-Result", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Result', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResult();
       var od = api.Result.fromJson(o.toJson());
       checkResult(od);
     });
   });
 
-  unittest.group("obj-schema-SearchQueriesNextPage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchQueriesNextPage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchQueriesNextPage();
       var od = api.SearchQueriesNextPage.fromJson(o.toJson());
       checkSearchQueriesNextPage(od);
     });
   });
 
-  unittest.group("obj-schema-SearchQueriesPreviousPage", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchQueriesPreviousPage', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchQueriesPreviousPage();
       var od = api.SearchQueriesPreviousPage.fromJson(o.toJson());
       checkSearchQueriesPreviousPage(od);
     });
   });
 
-  unittest.group("obj-schema-SearchQueriesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchQueriesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchQueriesRequest();
       var od = api.SearchQueriesRequest.fromJson(o.toJson());
       checkSearchQueriesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-SearchQueries", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchQueries', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchQueries();
       var od = api.SearchQueries.fromJson(o.toJson());
       checkSearchQueries(od);
     });
   });
 
-  unittest.group("obj-schema-SearchSearchInformation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchSearchInformation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchSearchInformation();
       var od = api.SearchSearchInformation.fromJson(o.toJson());
       checkSearchSearchInformation(od);
     });
   });
 
-  unittest.group("obj-schema-SearchSpelling", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchSpelling', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchSpelling();
       var od = api.SearchSpelling.fromJson(o.toJson());
       checkSearchSpelling(od);
     });
   });
 
-  unittest.group("obj-schema-SearchUrl", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SearchUrl', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearchUrl();
       var od = api.SearchUrl.fromJson(o.toJson());
       checkSearchUrl(od);
     });
   });
 
-  unittest.group("obj-schema-Search", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Search', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSearch();
       var od = api.Search.fromJson(o.toJson());
       checkSearch(od);
     });
   });
 
-  unittest.group("resource-CseResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-CseResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CseResourceApi res = api.CustomsearchApi(mock).cse;
-      var arg_dateRestrict = "foo";
-      var arg_relatedSite = "foo";
-      var arg_hl = "foo";
-      var arg_fileType = "foo";
-      var arg_googlehost = "foo";
-      var arg_imgType = "foo";
-      var arg_q = "foo";
-      var arg_imgColorType = "foo";
-      var arg_rights = "foo";
-      var arg_cr = "foo";
-      var arg_cx = "foo";
-      var arg_siteSearchFilter = "foo";
-      var arg_orTerms = "foo";
-      var arg_sort = "foo";
-      var arg_highRange = "foo";
-      var arg_imgDominantColor = "foo";
-      var arg_safe = "foo";
+      var arg_dateRestrict = 'foo';
+      var arg_relatedSite = 'foo';
+      var arg_hl = 'foo';
+      var arg_fileType = 'foo';
+      var arg_googlehost = 'foo';
+      var arg_imgType = 'foo';
+      var arg_q = 'foo';
+      var arg_imgColorType = 'foo';
+      var arg_rights = 'foo';
+      var arg_cr = 'foo';
+      var arg_cx = 'foo';
+      var arg_siteSearchFilter = 'foo';
+      var arg_orTerms = 'foo';
+      var arg_sort = 'foo';
+      var arg_highRange = 'foo';
+      var arg_imgDominantColor = 'foo';
+      var arg_safe = 'foo';
       var arg_num = 42;
-      var arg_filter = "foo";
-      var arg_searchType = "foo";
-      var arg_exactTerms = "foo";
-      var arg_linkSite = "foo";
-      var arg_lowRange = "foo";
-      var arg_gl = "foo";
-      var arg_excludeTerms = "foo";
-      var arg_c2coff = "foo";
+      var arg_filter = 'foo';
+      var arg_searchType = 'foo';
+      var arg_exactTerms = 'foo';
+      var arg_linkSite = 'foo';
+      var arg_lowRange = 'foo';
+      var arg_gl = 'foo';
+      var arg_excludeTerms = 'foo';
+      var arg_c2coff = 'foo';
       var arg_start = 42;
-      var arg_lr = "foo";
-      var arg_imgSize = "foo";
-      var arg_siteSearch = "foo";
-      var arg_hq = "foo";
-      var arg_$fields = "foo";
+      var arg_lr = 'foo';
+      var arg_imgSize = 'foo';
+      var arg_siteSearch = 'foo';
+      var arg_hq = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -954,8 +954,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1015,7 +1015,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSearch());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1060,43 +1060,43 @@ void main() {
     });
   });
 
-  unittest.group("resource-CseSiterestrictResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-CseSiterestrictResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CseSiterestrictResourceApi res =
           api.CustomsearchApi(mock).cse.siterestrict;
-      var arg_relatedSite = "foo";
-      var arg_cx = "foo";
-      var arg_hl = "foo";
-      var arg_imgType = "foo";
-      var arg_siteSearch = "foo";
-      var arg_lowRange = "foo";
-      var arg_gl = "foo";
-      var arg_filter = "foo";
-      var arg_q = "foo";
-      var arg_siteSearchFilter = "foo";
-      var arg_hq = "foo";
+      var arg_relatedSite = 'foo';
+      var arg_cx = 'foo';
+      var arg_hl = 'foo';
+      var arg_imgType = 'foo';
+      var arg_siteSearch = 'foo';
+      var arg_lowRange = 'foo';
+      var arg_gl = 'foo';
+      var arg_filter = 'foo';
+      var arg_q = 'foo';
+      var arg_siteSearchFilter = 'foo';
+      var arg_hq = 'foo';
       var arg_num = 42;
-      var arg_orTerms = "foo";
-      var arg_lr = "foo";
-      var arg_rights = "foo";
-      var arg_sort = "foo";
-      var arg_imgSize = "foo";
-      var arg_cr = "foo";
-      var arg_dateRestrict = "foo";
+      var arg_orTerms = 'foo';
+      var arg_lr = 'foo';
+      var arg_rights = 'foo';
+      var arg_sort = 'foo';
+      var arg_imgSize = 'foo';
+      var arg_cr = 'foo';
+      var arg_dateRestrict = 'foo';
       var arg_start = 42;
-      var arg_linkSite = "foo";
-      var arg_searchType = "foo";
-      var arg_fileType = "foo";
-      var arg_highRange = "foo";
-      var arg_exactTerms = "foo";
-      var arg_c2coff = "foo";
-      var arg_excludeTerms = "foo";
-      var arg_imgDominantColor = "foo";
-      var arg_safe = "foo";
-      var arg_imgColorType = "foo";
-      var arg_googlehost = "foo";
-      var arg_$fields = "foo";
+      var arg_linkSite = 'foo';
+      var arg_searchType = 'foo';
+      var arg_fileType = 'foo';
+      var arg_highRange = 'foo';
+      var arg_exactTerms = 'foo';
+      var arg_c2coff = 'foo';
+      var arg_excludeTerms = 'foo';
+      var arg_imgDominantColor = 'foo';
+      var arg_safe = 'foo';
+      var arg_imgColorType = 'foo';
+      var arg_googlehost = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1115,8 +1115,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1176,7 +1176,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSearch());
         return async.Future.value(stringResponse(200, h, resp));

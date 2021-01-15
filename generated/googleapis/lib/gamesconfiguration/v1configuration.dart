@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -48,7 +47,7 @@ const core.String USER_AGENT =
 class GamesConfigurationApi {
   /// View and manage your Google Play Developer account
   static const AndroidpublisherScope =
-      "https://www.googleapis.com/auth/androidpublisher";
+      'https://www.googleapis.com/auth/androidpublisher';
 
   final commons.ApiRequester _requester;
 
@@ -60,8 +59,8 @@ class GamesConfigurationApi {
       LeaderboardConfigurationsResourceApi(_requester);
 
   GamesConfigurationApi(http.Client client,
-      {core.String rootUrl = "https://gamesconfiguration.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://gamesconfiguration.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -98,10 +97,10 @@ class AchievementConfigurationsResourceApi {
     core.String _body;
 
     if (achievementId == null) {
-      throw core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError('Parameter achievementId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -111,7 +110,7 @@ class AchievementConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -149,10 +148,10 @@ class AchievementConfigurationsResourceApi {
     core.String _body;
 
     if (achievementId == null) {
-      throw core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError('Parameter achievementId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1configuration/achievements/' +
@@ -160,7 +159,7 @@ class AchievementConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -205,10 +204,10 @@ class AchievementConfigurationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1configuration/applications/' +
@@ -217,7 +216,7 @@ class AchievementConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -264,16 +263,16 @@ class AchievementConfigurationsResourceApi {
     core.String _body;
 
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1configuration/applications/' +
@@ -282,7 +281,7 @@ class AchievementConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -327,10 +326,10 @@ class AchievementConfigurationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (achievementId == null) {
-      throw core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError('Parameter achievementId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1configuration/achievements/' +
@@ -338,7 +337,7 @@ class AchievementConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -393,13 +392,13 @@ class ImageConfigurationsResourceApi {
     core.String _body;
 
     if (resourceId == null) {
-      throw core.ArgumentError("Parameter resourceId is required.");
+      throw core.ArgumentError('Parameter resourceId is required.');
     }
     if (imageType == null) {
-      throw core.ArgumentError("Parameter imageType is required.");
+      throw core.ArgumentError('Parameter imageType is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -419,7 +418,7 @@ class ImageConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -462,10 +461,10 @@ class LeaderboardConfigurationsResourceApi {
     core.String _body;
 
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -475,7 +474,7 @@ class LeaderboardConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -513,10 +512,10 @@ class LeaderboardConfigurationsResourceApi {
     core.String _body;
 
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1configuration/leaderboards/' +
@@ -524,7 +523,7 @@ class LeaderboardConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -569,10 +568,10 @@ class LeaderboardConfigurationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1configuration/applications/' +
@@ -581,7 +580,7 @@ class LeaderboardConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -628,16 +627,16 @@ class LeaderboardConfigurationsResourceApi {
     core.String _body;
 
     if (applicationId == null) {
-      throw core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError('Parameter applicationId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1configuration/applications/' +
@@ -646,7 +645,7 @@ class LeaderboardConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -691,10 +690,10 @@ class LeaderboardConfigurationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (leaderboardId == null) {
-      throw core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError('Parameter leaderboardId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'games/v1configuration/leaderboards/' +
@@ -702,7 +701,7 @@ class LeaderboardConfigurationsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -751,29 +750,29 @@ class AchievementConfiguration {
   AchievementConfiguration();
 
   AchievementConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("achievementType")) {
-      achievementType = _json["achievementType"];
+    if (_json.containsKey('achievementType')) {
+      achievementType = _json['achievementType'];
     }
-    if (_json.containsKey("draft")) {
-      draft = AchievementConfigurationDetail.fromJson(_json["draft"]);
+    if (_json.containsKey('draft')) {
+      draft = AchievementConfigurationDetail.fromJson(_json['draft']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("initialState")) {
-      initialState = _json["initialState"];
+    if (_json.containsKey('initialState')) {
+      initialState = _json['initialState'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("published")) {
-      published = AchievementConfigurationDetail.fromJson(_json["published"]);
+    if (_json.containsKey('published')) {
+      published = AchievementConfigurationDetail.fromJson(_json['published']);
     }
-    if (_json.containsKey("stepsToUnlock")) {
-      stepsToUnlock = _json["stepsToUnlock"];
+    if (_json.containsKey('stepsToUnlock')) {
+      stepsToUnlock = _json['stepsToUnlock'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
   }
 
@@ -781,28 +780,28 @@ class AchievementConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (achievementType != null) {
-      _json["achievementType"] = achievementType;
+      _json['achievementType'] = achievementType;
     }
     if (draft != null) {
-      _json["draft"] = draft.toJson();
+      _json['draft'] = draft.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (initialState != null) {
-      _json["initialState"] = initialState;
+      _json['initialState'] = initialState;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (published != null) {
-      _json["published"] = published.toJson();
+      _json['published'] = published.toJson();
     }
     if (stepsToUnlock != null) {
-      _json["stepsToUnlock"] = stepsToUnlock;
+      _json['stepsToUnlock'] = stepsToUnlock;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     return _json;
   }
@@ -832,23 +831,23 @@ class AchievementConfigurationDetail {
   AchievementConfigurationDetail();
 
   AchievementConfigurationDetail.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = LocalizedStringBundle.fromJson(_json["description"]);
+    if (_json.containsKey('description')) {
+      description = LocalizedStringBundle.fromJson(_json['description']);
     }
-    if (_json.containsKey("iconUrl")) {
-      iconUrl = _json["iconUrl"];
+    if (_json.containsKey('iconUrl')) {
+      iconUrl = _json['iconUrl'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = LocalizedStringBundle.fromJson(_json["name"]);
+    if (_json.containsKey('name')) {
+      name = LocalizedStringBundle.fromJson(_json['name']);
     }
-    if (_json.containsKey("pointValue")) {
-      pointValue = _json["pointValue"];
+    if (_json.containsKey('pointValue')) {
+      pointValue = _json['pointValue'];
     }
-    if (_json.containsKey("sortRank")) {
-      sortRank = _json["sortRank"];
+    if (_json.containsKey('sortRank')) {
+      sortRank = _json['sortRank'];
     }
   }
 
@@ -856,22 +855,22 @@ class AchievementConfigurationDetail {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description.toJson();
+      _json['description'] = description.toJson();
     }
     if (iconUrl != null) {
-      _json["iconUrl"] = iconUrl;
+      _json['iconUrl'] = iconUrl;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name.toJson();
+      _json['name'] = name.toJson();
     }
     if (pointValue != null) {
-      _json["pointValue"] = pointValue;
+      _json['pointValue'] = pointValue;
     }
     if (sortRank != null) {
-      _json["sortRank"] = sortRank;
+      _json['sortRank'] = sortRank;
     }
     return _json;
   }
@@ -892,17 +891,17 @@ class AchievementConfigurationListResponse {
   AchievementConfigurationListResponse();
 
   AchievementConfigurationListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<AchievementConfiguration>(
               (value) => AchievementConfiguration.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -910,13 +909,13 @@ class AchievementConfigurationListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -953,23 +952,23 @@ class GamesNumberAffixConfiguration {
   GamesNumberAffixConfiguration();
 
   GamesNumberAffixConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("few")) {
-      few = LocalizedStringBundle.fromJson(_json["few"]);
+    if (_json.containsKey('few')) {
+      few = LocalizedStringBundle.fromJson(_json['few']);
     }
-    if (_json.containsKey("many")) {
-      many = LocalizedStringBundle.fromJson(_json["many"]);
+    if (_json.containsKey('many')) {
+      many = LocalizedStringBundle.fromJson(_json['many']);
     }
-    if (_json.containsKey("one")) {
-      one = LocalizedStringBundle.fromJson(_json["one"]);
+    if (_json.containsKey('one')) {
+      one = LocalizedStringBundle.fromJson(_json['one']);
     }
-    if (_json.containsKey("other")) {
-      other = LocalizedStringBundle.fromJson(_json["other"]);
+    if (_json.containsKey('other')) {
+      other = LocalizedStringBundle.fromJson(_json['other']);
     }
-    if (_json.containsKey("two")) {
-      two = LocalizedStringBundle.fromJson(_json["two"]);
+    if (_json.containsKey('two')) {
+      two = LocalizedStringBundle.fromJson(_json['two']);
     }
-    if (_json.containsKey("zero")) {
-      zero = LocalizedStringBundle.fromJson(_json["zero"]);
+    if (_json.containsKey('zero')) {
+      zero = LocalizedStringBundle.fromJson(_json['zero']);
     }
   }
 
@@ -977,22 +976,22 @@ class GamesNumberAffixConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (few != null) {
-      _json["few"] = few.toJson();
+      _json['few'] = few.toJson();
     }
     if (many != null) {
-      _json["many"] = many.toJson();
+      _json['many'] = many.toJson();
     }
     if (one != null) {
-      _json["one"] = one.toJson();
+      _json['one'] = one.toJson();
     }
     if (other != null) {
-      _json["other"] = other.toJson();
+      _json['other'] = other.toJson();
     }
     if (two != null) {
-      _json["two"] = two.toJson();
+      _json['two'] = two.toJson();
     }
     if (zero != null) {
-      _json["zero"] = zero.toJson();
+      _json['zero'] = zero.toJson();
     }
     return _json;
   }
@@ -1024,17 +1023,17 @@ class GamesNumberFormatConfiguration {
   GamesNumberFormatConfiguration();
 
   GamesNumberFormatConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'];
     }
-    if (_json.containsKey("numDecimalPlaces")) {
-      numDecimalPlaces = _json["numDecimalPlaces"];
+    if (_json.containsKey('numDecimalPlaces')) {
+      numDecimalPlaces = _json['numDecimalPlaces'];
     }
-    if (_json.containsKey("numberFormatType")) {
-      numberFormatType = _json["numberFormatType"];
+    if (_json.containsKey('numberFormatType')) {
+      numberFormatType = _json['numberFormatType'];
     }
-    if (_json.containsKey("suffix")) {
-      suffix = GamesNumberAffixConfiguration.fromJson(_json["suffix"]);
+    if (_json.containsKey('suffix')) {
+      suffix = GamesNumberAffixConfiguration.fromJson(_json['suffix']);
     }
   }
 
@@ -1042,16 +1041,16 @@ class GamesNumberFormatConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
+      _json['currencyCode'] = currencyCode;
     }
     if (numDecimalPlaces != null) {
-      _json["numDecimalPlaces"] = numDecimalPlaces;
+      _json['numDecimalPlaces'] = numDecimalPlaces;
     }
     if (numberFormatType != null) {
-      _json["numberFormatType"] = numberFormatType;
+      _json['numberFormatType'] = numberFormatType;
     }
     if (suffix != null) {
-      _json["suffix"] = suffix.toJson();
+      _json['suffix'] = suffix.toJson();
     }
     return _json;
   }
@@ -1079,17 +1078,17 @@ class ImageConfiguration {
   ImageConfiguration();
 
   ImageConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("imageType")) {
-      imageType = _json["imageType"];
+    if (_json.containsKey('imageType')) {
+      imageType = _json['imageType'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = _json["resourceId"];
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -1097,16 +1096,16 @@ class ImageConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (imageType != null) {
-      _json["imageType"] = imageType;
+      _json['imageType'] = imageType;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId;
+      _json['resourceId'] = resourceId;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -1146,29 +1145,29 @@ class LeaderboardConfiguration {
   LeaderboardConfiguration();
 
   LeaderboardConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("draft")) {
-      draft = LeaderboardConfigurationDetail.fromJson(_json["draft"]);
+    if (_json.containsKey('draft')) {
+      draft = LeaderboardConfigurationDetail.fromJson(_json['draft']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("published")) {
-      published = LeaderboardConfigurationDetail.fromJson(_json["published"]);
+    if (_json.containsKey('published')) {
+      published = LeaderboardConfigurationDetail.fromJson(_json['published']);
     }
-    if (_json.containsKey("scoreMax")) {
-      scoreMax = _json["scoreMax"];
+    if (_json.containsKey('scoreMax')) {
+      scoreMax = _json['scoreMax'];
     }
-    if (_json.containsKey("scoreMin")) {
-      scoreMin = _json["scoreMin"];
+    if (_json.containsKey('scoreMin')) {
+      scoreMin = _json['scoreMin'];
     }
-    if (_json.containsKey("scoreOrder")) {
-      scoreOrder = _json["scoreOrder"];
+    if (_json.containsKey('scoreOrder')) {
+      scoreOrder = _json['scoreOrder'];
     }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
+    if (_json.containsKey('token')) {
+      token = _json['token'];
     }
   }
 
@@ -1176,28 +1175,28 @@ class LeaderboardConfiguration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (draft != null) {
-      _json["draft"] = draft.toJson();
+      _json['draft'] = draft.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (published != null) {
-      _json["published"] = published.toJson();
+      _json['published'] = published.toJson();
     }
     if (scoreMax != null) {
-      _json["scoreMax"] = scoreMax;
+      _json['scoreMax'] = scoreMax;
     }
     if (scoreMin != null) {
-      _json["scoreMin"] = scoreMin;
+      _json['scoreMin'] = scoreMin;
     }
     if (scoreOrder != null) {
-      _json["scoreOrder"] = scoreOrder;
+      _json['scoreOrder'] = scoreOrder;
     }
     if (token != null) {
-      _json["token"] = token;
+      _json['token'] = token;
     }
     return _json;
   }
@@ -1224,21 +1223,21 @@ class LeaderboardConfigurationDetail {
   LeaderboardConfigurationDetail();
 
   LeaderboardConfigurationDetail.fromJson(core.Map _json) {
-    if (_json.containsKey("iconUrl")) {
-      iconUrl = _json["iconUrl"];
+    if (_json.containsKey('iconUrl')) {
+      iconUrl = _json['iconUrl'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = LocalizedStringBundle.fromJson(_json["name"]);
+    if (_json.containsKey('name')) {
+      name = LocalizedStringBundle.fromJson(_json['name']);
     }
-    if (_json.containsKey("scoreFormat")) {
+    if (_json.containsKey('scoreFormat')) {
       scoreFormat =
-          GamesNumberFormatConfiguration.fromJson(_json["scoreFormat"]);
+          GamesNumberFormatConfiguration.fromJson(_json['scoreFormat']);
     }
-    if (_json.containsKey("sortRank")) {
-      sortRank = _json["sortRank"];
+    if (_json.containsKey('sortRank')) {
+      sortRank = _json['sortRank'];
     }
   }
 
@@ -1246,19 +1245,19 @@ class LeaderboardConfigurationDetail {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (iconUrl != null) {
-      _json["iconUrl"] = iconUrl;
+      _json['iconUrl'] = iconUrl;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name.toJson();
+      _json['name'] = name.toJson();
     }
     if (scoreFormat != null) {
-      _json["scoreFormat"] = scoreFormat.toJson();
+      _json['scoreFormat'] = scoreFormat.toJson();
     }
     if (sortRank != null) {
-      _json["sortRank"] = sortRank;
+      _json['sortRank'] = sortRank;
     }
     return _json;
   }
@@ -1279,17 +1278,17 @@ class LeaderboardConfigurationListResponse {
   LeaderboardConfigurationListResponse();
 
   LeaderboardConfigurationListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<LeaderboardConfiguration>(
               (value) => LeaderboardConfiguration.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1297,13 +1296,13 @@ class LeaderboardConfigurationListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1324,14 +1323,14 @@ class LocalizedString {
   LocalizedString();
 
   LocalizedString.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("locale")) {
-      locale = _json["locale"];
+    if (_json.containsKey('locale')) {
+      locale = _json['locale'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -1339,13 +1338,13 @@ class LocalizedString {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (locale != null) {
-      _json["locale"] = locale;
+      _json['locale'] = locale;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -1363,11 +1362,11 @@ class LocalizedStringBundle {
   LocalizedStringBundle();
 
   LocalizedStringBundle.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("translations")) {
-      translations = (_json["translations"] as core.List)
+    if (_json.containsKey('translations')) {
+      translations = (_json['translations'] as core.List)
           .map<LocalizedString>((value) => LocalizedString.fromJson(value))
           .toList();
     }
@@ -1377,10 +1376,10 @@ class LocalizedStringBundle {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (translations != null) {
-      _json["translations"] =
+      _json['translations'] =
           translations.map((value) => value.toJson()).toList();
     }
     return _json;

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,18 +37,18 @@ const core.String USER_AGENT = 'dart-api-client genomics/v1';
 class GenomicsApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and manage Genomics data
-  static const GenomicsScope = "https://www.googleapis.com/auth/genomics";
+  static const GenomicsScope = 'https://www.googleapis.com/auth/genomics';
 
   final commons.ApiRequester _requester;
 
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
 
   GenomicsApi(http.Client client,
-      {core.String rootUrl = "https://genomics.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://genomics.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -100,17 +99,17 @@ class OperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -152,17 +151,17 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -232,26 +231,26 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -293,17 +292,17 @@ class ComputeEngine {
   ComputeEngine();
 
   ComputeEngine.fromJson(core.Map _json) {
-    if (_json.containsKey("diskNames")) {
-      diskNames = (_json["diskNames"] as core.List).cast<core.String>();
+    if (_json.containsKey('diskNames')) {
+      diskNames = (_json['diskNames'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("instanceName")) {
-      instanceName = _json["instanceName"];
+    if (_json.containsKey('instanceName')) {
+      instanceName = _json['instanceName'];
     }
-    if (_json.containsKey("machineType")) {
-      machineType = _json["machineType"];
+    if (_json.containsKey('machineType')) {
+      machineType = _json['machineType'];
     }
-    if (_json.containsKey("zone")) {
-      zone = _json["zone"];
+    if (_json.containsKey('zone')) {
+      zone = _json['zone'];
     }
   }
 
@@ -311,16 +310,16 @@ class ComputeEngine {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (diskNames != null) {
-      _json["diskNames"] = diskNames;
+      _json['diskNames'] = diskNames;
     }
     if (instanceName != null) {
-      _json["instanceName"] = instanceName;
+      _json['instanceName'] = instanceName;
     }
     if (machineType != null) {
-      _json["machineType"] = machineType;
+      _json['machineType'] = machineType;
     }
     if (zone != null) {
-      _json["zone"] = zone;
+      _json['zone'] = zone;
     }
     return _json;
   }
@@ -336,8 +335,8 @@ class ContainerKilledEvent {
   ContainerKilledEvent();
 
   ContainerKilledEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("actionId")) {
-      actionId = _json["actionId"];
+    if (_json.containsKey('actionId')) {
+      actionId = _json['actionId'];
     }
   }
 
@@ -345,7 +344,7 @@ class ContainerKilledEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actionId != null) {
-      _json["actionId"] = actionId;
+      _json['actionId'] = actionId;
     }
     return _json;
   }
@@ -370,15 +369,15 @@ class ContainerStartedEvent {
   ContainerStartedEvent();
 
   ContainerStartedEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("actionId")) {
-      actionId = _json["actionId"];
+    if (_json.containsKey('actionId')) {
+      actionId = _json['actionId'];
     }
-    if (_json.containsKey("ipAddress")) {
-      ipAddress = _json["ipAddress"];
+    if (_json.containsKey('ipAddress')) {
+      ipAddress = _json['ipAddress'];
     }
-    if (_json.containsKey("portMappings")) {
+    if (_json.containsKey('portMappings')) {
       portMappings =
-          (_json["portMappings"] as core.Map).cast<core.String, core.int>();
+          (_json['portMappings'] as core.Map).cast<core.String, core.int>();
     }
   }
 
@@ -386,13 +385,13 @@ class ContainerStartedEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actionId != null) {
-      _json["actionId"] = actionId;
+      _json['actionId'] = actionId;
     }
     if (ipAddress != null) {
-      _json["ipAddress"] = ipAddress;
+      _json['ipAddress'] = ipAddress;
     }
     if (portMappings != null) {
-      _json["portMappings"] = portMappings;
+      _json['portMappings'] = portMappings;
     }
     return _json;
   }
@@ -418,14 +417,14 @@ class ContainerStoppedEvent {
   ContainerStoppedEvent();
 
   ContainerStoppedEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("actionId")) {
-      actionId = _json["actionId"];
+    if (_json.containsKey('actionId')) {
+      actionId = _json['actionId'];
     }
-    if (_json.containsKey("exitStatus")) {
-      exitStatus = _json["exitStatus"];
+    if (_json.containsKey('exitStatus')) {
+      exitStatus = _json['exitStatus'];
     }
-    if (_json.containsKey("stderr")) {
-      stderr = _json["stderr"];
+    if (_json.containsKey('stderr')) {
+      stderr = _json['stderr'];
     }
   }
 
@@ -433,13 +432,13 @@ class ContainerStoppedEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actionId != null) {
-      _json["actionId"] = actionId;
+      _json['actionId'] = actionId;
     }
     if (exitStatus != null) {
-      _json["exitStatus"] = exitStatus;
+      _json['exitStatus'] = exitStatus;
     }
     if (stderr != null) {
-      _json["stderr"] = stderr;
+      _json['stderr'] = stderr;
     }
     return _json;
   }
@@ -462,11 +461,11 @@ class DelayedEvent {
   DelayedEvent();
 
   DelayedEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("cause")) {
-      cause = _json["cause"];
+    if (_json.containsKey('cause')) {
+      cause = _json['cause'];
     }
-    if (_json.containsKey("metrics")) {
-      metrics = (_json["metrics"] as core.List).cast<core.String>();
+    if (_json.containsKey('metrics')) {
+      metrics = (_json['metrics'] as core.List).cast<core.String>();
     }
   }
 
@@ -474,10 +473,10 @@ class DelayedEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cause != null) {
-      _json["cause"] = cause;
+      _json['cause'] = cause;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics;
+      _json['metrics'] = metrics;
     }
     return _json;
   }
@@ -519,14 +518,14 @@ class Event {
   Event();
 
   Event.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.Map).cast<core.String, core.Object>();
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("timestamp")) {
-      timestamp = _json["timestamp"];
+    if (_json.containsKey('timestamp')) {
+      timestamp = _json['timestamp'];
     }
   }
 
@@ -534,13 +533,13 @@ class Event {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (timestamp != null) {
-      _json["timestamp"] = timestamp;
+      _json['timestamp'] = timestamp;
     }
     return _json;
   }
@@ -638,11 +637,11 @@ class FailedEvent {
   FailedEvent();
 
   FailedEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("cause")) {
-      cause = _json["cause"];
+    if (_json.containsKey('cause')) {
+      cause = _json['cause'];
     }
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
   }
 
@@ -650,10 +649,10 @@ class FailedEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cause != null) {
-      _json["cause"] = cause;
+      _json['cause'] = cause;
     }
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     return _json;
   }
@@ -670,11 +669,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -684,10 +683,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -725,22 +724,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -748,19 +747,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -781,14 +780,14 @@ class OperationEvent {
   OperationEvent();
 
   OperationEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -796,13 +795,13 @@ class OperationEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -852,35 +851,35 @@ class OperationMetadata {
   OperationMetadata();
 
   OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
+    if (_json.containsKey('clientId')) {
+      clientId = _json['clientId'];
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("events")) {
-      events = (_json["events"] as core.List)
+    if (_json.containsKey('events')) {
+      events = (_json['events'] as core.List)
           .map<OperationEvent>((value) => OperationEvent.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'];
     }
-    if (_json.containsKey("request")) {
-      request = (_json["request"] as core.Map).cast<core.String, core.Object>();
+    if (_json.containsKey('request')) {
+      request = (_json['request'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("runtimeMetadata")) {
-      runtimeMetadata = (_json["runtimeMetadata"] as core.Map)
+    if (_json.containsKey('runtimeMetadata')) {
+      runtimeMetadata = (_json['runtimeMetadata'] as core.Map)
           .cast<core.String, core.Object>();
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -888,31 +887,31 @@ class OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientId != null) {
-      _json["clientId"] = clientId;
+      _json['clientId'] = clientId;
     }
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (events != null) {
-      _json["events"] = events.map((value) => value.toJson()).toList();
+      _json['events'] = events.map((value) => value.toJson()).toList();
     }
     if (labels != null) {
-      _json["labels"] = labels;
+      _json['labels'] = labels;
     }
     if (projectId != null) {
-      _json["projectId"] = projectId;
+      _json['projectId'] = projectId;
     }
     if (request != null) {
-      _json["request"] = request;
+      _json['request'] = request;
     }
     if (runtimeMetadata != null) {
-      _json["runtimeMetadata"] = runtimeMetadata;
+      _json['runtimeMetadata'] = runtimeMetadata;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -926,8 +925,8 @@ class PullStartedEvent {
   PullStartedEvent();
 
   PullStartedEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("imageUri")) {
-      imageUri = _json["imageUri"];
+    if (_json.containsKey('imageUri')) {
+      imageUri = _json['imageUri'];
     }
   }
 
@@ -935,7 +934,7 @@ class PullStartedEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (imageUri != null) {
-      _json["imageUri"] = imageUri;
+      _json['imageUri'] = imageUri;
     }
     return _json;
   }
@@ -949,8 +948,8 @@ class PullStoppedEvent {
   PullStoppedEvent();
 
   PullStoppedEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("imageUri")) {
-      imageUri = _json["imageUri"];
+    if (_json.containsKey('imageUri')) {
+      imageUri = _json['imageUri'];
     }
   }
 
@@ -958,7 +957,7 @@ class PullStoppedEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (imageUri != null) {
-      _json["imageUri"] = imageUri;
+      _json['imageUri'] = imageUri;
     }
     return _json;
   }
@@ -987,8 +986,8 @@ class RuntimeMetadata {
   RuntimeMetadata();
 
   RuntimeMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("computeEngine")) {
-      computeEngine = ComputeEngine.fromJson(_json["computeEngine"]);
+    if (_json.containsKey('computeEngine')) {
+      computeEngine = ComputeEngine.fromJson(_json['computeEngine']);
     }
   }
 
@@ -996,7 +995,7 @@ class RuntimeMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (computeEngine != null) {
-      _json["computeEngine"] = computeEngine.toJson();
+      _json['computeEngine'] = computeEngine.toJson();
     }
     return _json;
   }
@@ -1027,17 +1026,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -1045,13 +1044,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -1071,11 +1070,11 @@ class UnexpectedExitStatusEvent {
   UnexpectedExitStatusEvent();
 
   UnexpectedExitStatusEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("actionId")) {
-      actionId = _json["actionId"];
+    if (_json.containsKey('actionId')) {
+      actionId = _json['actionId'];
     }
-    if (_json.containsKey("exitStatus")) {
-      exitStatus = _json["exitStatus"];
+    if (_json.containsKey('exitStatus')) {
+      exitStatus = _json['exitStatus'];
     }
   }
 
@@ -1083,10 +1082,10 @@ class UnexpectedExitStatusEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actionId != null) {
-      _json["actionId"] = actionId;
+      _json['actionId'] = actionId;
     }
     if (exitStatus != null) {
-      _json["exitStatus"] = exitStatus;
+      _json['exitStatus'] = exitStatus;
     }
     return _json;
   }
@@ -1106,14 +1105,14 @@ class WorkerAssignedEvent {
   WorkerAssignedEvent();
 
   WorkerAssignedEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("instance")) {
-      instance = _json["instance"];
+    if (_json.containsKey('instance')) {
+      instance = _json['instance'];
     }
-    if (_json.containsKey("machineType")) {
-      machineType = _json["machineType"];
+    if (_json.containsKey('machineType')) {
+      machineType = _json['machineType'];
     }
-    if (_json.containsKey("zone")) {
-      zone = _json["zone"];
+    if (_json.containsKey('zone')) {
+      zone = _json['zone'];
     }
   }
 
@@ -1121,13 +1120,13 @@ class WorkerAssignedEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (instance != null) {
-      _json["instance"] = instance;
+      _json['instance'] = instance;
     }
     if (machineType != null) {
-      _json["machineType"] = machineType;
+      _json['machineType'] = machineType;
     }
     if (zone != null) {
-      _json["zone"] = zone;
+      _json['zone'] = zone;
     }
     return _json;
   }
@@ -1145,11 +1144,11 @@ class WorkerReleasedEvent {
   WorkerReleasedEvent();
 
   WorkerReleasedEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("instance")) {
-      instance = _json["instance"];
+    if (_json.containsKey('instance')) {
+      instance = _json['instance'];
     }
-    if (_json.containsKey("zone")) {
-      zone = _json["zone"];
+    if (_json.containsKey('zone')) {
+      zone = _json['zone'];
     }
   }
 
@@ -1157,10 +1156,10 @@ class WorkerReleasedEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (instance != null) {
-      _json["instance"] = instance;
+      _json['instance'] = instance;
     }
     if (zone != null) {
-      _json["zone"] = zone;
+      _json['zone'] = zone;
     }
     return _json;
   }

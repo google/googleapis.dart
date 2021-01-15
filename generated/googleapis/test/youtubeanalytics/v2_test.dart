@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -91,8 +91,8 @@ void checkEmptyResponse(api.EmptyResponse o) {
 
 core.List<core.String> buildUnnamed4836() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -108,12 +108,12 @@ api.ErrorProto buildErrorProto() {
   buildCounterErrorProto++;
   if (buildCounterErrorProto < 3) {
     o.argument = buildUnnamed4836();
-    o.code = "foo";
-    o.debugInfo = "foo";
-    o.domain = "foo";
-    o.externalErrorMessage = "foo";
-    o.location = "foo";
-    o.locationType = "foo";
+    o.code = 'foo';
+    o.debugInfo = 'foo';
+    o.domain = 'foo';
+    o.externalErrorMessage = 'foo';
+    o.location = 'foo';
+    o.locationType = 'foo';
   }
   buildCounterErrorProto--;
   return o;
@@ -151,9 +151,9 @@ api.Errors buildErrors() {
   var o = api.Errors();
   buildCounterErrors++;
   if (buildCounterErrors < 3) {
-    o.code = "foo";
+    o.code = 'foo';
     o.error = buildUnnamed4837();
-    o.requestId = "foo";
+    o.requestId = 'foo';
   }
   buildCounterErrors--;
   return o;
@@ -176,9 +176,9 @@ api.Group buildGroup() {
   if (buildCounterGroup < 3) {
     o.contentDetails = buildGroupContentDetails();
     o.errors = buildErrors();
-    o.etag = "foo";
-    o.id = "foo";
-    o.kind = "foo";
+    o.etag = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
     o.snippet = buildGroupSnippet();
   }
   buildCounterGroup--;
@@ -203,8 +203,8 @@ api.GroupContentDetails buildGroupContentDetails() {
   var o = api.GroupContentDetails();
   buildCounterGroupContentDetails++;
   if (buildCounterGroupContentDetails < 3) {
-    o.itemCount = "foo";
-    o.itemType = "foo";
+    o.itemCount = 'foo';
+    o.itemType = 'foo';
   }
   buildCounterGroupContentDetails--;
   return o;
@@ -225,10 +225,10 @@ api.GroupItem buildGroupItem() {
   buildCounterGroupItem++;
   if (buildCounterGroupItem < 3) {
     o.errors = buildErrors();
-    o.etag = "foo";
-    o.groupId = "foo";
-    o.id = "foo";
-    o.kind = "foo";
+    o.etag = 'foo';
+    o.groupId = 'foo';
+    o.id = 'foo';
+    o.kind = 'foo';
     o.resource = buildGroupItemResource();
   }
   buildCounterGroupItem--;
@@ -253,8 +253,8 @@ api.GroupItemResource buildGroupItemResource() {
   var o = api.GroupItemResource();
   buildCounterGroupItemResource++;
   if (buildCounterGroupItemResource < 3) {
-    o.id = "foo";
-    o.kind = "foo";
+    o.id = 'foo';
+    o.kind = 'foo';
   }
   buildCounterGroupItemResource--;
   return o;
@@ -274,8 +274,8 @@ api.GroupSnippet buildGroupSnippet() {
   var o = api.GroupSnippet();
   buildCounterGroupSnippet++;
   if (buildCounterGroupSnippet < 3) {
-    o.publishedAt = "foo";
-    o.title = "foo";
+    o.publishedAt = 'foo';
+    o.title = 'foo';
   }
   buildCounterGroupSnippet--;
   return o;
@@ -309,9 +309,9 @@ api.ListGroupItemsResponse buildListGroupItemsResponse() {
   buildCounterListGroupItemsResponse++;
   if (buildCounterListGroupItemsResponse < 3) {
     o.errors = buildErrors();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed4838();
-    o.kind = "foo";
+    o.kind = 'foo';
   }
   buildCounterListGroupItemsResponse--;
   return o;
@@ -347,10 +347,10 @@ api.ListGroupsResponse buildListGroupsResponse() {
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
     o.errors = buildErrors();
-    o.etag = "foo";
+    o.etag = 'foo';
     o.items = buildUnnamed4839();
-    o.kind = "foo";
-    o.nextPageToken = "foo";
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
   }
   buildCounterListGroupsResponse--;
   return o;
@@ -400,14 +400,14 @@ void checkUnnamed4841(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o[1]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.List<core.List<core.Object>> buildUnnamed4842() {
@@ -430,7 +430,7 @@ api.QueryResponse buildQueryResponse() {
   if (buildCounterQueryResponse < 3) {
     o.columnHeaders = buildUnnamed4840();
     o.errors = buildErrors();
-    o.kind = "foo";
+    o.kind = 'foo';
     o.rows = buildUnnamed4842();
   }
   buildCounterQueryResponse--;
@@ -453,9 +453,9 @@ api.ResultTableColumnHeader buildResultTableColumnHeader() {
   var o = api.ResultTableColumnHeader();
   buildCounterResultTableColumnHeader++;
   if (buildCounterResultTableColumnHeader < 3) {
-    o.columnType = "foo";
-    o.dataType = "foo";
-    o.name = "foo";
+    o.columnType = 'foo';
+    o.dataType = 'foo';
+    o.name = 'foo';
   }
   buildCounterResultTableColumnHeader--;
   return o;
@@ -472,109 +472,109 @@ void checkResultTableColumnHeader(api.ResultTableColumnHeader o) {
 }
 
 void main() {
-  unittest.group("obj-schema-EmptyResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EmptyResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmptyResponse();
       var od = api.EmptyResponse.fromJson(o.toJson());
       checkEmptyResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ErrorProto", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ErrorProto', () {
+    unittest.test('to-json--from-json', () {
       var o = buildErrorProto();
       var od = api.ErrorProto.fromJson(o.toJson());
       checkErrorProto(od);
     });
   });
 
-  unittest.group("obj-schema-Errors", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Errors', () {
+    unittest.test('to-json--from-json', () {
       var o = buildErrors();
       var od = api.Errors.fromJson(o.toJson());
       checkErrors(od);
     });
   });
 
-  unittest.group("obj-schema-Group", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Group', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
       checkGroup(od);
     });
   });
 
-  unittest.group("obj-schema-GroupContentDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GroupContentDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGroupContentDetails();
       var od = api.GroupContentDetails.fromJson(o.toJson());
       checkGroupContentDetails(od);
     });
   });
 
-  unittest.group("obj-schema-GroupItem", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GroupItem', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGroupItem();
       var od = api.GroupItem.fromJson(o.toJson());
       checkGroupItem(od);
     });
   });
 
-  unittest.group("obj-schema-GroupItemResource", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GroupItemResource', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGroupItemResource();
       var od = api.GroupItemResource.fromJson(o.toJson());
       checkGroupItemResource(od);
     });
   });
 
-  unittest.group("obj-schema-GroupSnippet", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GroupSnippet', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGroupSnippet();
       var od = api.GroupSnippet.fromJson(o.toJson());
       checkGroupSnippet(od);
     });
   });
 
-  unittest.group("obj-schema-ListGroupItemsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListGroupItemsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListGroupItemsResponse();
       var od = api.ListGroupItemsResponse.fromJson(o.toJson());
       checkListGroupItemsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListGroupsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListGroupsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListGroupsResponse();
       var od = api.ListGroupsResponse.fromJson(o.toJson());
       checkListGroupsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-QueryResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryResponse();
       var od = api.QueryResponse.fromJson(o.toJson());
       checkQueryResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ResultTableColumnHeader", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ResultTableColumnHeader', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResultTableColumnHeader();
       var od = api.ResultTableColumnHeader.fromJson(o.toJson());
       checkResultTableColumnHeader(od);
     });
   });
 
-  unittest.group("resource-GroupItemsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-GroupItemsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.GroupItemsResourceApi res = api.YoutubeAnalyticsApi(mock).groupItems;
-      var arg_id = "foo";
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_id = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -593,8 +593,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -607,7 +607,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmptyResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -622,12 +622,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.GroupItemsResourceApi res = api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_request = buildGroupItem();
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GroupItem.fromJson(json);
         checkGroupItem(obj);
@@ -649,8 +649,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -662,7 +662,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGroupItem());
         return async.Future.value(stringResponse(200, h, resp));
@@ -676,12 +676,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.GroupItemsResourceApi res = api.YoutubeAnalyticsApi(mock).groupItems;
-      var arg_groupId = "foo";
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_groupId = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -700,8 +700,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -715,7 +715,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListGroupItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -731,13 +731,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-GroupsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-GroupsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.YoutubeAnalyticsApi(mock).groups;
-      var arg_id = "foo";
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_id = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -756,8 +756,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -770,7 +770,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmptyResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -785,12 +785,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--insert", () {
+    unittest.test('method--insert', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.YoutubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Group.fromJson(json);
         checkGroup(obj);
@@ -812,8 +812,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -825,7 +825,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
@@ -839,14 +839,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.YoutubeAnalyticsApi(mock).groups;
       var arg_mine = true;
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_id = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_id = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -865,8 +865,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -882,7 +882,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -899,12 +899,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.YoutubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
-      var arg_onBehalfOfContentOwner = "foo";
-      var arg_$fields = "foo";
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Group.fromJson(json);
         checkGroup(obj);
@@ -926,8 +926,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -939,7 +939,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
@@ -954,22 +954,22 @@ void main() {
     });
   });
 
-  unittest.group("resource-ReportsResourceApi", () {
-    unittest.test("method--query", () {
+  unittest.group('resource-ReportsResourceApi', () {
+    unittest.test('method--query', () {
       var mock = HttpServerMock();
       api.ReportsResourceApi res = api.YoutubeAnalyticsApi(mock).reports;
       var arg_startIndex = 42;
-      var arg_metrics = "foo";
-      var arg_sort = "foo";
+      var arg_metrics = 'foo';
+      var arg_sort = 'foo';
       var arg_includeHistoricalChannelData = true;
-      var arg_dimensions = "foo";
-      var arg_filters = "foo";
+      var arg_dimensions = 'foo';
+      var arg_filters = 'foo';
       var arg_maxResults = 42;
-      var arg_currency = "foo";
-      var arg_endDate = "foo";
-      var arg_startDate = "foo";
-      var arg_ids = "foo";
-      var arg_$fields = "foo";
+      var arg_currency = 'foo';
+      var arg_endDate = 'foo';
+      var arg_startDate = 'foo';
+      var arg_ids = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -988,8 +988,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1019,7 +1019,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));

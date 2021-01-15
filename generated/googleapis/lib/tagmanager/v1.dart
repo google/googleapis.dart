@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,40 +38,40 @@ const core.String USER_AGENT = 'dart-api-client tagmanager/v1';
 class TagmanagerApi {
   /// Delete your Google Tag Manager containers
   static const TagmanagerDeleteContainersScope =
-      "https://www.googleapis.com/auth/tagmanager.delete.containers";
+      'https://www.googleapis.com/auth/tagmanager.delete.containers';
 
   /// Manage your Google Tag Manager container and its subcomponents, excluding
   /// versioning and publishing
   static const TagmanagerEditContainersScope =
-      "https://www.googleapis.com/auth/tagmanager.edit.containers";
+      'https://www.googleapis.com/auth/tagmanager.edit.containers';
 
   /// Manage your Google Tag Manager container versions
   static const TagmanagerEditContainerversionsScope =
-      "https://www.googleapis.com/auth/tagmanager.edit.containerversions";
+      'https://www.googleapis.com/auth/tagmanager.edit.containerversions';
 
   /// View and manage your Google Tag Manager accounts
   static const TagmanagerManageAccountsScope =
-      "https://www.googleapis.com/auth/tagmanager.manage.accounts";
+      'https://www.googleapis.com/auth/tagmanager.manage.accounts';
 
   /// Manage user permissions of your Google Tag Manager account and container
   static const TagmanagerManageUsersScope =
-      "https://www.googleapis.com/auth/tagmanager.manage.users";
+      'https://www.googleapis.com/auth/tagmanager.manage.users';
 
   /// Publish your Google Tag Manager container versions
   static const TagmanagerPublishScope =
-      "https://www.googleapis.com/auth/tagmanager.publish";
+      'https://www.googleapis.com/auth/tagmanager.publish';
 
   /// View your Google Tag Manager container and its subcomponents
   static const TagmanagerReadonlyScope =
-      "https://www.googleapis.com/auth/tagmanager.readonly";
+      'https://www.googleapis.com/auth/tagmanager.readonly';
 
   final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
   TagmanagerApi(http.Client client,
-      {core.String rootUrl = "https://tagmanager.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://tagmanager.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -115,10 +114,10 @@ class AccountsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -126,7 +125,7 @@ class AccountsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -161,14 +160,14 @@ class AccountsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -216,13 +215,13 @@ class AccountsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -230,7 +229,7 @@ class AccountsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -299,10 +298,10 @@ class AccountsContainersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -311,7 +310,7 @@ class AccountsContainersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -350,13 +349,13 @@ class AccountsContainersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -368,7 +367,7 @@ class AccountsContainersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -409,13 +408,13 @@ class AccountsContainersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -425,7 +424,7 @@ class AccountsContainersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -463,10 +462,10 @@ class AccountsContainersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -475,7 +474,7 @@ class AccountsContainersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -526,16 +525,16 @@ class AccountsContainersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -545,7 +544,7 @@ class AccountsContainersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -599,13 +598,13 @@ class AccountsContainersEnvironmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -616,7 +615,7 @@ class AccountsContainersEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -658,16 +657,16 @@ class AccountsContainersEnvironmentsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (environmentId == null) {
-      throw core.ArgumentError("Parameter environmentId is required.");
+      throw core.ArgumentError('Parameter environmentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -681,7 +680,7 @@ class AccountsContainersEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -725,16 +724,16 @@ class AccountsContainersEnvironmentsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (environmentId == null) {
-      throw core.ArgumentError("Parameter environmentId is required.");
+      throw core.ArgumentError('Parameter environmentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -746,7 +745,7 @@ class AccountsContainersEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -787,13 +786,13 @@ class AccountsContainersEnvironmentsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -804,7 +803,7 @@ class AccountsContainersEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -858,19 +857,19 @@ class AccountsContainersEnvironmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (environmentId == null) {
-      throw core.ArgumentError("Parameter environmentId is required.");
+      throw core.ArgumentError('Parameter environmentId is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -882,7 +881,7 @@ class AccountsContainersEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -939,13 +938,13 @@ class AccountsContainersFoldersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -956,7 +955,7 @@ class AccountsContainersFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -998,16 +997,16 @@ class AccountsContainersFoldersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (folderId == null) {
-      throw core.ArgumentError("Parameter folderId is required.");
+      throw core.ArgumentError('Parameter folderId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1021,7 +1020,7 @@ class AccountsContainersFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1065,16 +1064,16 @@ class AccountsContainersFoldersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (folderId == null) {
-      throw core.ArgumentError("Parameter folderId is required.");
+      throw core.ArgumentError('Parameter folderId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1086,7 +1085,7 @@ class AccountsContainersFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1127,13 +1126,13 @@ class AccountsContainersFoldersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1144,7 +1143,7 @@ class AccountsContainersFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1198,19 +1197,19 @@ class AccountsContainersFoldersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (folderId == null) {
-      throw core.ArgumentError("Parameter folderId is required.");
+      throw core.ArgumentError('Parameter folderId is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1222,7 +1221,7 @@ class AccountsContainersFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1273,16 +1272,16 @@ class AccountsContainersFoldersEntitiesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (folderId == null) {
-      throw core.ArgumentError("Parameter folderId is required.");
+      throw core.ArgumentError('Parameter folderId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1295,7 +1294,7 @@ class AccountsContainersFoldersEntitiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1359,25 +1358,25 @@ class AccountsContainersMoveFoldersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (folderId == null) {
-      throw core.ArgumentError("Parameter folderId is required.");
+      throw core.ArgumentError('Parameter folderId is required.');
     }
     if (variableId != null) {
-      _queryParams["variableId"] = variableId;
+      _queryParams['variableId'] = variableId;
     }
     if (tagId != null) {
-      _queryParams["tagId"] = tagId;
+      _queryParams['tagId'] = tagId;
     }
     if (triggerId != null) {
-      _queryParams["triggerId"] = triggerId;
+      _queryParams['triggerId'] = triggerId;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1391,7 +1390,7 @@ class AccountsContainersMoveFoldersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1449,16 +1448,16 @@ class AccountsContainersReauthorizeEnvironmentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (environmentId == null) {
-      throw core.ArgumentError("Parameter environmentId is required.");
+      throw core.ArgumentError('Parameter environmentId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1470,7 +1469,7 @@ class AccountsContainersReauthorizeEnvironmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1524,13 +1523,13 @@ class AccountsContainersTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1541,7 +1540,7 @@ class AccountsContainersTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1583,16 +1582,16 @@ class AccountsContainersTagsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (tagId == null) {
-      throw core.ArgumentError("Parameter tagId is required.");
+      throw core.ArgumentError('Parameter tagId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1606,7 +1605,7 @@ class AccountsContainersTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1650,16 +1649,16 @@ class AccountsContainersTagsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (tagId == null) {
-      throw core.ArgumentError("Parameter tagId is required.");
+      throw core.ArgumentError('Parameter tagId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1671,7 +1670,7 @@ class AccountsContainersTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1712,13 +1711,13 @@ class AccountsContainersTagsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1729,7 +1728,7 @@ class AccountsContainersTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1783,19 +1782,19 @@ class AccountsContainersTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (tagId == null) {
-      throw core.ArgumentError("Parameter tagId is required.");
+      throw core.ArgumentError('Parameter tagId is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1807,7 +1806,7 @@ class AccountsContainersTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1861,13 +1860,13 @@ class AccountsContainersTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -1878,7 +1877,7 @@ class AccountsContainersTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1920,16 +1919,16 @@ class AccountsContainersTriggersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (triggerId == null) {
-      throw core.ArgumentError("Parameter triggerId is required.");
+      throw core.ArgumentError('Parameter triggerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1943,7 +1942,7 @@ class AccountsContainersTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1987,16 +1986,16 @@ class AccountsContainersTriggersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (triggerId == null) {
-      throw core.ArgumentError("Parameter triggerId is required.");
+      throw core.ArgumentError('Parameter triggerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2008,7 +2007,7 @@ class AccountsContainersTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2049,13 +2048,13 @@ class AccountsContainersTriggersResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2066,7 +2065,7 @@ class AccountsContainersTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2120,19 +2119,19 @@ class AccountsContainersTriggersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (triggerId == null) {
-      throw core.ArgumentError("Parameter triggerId is required.");
+      throw core.ArgumentError('Parameter triggerId is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2144,7 +2143,7 @@ class AccountsContainersTriggersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2198,13 +2197,13 @@ class AccountsContainersVariablesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2215,7 +2214,7 @@ class AccountsContainersVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2257,16 +2256,16 @@ class AccountsContainersVariablesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (variableId == null) {
-      throw core.ArgumentError("Parameter variableId is required.");
+      throw core.ArgumentError('Parameter variableId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2280,7 +2279,7 @@ class AccountsContainersVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2324,16 +2323,16 @@ class AccountsContainersVariablesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (variableId == null) {
-      throw core.ArgumentError("Parameter variableId is required.");
+      throw core.ArgumentError('Parameter variableId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2345,7 +2344,7 @@ class AccountsContainersVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2386,13 +2385,13 @@ class AccountsContainersVariablesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2403,7 +2402,7 @@ class AccountsContainersVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2457,19 +2456,19 @@ class AccountsContainersVariablesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (variableId == null) {
-      throw core.ArgumentError("Parameter variableId is required.");
+      throw core.ArgumentError('Parameter variableId is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2481,7 +2480,7 @@ class AccountsContainersVariablesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2535,13 +2534,13 @@ class AccountsContainersVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2552,7 +2551,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2595,16 +2594,16 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (containerVersionId == null) {
-      throw core.ArgumentError("Parameter containerVersionId is required.");
+      throw core.ArgumentError('Parameter containerVersionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2618,7 +2617,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2663,16 +2662,16 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (containerVersionId == null) {
-      throw core.ArgumentError("Parameter containerVersionId is required.");
+      throw core.ArgumentError('Parameter containerVersionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2684,7 +2683,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2731,19 +2730,19 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
+      _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
     if (headers != null) {
-      _queryParams["headers"] = ["${headers}"];
+      _queryParams['headers'] = ['${headers}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2754,7 +2753,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2803,19 +2802,19 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (containerVersionId == null) {
-      throw core.ArgumentError("Parameter containerVersionId is required.");
+      throw core.ArgumentError('Parameter containerVersionId is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2828,7 +2827,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2876,16 +2875,16 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (containerVersionId == null) {
-      throw core.ArgumentError("Parameter containerVersionId is required.");
+      throw core.ArgumentError('Parameter containerVersionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2898,7 +2897,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2942,16 +2941,16 @@ class AccountsContainersVersionsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (containerVersionId == null) {
-      throw core.ArgumentError("Parameter containerVersionId is required.");
+      throw core.ArgumentError('Parameter containerVersionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -2964,7 +2963,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3018,19 +3017,19 @@ class AccountsContainersVersionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (containerId == null) {
-      throw core.ArgumentError("Parameter containerId is required.");
+      throw core.ArgumentError('Parameter containerId is required.');
     }
     if (containerVersionId == null) {
-      throw core.ArgumentError("Parameter containerVersionId is required.");
+      throw core.ArgumentError('Parameter containerVersionId is required.');
     }
     if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
+      _queryParams['fingerprint'] = [fingerprint];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -3042,7 +3041,7 @@ class AccountsContainersVersionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3093,10 +3092,10 @@ class AccountsPermissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -3105,7 +3104,7 @@ class AccountsPermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3145,13 +3144,13 @@ class AccountsPermissionsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (permissionId == null) {
-      throw core.ArgumentError("Parameter permissionId is required.");
+      throw core.ArgumentError('Parameter permissionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3163,7 +3162,7 @@ class AccountsPermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3204,13 +3203,13 @@ class AccountsPermissionsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (permissionId == null) {
-      throw core.ArgumentError("Parameter permissionId is required.");
+      throw core.ArgumentError('Parameter permissionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -3220,7 +3219,7 @@ class AccountsPermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3259,10 +3258,10 @@ class AccountsPermissionsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -3271,7 +3270,7 @@ class AccountsPermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3318,13 +3317,13 @@ class AccountsPermissionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (permissionId == null) {
-      throw core.ArgumentError("Parameter permissionId is required.");
+      throw core.ArgumentError('Parameter permissionId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'tagmanager/v1/accounts/' +
@@ -3334,7 +3333,7 @@ class AccountsPermissionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3365,17 +3364,17 @@ class Account {
   Account();
 
   Account.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("shareData")) {
-      shareData = _json["shareData"];
+    if (_json.containsKey('shareData')) {
+      shareData = _json['shareData'];
     }
   }
 
@@ -3383,16 +3382,16 @@ class Account {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (shareData != null) {
-      _json["shareData"] = shareData;
+      _json['shareData'] = shareData;
     }
     return _json;
   }
@@ -3408,8 +3407,8 @@ class AccountAccess {
   AccountAccess();
 
   AccountAccess.fromJson(core.Map _json) {
-    if (_json.containsKey("permission")) {
-      permission = (_json["permission"] as core.List).cast<core.String>();
+    if (_json.containsKey('permission')) {
+      permission = (_json['permission'] as core.List).cast<core.String>();
     }
   }
 
@@ -3417,7 +3416,7 @@ class AccountAccess {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permission != null) {
-      _json["permission"] = permission;
+      _json['permission'] = permission;
     }
     return _json;
   }
@@ -3457,13 +3456,13 @@ class Condition {
   Condition();
 
   Condition.fromJson(core.Map _json) {
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3471,10 +3470,10 @@ class Condition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3534,39 +3533,39 @@ class Container {
   Container();
 
   Container.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("domainName")) {
-      domainName = (_json["domainName"] as core.List).cast<core.String>();
+    if (_json.containsKey('domainName')) {
+      domainName = (_json['domainName'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("enabledBuiltInVariable")) {
+    if (_json.containsKey('enabledBuiltInVariable')) {
       enabledBuiltInVariable =
-          (_json["enabledBuiltInVariable"] as core.List).cast<core.String>();
+          (_json['enabledBuiltInVariable'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("publicId")) {
-      publicId = _json["publicId"];
+    if (_json.containsKey('publicId')) {
+      publicId = _json['publicId'];
     }
-    if (_json.containsKey("timeZoneCountryId")) {
-      timeZoneCountryId = _json["timeZoneCountryId"];
+    if (_json.containsKey('timeZoneCountryId')) {
+      timeZoneCountryId = _json['timeZoneCountryId'];
     }
-    if (_json.containsKey("timeZoneId")) {
-      timeZoneId = _json["timeZoneId"];
+    if (_json.containsKey('timeZoneId')) {
+      timeZoneId = _json['timeZoneId'];
     }
-    if (_json.containsKey("usageContext")) {
-      usageContext = (_json["usageContext"] as core.List).cast<core.String>();
+    if (_json.containsKey('usageContext')) {
+      usageContext = (_json['usageContext'] as core.List).cast<core.String>();
     }
   }
 
@@ -3574,37 +3573,37 @@ class Container {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (domainName != null) {
-      _json["domainName"] = domainName;
+      _json['domainName'] = domainName;
     }
     if (enabledBuiltInVariable != null) {
-      _json["enabledBuiltInVariable"] = enabledBuiltInVariable;
+      _json['enabledBuiltInVariable'] = enabledBuiltInVariable;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (publicId != null) {
-      _json["publicId"] = publicId;
+      _json['publicId'] = publicId;
     }
     if (timeZoneCountryId != null) {
-      _json["timeZoneCountryId"] = timeZoneCountryId;
+      _json['timeZoneCountryId'] = timeZoneCountryId;
     }
     if (timeZoneId != null) {
-      _json["timeZoneId"] = timeZoneId;
+      _json['timeZoneId'] = timeZoneId;
     }
     if (usageContext != null) {
-      _json["usageContext"] = usageContext;
+      _json['usageContext'] = usageContext;
     }
     return _json;
   }
@@ -3624,11 +3623,11 @@ class ContainerAccess {
   ContainerAccess();
 
   ContainerAccess.fromJson(core.Map _json) {
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("permission")) {
-      permission = (_json["permission"] as core.List).cast<core.String>();
+    if (_json.containsKey('permission')) {
+      permission = (_json['permission'] as core.List).cast<core.String>();
     }
   }
 
@@ -3636,10 +3635,10 @@ class ContainerAccess {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (permission != null) {
-      _json["permission"] = permission;
+      _json['permission'] = permission;
     }
     return _json;
   }
@@ -3695,57 +3694,57 @@ class ContainerVersion {
   ContainerVersion();
 
   ContainerVersion.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("container")) {
-      container = Container.fromJson(_json["container"]);
+    if (_json.containsKey('container')) {
+      container = Container.fromJson(_json['container']);
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("containerVersionId")) {
-      containerVersionId = _json["containerVersionId"];
+    if (_json.containsKey('containerVersionId')) {
+      containerVersionId = _json['containerVersionId'];
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("folder")) {
-      folder = (_json["folder"] as core.List)
+    if (_json.containsKey('folder')) {
+      folder = (_json['folder'] as core.List)
           .map<Folder>((value) => Folder.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("macro")) {
-      macro = (_json["macro"] as core.List)
+    if (_json.containsKey('macro')) {
+      macro = (_json['macro'] as core.List)
           .map<Macro>((value) => Macro.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("rule")) {
-      rule = (_json["rule"] as core.List)
+    if (_json.containsKey('rule')) {
+      rule = (_json['rule'] as core.List)
           .map<Rule>((value) => Rule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tag")) {
-      tag = (_json["tag"] as core.List)
+    if (_json.containsKey('tag')) {
+      tag = (_json['tag'] as core.List)
           .map<Tag>((value) => Tag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("trigger")) {
-      trigger = (_json["trigger"] as core.List)
+    if (_json.containsKey('trigger')) {
+      trigger = (_json['trigger'] as core.List)
           .map<Trigger>((value) => Trigger.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("variable")) {
-      variable = (_json["variable"] as core.List)
+    if (_json.containsKey('variable')) {
+      variable = (_json['variable'] as core.List)
           .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
@@ -3755,46 +3754,46 @@ class ContainerVersion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (container != null) {
-      _json["container"] = container.toJson();
+      _json['container'] = container.toJson();
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (containerVersionId != null) {
-      _json["containerVersionId"] = containerVersionId;
+      _json['containerVersionId'] = containerVersionId;
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (folder != null) {
-      _json["folder"] = folder.map((value) => value.toJson()).toList();
+      _json['folder'] = folder.map((value) => value.toJson()).toList();
     }
     if (macro != null) {
-      _json["macro"] = macro.map((value) => value.toJson()).toList();
+      _json['macro'] = macro.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (rule != null) {
-      _json["rule"] = rule.map((value) => value.toJson()).toList();
+      _json['rule'] = rule.map((value) => value.toJson()).toList();
     }
     if (tag != null) {
-      _json["tag"] = tag.map((value) => value.toJson()).toList();
+      _json['tag'] = tag.map((value) => value.toJson()).toList();
     }
     if (trigger != null) {
-      _json["trigger"] = trigger.map((value) => value.toJson()).toList();
+      _json['trigger'] = trigger.map((value) => value.toJson()).toList();
     }
     if (variable != null) {
-      _json["variable"] = variable.map((value) => value.toJson()).toList();
+      _json['variable'] = variable.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3835,35 +3834,35 @@ class ContainerVersionHeader {
   ContainerVersionHeader();
 
   ContainerVersionHeader.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("containerVersionId")) {
-      containerVersionId = _json["containerVersionId"];
+    if (_json.containsKey('containerVersionId')) {
+      containerVersionId = _json['containerVersionId'];
     }
-    if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"];
+    if (_json.containsKey('deleted')) {
+      deleted = _json['deleted'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("numMacros")) {
-      numMacros = _json["numMacros"];
+    if (_json.containsKey('numMacros')) {
+      numMacros = _json['numMacros'];
     }
-    if (_json.containsKey("numRules")) {
-      numRules = _json["numRules"];
+    if (_json.containsKey('numRules')) {
+      numRules = _json['numRules'];
     }
-    if (_json.containsKey("numTags")) {
-      numTags = _json["numTags"];
+    if (_json.containsKey('numTags')) {
+      numTags = _json['numTags'];
     }
-    if (_json.containsKey("numTriggers")) {
-      numTriggers = _json["numTriggers"];
+    if (_json.containsKey('numTriggers')) {
+      numTriggers = _json['numTriggers'];
     }
-    if (_json.containsKey("numVariables")) {
-      numVariables = _json["numVariables"];
+    if (_json.containsKey('numVariables')) {
+      numVariables = _json['numVariables'];
     }
   }
 
@@ -3871,34 +3870,34 @@ class ContainerVersionHeader {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (containerVersionId != null) {
-      _json["containerVersionId"] = containerVersionId;
+      _json['containerVersionId'] = containerVersionId;
     }
     if (deleted != null) {
-      _json["deleted"] = deleted;
+      _json['deleted'] = deleted;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (numMacros != null) {
-      _json["numMacros"] = numMacros;
+      _json['numMacros'] = numMacros;
     }
     if (numRules != null) {
-      _json["numRules"] = numRules;
+      _json['numRules'] = numRules;
     }
     if (numTags != null) {
-      _json["numTags"] = numTags;
+      _json['numTags'] = numTags;
     }
     if (numTriggers != null) {
-      _json["numTriggers"] = numTriggers;
+      _json['numTriggers'] = numTriggers;
     }
     if (numVariables != null) {
-      _json["numVariables"] = numVariables;
+      _json['numVariables'] = numVariables;
     }
     return _json;
   }
@@ -3919,14 +3918,14 @@ class CreateContainerVersionRequestVersionOptions {
   CreateContainerVersionRequestVersionOptions();
 
   CreateContainerVersionRequestVersionOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("quickPreview")) {
-      quickPreview = _json["quickPreview"];
+    if (_json.containsKey('quickPreview')) {
+      quickPreview = _json['quickPreview'];
     }
   }
 
@@ -3934,13 +3933,13 @@ class CreateContainerVersionRequestVersionOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (quickPreview != null) {
-      _json["quickPreview"] = quickPreview;
+      _json['quickPreview'] = quickPreview;
     }
     return _json;
   }
@@ -3957,11 +3956,11 @@ class CreateContainerVersionResponse {
   CreateContainerVersionResponse();
 
   CreateContainerVersionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("compilerError")) {
-      compilerError = _json["compilerError"];
+    if (_json.containsKey('compilerError')) {
+      compilerError = _json['compilerError'];
     }
-    if (_json.containsKey("containerVersion")) {
-      containerVersion = ContainerVersion.fromJson(_json["containerVersion"]);
+    if (_json.containsKey('containerVersion')) {
+      containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
     }
   }
 
@@ -3969,10 +3968,10 @@ class CreateContainerVersionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (compilerError != null) {
-      _json["compilerError"] = compilerError;
+      _json['compilerError'] = compilerError;
     }
     if (containerVersion != null) {
-      _json["containerVersion"] = containerVersion.toJson();
+      _json['containerVersion'] = containerVersion.toJson();
     }
     return _json;
   }
@@ -4036,41 +4035,41 @@ class Environment {
   Environment();
 
   Environment.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("authorizationCode")) {
-      authorizationCode = _json["authorizationCode"];
+    if (_json.containsKey('authorizationCode')) {
+      authorizationCode = _json['authorizationCode'];
     }
-    if (_json.containsKey("authorizationTimestampMs")) {
-      authorizationTimestampMs = _json["authorizationTimestampMs"];
+    if (_json.containsKey('authorizationTimestampMs')) {
+      authorizationTimestampMs = _json['authorizationTimestampMs'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("containerVersionId")) {
-      containerVersionId = _json["containerVersionId"];
+    if (_json.containsKey('containerVersionId')) {
+      containerVersionId = _json['containerVersionId'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("enableDebug")) {
-      enableDebug = _json["enableDebug"];
+    if (_json.containsKey('enableDebug')) {
+      enableDebug = _json['enableDebug'];
     }
-    if (_json.containsKey("environmentId")) {
-      environmentId = _json["environmentId"];
+    if (_json.containsKey('environmentId')) {
+      environmentId = _json['environmentId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -4078,40 +4077,40 @@ class Environment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (authorizationCode != null) {
-      _json["authorizationCode"] = authorizationCode;
+      _json['authorizationCode'] = authorizationCode;
     }
     if (authorizationTimestampMs != null) {
-      _json["authorizationTimestampMs"] = authorizationTimestampMs;
+      _json['authorizationTimestampMs'] = authorizationTimestampMs;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (containerVersionId != null) {
-      _json["containerVersionId"] = containerVersionId;
+      _json['containerVersionId'] = containerVersionId;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (enableDebug != null) {
-      _json["enableDebug"] = enableDebug;
+      _json['enableDebug'] = enableDebug;
     }
     if (environmentId != null) {
-      _json["environmentId"] = environmentId;
+      _json['environmentId'] = environmentId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -4140,20 +4139,20 @@ class Folder {
   Folder();
 
   Folder.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("folderId")) {
-      folderId = _json["folderId"];
+    if (_json.containsKey('folderId')) {
+      folderId = _json['folderId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4161,19 +4160,19 @@ class Folder {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (folderId != null) {
-      _json["folderId"] = folderId;
+      _json['folderId'] = folderId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4193,18 +4192,18 @@ class FolderEntities {
   FolderEntities();
 
   FolderEntities.fromJson(core.Map _json) {
-    if (_json.containsKey("tag")) {
-      tag = (_json["tag"] as core.List)
+    if (_json.containsKey('tag')) {
+      tag = (_json['tag'] as core.List)
           .map<Tag>((value) => Tag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("trigger")) {
-      trigger = (_json["trigger"] as core.List)
+    if (_json.containsKey('trigger')) {
+      trigger = (_json['trigger'] as core.List)
           .map<Trigger>((value) => Trigger.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("variable")) {
-      variable = (_json["variable"] as core.List)
+    if (_json.containsKey('variable')) {
+      variable = (_json['variable'] as core.List)
           .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
@@ -4214,13 +4213,13 @@ class FolderEntities {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (tag != null) {
-      _json["tag"] = tag.map((value) => value.toJson()).toList();
+      _json['tag'] = tag.map((value) => value.toJson()).toList();
     }
     if (trigger != null) {
-      _json["trigger"] = trigger.map((value) => value.toJson()).toList();
+      _json['trigger'] = trigger.map((value) => value.toJson()).toList();
     }
     if (variable != null) {
-      _json["variable"] = variable.map((value) => value.toJson()).toList();
+      _json['variable'] = variable.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4234,8 +4233,8 @@ class ListAccountUsersResponse {
   ListAccountUsersResponse();
 
   ListAccountUsersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("userAccess")) {
-      userAccess = (_json["userAccess"] as core.List)
+    if (_json.containsKey('userAccess')) {
+      userAccess = (_json['userAccess'] as core.List)
           .map<UserAccess>((value) => UserAccess.fromJson(value))
           .toList();
     }
@@ -4245,7 +4244,7 @@ class ListAccountUsersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (userAccess != null) {
-      _json["userAccess"] = userAccess.map((value) => value.toJson()).toList();
+      _json['userAccess'] = userAccess.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4259,8 +4258,8 @@ class ListAccountsResponse {
   ListAccountsResponse();
 
   ListAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("accounts")) {
-      accounts = (_json["accounts"] as core.List)
+    if (_json.containsKey('accounts')) {
+      accounts = (_json['accounts'] as core.List)
           .map<Account>((value) => Account.fromJson(value))
           .toList();
     }
@@ -4270,7 +4269,7 @@ class ListAccountsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accounts != null) {
-      _json["accounts"] = accounts.map((value) => value.toJson()).toList();
+      _json['accounts'] = accounts.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4287,13 +4286,13 @@ class ListContainerVersionsResponse {
   ListContainerVersionsResponse();
 
   ListContainerVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("containerVersion")) {
-      containerVersion = (_json["containerVersion"] as core.List)
+    if (_json.containsKey('containerVersion')) {
+      containerVersion = (_json['containerVersion'] as core.List)
           .map<ContainerVersion>((value) => ContainerVersion.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("containerVersionHeader")) {
-      containerVersionHeader = (_json["containerVersionHeader"] as core.List)
+    if (_json.containsKey('containerVersionHeader')) {
+      containerVersionHeader = (_json['containerVersionHeader'] as core.List)
           .map<ContainerVersionHeader>(
               (value) => ContainerVersionHeader.fromJson(value))
           .toList();
@@ -4304,11 +4303,11 @@ class ListContainerVersionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (containerVersion != null) {
-      _json["containerVersion"] =
+      _json['containerVersion'] =
           containerVersion.map((value) => value.toJson()).toList();
     }
     if (containerVersionHeader != null) {
-      _json["containerVersionHeader"] =
+      _json['containerVersionHeader'] =
           containerVersionHeader.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4323,8 +4322,8 @@ class ListContainersResponse {
   ListContainersResponse();
 
   ListContainersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("containers")) {
-      containers = (_json["containers"] as core.List)
+    if (_json.containsKey('containers')) {
+      containers = (_json['containers'] as core.List)
           .map<Container>((value) => Container.fromJson(value))
           .toList();
     }
@@ -4334,7 +4333,7 @@ class ListContainersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (containers != null) {
-      _json["containers"] = containers.map((value) => value.toJson()).toList();
+      _json['containers'] = containers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4348,8 +4347,8 @@ class ListEnvironmentsResponse {
   ListEnvironmentsResponse();
 
   ListEnvironmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("environments")) {
-      environments = (_json["environments"] as core.List)
+    if (_json.containsKey('environments')) {
+      environments = (_json['environments'] as core.List)
           .map<Environment>((value) => Environment.fromJson(value))
           .toList();
     }
@@ -4359,7 +4358,7 @@ class ListEnvironmentsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (environments != null) {
-      _json["environments"] =
+      _json['environments'] =
           environments.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4374,8 +4373,8 @@ class ListFoldersResponse {
   ListFoldersResponse();
 
   ListFoldersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("folders")) {
-      folders = (_json["folders"] as core.List)
+    if (_json.containsKey('folders')) {
+      folders = (_json['folders'] as core.List)
           .map<Folder>((value) => Folder.fromJson(value))
           .toList();
     }
@@ -4385,7 +4384,7 @@ class ListFoldersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (folders != null) {
-      _json["folders"] = folders.map((value) => value.toJson()).toList();
+      _json['folders'] = folders.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4399,8 +4398,8 @@ class ListTagsResponse {
   ListTagsResponse();
 
   ListTagsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("tags")) {
-      tags = (_json["tags"] as core.List)
+    if (_json.containsKey('tags')) {
+      tags = (_json['tags'] as core.List)
           .map<Tag>((value) => Tag.fromJson(value))
           .toList();
     }
@@ -4410,7 +4409,7 @@ class ListTagsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (tags != null) {
-      _json["tags"] = tags.map((value) => value.toJson()).toList();
+      _json['tags'] = tags.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4424,8 +4423,8 @@ class ListTriggersResponse {
   ListTriggersResponse();
 
   ListTriggersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("triggers")) {
-      triggers = (_json["triggers"] as core.List)
+    if (_json.containsKey('triggers')) {
+      triggers = (_json['triggers'] as core.List)
           .map<Trigger>((value) => Trigger.fromJson(value))
           .toList();
     }
@@ -4435,7 +4434,7 @@ class ListTriggersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (triggers != null) {
-      _json["triggers"] = triggers.map((value) => value.toJson()).toList();
+      _json['triggers'] = triggers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4449,8 +4448,8 @@ class ListVariablesResponse {
   ListVariablesResponse();
 
   ListVariablesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("variables")) {
-      variables = (_json["variables"] as core.List)
+    if (_json.containsKey('variables')) {
+      variables = (_json['variables'] as core.List)
           .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
@@ -4460,7 +4459,7 @@ class ListVariablesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (variables != null) {
-      _json["variables"] = variables.map((value) => value.toJson()).toList();
+      _json['variables'] = variables.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4529,48 +4528,48 @@ class Macro {
   Macro();
 
   Macro.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("disablingRuleId")) {
+    if (_json.containsKey('disablingRuleId')) {
       disablingRuleId =
-          (_json["disablingRuleId"] as core.List).cast<core.String>();
+          (_json['disablingRuleId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("enablingRuleId")) {
+    if (_json.containsKey('enablingRuleId')) {
       enablingRuleId =
-          (_json["enablingRuleId"] as core.List).cast<core.String>();
+          (_json['enablingRuleId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("macroId")) {
-      macroId = _json["macroId"];
+    if (_json.containsKey('macroId')) {
+      macroId = _json['macroId'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parentFolderId")) {
-      parentFolderId = _json["parentFolderId"];
+    if (_json.containsKey('parentFolderId')) {
+      parentFolderId = _json['parentFolderId'];
     }
-    if (_json.containsKey("scheduleEndMs")) {
-      scheduleEndMs = _json["scheduleEndMs"];
+    if (_json.containsKey('scheduleEndMs')) {
+      scheduleEndMs = _json['scheduleEndMs'];
     }
-    if (_json.containsKey("scheduleStartMs")) {
-      scheduleStartMs = _json["scheduleStartMs"];
+    if (_json.containsKey('scheduleStartMs')) {
+      scheduleStartMs = _json['scheduleStartMs'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4578,43 +4577,43 @@ class Macro {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (disablingRuleId != null) {
-      _json["disablingRuleId"] = disablingRuleId;
+      _json['disablingRuleId'] = disablingRuleId;
     }
     if (enablingRuleId != null) {
-      _json["enablingRuleId"] = enablingRuleId;
+      _json['enablingRuleId'] = enablingRuleId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (macroId != null) {
-      _json["macroId"] = macroId;
+      _json['macroId'] = macroId;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
-      _json["parentFolderId"] = parentFolderId;
+      _json['parentFolderId'] = parentFolderId;
     }
     if (scheduleEndMs != null) {
-      _json["scheduleEndMs"] = scheduleEndMs;
+      _json['scheduleEndMs'] = scheduleEndMs;
     }
     if (scheduleStartMs != null) {
-      _json["scheduleStartMs"] = scheduleStartMs;
+      _json['scheduleStartMs'] = scheduleStartMs;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4687,24 +4686,24 @@ class Parameter {
   Parameter();
 
   Parameter.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("list")) {
-      list = (_json["list"] as core.List)
+    if (_json.containsKey('list')) {
+      list = (_json['list'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("map")) {
-      map = (_json["map"] as core.List)
+    if (_json.containsKey('map')) {
+      map = (_json['map'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -4712,19 +4711,19 @@ class Parameter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (list != null) {
-      _json["list"] = list.map((value) => value.toJson()).toList();
+      _json['list'] = list.map((value) => value.toJson()).toList();
     }
     if (map != null) {
-      _json["map"] = map.map((value) => value.toJson()).toList();
+      _json['map'] = map.map((value) => value.toJson()).toList();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -4741,11 +4740,11 @@ class PublishContainerVersionResponse {
   PublishContainerVersionResponse();
 
   PublishContainerVersionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("compilerError")) {
-      compilerError = _json["compilerError"];
+    if (_json.containsKey('compilerError')) {
+      compilerError = _json['compilerError'];
     }
-    if (_json.containsKey("containerVersion")) {
-      containerVersion = ContainerVersion.fromJson(_json["containerVersion"]);
+    if (_json.containsKey('containerVersion')) {
+      containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
     }
   }
 
@@ -4753,10 +4752,10 @@ class PublishContainerVersionResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (compilerError != null) {
-      _json["compilerError"] = compilerError;
+      _json['compilerError'] = compilerError;
     }
     if (containerVersion != null) {
-      _json["containerVersion"] = containerVersion.toJson();
+      _json['containerVersion'] = containerVersion.toJson();
     }
     return _json;
   }
@@ -4794,28 +4793,28 @@ class Rule {
   Rule();
 
   Rule.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("condition")) {
-      condition = (_json["condition"] as core.List)
+    if (_json.containsKey('condition')) {
+      condition = (_json['condition'] as core.List)
           .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("ruleId")) {
-      ruleId = _json["ruleId"];
+    if (_json.containsKey('ruleId')) {
+      ruleId = _json['ruleId'];
     }
   }
 
@@ -4823,25 +4822,25 @@ class Rule {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (condition != null) {
-      _json["condition"] = condition.map((value) => value.toJson()).toList();
+      _json['condition'] = condition.map((value) => value.toJson()).toList();
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (ruleId != null) {
-      _json["ruleId"] = ruleId;
+      _json['ruleId'] = ruleId;
     }
     return _json;
   }
@@ -4859,11 +4858,11 @@ class SetupTag {
   SetupTag();
 
   SetupTag.fromJson(core.Map _json) {
-    if (_json.containsKey("stopOnSetupFailure")) {
-      stopOnSetupFailure = _json["stopOnSetupFailure"];
+    if (_json.containsKey('stopOnSetupFailure')) {
+      stopOnSetupFailure = _json['stopOnSetupFailure'];
     }
-    if (_json.containsKey("tagName")) {
-      tagName = _json["tagName"];
+    if (_json.containsKey('tagName')) {
+      tagName = _json['tagName'];
     }
   }
 
@@ -4871,10 +4870,10 @@ class SetupTag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (stopOnSetupFailure != null) {
-      _json["stopOnSetupFailure"] = stopOnSetupFailure;
+      _json['stopOnSetupFailure'] = stopOnSetupFailure;
     }
     if (tagName != null) {
-      _json["tagName"] = tagName;
+      _json['tagName'] = tagName;
     }
     return _json;
   }
@@ -4983,77 +4982,77 @@ class Tag {
   Tag();
 
   Tag.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("blockingRuleId")) {
+    if (_json.containsKey('blockingRuleId')) {
       blockingRuleId =
-          (_json["blockingRuleId"] as core.List).cast<core.String>();
+          (_json['blockingRuleId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("blockingTriggerId")) {
+    if (_json.containsKey('blockingTriggerId')) {
       blockingTriggerId =
-          (_json["blockingTriggerId"] as core.List).cast<core.String>();
+          (_json['blockingTriggerId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("firingRuleId")) {
-      firingRuleId = (_json["firingRuleId"] as core.List).cast<core.String>();
+    if (_json.containsKey('firingRuleId')) {
+      firingRuleId = (_json['firingRuleId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("firingTriggerId")) {
+    if (_json.containsKey('firingTriggerId')) {
       firingTriggerId =
-          (_json["firingTriggerId"] as core.List).cast<core.String>();
+          (_json['firingTriggerId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("liveOnly")) {
-      liveOnly = _json["liveOnly"];
+    if (_json.containsKey('liveOnly')) {
+      liveOnly = _json['liveOnly'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parentFolderId")) {
-      parentFolderId = _json["parentFolderId"];
+    if (_json.containsKey('parentFolderId')) {
+      parentFolderId = _json['parentFolderId'];
     }
-    if (_json.containsKey("paused")) {
-      paused = _json["paused"];
+    if (_json.containsKey('paused')) {
+      paused = _json['paused'];
     }
-    if (_json.containsKey("priority")) {
-      priority = Parameter.fromJson(_json["priority"]);
+    if (_json.containsKey('priority')) {
+      priority = Parameter.fromJson(_json['priority']);
     }
-    if (_json.containsKey("scheduleEndMs")) {
-      scheduleEndMs = _json["scheduleEndMs"];
+    if (_json.containsKey('scheduleEndMs')) {
+      scheduleEndMs = _json['scheduleEndMs'];
     }
-    if (_json.containsKey("scheduleStartMs")) {
-      scheduleStartMs = _json["scheduleStartMs"];
+    if (_json.containsKey('scheduleStartMs')) {
+      scheduleStartMs = _json['scheduleStartMs'];
     }
-    if (_json.containsKey("setupTag")) {
-      setupTag = (_json["setupTag"] as core.List)
+    if (_json.containsKey('setupTag')) {
+      setupTag = (_json['setupTag'] as core.List)
           .map<SetupTag>((value) => SetupTag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("tagFiringOption")) {
-      tagFiringOption = _json["tagFiringOption"];
+    if (_json.containsKey('tagFiringOption')) {
+      tagFiringOption = _json['tagFiringOption'];
     }
-    if (_json.containsKey("tagId")) {
-      tagId = _json["tagId"];
+    if (_json.containsKey('tagId')) {
+      tagId = _json['tagId'];
     }
-    if (_json.containsKey("teardownTag")) {
-      teardownTag = (_json["teardownTag"] as core.List)
+    if (_json.containsKey('teardownTag')) {
+      teardownTag = (_json['teardownTag'] as core.List)
           .map<TeardownTag>((value) => TeardownTag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -5061,68 +5060,68 @@ class Tag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (blockingRuleId != null) {
-      _json["blockingRuleId"] = blockingRuleId;
+      _json['blockingRuleId'] = blockingRuleId;
     }
     if (blockingTriggerId != null) {
-      _json["blockingTriggerId"] = blockingTriggerId;
+      _json['blockingTriggerId'] = blockingTriggerId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (firingRuleId != null) {
-      _json["firingRuleId"] = firingRuleId;
+      _json['firingRuleId'] = firingRuleId;
     }
     if (firingTriggerId != null) {
-      _json["firingTriggerId"] = firingTriggerId;
+      _json['firingTriggerId'] = firingTriggerId;
     }
     if (liveOnly != null) {
-      _json["liveOnly"] = liveOnly;
+      _json['liveOnly'] = liveOnly;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
-      _json["parentFolderId"] = parentFolderId;
+      _json['parentFolderId'] = parentFolderId;
     }
     if (paused != null) {
-      _json["paused"] = paused;
+      _json['paused'] = paused;
     }
     if (priority != null) {
-      _json["priority"] = priority.toJson();
+      _json['priority'] = priority.toJson();
     }
     if (scheduleEndMs != null) {
-      _json["scheduleEndMs"] = scheduleEndMs;
+      _json['scheduleEndMs'] = scheduleEndMs;
     }
     if (scheduleStartMs != null) {
-      _json["scheduleStartMs"] = scheduleStartMs;
+      _json['scheduleStartMs'] = scheduleStartMs;
     }
     if (setupTag != null) {
-      _json["setupTag"] = setupTag.map((value) => value.toJson()).toList();
+      _json['setupTag'] = setupTag.map((value) => value.toJson()).toList();
     }
     if (tagFiringOption != null) {
-      _json["tagFiringOption"] = tagFiringOption;
+      _json['tagFiringOption'] = tagFiringOption;
     }
     if (tagId != null) {
-      _json["tagId"] = tagId;
+      _json['tagId'] = tagId;
     }
     if (teardownTag != null) {
-      _json["teardownTag"] =
+      _json['teardownTag'] =
           teardownTag.map((value) => value.toJson()).toList();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -5140,11 +5139,11 @@ class TeardownTag {
   TeardownTag();
 
   TeardownTag.fromJson(core.Map _json) {
-    if (_json.containsKey("stopTeardownOnFailure")) {
-      stopTeardownOnFailure = _json["stopTeardownOnFailure"];
+    if (_json.containsKey('stopTeardownOnFailure')) {
+      stopTeardownOnFailure = _json['stopTeardownOnFailure'];
     }
-    if (_json.containsKey("tagName")) {
-      tagName = _json["tagName"];
+    if (_json.containsKey('tagName')) {
+      tagName = _json['tagName'];
     }
   }
 
@@ -5152,10 +5151,10 @@ class TeardownTag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (stopTeardownOnFailure != null) {
-      _json["stopTeardownOnFailure"] = stopTeardownOnFailure;
+      _json['stopTeardownOnFailure'] = stopTeardownOnFailure;
     }
     if (tagName != null) {
-      _json["tagName"] = tagName;
+      _json['tagName'] = tagName;
     }
     return _json;
   }
@@ -5339,102 +5338,102 @@ class Trigger {
   Trigger();
 
   Trigger.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("autoEventFilter")) {
-      autoEventFilter = (_json["autoEventFilter"] as core.List)
+    if (_json.containsKey('autoEventFilter')) {
+      autoEventFilter = (_json['autoEventFilter'] as core.List)
           .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("checkValidation")) {
-      checkValidation = Parameter.fromJson(_json["checkValidation"]);
+    if (_json.containsKey('checkValidation')) {
+      checkValidation = Parameter.fromJson(_json['checkValidation']);
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("continuousTimeMinMilliseconds")) {
+    if (_json.containsKey('continuousTimeMinMilliseconds')) {
       continuousTimeMinMilliseconds =
-          Parameter.fromJson(_json["continuousTimeMinMilliseconds"]);
+          Parameter.fromJson(_json['continuousTimeMinMilliseconds']);
     }
-    if (_json.containsKey("customEventFilter")) {
-      customEventFilter = (_json["customEventFilter"] as core.List)
+    if (_json.containsKey('customEventFilter')) {
+      customEventFilter = (_json['customEventFilter'] as core.List)
           .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("eventName")) {
-      eventName = Parameter.fromJson(_json["eventName"]);
+    if (_json.containsKey('eventName')) {
+      eventName = Parameter.fromJson(_json['eventName']);
     }
-    if (_json.containsKey("filter")) {
-      filter = (_json["filter"] as core.List)
+    if (_json.containsKey('filter')) {
+      filter = (_json['filter'] as core.List)
           .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("horizontalScrollPercentageList")) {
+    if (_json.containsKey('horizontalScrollPercentageList')) {
       horizontalScrollPercentageList =
-          Parameter.fromJson(_json["horizontalScrollPercentageList"]);
+          Parameter.fromJson(_json['horizontalScrollPercentageList']);
     }
-    if (_json.containsKey("interval")) {
-      interval = Parameter.fromJson(_json["interval"]);
+    if (_json.containsKey('interval')) {
+      interval = Parameter.fromJson(_json['interval']);
     }
-    if (_json.containsKey("intervalSeconds")) {
-      intervalSeconds = Parameter.fromJson(_json["intervalSeconds"]);
+    if (_json.containsKey('intervalSeconds')) {
+      intervalSeconds = Parameter.fromJson(_json['intervalSeconds']);
     }
-    if (_json.containsKey("limit")) {
-      limit = Parameter.fromJson(_json["limit"]);
+    if (_json.containsKey('limit')) {
+      limit = Parameter.fromJson(_json['limit']);
     }
-    if (_json.containsKey("maxTimerLengthSeconds")) {
+    if (_json.containsKey('maxTimerLengthSeconds')) {
       maxTimerLengthSeconds =
-          Parameter.fromJson(_json["maxTimerLengthSeconds"]);
+          Parameter.fromJson(_json['maxTimerLengthSeconds']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parentFolderId")) {
-      parentFolderId = _json["parentFolderId"];
+    if (_json.containsKey('parentFolderId')) {
+      parentFolderId = _json['parentFolderId'];
     }
-    if (_json.containsKey("selector")) {
-      selector = Parameter.fromJson(_json["selector"]);
+    if (_json.containsKey('selector')) {
+      selector = Parameter.fromJson(_json['selector']);
     }
-    if (_json.containsKey("totalTimeMinMilliseconds")) {
+    if (_json.containsKey('totalTimeMinMilliseconds')) {
       totalTimeMinMilliseconds =
-          Parameter.fromJson(_json["totalTimeMinMilliseconds"]);
+          Parameter.fromJson(_json['totalTimeMinMilliseconds']);
     }
-    if (_json.containsKey("triggerId")) {
-      triggerId = _json["triggerId"];
+    if (_json.containsKey('triggerId')) {
+      triggerId = _json['triggerId'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("uniqueTriggerId")) {
-      uniqueTriggerId = Parameter.fromJson(_json["uniqueTriggerId"]);
+    if (_json.containsKey('uniqueTriggerId')) {
+      uniqueTriggerId = Parameter.fromJson(_json['uniqueTriggerId']);
     }
-    if (_json.containsKey("verticalScrollPercentageList")) {
+    if (_json.containsKey('verticalScrollPercentageList')) {
       verticalScrollPercentageList =
-          Parameter.fromJson(_json["verticalScrollPercentageList"]);
+          Parameter.fromJson(_json['verticalScrollPercentageList']);
     }
-    if (_json.containsKey("visibilitySelector")) {
-      visibilitySelector = Parameter.fromJson(_json["visibilitySelector"]);
+    if (_json.containsKey('visibilitySelector')) {
+      visibilitySelector = Parameter.fromJson(_json['visibilitySelector']);
     }
-    if (_json.containsKey("visiblePercentageMax")) {
-      visiblePercentageMax = Parameter.fromJson(_json["visiblePercentageMax"]);
+    if (_json.containsKey('visiblePercentageMax')) {
+      visiblePercentageMax = Parameter.fromJson(_json['visiblePercentageMax']);
     }
-    if (_json.containsKey("visiblePercentageMin")) {
-      visiblePercentageMin = Parameter.fromJson(_json["visiblePercentageMin"]);
+    if (_json.containsKey('visiblePercentageMin')) {
+      visiblePercentageMin = Parameter.fromJson(_json['visiblePercentageMin']);
     }
-    if (_json.containsKey("waitForTags")) {
-      waitForTags = Parameter.fromJson(_json["waitForTags"]);
+    if (_json.containsKey('waitForTags')) {
+      waitForTags = Parameter.fromJson(_json['waitForTags']);
     }
-    if (_json.containsKey("waitForTagsTimeout")) {
-      waitForTagsTimeout = Parameter.fromJson(_json["waitForTagsTimeout"]);
+    if (_json.containsKey('waitForTagsTimeout')) {
+      waitForTagsTimeout = Parameter.fromJson(_json['waitForTagsTimeout']);
     }
   }
 
@@ -5442,93 +5441,93 @@ class Trigger {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (autoEventFilter != null) {
-      _json["autoEventFilter"] =
+      _json['autoEventFilter'] =
           autoEventFilter.map((value) => value.toJson()).toList();
     }
     if (checkValidation != null) {
-      _json["checkValidation"] = checkValidation.toJson();
+      _json['checkValidation'] = checkValidation.toJson();
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (continuousTimeMinMilliseconds != null) {
-      _json["continuousTimeMinMilliseconds"] =
+      _json['continuousTimeMinMilliseconds'] =
           continuousTimeMinMilliseconds.toJson();
     }
     if (customEventFilter != null) {
-      _json["customEventFilter"] =
+      _json['customEventFilter'] =
           customEventFilter.map((value) => value.toJson()).toList();
     }
     if (eventName != null) {
-      _json["eventName"] = eventName.toJson();
+      _json['eventName'] = eventName.toJson();
     }
     if (filter != null) {
-      _json["filter"] = filter.map((value) => value.toJson()).toList();
+      _json['filter'] = filter.map((value) => value.toJson()).toList();
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (horizontalScrollPercentageList != null) {
-      _json["horizontalScrollPercentageList"] =
+      _json['horizontalScrollPercentageList'] =
           horizontalScrollPercentageList.toJson();
     }
     if (interval != null) {
-      _json["interval"] = interval.toJson();
+      _json['interval'] = interval.toJson();
     }
     if (intervalSeconds != null) {
-      _json["intervalSeconds"] = intervalSeconds.toJson();
+      _json['intervalSeconds'] = intervalSeconds.toJson();
     }
     if (limit != null) {
-      _json["limit"] = limit.toJson();
+      _json['limit'] = limit.toJson();
     }
     if (maxTimerLengthSeconds != null) {
-      _json["maxTimerLengthSeconds"] = maxTimerLengthSeconds.toJson();
+      _json['maxTimerLengthSeconds'] = maxTimerLengthSeconds.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
-      _json["parentFolderId"] = parentFolderId;
+      _json['parentFolderId'] = parentFolderId;
     }
     if (selector != null) {
-      _json["selector"] = selector.toJson();
+      _json['selector'] = selector.toJson();
     }
     if (totalTimeMinMilliseconds != null) {
-      _json["totalTimeMinMilliseconds"] = totalTimeMinMilliseconds.toJson();
+      _json['totalTimeMinMilliseconds'] = totalTimeMinMilliseconds.toJson();
     }
     if (triggerId != null) {
-      _json["triggerId"] = triggerId;
+      _json['triggerId'] = triggerId;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (uniqueTriggerId != null) {
-      _json["uniqueTriggerId"] = uniqueTriggerId.toJson();
+      _json['uniqueTriggerId'] = uniqueTriggerId.toJson();
     }
     if (verticalScrollPercentageList != null) {
-      _json["verticalScrollPercentageList"] =
+      _json['verticalScrollPercentageList'] =
           verticalScrollPercentageList.toJson();
     }
     if (visibilitySelector != null) {
-      _json["visibilitySelector"] = visibilitySelector.toJson();
+      _json['visibilitySelector'] = visibilitySelector.toJson();
     }
     if (visiblePercentageMax != null) {
-      _json["visiblePercentageMax"] = visiblePercentageMax.toJson();
+      _json['visiblePercentageMax'] = visiblePercentageMax.toJson();
     }
     if (visiblePercentageMin != null) {
-      _json["visiblePercentageMin"] = visiblePercentageMin.toJson();
+      _json['visiblePercentageMin'] = visiblePercentageMin.toJson();
     }
     if (waitForTags != null) {
-      _json["waitForTags"] = waitForTags.toJson();
+      _json['waitForTags'] = waitForTags.toJson();
     }
     if (waitForTagsTimeout != null) {
-      _json["waitForTagsTimeout"] = waitForTagsTimeout.toJson();
+      _json['waitForTagsTimeout'] = waitForTagsTimeout.toJson();
     }
     return _json;
   }
@@ -5558,22 +5557,22 @@ class UserAccess {
   UserAccess();
 
   UserAccess.fromJson(core.Map _json) {
-    if (_json.containsKey("accountAccess")) {
-      accountAccess = AccountAccess.fromJson(_json["accountAccess"]);
+    if (_json.containsKey('accountAccess')) {
+      accountAccess = AccountAccess.fromJson(_json['accountAccess']);
     }
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerAccess")) {
-      containerAccess = (_json["containerAccess"] as core.List)
+    if (_json.containsKey('containerAccess')) {
+      containerAccess = (_json['containerAccess'] as core.List)
           .map<ContainerAccess>((value) => ContainerAccess.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("emailAddress")) {
-      emailAddress = _json["emailAddress"];
+    if (_json.containsKey('emailAddress')) {
+      emailAddress = _json['emailAddress'];
     }
-    if (_json.containsKey("permissionId")) {
-      permissionId = _json["permissionId"];
+    if (_json.containsKey('permissionId')) {
+      permissionId = _json['permissionId'];
     }
   }
 
@@ -5581,20 +5580,20 @@ class UserAccess {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountAccess != null) {
-      _json["accountAccess"] = accountAccess.toJson();
+      _json['accountAccess'] = accountAccess.toJson();
     }
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerAccess != null) {
-      _json["containerAccess"] =
+      _json['containerAccess'] =
           containerAccess.map((value) => value.toJson()).toList();
     }
     if (emailAddress != null) {
-      _json["emailAddress"] = emailAddress;
+      _json['emailAddress'] = emailAddress;
     }
     if (permissionId != null) {
-      _json["permissionId"] = permissionId;
+      _json['permissionId'] = permissionId;
     }
     return _json;
   }
@@ -5665,48 +5664,48 @@ class Variable {
   Variable();
 
   Variable.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'];
     }
-    if (_json.containsKey("containerId")) {
-      containerId = _json["containerId"];
+    if (_json.containsKey('containerId')) {
+      containerId = _json['containerId'];
     }
-    if (_json.containsKey("disablingTriggerId")) {
+    if (_json.containsKey('disablingTriggerId')) {
       disablingTriggerId =
-          (_json["disablingTriggerId"] as core.List).cast<core.String>();
+          (_json['disablingTriggerId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("enablingTriggerId")) {
+    if (_json.containsKey('enablingTriggerId')) {
       enablingTriggerId =
-          (_json["enablingTriggerId"] as core.List).cast<core.String>();
+          (_json['enablingTriggerId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"];
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'];
     }
-    if (_json.containsKey("parameter")) {
-      parameter = (_json["parameter"] as core.List)
+    if (_json.containsKey('parameter')) {
+      parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("parentFolderId")) {
-      parentFolderId = _json["parentFolderId"];
+    if (_json.containsKey('parentFolderId')) {
+      parentFolderId = _json['parentFolderId'];
     }
-    if (_json.containsKey("scheduleEndMs")) {
-      scheduleEndMs = _json["scheduleEndMs"];
+    if (_json.containsKey('scheduleEndMs')) {
+      scheduleEndMs = _json['scheduleEndMs'];
     }
-    if (_json.containsKey("scheduleStartMs")) {
-      scheduleStartMs = _json["scheduleStartMs"];
+    if (_json.containsKey('scheduleStartMs')) {
+      scheduleStartMs = _json['scheduleStartMs'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("variableId")) {
-      variableId = _json["variableId"];
+    if (_json.containsKey('variableId')) {
+      variableId = _json['variableId'];
     }
   }
 
@@ -5714,43 +5713,43 @@ class Variable {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accountId != null) {
-      _json["accountId"] = accountId;
+      _json['accountId'] = accountId;
     }
     if (containerId != null) {
-      _json["containerId"] = containerId;
+      _json['containerId'] = containerId;
     }
     if (disablingTriggerId != null) {
-      _json["disablingTriggerId"] = disablingTriggerId;
+      _json['disablingTriggerId'] = disablingTriggerId;
     }
     if (enablingTriggerId != null) {
-      _json["enablingTriggerId"] = enablingTriggerId;
+      _json['enablingTriggerId'] = enablingTriggerId;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
+      _json['fingerprint'] = fingerprint;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notes != null) {
-      _json["notes"] = notes;
+      _json['notes'] = notes;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
+      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
-      _json["parentFolderId"] = parentFolderId;
+      _json['parentFolderId'] = parentFolderId;
     }
     if (scheduleEndMs != null) {
-      _json["scheduleEndMs"] = scheduleEndMs;
+      _json['scheduleEndMs'] = scheduleEndMs;
     }
     if (scheduleStartMs != null) {
-      _json["scheduleStartMs"] = scheduleStartMs;
+      _json['scheduleStartMs'] = scheduleStartMs;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (variableId != null) {
-      _json["variableId"] = variableId;
+      _json['variableId'] = variableId;
     }
     return _json;
   }

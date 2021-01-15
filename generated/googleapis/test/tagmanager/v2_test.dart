@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,12 +75,12 @@ api.Account buildAccount() {
   var o = api.Account();
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    o.accountId = "foo";
-    o.fingerprint = "foo";
-    o.name = "foo";
-    o.path = "foo";
+    o.accountId = 'foo';
+    o.fingerprint = 'foo';
+    o.name = 'foo';
+    o.path = 'foo';
     o.shareData = true;
-    o.tagManagerUrl = "foo";
+    o.tagManagerUrl = 'foo';
   }
   buildCounterAccount--;
   return o;
@@ -104,7 +104,7 @@ api.AccountAccess buildAccountAccess() {
   var o = api.AccountAccess();
   buildCounterAccountAccess++;
   if (buildCounterAccountAccess < 3) {
-    o.permission = "foo";
+    o.permission = 'foo';
   }
   buildCounterAccountAccess--;
   return o;
@@ -123,12 +123,12 @@ api.BuiltInVariable buildBuiltInVariable() {
   var o = api.BuiltInVariable();
   buildCounterBuiltInVariable++;
   if (buildCounterBuiltInVariable < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
-    o.name = "foo";
-    o.path = "foo";
-    o.type = "foo";
-    o.workspaceId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
+    o.name = 'foo';
+    o.path = 'foo';
+    o.type = 'foo';
+    o.workspaceId = 'foo';
   }
   buildCounterBuiltInVariable--;
   return o;
@@ -165,18 +165,18 @@ api.Client buildClient() {
   var o = api.Client();
   buildCounterClient++;
   if (buildCounterClient < 3) {
-    o.accountId = "foo";
-    o.clientId = "foo";
-    o.containerId = "foo";
-    o.fingerprint = "foo";
-    o.name = "foo";
+    o.accountId = 'foo';
+    o.clientId = 'foo';
+    o.containerId = 'foo';
+    o.fingerprint = 'foo';
+    o.name = 'foo';
     o.parameter = buildUnnamed4424();
-    o.parentFolderId = "foo";
-    o.path = "foo";
+    o.parentFolderId = 'foo';
+    o.path = 'foo';
     o.priority = 42;
-    o.tagManagerUrl = "foo";
-    o.type = "foo";
-    o.workspaceId = "foo";
+    o.tagManagerUrl = 'foo';
+    o.type = 'foo';
+    o.workspaceId = 'foo';
   }
   buildCounterClient--;
   return o;
@@ -220,7 +220,7 @@ api.Condition buildCondition() {
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
     o.parameter = buildUnnamed4425();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterCondition--;
   return o;
@@ -237,8 +237,8 @@ void checkCondition(api.Condition o) {
 
 core.List<core.String> buildUnnamed4426() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -250,8 +250,8 @@ void checkUnnamed4426(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4427() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -266,15 +266,15 @@ api.Container buildContainer() {
   var o = api.Container();
   buildCounterContainer++;
   if (buildCounterContainer < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
     o.domainName = buildUnnamed4426();
-    o.fingerprint = "foo";
-    o.name = "foo";
-    o.notes = "foo";
-    o.path = "foo";
-    o.publicId = "foo";
-    o.tagManagerUrl = "foo";
+    o.fingerprint = 'foo';
+    o.name = 'foo';
+    o.notes = 'foo';
+    o.path = 'foo';
+    o.publicId = 'foo';
+    o.tagManagerUrl = 'foo';
     o.usageContext = buildUnnamed4427();
   }
   buildCounterContainer--;
@@ -303,8 +303,8 @@ api.ContainerAccess buildContainerAccess() {
   var o = api.ContainerAccess();
   buildCounterContainerAccess++;
   if (buildCounterContainerAccess < 3) {
-    o.containerId = "foo";
-    o.permission = "foo";
+    o.containerId = 'foo';
+    o.permission = 'foo';
   }
   buildCounterContainerAccess--;
   return o;
@@ -428,21 +428,21 @@ api.ContainerVersion buildContainerVersion() {
   var o = api.ContainerVersion();
   buildCounterContainerVersion++;
   if (buildCounterContainerVersion < 3) {
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.builtInVariable = buildUnnamed4428();
     o.client = buildUnnamed4429();
     o.container = buildContainer();
-    o.containerId = "foo";
-    o.containerVersionId = "foo";
+    o.containerId = 'foo';
+    o.containerVersionId = 'foo';
     o.customTemplate = buildUnnamed4430();
     o.deleted = true;
-    o.description = "foo";
-    o.fingerprint = "foo";
+    o.description = 'foo';
+    o.fingerprint = 'foo';
     o.folder = buildUnnamed4431();
-    o.name = "foo";
-    o.path = "foo";
+    o.name = 'foo';
+    o.path = 'foo';
     o.tag = buildUnnamed4432();
-    o.tagManagerUrl = "foo";
+    o.tagManagerUrl = 'foo';
     o.trigger = buildUnnamed4433();
     o.variable = buildUnnamed4434();
     o.zone = buildUnnamed4435();
@@ -481,19 +481,19 @@ api.ContainerVersionHeader buildContainerVersionHeader() {
   var o = api.ContainerVersionHeader();
   buildCounterContainerVersionHeader++;
   if (buildCounterContainerVersionHeader < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
-    o.containerVersionId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
+    o.containerVersionId = 'foo';
     o.deleted = true;
-    o.name = "foo";
-    o.numCustomTemplates = "foo";
-    o.numMacros = "foo";
-    o.numRules = "foo";
-    o.numTags = "foo";
-    o.numTriggers = "foo";
-    o.numVariables = "foo";
-    o.numZones = "foo";
-    o.path = "foo";
+    o.name = 'foo';
+    o.numCustomTemplates = 'foo';
+    o.numMacros = 'foo';
+    o.numRules = 'foo';
+    o.numTags = 'foo';
+    o.numTriggers = 'foo';
+    o.numVariables = 'foo';
+    o.numZones = 'foo';
+    o.path = 'foo';
   }
   buildCounterContainerVersionHeader--;
   return o;
@@ -557,8 +557,8 @@ api.CreateContainerVersionRequestVersionOptions
   var o = api.CreateContainerVersionRequestVersionOptions();
   buildCounterCreateContainerVersionRequestVersionOptions++;
   if (buildCounterCreateContainerVersionRequestVersionOptions < 3) {
-    o.name = "foo";
-    o.notes = "foo";
+    o.name = 'foo';
+    o.notes = 'foo';
   }
   buildCounterCreateContainerVersionRequestVersionOptions--;
   return o;
@@ -581,7 +581,7 @@ api.CreateContainerVersionResponse buildCreateContainerVersionResponse() {
   if (buildCounterCreateContainerVersionResponse < 3) {
     o.compilerError = true;
     o.containerVersion = buildContainerVersion();
-    o.newWorkspacePath = "foo";
+    o.newWorkspacePath = 'foo';
     o.syncStatus = buildSyncStatus();
   }
   buildCounterCreateContainerVersionResponse--;
@@ -604,16 +604,16 @@ api.CustomTemplate buildCustomTemplate() {
   var o = api.CustomTemplate();
   buildCounterCustomTemplate++;
   if (buildCounterCustomTemplate < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
-    o.fingerprint = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
+    o.fingerprint = 'foo';
     o.galleryReference = buildGalleryReference();
-    o.name = "foo";
-    o.path = "foo";
-    o.tagManagerUrl = "foo";
-    o.templateData = "foo";
-    o.templateId = "foo";
-    o.workspaceId = "foo";
+    o.name = 'foo';
+    o.path = 'foo';
+    o.tagManagerUrl = 'foo';
+    o.templateData = 'foo';
+    o.templateId = 'foo';
+    o.workspaceId = 'foo';
   }
   buildCounterCustomTemplate--;
   return o;
@@ -641,7 +641,7 @@ api.Entity buildEntity() {
   var o = api.Entity();
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
-    o.changeStatus = "foo";
+    o.changeStatus = 'foo';
     o.folder = buildFolder();
     o.tag = buildTag();
     o.trigger = buildTrigger();
@@ -668,21 +668,21 @@ api.Environment buildEnvironment() {
   var o = api.Environment();
   buildCounterEnvironment++;
   if (buildCounterEnvironment < 3) {
-    o.accountId = "foo";
-    o.authorizationCode = "foo";
-    o.authorizationTimestamp = "foo";
-    o.containerId = "foo";
-    o.containerVersionId = "foo";
-    o.description = "foo";
+    o.accountId = 'foo';
+    o.authorizationCode = 'foo';
+    o.authorizationTimestamp = 'foo';
+    o.containerId = 'foo';
+    o.containerVersionId = 'foo';
+    o.description = 'foo';
     o.enableDebug = true;
-    o.environmentId = "foo";
-    o.fingerprint = "foo";
-    o.name = "foo";
-    o.path = "foo";
-    o.tagManagerUrl = "foo";
-    o.type = "foo";
-    o.url = "foo";
-    o.workspaceId = "foo";
+    o.environmentId = 'foo';
+    o.fingerprint = 'foo';
+    o.name = 'foo';
+    o.path = 'foo';
+    o.tagManagerUrl = 'foo';
+    o.type = 'foo';
+    o.url = 'foo';
+    o.workspaceId = 'foo';
   }
   buildCounterEnvironment--;
   return o;
@@ -715,15 +715,15 @@ api.Folder buildFolder() {
   var o = api.Folder();
   buildCounterFolder++;
   if (buildCounterFolder < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
-    o.fingerprint = "foo";
-    o.folderId = "foo";
-    o.name = "foo";
-    o.notes = "foo";
-    o.path = "foo";
-    o.tagManagerUrl = "foo";
-    o.workspaceId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
+    o.fingerprint = 'foo';
+    o.folderId = 'foo';
+    o.name = 'foo';
+    o.notes = 'foo';
+    o.path = 'foo';
+    o.tagManagerUrl = 'foo';
+    o.workspaceId = 'foo';
   }
   buildCounterFolder--;
   return o;
@@ -789,7 +789,7 @@ api.FolderEntities buildFolderEntities() {
   var o = api.FolderEntities();
   buildCounterFolderEntities++;
   if (buildCounterFolderEntities < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.tag = buildUnnamed4437();
     o.trigger = buildUnnamed4438();
     o.variable = buildUnnamed4439();
@@ -814,12 +814,12 @@ api.GalleryReference buildGalleryReference() {
   var o = api.GalleryReference();
   buildCounterGalleryReference++;
   if (buildCounterGalleryReference < 3) {
-    o.host = "foo";
+    o.host = 'foo';
     o.isModified = true;
-    o.owner = "foo";
-    o.repository = "foo";
-    o.signature = "foo";
-    o.version = "foo";
+    o.owner = 'foo';
+    o.repository = 'foo';
+    o.signature = 'foo';
+    o.version = 'foo';
   }
   buildCounterGalleryReference--;
   return o;
@@ -904,7 +904,7 @@ api.ListAccountsResponse buildListAccountsResponse() {
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
     o.account = buildUnnamed4442();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListAccountsResponse--;
   return o;
@@ -938,7 +938,7 @@ api.ListContainerVersionsResponse buildListContainerVersionsResponse() {
   buildCounterListContainerVersionsResponse++;
   if (buildCounterListContainerVersionsResponse < 3) {
     o.containerVersionHeader = buildUnnamed4443();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListContainerVersionsResponse--;
   return o;
@@ -972,7 +972,7 @@ api.ListContainersResponse buildListContainersResponse() {
   buildCounterListContainersResponse++;
   if (buildCounterListContainersResponse < 3) {
     o.container = buildUnnamed4444();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListContainersResponse--;
   return o;
@@ -1007,7 +1007,7 @@ api.ListEnabledBuiltInVariablesResponse
   buildCounterListEnabledBuiltInVariablesResponse++;
   if (buildCounterListEnabledBuiltInVariablesResponse < 3) {
     o.builtInVariable = buildUnnamed4445();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListEnabledBuiltInVariablesResponse--;
   return o;
@@ -1042,7 +1042,7 @@ api.ListEnvironmentsResponse buildListEnvironmentsResponse() {
   buildCounterListEnvironmentsResponse++;
   if (buildCounterListEnvironmentsResponse < 3) {
     o.environment = buildUnnamed4446();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListEnvironmentsResponse--;
   return o;
@@ -1076,7 +1076,7 @@ api.ListFoldersResponse buildListFoldersResponse() {
   buildCounterListFoldersResponse++;
   if (buildCounterListFoldersResponse < 3) {
     o.folder = buildUnnamed4447();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListFoldersResponse--;
   return o;
@@ -1109,7 +1109,7 @@ api.ListTagsResponse buildListTagsResponse() {
   var o = api.ListTagsResponse();
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.tag = buildUnnamed4448();
   }
   buildCounterListTagsResponse--;
@@ -1143,7 +1143,7 @@ api.ListTemplatesResponse buildListTemplatesResponse() {
   var o = api.ListTemplatesResponse();
   buildCounterListTemplatesResponse++;
   if (buildCounterListTemplatesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.template = buildUnnamed4449();
   }
   buildCounterListTemplatesResponse--;
@@ -1177,7 +1177,7 @@ api.ListTriggersResponse buildListTriggersResponse() {
   var o = api.ListTriggersResponse();
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.trigger = buildUnnamed4450();
   }
   buildCounterListTriggersResponse--;
@@ -1211,7 +1211,7 @@ api.ListUserPermissionsResponse buildListUserPermissionsResponse() {
   var o = api.ListUserPermissionsResponse();
   buildCounterListUserPermissionsResponse++;
   if (buildCounterListUserPermissionsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.userPermission = buildUnnamed4451();
   }
   buildCounterListUserPermissionsResponse--;
@@ -1245,7 +1245,7 @@ api.ListVariablesResponse buildListVariablesResponse() {
   var o = api.ListVariablesResponse();
   buildCounterListVariablesResponse++;
   if (buildCounterListVariablesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.variable = buildUnnamed4452();
   }
   buildCounterListVariablesResponse--;
@@ -1279,7 +1279,7 @@ api.ListWorkspacesResponse buildListWorkspacesResponse() {
   var o = api.ListWorkspacesResponse();
   buildCounterListWorkspacesResponse++;
   if (buildCounterListWorkspacesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.workspace = buildUnnamed4453();
   }
   buildCounterListWorkspacesResponse--;
@@ -1313,7 +1313,7 @@ api.ListZonesResponse buildListZonesResponse() {
   var o = api.ListZonesResponse();
   buildCounterListZonesResponse++;
   if (buildCounterListZonesResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.zone = buildUnnamed4454();
   }
   buildCounterListZonesResponse--;
@@ -1381,11 +1381,11 @@ api.Parameter buildParameter() {
   var o = api.Parameter();
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
-    o.key = "foo";
+    o.key = 'foo';
     o.list = buildUnnamed4455();
     o.map = buildUnnamed4456();
-    o.type = "foo";
-    o.value = "foo";
+    o.type = 'foo';
+    o.value = 'foo';
   }
   buildCounterParameter--;
   return o;
@@ -1587,7 +1587,7 @@ api.SetupTag buildSetupTag() {
   buildCounterSetupTag++;
   if (buildCounterSetupTag < 3) {
     o.stopOnSetupFailure = true;
-    o.tagName = "foo";
+    o.tagName = 'foo';
   }
   buildCounterSetupTag--;
   return o;
@@ -1659,8 +1659,8 @@ void checkSyncWorkspaceResponse(api.SyncWorkspaceResponse o) {
 
 core.List<core.String> buildUnnamed4458() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1672,8 +1672,8 @@ void checkUnnamed4458(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4459() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1685,8 +1685,8 @@ void checkUnnamed4459(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4460() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1698,8 +1698,8 @@ void checkUnnamed4460(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4461() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1753,32 +1753,32 @@ api.Tag buildTag() {
   var o = api.Tag();
   buildCounterTag++;
   if (buildCounterTag < 3) {
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.blockingRuleId = buildUnnamed4458();
     o.blockingTriggerId = buildUnnamed4459();
-    o.containerId = "foo";
-    o.fingerprint = "foo";
+    o.containerId = 'foo';
+    o.fingerprint = 'foo';
     o.firingRuleId = buildUnnamed4460();
     o.firingTriggerId = buildUnnamed4461();
     o.liveOnly = true;
     o.monitoringMetadata = buildParameter();
-    o.monitoringMetadataTagNameKey = "foo";
-    o.name = "foo";
-    o.notes = "foo";
+    o.monitoringMetadataTagNameKey = 'foo';
+    o.name = 'foo';
+    o.notes = 'foo';
     o.parameter = buildUnnamed4462();
-    o.parentFolderId = "foo";
-    o.path = "foo";
+    o.parentFolderId = 'foo';
+    o.path = 'foo';
     o.paused = true;
     o.priority = buildParameter();
-    o.scheduleEndMs = "foo";
-    o.scheduleStartMs = "foo";
+    o.scheduleEndMs = 'foo';
+    o.scheduleStartMs = 'foo';
     o.setupTag = buildUnnamed4463();
-    o.tagFiringOption = "foo";
-    o.tagId = "foo";
-    o.tagManagerUrl = "foo";
+    o.tagFiringOption = 'foo';
+    o.tagId = 'foo';
+    o.tagManagerUrl = 'foo';
     o.teardownTag = buildUnnamed4464();
-    o.type = "foo";
-    o.workspaceId = "foo";
+    o.type = 'foo';
+    o.workspaceId = 'foo';
   }
   buildCounterTag--;
   return o;
@@ -1823,7 +1823,7 @@ api.TeardownTag buildTeardownTag() {
   buildCounterTeardownTag++;
   if (buildCounterTeardownTag < 3) {
     o.stopTeardownOnFailure = true;
-    o.tagName = "foo";
+    o.tagName = 'foo';
   }
   buildCounterTeardownTag--;
   return o;
@@ -1895,30 +1895,30 @@ api.Trigger buildTrigger() {
   var o = api.Trigger();
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.autoEventFilter = buildUnnamed4465();
     o.checkValidation = buildParameter();
-    o.containerId = "foo";
+    o.containerId = 'foo';
     o.continuousTimeMinMilliseconds = buildParameter();
     o.customEventFilter = buildUnnamed4466();
     o.eventName = buildParameter();
     o.filter = buildUnnamed4467();
-    o.fingerprint = "foo";
+    o.fingerprint = 'foo';
     o.horizontalScrollPercentageList = buildParameter();
     o.interval = buildParameter();
     o.intervalSeconds = buildParameter();
     o.limit = buildParameter();
     o.maxTimerLengthSeconds = buildParameter();
-    o.name = "foo";
-    o.notes = "foo";
+    o.name = 'foo';
+    o.notes = 'foo';
     o.parameter = buildUnnamed4468();
-    o.parentFolderId = "foo";
-    o.path = "foo";
+    o.parentFolderId = 'foo';
+    o.path = 'foo';
     o.selector = buildParameter();
-    o.tagManagerUrl = "foo";
+    o.tagManagerUrl = 'foo';
     o.totalTimeMinMilliseconds = buildParameter();
-    o.triggerId = "foo";
-    o.type = "foo";
+    o.triggerId = 'foo';
+    o.type = 'foo';
     o.uniqueTriggerId = buildParameter();
     o.verticalScrollPercentageList = buildParameter();
     o.visibilitySelector = buildParameter();
@@ -1926,7 +1926,7 @@ api.Trigger buildTrigger() {
     o.visiblePercentageMin = buildParameter();
     o.waitForTags = buildParameter();
     o.waitForTagsTimeout = buildParameter();
-    o.workspaceId = "foo";
+    o.workspaceId = 'foo';
   }
   buildCounterTrigger--;
   return o;
@@ -1990,10 +1990,10 @@ api.UserPermission buildUserPermission() {
   buildCounterUserPermission++;
   if (buildCounterUserPermission < 3) {
     o.accountAccess = buildAccountAccess();
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.containerAccess = buildUnnamed4469();
-    o.emailAddress = "foo";
-    o.path = "foo";
+    o.emailAddress = 'foo';
+    o.path = 'foo';
   }
   buildCounterUserPermission--;
   return o;
@@ -2013,8 +2013,8 @@ void checkUserPermission(api.UserPermission o) {
 
 core.List<core.String> buildUnnamed4470() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2026,8 +2026,8 @@ void checkUnnamed4470(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4471() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2055,23 +2055,23 @@ api.Variable buildVariable() {
   var o = api.Variable();
   buildCounterVariable++;
   if (buildCounterVariable < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
     o.disablingTriggerId = buildUnnamed4470();
     o.enablingTriggerId = buildUnnamed4471();
-    o.fingerprint = "foo";
+    o.fingerprint = 'foo';
     o.formatValue = buildVariableFormatValue();
-    o.name = "foo";
-    o.notes = "foo";
+    o.name = 'foo';
+    o.notes = 'foo';
     o.parameter = buildUnnamed4472();
-    o.parentFolderId = "foo";
-    o.path = "foo";
-    o.scheduleEndMs = "foo";
-    o.scheduleStartMs = "foo";
-    o.tagManagerUrl = "foo";
-    o.type = "foo";
-    o.variableId = "foo";
-    o.workspaceId = "foo";
+    o.parentFolderId = 'foo';
+    o.path = 'foo';
+    o.scheduleEndMs = 'foo';
+    o.scheduleStartMs = 'foo';
+    o.tagManagerUrl = 'foo';
+    o.type = 'foo';
+    o.variableId = 'foo';
+    o.workspaceId = 'foo';
   }
   buildCounterVariable--;
   return o;
@@ -2106,7 +2106,7 @@ api.VariableFormatValue buildVariableFormatValue() {
   var o = api.VariableFormatValue();
   buildCounterVariableFormatValue++;
   if (buildCounterVariableFormatValue < 3) {
-    o.caseConversionType = "foo";
+    o.caseConversionType = 'foo';
     o.convertFalseToValue = buildParameter();
     o.convertNullToValue = buildParameter();
     o.convertTrueToValue = buildParameter();
@@ -2133,14 +2133,14 @@ api.Workspace buildWorkspace() {
   var o = api.Workspace();
   buildCounterWorkspace++;
   if (buildCounterWorkspace < 3) {
-    o.accountId = "foo";
-    o.containerId = "foo";
-    o.description = "foo";
-    o.fingerprint = "foo";
-    o.name = "foo";
-    o.path = "foo";
-    o.tagManagerUrl = "foo";
-    o.workspaceId = "foo";
+    o.accountId = 'foo';
+    o.containerId = 'foo';
+    o.description = 'foo';
+    o.fingerprint = 'foo';
+    o.name = 'foo';
+    o.path = 'foo';
+    o.tagManagerUrl = 'foo';
+    o.workspaceId = 'foo';
   }
   buildCounterWorkspace--;
   return o;
@@ -2179,18 +2179,18 @@ api.Zone buildZone() {
   var o = api.Zone();
   buildCounterZone++;
   if (buildCounterZone < 3) {
-    o.accountId = "foo";
+    o.accountId = 'foo';
     o.boundary = buildZoneBoundary();
     o.childContainer = buildUnnamed4473();
-    o.containerId = "foo";
-    o.fingerprint = "foo";
-    o.name = "foo";
-    o.notes = "foo";
-    o.path = "foo";
-    o.tagManagerUrl = "foo";
+    o.containerId = 'foo';
+    o.fingerprint = 'foo';
+    o.name = 'foo';
+    o.notes = 'foo';
+    o.path = 'foo';
+    o.tagManagerUrl = 'foo';
     o.typeRestriction = buildZoneTypeRestriction();
-    o.workspaceId = "foo";
-    o.zoneId = "foo";
+    o.workspaceId = 'foo';
+    o.zoneId = 'foo';
   }
   buildCounterZone--;
   return o;
@@ -2230,8 +2230,8 @@ void checkUnnamed4474(core.List<api.Condition> o) {
 
 core.List<core.String> buildUnnamed4475() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2267,8 +2267,8 @@ api.ZoneChildContainer buildZoneChildContainer() {
   var o = api.ZoneChildContainer();
   buildCounterZoneChildContainer++;
   if (buildCounterZoneChildContainer < 3) {
-    o.nickname = "foo";
-    o.publicId = "foo";
+    o.nickname = 'foo';
+    o.publicId = 'foo';
   }
   buildCounterZoneChildContainer--;
   return o;
@@ -2285,8 +2285,8 @@ void checkZoneChildContainer(api.ZoneChildContainer o) {
 
 core.List<core.String> buildUnnamed4476() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2319,8 +2319,8 @@ void checkZoneTypeRestriction(api.ZoneTypeRestriction o) {
 
 core.List<core.String> buildUnnamed4477() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2332,8 +2332,8 @@ void checkUnnamed4477(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4478() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2345,8 +2345,8 @@ void checkUnnamed4478(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4479() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2358,8 +2358,8 @@ void checkUnnamed4479(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4480() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2371,8 +2371,8 @@ void checkUnnamed4480(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed4481() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2383,88 +2383,88 @@ void checkUnnamed4481(core.List<core.String> o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Account", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Account', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od);
     });
   });
 
-  unittest.group("obj-schema-AccountAccess", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AccountAccess', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAccountAccess();
       var od = api.AccountAccess.fromJson(o.toJson());
       checkAccountAccess(od);
     });
   });
 
-  unittest.group("obj-schema-BuiltInVariable", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BuiltInVariable', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBuiltInVariable();
       var od = api.BuiltInVariable.fromJson(o.toJson());
       checkBuiltInVariable(od);
     });
   });
 
-  unittest.group("obj-schema-Client", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Client', () {
+    unittest.test('to-json--from-json', () {
       var o = buildClient();
       var od = api.Client.fromJson(o.toJson());
       checkClient(od);
     });
   });
 
-  unittest.group("obj-schema-Condition", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Condition', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCondition();
       var od = api.Condition.fromJson(o.toJson());
       checkCondition(od);
     });
   });
 
-  unittest.group("obj-schema-Container", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Container', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainer();
       var od = api.Container.fromJson(o.toJson());
       checkContainer(od);
     });
   });
 
-  unittest.group("obj-schema-ContainerAccess", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContainerAccess', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainerAccess();
       var od = api.ContainerAccess.fromJson(o.toJson());
       checkContainerAccess(od);
     });
   });
 
-  unittest.group("obj-schema-ContainerVersion", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContainerVersion', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainerVersion();
       var od = api.ContainerVersion.fromJson(o.toJson());
       checkContainerVersion(od);
     });
   });
 
-  unittest.group("obj-schema-ContainerVersionHeader", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ContainerVersionHeader', () {
+    unittest.test('to-json--from-json', () {
       var o = buildContainerVersionHeader();
       var od = api.ContainerVersionHeader.fromJson(o.toJson());
       checkContainerVersionHeader(od);
     });
   });
 
-  unittest.group("obj-schema-CreateBuiltInVariableResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateBuiltInVariableResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateBuiltInVariableResponse();
       var od = api.CreateBuiltInVariableResponse.fromJson(o.toJson());
       checkCreateBuiltInVariableResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CreateContainerVersionRequestVersionOptions", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateContainerVersionRequestVersionOptions', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateContainerVersionRequestVersionOptions();
       var od =
           api.CreateContainerVersionRequestVersionOptions.fromJson(o.toJson());
@@ -2472,380 +2472,380 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-CreateContainerVersionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateContainerVersionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateContainerVersionResponse();
       var od = api.CreateContainerVersionResponse.fromJson(o.toJson());
       checkCreateContainerVersionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CustomTemplate", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CustomTemplate', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCustomTemplate();
       var od = api.CustomTemplate.fromJson(o.toJson());
       checkCustomTemplate(od);
     });
   });
 
-  unittest.group("obj-schema-Entity", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Entity', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEntity();
       var od = api.Entity.fromJson(o.toJson());
       checkEntity(od);
     });
   });
 
-  unittest.group("obj-schema-Environment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Environment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
       checkEnvironment(od);
     });
   });
 
-  unittest.group("obj-schema-Folder", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Folder', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFolder();
       var od = api.Folder.fromJson(o.toJson());
       checkFolder(od);
     });
   });
 
-  unittest.group("obj-schema-FolderEntities", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FolderEntities', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFolderEntities();
       var od = api.FolderEntities.fromJson(o.toJson());
       checkFolderEntities(od);
     });
   });
 
-  unittest.group("obj-schema-GalleryReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GalleryReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGalleryReference();
       var od = api.GalleryReference.fromJson(o.toJson());
       checkGalleryReference(od);
     });
   });
 
-  unittest.group("obj-schema-GetWorkspaceStatusResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GetWorkspaceStatusResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGetWorkspaceStatusResponse();
       var od = api.GetWorkspaceStatusResponse.fromJson(o.toJson());
       checkGetWorkspaceStatusResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListAccountsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListAccountsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListAccountsResponse();
       var od = api.ListAccountsResponse.fromJson(o.toJson());
       checkListAccountsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListContainerVersionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListContainerVersionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListContainerVersionsResponse();
       var od = api.ListContainerVersionsResponse.fromJson(o.toJson());
       checkListContainerVersionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListContainersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListContainersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListContainersResponse();
       var od = api.ListContainersResponse.fromJson(o.toJson());
       checkListContainersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListEnabledBuiltInVariablesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListEnabledBuiltInVariablesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListEnabledBuiltInVariablesResponse();
       var od = api.ListEnabledBuiltInVariablesResponse.fromJson(o.toJson());
       checkListEnabledBuiltInVariablesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListEnvironmentsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListEnvironmentsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListEnvironmentsResponse();
       var od = api.ListEnvironmentsResponse.fromJson(o.toJson());
       checkListEnvironmentsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListFoldersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListFoldersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListFoldersResponse();
       var od = api.ListFoldersResponse.fromJson(o.toJson());
       checkListFoldersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTagsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTagsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTagsResponse();
       var od = api.ListTagsResponse.fromJson(o.toJson());
       checkListTagsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTemplatesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTemplatesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTemplatesResponse();
       var od = api.ListTemplatesResponse.fromJson(o.toJson());
       checkListTemplatesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListTriggersResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListTriggersResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListTriggersResponse();
       var od = api.ListTriggersResponse.fromJson(o.toJson());
       checkListTriggersResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListUserPermissionsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListUserPermissionsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListUserPermissionsResponse();
       var od = api.ListUserPermissionsResponse.fromJson(o.toJson());
       checkListUserPermissionsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListVariablesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListVariablesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListVariablesResponse();
       var od = api.ListVariablesResponse.fromJson(o.toJson());
       checkListVariablesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListWorkspacesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListWorkspacesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListWorkspacesResponse();
       var od = api.ListWorkspacesResponse.fromJson(o.toJson());
       checkListWorkspacesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListZonesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListZonesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListZonesResponse();
       var od = api.ListZonesResponse.fromJson(o.toJson());
       checkListZonesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-MergeConflict", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MergeConflict', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMergeConflict();
       var od = api.MergeConflict.fromJson(o.toJson());
       checkMergeConflict(od);
     });
   });
 
-  unittest.group("obj-schema-Parameter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Parameter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParameter();
       var od = api.Parameter.fromJson(o.toJson());
       checkParameter(od);
     });
   });
 
-  unittest.group("obj-schema-PublishContainerVersionResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PublishContainerVersionResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPublishContainerVersionResponse();
       var od = api.PublishContainerVersionResponse.fromJson(o.toJson());
       checkPublishContainerVersionResponse(od);
     });
   });
 
-  unittest.group("obj-schema-QuickPreviewResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QuickPreviewResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQuickPreviewResponse();
       var od = api.QuickPreviewResponse.fromJson(o.toJson());
       checkQuickPreviewResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RevertBuiltInVariableResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RevertBuiltInVariableResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevertBuiltInVariableResponse();
       var od = api.RevertBuiltInVariableResponse.fromJson(o.toJson());
       checkRevertBuiltInVariableResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RevertFolderResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RevertFolderResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevertFolderResponse();
       var od = api.RevertFolderResponse.fromJson(o.toJson());
       checkRevertFolderResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RevertTagResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RevertTagResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevertTagResponse();
       var od = api.RevertTagResponse.fromJson(o.toJson());
       checkRevertTagResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RevertTemplateResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RevertTemplateResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevertTemplateResponse();
       var od = api.RevertTemplateResponse.fromJson(o.toJson());
       checkRevertTemplateResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RevertTriggerResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RevertTriggerResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevertTriggerResponse();
       var od = api.RevertTriggerResponse.fromJson(o.toJson());
       checkRevertTriggerResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RevertVariableResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RevertVariableResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevertVariableResponse();
       var od = api.RevertVariableResponse.fromJson(o.toJson());
       checkRevertVariableResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RevertZoneResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RevertZoneResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRevertZoneResponse();
       var od = api.RevertZoneResponse.fromJson(o.toJson());
       checkRevertZoneResponse(od);
     });
   });
 
-  unittest.group("obj-schema-SetupTag", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SetupTag', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSetupTag();
       var od = api.SetupTag.fromJson(o.toJson());
       checkSetupTag(od);
     });
   });
 
-  unittest.group("obj-schema-SyncStatus", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SyncStatus', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSyncStatus();
       var od = api.SyncStatus.fromJson(o.toJson());
       checkSyncStatus(od);
     });
   });
 
-  unittest.group("obj-schema-SyncWorkspaceResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SyncWorkspaceResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSyncWorkspaceResponse();
       var od = api.SyncWorkspaceResponse.fromJson(o.toJson());
       checkSyncWorkspaceResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Tag", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Tag', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTag();
       var od = api.Tag.fromJson(o.toJson());
       checkTag(od);
     });
   });
 
-  unittest.group("obj-schema-TeardownTag", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TeardownTag', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTeardownTag();
       var od = api.TeardownTag.fromJson(o.toJson());
       checkTeardownTag(od);
     });
   });
 
-  unittest.group("obj-schema-Trigger", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Trigger', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTrigger();
       var od = api.Trigger.fromJson(o.toJson());
       checkTrigger(od);
     });
   });
 
-  unittest.group("obj-schema-UserPermission", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UserPermission', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUserPermission();
       var od = api.UserPermission.fromJson(o.toJson());
       checkUserPermission(od);
     });
   });
 
-  unittest.group("obj-schema-Variable", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Variable', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVariable();
       var od = api.Variable.fromJson(o.toJson());
       checkVariable(od);
     });
   });
 
-  unittest.group("obj-schema-VariableFormatValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-VariableFormatValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildVariableFormatValue();
       var od = api.VariableFormatValue.fromJson(o.toJson());
       checkVariableFormatValue(od);
     });
   });
 
-  unittest.group("obj-schema-Workspace", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Workspace', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWorkspace();
       var od = api.Workspace.fromJson(o.toJson());
       checkWorkspace(od);
     });
   });
 
-  unittest.group("obj-schema-Zone", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Zone', () {
+    unittest.test('to-json--from-json', () {
       var o = buildZone();
       var od = api.Zone.fromJson(o.toJson());
       checkZone(od);
     });
   });
 
-  unittest.group("obj-schema-ZoneBoundary", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ZoneBoundary', () {
+    unittest.test('to-json--from-json', () {
       var o = buildZoneBoundary();
       var od = api.ZoneBoundary.fromJson(o.toJson());
       checkZoneBoundary(od);
     });
   });
 
-  unittest.group("obj-schema-ZoneChildContainer", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ZoneChildContainer', () {
+    unittest.test('to-json--from-json', () {
       var o = buildZoneChildContainer();
       var od = api.ZoneChildContainer.fromJson(o.toJson());
       checkZoneChildContainer(od);
     });
   });
 
-  unittest.group("obj-schema-ZoneTypeRestriction", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ZoneTypeRestriction', () {
+    unittest.test('to-json--from-json', () {
       var o = buildZoneTypeRestriction();
       var od = api.ZoneTypeRestriction.fromJson(o.toJson());
       checkZoneTypeRestriction(od);
     });
   });
 
-  unittest.group("resource-AccountsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AccountsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.TagmanagerApi(mock).accounts;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2865,8 +2865,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2876,7 +2876,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2888,11 +2888,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.TagmanagerApi(mock).accounts;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2911,8 +2911,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2924,7 +2924,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2936,13 +2936,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.TagmanagerApi(mock).accounts;
       var arg_request = buildAccount();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Account.fromJson(json);
         checkAccount(obj);
@@ -2965,8 +2965,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2978,7 +2978,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -2992,14 +2992,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Container.fromJson(json);
         checkContainer(obj);
@@ -3022,8 +3022,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3033,7 +3033,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3045,12 +3045,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3070,8 +3070,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3081,9 +3081,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3091,12 +3091,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3116,8 +3116,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3127,7 +3127,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3139,13 +3139,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3165,8 +3165,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3178,7 +3178,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListContainersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3190,14 +3190,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Container.fromJson(json);
         checkContainer(obj);
@@ -3220,8 +3220,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3233,7 +3233,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainer());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3247,14 +3247,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersEnvironmentsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersEnvironmentsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Environment.fromJson(json);
         checkEnvironment(obj);
@@ -3277,8 +3277,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3288,7 +3288,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3300,12 +3300,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3325,8 +3325,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3336,9 +3336,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3346,12 +3346,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3371,8 +3371,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3382,7 +3382,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3394,13 +3394,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3420,8 +3420,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3433,7 +3433,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListEnvironmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3445,13 +3445,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--reauthorize", () {
+    unittest.test('method--reauthorize', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Environment.fromJson(json);
         checkEnvironment(obj);
@@ -3474,8 +3474,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3485,7 +3485,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3497,14 +3497,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersEnvironmentsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Environment.fromJson(json);
         checkEnvironment(obj);
@@ -3527,8 +3527,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3540,7 +3540,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3554,13 +3554,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersVersionHeadersResourceApi", () {
-    unittest.test("method--latest", () {
+  unittest.group('resource-AccountsContainersVersionHeadersResourceApi', () {
+    unittest.test('method--latest', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionHeadersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versionHeaders;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3580,8 +3580,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3591,7 +3591,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersionHeader());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3603,14 +3603,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionHeadersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versionHeaders;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_includeDeleted = true;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3630,8 +3630,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3645,7 +3645,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListContainerVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3661,13 +3661,13 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersVersionsResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-AccountsContainersVersionsResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3687,8 +3687,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3698,9 +3698,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3708,13 +3708,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_path = "foo";
-      var arg_containerVersionId = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_containerVersionId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3734,8 +3734,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3747,7 +3747,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3760,12 +3760,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--live", () {
+    unittest.test('method--live', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3785,8 +3785,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3796,7 +3796,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3808,13 +3808,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--publish", () {
+    unittest.test('method--publish', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3834,8 +3834,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3847,7 +3847,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPublishContainerVersionResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3859,12 +3859,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--setLatest", () {
+    unittest.test('method--setLatest', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3884,8 +3884,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3895,7 +3895,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3907,12 +3907,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--undelete", () {
+    unittest.test('method--undelete', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3932,8 +3932,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3943,7 +3943,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -3955,14 +3955,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersVersionsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_request = buildContainerVersion();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ContainerVersion.fromJson(json);
         checkContainerVersion(obj);
@@ -3985,8 +3985,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3998,7 +3998,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4012,14 +4012,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersWorkspacesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersWorkspacesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildWorkspace();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Workspace.fromJson(json);
         checkWorkspace(obj);
@@ -4042,8 +4042,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4053,7 +4053,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildWorkspace());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4065,13 +4065,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--createVersion", () {
+    unittest.test('method--createVersion', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildCreateContainerVersionRequestVersionOptions();
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.CreateContainerVersionRequestVersionOptions.fromJson(json);
@@ -4095,8 +4095,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4106,7 +4106,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreateContainerVersionResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4118,12 +4118,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4143,8 +4143,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4154,9 +4154,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4164,12 +4164,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4189,8 +4189,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4200,7 +4200,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildWorkspace());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4212,12 +4212,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--getStatus", () {
+    unittest.test('method--getStatus', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4237,8 +4237,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4248,7 +4248,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGetWorkspaceStatusResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4260,13 +4260,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4286,8 +4286,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4299,7 +4299,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListWorkspacesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4311,12 +4311,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--quickPreview", () {
+    unittest.test('method--quickPreview', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4336,8 +4336,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4347,7 +4347,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildQuickPreviewResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4359,14 +4359,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--resolveConflict", () {
+    unittest.test('method--resolveConflict', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildEntity();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Entity.fromJson(json);
         checkEntity(obj);
@@ -4389,8 +4389,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4402,9 +4402,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4413,12 +4413,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--sync", () {
+    unittest.test('method--sync', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4438,8 +4438,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4449,7 +4449,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSyncWorkspaceResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4461,14 +4461,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildWorkspace();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Workspace.fromJson(json);
         checkWorkspace(obj);
@@ -4491,8 +4491,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4504,7 +4504,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildWorkspace());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4519,8 +4519,8 @@ void main() {
   });
 
   unittest.group(
-      "resource-AccountsContainersWorkspacesBuiltInVariablesResourceApi", () {
-    unittest.test("method--create", () {
+      'resource-AccountsContainersWorkspacesBuiltInVariablesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesBuiltInVariablesResourceApi res =
           api.TagmanagerApi(mock)
@@ -4528,9 +4528,9 @@ void main() {
               .containers
               .workspaces
               .builtInVariables;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_type = buildUnnamed4477();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4550,8 +4550,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4562,7 +4562,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCreateBuiltInVariableResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4574,7 +4574,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesBuiltInVariablesResourceApi res =
           api.TagmanagerApi(mock)
@@ -4582,9 +4582,9 @@ void main() {
               .containers
               .workspaces
               .builtInVariables;
-      var arg_path = "foo";
+      var arg_path = 'foo';
       var arg_type = buildUnnamed4478();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4604,8 +4604,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4616,9 +4616,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4626,7 +4626,7 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesBuiltInVariablesResourceApi res =
           api.TagmanagerApi(mock)
@@ -4634,9 +4634,9 @@ void main() {
               .containers
               .workspaces
               .builtInVariables;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4656,8 +4656,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4669,7 +4669,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildListEnabledBuiltInVariablesResponse());
@@ -4682,7 +4682,7 @@ void main() {
       })));
     });
 
-    unittest.test("method--revert", () {
+    unittest.test('method--revert', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesBuiltInVariablesResourceApi res =
           api.TagmanagerApi(mock)
@@ -4690,9 +4690,9 @@ void main() {
               .containers
               .workspaces
               .builtInVariables;
-      var arg_path = "foo";
-      var arg_type = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_type = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4712,8 +4712,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4724,7 +4724,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevertBuiltInVariableResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4737,14 +4737,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersWorkspacesFoldersResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersWorkspacesFoldersResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Folder.fromJson(json);
         checkFolder(obj);
@@ -4767,8 +4767,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4778,7 +4778,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4790,12 +4790,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4815,8 +4815,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4826,9 +4826,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4836,13 +4836,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--entities", () {
+    unittest.test('method--entities', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
-      var arg_path = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4862,8 +4862,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4875,7 +4875,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFolderEntities());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4887,12 +4887,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4912,8 +4912,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4923,7 +4923,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4935,13 +4935,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4961,8 +4961,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4974,7 +4974,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListFoldersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -4986,16 +4986,16 @@ void main() {
       })));
     });
 
-    unittest.test("method--moveEntitiesToFolder", () {
+    unittest.test('method--moveEntitiesToFolder', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
-      var arg_path = "foo";
+      var arg_path = 'foo';
       var arg_variableId = buildUnnamed4479();
       var arg_triggerId = buildUnnamed4480();
       var arg_tagId = buildUnnamed4481();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Folder.fromJson(json);
         checkFolder(obj);
@@ -5018,8 +5018,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5033,9 +5033,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5047,13 +5047,13 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--revert", () {
+    unittest.test('method--revert', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5073,8 +5073,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5086,7 +5086,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevertFolderResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5098,14 +5098,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesFoldersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Folder.fromJson(json);
         checkFolder(obj);
@@ -5128,8 +5128,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5141,7 +5141,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5155,14 +5155,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersWorkspacesTagsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersWorkspacesTagsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
       var arg_request = buildTag();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Tag.fromJson(json);
         checkTag(obj);
@@ -5185,8 +5185,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5196,7 +5196,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTag());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5208,12 +5208,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5233,8 +5233,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5244,9 +5244,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5254,12 +5254,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5279,8 +5279,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5290,7 +5290,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTag());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5302,13 +5302,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5328,8 +5328,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5341,7 +5341,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTagsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5353,13 +5353,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--revert", () {
+    unittest.test('method--revert', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5379,8 +5379,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5392,7 +5392,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevertTagResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5404,14 +5404,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTagsResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
       var arg_request = buildTag();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Tag.fromJson(json);
         checkTag(obj);
@@ -5434,8 +5434,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5447,7 +5447,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTag());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5461,15 +5461,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersWorkspacesTemplatesResourceApi",
+  unittest.group('resource-AccountsContainersWorkspacesTemplatesResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTemplatesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
       var arg_request = buildCustomTemplate();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CustomTemplate.fromJson(json);
         checkCustomTemplate(obj);
@@ -5492,8 +5492,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5503,7 +5503,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomTemplate());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5515,12 +5515,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTemplatesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5540,8 +5540,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5551,9 +5551,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5561,12 +5561,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTemplatesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5586,8 +5586,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5597,7 +5597,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomTemplate());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5609,13 +5609,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTemplatesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5635,8 +5635,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5648,7 +5648,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5660,13 +5660,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--revert", () {
+    unittest.test('method--revert', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTemplatesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5686,8 +5686,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5699,7 +5699,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevertTemplateResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5711,14 +5711,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTemplatesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
       var arg_request = buildCustomTemplate();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CustomTemplate.fromJson(json);
         checkCustomTemplate(obj);
@@ -5741,8 +5741,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5754,7 +5754,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildCustomTemplate());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5768,15 +5768,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersWorkspacesTriggersResourceApi",
+  unittest.group('resource-AccountsContainersWorkspacesTriggersResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_request = buildTrigger();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Trigger.fromJson(json);
         checkTrigger(obj);
@@ -5799,8 +5799,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5810,7 +5810,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5822,12 +5822,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5847,8 +5847,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5858,9 +5858,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5868,12 +5868,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5893,8 +5893,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5904,7 +5904,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5916,13 +5916,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5942,8 +5942,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5955,7 +5955,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListTriggersResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5967,13 +5967,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--revert", () {
+    unittest.test('method--revert', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5993,8 +5993,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6006,7 +6006,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevertTriggerResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6018,14 +6018,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesTriggersResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_request = buildTrigger();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Trigger.fromJson(json);
         checkTrigger(obj);
@@ -6048,8 +6048,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6061,7 +6061,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6075,15 +6075,15 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersWorkspacesVariablesResourceApi",
+  unittest.group('resource-AccountsContainersWorkspacesVariablesResourceApi',
       () {
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
       var arg_request = buildVariable();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Variable.fromJson(json);
         checkVariable(obj);
@@ -6106,8 +6106,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6117,7 +6117,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVariable());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6129,12 +6129,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6154,8 +6154,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6165,9 +6165,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -6175,12 +6175,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6200,8 +6200,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6211,7 +6211,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVariable());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6223,13 +6223,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6249,8 +6249,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6262,7 +6262,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListVariablesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6274,13 +6274,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--revert", () {
+    unittest.test('method--revert', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6300,8 +6300,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6313,7 +6313,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevertVariableResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6325,14 +6325,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesVariablesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
       var arg_request = buildVariable();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Variable.fromJson(json);
         checkVariable(obj);
@@ -6355,8 +6355,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6368,7 +6368,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildVariable());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6382,14 +6382,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsContainersWorkspacesZonesResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsContainersWorkspacesZonesResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesZonesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
       var arg_request = buildZone();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Zone.fromJson(json);
         checkZone(obj);
@@ -6412,8 +6412,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6423,7 +6423,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildZone());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6435,12 +6435,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesZonesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6460,8 +6460,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6471,9 +6471,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -6481,12 +6481,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesZonesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6506,8 +6506,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6517,7 +6517,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildZone());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6529,13 +6529,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesZonesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6555,8 +6555,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6568,7 +6568,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListZonesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6580,13 +6580,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--revert", () {
+    unittest.test('method--revert', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesZonesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6606,8 +6606,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6619,7 +6619,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRevertZoneResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6631,14 +6631,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsContainersWorkspacesZonesResourceApi res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
       var arg_request = buildZone();
-      var arg_path = "foo";
-      var arg_fingerprint = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_fingerprint = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Zone.fromJson(json);
         checkZone(obj);
@@ -6661,8 +6661,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6674,7 +6674,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildZone());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6688,14 +6688,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsUserPermissionsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-AccountsUserPermissionsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.AccountsUserPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.userPermissions;
       var arg_request = buildUserPermission();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UserPermission.fromJson(json);
         checkUserPermission(obj);
@@ -6718,8 +6718,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6729,7 +6729,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUserPermission());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6741,12 +6741,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AccountsUserPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.userPermissions;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6766,8 +6766,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6777,9 +6777,9 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
-        var resp = "";
+        var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -6787,12 +6787,12 @@ void main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsUserPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.userPermissions;
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6812,8 +6812,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6823,7 +6823,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUserPermission());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6835,13 +6835,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsUserPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.userPermissions;
-      var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6861,8 +6861,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6874,7 +6874,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListUserPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6886,13 +6886,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--update", () {
+    unittest.test('method--update', () {
       var mock = HttpServerMock();
       api.AccountsUserPermissionsResourceApi res =
           api.TagmanagerApi(mock).accounts.userPermissions;
       var arg_request = buildUserPermission();
-      var arg_path = "foo";
-      var arg_$fields = "foo";
+      var arg_path = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.UserPermission.fromJson(json);
         checkUserPermission(obj);
@@ -6915,8 +6915,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6926,7 +6926,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildUserPermission());
         return async.Future.value(stringResponse(200, h, resp));

@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,8 +72,8 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.List<core.String> buildUnnamed5441() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -85,8 +85,8 @@ void checkUnnamed5441(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5442() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -98,15 +98,15 @@ void checkUnnamed5442(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed5443() {
   var o = <core.String, api.SuggestedTextStyle>{};
-  o["x"] = buildSuggestedTextStyle();
-  o["y"] = buildSuggestedTextStyle();
+  o['x'] = buildSuggestedTextStyle();
+  o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
 void checkUnnamed5443(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o["x"]);
-  checkSuggestedTextStyle(o["y"]);
+  checkSuggestedTextStyle(o['x']);
+  checkSuggestedTextStyle(o['y']);
 }
 
 core.int buildCounterAutoText = 0;
@@ -118,7 +118,7 @@ api.AutoText buildAutoText() {
     o.suggestedInsertionIds = buildUnnamed5442();
     o.suggestedTextStyleChanges = buildUnnamed5443();
     o.textStyle = buildTextStyle();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterAutoText--;
   return o;
@@ -226,7 +226,7 @@ api.BatchUpdateDocumentResponse buildBatchUpdateDocumentResponse() {
   var o = api.BatchUpdateDocumentResponse();
   buildCounterBatchUpdateDocumentResponse++;
   if (buildCounterBatchUpdateDocumentResponse < 3) {
-    o.documentId = "foo";
+    o.documentId = 'foo';
     o.replies = buildUnnamed5445();
     o.writeControl = buildWriteControl();
   }
@@ -281,7 +281,7 @@ api.Bullet buildBullet() {
   var o = api.Bullet();
   buildCounterBullet++;
   if (buildCounterBullet < 3) {
-    o.listId = "foo";
+    o.listId = 'foo';
     o.nestingLevel = 42;
     o.textStyle = buildTextStyle();
   }
@@ -343,8 +343,8 @@ void checkColor(api.Color o) {
 
 core.List<core.String> buildUnnamed5447() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -356,8 +356,8 @@ void checkUnnamed5447(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5448() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -369,15 +369,15 @@ void checkUnnamed5448(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed5449() {
   var o = <core.String, api.SuggestedTextStyle>{};
-  o["x"] = buildSuggestedTextStyle();
-  o["y"] = buildSuggestedTextStyle();
+  o['x'] = buildSuggestedTextStyle();
+  o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
 void checkUnnamed5449(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o["x"]);
-  checkSuggestedTextStyle(o["y"]);
+  checkSuggestedTextStyle(o['x']);
+  checkSuggestedTextStyle(o['y']);
 }
 
 core.int buildCounterColumnBreak = 0;
@@ -411,7 +411,7 @@ api.CreateFooterRequest buildCreateFooterRequest() {
   buildCounterCreateFooterRequest++;
   if (buildCounterCreateFooterRequest < 3) {
     o.sectionBreakLocation = buildLocation();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterCreateFooterRequest--;
   return o;
@@ -431,7 +431,7 @@ api.CreateFooterResponse buildCreateFooterResponse() {
   var o = api.CreateFooterResponse();
   buildCounterCreateFooterResponse++;
   if (buildCounterCreateFooterResponse < 3) {
-    o.footerId = "foo";
+    o.footerId = 'foo';
   }
   buildCounterCreateFooterResponse--;
   return o;
@@ -471,7 +471,7 @@ api.CreateFootnoteResponse buildCreateFootnoteResponse() {
   var o = api.CreateFootnoteResponse();
   buildCounterCreateFootnoteResponse++;
   if (buildCounterCreateFootnoteResponse < 3) {
-    o.footnoteId = "foo";
+    o.footnoteId = 'foo';
   }
   buildCounterCreateFootnoteResponse--;
   return o;
@@ -491,7 +491,7 @@ api.CreateHeaderRequest buildCreateHeaderRequest() {
   buildCounterCreateHeaderRequest++;
   if (buildCounterCreateHeaderRequest < 3) {
     o.sectionBreakLocation = buildLocation();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterCreateHeaderRequest--;
   return o;
@@ -511,7 +511,7 @@ api.CreateHeaderResponse buildCreateHeaderResponse() {
   var o = api.CreateHeaderResponse();
   buildCounterCreateHeaderResponse++;
   if (buildCounterCreateHeaderResponse < 3) {
-    o.headerId = "foo";
+    o.headerId = 'foo';
   }
   buildCounterCreateHeaderResponse--;
   return o;
@@ -530,7 +530,7 @@ api.CreateNamedRangeRequest buildCreateNamedRangeRequest() {
   var o = api.CreateNamedRangeRequest();
   buildCounterCreateNamedRangeRequest++;
   if (buildCounterCreateNamedRangeRequest < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.range = buildRange();
   }
   buildCounterCreateNamedRangeRequest--;
@@ -551,7 +551,7 @@ api.CreateNamedRangeResponse buildCreateNamedRangeResponse() {
   var o = api.CreateNamedRangeResponse();
   buildCounterCreateNamedRangeResponse++;
   if (buildCounterCreateNamedRangeResponse < 3) {
-    o.namedRangeId = "foo";
+    o.namedRangeId = 'foo';
   }
   buildCounterCreateNamedRangeResponse--;
   return o;
@@ -570,7 +570,7 @@ api.CreateParagraphBulletsRequest buildCreateParagraphBulletsRequest() {
   var o = api.CreateParagraphBulletsRequest();
   buildCounterCreateParagraphBulletsRequest++;
   if (buildCounterCreateParagraphBulletsRequest < 3) {
-    o.bulletPreset = "foo";
+    o.bulletPreset = 'foo';
     o.range = buildRange();
   }
   buildCounterCreateParagraphBulletsRequest--;
@@ -664,7 +664,7 @@ api.DeleteFooterRequest buildDeleteFooterRequest() {
   var o = api.DeleteFooterRequest();
   buildCounterDeleteFooterRequest++;
   if (buildCounterDeleteFooterRequest < 3) {
-    o.footerId = "foo";
+    o.footerId = 'foo';
   }
   buildCounterDeleteFooterRequest--;
   return o;
@@ -683,7 +683,7 @@ api.DeleteHeaderRequest buildDeleteHeaderRequest() {
   var o = api.DeleteHeaderRequest();
   buildCounterDeleteHeaderRequest++;
   if (buildCounterDeleteHeaderRequest < 3) {
-    o.headerId = "foo";
+    o.headerId = 'foo';
   }
   buildCounterDeleteHeaderRequest--;
   return o;
@@ -702,8 +702,8 @@ api.DeleteNamedRangeRequest buildDeleteNamedRangeRequest() {
   var o = api.DeleteNamedRangeRequest();
   buildCounterDeleteNamedRangeRequest++;
   if (buildCounterDeleteNamedRangeRequest < 3) {
-    o.name = "foo";
-    o.namedRangeId = "foo";
+    o.name = 'foo';
+    o.namedRangeId = 'foo';
   }
   buildCounterDeleteNamedRangeRequest--;
   return o;
@@ -742,7 +742,7 @@ api.DeletePositionedObjectRequest buildDeletePositionedObjectRequest() {
   var o = api.DeletePositionedObjectRequest();
   buildCounterDeletePositionedObjectRequest++;
   if (buildCounterDeletePositionedObjectRequest < 3) {
-    o.objectId = "foo";
+    o.objectId = 'foo';
   }
   buildCounterDeletePositionedObjectRequest--;
   return o;
@@ -800,7 +800,7 @@ api.Dimension buildDimension() {
   buildCounterDimension++;
   if (buildCounterDimension < 3) {
     o.magnitude = 42.0;
-    o.unit = "foo";
+    o.unit = 'foo';
   }
   buildCounterDimension--;
   return o;
@@ -817,119 +817,119 @@ void checkDimension(api.Dimension o) {
 
 core.Map<core.String, api.Footer> buildUnnamed5450() {
   var o = <core.String, api.Footer>{};
-  o["x"] = buildFooter();
-  o["y"] = buildFooter();
+  o['x'] = buildFooter();
+  o['y'] = buildFooter();
   return o;
 }
 
 void checkUnnamed5450(core.Map<core.String, api.Footer> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFooter(o["x"]);
-  checkFooter(o["y"]);
+  checkFooter(o['x']);
+  checkFooter(o['y']);
 }
 
 core.Map<core.String, api.Footnote> buildUnnamed5451() {
   var o = <core.String, api.Footnote>{};
-  o["x"] = buildFootnote();
-  o["y"] = buildFootnote();
+  o['x'] = buildFootnote();
+  o['y'] = buildFootnote();
   return o;
 }
 
 void checkUnnamed5451(core.Map<core.String, api.Footnote> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFootnote(o["x"]);
-  checkFootnote(o["y"]);
+  checkFootnote(o['x']);
+  checkFootnote(o['y']);
 }
 
 core.Map<core.String, api.Header> buildUnnamed5452() {
   var o = <core.String, api.Header>{};
-  o["x"] = buildHeader();
-  o["y"] = buildHeader();
+  o['x'] = buildHeader();
+  o['y'] = buildHeader();
   return o;
 }
 
 void checkUnnamed5452(core.Map<core.String, api.Header> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHeader(o["x"]);
-  checkHeader(o["y"]);
+  checkHeader(o['x']);
+  checkHeader(o['y']);
 }
 
 core.Map<core.String, api.InlineObject> buildUnnamed5453() {
   var o = <core.String, api.InlineObject>{};
-  o["x"] = buildInlineObject();
-  o["y"] = buildInlineObject();
+  o['x'] = buildInlineObject();
+  o['y'] = buildInlineObject();
   return o;
 }
 
 void checkUnnamed5453(core.Map<core.String, api.InlineObject> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInlineObject(o["x"]);
-  checkInlineObject(o["y"]);
+  checkInlineObject(o['x']);
+  checkInlineObject(o['y']);
 }
 
 core.Map<core.String, api.List> buildUnnamed5454() {
   var o = <core.String, api.List>{};
-  o["x"] = buildList();
-  o["y"] = buildList();
+  o['x'] = buildList();
+  o['y'] = buildList();
   return o;
 }
 
 void checkUnnamed5454(core.Map<core.String, api.List> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkList(o["x"]);
-  checkList(o["y"]);
+  checkList(o['x']);
+  checkList(o['y']);
 }
 
 core.Map<core.String, api.NamedRanges> buildUnnamed5455() {
   var o = <core.String, api.NamedRanges>{};
-  o["x"] = buildNamedRanges();
-  o["y"] = buildNamedRanges();
+  o['x'] = buildNamedRanges();
+  o['y'] = buildNamedRanges();
   return o;
 }
 
 void checkUnnamed5455(core.Map<core.String, api.NamedRanges> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNamedRanges(o["x"]);
-  checkNamedRanges(o["y"]);
+  checkNamedRanges(o['x']);
+  checkNamedRanges(o['y']);
 }
 
 core.Map<core.String, api.PositionedObject> buildUnnamed5456() {
   var o = <core.String, api.PositionedObject>{};
-  o["x"] = buildPositionedObject();
-  o["y"] = buildPositionedObject();
+  o['x'] = buildPositionedObject();
+  o['y'] = buildPositionedObject();
   return o;
 }
 
 void checkUnnamed5456(core.Map<core.String, api.PositionedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPositionedObject(o["x"]);
-  checkPositionedObject(o["y"]);
+  checkPositionedObject(o['x']);
+  checkPositionedObject(o['y']);
 }
 
 core.Map<core.String, api.SuggestedDocumentStyle> buildUnnamed5457() {
   var o = <core.String, api.SuggestedDocumentStyle>{};
-  o["x"] = buildSuggestedDocumentStyle();
-  o["y"] = buildSuggestedDocumentStyle();
+  o['x'] = buildSuggestedDocumentStyle();
+  o['y'] = buildSuggestedDocumentStyle();
   return o;
 }
 
 void checkUnnamed5457(core.Map<core.String, api.SuggestedDocumentStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedDocumentStyle(o["x"]);
-  checkSuggestedDocumentStyle(o["y"]);
+  checkSuggestedDocumentStyle(o['x']);
+  checkSuggestedDocumentStyle(o['y']);
 }
 
 core.Map<core.String, api.SuggestedNamedStyles> buildUnnamed5458() {
   var o = <core.String, api.SuggestedNamedStyles>{};
-  o["x"] = buildSuggestedNamedStyles();
-  o["y"] = buildSuggestedNamedStyles();
+  o['x'] = buildSuggestedNamedStyles();
+  o['y'] = buildSuggestedNamedStyles();
   return o;
 }
 
 void checkUnnamed5458(core.Map<core.String, api.SuggestedNamedStyles> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedNamedStyles(o["x"]);
-  checkSuggestedNamedStyles(o["y"]);
+  checkSuggestedNamedStyles(o['x']);
+  checkSuggestedNamedStyles(o['y']);
 }
 
 core.int buildCounterDocument = 0;
@@ -938,7 +938,7 @@ api.Document buildDocument() {
   buildCounterDocument++;
   if (buildCounterDocument < 3) {
     o.body = buildBody();
-    o.documentId = "foo";
+    o.documentId = 'foo';
     o.documentStyle = buildDocumentStyle();
     o.footers = buildUnnamed5450();
     o.footnotes = buildUnnamed5451();
@@ -948,11 +948,11 @@ api.Document buildDocument() {
     o.namedRanges = buildUnnamed5455();
     o.namedStyles = buildNamedStyles();
     o.positionedObjects = buildUnnamed5456();
-    o.revisionId = "foo";
+    o.revisionId = 'foo';
     o.suggestedDocumentStyleChanges = buildUnnamed5457();
     o.suggestedNamedStylesChanges = buildUnnamed5458();
-    o.suggestionsViewMode = "foo";
-    o.title = "foo";
+    o.suggestionsViewMode = 'foo';
+    o.title = 'foo';
   }
   buildCounterDocument--;
   return o;
@@ -987,12 +987,12 @@ api.DocumentStyle buildDocumentStyle() {
   buildCounterDocumentStyle++;
   if (buildCounterDocumentStyle < 3) {
     o.background = buildBackground();
-    o.defaultFooterId = "foo";
-    o.defaultHeaderId = "foo";
-    o.evenPageFooterId = "foo";
-    o.evenPageHeaderId = "foo";
-    o.firstPageFooterId = "foo";
-    o.firstPageHeaderId = "foo";
+    o.defaultFooterId = 'foo';
+    o.defaultHeaderId = 'foo';
+    o.evenPageFooterId = 'foo';
+    o.evenPageHeaderId = 'foo';
+    o.firstPageFooterId = 'foo';
+    o.firstPageHeaderId = 'foo';
     o.marginBottom = buildDimension();
     o.marginFooter = buildDimension();
     o.marginHeader = buildDimension();
@@ -1124,7 +1124,7 @@ api.EmbeddedObject buildEmbeddedObject() {
   var o = api.EmbeddedObject();
   buildCounterEmbeddedObject++;
   if (buildCounterEmbeddedObject < 3) {
-    o.description = "foo";
+    o.description = 'foo';
     o.embeddedDrawingProperties = buildEmbeddedDrawingProperties();
     o.embeddedObjectBorder = buildEmbeddedObjectBorder();
     o.imageProperties = buildImageProperties();
@@ -1134,7 +1134,7 @@ api.EmbeddedObject buildEmbeddedObject() {
     o.marginRight = buildDimension();
     o.marginTop = buildDimension();
     o.size = buildSize();
-    o.title = "foo";
+    o.title = 'foo';
   }
   buildCounterEmbeddedObject--;
   return o;
@@ -1164,8 +1164,8 @@ api.EmbeddedObjectBorder buildEmbeddedObjectBorder() {
   buildCounterEmbeddedObjectBorder++;
   if (buildCounterEmbeddedObjectBorder < 3) {
     o.color = buildOptionalColor();
-    o.dashStyle = "foo";
-    o.propertyState = "foo";
+    o.dashStyle = 'foo';
+    o.propertyState = 'foo';
     o.width = buildDimension();
   }
   buildCounterEmbeddedObjectBorder--;
@@ -1260,7 +1260,7 @@ api.EndOfSegmentLocation buildEndOfSegmentLocation() {
   var o = api.EndOfSegmentLocation();
   buildCounterEndOfSegmentLocation++;
   if (buildCounterEndOfSegmentLocation < 3) {
-    o.segmentId = "foo";
+    o.segmentId = 'foo';
   }
   buildCounterEndOfSegmentLocation--;
   return o;
@@ -1276,8 +1276,8 @@ void checkEndOfSegmentLocation(api.EndOfSegmentLocation o) {
 
 core.List<core.String> buildUnnamed5459() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1289,8 +1289,8 @@ void checkUnnamed5459(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5460() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1340,7 +1340,7 @@ api.Footer buildFooter() {
   buildCounterFooter++;
   if (buildCounterFooter < 3) {
     o.content = buildUnnamed5461();
-    o.footerId = "foo";
+    o.footerId = 'foo';
   }
   buildCounterFooter--;
   return o;
@@ -1374,7 +1374,7 @@ api.Footnote buildFootnote() {
   buildCounterFootnote++;
   if (buildCounterFootnote < 3) {
     o.content = buildUnnamed5462();
-    o.footnoteId = "foo";
+    o.footnoteId = 'foo';
   }
   buildCounterFootnote--;
   return o;
@@ -1391,8 +1391,8 @@ void checkFootnote(api.Footnote o) {
 
 core.List<core.String> buildUnnamed5463() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1404,8 +1404,8 @@ void checkUnnamed5463(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5464() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1417,15 +1417,15 @@ void checkUnnamed5464(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed5465() {
   var o = <core.String, api.SuggestedTextStyle>{};
-  o["x"] = buildSuggestedTextStyle();
-  o["y"] = buildSuggestedTextStyle();
+  o['x'] = buildSuggestedTextStyle();
+  o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
 void checkUnnamed5465(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o["x"]);
-  checkSuggestedTextStyle(o["y"]);
+  checkSuggestedTextStyle(o['x']);
+  checkSuggestedTextStyle(o['y']);
 }
 
 core.int buildCounterFootnoteReference = 0;
@@ -1433,8 +1433,8 @@ api.FootnoteReference buildFootnoteReference() {
   var o = api.FootnoteReference();
   buildCounterFootnoteReference++;
   if (buildCounterFootnoteReference < 3) {
-    o.footnoteId = "foo";
-    o.footnoteNumber = "foo";
+    o.footnoteId = 'foo';
+    o.footnoteNumber = 'foo';
     o.suggestedDeletionIds = buildUnnamed5463();
     o.suggestedInsertionIds = buildUnnamed5464();
     o.suggestedTextStyleChanges = buildUnnamed5465();
@@ -1476,7 +1476,7 @@ api.Header buildHeader() {
   buildCounterHeader++;
   if (buildCounterHeader < 3) {
     o.content = buildUnnamed5466();
-    o.headerId = "foo";
+    o.headerId = 'foo';
   }
   buildCounterHeader--;
   return o;
@@ -1493,8 +1493,8 @@ void checkHeader(api.Header o) {
 
 core.List<core.String> buildUnnamed5467() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1506,8 +1506,8 @@ void checkUnnamed5467(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5468() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1519,15 +1519,15 @@ void checkUnnamed5468(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed5469() {
   var o = <core.String, api.SuggestedTextStyle>{};
-  o["x"] = buildSuggestedTextStyle();
-  o["y"] = buildSuggestedTextStyle();
+  o['x'] = buildSuggestedTextStyle();
+  o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
 void checkUnnamed5469(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o["x"]);
-  checkSuggestedTextStyle(o["y"]);
+  checkSuggestedTextStyle(o['x']);
+  checkSuggestedTextStyle(o['y']);
 }
 
 core.int buildCounterHorizontalRule = 0;
@@ -1562,10 +1562,10 @@ api.ImageProperties buildImageProperties() {
   if (buildCounterImageProperties < 3) {
     o.angle = 42.0;
     o.brightness = 42.0;
-    o.contentUri = "foo";
+    o.contentUri = 'foo';
     o.contrast = 42.0;
     o.cropProperties = buildCropProperties();
-    o.sourceUri = "foo";
+    o.sourceUri = 'foo';
     o.transparency = 42.0;
   }
   buildCounterImageProperties--;
@@ -1619,8 +1619,8 @@ void checkImagePropertiesSuggestionState(api.ImagePropertiesSuggestionState o) {
 
 core.List<core.String> buildUnnamed5470() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1632,16 +1632,16 @@ void checkUnnamed5470(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedInlineObjectProperties> buildUnnamed5471() {
   var o = <core.String, api.SuggestedInlineObjectProperties>{};
-  o["x"] = buildSuggestedInlineObjectProperties();
-  o["y"] = buildSuggestedInlineObjectProperties();
+  o['x'] = buildSuggestedInlineObjectProperties();
+  o['y'] = buildSuggestedInlineObjectProperties();
   return o;
 }
 
 void checkUnnamed5471(
     core.Map<core.String, api.SuggestedInlineObjectProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedInlineObjectProperties(o["x"]);
-  checkSuggestedInlineObjectProperties(o["y"]);
+  checkSuggestedInlineObjectProperties(o['x']);
+  checkSuggestedInlineObjectProperties(o['y']);
 }
 
 core.int buildCounterInlineObject = 0;
@@ -1650,10 +1650,10 @@ api.InlineObject buildInlineObject() {
   buildCounterInlineObject++;
   if (buildCounterInlineObject < 3) {
     o.inlineObjectProperties = buildInlineObjectProperties();
-    o.objectId = "foo";
+    o.objectId = 'foo';
     o.suggestedDeletionIds = buildUnnamed5470();
     o.suggestedInlineObjectPropertiesChanges = buildUnnamed5471();
-    o.suggestedInsertionId = "foo";
+    o.suggestedInsertionId = 'foo';
   }
   buildCounterInlineObject--;
   return o;
@@ -1673,8 +1673,8 @@ void checkInlineObject(api.InlineObject o) {
 
 core.List<core.String> buildUnnamed5472() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1686,8 +1686,8 @@ void checkUnnamed5472(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5473() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1699,15 +1699,15 @@ void checkUnnamed5473(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed5474() {
   var o = <core.String, api.SuggestedTextStyle>{};
-  o["x"] = buildSuggestedTextStyle();
-  o["y"] = buildSuggestedTextStyle();
+  o['x'] = buildSuggestedTextStyle();
+  o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
 void checkUnnamed5474(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o["x"]);
-  checkSuggestedTextStyle(o["y"]);
+  checkSuggestedTextStyle(o['x']);
+  checkSuggestedTextStyle(o['y']);
 }
 
 core.int buildCounterInlineObjectElement = 0;
@@ -1715,7 +1715,7 @@ api.InlineObjectElement buildInlineObjectElement() {
   var o = api.InlineObjectElement();
   buildCounterInlineObjectElement++;
   if (buildCounterInlineObjectElement < 3) {
-    o.inlineObjectId = "foo";
+    o.inlineObjectId = 'foo';
     o.suggestedDeletionIds = buildUnnamed5472();
     o.suggestedInsertionIds = buildUnnamed5473();
     o.suggestedTextStyleChanges = buildUnnamed5474();
@@ -1785,7 +1785,7 @@ api.InsertInlineImageRequest buildInsertInlineImageRequest() {
     o.endOfSegmentLocation = buildEndOfSegmentLocation();
     o.location = buildLocation();
     o.objectSize = buildSize();
-    o.uri = "foo";
+    o.uri = 'foo';
   }
   buildCounterInsertInlineImageRequest--;
   return o;
@@ -1807,7 +1807,7 @@ api.InsertInlineImageResponse buildInsertInlineImageResponse() {
   var o = api.InsertInlineImageResponse();
   buildCounterInsertInlineImageResponse++;
   if (buildCounterInsertInlineImageResponse < 3) {
-    o.objectId = "foo";
+    o.objectId = 'foo';
   }
   buildCounterInsertInlineImageResponse--;
   return o;
@@ -1826,7 +1826,7 @@ api.InsertInlineSheetsChartResponse buildInsertInlineSheetsChartResponse() {
   var o = api.InsertInlineSheetsChartResponse();
   buildCounterInsertInlineSheetsChartResponse++;
   if (buildCounterInsertInlineSheetsChartResponse < 3) {
-    o.objectId = "foo";
+    o.objectId = 'foo';
   }
   buildCounterInsertInlineSheetsChartResponse--;
   return o;
@@ -1869,7 +1869,7 @@ api.InsertSectionBreakRequest buildInsertSectionBreakRequest() {
   if (buildCounterInsertSectionBreakRequest < 3) {
     o.endOfSegmentLocation = buildEndOfSegmentLocation();
     o.location = buildLocation();
-    o.sectionType = "foo";
+    o.sectionType = 'foo';
   }
   buildCounterInsertSectionBreakRequest--;
   return o;
@@ -1959,7 +1959,7 @@ api.InsertTextRequest buildInsertTextRequest() {
   if (buildCounterInsertTextRequest < 3) {
     o.endOfSegmentLocation = buildEndOfSegmentLocation();
     o.location = buildLocation();
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterInsertTextRequest--;
   return o;
@@ -1980,9 +1980,9 @@ api.Link buildLink() {
   var o = api.Link();
   buildCounterLink++;
   if (buildCounterLink < 3) {
-    o.bookmarkId = "foo";
-    o.headingId = "foo";
-    o.url = "foo";
+    o.bookmarkId = 'foo';
+    o.headingId = 'foo';
+    o.url = 'foo';
   }
   buildCounterLink--;
   return o;
@@ -2042,8 +2042,8 @@ void checkLinkedContentReferenceSuggestionState(
 
 core.List<core.String> buildUnnamed5475() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2055,15 +2055,15 @@ void checkUnnamed5475(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedListProperties> buildUnnamed5476() {
   var o = <core.String, api.SuggestedListProperties>{};
-  o["x"] = buildSuggestedListProperties();
-  o["y"] = buildSuggestedListProperties();
+  o['x'] = buildSuggestedListProperties();
+  o['y'] = buildSuggestedListProperties();
   return o;
 }
 
 void checkUnnamed5476(core.Map<core.String, api.SuggestedListProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedListProperties(o["x"]);
-  checkSuggestedListProperties(o["y"]);
+  checkSuggestedListProperties(o['x']);
+  checkSuggestedListProperties(o['y']);
 }
 
 core.int buildCounterList = 0;
@@ -2073,7 +2073,7 @@ api.List buildList() {
   if (buildCounterList < 3) {
     o.listProperties = buildListProperties();
     o.suggestedDeletionIds = buildUnnamed5475();
-    o.suggestedInsertionId = "foo";
+    o.suggestedInsertionId = 'foo';
     o.suggestedListPropertiesChanges = buildUnnamed5476();
   }
   buildCounterList--;
@@ -2161,7 +2161,7 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.index = 42;
-    o.segmentId = "foo";
+    o.segmentId = 'foo';
   }
   buildCounterLocation--;
   return o;
@@ -2213,8 +2213,8 @@ api.NamedRange buildNamedRange() {
   var o = api.NamedRange();
   buildCounterNamedRange++;
   if (buildCounterNamedRange < 3) {
-    o.name = "foo";
-    o.namedRangeId = "foo";
+    o.name = 'foo';
+    o.namedRangeId = 'foo';
     o.ranges = buildUnnamed5479();
   }
   buildCounterNamedRange--;
@@ -2249,7 +2249,7 @@ api.NamedRanges buildNamedRanges() {
   var o = api.NamedRanges();
   buildCounterNamedRanges++;
   if (buildCounterNamedRanges < 3) {
-    o.name = "foo";
+    o.name = 'foo';
     o.namedRanges = buildUnnamed5480();
   }
   buildCounterNamedRanges--;
@@ -2270,7 +2270,7 @@ api.NamedStyle buildNamedStyle() {
   var o = api.NamedStyle();
   buildCounterNamedStyle++;
   if (buildCounterNamedStyle < 3) {
-    o.namedStyleType = "foo";
+    o.namedStyleType = 'foo';
     o.paragraphStyle = buildParagraphStyle();
     o.textStyle = buildTextStyle();
   }
@@ -2293,7 +2293,7 @@ api.NamedStyleSuggestionState buildNamedStyleSuggestionState() {
   var o = api.NamedStyleSuggestionState();
   buildCounterNamedStyleSuggestionState++;
   if (buildCounterNamedStyleSuggestionState < 3) {
-    o.namedStyleType = "foo";
+    o.namedStyleType = 'foo';
     o.paragraphStyleSuggestionState = buildParagraphStyleSuggestionState();
     o.textStyleSuggestionState = buildTextStyleSuggestionState();
   }
@@ -2380,10 +2380,10 @@ api.NestingLevel buildNestingLevel() {
   var o = api.NestingLevel();
   buildCounterNestingLevel++;
   if (buildCounterNestingLevel < 3) {
-    o.bulletAlignment = "foo";
-    o.glyphFormat = "foo";
-    o.glyphSymbol = "foo";
-    o.glyphType = "foo";
+    o.bulletAlignment = 'foo';
+    o.glyphFormat = 'foo';
+    o.glyphSymbol = 'foo';
+    o.glyphType = 'foo';
     o.indentFirstLine = buildDimension();
     o.indentStart = buildDimension();
     o.startNumber = 42;
@@ -2443,8 +2443,8 @@ void checkNestingLevelSuggestionState(api.NestingLevelSuggestionState o) {
 
 core.List<core.String> buildUnnamed5483() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2494,8 +2494,8 @@ void checkOptionalColor(api.OptionalColor o) {
 
 core.List<core.String> buildUnnamed5484() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2507,8 +2507,8 @@ void checkUnnamed5484(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5485() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2520,15 +2520,15 @@ void checkUnnamed5485(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed5486() {
   var o = <core.String, api.SuggestedTextStyle>{};
-  o["x"] = buildSuggestedTextStyle();
-  o["y"] = buildSuggestedTextStyle();
+  o['x'] = buildSuggestedTextStyle();
+  o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
 void checkUnnamed5486(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o["x"]);
-  checkSuggestedTextStyle(o["y"]);
+  checkSuggestedTextStyle(o['x']);
+  checkSuggestedTextStyle(o['y']);
 }
 
 core.int buildCounterPageBreak = 0;
@@ -2571,8 +2571,8 @@ void checkUnnamed5487(core.List<api.ParagraphElement> o) {
 
 core.List<core.String> buildUnnamed5488() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2584,41 +2584,41 @@ void checkUnnamed5488(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedBullet> buildUnnamed5489() {
   var o = <core.String, api.SuggestedBullet>{};
-  o["x"] = buildSuggestedBullet();
-  o["y"] = buildSuggestedBullet();
+  o['x'] = buildSuggestedBullet();
+  o['y'] = buildSuggestedBullet();
   return o;
 }
 
 void checkUnnamed5489(core.Map<core.String, api.SuggestedBullet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedBullet(o["x"]);
-  checkSuggestedBullet(o["y"]);
+  checkSuggestedBullet(o['x']);
+  checkSuggestedBullet(o['y']);
 }
 
 core.Map<core.String, api.SuggestedParagraphStyle> buildUnnamed5490() {
   var o = <core.String, api.SuggestedParagraphStyle>{};
-  o["x"] = buildSuggestedParagraphStyle();
-  o["y"] = buildSuggestedParagraphStyle();
+  o['x'] = buildSuggestedParagraphStyle();
+  o['y'] = buildSuggestedParagraphStyle();
   return o;
 }
 
 void checkUnnamed5490(core.Map<core.String, api.SuggestedParagraphStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedParagraphStyle(o["x"]);
-  checkSuggestedParagraphStyle(o["y"]);
+  checkSuggestedParagraphStyle(o['x']);
+  checkSuggestedParagraphStyle(o['y']);
 }
 
 core.Map<core.String, api.ObjectReferences> buildUnnamed5491() {
   var o = <core.String, api.ObjectReferences>{};
-  o["x"] = buildObjectReferences();
-  o["y"] = buildObjectReferences();
+  o['x'] = buildObjectReferences();
+  o['y'] = buildObjectReferences();
   return o;
 }
 
 void checkUnnamed5491(core.Map<core.String, api.ObjectReferences> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkObjectReferences(o["x"]);
-  checkObjectReferences(o["y"]);
+  checkObjectReferences(o['x']);
+  checkObjectReferences(o['y']);
 }
 
 core.int buildCounterParagraph = 0;
@@ -2658,7 +2658,7 @@ api.ParagraphBorder buildParagraphBorder() {
   buildCounterParagraphBorder++;
   if (buildCounterParagraphBorder < 3) {
     o.color = buildOptionalColor();
-    o.dashStyle = "foo";
+    o.dashStyle = 'foo';
     o.padding = buildDimension();
     o.width = buildDimension();
   }
@@ -2732,26 +2732,26 @@ api.ParagraphStyle buildParagraphStyle() {
   var o = api.ParagraphStyle();
   buildCounterParagraphStyle++;
   if (buildCounterParagraphStyle < 3) {
-    o.alignment = "foo";
+    o.alignment = 'foo';
     o.avoidWidowAndOrphan = true;
     o.borderBetween = buildParagraphBorder();
     o.borderBottom = buildParagraphBorder();
     o.borderLeft = buildParagraphBorder();
     o.borderRight = buildParagraphBorder();
     o.borderTop = buildParagraphBorder();
-    o.direction = "foo";
-    o.headingId = "foo";
+    o.direction = 'foo';
+    o.headingId = 'foo';
     o.indentEnd = buildDimension();
     o.indentFirstLine = buildDimension();
     o.indentStart = buildDimension();
     o.keepLinesTogether = true;
     o.keepWithNext = true;
     o.lineSpacing = 42.0;
-    o.namedStyleType = "foo";
+    o.namedStyleType = 'foo';
     o.shading = buildShading();
     o.spaceAbove = buildDimension();
     o.spaceBelow = buildDimension();
-    o.spacingMode = "foo";
+    o.spacingMode = 'foo';
     o.tabStops = buildUnnamed5492();
   }
   buildCounterParagraphStyle--;
@@ -2845,8 +2845,8 @@ void checkParagraphStyleSuggestionState(api.ParagraphStyleSuggestionState o) {
 
 core.List<core.String> buildUnnamed5493() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -2859,16 +2859,16 @@ void checkUnnamed5493(core.List<core.String> o) {
 core.Map<core.String, api.SuggestedPositionedObjectProperties>
     buildUnnamed5494() {
   var o = <core.String, api.SuggestedPositionedObjectProperties>{};
-  o["x"] = buildSuggestedPositionedObjectProperties();
-  o["y"] = buildSuggestedPositionedObjectProperties();
+  o['x'] = buildSuggestedPositionedObjectProperties();
+  o['y'] = buildSuggestedPositionedObjectProperties();
   return o;
 }
 
 void checkUnnamed5494(
     core.Map<core.String, api.SuggestedPositionedObjectProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedPositionedObjectProperties(o["x"]);
-  checkSuggestedPositionedObjectProperties(o["y"]);
+  checkSuggestedPositionedObjectProperties(o['x']);
+  checkSuggestedPositionedObjectProperties(o['y']);
 }
 
 core.int buildCounterPositionedObject = 0;
@@ -2876,10 +2876,10 @@ api.PositionedObject buildPositionedObject() {
   var o = api.PositionedObject();
   buildCounterPositionedObject++;
   if (buildCounterPositionedObject < 3) {
-    o.objectId = "foo";
+    o.objectId = 'foo';
     o.positionedObjectProperties = buildPositionedObjectProperties();
     o.suggestedDeletionIds = buildUnnamed5493();
-    o.suggestedInsertionId = "foo";
+    o.suggestedInsertionId = 'foo';
     o.suggestedPositionedObjectPropertiesChanges = buildUnnamed5494();
   }
   buildCounterPositionedObject--;
@@ -2903,7 +2903,7 @@ api.PositionedObjectPositioning buildPositionedObjectPositioning() {
   var o = api.PositionedObjectPositioning();
   buildCounterPositionedObjectPositioning++;
   if (buildCounterPositionedObjectPositioning < 3) {
-    o.layout = "foo";
+    o.layout = 'foo';
     o.leftOffset = buildDimension();
     o.topOffset = buildDimension();
   }
@@ -2998,7 +2998,7 @@ api.Range buildRange() {
   buildCounterRange++;
   if (buildCounterRange < 3) {
     o.endIndex = 42;
-    o.segmentId = "foo";
+    o.segmentId = 'foo';
     o.startIndex = 42;
   }
   buildCounterRange--;
@@ -3021,7 +3021,7 @@ api.ReplaceAllTextRequest buildReplaceAllTextRequest() {
   buildCounterReplaceAllTextRequest++;
   if (buildCounterReplaceAllTextRequest < 3) {
     o.containsText = buildSubstringMatchCriteria();
-    o.replaceText = "foo";
+    o.replaceText = 'foo';
   }
   buildCounterReplaceAllTextRequest--;
   return o;
@@ -3060,9 +3060,9 @@ api.ReplaceImageRequest buildReplaceImageRequest() {
   var o = api.ReplaceImageRequest();
   buildCounterReplaceImageRequest++;
   if (buildCounterReplaceImageRequest < 3) {
-    o.imageObjectId = "foo";
-    o.imageReplaceMethod = "foo";
-    o.uri = "foo";
+    o.imageObjectId = 'foo';
+    o.imageReplaceMethod = 'foo';
+    o.uri = 'foo';
   }
   buildCounterReplaceImageRequest--;
   return o;
@@ -3083,9 +3083,9 @@ api.ReplaceNamedRangeContentRequest buildReplaceNamedRangeContentRequest() {
   var o = api.ReplaceNamedRangeContentRequest();
   buildCounterReplaceNamedRangeContentRequest++;
   if (buildCounterReplaceNamedRangeContentRequest < 3) {
-    o.namedRangeId = "foo";
-    o.namedRangeName = "foo";
-    o.text = "foo";
+    o.namedRangeId = 'foo';
+    o.namedRangeName = 'foo';
+    o.text = 'foo';
   }
   buildCounterReplaceNamedRangeContentRequest--;
   return o;
@@ -3239,8 +3239,8 @@ void checkRgbColor(api.RgbColor o) {
 
 core.List<core.String> buildUnnamed5495() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3252,8 +3252,8 @@ void checkUnnamed5495(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5496() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3326,14 +3326,14 @@ api.SectionStyle buildSectionStyle() {
   buildCounterSectionStyle++;
   if (buildCounterSectionStyle < 3) {
     o.columnProperties = buildUnnamed5497();
-    o.columnSeparatorStyle = "foo";
-    o.contentDirection = "foo";
-    o.defaultFooterId = "foo";
-    o.defaultHeaderId = "foo";
-    o.evenPageFooterId = "foo";
-    o.evenPageHeaderId = "foo";
-    o.firstPageFooterId = "foo";
-    o.firstPageHeaderId = "foo";
+    o.columnSeparatorStyle = 'foo';
+    o.contentDirection = 'foo';
+    o.defaultFooterId = 'foo';
+    o.defaultHeaderId = 'foo';
+    o.evenPageFooterId = 'foo';
+    o.evenPageHeaderId = 'foo';
+    o.firstPageFooterId = 'foo';
+    o.firstPageHeaderId = 'foo';
     o.marginBottom = buildDimension();
     o.marginFooter = buildDimension();
     o.marginHeader = buildDimension();
@@ -3341,7 +3341,7 @@ api.SectionStyle buildSectionStyle() {
     o.marginRight = buildDimension();
     o.marginTop = buildDimension();
     o.pageNumberStart = 42;
-    o.sectionType = "foo";
+    o.sectionType = 'foo';
     o.useFirstPageHeaderFooter = true;
   }
   buildCounterSectionStyle--;
@@ -3417,7 +3417,7 @@ api.SheetsChartReference buildSheetsChartReference() {
   buildCounterSheetsChartReference++;
   if (buildCounterSheetsChartReference < 3) {
     o.chartId = 42;
-    o.spreadsheetId = "foo";
+    o.spreadsheetId = 'foo';
   }
   buildCounterSheetsChartReference--;
   return o;
@@ -3532,7 +3532,7 @@ api.SubstringMatchCriteria buildSubstringMatchCriteria() {
   buildCounterSubstringMatchCriteria++;
   if (buildCounterSubstringMatchCriteria < 3) {
     o.matchCase = true;
-    o.text = "foo";
+    o.text = 'foo';
   }
   buildCounterSubstringMatchCriteria--;
   return o;
@@ -3769,7 +3769,7 @@ api.TabStop buildTabStop() {
   var o = api.TabStop();
   buildCounterTabStop++;
   if (buildCounterTabStop < 3) {
-    o.alignment = "foo";
+    o.alignment = 'foo';
     o.offset = buildDimension();
   }
   buildCounterTabStop--;
@@ -3787,8 +3787,8 @@ void checkTabStop(api.TabStop o) {
 
 core.List<core.String> buildUnnamed5498() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3800,8 +3800,8 @@ void checkUnnamed5498(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5499() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3868,8 +3868,8 @@ void checkUnnamed5501(core.List<api.StructuralElement> o) {
 
 core.List<core.String> buildUnnamed5502() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3881,8 +3881,8 @@ void checkUnnamed5502(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5503() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -3894,15 +3894,15 @@ void checkUnnamed5503(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedTableCellStyle> buildUnnamed5504() {
   var o = <core.String, api.SuggestedTableCellStyle>{};
-  o["x"] = buildSuggestedTableCellStyle();
-  o["y"] = buildSuggestedTableCellStyle();
+  o['x'] = buildSuggestedTableCellStyle();
+  o['y'] = buildSuggestedTableCellStyle();
   return o;
 }
 
 void checkUnnamed5504(core.Map<core.String, api.SuggestedTableCellStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTableCellStyle(o["x"]);
-  checkSuggestedTableCellStyle(o["y"]);
+  checkSuggestedTableCellStyle(o['x']);
+  checkSuggestedTableCellStyle(o['y']);
 }
 
 core.int buildCounterTableCell = 0;
@@ -3942,7 +3942,7 @@ api.TableCellBorder buildTableCellBorder() {
   buildCounterTableCellBorder++;
   if (buildCounterTableCellBorder < 3) {
     o.color = buildOptionalColor();
-    o.dashStyle = "foo";
+    o.dashStyle = 'foo';
     o.width = buildDimension();
   }
   buildCounterTableCellBorder--;
@@ -3993,7 +3993,7 @@ api.TableCellStyle buildTableCellStyle() {
     o.borderRight = buildTableCellBorder();
     o.borderTop = buildTableCellBorder();
     o.columnSpan = 42;
-    o.contentAlignment = "foo";
+    o.contentAlignment = 'foo';
     o.paddingBottom = buildDimension();
     o.paddingLeft = buildDimension();
     o.paddingRight = buildDimension();
@@ -4070,7 +4070,7 @@ api.TableColumnProperties buildTableColumnProperties() {
   buildCounterTableColumnProperties++;
   if (buildCounterTableColumnProperties < 3) {
     o.width = buildDimension();
-    o.widthType = "foo";
+    o.widthType = 'foo';
   }
   buildCounterTableColumnProperties--;
   return o;
@@ -4100,8 +4100,8 @@ void checkUnnamed5505(core.List<api.StructuralElement> o) {
 
 core.List<core.String> buildUnnamed5506() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4113,8 +4113,8 @@ void checkUnnamed5506(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5507() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4172,8 +4172,8 @@ void checkTableRange(api.TableRange o) {
 
 core.List<core.String> buildUnnamed5508() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4185,8 +4185,8 @@ void checkUnnamed5508(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5509() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4198,15 +4198,15 @@ void checkUnnamed5509(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedTableRowStyle> buildUnnamed5510() {
   var o = <core.String, api.SuggestedTableRowStyle>{};
-  o["x"] = buildSuggestedTableRowStyle();
-  o["y"] = buildSuggestedTableRowStyle();
+  o['x'] = buildSuggestedTableRowStyle();
+  o['y'] = buildSuggestedTableRowStyle();
   return o;
 }
 
 void checkUnnamed5510(core.Map<core.String, api.SuggestedTableRowStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTableRowStyle(o["x"]);
-  checkSuggestedTableRowStyle(o["y"]);
+  checkSuggestedTableRowStyle(o['x']);
+  checkSuggestedTableRowStyle(o['y']);
 }
 
 core.List<api.TableCell> buildUnnamed5511() {
@@ -4325,8 +4325,8 @@ void checkTableStyle(api.TableStyle o) {
 
 core.List<core.String> buildUnnamed5513() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4338,8 +4338,8 @@ void checkUnnamed5513(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5514() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -4351,15 +4351,15 @@ void checkUnnamed5514(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed5515() {
   var o = <core.String, api.SuggestedTextStyle>{};
-  o["x"] = buildSuggestedTextStyle();
-  o["y"] = buildSuggestedTextStyle();
+  o['x'] = buildSuggestedTextStyle();
+  o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
 void checkUnnamed5515(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o["x"]);
-  checkSuggestedTextStyle(o["y"]);
+  checkSuggestedTextStyle(o['x']);
+  checkSuggestedTextStyle(o['y']);
 }
 
 core.int buildCounterTextRun = 0;
@@ -4367,7 +4367,7 @@ api.TextRun buildTextRun() {
   var o = api.TextRun();
   buildCounterTextRun++;
   if (buildCounterTextRun < 3) {
-    o.content = "foo";
+    o.content = 'foo';
     o.suggestedDeletionIds = buildUnnamed5513();
     o.suggestedInsertionIds = buildUnnamed5514();
     o.suggestedTextStyleChanges = buildUnnamed5515();
@@ -4395,7 +4395,7 @@ api.TextStyle buildTextStyle() {
   buildCounterTextStyle++;
   if (buildCounterTextStyle < 3) {
     o.backgroundColor = buildOptionalColor();
-    o.baselineOffset = "foo";
+    o.baselineOffset = 'foo';
     o.bold = true;
     o.fontSize = buildDimension();
     o.foregroundColor = buildOptionalColor();
@@ -4492,7 +4492,7 @@ api.UpdateDocumentStyleRequest buildUpdateDocumentStyleRequest() {
   buildCounterUpdateDocumentStyleRequest++;
   if (buildCounterUpdateDocumentStyleRequest < 3) {
     o.documentStyle = buildDocumentStyle();
-    o.fields = "foo";
+    o.fields = 'foo';
   }
   buildCounterUpdateDocumentStyleRequest--;
   return o;
@@ -4512,7 +4512,7 @@ api.UpdateParagraphStyleRequest buildUpdateParagraphStyleRequest() {
   var o = api.UpdateParagraphStyleRequest();
   buildCounterUpdateParagraphStyleRequest++;
   if (buildCounterUpdateParagraphStyleRequest < 3) {
-    o.fields = "foo";
+    o.fields = 'foo';
     o.paragraphStyle = buildParagraphStyle();
     o.range = buildRange();
   }
@@ -4535,7 +4535,7 @@ api.UpdateSectionStyleRequest buildUpdateSectionStyleRequest() {
   var o = api.UpdateSectionStyleRequest();
   buildCounterUpdateSectionStyleRequest++;
   if (buildCounterUpdateSectionStyleRequest < 3) {
-    o.fields = "foo";
+    o.fields = 'foo';
     o.range = buildRange();
     o.sectionStyle = buildSectionStyle();
   }
@@ -4558,7 +4558,7 @@ api.UpdateTableCellStyleRequest buildUpdateTableCellStyleRequest() {
   var o = api.UpdateTableCellStyleRequest();
   buildCounterUpdateTableCellStyleRequest++;
   if (buildCounterUpdateTableCellStyleRequest < 3) {
-    o.fields = "foo";
+    o.fields = 'foo';
     o.tableCellStyle = buildTableCellStyle();
     o.tableRange = buildTableRange();
     o.tableStartLocation = buildLocation();
@@ -4598,7 +4598,7 @@ api.UpdateTableColumnPropertiesRequest
   buildCounterUpdateTableColumnPropertiesRequest++;
   if (buildCounterUpdateTableColumnPropertiesRequest < 3) {
     o.columnIndices = buildUnnamed5516();
-    o.fields = "foo";
+    o.fields = 'foo';
     o.tableColumnProperties = buildTableColumnProperties();
     o.tableStartLocation = buildLocation();
   }
@@ -4636,7 +4636,7 @@ api.UpdateTableRowStyleRequest buildUpdateTableRowStyleRequest() {
   var o = api.UpdateTableRowStyleRequest();
   buildCounterUpdateTableRowStyleRequest++;
   if (buildCounterUpdateTableRowStyleRequest < 3) {
-    o.fields = "foo";
+    o.fields = 'foo';
     o.rowIndices = buildUnnamed5517();
     o.tableRowStyle = buildTableRowStyle();
     o.tableStartLocation = buildLocation();
@@ -4661,7 +4661,7 @@ api.UpdateTextStyleRequest buildUpdateTextStyleRequest() {
   var o = api.UpdateTextStyleRequest();
   buildCounterUpdateTextStyleRequest++;
   if (buildCounterUpdateTextStyleRequest < 3) {
-    o.fields = "foo";
+    o.fields = 'foo';
     o.range = buildRange();
     o.textStyle = buildTextStyle();
   }
@@ -4684,7 +4684,7 @@ api.WeightedFontFamily buildWeightedFontFamily() {
   var o = api.WeightedFontFamily();
   buildCounterWeightedFontFamily++;
   if (buildCounterWeightedFontFamily < 3) {
-    o.fontFamily = "foo";
+    o.fontFamily = 'foo';
     o.weight = 42;
   }
   buildCounterWeightedFontFamily--;
@@ -4705,8 +4705,8 @@ api.WriteControl buildWriteControl() {
   var o = api.WriteControl();
   buildCounterWriteControl++;
   if (buildCounterWriteControl < 3) {
-    o.requiredRevisionId = "foo";
-    o.targetRevisionId = "foo";
+    o.requiredRevisionId = 'foo';
+    o.targetRevisionId = 'foo';
   }
   buildCounterWriteControl--;
   return o;
@@ -4722,280 +4722,280 @@ void checkWriteControl(api.WriteControl o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AutoText", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AutoText', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAutoText();
       var od = api.AutoText.fromJson(o.toJson());
       checkAutoText(od);
     });
   });
 
-  unittest.group("obj-schema-Background", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Background', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBackground();
       var od = api.Background.fromJson(o.toJson());
       checkBackground(od);
     });
   });
 
-  unittest.group("obj-schema-BackgroundSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BackgroundSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBackgroundSuggestionState();
       var od = api.BackgroundSuggestionState.fromJson(o.toJson());
       checkBackgroundSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-BatchUpdateDocumentRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchUpdateDocumentRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchUpdateDocumentRequest();
       var od = api.BatchUpdateDocumentRequest.fromJson(o.toJson());
       checkBatchUpdateDocumentRequest(od);
     });
   });
 
-  unittest.group("obj-schema-BatchUpdateDocumentResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BatchUpdateDocumentResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBatchUpdateDocumentResponse();
       var od = api.BatchUpdateDocumentResponse.fromJson(o.toJson());
       checkBatchUpdateDocumentResponse(od);
     });
   });
 
-  unittest.group("obj-schema-Body", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Body', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBody();
       var od = api.Body.fromJson(o.toJson());
       checkBody(od);
     });
   });
 
-  unittest.group("obj-schema-Bullet", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Bullet', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBullet();
       var od = api.Bullet.fromJson(o.toJson());
       checkBullet(od);
     });
   });
 
-  unittest.group("obj-schema-BulletSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-BulletSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildBulletSuggestionState();
       var od = api.BulletSuggestionState.fromJson(o.toJson());
       checkBulletSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-Color", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Color', () {
+    unittest.test('to-json--from-json', () {
       var o = buildColor();
       var od = api.Color.fromJson(o.toJson());
       checkColor(od);
     });
   });
 
-  unittest.group("obj-schema-ColumnBreak", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ColumnBreak', () {
+    unittest.test('to-json--from-json', () {
       var o = buildColumnBreak();
       var od = api.ColumnBreak.fromJson(o.toJson());
       checkColumnBreak(od);
     });
   });
 
-  unittest.group("obj-schema-CreateFooterRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateFooterRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateFooterRequest();
       var od = api.CreateFooterRequest.fromJson(o.toJson());
       checkCreateFooterRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CreateFooterResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateFooterResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateFooterResponse();
       var od = api.CreateFooterResponse.fromJson(o.toJson());
       checkCreateFooterResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CreateFootnoteRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateFootnoteRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateFootnoteRequest();
       var od = api.CreateFootnoteRequest.fromJson(o.toJson());
       checkCreateFootnoteRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CreateFootnoteResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateFootnoteResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateFootnoteResponse();
       var od = api.CreateFootnoteResponse.fromJson(o.toJson());
       checkCreateFootnoteResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CreateHeaderRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateHeaderRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateHeaderRequest();
       var od = api.CreateHeaderRequest.fromJson(o.toJson());
       checkCreateHeaderRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CreateHeaderResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateHeaderResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateHeaderResponse();
       var od = api.CreateHeaderResponse.fromJson(o.toJson());
       checkCreateHeaderResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CreateNamedRangeRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateNamedRangeRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateNamedRangeRequest();
       var od = api.CreateNamedRangeRequest.fromJson(o.toJson());
       checkCreateNamedRangeRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CreateNamedRangeResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateNamedRangeResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateNamedRangeResponse();
       var od = api.CreateNamedRangeResponse.fromJson(o.toJson());
       checkCreateNamedRangeResponse(od);
     });
   });
 
-  unittest.group("obj-schema-CreateParagraphBulletsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CreateParagraphBulletsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCreateParagraphBulletsRequest();
       var od = api.CreateParagraphBulletsRequest.fromJson(o.toJson());
       checkCreateParagraphBulletsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-CropProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CropProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCropProperties();
       var od = api.CropProperties.fromJson(o.toJson());
       checkCropProperties(od);
     });
   });
 
-  unittest.group("obj-schema-CropPropertiesSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CropPropertiesSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCropPropertiesSuggestionState();
       var od = api.CropPropertiesSuggestionState.fromJson(o.toJson());
       checkCropPropertiesSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-DeleteContentRangeRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeleteContentRangeRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeleteContentRangeRequest();
       var od = api.DeleteContentRangeRequest.fromJson(o.toJson());
       checkDeleteContentRangeRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeleteFooterRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeleteFooterRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeleteFooterRequest();
       var od = api.DeleteFooterRequest.fromJson(o.toJson());
       checkDeleteFooterRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeleteHeaderRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeleteHeaderRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeleteHeaderRequest();
       var od = api.DeleteHeaderRequest.fromJson(o.toJson());
       checkDeleteHeaderRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeleteNamedRangeRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeleteNamedRangeRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeleteNamedRangeRequest();
       var od = api.DeleteNamedRangeRequest.fromJson(o.toJson());
       checkDeleteNamedRangeRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeleteParagraphBulletsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeleteParagraphBulletsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeleteParagraphBulletsRequest();
       var od = api.DeleteParagraphBulletsRequest.fromJson(o.toJson());
       checkDeleteParagraphBulletsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeletePositionedObjectRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeletePositionedObjectRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeletePositionedObjectRequest();
       var od = api.DeletePositionedObjectRequest.fromJson(o.toJson());
       checkDeletePositionedObjectRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeleteTableColumnRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeleteTableColumnRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeleteTableColumnRequest();
       var od = api.DeleteTableColumnRequest.fromJson(o.toJson());
       checkDeleteTableColumnRequest(od);
     });
   });
 
-  unittest.group("obj-schema-DeleteTableRowRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeleteTableRowRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeleteTableRowRequest();
       var od = api.DeleteTableRowRequest.fromJson(o.toJson());
       checkDeleteTableRowRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Dimension", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Dimension', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDimension();
       var od = api.Dimension.fromJson(o.toJson());
       checkDimension(od);
     });
   });
 
-  unittest.group("obj-schema-Document", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Document', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocument();
       var od = api.Document.fromJson(o.toJson());
       checkDocument(od);
     });
   });
 
-  unittest.group("obj-schema-DocumentStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DocumentStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocumentStyle();
       var od = api.DocumentStyle.fromJson(o.toJson());
       checkDocumentStyle(od);
     });
   });
 
-  unittest.group("obj-schema-DocumentStyleSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DocumentStyleSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDocumentStyleSuggestionState();
       var od = api.DocumentStyleSuggestionState.fromJson(o.toJson());
       checkDocumentStyleSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-EmbeddedDrawingProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EmbeddedDrawingProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmbeddedDrawingProperties();
       var od = api.EmbeddedDrawingProperties.fromJson(o.toJson());
       checkEmbeddedDrawingProperties(od);
     });
   });
 
-  unittest.group("obj-schema-EmbeddedDrawingPropertiesSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EmbeddedDrawingPropertiesSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmbeddedDrawingPropertiesSuggestionState();
       var od =
           api.EmbeddedDrawingPropertiesSuggestionState.fromJson(o.toJson());
@@ -5003,424 +5003,424 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-EmbeddedObject", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EmbeddedObject', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmbeddedObject();
       var od = api.EmbeddedObject.fromJson(o.toJson());
       checkEmbeddedObject(od);
     });
   });
 
-  unittest.group("obj-schema-EmbeddedObjectBorder", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EmbeddedObjectBorder', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmbeddedObjectBorder();
       var od = api.EmbeddedObjectBorder.fromJson(o.toJson());
       checkEmbeddedObjectBorder(od);
     });
   });
 
-  unittest.group("obj-schema-EmbeddedObjectBorderSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EmbeddedObjectBorderSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmbeddedObjectBorderSuggestionState();
       var od = api.EmbeddedObjectBorderSuggestionState.fromJson(o.toJson());
       checkEmbeddedObjectBorderSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-EmbeddedObjectSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EmbeddedObjectSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmbeddedObjectSuggestionState();
       var od = api.EmbeddedObjectSuggestionState.fromJson(o.toJson());
       checkEmbeddedObjectSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-EndOfSegmentLocation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-EndOfSegmentLocation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEndOfSegmentLocation();
       var od = api.EndOfSegmentLocation.fromJson(o.toJson());
       checkEndOfSegmentLocation(od);
     });
   });
 
-  unittest.group("obj-schema-Equation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Equation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEquation();
       var od = api.Equation.fromJson(o.toJson());
       checkEquation(od);
     });
   });
 
-  unittest.group("obj-schema-Footer", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Footer', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFooter();
       var od = api.Footer.fromJson(o.toJson());
       checkFooter(od);
     });
   });
 
-  unittest.group("obj-schema-Footnote", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Footnote', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFootnote();
       var od = api.Footnote.fromJson(o.toJson());
       checkFootnote(od);
     });
   });
 
-  unittest.group("obj-schema-FootnoteReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FootnoteReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFootnoteReference();
       var od = api.FootnoteReference.fromJson(o.toJson());
       checkFootnoteReference(od);
     });
   });
 
-  unittest.group("obj-schema-Header", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Header', () {
+    unittest.test('to-json--from-json', () {
       var o = buildHeader();
       var od = api.Header.fromJson(o.toJson());
       checkHeader(od);
     });
   });
 
-  unittest.group("obj-schema-HorizontalRule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-HorizontalRule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildHorizontalRule();
       var od = api.HorizontalRule.fromJson(o.toJson());
       checkHorizontalRule(od);
     });
   });
 
-  unittest.group("obj-schema-ImageProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImageProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImageProperties();
       var od = api.ImageProperties.fromJson(o.toJson());
       checkImageProperties(od);
     });
   });
 
-  unittest.group("obj-schema-ImagePropertiesSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ImagePropertiesSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildImagePropertiesSuggestionState();
       var od = api.ImagePropertiesSuggestionState.fromJson(o.toJson());
       checkImagePropertiesSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-InlineObject", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InlineObject', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInlineObject();
       var od = api.InlineObject.fromJson(o.toJson());
       checkInlineObject(od);
     });
   });
 
-  unittest.group("obj-schema-InlineObjectElement", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InlineObjectElement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInlineObjectElement();
       var od = api.InlineObjectElement.fromJson(o.toJson());
       checkInlineObjectElement(od);
     });
   });
 
-  unittest.group("obj-schema-InlineObjectProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InlineObjectProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInlineObjectProperties();
       var od = api.InlineObjectProperties.fromJson(o.toJson());
       checkInlineObjectProperties(od);
     });
   });
 
-  unittest.group("obj-schema-InlineObjectPropertiesSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InlineObjectPropertiesSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInlineObjectPropertiesSuggestionState();
       var od = api.InlineObjectPropertiesSuggestionState.fromJson(o.toJson());
       checkInlineObjectPropertiesSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-InsertInlineImageRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertInlineImageRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertInlineImageRequest();
       var od = api.InsertInlineImageRequest.fromJson(o.toJson());
       checkInsertInlineImageRequest(od);
     });
   });
 
-  unittest.group("obj-schema-InsertInlineImageResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertInlineImageResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertInlineImageResponse();
       var od = api.InsertInlineImageResponse.fromJson(o.toJson());
       checkInsertInlineImageResponse(od);
     });
   });
 
-  unittest.group("obj-schema-InsertInlineSheetsChartResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertInlineSheetsChartResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertInlineSheetsChartResponse();
       var od = api.InsertInlineSheetsChartResponse.fromJson(o.toJson());
       checkInsertInlineSheetsChartResponse(od);
     });
   });
 
-  unittest.group("obj-schema-InsertPageBreakRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertPageBreakRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertPageBreakRequest();
       var od = api.InsertPageBreakRequest.fromJson(o.toJson());
       checkInsertPageBreakRequest(od);
     });
   });
 
-  unittest.group("obj-schema-InsertSectionBreakRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertSectionBreakRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertSectionBreakRequest();
       var od = api.InsertSectionBreakRequest.fromJson(o.toJson());
       checkInsertSectionBreakRequest(od);
     });
   });
 
-  unittest.group("obj-schema-InsertTableColumnRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertTableColumnRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertTableColumnRequest();
       var od = api.InsertTableColumnRequest.fromJson(o.toJson());
       checkInsertTableColumnRequest(od);
     });
   });
 
-  unittest.group("obj-schema-InsertTableRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertTableRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertTableRequest();
       var od = api.InsertTableRequest.fromJson(o.toJson());
       checkInsertTableRequest(od);
     });
   });
 
-  unittest.group("obj-schema-InsertTableRowRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertTableRowRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertTableRowRequest();
       var od = api.InsertTableRowRequest.fromJson(o.toJson());
       checkInsertTableRowRequest(od);
     });
   });
 
-  unittest.group("obj-schema-InsertTextRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-InsertTextRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildInsertTextRequest();
       var od = api.InsertTextRequest.fromJson(o.toJson());
       checkInsertTextRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Link", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Link', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
       checkLink(od);
     });
   });
 
-  unittest.group("obj-schema-LinkedContentReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LinkedContentReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLinkedContentReference();
       var od = api.LinkedContentReference.fromJson(o.toJson());
       checkLinkedContentReference(od);
     });
   });
 
-  unittest.group("obj-schema-LinkedContentReferenceSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LinkedContentReferenceSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLinkedContentReferenceSuggestionState();
       var od = api.LinkedContentReferenceSuggestionState.fromJson(o.toJson());
       checkLinkedContentReferenceSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-List", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-List', () {
+    unittest.test('to-json--from-json', () {
       var o = buildList();
       var od = api.List.fromJson(o.toJson());
       checkList(od);
     });
   });
 
-  unittest.group("obj-schema-ListProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListProperties();
       var od = api.ListProperties.fromJson(o.toJson());
       checkListProperties(od);
     });
   });
 
-  unittest.group("obj-schema-ListPropertiesSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListPropertiesSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListPropertiesSuggestionState();
       var od = api.ListPropertiesSuggestionState.fromJson(o.toJson());
       checkListPropertiesSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-Location", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Location', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od);
     });
   });
 
-  unittest.group("obj-schema-MergeTableCellsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MergeTableCellsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMergeTableCellsRequest();
       var od = api.MergeTableCellsRequest.fromJson(o.toJson());
       checkMergeTableCellsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-NamedRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NamedRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNamedRange();
       var od = api.NamedRange.fromJson(o.toJson());
       checkNamedRange(od);
     });
   });
 
-  unittest.group("obj-schema-NamedRanges", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NamedRanges', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNamedRanges();
       var od = api.NamedRanges.fromJson(o.toJson());
       checkNamedRanges(od);
     });
   });
 
-  unittest.group("obj-schema-NamedStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NamedStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNamedStyle();
       var od = api.NamedStyle.fromJson(o.toJson());
       checkNamedStyle(od);
     });
   });
 
-  unittest.group("obj-schema-NamedStyleSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NamedStyleSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNamedStyleSuggestionState();
       var od = api.NamedStyleSuggestionState.fromJson(o.toJson());
       checkNamedStyleSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-NamedStyles", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NamedStyles', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNamedStyles();
       var od = api.NamedStyles.fromJson(o.toJson());
       checkNamedStyles(od);
     });
   });
 
-  unittest.group("obj-schema-NamedStylesSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NamedStylesSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNamedStylesSuggestionState();
       var od = api.NamedStylesSuggestionState.fromJson(o.toJson());
       checkNamedStylesSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-NestingLevel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NestingLevel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNestingLevel();
       var od = api.NestingLevel.fromJson(o.toJson());
       checkNestingLevel(od);
     });
   });
 
-  unittest.group("obj-schema-NestingLevelSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NestingLevelSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNestingLevelSuggestionState();
       var od = api.NestingLevelSuggestionState.fromJson(o.toJson());
       checkNestingLevelSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-ObjectReferences", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ObjectReferences', () {
+    unittest.test('to-json--from-json', () {
       var o = buildObjectReferences();
       var od = api.ObjectReferences.fromJson(o.toJson());
       checkObjectReferences(od);
     });
   });
 
-  unittest.group("obj-schema-OptionalColor", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OptionalColor', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOptionalColor();
       var od = api.OptionalColor.fromJson(o.toJson());
       checkOptionalColor(od);
     });
   });
 
-  unittest.group("obj-schema-PageBreak", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PageBreak', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPageBreak();
       var od = api.PageBreak.fromJson(o.toJson());
       checkPageBreak(od);
     });
   });
 
-  unittest.group("obj-schema-Paragraph", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Paragraph', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParagraph();
       var od = api.Paragraph.fromJson(o.toJson());
       checkParagraph(od);
     });
   });
 
-  unittest.group("obj-schema-ParagraphBorder", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParagraphBorder', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParagraphBorder();
       var od = api.ParagraphBorder.fromJson(o.toJson());
       checkParagraphBorder(od);
     });
   });
 
-  unittest.group("obj-schema-ParagraphElement", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParagraphElement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParagraphElement();
       var od = api.ParagraphElement.fromJson(o.toJson());
       checkParagraphElement(od);
     });
   });
 
-  unittest.group("obj-schema-ParagraphStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParagraphStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParagraphStyle();
       var od = api.ParagraphStyle.fromJson(o.toJson());
       checkParagraphStyle(od);
     });
   });
 
-  unittest.group("obj-schema-ParagraphStyleSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ParagraphStyleSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildParagraphStyleSuggestionState();
       var od = api.ParagraphStyleSuggestionState.fromJson(o.toJson());
       checkParagraphStyleSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-PositionedObject", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PositionedObject', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPositionedObject();
       var od = api.PositionedObject.fromJson(o.toJson());
       checkPositionedObject(od);
     });
   });
 
-  unittest.group("obj-schema-PositionedObjectPositioning", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PositionedObjectPositioning', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPositionedObjectPositioning();
       var od = api.PositionedObjectPositioning.fromJson(o.toJson());
       checkPositionedObjectPositioning(od);
     });
   });
 
-  unittest.group("obj-schema-PositionedObjectPositioningSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PositionedObjectPositioningSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPositionedObjectPositioningSuggestionState();
       var od =
           api.PositionedObjectPositioningSuggestionState.fromJson(o.toJson());
@@ -5428,16 +5428,16 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-PositionedObjectProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PositionedObjectProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPositionedObjectProperties();
       var od = api.PositionedObjectProperties.fromJson(o.toJson());
       checkPositionedObjectProperties(od);
     });
   });
 
-  unittest.group("obj-schema-PositionedObjectPropertiesSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PositionedObjectPropertiesSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPositionedObjectPropertiesSuggestionState();
       var od =
           api.PositionedObjectPropertiesSuggestionState.fromJson(o.toJson());
@@ -5445,461 +5445,461 @@ void main() {
     });
   });
 
-  unittest.group("obj-schema-Range", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Range', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRange();
       var od = api.Range.fromJson(o.toJson());
       checkRange(od);
     });
   });
 
-  unittest.group("obj-schema-ReplaceAllTextRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReplaceAllTextRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReplaceAllTextRequest();
       var od = api.ReplaceAllTextRequest.fromJson(o.toJson());
       checkReplaceAllTextRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ReplaceAllTextResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReplaceAllTextResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReplaceAllTextResponse();
       var od = api.ReplaceAllTextResponse.fromJson(o.toJson());
       checkReplaceAllTextResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ReplaceImageRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReplaceImageRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReplaceImageRequest();
       var od = api.ReplaceImageRequest.fromJson(o.toJson());
       checkReplaceImageRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ReplaceNamedRangeContentRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReplaceNamedRangeContentRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReplaceNamedRangeContentRequest();
       var od = api.ReplaceNamedRangeContentRequest.fromJson(o.toJson());
       checkReplaceNamedRangeContentRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Request", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Request', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRequest();
       var od = api.Request.fromJson(o.toJson());
       checkRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Response", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Response', () {
+    unittest.test('to-json--from-json', () {
       var o = buildResponse();
       var od = api.Response.fromJson(o.toJson());
       checkResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RgbColor", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RgbColor', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRgbColor();
       var od = api.RgbColor.fromJson(o.toJson());
       checkRgbColor(od);
     });
   });
 
-  unittest.group("obj-schema-SectionBreak", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SectionBreak', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSectionBreak();
       var od = api.SectionBreak.fromJson(o.toJson());
       checkSectionBreak(od);
     });
   });
 
-  unittest.group("obj-schema-SectionColumnProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SectionColumnProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSectionColumnProperties();
       var od = api.SectionColumnProperties.fromJson(o.toJson());
       checkSectionColumnProperties(od);
     });
   });
 
-  unittest.group("obj-schema-SectionStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SectionStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSectionStyle();
       var od = api.SectionStyle.fromJson(o.toJson());
       checkSectionStyle(od);
     });
   });
 
-  unittest.group("obj-schema-Shading", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Shading', () {
+    unittest.test('to-json--from-json', () {
       var o = buildShading();
       var od = api.Shading.fromJson(o.toJson());
       checkShading(od);
     });
   });
 
-  unittest.group("obj-schema-ShadingSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ShadingSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildShadingSuggestionState();
       var od = api.ShadingSuggestionState.fromJson(o.toJson());
       checkShadingSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-SheetsChartReference", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SheetsChartReference', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSheetsChartReference();
       var od = api.SheetsChartReference.fromJson(o.toJson());
       checkSheetsChartReference(od);
     });
   });
 
-  unittest.group("obj-schema-SheetsChartReferenceSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SheetsChartReferenceSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSheetsChartReferenceSuggestionState();
       var od = api.SheetsChartReferenceSuggestionState.fromJson(o.toJson());
       checkSheetsChartReferenceSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-Size", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Size', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSize();
       var od = api.Size.fromJson(o.toJson());
       checkSize(od);
     });
   });
 
-  unittest.group("obj-schema-SizeSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SizeSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSizeSuggestionState();
       var od = api.SizeSuggestionState.fromJson(o.toJson());
       checkSizeSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-StructuralElement", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StructuralElement', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStructuralElement();
       var od = api.StructuralElement.fromJson(o.toJson());
       checkStructuralElement(od);
     });
   });
 
-  unittest.group("obj-schema-SubstringMatchCriteria", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SubstringMatchCriteria', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSubstringMatchCriteria();
       var od = api.SubstringMatchCriteria.fromJson(o.toJson());
       checkSubstringMatchCriteria(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedBullet", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedBullet', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedBullet();
       var od = api.SuggestedBullet.fromJson(o.toJson());
       checkSuggestedBullet(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedDocumentStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedDocumentStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedDocumentStyle();
       var od = api.SuggestedDocumentStyle.fromJson(o.toJson());
       checkSuggestedDocumentStyle(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedInlineObjectProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedInlineObjectProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedInlineObjectProperties();
       var od = api.SuggestedInlineObjectProperties.fromJson(o.toJson());
       checkSuggestedInlineObjectProperties(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedListProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedListProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedListProperties();
       var od = api.SuggestedListProperties.fromJson(o.toJson());
       checkSuggestedListProperties(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedNamedStyles", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedNamedStyles', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedNamedStyles();
       var od = api.SuggestedNamedStyles.fromJson(o.toJson());
       checkSuggestedNamedStyles(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedParagraphStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedParagraphStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedParagraphStyle();
       var od = api.SuggestedParagraphStyle.fromJson(o.toJson());
       checkSuggestedParagraphStyle(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedPositionedObjectProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedPositionedObjectProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedPositionedObjectProperties();
       var od = api.SuggestedPositionedObjectProperties.fromJson(o.toJson());
       checkSuggestedPositionedObjectProperties(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedTableCellStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedTableCellStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedTableCellStyle();
       var od = api.SuggestedTableCellStyle.fromJson(o.toJson());
       checkSuggestedTableCellStyle(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedTableRowStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedTableRowStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedTableRowStyle();
       var od = api.SuggestedTableRowStyle.fromJson(o.toJson());
       checkSuggestedTableRowStyle(od);
     });
   });
 
-  unittest.group("obj-schema-SuggestedTextStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SuggestedTextStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSuggestedTextStyle();
       var od = api.SuggestedTextStyle.fromJson(o.toJson());
       checkSuggestedTextStyle(od);
     });
   });
 
-  unittest.group("obj-schema-TabStop", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TabStop', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTabStop();
       var od = api.TabStop.fromJson(o.toJson());
       checkTabStop(od);
     });
   });
 
-  unittest.group("obj-schema-Table", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Table', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTable();
       var od = api.Table.fromJson(o.toJson());
       checkTable(od);
     });
   });
 
-  unittest.group("obj-schema-TableCell", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableCell', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableCell();
       var od = api.TableCell.fromJson(o.toJson());
       checkTableCell(od);
     });
   });
 
-  unittest.group("obj-schema-TableCellBorder", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableCellBorder', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableCellBorder();
       var od = api.TableCellBorder.fromJson(o.toJson());
       checkTableCellBorder(od);
     });
   });
 
-  unittest.group("obj-schema-TableCellLocation", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableCellLocation', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableCellLocation();
       var od = api.TableCellLocation.fromJson(o.toJson());
       checkTableCellLocation(od);
     });
   });
 
-  unittest.group("obj-schema-TableCellStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableCellStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableCellStyle();
       var od = api.TableCellStyle.fromJson(o.toJson());
       checkTableCellStyle(od);
     });
   });
 
-  unittest.group("obj-schema-TableCellStyleSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableCellStyleSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableCellStyleSuggestionState();
       var od = api.TableCellStyleSuggestionState.fromJson(o.toJson());
       checkTableCellStyleSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-TableColumnProperties", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableColumnProperties', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableColumnProperties();
       var od = api.TableColumnProperties.fromJson(o.toJson());
       checkTableColumnProperties(od);
     });
   });
 
-  unittest.group("obj-schema-TableOfContents", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableOfContents', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableOfContents();
       var od = api.TableOfContents.fromJson(o.toJson());
       checkTableOfContents(od);
     });
   });
 
-  unittest.group("obj-schema-TableRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableRange();
       var od = api.TableRange.fromJson(o.toJson());
       checkTableRange(od);
     });
   });
 
-  unittest.group("obj-schema-TableRow", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableRow', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableRow();
       var od = api.TableRow.fromJson(o.toJson());
       checkTableRow(od);
     });
   });
 
-  unittest.group("obj-schema-TableRowStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableRowStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableRowStyle();
       var od = api.TableRowStyle.fromJson(o.toJson());
       checkTableRowStyle(od);
     });
   });
 
-  unittest.group("obj-schema-TableRowStyleSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableRowStyleSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableRowStyleSuggestionState();
       var od = api.TableRowStyleSuggestionState.fromJson(o.toJson());
       checkTableRowStyleSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-TableStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TableStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTableStyle();
       var od = api.TableStyle.fromJson(o.toJson());
       checkTableStyle(od);
     });
   });
 
-  unittest.group("obj-schema-TextRun", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TextRun', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTextRun();
       var od = api.TextRun.fromJson(o.toJson());
       checkTextRun(od);
     });
   });
 
-  unittest.group("obj-schema-TextStyle", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TextStyle', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTextStyle();
       var od = api.TextStyle.fromJson(o.toJson());
       checkTextStyle(od);
     });
   });
 
-  unittest.group("obj-schema-TextStyleSuggestionState", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TextStyleSuggestionState', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTextStyleSuggestionState();
       var od = api.TextStyleSuggestionState.fromJson(o.toJson());
       checkTextStyleSuggestionState(od);
     });
   });
 
-  unittest.group("obj-schema-UnmergeTableCellsRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UnmergeTableCellsRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUnmergeTableCellsRequest();
       var od = api.UnmergeTableCellsRequest.fromJson(o.toJson());
       checkUnmergeTableCellsRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateDocumentStyleRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateDocumentStyleRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateDocumentStyleRequest();
       var od = api.UpdateDocumentStyleRequest.fromJson(o.toJson());
       checkUpdateDocumentStyleRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateParagraphStyleRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateParagraphStyleRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateParagraphStyleRequest();
       var od = api.UpdateParagraphStyleRequest.fromJson(o.toJson());
       checkUpdateParagraphStyleRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateSectionStyleRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateSectionStyleRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateSectionStyleRequest();
       var od = api.UpdateSectionStyleRequest.fromJson(o.toJson());
       checkUpdateSectionStyleRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateTableCellStyleRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateTableCellStyleRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateTableCellStyleRequest();
       var od = api.UpdateTableCellStyleRequest.fromJson(o.toJson());
       checkUpdateTableCellStyleRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateTableColumnPropertiesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateTableColumnPropertiesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateTableColumnPropertiesRequest();
       var od = api.UpdateTableColumnPropertiesRequest.fromJson(o.toJson());
       checkUpdateTableColumnPropertiesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateTableRowStyleRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateTableRowStyleRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateTableRowStyleRequest();
       var od = api.UpdateTableRowStyleRequest.fromJson(o.toJson());
       checkUpdateTableRowStyleRequest(od);
     });
   });
 
-  unittest.group("obj-schema-UpdateTextStyleRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-UpdateTextStyleRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildUpdateTextStyleRequest();
       var od = api.UpdateTextStyleRequest.fromJson(o.toJson());
       checkUpdateTextStyleRequest(od);
     });
   });
 
-  unittest.group("obj-schema-WeightedFontFamily", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WeightedFontFamily', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWeightedFontFamily();
       var od = api.WeightedFontFamily.fromJson(o.toJson());
       checkWeightedFontFamily(od);
     });
   });
 
-  unittest.group("obj-schema-WriteControl", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WriteControl', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWriteControl();
       var od = api.WriteControl.fromJson(o.toJson());
       checkWriteControl(od);
     });
   });
 
-  unittest.group("resource-DocumentsResourceApi", () {
-    unittest.test("method--batchUpdate", () {
+  unittest.group('resource-DocumentsResourceApi', () {
+    unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
       api.DocumentsResourceApi res = api.DocsApi(mock).documents;
       var arg_request = buildBatchUpdateDocumentRequest();
-      var arg_documentId = "foo";
-      var arg_$fields = "foo";
+      var arg_documentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BatchUpdateDocumentRequest.fromJson(json);
         checkBatchUpdateDocumentRequest(obj);
@@ -5914,12 +5914,12 @@ void main() {
         unittest.expect(path.substring(pathOffset, pathOffset + 13),
             unittest.equals("v1/documents/"));
         pathOffset += 13;
-        index = path.indexOf(":batchUpdate", pathOffset);
+        index = path.indexOf(':batchUpdate', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_documentId"));
+        unittest.expect(subPart, unittest.equals('$arg_documentId'));
         unittest.expect(path.substring(pathOffset, pathOffset + 12),
             unittest.equals(":batchUpdate"));
         pathOffset += 12;
@@ -5930,8 +5930,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5941,7 +5941,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildBatchUpdateDocumentResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -5953,11 +5953,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--create", () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.DocumentsResourceApi res = api.DocsApi(mock).documents;
       var arg_request = buildDocument();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Document.fromJson(json);
         checkDocument(obj);
@@ -5979,8 +5979,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5990,7 +5990,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDocument());
         return async.Future.value(stringResponse(200, h, resp));
@@ -6002,12 +6002,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.DocumentsResourceApi res = api.DocsApi(mock).documents;
-      var arg_documentId = "foo";
-      var arg_suggestionsViewMode = "foo";
-      var arg_$fields = "foo";
+      var arg_documentId = 'foo';
+      var arg_suggestionsViewMode = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6021,7 +6021,7 @@ void main() {
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_documentId"));
+        unittest.expect(subPart, unittest.equals('$arg_documentId'));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6029,8 +6029,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6042,7 +6042,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildDocument());
         return async.Future.value(stringResponse(200, h, resp));

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,7 +38,7 @@ const core.String USER_AGENT = 'dart-api-client datacatalog/v1beta1';
 class DatacatalogApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -48,8 +47,8 @@ class DatacatalogApi {
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   DatacatalogApi(http.Client client,
-      {core.String rootUrl = "https://datacatalog.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://datacatalog.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -100,14 +99,14 @@ class CatalogResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/catalog:search';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -169,20 +168,20 @@ class EntriesResourceApi {
     core.String _body;
 
     if (sqlResource != null) {
-      _queryParams["sqlResource"] = [sqlResource];
+      _queryParams['sqlResource'] = [sqlResource];
     }
     if (linkedResource != null) {
-      _queryParams["linkedResource"] = [linkedResource];
+      _queryParams['linkedResource'] = [linkedResource];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/entries:lookup';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -275,13 +274,13 @@ class ProjectsLocationsEntryGroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (entryGroupId != null) {
-      _queryParams["entryGroupId"] = [entryGroupId];
+      _queryParams['entryGroupId'] = [entryGroupId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -290,7 +289,7 @@ class ProjectsLocationsEntryGroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -339,20 +338,20 @@ class ProjectsLocationsEntryGroupsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (force != null) {
-      _queryParams["force"] = ["${force}"];
+      _queryParams['force'] = ['${force}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -397,20 +396,20 @@ class ProjectsLocationsEntryGroupsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (readMask != null) {
-      _queryParams["readMask"] = [readMask];
+      _queryParams['readMask'] = [readMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -468,10 +467,10 @@ class ProjectsLocationsEntryGroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -480,7 +479,7 @@ class ProjectsLocationsEntryGroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -529,16 +528,16 @@ class ProjectsLocationsEntryGroupsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -547,7 +546,7 @@ class ProjectsLocationsEntryGroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -605,20 +604,20 @@ class ProjectsLocationsEntryGroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -674,10 +673,10 @@ class ProjectsLocationsEntryGroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -686,7 +685,7 @@ class ProjectsLocationsEntryGroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -740,10 +739,10 @@ class ProjectsLocationsEntryGroupsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -752,7 +751,7 @@ class ProjectsLocationsEntryGroupsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -820,13 +819,13 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (entryId != null) {
-      _queryParams["entryId"] = [entryId];
+      _queryParams['entryId'] = [entryId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -835,7 +834,7 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -881,17 +880,17 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -932,17 +931,17 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1000,10 +999,10 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -1012,7 +1011,7 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1068,19 +1067,19 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (readMask != null) {
-      _queryParams["readMask"] = [readMask];
+      _queryParams['readMask'] = [readMask];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -1089,7 +1088,7 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1154,20 +1153,20 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1222,10 +1221,10 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -1234,7 +1233,7 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1297,10 +1296,10 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1308,7 +1307,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1350,17 +1349,17 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1411,16 +1410,16 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1428,7 +1427,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1483,20 +1482,20 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1559,10 +1558,10 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1570,7 +1569,7 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1612,17 +1611,17 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1673,16 +1672,16 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1690,7 +1689,7 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1745,20 +1744,20 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1822,13 +1821,13 @@ class ProjectsLocationsTagTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (tagTemplateId != null) {
-      _queryParams["tagTemplateId"] = [tagTemplateId];
+      _queryParams['tagTemplateId'] = [tagTemplateId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -1837,7 +1836,7 @@ class ProjectsLocationsTagTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1888,20 +1887,20 @@ class ProjectsLocationsTagTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (force != null) {
-      _queryParams["force"] = ["${force}"];
+      _queryParams['force'] = ['${force}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1942,17 +1941,17 @@ class ProjectsLocationsTagTemplatesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2010,10 +2009,10 @@ class ProjectsLocationsTagTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -2022,7 +2021,7 @@ class ProjectsLocationsTagTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2082,20 +2081,20 @@ class ProjectsLocationsTagTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2151,10 +2150,10 @@ class ProjectsLocationsTagTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -2163,7 +2162,7 @@ class ProjectsLocationsTagTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2217,10 +2216,10 @@ class ProjectsLocationsTagTemplatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -2229,7 +2228,7 @@ class ProjectsLocationsTagTemplatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2299,13 +2298,13 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (tagTemplateFieldId != null) {
-      _queryParams["tagTemplateFieldId"] = [tagTemplateFieldId];
+      _queryParams['tagTemplateFieldId'] = [tagTemplateFieldId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -2314,7 +2313,7 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2366,20 +2365,20 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (force != null) {
-      _queryParams["force"] = ["${force}"];
+      _queryParams['force'] = ['${force}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2440,20 +2439,20 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2505,10 +2504,10 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2516,7 +2515,7 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2574,10 +2573,10 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2585,7 +2584,7 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2642,10 +2641,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -2654,7 +2653,7 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2697,17 +2696,17 @@ class ProjectsLocationsTaxonomiesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2755,16 +2754,16 @@ class ProjectsLocationsTaxonomiesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (taxonomies != null) {
-      _queryParams["taxonomies"] = taxonomies;
+      _queryParams['taxonomies'] = taxonomies;
     }
     if (serializedTaxonomies != null) {
-      _queryParams["serializedTaxonomies"] = ["${serializedTaxonomies}"];
+      _queryParams['serializedTaxonomies'] = ['${serializedTaxonomies}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -2773,7 +2772,7 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2814,17 +2813,17 @@ class ProjectsLocationsTaxonomiesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2873,10 +2872,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -2885,7 +2884,7 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2933,10 +2932,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -2945,7 +2944,7 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2995,16 +2994,16 @@ class ProjectsLocationsTaxonomiesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -3013,7 +3012,7 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3067,20 +3066,20 @@ class ProjectsLocationsTaxonomiesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3129,10 +3128,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -3141,7 +3140,7 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3190,10 +3189,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -3202,7 +3201,7 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3256,10 +3255,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -3268,7 +3267,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3310,17 +3309,17 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3360,17 +3359,17 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3419,10 +3418,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -3431,7 +3430,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3480,16 +3479,16 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -3498,7 +3497,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3555,20 +3554,20 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3617,10 +3616,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -3629,7 +3628,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3678,10 +3677,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError('Parameter resource is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -3690,7 +3689,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3754,17 +3753,17 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
+    if (_json.containsKey('bindingId')) {
+      bindingId = _json['bindingId'];
     }
-    if (_json.containsKey("condition")) {
-      condition = Expr.fromJson(_json["condition"]);
+    if (_json.containsKey('condition')) {
+      condition = Expr.fromJson(_json['condition']);
     }
-    if (_json.containsKey("members")) {
-      members = (_json["members"] as core.List).cast<core.String>();
+    if (_json.containsKey('members')) {
+      members = (_json['members'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
+    if (_json.containsKey('role')) {
+      role = _json['role'];
     }
   }
 
@@ -3772,16 +3771,16 @@ class Binding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bindingId != null) {
-      _json["bindingId"] = bindingId;
+      _json['bindingId'] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = condition.toJson();
+      _json['condition'] = condition.toJson();
     }
     if (members != null) {
-      _json["members"] = members;
+      _json['members'] = members;
     }
     if (role != null) {
-      _json["role"] = role;
+      _json['role'] = role;
     }
     return _json;
   }
@@ -3840,17 +3839,17 @@ class Expr {
   Expr();
 
   Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
+    if (_json.containsKey('expression')) {
+      expression = _json['expression'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -3858,16 +3857,16 @@ class Expr {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (expression != null) {
-      _json["expression"] = expression;
+      _json['expression'] = expression;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -3882,8 +3881,8 @@ class GetIamPolicyRequest {
   GetIamPolicyRequest();
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("options")) {
-      options = GetPolicyOptions.fromJson(_json["options"]);
+    if (_json.containsKey('options')) {
+      options = GetPolicyOptions.fromJson(_json['options']);
     }
   }
 
@@ -3891,7 +3890,7 @@ class GetIamPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = options.toJson();
+      _json['options'] = options.toJson();
     }
     return _json;
   }
@@ -3911,8 +3910,8 @@ class GetPolicyOptions {
   GetPolicyOptions();
 
   GetPolicyOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("requestedPolicyVersion")) {
-      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    if (_json.containsKey('requestedPolicyVersion')) {
+      requestedPolicyVersion = _json['requestedPolicyVersion'];
     }
   }
 
@@ -3920,7 +3919,7 @@ class GetPolicyOptions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
-      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+      _json['requestedPolicyVersion'] = requestedPolicyVersion;
     }
     return _json;
   }
@@ -3947,14 +3946,14 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
 
   GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
       core.Map _json) {
-    if (_json.containsKey("dataset")) {
-      dataset = _json["dataset"];
+    if (_json.containsKey('dataset')) {
+      dataset = _json['dataset'];
     }
-    if (_json.containsKey("shardCount")) {
-      shardCount = _json["shardCount"];
+    if (_json.containsKey('shardCount')) {
+      shardCount = _json['shardCount'];
     }
-    if (_json.containsKey("tablePrefix")) {
-      tablePrefix = _json["tablePrefix"];
+    if (_json.containsKey('tablePrefix')) {
+      tablePrefix = _json['tablePrefix'];
     }
   }
 
@@ -3962,13 +3961,13 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dataset != null) {
-      _json["dataset"] = dataset;
+      _json['dataset'] = dataset;
     }
     if (shardCount != null) {
-      _json["shardCount"] = shardCount;
+      _json['shardCount'] = shardCount;
     }
     if (tablePrefix != null) {
-      _json["tablePrefix"] = tablePrefix;
+      _json['tablePrefix'] = tablePrefix;
     }
     return _json;
   }
@@ -3995,16 +3994,16 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   GoogleCloudDatacatalogV1beta1BigQueryTableSpec();
 
   GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("tableSourceType")) {
-      tableSourceType = _json["tableSourceType"];
+    if (_json.containsKey('tableSourceType')) {
+      tableSourceType = _json['tableSourceType'];
     }
-    if (_json.containsKey("tableSpec")) {
+    if (_json.containsKey('tableSpec')) {
       tableSpec =
-          GoogleCloudDatacatalogV1beta1TableSpec.fromJson(_json["tableSpec"]);
+          GoogleCloudDatacatalogV1beta1TableSpec.fromJson(_json['tableSpec']);
     }
-    if (_json.containsKey("viewSpec")) {
+    if (_json.containsKey('viewSpec')) {
       viewSpec =
-          GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(_json["viewSpec"]);
+          GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(_json['viewSpec']);
     }
   }
 
@@ -4012,13 +4011,13 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (tableSourceType != null) {
-      _json["tableSourceType"] = tableSourceType;
+      _json['tableSourceType'] = tableSourceType;
     }
     if (tableSpec != null) {
-      _json["tableSpec"] = tableSpec.toJson();
+      _json['tableSpec'] = tableSpec.toJson();
     }
     if (viewSpec != null) {
-      _json["viewSpec"] = viewSpec.toJson();
+      _json['viewSpec'] = viewSpec.toJson();
     }
     return _json;
   }
@@ -4048,23 +4047,23 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
   GoogleCloudDatacatalogV1beta1ColumnSchema();
 
   GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(core.Map _json) {
-    if (_json.containsKey("column")) {
-      column = _json["column"];
+    if (_json.containsKey('column')) {
+      column = _json['column'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("mode")) {
-      mode = _json["mode"];
+    if (_json.containsKey('mode')) {
+      mode = _json['mode'];
     }
-    if (_json.containsKey("subcolumns")) {
-      subcolumns = (_json["subcolumns"] as core.List)
+    if (_json.containsKey('subcolumns')) {
+      subcolumns = (_json['subcolumns'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1ColumnSchema>((value) =>
               GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4072,19 +4071,19 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (column != null) {
-      _json["column"] = column;
+      _json['column'] = column;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (mode != null) {
-      _json["mode"] = mode;
+      _json['mode'] = mode;
     }
     if (subcolumns != null) {
-      _json["subcolumns"] = subcolumns.map((value) => value.toJson()).toList();
+      _json['subcolumns'] = subcolumns.map((value) => value.toJson()).toList();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4189,51 +4188,51 @@ class GoogleCloudDatacatalogV1beta1Entry {
   GoogleCloudDatacatalogV1beta1Entry();
 
   GoogleCloudDatacatalogV1beta1Entry.fromJson(core.Map _json) {
-    if (_json.containsKey("bigqueryDateShardedSpec")) {
+    if (_json.containsKey('bigqueryDateShardedSpec')) {
       bigqueryDateShardedSpec =
           GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
-              _json["bigqueryDateShardedSpec"]);
+              _json['bigqueryDateShardedSpec']);
     }
-    if (_json.containsKey("bigqueryTableSpec")) {
+    if (_json.containsKey('bigqueryTableSpec')) {
       bigqueryTableSpec =
           GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
-              _json["bigqueryTableSpec"]);
+              _json['bigqueryTableSpec']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("gcsFilesetSpec")) {
+    if (_json.containsKey('gcsFilesetSpec')) {
       gcsFilesetSpec = GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
-          _json["gcsFilesetSpec"]);
+          _json['gcsFilesetSpec']);
     }
-    if (_json.containsKey("integratedSystem")) {
-      integratedSystem = _json["integratedSystem"];
+    if (_json.containsKey('integratedSystem')) {
+      integratedSystem = _json['integratedSystem'];
     }
-    if (_json.containsKey("linkedResource")) {
-      linkedResource = _json["linkedResource"];
+    if (_json.containsKey('linkedResource')) {
+      linkedResource = _json['linkedResource'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("schema")) {
-      schema = GoogleCloudDatacatalogV1beta1Schema.fromJson(_json["schema"]);
+    if (_json.containsKey('schema')) {
+      schema = GoogleCloudDatacatalogV1beta1Schema.fromJson(_json['schema']);
     }
-    if (_json.containsKey("sourceSystemTimestamps")) {
+    if (_json.containsKey('sourceSystemTimestamps')) {
       sourceSystemTimestamps =
           GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-              _json["sourceSystemTimestamps"]);
+              _json['sourceSystemTimestamps']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("userSpecifiedSystem")) {
-      userSpecifiedSystem = _json["userSpecifiedSystem"];
+    if (_json.containsKey('userSpecifiedSystem')) {
+      userSpecifiedSystem = _json['userSpecifiedSystem'];
     }
-    if (_json.containsKey("userSpecifiedType")) {
-      userSpecifiedType = _json["userSpecifiedType"];
+    if (_json.containsKey('userSpecifiedType')) {
+      userSpecifiedType = _json['userSpecifiedType'];
     }
   }
 
@@ -4241,43 +4240,43 @@ class GoogleCloudDatacatalogV1beta1Entry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bigqueryDateShardedSpec != null) {
-      _json["bigqueryDateShardedSpec"] = bigqueryDateShardedSpec.toJson();
+      _json['bigqueryDateShardedSpec'] = bigqueryDateShardedSpec.toJson();
     }
     if (bigqueryTableSpec != null) {
-      _json["bigqueryTableSpec"] = bigqueryTableSpec.toJson();
+      _json['bigqueryTableSpec'] = bigqueryTableSpec.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (gcsFilesetSpec != null) {
-      _json["gcsFilesetSpec"] = gcsFilesetSpec.toJson();
+      _json['gcsFilesetSpec'] = gcsFilesetSpec.toJson();
     }
     if (integratedSystem != null) {
-      _json["integratedSystem"] = integratedSystem;
+      _json['integratedSystem'] = integratedSystem;
     }
     if (linkedResource != null) {
-      _json["linkedResource"] = linkedResource;
+      _json['linkedResource'] = linkedResource;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (schema != null) {
-      _json["schema"] = schema.toJson();
+      _json['schema'] = schema.toJson();
     }
     if (sourceSystemTimestamps != null) {
-      _json["sourceSystemTimestamps"] = sourceSystemTimestamps.toJson();
+      _json['sourceSystemTimestamps'] = sourceSystemTimestamps.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (userSpecifiedSystem != null) {
-      _json["userSpecifiedSystem"] = userSpecifiedSystem;
+      _json['userSpecifiedSystem'] = userSpecifiedSystem;
     }
     if (userSpecifiedType != null) {
-      _json["userSpecifiedType"] = userSpecifiedType;
+      _json['userSpecifiedType'] = userSpecifiedType;
     }
     return _json;
   }
@@ -4308,19 +4307,19 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
   GoogleCloudDatacatalogV1beta1EntryGroup();
 
   GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(core.Map _json) {
-    if (_json.containsKey("dataCatalogTimestamps")) {
+    if (_json.containsKey('dataCatalogTimestamps')) {
       dataCatalogTimestamps =
           GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-              _json["dataCatalogTimestamps"]);
+              _json['dataCatalogTimestamps']);
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4328,16 +4327,16 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dataCatalogTimestamps != null) {
-      _json["dataCatalogTimestamps"] = dataCatalogTimestamps.toJson();
+      _json['dataCatalogTimestamps'] = dataCatalogTimestamps.toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4352,8 +4351,8 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
 
   GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("taxonomies")) {
-      taxonomies = (_json["taxonomies"] as core.List)
+    if (_json.containsKey('taxonomies')) {
+      taxonomies = (_json['taxonomies'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>((value) =>
               GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(value))
           .toList();
@@ -4364,7 +4363,7 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (taxonomies != null) {
-      _json["taxonomies"] = taxonomies.map((value) => value.toJson()).toList();
+      _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4387,12 +4386,12 @@ class GoogleCloudDatacatalogV1beta1FieldType {
   GoogleCloudDatacatalogV1beta1FieldType();
 
   GoogleCloudDatacatalogV1beta1FieldType.fromJson(core.Map _json) {
-    if (_json.containsKey("enumType")) {
+    if (_json.containsKey('enumType')) {
       enumType = GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
-          _json["enumType"]);
+          _json['enumType']);
     }
-    if (_json.containsKey("primitiveType")) {
-      primitiveType = _json["primitiveType"];
+    if (_json.containsKey('primitiveType')) {
+      primitiveType = _json['primitiveType'];
     }
   }
 
@@ -4400,10 +4399,10 @@ class GoogleCloudDatacatalogV1beta1FieldType {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enumType != null) {
-      _json["enumType"] = enumType.toJson();
+      _json['enumType'] = enumType.toJson();
     }
     if (primitiveType != null) {
-      _json["primitiveType"] = primitiveType;
+      _json['primitiveType'] = primitiveType;
     }
     return _json;
   }
@@ -4426,8 +4425,8 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
   GoogleCloudDatacatalogV1beta1FieldTypeEnumType();
 
   GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(core.Map _json) {
-    if (_json.containsKey("allowedValues")) {
-      allowedValues = (_json["allowedValues"] as core.List)
+    if (_json.containsKey('allowedValues')) {
+      allowedValues = (_json['allowedValues'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>(
               (value) => GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue
                   .fromJson(value))
@@ -4439,7 +4438,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowedValues != null) {
-      _json["allowedValues"] =
+      _json['allowedValues'] =
           allowedValues.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4454,8 +4453,8 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
 
   GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue.fromJson(
       core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
   }
 
@@ -4463,7 +4462,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     return _json;
   }
@@ -4483,15 +4482,15 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
   GoogleCloudDatacatalogV1beta1GcsFileSpec();
 
   GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("filePath")) {
-      filePath = _json["filePath"];
+    if (_json.containsKey('filePath')) {
+      filePath = _json['filePath'];
     }
-    if (_json.containsKey("gcsTimestamps")) {
+    if (_json.containsKey('gcsTimestamps')) {
       gcsTimestamps = GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-          _json["gcsTimestamps"]);
+          _json['gcsTimestamps']);
     }
-    if (_json.containsKey("sizeBytes")) {
-      sizeBytes = _json["sizeBytes"];
+    if (_json.containsKey('sizeBytes')) {
+      sizeBytes = _json['sizeBytes'];
     }
   }
 
@@ -4499,13 +4498,13 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filePath != null) {
-      _json["filePath"] = filePath;
+      _json['filePath'] = filePath;
     }
     if (gcsTimestamps != null) {
-      _json["gcsTimestamps"] = gcsTimestamps.toJson();
+      _json['gcsTimestamps'] = gcsTimestamps.toJson();
     }
     if (sizeBytes != null) {
-      _json["sizeBytes"] = sizeBytes;
+      _json['sizeBytes'] = sizeBytes;
     }
     return _json;
   }
@@ -4540,11 +4539,11 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   GoogleCloudDatacatalogV1beta1GcsFilesetSpec();
 
   GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("filePatterns")) {
-      filePatterns = (_json["filePatterns"] as core.List).cast<core.String>();
+    if (_json.containsKey('filePatterns')) {
+      filePatterns = (_json['filePatterns'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("sampleGcsFileSpecs")) {
-      sampleGcsFileSpecs = (_json["sampleGcsFileSpecs"] as core.List)
+    if (_json.containsKey('sampleGcsFileSpecs')) {
+      sampleGcsFileSpecs = (_json['sampleGcsFileSpecs'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1GcsFileSpec>((value) =>
               GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(value))
           .toList();
@@ -4555,10 +4554,10 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filePatterns != null) {
-      _json["filePatterns"] = filePatterns;
+      _json['filePatterns'] = filePatterns;
     }
     if (sampleGcsFileSpecs != null) {
-      _json["sampleGcsFileSpecs"] =
+      _json['sampleGcsFileSpecs'] =
           sampleGcsFileSpecs.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -4574,9 +4573,9 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
 
   GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
       core.Map _json) {
-    if (_json.containsKey("inlineSource")) {
+    if (_json.containsKey('inlineSource')) {
       inlineSource = GoogleCloudDatacatalogV1beta1InlineSource.fromJson(
-          _json["inlineSource"]);
+          _json['inlineSource']);
     }
   }
 
@@ -4584,7 +4583,7 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inlineSource != null) {
-      _json["inlineSource"] = inlineSource.toJson();
+      _json['inlineSource'] = inlineSource.toJson();
     }
     return _json;
   }
@@ -4599,8 +4598,8 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
 
   GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("taxonomies")) {
-      taxonomies = (_json["taxonomies"] as core.List)
+    if (_json.containsKey('taxonomies')) {
+      taxonomies = (_json['taxonomies'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1Taxonomy>(
               (value) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(value))
           .toList();
@@ -4611,7 +4610,7 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (taxonomies != null) {
-      _json["taxonomies"] = taxonomies.map((value) => value.toJson()).toList();
+      _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4625,8 +4624,8 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
   GoogleCloudDatacatalogV1beta1InlineSource();
 
   GoogleCloudDatacatalogV1beta1InlineSource.fromJson(core.Map _json) {
-    if (_json.containsKey("taxonomies")) {
-      taxonomies = (_json["taxonomies"] as core.List)
+    if (_json.containsKey('taxonomies')) {
+      taxonomies = (_json['taxonomies'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>((value) =>
               GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(value))
           .toList();
@@ -4637,7 +4636,7 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (taxonomies != null) {
-      _json["taxonomies"] = taxonomies.map((value) => value.toJson()).toList();
+      _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4655,14 +4654,14 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   GoogleCloudDatacatalogV1beta1ListEntriesResponse();
 
   GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("entries")) {
-      entries = (_json["entries"] as core.List)
+    if (_json.containsKey('entries')) {
+      entries = (_json['entries'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1Entry>(
               (value) => GoogleCloudDatacatalogV1beta1Entry.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4670,10 +4669,10 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entries != null) {
-      _json["entries"] = entries.map((value) => value.toJson()).toList();
+      _json['entries'] = entries.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4692,14 +4691,14 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
 
   GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("entryGroups")) {
-      entryGroups = (_json["entryGroups"] as core.List)
+    if (_json.containsKey('entryGroups')) {
+      entryGroups = (_json['entryGroups'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1EntryGroup>((value) =>
               GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4707,11 +4706,11 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entryGroups != null) {
-      _json["entryGroups"] =
+      _json['entryGroups'] =
           entryGroups.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4729,11 +4728,11 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
   GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
 
   GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("policyTags")) {
-      policyTags = (_json["policyTags"] as core.List)
+    if (_json.containsKey('policyTags')) {
+      policyTags = (_json['policyTags'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1PolicyTag>(
               (value) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(value))
           .toList();
@@ -4744,10 +4743,10 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (policyTags != null) {
-      _json["policyTags"] = policyTags.map((value) => value.toJson()).toList();
+      _json['policyTags'] = policyTags.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4765,11 +4764,11 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
   GoogleCloudDatacatalogV1beta1ListTagsResponse();
 
   GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("tags")) {
-      tags = (_json["tags"] as core.List)
+    if (_json.containsKey('tags')) {
+      tags = (_json['tags'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1Tag>(
               (value) => GoogleCloudDatacatalogV1beta1Tag.fromJson(value))
           .toList();
@@ -4780,10 +4779,10 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (tags != null) {
-      _json["tags"] = tags.map((value) => value.toJson()).toList();
+      _json['tags'] = tags.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4801,11 +4800,11 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
 
   GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("taxonomies")) {
-      taxonomies = (_json["taxonomies"] as core.List)
+    if (_json.containsKey('taxonomies')) {
+      taxonomies = (_json['taxonomies'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1Taxonomy>(
               (value) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(value))
           .toList();
@@ -4816,10 +4815,10 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (taxonomies != null) {
-      _json["taxonomies"] = taxonomies.map((value) => value.toJson()).toList();
+      _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4860,21 +4859,21 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
   GoogleCloudDatacatalogV1beta1PolicyTag();
 
   GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(core.Map _json) {
-    if (_json.containsKey("childPolicyTags")) {
+    if (_json.containsKey('childPolicyTags')) {
       childPolicyTags =
-          (_json["childPolicyTags"] as core.List).cast<core.String>();
+          (_json['childPolicyTags'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("parentPolicyTag")) {
-      parentPolicyTag = _json["parentPolicyTag"];
+    if (_json.containsKey('parentPolicyTag')) {
+      parentPolicyTag = _json['parentPolicyTag'];
     }
   }
 
@@ -4882,19 +4881,19 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (childPolicyTags != null) {
-      _json["childPolicyTags"] = childPolicyTags;
+      _json['childPolicyTags'] = childPolicyTags;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (parentPolicyTag != null) {
-      _json["parentPolicyTag"] = parentPolicyTag;
+      _json['parentPolicyTag'] = parentPolicyTag;
     }
     return _json;
   }
@@ -4910,8 +4909,8 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
 
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest.fromJson(
       core.Map _json) {
-    if (_json.containsKey("newEnumValueDisplayName")) {
-      newEnumValueDisplayName = _json["newEnumValueDisplayName"];
+    if (_json.containsKey('newEnumValueDisplayName')) {
+      newEnumValueDisplayName = _json['newEnumValueDisplayName'];
     }
   }
 
@@ -4919,7 +4918,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (newEnumValueDisplayName != null) {
-      _json["newEnumValueDisplayName"] = newEnumValueDisplayName;
+      _json['newEnumValueDisplayName'] = newEnumValueDisplayName;
     }
     return _json;
   }
@@ -4935,8 +4934,8 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
 
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest.fromJson(
       core.Map _json) {
-    if (_json.containsKey("newTagTemplateFieldId")) {
-      newTagTemplateFieldId = _json["newTagTemplateFieldId"];
+    if (_json.containsKey('newTagTemplateFieldId')) {
+      newTagTemplateFieldId = _json['newTagTemplateFieldId'];
     }
   }
 
@@ -4944,7 +4943,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (newTagTemplateFieldId != null) {
-      _json["newTagTemplateFieldId"] = newTagTemplateFieldId;
+      _json['newTagTemplateFieldId'] = newTagTemplateFieldId;
     }
     return _json;
   }
@@ -4959,8 +4958,8 @@ class GoogleCloudDatacatalogV1beta1Schema {
   GoogleCloudDatacatalogV1beta1Schema();
 
   GoogleCloudDatacatalogV1beta1Schema.fromJson(core.Map _json) {
-    if (_json.containsKey("columns")) {
-      columns = (_json["columns"] as core.List)
+    if (_json.containsKey('columns')) {
+      columns = (_json['columns'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1ColumnSchema>((value) =>
               GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(value))
           .toList();
@@ -4971,7 +4970,7 @@ class GoogleCloudDatacatalogV1beta1Schema {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (columns != null) {
-      _json["columns"] = columns.map((value) => value.toJson()).toList();
+      _json['columns'] = columns.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5015,21 +5014,21 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   GoogleCloudDatacatalogV1beta1SearchCatalogRequest();
 
   GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("orderBy")) {
-      orderBy = _json["orderBy"];
+    if (_json.containsKey('orderBy')) {
+      orderBy = _json['orderBy'];
     }
-    if (_json.containsKey("pageSize")) {
-      pageSize = _json["pageSize"];
+    if (_json.containsKey('pageSize')) {
+      pageSize = _json['pageSize'];
     }
-    if (_json.containsKey("pageToken")) {
-      pageToken = _json["pageToken"];
+    if (_json.containsKey('pageToken')) {
+      pageToken = _json['pageToken'];
     }
-    if (_json.containsKey("query")) {
-      query = _json["query"];
+    if (_json.containsKey('query')) {
+      query = _json['query'];
     }
-    if (_json.containsKey("scope")) {
+    if (_json.containsKey('scope')) {
       scope = GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
-          _json["scope"]);
+          _json['scope']);
     }
   }
 
@@ -5037,19 +5036,19 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (orderBy != null) {
-      _json["orderBy"] = orderBy;
+      _json['orderBy'] = orderBy;
     }
     if (pageSize != null) {
-      _json["pageSize"] = pageSize;
+      _json['pageSize'] = pageSize;
     }
     if (pageToken != null) {
-      _json["pageToken"] = pageToken;
+      _json['pageToken'] = pageToken;
     }
     if (query != null) {
-      _json["query"] = query;
+      _json['query'] = query;
     }
     if (scope != null) {
-      _json["scope"] = scope.toJson();
+      _json['scope'] = scope.toJson();
     }
     return _json;
   }
@@ -5092,19 +5091,19 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
 
   GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
       core.Map _json) {
-    if (_json.containsKey("includeGcpPublicDatasets")) {
-      includeGcpPublicDatasets = _json["includeGcpPublicDatasets"];
+    if (_json.containsKey('includeGcpPublicDatasets')) {
+      includeGcpPublicDatasets = _json['includeGcpPublicDatasets'];
     }
-    if (_json.containsKey("includeOrgIds")) {
-      includeOrgIds = (_json["includeOrgIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('includeOrgIds')) {
+      includeOrgIds = (_json['includeOrgIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("includeProjectIds")) {
+    if (_json.containsKey('includeProjectIds')) {
       includeProjectIds =
-          (_json["includeProjectIds"] as core.List).cast<core.String>();
+          (_json['includeProjectIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("restrictedLocations")) {
+    if (_json.containsKey('restrictedLocations')) {
       restrictedLocations =
-          (_json["restrictedLocations"] as core.List).cast<core.String>();
+          (_json['restrictedLocations'] as core.List).cast<core.String>();
     }
   }
 
@@ -5112,16 +5111,16 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (includeGcpPublicDatasets != null) {
-      _json["includeGcpPublicDatasets"] = includeGcpPublicDatasets;
+      _json['includeGcpPublicDatasets'] = includeGcpPublicDatasets;
     }
     if (includeOrgIds != null) {
-      _json["includeOrgIds"] = includeOrgIds;
+      _json['includeOrgIds'] = includeOrgIds;
     }
     if (includeProjectIds != null) {
-      _json["includeProjectIds"] = includeProjectIds;
+      _json['includeProjectIds'] = includeProjectIds;
     }
     if (restrictedLocations != null) {
-      _json["restrictedLocations"] = restrictedLocations;
+      _json['restrictedLocations'] = restrictedLocations;
     }
     return _json;
   }
@@ -5144,17 +5143,17 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   GoogleCloudDatacatalogV1beta1SearchCatalogResponse();
 
   GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SearchCatalogResult>((value) =>
               GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("unreachable")) {
-      unreachable = (_json["unreachable"] as core.List).cast<core.String>();
+    if (_json.containsKey('unreachable')) {
+      unreachable = (_json['unreachable'] as core.List).cast<core.String>();
     }
   }
 
@@ -5162,13 +5161,13 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     if (unreachable != null) {
-      _json["unreachable"] = unreachable;
+      _json['unreachable'] = unreachable;
     }
     return _json;
   }
@@ -5206,17 +5205,17 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   GoogleCloudDatacatalogV1beta1SearchCatalogResult();
 
   GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(core.Map _json) {
-    if (_json.containsKey("linkedResource")) {
-      linkedResource = _json["linkedResource"];
+    if (_json.containsKey('linkedResource')) {
+      linkedResource = _json['linkedResource'];
     }
-    if (_json.containsKey("relativeResourceName")) {
-      relativeResourceName = _json["relativeResourceName"];
+    if (_json.containsKey('relativeResourceName')) {
+      relativeResourceName = _json['relativeResourceName'];
     }
-    if (_json.containsKey("searchResultSubtype")) {
-      searchResultSubtype = _json["searchResultSubtype"];
+    if (_json.containsKey('searchResultSubtype')) {
+      searchResultSubtype = _json['searchResultSubtype'];
     }
-    if (_json.containsKey("searchResultType")) {
-      searchResultType = _json["searchResultType"];
+    if (_json.containsKey('searchResultType')) {
+      searchResultType = _json['searchResultType'];
     }
   }
 
@@ -5224,16 +5223,16 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (linkedResource != null) {
-      _json["linkedResource"] = linkedResource;
+      _json['linkedResource'] = linkedResource;
     }
     if (relativeResourceName != null) {
-      _json["relativeResourceName"] = relativeResourceName;
+      _json['relativeResourceName'] = relativeResourceName;
     }
     if (searchResultSubtype != null) {
-      _json["searchResultSubtype"] = searchResultSubtype;
+      _json['searchResultSubtype'] = searchResultSubtype;
     }
     if (searchResultType != null) {
-      _json["searchResultType"] = searchResultType;
+      _json['searchResultType'] = searchResultType;
     }
     return _json;
   }
@@ -5260,20 +5259,20 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
   GoogleCloudDatacatalogV1beta1SerializedPolicyTag();
 
   GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(core.Map _json) {
-    if (_json.containsKey("childPolicyTags")) {
-      childPolicyTags = (_json["childPolicyTags"] as core.List)
+    if (_json.containsKey('childPolicyTags')) {
+      childPolicyTags = (_json['childPolicyTags'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>((value) =>
               GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("policyTag")) {
-      policyTag = _json["policyTag"];
+    if (_json.containsKey('policyTag')) {
+      policyTag = _json['policyTag'];
     }
   }
 
@@ -5281,17 +5280,17 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (childPolicyTags != null) {
-      _json["childPolicyTags"] =
+      _json['childPolicyTags'] =
           childPolicyTags.map((value) => value.toJson()).toList();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (policyTag != null) {
-      _json["policyTag"] = policyTag;
+      _json['policyTag'] = policyTag;
     }
     return _json;
   }
@@ -5315,14 +5314,14 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   GoogleCloudDatacatalogV1beta1SerializedTaxonomy();
 
   GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("policyTags")) {
-      policyTags = (_json["policyTags"] as core.List)
+    if (_json.containsKey('policyTags')) {
+      policyTags = (_json['policyTags'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>((value) =>
               GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(value))
           .toList();
@@ -5333,13 +5332,13 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (policyTags != null) {
-      _json["policyTags"] = policyTags.map((value) => value.toJson()).toList();
+      _json['policyTags'] = policyTags.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5360,14 +5359,14 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
   GoogleCloudDatacatalogV1beta1SystemTimestamps();
 
   GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("expireTime")) {
-      expireTime = _json["expireTime"];
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -5375,13 +5374,13 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (expireTime != null) {
-      _json["expireTime"] = expireTime;
+      _json['expireTime'] = expireTime;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -5399,8 +5398,8 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
   GoogleCloudDatacatalogV1beta1TableSpec();
 
   GoogleCloudDatacatalogV1beta1TableSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("groupedEntry")) {
-      groupedEntry = _json["groupedEntry"];
+    if (_json.containsKey('groupedEntry')) {
+      groupedEntry = _json['groupedEntry'];
     }
   }
 
@@ -5408,7 +5407,7 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (groupedEntry != null) {
-      _json["groupedEntry"] = groupedEntry;
+      _json['groupedEntry'] = groupedEntry;
     }
     return _json;
   }
@@ -5448,23 +5447,23 @@ class GoogleCloudDatacatalogV1beta1Tag {
   GoogleCloudDatacatalogV1beta1Tag();
 
   GoogleCloudDatacatalogV1beta1Tag.fromJson(core.Map _json) {
-    if (_json.containsKey("column")) {
-      column = _json["column"];
+    if (_json.containsKey('column')) {
+      column = _json['column'];
     }
-    if (_json.containsKey("fields")) {
+    if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, GoogleCloudDatacatalogV1beta1TagField>(
-          _json["fields"].cast<core.String, core.Map>(),
+          _json['fields'].cast<core.String, core.Map>(),
           (core.Map item) =>
               GoogleCloudDatacatalogV1beta1TagField.fromJson(item));
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("template")) {
-      template = _json["template"];
+    if (_json.containsKey('template')) {
+      template = _json['template'];
     }
-    if (_json.containsKey("templateDisplayName")) {
-      templateDisplayName = _json["templateDisplayName"];
+    if (_json.containsKey('templateDisplayName')) {
+      templateDisplayName = _json['templateDisplayName'];
     }
   }
 
@@ -5472,21 +5471,21 @@ class GoogleCloudDatacatalogV1beta1Tag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (column != null) {
-      _json["column"] = column;
+      _json['column'] = column;
     }
     if (fields != null) {
-      _json["fields"] = commons.mapMap<GoogleCloudDatacatalogV1beta1TagField,
+      _json['fields'] = commons.mapMap<GoogleCloudDatacatalogV1beta1TagField,
               core.Map<core.String, core.Object>>(fields,
           (GoogleCloudDatacatalogV1beta1TagField item) => item.toJson());
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (template != null) {
-      _json["template"] = template;
+      _json['template'] = template;
     }
     if (templateDisplayName != null) {
-      _json["templateDisplayName"] = templateDisplayName;
+      _json['templateDisplayName'] = templateDisplayName;
     }
     return _json;
   }
@@ -5522,27 +5521,27 @@ class GoogleCloudDatacatalogV1beta1TagField {
   GoogleCloudDatacatalogV1beta1TagField();
 
   GoogleCloudDatacatalogV1beta1TagField.fromJson(core.Map _json) {
-    if (_json.containsKey("boolValue")) {
-      boolValue = _json["boolValue"];
+    if (_json.containsKey('boolValue')) {
+      boolValue = _json['boolValue'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("doubleValue")) {
-      doubleValue = _json["doubleValue"].toDouble();
+    if (_json.containsKey('doubleValue')) {
+      doubleValue = _json['doubleValue'].toDouble();
     }
-    if (_json.containsKey("enumValue")) {
+    if (_json.containsKey('enumValue')) {
       enumValue = GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
-          _json["enumValue"]);
+          _json['enumValue']);
     }
-    if (_json.containsKey("order")) {
-      order = _json["order"];
+    if (_json.containsKey('order')) {
+      order = _json['order'];
     }
-    if (_json.containsKey("stringValue")) {
-      stringValue = _json["stringValue"];
+    if (_json.containsKey('stringValue')) {
+      stringValue = _json['stringValue'];
     }
-    if (_json.containsKey("timestampValue")) {
-      timestampValue = _json["timestampValue"];
+    if (_json.containsKey('timestampValue')) {
+      timestampValue = _json['timestampValue'];
     }
   }
 
@@ -5550,25 +5549,25 @@ class GoogleCloudDatacatalogV1beta1TagField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boolValue != null) {
-      _json["boolValue"] = boolValue;
+      _json['boolValue'] = boolValue;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (doubleValue != null) {
-      _json["doubleValue"] = doubleValue;
+      _json['doubleValue'] = doubleValue;
     }
     if (enumValue != null) {
-      _json["enumValue"] = enumValue.toJson();
+      _json['enumValue'] = enumValue.toJson();
     }
     if (order != null) {
-      _json["order"] = order;
+      _json['order'] = order;
     }
     if (stringValue != null) {
-      _json["stringValue"] = stringValue;
+      _json['stringValue'] = stringValue;
     }
     if (timestampValue != null) {
-      _json["timestampValue"] = timestampValue;
+      _json['timestampValue'] = timestampValue;
     }
     return _json;
   }
@@ -5582,8 +5581,8 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
   GoogleCloudDatacatalogV1beta1TagFieldEnumValue();
 
   GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
   }
 
@@ -5591,7 +5590,7 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     return _json;
   }
@@ -5627,18 +5626,18 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
   GoogleCloudDatacatalogV1beta1TagTemplate();
 
   GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("fields")) {
+    if (_json.containsKey('fields')) {
       fields = commons
           .mapMap<core.Map, GoogleCloudDatacatalogV1beta1TagTemplateField>(
-              _json["fields"].cast<core.String, core.Map>(),
+              _json['fields'].cast<core.String, core.Map>(),
               (core.Map item) =>
                   GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(item));
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -5646,10 +5645,10 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (fields != null) {
-      _json["fields"] = commons.mapMap<
+      _json['fields'] = commons.mapMap<
               GoogleCloudDatacatalogV1beta1TagTemplateField,
               core.Map<core.String, core.Object>>(
           fields,
@@ -5657,7 +5656,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
               item.toJson());
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -5690,20 +5689,20 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
   GoogleCloudDatacatalogV1beta1TagTemplateField();
 
   GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("isRequired")) {
-      isRequired = _json["isRequired"];
+    if (_json.containsKey('isRequired')) {
+      isRequired = _json['isRequired'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("order")) {
-      order = _json["order"];
+    if (_json.containsKey('order')) {
+      order = _json['order'];
     }
-    if (_json.containsKey("type")) {
-      type = GoogleCloudDatacatalogV1beta1FieldType.fromJson(_json["type"]);
+    if (_json.containsKey('type')) {
+      type = GoogleCloudDatacatalogV1beta1FieldType.fromJson(_json['type']);
     }
   }
 
@@ -5711,19 +5710,19 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (isRequired != null) {
-      _json["isRequired"] = isRequired;
+      _json['isRequired'] = isRequired;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (order != null) {
-      _json["order"] = order;
+      _json['order'] = order;
     }
     if (type != null) {
-      _json["type"] = type.toJson();
+      _json['type'] = type.toJson();
     }
     return _json;
   }
@@ -5757,18 +5756,18 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
   GoogleCloudDatacatalogV1beta1Taxonomy();
 
   GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(core.Map _json) {
-    if (_json.containsKey("activatedPolicyTypes")) {
+    if (_json.containsKey('activatedPolicyTypes')) {
       activatedPolicyTypes =
-          (_json["activatedPolicyTypes"] as core.List).cast<core.String>();
+          (_json['activatedPolicyTypes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -5776,16 +5775,16 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activatedPolicyTypes != null) {
-      _json["activatedPolicyTypes"] = activatedPolicyTypes;
+      _json['activatedPolicyTypes'] = activatedPolicyTypes;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -5799,8 +5798,8 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
   GoogleCloudDatacatalogV1beta1ViewSpec();
 
   GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("viewQuery")) {
-      viewQuery = _json["viewQuery"];
+    if (_json.containsKey('viewQuery')) {
+      viewQuery = _json['viewQuery'];
     }
   }
 
@@ -5808,7 +5807,7 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (viewQuery != null) {
-      _json["viewQuery"] = viewQuery;
+      _json['viewQuery'] = viewQuery;
     }
     return _json;
   }
@@ -5865,7 +5864,7 @@ class Policy {
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
@@ -5888,16 +5887,16 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("bindings")) {
-      bindings = (_json["bindings"] as core.List)
+    if (_json.containsKey('bindings')) {
+      bindings = (_json['bindings'] as core.List)
           .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
+    if (_json.containsKey('version')) {
+      version = _json['version'];
     }
   }
 
@@ -5905,13 +5904,13 @@ class Policy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
+      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (version != null) {
-      _json["version"] = version;
+      _json['version'] = version;
     }
     return _json;
   }
@@ -5928,8 +5927,8 @@ class SetIamPolicyRequest {
   SetIamPolicyRequest();
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("policy")) {
-      policy = Policy.fromJson(_json["policy"]);
+    if (_json.containsKey('policy')) {
+      policy = Policy.fromJson(_json['policy']);
     }
   }
 
@@ -5937,7 +5936,7 @@ class SetIamPolicyRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = policy.toJson();
+      _json['policy'] = policy.toJson();
     }
     return _json;
   }
@@ -5954,8 +5953,8 @@ class TestIamPermissionsRequest {
   TestIamPermissionsRequest();
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -5963,7 +5962,7 @@ class TestIamPermissionsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }
@@ -5978,8 +5977,8 @@ class TestIamPermissionsResponse {
   TestIamPermissionsResponse();
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List).cast<core.String>();
     }
   }
 
@@ -5987,7 +5986,7 @@ class TestIamPermissionsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (permissions != null) {
-      _json["permissions"] = permissions;
+      _json['permissions'] = permissions;
     }
     return _json;
   }

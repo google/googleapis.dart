@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -75,7 +75,7 @@ api.AgentDeviceId buildAgentDeviceId() {
   var o = api.AgentDeviceId();
   buildCounterAgentDeviceId++;
   if (buildCounterAgentDeviceId < 3) {
-    o.id = "foo";
+    o.id = 'foo';
   }
   buildCounterAgentDeviceId--;
   return o;
@@ -94,8 +94,8 @@ api.AgentOtherDeviceId buildAgentOtherDeviceId() {
   var o = api.AgentOtherDeviceId();
   buildCounterAgentOtherDeviceId++;
   if (buildCounterAgentOtherDeviceId < 3) {
-    o.agentId = "foo";
-    o.deviceId = "foo";
+    o.agentId = 'foo';
+    o.deviceId = 'foo';
   }
   buildCounterAgentOtherDeviceId--;
   return o;
@@ -112,12 +112,12 @@ void checkAgentOtherDeviceId(api.AgentOtherDeviceId o) {
 
 core.Map<core.String, core.Object> buildUnnamed1162() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -127,26 +127,26 @@ core.Map<core.String, core.Object> buildUnnamed1162() {
 
 void checkUnnamed1162(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
+  var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed1163() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -156,16 +156,16 @@ core.Map<core.String, core.Object> buildUnnamed1163() {
 
 void checkUnnamed1163(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
+  var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4["bool"], unittest.equals(true));
-  unittest.expect(casted4["string"], unittest.equals('foo'));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
 core.List<api.AgentOtherDeviceId> buildUnnamed1164() {
@@ -183,8 +183,8 @@ void checkUnnamed1164(core.List<api.AgentOtherDeviceId> o) {
 
 core.List<core.String> buildUnnamed1165() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -202,14 +202,14 @@ api.Device buildDevice() {
     o.attributes = buildUnnamed1162();
     o.customData = buildUnnamed1163();
     o.deviceInfo = buildDeviceInfo();
-    o.id = "foo";
+    o.id = 'foo';
     o.name = buildDeviceNames();
     o.notificationSupportedByAgent = true;
     o.otherDeviceIds = buildUnnamed1164();
-    o.roomHint = "foo";
-    o.structureHint = "foo";
+    o.roomHint = 'foo';
+    o.structureHint = 'foo';
     o.traits = buildUnnamed1165();
-    o.type = "foo";
+    o.type = 'foo';
     o.willReportState = true;
   }
   buildCounterDevice--;
@@ -240,10 +240,10 @@ api.DeviceInfo buildDeviceInfo() {
   var o = api.DeviceInfo();
   buildCounterDeviceInfo++;
   if (buildCounterDeviceInfo < 3) {
-    o.hwVersion = "foo";
-    o.manufacturer = "foo";
-    o.model = "foo";
-    o.swVersion = "foo";
+    o.hwVersion = 'foo';
+    o.manufacturer = 'foo';
+    o.model = 'foo';
+    o.swVersion = 'foo';
   }
   buildCounterDeviceInfo--;
   return o;
@@ -262,8 +262,8 @@ void checkDeviceInfo(api.DeviceInfo o) {
 
 core.List<core.String> buildUnnamed1166() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -275,8 +275,8 @@ void checkUnnamed1166(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed1167() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -292,7 +292,7 @@ api.DeviceNames buildDeviceNames() {
   buildCounterDeviceNames++;
   if (buildCounterDeviceNames < 3) {
     o.defaultNames = buildUnnamed1166();
-    o.name = "foo";
+    o.name = 'foo';
     o.nicknames = buildUnnamed1167();
   }
   buildCounterDeviceNames--;
@@ -342,9 +342,9 @@ api.QueryRequest buildQueryRequest() {
   var o = api.QueryRequest();
   buildCounterQueryRequest++;
   if (buildCounterQueryRequest < 3) {
-    o.agentUserId = "foo";
+    o.agentUserId = 'foo';
     o.inputs = buildUnnamed1168();
-    o.requestId = "foo";
+    o.requestId = 'foo';
   }
   buildCounterQueryRequest--;
   return o;
@@ -417,7 +417,7 @@ api.QueryResponse buildQueryResponse() {
   buildCounterQueryResponse++;
   if (buildCounterQueryResponse < 3) {
     o.payload = buildQueryResponsePayload();
-    o.requestId = "foo";
+    o.requestId = 'foo';
   }
   buildCounterQueryResponse--;
   return o;
@@ -434,12 +434,12 @@ void checkQueryResponse(api.QueryResponse o) {
 
 core.Map<core.String, core.Object> buildUnnamed1170() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -449,30 +449,30 @@ core.Map<core.String, core.Object> buildUnnamed1170() {
 
 void checkUnnamed1170(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
+  var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Map<core.String, core.Object>> buildUnnamed1171() {
   var o = <core.String, core.Map<core.String, core.Object>>{};
-  o["x"] = buildUnnamed1170();
-  o["y"] = buildUnnamed1170();
+  o['x'] = buildUnnamed1170();
+  o['y'] = buildUnnamed1170();
   return o;
 }
 
 void checkUnnamed1171(
     core.Map<core.String, core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1170(o["x"]);
-  checkUnnamed1170(o["y"]);
+  checkUnnamed1170(o['x']);
+  checkUnnamed1170(o['y']);
 }
 
 core.int buildCounterQueryResponsePayload = 0;
@@ -496,12 +496,12 @@ void checkQueryResponsePayload(api.QueryResponsePayload o) {
 
 core.Map<core.String, core.Object> buildUnnamed1172() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -511,26 +511,26 @@ core.Map<core.String, core.Object> buildUnnamed1172() {
 
 void checkUnnamed1172(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o["x"]) as core.Map;
+  var casted7 = (o['x']) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
-  var casted8 = (o["y"]) as core.Map;
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
+  var casted8 = (o['y']) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8["bool"], unittest.equals(true));
-  unittest.expect(casted8["string"], unittest.equals('foo'));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed1173() {
   var o = <core.String, core.Object>{};
-  o["x"] = {
+  o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
   };
-  o["y"] = {
+  o['y'] = {
     'list': [1, 2, 3],
     'bool': true,
     'string': 'foo'
@@ -540,16 +540,16 @@ core.Map<core.String, core.Object> buildUnnamed1173() {
 
 void checkUnnamed1173(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted9 = (o["x"]) as core.Map;
+  var casted9 = (o['x']) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(casted9["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted9["bool"], unittest.equals(true));
-  unittest.expect(casted9["string"], unittest.equals('foo'));
-  var casted10 = (o["y"]) as core.Map;
+  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted9['bool'], unittest.equals(true));
+  unittest.expect(casted9['string'], unittest.equals('foo'));
+  var casted10 = (o['y']) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(casted10["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted10["bool"], unittest.equals(true));
-  unittest.expect(casted10["string"], unittest.equals('foo'));
+  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted10['bool'], unittest.equals(true));
+  unittest.expect(casted10['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterReportStateAndNotificationDevice = 0;
@@ -579,11 +579,11 @@ api.ReportStateAndNotificationRequest buildReportStateAndNotificationRequest() {
   var o = api.ReportStateAndNotificationRequest();
   buildCounterReportStateAndNotificationRequest++;
   if (buildCounterReportStateAndNotificationRequest < 3) {
-    o.agentUserId = "foo";
-    o.eventId = "foo";
-    o.followUpToken = "foo";
+    o.agentUserId = 'foo';
+    o.eventId = 'foo';
+    o.followUpToken = 'foo';
     o.payload = buildStateAndNotificationPayload();
-    o.requestId = "foo";
+    o.requestId = 'foo';
   }
   buildCounterReportStateAndNotificationRequest--;
   return o;
@@ -608,7 +608,7 @@ api.ReportStateAndNotificationResponse
   var o = api.ReportStateAndNotificationResponse();
   buildCounterReportStateAndNotificationResponse++;
   if (buildCounterReportStateAndNotificationResponse < 3) {
-    o.requestId = "foo";
+    o.requestId = 'foo';
   }
   buildCounterReportStateAndNotificationResponse--;
   return o;
@@ -628,7 +628,7 @@ api.RequestSyncDevicesRequest buildRequestSyncDevicesRequest() {
   var o = api.RequestSyncDevicesRequest();
   buildCounterRequestSyncDevicesRequest++;
   if (buildCounterRequestSyncDevicesRequest < 3) {
-    o.agentUserId = "foo";
+    o.agentUserId = 'foo';
     o.async = true;
   }
   buildCounterRequestSyncDevicesRequest--;
@@ -683,8 +683,8 @@ api.SyncRequest buildSyncRequest() {
   var o = api.SyncRequest();
   buildCounterSyncRequest++;
   if (buildCounterSyncRequest < 3) {
-    o.agentUserId = "foo";
-    o.requestId = "foo";
+    o.agentUserId = 'foo';
+    o.requestId = 'foo';
   }
   buildCounterSyncRequest--;
   return o;
@@ -705,7 +705,7 @@ api.SyncResponse buildSyncResponse() {
   buildCounterSyncResponse++;
   if (buildCounterSyncResponse < 3) {
     o.payload = buildSyncResponsePayload();
-    o.requestId = "foo";
+    o.requestId = 'foo';
   }
   buildCounterSyncResponse--;
   return o;
@@ -738,7 +738,7 @@ api.SyncResponsePayload buildSyncResponsePayload() {
   var o = api.SyncResponsePayload();
   buildCounterSyncResponsePayload++;
   if (buildCounterSyncResponsePayload < 3) {
-    o.agentUserId = "foo";
+    o.agentUserId = 'foo';
     o.devices = buildUnnamed1174();
   }
   buildCounterSyncResponsePayload--;
@@ -755,173 +755,173 @@ void checkSyncResponsePayload(api.SyncResponsePayload o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AgentDeviceId", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AgentDeviceId', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAgentDeviceId();
       var od = api.AgentDeviceId.fromJson(o.toJson());
       checkAgentDeviceId(od);
     });
   });
 
-  unittest.group("obj-schema-AgentOtherDeviceId", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AgentOtherDeviceId', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAgentOtherDeviceId();
       var od = api.AgentOtherDeviceId.fromJson(o.toJson());
       checkAgentOtherDeviceId(od);
     });
   });
 
-  unittest.group("obj-schema-Device", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Device', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
       checkDevice(od);
     });
   });
 
-  unittest.group("obj-schema-DeviceInfo", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeviceInfo', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceInfo();
       var od = api.DeviceInfo.fromJson(o.toJson());
       checkDeviceInfo(od);
     });
   });
 
-  unittest.group("obj-schema-DeviceNames", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DeviceNames', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDeviceNames();
       var od = api.DeviceNames.fromJson(o.toJson());
       checkDeviceNames(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-QueryRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryRequest();
       var od = api.QueryRequest.fromJson(o.toJson());
       checkQueryRequest(od);
     });
   });
 
-  unittest.group("obj-schema-QueryRequestInput", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryRequestInput', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryRequestInput();
       var od = api.QueryRequestInput.fromJson(o.toJson());
       checkQueryRequestInput(od);
     });
   });
 
-  unittest.group("obj-schema-QueryRequestPayload", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryRequestPayload', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryRequestPayload();
       var od = api.QueryRequestPayload.fromJson(o.toJson());
       checkQueryRequestPayload(od);
     });
   });
 
-  unittest.group("obj-schema-QueryResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryResponse();
       var od = api.QueryResponse.fromJson(o.toJson());
       checkQueryResponse(od);
     });
   });
 
-  unittest.group("obj-schema-QueryResponsePayload", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-QueryResponsePayload', () {
+    unittest.test('to-json--from-json', () {
       var o = buildQueryResponsePayload();
       var od = api.QueryResponsePayload.fromJson(o.toJson());
       checkQueryResponsePayload(od);
     });
   });
 
-  unittest.group("obj-schema-ReportStateAndNotificationDevice", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportStateAndNotificationDevice', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportStateAndNotificationDevice();
       var od = api.ReportStateAndNotificationDevice.fromJson(o.toJson());
       checkReportStateAndNotificationDevice(od);
     });
   });
 
-  unittest.group("obj-schema-ReportStateAndNotificationRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportStateAndNotificationRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportStateAndNotificationRequest();
       var od = api.ReportStateAndNotificationRequest.fromJson(o.toJson());
       checkReportStateAndNotificationRequest(od);
     });
   });
 
-  unittest.group("obj-schema-ReportStateAndNotificationResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportStateAndNotificationResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportStateAndNotificationResponse();
       var od = api.ReportStateAndNotificationResponse.fromJson(o.toJson());
       checkReportStateAndNotificationResponse(od);
     });
   });
 
-  unittest.group("obj-schema-RequestSyncDevicesRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RequestSyncDevicesRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRequestSyncDevicesRequest();
       var od = api.RequestSyncDevicesRequest.fromJson(o.toJson());
       checkRequestSyncDevicesRequest(od);
     });
   });
 
-  unittest.group("obj-schema-RequestSyncDevicesResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RequestSyncDevicesResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRequestSyncDevicesResponse();
       var od = api.RequestSyncDevicesResponse.fromJson(o.toJson());
       checkRequestSyncDevicesResponse(od);
     });
   });
 
-  unittest.group("obj-schema-StateAndNotificationPayload", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StateAndNotificationPayload', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStateAndNotificationPayload();
       var od = api.StateAndNotificationPayload.fromJson(o.toJson());
       checkStateAndNotificationPayload(od);
     });
   });
 
-  unittest.group("obj-schema-SyncRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SyncRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSyncRequest();
       var od = api.SyncRequest.fromJson(o.toJson());
       checkSyncRequest(od);
     });
   });
 
-  unittest.group("obj-schema-SyncResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SyncResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSyncResponse();
       var od = api.SyncResponse.fromJson(o.toJson());
       checkSyncResponse(od);
     });
   });
 
-  unittest.group("obj-schema-SyncResponsePayload", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-SyncResponsePayload', () {
+    unittest.test('to-json--from-json', () {
       var o = buildSyncResponsePayload();
       var od = api.SyncResponsePayload.fromJson(o.toJson());
       checkSyncResponsePayload(od);
     });
   });
 
-  unittest.group("resource-AgentUsersResourceApi", () {
-    unittest.test("method--delete", () {
+  unittest.group('resource-AgentUsersResourceApi', () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.AgentUsersResourceApi res = api.HomegraphApi(mock).agentUsers;
-      var arg_agentUserId = "foo";
-      var arg_requestId = "foo";
-      var arg_$fields = "foo";
+      var arg_agentUserId = 'foo';
+      var arg_requestId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -941,8 +941,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -954,7 +954,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -968,12 +968,12 @@ void main() {
     });
   });
 
-  unittest.group("resource-DevicesResourceApi", () {
-    unittest.test("method--query", () {
+  unittest.group('resource-DevicesResourceApi', () {
+    unittest.test('method--query', () {
       var mock = HttpServerMock();
       api.DevicesResourceApi res = api.HomegraphApi(mock).devices;
       var arg_request = buildQueryRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.QueryRequest.fromJson(json);
         checkQueryRequest(obj);
@@ -995,8 +995,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1006,7 +1006,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1018,11 +1018,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--reportStateAndNotification", () {
+    unittest.test('method--reportStateAndNotification', () {
       var mock = HttpServerMock();
       api.DevicesResourceApi res = api.HomegraphApi(mock).devices;
       var arg_request = buildReportStateAndNotificationRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ReportStateAndNotificationRequest.fromJson(json);
         checkReportStateAndNotificationRequest(obj);
@@ -1044,8 +1044,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1055,7 +1055,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildReportStateAndNotificationResponse());
@@ -1068,11 +1068,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--requestSync", () {
+    unittest.test('method--requestSync', () {
       var mock = HttpServerMock();
       api.DevicesResourceApi res = api.HomegraphApi(mock).devices;
       var arg_request = buildRequestSyncDevicesRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RequestSyncDevicesRequest.fromJson(json);
         checkRequestSyncDevicesRequest(obj);
@@ -1094,8 +1094,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1105,7 +1105,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildRequestSyncDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1117,11 +1117,11 @@ void main() {
       })));
     });
 
-    unittest.test("method--sync", () {
+    unittest.test('method--sync', () {
       var mock = HttpServerMock();
       api.DevicesResourceApi res = api.HomegraphApi(mock).devices;
       var arg_request = buildSyncRequest();
-      var arg_$fields = "foo";
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SyncRequest.fromJson(json);
         checkSyncRequest(obj);
@@ -1143,8 +1143,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1154,7 +1154,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildSyncResponse());
         return async.Future.value(stringResponse(200, h, resp));

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -40,11 +39,11 @@ const core.String USER_AGENT = 'dart-api-client vision/v1';
 class VisionApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   /// Apply machine learning models to understand and label images
   static const CloudVisionScope =
-      "https://www.googleapis.com/auth/cloud-vision";
+      'https://www.googleapis.com/auth/cloud-vision';
 
   final commons.ApiRequester _requester;
 
@@ -55,8 +54,8 @@ class VisionApi {
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   VisionApi(http.Client client,
-      {core.String rootUrl = "https://vision.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://vision.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -102,14 +101,14 @@ class FilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/files:annotate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -155,14 +154,14 @@ class FilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/files:asyncBatchAnnotate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -209,14 +208,14 @@ class ImagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/images:annotate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -263,14 +262,14 @@ class ImagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/images:asyncBatchAnnotate';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -327,17 +326,17 @@ class LocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -396,17 +395,17 @@ class OperationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -448,17 +447,17 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -499,17 +498,17 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -565,26 +564,26 @@ class OperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -657,10 +656,10 @@ class ProjectsFilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -669,7 +668,7 @@ class ProjectsFilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -723,10 +722,10 @@ class ProjectsFilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -735,7 +734,7 @@ class ProjectsFilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -790,10 +789,10 @@ class ProjectsImagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -802,7 +801,7 @@ class ProjectsImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -857,10 +856,10 @@ class ProjectsImagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -869,7 +868,7 @@ class ProjectsImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -948,10 +947,10 @@ class ProjectsLocationsFilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -960,7 +959,7 @@ class ProjectsLocationsFilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1014,10 +1013,10 @@ class ProjectsLocationsFilesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1026,7 +1025,7 @@ class ProjectsLocationsFilesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1082,10 +1081,10 @@ class ProjectsLocationsImagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1094,7 +1093,7 @@ class ProjectsLocationsImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1149,10 +1148,10 @@ class ProjectsLocationsImagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1161,7 +1160,7 @@ class ProjectsLocationsImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1210,17 +1209,17 @@ class ProjectsLocationsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1280,10 +1279,10 @@ class ProjectsLocationsProductSetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1291,7 +1290,7 @@ class ProjectsLocationsProductSetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1345,13 +1344,13 @@ class ProjectsLocationsProductSetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (productSetId != null) {
-      _queryParams["productSetId"] = [productSetId];
+      _queryParams['productSetId'] = [productSetId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1360,7 +1359,7 @@ class ProjectsLocationsProductSetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1403,17 +1402,17 @@ class ProjectsLocationsProductSetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1455,17 +1454,17 @@ class ProjectsLocationsProductSetsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1518,10 +1517,10 @@ class ProjectsLocationsProductSetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1530,7 +1529,7 @@ class ProjectsLocationsProductSetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1579,16 +1578,16 @@ class ProjectsLocationsProductSetsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1597,7 +1596,7 @@ class ProjectsLocationsProductSetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1653,20 +1652,20 @@ class ProjectsLocationsProductSetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1713,10 +1712,10 @@ class ProjectsLocationsProductSetsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1725,7 +1724,7 @@ class ProjectsLocationsProductSetsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1785,23 +1784,23 @@ class ProjectsLocationsProductSetsProductsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/products';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1868,13 +1867,13 @@ class ProjectsLocationsProductsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (productId != null) {
-      _queryParams["productId"] = [productId];
+      _queryParams['productId'] = [productId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1882,7 +1881,7 @@ class ProjectsLocationsProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1925,17 +1924,17 @@ class ProjectsLocationsProductsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1976,17 +1975,17 @@ class ProjectsLocationsProductsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2035,16 +2034,16 @@ class ProjectsLocationsProductsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -2052,7 +2051,7 @@ class ProjectsLocationsProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2112,20 +2111,20 @@ class ProjectsLocationsProductsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2187,10 +2186,10 @@ class ProjectsLocationsProductsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2199,7 +2198,7 @@ class ProjectsLocationsProductsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2272,13 +2271,13 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (referenceImageId != null) {
-      _queryParams["referenceImageId"] = [referenceImageId];
+      _queryParams['referenceImageId'] = [referenceImageId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2287,7 +2286,7 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2332,17 +2331,17 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2385,17 +2384,17 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2447,16 +2446,16 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -2465,7 +2464,7 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2513,17 +2512,17 @@ class ProjectsOperationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2544,8 +2543,8 @@ class AddProductToProductSetRequest {
   AddProductToProductSetRequest();
 
   AddProductToProductSetRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("product")) {
-      product = _json["product"];
+    if (_json.containsKey('product')) {
+      product = _json['product'];
     }
   }
 
@@ -2553,7 +2552,7 @@ class AddProductToProductSetRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (product != null) {
-      _json["product"] = product;
+      _json['product'] = product;
     }
     return _json;
   }
@@ -2582,19 +2581,19 @@ class AnnotateFileRequest {
   AnnotateFileRequest();
 
   AnnotateFileRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("features")) {
-      features = (_json["features"] as core.List)
+    if (_json.containsKey('features')) {
+      features = (_json['features'] as core.List)
           .map<Feature>((value) => Feature.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("imageContext")) {
-      imageContext = ImageContext.fromJson(_json["imageContext"]);
+    if (_json.containsKey('imageContext')) {
+      imageContext = ImageContext.fromJson(_json['imageContext']);
     }
-    if (_json.containsKey("inputConfig")) {
-      inputConfig = InputConfig.fromJson(_json["inputConfig"]);
+    if (_json.containsKey('inputConfig')) {
+      inputConfig = InputConfig.fromJson(_json['inputConfig']);
     }
-    if (_json.containsKey("pages")) {
-      pages = (_json["pages"] as core.List).cast<core.int>();
+    if (_json.containsKey('pages')) {
+      pages = (_json['pages'] as core.List).cast<core.int>();
     }
   }
 
@@ -2602,16 +2601,16 @@ class AnnotateFileRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (features != null) {
-      _json["features"] = features.map((value) => value.toJson()).toList();
+      _json['features'] = features.map((value) => value.toJson()).toList();
     }
     if (imageContext != null) {
-      _json["imageContext"] = imageContext.toJson();
+      _json['imageContext'] = imageContext.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (pages != null) {
-      _json["pages"] = pages;
+      _json['pages'] = pages;
     }
     return _json;
   }
@@ -2637,20 +2636,20 @@ class AnnotateFileResponse {
   AnnotateFileResponse();
 
   AnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("inputConfig")) {
-      inputConfig = InputConfig.fromJson(_json["inputConfig"]);
+    if (_json.containsKey('inputConfig')) {
+      inputConfig = InputConfig.fromJson(_json['inputConfig']);
     }
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<AnnotateImageResponse>(
               (value) => AnnotateImageResponse.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("totalPages")) {
-      totalPages = _json["totalPages"];
+    if (_json.containsKey('totalPages')) {
+      totalPages = _json['totalPages'];
     }
   }
 
@@ -2658,16 +2657,16 @@ class AnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
-      _json["totalPages"] = totalPages;
+      _json['totalPages'] = totalPages;
     }
     return _json;
   }
@@ -2688,16 +2687,16 @@ class AnnotateImageRequest {
   AnnotateImageRequest();
 
   AnnotateImageRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("features")) {
-      features = (_json["features"] as core.List)
+    if (_json.containsKey('features')) {
+      features = (_json['features'] as core.List)
           .map<Feature>((value) => Feature.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("image")) {
-      image = Image.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = Image.fromJson(_json['image']);
     }
-    if (_json.containsKey("imageContext")) {
-      imageContext = ImageContext.fromJson(_json["imageContext"]);
+    if (_json.containsKey('imageContext')) {
+      imageContext = ImageContext.fromJson(_json['imageContext']);
     }
   }
 
@@ -2705,13 +2704,13 @@ class AnnotateImageRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (features != null) {
-      _json["features"] = features.map((value) => value.toJson()).toList();
+      _json['features'] = features.map((value) => value.toJson()).toList();
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (imageContext != null) {
-      _json["imageContext"] = imageContext.toJson();
+      _json['imageContext'] = imageContext.toJson();
     }
     return _json;
   }
@@ -2770,65 +2769,65 @@ class AnnotateImageResponse {
   AnnotateImageResponse();
 
   AnnotateImageResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
-      context = ImageAnnotationContext.fromJson(_json["context"]);
+    if (_json.containsKey('context')) {
+      context = ImageAnnotationContext.fromJson(_json['context']);
     }
-    if (_json.containsKey("cropHintsAnnotation")) {
+    if (_json.containsKey('cropHintsAnnotation')) {
       cropHintsAnnotation =
-          CropHintsAnnotation.fromJson(_json["cropHintsAnnotation"]);
+          CropHintsAnnotation.fromJson(_json['cropHintsAnnotation']);
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("faceAnnotations")) {
-      faceAnnotations = (_json["faceAnnotations"] as core.List)
+    if (_json.containsKey('faceAnnotations')) {
+      faceAnnotations = (_json['faceAnnotations'] as core.List)
           .map<FaceAnnotation>((value) => FaceAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullTextAnnotation")) {
-      fullTextAnnotation = TextAnnotation.fromJson(_json["fullTextAnnotation"]);
+    if (_json.containsKey('fullTextAnnotation')) {
+      fullTextAnnotation = TextAnnotation.fromJson(_json['fullTextAnnotation']);
     }
-    if (_json.containsKey("imagePropertiesAnnotation")) {
+    if (_json.containsKey('imagePropertiesAnnotation')) {
       imagePropertiesAnnotation =
-          ImageProperties.fromJson(_json["imagePropertiesAnnotation"]);
+          ImageProperties.fromJson(_json['imagePropertiesAnnotation']);
     }
-    if (_json.containsKey("labelAnnotations")) {
-      labelAnnotations = (_json["labelAnnotations"] as core.List)
+    if (_json.containsKey('labelAnnotations')) {
+      labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("landmarkAnnotations")) {
-      landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
+    if (_json.containsKey('landmarkAnnotations')) {
+      landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
           .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("localizedObjectAnnotations")) {
+    if (_json.containsKey('localizedObjectAnnotations')) {
       localizedObjectAnnotations =
-          (_json["localizedObjectAnnotations"] as core.List)
+          (_json['localizedObjectAnnotations'] as core.List)
               .map<LocalizedObjectAnnotation>(
                   (value) => LocalizedObjectAnnotation.fromJson(value))
               .toList();
     }
-    if (_json.containsKey("logoAnnotations")) {
-      logoAnnotations = (_json["logoAnnotations"] as core.List)
+    if (_json.containsKey('logoAnnotations')) {
+      logoAnnotations = (_json['logoAnnotations'] as core.List)
           .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("productSearchResults")) {
+    if (_json.containsKey('productSearchResults')) {
       productSearchResults =
-          ProductSearchResults.fromJson(_json["productSearchResults"]);
+          ProductSearchResults.fromJson(_json['productSearchResults']);
     }
-    if (_json.containsKey("safeSearchAnnotation")) {
+    if (_json.containsKey('safeSearchAnnotation')) {
       safeSearchAnnotation =
-          SafeSearchAnnotation.fromJson(_json["safeSearchAnnotation"]);
+          SafeSearchAnnotation.fromJson(_json['safeSearchAnnotation']);
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webDetection")) {
-      webDetection = WebDetection.fromJson(_json["webDetection"]);
+    if (_json.containsKey('webDetection')) {
+      webDetection = WebDetection.fromJson(_json['webDetection']);
     }
   }
 
@@ -2836,52 +2835,52 @@ class AnnotateImageResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
+      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (faceAnnotations != null) {
-      _json["faceAnnotations"] =
+      _json['faceAnnotations'] =
           faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
+      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
+      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
-      _json["labelAnnotations"] =
+      _json['labelAnnotations'] =
           labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
-      _json["landmarkAnnotations"] =
+      _json['landmarkAnnotations'] =
           landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
-      _json["localizedObjectAnnotations"] =
+      _json['localizedObjectAnnotations'] =
           localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
-      _json["logoAnnotations"] =
+      _json['logoAnnotations'] =
           logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = productSearchResults.toJson();
+      _json['productSearchResults'] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
+      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = webDetection.toJson();
+      _json['webDetection'] = webDetection.toJson();
     }
     return _json;
   }
@@ -2904,19 +2903,19 @@ class AsyncAnnotateFileRequest {
   AsyncAnnotateFileRequest();
 
   AsyncAnnotateFileRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("features")) {
-      features = (_json["features"] as core.List)
+    if (_json.containsKey('features')) {
+      features = (_json['features'] as core.List)
           .map<Feature>((value) => Feature.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("imageContext")) {
-      imageContext = ImageContext.fromJson(_json["imageContext"]);
+    if (_json.containsKey('imageContext')) {
+      imageContext = ImageContext.fromJson(_json['imageContext']);
     }
-    if (_json.containsKey("inputConfig")) {
-      inputConfig = InputConfig.fromJson(_json["inputConfig"]);
+    if (_json.containsKey('inputConfig')) {
+      inputConfig = InputConfig.fromJson(_json['inputConfig']);
     }
-    if (_json.containsKey("outputConfig")) {
-      outputConfig = OutputConfig.fromJson(_json["outputConfig"]);
+    if (_json.containsKey('outputConfig')) {
+      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
     }
   }
 
@@ -2924,16 +2923,16 @@ class AsyncAnnotateFileRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (features != null) {
-      _json["features"] = features.map((value) => value.toJson()).toList();
+      _json['features'] = features.map((value) => value.toJson()).toList();
     }
     if (imageContext != null) {
-      _json["imageContext"] = imageContext.toJson();
+      _json['imageContext'] = imageContext.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -2947,8 +2946,8 @@ class AsyncAnnotateFileResponse {
   AsyncAnnotateFileResponse();
 
   AsyncAnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
-      outputConfig = OutputConfig.fromJson(_json["outputConfig"]);
+    if (_json.containsKey('outputConfig')) {
+      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
     }
   }
 
@@ -2956,7 +2955,7 @@ class AsyncAnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -2978,11 +2977,11 @@ class AsyncBatchAnnotateFilesRequest {
   AsyncBatchAnnotateFilesRequest();
 
   AsyncBatchAnnotateFilesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("parent")) {
-      parent = _json["parent"];
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'];
     }
-    if (_json.containsKey("requests")) {
-      requests = (_json["requests"] as core.List)
+    if (_json.containsKey('requests')) {
+      requests = (_json['requests'] as core.List)
           .map<AsyncAnnotateFileRequest>(
               (value) => AsyncAnnotateFileRequest.fromJson(value))
           .toList();
@@ -2993,10 +2992,10 @@ class AsyncBatchAnnotateFilesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (requests != null) {
-      _json["requests"] = requests.map((value) => value.toJson()).toList();
+      _json['requests'] = requests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3011,8 +3010,8 @@ class AsyncBatchAnnotateFilesResponse {
   AsyncBatchAnnotateFilesResponse();
 
   AsyncBatchAnnotateFilesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<AsyncAnnotateFileResponse>(
               (value) => AsyncAnnotateFileResponse.fromJson(value))
           .toList();
@@ -3023,7 +3022,7 @@ class AsyncBatchAnnotateFilesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3047,14 +3046,14 @@ class AsyncBatchAnnotateImagesRequest {
   AsyncBatchAnnotateImagesRequest();
 
   AsyncBatchAnnotateImagesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
-      outputConfig = OutputConfig.fromJson(_json["outputConfig"]);
+    if (_json.containsKey('outputConfig')) {
+      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
     }
-    if (_json.containsKey("parent")) {
-      parent = _json["parent"];
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'];
     }
-    if (_json.containsKey("requests")) {
-      requests = (_json["requests"] as core.List)
+    if (_json.containsKey('requests')) {
+      requests = (_json['requests'] as core.List)
           .map<AnnotateImageRequest>(
               (value) => AnnotateImageRequest.fromJson(value))
           .toList();
@@ -3065,13 +3064,13 @@ class AsyncBatchAnnotateImagesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (requests != null) {
-      _json["requests"] = requests.map((value) => value.toJson()).toList();
+      _json['requests'] = requests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3085,8 +3084,8 @@ class AsyncBatchAnnotateImagesResponse {
   AsyncBatchAnnotateImagesResponse();
 
   AsyncBatchAnnotateImagesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
-      outputConfig = OutputConfig.fromJson(_json["outputConfig"]);
+    if (_json.containsKey('outputConfig')) {
+      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
     }
   }
 
@@ -3094,7 +3093,7 @@ class AsyncBatchAnnotateImagesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -3116,11 +3115,11 @@ class BatchAnnotateFilesRequest {
   BatchAnnotateFilesRequest();
 
   BatchAnnotateFilesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("parent")) {
-      parent = _json["parent"];
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'];
     }
-    if (_json.containsKey("requests")) {
-      requests = (_json["requests"] as core.List)
+    if (_json.containsKey('requests')) {
+      requests = (_json['requests'] as core.List)
           .map<AnnotateFileRequest>(
               (value) => AnnotateFileRequest.fromJson(value))
           .toList();
@@ -3131,10 +3130,10 @@ class BatchAnnotateFilesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (requests != null) {
-      _json["requests"] = requests.map((value) => value.toJson()).toList();
+      _json['requests'] = requests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3149,8 +3148,8 @@ class BatchAnnotateFilesResponse {
   BatchAnnotateFilesResponse();
 
   BatchAnnotateFilesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<AnnotateFileResponse>(
               (value) => AnnotateFileResponse.fromJson(value))
           .toList();
@@ -3161,7 +3160,7 @@ class BatchAnnotateFilesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3182,11 +3181,11 @@ class BatchAnnotateImagesRequest {
   BatchAnnotateImagesRequest();
 
   BatchAnnotateImagesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("parent")) {
-      parent = _json["parent"];
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'];
     }
-    if (_json.containsKey("requests")) {
-      requests = (_json["requests"] as core.List)
+    if (_json.containsKey('requests')) {
+      requests = (_json['requests'] as core.List)
           .map<AnnotateImageRequest>(
               (value) => AnnotateImageRequest.fromJson(value))
           .toList();
@@ -3197,10 +3196,10 @@ class BatchAnnotateImagesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (parent != null) {
-      _json["parent"] = parent;
+      _json['parent'] = parent;
     }
     if (requests != null) {
-      _json["requests"] = requests.map((value) => value.toJson()).toList();
+      _json['requests'] = requests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3214,8 +3213,8 @@ class BatchAnnotateImagesResponse {
   BatchAnnotateImagesResponse();
 
   BatchAnnotateImagesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<AnnotateImageResponse>(
               (value) => AnnotateImageResponse.fromJson(value))
           .toList();
@@ -3226,7 +3225,7 @@ class BatchAnnotateImagesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3260,14 +3259,14 @@ class BatchOperationMetadata {
   BatchOperationMetadata();
 
   BatchOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("submitTime")) {
-      submitTime = _json["submitTime"];
+    if (_json.containsKey('submitTime')) {
+      submitTime = _json['submitTime'];
     }
   }
 
@@ -3275,13 +3274,13 @@ class BatchOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (submitTime != null) {
-      _json["submitTime"] = submitTime;
+      _json['submitTime'] = submitTime;
     }
     return _json;
   }
@@ -3320,22 +3319,22 @@ class Block {
   Block();
 
   Block.fromJson(core.Map _json) {
-    if (_json.containsKey("blockType")) {
-      blockType = _json["blockType"];
+    if (_json.containsKey('blockType')) {
+      blockType = _json['blockType'];
     }
-    if (_json.containsKey("boundingBox")) {
-      boundingBox = BoundingPoly.fromJson(_json["boundingBox"]);
+    if (_json.containsKey('boundingBox')) {
+      boundingBox = BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("paragraphs")) {
-      paragraphs = (_json["paragraphs"] as core.List)
+    if (_json.containsKey('paragraphs')) {
+      paragraphs = (_json['paragraphs'] as core.List)
           .map<Paragraph>((value) => Paragraph.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("property")) {
-      property = TextProperty.fromJson(_json["property"]);
+    if (_json.containsKey('property')) {
+      property = TextProperty.fromJson(_json['property']);
     }
   }
 
@@ -3343,19 +3342,19 @@ class Block {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blockType != null) {
-      _json["blockType"] = blockType;
+      _json['blockType'] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
+      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     return _json;
   }
@@ -3372,13 +3371,13 @@ class BoundingPoly {
   BoundingPoly();
 
   BoundingPoly.fromJson(core.Map _json) {
-    if (_json.containsKey("normalizedVertices")) {
-      normalizedVertices = (_json["normalizedVertices"] as core.List)
+    if (_json.containsKey('normalizedVertices')) {
+      normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<NormalizedVertex>((value) => NormalizedVertex.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<Vertex>((value) => Vertex.fromJson(value))
           .toList();
     }
@@ -3388,11 +3387,11 @@ class BoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedVertices != null) {
-      _json["normalizedVertices"] =
+      _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3483,17 +3482,17 @@ class Color {
   Color();
 
   Color.fromJson(core.Map _json) {
-    if (_json.containsKey("alpha")) {
-      alpha = _json["alpha"].toDouble();
+    if (_json.containsKey('alpha')) {
+      alpha = _json['alpha'].toDouble();
     }
-    if (_json.containsKey("blue")) {
-      blue = _json["blue"].toDouble();
+    if (_json.containsKey('blue')) {
+      blue = _json['blue'].toDouble();
     }
-    if (_json.containsKey("green")) {
-      green = _json["green"].toDouble();
+    if (_json.containsKey('green')) {
+      green = _json['green'].toDouble();
     }
-    if (_json.containsKey("red")) {
-      red = _json["red"].toDouble();
+    if (_json.containsKey('red')) {
+      red = _json['red'].toDouble();
     }
   }
 
@@ -3501,16 +3500,16 @@ class Color {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alpha != null) {
-      _json["alpha"] = alpha;
+      _json['alpha'] = alpha;
     }
     if (blue != null) {
-      _json["blue"] = blue;
+      _json['blue'] = blue;
     }
     if (green != null) {
-      _json["green"] = green;
+      _json['green'] = green;
     }
     if (red != null) {
-      _json["red"] = red;
+      _json['red'] = red;
     }
     return _json;
   }
@@ -3532,14 +3531,14 @@ class ColorInfo {
   ColorInfo();
 
   ColorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("color")) {
-      color = Color.fromJson(_json["color"]);
+    if (_json.containsKey('color')) {
+      color = Color.fromJson(_json['color']);
     }
-    if (_json.containsKey("pixelFraction")) {
-      pixelFraction = _json["pixelFraction"].toDouble();
+    if (_json.containsKey('pixelFraction')) {
+      pixelFraction = _json['pixelFraction'].toDouble();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -3547,13 +3546,13 @@ class ColorInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = color.toJson();
+      _json['color'] = color.toJson();
     }
     if (pixelFraction != null) {
-      _json["pixelFraction"] = pixelFraction;
+      _json['pixelFraction'] = pixelFraction;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -3575,14 +3574,14 @@ class CropHint {
   CropHint();
 
   CropHint.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
-      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
+    if (_json.containsKey('boundingPoly')) {
+      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("importanceFraction")) {
-      importanceFraction = _json["importanceFraction"].toDouble();
+    if (_json.containsKey('importanceFraction')) {
+      importanceFraction = _json['importanceFraction'].toDouble();
     }
   }
 
@@ -3590,13 +3589,13 @@ class CropHint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (importanceFraction != null) {
-      _json["importanceFraction"] = importanceFraction;
+      _json['importanceFraction'] = importanceFraction;
     }
     return _json;
   }
@@ -3610,8 +3609,8 @@ class CropHintsAnnotation {
   CropHintsAnnotation();
 
   CropHintsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("cropHints")) {
-      cropHints = (_json["cropHints"] as core.List)
+    if (_json.containsKey('cropHints')) {
+      cropHints = (_json['cropHints'] as core.List)
           .map<CropHint>((value) => CropHint.fromJson(value))
           .toList();
     }
@@ -3621,7 +3620,7 @@ class CropHintsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
+      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3639,8 +3638,8 @@ class CropHintsParams {
   CropHintsParams();
 
   CropHintsParams.fromJson(core.Map _json) {
-    if (_json.containsKey("aspectRatios")) {
-      aspectRatios = (_json["aspectRatios"] as core.List)
+    if (_json.containsKey('aspectRatios')) {
+      aspectRatios = (_json['aspectRatios'] as core.List)
           .map<core.double>((value) => value.toDouble())
           .toList();
     }
@@ -3650,7 +3649,7 @@ class CropHintsParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (aspectRatios != null) {
-      _json["aspectRatios"] = aspectRatios;
+      _json['aspectRatios'] = aspectRatios;
     }
     return _json;
   }
@@ -3675,11 +3674,11 @@ class DetectedBreak {
   DetectedBreak();
 
   DetectedBreak.fromJson(core.Map _json) {
-    if (_json.containsKey("isPrefix")) {
-      isPrefix = _json["isPrefix"];
+    if (_json.containsKey('isPrefix')) {
+      isPrefix = _json['isPrefix'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3687,10 +3686,10 @@ class DetectedBreak {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (isPrefix != null) {
-      _json["isPrefix"] = isPrefix;
+      _json['isPrefix'] = isPrefix;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3709,11 +3708,11 @@ class DetectedLanguage {
   DetectedLanguage();
 
   DetectedLanguage.fromJson(core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -3721,10 +3720,10 @@ class DetectedLanguage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -3738,8 +3737,8 @@ class DominantColorsAnnotation {
   DominantColorsAnnotation();
 
   DominantColorsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("colors")) {
-      colors = (_json["colors"] as core.List)
+    if (_json.containsKey('colors')) {
+      colors = (_json['colors'] as core.List)
           .map<ColorInfo>((value) => ColorInfo.fromJson(value))
           .toList();
     }
@@ -3749,7 +3748,7 @@ class DominantColorsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => value.toJson()).toList();
+      _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3819,36 +3818,36 @@ class EntityAnnotation {
   EntityAnnotation();
 
   EntityAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
-      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
+    if (_json.containsKey('boundingPoly')) {
+      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("locale")) {
-      locale = _json["locale"];
+    if (_json.containsKey('locale')) {
+      locale = _json['locale'];
     }
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<LocationInfo>((value) => LocationInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("properties")) {
-      properties = (_json["properties"] as core.List)
+    if (_json.containsKey('properties')) {
+      properties = (_json['properties'] as core.List)
           .map<Property>((value) => Property.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("topicality")) {
-      topicality = _json["topicality"].toDouble();
+    if (_json.containsKey('topicality')) {
+      topicality = _json['topicality'].toDouble();
     }
   }
 
@@ -3856,31 +3855,31 @@ class EntityAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (locale != null) {
-      _json["locale"] = locale;
+      _json['locale'] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (properties != null) {
-      _json["properties"] = properties.map((value) => value.toJson()).toList();
+      _json['properties'] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (topicality != null) {
-      _json["topicality"] = topicality;
+      _json['topicality'] = topicality;
     }
     return _json;
   }
@@ -4000,52 +3999,52 @@ class FaceAnnotation {
   FaceAnnotation();
 
   FaceAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("angerLikelihood")) {
-      angerLikelihood = _json["angerLikelihood"];
+    if (_json.containsKey('angerLikelihood')) {
+      angerLikelihood = _json['angerLikelihood'];
     }
-    if (_json.containsKey("blurredLikelihood")) {
-      blurredLikelihood = _json["blurredLikelihood"];
+    if (_json.containsKey('blurredLikelihood')) {
+      blurredLikelihood = _json['blurredLikelihood'];
     }
-    if (_json.containsKey("boundingPoly")) {
-      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
+    if (_json.containsKey('boundingPoly')) {
+      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
     }
-    if (_json.containsKey("detectionConfidence")) {
-      detectionConfidence = _json["detectionConfidence"].toDouble();
+    if (_json.containsKey('detectionConfidence')) {
+      detectionConfidence = _json['detectionConfidence'].toDouble();
     }
-    if (_json.containsKey("fdBoundingPoly")) {
-      fdBoundingPoly = BoundingPoly.fromJson(_json["fdBoundingPoly"]);
+    if (_json.containsKey('fdBoundingPoly')) {
+      fdBoundingPoly = BoundingPoly.fromJson(_json['fdBoundingPoly']);
     }
-    if (_json.containsKey("headwearLikelihood")) {
-      headwearLikelihood = _json["headwearLikelihood"];
+    if (_json.containsKey('headwearLikelihood')) {
+      headwearLikelihood = _json['headwearLikelihood'];
     }
-    if (_json.containsKey("joyLikelihood")) {
-      joyLikelihood = _json["joyLikelihood"];
+    if (_json.containsKey('joyLikelihood')) {
+      joyLikelihood = _json['joyLikelihood'];
     }
-    if (_json.containsKey("landmarkingConfidence")) {
-      landmarkingConfidence = _json["landmarkingConfidence"].toDouble();
+    if (_json.containsKey('landmarkingConfidence')) {
+      landmarkingConfidence = _json['landmarkingConfidence'].toDouble();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<Landmark>((value) => Landmark.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("panAngle")) {
-      panAngle = _json["panAngle"].toDouble();
+    if (_json.containsKey('panAngle')) {
+      panAngle = _json['panAngle'].toDouble();
     }
-    if (_json.containsKey("rollAngle")) {
-      rollAngle = _json["rollAngle"].toDouble();
+    if (_json.containsKey('rollAngle')) {
+      rollAngle = _json['rollAngle'].toDouble();
     }
-    if (_json.containsKey("sorrowLikelihood")) {
-      sorrowLikelihood = _json["sorrowLikelihood"];
+    if (_json.containsKey('sorrowLikelihood')) {
+      sorrowLikelihood = _json['sorrowLikelihood'];
     }
-    if (_json.containsKey("surpriseLikelihood")) {
-      surpriseLikelihood = _json["surpriseLikelihood"];
+    if (_json.containsKey('surpriseLikelihood')) {
+      surpriseLikelihood = _json['surpriseLikelihood'];
     }
-    if (_json.containsKey("tiltAngle")) {
-      tiltAngle = _json["tiltAngle"].toDouble();
+    if (_json.containsKey('tiltAngle')) {
+      tiltAngle = _json['tiltAngle'].toDouble();
     }
-    if (_json.containsKey("underExposedLikelihood")) {
-      underExposedLikelihood = _json["underExposedLikelihood"];
+    if (_json.containsKey('underExposedLikelihood')) {
+      underExposedLikelihood = _json['underExposedLikelihood'];
     }
   }
 
@@ -4053,49 +4052,49 @@ class FaceAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (angerLikelihood != null) {
-      _json["angerLikelihood"] = angerLikelihood;
+      _json['angerLikelihood'] = angerLikelihood;
     }
     if (blurredLikelihood != null) {
-      _json["blurredLikelihood"] = blurredLikelihood;
+      _json['blurredLikelihood'] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
-      _json["detectionConfidence"] = detectionConfidence;
+      _json['detectionConfidence'] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
+      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
-      _json["headwearLikelihood"] = headwearLikelihood;
+      _json['headwearLikelihood'] = headwearLikelihood;
     }
     if (joyLikelihood != null) {
-      _json["joyLikelihood"] = joyLikelihood;
+      _json['joyLikelihood'] = joyLikelihood;
     }
     if (landmarkingConfidence != null) {
-      _json["landmarkingConfidence"] = landmarkingConfidence;
+      _json['landmarkingConfidence'] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
-      _json["panAngle"] = panAngle;
+      _json['panAngle'] = panAngle;
     }
     if (rollAngle != null) {
-      _json["rollAngle"] = rollAngle;
+      _json['rollAngle'] = rollAngle;
     }
     if (sorrowLikelihood != null) {
-      _json["sorrowLikelihood"] = sorrowLikelihood;
+      _json['sorrowLikelihood'] = sorrowLikelihood;
     }
     if (surpriseLikelihood != null) {
-      _json["surpriseLikelihood"] = surpriseLikelihood;
+      _json['surpriseLikelihood'] = surpriseLikelihood;
     }
     if (tiltAngle != null) {
-      _json["tiltAngle"] = tiltAngle;
+      _json['tiltAngle'] = tiltAngle;
     }
     if (underExposedLikelihood != null) {
-      _json["underExposedLikelihood"] = underExposedLikelihood;
+      _json['underExposedLikelihood'] = underExposedLikelihood;
     }
     return _json;
   }
@@ -4139,14 +4138,14 @@ class Feature {
   Feature();
 
   Feature.fromJson(core.Map _json) {
-    if (_json.containsKey("maxResults")) {
-      maxResults = _json["maxResults"];
+    if (_json.containsKey('maxResults')) {
+      maxResults = _json['maxResults'];
     }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
+    if (_json.containsKey('model')) {
+      model = _json['model'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -4154,13 +4153,13 @@ class Feature {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxResults != null) {
-      _json["maxResults"] = maxResults;
+      _json['maxResults'] = maxResults;
     }
     if (model != null) {
-      _json["model"] = model;
+      _json['model'] = model;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -4188,8 +4187,8 @@ class GcsDestination {
   GcsDestination();
 
   GcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -4197,7 +4196,7 @@ class GcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -4212,8 +4211,8 @@ class GcsSource {
   GcsSource();
 
   GcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -4221,7 +4220,7 @@ class GcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -4247,21 +4246,21 @@ class GoogleCloudVisionV1p1beta1AnnotateFileResponse {
   GoogleCloudVisionV1p1beta1AnnotateFileResponse();
 
   GoogleCloudVisionV1p1beta1AnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("inputConfig")) {
+    if (_json.containsKey('inputConfig')) {
       inputConfig =
-          GoogleCloudVisionV1p1beta1InputConfig.fromJson(_json["inputConfig"]);
+          GoogleCloudVisionV1p1beta1InputConfig.fromJson(_json['inputConfig']);
     }
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p1beta1AnnotateImageResponse>((value) =>
               GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("totalPages")) {
-      totalPages = _json["totalPages"];
+    if (_json.containsKey('totalPages')) {
+      totalPages = _json['totalPages'];
     }
   }
 
@@ -4269,16 +4268,16 @@ class GoogleCloudVisionV1p1beta1AnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
-      _json["totalPages"] = totalPages;
+      _json['totalPages'] = totalPages;
     }
     return _json;
   }
@@ -4338,78 +4337,78 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
   GoogleCloudVisionV1p1beta1AnnotateImageResponse();
 
   GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
+    if (_json.containsKey('context')) {
       context = GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(
-          _json["context"]);
+          _json['context']);
     }
-    if (_json.containsKey("cropHintsAnnotation")) {
+    if (_json.containsKey('cropHintsAnnotation')) {
       cropHintsAnnotation =
           GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(
-              _json["cropHintsAnnotation"]);
+              _json['cropHintsAnnotation']);
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("faceAnnotations")) {
-      faceAnnotations = (_json["faceAnnotations"] as core.List)
+    if (_json.containsKey('faceAnnotations')) {
+      faceAnnotations = (_json['faceAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1FaceAnnotation>((value) =>
               GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullTextAnnotation")) {
+    if (_json.containsKey('fullTextAnnotation')) {
       fullTextAnnotation = GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(
-          _json["fullTextAnnotation"]);
+          _json['fullTextAnnotation']);
     }
-    if (_json.containsKey("imagePropertiesAnnotation")) {
+    if (_json.containsKey('imagePropertiesAnnotation')) {
       imagePropertiesAnnotation =
           GoogleCloudVisionV1p1beta1ImageProperties.fromJson(
-              _json["imagePropertiesAnnotation"]);
+              _json['imagePropertiesAnnotation']);
     }
-    if (_json.containsKey("labelAnnotations")) {
-      labelAnnotations = (_json["labelAnnotations"] as core.List)
+    if (_json.containsKey('labelAnnotations')) {
+      labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("landmarkAnnotations")) {
-      landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
+    if (_json.containsKey('landmarkAnnotations')) {
+      landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("localizedObjectAnnotations")) {
-      localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
+    if (_json.containsKey('localizedObjectAnnotations')) {
+      localizedObjectAnnotations = (_json['localizedObjectAnnotations']
               as core.List)
           .map<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>((value) =>
               GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("logoAnnotations")) {
-      logoAnnotations = (_json["logoAnnotations"] as core.List)
+    if (_json.containsKey('logoAnnotations')) {
+      logoAnnotations = (_json['logoAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("productSearchResults")) {
+    if (_json.containsKey('productSearchResults')) {
       productSearchResults =
           GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
-              _json["productSearchResults"]);
+              _json['productSearchResults']);
     }
-    if (_json.containsKey("safeSearchAnnotation")) {
+    if (_json.containsKey('safeSearchAnnotation')) {
       safeSearchAnnotation =
           GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(
-              _json["safeSearchAnnotation"]);
+              _json['safeSearchAnnotation']);
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webDetection")) {
+    if (_json.containsKey('webDetection')) {
       webDetection = GoogleCloudVisionV1p1beta1WebDetection.fromJson(
-          _json["webDetection"]);
+          _json['webDetection']);
     }
   }
 
@@ -4417,52 +4416,52 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
+      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (faceAnnotations != null) {
-      _json["faceAnnotations"] =
+      _json['faceAnnotations'] =
           faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
+      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
+      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
-      _json["labelAnnotations"] =
+      _json['labelAnnotations'] =
           labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
-      _json["landmarkAnnotations"] =
+      _json['landmarkAnnotations'] =
           landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
-      _json["localizedObjectAnnotations"] =
+      _json['localizedObjectAnnotations'] =
           localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
-      _json["logoAnnotations"] =
+      _json['logoAnnotations'] =
           logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = productSearchResults.toJson();
+      _json['productSearchResults'] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
+      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = webDetection.toJson();
+      _json['webDetection'] = webDetection.toJson();
     }
     return _json;
   }
@@ -4476,9 +4475,9 @@ class GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse {
   GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse();
 
   GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
+    if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p1beta1OutputConfig.fromJson(
-          _json["outputConfig"]);
+          _json['outputConfig']);
     }
   }
 
@@ -4486,7 +4485,7 @@ class GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -4502,8 +4501,8 @@ class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
 
   GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>((value) =>
               GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(
                   value))
@@ -4515,7 +4514,7 @@ class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4554,25 +4553,25 @@ class GoogleCloudVisionV1p1beta1Block {
   GoogleCloudVisionV1p1beta1Block();
 
   GoogleCloudVisionV1p1beta1Block.fromJson(core.Map _json) {
-    if (_json.containsKey("blockType")) {
-      blockType = _json["blockType"];
+    if (_json.containsKey('blockType')) {
+      blockType = _json['blockType'];
     }
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("paragraphs")) {
-      paragraphs = (_json["paragraphs"] as core.List)
+    if (_json.containsKey('paragraphs')) {
+      paragraphs = (_json['paragraphs'] as core.List)
           .map<GoogleCloudVisionV1p1beta1Paragraph>(
               (value) => GoogleCloudVisionV1p1beta1Paragraph.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
   }
 
@@ -4580,19 +4579,19 @@ class GoogleCloudVisionV1p1beta1Block {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blockType != null) {
-      _json["blockType"] = blockType;
+      _json['blockType'] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
+      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     return _json;
   }
@@ -4609,14 +4608,14 @@ class GoogleCloudVisionV1p1beta1BoundingPoly {
   GoogleCloudVisionV1p1beta1BoundingPoly();
 
   GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(core.Map _json) {
-    if (_json.containsKey("normalizedVertices")) {
-      normalizedVertices = (_json["normalizedVertices"] as core.List)
+    if (_json.containsKey('normalizedVertices')) {
+      normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudVisionV1p1beta1NormalizedVertex>((value) =>
               GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudVisionV1p1beta1Vertex>(
               (value) => GoogleCloudVisionV1p1beta1Vertex.fromJson(value))
           .toList();
@@ -4627,11 +4626,11 @@ class GoogleCloudVisionV1p1beta1BoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedVertices != null) {
-      _json["normalizedVertices"] =
+      _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4653,14 +4652,14 @@ class GoogleCloudVisionV1p1beta1ColorInfo {
   GoogleCloudVisionV1p1beta1ColorInfo();
 
   GoogleCloudVisionV1p1beta1ColorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("color")) {
-      color = Color.fromJson(_json["color"]);
+    if (_json.containsKey('color')) {
+      color = Color.fromJson(_json['color']);
     }
-    if (_json.containsKey("pixelFraction")) {
-      pixelFraction = _json["pixelFraction"].toDouble();
+    if (_json.containsKey('pixelFraction')) {
+      pixelFraction = _json['pixelFraction'].toDouble();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -4668,13 +4667,13 @@ class GoogleCloudVisionV1p1beta1ColorInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = color.toJson();
+      _json['color'] = color.toJson();
     }
     if (pixelFraction != null) {
-      _json["pixelFraction"] = pixelFraction;
+      _json['pixelFraction'] = pixelFraction;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -4696,15 +4695,15 @@ class GoogleCloudVisionV1p1beta1CropHint {
   GoogleCloudVisionV1p1beta1CropHint();
 
   GoogleCloudVisionV1p1beta1CropHint.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("importanceFraction")) {
-      importanceFraction = _json["importanceFraction"].toDouble();
+    if (_json.containsKey('importanceFraction')) {
+      importanceFraction = _json['importanceFraction'].toDouble();
     }
   }
 
@@ -4712,13 +4711,13 @@ class GoogleCloudVisionV1p1beta1CropHint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (importanceFraction != null) {
-      _json["importanceFraction"] = importanceFraction;
+      _json['importanceFraction'] = importanceFraction;
     }
     return _json;
   }
@@ -4732,8 +4731,8 @@ class GoogleCloudVisionV1p1beta1CropHintsAnnotation {
   GoogleCloudVisionV1p1beta1CropHintsAnnotation();
 
   GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("cropHints")) {
-      cropHints = (_json["cropHints"] as core.List)
+    if (_json.containsKey('cropHints')) {
+      cropHints = (_json['cropHints'] as core.List)
           .map<GoogleCloudVisionV1p1beta1CropHint>(
               (value) => GoogleCloudVisionV1p1beta1CropHint.fromJson(value))
           .toList();
@@ -4744,7 +4743,7 @@ class GoogleCloudVisionV1p1beta1CropHintsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
+      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4758,8 +4757,8 @@ class GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p1beta1DominantColorsAnnotation();
 
   GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("colors")) {
-      colors = (_json["colors"] as core.List)
+    if (_json.containsKey('colors')) {
+      colors = (_json['colors'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ColorInfo>(
               (value) => GoogleCloudVisionV1p1beta1ColorInfo.fromJson(value))
           .toList();
@@ -4770,7 +4769,7 @@ class GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => value.toJson()).toList();
+      _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4823,39 +4822,39 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
   GoogleCloudVisionV1p1beta1EntityAnnotation();
 
   GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("locale")) {
-      locale = _json["locale"];
+    if (_json.containsKey('locale')) {
+      locale = _json['locale'];
     }
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1LocationInfo>(
               (value) => GoogleCloudVisionV1p1beta1LocationInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("properties")) {
-      properties = (_json["properties"] as core.List)
+    if (_json.containsKey('properties')) {
+      properties = (_json['properties'] as core.List)
           .map<GoogleCloudVisionV1p1beta1Property>(
               (value) => GoogleCloudVisionV1p1beta1Property.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("topicality")) {
-      topicality = _json["topicality"].toDouble();
+    if (_json.containsKey('topicality')) {
+      topicality = _json['topicality'].toDouble();
     }
   }
 
@@ -4863,31 +4862,31 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (locale != null) {
-      _json["locale"] = locale;
+      _json['locale'] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (properties != null) {
-      _json["properties"] = properties.map((value) => value.toJson()).toList();
+      _json['properties'] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (topicality != null) {
-      _json["topicality"] = topicality;
+      _json['topicality'] = topicality;
     }
     return _json;
   }
@@ -5007,55 +5006,55 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
   GoogleCloudVisionV1p1beta1FaceAnnotation();
 
   GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("angerLikelihood")) {
-      angerLikelihood = _json["angerLikelihood"];
+    if (_json.containsKey('angerLikelihood')) {
+      angerLikelihood = _json['angerLikelihood'];
     }
-    if (_json.containsKey("blurredLikelihood")) {
-      blurredLikelihood = _json["blurredLikelihood"];
+    if (_json.containsKey('blurredLikelihood')) {
+      blurredLikelihood = _json['blurredLikelihood'];
     }
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("detectionConfidence")) {
-      detectionConfidence = _json["detectionConfidence"].toDouble();
+    if (_json.containsKey('detectionConfidence')) {
+      detectionConfidence = _json['detectionConfidence'].toDouble();
     }
-    if (_json.containsKey("fdBoundingPoly")) {
+    if (_json.containsKey('fdBoundingPoly')) {
       fdBoundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["fdBoundingPoly"]);
+          _json['fdBoundingPoly']);
     }
-    if (_json.containsKey("headwearLikelihood")) {
-      headwearLikelihood = _json["headwearLikelihood"];
+    if (_json.containsKey('headwearLikelihood')) {
+      headwearLikelihood = _json['headwearLikelihood'];
     }
-    if (_json.containsKey("joyLikelihood")) {
-      joyLikelihood = _json["joyLikelihood"];
+    if (_json.containsKey('joyLikelihood')) {
+      joyLikelihood = _json['joyLikelihood'];
     }
-    if (_json.containsKey("landmarkingConfidence")) {
-      landmarkingConfidence = _json["landmarkingConfidence"].toDouble();
+    if (_json.containsKey('landmarkingConfidence')) {
+      landmarkingConfidence = _json['landmarkingConfidence'].toDouble();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>((value) =>
               GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("panAngle")) {
-      panAngle = _json["panAngle"].toDouble();
+    if (_json.containsKey('panAngle')) {
+      panAngle = _json['panAngle'].toDouble();
     }
-    if (_json.containsKey("rollAngle")) {
-      rollAngle = _json["rollAngle"].toDouble();
+    if (_json.containsKey('rollAngle')) {
+      rollAngle = _json['rollAngle'].toDouble();
     }
-    if (_json.containsKey("sorrowLikelihood")) {
-      sorrowLikelihood = _json["sorrowLikelihood"];
+    if (_json.containsKey('sorrowLikelihood')) {
+      sorrowLikelihood = _json['sorrowLikelihood'];
     }
-    if (_json.containsKey("surpriseLikelihood")) {
-      surpriseLikelihood = _json["surpriseLikelihood"];
+    if (_json.containsKey('surpriseLikelihood')) {
+      surpriseLikelihood = _json['surpriseLikelihood'];
     }
-    if (_json.containsKey("tiltAngle")) {
-      tiltAngle = _json["tiltAngle"].toDouble();
+    if (_json.containsKey('tiltAngle')) {
+      tiltAngle = _json['tiltAngle'].toDouble();
     }
-    if (_json.containsKey("underExposedLikelihood")) {
-      underExposedLikelihood = _json["underExposedLikelihood"];
+    if (_json.containsKey('underExposedLikelihood')) {
+      underExposedLikelihood = _json['underExposedLikelihood'];
     }
   }
 
@@ -5063,49 +5062,49 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (angerLikelihood != null) {
-      _json["angerLikelihood"] = angerLikelihood;
+      _json['angerLikelihood'] = angerLikelihood;
     }
     if (blurredLikelihood != null) {
-      _json["blurredLikelihood"] = blurredLikelihood;
+      _json['blurredLikelihood'] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
-      _json["detectionConfidence"] = detectionConfidence;
+      _json['detectionConfidence'] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
+      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
-      _json["headwearLikelihood"] = headwearLikelihood;
+      _json['headwearLikelihood'] = headwearLikelihood;
     }
     if (joyLikelihood != null) {
-      _json["joyLikelihood"] = joyLikelihood;
+      _json['joyLikelihood'] = joyLikelihood;
     }
     if (landmarkingConfidence != null) {
-      _json["landmarkingConfidence"] = landmarkingConfidence;
+      _json['landmarkingConfidence'] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
-      _json["panAngle"] = panAngle;
+      _json['panAngle'] = panAngle;
     }
     if (rollAngle != null) {
-      _json["rollAngle"] = rollAngle;
+      _json['rollAngle'] = rollAngle;
     }
     if (sorrowLikelihood != null) {
-      _json["sorrowLikelihood"] = sorrowLikelihood;
+      _json['sorrowLikelihood'] = sorrowLikelihood;
     }
     if (surpriseLikelihood != null) {
-      _json["surpriseLikelihood"] = surpriseLikelihood;
+      _json['surpriseLikelihood'] = surpriseLikelihood;
     }
     if (tiltAngle != null) {
-      _json["tiltAngle"] = tiltAngle;
+      _json['tiltAngle'] = tiltAngle;
     }
     if (underExposedLikelihood != null) {
-      _json["underExposedLikelihood"] = underExposedLikelihood;
+      _json['underExposedLikelihood'] = underExposedLikelihood;
     }
     return _json;
   }
@@ -5161,11 +5160,11 @@ class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
   GoogleCloudVisionV1p1beta1FaceAnnotationLandmark();
 
   GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
-    if (_json.containsKey("position")) {
-      position = GoogleCloudVisionV1p1beta1Position.fromJson(_json["position"]);
+    if (_json.containsKey('position')) {
+      position = GoogleCloudVisionV1p1beta1Position.fromJson(_json['position']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -5173,10 +5172,10 @@ class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = position.toJson();
+      _json['position'] = position.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -5204,8 +5203,8 @@ class GoogleCloudVisionV1p1beta1GcsDestination {
   GoogleCloudVisionV1p1beta1GcsDestination();
 
   GoogleCloudVisionV1p1beta1GcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -5213,7 +5212,7 @@ class GoogleCloudVisionV1p1beta1GcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -5228,8 +5227,8 @@ class GoogleCloudVisionV1p1beta1GcsSource {
   GoogleCloudVisionV1p1beta1GcsSource();
 
   GoogleCloudVisionV1p1beta1GcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -5237,7 +5236,7 @@ class GoogleCloudVisionV1p1beta1GcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -5256,11 +5255,11 @@ class GoogleCloudVisionV1p1beta1ImageAnnotationContext {
   GoogleCloudVisionV1p1beta1ImageAnnotationContext();
 
   GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(core.Map _json) {
-    if (_json.containsKey("pageNumber")) {
-      pageNumber = _json["pageNumber"];
+    if (_json.containsKey('pageNumber')) {
+      pageNumber = _json['pageNumber'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -5268,10 +5267,10 @@ class GoogleCloudVisionV1p1beta1ImageAnnotationContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageNumber != null) {
-      _json["pageNumber"] = pageNumber;
+      _json['pageNumber'] = pageNumber;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -5285,10 +5284,10 @@ class GoogleCloudVisionV1p1beta1ImageProperties {
   GoogleCloudVisionV1p1beta1ImageProperties();
 
   GoogleCloudVisionV1p1beta1ImageProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("dominantColors")) {
+    if (_json.containsKey('dominantColors')) {
       dominantColors =
           GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(
-              _json["dominantColors"]);
+              _json['dominantColors']);
     }
   }
 
@@ -5296,7 +5295,7 @@ class GoogleCloudVisionV1p1beta1ImageProperties {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = dominantColors.toJson();
+      _json['dominantColors'] = dominantColors.toJson();
     }
     return _json;
   }
@@ -5314,7 +5313,7 @@ class GoogleCloudVisionV1p1beta1InputConfig {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The Google Cloud Storage location to read the input from.
@@ -5327,15 +5326,15 @@ class GoogleCloudVisionV1p1beta1InputConfig {
   GoogleCloudVisionV1p1beta1InputConfig();
 
   GoogleCloudVisionV1p1beta1InputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("gcsSource")) {
+    if (_json.containsKey('gcsSource')) {
       gcsSource =
-          GoogleCloudVisionV1p1beta1GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudVisionV1p1beta1GcsSource.fromJson(_json['gcsSource']);
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
   }
 
@@ -5343,13 +5342,13 @@ class GoogleCloudVisionV1p1beta1InputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     return _json;
   }
@@ -5377,21 +5376,21 @@ class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
   GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
 
   GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -5399,19 +5398,19 @@ class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -5425,8 +5424,8 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
   GoogleCloudVisionV1p1beta1LocationInfo();
 
   GoogleCloudVisionV1p1beta1LocationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("latLng")) {
-      latLng = LatLng.fromJson(_json["latLng"]);
+    if (_json.containsKey('latLng')) {
+      latLng = LatLng.fromJson(_json['latLng']);
     }
   }
 
@@ -5434,7 +5433,7 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = latLng.toJson();
+      _json['latLng'] = latLng.toJson();
     }
     return _json;
   }
@@ -5452,11 +5451,11 @@ class GoogleCloudVisionV1p1beta1NormalizedVertex {
   GoogleCloudVisionV1p1beta1NormalizedVertex();
 
   GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -5464,10 +5463,10 @@ class GoogleCloudVisionV1p1beta1NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -5493,14 +5492,14 @@ class GoogleCloudVisionV1p1beta1OperationMetadata {
   GoogleCloudVisionV1p1beta1OperationMetadata();
 
   GoogleCloudVisionV1p1beta1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -5508,13 +5507,13 @@ class GoogleCloudVisionV1p1beta1OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -5538,12 +5537,12 @@ class GoogleCloudVisionV1p1beta1OutputConfig {
   GoogleCloudVisionV1p1beta1OutputConfig();
 
   GoogleCloudVisionV1p1beta1OutputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("batchSize")) {
-      batchSize = _json["batchSize"];
+    if (_json.containsKey('batchSize')) {
+      batchSize = _json['batchSize'];
     }
-    if (_json.containsKey("gcsDestination")) {
+    if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudVisionV1p1beta1GcsDestination.fromJson(
-          _json["gcsDestination"]);
+          _json['gcsDestination']);
     }
   }
 
@@ -5551,10 +5550,10 @@ class GoogleCloudVisionV1p1beta1OutputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batchSize != null) {
-      _json["batchSize"] = batchSize;
+      _json['batchSize'] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -5582,24 +5581,24 @@ class GoogleCloudVisionV1p1beta1Page {
   GoogleCloudVisionV1p1beta1Page();
 
   GoogleCloudVisionV1p1beta1Page.fromJson(core.Map _json) {
-    if (_json.containsKey("blocks")) {
-      blocks = (_json["blocks"] as core.List)
+    if (_json.containsKey('blocks')) {
+      blocks = (_json['blocks'] as core.List)
           .map<GoogleCloudVisionV1p1beta1Block>(
               (value) => GoogleCloudVisionV1p1beta1Block.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -5607,19 +5606,19 @@ class GoogleCloudVisionV1p1beta1Page {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
+      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -5649,19 +5648,19 @@ class GoogleCloudVisionV1p1beta1Paragraph {
   GoogleCloudVisionV1p1beta1Paragraph();
 
   GoogleCloudVisionV1p1beta1Paragraph.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<GoogleCloudVisionV1p1beta1Word>(
               (value) => GoogleCloudVisionV1p1beta1Word.fromJson(value))
           .toList();
@@ -5672,16 +5671,16 @@ class GoogleCloudVisionV1p1beta1Paragraph {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5703,14 +5702,14 @@ class GoogleCloudVisionV1p1beta1Position {
   GoogleCloudVisionV1p1beta1Position();
 
   GoogleCloudVisionV1p1beta1Position.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
-    if (_json.containsKey("z")) {
-      z = _json["z"].toDouble();
+    if (_json.containsKey('z')) {
+      z = _json['z'].toDouble();
     }
   }
 
@@ -5718,13 +5717,13 @@ class GoogleCloudVisionV1p1beta1Position {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     if (z != null) {
-      _json["z"] = z;
+      _json['z'] = z;
     }
     return _json;
   }
@@ -5766,20 +5765,20 @@ class GoogleCloudVisionV1p1beta1Product {
   GoogleCloudVisionV1p1beta1Product();
 
   GoogleCloudVisionV1p1beta1Product.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("productCategory")) {
-      productCategory = _json["productCategory"];
+    if (_json.containsKey('productCategory')) {
+      productCategory = _json['productCategory'];
     }
-    if (_json.containsKey("productLabels")) {
-      productLabels = (_json["productLabels"] as core.List)
+    if (_json.containsKey('productLabels')) {
+      productLabels = (_json['productLabels'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductKeyValue>((value) =>
               GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(value))
           .toList();
@@ -5790,19 +5789,19 @@ class GoogleCloudVisionV1p1beta1Product {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (productCategory != null) {
-      _json["productCategory"] = productCategory;
+      _json['productCategory'] = productCategory;
     }
     if (productLabels != null) {
-      _json["productLabels"] =
+      _json['productLabels'] =
           productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5822,11 +5821,11 @@ class GoogleCloudVisionV1p1beta1ProductKeyValue {
   GoogleCloudVisionV1p1beta1ProductKeyValue();
 
   GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -5834,10 +5833,10 @@ class GoogleCloudVisionV1p1beta1ProductKeyValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -5863,19 +5862,19 @@ class GoogleCloudVisionV1p1beta1ProductSearchResults {
   GoogleCloudVisionV1p1beta1ProductSearchResults();
 
   GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(core.Map _json) {
-    if (_json.containsKey("indexTime")) {
-      indexTime = _json["indexTime"];
+    if (_json.containsKey('indexTime')) {
+      indexTime = _json['indexTime'];
     }
-    if (_json.containsKey("productGroupedResults")) {
-      productGroupedResults = (_json["productGroupedResults"] as core.List)
+    if (_json.containsKey('productGroupedResults')) {
+      productGroupedResults = (_json['productGroupedResults'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>(
               (value) =>
                   GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
                   value))
@@ -5887,14 +5886,14 @@ class GoogleCloudVisionV1p1beta1ProductSearchResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indexTime != null) {
-      _json["indexTime"] = indexTime;
+      _json['indexTime'] = indexTime;
     }
     if (productGroupedResults != null) {
-      _json["productGroupedResults"] =
+      _json['productGroupedResults'] =
           productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5916,20 +5915,20 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
 
   GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult.fromJson(
       core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
                   GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
                   value))
@@ -5941,14 +5940,14 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5974,17 +5973,17 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation {
 
   GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -5992,16 +5991,16 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -6024,14 +6023,14 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
 
   GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
       core.Map _json) {
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("product")) {
-      product = GoogleCloudVisionV1p1beta1Product.fromJson(_json["product"]);
+    if (_json.containsKey('product')) {
+      product = GoogleCloudVisionV1p1beta1Product.fromJson(_json['product']);
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -6039,13 +6038,13 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (product != null) {
-      _json["product"] = product.toJson();
+      _json['product'] = product.toJson();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -6065,14 +6064,14 @@ class GoogleCloudVisionV1p1beta1Property {
   GoogleCloudVisionV1p1beta1Property();
 
   GoogleCloudVisionV1p1beta1Property.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("uint64Value")) {
-      uint64Value = _json["uint64Value"];
+    if (_json.containsKey('uint64Value')) {
+      uint64Value = _json['uint64Value'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -6080,13 +6079,13 @@ class GoogleCloudVisionV1p1beta1Property {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (uint64Value != null) {
-      _json["uint64Value"] = uint64Value;
+      _json['uint64Value'] = uint64Value;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -6154,20 +6153,20 @@ class GoogleCloudVisionV1p1beta1SafeSearchAnnotation {
   GoogleCloudVisionV1p1beta1SafeSearchAnnotation();
 
   GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("adult")) {
-      adult = _json["adult"];
+    if (_json.containsKey('adult')) {
+      adult = _json['adult'];
     }
-    if (_json.containsKey("medical")) {
-      medical = _json["medical"];
+    if (_json.containsKey('medical')) {
+      medical = _json['medical'];
     }
-    if (_json.containsKey("racy")) {
-      racy = _json["racy"];
+    if (_json.containsKey('racy')) {
+      racy = _json['racy'];
     }
-    if (_json.containsKey("spoof")) {
-      spoof = _json["spoof"];
+    if (_json.containsKey('spoof')) {
+      spoof = _json['spoof'];
     }
-    if (_json.containsKey("violence")) {
-      violence = _json["violence"];
+    if (_json.containsKey('violence')) {
+      violence = _json['violence'];
     }
   }
 
@@ -6175,19 +6174,19 @@ class GoogleCloudVisionV1p1beta1SafeSearchAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adult != null) {
-      _json["adult"] = adult;
+      _json['adult'] = adult;
     }
     if (medical != null) {
-      _json["medical"] = medical;
+      _json['medical'] = medical;
     }
     if (racy != null) {
-      _json["racy"] = racy;
+      _json['racy'] = racy;
     }
     if (spoof != null) {
-      _json["spoof"] = spoof;
+      _json['spoof'] = spoof;
     }
     if (violence != null) {
-      _json["violence"] = violence;
+      _json['violence'] = violence;
     }
     return _json;
   }
@@ -6217,19 +6216,19 @@ class GoogleCloudVisionV1p1beta1Symbol {
   GoogleCloudVisionV1p1beta1Symbol();
 
   GoogleCloudVisionV1p1beta1Symbol.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -6237,16 +6236,16 @@ class GoogleCloudVisionV1p1beta1Symbol {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -6269,14 +6268,14 @@ class GoogleCloudVisionV1p1beta1TextAnnotation {
   GoogleCloudVisionV1p1beta1TextAnnotation();
 
   GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("pages")) {
-      pages = (_json["pages"] as core.List)
+    if (_json.containsKey('pages')) {
+      pages = (_json['pages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1Page>(
               (value) => GoogleCloudVisionV1p1beta1Page.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -6284,10 +6283,10 @@ class GoogleCloudVisionV1p1beta1TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => value.toJson()).toList();
+      _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -6313,11 +6312,11 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak {
 
   GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak.fromJson(
       core.Map _json) {
-    if (_json.containsKey("isPrefix")) {
-      isPrefix = _json["isPrefix"];
+    if (_json.containsKey('isPrefix')) {
+      isPrefix = _json['isPrefix'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -6325,10 +6324,10 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (isPrefix != null) {
-      _json["isPrefix"] = isPrefix;
+      _json['isPrefix'] = isPrefix;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -6348,11 +6347,11 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage {
 
   GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -6360,10 +6359,10 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -6382,13 +6381,13 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
 
   GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
       core.Map _json) {
-    if (_json.containsKey("detectedBreak")) {
+    if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak.fromJson(
-              _json["detectedBreak"]);
+              _json['detectedBreak']);
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>(
               (value) =>
                   GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage
@@ -6401,10 +6400,10 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = detectedBreak.toJson();
+      _json['detectedBreak'] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6423,11 +6422,11 @@ class GoogleCloudVisionV1p1beta1Vertex {
   GoogleCloudVisionV1p1beta1Vertex();
 
   GoogleCloudVisionV1p1beta1Vertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"];
+    if (_json.containsKey('x')) {
+      x = _json['x'];
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"];
+    if (_json.containsKey('y')) {
+      y = _json['y'];
     }
   }
 
@@ -6435,10 +6434,10 @@ class GoogleCloudVisionV1p1beta1Vertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -6474,38 +6473,38 @@ class GoogleCloudVisionV1p1beta1WebDetection {
   GoogleCloudVisionV1p1beta1WebDetection();
 
   GoogleCloudVisionV1p1beta1WebDetection.fromJson(core.Map _json) {
-    if (_json.containsKey("bestGuessLabels")) {
-      bestGuessLabels = (_json["bestGuessLabels"] as core.List)
+    if (_json.containsKey('bestGuessLabels')) {
+      bestGuessLabels = (_json['bestGuessLabels'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebLabel>((value) =>
               GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pagesWithMatchingImages")) {
-      pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
+    if (_json.containsKey('pagesWithMatchingImages')) {
+      pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebPage>((value) =>
               GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("visuallySimilarImages")) {
-      visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
+    if (_json.containsKey('visuallySimilarImages')) {
+      visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webEntities")) {
-      webEntities = (_json["webEntities"] as core.List)
+    if (_json.containsKey('webEntities')) {
+      webEntities = (_json['webEntities'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebEntity>((value) =>
               GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(value))
           .toList();
@@ -6516,27 +6515,27 @@ class GoogleCloudVisionV1p1beta1WebDetection {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bestGuessLabels != null) {
-      _json["bestGuessLabels"] =
+      _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
-      _json["pagesWithMatchingImages"] =
+      _json['pagesWithMatchingImages'] =
           pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
-      _json["visuallySimilarImages"] =
+      _json['visuallySimilarImages'] =
           visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
-      _json["webEntities"] =
+      _json['webEntities'] =
           webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -6558,14 +6557,14 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebEntity {
   GoogleCloudVisionV1p1beta1WebDetectionWebEntity();
 
   GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -6573,13 +6572,13 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebEntity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -6596,11 +6595,11 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebImage {
   GoogleCloudVisionV1p1beta1WebDetectionWebImage();
 
   GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(core.Map _json) {
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -6608,10 +6607,10 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -6630,11 +6629,11 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebLabel {
   GoogleCloudVisionV1p1beta1WebDetectionWebLabel();
 
   GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(core.Map _json) {
-    if (_json.containsKey("label")) {
-      label = _json["label"];
+    if (_json.containsKey('label')) {
+      label = _json['label'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -6642,10 +6641,10 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebLabel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (label != null) {
-      _json["label"] = label;
+      _json['label'] = label;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -6675,26 +6674,26 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
   GoogleCloudVisionV1p1beta1WebDetectionWebPage();
 
   GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(core.Map _json) {
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pageTitle")) {
-      pageTitle = _json["pageTitle"];
+    if (_json.containsKey('pageTitle')) {
+      pageTitle = _json['pageTitle'];
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -6702,21 +6701,21 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
-      _json["pageTitle"] = pageTitle;
+      _json['pageTitle'] = pageTitle;
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -6746,19 +6745,19 @@ class GoogleCloudVisionV1p1beta1Word {
   GoogleCloudVisionV1p1beta1Word();
 
   GoogleCloudVisionV1p1beta1Word.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("symbols")) {
-      symbols = (_json["symbols"] as core.List)
+    if (_json.containsKey('symbols')) {
+      symbols = (_json['symbols'] as core.List)
           .map<GoogleCloudVisionV1p1beta1Symbol>(
               (value) => GoogleCloudVisionV1p1beta1Symbol.fromJson(value))
           .toList();
@@ -6769,16 +6768,16 @@ class GoogleCloudVisionV1p1beta1Word {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
+      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6804,21 +6803,21 @@ class GoogleCloudVisionV1p2beta1AnnotateFileResponse {
   GoogleCloudVisionV1p2beta1AnnotateFileResponse();
 
   GoogleCloudVisionV1p2beta1AnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("inputConfig")) {
+    if (_json.containsKey('inputConfig')) {
       inputConfig =
-          GoogleCloudVisionV1p2beta1InputConfig.fromJson(_json["inputConfig"]);
+          GoogleCloudVisionV1p2beta1InputConfig.fromJson(_json['inputConfig']);
     }
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p2beta1AnnotateImageResponse>((value) =>
               GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("totalPages")) {
-      totalPages = _json["totalPages"];
+    if (_json.containsKey('totalPages')) {
+      totalPages = _json['totalPages'];
     }
   }
 
@@ -6826,16 +6825,16 @@ class GoogleCloudVisionV1p2beta1AnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
-      _json["totalPages"] = totalPages;
+      _json['totalPages'] = totalPages;
     }
     return _json;
   }
@@ -6895,78 +6894,78 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
   GoogleCloudVisionV1p2beta1AnnotateImageResponse();
 
   GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
+    if (_json.containsKey('context')) {
       context = GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(
-          _json["context"]);
+          _json['context']);
     }
-    if (_json.containsKey("cropHintsAnnotation")) {
+    if (_json.containsKey('cropHintsAnnotation')) {
       cropHintsAnnotation =
           GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(
-              _json["cropHintsAnnotation"]);
+              _json['cropHintsAnnotation']);
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("faceAnnotations")) {
-      faceAnnotations = (_json["faceAnnotations"] as core.List)
+    if (_json.containsKey('faceAnnotations')) {
+      faceAnnotations = (_json['faceAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1FaceAnnotation>((value) =>
               GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullTextAnnotation")) {
+    if (_json.containsKey('fullTextAnnotation')) {
       fullTextAnnotation = GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(
-          _json["fullTextAnnotation"]);
+          _json['fullTextAnnotation']);
     }
-    if (_json.containsKey("imagePropertiesAnnotation")) {
+    if (_json.containsKey('imagePropertiesAnnotation')) {
       imagePropertiesAnnotation =
           GoogleCloudVisionV1p2beta1ImageProperties.fromJson(
-              _json["imagePropertiesAnnotation"]);
+              _json['imagePropertiesAnnotation']);
     }
-    if (_json.containsKey("labelAnnotations")) {
-      labelAnnotations = (_json["labelAnnotations"] as core.List)
+    if (_json.containsKey('labelAnnotations')) {
+      labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("landmarkAnnotations")) {
-      landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
+    if (_json.containsKey('landmarkAnnotations')) {
+      landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("localizedObjectAnnotations")) {
-      localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
+    if (_json.containsKey('localizedObjectAnnotations')) {
+      localizedObjectAnnotations = (_json['localizedObjectAnnotations']
               as core.List)
           .map<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>((value) =>
               GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("logoAnnotations")) {
-      logoAnnotations = (_json["logoAnnotations"] as core.List)
+    if (_json.containsKey('logoAnnotations')) {
+      logoAnnotations = (_json['logoAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("productSearchResults")) {
+    if (_json.containsKey('productSearchResults')) {
       productSearchResults =
           GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
-              _json["productSearchResults"]);
+              _json['productSearchResults']);
     }
-    if (_json.containsKey("safeSearchAnnotation")) {
+    if (_json.containsKey('safeSearchAnnotation')) {
       safeSearchAnnotation =
           GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(
-              _json["safeSearchAnnotation"]);
+              _json['safeSearchAnnotation']);
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webDetection")) {
+    if (_json.containsKey('webDetection')) {
       webDetection = GoogleCloudVisionV1p2beta1WebDetection.fromJson(
-          _json["webDetection"]);
+          _json['webDetection']);
     }
   }
 
@@ -6974,52 +6973,52 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
+      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (faceAnnotations != null) {
-      _json["faceAnnotations"] =
+      _json['faceAnnotations'] =
           faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
+      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
+      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
-      _json["labelAnnotations"] =
+      _json['labelAnnotations'] =
           labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
-      _json["landmarkAnnotations"] =
+      _json['landmarkAnnotations'] =
           landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
-      _json["localizedObjectAnnotations"] =
+      _json['localizedObjectAnnotations'] =
           localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
-      _json["logoAnnotations"] =
+      _json['logoAnnotations'] =
           logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = productSearchResults.toJson();
+      _json['productSearchResults'] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
+      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = webDetection.toJson();
+      _json['webDetection'] = webDetection.toJson();
     }
     return _json;
   }
@@ -7033,9 +7032,9 @@ class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse {
   GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse();
 
   GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
+    if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p2beta1OutputConfig.fromJson(
-          _json["outputConfig"]);
+          _json['outputConfig']);
     }
   }
 
@@ -7043,7 +7042,7 @@ class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -7059,8 +7058,8 @@ class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
 
   GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>((value) =>
               GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(
                   value))
@@ -7072,7 +7071,7 @@ class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7111,25 +7110,25 @@ class GoogleCloudVisionV1p2beta1Block {
   GoogleCloudVisionV1p2beta1Block();
 
   GoogleCloudVisionV1p2beta1Block.fromJson(core.Map _json) {
-    if (_json.containsKey("blockType")) {
-      blockType = _json["blockType"];
+    if (_json.containsKey('blockType')) {
+      blockType = _json['blockType'];
     }
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("paragraphs")) {
-      paragraphs = (_json["paragraphs"] as core.List)
+    if (_json.containsKey('paragraphs')) {
+      paragraphs = (_json['paragraphs'] as core.List)
           .map<GoogleCloudVisionV1p2beta1Paragraph>(
               (value) => GoogleCloudVisionV1p2beta1Paragraph.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
   }
 
@@ -7137,19 +7136,19 @@ class GoogleCloudVisionV1p2beta1Block {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blockType != null) {
-      _json["blockType"] = blockType;
+      _json['blockType'] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
+      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     return _json;
   }
@@ -7166,14 +7165,14 @@ class GoogleCloudVisionV1p2beta1BoundingPoly {
   GoogleCloudVisionV1p2beta1BoundingPoly();
 
   GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(core.Map _json) {
-    if (_json.containsKey("normalizedVertices")) {
-      normalizedVertices = (_json["normalizedVertices"] as core.List)
+    if (_json.containsKey('normalizedVertices')) {
+      normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudVisionV1p2beta1NormalizedVertex>((value) =>
               GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudVisionV1p2beta1Vertex>(
               (value) => GoogleCloudVisionV1p2beta1Vertex.fromJson(value))
           .toList();
@@ -7184,11 +7183,11 @@ class GoogleCloudVisionV1p2beta1BoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedVertices != null) {
-      _json["normalizedVertices"] =
+      _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7210,14 +7209,14 @@ class GoogleCloudVisionV1p2beta1ColorInfo {
   GoogleCloudVisionV1p2beta1ColorInfo();
 
   GoogleCloudVisionV1p2beta1ColorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("color")) {
-      color = Color.fromJson(_json["color"]);
+    if (_json.containsKey('color')) {
+      color = Color.fromJson(_json['color']);
     }
-    if (_json.containsKey("pixelFraction")) {
-      pixelFraction = _json["pixelFraction"].toDouble();
+    if (_json.containsKey('pixelFraction')) {
+      pixelFraction = _json['pixelFraction'].toDouble();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -7225,13 +7224,13 @@ class GoogleCloudVisionV1p2beta1ColorInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = color.toJson();
+      _json['color'] = color.toJson();
     }
     if (pixelFraction != null) {
-      _json["pixelFraction"] = pixelFraction;
+      _json['pixelFraction'] = pixelFraction;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -7253,15 +7252,15 @@ class GoogleCloudVisionV1p2beta1CropHint {
   GoogleCloudVisionV1p2beta1CropHint();
 
   GoogleCloudVisionV1p2beta1CropHint.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("importanceFraction")) {
-      importanceFraction = _json["importanceFraction"].toDouble();
+    if (_json.containsKey('importanceFraction')) {
+      importanceFraction = _json['importanceFraction'].toDouble();
     }
   }
 
@@ -7269,13 +7268,13 @@ class GoogleCloudVisionV1p2beta1CropHint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (importanceFraction != null) {
-      _json["importanceFraction"] = importanceFraction;
+      _json['importanceFraction'] = importanceFraction;
     }
     return _json;
   }
@@ -7289,8 +7288,8 @@ class GoogleCloudVisionV1p2beta1CropHintsAnnotation {
   GoogleCloudVisionV1p2beta1CropHintsAnnotation();
 
   GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("cropHints")) {
-      cropHints = (_json["cropHints"] as core.List)
+    if (_json.containsKey('cropHints')) {
+      cropHints = (_json['cropHints'] as core.List)
           .map<GoogleCloudVisionV1p2beta1CropHint>(
               (value) => GoogleCloudVisionV1p2beta1CropHint.fromJson(value))
           .toList();
@@ -7301,7 +7300,7 @@ class GoogleCloudVisionV1p2beta1CropHintsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
+      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7315,8 +7314,8 @@ class GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p2beta1DominantColorsAnnotation();
 
   GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("colors")) {
-      colors = (_json["colors"] as core.List)
+    if (_json.containsKey('colors')) {
+      colors = (_json['colors'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ColorInfo>(
               (value) => GoogleCloudVisionV1p2beta1ColorInfo.fromJson(value))
           .toList();
@@ -7327,7 +7326,7 @@ class GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => value.toJson()).toList();
+      _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7380,39 +7379,39 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
   GoogleCloudVisionV1p2beta1EntityAnnotation();
 
   GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("locale")) {
-      locale = _json["locale"];
+    if (_json.containsKey('locale')) {
+      locale = _json['locale'];
     }
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1LocationInfo>(
               (value) => GoogleCloudVisionV1p2beta1LocationInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("properties")) {
-      properties = (_json["properties"] as core.List)
+    if (_json.containsKey('properties')) {
+      properties = (_json['properties'] as core.List)
           .map<GoogleCloudVisionV1p2beta1Property>(
               (value) => GoogleCloudVisionV1p2beta1Property.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("topicality")) {
-      topicality = _json["topicality"].toDouble();
+    if (_json.containsKey('topicality')) {
+      topicality = _json['topicality'].toDouble();
     }
   }
 
@@ -7420,31 +7419,31 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (locale != null) {
-      _json["locale"] = locale;
+      _json['locale'] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (properties != null) {
-      _json["properties"] = properties.map((value) => value.toJson()).toList();
+      _json['properties'] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (topicality != null) {
-      _json["topicality"] = topicality;
+      _json['topicality'] = topicality;
     }
     return _json;
   }
@@ -7564,55 +7563,55 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
   GoogleCloudVisionV1p2beta1FaceAnnotation();
 
   GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("angerLikelihood")) {
-      angerLikelihood = _json["angerLikelihood"];
+    if (_json.containsKey('angerLikelihood')) {
+      angerLikelihood = _json['angerLikelihood'];
     }
-    if (_json.containsKey("blurredLikelihood")) {
-      blurredLikelihood = _json["blurredLikelihood"];
+    if (_json.containsKey('blurredLikelihood')) {
+      blurredLikelihood = _json['blurredLikelihood'];
     }
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("detectionConfidence")) {
-      detectionConfidence = _json["detectionConfidence"].toDouble();
+    if (_json.containsKey('detectionConfidence')) {
+      detectionConfidence = _json['detectionConfidence'].toDouble();
     }
-    if (_json.containsKey("fdBoundingPoly")) {
+    if (_json.containsKey('fdBoundingPoly')) {
       fdBoundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["fdBoundingPoly"]);
+          _json['fdBoundingPoly']);
     }
-    if (_json.containsKey("headwearLikelihood")) {
-      headwearLikelihood = _json["headwearLikelihood"];
+    if (_json.containsKey('headwearLikelihood')) {
+      headwearLikelihood = _json['headwearLikelihood'];
     }
-    if (_json.containsKey("joyLikelihood")) {
-      joyLikelihood = _json["joyLikelihood"];
+    if (_json.containsKey('joyLikelihood')) {
+      joyLikelihood = _json['joyLikelihood'];
     }
-    if (_json.containsKey("landmarkingConfidence")) {
-      landmarkingConfidence = _json["landmarkingConfidence"].toDouble();
+    if (_json.containsKey('landmarkingConfidence')) {
+      landmarkingConfidence = _json['landmarkingConfidence'].toDouble();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>((value) =>
               GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("panAngle")) {
-      panAngle = _json["panAngle"].toDouble();
+    if (_json.containsKey('panAngle')) {
+      panAngle = _json['panAngle'].toDouble();
     }
-    if (_json.containsKey("rollAngle")) {
-      rollAngle = _json["rollAngle"].toDouble();
+    if (_json.containsKey('rollAngle')) {
+      rollAngle = _json['rollAngle'].toDouble();
     }
-    if (_json.containsKey("sorrowLikelihood")) {
-      sorrowLikelihood = _json["sorrowLikelihood"];
+    if (_json.containsKey('sorrowLikelihood')) {
+      sorrowLikelihood = _json['sorrowLikelihood'];
     }
-    if (_json.containsKey("surpriseLikelihood")) {
-      surpriseLikelihood = _json["surpriseLikelihood"];
+    if (_json.containsKey('surpriseLikelihood')) {
+      surpriseLikelihood = _json['surpriseLikelihood'];
     }
-    if (_json.containsKey("tiltAngle")) {
-      tiltAngle = _json["tiltAngle"].toDouble();
+    if (_json.containsKey('tiltAngle')) {
+      tiltAngle = _json['tiltAngle'].toDouble();
     }
-    if (_json.containsKey("underExposedLikelihood")) {
-      underExposedLikelihood = _json["underExposedLikelihood"];
+    if (_json.containsKey('underExposedLikelihood')) {
+      underExposedLikelihood = _json['underExposedLikelihood'];
     }
   }
 
@@ -7620,49 +7619,49 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (angerLikelihood != null) {
-      _json["angerLikelihood"] = angerLikelihood;
+      _json['angerLikelihood'] = angerLikelihood;
     }
     if (blurredLikelihood != null) {
-      _json["blurredLikelihood"] = blurredLikelihood;
+      _json['blurredLikelihood'] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
-      _json["detectionConfidence"] = detectionConfidence;
+      _json['detectionConfidence'] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
+      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
-      _json["headwearLikelihood"] = headwearLikelihood;
+      _json['headwearLikelihood'] = headwearLikelihood;
     }
     if (joyLikelihood != null) {
-      _json["joyLikelihood"] = joyLikelihood;
+      _json['joyLikelihood'] = joyLikelihood;
     }
     if (landmarkingConfidence != null) {
-      _json["landmarkingConfidence"] = landmarkingConfidence;
+      _json['landmarkingConfidence'] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
-      _json["panAngle"] = panAngle;
+      _json['panAngle'] = panAngle;
     }
     if (rollAngle != null) {
-      _json["rollAngle"] = rollAngle;
+      _json['rollAngle'] = rollAngle;
     }
     if (sorrowLikelihood != null) {
-      _json["sorrowLikelihood"] = sorrowLikelihood;
+      _json['sorrowLikelihood'] = sorrowLikelihood;
     }
     if (surpriseLikelihood != null) {
-      _json["surpriseLikelihood"] = surpriseLikelihood;
+      _json['surpriseLikelihood'] = surpriseLikelihood;
     }
     if (tiltAngle != null) {
-      _json["tiltAngle"] = tiltAngle;
+      _json['tiltAngle'] = tiltAngle;
     }
     if (underExposedLikelihood != null) {
-      _json["underExposedLikelihood"] = underExposedLikelihood;
+      _json['underExposedLikelihood'] = underExposedLikelihood;
     }
     return _json;
   }
@@ -7718,11 +7717,11 @@ class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
   GoogleCloudVisionV1p2beta1FaceAnnotationLandmark();
 
   GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
-    if (_json.containsKey("position")) {
-      position = GoogleCloudVisionV1p2beta1Position.fromJson(_json["position"]);
+    if (_json.containsKey('position')) {
+      position = GoogleCloudVisionV1p2beta1Position.fromJson(_json['position']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -7730,10 +7729,10 @@ class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = position.toJson();
+      _json['position'] = position.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -7761,8 +7760,8 @@ class GoogleCloudVisionV1p2beta1GcsDestination {
   GoogleCloudVisionV1p2beta1GcsDestination();
 
   GoogleCloudVisionV1p2beta1GcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -7770,7 +7769,7 @@ class GoogleCloudVisionV1p2beta1GcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -7785,8 +7784,8 @@ class GoogleCloudVisionV1p2beta1GcsSource {
   GoogleCloudVisionV1p2beta1GcsSource();
 
   GoogleCloudVisionV1p2beta1GcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -7794,7 +7793,7 @@ class GoogleCloudVisionV1p2beta1GcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -7813,11 +7812,11 @@ class GoogleCloudVisionV1p2beta1ImageAnnotationContext {
   GoogleCloudVisionV1p2beta1ImageAnnotationContext();
 
   GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(core.Map _json) {
-    if (_json.containsKey("pageNumber")) {
-      pageNumber = _json["pageNumber"];
+    if (_json.containsKey('pageNumber')) {
+      pageNumber = _json['pageNumber'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -7825,10 +7824,10 @@ class GoogleCloudVisionV1p2beta1ImageAnnotationContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageNumber != null) {
-      _json["pageNumber"] = pageNumber;
+      _json['pageNumber'] = pageNumber;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -7842,10 +7841,10 @@ class GoogleCloudVisionV1p2beta1ImageProperties {
   GoogleCloudVisionV1p2beta1ImageProperties();
 
   GoogleCloudVisionV1p2beta1ImageProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("dominantColors")) {
+    if (_json.containsKey('dominantColors')) {
       dominantColors =
           GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(
-              _json["dominantColors"]);
+              _json['dominantColors']);
     }
   }
 
@@ -7853,7 +7852,7 @@ class GoogleCloudVisionV1p2beta1ImageProperties {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = dominantColors.toJson();
+      _json['dominantColors'] = dominantColors.toJson();
     }
     return _json;
   }
@@ -7871,7 +7870,7 @@ class GoogleCloudVisionV1p2beta1InputConfig {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The Google Cloud Storage location to read the input from.
@@ -7884,15 +7883,15 @@ class GoogleCloudVisionV1p2beta1InputConfig {
   GoogleCloudVisionV1p2beta1InputConfig();
 
   GoogleCloudVisionV1p2beta1InputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("gcsSource")) {
+    if (_json.containsKey('gcsSource')) {
       gcsSource =
-          GoogleCloudVisionV1p2beta1GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudVisionV1p2beta1GcsSource.fromJson(_json['gcsSource']);
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
   }
 
@@ -7900,13 +7899,13 @@ class GoogleCloudVisionV1p2beta1InputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     return _json;
   }
@@ -7934,21 +7933,21 @@ class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
   GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
 
   GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -7956,19 +7955,19 @@ class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -7982,8 +7981,8 @@ class GoogleCloudVisionV1p2beta1LocationInfo {
   GoogleCloudVisionV1p2beta1LocationInfo();
 
   GoogleCloudVisionV1p2beta1LocationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("latLng")) {
-      latLng = LatLng.fromJson(_json["latLng"]);
+    if (_json.containsKey('latLng')) {
+      latLng = LatLng.fromJson(_json['latLng']);
     }
   }
 
@@ -7991,7 +7990,7 @@ class GoogleCloudVisionV1p2beta1LocationInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = latLng.toJson();
+      _json['latLng'] = latLng.toJson();
     }
     return _json;
   }
@@ -8009,11 +8008,11 @@ class GoogleCloudVisionV1p2beta1NormalizedVertex {
   GoogleCloudVisionV1p2beta1NormalizedVertex();
 
   GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -8021,10 +8020,10 @@ class GoogleCloudVisionV1p2beta1NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -8050,14 +8049,14 @@ class GoogleCloudVisionV1p2beta1OperationMetadata {
   GoogleCloudVisionV1p2beta1OperationMetadata();
 
   GoogleCloudVisionV1p2beta1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -8065,13 +8064,13 @@ class GoogleCloudVisionV1p2beta1OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -8095,12 +8094,12 @@ class GoogleCloudVisionV1p2beta1OutputConfig {
   GoogleCloudVisionV1p2beta1OutputConfig();
 
   GoogleCloudVisionV1p2beta1OutputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("batchSize")) {
-      batchSize = _json["batchSize"];
+    if (_json.containsKey('batchSize')) {
+      batchSize = _json['batchSize'];
     }
-    if (_json.containsKey("gcsDestination")) {
+    if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudVisionV1p2beta1GcsDestination.fromJson(
-          _json["gcsDestination"]);
+          _json['gcsDestination']);
     }
   }
 
@@ -8108,10 +8107,10 @@ class GoogleCloudVisionV1p2beta1OutputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batchSize != null) {
-      _json["batchSize"] = batchSize;
+      _json['batchSize'] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -8139,24 +8138,24 @@ class GoogleCloudVisionV1p2beta1Page {
   GoogleCloudVisionV1p2beta1Page();
 
   GoogleCloudVisionV1p2beta1Page.fromJson(core.Map _json) {
-    if (_json.containsKey("blocks")) {
-      blocks = (_json["blocks"] as core.List)
+    if (_json.containsKey('blocks')) {
+      blocks = (_json['blocks'] as core.List)
           .map<GoogleCloudVisionV1p2beta1Block>(
               (value) => GoogleCloudVisionV1p2beta1Block.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -8164,19 +8163,19 @@ class GoogleCloudVisionV1p2beta1Page {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
+      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -8206,19 +8205,19 @@ class GoogleCloudVisionV1p2beta1Paragraph {
   GoogleCloudVisionV1p2beta1Paragraph();
 
   GoogleCloudVisionV1p2beta1Paragraph.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<GoogleCloudVisionV1p2beta1Word>(
               (value) => GoogleCloudVisionV1p2beta1Word.fromJson(value))
           .toList();
@@ -8229,16 +8228,16 @@ class GoogleCloudVisionV1p2beta1Paragraph {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8260,14 +8259,14 @@ class GoogleCloudVisionV1p2beta1Position {
   GoogleCloudVisionV1p2beta1Position();
 
   GoogleCloudVisionV1p2beta1Position.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
-    if (_json.containsKey("z")) {
-      z = _json["z"].toDouble();
+    if (_json.containsKey('z')) {
+      z = _json['z'].toDouble();
     }
   }
 
@@ -8275,13 +8274,13 @@ class GoogleCloudVisionV1p2beta1Position {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     if (z != null) {
-      _json["z"] = z;
+      _json['z'] = z;
     }
     return _json;
   }
@@ -8323,20 +8322,20 @@ class GoogleCloudVisionV1p2beta1Product {
   GoogleCloudVisionV1p2beta1Product();
 
   GoogleCloudVisionV1p2beta1Product.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("productCategory")) {
-      productCategory = _json["productCategory"];
+    if (_json.containsKey('productCategory')) {
+      productCategory = _json['productCategory'];
     }
-    if (_json.containsKey("productLabels")) {
-      productLabels = (_json["productLabels"] as core.List)
+    if (_json.containsKey('productLabels')) {
+      productLabels = (_json['productLabels'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductKeyValue>((value) =>
               GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(value))
           .toList();
@@ -8347,19 +8346,19 @@ class GoogleCloudVisionV1p2beta1Product {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (productCategory != null) {
-      _json["productCategory"] = productCategory;
+      _json['productCategory'] = productCategory;
     }
     if (productLabels != null) {
-      _json["productLabels"] =
+      _json['productLabels'] =
           productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -8379,11 +8378,11 @@ class GoogleCloudVisionV1p2beta1ProductKeyValue {
   GoogleCloudVisionV1p2beta1ProductKeyValue();
 
   GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -8391,10 +8390,10 @@ class GoogleCloudVisionV1p2beta1ProductKeyValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -8420,19 +8419,19 @@ class GoogleCloudVisionV1p2beta1ProductSearchResults {
   GoogleCloudVisionV1p2beta1ProductSearchResults();
 
   GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(core.Map _json) {
-    if (_json.containsKey("indexTime")) {
-      indexTime = _json["indexTime"];
+    if (_json.containsKey('indexTime')) {
+      indexTime = _json['indexTime'];
     }
-    if (_json.containsKey("productGroupedResults")) {
-      productGroupedResults = (_json["productGroupedResults"] as core.List)
+    if (_json.containsKey('productGroupedResults')) {
+      productGroupedResults = (_json['productGroupedResults'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>(
               (value) =>
                   GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
                   value))
@@ -8444,14 +8443,14 @@ class GoogleCloudVisionV1p2beta1ProductSearchResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indexTime != null) {
-      _json["indexTime"] = indexTime;
+      _json['indexTime'] = indexTime;
     }
     if (productGroupedResults != null) {
-      _json["productGroupedResults"] =
+      _json['productGroupedResults'] =
           productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8473,20 +8472,20 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
 
   GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult.fromJson(
       core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
                   GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
                   value))
@@ -8498,14 +8497,14 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8531,17 +8530,17 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation {
 
   GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -8549,16 +8548,16 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -8581,14 +8580,14 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
 
   GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
       core.Map _json) {
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("product")) {
-      product = GoogleCloudVisionV1p2beta1Product.fromJson(_json["product"]);
+    if (_json.containsKey('product')) {
+      product = GoogleCloudVisionV1p2beta1Product.fromJson(_json['product']);
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -8596,13 +8595,13 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (product != null) {
-      _json["product"] = product.toJson();
+      _json['product'] = product.toJson();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -8622,14 +8621,14 @@ class GoogleCloudVisionV1p2beta1Property {
   GoogleCloudVisionV1p2beta1Property();
 
   GoogleCloudVisionV1p2beta1Property.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("uint64Value")) {
-      uint64Value = _json["uint64Value"];
+    if (_json.containsKey('uint64Value')) {
+      uint64Value = _json['uint64Value'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -8637,13 +8636,13 @@ class GoogleCloudVisionV1p2beta1Property {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (uint64Value != null) {
-      _json["uint64Value"] = uint64Value;
+      _json['uint64Value'] = uint64Value;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -8711,20 +8710,20 @@ class GoogleCloudVisionV1p2beta1SafeSearchAnnotation {
   GoogleCloudVisionV1p2beta1SafeSearchAnnotation();
 
   GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("adult")) {
-      adult = _json["adult"];
+    if (_json.containsKey('adult')) {
+      adult = _json['adult'];
     }
-    if (_json.containsKey("medical")) {
-      medical = _json["medical"];
+    if (_json.containsKey('medical')) {
+      medical = _json['medical'];
     }
-    if (_json.containsKey("racy")) {
-      racy = _json["racy"];
+    if (_json.containsKey('racy')) {
+      racy = _json['racy'];
     }
-    if (_json.containsKey("spoof")) {
-      spoof = _json["spoof"];
+    if (_json.containsKey('spoof')) {
+      spoof = _json['spoof'];
     }
-    if (_json.containsKey("violence")) {
-      violence = _json["violence"];
+    if (_json.containsKey('violence')) {
+      violence = _json['violence'];
     }
   }
 
@@ -8732,19 +8731,19 @@ class GoogleCloudVisionV1p2beta1SafeSearchAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adult != null) {
-      _json["adult"] = adult;
+      _json['adult'] = adult;
     }
     if (medical != null) {
-      _json["medical"] = medical;
+      _json['medical'] = medical;
     }
     if (racy != null) {
-      _json["racy"] = racy;
+      _json['racy'] = racy;
     }
     if (spoof != null) {
-      _json["spoof"] = spoof;
+      _json['spoof'] = spoof;
     }
     if (violence != null) {
-      _json["violence"] = violence;
+      _json['violence'] = violence;
     }
     return _json;
   }
@@ -8774,19 +8773,19 @@ class GoogleCloudVisionV1p2beta1Symbol {
   GoogleCloudVisionV1p2beta1Symbol();
 
   GoogleCloudVisionV1p2beta1Symbol.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -8794,16 +8793,16 @@ class GoogleCloudVisionV1p2beta1Symbol {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -8826,14 +8825,14 @@ class GoogleCloudVisionV1p2beta1TextAnnotation {
   GoogleCloudVisionV1p2beta1TextAnnotation();
 
   GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("pages")) {
-      pages = (_json["pages"] as core.List)
+    if (_json.containsKey('pages')) {
+      pages = (_json['pages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1Page>(
               (value) => GoogleCloudVisionV1p2beta1Page.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -8841,10 +8840,10 @@ class GoogleCloudVisionV1p2beta1TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => value.toJson()).toList();
+      _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -8870,11 +8869,11 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak {
 
   GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak.fromJson(
       core.Map _json) {
-    if (_json.containsKey("isPrefix")) {
-      isPrefix = _json["isPrefix"];
+    if (_json.containsKey('isPrefix')) {
+      isPrefix = _json['isPrefix'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -8882,10 +8881,10 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (isPrefix != null) {
-      _json["isPrefix"] = isPrefix;
+      _json['isPrefix'] = isPrefix;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -8905,11 +8904,11 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage {
 
   GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -8917,10 +8916,10 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -8939,13 +8938,13 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
 
   GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
       core.Map _json) {
-    if (_json.containsKey("detectedBreak")) {
+    if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak.fromJson(
-              _json["detectedBreak"]);
+              _json['detectedBreak']);
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>(
               (value) =>
                   GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage
@@ -8958,10 +8957,10 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = detectedBreak.toJson();
+      _json['detectedBreak'] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -8980,11 +8979,11 @@ class GoogleCloudVisionV1p2beta1Vertex {
   GoogleCloudVisionV1p2beta1Vertex();
 
   GoogleCloudVisionV1p2beta1Vertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"];
+    if (_json.containsKey('x')) {
+      x = _json['x'];
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"];
+    if (_json.containsKey('y')) {
+      y = _json['y'];
     }
   }
 
@@ -8992,10 +8991,10 @@ class GoogleCloudVisionV1p2beta1Vertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -9031,38 +9030,38 @@ class GoogleCloudVisionV1p2beta1WebDetection {
   GoogleCloudVisionV1p2beta1WebDetection();
 
   GoogleCloudVisionV1p2beta1WebDetection.fromJson(core.Map _json) {
-    if (_json.containsKey("bestGuessLabels")) {
-      bestGuessLabels = (_json["bestGuessLabels"] as core.List)
+    if (_json.containsKey('bestGuessLabels')) {
+      bestGuessLabels = (_json['bestGuessLabels'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebLabel>((value) =>
               GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pagesWithMatchingImages")) {
-      pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
+    if (_json.containsKey('pagesWithMatchingImages')) {
+      pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebPage>((value) =>
               GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("visuallySimilarImages")) {
-      visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
+    if (_json.containsKey('visuallySimilarImages')) {
+      visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webEntities")) {
-      webEntities = (_json["webEntities"] as core.List)
+    if (_json.containsKey('webEntities')) {
+      webEntities = (_json['webEntities'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebEntity>((value) =>
               GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(value))
           .toList();
@@ -9073,27 +9072,27 @@ class GoogleCloudVisionV1p2beta1WebDetection {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bestGuessLabels != null) {
-      _json["bestGuessLabels"] =
+      _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
-      _json["pagesWithMatchingImages"] =
+      _json['pagesWithMatchingImages'] =
           pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
-      _json["visuallySimilarImages"] =
+      _json['visuallySimilarImages'] =
           visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
-      _json["webEntities"] =
+      _json['webEntities'] =
           webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -9115,14 +9114,14 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebEntity {
   GoogleCloudVisionV1p2beta1WebDetectionWebEntity();
 
   GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -9130,13 +9129,13 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebEntity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -9153,11 +9152,11 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebImage {
   GoogleCloudVisionV1p2beta1WebDetectionWebImage();
 
   GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(core.Map _json) {
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -9165,10 +9164,10 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -9187,11 +9186,11 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebLabel {
   GoogleCloudVisionV1p2beta1WebDetectionWebLabel();
 
   GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(core.Map _json) {
-    if (_json.containsKey("label")) {
-      label = _json["label"];
+    if (_json.containsKey('label')) {
+      label = _json['label'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -9199,10 +9198,10 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebLabel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (label != null) {
-      _json["label"] = label;
+      _json['label'] = label;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -9232,26 +9231,26 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
   GoogleCloudVisionV1p2beta1WebDetectionWebPage();
 
   GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(core.Map _json) {
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pageTitle")) {
-      pageTitle = _json["pageTitle"];
+    if (_json.containsKey('pageTitle')) {
+      pageTitle = _json['pageTitle'];
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -9259,21 +9258,21 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
-      _json["pageTitle"] = pageTitle;
+      _json['pageTitle'] = pageTitle;
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -9303,19 +9302,19 @@ class GoogleCloudVisionV1p2beta1Word {
   GoogleCloudVisionV1p2beta1Word();
 
   GoogleCloudVisionV1p2beta1Word.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("symbols")) {
-      symbols = (_json["symbols"] as core.List)
+    if (_json.containsKey('symbols')) {
+      symbols = (_json['symbols'] as core.List)
           .map<GoogleCloudVisionV1p2beta1Symbol>(
               (value) => GoogleCloudVisionV1p2beta1Symbol.fromJson(value))
           .toList();
@@ -9326,16 +9325,16 @@ class GoogleCloudVisionV1p2beta1Word {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
+      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9361,21 +9360,21 @@ class GoogleCloudVisionV1p3beta1AnnotateFileResponse {
   GoogleCloudVisionV1p3beta1AnnotateFileResponse();
 
   GoogleCloudVisionV1p3beta1AnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("inputConfig")) {
+    if (_json.containsKey('inputConfig')) {
       inputConfig =
-          GoogleCloudVisionV1p3beta1InputConfig.fromJson(_json["inputConfig"]);
+          GoogleCloudVisionV1p3beta1InputConfig.fromJson(_json['inputConfig']);
     }
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p3beta1AnnotateImageResponse>((value) =>
               GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("totalPages")) {
-      totalPages = _json["totalPages"];
+    if (_json.containsKey('totalPages')) {
+      totalPages = _json['totalPages'];
     }
   }
 
@@ -9383,16 +9382,16 @@ class GoogleCloudVisionV1p3beta1AnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
-      _json["totalPages"] = totalPages;
+      _json['totalPages'] = totalPages;
     }
     return _json;
   }
@@ -9452,78 +9451,78 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
   GoogleCloudVisionV1p3beta1AnnotateImageResponse();
 
   GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
+    if (_json.containsKey('context')) {
       context = GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(
-          _json["context"]);
+          _json['context']);
     }
-    if (_json.containsKey("cropHintsAnnotation")) {
+    if (_json.containsKey('cropHintsAnnotation')) {
       cropHintsAnnotation =
           GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(
-              _json["cropHintsAnnotation"]);
+              _json['cropHintsAnnotation']);
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("faceAnnotations")) {
-      faceAnnotations = (_json["faceAnnotations"] as core.List)
+    if (_json.containsKey('faceAnnotations')) {
+      faceAnnotations = (_json['faceAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1FaceAnnotation>((value) =>
               GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullTextAnnotation")) {
+    if (_json.containsKey('fullTextAnnotation')) {
       fullTextAnnotation = GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(
-          _json["fullTextAnnotation"]);
+          _json['fullTextAnnotation']);
     }
-    if (_json.containsKey("imagePropertiesAnnotation")) {
+    if (_json.containsKey('imagePropertiesAnnotation')) {
       imagePropertiesAnnotation =
           GoogleCloudVisionV1p3beta1ImageProperties.fromJson(
-              _json["imagePropertiesAnnotation"]);
+              _json['imagePropertiesAnnotation']);
     }
-    if (_json.containsKey("labelAnnotations")) {
-      labelAnnotations = (_json["labelAnnotations"] as core.List)
+    if (_json.containsKey('labelAnnotations')) {
+      labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("landmarkAnnotations")) {
-      landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
+    if (_json.containsKey('landmarkAnnotations')) {
+      landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("localizedObjectAnnotations")) {
-      localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
+    if (_json.containsKey('localizedObjectAnnotations')) {
+      localizedObjectAnnotations = (_json['localizedObjectAnnotations']
               as core.List)
           .map<GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>((value) =>
               GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("logoAnnotations")) {
-      logoAnnotations = (_json["logoAnnotations"] as core.List)
+    if (_json.containsKey('logoAnnotations')) {
+      logoAnnotations = (_json['logoAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("productSearchResults")) {
+    if (_json.containsKey('productSearchResults')) {
       productSearchResults =
           GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(
-              _json["productSearchResults"]);
+              _json['productSearchResults']);
     }
-    if (_json.containsKey("safeSearchAnnotation")) {
+    if (_json.containsKey('safeSearchAnnotation')) {
       safeSearchAnnotation =
           GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(
-              _json["safeSearchAnnotation"]);
+              _json['safeSearchAnnotation']);
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webDetection")) {
+    if (_json.containsKey('webDetection')) {
       webDetection = GoogleCloudVisionV1p3beta1WebDetection.fromJson(
-          _json["webDetection"]);
+          _json['webDetection']);
     }
   }
 
@@ -9531,52 +9530,52 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
+      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (faceAnnotations != null) {
-      _json["faceAnnotations"] =
+      _json['faceAnnotations'] =
           faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
+      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
+      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
-      _json["labelAnnotations"] =
+      _json['labelAnnotations'] =
           labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
-      _json["landmarkAnnotations"] =
+      _json['landmarkAnnotations'] =
           landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
-      _json["localizedObjectAnnotations"] =
+      _json['localizedObjectAnnotations'] =
           localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
-      _json["logoAnnotations"] =
+      _json['logoAnnotations'] =
           logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = productSearchResults.toJson();
+      _json['productSearchResults'] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
+      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = webDetection.toJson();
+      _json['webDetection'] = webDetection.toJson();
     }
     return _json;
   }
@@ -9590,9 +9589,9 @@ class GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse {
   GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse();
 
   GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
+    if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p3beta1OutputConfig.fromJson(
-          _json["outputConfig"]);
+          _json['outputConfig']);
     }
   }
 
@@ -9600,7 +9599,7 @@ class GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -9616,8 +9615,8 @@ class GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
 
   GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>((value) =>
               GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(
                   value))
@@ -9629,7 +9628,7 @@ class GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9663,14 +9662,14 @@ class GoogleCloudVisionV1p3beta1BatchOperationMetadata {
   GoogleCloudVisionV1p3beta1BatchOperationMetadata();
 
   GoogleCloudVisionV1p3beta1BatchOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("submitTime")) {
-      submitTime = _json["submitTime"];
+    if (_json.containsKey('submitTime')) {
+      submitTime = _json['submitTime'];
     }
   }
 
@@ -9678,13 +9677,13 @@ class GoogleCloudVisionV1p3beta1BatchOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (submitTime != null) {
-      _json["submitTime"] = submitTime;
+      _json['submitTime'] = submitTime;
     }
     return _json;
   }
@@ -9723,25 +9722,25 @@ class GoogleCloudVisionV1p3beta1Block {
   GoogleCloudVisionV1p3beta1Block();
 
   GoogleCloudVisionV1p3beta1Block.fromJson(core.Map _json) {
-    if (_json.containsKey("blockType")) {
-      blockType = _json["blockType"];
+    if (_json.containsKey('blockType')) {
+      blockType = _json['blockType'];
     }
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("paragraphs")) {
-      paragraphs = (_json["paragraphs"] as core.List)
+    if (_json.containsKey('paragraphs')) {
+      paragraphs = (_json['paragraphs'] as core.List)
           .map<GoogleCloudVisionV1p3beta1Paragraph>(
               (value) => GoogleCloudVisionV1p3beta1Paragraph.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
   }
 
@@ -9749,19 +9748,19 @@ class GoogleCloudVisionV1p3beta1Block {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blockType != null) {
-      _json["blockType"] = blockType;
+      _json['blockType'] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
+      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     return _json;
   }
@@ -9778,14 +9777,14 @@ class GoogleCloudVisionV1p3beta1BoundingPoly {
   GoogleCloudVisionV1p3beta1BoundingPoly();
 
   GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(core.Map _json) {
-    if (_json.containsKey("normalizedVertices")) {
-      normalizedVertices = (_json["normalizedVertices"] as core.List)
+    if (_json.containsKey('normalizedVertices')) {
+      normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudVisionV1p3beta1NormalizedVertex>((value) =>
               GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudVisionV1p3beta1Vertex>(
               (value) => GoogleCloudVisionV1p3beta1Vertex.fromJson(value))
           .toList();
@@ -9796,11 +9795,11 @@ class GoogleCloudVisionV1p3beta1BoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedVertices != null) {
-      _json["normalizedVertices"] =
+      _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9822,14 +9821,14 @@ class GoogleCloudVisionV1p3beta1ColorInfo {
   GoogleCloudVisionV1p3beta1ColorInfo();
 
   GoogleCloudVisionV1p3beta1ColorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("color")) {
-      color = Color.fromJson(_json["color"]);
+    if (_json.containsKey('color')) {
+      color = Color.fromJson(_json['color']);
     }
-    if (_json.containsKey("pixelFraction")) {
-      pixelFraction = _json["pixelFraction"].toDouble();
+    if (_json.containsKey('pixelFraction')) {
+      pixelFraction = _json['pixelFraction'].toDouble();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -9837,13 +9836,13 @@ class GoogleCloudVisionV1p3beta1ColorInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = color.toJson();
+      _json['color'] = color.toJson();
     }
     if (pixelFraction != null) {
-      _json["pixelFraction"] = pixelFraction;
+      _json['pixelFraction'] = pixelFraction;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -9865,15 +9864,15 @@ class GoogleCloudVisionV1p3beta1CropHint {
   GoogleCloudVisionV1p3beta1CropHint();
 
   GoogleCloudVisionV1p3beta1CropHint.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("importanceFraction")) {
-      importanceFraction = _json["importanceFraction"].toDouble();
+    if (_json.containsKey('importanceFraction')) {
+      importanceFraction = _json['importanceFraction'].toDouble();
     }
   }
 
@@ -9881,13 +9880,13 @@ class GoogleCloudVisionV1p3beta1CropHint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (importanceFraction != null) {
-      _json["importanceFraction"] = importanceFraction;
+      _json['importanceFraction'] = importanceFraction;
     }
     return _json;
   }
@@ -9901,8 +9900,8 @@ class GoogleCloudVisionV1p3beta1CropHintsAnnotation {
   GoogleCloudVisionV1p3beta1CropHintsAnnotation();
 
   GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("cropHints")) {
-      cropHints = (_json["cropHints"] as core.List)
+    if (_json.containsKey('cropHints')) {
+      cropHints = (_json['cropHints'] as core.List)
           .map<GoogleCloudVisionV1p3beta1CropHint>(
               (value) => GoogleCloudVisionV1p3beta1CropHint.fromJson(value))
           .toList();
@@ -9913,7 +9912,7 @@ class GoogleCloudVisionV1p3beta1CropHintsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
+      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9927,8 +9926,8 @@ class GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p3beta1DominantColorsAnnotation();
 
   GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("colors")) {
-      colors = (_json["colors"] as core.List)
+    if (_json.containsKey('colors')) {
+      colors = (_json['colors'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ColorInfo>(
               (value) => GoogleCloudVisionV1p3beta1ColorInfo.fromJson(value))
           .toList();
@@ -9939,7 +9938,7 @@ class GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => value.toJson()).toList();
+      _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9992,39 +9991,39 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
   GoogleCloudVisionV1p3beta1EntityAnnotation();
 
   GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("locale")) {
-      locale = _json["locale"];
+    if (_json.containsKey('locale')) {
+      locale = _json['locale'];
     }
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1LocationInfo>(
               (value) => GoogleCloudVisionV1p3beta1LocationInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("properties")) {
-      properties = (_json["properties"] as core.List)
+    if (_json.containsKey('properties')) {
+      properties = (_json['properties'] as core.List)
           .map<GoogleCloudVisionV1p3beta1Property>(
               (value) => GoogleCloudVisionV1p3beta1Property.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("topicality")) {
-      topicality = _json["topicality"].toDouble();
+    if (_json.containsKey('topicality')) {
+      topicality = _json['topicality'].toDouble();
     }
   }
 
@@ -10032,31 +10031,31 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (locale != null) {
-      _json["locale"] = locale;
+      _json['locale'] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (properties != null) {
-      _json["properties"] = properties.map((value) => value.toJson()).toList();
+      _json['properties'] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (topicality != null) {
-      _json["topicality"] = topicality;
+      _json['topicality'] = topicality;
     }
     return _json;
   }
@@ -10176,55 +10175,55 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
   GoogleCloudVisionV1p3beta1FaceAnnotation();
 
   GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("angerLikelihood")) {
-      angerLikelihood = _json["angerLikelihood"];
+    if (_json.containsKey('angerLikelihood')) {
+      angerLikelihood = _json['angerLikelihood'];
     }
-    if (_json.containsKey("blurredLikelihood")) {
-      blurredLikelihood = _json["blurredLikelihood"];
+    if (_json.containsKey('blurredLikelihood')) {
+      blurredLikelihood = _json['blurredLikelihood'];
     }
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("detectionConfidence")) {
-      detectionConfidence = _json["detectionConfidence"].toDouble();
+    if (_json.containsKey('detectionConfidence')) {
+      detectionConfidence = _json['detectionConfidence'].toDouble();
     }
-    if (_json.containsKey("fdBoundingPoly")) {
+    if (_json.containsKey('fdBoundingPoly')) {
       fdBoundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["fdBoundingPoly"]);
+          _json['fdBoundingPoly']);
     }
-    if (_json.containsKey("headwearLikelihood")) {
-      headwearLikelihood = _json["headwearLikelihood"];
+    if (_json.containsKey('headwearLikelihood')) {
+      headwearLikelihood = _json['headwearLikelihood'];
     }
-    if (_json.containsKey("joyLikelihood")) {
-      joyLikelihood = _json["joyLikelihood"];
+    if (_json.containsKey('joyLikelihood')) {
+      joyLikelihood = _json['joyLikelihood'];
     }
-    if (_json.containsKey("landmarkingConfidence")) {
-      landmarkingConfidence = _json["landmarkingConfidence"].toDouble();
+    if (_json.containsKey('landmarkingConfidence')) {
+      landmarkingConfidence = _json['landmarkingConfidence'].toDouble();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>((value) =>
               GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("panAngle")) {
-      panAngle = _json["panAngle"].toDouble();
+    if (_json.containsKey('panAngle')) {
+      panAngle = _json['panAngle'].toDouble();
     }
-    if (_json.containsKey("rollAngle")) {
-      rollAngle = _json["rollAngle"].toDouble();
+    if (_json.containsKey('rollAngle')) {
+      rollAngle = _json['rollAngle'].toDouble();
     }
-    if (_json.containsKey("sorrowLikelihood")) {
-      sorrowLikelihood = _json["sorrowLikelihood"];
+    if (_json.containsKey('sorrowLikelihood')) {
+      sorrowLikelihood = _json['sorrowLikelihood'];
     }
-    if (_json.containsKey("surpriseLikelihood")) {
-      surpriseLikelihood = _json["surpriseLikelihood"];
+    if (_json.containsKey('surpriseLikelihood')) {
+      surpriseLikelihood = _json['surpriseLikelihood'];
     }
-    if (_json.containsKey("tiltAngle")) {
-      tiltAngle = _json["tiltAngle"].toDouble();
+    if (_json.containsKey('tiltAngle')) {
+      tiltAngle = _json['tiltAngle'].toDouble();
     }
-    if (_json.containsKey("underExposedLikelihood")) {
-      underExposedLikelihood = _json["underExposedLikelihood"];
+    if (_json.containsKey('underExposedLikelihood')) {
+      underExposedLikelihood = _json['underExposedLikelihood'];
     }
   }
 
@@ -10232,49 +10231,49 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (angerLikelihood != null) {
-      _json["angerLikelihood"] = angerLikelihood;
+      _json['angerLikelihood'] = angerLikelihood;
     }
     if (blurredLikelihood != null) {
-      _json["blurredLikelihood"] = blurredLikelihood;
+      _json['blurredLikelihood'] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
-      _json["detectionConfidence"] = detectionConfidence;
+      _json['detectionConfidence'] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
+      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
-      _json["headwearLikelihood"] = headwearLikelihood;
+      _json['headwearLikelihood'] = headwearLikelihood;
     }
     if (joyLikelihood != null) {
-      _json["joyLikelihood"] = joyLikelihood;
+      _json['joyLikelihood'] = joyLikelihood;
     }
     if (landmarkingConfidence != null) {
-      _json["landmarkingConfidence"] = landmarkingConfidence;
+      _json['landmarkingConfidence'] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
-      _json["panAngle"] = panAngle;
+      _json['panAngle'] = panAngle;
     }
     if (rollAngle != null) {
-      _json["rollAngle"] = rollAngle;
+      _json['rollAngle'] = rollAngle;
     }
     if (sorrowLikelihood != null) {
-      _json["sorrowLikelihood"] = sorrowLikelihood;
+      _json['sorrowLikelihood'] = sorrowLikelihood;
     }
     if (surpriseLikelihood != null) {
-      _json["surpriseLikelihood"] = surpriseLikelihood;
+      _json['surpriseLikelihood'] = surpriseLikelihood;
     }
     if (tiltAngle != null) {
-      _json["tiltAngle"] = tiltAngle;
+      _json['tiltAngle'] = tiltAngle;
     }
     if (underExposedLikelihood != null) {
-      _json["underExposedLikelihood"] = underExposedLikelihood;
+      _json['underExposedLikelihood'] = underExposedLikelihood;
     }
     return _json;
   }
@@ -10330,11 +10329,11 @@ class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
   GoogleCloudVisionV1p3beta1FaceAnnotationLandmark();
 
   GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
-    if (_json.containsKey("position")) {
-      position = GoogleCloudVisionV1p3beta1Position.fromJson(_json["position"]);
+    if (_json.containsKey('position')) {
+      position = GoogleCloudVisionV1p3beta1Position.fromJson(_json['position']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -10342,10 +10341,10 @@ class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = position.toJson();
+      _json['position'] = position.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -10373,8 +10372,8 @@ class GoogleCloudVisionV1p3beta1GcsDestination {
   GoogleCloudVisionV1p3beta1GcsDestination();
 
   GoogleCloudVisionV1p3beta1GcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -10382,7 +10381,7 @@ class GoogleCloudVisionV1p3beta1GcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -10397,8 +10396,8 @@ class GoogleCloudVisionV1p3beta1GcsSource {
   GoogleCloudVisionV1p3beta1GcsSource();
 
   GoogleCloudVisionV1p3beta1GcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -10406,7 +10405,7 @@ class GoogleCloudVisionV1p3beta1GcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -10425,11 +10424,11 @@ class GoogleCloudVisionV1p3beta1ImageAnnotationContext {
   GoogleCloudVisionV1p3beta1ImageAnnotationContext();
 
   GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(core.Map _json) {
-    if (_json.containsKey("pageNumber")) {
-      pageNumber = _json["pageNumber"];
+    if (_json.containsKey('pageNumber')) {
+      pageNumber = _json['pageNumber'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -10437,10 +10436,10 @@ class GoogleCloudVisionV1p3beta1ImageAnnotationContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageNumber != null) {
-      _json["pageNumber"] = pageNumber;
+      _json['pageNumber'] = pageNumber;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -10454,10 +10453,10 @@ class GoogleCloudVisionV1p3beta1ImageProperties {
   GoogleCloudVisionV1p3beta1ImageProperties();
 
   GoogleCloudVisionV1p3beta1ImageProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("dominantColors")) {
+    if (_json.containsKey('dominantColors')) {
       dominantColors =
           GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(
-              _json["dominantColors"]);
+              _json['dominantColors']);
     }
   }
 
@@ -10465,7 +10464,7 @@ class GoogleCloudVisionV1p3beta1ImageProperties {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = dominantColors.toJson();
+      _json['dominantColors'] = dominantColors.toJson();
     }
     return _json;
   }
@@ -10487,14 +10486,14 @@ class GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
   GoogleCloudVisionV1p3beta1ImportProductSetsResponse();
 
   GoogleCloudVisionV1p3beta1ImportProductSetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("referenceImages")) {
-      referenceImages = (_json["referenceImages"] as core.List)
+    if (_json.containsKey('referenceImages')) {
+      referenceImages = (_json['referenceImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ReferenceImage>((value) =>
               GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("statuses")) {
-      statuses = (_json["statuses"] as core.List)
+    if (_json.containsKey('statuses')) {
+      statuses = (_json['statuses'] as core.List)
           .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
@@ -10504,11 +10503,11 @@ class GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (referenceImages != null) {
-      _json["referenceImages"] =
+      _json['referenceImages'] =
           referenceImages.map((value) => value.toJson()).toList();
     }
     if (statuses != null) {
-      _json["statuses"] = statuses.map((value) => value.toJson()).toList();
+      _json['statuses'] = statuses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10526,7 +10525,7 @@ class GoogleCloudVisionV1p3beta1InputConfig {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The Google Cloud Storage location to read the input from.
@@ -10539,15 +10538,15 @@ class GoogleCloudVisionV1p3beta1InputConfig {
   GoogleCloudVisionV1p3beta1InputConfig();
 
   GoogleCloudVisionV1p3beta1InputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("gcsSource")) {
+    if (_json.containsKey('gcsSource')) {
       gcsSource =
-          GoogleCloudVisionV1p3beta1GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudVisionV1p3beta1GcsSource.fromJson(_json['gcsSource']);
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
   }
 
@@ -10555,13 +10554,13 @@ class GoogleCloudVisionV1p3beta1InputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     return _json;
   }
@@ -10589,21 +10588,21 @@ class GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
   GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation();
 
   GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -10611,19 +10610,19 @@ class GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -10637,8 +10636,8 @@ class GoogleCloudVisionV1p3beta1LocationInfo {
   GoogleCloudVisionV1p3beta1LocationInfo();
 
   GoogleCloudVisionV1p3beta1LocationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("latLng")) {
-      latLng = LatLng.fromJson(_json["latLng"]);
+    if (_json.containsKey('latLng')) {
+      latLng = LatLng.fromJson(_json['latLng']);
     }
   }
 
@@ -10646,7 +10645,7 @@ class GoogleCloudVisionV1p3beta1LocationInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = latLng.toJson();
+      _json['latLng'] = latLng.toJson();
     }
     return _json;
   }
@@ -10664,11 +10663,11 @@ class GoogleCloudVisionV1p3beta1NormalizedVertex {
   GoogleCloudVisionV1p3beta1NormalizedVertex();
 
   GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -10676,10 +10675,10 @@ class GoogleCloudVisionV1p3beta1NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -10705,14 +10704,14 @@ class GoogleCloudVisionV1p3beta1OperationMetadata {
   GoogleCloudVisionV1p3beta1OperationMetadata();
 
   GoogleCloudVisionV1p3beta1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -10720,13 +10719,13 @@ class GoogleCloudVisionV1p3beta1OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -10750,12 +10749,12 @@ class GoogleCloudVisionV1p3beta1OutputConfig {
   GoogleCloudVisionV1p3beta1OutputConfig();
 
   GoogleCloudVisionV1p3beta1OutputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("batchSize")) {
-      batchSize = _json["batchSize"];
+    if (_json.containsKey('batchSize')) {
+      batchSize = _json['batchSize'];
     }
-    if (_json.containsKey("gcsDestination")) {
+    if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudVisionV1p3beta1GcsDestination.fromJson(
-          _json["gcsDestination"]);
+          _json['gcsDestination']);
     }
   }
 
@@ -10763,10 +10762,10 @@ class GoogleCloudVisionV1p3beta1OutputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batchSize != null) {
-      _json["batchSize"] = batchSize;
+      _json['batchSize'] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -10794,24 +10793,24 @@ class GoogleCloudVisionV1p3beta1Page {
   GoogleCloudVisionV1p3beta1Page();
 
   GoogleCloudVisionV1p3beta1Page.fromJson(core.Map _json) {
-    if (_json.containsKey("blocks")) {
-      blocks = (_json["blocks"] as core.List)
+    if (_json.containsKey('blocks')) {
+      blocks = (_json['blocks'] as core.List)
           .map<GoogleCloudVisionV1p3beta1Block>(
               (value) => GoogleCloudVisionV1p3beta1Block.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -10819,19 +10818,19 @@ class GoogleCloudVisionV1p3beta1Page {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
+      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -10861,19 +10860,19 @@ class GoogleCloudVisionV1p3beta1Paragraph {
   GoogleCloudVisionV1p3beta1Paragraph();
 
   GoogleCloudVisionV1p3beta1Paragraph.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<GoogleCloudVisionV1p3beta1Word>(
               (value) => GoogleCloudVisionV1p3beta1Word.fromJson(value))
           .toList();
@@ -10884,16 +10883,16 @@ class GoogleCloudVisionV1p3beta1Paragraph {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10915,14 +10914,14 @@ class GoogleCloudVisionV1p3beta1Position {
   GoogleCloudVisionV1p3beta1Position();
 
   GoogleCloudVisionV1p3beta1Position.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
-    if (_json.containsKey("z")) {
-      z = _json["z"].toDouble();
+    if (_json.containsKey('z')) {
+      z = _json['z'].toDouble();
     }
   }
 
@@ -10930,13 +10929,13 @@ class GoogleCloudVisionV1p3beta1Position {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     if (z != null) {
-      _json["z"] = z;
+      _json['z'] = z;
     }
     return _json;
   }
@@ -10978,20 +10977,20 @@ class GoogleCloudVisionV1p3beta1Product {
   GoogleCloudVisionV1p3beta1Product();
 
   GoogleCloudVisionV1p3beta1Product.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("productCategory")) {
-      productCategory = _json["productCategory"];
+    if (_json.containsKey('productCategory')) {
+      productCategory = _json['productCategory'];
     }
-    if (_json.containsKey("productLabels")) {
-      productLabels = (_json["productLabels"] as core.List)
+    if (_json.containsKey('productLabels')) {
+      productLabels = (_json['productLabels'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductKeyValue>((value) =>
               GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(value))
           .toList();
@@ -11002,19 +11001,19 @@ class GoogleCloudVisionV1p3beta1Product {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (productCategory != null) {
-      _json["productCategory"] = productCategory;
+      _json['productCategory'] = productCategory;
     }
     if (productLabels != null) {
-      _json["productLabels"] =
+      _json['productLabels'] =
           productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -11034,11 +11033,11 @@ class GoogleCloudVisionV1p3beta1ProductKeyValue {
   GoogleCloudVisionV1p3beta1ProductKeyValue();
 
   GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -11046,10 +11045,10 @@ class GoogleCloudVisionV1p3beta1ProductKeyValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -11075,19 +11074,19 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
   GoogleCloudVisionV1p3beta1ProductSearchResults();
 
   GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(core.Map _json) {
-    if (_json.containsKey("indexTime")) {
-      indexTime = _json["indexTime"];
+    if (_json.containsKey('indexTime')) {
+      indexTime = _json['indexTime'];
     }
-    if (_json.containsKey("productGroupedResults")) {
-      productGroupedResults = (_json["productGroupedResults"] as core.List)
+    if (_json.containsKey('productGroupedResults')) {
+      productGroupedResults = (_json['productGroupedResults'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>(
               (value) =>
                   GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
                   value))
@@ -11099,14 +11098,14 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indexTime != null) {
-      _json["indexTime"] = indexTime;
+      _json['indexTime'] = indexTime;
     }
     if (productGroupedResults != null) {
-      _json["productGroupedResults"] =
+      _json['productGroupedResults'] =
           productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11128,20 +11127,20 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
 
   GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult.fromJson(
       core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
                   GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
                   value))
@@ -11153,14 +11152,14 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11186,17 +11185,17 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation {
 
   GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -11204,16 +11203,16 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -11236,14 +11235,14 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
 
   GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
       core.Map _json) {
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("product")) {
-      product = GoogleCloudVisionV1p3beta1Product.fromJson(_json["product"]);
+    if (_json.containsKey('product')) {
+      product = GoogleCloudVisionV1p3beta1Product.fromJson(_json['product']);
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -11251,13 +11250,13 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (product != null) {
-      _json["product"] = product.toJson();
+      _json['product'] = product.toJson();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -11277,14 +11276,14 @@ class GoogleCloudVisionV1p3beta1Property {
   GoogleCloudVisionV1p3beta1Property();
 
   GoogleCloudVisionV1p3beta1Property.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("uint64Value")) {
-      uint64Value = _json["uint64Value"];
+    if (_json.containsKey('uint64Value')) {
+      uint64Value = _json['uint64Value'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -11292,13 +11291,13 @@ class GoogleCloudVisionV1p3beta1Property {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (uint64Value != null) {
-      _json["uint64Value"] = uint64Value;
+      _json['uint64Value'] = uint64Value;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -11327,17 +11326,17 @@ class GoogleCloudVisionV1p3beta1ReferenceImage {
   GoogleCloudVisionV1p3beta1ReferenceImage();
 
   GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPolys")) {
-      boundingPolys = (_json["boundingPolys"] as core.List)
+    if (_json.containsKey('boundingPolys')) {
+      boundingPolys = (_json['boundingPolys'] as core.List)
           .map<GoogleCloudVisionV1p3beta1BoundingPoly>(
               (value) => GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -11345,14 +11344,14 @@ class GoogleCloudVisionV1p3beta1ReferenceImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPolys != null) {
-      _json["boundingPolys"] =
+      _json['boundingPolys'] =
           boundingPolys.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -11420,20 +11419,20 @@ class GoogleCloudVisionV1p3beta1SafeSearchAnnotation {
   GoogleCloudVisionV1p3beta1SafeSearchAnnotation();
 
   GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("adult")) {
-      adult = _json["adult"];
+    if (_json.containsKey('adult')) {
+      adult = _json['adult'];
     }
-    if (_json.containsKey("medical")) {
-      medical = _json["medical"];
+    if (_json.containsKey('medical')) {
+      medical = _json['medical'];
     }
-    if (_json.containsKey("racy")) {
-      racy = _json["racy"];
+    if (_json.containsKey('racy')) {
+      racy = _json['racy'];
     }
-    if (_json.containsKey("spoof")) {
-      spoof = _json["spoof"];
+    if (_json.containsKey('spoof')) {
+      spoof = _json['spoof'];
     }
-    if (_json.containsKey("violence")) {
-      violence = _json["violence"];
+    if (_json.containsKey('violence')) {
+      violence = _json['violence'];
     }
   }
 
@@ -11441,19 +11440,19 @@ class GoogleCloudVisionV1p3beta1SafeSearchAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adult != null) {
-      _json["adult"] = adult;
+      _json['adult'] = adult;
     }
     if (medical != null) {
-      _json["medical"] = medical;
+      _json['medical'] = medical;
     }
     if (racy != null) {
-      _json["racy"] = racy;
+      _json['racy'] = racy;
     }
     if (spoof != null) {
-      _json["spoof"] = spoof;
+      _json['spoof'] = spoof;
     }
     if (violence != null) {
-      _json["violence"] = violence;
+      _json['violence'] = violence;
     }
     return _json;
   }
@@ -11483,19 +11482,19 @@ class GoogleCloudVisionV1p3beta1Symbol {
   GoogleCloudVisionV1p3beta1Symbol();
 
   GoogleCloudVisionV1p3beta1Symbol.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -11503,16 +11502,16 @@ class GoogleCloudVisionV1p3beta1Symbol {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -11535,14 +11534,14 @@ class GoogleCloudVisionV1p3beta1TextAnnotation {
   GoogleCloudVisionV1p3beta1TextAnnotation();
 
   GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("pages")) {
-      pages = (_json["pages"] as core.List)
+    if (_json.containsKey('pages')) {
+      pages = (_json['pages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1Page>(
               (value) => GoogleCloudVisionV1p3beta1Page.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -11550,10 +11549,10 @@ class GoogleCloudVisionV1p3beta1TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => value.toJson()).toList();
+      _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -11579,11 +11578,11 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak {
 
   GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak.fromJson(
       core.Map _json) {
-    if (_json.containsKey("isPrefix")) {
-      isPrefix = _json["isPrefix"];
+    if (_json.containsKey('isPrefix')) {
+      isPrefix = _json['isPrefix'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -11591,10 +11590,10 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (isPrefix != null) {
-      _json["isPrefix"] = isPrefix;
+      _json['isPrefix'] = isPrefix;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -11614,11 +11613,11 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage {
 
   GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -11626,10 +11625,10 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -11648,13 +11647,13 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
 
   GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
       core.Map _json) {
-    if (_json.containsKey("detectedBreak")) {
+    if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak.fromJson(
-              _json["detectedBreak"]);
+              _json['detectedBreak']);
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>(
               (value) =>
                   GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage
@@ -11667,10 +11666,10 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = detectedBreak.toJson();
+      _json['detectedBreak'] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -11689,11 +11688,11 @@ class GoogleCloudVisionV1p3beta1Vertex {
   GoogleCloudVisionV1p3beta1Vertex();
 
   GoogleCloudVisionV1p3beta1Vertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"];
+    if (_json.containsKey('x')) {
+      x = _json['x'];
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"];
+    if (_json.containsKey('y')) {
+      y = _json['y'];
     }
   }
 
@@ -11701,10 +11700,10 @@ class GoogleCloudVisionV1p3beta1Vertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -11740,38 +11739,38 @@ class GoogleCloudVisionV1p3beta1WebDetection {
   GoogleCloudVisionV1p3beta1WebDetection();
 
   GoogleCloudVisionV1p3beta1WebDetection.fromJson(core.Map _json) {
-    if (_json.containsKey("bestGuessLabels")) {
-      bestGuessLabels = (_json["bestGuessLabels"] as core.List)
+    if (_json.containsKey('bestGuessLabels')) {
+      bestGuessLabels = (_json['bestGuessLabels'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebLabel>((value) =>
               GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pagesWithMatchingImages")) {
-      pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
+    if (_json.containsKey('pagesWithMatchingImages')) {
+      pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebPage>((value) =>
               GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("visuallySimilarImages")) {
-      visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
+    if (_json.containsKey('visuallySimilarImages')) {
+      visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webEntities")) {
-      webEntities = (_json["webEntities"] as core.List)
+    if (_json.containsKey('webEntities')) {
+      webEntities = (_json['webEntities'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebEntity>((value) =>
               GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(value))
           .toList();
@@ -11782,27 +11781,27 @@ class GoogleCloudVisionV1p3beta1WebDetection {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bestGuessLabels != null) {
-      _json["bestGuessLabels"] =
+      _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
-      _json["pagesWithMatchingImages"] =
+      _json['pagesWithMatchingImages'] =
           pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
-      _json["visuallySimilarImages"] =
+      _json['visuallySimilarImages'] =
           visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
-      _json["webEntities"] =
+      _json['webEntities'] =
           webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -11824,14 +11823,14 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebEntity {
   GoogleCloudVisionV1p3beta1WebDetectionWebEntity();
 
   GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -11839,13 +11838,13 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebEntity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -11862,11 +11861,11 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebImage {
   GoogleCloudVisionV1p3beta1WebDetectionWebImage();
 
   GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(core.Map _json) {
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -11874,10 +11873,10 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -11896,11 +11895,11 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebLabel {
   GoogleCloudVisionV1p3beta1WebDetectionWebLabel();
 
   GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(core.Map _json) {
-    if (_json.containsKey("label")) {
-      label = _json["label"];
+    if (_json.containsKey('label')) {
+      label = _json['label'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -11908,10 +11907,10 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebLabel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (label != null) {
-      _json["label"] = label;
+      _json['label'] = label;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -11941,26 +11940,26 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
   GoogleCloudVisionV1p3beta1WebDetectionWebPage();
 
   GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(core.Map _json) {
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pageTitle")) {
-      pageTitle = _json["pageTitle"];
+    if (_json.containsKey('pageTitle')) {
+      pageTitle = _json['pageTitle'];
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -11968,21 +11967,21 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
-      _json["pageTitle"] = pageTitle;
+      _json['pageTitle'] = pageTitle;
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -12012,19 +12011,19 @@ class GoogleCloudVisionV1p3beta1Word {
   GoogleCloudVisionV1p3beta1Word();
 
   GoogleCloudVisionV1p3beta1Word.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("symbols")) {
-      symbols = (_json["symbols"] as core.List)
+    if (_json.containsKey('symbols')) {
+      symbols = (_json['symbols'] as core.List)
           .map<GoogleCloudVisionV1p3beta1Symbol>(
               (value) => GoogleCloudVisionV1p3beta1Symbol.fromJson(value))
           .toList();
@@ -12035,16 +12034,16 @@ class GoogleCloudVisionV1p3beta1Word {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
+      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12070,21 +12069,21 @@ class GoogleCloudVisionV1p4beta1AnnotateFileResponse {
   GoogleCloudVisionV1p4beta1AnnotateFileResponse();
 
   GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("inputConfig")) {
+    if (_json.containsKey('inputConfig')) {
       inputConfig =
-          GoogleCloudVisionV1p4beta1InputConfig.fromJson(_json["inputConfig"]);
+          GoogleCloudVisionV1p4beta1InputConfig.fromJson(_json['inputConfig']);
     }
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p4beta1AnnotateImageResponse>((value) =>
               GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("totalPages")) {
-      totalPages = _json["totalPages"];
+    if (_json.containsKey('totalPages')) {
+      totalPages = _json['totalPages'];
     }
   }
 
@@ -12092,16 +12091,16 @@ class GoogleCloudVisionV1p4beta1AnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
-      _json["totalPages"] = totalPages;
+      _json['totalPages'] = totalPages;
     }
     return _json;
   }
@@ -12161,78 +12160,78 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
   GoogleCloudVisionV1p4beta1AnnotateImageResponse();
 
   GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
+    if (_json.containsKey('context')) {
       context = GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(
-          _json["context"]);
+          _json['context']);
     }
-    if (_json.containsKey("cropHintsAnnotation")) {
+    if (_json.containsKey('cropHintsAnnotation')) {
       cropHintsAnnotation =
           GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(
-              _json["cropHintsAnnotation"]);
+              _json['cropHintsAnnotation']);
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("faceAnnotations")) {
-      faceAnnotations = (_json["faceAnnotations"] as core.List)
+    if (_json.containsKey('faceAnnotations')) {
+      faceAnnotations = (_json['faceAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1FaceAnnotation>((value) =>
               GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullTextAnnotation")) {
+    if (_json.containsKey('fullTextAnnotation')) {
       fullTextAnnotation = GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(
-          _json["fullTextAnnotation"]);
+          _json['fullTextAnnotation']);
     }
-    if (_json.containsKey("imagePropertiesAnnotation")) {
+    if (_json.containsKey('imagePropertiesAnnotation')) {
       imagePropertiesAnnotation =
           GoogleCloudVisionV1p4beta1ImageProperties.fromJson(
-              _json["imagePropertiesAnnotation"]);
+              _json['imagePropertiesAnnotation']);
     }
-    if (_json.containsKey("labelAnnotations")) {
-      labelAnnotations = (_json["labelAnnotations"] as core.List)
+    if (_json.containsKey('labelAnnotations')) {
+      labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("landmarkAnnotations")) {
-      landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
+    if (_json.containsKey('landmarkAnnotations')) {
+      landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("localizedObjectAnnotations")) {
-      localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
+    if (_json.containsKey('localizedObjectAnnotations')) {
+      localizedObjectAnnotations = (_json['localizedObjectAnnotations']
               as core.List)
           .map<GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>((value) =>
               GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(
                   value))
           .toList();
     }
-    if (_json.containsKey("logoAnnotations")) {
-      logoAnnotations = (_json["logoAnnotations"] as core.List)
+    if (_json.containsKey('logoAnnotations')) {
+      logoAnnotations = (_json['logoAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("productSearchResults")) {
+    if (_json.containsKey('productSearchResults')) {
       productSearchResults =
           GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(
-              _json["productSearchResults"]);
+              _json['productSearchResults']);
     }
-    if (_json.containsKey("safeSearchAnnotation")) {
+    if (_json.containsKey('safeSearchAnnotation')) {
       safeSearchAnnotation =
           GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(
-              _json["safeSearchAnnotation"]);
+              _json['safeSearchAnnotation']);
     }
-    if (_json.containsKey("textAnnotations")) {
-      textAnnotations = (_json["textAnnotations"] as core.List)
+    if (_json.containsKey('textAnnotations')) {
+      textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
               GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webDetection")) {
+    if (_json.containsKey('webDetection')) {
       webDetection = GoogleCloudVisionV1p4beta1WebDetection.fromJson(
-          _json["webDetection"]);
+          _json['webDetection']);
     }
   }
 
@@ -12240,52 +12239,52 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context.toJson();
+      _json['context'] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
+      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (faceAnnotations != null) {
-      _json["faceAnnotations"] =
+      _json['faceAnnotations'] =
           faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
+      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
+      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
-      _json["labelAnnotations"] =
+      _json['labelAnnotations'] =
           labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
-      _json["landmarkAnnotations"] =
+      _json['landmarkAnnotations'] =
           landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
-      _json["localizedObjectAnnotations"] =
+      _json['localizedObjectAnnotations'] =
           localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
-      _json["logoAnnotations"] =
+      _json['logoAnnotations'] =
           logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = productSearchResults.toJson();
+      _json['productSearchResults'] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
+      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
-      _json["textAnnotations"] =
+      _json['textAnnotations'] =
           textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = webDetection.toJson();
+      _json['webDetection'] = webDetection.toJson();
     }
     return _json;
   }
@@ -12299,9 +12298,9 @@ class GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse {
   GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse();
 
   GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
+    if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
-          _json["outputConfig"]);
+          _json['outputConfig']);
     }
   }
 
@@ -12309,7 +12308,7 @@ class GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -12325,8 +12324,8 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
 
   GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>((value) =>
               GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(
                   value))
@@ -12338,7 +12337,7 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12353,9 +12352,9 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse {
 
   GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("outputConfig")) {
+    if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
-          _json["outputConfig"]);
+          _json['outputConfig']);
     }
   }
 
@@ -12363,7 +12362,7 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = outputConfig.toJson();
+      _json['outputConfig'] = outputConfig.toJson();
     }
     return _json;
   }
@@ -12379,8 +12378,8 @@ class GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
 
   GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse.fromJson(
       core.Map _json) {
-    if (_json.containsKey("responses")) {
-      responses = (_json["responses"] as core.List)
+    if (_json.containsKey('responses')) {
+      responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p4beta1AnnotateFileResponse>((value) =>
               GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(value))
           .toList();
@@ -12391,7 +12390,7 @@ class GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => value.toJson()).toList();
+      _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12425,14 +12424,14 @@ class GoogleCloudVisionV1p4beta1BatchOperationMetadata {
   GoogleCloudVisionV1p4beta1BatchOperationMetadata();
 
   GoogleCloudVisionV1p4beta1BatchOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("submitTime")) {
-      submitTime = _json["submitTime"];
+    if (_json.containsKey('submitTime')) {
+      submitTime = _json['submitTime'];
     }
   }
 
@@ -12440,13 +12439,13 @@ class GoogleCloudVisionV1p4beta1BatchOperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (submitTime != null) {
-      _json["submitTime"] = submitTime;
+      _json['submitTime'] = submitTime;
     }
     return _json;
   }
@@ -12485,25 +12484,25 @@ class GoogleCloudVisionV1p4beta1Block {
   GoogleCloudVisionV1p4beta1Block();
 
   GoogleCloudVisionV1p4beta1Block.fromJson(core.Map _json) {
-    if (_json.containsKey("blockType")) {
-      blockType = _json["blockType"];
+    if (_json.containsKey('blockType')) {
+      blockType = _json['blockType'];
     }
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("paragraphs")) {
-      paragraphs = (_json["paragraphs"] as core.List)
+    if (_json.containsKey('paragraphs')) {
+      paragraphs = (_json['paragraphs'] as core.List)
           .map<GoogleCloudVisionV1p4beta1Paragraph>(
               (value) => GoogleCloudVisionV1p4beta1Paragraph.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
   }
 
@@ -12511,19 +12510,19 @@ class GoogleCloudVisionV1p4beta1Block {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blockType != null) {
-      _json["blockType"] = blockType;
+      _json['blockType'] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
+      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     return _json;
   }
@@ -12540,14 +12539,14 @@ class GoogleCloudVisionV1p4beta1BoundingPoly {
   GoogleCloudVisionV1p4beta1BoundingPoly();
 
   GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(core.Map _json) {
-    if (_json.containsKey("normalizedVertices")) {
-      normalizedVertices = (_json["normalizedVertices"] as core.List)
+    if (_json.containsKey('normalizedVertices')) {
+      normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudVisionV1p4beta1NormalizedVertex>((value) =>
               GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("vertices")) {
-      vertices = (_json["vertices"] as core.List)
+    if (_json.containsKey('vertices')) {
+      vertices = (_json['vertices'] as core.List)
           .map<GoogleCloudVisionV1p4beta1Vertex>(
               (value) => GoogleCloudVisionV1p4beta1Vertex.fromJson(value))
           .toList();
@@ -12558,11 +12557,11 @@ class GoogleCloudVisionV1p4beta1BoundingPoly {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (normalizedVertices != null) {
-      _json["normalizedVertices"] =
+      _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
+      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12583,14 +12582,14 @@ class GoogleCloudVisionV1p4beta1Celebrity {
   GoogleCloudVisionV1p4beta1Celebrity();
 
   GoogleCloudVisionV1p4beta1Celebrity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -12598,13 +12597,13 @@ class GoogleCloudVisionV1p4beta1Celebrity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -12626,14 +12625,14 @@ class GoogleCloudVisionV1p4beta1ColorInfo {
   GoogleCloudVisionV1p4beta1ColorInfo();
 
   GoogleCloudVisionV1p4beta1ColorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("color")) {
-      color = Color.fromJson(_json["color"]);
+    if (_json.containsKey('color')) {
+      color = Color.fromJson(_json['color']);
     }
-    if (_json.containsKey("pixelFraction")) {
-      pixelFraction = _json["pixelFraction"].toDouble();
+    if (_json.containsKey('pixelFraction')) {
+      pixelFraction = _json['pixelFraction'].toDouble();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -12641,13 +12640,13 @@ class GoogleCloudVisionV1p4beta1ColorInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = color.toJson();
+      _json['color'] = color.toJson();
     }
     if (pixelFraction != null) {
-      _json["pixelFraction"] = pixelFraction;
+      _json['pixelFraction'] = pixelFraction;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -12669,15 +12668,15 @@ class GoogleCloudVisionV1p4beta1CropHint {
   GoogleCloudVisionV1p4beta1CropHint();
 
   GoogleCloudVisionV1p4beta1CropHint.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("importanceFraction")) {
-      importanceFraction = _json["importanceFraction"].toDouble();
+    if (_json.containsKey('importanceFraction')) {
+      importanceFraction = _json['importanceFraction'].toDouble();
     }
   }
 
@@ -12685,13 +12684,13 @@ class GoogleCloudVisionV1p4beta1CropHint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (importanceFraction != null) {
-      _json["importanceFraction"] = importanceFraction;
+      _json['importanceFraction'] = importanceFraction;
     }
     return _json;
   }
@@ -12705,8 +12704,8 @@ class GoogleCloudVisionV1p4beta1CropHintsAnnotation {
   GoogleCloudVisionV1p4beta1CropHintsAnnotation();
 
   GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("cropHints")) {
-      cropHints = (_json["cropHints"] as core.List)
+    if (_json.containsKey('cropHints')) {
+      cropHints = (_json['cropHints'] as core.List)
           .map<GoogleCloudVisionV1p4beta1CropHint>(
               (value) => GoogleCloudVisionV1p4beta1CropHint.fromJson(value))
           .toList();
@@ -12717,7 +12716,7 @@ class GoogleCloudVisionV1p4beta1CropHintsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
+      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12731,8 +12730,8 @@ class GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p4beta1DominantColorsAnnotation();
 
   GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("colors")) {
-      colors = (_json["colors"] as core.List)
+    if (_json.containsKey('colors')) {
+      colors = (_json['colors'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ColorInfo>(
               (value) => GoogleCloudVisionV1p4beta1ColorInfo.fromJson(value))
           .toList();
@@ -12743,7 +12742,7 @@ class GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => value.toJson()).toList();
+      _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12796,39 +12795,39 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
   GoogleCloudVisionV1p4beta1EntityAnnotation();
 
   GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("locale")) {
-      locale = _json["locale"];
+    if (_json.containsKey('locale')) {
+      locale = _json['locale'];
     }
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
+    if (_json.containsKey('locations')) {
+      locations = (_json['locations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1LocationInfo>(
               (value) => GoogleCloudVisionV1p4beta1LocationInfo.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("properties")) {
-      properties = (_json["properties"] as core.List)
+    if (_json.containsKey('properties')) {
+      properties = (_json['properties'] as core.List)
           .map<GoogleCloudVisionV1p4beta1Property>(
               (value) => GoogleCloudVisionV1p4beta1Property.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("topicality")) {
-      topicality = _json["topicality"].toDouble();
+    if (_json.containsKey('topicality')) {
+      topicality = _json['topicality'].toDouble();
     }
   }
 
@@ -12836,31 +12835,31 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (locale != null) {
-      _json["locale"] = locale;
+      _json['locale'] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => value.toJson()).toList();
+      _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (properties != null) {
-      _json["properties"] = properties.map((value) => value.toJson()).toList();
+      _json['properties'] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (topicality != null) {
-      _json["topicality"] = topicality;
+      _json['topicality'] = topicality;
     }
     return _json;
   }
@@ -12986,61 +12985,61 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
   GoogleCloudVisionV1p4beta1FaceAnnotation();
 
   GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("angerLikelihood")) {
-      angerLikelihood = _json["angerLikelihood"];
+    if (_json.containsKey('angerLikelihood')) {
+      angerLikelihood = _json['angerLikelihood'];
     }
-    if (_json.containsKey("blurredLikelihood")) {
-      blurredLikelihood = _json["blurredLikelihood"];
+    if (_json.containsKey('blurredLikelihood')) {
+      blurredLikelihood = _json['blurredLikelihood'];
     }
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("detectionConfidence")) {
-      detectionConfidence = _json["detectionConfidence"].toDouble();
+    if (_json.containsKey('detectionConfidence')) {
+      detectionConfidence = _json['detectionConfidence'].toDouble();
     }
-    if (_json.containsKey("fdBoundingPoly")) {
+    if (_json.containsKey('fdBoundingPoly')) {
       fdBoundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["fdBoundingPoly"]);
+          _json['fdBoundingPoly']);
     }
-    if (_json.containsKey("headwearLikelihood")) {
-      headwearLikelihood = _json["headwearLikelihood"];
+    if (_json.containsKey('headwearLikelihood')) {
+      headwearLikelihood = _json['headwearLikelihood'];
     }
-    if (_json.containsKey("joyLikelihood")) {
-      joyLikelihood = _json["joyLikelihood"];
+    if (_json.containsKey('joyLikelihood')) {
+      joyLikelihood = _json['joyLikelihood'];
     }
-    if (_json.containsKey("landmarkingConfidence")) {
-      landmarkingConfidence = _json["landmarkingConfidence"].toDouble();
+    if (_json.containsKey('landmarkingConfidence')) {
+      landmarkingConfidence = _json['landmarkingConfidence'].toDouble();
     }
-    if (_json.containsKey("landmarks")) {
-      landmarks = (_json["landmarks"] as core.List)
+    if (_json.containsKey('landmarks')) {
+      landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>((value) =>
               GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("panAngle")) {
-      panAngle = _json["panAngle"].toDouble();
+    if (_json.containsKey('panAngle')) {
+      panAngle = _json['panAngle'].toDouble();
     }
-    if (_json.containsKey("recognitionResult")) {
-      recognitionResult = (_json["recognitionResult"] as core.List)
+    if (_json.containsKey('recognitionResult')) {
+      recognitionResult = (_json['recognitionResult'] as core.List)
           .map<GoogleCloudVisionV1p4beta1FaceRecognitionResult>((value) =>
               GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("rollAngle")) {
-      rollAngle = _json["rollAngle"].toDouble();
+    if (_json.containsKey('rollAngle')) {
+      rollAngle = _json['rollAngle'].toDouble();
     }
-    if (_json.containsKey("sorrowLikelihood")) {
-      sorrowLikelihood = _json["sorrowLikelihood"];
+    if (_json.containsKey('sorrowLikelihood')) {
+      sorrowLikelihood = _json['sorrowLikelihood'];
     }
-    if (_json.containsKey("surpriseLikelihood")) {
-      surpriseLikelihood = _json["surpriseLikelihood"];
+    if (_json.containsKey('surpriseLikelihood')) {
+      surpriseLikelihood = _json['surpriseLikelihood'];
     }
-    if (_json.containsKey("tiltAngle")) {
-      tiltAngle = _json["tiltAngle"].toDouble();
+    if (_json.containsKey('tiltAngle')) {
+      tiltAngle = _json['tiltAngle'].toDouble();
     }
-    if (_json.containsKey("underExposedLikelihood")) {
-      underExposedLikelihood = _json["underExposedLikelihood"];
+    if (_json.containsKey('underExposedLikelihood')) {
+      underExposedLikelihood = _json['underExposedLikelihood'];
     }
   }
 
@@ -13048,53 +13047,53 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (angerLikelihood != null) {
-      _json["angerLikelihood"] = angerLikelihood;
+      _json['angerLikelihood'] = angerLikelihood;
     }
     if (blurredLikelihood != null) {
-      _json["blurredLikelihood"] = blurredLikelihood;
+      _json['blurredLikelihood'] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
-      _json["detectionConfidence"] = detectionConfidence;
+      _json['detectionConfidence'] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
+      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
-      _json["headwearLikelihood"] = headwearLikelihood;
+      _json['headwearLikelihood'] = headwearLikelihood;
     }
     if (joyLikelihood != null) {
-      _json["joyLikelihood"] = joyLikelihood;
+      _json['joyLikelihood'] = joyLikelihood;
     }
     if (landmarkingConfidence != null) {
-      _json["landmarkingConfidence"] = landmarkingConfidence;
+      _json['landmarkingConfidence'] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
+      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
-      _json["panAngle"] = panAngle;
+      _json['panAngle'] = panAngle;
     }
     if (recognitionResult != null) {
-      _json["recognitionResult"] =
+      _json['recognitionResult'] =
           recognitionResult.map((value) => value.toJson()).toList();
     }
     if (rollAngle != null) {
-      _json["rollAngle"] = rollAngle;
+      _json['rollAngle'] = rollAngle;
     }
     if (sorrowLikelihood != null) {
-      _json["sorrowLikelihood"] = sorrowLikelihood;
+      _json['sorrowLikelihood'] = sorrowLikelihood;
     }
     if (surpriseLikelihood != null) {
-      _json["surpriseLikelihood"] = surpriseLikelihood;
+      _json['surpriseLikelihood'] = surpriseLikelihood;
     }
     if (tiltAngle != null) {
-      _json["tiltAngle"] = tiltAngle;
+      _json['tiltAngle'] = tiltAngle;
     }
     if (underExposedLikelihood != null) {
-      _json["underExposedLikelihood"] = underExposedLikelihood;
+      _json['underExposedLikelihood'] = underExposedLikelihood;
     }
     return _json;
   }
@@ -13150,11 +13149,11 @@ class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark {
   GoogleCloudVisionV1p4beta1FaceAnnotationLandmark();
 
   GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
-    if (_json.containsKey("position")) {
-      position = GoogleCloudVisionV1p4beta1Position.fromJson(_json["position"]);
+    if (_json.containsKey('position')) {
+      position = GoogleCloudVisionV1p4beta1Position.fromJson(_json['position']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -13162,10 +13161,10 @@ class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = position.toJson();
+      _json['position'] = position.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -13182,12 +13181,12 @@ class GoogleCloudVisionV1p4beta1FaceRecognitionResult {
   GoogleCloudVisionV1p4beta1FaceRecognitionResult();
 
   GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(core.Map _json) {
-    if (_json.containsKey("celebrity")) {
+    if (_json.containsKey('celebrity')) {
       celebrity =
-          GoogleCloudVisionV1p4beta1Celebrity.fromJson(_json["celebrity"]);
+          GoogleCloudVisionV1p4beta1Celebrity.fromJson(_json['celebrity']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
   }
 
@@ -13195,10 +13194,10 @@ class GoogleCloudVisionV1p4beta1FaceRecognitionResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (celebrity != null) {
-      _json["celebrity"] = celebrity.toJson();
+      _json['celebrity'] = celebrity.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     return _json;
   }
@@ -13226,8 +13225,8 @@ class GoogleCloudVisionV1p4beta1GcsDestination {
   GoogleCloudVisionV1p4beta1GcsDestination();
 
   GoogleCloudVisionV1p4beta1GcsDestination.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -13235,7 +13234,7 @@ class GoogleCloudVisionV1p4beta1GcsDestination {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -13250,8 +13249,8 @@ class GoogleCloudVisionV1p4beta1GcsSource {
   GoogleCloudVisionV1p4beta1GcsSource();
 
   GoogleCloudVisionV1p4beta1GcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -13259,7 +13258,7 @@ class GoogleCloudVisionV1p4beta1GcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -13278,11 +13277,11 @@ class GoogleCloudVisionV1p4beta1ImageAnnotationContext {
   GoogleCloudVisionV1p4beta1ImageAnnotationContext();
 
   GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(core.Map _json) {
-    if (_json.containsKey("pageNumber")) {
-      pageNumber = _json["pageNumber"];
+    if (_json.containsKey('pageNumber')) {
+      pageNumber = _json['pageNumber'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -13290,10 +13289,10 @@ class GoogleCloudVisionV1p4beta1ImageAnnotationContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageNumber != null) {
-      _json["pageNumber"] = pageNumber;
+      _json['pageNumber'] = pageNumber;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -13307,10 +13306,10 @@ class GoogleCloudVisionV1p4beta1ImageProperties {
   GoogleCloudVisionV1p4beta1ImageProperties();
 
   GoogleCloudVisionV1p4beta1ImageProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("dominantColors")) {
+    if (_json.containsKey('dominantColors')) {
       dominantColors =
           GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(
-              _json["dominantColors"]);
+              _json['dominantColors']);
     }
   }
 
@@ -13318,7 +13317,7 @@ class GoogleCloudVisionV1p4beta1ImageProperties {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = dominantColors.toJson();
+      _json['dominantColors'] = dominantColors.toJson();
     }
     return _json;
   }
@@ -13340,14 +13339,14 @@ class GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
   GoogleCloudVisionV1p4beta1ImportProductSetsResponse();
 
   GoogleCloudVisionV1p4beta1ImportProductSetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("referenceImages")) {
-      referenceImages = (_json["referenceImages"] as core.List)
+    if (_json.containsKey('referenceImages')) {
+      referenceImages = (_json['referenceImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ReferenceImage>((value) =>
               GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("statuses")) {
-      statuses = (_json["statuses"] as core.List)
+    if (_json.containsKey('statuses')) {
+      statuses = (_json['statuses'] as core.List)
           .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
@@ -13357,11 +13356,11 @@ class GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (referenceImages != null) {
-      _json["referenceImages"] =
+      _json['referenceImages'] =
           referenceImages.map((value) => value.toJson()).toList();
     }
     if (statuses != null) {
-      _json["statuses"] = statuses.map((value) => value.toJson()).toList();
+      _json['statuses'] = statuses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13379,7 +13378,7 @@ class GoogleCloudVisionV1p4beta1InputConfig {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The Google Cloud Storage location to read the input from.
@@ -13392,15 +13391,15 @@ class GoogleCloudVisionV1p4beta1InputConfig {
   GoogleCloudVisionV1p4beta1InputConfig();
 
   GoogleCloudVisionV1p4beta1InputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("gcsSource")) {
+    if (_json.containsKey('gcsSource')) {
       gcsSource =
-          GoogleCloudVisionV1p4beta1GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudVisionV1p4beta1GcsSource.fromJson(_json['gcsSource']);
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
   }
 
@@ -13408,13 +13407,13 @@ class GoogleCloudVisionV1p4beta1InputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     return _json;
   }
@@ -13442,21 +13441,21 @@ class GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
   GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation();
 
   GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -13464,19 +13463,19 @@ class GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -13490,8 +13489,8 @@ class GoogleCloudVisionV1p4beta1LocationInfo {
   GoogleCloudVisionV1p4beta1LocationInfo();
 
   GoogleCloudVisionV1p4beta1LocationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("latLng")) {
-      latLng = LatLng.fromJson(_json["latLng"]);
+    if (_json.containsKey('latLng')) {
+      latLng = LatLng.fromJson(_json['latLng']);
     }
   }
 
@@ -13499,7 +13498,7 @@ class GoogleCloudVisionV1p4beta1LocationInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = latLng.toJson();
+      _json['latLng'] = latLng.toJson();
     }
     return _json;
   }
@@ -13517,11 +13516,11 @@ class GoogleCloudVisionV1p4beta1NormalizedVertex {
   GoogleCloudVisionV1p4beta1NormalizedVertex();
 
   GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -13529,10 +13528,10 @@ class GoogleCloudVisionV1p4beta1NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -13558,14 +13557,14 @@ class GoogleCloudVisionV1p4beta1OperationMetadata {
   GoogleCloudVisionV1p4beta1OperationMetadata();
 
   GoogleCloudVisionV1p4beta1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -13573,13 +13572,13 @@ class GoogleCloudVisionV1p4beta1OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -13603,12 +13602,12 @@ class GoogleCloudVisionV1p4beta1OutputConfig {
   GoogleCloudVisionV1p4beta1OutputConfig();
 
   GoogleCloudVisionV1p4beta1OutputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("batchSize")) {
-      batchSize = _json["batchSize"];
+    if (_json.containsKey('batchSize')) {
+      batchSize = _json['batchSize'];
     }
-    if (_json.containsKey("gcsDestination")) {
+    if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudVisionV1p4beta1GcsDestination.fromJson(
-          _json["gcsDestination"]);
+          _json['gcsDestination']);
     }
   }
 
@@ -13616,10 +13615,10 @@ class GoogleCloudVisionV1p4beta1OutputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batchSize != null) {
-      _json["batchSize"] = batchSize;
+      _json['batchSize'] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -13647,24 +13646,24 @@ class GoogleCloudVisionV1p4beta1Page {
   GoogleCloudVisionV1p4beta1Page();
 
   GoogleCloudVisionV1p4beta1Page.fromJson(core.Map _json) {
-    if (_json.containsKey("blocks")) {
-      blocks = (_json["blocks"] as core.List)
+    if (_json.containsKey('blocks')) {
+      blocks = (_json['blocks'] as core.List)
           .map<GoogleCloudVisionV1p4beta1Block>(
               (value) => GoogleCloudVisionV1p4beta1Block.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -13672,19 +13671,19 @@ class GoogleCloudVisionV1p4beta1Page {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
+      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -13714,19 +13713,19 @@ class GoogleCloudVisionV1p4beta1Paragraph {
   GoogleCloudVisionV1p4beta1Paragraph();
 
   GoogleCloudVisionV1p4beta1Paragraph.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<GoogleCloudVisionV1p4beta1Word>(
               (value) => GoogleCloudVisionV1p4beta1Word.fromJson(value))
           .toList();
@@ -13737,16 +13736,16 @@ class GoogleCloudVisionV1p4beta1Paragraph {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13768,14 +13767,14 @@ class GoogleCloudVisionV1p4beta1Position {
   GoogleCloudVisionV1p4beta1Position();
 
   GoogleCloudVisionV1p4beta1Position.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
-    if (_json.containsKey("z")) {
-      z = _json["z"].toDouble();
+    if (_json.containsKey('z')) {
+      z = _json['z'].toDouble();
     }
   }
 
@@ -13783,13 +13782,13 @@ class GoogleCloudVisionV1p4beta1Position {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     if (z != null) {
-      _json["z"] = z;
+      _json['z'] = z;
     }
     return _json;
   }
@@ -13831,20 +13830,20 @@ class GoogleCloudVisionV1p4beta1Product {
   GoogleCloudVisionV1p4beta1Product();
 
   GoogleCloudVisionV1p4beta1Product.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("productCategory")) {
-      productCategory = _json["productCategory"];
+    if (_json.containsKey('productCategory')) {
+      productCategory = _json['productCategory'];
     }
-    if (_json.containsKey("productLabels")) {
-      productLabels = (_json["productLabels"] as core.List)
+    if (_json.containsKey('productLabels')) {
+      productLabels = (_json['productLabels'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductKeyValue>((value) =>
               GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(value))
           .toList();
@@ -13855,19 +13854,19 @@ class GoogleCloudVisionV1p4beta1Product {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (productCategory != null) {
-      _json["productCategory"] = productCategory;
+      _json['productCategory'] = productCategory;
     }
     if (productLabels != null) {
-      _json["productLabels"] =
+      _json['productLabels'] =
           productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -13887,11 +13886,11 @@ class GoogleCloudVisionV1p4beta1ProductKeyValue {
   GoogleCloudVisionV1p4beta1ProductKeyValue();
 
   GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -13899,10 +13898,10 @@ class GoogleCloudVisionV1p4beta1ProductKeyValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -13928,19 +13927,19 @@ class GoogleCloudVisionV1p4beta1ProductSearchResults {
   GoogleCloudVisionV1p4beta1ProductSearchResults();
 
   GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(core.Map _json) {
-    if (_json.containsKey("indexTime")) {
-      indexTime = _json["indexTime"];
+    if (_json.containsKey('indexTime')) {
+      indexTime = _json['indexTime'];
     }
-    if (_json.containsKey("productGroupedResults")) {
-      productGroupedResults = (_json["productGroupedResults"] as core.List)
+    if (_json.containsKey('productGroupedResults')) {
+      productGroupedResults = (_json['productGroupedResults'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>(
               (value) =>
                   GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
                   value))
@@ -13952,14 +13951,14 @@ class GoogleCloudVisionV1p4beta1ProductSearchResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indexTime != null) {
-      _json["indexTime"] = indexTime;
+      _json['indexTime'] = indexTime;
     }
     if (productGroupedResults != null) {
-      _json["productGroupedResults"] =
+      _json['productGroupedResults'] =
           productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13981,20 +13980,20 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
 
   GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult.fromJson(
       core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
+    if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["boundingPoly"]);
+          _json['boundingPoly']);
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
                   GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
                   value))
@@ -14006,14 +14005,14 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14039,17 +14038,17 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation {
 
   GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation.fromJson(
       core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -14057,16 +14056,16 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -14089,14 +14088,14 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsResult {
 
   GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
       core.Map _json) {
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("product")) {
-      product = GoogleCloudVisionV1p4beta1Product.fromJson(_json["product"]);
+    if (_json.containsKey('product')) {
+      product = GoogleCloudVisionV1p4beta1Product.fromJson(_json['product']);
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -14104,13 +14103,13 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (product != null) {
-      _json["product"] = product.toJson();
+      _json['product'] = product.toJson();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -14130,14 +14129,14 @@ class GoogleCloudVisionV1p4beta1Property {
   GoogleCloudVisionV1p4beta1Property();
 
   GoogleCloudVisionV1p4beta1Property.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("uint64Value")) {
-      uint64Value = _json["uint64Value"];
+    if (_json.containsKey('uint64Value')) {
+      uint64Value = _json['uint64Value'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -14145,13 +14144,13 @@ class GoogleCloudVisionV1p4beta1Property {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (uint64Value != null) {
-      _json["uint64Value"] = uint64Value;
+      _json['uint64Value'] = uint64Value;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -14180,17 +14179,17 @@ class GoogleCloudVisionV1p4beta1ReferenceImage {
   GoogleCloudVisionV1p4beta1ReferenceImage();
 
   GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPolys")) {
-      boundingPolys = (_json["boundingPolys"] as core.List)
+    if (_json.containsKey('boundingPolys')) {
+      boundingPolys = (_json['boundingPolys'] as core.List)
           .map<GoogleCloudVisionV1p4beta1BoundingPoly>(
               (value) => GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -14198,14 +14197,14 @@ class GoogleCloudVisionV1p4beta1ReferenceImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPolys != null) {
-      _json["boundingPolys"] =
+      _json['boundingPolys'] =
           boundingPolys.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -14273,20 +14272,20 @@ class GoogleCloudVisionV1p4beta1SafeSearchAnnotation {
   GoogleCloudVisionV1p4beta1SafeSearchAnnotation();
 
   GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("adult")) {
-      adult = _json["adult"];
+    if (_json.containsKey('adult')) {
+      adult = _json['adult'];
     }
-    if (_json.containsKey("medical")) {
-      medical = _json["medical"];
+    if (_json.containsKey('medical')) {
+      medical = _json['medical'];
     }
-    if (_json.containsKey("racy")) {
-      racy = _json["racy"];
+    if (_json.containsKey('racy')) {
+      racy = _json['racy'];
     }
-    if (_json.containsKey("spoof")) {
-      spoof = _json["spoof"];
+    if (_json.containsKey('spoof')) {
+      spoof = _json['spoof'];
     }
-    if (_json.containsKey("violence")) {
-      violence = _json["violence"];
+    if (_json.containsKey('violence')) {
+      violence = _json['violence'];
     }
   }
 
@@ -14294,19 +14293,19 @@ class GoogleCloudVisionV1p4beta1SafeSearchAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adult != null) {
-      _json["adult"] = adult;
+      _json['adult'] = adult;
     }
     if (medical != null) {
-      _json["medical"] = medical;
+      _json['medical'] = medical;
     }
     if (racy != null) {
-      _json["racy"] = racy;
+      _json['racy'] = racy;
     }
     if (spoof != null) {
-      _json["spoof"] = spoof;
+      _json['spoof'] = spoof;
     }
     if (violence != null) {
-      _json["violence"] = violence;
+      _json['violence'] = violence;
     }
     return _json;
   }
@@ -14336,19 +14335,19 @@ class GoogleCloudVisionV1p4beta1Symbol {
   GoogleCloudVisionV1p4beta1Symbol();
 
   GoogleCloudVisionV1p4beta1Symbol.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -14356,16 +14355,16 @@ class GoogleCloudVisionV1p4beta1Symbol {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -14388,14 +14387,14 @@ class GoogleCloudVisionV1p4beta1TextAnnotation {
   GoogleCloudVisionV1p4beta1TextAnnotation();
 
   GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("pages")) {
-      pages = (_json["pages"] as core.List)
+    if (_json.containsKey('pages')) {
+      pages = (_json['pages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1Page>(
               (value) => GoogleCloudVisionV1p4beta1Page.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -14403,10 +14402,10 @@ class GoogleCloudVisionV1p4beta1TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => value.toJson()).toList();
+      _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -14432,11 +14431,11 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak {
 
   GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak.fromJson(
       core.Map _json) {
-    if (_json.containsKey("isPrefix")) {
-      isPrefix = _json["isPrefix"];
+    if (_json.containsKey('isPrefix')) {
+      isPrefix = _json['isPrefix'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -14444,10 +14443,10 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (isPrefix != null) {
-      _json["isPrefix"] = isPrefix;
+      _json['isPrefix'] = isPrefix;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -14467,11 +14466,11 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage {
 
   GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage.fromJson(
       core.Map _json) {
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -14479,10 +14478,10 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -14501,13 +14500,13 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
 
   GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
       core.Map _json) {
-    if (_json.containsKey("detectedBreak")) {
+    if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak.fromJson(
-              _json["detectedBreak"]);
+              _json['detectedBreak']);
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>(
               (value) =>
                   GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage
@@ -14520,10 +14519,10 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = detectedBreak.toJson();
+      _json['detectedBreak'] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -14542,11 +14541,11 @@ class GoogleCloudVisionV1p4beta1Vertex {
   GoogleCloudVisionV1p4beta1Vertex();
 
   GoogleCloudVisionV1p4beta1Vertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"];
+    if (_json.containsKey('x')) {
+      x = _json['x'];
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"];
+    if (_json.containsKey('y')) {
+      y = _json['y'];
     }
   }
 
@@ -14554,10 +14553,10 @@ class GoogleCloudVisionV1p4beta1Vertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -14593,38 +14592,38 @@ class GoogleCloudVisionV1p4beta1WebDetection {
   GoogleCloudVisionV1p4beta1WebDetection();
 
   GoogleCloudVisionV1p4beta1WebDetection.fromJson(core.Map _json) {
-    if (_json.containsKey("bestGuessLabels")) {
-      bestGuessLabels = (_json["bestGuessLabels"] as core.List)
+    if (_json.containsKey('bestGuessLabels')) {
+      bestGuessLabels = (_json['bestGuessLabels'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebLabel>((value) =>
               GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pagesWithMatchingImages")) {
-      pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
+    if (_json.containsKey('pagesWithMatchingImages')) {
+      pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebPage>((value) =>
               GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("visuallySimilarImages")) {
-      visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
+    if (_json.containsKey('visuallySimilarImages')) {
+      visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webEntities")) {
-      webEntities = (_json["webEntities"] as core.List)
+    if (_json.containsKey('webEntities')) {
+      webEntities = (_json['webEntities'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebEntity>((value) =>
               GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(value))
           .toList();
@@ -14635,27 +14634,27 @@ class GoogleCloudVisionV1p4beta1WebDetection {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bestGuessLabels != null) {
-      _json["bestGuessLabels"] =
+      _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
-      _json["pagesWithMatchingImages"] =
+      _json['pagesWithMatchingImages'] =
           pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
-      _json["visuallySimilarImages"] =
+      _json['visuallySimilarImages'] =
           visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
-      _json["webEntities"] =
+      _json['webEntities'] =
           webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -14677,14 +14676,14 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebEntity {
   GoogleCloudVisionV1p4beta1WebDetectionWebEntity();
 
   GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -14692,13 +14691,13 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebEntity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -14715,11 +14714,11 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebImage {
   GoogleCloudVisionV1p4beta1WebDetectionWebImage();
 
   GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(core.Map _json) {
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -14727,10 +14726,10 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -14749,11 +14748,11 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebLabel {
   GoogleCloudVisionV1p4beta1WebDetectionWebLabel();
 
   GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(core.Map _json) {
-    if (_json.containsKey("label")) {
-      label = _json["label"];
+    if (_json.containsKey('label')) {
+      label = _json['label'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -14761,10 +14760,10 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebLabel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (label != null) {
-      _json["label"] = label;
+      _json['label'] = label;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -14794,26 +14793,26 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
   GoogleCloudVisionV1p4beta1WebDetectionWebPage();
 
   GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(core.Map _json) {
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pageTitle")) {
-      pageTitle = _json["pageTitle"];
+    if (_json.containsKey('pageTitle')) {
+      pageTitle = _json['pageTitle'];
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
               GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -14821,21 +14820,21 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
-      _json["pageTitle"] = pageTitle;
+      _json['pageTitle'] = pageTitle;
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -14865,19 +14864,19 @@ class GoogleCloudVisionV1p4beta1Word {
   GoogleCloudVisionV1p4beta1Word();
 
   GoogleCloudVisionV1p4beta1Word.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
+    if (_json.containsKey('boundingBox')) {
       boundingBox =
-          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json["boundingBox"]);
+          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
+    if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json["property"]);
+          _json['property']);
     }
-    if (_json.containsKey("symbols")) {
-      symbols = (_json["symbols"] as core.List)
+    if (_json.containsKey('symbols')) {
+      symbols = (_json['symbols'] as core.List)
           .map<GoogleCloudVisionV1p4beta1Symbol>(
               (value) => GoogleCloudVisionV1p4beta1Symbol.fromJson(value))
           .toList();
@@ -14888,16 +14887,16 @@ class GoogleCloudVisionV1p4beta1Word {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
+      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14917,16 +14916,16 @@ class GroupedResult {
   GroupedResult();
 
   GroupedResult.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
-      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
+    if (_json.containsKey('boundingPoly')) {
+      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
     }
-    if (_json.containsKey("objectAnnotations")) {
-      objectAnnotations = (_json["objectAnnotations"] as core.List)
+    if (_json.containsKey('objectAnnotations')) {
+      objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<ObjectAnnotation>((value) => ObjectAnnotation.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<Result>((value) => Result.fromJson(value))
           .toList();
     }
@@ -14936,14 +14935,14 @@ class GroupedResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
-      _json["objectAnnotations"] =
+      _json['objectAnnotations'] =
           objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14961,7 +14960,7 @@ class Image {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Google Cloud Storage image location, or publicly-accessible image URL. If
@@ -14972,11 +14971,11 @@ class Image {
   Image();
 
   Image.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("source")) {
-      source = ImageSource.fromJson(_json["source"]);
+    if (_json.containsKey('source')) {
+      source = ImageSource.fromJson(_json['source']);
     }
   }
 
@@ -14984,10 +14983,10 @@ class Image {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (source != null) {
-      _json["source"] = source.toJson();
+      _json['source'] = source.toJson();
     }
     return _json;
   }
@@ -15006,11 +15005,11 @@ class ImageAnnotationContext {
   ImageAnnotationContext();
 
   ImageAnnotationContext.fromJson(core.Map _json) {
-    if (_json.containsKey("pageNumber")) {
-      pageNumber = _json["pageNumber"];
+    if (_json.containsKey('pageNumber')) {
+      pageNumber = _json['pageNumber'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -15018,10 +15017,10 @@ class ImageAnnotationContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pageNumber != null) {
-      _json["pageNumber"] = pageNumber;
+      _json['pageNumber'] = pageNumber;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -15054,22 +15053,22 @@ class ImageContext {
   ImageContext();
 
   ImageContext.fromJson(core.Map _json) {
-    if (_json.containsKey("cropHintsParams")) {
-      cropHintsParams = CropHintsParams.fromJson(_json["cropHintsParams"]);
+    if (_json.containsKey('cropHintsParams')) {
+      cropHintsParams = CropHintsParams.fromJson(_json['cropHintsParams']);
     }
-    if (_json.containsKey("languageHints")) {
-      languageHints = (_json["languageHints"] as core.List).cast<core.String>();
+    if (_json.containsKey('languageHints')) {
+      languageHints = (_json['languageHints'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("latLongRect")) {
-      latLongRect = LatLongRect.fromJson(_json["latLongRect"]);
+    if (_json.containsKey('latLongRect')) {
+      latLongRect = LatLongRect.fromJson(_json['latLongRect']);
     }
-    if (_json.containsKey("productSearchParams")) {
+    if (_json.containsKey('productSearchParams')) {
       productSearchParams =
-          ProductSearchParams.fromJson(_json["productSearchParams"]);
+          ProductSearchParams.fromJson(_json['productSearchParams']);
     }
-    if (_json.containsKey("webDetectionParams")) {
+    if (_json.containsKey('webDetectionParams')) {
       webDetectionParams =
-          WebDetectionParams.fromJson(_json["webDetectionParams"]);
+          WebDetectionParams.fromJson(_json['webDetectionParams']);
     }
   }
 
@@ -15077,19 +15076,19 @@ class ImageContext {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cropHintsParams != null) {
-      _json["cropHintsParams"] = cropHintsParams.toJson();
+      _json['cropHintsParams'] = cropHintsParams.toJson();
     }
     if (languageHints != null) {
-      _json["languageHints"] = languageHints;
+      _json['languageHints'] = languageHints;
     }
     if (latLongRect != null) {
-      _json["latLongRect"] = latLongRect.toJson();
+      _json['latLongRect'] = latLongRect.toJson();
     }
     if (productSearchParams != null) {
-      _json["productSearchParams"] = productSearchParams.toJson();
+      _json['productSearchParams'] = productSearchParams.toJson();
     }
     if (webDetectionParams != null) {
-      _json["webDetectionParams"] = webDetectionParams.toJson();
+      _json['webDetectionParams'] = webDetectionParams.toJson();
     }
     return _json;
   }
@@ -15103,9 +15102,9 @@ class ImageProperties {
   ImageProperties();
 
   ImageProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("dominantColors")) {
+    if (_json.containsKey('dominantColors')) {
       dominantColors =
-          DominantColorsAnnotation.fromJson(_json["dominantColors"]);
+          DominantColorsAnnotation.fromJson(_json['dominantColors']);
     }
   }
 
@@ -15113,7 +15112,7 @@ class ImageProperties {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = dominantColors.toJson();
+      _json['dominantColors'] = dominantColors.toJson();
     }
     return _json;
   }
@@ -15144,11 +15143,11 @@ class ImageSource {
   ImageSource();
 
   ImageSource.fromJson(core.Map _json) {
-    if (_json.containsKey("gcsImageUri")) {
-      gcsImageUri = _json["gcsImageUri"];
+    if (_json.containsKey('gcsImageUri')) {
+      gcsImageUri = _json['gcsImageUri'];
     }
-    if (_json.containsKey("imageUri")) {
-      imageUri = _json["imageUri"];
+    if (_json.containsKey('imageUri')) {
+      imageUri = _json['imageUri'];
     }
   }
 
@@ -15156,10 +15155,10 @@ class ImageSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcsImageUri != null) {
-      _json["gcsImageUri"] = gcsImageUri;
+      _json['gcsImageUri'] = gcsImageUri;
     }
     if (imageUri != null) {
-      _json["imageUri"] = imageUri;
+      _json['imageUri'] = imageUri;
     }
     return _json;
   }
@@ -15206,8 +15205,8 @@ class ImportProductSetsGcsSource {
   ImportProductSetsGcsSource();
 
   ImportProductSetsGcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey("csvFileUri")) {
-      csvFileUri = _json["csvFileUri"];
+    if (_json.containsKey('csvFileUri')) {
+      csvFileUri = _json['csvFileUri'];
     }
   }
 
@@ -15215,7 +15214,7 @@ class ImportProductSetsGcsSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (csvFileUri != null) {
-      _json["csvFileUri"] = csvFileUri;
+      _json['csvFileUri'] = csvFileUri;
     }
     return _json;
   }
@@ -15230,8 +15229,8 @@ class ImportProductSetsInputConfig {
   ImportProductSetsInputConfig();
 
   ImportProductSetsInputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("gcsSource")) {
-      gcsSource = ImportProductSetsGcsSource.fromJson(_json["gcsSource"]);
+    if (_json.containsKey('gcsSource')) {
+      gcsSource = ImportProductSetsGcsSource.fromJson(_json['gcsSource']);
     }
   }
 
@@ -15239,7 +15238,7 @@ class ImportProductSetsInputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     return _json;
   }
@@ -15253,8 +15252,8 @@ class ImportProductSetsRequest {
   ImportProductSetsRequest();
 
   ImportProductSetsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("inputConfig")) {
-      inputConfig = ImportProductSetsInputConfig.fromJson(_json["inputConfig"]);
+    if (_json.containsKey('inputConfig')) {
+      inputConfig = ImportProductSetsInputConfig.fromJson(_json['inputConfig']);
     }
   }
 
@@ -15262,7 +15261,7 @@ class ImportProductSetsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (inputConfig != null) {
-      _json["inputConfig"] = inputConfig.toJson();
+      _json['inputConfig'] = inputConfig.toJson();
     }
     return _json;
   }
@@ -15284,13 +15283,13 @@ class ImportProductSetsResponse {
   ImportProductSetsResponse();
 
   ImportProductSetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("referenceImages")) {
-      referenceImages = (_json["referenceImages"] as core.List)
+    if (_json.containsKey('referenceImages')) {
+      referenceImages = (_json['referenceImages'] as core.List)
           .map<ReferenceImage>((value) => ReferenceImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("statuses")) {
-      statuses = (_json["statuses"] as core.List)
+    if (_json.containsKey('statuses')) {
+      statuses = (_json['statuses'] as core.List)
           .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
@@ -15300,11 +15299,11 @@ class ImportProductSetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (referenceImages != null) {
-      _json["referenceImages"] =
+      _json['referenceImages'] =
           referenceImages.map((value) => value.toJson()).toList();
     }
     if (statuses != null) {
-      _json["statuses"] = statuses.map((value) => value.toJson()).toList();
+      _json['statuses'] = statuses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15322,7 +15321,7 @@ class InputConfig {
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The Google Cloud Storage location to read the input from.
@@ -15335,14 +15334,14 @@ class InputConfig {
   InputConfig();
 
   InputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
+    if (_json.containsKey('content')) {
+      content = _json['content'];
     }
-    if (_json.containsKey("gcsSource")) {
-      gcsSource = GcsSource.fromJson(_json["gcsSource"]);
+    if (_json.containsKey('gcsSource')) {
+      gcsSource = GcsSource.fromJson(_json['gcsSource']);
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
   }
 
@@ -15350,13 +15349,13 @@ class InputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = content;
+      _json['content'] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = gcsSource.toJson();
+      _json['gcsSource'] = gcsSource.toJson();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     return _json;
   }
@@ -15375,11 +15374,11 @@ class KeyValue {
   KeyValue();
 
   KeyValue.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -15387,10 +15386,10 @@ class KeyValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -15446,11 +15445,11 @@ class Landmark {
   Landmark();
 
   Landmark.fromJson(core.Map _json) {
-    if (_json.containsKey("position")) {
-      position = Position.fromJson(_json["position"]);
+    if (_json.containsKey('position')) {
+      position = Position.fromJson(_json['position']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -15458,10 +15457,10 @@ class Landmark {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = position.toJson();
+      _json['position'] = position.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -15481,11 +15480,11 @@ class LatLng {
   LatLng();
 
   LatLng.fromJson(core.Map _json) {
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
   }
 
@@ -15493,10 +15492,10 @@ class LatLng {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     return _json;
   }
@@ -15513,11 +15512,11 @@ class LatLongRect {
   LatLongRect();
 
   LatLongRect.fromJson(core.Map _json) {
-    if (_json.containsKey("maxLatLng")) {
-      maxLatLng = LatLng.fromJson(_json["maxLatLng"]);
+    if (_json.containsKey('maxLatLng')) {
+      maxLatLng = LatLng.fromJson(_json['maxLatLng']);
     }
-    if (_json.containsKey("minLatLng")) {
-      minLatLng = LatLng.fromJson(_json["minLatLng"]);
+    if (_json.containsKey('minLatLng')) {
+      minLatLng = LatLng.fromJson(_json['minLatLng']);
     }
   }
 
@@ -15525,10 +15524,10 @@ class LatLongRect {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (maxLatLng != null) {
-      _json["maxLatLng"] = maxLatLng.toJson();
+      _json['maxLatLng'] = maxLatLng.toJson();
     }
     if (minLatLng != null) {
-      _json["minLatLng"] = minLatLng.toJson();
+      _json['minLatLng'] = minLatLng.toJson();
     }
     return _json;
   }
@@ -15545,11 +15544,11 @@ class ListOperationsResponse {
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
           .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
@@ -15559,10 +15558,10 @@ class ListOperationsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => value.toJson()).toList();
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15580,11 +15579,11 @@ class ListProductSetsResponse {
   ListProductSetsResponse();
 
   ListProductSetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("productSets")) {
-      productSets = (_json["productSets"] as core.List)
+    if (_json.containsKey('productSets')) {
+      productSets = (_json['productSets'] as core.List)
           .map<ProductSet>((value) => ProductSet.fromJson(value))
           .toList();
     }
@@ -15594,10 +15593,10 @@ class ListProductSetsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (productSets != null) {
-      _json["productSets"] =
+      _json['productSets'] =
           productSets.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -15616,11 +15615,11 @@ class ListProductsInProductSetResponse {
   ListProductsInProductSetResponse();
 
   ListProductsInProductSetResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("products")) {
-      products = (_json["products"] as core.List)
+    if (_json.containsKey('products')) {
+      products = (_json['products'] as core.List)
           .map<Product>((value) => Product.fromJson(value))
           .toList();
     }
@@ -15630,10 +15629,10 @@ class ListProductsInProductSetResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (products != null) {
-      _json["products"] = products.map((value) => value.toJson()).toList();
+      _json['products'] = products.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15651,11 +15650,11 @@ class ListProductsResponse {
   ListProductsResponse();
 
   ListProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("products")) {
-      products = (_json["products"] as core.List)
+    if (_json.containsKey('products')) {
+      products = (_json['products'] as core.List)
           .map<Product>((value) => Product.fromJson(value))
           .toList();
     }
@@ -15665,10 +15664,10 @@ class ListProductsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (products != null) {
-      _json["products"] = products.map((value) => value.toJson()).toList();
+      _json['products'] = products.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15688,14 +15687,14 @@ class ListReferenceImagesResponse {
   ListReferenceImagesResponse();
 
   ListReferenceImagesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageSize")) {
-      pageSize = _json["pageSize"];
+    if (_json.containsKey('pageSize')) {
+      pageSize = _json['pageSize'];
     }
-    if (_json.containsKey("referenceImages")) {
-      referenceImages = (_json["referenceImages"] as core.List)
+    if (_json.containsKey('referenceImages')) {
+      referenceImages = (_json['referenceImages'] as core.List)
           .map<ReferenceImage>((value) => ReferenceImage.fromJson(value))
           .toList();
     }
@@ -15705,13 +15704,13 @@ class ListReferenceImagesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageSize != null) {
-      _json["pageSize"] = pageSize;
+      _json['pageSize'] = pageSize;
     }
     if (referenceImages != null) {
-      _json["referenceImages"] =
+      _json['referenceImages'] =
           referenceImages.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -15740,20 +15739,20 @@ class LocalizedObjectAnnotation {
   LocalizedObjectAnnotation();
 
   LocalizedObjectAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
-      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
+    if (_json.containsKey('boundingPoly')) {
+      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -15761,19 +15760,19 @@ class LocalizedObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -15787,8 +15786,8 @@ class LocationInfo {
   LocationInfo();
 
   LocationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("latLng")) {
-      latLng = LatLng.fromJson(_json["latLng"]);
+    if (_json.containsKey('latLng')) {
+      latLng = LatLng.fromJson(_json['latLng']);
     }
   }
 
@@ -15796,7 +15795,7 @@ class LocationInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = latLng.toJson();
+      _json['latLng'] = latLng.toJson();
     }
     return _json;
   }
@@ -15814,11 +15813,11 @@ class NormalizedVertex {
   NormalizedVertex();
 
   NormalizedVertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
   }
 
@@ -15826,10 +15825,10 @@ class NormalizedVertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -15854,17 +15853,17 @@ class ObjectAnnotation {
   ObjectAnnotation();
 
   ObjectAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("mid")) {
-      mid = _json["mid"];
+    if (_json.containsKey('mid')) {
+      mid = _json['mid'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -15872,16 +15871,16 @@ class ObjectAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (mid != null) {
-      _json["mid"] = mid;
+      _json['mid'] = mid;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -15927,22 +15926,22 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
+    if (_json.containsKey('done')) {
+      done = _json['done'];
     }
-    if (_json.containsKey("error")) {
-      error = Status.fromJson(_json["error"]);
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(_json['error']);
     }
-    if (_json.containsKey("metadata")) {
+    if (_json.containsKey('metadata')) {
       metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("response")) {
+    if (_json.containsKey('response')) {
       response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
+          (_json['response'] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -15950,19 +15949,19 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (done != null) {
-      _json["done"] = done;
+      _json['done'] = done;
     }
     if (error != null) {
-      _json["error"] = error.toJson();
+      _json['error'] = error.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = metadata;
+      _json['metadata'] = metadata;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (response != null) {
-      _json["response"] = response;
+      _json['response'] = response;
     }
     return _json;
   }
@@ -15988,14 +15987,14 @@ class OperationMetadata {
   OperationMetadata();
 
   OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'];
     }
   }
 
@@ -16003,13 +16002,13 @@ class OperationMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (createTime != null) {
-      _json["createTime"] = createTime;
+      _json['createTime'] = createTime;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -16033,11 +16032,11 @@ class OutputConfig {
   OutputConfig();
 
   OutputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("batchSize")) {
-      batchSize = _json["batchSize"];
+    if (_json.containsKey('batchSize')) {
+      batchSize = _json['batchSize'];
     }
-    if (_json.containsKey("gcsDestination")) {
-      gcsDestination = GcsDestination.fromJson(_json["gcsDestination"]);
+    if (_json.containsKey('gcsDestination')) {
+      gcsDestination = GcsDestination.fromJson(_json['gcsDestination']);
     }
   }
 
@@ -16045,10 +16044,10 @@ class OutputConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (batchSize != null) {
-      _json["batchSize"] = batchSize;
+      _json['batchSize'] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = gcsDestination.toJson();
+      _json['gcsDestination'] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -16076,22 +16075,22 @@ class Page {
   Page();
 
   Page.fromJson(core.Map _json) {
-    if (_json.containsKey("blocks")) {
-      blocks = (_json["blocks"] as core.List)
+    if (_json.containsKey('blocks')) {
+      blocks = (_json['blocks'] as core.List)
           .map<Block>((value) => Block.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("property")) {
-      property = TextProperty.fromJson(_json["property"]);
+    if (_json.containsKey('property')) {
+      property = TextProperty.fromJson(_json['property']);
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -16099,19 +16098,19 @@ class Page {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
+      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -16141,17 +16140,17 @@ class Paragraph {
   Paragraph();
 
   Paragraph.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
-      boundingBox = BoundingPoly.fromJson(_json["boundingBox"]);
+    if (_json.containsKey('boundingBox')) {
+      boundingBox = BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
-      property = TextProperty.fromJson(_json["property"]);
+    if (_json.containsKey('property')) {
+      property = TextProperty.fromJson(_json['property']);
     }
-    if (_json.containsKey("words")) {
-      words = (_json["words"] as core.List)
+    if (_json.containsKey('words')) {
+      words = (_json['words'] as core.List)
           .map<Word>((value) => Word.fromJson(value))
           .toList();
     }
@@ -16161,16 +16160,16 @@ class Paragraph {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => value.toJson()).toList();
+      _json['words'] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16192,14 +16191,14 @@ class Position {
   Position();
 
   Position.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"].toDouble();
+    if (_json.containsKey('x')) {
+      x = _json['x'].toDouble();
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"].toDouble();
+    if (_json.containsKey('y')) {
+      y = _json['y'].toDouble();
     }
-    if (_json.containsKey("z")) {
-      z = _json["z"].toDouble();
+    if (_json.containsKey('z')) {
+      z = _json['z'].toDouble();
     }
   }
 
@@ -16207,13 +16206,13 @@ class Position {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     if (z != null) {
-      _json["z"] = z;
+      _json['z'] = z;
     }
     return _json;
   }
@@ -16255,20 +16254,20 @@ class Product {
   Product();
 
   Product.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("productCategory")) {
-      productCategory = _json["productCategory"];
+    if (_json.containsKey('productCategory')) {
+      productCategory = _json['productCategory'];
     }
-    if (_json.containsKey("productLabels")) {
-      productLabels = (_json["productLabels"] as core.List)
+    if (_json.containsKey('productLabels')) {
+      productLabels = (_json['productLabels'] as core.List)
           .map<KeyValue>((value) => KeyValue.fromJson(value))
           .toList();
     }
@@ -16278,19 +16277,19 @@ class Product {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (productCategory != null) {
-      _json["productCategory"] = productCategory;
+      _json['productCategory'] = productCategory;
     }
     if (productLabels != null) {
-      _json["productLabels"] =
+      _json['productLabels'] =
           productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -16329,18 +16328,18 @@ class ProductSearchParams {
   ProductSearchParams();
 
   ProductSearchParams.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPoly")) {
-      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
+    if (_json.containsKey('boundingPoly')) {
+      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
     }
-    if (_json.containsKey("filter")) {
-      filter = _json["filter"];
+    if (_json.containsKey('filter')) {
+      filter = _json['filter'];
     }
-    if (_json.containsKey("productCategories")) {
+    if (_json.containsKey('productCategories')) {
       productCategories =
-          (_json["productCategories"] as core.List).cast<core.String>();
+          (_json['productCategories'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("productSet")) {
-      productSet = _json["productSet"];
+    if (_json.containsKey('productSet')) {
+      productSet = _json['productSet'];
     }
   }
 
@@ -16348,16 +16347,16 @@ class ProductSearchParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = boundingPoly.toJson();
+      _json['boundingPoly'] = boundingPoly.toJson();
     }
     if (filter != null) {
-      _json["filter"] = filter;
+      _json['filter'] = filter;
     }
     if (productCategories != null) {
-      _json["productCategories"] = productCategories;
+      _json['productCategories'] = productCategories;
     }
     if (productSet != null) {
-      _json["productSet"] = productSet;
+      _json['productSet'] = productSet;
     }
     return _json;
   }
@@ -16382,16 +16381,16 @@ class ProductSearchResults {
   ProductSearchResults();
 
   ProductSearchResults.fromJson(core.Map _json) {
-    if (_json.containsKey("indexTime")) {
-      indexTime = _json["indexTime"];
+    if (_json.containsKey('indexTime')) {
+      indexTime = _json['indexTime'];
     }
-    if (_json.containsKey("productGroupedResults")) {
-      productGroupedResults = (_json["productGroupedResults"] as core.List)
+    if (_json.containsKey('productGroupedResults')) {
+      productGroupedResults = (_json['productGroupedResults'] as core.List)
           .map<GroupedResult>((value) => GroupedResult.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
           .map<Result>((value) => Result.fromJson(value))
           .toList();
     }
@@ -16401,14 +16400,14 @@ class ProductSearchResults {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indexTime != null) {
-      _json["indexTime"] = indexTime;
+      _json['indexTime'] = indexTime;
     }
     if (productGroupedResults != null) {
-      _json["productGroupedResults"] =
+      _json['productGroupedResults'] =
           productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => value.toJson()).toList();
+      _json['results'] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16440,17 +16439,17 @@ class ProductSet {
   ProductSet();
 
   ProductSet.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("indexError")) {
-      indexError = Status.fromJson(_json["indexError"]);
+    if (_json.containsKey('indexError')) {
+      indexError = Status.fromJson(_json['indexError']);
     }
-    if (_json.containsKey("indexTime")) {
-      indexTime = _json["indexTime"];
+    if (_json.containsKey('indexTime')) {
+      indexTime = _json['indexTime'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -16458,16 +16457,16 @@ class ProductSet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (indexError != null) {
-      _json["indexError"] = indexError.toJson();
+      _json['indexError'] = indexError.toJson();
     }
     if (indexTime != null) {
-      _json["indexTime"] = indexTime;
+      _json['indexTime'] = indexTime;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -16483,8 +16482,8 @@ class ProductSetPurgeConfig {
   ProductSetPurgeConfig();
 
   ProductSetPurgeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("productSetId")) {
-      productSetId = _json["productSetId"];
+    if (_json.containsKey('productSetId')) {
+      productSetId = _json['productSetId'];
     }
   }
 
@@ -16492,7 +16491,7 @@ class ProductSetPurgeConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (productSetId != null) {
-      _json["productSetId"] = productSetId;
+      _json['productSetId'] = productSetId;
     }
     return _json;
   }
@@ -16512,14 +16511,14 @@ class Property {
   Property();
 
   Property.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("uint64Value")) {
-      uint64Value = _json["uint64Value"];
+    if (_json.containsKey('uint64Value')) {
+      uint64Value = _json['uint64Value'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -16527,13 +16526,13 @@ class Property {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (uint64Value != null) {
-      _json["uint64Value"] = uint64Value;
+      _json['uint64Value'] = uint64Value;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -16555,15 +16554,15 @@ class PurgeProductsRequest {
   PurgeProductsRequest();
 
   PurgeProductsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deleteOrphanProducts")) {
-      deleteOrphanProducts = _json["deleteOrphanProducts"];
+    if (_json.containsKey('deleteOrphanProducts')) {
+      deleteOrphanProducts = _json['deleteOrphanProducts'];
     }
-    if (_json.containsKey("force")) {
-      force = _json["force"];
+    if (_json.containsKey('force')) {
+      force = _json['force'];
     }
-    if (_json.containsKey("productSetPurgeConfig")) {
+    if (_json.containsKey('productSetPurgeConfig')) {
       productSetPurgeConfig =
-          ProductSetPurgeConfig.fromJson(_json["productSetPurgeConfig"]);
+          ProductSetPurgeConfig.fromJson(_json['productSetPurgeConfig']);
     }
   }
 
@@ -16571,13 +16570,13 @@ class PurgeProductsRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deleteOrphanProducts != null) {
-      _json["deleteOrphanProducts"] = deleteOrphanProducts;
+      _json['deleteOrphanProducts'] = deleteOrphanProducts;
     }
     if (force != null) {
-      _json["force"] = force;
+      _json['force'] = force;
     }
     if (productSetPurgeConfig != null) {
-      _json["productSetPurgeConfig"] = productSetPurgeConfig.toJson();
+      _json['productSetPurgeConfig'] = productSetPurgeConfig.toJson();
     }
     return _json;
   }
@@ -16606,16 +16605,16 @@ class ReferenceImage {
   ReferenceImage();
 
   ReferenceImage.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingPolys")) {
-      boundingPolys = (_json["boundingPolys"] as core.List)
+    if (_json.containsKey('boundingPolys')) {
+      boundingPolys = (_json['boundingPolys'] as core.List)
           .map<BoundingPoly>((value) => BoundingPoly.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'];
     }
   }
 
@@ -16623,14 +16622,14 @@ class ReferenceImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingPolys != null) {
-      _json["boundingPolys"] =
+      _json['boundingPolys'] =
           boundingPolys.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (uri != null) {
-      _json["uri"] = uri;
+      _json['uri'] = uri;
     }
     return _json;
   }
@@ -16646,8 +16645,8 @@ class RemoveProductFromProductSetRequest {
   RemoveProductFromProductSetRequest();
 
   RemoveProductFromProductSetRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("product")) {
-      product = _json["product"];
+    if (_json.containsKey('product')) {
+      product = _json['product'];
     }
   }
 
@@ -16655,7 +16654,7 @@ class RemoveProductFromProductSetRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (product != null) {
-      _json["product"] = product;
+      _json['product'] = product;
     }
     return _json;
   }
@@ -16677,14 +16676,14 @@ class Result {
   Result();
 
   Result.fromJson(core.Map _json) {
-    if (_json.containsKey("image")) {
-      image = _json["image"];
+    if (_json.containsKey('image')) {
+      image = _json['image'];
     }
-    if (_json.containsKey("product")) {
-      product = Product.fromJson(_json["product"]);
+    if (_json.containsKey('product')) {
+      product = Product.fromJson(_json['product']);
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -16692,13 +16691,13 @@ class Result {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (image != null) {
-      _json["image"] = image;
+      _json['image'] = image;
     }
     if (product != null) {
-      _json["product"] = product.toJson();
+      _json['product'] = product.toJson();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -16766,20 +16765,20 @@ class SafeSearchAnnotation {
   SafeSearchAnnotation();
 
   SafeSearchAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("adult")) {
-      adult = _json["adult"];
+    if (_json.containsKey('adult')) {
+      adult = _json['adult'];
     }
-    if (_json.containsKey("medical")) {
-      medical = _json["medical"];
+    if (_json.containsKey('medical')) {
+      medical = _json['medical'];
     }
-    if (_json.containsKey("racy")) {
-      racy = _json["racy"];
+    if (_json.containsKey('racy')) {
+      racy = _json['racy'];
     }
-    if (_json.containsKey("spoof")) {
-      spoof = _json["spoof"];
+    if (_json.containsKey('spoof')) {
+      spoof = _json['spoof'];
     }
-    if (_json.containsKey("violence")) {
-      violence = _json["violence"];
+    if (_json.containsKey('violence')) {
+      violence = _json['violence'];
     }
   }
 
@@ -16787,19 +16786,19 @@ class SafeSearchAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adult != null) {
-      _json["adult"] = adult;
+      _json['adult'] = adult;
     }
     if (medical != null) {
-      _json["medical"] = medical;
+      _json['medical'] = medical;
     }
     if (racy != null) {
-      _json["racy"] = racy;
+      _json['racy'] = racy;
     }
     if (spoof != null) {
-      _json["spoof"] = spoof;
+      _json['spoof'] = spoof;
     }
     if (violence != null) {
-      _json["violence"] = violence;
+      _json['violence'] = violence;
     }
     return _json;
   }
@@ -16830,17 +16829,17 @@ class Status {
   Status();
 
   Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>(
               (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
   }
 
@@ -16848,13 +16847,13 @@ class Status {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (details != null) {
-      _json["details"] = details;
+      _json['details'] = details;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     return _json;
   }
@@ -16884,17 +16883,17 @@ class Symbol {
   Symbol();
 
   Symbol.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
-      boundingBox = BoundingPoly.fromJson(_json["boundingBox"]);
+    if (_json.containsKey('boundingBox')) {
+      boundingBox = BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
-      property = TextProperty.fromJson(_json["property"]);
+    if (_json.containsKey('property')) {
+      property = TextProperty.fromJson(_json['property']);
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -16902,16 +16901,16 @@ class Symbol {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -16934,13 +16933,13 @@ class TextAnnotation {
   TextAnnotation();
 
   TextAnnotation.fromJson(core.Map _json) {
-    if (_json.containsKey("pages")) {
-      pages = (_json["pages"] as core.List)
+    if (_json.containsKey('pages')) {
+      pages = (_json['pages'] as core.List)
           .map<Page>((value) => Page.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -16948,10 +16947,10 @@ class TextAnnotation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => value.toJson()).toList();
+      _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -16968,11 +16967,11 @@ class TextProperty {
   TextProperty();
 
   TextProperty.fromJson(core.Map _json) {
-    if (_json.containsKey("detectedBreak")) {
-      detectedBreak = DetectedBreak.fromJson(_json["detectedBreak"]);
+    if (_json.containsKey('detectedBreak')) {
+      detectedBreak = DetectedBreak.fromJson(_json['detectedBreak']);
     }
-    if (_json.containsKey("detectedLanguages")) {
-      detectedLanguages = (_json["detectedLanguages"] as core.List)
+    if (_json.containsKey('detectedLanguages')) {
+      detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<DetectedLanguage>((value) => DetectedLanguage.fromJson(value))
           .toList();
     }
@@ -16982,10 +16981,10 @@ class TextProperty {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = detectedBreak.toJson();
+      _json['detectedBreak'] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
-      _json["detectedLanguages"] =
+      _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -17004,11 +17003,11 @@ class Vertex {
   Vertex();
 
   Vertex.fromJson(core.Map _json) {
-    if (_json.containsKey("x")) {
-      x = _json["x"];
+    if (_json.containsKey('x')) {
+      x = _json['x'];
     }
-    if (_json.containsKey("y")) {
-      y = _json["y"];
+    if (_json.containsKey('y')) {
+      y = _json['y'];
     }
   }
 
@@ -17016,10 +17015,10 @@ class Vertex {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (x != null) {
-      _json["x"] = x;
+      _json['x'] = x;
     }
     if (y != null) {
-      _json["y"] = y;
+      _json['y'] = y;
     }
     return _json;
   }
@@ -17052,33 +17051,33 @@ class WebDetection {
   WebDetection();
 
   WebDetection.fromJson(core.Map _json) {
-    if (_json.containsKey("bestGuessLabels")) {
-      bestGuessLabels = (_json["bestGuessLabels"] as core.List)
+    if (_json.containsKey('bestGuessLabels')) {
+      bestGuessLabels = (_json['bestGuessLabels'] as core.List)
           .map<WebLabel>((value) => WebLabel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pagesWithMatchingImages")) {
-      pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
+    if (_json.containsKey('pagesWithMatchingImages')) {
+      pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
           .map<WebPage>((value) => WebPage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("visuallySimilarImages")) {
-      visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
+    if (_json.containsKey('visuallySimilarImages')) {
+      visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
           .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("webEntities")) {
-      webEntities = (_json["webEntities"] as core.List)
+    if (_json.containsKey('webEntities')) {
+      webEntities = (_json['webEntities'] as core.List)
           .map<WebEntity>((value) => WebEntity.fromJson(value))
           .toList();
     }
@@ -17088,27 +17087,27 @@ class WebDetection {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bestGuessLabels != null) {
-      _json["bestGuessLabels"] =
+      _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
-      _json["pagesWithMatchingImages"] =
+      _json['pagesWithMatchingImages'] =
           pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
-      _json["visuallySimilarImages"] =
+      _json['visuallySimilarImages'] =
           visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
-      _json["webEntities"] =
+      _json['webEntities'] =
           webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -17123,8 +17122,8 @@ class WebDetectionParams {
   WebDetectionParams();
 
   WebDetectionParams.fromJson(core.Map _json) {
-    if (_json.containsKey("includeGeoResults")) {
-      includeGeoResults = _json["includeGeoResults"];
+    if (_json.containsKey('includeGeoResults')) {
+      includeGeoResults = _json['includeGeoResults'];
     }
   }
 
@@ -17132,7 +17131,7 @@ class WebDetectionParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (includeGeoResults != null) {
-      _json["includeGeoResults"] = includeGeoResults;
+      _json['includeGeoResults'] = includeGeoResults;
     }
     return _json;
   }
@@ -17153,14 +17152,14 @@ class WebEntity {
   WebEntity();
 
   WebEntity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("entityId")) {
-      entityId = _json["entityId"];
+    if (_json.containsKey('entityId')) {
+      entityId = _json['entityId'];
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
   }
 
@@ -17168,13 +17167,13 @@ class WebEntity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (entityId != null) {
-      _json["entityId"] = entityId;
+      _json['entityId'] = entityId;
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     return _json;
   }
@@ -17191,11 +17190,11 @@ class WebImage {
   WebImage();
 
   WebImage.fromJson(core.Map _json) {
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -17203,10 +17202,10 @@ class WebImage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -17225,11 +17224,11 @@ class WebLabel {
   WebLabel();
 
   WebLabel.fromJson(core.Map _json) {
-    if (_json.containsKey("label")) {
-      label = _json["label"];
+    if (_json.containsKey('label')) {
+      label = _json['label'];
     }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
   }
 
@@ -17237,10 +17236,10 @@ class WebLabel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (label != null) {
-      _json["label"] = label;
+      _json['label'] = label;
     }
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     return _json;
   }
@@ -17269,24 +17268,24 @@ class WebPage {
   WebPage();
 
   WebPage.fromJson(core.Map _json) {
-    if (_json.containsKey("fullMatchingImages")) {
-      fullMatchingImages = (_json["fullMatchingImages"] as core.List)
+    if (_json.containsKey('fullMatchingImages')) {
+      fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("pageTitle")) {
-      pageTitle = _json["pageTitle"];
+    if (_json.containsKey('pageTitle')) {
+      pageTitle = _json['pageTitle'];
     }
-    if (_json.containsKey("partialMatchingImages")) {
-      partialMatchingImages = (_json["partialMatchingImages"] as core.List)
+    if (_json.containsKey('partialMatchingImages')) {
+      partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("score")) {
-      score = _json["score"].toDouble();
+    if (_json.containsKey('score')) {
+      score = _json['score'].toDouble();
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -17294,21 +17293,21 @@ class WebPage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (fullMatchingImages != null) {
-      _json["fullMatchingImages"] =
+      _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
-      _json["pageTitle"] = pageTitle;
+      _json['pageTitle'] = pageTitle;
     }
     if (partialMatchingImages != null) {
-      _json["partialMatchingImages"] =
+      _json['partialMatchingImages'] =
           partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
-      _json["score"] = score;
+      _json['score'] = score;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -17338,17 +17337,17 @@ class Word {
   Word();
 
   Word.fromJson(core.Map _json) {
-    if (_json.containsKey("boundingBox")) {
-      boundingBox = BoundingPoly.fromJson(_json["boundingBox"]);
+    if (_json.containsKey('boundingBox')) {
+      boundingBox = BoundingPoly.fromJson(_json['boundingBox']);
     }
-    if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"].toDouble();
+    if (_json.containsKey('confidence')) {
+      confidence = _json['confidence'].toDouble();
     }
-    if (_json.containsKey("property")) {
-      property = TextProperty.fromJson(_json["property"]);
+    if (_json.containsKey('property')) {
+      property = TextProperty.fromJson(_json['property']);
     }
-    if (_json.containsKey("symbols")) {
-      symbols = (_json["symbols"] as core.List)
+    if (_json.containsKey('symbols')) {
+      symbols = (_json['symbols'] as core.List)
           .map<Symbol>((value) => Symbol.fromJson(value))
           .toList();
     }
@@ -17358,16 +17357,16 @@ class Word {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = boundingBox.toJson();
+      _json['boundingBox'] = boundingBox.toJson();
     }
     if (confidence != null) {
-      _json["confidence"] = confidence;
+      _json['confidence'] = confidence;
     }
     if (property != null) {
-      _json["property"] = property.toJson();
+      _json['property'] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
+      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }

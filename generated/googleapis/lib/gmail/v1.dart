@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -46,67 +45,67 @@ const core.String USER_AGENT = 'dart-api-client gmail/v1';
 /// messages, and labels.
 class GmailApi {
   /// Read, compose, send, and permanently delete all your email from Gmail
-  static const MailGoogleComScope = "https://mail.google.com/";
+  static const MailGoogleComScope = 'https://mail.google.com/';
 
   /// Manage drafts and send emails when you interact with the add-on
   static const GmailAddonsCurrentActionComposeScope =
-      "https://www.googleapis.com/auth/gmail.addons.current.action.compose";
+      'https://www.googleapis.com/auth/gmail.addons.current.action.compose';
 
   /// View your email messages when you interact with the add-on
   static const GmailAddonsCurrentMessageActionScope =
-      "https://www.googleapis.com/auth/gmail.addons.current.message.action";
+      'https://www.googleapis.com/auth/gmail.addons.current.message.action';
 
   /// View your email message metadata when the add-on is running
   static const GmailAddonsCurrentMessageMetadataScope =
-      "https://www.googleapis.com/auth/gmail.addons.current.message.metadata";
+      'https://www.googleapis.com/auth/gmail.addons.current.message.metadata';
 
   /// View your email messages when the add-on is running
   static const GmailAddonsCurrentMessageReadonlyScope =
-      "https://www.googleapis.com/auth/gmail.addons.current.message.readonly";
+      'https://www.googleapis.com/auth/gmail.addons.current.message.readonly';
 
   /// Manage drafts and send emails
   static const GmailComposeScope =
-      "https://www.googleapis.com/auth/gmail.compose";
+      'https://www.googleapis.com/auth/gmail.compose';
 
   /// Insert mail into your mailbox
   static const GmailInsertScope =
-      "https://www.googleapis.com/auth/gmail.insert";
+      'https://www.googleapis.com/auth/gmail.insert';
 
   /// Manage mailbox labels
   static const GmailLabelsScope =
-      "https://www.googleapis.com/auth/gmail.labels";
+      'https://www.googleapis.com/auth/gmail.labels';
 
   /// View your email message metadata such as labels and headers, but not the
   /// email body
   static const GmailMetadataScope =
-      "https://www.googleapis.com/auth/gmail.metadata";
+      'https://www.googleapis.com/auth/gmail.metadata';
 
   /// View and modify but not delete your email
   static const GmailModifyScope =
-      "https://www.googleapis.com/auth/gmail.modify";
+      'https://www.googleapis.com/auth/gmail.modify';
 
   /// View your email messages and settings
   static const GmailReadonlyScope =
-      "https://www.googleapis.com/auth/gmail.readonly";
+      'https://www.googleapis.com/auth/gmail.readonly';
 
   /// Send email on your behalf
-  static const GmailSendScope = "https://www.googleapis.com/auth/gmail.send";
+  static const GmailSendScope = 'https://www.googleapis.com/auth/gmail.send';
 
   /// Manage your basic mail settings
   static const GmailSettingsBasicScope =
-      "https://www.googleapis.com/auth/gmail.settings.basic";
+      'https://www.googleapis.com/auth/gmail.settings.basic';
 
   /// Manage your sensitive mail settings, including who can manage your mail
   static const GmailSettingsSharingScope =
-      "https://www.googleapis.com/auth/gmail.settings.sharing";
+      'https://www.googleapis.com/auth/gmail.settings.sharing';
 
   final commons.ApiRequester _requester;
 
   UsersResourceApi get users => UsersResourceApi(_requester);
 
   GmailApi(http.Client client,
-      {core.String rootUrl = "https://gmail.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://gmail.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -152,10 +151,10 @@ class UsersResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -164,7 +163,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -201,10 +200,10 @@ class UsersResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -214,7 +213,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -259,10 +258,10 @@ class UsersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -270,7 +269,7 @@ class UsersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -329,10 +328,10 @@ class UsersDraftsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -354,7 +353,7 @@ class UsersDraftsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -395,13 +394,13 @@ class UsersDraftsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -413,7 +412,7 @@ class UsersDraftsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -469,16 +468,16 @@ class UsersDraftsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (format != null) {
-      _queryParams["format"] = [format];
+      _queryParams['format'] = [format];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -488,7 +487,7 @@ class UsersDraftsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -543,22 +542,22 @@ class UsersDraftsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (includeSpamTrash != null) {
-      _queryParams["includeSpamTrash"] = ["${includeSpamTrash}"];
+      _queryParams['includeSpamTrash'] = ['${includeSpamTrash}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -567,7 +566,7 @@ class UsersDraftsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -621,10 +620,10 @@ class UsersDraftsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -646,7 +645,7 @@ class UsersDraftsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -702,13 +701,13 @@ class UsersDraftsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -733,7 +732,7 @@ class UsersDraftsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -805,25 +804,25 @@ class UsersHistoryResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (historyTypes != null) {
-      _queryParams["historyTypes"] = historyTypes;
+      _queryParams['historyTypes'] = historyTypes;
     }
     if (labelId != null) {
-      _queryParams["labelId"] = [labelId];
+      _queryParams['labelId'] = [labelId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (startHistoryId != null) {
-      _queryParams["startHistoryId"] = [startHistoryId];
+      _queryParams['startHistoryId'] = [startHistoryId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -832,7 +831,7 @@ class UsersHistoryResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -883,10 +882,10 @@ class UsersLabelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -895,7 +894,7 @@ class UsersLabelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -936,13 +935,13 @@ class UsersLabelsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -954,7 +953,7 @@ class UsersLabelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -996,13 +995,13 @@ class UsersLabelsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -1012,7 +1011,7 @@ class UsersLabelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1051,10 +1050,10 @@ class UsersLabelsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -1063,7 +1062,7 @@ class UsersLabelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1111,13 +1110,13 @@ class UsersLabelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -1127,7 +1126,7 @@ class UsersLabelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1175,13 +1174,13 @@ class UsersLabelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -1191,7 +1190,7 @@ class UsersLabelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1244,10 +1243,10 @@ class UsersMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1258,7 +1257,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1301,10 +1300,10 @@ class UsersMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1315,7 +1314,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1356,13 +1355,13 @@ class UsersMessagesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1374,7 +1373,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1434,19 +1433,19 @@ class UsersMessagesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (metadataHeaders != null) {
-      _queryParams["metadataHeaders"] = metadataHeaders;
+      _queryParams['metadataHeaders'] = metadataHeaders;
     }
     if (format != null) {
-      _queryParams["format"] = [format];
+      _queryParams['format'] = [format];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -1456,7 +1455,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1533,22 +1532,22 @@ class UsersMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (processForCalendar != null) {
-      _queryParams["processForCalendar"] = ["${processForCalendar}"];
+      _queryParams['processForCalendar'] = ['${processForCalendar}'];
     }
     if (internalDateSource != null) {
-      _queryParams["internalDateSource"] = [internalDateSource];
+      _queryParams['internalDateSource'] = [internalDateSource];
     }
     if (neverMarkSpam != null) {
-      _queryParams["neverMarkSpam"] = ["${neverMarkSpam}"];
+      _queryParams['neverMarkSpam'] = ['${neverMarkSpam}'];
     }
     if (deleted != null) {
-      _queryParams["deleted"] = ["${deleted}"];
+      _queryParams['deleted'] = ['${deleted}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1570,7 +1569,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1638,16 +1637,16 @@ class UsersMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (deleted != null) {
-      _queryParams["deleted"] = ["${deleted}"];
+      _queryParams['deleted'] = ['${deleted}'];
     }
     if (internalDateSource != null) {
-      _queryParams["internalDateSource"] = [internalDateSource];
+      _queryParams['internalDateSource'] = [internalDateSource];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1669,7 +1668,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1729,25 +1728,25 @@ class UsersMessagesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (includeSpamTrash != null) {
-      _queryParams["includeSpamTrash"] = ["${includeSpamTrash}"];
+      _queryParams['includeSpamTrash'] = ['${includeSpamTrash}'];
     }
     if (labelIds != null) {
-      _queryParams["labelIds"] = labelIds;
+      _queryParams['labelIds'] = labelIds;
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -1756,7 +1755,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1804,13 +1803,13 @@ class UsersMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -1821,7 +1820,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1875,10 +1874,10 @@ class UsersMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1900,7 +1899,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1942,13 +1941,13 @@ class UsersMessagesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -1959,7 +1958,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2001,13 +2000,13 @@ class UsersMessagesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2018,7 +2017,7 @@ class UsersMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2070,16 +2069,16 @@ class UsersMessagesAttachmentsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (messageId == null) {
-      throw core.ArgumentError("Parameter messageId is required.");
+      throw core.ArgumentError('Parameter messageId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2091,7 +2090,7 @@ class UsersMessagesAttachmentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2145,10 +2144,10 @@ class UsersSettingsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2157,7 +2156,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2196,10 +2195,10 @@ class UsersSettingsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2208,7 +2207,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2247,10 +2246,10 @@ class UsersSettingsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2259,7 +2258,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2298,10 +2297,10 @@ class UsersSettingsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2310,7 +2309,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2349,10 +2348,10 @@ class UsersSettingsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2361,7 +2360,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2409,10 +2408,10 @@ class UsersSettingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2421,7 +2420,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2466,10 +2465,10 @@ class UsersSettingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2478,7 +2477,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2527,10 +2526,10 @@ class UsersSettingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2539,7 +2538,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2584,10 +2583,10 @@ class UsersSettingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2596,7 +2595,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2641,10 +2640,10 @@ class UsersSettingsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2653,7 +2652,7 @@ class UsersSettingsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2715,10 +2714,10 @@ class UsersSettingsDelegatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2727,7 +2726,7 @@ class UsersSettingsDelegatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2772,13 +2771,13 @@ class UsersSettingsDelegatesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (delegateEmail == null) {
-      throw core.ArgumentError("Parameter delegateEmail is required.");
+      throw core.ArgumentError('Parameter delegateEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2790,7 +2789,7 @@ class UsersSettingsDelegatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2836,13 +2835,13 @@ class UsersSettingsDelegatesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (delegateEmail == null) {
-      throw core.ArgumentError("Parameter delegateEmail is required.");
+      throw core.ArgumentError('Parameter delegateEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2852,7 +2851,7 @@ class UsersSettingsDelegatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2893,10 +2892,10 @@ class UsersSettingsDelegatesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2905,7 +2904,7 @@ class UsersSettingsDelegatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2957,10 +2956,10 @@ class UsersSettingsFiltersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -2969,7 +2968,7 @@ class UsersSettingsFiltersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3009,13 +3008,13 @@ class UsersSettingsFiltersResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3027,7 +3026,7 @@ class UsersSettingsFiltersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3069,13 +3068,13 @@ class UsersSettingsFiltersResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3085,7 +3084,7 @@ class UsersSettingsFiltersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3124,10 +3123,10 @@ class UsersSettingsFiltersResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3136,7 +3135,7 @@ class UsersSettingsFiltersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3192,10 +3191,10 @@ class UsersSettingsForwardingAddressesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3204,7 +3203,7 @@ class UsersSettingsForwardingAddressesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3246,13 +3245,13 @@ class UsersSettingsForwardingAddressesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (forwardingEmail == null) {
-      throw core.ArgumentError("Parameter forwardingEmail is required.");
+      throw core.ArgumentError('Parameter forwardingEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3264,7 +3263,7 @@ class UsersSettingsForwardingAddressesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3306,13 +3305,13 @@ class UsersSettingsForwardingAddressesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (forwardingEmail == null) {
-      throw core.ArgumentError("Parameter forwardingEmail is required.");
+      throw core.ArgumentError('Parameter forwardingEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3322,7 +3321,7 @@ class UsersSettingsForwardingAddressesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3361,10 +3360,10 @@ class UsersSettingsForwardingAddressesResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3373,7 +3372,7 @@ class UsersSettingsForwardingAddressesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3437,10 +3436,10 @@ class UsersSettingsSendAsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3449,7 +3448,7 @@ class UsersSettingsSendAsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3491,13 +3490,13 @@ class UsersSettingsSendAsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3509,7 +3508,7 @@ class UsersSettingsSendAsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3552,13 +3551,13 @@ class UsersSettingsSendAsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3568,7 +3567,7 @@ class UsersSettingsSendAsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3609,10 +3608,10 @@ class UsersSettingsSendAsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3621,7 +3620,7 @@ class UsersSettingsSendAsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3669,13 +3668,13 @@ class UsersSettingsSendAsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3685,7 +3684,7 @@ class UsersSettingsSendAsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3736,13 +3735,13 @@ class UsersSettingsSendAsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3752,7 +3751,7 @@ class UsersSettingsSendAsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3794,13 +3793,13 @@ class UsersSettingsSendAsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3813,7 +3812,7 @@ class UsersSettingsSendAsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3864,16 +3863,16 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3887,7 +3886,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3933,16 +3932,16 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -3954,7 +3953,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4004,13 +4003,13 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -4021,7 +4020,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4064,13 +4063,13 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -4081,7 +4080,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4125,16 +4124,16 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (sendAsEmail == null) {
-      throw core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError('Parameter sendAsEmail is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4149,7 +4148,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4196,13 +4195,13 @@ class UsersThreadsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4214,7 +4213,7 @@ class UsersThreadsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4270,19 +4269,19 @@ class UsersThreadsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (metadataHeaders != null) {
-      _queryParams["metadataHeaders"] = metadataHeaders;
+      _queryParams['metadataHeaders'] = metadataHeaders;
     }
     if (format != null) {
-      _queryParams["format"] = [format];
+      _queryParams['format'] = [format];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -4292,7 +4291,7 @@ class UsersThreadsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4352,25 +4351,25 @@ class UsersThreadsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (labelIds != null) {
-      _queryParams["labelIds"] = labelIds;
+      _queryParams['labelIds'] = labelIds;
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (includeSpamTrash != null) {
-      _queryParams["includeSpamTrash"] = ["${includeSpamTrash}"];
+      _queryParams['includeSpamTrash'] = ['${includeSpamTrash}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -4379,7 +4378,7 @@ class UsersThreadsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4428,13 +4427,13 @@ class UsersThreadsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -4445,7 +4444,7 @@ class UsersThreadsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4487,13 +4486,13 @@ class UsersThreadsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -4504,7 +4503,7 @@ class UsersThreadsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4546,13 +4545,13 @@ class UsersThreadsResourceApi {
     core.String _body;
 
     if (userId == null) {
-      throw core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError('Parameter userId is required.');
     }
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'gmail/v1/users/' +
@@ -4563,7 +4562,7 @@ class UsersThreadsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4595,14 +4594,14 @@ class AutoForwarding {
   AutoForwarding();
 
   AutoForwarding.fromJson(core.Map _json) {
-    if (_json.containsKey("disposition")) {
-      disposition = _json["disposition"];
+    if (_json.containsKey('disposition')) {
+      disposition = _json['disposition'];
     }
-    if (_json.containsKey("emailAddress")) {
-      emailAddress = _json["emailAddress"];
+    if (_json.containsKey('emailAddress')) {
+      emailAddress = _json['emailAddress'];
     }
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
   }
 
@@ -4610,13 +4609,13 @@ class AutoForwarding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (disposition != null) {
-      _json["disposition"] = disposition;
+      _json['disposition'] = disposition;
     }
     if (emailAddress != null) {
-      _json["emailAddress"] = emailAddress;
+      _json['emailAddress'] = emailAddress;
     }
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     return _json;
   }
@@ -4629,8 +4628,8 @@ class BatchDeleteMessagesRequest {
   BatchDeleteMessagesRequest();
 
   BatchDeleteMessagesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("ids")) {
-      ids = (_json["ids"] as core.List).cast<core.String>();
+    if (_json.containsKey('ids')) {
+      ids = (_json['ids'] as core.List).cast<core.String>();
     }
   }
 
@@ -4638,7 +4637,7 @@ class BatchDeleteMessagesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ids != null) {
-      _json["ids"] = ids;
+      _json['ids'] = ids;
     }
     return _json;
   }
@@ -4658,15 +4657,15 @@ class BatchModifyMessagesRequest {
   BatchModifyMessagesRequest();
 
   BatchModifyMessagesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("addLabelIds")) {
-      addLabelIds = (_json["addLabelIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('addLabelIds')) {
+      addLabelIds = (_json['addLabelIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("ids")) {
-      ids = (_json["ids"] as core.List).cast<core.String>();
+    if (_json.containsKey('ids')) {
+      ids = (_json['ids'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("removeLabelIds")) {
+    if (_json.containsKey('removeLabelIds')) {
       removeLabelIds =
-          (_json["removeLabelIds"] as core.List).cast<core.String>();
+          (_json['removeLabelIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -4674,13 +4673,13 @@ class BatchModifyMessagesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addLabelIds != null) {
-      _json["addLabelIds"] = addLabelIds;
+      _json['addLabelIds'] = addLabelIds;
     }
     if (ids != null) {
-      _json["ids"] = ids;
+      _json['ids'] = ids;
     }
     if (removeLabelIds != null) {
-      _json["removeLabelIds"] = removeLabelIds;
+      _json['removeLabelIds'] = removeLabelIds;
     }
     return _json;
   }
@@ -4709,11 +4708,11 @@ class Delegate {
   Delegate();
 
   Delegate.fromJson(core.Map _json) {
-    if (_json.containsKey("delegateEmail")) {
-      delegateEmail = _json["delegateEmail"];
+    if (_json.containsKey('delegateEmail')) {
+      delegateEmail = _json['delegateEmail'];
     }
-    if (_json.containsKey("verificationStatus")) {
-      verificationStatus = _json["verificationStatus"];
+    if (_json.containsKey('verificationStatus')) {
+      verificationStatus = _json['verificationStatus'];
     }
   }
 
@@ -4721,10 +4720,10 @@ class Delegate {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (delegateEmail != null) {
-      _json["delegateEmail"] = delegateEmail;
+      _json['delegateEmail'] = delegateEmail;
     }
     if (verificationStatus != null) {
-      _json["verificationStatus"] = verificationStatus;
+      _json['verificationStatus'] = verificationStatus;
     }
     return _json;
   }
@@ -4741,11 +4740,11 @@ class Draft {
   Draft();
 
   Draft.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("message")) {
-      message = Message.fromJson(_json["message"]);
+    if (_json.containsKey('message')) {
+      message = Message.fromJson(_json['message']);
     }
   }
 
@@ -4753,10 +4752,10 @@ class Draft {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (message != null) {
-      _json["message"] = message.toJson();
+      _json['message'] = message.toJson();
     }
     return _json;
   }
@@ -4777,14 +4776,14 @@ class Filter {
   Filter();
 
   Filter.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = FilterAction.fromJson(_json["action"]);
+    if (_json.containsKey('action')) {
+      action = FilterAction.fromJson(_json['action']);
     }
-    if (_json.containsKey("criteria")) {
-      criteria = FilterCriteria.fromJson(_json["criteria"]);
+    if (_json.containsKey('criteria')) {
+      criteria = FilterCriteria.fromJson(_json['criteria']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -4792,13 +4791,13 @@ class Filter {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (action != null) {
-      _json["action"] = action.toJson();
+      _json['action'] = action.toJson();
     }
     if (criteria != null) {
-      _json["criteria"] = criteria.toJson();
+      _json['criteria'] = criteria.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -4818,15 +4817,15 @@ class FilterAction {
   FilterAction();
 
   FilterAction.fromJson(core.Map _json) {
-    if (_json.containsKey("addLabelIds")) {
-      addLabelIds = (_json["addLabelIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('addLabelIds')) {
+      addLabelIds = (_json['addLabelIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("forward")) {
-      forward = _json["forward"];
+    if (_json.containsKey('forward')) {
+      forward = _json['forward'];
     }
-    if (_json.containsKey("removeLabelIds")) {
+    if (_json.containsKey('removeLabelIds')) {
       removeLabelIds =
-          (_json["removeLabelIds"] as core.List).cast<core.String>();
+          (_json['removeLabelIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -4834,13 +4833,13 @@ class FilterAction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addLabelIds != null) {
-      _json["addLabelIds"] = addLabelIds;
+      _json['addLabelIds'] = addLabelIds;
     }
     if (forward != null) {
-      _json["forward"] = forward;
+      _json['forward'] = forward;
     }
     if (removeLabelIds != null) {
-      _json["removeLabelIds"] = removeLabelIds;
+      _json['removeLabelIds'] = removeLabelIds;
     }
     return _json;
   }
@@ -4891,32 +4890,32 @@ class FilterCriteria {
   FilterCriteria();
 
   FilterCriteria.fromJson(core.Map _json) {
-    if (_json.containsKey("excludeChats")) {
-      excludeChats = _json["excludeChats"];
+    if (_json.containsKey('excludeChats')) {
+      excludeChats = _json['excludeChats'];
     }
-    if (_json.containsKey("from")) {
-      from = _json["from"];
+    if (_json.containsKey('from')) {
+      from = _json['from'];
     }
-    if (_json.containsKey("hasAttachment")) {
-      hasAttachment = _json["hasAttachment"];
+    if (_json.containsKey('hasAttachment')) {
+      hasAttachment = _json['hasAttachment'];
     }
-    if (_json.containsKey("negatedQuery")) {
-      negatedQuery = _json["negatedQuery"];
+    if (_json.containsKey('negatedQuery')) {
+      negatedQuery = _json['negatedQuery'];
     }
-    if (_json.containsKey("query")) {
-      query = _json["query"];
+    if (_json.containsKey('query')) {
+      query = _json['query'];
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
-    if (_json.containsKey("sizeComparison")) {
-      sizeComparison = _json["sizeComparison"];
+    if (_json.containsKey('sizeComparison')) {
+      sizeComparison = _json['sizeComparison'];
     }
-    if (_json.containsKey("subject")) {
-      subject = _json["subject"];
+    if (_json.containsKey('subject')) {
+      subject = _json['subject'];
     }
-    if (_json.containsKey("to")) {
-      to = _json["to"];
+    if (_json.containsKey('to')) {
+      to = _json['to'];
     }
   }
 
@@ -4924,31 +4923,31 @@ class FilterCriteria {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludeChats != null) {
-      _json["excludeChats"] = excludeChats;
+      _json['excludeChats'] = excludeChats;
     }
     if (from != null) {
-      _json["from"] = from;
+      _json['from'] = from;
     }
     if (hasAttachment != null) {
-      _json["hasAttachment"] = hasAttachment;
+      _json['hasAttachment'] = hasAttachment;
     }
     if (negatedQuery != null) {
-      _json["negatedQuery"] = negatedQuery;
+      _json['negatedQuery'] = negatedQuery;
     }
     if (query != null) {
-      _json["query"] = query;
+      _json['query'] = query;
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     if (sizeComparison != null) {
-      _json["sizeComparison"] = sizeComparison;
+      _json['sizeComparison'] = sizeComparison;
     }
     if (subject != null) {
-      _json["subject"] = subject;
+      _json['subject'] = subject;
     }
     if (to != null) {
-      _json["to"] = to;
+      _json['to'] = to;
     }
     return _json;
   }
@@ -4970,11 +4969,11 @@ class ForwardingAddress {
   ForwardingAddress();
 
   ForwardingAddress.fromJson(core.Map _json) {
-    if (_json.containsKey("forwardingEmail")) {
-      forwardingEmail = _json["forwardingEmail"];
+    if (_json.containsKey('forwardingEmail')) {
+      forwardingEmail = _json['forwardingEmail'];
     }
-    if (_json.containsKey("verificationStatus")) {
-      verificationStatus = _json["verificationStatus"];
+    if (_json.containsKey('verificationStatus')) {
+      verificationStatus = _json['verificationStatus'];
     }
   }
 
@@ -4982,10 +4981,10 @@ class ForwardingAddress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (forwardingEmail != null) {
-      _json["forwardingEmail"] = forwardingEmail;
+      _json['forwardingEmail'] = forwardingEmail;
     }
     if (verificationStatus != null) {
-      _json["verificationStatus"] = verificationStatus;
+      _json['verificationStatus'] = verificationStatus;
     }
     return _json;
   }
@@ -5017,33 +5016,33 @@ class History {
   History();
 
   History.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("labelsAdded")) {
-      labelsAdded = (_json["labelsAdded"] as core.List)
+    if (_json.containsKey('labelsAdded')) {
+      labelsAdded = (_json['labelsAdded'] as core.List)
           .map<HistoryLabelAdded>((value) => HistoryLabelAdded.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("labelsRemoved")) {
-      labelsRemoved = (_json["labelsRemoved"] as core.List)
+    if (_json.containsKey('labelsRemoved')) {
+      labelsRemoved = (_json['labelsRemoved'] as core.List)
           .map<HistoryLabelRemoved>(
               (value) => HistoryLabelRemoved.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("messages")) {
-      messages = (_json["messages"] as core.List)
+    if (_json.containsKey('messages')) {
+      messages = (_json['messages'] as core.List)
           .map<Message>((value) => Message.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("messagesAdded")) {
-      messagesAdded = (_json["messagesAdded"] as core.List)
+    if (_json.containsKey('messagesAdded')) {
+      messagesAdded = (_json['messagesAdded'] as core.List)
           .map<HistoryMessageAdded>(
               (value) => HistoryMessageAdded.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("messagesDeleted")) {
-      messagesDeleted = (_json["messagesDeleted"] as core.List)
+    if (_json.containsKey('messagesDeleted')) {
+      messagesDeleted = (_json['messagesDeleted'] as core.List)
           .map<HistoryMessageDeleted>(
               (value) => HistoryMessageDeleted.fromJson(value))
           .toList();
@@ -5054,25 +5053,25 @@ class History {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (labelsAdded != null) {
-      _json["labelsAdded"] =
+      _json['labelsAdded'] =
           labelsAdded.map((value) => value.toJson()).toList();
     }
     if (labelsRemoved != null) {
-      _json["labelsRemoved"] =
+      _json['labelsRemoved'] =
           labelsRemoved.map((value) => value.toJson()).toList();
     }
     if (messages != null) {
-      _json["messages"] = messages.map((value) => value.toJson()).toList();
+      _json['messages'] = messages.map((value) => value.toJson()).toList();
     }
     if (messagesAdded != null) {
-      _json["messagesAdded"] =
+      _json['messagesAdded'] =
           messagesAdded.map((value) => value.toJson()).toList();
     }
     if (messagesDeleted != null) {
-      _json["messagesDeleted"] =
+      _json['messagesDeleted'] =
           messagesDeleted.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5087,11 +5086,11 @@ class HistoryLabelAdded {
   HistoryLabelAdded();
 
   HistoryLabelAdded.fromJson(core.Map _json) {
-    if (_json.containsKey("labelIds")) {
-      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('labelIds')) {
+      labelIds = (_json['labelIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("message")) {
-      message = Message.fromJson(_json["message"]);
+    if (_json.containsKey('message')) {
+      message = Message.fromJson(_json['message']);
     }
   }
 
@@ -5099,10 +5098,10 @@ class HistoryLabelAdded {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (labelIds != null) {
-      _json["labelIds"] = labelIds;
+      _json['labelIds'] = labelIds;
     }
     if (message != null) {
-      _json["message"] = message.toJson();
+      _json['message'] = message.toJson();
     }
     return _json;
   }
@@ -5116,11 +5115,11 @@ class HistoryLabelRemoved {
   HistoryLabelRemoved();
 
   HistoryLabelRemoved.fromJson(core.Map _json) {
-    if (_json.containsKey("labelIds")) {
-      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('labelIds')) {
+      labelIds = (_json['labelIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("message")) {
-      message = Message.fromJson(_json["message"]);
+    if (_json.containsKey('message')) {
+      message = Message.fromJson(_json['message']);
     }
   }
 
@@ -5128,10 +5127,10 @@ class HistoryLabelRemoved {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (labelIds != null) {
-      _json["labelIds"] = labelIds;
+      _json['labelIds'] = labelIds;
     }
     if (message != null) {
-      _json["message"] = message.toJson();
+      _json['message'] = message.toJson();
     }
     return _json;
   }
@@ -5143,8 +5142,8 @@ class HistoryMessageAdded {
   HistoryMessageAdded();
 
   HistoryMessageAdded.fromJson(core.Map _json) {
-    if (_json.containsKey("message")) {
-      message = Message.fromJson(_json["message"]);
+    if (_json.containsKey('message')) {
+      message = Message.fromJson(_json['message']);
     }
   }
 
@@ -5152,7 +5151,7 @@ class HistoryMessageAdded {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = message.toJson();
+      _json['message'] = message.toJson();
     }
     return _json;
   }
@@ -5164,8 +5163,8 @@ class HistoryMessageDeleted {
   HistoryMessageDeleted();
 
   HistoryMessageDeleted.fromJson(core.Map _json) {
-    if (_json.containsKey("message")) {
-      message = Message.fromJson(_json["message"]);
+    if (_json.containsKey('message')) {
+      message = Message.fromJson(_json['message']);
     }
   }
 
@@ -5173,7 +5172,7 @@ class HistoryMessageDeleted {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = message.toJson();
+      _json['message'] = message.toJson();
     }
     return _json;
   }
@@ -5207,17 +5206,17 @@ class ImapSettings {
   ImapSettings();
 
   ImapSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("autoExpunge")) {
-      autoExpunge = _json["autoExpunge"];
+    if (_json.containsKey('autoExpunge')) {
+      autoExpunge = _json['autoExpunge'];
     }
-    if (_json.containsKey("enabled")) {
-      enabled = _json["enabled"];
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'];
     }
-    if (_json.containsKey("expungeBehavior")) {
-      expungeBehavior = _json["expungeBehavior"];
+    if (_json.containsKey('expungeBehavior')) {
+      expungeBehavior = _json['expungeBehavior'];
     }
-    if (_json.containsKey("maxFolderSize")) {
-      maxFolderSize = _json["maxFolderSize"];
+    if (_json.containsKey('maxFolderSize')) {
+      maxFolderSize = _json['maxFolderSize'];
     }
   }
 
@@ -5225,16 +5224,16 @@ class ImapSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (autoExpunge != null) {
-      _json["autoExpunge"] = autoExpunge;
+      _json['autoExpunge'] = autoExpunge;
     }
     if (enabled != null) {
-      _json["enabled"] = enabled;
+      _json['enabled'] = enabled;
     }
     if (expungeBehavior != null) {
-      _json["expungeBehavior"] = expungeBehavior;
+      _json['expungeBehavior'] = expungeBehavior;
     }
     if (maxFolderSize != null) {
-      _json["maxFolderSize"] = maxFolderSize;
+      _json['maxFolderSize'] = maxFolderSize;
     }
     return _json;
   }
@@ -5296,35 +5295,35 @@ class Label {
   Label();
 
   Label.fromJson(core.Map _json) {
-    if (_json.containsKey("color")) {
-      color = LabelColor.fromJson(_json["color"]);
+    if (_json.containsKey('color')) {
+      color = LabelColor.fromJson(_json['color']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("labelListVisibility")) {
-      labelListVisibility = _json["labelListVisibility"];
+    if (_json.containsKey('labelListVisibility')) {
+      labelListVisibility = _json['labelListVisibility'];
     }
-    if (_json.containsKey("messageListVisibility")) {
-      messageListVisibility = _json["messageListVisibility"];
+    if (_json.containsKey('messageListVisibility')) {
+      messageListVisibility = _json['messageListVisibility'];
     }
-    if (_json.containsKey("messagesTotal")) {
-      messagesTotal = _json["messagesTotal"];
+    if (_json.containsKey('messagesTotal')) {
+      messagesTotal = _json['messagesTotal'];
     }
-    if (_json.containsKey("messagesUnread")) {
-      messagesUnread = _json["messagesUnread"];
+    if (_json.containsKey('messagesUnread')) {
+      messagesUnread = _json['messagesUnread'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("threadsTotal")) {
-      threadsTotal = _json["threadsTotal"];
+    if (_json.containsKey('threadsTotal')) {
+      threadsTotal = _json['threadsTotal'];
     }
-    if (_json.containsKey("threadsUnread")) {
-      threadsUnread = _json["threadsUnread"];
+    if (_json.containsKey('threadsUnread')) {
+      threadsUnread = _json['threadsUnread'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -5332,34 +5331,34 @@ class Label {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = color.toJson();
+      _json['color'] = color.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (labelListVisibility != null) {
-      _json["labelListVisibility"] = labelListVisibility;
+      _json['labelListVisibility'] = labelListVisibility;
     }
     if (messageListVisibility != null) {
-      _json["messageListVisibility"] = messageListVisibility;
+      _json['messageListVisibility'] = messageListVisibility;
     }
     if (messagesTotal != null) {
-      _json["messagesTotal"] = messagesTotal;
+      _json['messagesTotal'] = messagesTotal;
     }
     if (messagesUnread != null) {
-      _json["messagesUnread"] = messagesUnread;
+      _json['messagesUnread'] = messagesUnread;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (threadsTotal != null) {
-      _json["threadsTotal"] = threadsTotal;
+      _json['threadsTotal'] = threadsTotal;
     }
     if (threadsUnread != null) {
-      _json["threadsUnread"] = threadsUnread;
+      _json['threadsUnread'] = threadsUnread;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -5405,11 +5404,11 @@ class LabelColor {
   LabelColor();
 
   LabelColor.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundColor")) {
-      backgroundColor = _json["backgroundColor"];
+    if (_json.containsKey('backgroundColor')) {
+      backgroundColor = _json['backgroundColor'];
     }
-    if (_json.containsKey("textColor")) {
-      textColor = _json["textColor"];
+    if (_json.containsKey('textColor')) {
+      textColor = _json['textColor'];
     }
   }
 
@@ -5417,10 +5416,10 @@ class LabelColor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundColor != null) {
-      _json["backgroundColor"] = backgroundColor;
+      _json['backgroundColor'] = backgroundColor;
     }
     if (textColor != null) {
-      _json["textColor"] = textColor;
+      _json['textColor'] = textColor;
     }
     return _json;
   }
@@ -5444,8 +5443,8 @@ class LanguageSettings {
   LanguageSettings();
 
   LanguageSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("displayLanguage")) {
-      displayLanguage = _json["displayLanguage"];
+    if (_json.containsKey('displayLanguage')) {
+      displayLanguage = _json['displayLanguage'];
     }
   }
 
@@ -5453,7 +5452,7 @@ class LanguageSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayLanguage != null) {
-      _json["displayLanguage"] = displayLanguage;
+      _json['displayLanguage'] = displayLanguage;
     }
     return _json;
   }
@@ -5468,8 +5467,8 @@ class ListDelegatesResponse {
   ListDelegatesResponse();
 
   ListDelegatesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("delegates")) {
-      delegates = (_json["delegates"] as core.List)
+    if (_json.containsKey('delegates')) {
+      delegates = (_json['delegates'] as core.List)
           .map<Delegate>((value) => Delegate.fromJson(value))
           .toList();
     }
@@ -5479,7 +5478,7 @@ class ListDelegatesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (delegates != null) {
-      _json["delegates"] = delegates.map((value) => value.toJson()).toList();
+      _json['delegates'] = delegates.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5500,16 +5499,16 @@ class ListDraftsResponse {
   ListDraftsResponse();
 
   ListDraftsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("drafts")) {
-      drafts = (_json["drafts"] as core.List)
+    if (_json.containsKey('drafts')) {
+      drafts = (_json['drafts'] as core.List)
           .map<Draft>((value) => Draft.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("resultSizeEstimate")) {
-      resultSizeEstimate = _json["resultSizeEstimate"];
+    if (_json.containsKey('resultSizeEstimate')) {
+      resultSizeEstimate = _json['resultSizeEstimate'];
     }
   }
 
@@ -5517,13 +5516,13 @@ class ListDraftsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (drafts != null) {
-      _json["drafts"] = drafts.map((value) => value.toJson()).toList();
+      _json['drafts'] = drafts.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (resultSizeEstimate != null) {
-      _json["resultSizeEstimate"] = resultSizeEstimate;
+      _json['resultSizeEstimate'] = resultSizeEstimate;
     }
     return _json;
   }
@@ -5537,8 +5536,8 @@ class ListFiltersResponse {
   ListFiltersResponse();
 
   ListFiltersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("filter")) {
-      filter = (_json["filter"] as core.List)
+    if (_json.containsKey('filter')) {
+      filter = (_json['filter'] as core.List)
           .map<Filter>((value) => Filter.fromJson(value))
           .toList();
     }
@@ -5548,7 +5547,7 @@ class ListFiltersResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (filter != null) {
-      _json["filter"] = filter.map((value) => value.toJson()).toList();
+      _json['filter'] = filter.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5562,8 +5561,8 @@ class ListForwardingAddressesResponse {
   ListForwardingAddressesResponse();
 
   ListForwardingAddressesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("forwardingAddresses")) {
-      forwardingAddresses = (_json["forwardingAddresses"] as core.List)
+    if (_json.containsKey('forwardingAddresses')) {
+      forwardingAddresses = (_json['forwardingAddresses'] as core.List)
           .map<ForwardingAddress>((value) => ForwardingAddress.fromJson(value))
           .toList();
     }
@@ -5573,7 +5572,7 @@ class ListForwardingAddressesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (forwardingAddresses != null) {
-      _json["forwardingAddresses"] =
+      _json['forwardingAddresses'] =
           forwardingAddresses.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -5594,16 +5593,16 @@ class ListHistoryResponse {
   ListHistoryResponse();
 
   ListHistoryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("history")) {
-      history = (_json["history"] as core.List)
+    if (_json.containsKey('history')) {
+      history = (_json['history'] as core.List)
           .map<History>((value) => History.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("historyId")) {
-      historyId = _json["historyId"];
+    if (_json.containsKey('historyId')) {
+      historyId = _json['historyId'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -5611,13 +5610,13 @@ class ListHistoryResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (history != null) {
-      _json["history"] = history.map((value) => value.toJson()).toList();
+      _json['history'] = history.map((value) => value.toJson()).toList();
     }
     if (historyId != null) {
-      _json["historyId"] = historyId;
+      _json['historyId'] = historyId;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -5632,8 +5631,8 @@ class ListLabelsResponse {
   ListLabelsResponse();
 
   ListLabelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("labels")) {
-      labels = (_json["labels"] as core.List)
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.List)
           .map<Label>((value) => Label.fromJson(value))
           .toList();
     }
@@ -5643,7 +5642,7 @@ class ListLabelsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (labels != null) {
-      _json["labels"] = labels.map((value) => value.toJson()).toList();
+      _json['labels'] = labels.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5664,16 +5663,16 @@ class ListMessagesResponse {
   ListMessagesResponse();
 
   ListMessagesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("messages")) {
-      messages = (_json["messages"] as core.List)
+    if (_json.containsKey('messages')) {
+      messages = (_json['messages'] as core.List)
           .map<Message>((value) => Message.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("resultSizeEstimate")) {
-      resultSizeEstimate = _json["resultSizeEstimate"];
+    if (_json.containsKey('resultSizeEstimate')) {
+      resultSizeEstimate = _json['resultSizeEstimate'];
     }
   }
 
@@ -5681,13 +5680,13 @@ class ListMessagesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (messages != null) {
-      _json["messages"] = messages.map((value) => value.toJson()).toList();
+      _json['messages'] = messages.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (resultSizeEstimate != null) {
-      _json["resultSizeEstimate"] = resultSizeEstimate;
+      _json['resultSizeEstimate'] = resultSizeEstimate;
     }
     return _json;
   }
@@ -5701,8 +5700,8 @@ class ListSendAsResponse {
   ListSendAsResponse();
 
   ListSendAsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("sendAs")) {
-      sendAs = (_json["sendAs"] as core.List)
+    if (_json.containsKey('sendAs')) {
+      sendAs = (_json['sendAs'] as core.List)
           .map<SendAs>((value) => SendAs.fromJson(value))
           .toList();
     }
@@ -5712,7 +5711,7 @@ class ListSendAsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sendAs != null) {
-      _json["sendAs"] = sendAs.map((value) => value.toJson()).toList();
+      _json['sendAs'] = sendAs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5725,8 +5724,8 @@ class ListSmimeInfoResponse {
   ListSmimeInfoResponse();
 
   ListSmimeInfoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("smimeInfo")) {
-      smimeInfo = (_json["smimeInfo"] as core.List)
+    if (_json.containsKey('smimeInfo')) {
+      smimeInfo = (_json['smimeInfo'] as core.List)
           .map<SmimeInfo>((value) => SmimeInfo.fromJson(value))
           .toList();
     }
@@ -5736,7 +5735,7 @@ class ListSmimeInfoResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (smimeInfo != null) {
-      _json["smimeInfo"] = smimeInfo.map((value) => value.toJson()).toList();
+      _json['smimeInfo'] = smimeInfo.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5757,14 +5756,14 @@ class ListThreadsResponse {
   ListThreadsResponse();
 
   ListThreadsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("resultSizeEstimate")) {
-      resultSizeEstimate = _json["resultSizeEstimate"];
+    if (_json.containsKey('resultSizeEstimate')) {
+      resultSizeEstimate = _json['resultSizeEstimate'];
     }
-    if (_json.containsKey("threads")) {
-      threads = (_json["threads"] as core.List)
+    if (_json.containsKey('threads')) {
+      threads = (_json['threads'] as core.List)
           .map<Thread>((value) => Thread.fromJson(value))
           .toList();
     }
@@ -5774,13 +5773,13 @@ class ListThreadsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (resultSizeEstimate != null) {
-      _json["resultSizeEstimate"] = resultSizeEstimate;
+      _json['resultSizeEstimate'] = resultSizeEstimate;
     }
     if (threads != null) {
-      _json["threads"] = threads.map((value) => value.toJson()).toList();
+      _json['threads'] = threads.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5815,7 +5814,7 @@ class Message {
 
   set rawAsBytes(core.List<core.int> _bytes) {
     raw =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Estimated size in bytes of the message.
@@ -5835,32 +5834,32 @@ class Message {
   Message();
 
   Message.fromJson(core.Map _json) {
-    if (_json.containsKey("historyId")) {
-      historyId = _json["historyId"];
+    if (_json.containsKey('historyId')) {
+      historyId = _json['historyId'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("internalDate")) {
-      internalDate = _json["internalDate"];
+    if (_json.containsKey('internalDate')) {
+      internalDate = _json['internalDate'];
     }
-    if (_json.containsKey("labelIds")) {
-      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('labelIds')) {
+      labelIds = (_json['labelIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("payload")) {
-      payload = MessagePart.fromJson(_json["payload"]);
+    if (_json.containsKey('payload')) {
+      payload = MessagePart.fromJson(_json['payload']);
     }
-    if (_json.containsKey("raw")) {
-      raw = _json["raw"];
+    if (_json.containsKey('raw')) {
+      raw = _json['raw'];
     }
-    if (_json.containsKey("sizeEstimate")) {
-      sizeEstimate = _json["sizeEstimate"];
+    if (_json.containsKey('sizeEstimate')) {
+      sizeEstimate = _json['sizeEstimate'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = _json["snippet"];
+    if (_json.containsKey('snippet')) {
+      snippet = _json['snippet'];
     }
-    if (_json.containsKey("threadId")) {
-      threadId = _json["threadId"];
+    if (_json.containsKey('threadId')) {
+      threadId = _json['threadId'];
     }
   }
 
@@ -5868,31 +5867,31 @@ class Message {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (historyId != null) {
-      _json["historyId"] = historyId;
+      _json['historyId'] = historyId;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (internalDate != null) {
-      _json["internalDate"] = internalDate;
+      _json['internalDate'] = internalDate;
     }
     if (labelIds != null) {
-      _json["labelIds"] = labelIds;
+      _json['labelIds'] = labelIds;
     }
     if (payload != null) {
-      _json["payload"] = payload.toJson();
+      _json['payload'] = payload.toJson();
     }
     if (raw != null) {
-      _json["raw"] = raw;
+      _json['raw'] = raw;
     }
     if (sizeEstimate != null) {
-      _json["sizeEstimate"] = sizeEstimate;
+      _json['sizeEstimate'] = sizeEstimate;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet;
+      _json['snippet'] = snippet;
     }
     if (threadId != null) {
-      _json["threadId"] = threadId;
+      _json['threadId'] = threadId;
     }
     return _json;
   }
@@ -5928,25 +5927,25 @@ class MessagePart {
   MessagePart();
 
   MessagePart.fromJson(core.Map _json) {
-    if (_json.containsKey("body")) {
-      body = MessagePartBody.fromJson(_json["body"]);
+    if (_json.containsKey('body')) {
+      body = MessagePartBody.fromJson(_json['body']);
     }
-    if (_json.containsKey("filename")) {
-      filename = _json["filename"];
+    if (_json.containsKey('filename')) {
+      filename = _json['filename'];
     }
-    if (_json.containsKey("headers")) {
-      headers = (_json["headers"] as core.List)
+    if (_json.containsKey('headers')) {
+      headers = (_json['headers'] as core.List)
           .map<MessagePartHeader>((value) => MessagePartHeader.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'];
     }
-    if (_json.containsKey("partId")) {
-      partId = _json["partId"];
+    if (_json.containsKey('partId')) {
+      partId = _json['partId'];
     }
-    if (_json.containsKey("parts")) {
-      parts = (_json["parts"] as core.List)
+    if (_json.containsKey('parts')) {
+      parts = (_json['parts'] as core.List)
           .map<MessagePart>((value) => MessagePart.fromJson(value))
           .toList();
     }
@@ -5956,22 +5955,22 @@ class MessagePart {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (body != null) {
-      _json["body"] = body.toJson();
+      _json['body'] = body.toJson();
     }
     if (filename != null) {
-      _json["filename"] = filename;
+      _json['filename'] = filename;
     }
     if (headers != null) {
-      _json["headers"] = headers.map((value) => value.toJson()).toList();
+      _json['headers'] = headers.map((value) => value.toJson()).toList();
     }
     if (mimeType != null) {
-      _json["mimeType"] = mimeType;
+      _json['mimeType'] = mimeType;
     }
     if (partId != null) {
-      _json["partId"] = partId;
+      _json['partId'] = partId;
     }
     if (parts != null) {
-      _json["parts"] = parts.map((value) => value.toJson()).toList();
+      _json['parts'] = parts.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5994,7 +5993,7 @@ class MessagePartBody {
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Number of bytes for the message part data (encoding notwithstanding).
@@ -6003,14 +6002,14 @@ class MessagePartBody {
   MessagePartBody();
 
   MessagePartBody.fromJson(core.Map _json) {
-    if (_json.containsKey("attachmentId")) {
-      attachmentId = _json["attachmentId"];
+    if (_json.containsKey('attachmentId')) {
+      attachmentId = _json['attachmentId'];
     }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
+    if (_json.containsKey('data')) {
+      data = _json['data'];
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
   }
 
@@ -6018,13 +6017,13 @@ class MessagePartBody {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (attachmentId != null) {
-      _json["attachmentId"] = attachmentId;
+      _json['attachmentId'] = attachmentId;
     }
     if (data != null) {
-      _json["data"] = data;
+      _json['data'] = data;
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     return _json;
   }
@@ -6041,11 +6040,11 @@ class MessagePartHeader {
   MessagePartHeader();
 
   MessagePartHeader.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -6053,10 +6052,10 @@ class MessagePartHeader {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -6072,12 +6071,12 @@ class ModifyMessageRequest {
   ModifyMessageRequest();
 
   ModifyMessageRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("addLabelIds")) {
-      addLabelIds = (_json["addLabelIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('addLabelIds')) {
+      addLabelIds = (_json['addLabelIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("removeLabelIds")) {
+    if (_json.containsKey('removeLabelIds')) {
       removeLabelIds =
-          (_json["removeLabelIds"] as core.List).cast<core.String>();
+          (_json['removeLabelIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -6085,10 +6084,10 @@ class ModifyMessageRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addLabelIds != null) {
-      _json["addLabelIds"] = addLabelIds;
+      _json['addLabelIds'] = addLabelIds;
     }
     if (removeLabelIds != null) {
-      _json["removeLabelIds"] = removeLabelIds;
+      _json['removeLabelIds'] = removeLabelIds;
     }
     return _json;
   }
@@ -6104,12 +6103,12 @@ class ModifyThreadRequest {
   ModifyThreadRequest();
 
   ModifyThreadRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("addLabelIds")) {
-      addLabelIds = (_json["addLabelIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('addLabelIds')) {
+      addLabelIds = (_json['addLabelIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("removeLabelIds")) {
+    if (_json.containsKey('removeLabelIds')) {
       removeLabelIds =
-          (_json["removeLabelIds"] as core.List).cast<core.String>();
+          (_json['removeLabelIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -6117,10 +6116,10 @@ class ModifyThreadRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (addLabelIds != null) {
-      _json["addLabelIds"] = addLabelIds;
+      _json['addLabelIds'] = addLabelIds;
     }
     if (removeLabelIds != null) {
-      _json["removeLabelIds"] = removeLabelIds;
+      _json['removeLabelIds'] = removeLabelIds;
     }
     return _json;
   }
@@ -6151,11 +6150,11 @@ class PopSettings {
   PopSettings();
 
   PopSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("accessWindow")) {
-      accessWindow = _json["accessWindow"];
+    if (_json.containsKey('accessWindow')) {
+      accessWindow = _json['accessWindow'];
     }
-    if (_json.containsKey("disposition")) {
-      disposition = _json["disposition"];
+    if (_json.containsKey('disposition')) {
+      disposition = _json['disposition'];
     }
   }
 
@@ -6163,10 +6162,10 @@ class PopSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessWindow != null) {
-      _json["accessWindow"] = accessWindow;
+      _json['accessWindow'] = accessWindow;
     }
     if (disposition != null) {
-      _json["disposition"] = disposition;
+      _json['disposition'] = disposition;
     }
     return _json;
   }
@@ -6189,17 +6188,17 @@ class Profile {
   Profile();
 
   Profile.fromJson(core.Map _json) {
-    if (_json.containsKey("emailAddress")) {
-      emailAddress = _json["emailAddress"];
+    if (_json.containsKey('emailAddress')) {
+      emailAddress = _json['emailAddress'];
     }
-    if (_json.containsKey("historyId")) {
-      historyId = _json["historyId"];
+    if (_json.containsKey('historyId')) {
+      historyId = _json['historyId'];
     }
-    if (_json.containsKey("messagesTotal")) {
-      messagesTotal = _json["messagesTotal"];
+    if (_json.containsKey('messagesTotal')) {
+      messagesTotal = _json['messagesTotal'];
     }
-    if (_json.containsKey("threadsTotal")) {
-      threadsTotal = _json["threadsTotal"];
+    if (_json.containsKey('threadsTotal')) {
+      threadsTotal = _json['threadsTotal'];
     }
   }
 
@@ -6207,16 +6206,16 @@ class Profile {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (emailAddress != null) {
-      _json["emailAddress"] = emailAddress;
+      _json['emailAddress'] = emailAddress;
     }
     if (historyId != null) {
-      _json["historyId"] = historyId;
+      _json['historyId'] = historyId;
     }
     if (messagesTotal != null) {
-      _json["messagesTotal"] = messagesTotal;
+      _json['messagesTotal'] = messagesTotal;
     }
     if (threadsTotal != null) {
-      _json["threadsTotal"] = threadsTotal;
+      _json['threadsTotal'] = threadsTotal;
     }
     return _json;
   }
@@ -6282,32 +6281,32 @@ class SendAs {
   SendAs();
 
   SendAs.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("isDefault")) {
-      isDefault = _json["isDefault"];
+    if (_json.containsKey('isDefault')) {
+      isDefault = _json['isDefault'];
     }
-    if (_json.containsKey("isPrimary")) {
-      isPrimary = _json["isPrimary"];
+    if (_json.containsKey('isPrimary')) {
+      isPrimary = _json['isPrimary'];
     }
-    if (_json.containsKey("replyToAddress")) {
-      replyToAddress = _json["replyToAddress"];
+    if (_json.containsKey('replyToAddress')) {
+      replyToAddress = _json['replyToAddress'];
     }
-    if (_json.containsKey("sendAsEmail")) {
-      sendAsEmail = _json["sendAsEmail"];
+    if (_json.containsKey('sendAsEmail')) {
+      sendAsEmail = _json['sendAsEmail'];
     }
-    if (_json.containsKey("signature")) {
-      signature = _json["signature"];
+    if (_json.containsKey('signature')) {
+      signature = _json['signature'];
     }
-    if (_json.containsKey("smtpMsa")) {
-      smtpMsa = SmtpMsa.fromJson(_json["smtpMsa"]);
+    if (_json.containsKey('smtpMsa')) {
+      smtpMsa = SmtpMsa.fromJson(_json['smtpMsa']);
     }
-    if (_json.containsKey("treatAsAlias")) {
-      treatAsAlias = _json["treatAsAlias"];
+    if (_json.containsKey('treatAsAlias')) {
+      treatAsAlias = _json['treatAsAlias'];
     }
-    if (_json.containsKey("verificationStatus")) {
-      verificationStatus = _json["verificationStatus"];
+    if (_json.containsKey('verificationStatus')) {
+      verificationStatus = _json['verificationStatus'];
     }
   }
 
@@ -6315,31 +6314,31 @@ class SendAs {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (isDefault != null) {
-      _json["isDefault"] = isDefault;
+      _json['isDefault'] = isDefault;
     }
     if (isPrimary != null) {
-      _json["isPrimary"] = isPrimary;
+      _json['isPrimary'] = isPrimary;
     }
     if (replyToAddress != null) {
-      _json["replyToAddress"] = replyToAddress;
+      _json['replyToAddress'] = replyToAddress;
     }
     if (sendAsEmail != null) {
-      _json["sendAsEmail"] = sendAsEmail;
+      _json['sendAsEmail'] = sendAsEmail;
     }
     if (signature != null) {
-      _json["signature"] = signature;
+      _json['signature'] = signature;
     }
     if (smtpMsa != null) {
-      _json["smtpMsa"] = smtpMsa.toJson();
+      _json['smtpMsa'] = smtpMsa.toJson();
     }
     if (treatAsAlias != null) {
-      _json["treatAsAlias"] = treatAsAlias;
+      _json['treatAsAlias'] = treatAsAlias;
     }
     if (verificationStatus != null) {
-      _json["verificationStatus"] = verificationStatus;
+      _json['verificationStatus'] = verificationStatus;
     }
     return _json;
   }
@@ -6377,32 +6376,32 @@ class SmimeInfo {
 
   set pkcs12AsBytes(core.List<core.int> _bytes) {
     pkcs12 =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SmimeInfo();
 
   SmimeInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("encryptedKeyPassword")) {
-      encryptedKeyPassword = _json["encryptedKeyPassword"];
+    if (_json.containsKey('encryptedKeyPassword')) {
+      encryptedKeyPassword = _json['encryptedKeyPassword'];
     }
-    if (_json.containsKey("expiration")) {
-      expiration = _json["expiration"];
+    if (_json.containsKey('expiration')) {
+      expiration = _json['expiration'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("isDefault")) {
-      isDefault = _json["isDefault"];
+    if (_json.containsKey('isDefault')) {
+      isDefault = _json['isDefault'];
     }
-    if (_json.containsKey("issuerCn")) {
-      issuerCn = _json["issuerCn"];
+    if (_json.containsKey('issuerCn')) {
+      issuerCn = _json['issuerCn'];
     }
-    if (_json.containsKey("pem")) {
-      pem = _json["pem"];
+    if (_json.containsKey('pem')) {
+      pem = _json['pem'];
     }
-    if (_json.containsKey("pkcs12")) {
-      pkcs12 = _json["pkcs12"];
+    if (_json.containsKey('pkcs12')) {
+      pkcs12 = _json['pkcs12'];
     }
   }
 
@@ -6410,25 +6409,25 @@ class SmimeInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (encryptedKeyPassword != null) {
-      _json["encryptedKeyPassword"] = encryptedKeyPassword;
+      _json['encryptedKeyPassword'] = encryptedKeyPassword;
     }
     if (expiration != null) {
-      _json["expiration"] = expiration;
+      _json['expiration'] = expiration;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (isDefault != null) {
-      _json["isDefault"] = isDefault;
+      _json['isDefault'] = isDefault;
     }
     if (issuerCn != null) {
-      _json["issuerCn"] = issuerCn;
+      _json['issuerCn'] = issuerCn;
     }
     if (pem != null) {
-      _json["pem"] = pem;
+      _json['pem'] = pem;
     }
     if (pkcs12 != null) {
-      _json["pkcs12"] = pkcs12;
+      _json['pkcs12'] = pkcs12;
     }
     return _json;
   }
@@ -6466,20 +6465,20 @@ class SmtpMsa {
   SmtpMsa();
 
   SmtpMsa.fromJson(core.Map _json) {
-    if (_json.containsKey("host")) {
-      host = _json["host"];
+    if (_json.containsKey('host')) {
+      host = _json['host'];
     }
-    if (_json.containsKey("password")) {
-      password = _json["password"];
+    if (_json.containsKey('password')) {
+      password = _json['password'];
     }
-    if (_json.containsKey("port")) {
-      port = _json["port"];
+    if (_json.containsKey('port')) {
+      port = _json['port'];
     }
-    if (_json.containsKey("securityMode")) {
-      securityMode = _json["securityMode"];
+    if (_json.containsKey('securityMode')) {
+      securityMode = _json['securityMode'];
     }
-    if (_json.containsKey("username")) {
-      username = _json["username"];
+    if (_json.containsKey('username')) {
+      username = _json['username'];
     }
   }
 
@@ -6487,19 +6486,19 @@ class SmtpMsa {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (host != null) {
-      _json["host"] = host;
+      _json['host'] = host;
     }
     if (password != null) {
-      _json["password"] = password;
+      _json['password'] = password;
     }
     if (port != null) {
-      _json["port"] = port;
+      _json['port'] = port;
     }
     if (securityMode != null) {
-      _json["securityMode"] = securityMode;
+      _json['securityMode'] = securityMode;
     }
     if (username != null) {
-      _json["username"] = username;
+      _json['username'] = username;
     }
     return _json;
   }
@@ -6522,19 +6521,19 @@ class Thread {
   Thread();
 
   Thread.fromJson(core.Map _json) {
-    if (_json.containsKey("historyId")) {
-      historyId = _json["historyId"];
+    if (_json.containsKey('historyId')) {
+      historyId = _json['historyId'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("messages")) {
-      messages = (_json["messages"] as core.List)
+    if (_json.containsKey('messages')) {
+      messages = (_json['messages'] as core.List)
           .map<Message>((value) => Message.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("snippet")) {
-      snippet = _json["snippet"];
+    if (_json.containsKey('snippet')) {
+      snippet = _json['snippet'];
     }
   }
 
@@ -6542,16 +6541,16 @@ class Thread {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (historyId != null) {
-      _json["historyId"] = historyId;
+      _json['historyId'] = historyId;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (messages != null) {
-      _json["messages"] = messages.map((value) => value.toJson()).toList();
+      _json['messages'] = messages.map((value) => value.toJson()).toList();
     }
     if (snippet != null) {
-      _json["snippet"] = snippet;
+      _json['snippet'] = snippet;
     }
     return _json;
   }
@@ -6601,29 +6600,29 @@ class VacationSettings {
   VacationSettings();
 
   VacationSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("enableAutoReply")) {
-      enableAutoReply = _json["enableAutoReply"];
+    if (_json.containsKey('enableAutoReply')) {
+      enableAutoReply = _json['enableAutoReply'];
     }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'];
     }
-    if (_json.containsKey("responseBodyHtml")) {
-      responseBodyHtml = _json["responseBodyHtml"];
+    if (_json.containsKey('responseBodyHtml')) {
+      responseBodyHtml = _json['responseBodyHtml'];
     }
-    if (_json.containsKey("responseBodyPlainText")) {
-      responseBodyPlainText = _json["responseBodyPlainText"];
+    if (_json.containsKey('responseBodyPlainText')) {
+      responseBodyPlainText = _json['responseBodyPlainText'];
     }
-    if (_json.containsKey("responseSubject")) {
-      responseSubject = _json["responseSubject"];
+    if (_json.containsKey('responseSubject')) {
+      responseSubject = _json['responseSubject'];
     }
-    if (_json.containsKey("restrictToContacts")) {
-      restrictToContacts = _json["restrictToContacts"];
+    if (_json.containsKey('restrictToContacts')) {
+      restrictToContacts = _json['restrictToContacts'];
     }
-    if (_json.containsKey("restrictToDomain")) {
-      restrictToDomain = _json["restrictToDomain"];
+    if (_json.containsKey('restrictToDomain')) {
+      restrictToDomain = _json['restrictToDomain'];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'];
     }
   }
 
@@ -6631,28 +6630,28 @@ class VacationSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enableAutoReply != null) {
-      _json["enableAutoReply"] = enableAutoReply;
+      _json['enableAutoReply'] = enableAutoReply;
     }
     if (endTime != null) {
-      _json["endTime"] = endTime;
+      _json['endTime'] = endTime;
     }
     if (responseBodyHtml != null) {
-      _json["responseBodyHtml"] = responseBodyHtml;
+      _json['responseBodyHtml'] = responseBodyHtml;
     }
     if (responseBodyPlainText != null) {
-      _json["responseBodyPlainText"] = responseBodyPlainText;
+      _json['responseBodyPlainText'] = responseBodyPlainText;
     }
     if (responseSubject != null) {
-      _json["responseSubject"] = responseSubject;
+      _json['responseSubject'] = responseSubject;
     }
     if (restrictToContacts != null) {
-      _json["restrictToContacts"] = restrictToContacts;
+      _json['restrictToContacts'] = restrictToContacts;
     }
     if (restrictToDomain != null) {
-      _json["restrictToDomain"] = restrictToDomain;
+      _json['restrictToDomain'] = restrictToDomain;
     }
     if (startTime != null) {
-      _json["startTime"] = startTime;
+      _json['startTime'] = startTime;
     }
     return _json;
   }
@@ -6685,14 +6684,14 @@ class WatchRequest {
   WatchRequest();
 
   WatchRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("labelFilterAction")) {
-      labelFilterAction = _json["labelFilterAction"];
+    if (_json.containsKey('labelFilterAction')) {
+      labelFilterAction = _json['labelFilterAction'];
     }
-    if (_json.containsKey("labelIds")) {
-      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('labelIds')) {
+      labelIds = (_json['labelIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("topicName")) {
-      topicName = _json["topicName"];
+    if (_json.containsKey('topicName')) {
+      topicName = _json['topicName'];
     }
   }
 
@@ -6700,13 +6699,13 @@ class WatchRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (labelFilterAction != null) {
-      _json["labelFilterAction"] = labelFilterAction;
+      _json['labelFilterAction'] = labelFilterAction;
     }
     if (labelIds != null) {
-      _json["labelIds"] = labelIds;
+      _json['labelIds'] = labelIds;
     }
     if (topicName != null) {
-      _json["topicName"] = topicName;
+      _json['topicName'] = topicName;
     }
     return _json;
   }
@@ -6724,11 +6723,11 @@ class WatchResponse {
   WatchResponse();
 
   WatchResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("expiration")) {
-      expiration = _json["expiration"];
+    if (_json.containsKey('expiration')) {
+      expiration = _json['expiration'];
     }
-    if (_json.containsKey("historyId")) {
-      historyId = _json["historyId"];
+    if (_json.containsKey('historyId')) {
+      historyId = _json['historyId'];
     }
   }
 
@@ -6736,10 +6735,10 @@ class WatchResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expiration != null) {
-      _json["expiration"] = expiration;
+      _json['expiration'] = expiration;
     }
     if (historyId != null) {
-      _json["historyId"] = historyId;
+      _json['historyId'] = historyId;
     }
     return _json;
   }

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -55,8 +54,8 @@ class SafebrowsingApi {
       ThreatMatchesResourceApi(_requester);
 
   SafebrowsingApi(http.Client client,
-      {core.String rootUrl = "https://safebrowsing.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://safebrowsing.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -100,16 +99,16 @@ class EncodedFullHashesResourceApi {
     core.String _body;
 
     if (encodedRequest == null) {
-      throw core.ArgumentError("Parameter encodedRequest is required.");
+      throw core.ArgumentError('Parameter encodedRequest is required.');
     }
     if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
+      _queryParams['clientVersion'] = [clientVersion];
     }
     if (clientId != null) {
-      _queryParams["clientId"] = [clientId];
+      _queryParams['clientId'] = [clientId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v4/encodedFullHashes/' +
@@ -117,7 +116,7 @@ class EncodedFullHashesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -166,16 +165,16 @@ class EncodedUpdatesResourceApi {
     core.String _body;
 
     if (encodedRequest == null) {
-      throw core.ArgumentError("Parameter encodedRequest is required.");
+      throw core.ArgumentError('Parameter encodedRequest is required.');
     }
     if (clientId != null) {
-      _queryParams["clientId"] = [clientId];
+      _queryParams['clientId'] = [clientId];
     }
     if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
+      _queryParams['clientVersion'] = [clientVersion];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -183,7 +182,7 @@ class EncodedUpdatesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -231,14 +230,14 @@ class FullHashesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v4/fullHashes:find';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -286,14 +285,14 @@ class ThreatHitsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v4/threatHits';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -342,14 +341,14 @@ class ThreatListUpdatesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v4/threatListUpdates:fetch';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -391,14 +390,14 @@ class ThreatListsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v4/threatLists';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -445,14 +444,14 @@ class ThreatMatchesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v4/threatMatches:find';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -472,14 +471,14 @@ class Checksum {
 
   set sha256AsBytes(core.List<core.int> _bytes) {
     sha256 =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   Checksum();
 
   Checksum.fromJson(core.Map _json) {
-    if (_json.containsKey("sha256")) {
-      sha256 = _json["sha256"];
+    if (_json.containsKey('sha256')) {
+      sha256 = _json['sha256'];
     }
   }
 
@@ -487,7 +486,7 @@ class Checksum {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (sha256 != null) {
-      _json["sha256"] = sha256;
+      _json['sha256'] = sha256;
     }
     return _json;
   }
@@ -505,11 +504,11 @@ class ClientInfo {
   ClientInfo();
 
   ClientInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
+    if (_json.containsKey('clientId')) {
+      clientId = _json['clientId'];
     }
-    if (_json.containsKey("clientVersion")) {
-      clientVersion = _json["clientVersion"];
+    if (_json.containsKey('clientVersion')) {
+      clientVersion = _json['clientVersion'];
     }
   }
 
@@ -517,10 +516,10 @@ class ClientInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientId != null) {
-      _json["clientId"] = clientId;
+      _json['clientId'] = clientId;
     }
     if (clientVersion != null) {
-      _json["clientVersion"] = clientVersion;
+      _json['clientVersion'] = clientVersion;
     }
     return _json;
   }
@@ -557,24 +556,24 @@ class Constraints {
   Constraints();
 
   Constraints.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceLocation")) {
-      deviceLocation = _json["deviceLocation"];
+    if (_json.containsKey('deviceLocation')) {
+      deviceLocation = _json['deviceLocation'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("maxDatabaseEntries")) {
-      maxDatabaseEntries = _json["maxDatabaseEntries"];
+    if (_json.containsKey('maxDatabaseEntries')) {
+      maxDatabaseEntries = _json['maxDatabaseEntries'];
     }
-    if (_json.containsKey("maxUpdateEntries")) {
-      maxUpdateEntries = _json["maxUpdateEntries"];
+    if (_json.containsKey('maxUpdateEntries')) {
+      maxUpdateEntries = _json['maxUpdateEntries'];
     }
-    if (_json.containsKey("region")) {
-      region = _json["region"];
+    if (_json.containsKey('region')) {
+      region = _json['region'];
     }
-    if (_json.containsKey("supportedCompressions")) {
+    if (_json.containsKey('supportedCompressions')) {
       supportedCompressions =
-          (_json["supportedCompressions"] as core.List).cast<core.String>();
+          (_json['supportedCompressions'] as core.List).cast<core.String>();
     }
   }
 
@@ -582,22 +581,22 @@ class Constraints {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deviceLocation != null) {
-      _json["deviceLocation"] = deviceLocation;
+      _json['deviceLocation'] = deviceLocation;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (maxDatabaseEntries != null) {
-      _json["maxDatabaseEntries"] = maxDatabaseEntries;
+      _json['maxDatabaseEntries'] = maxDatabaseEntries;
     }
     if (maxUpdateEntries != null) {
-      _json["maxUpdateEntries"] = maxUpdateEntries;
+      _json['maxUpdateEntries'] = maxUpdateEntries;
     }
     if (region != null) {
-      _json["region"] = region;
+      _json['region'] = region;
     }
     if (supportedCompressions != null) {
-      _json["supportedCompressions"] = supportedCompressions;
+      _json['supportedCompressions'] = supportedCompressions;
     }
     return _json;
   }
@@ -633,11 +632,11 @@ class FetchThreatListUpdatesRequest {
   FetchThreatListUpdatesRequest();
 
   FetchThreatListUpdatesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("client")) {
-      client = ClientInfo.fromJson(_json["client"]);
+    if (_json.containsKey('client')) {
+      client = ClientInfo.fromJson(_json['client']);
     }
-    if (_json.containsKey("listUpdateRequests")) {
-      listUpdateRequests = (_json["listUpdateRequests"] as core.List)
+    if (_json.containsKey('listUpdateRequests')) {
+      listUpdateRequests = (_json['listUpdateRequests'] as core.List)
           .map<ListUpdateRequest>((value) => ListUpdateRequest.fromJson(value))
           .toList();
     }
@@ -647,10 +646,10 @@ class FetchThreatListUpdatesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (client != null) {
-      _json["client"] = client.toJson();
+      _json['client'] = client.toJson();
     }
     if (listUpdateRequests != null) {
-      _json["listUpdateRequests"] =
+      _json['listUpdateRequests'] =
           listUpdateRequests.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -668,14 +667,14 @@ class FetchThreatListUpdatesResponse {
   FetchThreatListUpdatesResponse();
 
   FetchThreatListUpdatesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("listUpdateResponses")) {
-      listUpdateResponses = (_json["listUpdateResponses"] as core.List)
+    if (_json.containsKey('listUpdateResponses')) {
+      listUpdateResponses = (_json['listUpdateResponses'] as core.List)
           .map<ListUpdateResponse>(
               (value) => ListUpdateResponse.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("minimumWaitDuration")) {
-      minimumWaitDuration = _json["minimumWaitDuration"];
+    if (_json.containsKey('minimumWaitDuration')) {
+      minimumWaitDuration = _json['minimumWaitDuration'];
     }
   }
 
@@ -683,11 +682,11 @@ class FetchThreatListUpdatesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (listUpdateResponses != null) {
-      _json["listUpdateResponses"] =
+      _json['listUpdateResponses'] =
           listUpdateResponses.map((value) => value.toJson()).toList();
     }
     if (minimumWaitDuration != null) {
-      _json["minimumWaitDuration"] = minimumWaitDuration;
+      _json['minimumWaitDuration'] = minimumWaitDuration;
     }
     return _json;
   }
@@ -711,17 +710,17 @@ class FindFullHashesRequest {
   FindFullHashesRequest();
 
   FindFullHashesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("apiClient")) {
-      apiClient = ClientInfo.fromJson(_json["apiClient"]);
+    if (_json.containsKey('apiClient')) {
+      apiClient = ClientInfo.fromJson(_json['apiClient']);
     }
-    if (_json.containsKey("client")) {
-      client = ClientInfo.fromJson(_json["client"]);
+    if (_json.containsKey('client')) {
+      client = ClientInfo.fromJson(_json['client']);
     }
-    if (_json.containsKey("clientStates")) {
-      clientStates = (_json["clientStates"] as core.List).cast<core.String>();
+    if (_json.containsKey('clientStates')) {
+      clientStates = (_json['clientStates'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("threatInfo")) {
-      threatInfo = ThreatInfo.fromJson(_json["threatInfo"]);
+    if (_json.containsKey('threatInfo')) {
+      threatInfo = ThreatInfo.fromJson(_json['threatInfo']);
     }
   }
 
@@ -729,16 +728,16 @@ class FindFullHashesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (apiClient != null) {
-      _json["apiClient"] = apiClient.toJson();
+      _json['apiClient'] = apiClient.toJson();
     }
     if (client != null) {
-      _json["client"] = client.toJson();
+      _json['client'] = client.toJson();
     }
     if (clientStates != null) {
-      _json["clientStates"] = clientStates;
+      _json['clientStates'] = clientStates;
     }
     if (threatInfo != null) {
-      _json["threatInfo"] = threatInfo.toJson();
+      _json['threatInfo'] = threatInfo.toJson();
     }
     return _json;
   }
@@ -760,16 +759,16 @@ class FindFullHashesResponse {
   FindFullHashesResponse();
 
   FindFullHashesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("matches")) {
-      matches = (_json["matches"] as core.List)
+    if (_json.containsKey('matches')) {
+      matches = (_json['matches'] as core.List)
           .map<ThreatMatch>((value) => ThreatMatch.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("minimumWaitDuration")) {
-      minimumWaitDuration = _json["minimumWaitDuration"];
+    if (_json.containsKey('minimumWaitDuration')) {
+      minimumWaitDuration = _json['minimumWaitDuration'];
     }
-    if (_json.containsKey("negativeCacheDuration")) {
-      negativeCacheDuration = _json["negativeCacheDuration"];
+    if (_json.containsKey('negativeCacheDuration')) {
+      negativeCacheDuration = _json['negativeCacheDuration'];
     }
   }
 
@@ -777,13 +776,13 @@ class FindFullHashesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (matches != null) {
-      _json["matches"] = matches.map((value) => value.toJson()).toList();
+      _json['matches'] = matches.map((value) => value.toJson()).toList();
     }
     if (minimumWaitDuration != null) {
-      _json["minimumWaitDuration"] = minimumWaitDuration;
+      _json['minimumWaitDuration'] = minimumWaitDuration;
     }
     if (negativeCacheDuration != null) {
-      _json["negativeCacheDuration"] = negativeCacheDuration;
+      _json['negativeCacheDuration'] = negativeCacheDuration;
     }
     return _json;
   }
@@ -800,11 +799,11 @@ class FindThreatMatchesRequest {
   FindThreatMatchesRequest();
 
   FindThreatMatchesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("client")) {
-      client = ClientInfo.fromJson(_json["client"]);
+    if (_json.containsKey('client')) {
+      client = ClientInfo.fromJson(_json['client']);
     }
-    if (_json.containsKey("threatInfo")) {
-      threatInfo = ThreatInfo.fromJson(_json["threatInfo"]);
+    if (_json.containsKey('threatInfo')) {
+      threatInfo = ThreatInfo.fromJson(_json['threatInfo']);
     }
   }
 
@@ -812,10 +811,10 @@ class FindThreatMatchesRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (client != null) {
-      _json["client"] = client.toJson();
+      _json['client'] = client.toJson();
     }
     if (threatInfo != null) {
-      _json["threatInfo"] = threatInfo.toJson();
+      _json['threatInfo'] = threatInfo.toJson();
     }
     return _json;
   }
@@ -828,8 +827,8 @@ class FindThreatMatchesResponse {
   FindThreatMatchesResponse();
 
   FindThreatMatchesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("matches")) {
-      matches = (_json["matches"] as core.List)
+    if (_json.containsKey('matches')) {
+      matches = (_json['matches'] as core.List)
           .map<ThreatMatch>((value) => ThreatMatch.fromJson(value))
           .toList();
     }
@@ -839,7 +838,7 @@ class FindThreatMatchesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (matches != null) {
-      _json["matches"] = matches.map((value) => value.toJson()).toList();
+      _json['matches'] = matches.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -852,8 +851,8 @@ class ListThreatListsResponse {
   ListThreatListsResponse();
 
   ListThreatListsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("threatLists")) {
-      threatLists = (_json["threatLists"] as core.List)
+    if (_json.containsKey('threatLists')) {
+      threatLists = (_json['threatLists'] as core.List)
           .map<ThreatListDescriptor>(
               (value) => ThreatListDescriptor.fromJson(value))
           .toList();
@@ -864,7 +863,7 @@ class ListThreatListsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (threatLists != null) {
-      _json["threatLists"] =
+      _json['threatLists'] =
           threatLists.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -896,7 +895,7 @@ class ListUpdateRequest {
 
   set stateAsBytes(core.List<core.int> _bytes) {
     state =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The types of entries present in the list.
@@ -942,20 +941,20 @@ class ListUpdateRequest {
   ListUpdateRequest();
 
   ListUpdateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("constraints")) {
-      constraints = Constraints.fromJson(_json["constraints"]);
+    if (_json.containsKey('constraints')) {
+      constraints = Constraints.fromJson(_json['constraints']);
     }
-    if (_json.containsKey("platformType")) {
-      platformType = _json["platformType"];
+    if (_json.containsKey('platformType')) {
+      platformType = _json['platformType'];
     }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+    if (_json.containsKey('state')) {
+      state = _json['state'];
     }
-    if (_json.containsKey("threatEntryType")) {
-      threatEntryType = _json["threatEntryType"];
+    if (_json.containsKey('threatEntryType')) {
+      threatEntryType = _json['threatEntryType'];
     }
-    if (_json.containsKey("threatType")) {
-      threatType = _json["threatType"];
+    if (_json.containsKey('threatType')) {
+      threatType = _json['threatType'];
     }
   }
 
@@ -963,19 +962,19 @@ class ListUpdateRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (constraints != null) {
-      _json["constraints"] = constraints.toJson();
+      _json['constraints'] = constraints.toJson();
     }
     if (platformType != null) {
-      _json["platformType"] = platformType;
+      _json['platformType'] = platformType;
     }
     if (state != null) {
-      _json["state"] = state;
+      _json['state'] = state;
     }
     if (threatEntryType != null) {
-      _json["threatEntryType"] = threatEntryType;
+      _json['threatEntryType'] = threatEntryType;
     }
     if (threatType != null) {
-      _json["threatType"] = threatType;
+      _json['threatType'] = threatType;
     }
     return _json;
   }
@@ -1001,7 +1000,7 @@ class ListUpdateResponse {
 
   set newClientStateAsBytes(core.List<core.int> _bytes) {
     newClientState =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The platform type for which data is returned.
@@ -1075,33 +1074,33 @@ class ListUpdateResponse {
   ListUpdateResponse();
 
   ListUpdateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("additions")) {
-      additions = (_json["additions"] as core.List)
+    if (_json.containsKey('additions')) {
+      additions = (_json['additions'] as core.List)
           .map<ThreatEntrySet>((value) => ThreatEntrySet.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("checksum")) {
-      checksum = Checksum.fromJson(_json["checksum"]);
+    if (_json.containsKey('checksum')) {
+      checksum = Checksum.fromJson(_json['checksum']);
     }
-    if (_json.containsKey("newClientState")) {
-      newClientState = _json["newClientState"];
+    if (_json.containsKey('newClientState')) {
+      newClientState = _json['newClientState'];
     }
-    if (_json.containsKey("platformType")) {
-      platformType = _json["platformType"];
+    if (_json.containsKey('platformType')) {
+      platformType = _json['platformType'];
     }
-    if (_json.containsKey("removals")) {
-      removals = (_json["removals"] as core.List)
+    if (_json.containsKey('removals')) {
+      removals = (_json['removals'] as core.List)
           .map<ThreatEntrySet>((value) => ThreatEntrySet.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("responseType")) {
-      responseType = _json["responseType"];
+    if (_json.containsKey('responseType')) {
+      responseType = _json['responseType'];
     }
-    if (_json.containsKey("threatEntryType")) {
-      threatEntryType = _json["threatEntryType"];
+    if (_json.containsKey('threatEntryType')) {
+      threatEntryType = _json['threatEntryType'];
     }
-    if (_json.containsKey("threatType")) {
-      threatType = _json["threatType"];
+    if (_json.containsKey('threatType')) {
+      threatType = _json['threatType'];
     }
   }
 
@@ -1109,28 +1108,28 @@ class ListUpdateResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (additions != null) {
-      _json["additions"] = additions.map((value) => value.toJson()).toList();
+      _json['additions'] = additions.map((value) => value.toJson()).toList();
     }
     if (checksum != null) {
-      _json["checksum"] = checksum.toJson();
+      _json['checksum'] = checksum.toJson();
     }
     if (newClientState != null) {
-      _json["newClientState"] = newClientState;
+      _json['newClientState'] = newClientState;
     }
     if (platformType != null) {
-      _json["platformType"] = platformType;
+      _json['platformType'] = platformType;
     }
     if (removals != null) {
-      _json["removals"] = removals.map((value) => value.toJson()).toList();
+      _json['removals'] = removals.map((value) => value.toJson()).toList();
     }
     if (responseType != null) {
-      _json["responseType"] = responseType;
+      _json['responseType'] = responseType;
     }
     if (threatEntryType != null) {
-      _json["threatEntryType"] = threatEntryType;
+      _json['threatEntryType'] = threatEntryType;
     }
     if (threatType != null) {
-      _json["threatType"] = threatType;
+      _json['threatType'] = threatType;
     }
     return _json;
   }
@@ -1144,7 +1143,7 @@ class MetadataEntry {
 
   set keyAsBytes(core.List<core.int> _bytes) {
     key =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The metadata entry value. For JSON requests, the value is base64-encoded.
@@ -1153,17 +1152,17 @@ class MetadataEntry {
 
   set valueAsBytes(core.List<core.int> _bytes) {
     value =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   MetadataEntry();
 
   MetadataEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
+    if (_json.containsKey('key')) {
+      key = _json['key'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -1171,10 +1170,10 @@ class MetadataEntry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (key != null) {
-      _json["key"] = key;
+      _json['key'] = key;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -1199,17 +1198,17 @@ class RawHashes {
 
   set rawHashesAsBytes(core.List<core.int> _bytes) {
     rawHashes =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   RawHashes();
 
   RawHashes.fromJson(core.Map _json) {
-    if (_json.containsKey("prefixSize")) {
-      prefixSize = _json["prefixSize"];
+    if (_json.containsKey('prefixSize')) {
+      prefixSize = _json['prefixSize'];
     }
-    if (_json.containsKey("rawHashes")) {
-      rawHashes = _json["rawHashes"];
+    if (_json.containsKey('rawHashes')) {
+      rawHashes = _json['rawHashes'];
     }
   }
 
@@ -1217,10 +1216,10 @@ class RawHashes {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (prefixSize != null) {
-      _json["prefixSize"] = prefixSize;
+      _json['prefixSize'] = prefixSize;
     }
     if (rawHashes != null) {
-      _json["rawHashes"] = rawHashes;
+      _json['rawHashes'] = rawHashes;
     }
     return _json;
   }
@@ -1234,8 +1233,8 @@ class RawIndices {
   RawIndices();
 
   RawIndices.fromJson(core.Map _json) {
-    if (_json.containsKey("indices")) {
-      indices = (_json["indices"] as core.List).cast<core.int>();
+    if (_json.containsKey('indices')) {
+      indices = (_json['indices'] as core.List).cast<core.int>();
     }
   }
 
@@ -1243,7 +1242,7 @@ class RawIndices {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (indices != null) {
-      _json["indices"] = indices;
+      _json['indices'] = indices;
     }
     return _json;
   }
@@ -1259,7 +1258,7 @@ class RiceDeltaEncoding {
 
   set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The offset of the first entry in the encoded data, or, if only a single
@@ -1279,17 +1278,17 @@ class RiceDeltaEncoding {
   RiceDeltaEncoding();
 
   RiceDeltaEncoding.fromJson(core.Map _json) {
-    if (_json.containsKey("encodedData")) {
-      encodedData = _json["encodedData"];
+    if (_json.containsKey('encodedData')) {
+      encodedData = _json['encodedData'];
     }
-    if (_json.containsKey("firstValue")) {
-      firstValue = _json["firstValue"];
+    if (_json.containsKey('firstValue')) {
+      firstValue = _json['firstValue'];
     }
-    if (_json.containsKey("numEntries")) {
-      numEntries = _json["numEntries"];
+    if (_json.containsKey('numEntries')) {
+      numEntries = _json['numEntries'];
     }
-    if (_json.containsKey("riceParameter")) {
-      riceParameter = _json["riceParameter"];
+    if (_json.containsKey('riceParameter')) {
+      riceParameter = _json['riceParameter'];
     }
   }
 
@@ -1297,16 +1296,16 @@ class RiceDeltaEncoding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (encodedData != null) {
-      _json["encodedData"] = encodedData;
+      _json['encodedData'] = encodedData;
     }
     if (firstValue != null) {
-      _json["firstValue"] = firstValue;
+      _json['firstValue'] = firstValue;
     }
     if (numEntries != null) {
-      _json["numEntries"] = numEntries;
+      _json['numEntries'] = numEntries;
     }
     if (riceParameter != null) {
-      _json["riceParameter"] = riceParameter;
+      _json['riceParameter'] = riceParameter;
     }
     return _json;
   }
@@ -1322,7 +1321,7 @@ class ThreatEntry {
 
   set digestAsBytes(core.List<core.int> _bytes) {
     digest =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A hash prefix, consisting of the most significant 4-32 bytes of a SHA256
@@ -1333,7 +1332,7 @@ class ThreatEntry {
 
   set hashAsBytes(core.List<core.int> _bytes) {
     hash =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A URL.
@@ -1342,14 +1341,14 @@ class ThreatEntry {
   ThreatEntry();
 
   ThreatEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("digest")) {
-      digest = _json["digest"];
+    if (_json.containsKey('digest')) {
+      digest = _json['digest'];
     }
-    if (_json.containsKey("hash")) {
-      hash = _json["hash"];
+    if (_json.containsKey('hash')) {
+      hash = _json['hash'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -1357,13 +1356,13 @@ class ThreatEntry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (digest != null) {
-      _json["digest"] = digest;
+      _json['digest'] = digest;
     }
     if (hash != null) {
-      _json["hash"] = hash;
+      _json['hash'] = hash;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -1378,8 +1377,8 @@ class ThreatEntryMetadata {
   ThreatEntryMetadata();
 
   ThreatEntryMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("entries")) {
-      entries = (_json["entries"] as core.List)
+    if (_json.containsKey('entries')) {
+      entries = (_json['entries'] as core.List)
           .map<MetadataEntry>((value) => MetadataEntry.fromJson(value))
           .toList();
     }
@@ -1389,7 +1388,7 @@ class ThreatEntryMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entries != null) {
-      _json["entries"] = entries.map((value) => value.toJson()).toList();
+      _json['entries'] = entries.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1425,20 +1424,20 @@ class ThreatEntrySet {
   ThreatEntrySet();
 
   ThreatEntrySet.fromJson(core.Map _json) {
-    if (_json.containsKey("compressionType")) {
-      compressionType = _json["compressionType"];
+    if (_json.containsKey('compressionType')) {
+      compressionType = _json['compressionType'];
     }
-    if (_json.containsKey("rawHashes")) {
-      rawHashes = RawHashes.fromJson(_json["rawHashes"]);
+    if (_json.containsKey('rawHashes')) {
+      rawHashes = RawHashes.fromJson(_json['rawHashes']);
     }
-    if (_json.containsKey("rawIndices")) {
-      rawIndices = RawIndices.fromJson(_json["rawIndices"]);
+    if (_json.containsKey('rawIndices')) {
+      rawIndices = RawIndices.fromJson(_json['rawIndices']);
     }
-    if (_json.containsKey("riceHashes")) {
-      riceHashes = RiceDeltaEncoding.fromJson(_json["riceHashes"]);
+    if (_json.containsKey('riceHashes')) {
+      riceHashes = RiceDeltaEncoding.fromJson(_json['riceHashes']);
     }
-    if (_json.containsKey("riceIndices")) {
-      riceIndices = RiceDeltaEncoding.fromJson(_json["riceIndices"]);
+    if (_json.containsKey('riceIndices')) {
+      riceIndices = RiceDeltaEncoding.fromJson(_json['riceIndices']);
     }
   }
 
@@ -1446,19 +1445,19 @@ class ThreatEntrySet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (compressionType != null) {
-      _json["compressionType"] = compressionType;
+      _json['compressionType'] = compressionType;
     }
     if (rawHashes != null) {
-      _json["rawHashes"] = rawHashes.toJson();
+      _json['rawHashes'] = rawHashes.toJson();
     }
     if (rawIndices != null) {
-      _json["rawIndices"] = rawIndices.toJson();
+      _json['rawIndices'] = rawIndices.toJson();
     }
     if (riceHashes != null) {
-      _json["riceHashes"] = riceHashes.toJson();
+      _json['riceHashes'] = riceHashes.toJson();
     }
     if (riceIndices != null) {
-      _json["riceIndices"] = riceIndices.toJson();
+      _json['riceIndices'] = riceIndices.toJson();
     }
     return _json;
   }
@@ -1523,25 +1522,25 @@ class ThreatHit {
   ThreatHit();
 
   ThreatHit.fromJson(core.Map _json) {
-    if (_json.containsKey("clientInfo")) {
-      clientInfo = ClientInfo.fromJson(_json["clientInfo"]);
+    if (_json.containsKey('clientInfo')) {
+      clientInfo = ClientInfo.fromJson(_json['clientInfo']);
     }
-    if (_json.containsKey("entry")) {
-      entry = ThreatEntry.fromJson(_json["entry"]);
+    if (_json.containsKey('entry')) {
+      entry = ThreatEntry.fromJson(_json['entry']);
     }
-    if (_json.containsKey("platformType")) {
-      platformType = _json["platformType"];
+    if (_json.containsKey('platformType')) {
+      platformType = _json['platformType'];
     }
-    if (_json.containsKey("resources")) {
-      resources = (_json["resources"] as core.List)
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List)
           .map<ThreatSource>((value) => ThreatSource.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("threatType")) {
-      threatType = _json["threatType"];
+    if (_json.containsKey('threatType')) {
+      threatType = _json['threatType'];
     }
-    if (_json.containsKey("userInfo")) {
-      userInfo = UserInfo.fromJson(_json["userInfo"]);
+    if (_json.containsKey('userInfo')) {
+      userInfo = UserInfo.fromJson(_json['userInfo']);
     }
   }
 
@@ -1549,22 +1548,22 @@ class ThreatHit {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (clientInfo != null) {
-      _json["clientInfo"] = clientInfo.toJson();
+      _json['clientInfo'] = clientInfo.toJson();
     }
     if (entry != null) {
-      _json["entry"] = entry.toJson();
+      _json['entry'] = entry.toJson();
     }
     if (platformType != null) {
-      _json["platformType"] = platformType;
+      _json['platformType'] = platformType;
     }
     if (resources != null) {
-      _json["resources"] = resources.map((value) => value.toJson()).toList();
+      _json['resources'] = resources.map((value) => value.toJson()).toList();
     }
     if (threatType != null) {
-      _json["threatType"] = threatType;
+      _json['threatType'] = threatType;
     }
     if (userInfo != null) {
-      _json["userInfo"] = userInfo.toJson();
+      _json['userInfo'] = userInfo.toJson();
     }
     return _json;
   }
@@ -1588,20 +1587,20 @@ class ThreatInfo {
   ThreatInfo();
 
   ThreatInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("platformTypes")) {
-      platformTypes = (_json["platformTypes"] as core.List).cast<core.String>();
+    if (_json.containsKey('platformTypes')) {
+      platformTypes = (_json['platformTypes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("threatEntries")) {
-      threatEntries = (_json["threatEntries"] as core.List)
+    if (_json.containsKey('threatEntries')) {
+      threatEntries = (_json['threatEntries'] as core.List)
           .map<ThreatEntry>((value) => ThreatEntry.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("threatEntryTypes")) {
+    if (_json.containsKey('threatEntryTypes')) {
       threatEntryTypes =
-          (_json["threatEntryTypes"] as core.List).cast<core.String>();
+          (_json['threatEntryTypes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("threatTypes")) {
-      threatTypes = (_json["threatTypes"] as core.List).cast<core.String>();
+    if (_json.containsKey('threatTypes')) {
+      threatTypes = (_json['threatTypes'] as core.List).cast<core.String>();
     }
   }
 
@@ -1609,17 +1608,17 @@ class ThreatInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (platformTypes != null) {
-      _json["platformTypes"] = platformTypes;
+      _json['platformTypes'] = platformTypes;
     }
     if (threatEntries != null) {
-      _json["threatEntries"] =
+      _json['threatEntries'] =
           threatEntries.map((value) => value.toJson()).toList();
     }
     if (threatEntryTypes != null) {
-      _json["threatEntryTypes"] = threatEntryTypes;
+      _json['threatEntryTypes'] = threatEntryTypes;
     }
     if (threatTypes != null) {
-      _json["threatTypes"] = threatTypes;
+      _json['threatTypes'] = threatTypes;
     }
     return _json;
   }
@@ -1685,14 +1684,14 @@ class ThreatListDescriptor {
   ThreatListDescriptor();
 
   ThreatListDescriptor.fromJson(core.Map _json) {
-    if (_json.containsKey("platformType")) {
-      platformType = _json["platformType"];
+    if (_json.containsKey('platformType')) {
+      platformType = _json['platformType'];
     }
-    if (_json.containsKey("threatEntryType")) {
-      threatEntryType = _json["threatEntryType"];
+    if (_json.containsKey('threatEntryType')) {
+      threatEntryType = _json['threatEntryType'];
     }
-    if (_json.containsKey("threatType")) {
-      threatType = _json["threatType"];
+    if (_json.containsKey('threatType')) {
+      threatType = _json['threatType'];
     }
   }
 
@@ -1700,13 +1699,13 @@ class ThreatListDescriptor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (platformType != null) {
-      _json["platformType"] = platformType;
+      _json['platformType'] = platformType;
     }
     if (threatEntryType != null) {
-      _json["threatEntryType"] = threatEntryType;
+      _json['threatEntryType'] = threatEntryType;
     }
     if (threatType != null) {
-      _json["threatType"] = threatType;
+      _json['threatType'] = threatType;
     }
     return _json;
   }
@@ -1780,24 +1779,24 @@ class ThreatMatch {
   ThreatMatch();
 
   ThreatMatch.fromJson(core.Map _json) {
-    if (_json.containsKey("cacheDuration")) {
-      cacheDuration = _json["cacheDuration"];
+    if (_json.containsKey('cacheDuration')) {
+      cacheDuration = _json['cacheDuration'];
     }
-    if (_json.containsKey("platformType")) {
-      platformType = _json["platformType"];
+    if (_json.containsKey('platformType')) {
+      platformType = _json['platformType'];
     }
-    if (_json.containsKey("threat")) {
-      threat = ThreatEntry.fromJson(_json["threat"]);
+    if (_json.containsKey('threat')) {
+      threat = ThreatEntry.fromJson(_json['threat']);
     }
-    if (_json.containsKey("threatEntryMetadata")) {
+    if (_json.containsKey('threatEntryMetadata')) {
       threatEntryMetadata =
-          ThreatEntryMetadata.fromJson(_json["threatEntryMetadata"]);
+          ThreatEntryMetadata.fromJson(_json['threatEntryMetadata']);
     }
-    if (_json.containsKey("threatEntryType")) {
-      threatEntryType = _json["threatEntryType"];
+    if (_json.containsKey('threatEntryType')) {
+      threatEntryType = _json['threatEntryType'];
     }
-    if (_json.containsKey("threatType")) {
-      threatType = _json["threatType"];
+    if (_json.containsKey('threatType')) {
+      threatType = _json['threatType'];
     }
   }
 
@@ -1805,22 +1804,22 @@ class ThreatMatch {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cacheDuration != null) {
-      _json["cacheDuration"] = cacheDuration;
+      _json['cacheDuration'] = cacheDuration;
     }
     if (platformType != null) {
-      _json["platformType"] = platformType;
+      _json['platformType'] = platformType;
     }
     if (threat != null) {
-      _json["threat"] = threat.toJson();
+      _json['threat'] = threat.toJson();
     }
     if (threatEntryMetadata != null) {
-      _json["threatEntryMetadata"] = threatEntryMetadata.toJson();
+      _json['threatEntryMetadata'] = threatEntryMetadata.toJson();
     }
     if (threatEntryType != null) {
-      _json["threatEntryType"] = threatEntryType;
+      _json['threatEntryType'] = threatEntryType;
     }
     if (threatType != null) {
-      _json["threatType"] = threatType;
+      _json['threatType'] = threatType;
     }
     return _json;
   }
@@ -1852,17 +1851,17 @@ class ThreatSource {
   ThreatSource();
 
   ThreatSource.fromJson(core.Map _json) {
-    if (_json.containsKey("referrer")) {
-      referrer = _json["referrer"];
+    if (_json.containsKey('referrer')) {
+      referrer = _json['referrer'];
     }
-    if (_json.containsKey("remoteIp")) {
-      remoteIp = _json["remoteIp"];
+    if (_json.containsKey('remoteIp')) {
+      remoteIp = _json['remoteIp'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -1870,16 +1869,16 @@ class ThreatSource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (referrer != null) {
-      _json["referrer"] = referrer;
+      _json['referrer'] = referrer;
     }
     if (remoteIp != null) {
-      _json["remoteIp"] = remoteIp;
+      _json['remoteIp'] = remoteIp;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -1896,17 +1895,17 @@ class UserInfo {
 
   set userIdAsBytes(core.List<core.int> _bytes) {
     userId =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   UserInfo();
 
   UserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("regionCode")) {
-      regionCode = _json["regionCode"];
+    if (_json.containsKey('regionCode')) {
+      regionCode = _json['regionCode'];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
+    if (_json.containsKey('userId')) {
+      userId = _json['userId'];
     }
   }
 
@@ -1914,10 +1913,10 @@ class UserInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (regionCode != null) {
-      _json["regionCode"] = regionCode;
+      _json['regionCode'] = regionCode;
     }
     if (userId != null) {
-      _json["userId"] = userId;
+      _json['userId'] = userId;
     }
     return _json;
   }

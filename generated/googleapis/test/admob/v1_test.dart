@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -218,7 +218,7 @@ api.ListPublisherAccountsResponse buildListPublisherAccountsResponse() {
   buildCounterListPublisherAccountsResponse++;
   if (buildCounterListPublisherAccountsResponse < 3) {
     o.account = buildUnnamed5706();
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
   }
   buildCounterListPublisherAccountsResponse--;
   return o;
@@ -238,8 +238,8 @@ api.LocalizationSettings buildLocalizationSettings() {
   var o = api.LocalizationSettings();
   buildCounterLocalizationSettings++;
   if (buildCounterLocalizationSettings < 3) {
-    o.currencyCode = "foo";
-    o.languageCode = "foo";
+    o.currencyCode = 'foo';
+    o.languageCode = 'foo';
   }
   buildCounterLocalizationSettings--;
   return o;
@@ -269,8 +269,8 @@ void checkUnnamed5707(core.List<api.MediationReportSpecDimensionFilter> o) {
 
 core.List<core.String> buildUnnamed5708() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -282,8 +282,8 @@ void checkUnnamed5708(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5709() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -318,7 +318,7 @@ api.MediationReportSpec buildMediationReportSpec() {
     o.maxReportRows = 42;
     o.metrics = buildUnnamed5709();
     o.sortConditions = buildUnnamed5710();
-    o.timeZone = "foo";
+    o.timeZone = 'foo';
   }
   buildCounterMediationReportSpec--;
   return o;
@@ -345,7 +345,7 @@ api.MediationReportSpecDimensionFilter
   var o = api.MediationReportSpecDimensionFilter();
   buildCounterMediationReportSpecDimensionFilter++;
   if (buildCounterMediationReportSpecDimensionFilter < 3) {
-    o.dimension = "foo";
+    o.dimension = 'foo';
     o.matchesAny = buildStringList();
   }
   buildCounterMediationReportSpecDimensionFilter--;
@@ -367,9 +367,9 @@ api.MediationReportSpecSortCondition buildMediationReportSpecSortCondition() {
   var o = api.MediationReportSpecSortCondition();
   buildCounterMediationReportSpecSortCondition++;
   if (buildCounterMediationReportSpecSortCondition < 3) {
-    o.dimension = "foo";
-    o.metric = "foo";
-    o.order = "foo";
+    o.dimension = 'foo';
+    o.metric = 'foo';
+    o.order = 'foo';
   }
   buildCounterMediationReportSpecSortCondition--;
   return o;
@@ -401,8 +401,8 @@ void checkUnnamed5711(core.List<api.NetworkReportSpecDimensionFilter> o) {
 
 core.List<core.String> buildUnnamed5712() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -414,8 +414,8 @@ void checkUnnamed5712(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed5713() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -450,7 +450,7 @@ api.NetworkReportSpec buildNetworkReportSpec() {
     o.maxReportRows = 42;
     o.metrics = buildUnnamed5713();
     o.sortConditions = buildUnnamed5714();
-    o.timeZone = "foo";
+    o.timeZone = 'foo';
   }
   buildCounterNetworkReportSpec--;
   return o;
@@ -476,7 +476,7 @@ api.NetworkReportSpecDimensionFilter buildNetworkReportSpecDimensionFilter() {
   var o = api.NetworkReportSpecDimensionFilter();
   buildCounterNetworkReportSpecDimensionFilter++;
   if (buildCounterNetworkReportSpecDimensionFilter < 3) {
-    o.dimension = "foo";
+    o.dimension = 'foo';
     o.matchesAny = buildStringList();
   }
   buildCounterNetworkReportSpecDimensionFilter--;
@@ -498,9 +498,9 @@ api.NetworkReportSpecSortCondition buildNetworkReportSpecSortCondition() {
   var o = api.NetworkReportSpecSortCondition();
   buildCounterNetworkReportSpecSortCondition++;
   if (buildCounterNetworkReportSpecSortCondition < 3) {
-    o.dimension = "foo";
-    o.metric = "foo";
-    o.order = "foo";
+    o.dimension = 'foo';
+    o.metric = 'foo';
+    o.order = 'foo';
   }
   buildCounterNetworkReportSpecSortCondition--;
   return o;
@@ -521,10 +521,10 @@ api.PublisherAccount buildPublisherAccount() {
   var o = api.PublisherAccount();
   buildCounterPublisherAccount++;
   if (buildCounterPublisherAccount < 3) {
-    o.currencyCode = "foo";
-    o.name = "foo";
-    o.publisherId = "foo";
-    o.reportingTimeZone = "foo";
+    o.currencyCode = 'foo';
+    o.name = 'foo';
+    o.publisherId = 'foo';
+    o.reportingTimeZone = 'foo';
   }
   buildCounterPublisherAccount--;
   return o;
@@ -559,7 +559,7 @@ api.ReportFooter buildReportFooter() {
   var o = api.ReportFooter();
   buildCounterReportFooter++;
   if (buildCounterReportFooter < 3) {
-    o.matchingRowCount = "foo";
+    o.matchingRowCount = 'foo';
     o.warnings = buildUnnamed5715();
   }
   buildCounterReportFooter--;
@@ -582,7 +582,7 @@ api.ReportHeader buildReportHeader() {
   if (buildCounterReportHeader < 3) {
     o.dateRange = buildDateRange();
     o.localizationSettings = buildLocalizationSettings();
-    o.reportingTimeZone = "foo";
+    o.reportingTimeZone = 'foo';
   }
   buildCounterReportHeader--;
   return o;
@@ -600,28 +600,28 @@ void checkReportHeader(api.ReportHeader o) {
 
 core.Map<core.String, api.ReportRowDimensionValue> buildUnnamed5716() {
   var o = <core.String, api.ReportRowDimensionValue>{};
-  o["x"] = buildReportRowDimensionValue();
-  o["y"] = buildReportRowDimensionValue();
+  o['x'] = buildReportRowDimensionValue();
+  o['y'] = buildReportRowDimensionValue();
   return o;
 }
 
 void checkUnnamed5716(core.Map<core.String, api.ReportRowDimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRowDimensionValue(o["x"]);
-  checkReportRowDimensionValue(o["y"]);
+  checkReportRowDimensionValue(o['x']);
+  checkReportRowDimensionValue(o['y']);
 }
 
 core.Map<core.String, api.ReportRowMetricValue> buildUnnamed5717() {
   var o = <core.String, api.ReportRowMetricValue>{};
-  o["x"] = buildReportRowMetricValue();
-  o["y"] = buildReportRowMetricValue();
+  o['x'] = buildReportRowMetricValue();
+  o['y'] = buildReportRowMetricValue();
   return o;
 }
 
 void checkUnnamed5717(core.Map<core.String, api.ReportRowMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRowMetricValue(o["x"]);
-  checkReportRowMetricValue(o["y"]);
+  checkReportRowMetricValue(o['x']);
+  checkReportRowMetricValue(o['y']);
 }
 
 core.int buildCounterReportRow = 0;
@@ -650,8 +650,8 @@ api.ReportRowDimensionValue buildReportRowDimensionValue() {
   var o = api.ReportRowDimensionValue();
   buildCounterReportRowDimensionValue++;
   if (buildCounterReportRowDimensionValue < 3) {
-    o.displayLabel = "foo";
-    o.value = "foo";
+    o.displayLabel = 'foo';
+    o.value = 'foo';
   }
   buildCounterReportRowDimensionValue--;
   return o;
@@ -672,8 +672,8 @@ api.ReportRowMetricValue buildReportRowMetricValue() {
   buildCounterReportRowMetricValue++;
   if (buildCounterReportRowMetricValue < 3) {
     o.doubleValue = 42.0;
-    o.integerValue = "foo";
-    o.microsValue = "foo";
+    o.integerValue = 'foo';
+    o.microsValue = 'foo';
   }
   buildCounterReportRowMetricValue--;
   return o;
@@ -694,8 +694,8 @@ api.ReportWarning buildReportWarning() {
   var o = api.ReportWarning();
   buildCounterReportWarning++;
   if (buildCounterReportWarning < 3) {
-    o.description = "foo";
-    o.type = "foo";
+    o.description = 'foo';
+    o.type = 'foo';
   }
   buildCounterReportWarning--;
   return o;
@@ -712,8 +712,8 @@ void checkReportWarning(api.ReportWarning o) {
 
 core.List<core.String> buildUnnamed5718() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -743,188 +743,188 @@ void checkStringList(api.StringList o) {
 }
 
 void main() {
-  unittest.group("obj-schema-Date", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Date', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od);
     });
   });
 
-  unittest.group("obj-schema-DateRange", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-DateRange', () {
+    unittest.test('to-json--from-json', () {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
       checkDateRange(od);
     });
   });
 
-  unittest.group("obj-schema-GenerateMediationReportRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GenerateMediationReportRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGenerateMediationReportRequest();
       var od = api.GenerateMediationReportRequest.fromJson(o.toJson());
       checkGenerateMediationReportRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GenerateMediationReportResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GenerateMediationReportResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGenerateMediationReportResponse();
       var od = api.GenerateMediationReportResponse.fromJson(o.toJson());
       checkGenerateMediationReportResponse(od);
     });
   });
 
-  unittest.group("obj-schema-GenerateNetworkReportRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GenerateNetworkReportRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGenerateNetworkReportRequest();
       var od = api.GenerateNetworkReportRequest.fromJson(o.toJson());
       checkGenerateNetworkReportRequest(od);
     });
   });
 
-  unittest.group("obj-schema-GenerateNetworkReportResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GenerateNetworkReportResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGenerateNetworkReportResponse();
       var od = api.GenerateNetworkReportResponse.fromJson(o.toJson());
       checkGenerateNetworkReportResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListPublisherAccountsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListPublisherAccountsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListPublisherAccountsResponse();
       var od = api.ListPublisherAccountsResponse.fromJson(o.toJson());
       checkListPublisherAccountsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-LocalizationSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-LocalizationSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildLocalizationSettings();
       var od = api.LocalizationSettings.fromJson(o.toJson());
       checkLocalizationSettings(od);
     });
   });
 
-  unittest.group("obj-schema-MediationReportSpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MediationReportSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMediationReportSpec();
       var od = api.MediationReportSpec.fromJson(o.toJson());
       checkMediationReportSpec(od);
     });
   });
 
-  unittest.group("obj-schema-MediationReportSpecDimensionFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MediationReportSpecDimensionFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMediationReportSpecDimensionFilter();
       var od = api.MediationReportSpecDimensionFilter.fromJson(o.toJson());
       checkMediationReportSpecDimensionFilter(od);
     });
   });
 
-  unittest.group("obj-schema-MediationReportSpecSortCondition", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MediationReportSpecSortCondition', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMediationReportSpecSortCondition();
       var od = api.MediationReportSpecSortCondition.fromJson(o.toJson());
       checkMediationReportSpecSortCondition(od);
     });
   });
 
-  unittest.group("obj-schema-NetworkReportSpec", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NetworkReportSpec', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNetworkReportSpec();
       var od = api.NetworkReportSpec.fromJson(o.toJson());
       checkNetworkReportSpec(od);
     });
   });
 
-  unittest.group("obj-schema-NetworkReportSpecDimensionFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NetworkReportSpecDimensionFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNetworkReportSpecDimensionFilter();
       var od = api.NetworkReportSpecDimensionFilter.fromJson(o.toJson());
       checkNetworkReportSpecDimensionFilter(od);
     });
   });
 
-  unittest.group("obj-schema-NetworkReportSpecSortCondition", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-NetworkReportSpecSortCondition', () {
+    unittest.test('to-json--from-json', () {
       var o = buildNetworkReportSpecSortCondition();
       var od = api.NetworkReportSpecSortCondition.fromJson(o.toJson());
       checkNetworkReportSpecSortCondition(od);
     });
   });
 
-  unittest.group("obj-schema-PublisherAccount", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PublisherAccount', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPublisherAccount();
       var od = api.PublisherAccount.fromJson(o.toJson());
       checkPublisherAccount(od);
     });
   });
 
-  unittest.group("obj-schema-ReportFooter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportFooter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportFooter();
       var od = api.ReportFooter.fromJson(o.toJson());
       checkReportFooter(od);
     });
   });
 
-  unittest.group("obj-schema-ReportHeader", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportHeader', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportHeader();
       var od = api.ReportHeader.fromJson(o.toJson());
       checkReportHeader(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRow", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRow', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
       checkReportRow(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRowDimensionValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRowDimensionValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRowDimensionValue();
       var od = api.ReportRowDimensionValue.fromJson(o.toJson());
       checkReportRowDimensionValue(od);
     });
   });
 
-  unittest.group("obj-schema-ReportRowMetricValue", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportRowMetricValue', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportRowMetricValue();
       var od = api.ReportRowMetricValue.fromJson(o.toJson());
       checkReportRowMetricValue(od);
     });
   });
 
-  unittest.group("obj-schema-ReportWarning", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ReportWarning', () {
+    unittest.test('to-json--from-json', () {
       var o = buildReportWarning();
       var od = api.ReportWarning.fromJson(o.toJson());
       checkReportWarning(od);
     });
   });
 
-  unittest.group("obj-schema-StringList", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-StringList', () {
+    unittest.test('to-json--from-json', () {
       var o = buildStringList();
       var od = api.StringList.fromJson(o.toJson());
       checkStringList(od);
     });
   });
 
-  unittest.group("resource-AccountsResourceApi", () {
-    unittest.test("method--get", () {
+  unittest.group('resource-AccountsResourceApi', () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.AdmobApi(mock).accounts;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -944,8 +944,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -955,7 +955,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPublisherAccount());
         return async.Future.value(stringResponse(200, h, resp));
@@ -967,12 +967,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.AdmobApi(mock).accounts;
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -991,8 +991,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1006,7 +1006,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListPublisherAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1022,14 +1022,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsMediationReportResourceApi", () {
-    unittest.test("method--generate", () {
+  unittest.group('resource-AccountsMediationReportResourceApi', () {
+    unittest.test('method--generate', () {
       var mock = HttpServerMock();
       api.AccountsMediationReportResourceApi res =
           api.AdmobApi(mock).accounts.mediationReport;
       var arg_request = buildGenerateMediationReportRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GenerateMediationReportRequest.fromJson(json);
         checkGenerateMediationReportRequest(obj);
@@ -1052,8 +1052,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1063,7 +1063,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGenerateMediationReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1076,14 +1076,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-AccountsNetworkReportResourceApi", () {
-    unittest.test("method--generate", () {
+  unittest.group('resource-AccountsNetworkReportResourceApi', () {
+    unittest.test('method--generate', () {
       var mock = HttpServerMock();
       api.AccountsNetworkReportResourceApi res =
           api.AdmobApi(mock).accounts.networkReport;
       var arg_request = buildGenerateNetworkReportRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GenerateNetworkReportRequest.fromJson(json);
         checkGenerateNetworkReportRequest(obj);
@@ -1106,8 +1106,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1117,7 +1117,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildGenerateNetworkReportResponse());
         return async.Future.value(stringResponse(200, h, resp));

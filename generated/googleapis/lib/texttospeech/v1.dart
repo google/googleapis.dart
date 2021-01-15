@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -39,7 +38,7 @@ const core.String USER_AGENT = 'dart-api-client texttospeech/v1';
 class TexttospeechApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -47,8 +46,8 @@ class TexttospeechApi {
   VoicesResourceApi get voices => VoicesResourceApi(_requester);
 
   TexttospeechApi(http.Client client,
-      {core.String rootUrl = "https://texttospeech.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://texttospeech.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -90,14 +89,14 @@ class TextResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/text:synthesize';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -148,17 +147,17 @@ class VoicesResourceApi {
     core.String _body;
 
     if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+      _queryParams['languageCode'] = [languageCode];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/voices';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -224,24 +223,24 @@ class AudioConfig {
   AudioConfig();
 
   AudioConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("audioEncoding")) {
-      audioEncoding = _json["audioEncoding"];
+    if (_json.containsKey('audioEncoding')) {
+      audioEncoding = _json['audioEncoding'];
     }
-    if (_json.containsKey("effectsProfileId")) {
+    if (_json.containsKey('effectsProfileId')) {
       effectsProfileId =
-          (_json["effectsProfileId"] as core.List).cast<core.String>();
+          (_json['effectsProfileId'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("pitch")) {
-      pitch = _json["pitch"].toDouble();
+    if (_json.containsKey('pitch')) {
+      pitch = _json['pitch'].toDouble();
     }
-    if (_json.containsKey("sampleRateHertz")) {
-      sampleRateHertz = _json["sampleRateHertz"];
+    if (_json.containsKey('sampleRateHertz')) {
+      sampleRateHertz = _json['sampleRateHertz'];
     }
-    if (_json.containsKey("speakingRate")) {
-      speakingRate = _json["speakingRate"].toDouble();
+    if (_json.containsKey('speakingRate')) {
+      speakingRate = _json['speakingRate'].toDouble();
     }
-    if (_json.containsKey("volumeGainDb")) {
-      volumeGainDb = _json["volumeGainDb"].toDouble();
+    if (_json.containsKey('volumeGainDb')) {
+      volumeGainDb = _json['volumeGainDb'].toDouble();
     }
   }
 
@@ -249,22 +248,22 @@ class AudioConfig {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audioEncoding != null) {
-      _json["audioEncoding"] = audioEncoding;
+      _json['audioEncoding'] = audioEncoding;
     }
     if (effectsProfileId != null) {
-      _json["effectsProfileId"] = effectsProfileId;
+      _json['effectsProfileId'] = effectsProfileId;
     }
     if (pitch != null) {
-      _json["pitch"] = pitch;
+      _json['pitch'] = pitch;
     }
     if (sampleRateHertz != null) {
-      _json["sampleRateHertz"] = sampleRateHertz;
+      _json['sampleRateHertz'] = sampleRateHertz;
     }
     if (speakingRate != null) {
-      _json["speakingRate"] = speakingRate;
+      _json['speakingRate'] = speakingRate;
     }
     if (volumeGainDb != null) {
-      _json["volumeGainDb"] = volumeGainDb;
+      _json['volumeGainDb'] = volumeGainDb;
     }
     return _json;
   }
@@ -278,8 +277,8 @@ class ListVoicesResponse {
   ListVoicesResponse();
 
   ListVoicesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("voices")) {
-      voices = (_json["voices"] as core.List)
+    if (_json.containsKey('voices')) {
+      voices = (_json['voices'] as core.List)
           .map<Voice>((value) => Voice.fromJson(value))
           .toList();
     }
@@ -289,7 +288,7 @@ class ListVoicesResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (voices != null) {
-      _json["voices"] = voices.map((value) => value.toJson()).toList();
+      _json['voices'] = voices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -312,11 +311,11 @@ class SynthesisInput {
   SynthesisInput();
 
   SynthesisInput.fromJson(core.Map _json) {
-    if (_json.containsKey("ssml")) {
-      ssml = _json["ssml"];
+    if (_json.containsKey('ssml')) {
+      ssml = _json['ssml'];
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
   }
 
@@ -324,10 +323,10 @@ class SynthesisInput {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ssml != null) {
-      _json["ssml"] = ssml;
+      _json['ssml'] = ssml;
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     return _json;
   }
@@ -347,14 +346,14 @@ class SynthesizeSpeechRequest {
   SynthesizeSpeechRequest();
 
   SynthesizeSpeechRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("audioConfig")) {
-      audioConfig = AudioConfig.fromJson(_json["audioConfig"]);
+    if (_json.containsKey('audioConfig')) {
+      audioConfig = AudioConfig.fromJson(_json['audioConfig']);
     }
-    if (_json.containsKey("input")) {
-      input = SynthesisInput.fromJson(_json["input"]);
+    if (_json.containsKey('input')) {
+      input = SynthesisInput.fromJson(_json['input']);
     }
-    if (_json.containsKey("voice")) {
-      voice = VoiceSelectionParams.fromJson(_json["voice"]);
+    if (_json.containsKey('voice')) {
+      voice = VoiceSelectionParams.fromJson(_json['voice']);
     }
   }
 
@@ -362,13 +361,13 @@ class SynthesizeSpeechRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audioConfig != null) {
-      _json["audioConfig"] = audioConfig.toJson();
+      _json['audioConfig'] = audioConfig.toJson();
     }
     if (input != null) {
-      _json["input"] = input.toJson();
+      _json['input'] = input.toJson();
     }
     if (voice != null) {
-      _json["voice"] = voice.toJson();
+      _json['voice'] = voice.toJson();
     }
     return _json;
   }
@@ -387,14 +386,14 @@ class SynthesizeSpeechResponse {
 
   set audioContentAsBytes(core.List<core.int> _bytes) {
     audioContent =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SynthesizeSpeechResponse();
 
   SynthesizeSpeechResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("audioContent")) {
-      audioContent = _json["audioContent"];
+    if (_json.containsKey('audioContent')) {
+      audioContent = _json['audioContent'];
     }
   }
 
@@ -402,7 +401,7 @@ class SynthesizeSpeechResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audioContent != null) {
-      _json["audioContent"] = audioContent;
+      _json['audioContent'] = audioContent;
     }
     return _json;
   }
@@ -436,17 +435,17 @@ class Voice {
   Voice();
 
   Voice.fromJson(core.Map _json) {
-    if (_json.containsKey("languageCodes")) {
-      languageCodes = (_json["languageCodes"] as core.List).cast<core.String>();
+    if (_json.containsKey('languageCodes')) {
+      languageCodes = (_json['languageCodes'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("naturalSampleRateHertz")) {
-      naturalSampleRateHertz = _json["naturalSampleRateHertz"];
+    if (_json.containsKey('naturalSampleRateHertz')) {
+      naturalSampleRateHertz = _json['naturalSampleRateHertz'];
     }
-    if (_json.containsKey("ssmlGender")) {
-      ssmlGender = _json["ssmlGender"];
+    if (_json.containsKey('ssmlGender')) {
+      ssmlGender = _json['ssmlGender'];
     }
   }
 
@@ -454,16 +453,16 @@ class Voice {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCodes != null) {
-      _json["languageCodes"] = languageCodes;
+      _json['languageCodes'] = languageCodes;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (naturalSampleRateHertz != null) {
-      _json["naturalSampleRateHertz"] = naturalSampleRateHertz;
+      _json['naturalSampleRateHertz'] = naturalSampleRateHertz;
     }
     if (ssmlGender != null) {
-      _json["ssmlGender"] = ssmlGender;
+      _json['ssmlGender'] = ssmlGender;
     }
     return _json;
   }
@@ -507,14 +506,14 @@ class VoiceSelectionParams {
   VoiceSelectionParams();
 
   VoiceSelectionParams.fromJson(core.Map _json) {
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("ssmlGender")) {
-      ssmlGender = _json["ssmlGender"];
+    if (_json.containsKey('ssmlGender')) {
+      ssmlGender = _json['ssmlGender'];
     }
   }
 
@@ -522,13 +521,13 @@ class VoiceSelectionParams {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (languageCode != null) {
-      _json["languageCode"] = languageCode;
+      _json['languageCode'] = languageCode;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (ssmlGender != null) {
-      _json["ssmlGender"] = ssmlGender;
+      _json['ssmlGender'] = ssmlGender;
     }
     return _json;
   }

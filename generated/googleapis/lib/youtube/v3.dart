@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -46,34 +45,34 @@ const core.String USER_AGENT = 'dart-api-client youtube/v3';
 /// as videos, playlists, and channels.
 class YoutubeApi {
   /// Manage your YouTube account
-  static const YoutubeScope = "https://www.googleapis.com/auth/youtube";
+  static const YoutubeScope = 'https://www.googleapis.com/auth/youtube';
 
   /// See a list of your current active channel members, their current level,
   /// and when they became a member
   static const YoutubeChannelMembershipsCreatorScope =
-      "https://www.googleapis.com/auth/youtube.channel-memberships.creator";
+      'https://www.googleapis.com/auth/youtube.channel-memberships.creator';
 
   /// See, edit, and permanently delete your YouTube videos, ratings, comments
   /// and captions
   static const YoutubeForceSslScope =
-      "https://www.googleapis.com/auth/youtube.force-ssl";
+      'https://www.googleapis.com/auth/youtube.force-ssl';
 
   /// View your YouTube account
   static const YoutubeReadonlyScope =
-      "https://www.googleapis.com/auth/youtube.readonly";
+      'https://www.googleapis.com/auth/youtube.readonly';
 
   /// Manage your YouTube videos
   static const YoutubeUploadScope =
-      "https://www.googleapis.com/auth/youtube.upload";
+      'https://www.googleapis.com/auth/youtube.upload';
 
   /// View and manage your assets and associated content on YouTube
   static const YoutubepartnerScope =
-      "https://www.googleapis.com/auth/youtubepartner";
+      'https://www.googleapis.com/auth/youtubepartner';
 
   /// View private information of your YouTube channel relevant during the audit
   /// process with a YouTube partner
   static const YoutubepartnerChannelAuditScope =
-      "https://www.googleapis.com/auth/youtubepartner-channel-audit";
+      'https://www.googleapis.com/auth/youtubepartner-channel-audit';
 
   final commons.ApiRequester _requester;
 
@@ -125,8 +124,8 @@ class YoutubeApi {
   WatermarksResourceApi get watermarks => WatermarksResourceApi(_requester);
 
   YoutubeApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -172,18 +171,18 @@ class AbuseReportsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/abuseReports';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -261,42 +260,42 @@ class ActivitiesResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (publishedAfter != null) {
-      _queryParams["publishedAfter"] = [publishedAfter];
+      _queryParams['publishedAfter'] = [publishedAfter];
     }
     if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+      _queryParams['mine'] = ['${mine}'];
     }
     if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
+      _queryParams['channelId'] = [channelId];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (publishedBefore != null) {
-      _queryParams["publishedBefore"] = [publishedBefore];
+      _queryParams['publishedBefore'] = [publishedBefore];
     }
     if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
+      _queryParams['regionCode'] = [regionCode];
     }
     if (home != null) {
-      _queryParams["home"] = ["${home}"];
+      _queryParams['home'] = ['${home}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/activities';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -354,17 +353,17 @@ class CaptionsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (onBehalfOf != null) {
-      _queryParams["onBehalfOf"] = [onBehalfOf];
+      _queryParams['onBehalfOf'] = [onBehalfOf];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -373,7 +372,7 @@ class CaptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -438,22 +437,22 @@ class CaptionsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (onBehalfOf != null) {
-      _queryParams["onBehalfOf"] = [onBehalfOf];
+      _queryParams['onBehalfOf'] = [onBehalfOf];
     }
     if (tlang != null) {
-      _queryParams["tlang"] = [tlang];
+      _queryParams['tlang'] = [tlang];
     }
     if (tfmt != null) {
-      _queryParams["tfmt"] = [tfmt];
+      _queryParams['tfmt'] = [tfmt];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -462,7 +461,7 @@ class CaptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -540,20 +539,20 @@ class CaptionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (onBehalfOf != null) {
-      _queryParams["onBehalfOf"] = [onBehalfOf];
+      _queryParams['onBehalfOf'] = [onBehalfOf];
     }
     if (sync != null) {
-      _queryParams["sync"] = ["${sync}"];
+      _queryParams['sync'] = ['${sync}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -569,7 +568,7 @@ class CaptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -631,31 +630,31 @@ class CaptionsResourceApi {
     core.String _body;
 
     if (videoId == null) {
-      throw core.ArgumentError("Parameter videoId is required.");
+      throw core.ArgumentError('Parameter videoId is required.');
     }
-    _queryParams["videoId"] = [videoId];
+    _queryParams['videoId'] = [videoId];
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOf != null) {
-      _queryParams["onBehalfOf"] = [onBehalfOf];
+      _queryParams['onBehalfOf'] = [onBehalfOf];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/captions';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -729,20 +728,20 @@ class CaptionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (sync != null) {
-      _queryParams["sync"] = ["${sync}"];
+      _queryParams['sync'] = ['${sync}'];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (onBehalfOf != null) {
-      _queryParams["onBehalfOf"] = [onBehalfOf];
+      _queryParams['onBehalfOf'] = [onBehalfOf];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -758,7 +757,7 @@ class CaptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -847,18 +846,18 @@ class ChannelBannersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
+      _queryParams['channelId'] = [channelId];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -874,7 +873,7 @@ class ChannelBannersResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -928,14 +927,14 @@ class ChannelSectionsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -944,7 +943,7 @@ class ChannelSectionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1021,26 +1020,26 @@ class ChannelSectionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/channelSections';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1111,33 +1110,33 @@ class ChannelSectionsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+      _queryParams['mine'] = ['${mine}'];
     }
     if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
+      _queryParams['channelId'] = [channelId];
     }
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/channelSections';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1196,21 +1195,21 @@ class ChannelSectionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/channelSections';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1306,48 +1305,48 @@ class ChannelsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (categoryId != null) {
-      _queryParams["categoryId"] = [categoryId];
+      _queryParams['categoryId'] = [categoryId];
     }
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (forUsername != null) {
-      _queryParams["forUsername"] = [forUsername];
+      _queryParams['forUsername'] = [forUsername];
     }
     if (managedByMe != null) {
-      _queryParams["managedByMe"] = ["${managedByMe}"];
+      _queryParams['managedByMe'] = ['${managedByMe}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+      _queryParams['mine'] = ['${mine}'];
     }
     if (mySubscribers != null) {
-      _queryParams["mySubscribers"] = ["${mySubscribers}"];
+      _queryParams['mySubscribers'] = ['${mySubscribers}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/channels';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1409,21 +1408,21 @@ class ChannelsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/channels';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1475,18 +1474,18 @@ class CommentThreadsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/commentThreads';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1577,50 +1576,50 @@ class CommentThreadsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (order != null) {
-      _queryParams["order"] = [order];
+      _queryParams['order'] = [order];
     }
     if (videoId != null) {
-      _queryParams["videoId"] = [videoId];
+      _queryParams['videoId'] = [videoId];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (moderationStatus != null) {
-      _queryParams["moderationStatus"] = [moderationStatus];
+      _queryParams['moderationStatus'] = [moderationStatus];
     }
     if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
+      _queryParams['channelId'] = [channelId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (searchTerms != null) {
-      _queryParams["searchTerms"] = [searchTerms];
+      _queryParams['searchTerms'] = [searchTerms];
     }
     if (allThreadsRelatedToChannelId != null) {
-      _queryParams["allThreadsRelatedToChannelId"] = [
+      _queryParams['allThreadsRelatedToChannelId'] = [
         allThreadsRelatedToChannelId
       ];
     }
     if (textFormat != null) {
-      _queryParams["textFormat"] = [textFormat];
+      _queryParams['textFormat'] = [textFormat];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/commentThreads';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1667,18 +1666,18 @@ class CommentThreadsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/commentThreads';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1720,11 +1719,11 @@ class CommentsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1733,7 +1732,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1779,18 +1778,18 @@ class CommentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/comments';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1853,33 +1852,33 @@ class CommentsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (textFormat != null) {
-      _queryParams["textFormat"] = [textFormat];
+      _queryParams['textFormat'] = [textFormat];
     }
     if (parentId != null) {
-      _queryParams["parentId"] = [parentId];
+      _queryParams['parentId'] = [parentId];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/comments';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1917,11 +1916,11 @@ class CommentsResourceApi {
     core.String _body;
 
     if (id == null || id.isEmpty) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = id;
+    _queryParams['id'] = id;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1930,7 +1929,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1983,18 +1982,18 @@ class CommentsResourceApi {
     core.String _body;
 
     if (id == null || id.isEmpty) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = id;
+    _queryParams['id'] = id;
     if (moderationStatus == null) {
-      throw core.ArgumentError("Parameter moderationStatus is required.");
+      throw core.ArgumentError('Parameter moderationStatus is required.');
     }
-    _queryParams["moderationStatus"] = [moderationStatus];
+    _queryParams['moderationStatus'] = [moderationStatus];
     if (banAuthor != null) {
-      _queryParams["banAuthor"] = ["${banAuthor}"];
+      _queryParams['banAuthor'] = ['${banAuthor}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2003,7 +2002,7 @@ class CommentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2050,18 +2049,18 @@ class CommentsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/comments';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2110,21 +2109,21 @@ class I18nLanguagesResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/i18nLanguages';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2172,21 +2171,21 @@ class I18nRegionsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/i18nRegions';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2269,33 +2268,33 @@ class LiveBroadcastsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (streamId != null) {
-      _queryParams["streamId"] = [streamId];
+      _queryParams['streamId'] = [streamId];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveBroadcasts/bind';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2384,39 +2383,39 @@ class LiveBroadcastsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (displaySlate != null) {
-      _queryParams["displaySlate"] = ["${displaySlate}"];
+      _queryParams['displaySlate'] = ['${displaySlate}'];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (walltime != null) {
-      _queryParams["walltime"] = [walltime];
+      _queryParams['walltime'] = [walltime];
     }
     if (offsetTimeMs != null) {
-      _queryParams["offsetTimeMs"] = [offsetTimeMs];
+      _queryParams['offsetTimeMs'] = [offsetTimeMs];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveBroadcasts/control';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2482,19 +2481,19 @@ class LiveBroadcastsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2503,7 +2502,7 @@ class LiveBroadcastsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2581,26 +2580,26 @@ class LiveBroadcastsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveBroadcasts';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2704,44 +2703,44 @@ class LiveBroadcastsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (broadcastType != null) {
-      _queryParams["broadcastType"] = [broadcastType];
+      _queryParams['broadcastType'] = [broadcastType];
     }
     if (broadcastStatus != null) {
-      _queryParams["broadcastStatus"] = [broadcastStatus];
+      _queryParams['broadcastStatus'] = [broadcastStatus];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+      _queryParams['mine'] = ['${mine}'];
     }
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveBroadcasts';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2828,34 +2827,34 @@ class LiveBroadcastsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (broadcastStatus == null) {
-      throw core.ArgumentError("Parameter broadcastStatus is required.");
+      throw core.ArgumentError('Parameter broadcastStatus is required.');
     }
-    _queryParams["broadcastStatus"] = [broadcastStatus];
+    _queryParams['broadcastStatus'] = [broadcastStatus];
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveBroadcasts/transition';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2941,26 +2940,26 @@ class LiveBroadcastsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveBroadcasts';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3002,11 +3001,11 @@ class LiveChatBansResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3015,7 +3014,7 @@ class LiveChatBansResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3062,18 +3061,18 @@ class LiveChatBansResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveChat/bans';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3116,11 +3115,11 @@ class LiveChatMessagesResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3129,7 +3128,7 @@ class LiveChatMessagesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3175,18 +3174,18 @@ class LiveChatMessagesResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveChat/messages';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3246,34 +3245,34 @@ class LiveChatMessagesResourceApi {
     core.String _body;
 
     if (liveChatId == null) {
-      throw core.ArgumentError("Parameter liveChatId is required.");
+      throw core.ArgumentError('Parameter liveChatId is required.');
     }
-    _queryParams["liveChatId"] = [liveChatId];
+    _queryParams['liveChatId'] = [liveChatId];
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (profileImageSize != null) {
-      _queryParams["profileImageSize"] = ["${profileImageSize}"];
+      _queryParams['profileImageSize'] = ['${profileImageSize}'];
     }
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveChat/messages';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3316,11 +3315,11 @@ class LiveChatModeratorsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3329,7 +3328,7 @@ class LiveChatModeratorsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3376,18 +3375,18 @@ class LiveChatModeratorsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveChat/moderators';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3440,28 +3439,28 @@ class LiveChatModeratorsResourceApi {
     core.String _body;
 
     if (liveChatId == null) {
-      throw core.ArgumentError("Parameter liveChatId is required.");
+      throw core.ArgumentError('Parameter liveChatId is required.');
     }
-    _queryParams["liveChatId"] = [liveChatId];
+    _queryParams['liveChatId'] = [liveChatId];
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveChat/moderators';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3534,19 +3533,19 @@ class LiveStreamsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3555,7 +3554,7 @@ class LiveStreamsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3632,26 +3631,26 @@ class LiveStreamsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveStreams';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3737,38 +3736,38 @@ class LiveStreamsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+      _queryParams['mine'] = ['${mine}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveStreams';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3849,26 +3848,26 @@ class LiveStreamsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/liveStreams';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -3938,33 +3937,33 @@ class MembersResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (filterByMemberChannelId != null) {
-      _queryParams["filterByMemberChannelId"] = [filterByMemberChannelId];
+      _queryParams['filterByMemberChannelId'] = [filterByMemberChannelId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (mode != null) {
-      _queryParams["mode"] = [mode];
+      _queryParams['mode'] = [mode];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (hasAccessToLevel != null) {
-      _queryParams["hasAccessToLevel"] = [hasAccessToLevel];
+      _queryParams['hasAccessToLevel'] = [hasAccessToLevel];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/members';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4011,18 +4010,18 @@ class MembershipsLevelsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/membershipsLevels';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4077,14 +4076,14 @@ class PlaylistItemsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4093,7 +4092,7 @@ class PlaylistItemsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4151,21 +4150,21 @@ class PlaylistItemsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/playlistItems';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4240,36 +4239,36 @@ class PlaylistItemsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (playlistId != null) {
-      _queryParams["playlistId"] = [playlistId];
+      _queryParams['playlistId'] = [playlistId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (videoId != null) {
-      _queryParams["videoId"] = [videoId];
+      _queryParams['videoId'] = [videoId];
     }
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/playlistItems';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4337,21 +4336,21 @@ class PlaylistItemsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/playlistItems';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4405,14 +4404,14 @@ class PlaylistsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4421,7 +4420,7 @@ class PlaylistsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4497,26 +4496,26 @@ class PlaylistsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/playlists';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4611,44 +4610,44 @@ class PlaylistsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+      _queryParams['mine'] = ['${mine}'];
     }
     if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
+      _queryParams['channelId'] = [channelId];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/playlists';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4712,21 +4711,21 @@ class PlaylistsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/playlists';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -4949,108 +4948,108 @@ class SearchResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (videoType != null) {
-      _queryParams["videoType"] = [videoType];
+      _queryParams['videoType'] = [videoType];
     }
     if (videoDimension != null) {
-      _queryParams["videoDimension"] = [videoDimension];
+      _queryParams['videoDimension'] = [videoDimension];
     }
     if (forDeveloper != null) {
-      _queryParams["forDeveloper"] = ["${forDeveloper}"];
+      _queryParams['forDeveloper'] = ['${forDeveloper}'];
     }
     if (videoCategoryId != null) {
-      _queryParams["videoCategoryId"] = [videoCategoryId];
+      _queryParams['videoCategoryId'] = [videoCategoryId];
     }
     if (forContentOwner != null) {
-      _queryParams["forContentOwner"] = ["${forContentOwner}"];
+      _queryParams['forContentOwner'] = ['${forContentOwner}'];
     }
     if (videoLicense != null) {
-      _queryParams["videoLicense"] = [videoLicense];
+      _queryParams['videoLicense'] = [videoLicense];
     }
     if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
+      _queryParams['regionCode'] = [regionCode];
     }
     if (videoSyndicated != null) {
-      _queryParams["videoSyndicated"] = [videoSyndicated];
+      _queryParams['videoSyndicated'] = [videoSyndicated];
     }
     if (eventType != null) {
-      _queryParams["eventType"] = [eventType];
+      _queryParams['eventType'] = [eventType];
     }
     if (forMine != null) {
-      _queryParams["forMine"] = ["${forMine}"];
+      _queryParams['forMine'] = ['${forMine}'];
     }
     if (publishedBefore != null) {
-      _queryParams["publishedBefore"] = [publishedBefore];
+      _queryParams['publishedBefore'] = [publishedBefore];
     }
     if (safeSearch != null) {
-      _queryParams["safeSearch"] = [safeSearch];
+      _queryParams['safeSearch'] = [safeSearch];
     }
     if (q != null) {
-      _queryParams["q"] = [q];
+      _queryParams['q'] = [q];
     }
     if (location != null) {
-      _queryParams["location"] = [location];
+      _queryParams['location'] = [location];
     }
     if (relatedToVideoId != null) {
-      _queryParams["relatedToVideoId"] = [relatedToVideoId];
+      _queryParams['relatedToVideoId'] = [relatedToVideoId];
     }
     if (locationRadius != null) {
-      _queryParams["locationRadius"] = [locationRadius];
+      _queryParams['locationRadius'] = [locationRadius];
     }
     if (order != null) {
-      _queryParams["order"] = [order];
+      _queryParams['order'] = [order];
     }
     if (videoDuration != null) {
-      _queryParams["videoDuration"] = [videoDuration];
+      _queryParams['videoDuration'] = [videoDuration];
     }
     if (videoDefinition != null) {
-      _queryParams["videoDefinition"] = [videoDefinition];
+      _queryParams['videoDefinition'] = [videoDefinition];
     }
     if (channelType != null) {
-      _queryParams["channelType"] = [channelType];
+      _queryParams['channelType'] = [channelType];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
+      _queryParams['channelId'] = [channelId];
     }
     if (relevanceLanguage != null) {
-      _queryParams["relevanceLanguage"] = [relevanceLanguage];
+      _queryParams['relevanceLanguage'] = [relevanceLanguage];
     }
     if (publishedAfter != null) {
-      _queryParams["publishedAfter"] = [publishedAfter];
+      _queryParams['publishedAfter'] = [publishedAfter];
     }
     if (type != null) {
-      _queryParams["type"] = type;
+      _queryParams['type'] = type;
     }
     if (videoCaption != null) {
-      _queryParams["videoCaption"] = [videoCaption];
+      _queryParams['videoCaption'] = [videoCaption];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (topicId != null) {
-      _queryParams["topicId"] = [topicId];
+      _queryParams['topicId'] = [topicId];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (videoEmbeddable != null) {
-      _queryParams["videoEmbeddable"] = [videoEmbeddable];
+      _queryParams['videoEmbeddable'] = [videoEmbeddable];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/search';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5112,27 +5111,27 @@ class SponsorsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/sponsors';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5174,11 +5173,11 @@ class SubscriptionsResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5187,7 +5186,7 @@ class SubscriptionsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5233,18 +5232,18 @@ class SubscriptionsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/subscriptions';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5354,53 +5353,53 @@ class SubscriptionsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+      _queryParams['mine'] = ['${mine}'];
     }
     if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
+      _queryParams['channelId'] = [channelId];
     }
     if (forChannelId != null) {
-      _queryParams["forChannelId"] = [forChannelId];
+      _queryParams['forChannelId'] = [forChannelId];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (order != null) {
-      _queryParams["order"] = [order];
+      _queryParams['order'] = [order];
     }
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (myRecentSubscribers != null) {
-      _queryParams["myRecentSubscribers"] = ["${myRecentSubscribers}"];
+      _queryParams['myRecentSubscribers'] = ['${myRecentSubscribers}'];
     }
     if (mySubscribers != null) {
-      _queryParams["mySubscribers"] = ["${mySubscribers}"];
+      _queryParams['mySubscribers'] = ['${mySubscribers}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/subscriptions';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5457,27 +5456,27 @@ class SuperChatEventsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/superChatEvents';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5527,18 +5526,18 @@ class TestsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/tests';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5591,18 +5590,18 @@ class ThirdPartyLinksResourceApi {
     core.String _body;
 
     if (linkingToken == null) {
-      throw core.ArgumentError("Parameter linkingToken is required.");
+      throw core.ArgumentError('Parameter linkingToken is required.');
     }
-    _queryParams["linkingToken"] = [linkingToken];
+    _queryParams['linkingToken'] = [linkingToken];
     if (type == null) {
-      throw core.ArgumentError("Parameter type is required.");
+      throw core.ArgumentError('Parameter type is required.');
     }
-    _queryParams["type"] = [type];
+    _queryParams['type'] = [type];
     if (part != null) {
-      _queryParams["part"] = part;
+      _queryParams['part'] = part;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5611,7 +5610,7 @@ class ThirdPartyLinksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5657,18 +5656,18 @@ class ThirdPartyLinksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/thirdPartyLinks';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5719,24 +5718,24 @@ class ThirdPartyLinksResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (type != null) {
-      _queryParams["type"] = [type];
+      _queryParams['type'] = [type];
     }
     if (linkingToken != null) {
-      _queryParams["linkingToken"] = [linkingToken];
+      _queryParams['linkingToken'] = [linkingToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/thirdPartyLinks';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5782,18 +5781,18 @@ class ThirdPartyLinksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/thirdPartyLinks';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5860,14 +5859,14 @@ class ThumbnailsResourceApi {
     core.String _body;
 
     if (videoId == null) {
-      throw core.ArgumentError("Parameter videoId is required.");
+      throw core.ArgumentError('Parameter videoId is required.');
     }
-    _queryParams["videoId"] = [videoId];
+    _queryParams['videoId'] = [videoId];
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -5883,7 +5882,7 @@ class ThumbnailsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -5932,21 +5931,21 @@ class VideoAbuseReportReasonsResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/videoAbuseReportReasons';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6003,27 +6002,27 @@ class VideoCategoriesResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
+      _queryParams['regionCode'] = [regionCode];
     }
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/videoCategories';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6077,14 +6076,14 @@ class VideosResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6093,7 +6092,7 @@ class VideosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6144,21 +6143,21 @@ class VideosResourceApi {
     core.String _body;
 
     if (id == null || id.isEmpty) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = id;
+    _queryParams['id'] = id;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/videos/getRating';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6257,28 +6256,28 @@ class VideosResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (autoLevels != null) {
-      _queryParams["autoLevels"] = ["${autoLevels}"];
+      _queryParams['autoLevels'] = ['${autoLevels}'];
     }
     if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
+      _queryParams['onBehalfOfContentOwnerChannel'] = [
         onBehalfOfContentOwnerChannel
       ];
     }
     if (stabilize != null) {
-      _queryParams["stabilize"] = ["${stabilize}"];
+      _queryParams['stabilize'] = ['${stabilize}'];
     }
     if (notifySubscribers != null) {
-      _queryParams["notifySubscribers"] = ["${notifySubscribers}"];
+      _queryParams['notifySubscribers'] = ['${notifySubscribers}'];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -6294,7 +6293,7 @@ class VideosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6405,54 +6404,54 @@ class VideosResourceApi {
     core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (maxWidth != null) {
-      _queryParams["maxWidth"] = ["${maxWidth}"];
+      _queryParams['maxWidth'] = ['${maxWidth}'];
     }
     if (chart != null) {
-      _queryParams["chart"] = [chart];
+      _queryParams['chart'] = [chart];
     }
     if (maxHeight != null) {
-      _queryParams["maxHeight"] = ["${maxHeight}"];
+      _queryParams['maxHeight'] = ['${maxHeight}'];
     }
     if (myRating != null) {
-      _queryParams["myRating"] = [myRating];
+      _queryParams['myRating'] = [myRating];
     }
     if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
+      _queryParams['regionCode'] = [regionCode];
     }
     if (id != null) {
-      _queryParams["id"] = id;
+      _queryParams['id'] = id;
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if (videoCategoryId != null) {
-      _queryParams["videoCategoryId"] = [videoCategoryId];
+      _queryParams['videoCategoryId'] = [videoCategoryId];
     }
     if (hl != null) {
-      _queryParams["hl"] = [hl];
+      _queryParams['hl'] = [hl];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/videos';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6495,15 +6494,15 @@ class VideosResourceApi {
     core.String _body;
 
     if (id == null) {
-      throw core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams["id"] = [id];
+    _queryParams['id'] = [id];
     if (rating == null) {
-      throw core.ArgumentError("Parameter rating is required.");
+      throw core.ArgumentError('Parameter rating is required.');
     }
-    _queryParams["rating"] = [rating];
+    _queryParams['rating'] = [rating];
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6512,7 +6511,7 @@ class VideosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6563,10 +6562,10 @@ class VideosResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6575,7 +6574,7 @@ class VideosResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6647,21 +6646,21 @@ class VideosResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams["part"] = part;
+    _queryParams['part'] = part;
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'youtube/v3/videos';
 
     final _response = _requester.request(
       _url,
-      "PUT",
+      'PUT',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6729,14 +6728,14 @@ class WatermarksResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (channelId == null) {
-      throw core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError('Parameter channelId is required.');
     }
-    _queryParams["channelId"] = [channelId];
+    _queryParams['channelId'] = [channelId];
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -6753,7 +6752,7 @@ class WatermarksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6801,14 +6800,14 @@ class WatermarksResourceApi {
     core.String _body;
 
     if (channelId == null) {
-      throw core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError('Parameter channelId is required.');
     }
-    _queryParams["channelId"] = [channelId];
+    _queryParams['channelId'] = [channelId];
     if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -6817,7 +6816,7 @@ class WatermarksResourceApi {
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6837,21 +6836,21 @@ class AbuseReport {
   AbuseReport();
 
   AbuseReport.fromJson(core.Map _json) {
-    if (_json.containsKey("abuseTypes")) {
-      abuseTypes = (_json["abuseTypes"] as core.List)
+    if (_json.containsKey('abuseTypes')) {
+      abuseTypes = (_json['abuseTypes'] as core.List)
           .map<AbuseType>((value) => AbuseType.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("relatedEntities")) {
-      relatedEntities = (_json["relatedEntities"] as core.List)
+    if (_json.containsKey('relatedEntities')) {
+      relatedEntities = (_json['relatedEntities'] as core.List)
           .map<RelatedEntity>((value) => RelatedEntity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("subject")) {
-      subject = Entity.fromJson(_json["subject"]);
+    if (_json.containsKey('subject')) {
+      subject = Entity.fromJson(_json['subject']);
     }
   }
 
@@ -6859,17 +6858,17 @@ class AbuseReport {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (abuseTypes != null) {
-      _json["abuseTypes"] = abuseTypes.map((value) => value.toJson()).toList();
+      _json['abuseTypes'] = abuseTypes.map((value) => value.toJson()).toList();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (relatedEntities != null) {
-      _json["relatedEntities"] =
+      _json['relatedEntities'] =
           relatedEntities.map((value) => value.toJson()).toList();
     }
     if (subject != null) {
-      _json["subject"] = subject.toJson();
+      _json['subject'] = subject.toJson();
     }
     return _json;
   }
@@ -6881,8 +6880,8 @@ class AbuseType {
   AbuseType();
 
   AbuseType.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
   }
 
@@ -6890,7 +6889,7 @@ class AbuseType {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     return _json;
   }
@@ -6909,11 +6908,11 @@ class AccessPolicy {
   AccessPolicy();
 
   AccessPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("allowed")) {
-      allowed = _json["allowed"];
+    if (_json.containsKey('allowed')) {
+      allowed = _json['allowed'];
     }
-    if (_json.containsKey("exception")) {
-      exception = (_json["exception"] as core.List).cast<core.String>();
+    if (_json.containsKey('exception')) {
+      exception = (_json['exception'] as core.List).cast<core.String>();
     }
   }
 
@@ -6921,10 +6920,10 @@ class AccessPolicy {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowed != null) {
-      _json["allowed"] = allowed;
+      _json['allowed'] = allowed;
     }
     if (exception != null) {
-      _json["exception"] = exception;
+      _json['exception'] = exception;
     }
     return _json;
   }
@@ -6961,20 +6960,20 @@ class Activity {
   Activity();
 
   Activity.fromJson(core.Map _json) {
-    if (_json.containsKey("contentDetails")) {
-      contentDetails = ActivityContentDetails.fromJson(_json["contentDetails"]);
+    if (_json.containsKey('contentDetails')) {
+      contentDetails = ActivityContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = ActivitySnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = ActivitySnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -6982,19 +6981,19 @@ class Activity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -7056,43 +7055,43 @@ class ActivityContentDetails {
   ActivityContentDetails();
 
   ActivityContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("bulletin")) {
-      bulletin = ActivityContentDetailsBulletin.fromJson(_json["bulletin"]);
+    if (_json.containsKey('bulletin')) {
+      bulletin = ActivityContentDetailsBulletin.fromJson(_json['bulletin']);
     }
-    if (_json.containsKey("channelItem")) {
+    if (_json.containsKey('channelItem')) {
       channelItem =
-          ActivityContentDetailsChannelItem.fromJson(_json["channelItem"]);
+          ActivityContentDetailsChannelItem.fromJson(_json['channelItem']);
     }
-    if (_json.containsKey("comment")) {
-      comment = ActivityContentDetailsComment.fromJson(_json["comment"]);
+    if (_json.containsKey('comment')) {
+      comment = ActivityContentDetailsComment.fromJson(_json['comment']);
     }
-    if (_json.containsKey("favorite")) {
-      favorite = ActivityContentDetailsFavorite.fromJson(_json["favorite"]);
+    if (_json.containsKey('favorite')) {
+      favorite = ActivityContentDetailsFavorite.fromJson(_json['favorite']);
     }
-    if (_json.containsKey("like")) {
-      like = ActivityContentDetailsLike.fromJson(_json["like"]);
+    if (_json.containsKey('like')) {
+      like = ActivityContentDetailsLike.fromJson(_json['like']);
     }
-    if (_json.containsKey("playlistItem")) {
+    if (_json.containsKey('playlistItem')) {
       playlistItem =
-          ActivityContentDetailsPlaylistItem.fromJson(_json["playlistItem"]);
+          ActivityContentDetailsPlaylistItem.fromJson(_json['playlistItem']);
     }
-    if (_json.containsKey("promotedItem")) {
+    if (_json.containsKey('promotedItem')) {
       promotedItem =
-          ActivityContentDetailsPromotedItem.fromJson(_json["promotedItem"]);
+          ActivityContentDetailsPromotedItem.fromJson(_json['promotedItem']);
     }
-    if (_json.containsKey("recommendation")) {
+    if (_json.containsKey('recommendation')) {
       recommendation = ActivityContentDetailsRecommendation.fromJson(
-          _json["recommendation"]);
+          _json['recommendation']);
     }
-    if (_json.containsKey("social")) {
-      social = ActivityContentDetailsSocial.fromJson(_json["social"]);
+    if (_json.containsKey('social')) {
+      social = ActivityContentDetailsSocial.fromJson(_json['social']);
     }
-    if (_json.containsKey("subscription")) {
+    if (_json.containsKey('subscription')) {
       subscription =
-          ActivityContentDetailsSubscription.fromJson(_json["subscription"]);
+          ActivityContentDetailsSubscription.fromJson(_json['subscription']);
     }
-    if (_json.containsKey("upload")) {
-      upload = ActivityContentDetailsUpload.fromJson(_json["upload"]);
+    if (_json.containsKey('upload')) {
+      upload = ActivityContentDetailsUpload.fromJson(_json['upload']);
     }
   }
 
@@ -7100,37 +7099,37 @@ class ActivityContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bulletin != null) {
-      _json["bulletin"] = bulletin.toJson();
+      _json['bulletin'] = bulletin.toJson();
     }
     if (channelItem != null) {
-      _json["channelItem"] = channelItem.toJson();
+      _json['channelItem'] = channelItem.toJson();
     }
     if (comment != null) {
-      _json["comment"] = comment.toJson();
+      _json['comment'] = comment.toJson();
     }
     if (favorite != null) {
-      _json["favorite"] = favorite.toJson();
+      _json['favorite'] = favorite.toJson();
     }
     if (like != null) {
-      _json["like"] = like.toJson();
+      _json['like'] = like.toJson();
     }
     if (playlistItem != null) {
-      _json["playlistItem"] = playlistItem.toJson();
+      _json['playlistItem'] = playlistItem.toJson();
     }
     if (promotedItem != null) {
-      _json["promotedItem"] = promotedItem.toJson();
+      _json['promotedItem'] = promotedItem.toJson();
     }
     if (recommendation != null) {
-      _json["recommendation"] = recommendation.toJson();
+      _json['recommendation'] = recommendation.toJson();
     }
     if (social != null) {
-      _json["social"] = social.toJson();
+      _json['social'] = social.toJson();
     }
     if (subscription != null) {
-      _json["subscription"] = subscription.toJson();
+      _json['subscription'] = subscription.toJson();
     }
     if (upload != null) {
-      _json["upload"] = upload.toJson();
+      _json['upload'] = upload.toJson();
     }
     return _json;
   }
@@ -7145,8 +7144,8 @@ class ActivityContentDetailsBulletin {
   ActivityContentDetailsBulletin();
 
   ActivityContentDetailsBulletin.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
   }
 
@@ -7154,7 +7153,7 @@ class ActivityContentDetailsBulletin {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     return _json;
   }
@@ -7169,8 +7168,8 @@ class ActivityContentDetailsChannelItem {
   ActivityContentDetailsChannelItem();
 
   ActivityContentDetailsChannelItem.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
   }
 
@@ -7178,7 +7177,7 @@ class ActivityContentDetailsChannelItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     return _json;
   }
@@ -7193,8 +7192,8 @@ class ActivityContentDetailsComment {
   ActivityContentDetailsComment();
 
   ActivityContentDetailsComment.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
   }
 
@@ -7202,7 +7201,7 @@ class ActivityContentDetailsComment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     return _json;
   }
@@ -7217,8 +7216,8 @@ class ActivityContentDetailsFavorite {
   ActivityContentDetailsFavorite();
 
   ActivityContentDetailsFavorite.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
   }
 
@@ -7226,7 +7225,7 @@ class ActivityContentDetailsFavorite {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     return _json;
   }
@@ -7241,8 +7240,8 @@ class ActivityContentDetailsLike {
   ActivityContentDetailsLike();
 
   ActivityContentDetailsLike.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
   }
 
@@ -7250,7 +7249,7 @@ class ActivityContentDetailsLike {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     return _json;
   }
@@ -7271,14 +7270,14 @@ class ActivityContentDetailsPlaylistItem {
   ActivityContentDetailsPlaylistItem();
 
   ActivityContentDetailsPlaylistItem.fromJson(core.Map _json) {
-    if (_json.containsKey("playlistId")) {
-      playlistId = _json["playlistId"];
+    if (_json.containsKey('playlistId')) {
+      playlistId = _json['playlistId'];
     }
-    if (_json.containsKey("playlistItemId")) {
-      playlistItemId = _json["playlistItemId"];
+    if (_json.containsKey('playlistItemId')) {
+      playlistItemId = _json['playlistItemId'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
   }
 
@@ -7286,13 +7285,13 @@ class ActivityContentDetailsPlaylistItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (playlistId != null) {
-      _json["playlistId"] = playlistId;
+      _json['playlistId'] = playlistId;
     }
     if (playlistItemId != null) {
-      _json["playlistItemId"] = playlistItemId;
+      _json['playlistItemId'] = playlistItemId;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     return _json;
   }
@@ -7344,36 +7343,36 @@ class ActivityContentDetailsPromotedItem {
   ActivityContentDetailsPromotedItem();
 
   ActivityContentDetailsPromotedItem.fromJson(core.Map _json) {
-    if (_json.containsKey("adTag")) {
-      adTag = _json["adTag"];
+    if (_json.containsKey('adTag')) {
+      adTag = _json['adTag'];
     }
-    if (_json.containsKey("clickTrackingUrl")) {
-      clickTrackingUrl = _json["clickTrackingUrl"];
+    if (_json.containsKey('clickTrackingUrl')) {
+      clickTrackingUrl = _json['clickTrackingUrl'];
     }
-    if (_json.containsKey("creativeViewUrl")) {
-      creativeViewUrl = _json["creativeViewUrl"];
+    if (_json.containsKey('creativeViewUrl')) {
+      creativeViewUrl = _json['creativeViewUrl'];
     }
-    if (_json.containsKey("ctaType")) {
-      ctaType = _json["ctaType"];
+    if (_json.containsKey('ctaType')) {
+      ctaType = _json['ctaType'];
     }
-    if (_json.containsKey("customCtaButtonText")) {
-      customCtaButtonText = _json["customCtaButtonText"];
+    if (_json.containsKey('customCtaButtonText')) {
+      customCtaButtonText = _json['customCtaButtonText'];
     }
-    if (_json.containsKey("descriptionText")) {
-      descriptionText = _json["descriptionText"];
+    if (_json.containsKey('descriptionText')) {
+      descriptionText = _json['descriptionText'];
     }
-    if (_json.containsKey("destinationUrl")) {
-      destinationUrl = _json["destinationUrl"];
+    if (_json.containsKey('destinationUrl')) {
+      destinationUrl = _json['destinationUrl'];
     }
-    if (_json.containsKey("forecastingUrl")) {
+    if (_json.containsKey('forecastingUrl')) {
       forecastingUrl =
-          (_json["forecastingUrl"] as core.List).cast<core.String>();
+          (_json['forecastingUrl'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("impressionUrl")) {
-      impressionUrl = (_json["impressionUrl"] as core.List).cast<core.String>();
+    if (_json.containsKey('impressionUrl')) {
+      impressionUrl = (_json['impressionUrl'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
+    if (_json.containsKey('videoId')) {
+      videoId = _json['videoId'];
     }
   }
 
@@ -7381,34 +7380,34 @@ class ActivityContentDetailsPromotedItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adTag != null) {
-      _json["adTag"] = adTag;
+      _json['adTag'] = adTag;
     }
     if (clickTrackingUrl != null) {
-      _json["clickTrackingUrl"] = clickTrackingUrl;
+      _json['clickTrackingUrl'] = clickTrackingUrl;
     }
     if (creativeViewUrl != null) {
-      _json["creativeViewUrl"] = creativeViewUrl;
+      _json['creativeViewUrl'] = creativeViewUrl;
     }
     if (ctaType != null) {
-      _json["ctaType"] = ctaType;
+      _json['ctaType'] = ctaType;
     }
     if (customCtaButtonText != null) {
-      _json["customCtaButtonText"] = customCtaButtonText;
+      _json['customCtaButtonText'] = customCtaButtonText;
     }
     if (descriptionText != null) {
-      _json["descriptionText"] = descriptionText;
+      _json['descriptionText'] = descriptionText;
     }
     if (destinationUrl != null) {
-      _json["destinationUrl"] = destinationUrl;
+      _json['destinationUrl'] = destinationUrl;
     }
     if (forecastingUrl != null) {
-      _json["forecastingUrl"] = forecastingUrl;
+      _json['forecastingUrl'] = forecastingUrl;
     }
     if (impressionUrl != null) {
-      _json["impressionUrl"] = impressionUrl;
+      _json['impressionUrl'] = impressionUrl;
     }
     if (videoId != null) {
-      _json["videoId"] = videoId;
+      _json['videoId'] = videoId;
     }
     return _json;
   }
@@ -7435,14 +7434,14 @@ class ActivityContentDetailsRecommendation {
   ActivityContentDetailsRecommendation();
 
   ActivityContentDetailsRecommendation.fromJson(core.Map _json) {
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
-    if (_json.containsKey("seedResourceId")) {
-      seedResourceId = ResourceId.fromJson(_json["seedResourceId"]);
+    if (_json.containsKey('seedResourceId')) {
+      seedResourceId = ResourceId.fromJson(_json['seedResourceId']);
     }
   }
 
@@ -7450,13 +7449,13 @@ class ActivityContentDetailsRecommendation {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     if (seedResourceId != null) {
-      _json["seedResourceId"] = seedResourceId.toJson();
+      _json['seedResourceId'] = seedResourceId.toJson();
     }
     return _json;
   }
@@ -7488,20 +7487,20 @@ class ActivityContentDetailsSocial {
   ActivityContentDetailsSocial();
 
   ActivityContentDetailsSocial.fromJson(core.Map _json) {
-    if (_json.containsKey("author")) {
-      author = _json["author"];
+    if (_json.containsKey('author')) {
+      author = _json['author'];
     }
-    if (_json.containsKey("imageUrl")) {
-      imageUrl = _json["imageUrl"];
+    if (_json.containsKey('imageUrl')) {
+      imageUrl = _json['imageUrl'];
     }
-    if (_json.containsKey("referenceUrl")) {
-      referenceUrl = _json["referenceUrl"];
+    if (_json.containsKey('referenceUrl')) {
+      referenceUrl = _json['referenceUrl'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -7509,19 +7508,19 @@ class ActivityContentDetailsSocial {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = author;
+      _json['author'] = author;
     }
     if (imageUrl != null) {
-      _json["imageUrl"] = imageUrl;
+      _json['imageUrl'] = imageUrl;
     }
     if (referenceUrl != null) {
-      _json["referenceUrl"] = referenceUrl;
+      _json['referenceUrl'] = referenceUrl;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -7536,8 +7535,8 @@ class ActivityContentDetailsSubscription {
   ActivityContentDetailsSubscription();
 
   ActivityContentDetailsSubscription.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
   }
 
@@ -7545,7 +7544,7 @@ class ActivityContentDetailsSubscription {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     return _json;
   }
@@ -7559,8 +7558,8 @@ class ActivityContentDetailsUpload {
   ActivityContentDetailsUpload();
 
   ActivityContentDetailsUpload.fromJson(core.Map _json) {
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
+    if (_json.containsKey('videoId')) {
+      videoId = _json['videoId'];
     }
   }
 
@@ -7568,7 +7567,7 @@ class ActivityContentDetailsUpload {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (videoId != null) {
-      _json["videoId"] = videoId;
+      _json['videoId'] = videoId;
     }
     return _json;
   }
@@ -7604,34 +7603,34 @@ class ActivityListResponse {
   ActivityListResponse();
 
   ActivityListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Activity>((value) => Activity.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -7639,31 +7638,31 @@ class ActivityListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -7723,29 +7722,29 @@ class ActivitySnippet {
   ActivitySnippet();
 
   ActivitySnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("channelTitle")) {
-      channelTitle = _json["channelTitle"];
+    if (_json.containsKey('channelTitle')) {
+      channelTitle = _json['channelTitle'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("groupId")) {
-      groupId = _json["groupId"];
+    if (_json.containsKey('groupId')) {
+      groupId = _json['groupId'];
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("thumbnails")) {
-      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
+    if (_json.containsKey('thumbnails')) {
+      thumbnails = ThumbnailDetails.fromJson(_json['thumbnails']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -7753,28 +7752,28 @@ class ActivitySnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (channelTitle != null) {
-      _json["channelTitle"] = channelTitle;
+      _json['channelTitle'] = channelTitle;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (groupId != null) {
-      _json["groupId"] = groupId;
+      _json['groupId'] = groupId;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.toJson();
+      _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -7799,17 +7798,17 @@ class Caption {
   Caption();
 
   Caption.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = CaptionSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = CaptionSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -7817,16 +7816,16 @@ class Caption {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -7852,22 +7851,22 @@ class CaptionListResponse {
   CaptionListResponse();
 
   CaptionListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Caption>((value) => Caption.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -7875,19 +7874,19 @@ class CaptionListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -7971,44 +7970,44 @@ class CaptionSnippet {
   CaptionSnippet();
 
   CaptionSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("audioTrackType")) {
-      audioTrackType = _json["audioTrackType"];
+    if (_json.containsKey('audioTrackType')) {
+      audioTrackType = _json['audioTrackType'];
     }
-    if (_json.containsKey("failureReason")) {
-      failureReason = _json["failureReason"];
+    if (_json.containsKey('failureReason')) {
+      failureReason = _json['failureReason'];
     }
-    if (_json.containsKey("isAutoSynced")) {
-      isAutoSynced = _json["isAutoSynced"];
+    if (_json.containsKey('isAutoSynced')) {
+      isAutoSynced = _json['isAutoSynced'];
     }
-    if (_json.containsKey("isCC")) {
-      isCC = _json["isCC"];
+    if (_json.containsKey('isCC')) {
+      isCC = _json['isCC'];
     }
-    if (_json.containsKey("isDraft")) {
-      isDraft = _json["isDraft"];
+    if (_json.containsKey('isDraft')) {
+      isDraft = _json['isDraft'];
     }
-    if (_json.containsKey("isEasyReader")) {
-      isEasyReader = _json["isEasyReader"];
+    if (_json.containsKey('isEasyReader')) {
+      isEasyReader = _json['isEasyReader'];
     }
-    if (_json.containsKey("isLarge")) {
-      isLarge = _json["isLarge"];
+    if (_json.containsKey('isLarge')) {
+      isLarge = _json['isLarge'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("lastUpdated")) {
-      lastUpdated = _json["lastUpdated"];
+    if (_json.containsKey('lastUpdated')) {
+      lastUpdated = _json['lastUpdated'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
-    if (_json.containsKey("trackKind")) {
-      trackKind = _json["trackKind"];
+    if (_json.containsKey('trackKind')) {
+      trackKind = _json['trackKind'];
     }
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
+    if (_json.containsKey('videoId')) {
+      videoId = _json['videoId'];
     }
   }
 
@@ -8016,43 +8015,43 @@ class CaptionSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audioTrackType != null) {
-      _json["audioTrackType"] = audioTrackType;
+      _json['audioTrackType'] = audioTrackType;
     }
     if (failureReason != null) {
-      _json["failureReason"] = failureReason;
+      _json['failureReason'] = failureReason;
     }
     if (isAutoSynced != null) {
-      _json["isAutoSynced"] = isAutoSynced;
+      _json['isAutoSynced'] = isAutoSynced;
     }
     if (isCC != null) {
-      _json["isCC"] = isCC;
+      _json['isCC'] = isCC;
     }
     if (isDraft != null) {
-      _json["isDraft"] = isDraft;
+      _json['isDraft'] = isDraft;
     }
     if (isEasyReader != null) {
-      _json["isEasyReader"] = isEasyReader;
+      _json['isEasyReader'] = isEasyReader;
     }
     if (isLarge != null) {
-      _json["isLarge"] = isLarge;
+      _json['isLarge'] = isLarge;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (lastUpdated != null) {
-      _json["lastUpdated"] = lastUpdated;
+      _json['lastUpdated'] = lastUpdated;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     if (trackKind != null) {
-      _json["trackKind"] = trackKind;
+      _json['trackKind'] = trackKind;
     }
     if (videoId != null) {
-      _json["videoId"] = videoId;
+      _json['videoId'] = videoId;
     }
     return _json;
   }
@@ -8097,20 +8096,20 @@ class CdnSettings {
   CdnSettings();
 
   CdnSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("format")) {
-      format = _json["format"];
+    if (_json.containsKey('format')) {
+      format = _json['format'];
     }
-    if (_json.containsKey("frameRate")) {
-      frameRate = _json["frameRate"];
+    if (_json.containsKey('frameRate')) {
+      frameRate = _json['frameRate'];
     }
-    if (_json.containsKey("ingestionInfo")) {
-      ingestionInfo = IngestionInfo.fromJson(_json["ingestionInfo"]);
+    if (_json.containsKey('ingestionInfo')) {
+      ingestionInfo = IngestionInfo.fromJson(_json['ingestionInfo']);
     }
-    if (_json.containsKey("ingestionType")) {
-      ingestionType = _json["ingestionType"];
+    if (_json.containsKey('ingestionType')) {
+      ingestionType = _json['ingestionType'];
     }
-    if (_json.containsKey("resolution")) {
-      resolution = _json["resolution"];
+    if (_json.containsKey('resolution')) {
+      resolution = _json['resolution'];
     }
   }
 
@@ -8118,19 +8117,19 @@ class CdnSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (format != null) {
-      _json["format"] = format;
+      _json['format'] = format;
     }
     if (frameRate != null) {
-      _json["frameRate"] = frameRate;
+      _json['frameRate'] = frameRate;
     }
     if (ingestionInfo != null) {
-      _json["ingestionInfo"] = ingestionInfo.toJson();
+      _json['ingestionInfo'] = ingestionInfo.toJson();
     }
     if (ingestionType != null) {
-      _json["ingestionType"] = ingestionType;
+      _json['ingestionType'] = ingestionType;
     }
     if (resolution != null) {
-      _json["resolution"] = resolution;
+      _json['resolution'] = resolution;
     }
     return _json;
   }
@@ -8189,49 +8188,49 @@ class Channel {
   Channel();
 
   Channel.fromJson(core.Map _json) {
-    if (_json.containsKey("auditDetails")) {
-      auditDetails = ChannelAuditDetails.fromJson(_json["auditDetails"]);
+    if (_json.containsKey('auditDetails')) {
+      auditDetails = ChannelAuditDetails.fromJson(_json['auditDetails']);
     }
-    if (_json.containsKey("brandingSettings")) {
+    if (_json.containsKey('brandingSettings')) {
       brandingSettings =
-          ChannelBrandingSettings.fromJson(_json["brandingSettings"]);
+          ChannelBrandingSettings.fromJson(_json['brandingSettings']);
     }
-    if (_json.containsKey("contentDetails")) {
-      contentDetails = ChannelContentDetails.fromJson(_json["contentDetails"]);
+    if (_json.containsKey('contentDetails')) {
+      contentDetails = ChannelContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("contentOwnerDetails")) {
+    if (_json.containsKey('contentOwnerDetails')) {
       contentOwnerDetails =
-          ChannelContentOwnerDetails.fromJson(_json["contentOwnerDetails"]);
+          ChannelContentOwnerDetails.fromJson(_json['contentOwnerDetails']);
     }
-    if (_json.containsKey("conversionPings")) {
+    if (_json.containsKey('conversionPings')) {
       conversionPings =
-          ChannelConversionPings.fromJson(_json["conversionPings"]);
+          ChannelConversionPings.fromJson(_json['conversionPings']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("localizations")) {
+    if (_json.containsKey('localizations')) {
       localizations = commons.mapMap<core.Map, ChannelLocalization>(
-          _json["localizations"].cast<core.String, core.Map>(),
+          _json['localizations'].cast<core.String, core.Map>(),
           (core.Map item) => ChannelLocalization.fromJson(item));
     }
-    if (_json.containsKey("snippet")) {
-      snippet = ChannelSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = ChannelSnippet.fromJson(_json['snippet']);
     }
-    if (_json.containsKey("statistics")) {
-      statistics = ChannelStatistics.fromJson(_json["statistics"]);
+    if (_json.containsKey('statistics')) {
+      statistics = ChannelStatistics.fromJson(_json['statistics']);
     }
-    if (_json.containsKey("status")) {
-      status = ChannelStatus.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = ChannelStatus.fromJson(_json['status']);
     }
-    if (_json.containsKey("topicDetails")) {
-      topicDetails = ChannelTopicDetails.fromJson(_json["topicDetails"]);
+    if (_json.containsKey('topicDetails')) {
+      topicDetails = ChannelTopicDetails.fromJson(_json['topicDetails']);
     }
   }
 
@@ -8239,45 +8238,45 @@ class Channel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (auditDetails != null) {
-      _json["auditDetails"] = auditDetails.toJson();
+      _json['auditDetails'] = auditDetails.toJson();
     }
     if (brandingSettings != null) {
-      _json["brandingSettings"] = brandingSettings.toJson();
+      _json['brandingSettings'] = brandingSettings.toJson();
     }
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (contentOwnerDetails != null) {
-      _json["contentOwnerDetails"] = contentOwnerDetails.toJson();
+      _json['contentOwnerDetails'] = contentOwnerDetails.toJson();
     }
     if (conversionPings != null) {
-      _json["conversionPings"] = conversionPings.toJson();
+      _json['conversionPings'] = conversionPings.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (localizations != null) {
-      _json["localizations"] = commons
+      _json['localizations'] = commons
           .mapMap<ChannelLocalization, core.Map<core.String, core.Object>>(
               localizations, (ChannelLocalization item) => item.toJson());
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     if (statistics != null) {
-      _json["statistics"] = statistics.toJson();
+      _json['statistics'] = statistics.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     if (topicDetails != null) {
-      _json["topicDetails"] = topicDetails.toJson();
+      _json['topicDetails'] = topicDetails.toJson();
     }
     return _json;
   }
@@ -8298,15 +8297,15 @@ class ChannelAuditDetails {
   ChannelAuditDetails();
 
   ChannelAuditDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("communityGuidelinesGoodStanding")) {
+    if (_json.containsKey('communityGuidelinesGoodStanding')) {
       communityGuidelinesGoodStanding =
-          _json["communityGuidelinesGoodStanding"];
+          _json['communityGuidelinesGoodStanding'];
     }
-    if (_json.containsKey("contentIdClaimsGoodStanding")) {
-      contentIdClaimsGoodStanding = _json["contentIdClaimsGoodStanding"];
+    if (_json.containsKey('contentIdClaimsGoodStanding')) {
+      contentIdClaimsGoodStanding = _json['contentIdClaimsGoodStanding'];
     }
-    if (_json.containsKey("copyrightStrikesGoodStanding")) {
-      copyrightStrikesGoodStanding = _json["copyrightStrikesGoodStanding"];
+    if (_json.containsKey('copyrightStrikesGoodStanding')) {
+      copyrightStrikesGoodStanding = _json['copyrightStrikesGoodStanding'];
     }
   }
 
@@ -8314,14 +8313,14 @@ class ChannelAuditDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (communityGuidelinesGoodStanding != null) {
-      _json["communityGuidelinesGoodStanding"] =
+      _json['communityGuidelinesGoodStanding'] =
           communityGuidelinesGoodStanding;
     }
     if (contentIdClaimsGoodStanding != null) {
-      _json["contentIdClaimsGoodStanding"] = contentIdClaimsGoodStanding;
+      _json['contentIdClaimsGoodStanding'] = contentIdClaimsGoodStanding;
     }
     if (copyrightStrikesGoodStanding != null) {
-      _json["copyrightStrikesGoodStanding"] = copyrightStrikesGoodStanding;
+      _json['copyrightStrikesGoodStanding'] = copyrightStrikesGoodStanding;
     }
     return _json;
   }
@@ -8341,14 +8340,14 @@ class ChannelBannerResource {
   ChannelBannerResource();
 
   ChannelBannerResource.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -8356,13 +8355,13 @@ class ChannelBannerResource {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -8385,19 +8384,19 @@ class ChannelBrandingSettings {
   ChannelBrandingSettings();
 
   ChannelBrandingSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("channel")) {
-      channel = ChannelSettings.fromJson(_json["channel"]);
+    if (_json.containsKey('channel')) {
+      channel = ChannelSettings.fromJson(_json['channel']);
     }
-    if (_json.containsKey("hints")) {
-      hints = (_json["hints"] as core.List)
+    if (_json.containsKey('hints')) {
+      hints = (_json['hints'] as core.List)
           .map<PropertyValue>((value) => PropertyValue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("image")) {
-      image = ImageSettings.fromJson(_json["image"]);
+    if (_json.containsKey('image')) {
+      image = ImageSettings.fromJson(_json['image']);
     }
-    if (_json.containsKey("watch")) {
-      watch = WatchSettings.fromJson(_json["watch"]);
+    if (_json.containsKey('watch')) {
+      watch = WatchSettings.fromJson(_json['watch']);
     }
   }
 
@@ -8405,16 +8404,16 @@ class ChannelBrandingSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channel != null) {
-      _json["channel"] = channel.toJson();
+      _json['channel'] = channel.toJson();
     }
     if (hints != null) {
-      _json["hints"] = hints.map((value) => value.toJson()).toList();
+      _json['hints'] = hints.map((value) => value.toJson()).toList();
     }
     if (image != null) {
-      _json["image"] = image.toJson();
+      _json['image'] = image.toJson();
     }
     if (watch != null) {
-      _json["watch"] = watch.toJson();
+      _json['watch'] = watch.toJson();
     }
     return _json;
   }
@@ -8449,20 +8448,20 @@ class ChannelContentDetailsRelatedPlaylists {
   ChannelContentDetailsRelatedPlaylists();
 
   ChannelContentDetailsRelatedPlaylists.fromJson(core.Map _json) {
-    if (_json.containsKey("favorites")) {
-      favorites = _json["favorites"];
+    if (_json.containsKey('favorites')) {
+      favorites = _json['favorites'];
     }
-    if (_json.containsKey("likes")) {
-      likes = _json["likes"];
+    if (_json.containsKey('likes')) {
+      likes = _json['likes'];
     }
-    if (_json.containsKey("uploads")) {
-      uploads = _json["uploads"];
+    if (_json.containsKey('uploads')) {
+      uploads = _json['uploads'];
     }
-    if (_json.containsKey("watchHistory")) {
-      watchHistory = _json["watchHistory"];
+    if (_json.containsKey('watchHistory')) {
+      watchHistory = _json['watchHistory'];
     }
-    if (_json.containsKey("watchLater")) {
-      watchLater = _json["watchLater"];
+    if (_json.containsKey('watchLater')) {
+      watchLater = _json['watchLater'];
     }
   }
 
@@ -8470,19 +8469,19 @@ class ChannelContentDetailsRelatedPlaylists {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (favorites != null) {
-      _json["favorites"] = favorites;
+      _json['favorites'] = favorites;
     }
     if (likes != null) {
-      _json["likes"] = likes;
+      _json['likes'] = likes;
     }
     if (uploads != null) {
-      _json["uploads"] = uploads;
+      _json['uploads'] = uploads;
     }
     if (watchHistory != null) {
-      _json["watchHistory"] = watchHistory;
+      _json['watchHistory'] = watchHistory;
     }
     if (watchLater != null) {
-      _json["watchLater"] = watchLater;
+      _json['watchLater'] = watchLater;
     }
     return _json;
   }
@@ -8495,9 +8494,9 @@ class ChannelContentDetails {
   ChannelContentDetails();
 
   ChannelContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("relatedPlaylists")) {
+    if (_json.containsKey('relatedPlaylists')) {
       relatedPlaylists = ChannelContentDetailsRelatedPlaylists.fromJson(
-          _json["relatedPlaylists"]);
+          _json['relatedPlaylists']);
     }
   }
 
@@ -8505,7 +8504,7 @@ class ChannelContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (relatedPlaylists != null) {
-      _json["relatedPlaylists"] = relatedPlaylists.toJson();
+      _json['relatedPlaylists'] = relatedPlaylists.toJson();
     }
     return _json;
   }
@@ -8524,11 +8523,11 @@ class ChannelContentOwnerDetails {
   ChannelContentOwnerDetails();
 
   ChannelContentOwnerDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("contentOwner")) {
-      contentOwner = _json["contentOwner"];
+    if (_json.containsKey('contentOwner')) {
+      contentOwner = _json['contentOwner'];
     }
-    if (_json.containsKey("timeLinked")) {
-      timeLinked = _json["timeLinked"];
+    if (_json.containsKey('timeLinked')) {
+      timeLinked = _json['timeLinked'];
     }
   }
 
@@ -8536,10 +8535,10 @@ class ChannelContentOwnerDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentOwner != null) {
-      _json["contentOwner"] = contentOwner;
+      _json['contentOwner'] = contentOwner;
     }
     if (timeLinked != null) {
-      _json["timeLinked"] = timeLinked;
+      _json['timeLinked'] = timeLinked;
     }
     return _json;
   }
@@ -8568,11 +8567,11 @@ class ChannelConversionPing {
   ChannelConversionPing();
 
   ChannelConversionPing.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
-      context = _json["context"];
+    if (_json.containsKey('context')) {
+      context = _json['context'];
     }
-    if (_json.containsKey("conversionUrl")) {
-      conversionUrl = _json["conversionUrl"];
+    if (_json.containsKey('conversionUrl')) {
+      conversionUrl = _json['conversionUrl'];
     }
   }
 
@@ -8580,10 +8579,10 @@ class ChannelConversionPing {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = context;
+      _json['context'] = context;
     }
     if (conversionUrl != null) {
-      _json["conversionUrl"] = conversionUrl;
+      _json['conversionUrl'] = conversionUrl;
     }
     return _json;
   }
@@ -8600,8 +8599,8 @@ class ChannelConversionPings {
   ChannelConversionPings();
 
   ChannelConversionPings.fromJson(core.Map _json) {
-    if (_json.containsKey("pings")) {
-      pings = (_json["pings"] as core.List)
+    if (_json.containsKey('pings')) {
+      pings = (_json['pings'] as core.List)
           .map<ChannelConversionPing>(
               (value) => ChannelConversionPing.fromJson(value))
           .toList();
@@ -8612,7 +8611,7 @@ class ChannelConversionPings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (pings != null) {
-      _json["pings"] = pings.map((value) => value.toJson()).toList();
+      _json['pings'] = pings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8648,34 +8647,34 @@ class ChannelListResponse {
   ChannelListResponse();
 
   ChannelListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Channel>((value) => Channel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -8683,31 +8682,31 @@ class ChannelListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -8724,11 +8723,11 @@ class ChannelLocalization {
   ChannelLocalization();
 
   ChannelLocalization.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -8736,10 +8735,10 @@ class ChannelLocalization {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -8761,17 +8760,17 @@ class ChannelProfileDetails {
   ChannelProfileDetails();
 
   ChannelProfileDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("channelUrl")) {
-      channelUrl = _json["channelUrl"];
+    if (_json.containsKey('channelUrl')) {
+      channelUrl = _json['channelUrl'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("profileImageUrl")) {
-      profileImageUrl = _json["profileImageUrl"];
+    if (_json.containsKey('profileImageUrl')) {
+      profileImageUrl = _json['profileImageUrl'];
     }
   }
 
@@ -8779,16 +8778,16 @@ class ChannelProfileDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (channelUrl != null) {
-      _json["channelUrl"] = channelUrl;
+      _json['channelUrl'] = channelUrl;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (profileImageUrl != null) {
-      _json["profileImageUrl"] = profileImageUrl;
+      _json['profileImageUrl'] = profileImageUrl;
     }
     return _json;
   }
@@ -8823,29 +8822,29 @@ class ChannelSection {
   ChannelSection();
 
   ChannelSection.fromJson(core.Map _json) {
-    if (_json.containsKey("contentDetails")) {
+    if (_json.containsKey('contentDetails')) {
       contentDetails =
-          ChannelSectionContentDetails.fromJson(_json["contentDetails"]);
+          ChannelSectionContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("localizations")) {
+    if (_json.containsKey('localizations')) {
       localizations = commons.mapMap<core.Map, ChannelSectionLocalization>(
-          _json["localizations"].cast<core.String, core.Map>(),
+          _json['localizations'].cast<core.String, core.Map>(),
           (core.Map item) => ChannelSectionLocalization.fromJson(item));
     }
-    if (_json.containsKey("snippet")) {
-      snippet = ChannelSectionSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = ChannelSectionSnippet.fromJson(_json['snippet']);
     }
-    if (_json.containsKey("targeting")) {
-      targeting = ChannelSectionTargeting.fromJson(_json["targeting"]);
+    if (_json.containsKey('targeting')) {
+      targeting = ChannelSectionTargeting.fromJson(_json['targeting']);
     }
   }
 
@@ -8853,27 +8852,27 @@ class ChannelSection {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (localizations != null) {
-      _json["localizations"] = commons.mapMap<ChannelSectionLocalization,
+      _json['localizations'] = commons.mapMap<ChannelSectionLocalization,
               core.Map<core.String, core.Object>>(
           localizations, (ChannelSectionLocalization item) => item.toJson());
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     if (targeting != null) {
-      _json["targeting"] = targeting.toJson();
+      _json['targeting'] = targeting.toJson();
     }
     return _json;
   }
@@ -8891,11 +8890,11 @@ class ChannelSectionContentDetails {
   ChannelSectionContentDetails();
 
   ChannelSectionContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("channels")) {
-      channels = (_json["channels"] as core.List).cast<core.String>();
+    if (_json.containsKey('channels')) {
+      channels = (_json['channels'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("playlists")) {
-      playlists = (_json["playlists"] as core.List).cast<core.String>();
+    if (_json.containsKey('playlists')) {
+      playlists = (_json['playlists'] as core.List).cast<core.String>();
     }
   }
 
@@ -8903,10 +8902,10 @@ class ChannelSectionContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channels != null) {
-      _json["channels"] = channels;
+      _json['channels'] = channels;
     }
     if (playlists != null) {
-      _json["playlists"] = playlists;
+      _json['playlists'] = playlists;
     }
     return _json;
   }
@@ -8932,22 +8931,22 @@ class ChannelSectionListResponse {
   ChannelSectionListResponse();
 
   ChannelSectionListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<ChannelSection>((value) => ChannelSection.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -8955,19 +8954,19 @@ class ChannelSectionListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -8981,8 +8980,8 @@ class ChannelSectionLocalization {
   ChannelSectionLocalization();
 
   ChannelSectionLocalization.fromJson(core.Map _json) {
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -8990,7 +8989,7 @@ class ChannelSectionLocalization {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -9045,26 +9044,26 @@ class ChannelSectionSnippet {
   ChannelSectionSnippet();
 
   ChannelSectionSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = _json["defaultLanguage"];
+    if (_json.containsKey('defaultLanguage')) {
+      defaultLanguage = _json['defaultLanguage'];
     }
-    if (_json.containsKey("localized")) {
-      localized = ChannelSectionLocalization.fromJson(_json["localized"]);
+    if (_json.containsKey('localized')) {
+      localized = ChannelSectionLocalization.fromJson(_json['localized']);
     }
-    if (_json.containsKey("position")) {
-      position = _json["position"];
+    if (_json.containsKey('position')) {
+      position = _json['position'];
     }
-    if (_json.containsKey("style")) {
-      style = _json["style"];
+    if (_json.containsKey('style')) {
+      style = _json['style'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -9072,25 +9071,25 @@ class ChannelSectionSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = defaultLanguage;
+      _json['defaultLanguage'] = defaultLanguage;
     }
     if (localized != null) {
-      _json["localized"] = localized.toJson();
+      _json['localized'] = localized.toJson();
     }
     if (position != null) {
-      _json["position"] = position;
+      _json['position'] = position;
     }
     if (style != null) {
-      _json["style"] = style;
+      _json['style'] = style;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -9110,14 +9109,14 @@ class ChannelSectionTargeting {
   ChannelSectionTargeting();
 
   ChannelSectionTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("countries")) {
-      countries = (_json["countries"] as core.List).cast<core.String>();
+    if (_json.containsKey('countries')) {
+      countries = (_json['countries'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("languages")) {
-      languages = (_json["languages"] as core.List).cast<core.String>();
+    if (_json.containsKey('languages')) {
+      languages = (_json['languages'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("regions")) {
-      regions = (_json["regions"] as core.List).cast<core.String>();
+    if (_json.containsKey('regions')) {
+      regions = (_json['regions'] as core.List).cast<core.String>();
     }
   }
 
@@ -9125,13 +9124,13 @@ class ChannelSectionTargeting {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (countries != null) {
-      _json["countries"] = countries;
+      _json['countries'] = countries;
     }
     if (languages != null) {
-      _json["languages"] = languages;
+      _json['languages'] = languages;
     }
     if (regions != null) {
-      _json["regions"] = regions;
+      _json['regions'] = regions;
     }
     return _json;
   }
@@ -9184,48 +9183,48 @@ class ChannelSettings {
   ChannelSettings();
 
   ChannelSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("country")) {
-      country = _json["country"];
+    if (_json.containsKey('country')) {
+      country = _json['country'];
     }
-    if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = _json["defaultLanguage"];
+    if (_json.containsKey('defaultLanguage')) {
+      defaultLanguage = _json['defaultLanguage'];
     }
-    if (_json.containsKey("defaultTab")) {
-      defaultTab = _json["defaultTab"];
+    if (_json.containsKey('defaultTab')) {
+      defaultTab = _json['defaultTab'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("featuredChannelsTitle")) {
-      featuredChannelsTitle = _json["featuredChannelsTitle"];
+    if (_json.containsKey('featuredChannelsTitle')) {
+      featuredChannelsTitle = _json['featuredChannelsTitle'];
     }
-    if (_json.containsKey("featuredChannelsUrls")) {
+    if (_json.containsKey('featuredChannelsUrls')) {
       featuredChannelsUrls =
-          (_json["featuredChannelsUrls"] as core.List).cast<core.String>();
+          (_json['featuredChannelsUrls'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("keywords")) {
-      keywords = _json["keywords"];
+    if (_json.containsKey('keywords')) {
+      keywords = _json['keywords'];
     }
-    if (_json.containsKey("moderateComments")) {
-      moderateComments = _json["moderateComments"];
+    if (_json.containsKey('moderateComments')) {
+      moderateComments = _json['moderateComments'];
     }
-    if (_json.containsKey("profileColor")) {
-      profileColor = _json["profileColor"];
+    if (_json.containsKey('profileColor')) {
+      profileColor = _json['profileColor'];
     }
-    if (_json.containsKey("showBrowseView")) {
-      showBrowseView = _json["showBrowseView"];
+    if (_json.containsKey('showBrowseView')) {
+      showBrowseView = _json['showBrowseView'];
     }
-    if (_json.containsKey("showRelatedChannels")) {
-      showRelatedChannels = _json["showRelatedChannels"];
+    if (_json.containsKey('showRelatedChannels')) {
+      showRelatedChannels = _json['showRelatedChannels'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("trackingAnalyticsAccountId")) {
-      trackingAnalyticsAccountId = _json["trackingAnalyticsAccountId"];
+    if (_json.containsKey('trackingAnalyticsAccountId')) {
+      trackingAnalyticsAccountId = _json['trackingAnalyticsAccountId'];
     }
-    if (_json.containsKey("unsubscribedTrailer")) {
-      unsubscribedTrailer = _json["unsubscribedTrailer"];
+    if (_json.containsKey('unsubscribedTrailer')) {
+      unsubscribedTrailer = _json['unsubscribedTrailer'];
     }
   }
 
@@ -9233,46 +9232,46 @@ class ChannelSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (country != null) {
-      _json["country"] = country;
+      _json['country'] = country;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = defaultLanguage;
+      _json['defaultLanguage'] = defaultLanguage;
     }
     if (defaultTab != null) {
-      _json["defaultTab"] = defaultTab;
+      _json['defaultTab'] = defaultTab;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (featuredChannelsTitle != null) {
-      _json["featuredChannelsTitle"] = featuredChannelsTitle;
+      _json['featuredChannelsTitle'] = featuredChannelsTitle;
     }
     if (featuredChannelsUrls != null) {
-      _json["featuredChannelsUrls"] = featuredChannelsUrls;
+      _json['featuredChannelsUrls'] = featuredChannelsUrls;
     }
     if (keywords != null) {
-      _json["keywords"] = keywords;
+      _json['keywords'] = keywords;
     }
     if (moderateComments != null) {
-      _json["moderateComments"] = moderateComments;
+      _json['moderateComments'] = moderateComments;
     }
     if (profileColor != null) {
-      _json["profileColor"] = profileColor;
+      _json['profileColor'] = profileColor;
     }
     if (showBrowseView != null) {
-      _json["showBrowseView"] = showBrowseView;
+      _json['showBrowseView'] = showBrowseView;
     }
     if (showRelatedChannels != null) {
-      _json["showRelatedChannels"] = showRelatedChannels;
+      _json['showRelatedChannels'] = showRelatedChannels;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (trackingAnalyticsAccountId != null) {
-      _json["trackingAnalyticsAccountId"] = trackingAnalyticsAccountId;
+      _json['trackingAnalyticsAccountId'] = trackingAnalyticsAccountId;
     }
     if (unsubscribedTrailer != null) {
-      _json["unsubscribedTrailer"] = unsubscribedTrailer;
+      _json['unsubscribedTrailer'] = unsubscribedTrailer;
     }
     return _json;
   }
@@ -9319,29 +9318,29 @@ class ChannelSnippet {
   ChannelSnippet();
 
   ChannelSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("country")) {
-      country = _json["country"];
+    if (_json.containsKey('country')) {
+      country = _json['country'];
     }
-    if (_json.containsKey("customUrl")) {
-      customUrl = _json["customUrl"];
+    if (_json.containsKey('customUrl')) {
+      customUrl = _json['customUrl'];
     }
-    if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = _json["defaultLanguage"];
+    if (_json.containsKey('defaultLanguage')) {
+      defaultLanguage = _json['defaultLanguage'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("localized")) {
-      localized = ChannelLocalization.fromJson(_json["localized"]);
+    if (_json.containsKey('localized')) {
+      localized = ChannelLocalization.fromJson(_json['localized']);
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("thumbnails")) {
-      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
+    if (_json.containsKey('thumbnails')) {
+      thumbnails = ThumbnailDetails.fromJson(_json['thumbnails']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -9349,28 +9348,28 @@ class ChannelSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (country != null) {
-      _json["country"] = country;
+      _json['country'] = country;
     }
     if (customUrl != null) {
-      _json["customUrl"] = customUrl;
+      _json['customUrl'] = customUrl;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = defaultLanguage;
+      _json['defaultLanguage'] = defaultLanguage;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (localized != null) {
-      _json["localized"] = localized.toJson();
+      _json['localized'] = localized.toJson();
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.toJson();
+      _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -9397,20 +9396,20 @@ class ChannelStatistics {
   ChannelStatistics();
 
   ChannelStatistics.fromJson(core.Map _json) {
-    if (_json.containsKey("commentCount")) {
-      commentCount = _json["commentCount"];
+    if (_json.containsKey('commentCount')) {
+      commentCount = _json['commentCount'];
     }
-    if (_json.containsKey("hiddenSubscriberCount")) {
-      hiddenSubscriberCount = _json["hiddenSubscriberCount"];
+    if (_json.containsKey('hiddenSubscriberCount')) {
+      hiddenSubscriberCount = _json['hiddenSubscriberCount'];
     }
-    if (_json.containsKey("subscriberCount")) {
-      subscriberCount = _json["subscriberCount"];
+    if (_json.containsKey('subscriberCount')) {
+      subscriberCount = _json['subscriberCount'];
     }
-    if (_json.containsKey("videoCount")) {
-      videoCount = _json["videoCount"];
+    if (_json.containsKey('videoCount')) {
+      videoCount = _json['videoCount'];
     }
-    if (_json.containsKey("viewCount")) {
-      viewCount = _json["viewCount"];
+    if (_json.containsKey('viewCount')) {
+      viewCount = _json['viewCount'];
     }
   }
 
@@ -9418,19 +9417,19 @@ class ChannelStatistics {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (commentCount != null) {
-      _json["commentCount"] = commentCount;
+      _json['commentCount'] = commentCount;
     }
     if (hiddenSubscriberCount != null) {
-      _json["hiddenSubscriberCount"] = hiddenSubscriberCount;
+      _json['hiddenSubscriberCount'] = hiddenSubscriberCount;
     }
     if (subscriberCount != null) {
-      _json["subscriberCount"] = subscriberCount;
+      _json['subscriberCount'] = subscriberCount;
     }
     if (videoCount != null) {
-      _json["videoCount"] = videoCount;
+      _json['videoCount'] = videoCount;
     }
     if (viewCount != null) {
-      _json["viewCount"] = viewCount;
+      _json['viewCount'] = viewCount;
     }
     return _json;
   }
@@ -9463,20 +9462,20 @@ class ChannelStatus {
   ChannelStatus();
 
   ChannelStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("isLinked")) {
-      isLinked = _json["isLinked"];
+    if (_json.containsKey('isLinked')) {
+      isLinked = _json['isLinked'];
     }
-    if (_json.containsKey("longUploadsStatus")) {
-      longUploadsStatus = _json["longUploadsStatus"];
+    if (_json.containsKey('longUploadsStatus')) {
+      longUploadsStatus = _json['longUploadsStatus'];
     }
-    if (_json.containsKey("madeForKids")) {
-      madeForKids = _json["madeForKids"];
+    if (_json.containsKey('madeForKids')) {
+      madeForKids = _json['madeForKids'];
     }
-    if (_json.containsKey("privacyStatus")) {
-      privacyStatus = _json["privacyStatus"];
+    if (_json.containsKey('privacyStatus')) {
+      privacyStatus = _json['privacyStatus'];
     }
-    if (_json.containsKey("selfDeclaredMadeForKids")) {
-      selfDeclaredMadeForKids = _json["selfDeclaredMadeForKids"];
+    if (_json.containsKey('selfDeclaredMadeForKids')) {
+      selfDeclaredMadeForKids = _json['selfDeclaredMadeForKids'];
     }
   }
 
@@ -9484,19 +9483,19 @@ class ChannelStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (isLinked != null) {
-      _json["isLinked"] = isLinked;
+      _json['isLinked'] = isLinked;
     }
     if (longUploadsStatus != null) {
-      _json["longUploadsStatus"] = longUploadsStatus;
+      _json['longUploadsStatus'] = longUploadsStatus;
     }
     if (madeForKids != null) {
-      _json["madeForKids"] = madeForKids;
+      _json['madeForKids'] = madeForKids;
     }
     if (privacyStatus != null) {
-      _json["privacyStatus"] = privacyStatus;
+      _json['privacyStatus'] = privacyStatus;
     }
     if (selfDeclaredMadeForKids != null) {
-      _json["selfDeclaredMadeForKids"] = selfDeclaredMadeForKids;
+      _json['selfDeclaredMadeForKids'] = selfDeclaredMadeForKids;
     }
     return _json;
   }
@@ -9514,11 +9513,11 @@ class ChannelToStoreLinkDetails {
   ChannelToStoreLinkDetails();
 
   ChannelToStoreLinkDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("storeName")) {
-      storeName = _json["storeName"];
+    if (_json.containsKey('storeName')) {
+      storeName = _json['storeName'];
     }
-    if (_json.containsKey("storeUrl")) {
-      storeUrl = _json["storeUrl"];
+    if (_json.containsKey('storeUrl')) {
+      storeUrl = _json['storeUrl'];
     }
   }
 
@@ -9526,10 +9525,10 @@ class ChannelToStoreLinkDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (storeName != null) {
-      _json["storeName"] = storeName;
+      _json['storeName'] = storeName;
     }
     if (storeUrl != null) {
-      _json["storeUrl"] = storeUrl;
+      _json['storeUrl'] = storeUrl;
     }
     return _json;
   }
@@ -9547,12 +9546,12 @@ class ChannelTopicDetails {
   ChannelTopicDetails();
 
   ChannelTopicDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("topicCategories")) {
+    if (_json.containsKey('topicCategories')) {
       topicCategories =
-          (_json["topicCategories"] as core.List).cast<core.String>();
+          (_json['topicCategories'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("topicIds")) {
-      topicIds = (_json["topicIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('topicIds')) {
+      topicIds = (_json['topicIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -9560,10 +9559,10 @@ class ChannelTopicDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (topicCategories != null) {
-      _json["topicCategories"] = topicCategories;
+      _json['topicCategories'] = topicCategories;
     }
     if (topicIds != null) {
-      _json["topicIds"] = topicIds;
+      _json['topicIds'] = topicIds;
     }
     return _json;
   }
@@ -9587,17 +9586,17 @@ class Comment {
   Comment();
 
   Comment.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = CommentSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = CommentSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -9605,16 +9604,16 @@ class Comment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -9648,31 +9647,31 @@ class CommentListResponse {
   CommentListResponse();
 
   CommentListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -9680,28 +9679,28 @@ class CommentListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -9777,51 +9776,51 @@ class CommentSnippet {
   CommentSnippet();
 
   CommentSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("authorChannelId")) {
+    if (_json.containsKey('authorChannelId')) {
       authorChannelId =
-          CommentSnippetAuthorChannelId.fromJson(_json["authorChannelId"]);
+          CommentSnippetAuthorChannelId.fromJson(_json['authorChannelId']);
     }
-    if (_json.containsKey("authorChannelUrl")) {
-      authorChannelUrl = _json["authorChannelUrl"];
+    if (_json.containsKey('authorChannelUrl')) {
+      authorChannelUrl = _json['authorChannelUrl'];
     }
-    if (_json.containsKey("authorDisplayName")) {
-      authorDisplayName = _json["authorDisplayName"];
+    if (_json.containsKey('authorDisplayName')) {
+      authorDisplayName = _json['authorDisplayName'];
     }
-    if (_json.containsKey("authorProfileImageUrl")) {
-      authorProfileImageUrl = _json["authorProfileImageUrl"];
+    if (_json.containsKey('authorProfileImageUrl')) {
+      authorProfileImageUrl = _json['authorProfileImageUrl'];
     }
-    if (_json.containsKey("canRate")) {
-      canRate = _json["canRate"];
+    if (_json.containsKey('canRate')) {
+      canRate = _json['canRate'];
     }
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("likeCount")) {
-      likeCount = _json["likeCount"];
+    if (_json.containsKey('likeCount')) {
+      likeCount = _json['likeCount'];
     }
-    if (_json.containsKey("moderationStatus")) {
-      moderationStatus = _json["moderationStatus"];
+    if (_json.containsKey('moderationStatus')) {
+      moderationStatus = _json['moderationStatus'];
     }
-    if (_json.containsKey("parentId")) {
-      parentId = _json["parentId"];
+    if (_json.containsKey('parentId')) {
+      parentId = _json['parentId'];
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("textDisplay")) {
-      textDisplay = _json["textDisplay"];
+    if (_json.containsKey('textDisplay')) {
+      textDisplay = _json['textDisplay'];
     }
-    if (_json.containsKey("textOriginal")) {
-      textOriginal = _json["textOriginal"];
+    if (_json.containsKey('textOriginal')) {
+      textOriginal = _json['textOriginal'];
     }
-    if (_json.containsKey("updatedAt")) {
-      updatedAt = _json["updatedAt"];
+    if (_json.containsKey('updatedAt')) {
+      updatedAt = _json['updatedAt'];
     }
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
+    if (_json.containsKey('videoId')) {
+      videoId = _json['videoId'];
     }
-    if (_json.containsKey("viewerRating")) {
-      viewerRating = _json["viewerRating"];
+    if (_json.containsKey('viewerRating')) {
+      viewerRating = _json['viewerRating'];
     }
   }
 
@@ -9829,49 +9828,49 @@ class CommentSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (authorChannelId != null) {
-      _json["authorChannelId"] = authorChannelId.toJson();
+      _json['authorChannelId'] = authorChannelId.toJson();
     }
     if (authorChannelUrl != null) {
-      _json["authorChannelUrl"] = authorChannelUrl;
+      _json['authorChannelUrl'] = authorChannelUrl;
     }
     if (authorDisplayName != null) {
-      _json["authorDisplayName"] = authorDisplayName;
+      _json['authorDisplayName'] = authorDisplayName;
     }
     if (authorProfileImageUrl != null) {
-      _json["authorProfileImageUrl"] = authorProfileImageUrl;
+      _json['authorProfileImageUrl'] = authorProfileImageUrl;
     }
     if (canRate != null) {
-      _json["canRate"] = canRate;
+      _json['canRate'] = canRate;
     }
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (likeCount != null) {
-      _json["likeCount"] = likeCount;
+      _json['likeCount'] = likeCount;
     }
     if (moderationStatus != null) {
-      _json["moderationStatus"] = moderationStatus;
+      _json['moderationStatus'] = moderationStatus;
     }
     if (parentId != null) {
-      _json["parentId"] = parentId;
+      _json['parentId'] = parentId;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (textDisplay != null) {
-      _json["textDisplay"] = textDisplay;
+      _json['textDisplay'] = textDisplay;
     }
     if (textOriginal != null) {
-      _json["textOriginal"] = textOriginal;
+      _json['textOriginal'] = textOriginal;
     }
     if (updatedAt != null) {
-      _json["updatedAt"] = updatedAt;
+      _json['updatedAt'] = updatedAt;
     }
     if (videoId != null) {
-      _json["videoId"] = videoId;
+      _json['videoId'] = videoId;
     }
     if (viewerRating != null) {
-      _json["viewerRating"] = viewerRating;
+      _json['viewerRating'] = viewerRating;
     }
     return _json;
   }
@@ -9884,8 +9883,8 @@ class CommentSnippetAuthorChannelId {
   CommentSnippetAuthorChannelId();
 
   CommentSnippetAuthorChannelId.fromJson(core.Map _json) {
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -9893,7 +9892,7 @@ class CommentSnippetAuthorChannelId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -9924,20 +9923,20 @@ class CommentThread {
   CommentThread();
 
   CommentThread.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("replies")) {
-      replies = CommentThreadReplies.fromJson(_json["replies"]);
+    if (_json.containsKey('replies')) {
+      replies = CommentThreadReplies.fromJson(_json['replies']);
     }
-    if (_json.containsKey("snippet")) {
-      snippet = CommentThreadSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = CommentThreadSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -9945,19 +9944,19 @@ class CommentThread {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (replies != null) {
-      _json["replies"] = replies.toJson();
+      _json['replies'] = replies.toJson();
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -9991,31 +9990,31 @@ class CommentThreadListResponse {
   CommentThreadListResponse();
 
   CommentThreadListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<CommentThread>((value) => CommentThread.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -10023,28 +10022,28 @@ class CommentThreadListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -10060,8 +10059,8 @@ class CommentThreadReplies {
   CommentThreadReplies();
 
   CommentThreadReplies.fromJson(core.Map _json) {
-    if (_json.containsKey("comments")) {
-      comments = (_json["comments"] as core.List)
+    if (_json.containsKey('comments')) {
+      comments = (_json['comments'] as core.List)
           .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
@@ -10071,7 +10070,7 @@ class CommentThreadReplies {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (comments != null) {
-      _json["comments"] = comments.map((value) => value.toJson()).toList();
+      _json['comments'] = comments.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10105,23 +10104,23 @@ class CommentThreadSnippet {
   CommentThreadSnippet();
 
   CommentThreadSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("canReply")) {
-      canReply = _json["canReply"];
+    if (_json.containsKey('canReply')) {
+      canReply = _json['canReply'];
     }
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("isPublic")) {
-      isPublic = _json["isPublic"];
+    if (_json.containsKey('isPublic')) {
+      isPublic = _json['isPublic'];
     }
-    if (_json.containsKey("topLevelComment")) {
-      topLevelComment = Comment.fromJson(_json["topLevelComment"]);
+    if (_json.containsKey('topLevelComment')) {
+      topLevelComment = Comment.fromJson(_json['topLevelComment']);
     }
-    if (_json.containsKey("totalReplyCount")) {
-      totalReplyCount = _json["totalReplyCount"];
+    if (_json.containsKey('totalReplyCount')) {
+      totalReplyCount = _json['totalReplyCount'];
     }
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
+    if (_json.containsKey('videoId')) {
+      videoId = _json['videoId'];
     }
   }
 
@@ -10129,22 +10128,22 @@ class CommentThreadSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (canReply != null) {
-      _json["canReply"] = canReply;
+      _json['canReply'] = canReply;
     }
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (isPublic != null) {
-      _json["isPublic"] = isPublic;
+      _json['isPublic'] = isPublic;
     }
     if (topLevelComment != null) {
-      _json["topLevelComment"] = topLevelComment.toJson();
+      _json['topLevelComment'] = topLevelComment.toJson();
     }
     if (totalReplyCount != null) {
-      _json["totalReplyCount"] = totalReplyCount;
+      _json['totalReplyCount'] = totalReplyCount;
     }
     if (videoId != null) {
-      _json["videoId"] = videoId;
+      _json['videoId'] = videoId;
     }
     return _json;
   }
@@ -11040,220 +11039,220 @@ class ContentRating {
   ContentRating();
 
   ContentRating.fromJson(core.Map _json) {
-    if (_json.containsKey("acbRating")) {
-      acbRating = _json["acbRating"];
+    if (_json.containsKey('acbRating')) {
+      acbRating = _json['acbRating'];
     }
-    if (_json.containsKey("agcomRating")) {
-      agcomRating = _json["agcomRating"];
+    if (_json.containsKey('agcomRating')) {
+      agcomRating = _json['agcomRating'];
     }
-    if (_json.containsKey("anatelRating")) {
-      anatelRating = _json["anatelRating"];
+    if (_json.containsKey('anatelRating')) {
+      anatelRating = _json['anatelRating'];
     }
-    if (_json.containsKey("bbfcRating")) {
-      bbfcRating = _json["bbfcRating"];
+    if (_json.containsKey('bbfcRating')) {
+      bbfcRating = _json['bbfcRating'];
     }
-    if (_json.containsKey("bfvcRating")) {
-      bfvcRating = _json["bfvcRating"];
+    if (_json.containsKey('bfvcRating')) {
+      bfvcRating = _json['bfvcRating'];
     }
-    if (_json.containsKey("bmukkRating")) {
-      bmukkRating = _json["bmukkRating"];
+    if (_json.containsKey('bmukkRating')) {
+      bmukkRating = _json['bmukkRating'];
     }
-    if (_json.containsKey("catvRating")) {
-      catvRating = _json["catvRating"];
+    if (_json.containsKey('catvRating')) {
+      catvRating = _json['catvRating'];
     }
-    if (_json.containsKey("catvfrRating")) {
-      catvfrRating = _json["catvfrRating"];
+    if (_json.containsKey('catvfrRating')) {
+      catvfrRating = _json['catvfrRating'];
     }
-    if (_json.containsKey("cbfcRating")) {
-      cbfcRating = _json["cbfcRating"];
+    if (_json.containsKey('cbfcRating')) {
+      cbfcRating = _json['cbfcRating'];
     }
-    if (_json.containsKey("cccRating")) {
-      cccRating = _json["cccRating"];
+    if (_json.containsKey('cccRating')) {
+      cccRating = _json['cccRating'];
     }
-    if (_json.containsKey("cceRating")) {
-      cceRating = _json["cceRating"];
+    if (_json.containsKey('cceRating')) {
+      cceRating = _json['cceRating'];
     }
-    if (_json.containsKey("chfilmRating")) {
-      chfilmRating = _json["chfilmRating"];
+    if (_json.containsKey('chfilmRating')) {
+      chfilmRating = _json['chfilmRating'];
     }
-    if (_json.containsKey("chvrsRating")) {
-      chvrsRating = _json["chvrsRating"];
+    if (_json.containsKey('chvrsRating')) {
+      chvrsRating = _json['chvrsRating'];
     }
-    if (_json.containsKey("cicfRating")) {
-      cicfRating = _json["cicfRating"];
+    if (_json.containsKey('cicfRating')) {
+      cicfRating = _json['cicfRating'];
     }
-    if (_json.containsKey("cnaRating")) {
-      cnaRating = _json["cnaRating"];
+    if (_json.containsKey('cnaRating')) {
+      cnaRating = _json['cnaRating'];
     }
-    if (_json.containsKey("cncRating")) {
-      cncRating = _json["cncRating"];
+    if (_json.containsKey('cncRating')) {
+      cncRating = _json['cncRating'];
     }
-    if (_json.containsKey("csaRating")) {
-      csaRating = _json["csaRating"];
+    if (_json.containsKey('csaRating')) {
+      csaRating = _json['csaRating'];
     }
-    if (_json.containsKey("cscfRating")) {
-      cscfRating = _json["cscfRating"];
+    if (_json.containsKey('cscfRating')) {
+      cscfRating = _json['cscfRating'];
     }
-    if (_json.containsKey("czfilmRating")) {
-      czfilmRating = _json["czfilmRating"];
+    if (_json.containsKey('czfilmRating')) {
+      czfilmRating = _json['czfilmRating'];
     }
-    if (_json.containsKey("djctqRating")) {
-      djctqRating = _json["djctqRating"];
+    if (_json.containsKey('djctqRating')) {
+      djctqRating = _json['djctqRating'];
     }
-    if (_json.containsKey("djctqRatingReasons")) {
+    if (_json.containsKey('djctqRatingReasons')) {
       djctqRatingReasons =
-          (_json["djctqRatingReasons"] as core.List).cast<core.String>();
+          (_json['djctqRatingReasons'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("ecbmctRating")) {
-      ecbmctRating = _json["ecbmctRating"];
+    if (_json.containsKey('ecbmctRating')) {
+      ecbmctRating = _json['ecbmctRating'];
     }
-    if (_json.containsKey("eefilmRating")) {
-      eefilmRating = _json["eefilmRating"];
+    if (_json.containsKey('eefilmRating')) {
+      eefilmRating = _json['eefilmRating'];
     }
-    if (_json.containsKey("egfilmRating")) {
-      egfilmRating = _json["egfilmRating"];
+    if (_json.containsKey('egfilmRating')) {
+      egfilmRating = _json['egfilmRating'];
     }
-    if (_json.containsKey("eirinRating")) {
-      eirinRating = _json["eirinRating"];
+    if (_json.containsKey('eirinRating')) {
+      eirinRating = _json['eirinRating'];
     }
-    if (_json.containsKey("fcbmRating")) {
-      fcbmRating = _json["fcbmRating"];
+    if (_json.containsKey('fcbmRating')) {
+      fcbmRating = _json['fcbmRating'];
     }
-    if (_json.containsKey("fcoRating")) {
-      fcoRating = _json["fcoRating"];
+    if (_json.containsKey('fcoRating')) {
+      fcoRating = _json['fcoRating'];
     }
-    if (_json.containsKey("fmocRating")) {
-      fmocRating = _json["fmocRating"];
+    if (_json.containsKey('fmocRating')) {
+      fmocRating = _json['fmocRating'];
     }
-    if (_json.containsKey("fpbRating")) {
-      fpbRating = _json["fpbRating"];
+    if (_json.containsKey('fpbRating')) {
+      fpbRating = _json['fpbRating'];
     }
-    if (_json.containsKey("fpbRatingReasons")) {
+    if (_json.containsKey('fpbRatingReasons')) {
       fpbRatingReasons =
-          (_json["fpbRatingReasons"] as core.List).cast<core.String>();
+          (_json['fpbRatingReasons'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("fskRating")) {
-      fskRating = _json["fskRating"];
+    if (_json.containsKey('fskRating')) {
+      fskRating = _json['fskRating'];
     }
-    if (_json.containsKey("grfilmRating")) {
-      grfilmRating = _json["grfilmRating"];
+    if (_json.containsKey('grfilmRating')) {
+      grfilmRating = _json['grfilmRating'];
     }
-    if (_json.containsKey("icaaRating")) {
-      icaaRating = _json["icaaRating"];
+    if (_json.containsKey('icaaRating')) {
+      icaaRating = _json['icaaRating'];
     }
-    if (_json.containsKey("ifcoRating")) {
-      ifcoRating = _json["ifcoRating"];
+    if (_json.containsKey('ifcoRating')) {
+      ifcoRating = _json['ifcoRating'];
     }
-    if (_json.containsKey("ilfilmRating")) {
-      ilfilmRating = _json["ilfilmRating"];
+    if (_json.containsKey('ilfilmRating')) {
+      ilfilmRating = _json['ilfilmRating'];
     }
-    if (_json.containsKey("incaaRating")) {
-      incaaRating = _json["incaaRating"];
+    if (_json.containsKey('incaaRating')) {
+      incaaRating = _json['incaaRating'];
     }
-    if (_json.containsKey("kfcbRating")) {
-      kfcbRating = _json["kfcbRating"];
+    if (_json.containsKey('kfcbRating')) {
+      kfcbRating = _json['kfcbRating'];
     }
-    if (_json.containsKey("kijkwijzerRating")) {
-      kijkwijzerRating = _json["kijkwijzerRating"];
+    if (_json.containsKey('kijkwijzerRating')) {
+      kijkwijzerRating = _json['kijkwijzerRating'];
     }
-    if (_json.containsKey("kmrbRating")) {
-      kmrbRating = _json["kmrbRating"];
+    if (_json.containsKey('kmrbRating')) {
+      kmrbRating = _json['kmrbRating'];
     }
-    if (_json.containsKey("lsfRating")) {
-      lsfRating = _json["lsfRating"];
+    if (_json.containsKey('lsfRating')) {
+      lsfRating = _json['lsfRating'];
     }
-    if (_json.containsKey("mccaaRating")) {
-      mccaaRating = _json["mccaaRating"];
+    if (_json.containsKey('mccaaRating')) {
+      mccaaRating = _json['mccaaRating'];
     }
-    if (_json.containsKey("mccypRating")) {
-      mccypRating = _json["mccypRating"];
+    if (_json.containsKey('mccypRating')) {
+      mccypRating = _json['mccypRating'];
     }
-    if (_json.containsKey("mcstRating")) {
-      mcstRating = _json["mcstRating"];
+    if (_json.containsKey('mcstRating')) {
+      mcstRating = _json['mcstRating'];
     }
-    if (_json.containsKey("mdaRating")) {
-      mdaRating = _json["mdaRating"];
+    if (_json.containsKey('mdaRating')) {
+      mdaRating = _json['mdaRating'];
     }
-    if (_json.containsKey("medietilsynetRating")) {
-      medietilsynetRating = _json["medietilsynetRating"];
+    if (_json.containsKey('medietilsynetRating')) {
+      medietilsynetRating = _json['medietilsynetRating'];
     }
-    if (_json.containsKey("mekuRating")) {
-      mekuRating = _json["mekuRating"];
+    if (_json.containsKey('mekuRating')) {
+      mekuRating = _json['mekuRating'];
     }
-    if (_json.containsKey("menaMpaaRating")) {
-      menaMpaaRating = _json["menaMpaaRating"];
+    if (_json.containsKey('menaMpaaRating')) {
+      menaMpaaRating = _json['menaMpaaRating'];
     }
-    if (_json.containsKey("mibacRating")) {
-      mibacRating = _json["mibacRating"];
+    if (_json.containsKey('mibacRating')) {
+      mibacRating = _json['mibacRating'];
     }
-    if (_json.containsKey("mocRating")) {
-      mocRating = _json["mocRating"];
+    if (_json.containsKey('mocRating')) {
+      mocRating = _json['mocRating'];
     }
-    if (_json.containsKey("moctwRating")) {
-      moctwRating = _json["moctwRating"];
+    if (_json.containsKey('moctwRating')) {
+      moctwRating = _json['moctwRating'];
     }
-    if (_json.containsKey("mpaaRating")) {
-      mpaaRating = _json["mpaaRating"];
+    if (_json.containsKey('mpaaRating')) {
+      mpaaRating = _json['mpaaRating'];
     }
-    if (_json.containsKey("mpaatRating")) {
-      mpaatRating = _json["mpaatRating"];
+    if (_json.containsKey('mpaatRating')) {
+      mpaatRating = _json['mpaatRating'];
     }
-    if (_json.containsKey("mtrcbRating")) {
-      mtrcbRating = _json["mtrcbRating"];
+    if (_json.containsKey('mtrcbRating')) {
+      mtrcbRating = _json['mtrcbRating'];
     }
-    if (_json.containsKey("nbcRating")) {
-      nbcRating = _json["nbcRating"];
+    if (_json.containsKey('nbcRating')) {
+      nbcRating = _json['nbcRating'];
     }
-    if (_json.containsKey("nbcplRating")) {
-      nbcplRating = _json["nbcplRating"];
+    if (_json.containsKey('nbcplRating')) {
+      nbcplRating = _json['nbcplRating'];
     }
-    if (_json.containsKey("nfrcRating")) {
-      nfrcRating = _json["nfrcRating"];
+    if (_json.containsKey('nfrcRating')) {
+      nfrcRating = _json['nfrcRating'];
     }
-    if (_json.containsKey("nfvcbRating")) {
-      nfvcbRating = _json["nfvcbRating"];
+    if (_json.containsKey('nfvcbRating')) {
+      nfvcbRating = _json['nfvcbRating'];
     }
-    if (_json.containsKey("nkclvRating")) {
-      nkclvRating = _json["nkclvRating"];
+    if (_json.containsKey('nkclvRating')) {
+      nkclvRating = _json['nkclvRating'];
     }
-    if (_json.containsKey("nmcRating")) {
-      nmcRating = _json["nmcRating"];
+    if (_json.containsKey('nmcRating')) {
+      nmcRating = _json['nmcRating'];
     }
-    if (_json.containsKey("oflcRating")) {
-      oflcRating = _json["oflcRating"];
+    if (_json.containsKey('oflcRating')) {
+      oflcRating = _json['oflcRating'];
     }
-    if (_json.containsKey("pefilmRating")) {
-      pefilmRating = _json["pefilmRating"];
+    if (_json.containsKey('pefilmRating')) {
+      pefilmRating = _json['pefilmRating'];
     }
-    if (_json.containsKey("rcnofRating")) {
-      rcnofRating = _json["rcnofRating"];
+    if (_json.containsKey('rcnofRating')) {
+      rcnofRating = _json['rcnofRating'];
     }
-    if (_json.containsKey("resorteviolenciaRating")) {
-      resorteviolenciaRating = _json["resorteviolenciaRating"];
+    if (_json.containsKey('resorteviolenciaRating')) {
+      resorteviolenciaRating = _json['resorteviolenciaRating'];
     }
-    if (_json.containsKey("rtcRating")) {
-      rtcRating = _json["rtcRating"];
+    if (_json.containsKey('rtcRating')) {
+      rtcRating = _json['rtcRating'];
     }
-    if (_json.containsKey("rteRating")) {
-      rteRating = _json["rteRating"];
+    if (_json.containsKey('rteRating')) {
+      rteRating = _json['rteRating'];
     }
-    if (_json.containsKey("russiaRating")) {
-      russiaRating = _json["russiaRating"];
+    if (_json.containsKey('russiaRating')) {
+      russiaRating = _json['russiaRating'];
     }
-    if (_json.containsKey("skfilmRating")) {
-      skfilmRating = _json["skfilmRating"];
+    if (_json.containsKey('skfilmRating')) {
+      skfilmRating = _json['skfilmRating'];
     }
-    if (_json.containsKey("smaisRating")) {
-      smaisRating = _json["smaisRating"];
+    if (_json.containsKey('smaisRating')) {
+      smaisRating = _json['smaisRating'];
     }
-    if (_json.containsKey("smsaRating")) {
-      smsaRating = _json["smsaRating"];
+    if (_json.containsKey('smsaRating')) {
+      smsaRating = _json['smsaRating'];
     }
-    if (_json.containsKey("tvpgRating")) {
-      tvpgRating = _json["tvpgRating"];
+    if (_json.containsKey('tvpgRating')) {
+      tvpgRating = _json['tvpgRating'];
     }
-    if (_json.containsKey("ytRating")) {
-      ytRating = _json["ytRating"];
+    if (_json.containsKey('ytRating')) {
+      ytRating = _json['ytRating'];
     }
   }
 
@@ -11261,217 +11260,217 @@ class ContentRating {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (acbRating != null) {
-      _json["acbRating"] = acbRating;
+      _json['acbRating'] = acbRating;
     }
     if (agcomRating != null) {
-      _json["agcomRating"] = agcomRating;
+      _json['agcomRating'] = agcomRating;
     }
     if (anatelRating != null) {
-      _json["anatelRating"] = anatelRating;
+      _json['anatelRating'] = anatelRating;
     }
     if (bbfcRating != null) {
-      _json["bbfcRating"] = bbfcRating;
+      _json['bbfcRating'] = bbfcRating;
     }
     if (bfvcRating != null) {
-      _json["bfvcRating"] = bfvcRating;
+      _json['bfvcRating'] = bfvcRating;
     }
     if (bmukkRating != null) {
-      _json["bmukkRating"] = bmukkRating;
+      _json['bmukkRating'] = bmukkRating;
     }
     if (catvRating != null) {
-      _json["catvRating"] = catvRating;
+      _json['catvRating'] = catvRating;
     }
     if (catvfrRating != null) {
-      _json["catvfrRating"] = catvfrRating;
+      _json['catvfrRating'] = catvfrRating;
     }
     if (cbfcRating != null) {
-      _json["cbfcRating"] = cbfcRating;
+      _json['cbfcRating'] = cbfcRating;
     }
     if (cccRating != null) {
-      _json["cccRating"] = cccRating;
+      _json['cccRating'] = cccRating;
     }
     if (cceRating != null) {
-      _json["cceRating"] = cceRating;
+      _json['cceRating'] = cceRating;
     }
     if (chfilmRating != null) {
-      _json["chfilmRating"] = chfilmRating;
+      _json['chfilmRating'] = chfilmRating;
     }
     if (chvrsRating != null) {
-      _json["chvrsRating"] = chvrsRating;
+      _json['chvrsRating'] = chvrsRating;
     }
     if (cicfRating != null) {
-      _json["cicfRating"] = cicfRating;
+      _json['cicfRating'] = cicfRating;
     }
     if (cnaRating != null) {
-      _json["cnaRating"] = cnaRating;
+      _json['cnaRating'] = cnaRating;
     }
     if (cncRating != null) {
-      _json["cncRating"] = cncRating;
+      _json['cncRating'] = cncRating;
     }
     if (csaRating != null) {
-      _json["csaRating"] = csaRating;
+      _json['csaRating'] = csaRating;
     }
     if (cscfRating != null) {
-      _json["cscfRating"] = cscfRating;
+      _json['cscfRating'] = cscfRating;
     }
     if (czfilmRating != null) {
-      _json["czfilmRating"] = czfilmRating;
+      _json['czfilmRating'] = czfilmRating;
     }
     if (djctqRating != null) {
-      _json["djctqRating"] = djctqRating;
+      _json['djctqRating'] = djctqRating;
     }
     if (djctqRatingReasons != null) {
-      _json["djctqRatingReasons"] = djctqRatingReasons;
+      _json['djctqRatingReasons'] = djctqRatingReasons;
     }
     if (ecbmctRating != null) {
-      _json["ecbmctRating"] = ecbmctRating;
+      _json['ecbmctRating'] = ecbmctRating;
     }
     if (eefilmRating != null) {
-      _json["eefilmRating"] = eefilmRating;
+      _json['eefilmRating'] = eefilmRating;
     }
     if (egfilmRating != null) {
-      _json["egfilmRating"] = egfilmRating;
+      _json['egfilmRating'] = egfilmRating;
     }
     if (eirinRating != null) {
-      _json["eirinRating"] = eirinRating;
+      _json['eirinRating'] = eirinRating;
     }
     if (fcbmRating != null) {
-      _json["fcbmRating"] = fcbmRating;
+      _json['fcbmRating'] = fcbmRating;
     }
     if (fcoRating != null) {
-      _json["fcoRating"] = fcoRating;
+      _json['fcoRating'] = fcoRating;
     }
     if (fmocRating != null) {
-      _json["fmocRating"] = fmocRating;
+      _json['fmocRating'] = fmocRating;
     }
     if (fpbRating != null) {
-      _json["fpbRating"] = fpbRating;
+      _json['fpbRating'] = fpbRating;
     }
     if (fpbRatingReasons != null) {
-      _json["fpbRatingReasons"] = fpbRatingReasons;
+      _json['fpbRatingReasons'] = fpbRatingReasons;
     }
     if (fskRating != null) {
-      _json["fskRating"] = fskRating;
+      _json['fskRating'] = fskRating;
     }
     if (grfilmRating != null) {
-      _json["grfilmRating"] = grfilmRating;
+      _json['grfilmRating'] = grfilmRating;
     }
     if (icaaRating != null) {
-      _json["icaaRating"] = icaaRating;
+      _json['icaaRating'] = icaaRating;
     }
     if (ifcoRating != null) {
-      _json["ifcoRating"] = ifcoRating;
+      _json['ifcoRating'] = ifcoRating;
     }
     if (ilfilmRating != null) {
-      _json["ilfilmRating"] = ilfilmRating;
+      _json['ilfilmRating'] = ilfilmRating;
     }
     if (incaaRating != null) {
-      _json["incaaRating"] = incaaRating;
+      _json['incaaRating'] = incaaRating;
     }
     if (kfcbRating != null) {
-      _json["kfcbRating"] = kfcbRating;
+      _json['kfcbRating'] = kfcbRating;
     }
     if (kijkwijzerRating != null) {
-      _json["kijkwijzerRating"] = kijkwijzerRating;
+      _json['kijkwijzerRating'] = kijkwijzerRating;
     }
     if (kmrbRating != null) {
-      _json["kmrbRating"] = kmrbRating;
+      _json['kmrbRating'] = kmrbRating;
     }
     if (lsfRating != null) {
-      _json["lsfRating"] = lsfRating;
+      _json['lsfRating'] = lsfRating;
     }
     if (mccaaRating != null) {
-      _json["mccaaRating"] = mccaaRating;
+      _json['mccaaRating'] = mccaaRating;
     }
     if (mccypRating != null) {
-      _json["mccypRating"] = mccypRating;
+      _json['mccypRating'] = mccypRating;
     }
     if (mcstRating != null) {
-      _json["mcstRating"] = mcstRating;
+      _json['mcstRating'] = mcstRating;
     }
     if (mdaRating != null) {
-      _json["mdaRating"] = mdaRating;
+      _json['mdaRating'] = mdaRating;
     }
     if (medietilsynetRating != null) {
-      _json["medietilsynetRating"] = medietilsynetRating;
+      _json['medietilsynetRating'] = medietilsynetRating;
     }
     if (mekuRating != null) {
-      _json["mekuRating"] = mekuRating;
+      _json['mekuRating'] = mekuRating;
     }
     if (menaMpaaRating != null) {
-      _json["menaMpaaRating"] = menaMpaaRating;
+      _json['menaMpaaRating'] = menaMpaaRating;
     }
     if (mibacRating != null) {
-      _json["mibacRating"] = mibacRating;
+      _json['mibacRating'] = mibacRating;
     }
     if (mocRating != null) {
-      _json["mocRating"] = mocRating;
+      _json['mocRating'] = mocRating;
     }
     if (moctwRating != null) {
-      _json["moctwRating"] = moctwRating;
+      _json['moctwRating'] = moctwRating;
     }
     if (mpaaRating != null) {
-      _json["mpaaRating"] = mpaaRating;
+      _json['mpaaRating'] = mpaaRating;
     }
     if (mpaatRating != null) {
-      _json["mpaatRating"] = mpaatRating;
+      _json['mpaatRating'] = mpaatRating;
     }
     if (mtrcbRating != null) {
-      _json["mtrcbRating"] = mtrcbRating;
+      _json['mtrcbRating'] = mtrcbRating;
     }
     if (nbcRating != null) {
-      _json["nbcRating"] = nbcRating;
+      _json['nbcRating'] = nbcRating;
     }
     if (nbcplRating != null) {
-      _json["nbcplRating"] = nbcplRating;
+      _json['nbcplRating'] = nbcplRating;
     }
     if (nfrcRating != null) {
-      _json["nfrcRating"] = nfrcRating;
+      _json['nfrcRating'] = nfrcRating;
     }
     if (nfvcbRating != null) {
-      _json["nfvcbRating"] = nfvcbRating;
+      _json['nfvcbRating'] = nfvcbRating;
     }
     if (nkclvRating != null) {
-      _json["nkclvRating"] = nkclvRating;
+      _json['nkclvRating'] = nkclvRating;
     }
     if (nmcRating != null) {
-      _json["nmcRating"] = nmcRating;
+      _json['nmcRating'] = nmcRating;
     }
     if (oflcRating != null) {
-      _json["oflcRating"] = oflcRating;
+      _json['oflcRating'] = oflcRating;
     }
     if (pefilmRating != null) {
-      _json["pefilmRating"] = pefilmRating;
+      _json['pefilmRating'] = pefilmRating;
     }
     if (rcnofRating != null) {
-      _json["rcnofRating"] = rcnofRating;
+      _json['rcnofRating'] = rcnofRating;
     }
     if (resorteviolenciaRating != null) {
-      _json["resorteviolenciaRating"] = resorteviolenciaRating;
+      _json['resorteviolenciaRating'] = resorteviolenciaRating;
     }
     if (rtcRating != null) {
-      _json["rtcRating"] = rtcRating;
+      _json['rtcRating'] = rtcRating;
     }
     if (rteRating != null) {
-      _json["rteRating"] = rteRating;
+      _json['rteRating'] = rteRating;
     }
     if (russiaRating != null) {
-      _json["russiaRating"] = russiaRating;
+      _json['russiaRating'] = russiaRating;
     }
     if (skfilmRating != null) {
-      _json["skfilmRating"] = skfilmRating;
+      _json['skfilmRating'] = skfilmRating;
     }
     if (smaisRating != null) {
-      _json["smaisRating"] = smaisRating;
+      _json['smaisRating'] = smaisRating;
     }
     if (smsaRating != null) {
-      _json["smsaRating"] = smsaRating;
+      _json['smsaRating'] = smsaRating;
     }
     if (tvpgRating != null) {
-      _json["tvpgRating"] = tvpgRating;
+      _json['tvpgRating'] = tvpgRating;
     }
     if (ytRating != null) {
-      _json["ytRating"] = ytRating;
+      _json['ytRating'] = ytRating;
     }
     return _json;
   }
@@ -11485,14 +11484,14 @@ class Entity {
   Entity();
 
   Entity.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("typeId")) {
-      typeId = _json["typeId"];
+    if (_json.containsKey('typeId')) {
+      typeId = _json['typeId'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -11500,13 +11499,13 @@ class Entity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (typeId != null) {
-      _json["typeId"] = typeId;
+      _json['typeId'] = typeId;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -11526,14 +11525,14 @@ class GeoPoint {
   GeoPoint();
 
   GeoPoint.fromJson(core.Map _json) {
-    if (_json.containsKey("altitude")) {
-      altitude = _json["altitude"].toDouble();
+    if (_json.containsKey('altitude')) {
+      altitude = _json['altitude'].toDouble();
     }
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"].toDouble();
+    if (_json.containsKey('latitude')) {
+      latitude = _json['latitude'].toDouble();
     }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"].toDouble();
+    if (_json.containsKey('longitude')) {
+      longitude = _json['longitude'].toDouble();
     }
   }
 
@@ -11541,13 +11540,13 @@ class GeoPoint {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (altitude != null) {
-      _json["altitude"] = altitude;
+      _json['altitude'] = altitude;
     }
     if (latitude != null) {
-      _json["latitude"] = latitude;
+      _json['latitude'] = latitude;
     }
     if (longitude != null) {
-      _json["longitude"] = longitude;
+      _json['longitude'] = longitude;
     }
     return _json;
   }
@@ -11573,17 +11572,17 @@ class I18nLanguage {
   I18nLanguage();
 
   I18nLanguage.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = I18nLanguageSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = I18nLanguageSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -11591,16 +11590,16 @@ class I18nLanguage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -11627,22 +11626,22 @@ class I18nLanguageListResponse {
   I18nLanguageListResponse();
 
   I18nLanguageListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<I18nLanguage>((value) => I18nLanguage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -11650,19 +11649,19 @@ class I18nLanguageListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -11680,11 +11679,11 @@ class I18nLanguageSnippet {
   I18nLanguageSnippet();
 
   I18nLanguageSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("hl")) {
-      hl = _json["hl"];
+    if (_json.containsKey('hl')) {
+      hl = _json['hl'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -11692,10 +11691,10 @@ class I18nLanguageSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (hl != null) {
-      _json["hl"] = hl;
+      _json['hl'] = hl;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -11720,17 +11719,17 @@ class I18nRegion {
   I18nRegion();
 
   I18nRegion.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = I18nRegionSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = I18nRegionSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -11738,16 +11737,16 @@ class I18nRegion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -11774,22 +11773,22 @@ class I18nRegionListResponse {
   I18nRegionListResponse();
 
   I18nRegionListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<I18nRegion>((value) => I18nRegion.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -11797,19 +11796,19 @@ class I18nRegionListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -11827,11 +11826,11 @@ class I18nRegionSnippet {
   I18nRegionSnippet();
 
   I18nRegionSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("gl")) {
-      gl = _json["gl"];
+    if (_json.containsKey('gl')) {
+      gl = _json['gl'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -11839,10 +11838,10 @@ class I18nRegionSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gl != null) {
-      _json["gl"] = gl;
+      _json['gl'] = gl;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -11924,76 +11923,76 @@ class ImageSettings {
   ImageSettings();
 
   ImageSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundImageUrl")) {
+    if (_json.containsKey('backgroundImageUrl')) {
       backgroundImageUrl =
-          LocalizedProperty.fromJson(_json["backgroundImageUrl"]);
+          LocalizedProperty.fromJson(_json['backgroundImageUrl']);
     }
-    if (_json.containsKey("bannerExternalUrl")) {
-      bannerExternalUrl = _json["bannerExternalUrl"];
+    if (_json.containsKey('bannerExternalUrl')) {
+      bannerExternalUrl = _json['bannerExternalUrl'];
     }
-    if (_json.containsKey("bannerImageUrl")) {
-      bannerImageUrl = _json["bannerImageUrl"];
+    if (_json.containsKey('bannerImageUrl')) {
+      bannerImageUrl = _json['bannerImageUrl'];
     }
-    if (_json.containsKey("bannerMobileExtraHdImageUrl")) {
-      bannerMobileExtraHdImageUrl = _json["bannerMobileExtraHdImageUrl"];
+    if (_json.containsKey('bannerMobileExtraHdImageUrl')) {
+      bannerMobileExtraHdImageUrl = _json['bannerMobileExtraHdImageUrl'];
     }
-    if (_json.containsKey("bannerMobileHdImageUrl")) {
-      bannerMobileHdImageUrl = _json["bannerMobileHdImageUrl"];
+    if (_json.containsKey('bannerMobileHdImageUrl')) {
+      bannerMobileHdImageUrl = _json['bannerMobileHdImageUrl'];
     }
-    if (_json.containsKey("bannerMobileImageUrl")) {
-      bannerMobileImageUrl = _json["bannerMobileImageUrl"];
+    if (_json.containsKey('bannerMobileImageUrl')) {
+      bannerMobileImageUrl = _json['bannerMobileImageUrl'];
     }
-    if (_json.containsKey("bannerMobileLowImageUrl")) {
-      bannerMobileLowImageUrl = _json["bannerMobileLowImageUrl"];
+    if (_json.containsKey('bannerMobileLowImageUrl')) {
+      bannerMobileLowImageUrl = _json['bannerMobileLowImageUrl'];
     }
-    if (_json.containsKey("bannerMobileMediumHdImageUrl")) {
-      bannerMobileMediumHdImageUrl = _json["bannerMobileMediumHdImageUrl"];
+    if (_json.containsKey('bannerMobileMediumHdImageUrl')) {
+      bannerMobileMediumHdImageUrl = _json['bannerMobileMediumHdImageUrl'];
     }
-    if (_json.containsKey("bannerTabletExtraHdImageUrl")) {
-      bannerTabletExtraHdImageUrl = _json["bannerTabletExtraHdImageUrl"];
+    if (_json.containsKey('bannerTabletExtraHdImageUrl')) {
+      bannerTabletExtraHdImageUrl = _json['bannerTabletExtraHdImageUrl'];
     }
-    if (_json.containsKey("bannerTabletHdImageUrl")) {
-      bannerTabletHdImageUrl = _json["bannerTabletHdImageUrl"];
+    if (_json.containsKey('bannerTabletHdImageUrl')) {
+      bannerTabletHdImageUrl = _json['bannerTabletHdImageUrl'];
     }
-    if (_json.containsKey("bannerTabletImageUrl")) {
-      bannerTabletImageUrl = _json["bannerTabletImageUrl"];
+    if (_json.containsKey('bannerTabletImageUrl')) {
+      bannerTabletImageUrl = _json['bannerTabletImageUrl'];
     }
-    if (_json.containsKey("bannerTabletLowImageUrl")) {
-      bannerTabletLowImageUrl = _json["bannerTabletLowImageUrl"];
+    if (_json.containsKey('bannerTabletLowImageUrl')) {
+      bannerTabletLowImageUrl = _json['bannerTabletLowImageUrl'];
     }
-    if (_json.containsKey("bannerTvHighImageUrl")) {
-      bannerTvHighImageUrl = _json["bannerTvHighImageUrl"];
+    if (_json.containsKey('bannerTvHighImageUrl')) {
+      bannerTvHighImageUrl = _json['bannerTvHighImageUrl'];
     }
-    if (_json.containsKey("bannerTvImageUrl")) {
-      bannerTvImageUrl = _json["bannerTvImageUrl"];
+    if (_json.containsKey('bannerTvImageUrl')) {
+      bannerTvImageUrl = _json['bannerTvImageUrl'];
     }
-    if (_json.containsKey("bannerTvLowImageUrl")) {
-      bannerTvLowImageUrl = _json["bannerTvLowImageUrl"];
+    if (_json.containsKey('bannerTvLowImageUrl')) {
+      bannerTvLowImageUrl = _json['bannerTvLowImageUrl'];
     }
-    if (_json.containsKey("bannerTvMediumImageUrl")) {
-      bannerTvMediumImageUrl = _json["bannerTvMediumImageUrl"];
+    if (_json.containsKey('bannerTvMediumImageUrl')) {
+      bannerTvMediumImageUrl = _json['bannerTvMediumImageUrl'];
     }
-    if (_json.containsKey("largeBrandedBannerImageImapScript")) {
+    if (_json.containsKey('largeBrandedBannerImageImapScript')) {
       largeBrandedBannerImageImapScript = LocalizedProperty.fromJson(
-          _json["largeBrandedBannerImageImapScript"]);
+          _json['largeBrandedBannerImageImapScript']);
     }
-    if (_json.containsKey("largeBrandedBannerImageUrl")) {
+    if (_json.containsKey('largeBrandedBannerImageUrl')) {
       largeBrandedBannerImageUrl =
-          LocalizedProperty.fromJson(_json["largeBrandedBannerImageUrl"]);
+          LocalizedProperty.fromJson(_json['largeBrandedBannerImageUrl']);
     }
-    if (_json.containsKey("smallBrandedBannerImageImapScript")) {
+    if (_json.containsKey('smallBrandedBannerImageImapScript')) {
       smallBrandedBannerImageImapScript = LocalizedProperty.fromJson(
-          _json["smallBrandedBannerImageImapScript"]);
+          _json['smallBrandedBannerImageImapScript']);
     }
-    if (_json.containsKey("smallBrandedBannerImageUrl")) {
+    if (_json.containsKey('smallBrandedBannerImageUrl')) {
       smallBrandedBannerImageUrl =
-          LocalizedProperty.fromJson(_json["smallBrandedBannerImageUrl"]);
+          LocalizedProperty.fromJson(_json['smallBrandedBannerImageUrl']);
     }
-    if (_json.containsKey("trackingImageUrl")) {
-      trackingImageUrl = _json["trackingImageUrl"];
+    if (_json.containsKey('trackingImageUrl')) {
+      trackingImageUrl = _json['trackingImageUrl'];
     }
-    if (_json.containsKey("watchIconImageUrl")) {
-      watchIconImageUrl = _json["watchIconImageUrl"];
+    if (_json.containsKey('watchIconImageUrl')) {
+      watchIconImageUrl = _json['watchIconImageUrl'];
     }
   }
 
@@ -12001,72 +12000,72 @@ class ImageSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundImageUrl != null) {
-      _json["backgroundImageUrl"] = backgroundImageUrl.toJson();
+      _json['backgroundImageUrl'] = backgroundImageUrl.toJson();
     }
     if (bannerExternalUrl != null) {
-      _json["bannerExternalUrl"] = bannerExternalUrl;
+      _json['bannerExternalUrl'] = bannerExternalUrl;
     }
     if (bannerImageUrl != null) {
-      _json["bannerImageUrl"] = bannerImageUrl;
+      _json['bannerImageUrl'] = bannerImageUrl;
     }
     if (bannerMobileExtraHdImageUrl != null) {
-      _json["bannerMobileExtraHdImageUrl"] = bannerMobileExtraHdImageUrl;
+      _json['bannerMobileExtraHdImageUrl'] = bannerMobileExtraHdImageUrl;
     }
     if (bannerMobileHdImageUrl != null) {
-      _json["bannerMobileHdImageUrl"] = bannerMobileHdImageUrl;
+      _json['bannerMobileHdImageUrl'] = bannerMobileHdImageUrl;
     }
     if (bannerMobileImageUrl != null) {
-      _json["bannerMobileImageUrl"] = bannerMobileImageUrl;
+      _json['bannerMobileImageUrl'] = bannerMobileImageUrl;
     }
     if (bannerMobileLowImageUrl != null) {
-      _json["bannerMobileLowImageUrl"] = bannerMobileLowImageUrl;
+      _json['bannerMobileLowImageUrl'] = bannerMobileLowImageUrl;
     }
     if (bannerMobileMediumHdImageUrl != null) {
-      _json["bannerMobileMediumHdImageUrl"] = bannerMobileMediumHdImageUrl;
+      _json['bannerMobileMediumHdImageUrl'] = bannerMobileMediumHdImageUrl;
     }
     if (bannerTabletExtraHdImageUrl != null) {
-      _json["bannerTabletExtraHdImageUrl"] = bannerTabletExtraHdImageUrl;
+      _json['bannerTabletExtraHdImageUrl'] = bannerTabletExtraHdImageUrl;
     }
     if (bannerTabletHdImageUrl != null) {
-      _json["bannerTabletHdImageUrl"] = bannerTabletHdImageUrl;
+      _json['bannerTabletHdImageUrl'] = bannerTabletHdImageUrl;
     }
     if (bannerTabletImageUrl != null) {
-      _json["bannerTabletImageUrl"] = bannerTabletImageUrl;
+      _json['bannerTabletImageUrl'] = bannerTabletImageUrl;
     }
     if (bannerTabletLowImageUrl != null) {
-      _json["bannerTabletLowImageUrl"] = bannerTabletLowImageUrl;
+      _json['bannerTabletLowImageUrl'] = bannerTabletLowImageUrl;
     }
     if (bannerTvHighImageUrl != null) {
-      _json["bannerTvHighImageUrl"] = bannerTvHighImageUrl;
+      _json['bannerTvHighImageUrl'] = bannerTvHighImageUrl;
     }
     if (bannerTvImageUrl != null) {
-      _json["bannerTvImageUrl"] = bannerTvImageUrl;
+      _json['bannerTvImageUrl'] = bannerTvImageUrl;
     }
     if (bannerTvLowImageUrl != null) {
-      _json["bannerTvLowImageUrl"] = bannerTvLowImageUrl;
+      _json['bannerTvLowImageUrl'] = bannerTvLowImageUrl;
     }
     if (bannerTvMediumImageUrl != null) {
-      _json["bannerTvMediumImageUrl"] = bannerTvMediumImageUrl;
+      _json['bannerTvMediumImageUrl'] = bannerTvMediumImageUrl;
     }
     if (largeBrandedBannerImageImapScript != null) {
-      _json["largeBrandedBannerImageImapScript"] =
+      _json['largeBrandedBannerImageImapScript'] =
           largeBrandedBannerImageImapScript.toJson();
     }
     if (largeBrandedBannerImageUrl != null) {
-      _json["largeBrandedBannerImageUrl"] = largeBrandedBannerImageUrl.toJson();
+      _json['largeBrandedBannerImageUrl'] = largeBrandedBannerImageUrl.toJson();
     }
     if (smallBrandedBannerImageImapScript != null) {
-      _json["smallBrandedBannerImageImapScript"] =
+      _json['smallBrandedBannerImageImapScript'] =
           smallBrandedBannerImageImapScript.toJson();
     }
     if (smallBrandedBannerImageUrl != null) {
-      _json["smallBrandedBannerImageUrl"] = smallBrandedBannerImageUrl.toJson();
+      _json['smallBrandedBannerImageUrl'] = smallBrandedBannerImageUrl.toJson();
     }
     if (trackingImageUrl != null) {
-      _json["trackingImageUrl"] = trackingImageUrl;
+      _json['trackingImageUrl'] = trackingImageUrl;
     }
     if (watchIconImageUrl != null) {
-      _json["watchIconImageUrl"] = watchIconImageUrl;
+      _json['watchIconImageUrl'] = watchIconImageUrl;
     }
     return _json;
   }
@@ -12100,20 +12099,20 @@ class IngestionInfo {
   IngestionInfo();
 
   IngestionInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("backupIngestionAddress")) {
-      backupIngestionAddress = _json["backupIngestionAddress"];
+    if (_json.containsKey('backupIngestionAddress')) {
+      backupIngestionAddress = _json['backupIngestionAddress'];
     }
-    if (_json.containsKey("ingestionAddress")) {
-      ingestionAddress = _json["ingestionAddress"];
+    if (_json.containsKey('ingestionAddress')) {
+      ingestionAddress = _json['ingestionAddress'];
     }
-    if (_json.containsKey("rtmpsBackupIngestionAddress")) {
-      rtmpsBackupIngestionAddress = _json["rtmpsBackupIngestionAddress"];
+    if (_json.containsKey('rtmpsBackupIngestionAddress')) {
+      rtmpsBackupIngestionAddress = _json['rtmpsBackupIngestionAddress'];
     }
-    if (_json.containsKey("rtmpsIngestionAddress")) {
-      rtmpsIngestionAddress = _json["rtmpsIngestionAddress"];
+    if (_json.containsKey('rtmpsIngestionAddress')) {
+      rtmpsIngestionAddress = _json['rtmpsIngestionAddress'];
     }
-    if (_json.containsKey("streamName")) {
-      streamName = _json["streamName"];
+    if (_json.containsKey('streamName')) {
+      streamName = _json['streamName'];
     }
   }
 
@@ -12121,19 +12120,19 @@ class IngestionInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backupIngestionAddress != null) {
-      _json["backupIngestionAddress"] = backupIngestionAddress;
+      _json['backupIngestionAddress'] = backupIngestionAddress;
     }
     if (ingestionAddress != null) {
-      _json["ingestionAddress"] = ingestionAddress;
+      _json['ingestionAddress'] = ingestionAddress;
     }
     if (rtmpsBackupIngestionAddress != null) {
-      _json["rtmpsBackupIngestionAddress"] = rtmpsBackupIngestionAddress;
+      _json['rtmpsBackupIngestionAddress'] = rtmpsBackupIngestionAddress;
     }
     if (rtmpsIngestionAddress != null) {
-      _json["rtmpsIngestionAddress"] = rtmpsIngestionAddress;
+      _json['rtmpsIngestionAddress'] = rtmpsIngestionAddress;
     }
     if (streamName != null) {
-      _json["streamName"] = streamName;
+      _json['streamName'] = streamName;
     }
     return _json;
   }
@@ -12148,7 +12147,7 @@ class InvideoBranding {
 
   set imageBytesAsBytes(core.List<core.int> _bytes) {
     imageBytes =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The url of the uploaded image. Only used in apiary to api communication.
@@ -12168,20 +12167,20 @@ class InvideoBranding {
   InvideoBranding();
 
   InvideoBranding.fromJson(core.Map _json) {
-    if (_json.containsKey("imageBytes")) {
-      imageBytes = _json["imageBytes"];
+    if (_json.containsKey('imageBytes')) {
+      imageBytes = _json['imageBytes'];
     }
-    if (_json.containsKey("imageUrl")) {
-      imageUrl = _json["imageUrl"];
+    if (_json.containsKey('imageUrl')) {
+      imageUrl = _json['imageUrl'];
     }
-    if (_json.containsKey("position")) {
-      position = InvideoPosition.fromJson(_json["position"]);
+    if (_json.containsKey('position')) {
+      position = InvideoPosition.fromJson(_json['position']);
     }
-    if (_json.containsKey("targetChannelId")) {
-      targetChannelId = _json["targetChannelId"];
+    if (_json.containsKey('targetChannelId')) {
+      targetChannelId = _json['targetChannelId'];
     }
-    if (_json.containsKey("timing")) {
-      timing = InvideoTiming.fromJson(_json["timing"]);
+    if (_json.containsKey('timing')) {
+      timing = InvideoTiming.fromJson(_json['timing']);
     }
   }
 
@@ -12189,19 +12188,19 @@ class InvideoBranding {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (imageBytes != null) {
-      _json["imageBytes"] = imageBytes;
+      _json['imageBytes'] = imageBytes;
     }
     if (imageUrl != null) {
-      _json["imageUrl"] = imageUrl;
+      _json['imageUrl'] = imageUrl;
     }
     if (position != null) {
-      _json["position"] = position.toJson();
+      _json['position'] = position.toJson();
     }
     if (targetChannelId != null) {
-      _json["targetChannelId"] = targetChannelId;
+      _json['targetChannelId'] = targetChannelId;
     }
     if (timing != null) {
-      _json["timing"] = timing.toJson();
+      _json['timing'] = timing.toJson();
     }
     return _json;
   }
@@ -12226,11 +12225,11 @@ class InvideoPosition {
   InvideoPosition();
 
   InvideoPosition.fromJson(core.Map _json) {
-    if (_json.containsKey("cornerPosition")) {
-      cornerPosition = _json["cornerPosition"];
+    if (_json.containsKey('cornerPosition')) {
+      cornerPosition = _json['cornerPosition'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -12238,10 +12237,10 @@ class InvideoPosition {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cornerPosition != null) {
-      _json["cornerPosition"] = cornerPosition;
+      _json['cornerPosition'] = cornerPosition;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -12270,14 +12269,14 @@ class InvideoTiming {
   InvideoTiming();
 
   InvideoTiming.fromJson(core.Map _json) {
-    if (_json.containsKey("durationMs")) {
-      durationMs = _json["durationMs"];
+    if (_json.containsKey('durationMs')) {
+      durationMs = _json['durationMs'];
     }
-    if (_json.containsKey("offsetMs")) {
-      offsetMs = _json["offsetMs"];
+    if (_json.containsKey('offsetMs')) {
+      offsetMs = _json['offsetMs'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -12285,13 +12284,13 @@ class InvideoTiming {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (durationMs != null) {
-      _json["durationMs"] = durationMs;
+      _json['durationMs'] = durationMs;
     }
     if (offsetMs != null) {
-      _json["offsetMs"] = offsetMs;
+      _json['offsetMs'] = offsetMs;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -12303,8 +12302,8 @@ class LanguageTag {
   LanguageTag();
 
   LanguageTag.fromJson(core.Map _json) {
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -12312,7 +12311,7 @@ class LanguageTag {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -12325,8 +12324,8 @@ class LevelDetails {
   LevelDetails();
 
   LevelDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
   }
 
@@ -12334,7 +12333,7 @@ class LevelDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     return _json;
   }
@@ -12375,27 +12374,27 @@ class LiveBroadcast {
   LiveBroadcast();
 
   LiveBroadcast.fromJson(core.Map _json) {
-    if (_json.containsKey("contentDetails")) {
+    if (_json.containsKey('contentDetails')) {
       contentDetails =
-          LiveBroadcastContentDetails.fromJson(_json["contentDetails"]);
+          LiveBroadcastContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = LiveBroadcastSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = LiveBroadcastSnippet.fromJson(_json['snippet']);
     }
-    if (_json.containsKey("statistics")) {
-      statistics = LiveBroadcastStatistics.fromJson(_json["statistics"]);
+    if (_json.containsKey('statistics')) {
+      statistics = LiveBroadcastStatistics.fromJson(_json['statistics']);
     }
-    if (_json.containsKey("status")) {
-      status = LiveBroadcastStatus.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = LiveBroadcastStatus.fromJson(_json['status']);
     }
   }
 
@@ -12403,25 +12402,25 @@ class LiveBroadcast {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     if (statistics != null) {
-      _json["statistics"] = statistics.toJson();
+      _json['statistics'] = statistics.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     return _json;
   }
@@ -12506,7 +12505,7 @@ class LiveBroadcastContentDetails {
 
   set meshAsBytes(core.List<core.int> _bytes) {
     mesh =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The monitorStream object contains information about the monitor stream,
@@ -12541,53 +12540,53 @@ class LiveBroadcastContentDetails {
   LiveBroadcastContentDetails();
 
   LiveBroadcastContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("boundStreamId")) {
-      boundStreamId = _json["boundStreamId"];
+    if (_json.containsKey('boundStreamId')) {
+      boundStreamId = _json['boundStreamId'];
     }
-    if (_json.containsKey("boundStreamLastUpdateTimeMs")) {
-      boundStreamLastUpdateTimeMs = _json["boundStreamLastUpdateTimeMs"];
+    if (_json.containsKey('boundStreamLastUpdateTimeMs')) {
+      boundStreamLastUpdateTimeMs = _json['boundStreamLastUpdateTimeMs'];
     }
-    if (_json.containsKey("closedCaptionsType")) {
-      closedCaptionsType = _json["closedCaptionsType"];
+    if (_json.containsKey('closedCaptionsType')) {
+      closedCaptionsType = _json['closedCaptionsType'];
     }
-    if (_json.containsKey("enableAutoStart")) {
-      enableAutoStart = _json["enableAutoStart"];
+    if (_json.containsKey('enableAutoStart')) {
+      enableAutoStart = _json['enableAutoStart'];
     }
-    if (_json.containsKey("enableAutoStop")) {
-      enableAutoStop = _json["enableAutoStop"];
+    if (_json.containsKey('enableAutoStop')) {
+      enableAutoStop = _json['enableAutoStop'];
     }
-    if (_json.containsKey("enableClosedCaptions")) {
-      enableClosedCaptions = _json["enableClosedCaptions"];
+    if (_json.containsKey('enableClosedCaptions')) {
+      enableClosedCaptions = _json['enableClosedCaptions'];
     }
-    if (_json.containsKey("enableContentEncryption")) {
-      enableContentEncryption = _json["enableContentEncryption"];
+    if (_json.containsKey('enableContentEncryption')) {
+      enableContentEncryption = _json['enableContentEncryption'];
     }
-    if (_json.containsKey("enableDvr")) {
-      enableDvr = _json["enableDvr"];
+    if (_json.containsKey('enableDvr')) {
+      enableDvr = _json['enableDvr'];
     }
-    if (_json.containsKey("enableEmbed")) {
-      enableEmbed = _json["enableEmbed"];
+    if (_json.containsKey('enableEmbed')) {
+      enableEmbed = _json['enableEmbed'];
     }
-    if (_json.containsKey("enableLowLatency")) {
-      enableLowLatency = _json["enableLowLatency"];
+    if (_json.containsKey('enableLowLatency')) {
+      enableLowLatency = _json['enableLowLatency'];
     }
-    if (_json.containsKey("latencyPreference")) {
-      latencyPreference = _json["latencyPreference"];
+    if (_json.containsKey('latencyPreference')) {
+      latencyPreference = _json['latencyPreference'];
     }
-    if (_json.containsKey("mesh")) {
-      mesh = _json["mesh"];
+    if (_json.containsKey('mesh')) {
+      mesh = _json['mesh'];
     }
-    if (_json.containsKey("monitorStream")) {
-      monitorStream = MonitorStreamInfo.fromJson(_json["monitorStream"]);
+    if (_json.containsKey('monitorStream')) {
+      monitorStream = MonitorStreamInfo.fromJson(_json['monitorStream']);
     }
-    if (_json.containsKey("projection")) {
-      projection = _json["projection"];
+    if (_json.containsKey('projection')) {
+      projection = _json['projection'];
     }
-    if (_json.containsKey("recordFromStart")) {
-      recordFromStart = _json["recordFromStart"];
+    if (_json.containsKey('recordFromStart')) {
+      recordFromStart = _json['recordFromStart'];
     }
-    if (_json.containsKey("startWithSlate")) {
-      startWithSlate = _json["startWithSlate"];
+    if (_json.containsKey('startWithSlate')) {
+      startWithSlate = _json['startWithSlate'];
     }
   }
 
@@ -12595,52 +12594,52 @@ class LiveBroadcastContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (boundStreamId != null) {
-      _json["boundStreamId"] = boundStreamId;
+      _json['boundStreamId'] = boundStreamId;
     }
     if (boundStreamLastUpdateTimeMs != null) {
-      _json["boundStreamLastUpdateTimeMs"] = boundStreamLastUpdateTimeMs;
+      _json['boundStreamLastUpdateTimeMs'] = boundStreamLastUpdateTimeMs;
     }
     if (closedCaptionsType != null) {
-      _json["closedCaptionsType"] = closedCaptionsType;
+      _json['closedCaptionsType'] = closedCaptionsType;
     }
     if (enableAutoStart != null) {
-      _json["enableAutoStart"] = enableAutoStart;
+      _json['enableAutoStart'] = enableAutoStart;
     }
     if (enableAutoStop != null) {
-      _json["enableAutoStop"] = enableAutoStop;
+      _json['enableAutoStop'] = enableAutoStop;
     }
     if (enableClosedCaptions != null) {
-      _json["enableClosedCaptions"] = enableClosedCaptions;
+      _json['enableClosedCaptions'] = enableClosedCaptions;
     }
     if (enableContentEncryption != null) {
-      _json["enableContentEncryption"] = enableContentEncryption;
+      _json['enableContentEncryption'] = enableContentEncryption;
     }
     if (enableDvr != null) {
-      _json["enableDvr"] = enableDvr;
+      _json['enableDvr'] = enableDvr;
     }
     if (enableEmbed != null) {
-      _json["enableEmbed"] = enableEmbed;
+      _json['enableEmbed'] = enableEmbed;
     }
     if (enableLowLatency != null) {
-      _json["enableLowLatency"] = enableLowLatency;
+      _json['enableLowLatency'] = enableLowLatency;
     }
     if (latencyPreference != null) {
-      _json["latencyPreference"] = latencyPreference;
+      _json['latencyPreference'] = latencyPreference;
     }
     if (mesh != null) {
-      _json["mesh"] = mesh;
+      _json['mesh'] = mesh;
     }
     if (monitorStream != null) {
-      _json["monitorStream"] = monitorStream.toJson();
+      _json['monitorStream'] = monitorStream.toJson();
     }
     if (projection != null) {
-      _json["projection"] = projection;
+      _json['projection'] = projection;
     }
     if (recordFromStart != null) {
-      _json["recordFromStart"] = recordFromStart;
+      _json['recordFromStart'] = recordFromStart;
     }
     if (startWithSlate != null) {
-      _json["startWithSlate"] = startWithSlate;
+      _json['startWithSlate'] = startWithSlate;
     }
     return _json;
   }
@@ -12678,34 +12677,34 @@ class LiveBroadcastListResponse {
   LiveBroadcastListResponse();
 
   LiveBroadcastListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<LiveBroadcast>((value) => LiveBroadcast.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -12713,31 +12712,31 @@ class LiveBroadcastListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -12795,38 +12794,38 @@ class LiveBroadcastSnippet {
   LiveBroadcastSnippet();
 
   LiveBroadcastSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("actualEndTime")) {
-      actualEndTime = _json["actualEndTime"];
+    if (_json.containsKey('actualEndTime')) {
+      actualEndTime = _json['actualEndTime'];
     }
-    if (_json.containsKey("actualStartTime")) {
-      actualStartTime = _json["actualStartTime"];
+    if (_json.containsKey('actualStartTime')) {
+      actualStartTime = _json['actualStartTime'];
     }
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("isDefaultBroadcast")) {
-      isDefaultBroadcast = _json["isDefaultBroadcast"];
+    if (_json.containsKey('isDefaultBroadcast')) {
+      isDefaultBroadcast = _json['isDefaultBroadcast'];
     }
-    if (_json.containsKey("liveChatId")) {
-      liveChatId = _json["liveChatId"];
+    if (_json.containsKey('liveChatId')) {
+      liveChatId = _json['liveChatId'];
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("scheduledEndTime")) {
-      scheduledEndTime = _json["scheduledEndTime"];
+    if (_json.containsKey('scheduledEndTime')) {
+      scheduledEndTime = _json['scheduledEndTime'];
     }
-    if (_json.containsKey("scheduledStartTime")) {
-      scheduledStartTime = _json["scheduledStartTime"];
+    if (_json.containsKey('scheduledStartTime')) {
+      scheduledStartTime = _json['scheduledStartTime'];
     }
-    if (_json.containsKey("thumbnails")) {
-      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
+    if (_json.containsKey('thumbnails')) {
+      thumbnails = ThumbnailDetails.fromJson(_json['thumbnails']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -12834,37 +12833,37 @@ class LiveBroadcastSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (actualEndTime != null) {
-      _json["actualEndTime"] = actualEndTime;
+      _json['actualEndTime'] = actualEndTime;
     }
     if (actualStartTime != null) {
-      _json["actualStartTime"] = actualStartTime;
+      _json['actualStartTime'] = actualStartTime;
     }
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (isDefaultBroadcast != null) {
-      _json["isDefaultBroadcast"] = isDefaultBroadcast;
+      _json['isDefaultBroadcast'] = isDefaultBroadcast;
     }
     if (liveChatId != null) {
-      _json["liveChatId"] = liveChatId;
+      _json['liveChatId'] = liveChatId;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (scheduledEndTime != null) {
-      _json["scheduledEndTime"] = scheduledEndTime;
+      _json['scheduledEndTime'] = scheduledEndTime;
     }
     if (scheduledStartTime != null) {
-      _json["scheduledStartTime"] = scheduledStartTime;
+      _json['scheduledStartTime'] = scheduledStartTime;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.toJson();
+      _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -12885,8 +12884,8 @@ class LiveBroadcastStatistics {
   LiveBroadcastStatistics();
 
   LiveBroadcastStatistics.fromJson(core.Map _json) {
-    if (_json.containsKey("totalChatCount")) {
-      totalChatCount = _json["totalChatCount"];
+    if (_json.containsKey('totalChatCount')) {
+      totalChatCount = _json['totalChatCount'];
     }
   }
 
@@ -12894,7 +12893,7 @@ class LiveBroadcastStatistics {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (totalChatCount != null) {
-      _json["totalChatCount"] = totalChatCount;
+      _json['totalChatCount'] = totalChatCount;
     }
     return _json;
   }
@@ -12957,23 +12956,23 @@ class LiveBroadcastStatus {
   LiveBroadcastStatus();
 
   LiveBroadcastStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("lifeCycleStatus")) {
-      lifeCycleStatus = _json["lifeCycleStatus"];
+    if (_json.containsKey('lifeCycleStatus')) {
+      lifeCycleStatus = _json['lifeCycleStatus'];
     }
-    if (_json.containsKey("liveBroadcastPriority")) {
-      liveBroadcastPriority = _json["liveBroadcastPriority"];
+    if (_json.containsKey('liveBroadcastPriority')) {
+      liveBroadcastPriority = _json['liveBroadcastPriority'];
     }
-    if (_json.containsKey("madeForKids")) {
-      madeForKids = _json["madeForKids"];
+    if (_json.containsKey('madeForKids')) {
+      madeForKids = _json['madeForKids'];
     }
-    if (_json.containsKey("privacyStatus")) {
-      privacyStatus = _json["privacyStatus"];
+    if (_json.containsKey('privacyStatus')) {
+      privacyStatus = _json['privacyStatus'];
     }
-    if (_json.containsKey("recordingStatus")) {
-      recordingStatus = _json["recordingStatus"];
+    if (_json.containsKey('recordingStatus')) {
+      recordingStatus = _json['recordingStatus'];
     }
-    if (_json.containsKey("selfDeclaredMadeForKids")) {
-      selfDeclaredMadeForKids = _json["selfDeclaredMadeForKids"];
+    if (_json.containsKey('selfDeclaredMadeForKids')) {
+      selfDeclaredMadeForKids = _json['selfDeclaredMadeForKids'];
     }
   }
 
@@ -12981,22 +12980,22 @@ class LiveBroadcastStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (lifeCycleStatus != null) {
-      _json["lifeCycleStatus"] = lifeCycleStatus;
+      _json['lifeCycleStatus'] = lifeCycleStatus;
     }
     if (liveBroadcastPriority != null) {
-      _json["liveBroadcastPriority"] = liveBroadcastPriority;
+      _json['liveBroadcastPriority'] = liveBroadcastPriority;
     }
     if (madeForKids != null) {
-      _json["madeForKids"] = madeForKids;
+      _json['madeForKids'] = madeForKids;
     }
     if (privacyStatus != null) {
-      _json["privacyStatus"] = privacyStatus;
+      _json['privacyStatus'] = privacyStatus;
     }
     if (recordingStatus != null) {
-      _json["recordingStatus"] = recordingStatus;
+      _json['recordingStatus'] = recordingStatus;
     }
     if (selfDeclaredMadeForKids != null) {
-      _json["selfDeclaredMadeForKids"] = selfDeclaredMadeForKids;
+      _json['selfDeclaredMadeForKids'] = selfDeclaredMadeForKids;
     }
     return _json;
   }
@@ -13020,17 +13019,17 @@ class LiveChatBan {
   LiveChatBan();
 
   LiveChatBan.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = LiveChatBanSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = LiveChatBanSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -13038,16 +13037,16 @@ class LiveChatBan {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -13071,18 +13070,18 @@ class LiveChatBanSnippet {
   LiveChatBanSnippet();
 
   LiveChatBanSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("banDurationSeconds")) {
-      banDurationSeconds = _json["banDurationSeconds"];
+    if (_json.containsKey('banDurationSeconds')) {
+      banDurationSeconds = _json['banDurationSeconds'];
     }
-    if (_json.containsKey("bannedUserDetails")) {
+    if (_json.containsKey('bannedUserDetails')) {
       bannedUserDetails =
-          ChannelProfileDetails.fromJson(_json["bannedUserDetails"]);
+          ChannelProfileDetails.fromJson(_json['bannedUserDetails']);
     }
-    if (_json.containsKey("liveChatId")) {
-      liveChatId = _json["liveChatId"];
+    if (_json.containsKey('liveChatId')) {
+      liveChatId = _json['liveChatId'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -13090,16 +13089,16 @@ class LiveChatBanSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (banDurationSeconds != null) {
-      _json["banDurationSeconds"] = banDurationSeconds;
+      _json['banDurationSeconds'] = banDurationSeconds;
     }
     if (bannedUserDetails != null) {
-      _json["bannedUserDetails"] = bannedUserDetails.toJson();
+      _json['bannedUserDetails'] = bannedUserDetails.toJson();
     }
     if (liveChatId != null) {
-      _json["liveChatId"] = liveChatId;
+      _json['liveChatId'] = liveChatId;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -13121,17 +13120,17 @@ class LiveChatFanFundingEventDetails {
   LiveChatFanFundingEventDetails();
 
   LiveChatFanFundingEventDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("amountDisplayString")) {
-      amountDisplayString = _json["amountDisplayString"];
+    if (_json.containsKey('amountDisplayString')) {
+      amountDisplayString = _json['amountDisplayString'];
     }
-    if (_json.containsKey("amountMicros")) {
-      amountMicros = _json["amountMicros"];
+    if (_json.containsKey('amountMicros')) {
+      amountMicros = _json['amountMicros'];
     }
-    if (_json.containsKey("currency")) {
-      currency = _json["currency"];
+    if (_json.containsKey('currency')) {
+      currency = _json['currency'];
     }
-    if (_json.containsKey("userComment")) {
-      userComment = _json["userComment"];
+    if (_json.containsKey('userComment')) {
+      userComment = _json['userComment'];
     }
   }
 
@@ -13139,16 +13138,16 @@ class LiveChatFanFundingEventDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amountDisplayString != null) {
-      _json["amountDisplayString"] = amountDisplayString;
+      _json['amountDisplayString'] = amountDisplayString;
     }
     if (amountMicros != null) {
-      _json["amountMicros"] = amountMicros;
+      _json['amountMicros'] = amountMicros;
     }
     if (currency != null) {
-      _json["currency"] = currency;
+      _json['currency'] = currency;
     }
     if (userComment != null) {
-      _json["userComment"] = userComment;
+      _json['userComment'] = userComment;
     }
     return _json;
   }
@@ -13177,21 +13176,21 @@ class LiveChatMessage {
   LiveChatMessage();
 
   LiveChatMessage.fromJson(core.Map _json) {
-    if (_json.containsKey("authorDetails")) {
+    if (_json.containsKey('authorDetails')) {
       authorDetails =
-          LiveChatMessageAuthorDetails.fromJson(_json["authorDetails"]);
+          LiveChatMessageAuthorDetails.fromJson(_json['authorDetails']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = LiveChatMessageSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = LiveChatMessageSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -13199,19 +13198,19 @@ class LiveChatMessage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (authorDetails != null) {
-      _json["authorDetails"] = authorDetails.toJson();
+      _json['authorDetails'] = authorDetails.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -13245,29 +13244,29 @@ class LiveChatMessageAuthorDetails {
   LiveChatMessageAuthorDetails();
 
   LiveChatMessageAuthorDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("channelUrl")) {
-      channelUrl = _json["channelUrl"];
+    if (_json.containsKey('channelUrl')) {
+      channelUrl = _json['channelUrl'];
     }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'];
     }
-    if (_json.containsKey("isChatModerator")) {
-      isChatModerator = _json["isChatModerator"];
+    if (_json.containsKey('isChatModerator')) {
+      isChatModerator = _json['isChatModerator'];
     }
-    if (_json.containsKey("isChatOwner")) {
-      isChatOwner = _json["isChatOwner"];
+    if (_json.containsKey('isChatOwner')) {
+      isChatOwner = _json['isChatOwner'];
     }
-    if (_json.containsKey("isChatSponsor")) {
-      isChatSponsor = _json["isChatSponsor"];
+    if (_json.containsKey('isChatSponsor')) {
+      isChatSponsor = _json['isChatSponsor'];
     }
-    if (_json.containsKey("isVerified")) {
-      isVerified = _json["isVerified"];
+    if (_json.containsKey('isVerified')) {
+      isVerified = _json['isVerified'];
     }
-    if (_json.containsKey("profileImageUrl")) {
-      profileImageUrl = _json["profileImageUrl"];
+    if (_json.containsKey('profileImageUrl')) {
+      profileImageUrl = _json['profileImageUrl'];
     }
   }
 
@@ -13275,28 +13274,28 @@ class LiveChatMessageAuthorDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (channelUrl != null) {
-      _json["channelUrl"] = channelUrl;
+      _json['channelUrl'] = channelUrl;
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json['displayName'] = displayName;
     }
     if (isChatModerator != null) {
-      _json["isChatModerator"] = isChatModerator;
+      _json['isChatModerator'] = isChatModerator;
     }
     if (isChatOwner != null) {
-      _json["isChatOwner"] = isChatOwner;
+      _json['isChatOwner'] = isChatOwner;
     }
     if (isChatSponsor != null) {
-      _json["isChatSponsor"] = isChatSponsor;
+      _json['isChatSponsor'] = isChatSponsor;
     }
     if (isVerified != null) {
-      _json["isVerified"] = isVerified;
+      _json['isVerified'] = isVerified;
     }
     if (profileImageUrl != null) {
-      _json["profileImageUrl"] = profileImageUrl;
+      _json['profileImageUrl'] = profileImageUrl;
     }
     return _json;
   }
@@ -13308,8 +13307,8 @@ class LiveChatMessageDeletedDetails {
   LiveChatMessageDeletedDetails();
 
   LiveChatMessageDeletedDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("deletedMessageId")) {
-      deletedMessageId = _json["deletedMessageId"];
+    if (_json.containsKey('deletedMessageId')) {
+      deletedMessageId = _json['deletedMessageId'];
     }
   }
 
@@ -13317,7 +13316,7 @@ class LiveChatMessageDeletedDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (deletedMessageId != null) {
-      _json["deletedMessageId"] = deletedMessageId;
+      _json['deletedMessageId'] = deletedMessageId;
     }
     return _json;
   }
@@ -13353,37 +13352,37 @@ class LiveChatMessageListResponse {
   LiveChatMessageListResponse();
 
   LiveChatMessageListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<LiveChatMessage>((value) => LiveChatMessage.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("offlineAt")) {
-      offlineAt = _json["offlineAt"];
+    if (_json.containsKey('offlineAt')) {
+      offlineAt = _json['offlineAt'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("pollingIntervalMillis")) {
-      pollingIntervalMillis = _json["pollingIntervalMillis"];
+    if (_json.containsKey('pollingIntervalMillis')) {
+      pollingIntervalMillis = _json['pollingIntervalMillis'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -13391,34 +13390,34 @@ class LiveChatMessageListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (offlineAt != null) {
-      _json["offlineAt"] = offlineAt;
+      _json['offlineAt'] = offlineAt;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (pollingIntervalMillis != null) {
-      _json["pollingIntervalMillis"] = pollingIntervalMillis;
+      _json['pollingIntervalMillis'] = pollingIntervalMillis;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -13430,8 +13429,8 @@ class LiveChatMessageRetractedDetails {
   LiveChatMessageRetractedDetails();
 
   LiveChatMessageRetractedDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("retractedMessageId")) {
-      retractedMessageId = _json["retractedMessageId"];
+    if (_json.containsKey('retractedMessageId')) {
+      retractedMessageId = _json['retractedMessageId'];
     }
   }
 
@@ -13439,7 +13438,7 @@ class LiveChatMessageRetractedDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (retractedMessageId != null) {
-      _json["retractedMessageId"] = retractedMessageId;
+      _json['retractedMessageId'] = retractedMessageId;
     }
     return _json;
   }
@@ -13508,51 +13507,51 @@ class LiveChatMessageSnippet {
   LiveChatMessageSnippet();
 
   LiveChatMessageSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("authorChannelId")) {
-      authorChannelId = _json["authorChannelId"];
+    if (_json.containsKey('authorChannelId')) {
+      authorChannelId = _json['authorChannelId'];
     }
-    if (_json.containsKey("displayMessage")) {
-      displayMessage = _json["displayMessage"];
+    if (_json.containsKey('displayMessage')) {
+      displayMessage = _json['displayMessage'];
     }
-    if (_json.containsKey("fanFundingEventDetails")) {
+    if (_json.containsKey('fanFundingEventDetails')) {
       fanFundingEventDetails = LiveChatFanFundingEventDetails.fromJson(
-          _json["fanFundingEventDetails"]);
+          _json['fanFundingEventDetails']);
     }
-    if (_json.containsKey("hasDisplayContent")) {
-      hasDisplayContent = _json["hasDisplayContent"];
+    if (_json.containsKey('hasDisplayContent')) {
+      hasDisplayContent = _json['hasDisplayContent'];
     }
-    if (_json.containsKey("liveChatId")) {
-      liveChatId = _json["liveChatId"];
+    if (_json.containsKey('liveChatId')) {
+      liveChatId = _json['liveChatId'];
     }
-    if (_json.containsKey("messageDeletedDetails")) {
+    if (_json.containsKey('messageDeletedDetails')) {
       messageDeletedDetails = LiveChatMessageDeletedDetails.fromJson(
-          _json["messageDeletedDetails"]);
+          _json['messageDeletedDetails']);
     }
-    if (_json.containsKey("messageRetractedDetails")) {
+    if (_json.containsKey('messageRetractedDetails')) {
       messageRetractedDetails = LiveChatMessageRetractedDetails.fromJson(
-          _json["messageRetractedDetails"]);
+          _json['messageRetractedDetails']);
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("superChatDetails")) {
+    if (_json.containsKey('superChatDetails')) {
       superChatDetails =
-          LiveChatSuperChatDetails.fromJson(_json["superChatDetails"]);
+          LiveChatSuperChatDetails.fromJson(_json['superChatDetails']);
     }
-    if (_json.containsKey("superStickerDetails")) {
+    if (_json.containsKey('superStickerDetails')) {
       superStickerDetails =
-          LiveChatSuperStickerDetails.fromJson(_json["superStickerDetails"]);
+          LiveChatSuperStickerDetails.fromJson(_json['superStickerDetails']);
     }
-    if (_json.containsKey("textMessageDetails")) {
+    if (_json.containsKey('textMessageDetails')) {
       textMessageDetails =
-          LiveChatTextMessageDetails.fromJson(_json["textMessageDetails"]);
+          LiveChatTextMessageDetails.fromJson(_json['textMessageDetails']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("userBannedDetails")) {
+    if (_json.containsKey('userBannedDetails')) {
       userBannedDetails =
-          LiveChatUserBannedMessageDetails.fromJson(_json["userBannedDetails"]);
+          LiveChatUserBannedMessageDetails.fromJson(_json['userBannedDetails']);
     }
   }
 
@@ -13560,43 +13559,43 @@ class LiveChatMessageSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (authorChannelId != null) {
-      _json["authorChannelId"] = authorChannelId;
+      _json['authorChannelId'] = authorChannelId;
     }
     if (displayMessage != null) {
-      _json["displayMessage"] = displayMessage;
+      _json['displayMessage'] = displayMessage;
     }
     if (fanFundingEventDetails != null) {
-      _json["fanFundingEventDetails"] = fanFundingEventDetails.toJson();
+      _json['fanFundingEventDetails'] = fanFundingEventDetails.toJson();
     }
     if (hasDisplayContent != null) {
-      _json["hasDisplayContent"] = hasDisplayContent;
+      _json['hasDisplayContent'] = hasDisplayContent;
     }
     if (liveChatId != null) {
-      _json["liveChatId"] = liveChatId;
+      _json['liveChatId'] = liveChatId;
     }
     if (messageDeletedDetails != null) {
-      _json["messageDeletedDetails"] = messageDeletedDetails.toJson();
+      _json['messageDeletedDetails'] = messageDeletedDetails.toJson();
     }
     if (messageRetractedDetails != null) {
-      _json["messageRetractedDetails"] = messageRetractedDetails.toJson();
+      _json['messageRetractedDetails'] = messageRetractedDetails.toJson();
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (superChatDetails != null) {
-      _json["superChatDetails"] = superChatDetails.toJson();
+      _json['superChatDetails'] = superChatDetails.toJson();
     }
     if (superStickerDetails != null) {
-      _json["superStickerDetails"] = superStickerDetails.toJson();
+      _json['superStickerDetails'] = superStickerDetails.toJson();
     }
     if (textMessageDetails != null) {
-      _json["textMessageDetails"] = textMessageDetails.toJson();
+      _json['textMessageDetails'] = textMessageDetails.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (userBannedDetails != null) {
-      _json["userBannedDetails"] = userBannedDetails.toJson();
+      _json['userBannedDetails'] = userBannedDetails.toJson();
     }
     return _json;
   }
@@ -13622,17 +13621,17 @@ class LiveChatModerator {
   LiveChatModerator();
 
   LiveChatModerator.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = LiveChatModeratorSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = LiveChatModeratorSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -13640,16 +13639,16 @@ class LiveChatModerator {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -13687,34 +13686,34 @@ class LiveChatModeratorListResponse {
   LiveChatModeratorListResponse();
 
   LiveChatModeratorListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<LiveChatModerator>((value) => LiveChatModerator.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -13722,31 +13721,31 @@ class LiveChatModeratorListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -13762,12 +13761,12 @@ class LiveChatModeratorSnippet {
   LiveChatModeratorSnippet();
 
   LiveChatModeratorSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("liveChatId")) {
-      liveChatId = _json["liveChatId"];
+    if (_json.containsKey('liveChatId')) {
+      liveChatId = _json['liveChatId'];
     }
-    if (_json.containsKey("moderatorDetails")) {
+    if (_json.containsKey('moderatorDetails')) {
       moderatorDetails =
-          ChannelProfileDetails.fromJson(_json["moderatorDetails"]);
+          ChannelProfileDetails.fromJson(_json['moderatorDetails']);
     }
   }
 
@@ -13775,10 +13774,10 @@ class LiveChatModeratorSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (liveChatId != null) {
-      _json["liveChatId"] = liveChatId;
+      _json['liveChatId'] = liveChatId;
     }
     if (moderatorDetails != null) {
-      _json["moderatorDetails"] = moderatorDetails.toJson();
+      _json['moderatorDetails'] = moderatorDetails.toJson();
     }
     return _json;
   }
@@ -13804,20 +13803,20 @@ class LiveChatSuperChatDetails {
   LiveChatSuperChatDetails();
 
   LiveChatSuperChatDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("amountDisplayString")) {
-      amountDisplayString = _json["amountDisplayString"];
+    if (_json.containsKey('amountDisplayString')) {
+      amountDisplayString = _json['amountDisplayString'];
     }
-    if (_json.containsKey("amountMicros")) {
-      amountMicros = _json["amountMicros"];
+    if (_json.containsKey('amountMicros')) {
+      amountMicros = _json['amountMicros'];
     }
-    if (_json.containsKey("currency")) {
-      currency = _json["currency"];
+    if (_json.containsKey('currency')) {
+      currency = _json['currency'];
     }
-    if (_json.containsKey("tier")) {
-      tier = _json["tier"];
+    if (_json.containsKey('tier')) {
+      tier = _json['tier'];
     }
-    if (_json.containsKey("userComment")) {
-      userComment = _json["userComment"];
+    if (_json.containsKey('userComment')) {
+      userComment = _json['userComment'];
     }
   }
 
@@ -13825,19 +13824,19 @@ class LiveChatSuperChatDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amountDisplayString != null) {
-      _json["amountDisplayString"] = amountDisplayString;
+      _json['amountDisplayString'] = amountDisplayString;
     }
     if (amountMicros != null) {
-      _json["amountMicros"] = amountMicros;
+      _json['amountMicros'] = amountMicros;
     }
     if (currency != null) {
-      _json["currency"] = currency;
+      _json['currency'] = currency;
     }
     if (tier != null) {
-      _json["tier"] = tier;
+      _json['tier'] = tier;
     }
     if (userComment != null) {
-      _json["userComment"] = userComment;
+      _json['userComment'] = userComment;
     }
     return _json;
   }
@@ -13863,21 +13862,21 @@ class LiveChatSuperStickerDetails {
   LiveChatSuperStickerDetails();
 
   LiveChatSuperStickerDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("amountDisplayString")) {
-      amountDisplayString = _json["amountDisplayString"];
+    if (_json.containsKey('amountDisplayString')) {
+      amountDisplayString = _json['amountDisplayString'];
     }
-    if (_json.containsKey("amountMicros")) {
-      amountMicros = _json["amountMicros"];
+    if (_json.containsKey('amountMicros')) {
+      amountMicros = _json['amountMicros'];
     }
-    if (_json.containsKey("currency")) {
-      currency = _json["currency"];
+    if (_json.containsKey('currency')) {
+      currency = _json['currency'];
     }
-    if (_json.containsKey("superStickerMetadata")) {
+    if (_json.containsKey('superStickerMetadata')) {
       superStickerMetadata =
-          SuperStickerMetadata.fromJson(_json["superStickerMetadata"]);
+          SuperStickerMetadata.fromJson(_json['superStickerMetadata']);
     }
-    if (_json.containsKey("tier")) {
-      tier = _json["tier"];
+    if (_json.containsKey('tier')) {
+      tier = _json['tier'];
     }
   }
 
@@ -13885,19 +13884,19 @@ class LiveChatSuperStickerDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amountDisplayString != null) {
-      _json["amountDisplayString"] = amountDisplayString;
+      _json['amountDisplayString'] = amountDisplayString;
     }
     if (amountMicros != null) {
-      _json["amountMicros"] = amountMicros;
+      _json['amountMicros'] = amountMicros;
     }
     if (currency != null) {
-      _json["currency"] = currency;
+      _json['currency'] = currency;
     }
     if (superStickerMetadata != null) {
-      _json["superStickerMetadata"] = superStickerMetadata.toJson();
+      _json['superStickerMetadata'] = superStickerMetadata.toJson();
     }
     if (tier != null) {
-      _json["tier"] = tier;
+      _json['tier'] = tier;
     }
     return _json;
   }
@@ -13910,8 +13909,8 @@ class LiveChatTextMessageDetails {
   LiveChatTextMessageDetails();
 
   LiveChatTextMessageDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("messageText")) {
-      messageText = _json["messageText"];
+    if (_json.containsKey('messageText')) {
+      messageText = _json['messageText'];
     }
   }
 
@@ -13919,7 +13918,7 @@ class LiveChatTextMessageDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (messageText != null) {
-      _json["messageText"] = messageText;
+      _json['messageText'] = messageText;
     }
     return _json;
   }
@@ -13942,15 +13941,15 @@ class LiveChatUserBannedMessageDetails {
   LiveChatUserBannedMessageDetails();
 
   LiveChatUserBannedMessageDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("banDurationSeconds")) {
-      banDurationSeconds = _json["banDurationSeconds"];
+    if (_json.containsKey('banDurationSeconds')) {
+      banDurationSeconds = _json['banDurationSeconds'];
     }
-    if (_json.containsKey("banType")) {
-      banType = _json["banType"];
+    if (_json.containsKey('banType')) {
+      banType = _json['banType'];
     }
-    if (_json.containsKey("bannedUserDetails")) {
+    if (_json.containsKey('bannedUserDetails')) {
       bannedUserDetails =
-          ChannelProfileDetails.fromJson(_json["bannedUserDetails"]);
+          ChannelProfileDetails.fromJson(_json['bannedUserDetails']);
     }
   }
 
@@ -13958,13 +13957,13 @@ class LiveChatUserBannedMessageDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (banDurationSeconds != null) {
-      _json["banDurationSeconds"] = banDurationSeconds;
+      _json['banDurationSeconds'] = banDurationSeconds;
     }
     if (banType != null) {
-      _json["banType"] = banType;
+      _json['banType'] = banType;
     }
     if (bannedUserDetails != null) {
-      _json["bannedUserDetails"] = bannedUserDetails.toJson();
+      _json['bannedUserDetails'] = bannedUserDetails.toJson();
     }
     return _json;
   }
@@ -14001,27 +14000,27 @@ class LiveStream {
   LiveStream();
 
   LiveStream.fromJson(core.Map _json) {
-    if (_json.containsKey("cdn")) {
-      cdn = CdnSettings.fromJson(_json["cdn"]);
+    if (_json.containsKey('cdn')) {
+      cdn = CdnSettings.fromJson(_json['cdn']);
     }
-    if (_json.containsKey("contentDetails")) {
+    if (_json.containsKey('contentDetails')) {
       contentDetails =
-          LiveStreamContentDetails.fromJson(_json["contentDetails"]);
+          LiveStreamContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = LiveStreamSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = LiveStreamSnippet.fromJson(_json['snippet']);
     }
-    if (_json.containsKey("status")) {
-      status = LiveStreamStatus.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = LiveStreamStatus.fromJson(_json['status']);
     }
   }
 
@@ -14029,25 +14028,25 @@ class LiveStream {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cdn != null) {
-      _json["cdn"] = cdn.toJson();
+      _json['cdn'] = cdn.toJson();
     }
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     return _json;
   }
@@ -14108,17 +14107,17 @@ class LiveStreamConfigurationIssue {
   LiveStreamConfigurationIssue();
 
   LiveStreamConfigurationIssue.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'];
     }
-    if (_json.containsKey("severity")) {
-      severity = _json["severity"];
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -14126,16 +14125,16 @@ class LiveStreamConfigurationIssue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (reason != null) {
-      _json["reason"] = reason;
+      _json['reason'] = reason;
     }
     if (severity != null) {
-      _json["severity"] = severity;
+      _json['severity'] = severity;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -14163,11 +14162,11 @@ class LiveStreamContentDetails {
   LiveStreamContentDetails();
 
   LiveStreamContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("closedCaptionsIngestionUrl")) {
-      closedCaptionsIngestionUrl = _json["closedCaptionsIngestionUrl"];
+    if (_json.containsKey('closedCaptionsIngestionUrl')) {
+      closedCaptionsIngestionUrl = _json['closedCaptionsIngestionUrl'];
     }
-    if (_json.containsKey("isReusable")) {
-      isReusable = _json["isReusable"];
+    if (_json.containsKey('isReusable')) {
+      isReusable = _json['isReusable'];
     }
   }
 
@@ -14175,10 +14174,10 @@ class LiveStreamContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (closedCaptionsIngestionUrl != null) {
-      _json["closedCaptionsIngestionUrl"] = closedCaptionsIngestionUrl;
+      _json['closedCaptionsIngestionUrl'] = closedCaptionsIngestionUrl;
     }
     if (isReusable != null) {
-      _json["isReusable"] = isReusable;
+      _json['isReusable'] = isReusable;
     }
     return _json;
   }
@@ -14203,17 +14202,17 @@ class LiveStreamHealthStatus {
   LiveStreamHealthStatus();
 
   LiveStreamHealthStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("configurationIssues")) {
-      configurationIssues = (_json["configurationIssues"] as core.List)
+    if (_json.containsKey('configurationIssues')) {
+      configurationIssues = (_json['configurationIssues'] as core.List)
           .map<LiveStreamConfigurationIssue>(
               (value) => LiveStreamConfigurationIssue.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("lastUpdateTimeSeconds")) {
-      lastUpdateTimeSeconds = _json["lastUpdateTimeSeconds"];
+    if (_json.containsKey('lastUpdateTimeSeconds')) {
+      lastUpdateTimeSeconds = _json['lastUpdateTimeSeconds'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
   }
 
@@ -14221,14 +14220,14 @@ class LiveStreamHealthStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (configurationIssues != null) {
-      _json["configurationIssues"] =
+      _json['configurationIssues'] =
           configurationIssues.map((value) => value.toJson()).toList();
     }
     if (lastUpdateTimeSeconds != null) {
-      _json["lastUpdateTimeSeconds"] = lastUpdateTimeSeconds;
+      _json['lastUpdateTimeSeconds'] = lastUpdateTimeSeconds;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     return _json;
   }
@@ -14264,34 +14263,34 @@ class LiveStreamListResponse {
   LiveStreamListResponse();
 
   LiveStreamListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<LiveStream>((value) => LiveStream.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -14299,31 +14298,31 @@ class LiveStreamListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -14349,20 +14348,20 @@ class LiveStreamSnippet {
   LiveStreamSnippet();
 
   LiveStreamSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("isDefaultStream")) {
-      isDefaultStream = _json["isDefaultStream"];
+    if (_json.containsKey('isDefaultStream')) {
+      isDefaultStream = _json['isDefaultStream'];
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -14370,19 +14369,19 @@ class LiveStreamSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (isDefaultStream != null) {
-      _json["isDefaultStream"] = isDefaultStream;
+      _json['isDefaultStream'] = isDefaultStream;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -14405,11 +14404,11 @@ class LiveStreamStatus {
   LiveStreamStatus();
 
   LiveStreamStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("healthStatus")) {
-      healthStatus = LiveStreamHealthStatus.fromJson(_json["healthStatus"]);
+    if (_json.containsKey('healthStatus')) {
+      healthStatus = LiveStreamHealthStatus.fromJson(_json['healthStatus']);
     }
-    if (_json.containsKey("streamStatus")) {
-      streamStatus = _json["streamStatus"];
+    if (_json.containsKey('streamStatus')) {
+      streamStatus = _json['streamStatus'];
     }
   }
 
@@ -14417,10 +14416,10 @@ class LiveStreamStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (healthStatus != null) {
-      _json["healthStatus"] = healthStatus.toJson();
+      _json['healthStatus'] = healthStatus.toJson();
     }
     if (streamStatus != null) {
-      _json["streamStatus"] = streamStatus;
+      _json['streamStatus'] = streamStatus;
     }
     return _json;
   }
@@ -14436,14 +14435,14 @@ class LocalizedProperty {
   LocalizedProperty();
 
   LocalizedProperty.fromJson(core.Map _json) {
-    if (_json.containsKey("default")) {
-      default_ = _json["default"];
+    if (_json.containsKey('default')) {
+      default_ = _json['default'];
     }
-    if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = LanguageTag.fromJson(_json["defaultLanguage"]);
+    if (_json.containsKey('defaultLanguage')) {
+      defaultLanguage = LanguageTag.fromJson(_json['defaultLanguage']);
     }
-    if (_json.containsKey("localized")) {
-      localized = (_json["localized"] as core.List)
+    if (_json.containsKey('localized')) {
+      localized = (_json['localized'] as core.List)
           .map<LocalizedString>((value) => LocalizedString.fromJson(value))
           .toList();
     }
@@ -14453,13 +14452,13 @@ class LocalizedProperty {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (default_ != null) {
-      _json["default"] = default_;
+      _json['default'] = default_;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = defaultLanguage.toJson();
+      _json['defaultLanguage'] = defaultLanguage.toJson();
     }
     if (localized != null) {
-      _json["localized"] = localized.map((value) => value.toJson()).toList();
+      _json['localized'] = localized.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14472,11 +14471,11 @@ class LocalizedString {
   LocalizedString();
 
   LocalizedString.fromJson(core.Map _json) {
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -14484,10 +14483,10 @@ class LocalizedString {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -14510,14 +14509,14 @@ class Member {
   Member();
 
   Member.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = MemberSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = MemberSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -14525,13 +14524,13 @@ class Member {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -14563,31 +14562,31 @@ class MemberListResponse {
   MemberListResponse();
 
   MemberListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Member>((value) => Member.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -14595,28 +14594,28 @@ class MemberListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -14635,15 +14634,15 @@ class MemberSnippet {
   MemberSnippet();
 
   MemberSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("creatorChannelId")) {
-      creatorChannelId = _json["creatorChannelId"];
+    if (_json.containsKey('creatorChannelId')) {
+      creatorChannelId = _json['creatorChannelId'];
     }
-    if (_json.containsKey("memberDetails")) {
-      memberDetails = ChannelProfileDetails.fromJson(_json["memberDetails"]);
+    if (_json.containsKey('memberDetails')) {
+      memberDetails = ChannelProfileDetails.fromJson(_json['memberDetails']);
     }
-    if (_json.containsKey("membershipsDetails")) {
+    if (_json.containsKey('membershipsDetails')) {
       membershipsDetails =
-          MembershipsDetails.fromJson(_json["membershipsDetails"]);
+          MembershipsDetails.fromJson(_json['membershipsDetails']);
     }
   }
 
@@ -14651,13 +14650,13 @@ class MemberSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creatorChannelId != null) {
-      _json["creatorChannelId"] = creatorChannelId;
+      _json['creatorChannelId'] = creatorChannelId;
     }
     if (memberDetails != null) {
-      _json["memberDetails"] = memberDetails.toJson();
+      _json['memberDetails'] = memberDetails.toJson();
     }
     if (membershipsDetails != null) {
-      _json["membershipsDetails"] = membershipsDetails.toJson();
+      _json['membershipsDetails'] = membershipsDetails.toJson();
     }
     return _json;
   }
@@ -14686,24 +14685,24 @@ class MembershipsDetails {
   MembershipsDetails();
 
   MembershipsDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("accessibleLevels")) {
+    if (_json.containsKey('accessibleLevels')) {
       accessibleLevels =
-          (_json["accessibleLevels"] as core.List).cast<core.String>();
+          (_json['accessibleLevels'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("highestAccessibleLevel")) {
-      highestAccessibleLevel = _json["highestAccessibleLevel"];
+    if (_json.containsKey('highestAccessibleLevel')) {
+      highestAccessibleLevel = _json['highestAccessibleLevel'];
     }
-    if (_json.containsKey("highestAccessibleLevelDisplayName")) {
+    if (_json.containsKey('highestAccessibleLevelDisplayName')) {
       highestAccessibleLevelDisplayName =
-          _json["highestAccessibleLevelDisplayName"];
+          _json['highestAccessibleLevelDisplayName'];
     }
-    if (_json.containsKey("membershipsDuration")) {
+    if (_json.containsKey('membershipsDuration')) {
       membershipsDuration =
-          MembershipsDuration.fromJson(_json["membershipsDuration"]);
+          MembershipsDuration.fromJson(_json['membershipsDuration']);
     }
-    if (_json.containsKey("membershipsDurationAtLevels")) {
+    if (_json.containsKey('membershipsDurationAtLevels')) {
       membershipsDurationAtLevels =
-          (_json["membershipsDurationAtLevels"] as core.List)
+          (_json['membershipsDurationAtLevels'] as core.List)
               .map<MembershipsDurationAtLevel>(
                   (value) => MembershipsDurationAtLevel.fromJson(value))
               .toList();
@@ -14714,20 +14713,20 @@ class MembershipsDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (accessibleLevels != null) {
-      _json["accessibleLevels"] = accessibleLevels;
+      _json['accessibleLevels'] = accessibleLevels;
     }
     if (highestAccessibleLevel != null) {
-      _json["highestAccessibleLevel"] = highestAccessibleLevel;
+      _json['highestAccessibleLevel'] = highestAccessibleLevel;
     }
     if (highestAccessibleLevelDisplayName != null) {
-      _json["highestAccessibleLevelDisplayName"] =
+      _json['highestAccessibleLevelDisplayName'] =
           highestAccessibleLevelDisplayName;
     }
     if (membershipsDuration != null) {
-      _json["membershipsDuration"] = membershipsDuration.toJson();
+      _json['membershipsDuration'] = membershipsDuration.toJson();
     }
     if (membershipsDurationAtLevels != null) {
-      _json["membershipsDurationAtLevels"] =
+      _json['membershipsDurationAtLevels'] =
           membershipsDurationAtLevels.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -14746,11 +14745,11 @@ class MembershipsDuration {
   MembershipsDuration();
 
   MembershipsDuration.fromJson(core.Map _json) {
-    if (_json.containsKey("memberSince")) {
-      memberSince = _json["memberSince"];
+    if (_json.containsKey('memberSince')) {
+      memberSince = _json['memberSince'];
     }
-    if (_json.containsKey("memberTotalDurationMonths")) {
-      memberTotalDurationMonths = _json["memberTotalDurationMonths"];
+    if (_json.containsKey('memberTotalDurationMonths')) {
+      memberTotalDurationMonths = _json['memberTotalDurationMonths'];
     }
   }
 
@@ -14758,10 +14757,10 @@ class MembershipsDuration {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (memberSince != null) {
-      _json["memberSince"] = memberSince;
+      _json['memberSince'] = memberSince;
     }
     if (memberTotalDurationMonths != null) {
-      _json["memberTotalDurationMonths"] = memberTotalDurationMonths;
+      _json['memberTotalDurationMonths'] = memberTotalDurationMonths;
     }
     return _json;
   }
@@ -14782,14 +14781,14 @@ class MembershipsDurationAtLevel {
   MembershipsDurationAtLevel();
 
   MembershipsDurationAtLevel.fromJson(core.Map _json) {
-    if (_json.containsKey("level")) {
-      level = _json["level"];
+    if (_json.containsKey('level')) {
+      level = _json['level'];
     }
-    if (_json.containsKey("memberSince")) {
-      memberSince = _json["memberSince"];
+    if (_json.containsKey('memberSince')) {
+      memberSince = _json['memberSince'];
     }
-    if (_json.containsKey("memberTotalDurationMonths")) {
-      memberTotalDurationMonths = _json["memberTotalDurationMonths"];
+    if (_json.containsKey('memberTotalDurationMonths')) {
+      memberTotalDurationMonths = _json['memberTotalDurationMonths'];
     }
   }
 
@@ -14797,13 +14796,13 @@ class MembershipsDurationAtLevel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (level != null) {
-      _json["level"] = level;
+      _json['level'] = level;
     }
     if (memberSince != null) {
-      _json["memberSince"] = memberSince;
+      _json['memberSince'] = memberSince;
     }
     if (memberTotalDurationMonths != null) {
-      _json["memberTotalDurationMonths"] = memberTotalDurationMonths;
+      _json['memberTotalDurationMonths'] = memberTotalDurationMonths;
     }
     return _json;
   }
@@ -14830,17 +14829,17 @@ class MembershipsLevel {
   MembershipsLevel();
 
   MembershipsLevel.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = MembershipsLevelSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = MembershipsLevelSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -14848,16 +14847,16 @@ class MembershipsLevel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -14883,22 +14882,22 @@ class MembershipsLevelListResponse {
   MembershipsLevelListResponse();
 
   MembershipsLevelListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<MembershipsLevel>((value) => MembershipsLevel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -14906,19 +14905,19 @@ class MembershipsLevelListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -14934,11 +14933,11 @@ class MembershipsLevelSnippet {
   MembershipsLevelSnippet();
 
   MembershipsLevelSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("creatorChannelId")) {
-      creatorChannelId = _json["creatorChannelId"];
+    if (_json.containsKey('creatorChannelId')) {
+      creatorChannelId = _json['creatorChannelId'];
     }
-    if (_json.containsKey("levelDetails")) {
-      levelDetails = LevelDetails.fromJson(_json["levelDetails"]);
+    if (_json.containsKey('levelDetails')) {
+      levelDetails = LevelDetails.fromJson(_json['levelDetails']);
     }
   }
 
@@ -14946,10 +14945,10 @@ class MembershipsLevelSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creatorChannelId != null) {
-      _json["creatorChannelId"] = creatorChannelId;
+      _json['creatorChannelId'] = creatorChannelId;
     }
     if (levelDetails != null) {
-      _json["levelDetails"] = levelDetails.toJson();
+      _json['levelDetails'] = levelDetails.toJson();
     }
     return _json;
   }
@@ -14977,14 +14976,14 @@ class MonitorStreamInfo {
   MonitorStreamInfo();
 
   MonitorStreamInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("broadcastStreamDelayMs")) {
-      broadcastStreamDelayMs = _json["broadcastStreamDelayMs"];
+    if (_json.containsKey('broadcastStreamDelayMs')) {
+      broadcastStreamDelayMs = _json['broadcastStreamDelayMs'];
     }
-    if (_json.containsKey("embedHtml")) {
-      embedHtml = _json["embedHtml"];
+    if (_json.containsKey('embedHtml')) {
+      embedHtml = _json['embedHtml'];
     }
-    if (_json.containsKey("enableMonitorStream")) {
-      enableMonitorStream = _json["enableMonitorStream"];
+    if (_json.containsKey('enableMonitorStream')) {
+      enableMonitorStream = _json['enableMonitorStream'];
     }
   }
 
@@ -14992,13 +14991,13 @@ class MonitorStreamInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (broadcastStreamDelayMs != null) {
-      _json["broadcastStreamDelayMs"] = broadcastStreamDelayMs;
+      _json['broadcastStreamDelayMs'] = broadcastStreamDelayMs;
     }
     if (embedHtml != null) {
-      _json["embedHtml"] = embedHtml;
+      _json['embedHtml'] = embedHtml;
     }
     if (enableMonitorStream != null) {
-      _json["enableMonitorStream"] = enableMonitorStream;
+      _json['enableMonitorStream'] = enableMonitorStream;
     }
     return _json;
   }
@@ -15016,11 +15015,11 @@ class PageInfo {
   PageInfo();
 
   PageInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("resultsPerPage")) {
-      resultsPerPage = _json["resultsPerPage"];
+    if (_json.containsKey('resultsPerPage')) {
+      resultsPerPage = _json['resultsPerPage'];
     }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
+    if (_json.containsKey('totalResults')) {
+      totalResults = _json['totalResults'];
     }
   }
 
@@ -15028,10 +15027,10 @@ class PageInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (resultsPerPage != null) {
-      _json["resultsPerPage"] = resultsPerPage;
+      _json['resultsPerPage'] = resultsPerPage;
     }
     if (totalResults != null) {
-      _json["totalResults"] = totalResults;
+      _json['totalResults'] = totalResults;
     }
     return _json;
   }
@@ -15082,31 +15081,31 @@ class Playlist {
   Playlist();
 
   Playlist.fromJson(core.Map _json) {
-    if (_json.containsKey("contentDetails")) {
-      contentDetails = PlaylistContentDetails.fromJson(_json["contentDetails"]);
+    if (_json.containsKey('contentDetails')) {
+      contentDetails = PlaylistContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("localizations")) {
+    if (_json.containsKey('localizations')) {
       localizations = commons.mapMap<core.Map, PlaylistLocalization>(
-          _json["localizations"].cast<core.String, core.Map>(),
+          _json['localizations'].cast<core.String, core.Map>(),
           (core.Map item) => PlaylistLocalization.fromJson(item));
     }
-    if (_json.containsKey("player")) {
-      player = PlaylistPlayer.fromJson(_json["player"]);
+    if (_json.containsKey('player')) {
+      player = PlaylistPlayer.fromJson(_json['player']);
     }
-    if (_json.containsKey("snippet")) {
-      snippet = PlaylistSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = PlaylistSnippet.fromJson(_json['snippet']);
     }
-    if (_json.containsKey("status")) {
-      status = PlaylistStatus.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = PlaylistStatus.fromJson(_json['status']);
     }
   }
 
@@ -15114,30 +15113,30 @@ class Playlist {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (localizations != null) {
-      _json["localizations"] = commons
+      _json['localizations'] = commons
           .mapMap<PlaylistLocalization, core.Map<core.String, core.Object>>(
               localizations, (PlaylistLocalization item) => item.toJson());
     }
     if (player != null) {
-      _json["player"] = player.toJson();
+      _json['player'] = player.toJson();
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     return _json;
   }
@@ -15150,8 +15149,8 @@ class PlaylistContentDetails {
   PlaylistContentDetails();
 
   PlaylistContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("itemCount")) {
-      itemCount = _json["itemCount"];
+    if (_json.containsKey('itemCount')) {
+      itemCount = _json['itemCount'];
     }
   }
 
@@ -15159,7 +15158,7 @@ class PlaylistContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (itemCount != null) {
-      _json["itemCount"] = itemCount;
+      _json['itemCount'] = itemCount;
     }
     return _json;
   }
@@ -15207,24 +15206,24 @@ class PlaylistItem {
   PlaylistItem();
 
   PlaylistItem.fromJson(core.Map _json) {
-    if (_json.containsKey("contentDetails")) {
+    if (_json.containsKey('contentDetails')) {
       contentDetails =
-          PlaylistItemContentDetails.fromJson(_json["contentDetails"]);
+          PlaylistItemContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = PlaylistItemSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = PlaylistItemSnippet.fromJson(_json['snippet']);
     }
-    if (_json.containsKey("status")) {
-      status = PlaylistItemStatus.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = PlaylistItemStatus.fromJson(_json['status']);
     }
   }
 
@@ -15232,22 +15231,22 @@ class PlaylistItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     return _json;
   }
@@ -15282,20 +15281,20 @@ class PlaylistItemContentDetails {
   PlaylistItemContentDetails();
 
   PlaylistItemContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("endAt")) {
-      endAt = _json["endAt"];
+    if (_json.containsKey('endAt')) {
+      endAt = _json['endAt'];
     }
-    if (_json.containsKey("note")) {
-      note = _json["note"];
+    if (_json.containsKey('note')) {
+      note = _json['note'];
     }
-    if (_json.containsKey("startAt")) {
-      startAt = _json["startAt"];
+    if (_json.containsKey('startAt')) {
+      startAt = _json['startAt'];
     }
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
+    if (_json.containsKey('videoId')) {
+      videoId = _json['videoId'];
     }
-    if (_json.containsKey("videoPublishedAt")) {
-      videoPublishedAt = _json["videoPublishedAt"];
+    if (_json.containsKey('videoPublishedAt')) {
+      videoPublishedAt = _json['videoPublishedAt'];
     }
   }
 
@@ -15303,19 +15302,19 @@ class PlaylistItemContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (endAt != null) {
-      _json["endAt"] = endAt;
+      _json['endAt'] = endAt;
     }
     if (note != null) {
-      _json["note"] = note;
+      _json['note'] = note;
     }
     if (startAt != null) {
-      _json["startAt"] = startAt;
+      _json['startAt'] = startAt;
     }
     if (videoId != null) {
-      _json["videoId"] = videoId;
+      _json['videoId'] = videoId;
     }
     if (videoPublishedAt != null) {
-      _json["videoPublishedAt"] = videoPublishedAt;
+      _json['videoPublishedAt'] = videoPublishedAt;
     }
     return _json;
   }
@@ -15352,34 +15351,34 @@ class PlaylistItemListResponse {
   PlaylistItemListResponse();
 
   PlaylistItemListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<PlaylistItem>((value) => PlaylistItem.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -15387,31 +15386,31 @@ class PlaylistItemListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -15458,32 +15457,32 @@ class PlaylistItemSnippet {
   PlaylistItemSnippet();
 
   PlaylistItemSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("channelTitle")) {
-      channelTitle = _json["channelTitle"];
+    if (_json.containsKey('channelTitle')) {
+      channelTitle = _json['channelTitle'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("playlistId")) {
-      playlistId = _json["playlistId"];
+    if (_json.containsKey('playlistId')) {
+      playlistId = _json['playlistId'];
     }
-    if (_json.containsKey("position")) {
-      position = _json["position"];
+    if (_json.containsKey('position')) {
+      position = _json['position'];
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
-    if (_json.containsKey("thumbnails")) {
-      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
+    if (_json.containsKey('thumbnails')) {
+      thumbnails = ThumbnailDetails.fromJson(_json['thumbnails']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -15491,31 +15490,31 @@ class PlaylistItemSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (channelTitle != null) {
-      _json["channelTitle"] = channelTitle;
+      _json['channelTitle'] = channelTitle;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (playlistId != null) {
-      _json["playlistId"] = playlistId;
+      _json['playlistId'] = playlistId;
     }
     if (position != null) {
-      _json["position"] = position;
+      _json['position'] = position;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.toJson();
+      _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -15533,8 +15532,8 @@ class PlaylistItemStatus {
   PlaylistItemStatus();
 
   PlaylistItemStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("privacyStatus")) {
-      privacyStatus = _json["privacyStatus"];
+    if (_json.containsKey('privacyStatus')) {
+      privacyStatus = _json['privacyStatus'];
     }
   }
 
@@ -15542,7 +15541,7 @@ class PlaylistItemStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (privacyStatus != null) {
-      _json["privacyStatus"] = privacyStatus;
+      _json['privacyStatus'] = privacyStatus;
     }
     return _json;
   }
@@ -15580,34 +15579,34 @@ class PlaylistListResponse {
   PlaylistListResponse();
 
   PlaylistListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Playlist>((value) => Playlist.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -15615,31 +15614,31 @@ class PlaylistListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -15656,11 +15655,11 @@ class PlaylistLocalization {
   PlaylistLocalization();
 
   PlaylistLocalization.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -15668,10 +15667,10 @@ class PlaylistLocalization {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -15684,8 +15683,8 @@ class PlaylistPlayer {
   PlaylistPlayer();
 
   PlaylistPlayer.fromJson(core.Map _json) {
-    if (_json.containsKey("embedHtml")) {
-      embedHtml = _json["embedHtml"];
+    if (_json.containsKey('embedHtml')) {
+      embedHtml = _json['embedHtml'];
     }
   }
 
@@ -15693,7 +15692,7 @@ class PlaylistPlayer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (embedHtml != null) {
-      _json["embedHtml"] = embedHtml;
+      _json['embedHtml'] = embedHtml;
     }
     return _json;
   }
@@ -15735,32 +15734,32 @@ class PlaylistSnippet {
   PlaylistSnippet();
 
   PlaylistSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("channelTitle")) {
-      channelTitle = _json["channelTitle"];
+    if (_json.containsKey('channelTitle')) {
+      channelTitle = _json['channelTitle'];
     }
-    if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = _json["defaultLanguage"];
+    if (_json.containsKey('defaultLanguage')) {
+      defaultLanguage = _json['defaultLanguage'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("localized")) {
-      localized = PlaylistLocalization.fromJson(_json["localized"]);
+    if (_json.containsKey('localized')) {
+      localized = PlaylistLocalization.fromJson(_json['localized']);
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("tags")) {
-      tags = (_json["tags"] as core.List).cast<core.String>();
+    if (_json.containsKey('tags')) {
+      tags = (_json['tags'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("thumbnails")) {
-      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
+    if (_json.containsKey('thumbnails')) {
+      thumbnails = ThumbnailDetails.fromJson(_json['thumbnails']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -15768,31 +15767,31 @@ class PlaylistSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (channelTitle != null) {
-      _json["channelTitle"] = channelTitle;
+      _json['channelTitle'] = channelTitle;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = defaultLanguage;
+      _json['defaultLanguage'] = defaultLanguage;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (localized != null) {
-      _json["localized"] = localized.toJson();
+      _json['localized'] = localized.toJson();
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (tags != null) {
-      _json["tags"] = tags;
+      _json['tags'] = tags;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.toJson();
+      _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -15809,8 +15808,8 @@ class PlaylistStatus {
   PlaylistStatus();
 
   PlaylistStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("privacyStatus")) {
-      privacyStatus = _json["privacyStatus"];
+    if (_json.containsKey('privacyStatus')) {
+      privacyStatus = _json['privacyStatus'];
     }
   }
 
@@ -15818,7 +15817,7 @@ class PlaylistStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (privacyStatus != null) {
-      _json["privacyStatus"] = privacyStatus;
+      _json['privacyStatus'] = privacyStatus;
     }
     return _json;
   }
@@ -15835,11 +15834,11 @@ class PropertyValue {
   PropertyValue();
 
   PropertyValue.fromJson(core.Map _json) {
-    if (_json.containsKey("property")) {
-      property = _json["property"];
+    if (_json.containsKey('property')) {
+      property = _json['property'];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
+    if (_json.containsKey('value')) {
+      value = _json['value'];
     }
   }
 
@@ -15847,10 +15846,10 @@ class PropertyValue {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (property != null) {
-      _json["property"] = property;
+      _json['property'] = property;
     }
     if (value != null) {
-      _json["value"] = value;
+      _json['value'] = value;
     }
     return _json;
   }
@@ -15862,8 +15861,8 @@ class RelatedEntity {
   RelatedEntity();
 
   RelatedEntity.fromJson(core.Map _json) {
-    if (_json.containsKey("entity")) {
-      entity = Entity.fromJson(_json["entity"]);
+    if (_json.containsKey('entity')) {
+      entity = Entity.fromJson(_json['entity']);
     }
   }
 
@@ -15871,7 +15870,7 @@ class RelatedEntity {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (entity != null) {
-      _json["entity"] = entity.toJson();
+      _json['entity'] = entity.toJson();
     }
     return _json;
   }
@@ -15901,17 +15900,17 @@ class ResourceId {
   ResourceId();
 
   ResourceId.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("playlistId")) {
-      playlistId = _json["playlistId"];
+    if (_json.containsKey('playlistId')) {
+      playlistId = _json['playlistId'];
     }
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
+    if (_json.containsKey('videoId')) {
+      videoId = _json['videoId'];
     }
   }
 
@@ -15919,16 +15918,16 @@ class ResourceId {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (playlistId != null) {
-      _json["playlistId"] = playlistId;
+      _json['playlistId'] = playlistId;
     }
     if (videoId != null) {
-      _json["videoId"] = videoId;
+      _json['videoId'] = videoId;
     }
     return _json;
   }
@@ -15967,37 +15966,37 @@ class SearchListResponse {
   SearchListResponse();
 
   SearchListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<SearchResult>((value) => SearchResult.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("regionCode")) {
-      regionCode = _json["regionCode"];
+    if (_json.containsKey('regionCode')) {
+      regionCode = _json['regionCode'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -16005,34 +16004,34 @@ class SearchListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (regionCode != null) {
-      _json["regionCode"] = regionCode;
+      _json['regionCode'] = regionCode;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -16063,17 +16062,17 @@ class SearchResult {
   SearchResult();
 
   SearchResult.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = ResourceId.fromJson(_json["id"]);
+    if (_json.containsKey('id')) {
+      id = ResourceId.fromJson(_json['id']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = SearchResultSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = SearchResultSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -16081,16 +16080,16 @@ class SearchResult {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id.toJson();
+      _json['id'] = id.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -16135,26 +16134,26 @@ class SearchResultSnippet {
   SearchResultSnippet();
 
   SearchResultSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("channelTitle")) {
-      channelTitle = _json["channelTitle"];
+    if (_json.containsKey('channelTitle')) {
+      channelTitle = _json['channelTitle'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("liveBroadcastContent")) {
-      liveBroadcastContent = _json["liveBroadcastContent"];
+    if (_json.containsKey('liveBroadcastContent')) {
+      liveBroadcastContent = _json['liveBroadcastContent'];
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("thumbnails")) {
-      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
+    if (_json.containsKey('thumbnails')) {
+      thumbnails = ThumbnailDetails.fromJson(_json['thumbnails']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -16162,25 +16161,25 @@ class SearchResultSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (channelTitle != null) {
-      _json["channelTitle"] = channelTitle;
+      _json['channelTitle'] = channelTitle;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (liveBroadcastContent != null) {
-      _json["liveBroadcastContent"] = liveBroadcastContent;
+      _json['liveBroadcastContent'] = liveBroadcastContent;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.toJson();
+      _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -16203,14 +16202,14 @@ class Sponsor {
   Sponsor();
 
   Sponsor.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = SponsorSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = SponsorSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -16218,13 +16217,13 @@ class Sponsor {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -16256,31 +16255,31 @@ class SponsorListResponse {
   SponsorListResponse();
 
   SponsorListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Sponsor>((value) => Sponsor.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -16288,28 +16287,28 @@ class SponsorListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -16332,17 +16331,17 @@ class SponsorSnippet {
   SponsorSnippet();
 
   SponsorSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("cumulativeDurationMonths")) {
-      cumulativeDurationMonths = _json["cumulativeDurationMonths"];
+    if (_json.containsKey('cumulativeDurationMonths')) {
+      cumulativeDurationMonths = _json['cumulativeDurationMonths'];
     }
-    if (_json.containsKey("sponsorDetails")) {
-      sponsorDetails = ChannelProfileDetails.fromJson(_json["sponsorDetails"]);
+    if (_json.containsKey('sponsorDetails')) {
+      sponsorDetails = ChannelProfileDetails.fromJson(_json['sponsorDetails']);
     }
-    if (_json.containsKey("sponsorSince")) {
-      sponsorSince = _json["sponsorSince"];
+    if (_json.containsKey('sponsorSince')) {
+      sponsorSince = _json['sponsorSince'];
     }
   }
 
@@ -16350,16 +16349,16 @@ class SponsorSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (cumulativeDurationMonths != null) {
-      _json["cumulativeDurationMonths"] = cumulativeDurationMonths;
+      _json['cumulativeDurationMonths'] = cumulativeDurationMonths;
     }
     if (sponsorDetails != null) {
-      _json["sponsorDetails"] = sponsorDetails.toJson();
+      _json['sponsorDetails'] = sponsorDetails.toJson();
     }
     if (sponsorSince != null) {
-      _json["sponsorSince"] = sponsorSince;
+      _json['sponsorSince'] = sponsorSince;
     }
     return _json;
   }
@@ -16394,25 +16393,25 @@ class Subscription {
   Subscription();
 
   Subscription.fromJson(core.Map _json) {
-    if (_json.containsKey("contentDetails")) {
+    if (_json.containsKey('contentDetails')) {
       contentDetails =
-          SubscriptionContentDetails.fromJson(_json["contentDetails"]);
+          SubscriptionContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = SubscriptionSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = SubscriptionSnippet.fromJson(_json['snippet']);
     }
-    if (_json.containsKey("subscriberSnippet")) {
+    if (_json.containsKey('subscriberSnippet')) {
       subscriberSnippet =
-          SubscriptionSubscriberSnippet.fromJson(_json["subscriberSnippet"]);
+          SubscriptionSubscriberSnippet.fromJson(_json['subscriberSnippet']);
     }
   }
 
@@ -16420,22 +16419,22 @@ class Subscription {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     if (subscriberSnippet != null) {
-      _json["subscriberSnippet"] = subscriberSnippet.toJson();
+      _json['subscriberSnippet'] = subscriberSnippet.toJson();
     }
     return _json;
   }
@@ -16460,14 +16459,14 @@ class SubscriptionContentDetails {
   SubscriptionContentDetails();
 
   SubscriptionContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("activityType")) {
-      activityType = _json["activityType"];
+    if (_json.containsKey('activityType')) {
+      activityType = _json['activityType'];
     }
-    if (_json.containsKey("newItemCount")) {
-      newItemCount = _json["newItemCount"];
+    if (_json.containsKey('newItemCount')) {
+      newItemCount = _json['newItemCount'];
     }
-    if (_json.containsKey("totalItemCount")) {
-      totalItemCount = _json["totalItemCount"];
+    if (_json.containsKey('totalItemCount')) {
+      totalItemCount = _json['totalItemCount'];
     }
   }
 
@@ -16475,13 +16474,13 @@ class SubscriptionContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activityType != null) {
-      _json["activityType"] = activityType;
+      _json['activityType'] = activityType;
     }
     if (newItemCount != null) {
-      _json["newItemCount"] = newItemCount;
+      _json['newItemCount'] = newItemCount;
     }
     if (totalItemCount != null) {
-      _json["totalItemCount"] = totalItemCount;
+      _json['totalItemCount'] = totalItemCount;
     }
     return _json;
   }
@@ -16517,34 +16516,34 @@ class SubscriptionListResponse {
   SubscriptionListResponse();
 
   SubscriptionListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Subscription>((value) => Subscription.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -16552,31 +16551,31 @@ class SubscriptionListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -16613,26 +16612,26 @@ class SubscriptionSnippet {
   SubscriptionSnippet();
 
   SubscriptionSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("channelTitle")) {
-      channelTitle = _json["channelTitle"];
+    if (_json.containsKey('channelTitle')) {
+      channelTitle = _json['channelTitle'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("resourceId")) {
-      resourceId = ResourceId.fromJson(_json["resourceId"]);
+    if (_json.containsKey('resourceId')) {
+      resourceId = ResourceId.fromJson(_json['resourceId']);
     }
-    if (_json.containsKey("thumbnails")) {
-      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
+    if (_json.containsKey('thumbnails')) {
+      thumbnails = ThumbnailDetails.fromJson(_json['thumbnails']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -16640,25 +16639,25 @@ class SubscriptionSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (channelTitle != null) {
-      _json["channelTitle"] = channelTitle;
+      _json['channelTitle'] = channelTitle;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (resourceId != null) {
-      _json["resourceId"] = resourceId.toJson();
+      _json['resourceId'] = resourceId.toJson();
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.toJson();
+      _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -16682,17 +16681,17 @@ class SubscriptionSubscriberSnippet {
   SubscriptionSubscriberSnippet();
 
   SubscriptionSubscriberSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("thumbnails")) {
-      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
+    if (_json.containsKey('thumbnails')) {
+      thumbnails = ThumbnailDetails.fromJson(_json['thumbnails']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -16700,16 +16699,16 @@ class SubscriptionSubscriberSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.toJson();
+      _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -16734,17 +16733,17 @@ class SuperChatEvent {
   SuperChatEvent();
 
   SuperChatEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = SuperChatEventSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = SuperChatEventSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -16752,16 +16751,16 @@ class SuperChatEvent {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -16793,31 +16792,31 @@ class SuperChatEventListResponse {
   SuperChatEventListResponse();
 
   SuperChatEventListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<SuperChatEvent>((value) => SuperChatEvent.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -16825,28 +16824,28 @@ class SuperChatEventListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -16891,37 +16890,37 @@ class SuperChatEventSnippet {
   SuperChatEventSnippet();
 
   SuperChatEventSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("amountMicros")) {
-      amountMicros = _json["amountMicros"];
+    if (_json.containsKey('amountMicros')) {
+      amountMicros = _json['amountMicros'];
     }
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("commentText")) {
-      commentText = _json["commentText"];
+    if (_json.containsKey('commentText')) {
+      commentText = _json['commentText'];
     }
-    if (_json.containsKey("createdAt")) {
-      createdAt = _json["createdAt"];
+    if (_json.containsKey('createdAt')) {
+      createdAt = _json['createdAt'];
     }
-    if (_json.containsKey("currency")) {
-      currency = _json["currency"];
+    if (_json.containsKey('currency')) {
+      currency = _json['currency'];
     }
-    if (_json.containsKey("displayString")) {
-      displayString = _json["displayString"];
+    if (_json.containsKey('displayString')) {
+      displayString = _json['displayString'];
     }
-    if (_json.containsKey("isSuperStickerEvent")) {
-      isSuperStickerEvent = _json["isSuperStickerEvent"];
+    if (_json.containsKey('isSuperStickerEvent')) {
+      isSuperStickerEvent = _json['isSuperStickerEvent'];
     }
-    if (_json.containsKey("messageType")) {
-      messageType = _json["messageType"];
+    if (_json.containsKey('messageType')) {
+      messageType = _json['messageType'];
     }
-    if (_json.containsKey("superStickerMetadata")) {
+    if (_json.containsKey('superStickerMetadata')) {
       superStickerMetadata =
-          SuperStickerMetadata.fromJson(_json["superStickerMetadata"]);
+          SuperStickerMetadata.fromJson(_json['superStickerMetadata']);
     }
-    if (_json.containsKey("supporterDetails")) {
+    if (_json.containsKey('supporterDetails')) {
       supporterDetails =
-          ChannelProfileDetails.fromJson(_json["supporterDetails"]);
+          ChannelProfileDetails.fromJson(_json['supporterDetails']);
     }
   }
 
@@ -16929,34 +16928,34 @@ class SuperChatEventSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (amountMicros != null) {
-      _json["amountMicros"] = amountMicros;
+      _json['amountMicros'] = amountMicros;
     }
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (commentText != null) {
-      _json["commentText"] = commentText;
+      _json['commentText'] = commentText;
     }
     if (createdAt != null) {
-      _json["createdAt"] = createdAt;
+      _json['createdAt'] = createdAt;
     }
     if (currency != null) {
-      _json["currency"] = currency;
+      _json['currency'] = currency;
     }
     if (displayString != null) {
-      _json["displayString"] = displayString;
+      _json['displayString'] = displayString;
     }
     if (isSuperStickerEvent != null) {
-      _json["isSuperStickerEvent"] = isSuperStickerEvent;
+      _json['isSuperStickerEvent'] = isSuperStickerEvent;
     }
     if (messageType != null) {
-      _json["messageType"] = messageType;
+      _json['messageType'] = messageType;
     }
     if (superStickerMetadata != null) {
-      _json["superStickerMetadata"] = superStickerMetadata.toJson();
+      _json['superStickerMetadata'] = superStickerMetadata.toJson();
     }
     if (supporterDetails != null) {
-      _json["supporterDetails"] = supporterDetails.toJson();
+      _json['supporterDetails'] = supporterDetails.toJson();
     }
     return _json;
   }
@@ -16978,14 +16977,14 @@ class SuperStickerMetadata {
   SuperStickerMetadata();
 
   SuperStickerMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("altText")) {
-      altText = _json["altText"];
+    if (_json.containsKey('altText')) {
+      altText = _json['altText'];
     }
-    if (_json.containsKey("altTextLanguage")) {
-      altTextLanguage = _json["altTextLanguage"];
+    if (_json.containsKey('altTextLanguage')) {
+      altTextLanguage = _json['altTextLanguage'];
     }
-    if (_json.containsKey("stickerId")) {
-      stickerId = _json["stickerId"];
+    if (_json.containsKey('stickerId')) {
+      stickerId = _json['stickerId'];
     }
   }
 
@@ -16993,13 +16992,13 @@ class SuperStickerMetadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (altText != null) {
-      _json["altText"] = altText;
+      _json['altText'] = altText;
     }
     if (altTextLanguage != null) {
-      _json["altTextLanguage"] = altTextLanguage;
+      _json['altTextLanguage'] = altTextLanguage;
     }
     if (stickerId != null) {
-      _json["stickerId"] = stickerId;
+      _json['stickerId'] = stickerId;
     }
     return _json;
   }
@@ -17013,14 +17012,14 @@ class TestItem {
   TestItem();
 
   TestItem.fromJson(core.Map _json) {
-    if (_json.containsKey("gaia")) {
-      gaia = _json["gaia"];
+    if (_json.containsKey('gaia')) {
+      gaia = _json['gaia'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = TestItemTestItemSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = TestItemTestItemSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -17028,13 +17027,13 @@ class TestItem {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (gaia != null) {
-      _json["gaia"] = gaia;
+      _json['gaia'] = gaia;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -17076,20 +17075,20 @@ class ThirdPartyLink {
   ThirdPartyLink();
 
   ThirdPartyLink.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("linkingToken")) {
-      linkingToken = _json["linkingToken"];
+    if (_json.containsKey('linkingToken')) {
+      linkingToken = _json['linkingToken'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = ThirdPartyLinkSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = ThirdPartyLinkSnippet.fromJson(_json['snippet']);
     }
-    if (_json.containsKey("status")) {
-      status = ThirdPartyLinkStatus.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = ThirdPartyLinkStatus.fromJson(_json['status']);
     }
   }
 
@@ -17097,19 +17096,19 @@ class ThirdPartyLink {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (linkingToken != null) {
-      _json["linkingToken"] = linkingToken;
+      _json['linkingToken'] = linkingToken;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     return _json;
   }
@@ -17133,12 +17132,12 @@ class ThirdPartyLinkSnippet {
   ThirdPartyLinkSnippet();
 
   ThirdPartyLinkSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelToStoreLink")) {
+    if (_json.containsKey('channelToStoreLink')) {
       channelToStoreLink =
-          ChannelToStoreLinkDetails.fromJson(_json["channelToStoreLink"]);
+          ChannelToStoreLinkDetails.fromJson(_json['channelToStoreLink']);
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -17146,10 +17145,10 @@ class ThirdPartyLinkSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (channelToStoreLink != null) {
-      _json["channelToStoreLink"] = channelToStoreLink.toJson();
+      _json['channelToStoreLink'] = channelToStoreLink.toJson();
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -17169,8 +17168,8 @@ class ThirdPartyLinkStatus {
   ThirdPartyLinkStatus();
 
   ThirdPartyLinkStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("linkStatus")) {
-      linkStatus = _json["linkStatus"];
+    if (_json.containsKey('linkStatus')) {
+      linkStatus = _json['linkStatus'];
     }
   }
 
@@ -17178,7 +17177,7 @@ class ThirdPartyLinkStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (linkStatus != null) {
-      _json["linkStatus"] = linkStatus;
+      _json['linkStatus'] = linkStatus;
     }
     return _json;
   }
@@ -17198,14 +17197,14 @@ class Thumbnail {
   Thumbnail();
 
   Thumbnail.fromJson(core.Map _json) {
-    if (_json.containsKey("height")) {
-      height = _json["height"];
+    if (_json.containsKey('height')) {
+      height = _json['height'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
-    if (_json.containsKey("width")) {
-      width = _json["width"];
+    if (_json.containsKey('width')) {
+      width = _json['width'];
     }
   }
 
@@ -17213,13 +17212,13 @@ class Thumbnail {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (height != null) {
-      _json["height"] = height;
+      _json['height'] = height;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     if (width != null) {
-      _json["width"] = width;
+      _json['width'] = width;
     }
     return _json;
   }
@@ -17245,20 +17244,20 @@ class ThumbnailDetails {
   ThumbnailDetails();
 
   ThumbnailDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("default")) {
-      default_ = Thumbnail.fromJson(_json["default"]);
+    if (_json.containsKey('default')) {
+      default_ = Thumbnail.fromJson(_json['default']);
     }
-    if (_json.containsKey("high")) {
-      high = Thumbnail.fromJson(_json["high"]);
+    if (_json.containsKey('high')) {
+      high = Thumbnail.fromJson(_json['high']);
     }
-    if (_json.containsKey("maxres")) {
-      maxres = Thumbnail.fromJson(_json["maxres"]);
+    if (_json.containsKey('maxres')) {
+      maxres = Thumbnail.fromJson(_json['maxres']);
     }
-    if (_json.containsKey("medium")) {
-      medium = Thumbnail.fromJson(_json["medium"]);
+    if (_json.containsKey('medium')) {
+      medium = Thumbnail.fromJson(_json['medium']);
     }
-    if (_json.containsKey("standard")) {
-      standard = Thumbnail.fromJson(_json["standard"]);
+    if (_json.containsKey('standard')) {
+      standard = Thumbnail.fromJson(_json['standard']);
     }
   }
 
@@ -17266,19 +17265,19 @@ class ThumbnailDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (default_ != null) {
-      _json["default"] = default_.toJson();
+      _json['default'] = default_.toJson();
     }
     if (high != null) {
-      _json["high"] = high.toJson();
+      _json['high'] = high.toJson();
     }
     if (maxres != null) {
-      _json["maxres"] = maxres.toJson();
+      _json['maxres'] = maxres.toJson();
     }
     if (medium != null) {
-      _json["medium"] = medium.toJson();
+      _json['medium'] = medium.toJson();
     }
     if (standard != null) {
-      _json["standard"] = standard.toJson();
+      _json['standard'] = standard.toJson();
     }
     return _json;
   }
@@ -17304,22 +17303,22 @@ class ThumbnailSetResponse {
   ThumbnailSetResponse();
 
   ThumbnailSetResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<ThumbnailDetails>((value) => ThumbnailDetails.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -17327,19 +17326,19 @@ class ThumbnailSetResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -17443,65 +17442,65 @@ class Video {
   Video();
 
   Video.fromJson(core.Map _json) {
-    if (_json.containsKey("ageGating")) {
-      ageGating = VideoAgeGating.fromJson(_json["ageGating"]);
+    if (_json.containsKey('ageGating')) {
+      ageGating = VideoAgeGating.fromJson(_json['ageGating']);
     }
-    if (_json.containsKey("contentDetails")) {
-      contentDetails = VideoContentDetails.fromJson(_json["contentDetails"]);
+    if (_json.containsKey('contentDetails')) {
+      contentDetails = VideoContentDetails.fromJson(_json['contentDetails']);
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("fileDetails")) {
-      fileDetails = VideoFileDetails.fromJson(_json["fileDetails"]);
+    if (_json.containsKey('fileDetails')) {
+      fileDetails = VideoFileDetails.fromJson(_json['fileDetails']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("liveStreamingDetails")) {
+    if (_json.containsKey('liveStreamingDetails')) {
       liveStreamingDetails =
-          VideoLiveStreamingDetails.fromJson(_json["liveStreamingDetails"]);
+          VideoLiveStreamingDetails.fromJson(_json['liveStreamingDetails']);
     }
-    if (_json.containsKey("localizations")) {
+    if (_json.containsKey('localizations')) {
       localizations = commons.mapMap<core.Map, VideoLocalization>(
-          _json["localizations"].cast<core.String, core.Map>(),
+          _json['localizations'].cast<core.String, core.Map>(),
           (core.Map item) => VideoLocalization.fromJson(item));
     }
-    if (_json.containsKey("monetizationDetails")) {
+    if (_json.containsKey('monetizationDetails')) {
       monetizationDetails =
-          VideoMonetizationDetails.fromJson(_json["monetizationDetails"]);
+          VideoMonetizationDetails.fromJson(_json['monetizationDetails']);
     }
-    if (_json.containsKey("player")) {
-      player = VideoPlayer.fromJson(_json["player"]);
+    if (_json.containsKey('player')) {
+      player = VideoPlayer.fromJson(_json['player']);
     }
-    if (_json.containsKey("processingDetails")) {
+    if (_json.containsKey('processingDetails')) {
       processingDetails =
-          VideoProcessingDetails.fromJson(_json["processingDetails"]);
+          VideoProcessingDetails.fromJson(_json['processingDetails']);
     }
-    if (_json.containsKey("projectDetails")) {
-      projectDetails = VideoProjectDetails.fromJson(_json["projectDetails"]);
+    if (_json.containsKey('projectDetails')) {
+      projectDetails = VideoProjectDetails.fromJson(_json['projectDetails']);
     }
-    if (_json.containsKey("recordingDetails")) {
+    if (_json.containsKey('recordingDetails')) {
       recordingDetails =
-          VideoRecordingDetails.fromJson(_json["recordingDetails"]);
+          VideoRecordingDetails.fromJson(_json['recordingDetails']);
     }
-    if (_json.containsKey("snippet")) {
-      snippet = VideoSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = VideoSnippet.fromJson(_json['snippet']);
     }
-    if (_json.containsKey("statistics")) {
-      statistics = VideoStatistics.fromJson(_json["statistics"]);
+    if (_json.containsKey('statistics')) {
+      statistics = VideoStatistics.fromJson(_json['statistics']);
     }
-    if (_json.containsKey("status")) {
-      status = VideoStatus.fromJson(_json["status"]);
+    if (_json.containsKey('status')) {
+      status = VideoStatus.fromJson(_json['status']);
     }
-    if (_json.containsKey("suggestions")) {
-      suggestions = VideoSuggestions.fromJson(_json["suggestions"]);
+    if (_json.containsKey('suggestions')) {
+      suggestions = VideoSuggestions.fromJson(_json['suggestions']);
     }
-    if (_json.containsKey("topicDetails")) {
-      topicDetails = VideoTopicDetails.fromJson(_json["topicDetails"]);
+    if (_json.containsKey('topicDetails')) {
+      topicDetails = VideoTopicDetails.fromJson(_json['topicDetails']);
     }
   }
 
@@ -17509,60 +17508,60 @@ class Video {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (ageGating != null) {
-      _json["ageGating"] = ageGating.toJson();
+      _json['ageGating'] = ageGating.toJson();
     }
     if (contentDetails != null) {
-      _json["contentDetails"] = contentDetails.toJson();
+      _json['contentDetails'] = contentDetails.toJson();
     }
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (fileDetails != null) {
-      _json["fileDetails"] = fileDetails.toJson();
+      _json['fileDetails'] = fileDetails.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (liveStreamingDetails != null) {
-      _json["liveStreamingDetails"] = liveStreamingDetails.toJson();
+      _json['liveStreamingDetails'] = liveStreamingDetails.toJson();
     }
     if (localizations != null) {
-      _json["localizations"] =
+      _json['localizations'] =
           commons.mapMap<VideoLocalization, core.Map<core.String, core.Object>>(
               localizations, (VideoLocalization item) => item.toJson());
     }
     if (monetizationDetails != null) {
-      _json["monetizationDetails"] = monetizationDetails.toJson();
+      _json['monetizationDetails'] = monetizationDetails.toJson();
     }
     if (player != null) {
-      _json["player"] = player.toJson();
+      _json['player'] = player.toJson();
     }
     if (processingDetails != null) {
-      _json["processingDetails"] = processingDetails.toJson();
+      _json['processingDetails'] = processingDetails.toJson();
     }
     if (projectDetails != null) {
-      _json["projectDetails"] = projectDetails.toJson();
+      _json['projectDetails'] = projectDetails.toJson();
     }
     if (recordingDetails != null) {
-      _json["recordingDetails"] = recordingDetails.toJson();
+      _json['recordingDetails'] = recordingDetails.toJson();
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     if (statistics != null) {
-      _json["statistics"] = statistics.toJson();
+      _json['statistics'] = statistics.toJson();
     }
     if (status != null) {
-      _json["status"] = status.toJson();
+      _json['status'] = status.toJson();
     }
     if (suggestions != null) {
-      _json["suggestions"] = suggestions.toJson();
+      _json['suggestions'] = suggestions.toJson();
     }
     if (topicDetails != null) {
-      _json["topicDetails"] = topicDetails.toJson();
+      _json['topicDetails'] = topicDetails.toJson();
     }
     return _json;
   }
@@ -17590,20 +17589,20 @@ class VideoAbuseReport {
   VideoAbuseReport();
 
   VideoAbuseReport.fromJson(core.Map _json) {
-    if (_json.containsKey("comments")) {
-      comments = _json["comments"];
+    if (_json.containsKey('comments')) {
+      comments = _json['comments'];
     }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
+    if (_json.containsKey('language')) {
+      language = _json['language'];
     }
-    if (_json.containsKey("reasonId")) {
-      reasonId = _json["reasonId"];
+    if (_json.containsKey('reasonId')) {
+      reasonId = _json['reasonId'];
     }
-    if (_json.containsKey("secondaryReasonId")) {
-      secondaryReasonId = _json["secondaryReasonId"];
+    if (_json.containsKey('secondaryReasonId')) {
+      secondaryReasonId = _json['secondaryReasonId'];
     }
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
+    if (_json.containsKey('videoId')) {
+      videoId = _json['videoId'];
     }
   }
 
@@ -17611,19 +17610,19 @@ class VideoAbuseReport {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (comments != null) {
-      _json["comments"] = comments;
+      _json['comments'] = comments;
     }
     if (language != null) {
-      _json["language"] = language;
+      _json['language'] = language;
     }
     if (reasonId != null) {
-      _json["reasonId"] = reasonId;
+      _json['reasonId'] = reasonId;
     }
     if (secondaryReasonId != null) {
-      _json["secondaryReasonId"] = secondaryReasonId;
+      _json['secondaryReasonId'] = secondaryReasonId;
     }
     if (videoId != null) {
-      _json["videoId"] = videoId;
+      _json['videoId'] = videoId;
     }
     return _json;
   }
@@ -17649,17 +17648,17 @@ class VideoAbuseReportReason {
   VideoAbuseReportReason();
 
   VideoAbuseReportReason.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = VideoAbuseReportReasonSnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = VideoAbuseReportReasonSnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -17667,16 +17666,16 @@ class VideoAbuseReportReason {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -17702,23 +17701,23 @@ class VideoAbuseReportReasonListResponse {
   VideoAbuseReportReasonListResponse();
 
   VideoAbuseReportReasonListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<VideoAbuseReportReason>(
               (value) => VideoAbuseReportReason.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -17726,19 +17725,19 @@ class VideoAbuseReportReasonListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -17756,11 +17755,11 @@ class VideoAbuseReportReasonSnippet {
   VideoAbuseReportReasonSnippet();
 
   VideoAbuseReportReasonSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("label")) {
-      label = _json["label"];
+    if (_json.containsKey('label')) {
+      label = _json['label'];
     }
-    if (_json.containsKey("secondaryReasons")) {
-      secondaryReasons = (_json["secondaryReasons"] as core.List)
+    if (_json.containsKey('secondaryReasons')) {
+      secondaryReasons = (_json['secondaryReasons'] as core.List)
           .map<VideoAbuseReportSecondaryReason>(
               (value) => VideoAbuseReportSecondaryReason.fromJson(value))
           .toList();
@@ -17771,10 +17770,10 @@ class VideoAbuseReportReasonSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (label != null) {
-      _json["label"] = label;
+      _json['label'] = label;
     }
     if (secondaryReasons != null) {
-      _json["secondaryReasons"] =
+      _json['secondaryReasons'] =
           secondaryReasons.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -17791,11 +17790,11 @@ class VideoAbuseReportSecondaryReason {
   VideoAbuseReportSecondaryReason();
 
   VideoAbuseReportSecondaryReason.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("label")) {
-      label = _json["label"];
+    if (_json.containsKey('label')) {
+      label = _json['label'];
     }
   }
 
@@ -17803,10 +17802,10 @@ class VideoAbuseReportSecondaryReason {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (label != null) {
-      _json["label"] = label;
+      _json['label'] = label;
     }
     return _json;
   }
@@ -17835,14 +17834,14 @@ class VideoAgeGating {
   VideoAgeGating();
 
   VideoAgeGating.fromJson(core.Map _json) {
-    if (_json.containsKey("alcoholContent")) {
-      alcoholContent = _json["alcoholContent"];
+    if (_json.containsKey('alcoholContent')) {
+      alcoholContent = _json['alcoholContent'];
     }
-    if (_json.containsKey("restricted")) {
-      restricted = _json["restricted"];
+    if (_json.containsKey('restricted')) {
+      restricted = _json['restricted'];
     }
-    if (_json.containsKey("videoGameRating")) {
-      videoGameRating = _json["videoGameRating"];
+    if (_json.containsKey('videoGameRating')) {
+      videoGameRating = _json['videoGameRating'];
     }
   }
 
@@ -17850,13 +17849,13 @@ class VideoAgeGating {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (alcoholContent != null) {
-      _json["alcoholContent"] = alcoholContent;
+      _json['alcoholContent'] = alcoholContent;
     }
     if (restricted != null) {
-      _json["restricted"] = restricted;
+      _json['restricted'] = restricted;
     }
     if (videoGameRating != null) {
-      _json["videoGameRating"] = videoGameRating;
+      _json['videoGameRating'] = videoGameRating;
     }
     return _json;
   }
@@ -17882,17 +17881,17 @@ class VideoCategory {
   VideoCategory();
 
   VideoCategory.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("snippet")) {
-      snippet = VideoCategorySnippet.fromJson(_json["snippet"]);
+    if (_json.containsKey('snippet')) {
+      snippet = VideoCategorySnippet.fromJson(_json['snippet']);
     }
   }
 
@@ -17900,16 +17899,16 @@ class VideoCategory {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = snippet.toJson();
+      _json['snippet'] = snippet.toJson();
     }
     return _json;
   }
@@ -17949,34 +17948,34 @@ class VideoCategoryListResponse {
   VideoCategoryListResponse();
 
   VideoCategoryListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<VideoCategory>((value) => VideoCategory.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -17984,31 +17983,31 @@ class VideoCategoryListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -18027,14 +18026,14 @@ class VideoCategorySnippet {
   VideoCategorySnippet();
 
   VideoCategorySnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("assignable")) {
-      assignable = _json["assignable"];
+    if (_json.containsKey('assignable')) {
+      assignable = _json['assignable'];
     }
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -18042,13 +18041,13 @@ class VideoCategorySnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (assignable != null) {
-      _json["assignable"] = assignable;
+      _json['assignable'] = assignable;
     }
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -18113,36 +18112,36 @@ class VideoContentDetails {
   VideoContentDetails();
 
   VideoContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("caption")) {
-      caption = _json["caption"];
+    if (_json.containsKey('caption')) {
+      caption = _json['caption'];
     }
-    if (_json.containsKey("contentRating")) {
-      contentRating = ContentRating.fromJson(_json["contentRating"]);
+    if (_json.containsKey('contentRating')) {
+      contentRating = ContentRating.fromJson(_json['contentRating']);
     }
-    if (_json.containsKey("countryRestriction")) {
-      countryRestriction = AccessPolicy.fromJson(_json["countryRestriction"]);
+    if (_json.containsKey('countryRestriction')) {
+      countryRestriction = AccessPolicy.fromJson(_json['countryRestriction']);
     }
-    if (_json.containsKey("definition")) {
-      definition = _json["definition"];
+    if (_json.containsKey('definition')) {
+      definition = _json['definition'];
     }
-    if (_json.containsKey("dimension")) {
-      dimension = _json["dimension"];
+    if (_json.containsKey('dimension')) {
+      dimension = _json['dimension'];
     }
-    if (_json.containsKey("duration")) {
-      duration = _json["duration"];
+    if (_json.containsKey('duration')) {
+      duration = _json['duration'];
     }
-    if (_json.containsKey("hasCustomThumbnail")) {
-      hasCustomThumbnail = _json["hasCustomThumbnail"];
+    if (_json.containsKey('hasCustomThumbnail')) {
+      hasCustomThumbnail = _json['hasCustomThumbnail'];
     }
-    if (_json.containsKey("licensedContent")) {
-      licensedContent = _json["licensedContent"];
+    if (_json.containsKey('licensedContent')) {
+      licensedContent = _json['licensedContent'];
     }
-    if (_json.containsKey("projection")) {
-      projection = _json["projection"];
+    if (_json.containsKey('projection')) {
+      projection = _json['projection'];
     }
-    if (_json.containsKey("regionRestriction")) {
+    if (_json.containsKey('regionRestriction')) {
       regionRestriction = VideoContentDetailsRegionRestriction.fromJson(
-          _json["regionRestriction"]);
+          _json['regionRestriction']);
     }
   }
 
@@ -18150,34 +18149,34 @@ class VideoContentDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (caption != null) {
-      _json["caption"] = caption;
+      _json['caption'] = caption;
     }
     if (contentRating != null) {
-      _json["contentRating"] = contentRating.toJson();
+      _json['contentRating'] = contentRating.toJson();
     }
     if (countryRestriction != null) {
-      _json["countryRestriction"] = countryRestriction.toJson();
+      _json['countryRestriction'] = countryRestriction.toJson();
     }
     if (definition != null) {
-      _json["definition"] = definition;
+      _json['definition'] = definition;
     }
     if (dimension != null) {
-      _json["dimension"] = dimension;
+      _json['dimension'] = dimension;
     }
     if (duration != null) {
-      _json["duration"] = duration;
+      _json['duration'] = duration;
     }
     if (hasCustomThumbnail != null) {
-      _json["hasCustomThumbnail"] = hasCustomThumbnail;
+      _json['hasCustomThumbnail'] = hasCustomThumbnail;
     }
     if (licensedContent != null) {
-      _json["licensedContent"] = licensedContent;
+      _json['licensedContent'] = licensedContent;
     }
     if (projection != null) {
-      _json["projection"] = projection;
+      _json['projection'] = projection;
     }
     if (regionRestriction != null) {
-      _json["regionRestriction"] = regionRestriction.toJson();
+      _json['regionRestriction'] = regionRestriction.toJson();
     }
     return _json;
   }
@@ -18201,11 +18200,11 @@ class VideoContentDetailsRegionRestriction {
   VideoContentDetailsRegionRestriction();
 
   VideoContentDetailsRegionRestriction.fromJson(core.Map _json) {
-    if (_json.containsKey("allowed")) {
-      allowed = (_json["allowed"] as core.List).cast<core.String>();
+    if (_json.containsKey('allowed')) {
+      allowed = (_json['allowed'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("blocked")) {
-      blocked = (_json["blocked"] as core.List).cast<core.String>();
+    if (_json.containsKey('blocked')) {
+      blocked = (_json['blocked'] as core.List).cast<core.String>();
     }
   }
 
@@ -18213,10 +18212,10 @@ class VideoContentDetailsRegionRestriction {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (allowed != null) {
-      _json["allowed"] = allowed;
+      _json['allowed'] = allowed;
     }
     if (blocked != null) {
-      _json["blocked"] = blocked;
+      _json['blocked'] = blocked;
     }
     return _json;
   }
@@ -18275,35 +18274,35 @@ class VideoFileDetails {
   VideoFileDetails();
 
   VideoFileDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("audioStreams")) {
-      audioStreams = (_json["audioStreams"] as core.List)
+    if (_json.containsKey('audioStreams')) {
+      audioStreams = (_json['audioStreams'] as core.List)
           .map<VideoFileDetailsAudioStream>(
               (value) => VideoFileDetailsAudioStream.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("bitrateBps")) {
-      bitrateBps = _json["bitrateBps"];
+    if (_json.containsKey('bitrateBps')) {
+      bitrateBps = _json['bitrateBps'];
     }
-    if (_json.containsKey("container")) {
-      container = _json["container"];
+    if (_json.containsKey('container')) {
+      container = _json['container'];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'];
     }
-    if (_json.containsKey("durationMs")) {
-      durationMs = _json["durationMs"];
+    if (_json.containsKey('durationMs')) {
+      durationMs = _json['durationMs'];
     }
-    if (_json.containsKey("fileName")) {
-      fileName = _json["fileName"];
+    if (_json.containsKey('fileName')) {
+      fileName = _json['fileName'];
     }
-    if (_json.containsKey("fileSize")) {
-      fileSize = _json["fileSize"];
+    if (_json.containsKey('fileSize')) {
+      fileSize = _json['fileSize'];
     }
-    if (_json.containsKey("fileType")) {
-      fileType = _json["fileType"];
+    if (_json.containsKey('fileType')) {
+      fileType = _json['fileType'];
     }
-    if (_json.containsKey("videoStreams")) {
-      videoStreams = (_json["videoStreams"] as core.List)
+    if (_json.containsKey('videoStreams')) {
+      videoStreams = (_json['videoStreams'] as core.List)
           .map<VideoFileDetailsVideoStream>(
               (value) => VideoFileDetailsVideoStream.fromJson(value))
           .toList();
@@ -18314,32 +18313,32 @@ class VideoFileDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (audioStreams != null) {
-      _json["audioStreams"] =
+      _json['audioStreams'] =
           audioStreams.map((value) => value.toJson()).toList();
     }
     if (bitrateBps != null) {
-      _json["bitrateBps"] = bitrateBps;
+      _json['bitrateBps'] = bitrateBps;
     }
     if (container != null) {
-      _json["container"] = container;
+      _json['container'] = container;
     }
     if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+      _json['creationTime'] = creationTime;
     }
     if (durationMs != null) {
-      _json["durationMs"] = durationMs;
+      _json['durationMs'] = durationMs;
     }
     if (fileName != null) {
-      _json["fileName"] = fileName;
+      _json['fileName'] = fileName;
     }
     if (fileSize != null) {
-      _json["fileSize"] = fileSize;
+      _json['fileSize'] = fileSize;
     }
     if (fileType != null) {
-      _json["fileType"] = fileType;
+      _json['fileType'] = fileType;
     }
     if (videoStreams != null) {
-      _json["videoStreams"] =
+      _json['videoStreams'] =
           videoStreams.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -18364,17 +18363,17 @@ class VideoFileDetailsAudioStream {
   VideoFileDetailsAudioStream();
 
   VideoFileDetailsAudioStream.fromJson(core.Map _json) {
-    if (_json.containsKey("bitrateBps")) {
-      bitrateBps = _json["bitrateBps"];
+    if (_json.containsKey('bitrateBps')) {
+      bitrateBps = _json['bitrateBps'];
     }
-    if (_json.containsKey("channelCount")) {
-      channelCount = _json["channelCount"];
+    if (_json.containsKey('channelCount')) {
+      channelCount = _json['channelCount'];
     }
-    if (_json.containsKey("codec")) {
-      codec = _json["codec"];
+    if (_json.containsKey('codec')) {
+      codec = _json['codec'];
     }
-    if (_json.containsKey("vendor")) {
-      vendor = _json["vendor"];
+    if (_json.containsKey('vendor')) {
+      vendor = _json['vendor'];
     }
   }
 
@@ -18382,16 +18381,16 @@ class VideoFileDetailsAudioStream {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (bitrateBps != null) {
-      _json["bitrateBps"] = bitrateBps;
+      _json['bitrateBps'] = bitrateBps;
     }
     if (channelCount != null) {
-      _json["channelCount"] = channelCount;
+      _json['channelCount'] = channelCount;
     }
     if (codec != null) {
-      _json["codec"] = codec;
+      _json['codec'] = codec;
     }
     if (vendor != null) {
-      _json["vendor"] = vendor;
+      _json['vendor'] = vendor;
     }
     return _json;
   }
@@ -18436,29 +18435,29 @@ class VideoFileDetailsVideoStream {
   VideoFileDetailsVideoStream();
 
   VideoFileDetailsVideoStream.fromJson(core.Map _json) {
-    if (_json.containsKey("aspectRatio")) {
-      aspectRatio = _json["aspectRatio"].toDouble();
+    if (_json.containsKey('aspectRatio')) {
+      aspectRatio = _json['aspectRatio'].toDouble();
     }
-    if (_json.containsKey("bitrateBps")) {
-      bitrateBps = _json["bitrateBps"];
+    if (_json.containsKey('bitrateBps')) {
+      bitrateBps = _json['bitrateBps'];
     }
-    if (_json.containsKey("codec")) {
-      codec = _json["codec"];
+    if (_json.containsKey('codec')) {
+      codec = _json['codec'];
     }
-    if (_json.containsKey("frameRateFps")) {
-      frameRateFps = _json["frameRateFps"].toDouble();
+    if (_json.containsKey('frameRateFps')) {
+      frameRateFps = _json['frameRateFps'].toDouble();
     }
-    if (_json.containsKey("heightPixels")) {
-      heightPixels = _json["heightPixels"];
+    if (_json.containsKey('heightPixels')) {
+      heightPixels = _json['heightPixels'];
     }
-    if (_json.containsKey("rotation")) {
-      rotation = _json["rotation"];
+    if (_json.containsKey('rotation')) {
+      rotation = _json['rotation'];
     }
-    if (_json.containsKey("vendor")) {
-      vendor = _json["vendor"];
+    if (_json.containsKey('vendor')) {
+      vendor = _json['vendor'];
     }
-    if (_json.containsKey("widthPixels")) {
-      widthPixels = _json["widthPixels"];
+    if (_json.containsKey('widthPixels')) {
+      widthPixels = _json['widthPixels'];
     }
   }
 
@@ -18466,28 +18465,28 @@ class VideoFileDetailsVideoStream {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (aspectRatio != null) {
-      _json["aspectRatio"] = aspectRatio;
+      _json['aspectRatio'] = aspectRatio;
     }
     if (bitrateBps != null) {
-      _json["bitrateBps"] = bitrateBps;
+      _json['bitrateBps'] = bitrateBps;
     }
     if (codec != null) {
-      _json["codec"] = codec;
+      _json['codec'] = codec;
     }
     if (frameRateFps != null) {
-      _json["frameRateFps"] = frameRateFps;
+      _json['frameRateFps'] = frameRateFps;
     }
     if (heightPixels != null) {
-      _json["heightPixels"] = heightPixels;
+      _json['heightPixels'] = heightPixels;
     }
     if (rotation != null) {
-      _json["rotation"] = rotation;
+      _json['rotation'] = rotation;
     }
     if (vendor != null) {
-      _json["vendor"] = vendor;
+      _json['vendor'] = vendor;
     }
     if (widthPixels != null) {
-      _json["widthPixels"] = widthPixels;
+      _json['widthPixels'] = widthPixels;
     }
     return _json;
   }
@@ -18523,34 +18522,34 @@ class VideoListResponse {
   VideoListResponse();
 
   VideoListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Video>((value) => Video.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
+    if (_json.containsKey('pageInfo')) {
+      pageInfo = PageInfo.fromJson(_json['pageInfo']);
     }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
+    if (_json.containsKey('prevPageToken')) {
+      prevPageToken = _json['prevPageToken'];
     }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
+    if (_json.containsKey('tokenPagination')) {
+      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -18558,31 +18557,31 @@ class VideoListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = pageInfo.toJson();
+      _json['pageInfo'] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
+      _json['prevPageToken'] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = tokenPagination.toJson();
+      _json['tokenPagination'] = tokenPagination.toJson();
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -18628,23 +18627,23 @@ class VideoLiveStreamingDetails {
   VideoLiveStreamingDetails();
 
   VideoLiveStreamingDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("activeLiveChatId")) {
-      activeLiveChatId = _json["activeLiveChatId"];
+    if (_json.containsKey('activeLiveChatId')) {
+      activeLiveChatId = _json['activeLiveChatId'];
     }
-    if (_json.containsKey("actualEndTime")) {
-      actualEndTime = _json["actualEndTime"];
+    if (_json.containsKey('actualEndTime')) {
+      actualEndTime = _json['actualEndTime'];
     }
-    if (_json.containsKey("actualStartTime")) {
-      actualStartTime = _json["actualStartTime"];
+    if (_json.containsKey('actualStartTime')) {
+      actualStartTime = _json['actualStartTime'];
     }
-    if (_json.containsKey("concurrentViewers")) {
-      concurrentViewers = _json["concurrentViewers"];
+    if (_json.containsKey('concurrentViewers')) {
+      concurrentViewers = _json['concurrentViewers'];
     }
-    if (_json.containsKey("scheduledEndTime")) {
-      scheduledEndTime = _json["scheduledEndTime"];
+    if (_json.containsKey('scheduledEndTime')) {
+      scheduledEndTime = _json['scheduledEndTime'];
     }
-    if (_json.containsKey("scheduledStartTime")) {
-      scheduledStartTime = _json["scheduledStartTime"];
+    if (_json.containsKey('scheduledStartTime')) {
+      scheduledStartTime = _json['scheduledStartTime'];
     }
   }
 
@@ -18652,22 +18651,22 @@ class VideoLiveStreamingDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (activeLiveChatId != null) {
-      _json["activeLiveChatId"] = activeLiveChatId;
+      _json['activeLiveChatId'] = activeLiveChatId;
     }
     if (actualEndTime != null) {
-      _json["actualEndTime"] = actualEndTime;
+      _json['actualEndTime'] = actualEndTime;
     }
     if (actualStartTime != null) {
-      _json["actualStartTime"] = actualStartTime;
+      _json['actualStartTime'] = actualStartTime;
     }
     if (concurrentViewers != null) {
-      _json["concurrentViewers"] = concurrentViewers;
+      _json['concurrentViewers'] = concurrentViewers;
     }
     if (scheduledEndTime != null) {
-      _json["scheduledEndTime"] = scheduledEndTime;
+      _json['scheduledEndTime'] = scheduledEndTime;
     }
     if (scheduledStartTime != null) {
-      _json["scheduledStartTime"] = scheduledStartTime;
+      _json['scheduledStartTime'] = scheduledStartTime;
     }
     return _json;
   }
@@ -18684,11 +18683,11 @@ class VideoLocalization {
   VideoLocalization();
 
   VideoLocalization.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -18696,10 +18695,10 @@ class VideoLocalization {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -18713,8 +18712,8 @@ class VideoMonetizationDetails {
   VideoMonetizationDetails();
 
   VideoMonetizationDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("access")) {
-      access = AccessPolicy.fromJson(_json["access"]);
+    if (_json.containsKey('access')) {
+      access = AccessPolicy.fromJson(_json['access']);
     }
   }
 
@@ -18722,7 +18721,7 @@ class VideoMonetizationDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (access != null) {
-      _json["access"] = access.toJson();
+      _json['access'] = access.toJson();
     }
     return _json;
   }
@@ -18741,14 +18740,14 @@ class VideoPlayer {
   VideoPlayer();
 
   VideoPlayer.fromJson(core.Map _json) {
-    if (_json.containsKey("embedHeight")) {
-      embedHeight = _json["embedHeight"];
+    if (_json.containsKey('embedHeight')) {
+      embedHeight = _json['embedHeight'];
     }
-    if (_json.containsKey("embedHtml")) {
-      embedHtml = _json["embedHtml"];
+    if (_json.containsKey('embedHtml')) {
+      embedHtml = _json['embedHtml'];
     }
-    if (_json.containsKey("embedWidth")) {
-      embedWidth = _json["embedWidth"];
+    if (_json.containsKey('embedWidth')) {
+      embedWidth = _json['embedWidth'];
     }
   }
 
@@ -18756,13 +18755,13 @@ class VideoPlayer {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (embedHeight != null) {
-      _json["embedHeight"] = embedHeight;
+      _json['embedHeight'] = embedHeight;
     }
     if (embedHtml != null) {
-      _json["embedHtml"] = embedHtml;
+      _json['embedHtml'] = embedHtml;
     }
     if (embedWidth != null) {
-      _json["embedWidth"] = embedWidth;
+      _json['embedWidth'] = embedWidth;
     }
     return _json;
   }
@@ -18825,30 +18824,30 @@ class VideoProcessingDetails {
   VideoProcessingDetails();
 
   VideoProcessingDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("editorSuggestionsAvailability")) {
-      editorSuggestionsAvailability = _json["editorSuggestionsAvailability"];
+    if (_json.containsKey('editorSuggestionsAvailability')) {
+      editorSuggestionsAvailability = _json['editorSuggestionsAvailability'];
     }
-    if (_json.containsKey("fileDetailsAvailability")) {
-      fileDetailsAvailability = _json["fileDetailsAvailability"];
+    if (_json.containsKey('fileDetailsAvailability')) {
+      fileDetailsAvailability = _json['fileDetailsAvailability'];
     }
-    if (_json.containsKey("processingFailureReason")) {
-      processingFailureReason = _json["processingFailureReason"];
+    if (_json.containsKey('processingFailureReason')) {
+      processingFailureReason = _json['processingFailureReason'];
     }
-    if (_json.containsKey("processingIssuesAvailability")) {
-      processingIssuesAvailability = _json["processingIssuesAvailability"];
+    if (_json.containsKey('processingIssuesAvailability')) {
+      processingIssuesAvailability = _json['processingIssuesAvailability'];
     }
-    if (_json.containsKey("processingProgress")) {
+    if (_json.containsKey('processingProgress')) {
       processingProgress = VideoProcessingDetailsProcessingProgress.fromJson(
-          _json["processingProgress"]);
+          _json['processingProgress']);
     }
-    if (_json.containsKey("processingStatus")) {
-      processingStatus = _json["processingStatus"];
+    if (_json.containsKey('processingStatus')) {
+      processingStatus = _json['processingStatus'];
     }
-    if (_json.containsKey("tagSuggestionsAvailability")) {
-      tagSuggestionsAvailability = _json["tagSuggestionsAvailability"];
+    if (_json.containsKey('tagSuggestionsAvailability')) {
+      tagSuggestionsAvailability = _json['tagSuggestionsAvailability'];
     }
-    if (_json.containsKey("thumbnailsAvailability")) {
-      thumbnailsAvailability = _json["thumbnailsAvailability"];
+    if (_json.containsKey('thumbnailsAvailability')) {
+      thumbnailsAvailability = _json['thumbnailsAvailability'];
     }
   }
 
@@ -18856,28 +18855,28 @@ class VideoProcessingDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (editorSuggestionsAvailability != null) {
-      _json["editorSuggestionsAvailability"] = editorSuggestionsAvailability;
+      _json['editorSuggestionsAvailability'] = editorSuggestionsAvailability;
     }
     if (fileDetailsAvailability != null) {
-      _json["fileDetailsAvailability"] = fileDetailsAvailability;
+      _json['fileDetailsAvailability'] = fileDetailsAvailability;
     }
     if (processingFailureReason != null) {
-      _json["processingFailureReason"] = processingFailureReason;
+      _json['processingFailureReason'] = processingFailureReason;
     }
     if (processingIssuesAvailability != null) {
-      _json["processingIssuesAvailability"] = processingIssuesAvailability;
+      _json['processingIssuesAvailability'] = processingIssuesAvailability;
     }
     if (processingProgress != null) {
-      _json["processingProgress"] = processingProgress.toJson();
+      _json['processingProgress'] = processingProgress.toJson();
     }
     if (processingStatus != null) {
-      _json["processingStatus"] = processingStatus;
+      _json['processingStatus'] = processingStatus;
     }
     if (tagSuggestionsAvailability != null) {
-      _json["tagSuggestionsAvailability"] = tagSuggestionsAvailability;
+      _json['tagSuggestionsAvailability'] = tagSuggestionsAvailability;
     }
     if (thumbnailsAvailability != null) {
-      _json["thumbnailsAvailability"] = thumbnailsAvailability;
+      _json['thumbnailsAvailability'] = thumbnailsAvailability;
     }
     return _json;
   }
@@ -18906,14 +18905,14 @@ class VideoProcessingDetailsProcessingProgress {
   VideoProcessingDetailsProcessingProgress();
 
   VideoProcessingDetailsProcessingProgress.fromJson(core.Map _json) {
-    if (_json.containsKey("partsProcessed")) {
-      partsProcessed = _json["partsProcessed"];
+    if (_json.containsKey('partsProcessed')) {
+      partsProcessed = _json['partsProcessed'];
     }
-    if (_json.containsKey("partsTotal")) {
-      partsTotal = _json["partsTotal"];
+    if (_json.containsKey('partsTotal')) {
+      partsTotal = _json['partsTotal'];
     }
-    if (_json.containsKey("timeLeftMs")) {
-      timeLeftMs = _json["timeLeftMs"];
+    if (_json.containsKey('timeLeftMs')) {
+      timeLeftMs = _json['timeLeftMs'];
     }
   }
 
@@ -18921,13 +18920,13 @@ class VideoProcessingDetailsProcessingProgress {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (partsProcessed != null) {
-      _json["partsProcessed"] = partsProcessed;
+      _json['partsProcessed'] = partsProcessed;
     }
     if (partsTotal != null) {
-      _json["partsTotal"] = partsTotal;
+      _json['partsTotal'] = partsTotal;
     }
     if (timeLeftMs != null) {
-      _json["timeLeftMs"] = timeLeftMs;
+      _json['timeLeftMs'] = timeLeftMs;
     }
     return _json;
   }
@@ -18941,8 +18940,8 @@ class VideoProjectDetails {
   VideoProjectDetails();
 
   VideoProjectDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("tags")) {
-      tags = (_json["tags"] as core.List).cast<core.String>();
+    if (_json.containsKey('tags')) {
+      tags = (_json['tags'] as core.List).cast<core.String>();
     }
   }
 
@@ -18950,7 +18949,7 @@ class VideoProjectDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (tags != null) {
-      _json["tags"] = tags;
+      _json['tags'] = tags;
     }
     return _json;
   }
@@ -18971,11 +18970,11 @@ class VideoRating {
   VideoRating();
 
   VideoRating.fromJson(core.Map _json) {
-    if (_json.containsKey("rating")) {
-      rating = _json["rating"];
+    if (_json.containsKey('rating')) {
+      rating = _json['rating'];
     }
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
+    if (_json.containsKey('videoId')) {
+      videoId = _json['videoId'];
     }
   }
 
@@ -18983,10 +18982,10 @@ class VideoRating {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (rating != null) {
-      _json["rating"] = rating;
+      _json['rating'] = rating;
     }
     if (videoId != null) {
-      _json["videoId"] = videoId;
+      _json['videoId'] = videoId;
     }
     return _json;
   }
@@ -19012,22 +19011,22 @@ class VideoRatingListResponse {
   VideoRatingListResponse();
 
   VideoRatingListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<VideoRating>((value) => VideoRating.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'];
     }
   }
 
@@ -19035,19 +19034,19 @@ class VideoRatingListResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (eventId != null) {
-      _json["eventId"] = eventId;
+      _json['eventId'] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (visitorId != null) {
-      _json["visitorId"] = visitorId;
+      _json['visitorId'] = visitorId;
     }
     return _json;
   }
@@ -19068,14 +19067,14 @@ class VideoRecordingDetails {
   VideoRecordingDetails();
 
   VideoRecordingDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("location")) {
-      location = GeoPoint.fromJson(_json["location"]);
+    if (_json.containsKey('location')) {
+      location = GeoPoint.fromJson(_json['location']);
     }
-    if (_json.containsKey("locationDescription")) {
-      locationDescription = _json["locationDescription"];
+    if (_json.containsKey('locationDescription')) {
+      locationDescription = _json['locationDescription'];
     }
-    if (_json.containsKey("recordingDate")) {
-      recordingDate = _json["recordingDate"];
+    if (_json.containsKey('recordingDate')) {
+      recordingDate = _json['recordingDate'];
     }
   }
 
@@ -19083,13 +19082,13 @@ class VideoRecordingDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (location != null) {
-      _json["location"] = location.toJson();
+      _json['location'] = location.toJson();
     }
     if (locationDescription != null) {
-      _json["locationDescription"] = locationDescription;
+      _json['locationDescription'] = locationDescription;
     }
     if (recordingDate != null) {
-      _json["recordingDate"] = recordingDate;
+      _json['recordingDate'] = recordingDate;
     }
     return _json;
   }
@@ -19150,41 +19149,41 @@ class VideoSnippet {
   VideoSnippet();
 
   VideoSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("categoryId")) {
-      categoryId = _json["categoryId"];
+    if (_json.containsKey('categoryId')) {
+      categoryId = _json['categoryId'];
     }
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
+    if (_json.containsKey('channelId')) {
+      channelId = _json['channelId'];
     }
-    if (_json.containsKey("channelTitle")) {
-      channelTitle = _json["channelTitle"];
+    if (_json.containsKey('channelTitle')) {
+      channelTitle = _json['channelTitle'];
     }
-    if (_json.containsKey("defaultAudioLanguage")) {
-      defaultAudioLanguage = _json["defaultAudioLanguage"];
+    if (_json.containsKey('defaultAudioLanguage')) {
+      defaultAudioLanguage = _json['defaultAudioLanguage'];
     }
-    if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = _json["defaultLanguage"];
+    if (_json.containsKey('defaultLanguage')) {
+      defaultLanguage = _json['defaultLanguage'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("liveBroadcastContent")) {
-      liveBroadcastContent = _json["liveBroadcastContent"];
+    if (_json.containsKey('liveBroadcastContent')) {
+      liveBroadcastContent = _json['liveBroadcastContent'];
     }
-    if (_json.containsKey("localized")) {
-      localized = VideoLocalization.fromJson(_json["localized"]);
+    if (_json.containsKey('localized')) {
+      localized = VideoLocalization.fromJson(_json['localized']);
     }
-    if (_json.containsKey("publishedAt")) {
-      publishedAt = _json["publishedAt"];
+    if (_json.containsKey('publishedAt')) {
+      publishedAt = _json['publishedAt'];
     }
-    if (_json.containsKey("tags")) {
-      tags = (_json["tags"] as core.List).cast<core.String>();
+    if (_json.containsKey('tags')) {
+      tags = (_json['tags'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("thumbnails")) {
-      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
+    if (_json.containsKey('thumbnails')) {
+      thumbnails = ThumbnailDetails.fromJson(_json['thumbnails']);
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
   }
 
@@ -19192,40 +19191,40 @@ class VideoSnippet {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoryId != null) {
-      _json["categoryId"] = categoryId;
+      _json['categoryId'] = categoryId;
     }
     if (channelId != null) {
-      _json["channelId"] = channelId;
+      _json['channelId'] = channelId;
     }
     if (channelTitle != null) {
-      _json["channelTitle"] = channelTitle;
+      _json['channelTitle'] = channelTitle;
     }
     if (defaultAudioLanguage != null) {
-      _json["defaultAudioLanguage"] = defaultAudioLanguage;
+      _json['defaultAudioLanguage'] = defaultAudioLanguage;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = defaultLanguage;
+      _json['defaultLanguage'] = defaultLanguage;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (liveBroadcastContent != null) {
-      _json["liveBroadcastContent"] = liveBroadcastContent;
+      _json['liveBroadcastContent'] = liveBroadcastContent;
     }
     if (localized != null) {
-      _json["localized"] = localized.toJson();
+      _json['localized'] = localized.toJson();
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = publishedAt;
+      _json['publishedAt'] = publishedAt;
     }
     if (tags != null) {
-      _json["tags"] = tags;
+      _json['tags'] = tags;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.toJson();
+      _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     return _json;
   }
@@ -19255,20 +19254,20 @@ class VideoStatistics {
   VideoStatistics();
 
   VideoStatistics.fromJson(core.Map _json) {
-    if (_json.containsKey("commentCount")) {
-      commentCount = _json["commentCount"];
+    if (_json.containsKey('commentCount')) {
+      commentCount = _json['commentCount'];
     }
-    if (_json.containsKey("dislikeCount")) {
-      dislikeCount = _json["dislikeCount"];
+    if (_json.containsKey('dislikeCount')) {
+      dislikeCount = _json['dislikeCount'];
     }
-    if (_json.containsKey("favoriteCount")) {
-      favoriteCount = _json["favoriteCount"];
+    if (_json.containsKey('favoriteCount')) {
+      favoriteCount = _json['favoriteCount'];
     }
-    if (_json.containsKey("likeCount")) {
-      likeCount = _json["likeCount"];
+    if (_json.containsKey('likeCount')) {
+      likeCount = _json['likeCount'];
     }
-    if (_json.containsKey("viewCount")) {
-      viewCount = _json["viewCount"];
+    if (_json.containsKey('viewCount')) {
+      viewCount = _json['viewCount'];
     }
   }
 
@@ -19276,19 +19275,19 @@ class VideoStatistics {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (commentCount != null) {
-      _json["commentCount"] = commentCount;
+      _json['commentCount'] = commentCount;
     }
     if (dislikeCount != null) {
-      _json["dislikeCount"] = dislikeCount;
+      _json['dislikeCount'] = dislikeCount;
     }
     if (favoriteCount != null) {
-      _json["favoriteCount"] = favoriteCount;
+      _json['favoriteCount'] = favoriteCount;
     }
     if (likeCount != null) {
-      _json["likeCount"] = likeCount;
+      _json['likeCount'] = likeCount;
     }
     if (viewCount != null) {
-      _json["viewCount"] = viewCount;
+      _json['viewCount'] = viewCount;
     }
     return _json;
   }
@@ -19366,35 +19365,35 @@ class VideoStatus {
   VideoStatus();
 
   VideoStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("embeddable")) {
-      embeddable = _json["embeddable"];
+    if (_json.containsKey('embeddable')) {
+      embeddable = _json['embeddable'];
     }
-    if (_json.containsKey("failureReason")) {
-      failureReason = _json["failureReason"];
+    if (_json.containsKey('failureReason')) {
+      failureReason = _json['failureReason'];
     }
-    if (_json.containsKey("license")) {
-      license = _json["license"];
+    if (_json.containsKey('license')) {
+      license = _json['license'];
     }
-    if (_json.containsKey("madeForKids")) {
-      madeForKids = _json["madeForKids"];
+    if (_json.containsKey('madeForKids')) {
+      madeForKids = _json['madeForKids'];
     }
-    if (_json.containsKey("privacyStatus")) {
-      privacyStatus = _json["privacyStatus"];
+    if (_json.containsKey('privacyStatus')) {
+      privacyStatus = _json['privacyStatus'];
     }
-    if (_json.containsKey("publicStatsViewable")) {
-      publicStatsViewable = _json["publicStatsViewable"];
+    if (_json.containsKey('publicStatsViewable')) {
+      publicStatsViewable = _json['publicStatsViewable'];
     }
-    if (_json.containsKey("publishAt")) {
-      publishAt = _json["publishAt"];
+    if (_json.containsKey('publishAt')) {
+      publishAt = _json['publishAt'];
     }
-    if (_json.containsKey("rejectionReason")) {
-      rejectionReason = _json["rejectionReason"];
+    if (_json.containsKey('rejectionReason')) {
+      rejectionReason = _json['rejectionReason'];
     }
-    if (_json.containsKey("selfDeclaredMadeForKids")) {
-      selfDeclaredMadeForKids = _json["selfDeclaredMadeForKids"];
+    if (_json.containsKey('selfDeclaredMadeForKids')) {
+      selfDeclaredMadeForKids = _json['selfDeclaredMadeForKids'];
     }
-    if (_json.containsKey("uploadStatus")) {
-      uploadStatus = _json["uploadStatus"];
+    if (_json.containsKey('uploadStatus')) {
+      uploadStatus = _json['uploadStatus'];
     }
   }
 
@@ -19402,34 +19401,34 @@ class VideoStatus {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (embeddable != null) {
-      _json["embeddable"] = embeddable;
+      _json['embeddable'] = embeddable;
     }
     if (failureReason != null) {
-      _json["failureReason"] = failureReason;
+      _json['failureReason'] = failureReason;
     }
     if (license != null) {
-      _json["license"] = license;
+      _json['license'] = license;
     }
     if (madeForKids != null) {
-      _json["madeForKids"] = madeForKids;
+      _json['madeForKids'] = madeForKids;
     }
     if (privacyStatus != null) {
-      _json["privacyStatus"] = privacyStatus;
+      _json['privacyStatus'] = privacyStatus;
     }
     if (publicStatsViewable != null) {
-      _json["publicStatsViewable"] = publicStatsViewable;
+      _json['publicStatsViewable'] = publicStatsViewable;
     }
     if (publishAt != null) {
-      _json["publishAt"] = publishAt;
+      _json['publishAt'] = publishAt;
     }
     if (rejectionReason != null) {
-      _json["rejectionReason"] = rejectionReason;
+      _json['rejectionReason'] = rejectionReason;
     }
     if (selfDeclaredMadeForKids != null) {
-      _json["selfDeclaredMadeForKids"] = selfDeclaredMadeForKids;
+      _json['selfDeclaredMadeForKids'] = selfDeclaredMadeForKids;
     }
     if (uploadStatus != null) {
-      _json["uploadStatus"] = uploadStatus;
+      _json['uploadStatus'] = uploadStatus;
     }
     return _json;
   }
@@ -19468,24 +19467,24 @@ class VideoSuggestions {
   VideoSuggestions();
 
   VideoSuggestions.fromJson(core.Map _json) {
-    if (_json.containsKey("editorSuggestions")) {
+    if (_json.containsKey('editorSuggestions')) {
       editorSuggestions =
-          (_json["editorSuggestions"] as core.List).cast<core.String>();
+          (_json['editorSuggestions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("processingErrors")) {
+    if (_json.containsKey('processingErrors')) {
       processingErrors =
-          (_json["processingErrors"] as core.List).cast<core.String>();
+          (_json['processingErrors'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("processingHints")) {
+    if (_json.containsKey('processingHints')) {
       processingHints =
-          (_json["processingHints"] as core.List).cast<core.String>();
+          (_json['processingHints'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("processingWarnings")) {
+    if (_json.containsKey('processingWarnings')) {
       processingWarnings =
-          (_json["processingWarnings"] as core.List).cast<core.String>();
+          (_json['processingWarnings'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("tagSuggestions")) {
-      tagSuggestions = (_json["tagSuggestions"] as core.List)
+    if (_json.containsKey('tagSuggestions')) {
+      tagSuggestions = (_json['tagSuggestions'] as core.List)
           .map<VideoSuggestionsTagSuggestion>(
               (value) => VideoSuggestionsTagSuggestion.fromJson(value))
           .toList();
@@ -19496,19 +19495,19 @@ class VideoSuggestions {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (editorSuggestions != null) {
-      _json["editorSuggestions"] = editorSuggestions;
+      _json['editorSuggestions'] = editorSuggestions;
     }
     if (processingErrors != null) {
-      _json["processingErrors"] = processingErrors;
+      _json['processingErrors'] = processingErrors;
     }
     if (processingHints != null) {
-      _json["processingHints"] = processingHints;
+      _json['processingHints'] = processingHints;
     }
     if (processingWarnings != null) {
-      _json["processingWarnings"] = processingWarnings;
+      _json['processingWarnings'] = processingWarnings;
     }
     if (tagSuggestions != null) {
-      _json["tagSuggestions"] =
+      _json['tagSuggestions'] =
           tagSuggestions.map((value) => value.toJson()).toList();
     }
     return _json;
@@ -19530,12 +19529,12 @@ class VideoSuggestionsTagSuggestion {
   VideoSuggestionsTagSuggestion();
 
   VideoSuggestionsTagSuggestion.fromJson(core.Map _json) {
-    if (_json.containsKey("categoryRestricts")) {
+    if (_json.containsKey('categoryRestricts')) {
       categoryRestricts =
-          (_json["categoryRestricts"] as core.List).cast<core.String>();
+          (_json['categoryRestricts'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("tag")) {
-      tag = _json["tag"];
+    if (_json.containsKey('tag')) {
+      tag = _json['tag'];
     }
   }
 
@@ -19543,10 +19542,10 @@ class VideoSuggestionsTagSuggestion {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (categoryRestricts != null) {
-      _json["categoryRestricts"] = categoryRestricts;
+      _json['categoryRestricts'] = categoryRestricts;
     }
     if (tag != null) {
-      _json["tag"] = tag;
+      _json['tag'] = tag;
     }
     return _json;
   }
@@ -19573,16 +19572,16 @@ class VideoTopicDetails {
   VideoTopicDetails();
 
   VideoTopicDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("relevantTopicIds")) {
+    if (_json.containsKey('relevantTopicIds')) {
       relevantTopicIds =
-          (_json["relevantTopicIds"] as core.List).cast<core.String>();
+          (_json['relevantTopicIds'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("topicCategories")) {
+    if (_json.containsKey('topicCategories')) {
       topicCategories =
-          (_json["topicCategories"] as core.List).cast<core.String>();
+          (_json['topicCategories'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("topicIds")) {
-      topicIds = (_json["topicIds"] as core.List).cast<core.String>();
+    if (_json.containsKey('topicIds')) {
+      topicIds = (_json['topicIds'] as core.List).cast<core.String>();
     }
   }
 
@@ -19590,13 +19589,13 @@ class VideoTopicDetails {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (relevantTopicIds != null) {
-      _json["relevantTopicIds"] = relevantTopicIds;
+      _json['relevantTopicIds'] = relevantTopicIds;
     }
     if (topicCategories != null) {
-      _json["topicCategories"] = topicCategories;
+      _json['topicCategories'] = topicCategories;
     }
     if (topicIds != null) {
-      _json["topicIds"] = topicIds;
+      _json['topicIds'] = topicIds;
     }
     return _json;
   }
@@ -19617,14 +19616,14 @@ class WatchSettings {
   WatchSettings();
 
   WatchSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundColor")) {
-      backgroundColor = _json["backgroundColor"];
+    if (_json.containsKey('backgroundColor')) {
+      backgroundColor = _json['backgroundColor'];
     }
-    if (_json.containsKey("featuredPlaylistId")) {
-      featuredPlaylistId = _json["featuredPlaylistId"];
+    if (_json.containsKey('featuredPlaylistId')) {
+      featuredPlaylistId = _json['featuredPlaylistId'];
     }
-    if (_json.containsKey("textColor")) {
-      textColor = _json["textColor"];
+    if (_json.containsKey('textColor')) {
+      textColor = _json['textColor'];
     }
   }
 
@@ -19632,13 +19631,13 @@ class WatchSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backgroundColor != null) {
-      _json["backgroundColor"] = backgroundColor;
+      _json['backgroundColor'] = backgroundColor;
     }
     if (featuredPlaylistId != null) {
-      _json["featuredPlaylistId"] = featuredPlaylistId;
+      _json['featuredPlaylistId'] = featuredPlaylistId;
     }
     if (textColor != null) {
-      _json["textColor"] = textColor;
+      _json['textColor'] = textColor;
     }
     return _json;
   }

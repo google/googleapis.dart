@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -44,11 +43,11 @@ const core.String USER_AGENT = 'dart-api-client adsense/v1.4';
 /// Accesses AdSense publishers' inventory and generates performance reports.
 class AdsenseApi {
   /// View and manage your AdSense data
-  static const AdsenseScope = "https://www.googleapis.com/auth/adsense";
+  static const AdsenseScope = 'https://www.googleapis.com/auth/adsense';
 
   /// View your AdSense data
   static const AdsenseReadonlyScope =
-      "https://www.googleapis.com/auth/adsense.readonly";
+      'https://www.googleapis.com/auth/adsense.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -66,8 +65,8 @@ class AdsenseApi {
   UrlchannelsResourceApi get urlchannels => UrlchannelsResourceApi(_requester);
 
   AdsenseApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "adsense/v1.4/"})
+      {core.String rootUrl = 'https://www.googleapis.com/',
+      core.String servicePath = 'adsense/v1.4/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -124,20 +123,20 @@ class AccountsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (tree != null) {
-      _queryParams["tree"] = ["${tree}"];
+      _queryParams['tree'] = ['${tree}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -182,20 +181,20 @@ class AccountsResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -246,16 +245,16 @@ class AccountsAdclientsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (tagPartner != null) {
-      _queryParams["tagPartner"] = [tagPartner];
+      _queryParams['tagPartner'] = [tagPartner];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -266,7 +265,7 @@ class AccountsAdclientsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -314,16 +313,16 @@ class AccountsAdclientsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -332,7 +331,7 @@ class AccountsAdclientsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -386,16 +385,16 @@ class AccountsAdunitsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (adUnitId == null) {
-      throw core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError('Parameter adUnitId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -407,7 +406,7 @@ class AccountsAdunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -451,16 +450,16 @@ class AccountsAdunitsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (adUnitId == null) {
-      throw core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError('Parameter adUnitId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -473,7 +472,7 @@ class AccountsAdunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -527,22 +526,22 @@ class AccountsAdunitsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
+      _queryParams['includeInactive'] = ['${includeInactive}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -553,7 +552,7 @@ class AccountsAdunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -614,22 +613,22 @@ class AccountsAdunitsCustomchannelsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (adUnitId == null) {
-      throw core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError('Parameter adUnitId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -642,7 +641,7 @@ class AccountsAdunitsCustomchannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -688,13 +687,13 @@ class AccountsAlertsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (alertId == null) {
-      throw core.ArgumentError("Parameter alertId is required.");
+      throw core.ArgumentError('Parameter alertId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -706,7 +705,7 @@ class AccountsAlertsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -749,13 +748,13 @@ class AccountsAlertsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -763,7 +762,7 @@ class AccountsAlertsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -818,16 +817,16 @@ class AccountsCustomchannelsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (customChannelId == null) {
-      throw core.ArgumentError("Parameter customChannelId is required.");
+      throw core.ArgumentError('Parameter customChannelId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -839,7 +838,7 @@ class AccountsCustomchannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -891,19 +890,19 @@ class AccountsCustomchannelsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -914,7 +913,7 @@ class AccountsCustomchannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -978,25 +977,25 @@ class AccountsCustomchannelsAdunitsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (customChannelId == null) {
-      throw core.ArgumentError("Parameter customChannelId is required.");
+      throw core.ArgumentError('Parameter customChannelId is required.');
     }
     if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
+      _queryParams['includeInactive'] = ['${includeInactive}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1009,7 +1008,7 @@ class AccountsCustomchannelsAdunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1054,10 +1053,10 @@ class AccountsPaymentsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url =
@@ -1065,7 +1064,7 @@ class AccountsPaymentsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1177,45 +1176,45 @@ class AccountsReportsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (startDate == null) {
-      throw core.ArgumentError("Parameter startDate is required.");
+      throw core.ArgumentError('Parameter startDate is required.');
     }
-    _queryParams["startDate"] = [startDate];
+    _queryParams['startDate'] = [startDate];
     if (endDate == null) {
-      throw core.ArgumentError("Parameter endDate is required.");
+      throw core.ArgumentError('Parameter endDate is required.');
     }
-    _queryParams["endDate"] = [endDate];
+    _queryParams['endDate'] = [endDate];
     if (useTimezoneReporting != null) {
-      _queryParams["useTimezoneReporting"] = ["${useTimezoneReporting}"];
+      _queryParams['useTimezoneReporting'] = ['${useTimezoneReporting}'];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (currency != null) {
-      _queryParams["currency"] = [currency];
+      _queryParams['currency'] = [currency];
     }
     if (filter != null) {
-      _queryParams["filter"] = filter;
+      _queryParams['filter'] = filter;
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (sort != null) {
-      _queryParams["sort"] = sort;
+      _queryParams['sort'] = sort;
     }
     if (dimension != null) {
-      _queryParams["dimension"] = dimension;
+      _queryParams['dimension'] = dimension;
     }
     if (metric != null) {
-      _queryParams["metric"] = metric;
+      _queryParams['metric'] = metric;
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -1225,7 +1224,7 @@ class AccountsReportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1293,22 +1292,22 @@ class AccountsReportsSavedResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (savedReportId == null) {
-      throw core.ArgumentError("Parameter savedReportId is required.");
+      throw core.ArgumentError('Parameter savedReportId is required.');
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1318,7 +1317,7 @@ class AccountsReportsSavedResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1367,16 +1366,16 @@ class AccountsReportsSavedResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1385,7 +1384,7 @@ class AccountsReportsSavedResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1433,13 +1432,13 @@ class AccountsSavedadstylesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (savedAdStyleId == null) {
-      throw core.ArgumentError("Parameter savedAdStyleId is required.");
+      throw core.ArgumentError('Parameter savedAdStyleId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1449,7 +1448,7 @@ class AccountsSavedadstylesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1497,16 +1496,16 @@ class AccountsSavedadstylesResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1515,7 +1514,7 @@ class AccountsSavedadstylesResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1574,19 +1573,19 @@ class AccountsUrlchannelsResourceApi {
     core.String _body;
 
     if (accountId == null) {
-      throw core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError('Parameter accountId is required.');
     }
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1597,7 +1596,7 @@ class AccountsUrlchannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1648,20 +1647,20 @@ class AdclientsResourceApi {
     core.String _body;
 
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'adclients';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1711,13 +1710,13 @@ class AdunitsResourceApi {
     core.String _body;
 
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (adUnitId == null) {
-      throw core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError('Parameter adUnitId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'adclients/' +
@@ -1727,7 +1726,7 @@ class AdunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1768,13 +1767,13 @@ class AdunitsResourceApi {
     core.String _body;
 
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (adUnitId == null) {
-      throw core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError('Parameter adUnitId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'adclients/' +
@@ -1785,7 +1784,7 @@ class AdunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1836,19 +1835,19 @@ class AdunitsResourceApi {
     core.String _body;
 
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
+      _queryParams['includeInactive'] = ['${includeInactive}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'adclients/' +
@@ -1857,7 +1856,7 @@ class AdunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1915,19 +1914,19 @@ class AdunitsCustomchannelsResourceApi {
     core.String _body;
 
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (adUnitId == null) {
-      throw core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError('Parameter adUnitId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'adclients/' +
@@ -1938,7 +1937,7 @@ class AdunitsCustomchannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1980,10 +1979,10 @@ class AlertsResourceApi {
     core.String _body;
 
     if (alertId == null) {
-      throw core.ArgumentError("Parameter alertId is required.");
+      throw core.ArgumentError('Parameter alertId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1992,7 +1991,7 @@ class AlertsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2032,17 +2031,17 @@ class AlertsResourceApi {
     core.String _body;
 
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'alerts';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2092,13 +2091,13 @@ class CustomchannelsResourceApi {
     core.String _body;
 
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (customChannelId == null) {
-      throw core.ArgumentError("Parameter customChannelId is required.");
+      throw core.ArgumentError('Parameter customChannelId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'adclients/' +
@@ -2108,7 +2107,7 @@ class CustomchannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2157,16 +2156,16 @@ class CustomchannelsResourceApi {
     core.String _body;
 
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'adclients/' +
@@ -2175,7 +2174,7 @@ class CustomchannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2236,22 +2235,22 @@ class CustomchannelsAdunitsResourceApi {
     core.String _body;
 
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (customChannelId == null) {
-      throw core.ArgumentError("Parameter customChannelId is required.");
+      throw core.ArgumentError('Parameter customChannelId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
+      _queryParams['includeInactive'] = ['${includeInactive}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'adclients/' +
@@ -2262,7 +2261,7 @@ class CustomchannelsAdunitsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2315,14 +2314,14 @@ class MetadataDimensionsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'metadata/dimensions';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2363,14 +2362,14 @@ class MetadataMetricsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'metadata/metrics';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2411,14 +2410,14 @@ class PaymentsResourceApi {
     core.String _body;
 
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'payments';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2529,45 +2528,45 @@ class ReportsResourceApi {
     core.String _body;
 
     if (startDate == null) {
-      throw core.ArgumentError("Parameter startDate is required.");
+      throw core.ArgumentError('Parameter startDate is required.');
     }
-    _queryParams["startDate"] = [startDate];
+    _queryParams['startDate'] = [startDate];
     if (endDate == null) {
-      throw core.ArgumentError("Parameter endDate is required.");
+      throw core.ArgumentError('Parameter endDate is required.');
     }
-    _queryParams["endDate"] = [endDate];
+    _queryParams['endDate'] = [endDate];
     if (metric != null) {
-      _queryParams["metric"] = metric;
+      _queryParams['metric'] = metric;
     }
     if (accountId != null) {
-      _queryParams["accountId"] = accountId;
+      _queryParams['accountId'] = accountId;
     }
     if (currency != null) {
-      _queryParams["currency"] = [currency];
+      _queryParams['currency'] = [currency];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if (useTimezoneReporting != null) {
-      _queryParams["useTimezoneReporting"] = ["${useTimezoneReporting}"];
+      _queryParams['useTimezoneReporting'] = ['${useTimezoneReporting}'];
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (sort != null) {
-      _queryParams["sort"] = sort;
+      _queryParams['sort'] = sort;
     }
     if (dimension != null) {
-      _queryParams["dimension"] = dimension;
+      _queryParams['dimension'] = dimension;
     }
     if (filter != null) {
-      _queryParams["filter"] = filter;
+      _queryParams['filter'] = filter;
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -2576,7 +2575,7 @@ class ReportsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2640,26 +2639,26 @@ class ReportsSavedResourceApi {
     core.String _body;
 
     if (savedReportId == null) {
-      throw core.ArgumentError("Parameter savedReportId is required.");
+      throw core.ArgumentError('Parameter savedReportId is required.');
     }
     if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (locale != null) {
-      _queryParams["locale"] = [locale];
+      _queryParams['locale'] = [locale];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'reports/' + commons.Escaper.ecapeVariable('$savedReportId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2705,20 +2704,20 @@ class ReportsSavedResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'reports/saved';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2762,17 +2761,17 @@ class SavedadstylesResourceApi {
     core.String _body;
 
     if (savedAdStyleId == null) {
-      throw core.ArgumentError("Parameter savedAdStyleId is required.");
+      throw core.ArgumentError('Parameter savedAdStyleId is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'savedadstyles/' + commons.Escaper.ecapeVariable('$savedAdStyleId');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2817,20 +2816,20 @@ class SavedadstylesResourceApi {
     core.String _body;
 
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'savedadstyles';
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2884,16 +2883,16 @@ class UrlchannelsResourceApi {
     core.String _body;
 
     if (adClientId == null) {
-      throw core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError('Parameter adClientId is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'adclients/' +
@@ -2902,7 +2901,7 @@ class UrlchannelsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -2937,28 +2936,28 @@ class Account {
   Account();
 
   Account.fromJson(core.Map _json) {
-    if (_json.containsKey("creation_time")) {
-      creationTime = _json["creation_time"];
+    if (_json.containsKey('creation_time')) {
+      creationTime = _json['creation_time'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("premium")) {
-      premium = _json["premium"];
+    if (_json.containsKey('premium')) {
+      premium = _json['premium'];
     }
-    if (_json.containsKey("subAccounts")) {
-      subAccounts = (_json["subAccounts"] as core.List)
+    if (_json.containsKey('subAccounts')) {
+      subAccounts = (_json['subAccounts'] as core.List)
           .map<Account>((value) => Account.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("timezone")) {
-      timezone = _json["timezone"];
+    if (_json.containsKey('timezone')) {
+      timezone = _json['timezone'];
     }
   }
 
@@ -2966,26 +2965,26 @@ class Account {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (creationTime != null) {
-      _json["creation_time"] = creationTime;
+      _json['creation_time'] = creationTime;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (premium != null) {
-      _json["premium"] = premium;
+      _json['premium'] = premium;
     }
     if (subAccounts != null) {
-      _json["subAccounts"] =
+      _json['subAccounts'] =
           subAccounts.map((value) => value.toJson()).toList();
     }
     if (timezone != null) {
-      _json["timezone"] = timezone;
+      _json['timezone'] = timezone;
     }
     return _json;
   }
@@ -3008,19 +3007,19 @@ class Accounts {
   Accounts();
 
   Accounts.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Account>((value) => Account.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -3028,16 +3027,16 @@ class Accounts {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -3063,20 +3062,20 @@ class AdClient {
   AdClient();
 
   AdClient.fromJson(core.Map _json) {
-    if (_json.containsKey("arcOptIn")) {
-      arcOptIn = _json["arcOptIn"];
+    if (_json.containsKey('arcOptIn')) {
+      arcOptIn = _json['arcOptIn'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("productCode")) {
-      productCode = _json["productCode"];
+    if (_json.containsKey('productCode')) {
+      productCode = _json['productCode'];
     }
-    if (_json.containsKey("supportsReporting")) {
-      supportsReporting = _json["supportsReporting"];
+    if (_json.containsKey('supportsReporting')) {
+      supportsReporting = _json['supportsReporting'];
     }
   }
 
@@ -3084,19 +3083,19 @@ class AdClient {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (arcOptIn != null) {
-      _json["arcOptIn"] = arcOptIn;
+      _json['arcOptIn'] = arcOptIn;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (productCode != null) {
-      _json["productCode"] = productCode;
+      _json['productCode'] = productCode;
     }
     if (supportsReporting != null) {
-      _json["supportsReporting"] = supportsReporting;
+      _json['supportsReporting'] = supportsReporting;
     }
     return _json;
   }
@@ -3119,19 +3118,19 @@ class AdClients {
   AdClients();
 
   AdClients.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<AdClient>((value) => AdClient.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -3139,16 +3138,16 @@ class AdClients {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -3170,17 +3169,17 @@ class AdCode {
   AdCode();
 
   AdCode.fromJson(core.Map _json) {
-    if (_json.containsKey("adCode")) {
-      adCode = _json["adCode"];
+    if (_json.containsKey('adCode')) {
+      adCode = _json['adCode'];
     }
-    if (_json.containsKey("ampBody")) {
-      ampBody = _json["ampBody"];
+    if (_json.containsKey('ampBody')) {
+      ampBody = _json['ampBody'];
     }
-    if (_json.containsKey("ampHead")) {
-      ampHead = _json["ampHead"];
+    if (_json.containsKey('ampHead')) {
+      ampHead = _json['ampHead'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -3188,16 +3187,16 @@ class AdCode {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adCode != null) {
-      _json["adCode"] = adCode;
+      _json['adCode'] = adCode;
     }
     if (ampBody != null) {
-      _json["ampBody"] = ampBody;
+      _json['ampBody'] = ampBody;
     }
     if (ampHead != null) {
-      _json["ampHead"] = ampHead;
+      _json['ampHead'] = ampHead;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -3225,20 +3224,20 @@ class AdStyleColors {
   AdStyleColors();
 
   AdStyleColors.fromJson(core.Map _json) {
-    if (_json.containsKey("background")) {
-      background = _json["background"];
+    if (_json.containsKey('background')) {
+      background = _json['background'];
     }
-    if (_json.containsKey("border")) {
-      border = _json["border"];
+    if (_json.containsKey('border')) {
+      border = _json['border'];
     }
-    if (_json.containsKey("text")) {
-      text = _json["text"];
+    if (_json.containsKey('text')) {
+      text = _json['text'];
     }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
+    if (_json.containsKey('title')) {
+      title = _json['title'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3246,19 +3245,19 @@ class AdStyleColors {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (background != null) {
-      _json["background"] = background;
+      _json['background'] = background;
     }
     if (border != null) {
-      _json["border"] = border;
+      _json['border'] = border;
     }
     if (text != null) {
-      _json["text"] = text;
+      _json['text'] = text;
     }
     if (title != null) {
-      _json["title"] = title;
+      _json['title'] = title;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3275,11 +3274,11 @@ class AdStyleFont {
   AdStyleFont();
 
   AdStyleFont.fromJson(core.Map _json) {
-    if (_json.containsKey("family")) {
-      family = _json["family"];
+    if (_json.containsKey('family')) {
+      family = _json['family'];
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
   }
 
@@ -3287,10 +3286,10 @@ class AdStyleFont {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (family != null) {
-      _json["family"] = family;
+      _json['family'] = family;
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     return _json;
   }
@@ -3314,17 +3313,17 @@ class AdStyle {
   AdStyle();
 
   AdStyle.fromJson(core.Map _json) {
-    if (_json.containsKey("colors")) {
-      colors = AdStyleColors.fromJson(_json["colors"]);
+    if (_json.containsKey('colors')) {
+      colors = AdStyleColors.fromJson(_json['colors']);
     }
-    if (_json.containsKey("corners")) {
-      corners = _json["corners"];
+    if (_json.containsKey('corners')) {
+      corners = _json['corners'];
     }
-    if (_json.containsKey("font")) {
-      font = AdStyleFont.fromJson(_json["font"]);
+    if (_json.containsKey('font')) {
+      font = AdStyleFont.fromJson(_json['font']);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -3332,16 +3331,16 @@ class AdStyle {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.toJson();
+      _json['colors'] = colors.toJson();
     }
     if (corners != null) {
-      _json["corners"] = corners;
+      _json['corners'] = corners;
     }
     if (font != null) {
-      _json["font"] = font.toJson();
+      _json['font'] = font.toJson();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -3361,14 +3360,14 @@ class AdUnitContentAdsSettingsBackupOption {
   AdUnitContentAdsSettingsBackupOption();
 
   AdUnitContentAdsSettingsBackupOption.fromJson(core.Map _json) {
-    if (_json.containsKey("color")) {
-      color = _json["color"];
+    if (_json.containsKey('color')) {
+      color = _json['color'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
+    if (_json.containsKey('url')) {
+      url = _json['url'];
     }
   }
 
@@ -3376,13 +3375,13 @@ class AdUnitContentAdsSettingsBackupOption {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = color;
+      _json['color'] = color;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     if (url != null) {
-      _json["url"] = url;
+      _json['url'] = url;
     }
     return _json;
   }
@@ -3403,15 +3402,15 @@ class AdUnitContentAdsSettings {
   AdUnitContentAdsSettings();
 
   AdUnitContentAdsSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("backupOption")) {
+    if (_json.containsKey('backupOption')) {
       backupOption =
-          AdUnitContentAdsSettingsBackupOption.fromJson(_json["backupOption"]);
+          AdUnitContentAdsSettingsBackupOption.fromJson(_json['backupOption']);
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3419,13 +3418,13 @@ class AdUnitContentAdsSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (backupOption != null) {
-      _json["backupOption"] = backupOption.toJson();
+      _json['backupOption'] = backupOption.toJson();
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3449,17 +3448,17 @@ class AdUnitFeedAdsSettings {
   AdUnitFeedAdsSettings();
 
   AdUnitFeedAdsSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("adPosition")) {
-      adPosition = _json["adPosition"];
+    if (_json.containsKey('adPosition')) {
+      adPosition = _json['adPosition'];
     }
-    if (_json.containsKey("frequency")) {
-      frequency = _json["frequency"];
+    if (_json.containsKey('frequency')) {
+      frequency = _json['frequency'];
     }
-    if (_json.containsKey("minimumWordCount")) {
-      minimumWordCount = _json["minimumWordCount"];
+    if (_json.containsKey('minimumWordCount')) {
+      minimumWordCount = _json['minimumWordCount'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3467,16 +3466,16 @@ class AdUnitFeedAdsSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adPosition != null) {
-      _json["adPosition"] = adPosition;
+      _json['adPosition'] = adPosition;
     }
     if (frequency != null) {
-      _json["frequency"] = frequency;
+      _json['frequency'] = frequency;
     }
     if (minimumWordCount != null) {
-      _json["minimumWordCount"] = minimumWordCount;
+      _json['minimumWordCount'] = minimumWordCount;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3499,17 +3498,17 @@ class AdUnitMobileContentAdsSettings {
   AdUnitMobileContentAdsSettings();
 
   AdUnitMobileContentAdsSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("markupLanguage")) {
-      markupLanguage = _json["markupLanguage"];
+    if (_json.containsKey('markupLanguage')) {
+      markupLanguage = _json['markupLanguage'];
     }
-    if (_json.containsKey("scriptingLanguage")) {
-      scriptingLanguage = _json["scriptingLanguage"];
+    if (_json.containsKey('scriptingLanguage')) {
+      scriptingLanguage = _json['scriptingLanguage'];
     }
-    if (_json.containsKey("size")) {
-      size = _json["size"];
+    if (_json.containsKey('size')) {
+      size = _json['size'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3517,16 +3516,16 @@ class AdUnitMobileContentAdsSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (markupLanguage != null) {
-      _json["markupLanguage"] = markupLanguage;
+      _json['markupLanguage'] = markupLanguage;
     }
     if (scriptingLanguage != null) {
-      _json["scriptingLanguage"] = scriptingLanguage;
+      _json['scriptingLanguage'] = scriptingLanguage;
     }
     if (size != null) {
-      _json["size"] = size;
+      _json['size'] = size;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3576,38 +3575,38 @@ class AdUnit {
   AdUnit();
 
   AdUnit.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("contentAdsSettings")) {
+    if (_json.containsKey('contentAdsSettings')) {
       contentAdsSettings =
-          AdUnitContentAdsSettings.fromJson(_json["contentAdsSettings"]);
+          AdUnitContentAdsSettings.fromJson(_json['contentAdsSettings']);
     }
-    if (_json.containsKey("customStyle")) {
-      customStyle = AdStyle.fromJson(_json["customStyle"]);
+    if (_json.containsKey('customStyle')) {
+      customStyle = AdStyle.fromJson(_json['customStyle']);
     }
-    if (_json.containsKey("feedAdsSettings")) {
+    if (_json.containsKey('feedAdsSettings')) {
       feedAdsSettings =
-          AdUnitFeedAdsSettings.fromJson(_json["feedAdsSettings"]);
+          AdUnitFeedAdsSettings.fromJson(_json['feedAdsSettings']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("mobileContentAdsSettings")) {
+    if (_json.containsKey('mobileContentAdsSettings')) {
       mobileContentAdsSettings = AdUnitMobileContentAdsSettings.fromJson(
-          _json["mobileContentAdsSettings"]);
+          _json['mobileContentAdsSettings']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("savedStyleId")) {
-      savedStyleId = _json["savedStyleId"];
+    if (_json.containsKey('savedStyleId')) {
+      savedStyleId = _json['savedStyleId'];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
+    if (_json.containsKey('status')) {
+      status = _json['status'];
     }
   }
 
@@ -3615,34 +3614,34 @@ class AdUnit {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (contentAdsSettings != null) {
-      _json["contentAdsSettings"] = contentAdsSettings.toJson();
+      _json['contentAdsSettings'] = contentAdsSettings.toJson();
     }
     if (customStyle != null) {
-      _json["customStyle"] = customStyle.toJson();
+      _json['customStyle'] = customStyle.toJson();
     }
     if (feedAdsSettings != null) {
-      _json["feedAdsSettings"] = feedAdsSettings.toJson();
+      _json['feedAdsSettings'] = feedAdsSettings.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (mobileContentAdsSettings != null) {
-      _json["mobileContentAdsSettings"] = mobileContentAdsSettings.toJson();
+      _json['mobileContentAdsSettings'] = mobileContentAdsSettings.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (savedStyleId != null) {
-      _json["savedStyleId"] = savedStyleId;
+      _json['savedStyleId'] = savedStyleId;
     }
     if (status != null) {
-      _json["status"] = status;
+      _json['status'] = status;
     }
     return _json;
   }
@@ -3665,19 +3664,19 @@ class AdUnits {
   AdUnits();
 
   AdUnits.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<AdUnit>((value) => AdUnit.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -3685,16 +3684,16 @@ class AdUnits {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -3715,14 +3714,14 @@ class AdsenseReportsGenerateResponseHeaders {
   AdsenseReportsGenerateResponseHeaders();
 
   AdsenseReportsGenerateResponseHeaders.fromJson(core.Map _json) {
-    if (_json.containsKey("currency")) {
-      currency = _json["currency"];
+    if (_json.containsKey('currency')) {
+      currency = _json['currency'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3730,13 +3729,13 @@ class AdsenseReportsGenerateResponseHeaders {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (currency != null) {
-      _json["currency"] = currency;
+      _json['currency'] = currency;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3781,38 +3780,38 @@ class AdsenseReportsGenerateResponse {
   AdsenseReportsGenerateResponse();
 
   AdsenseReportsGenerateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("averages")) {
-      averages = (_json["averages"] as core.List).cast<core.String>();
+    if (_json.containsKey('averages')) {
+      averages = (_json['averages'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("endDate")) {
-      endDate = _json["endDate"];
+    if (_json.containsKey('endDate')) {
+      endDate = _json['endDate'];
     }
-    if (_json.containsKey("headers")) {
-      headers = (_json["headers"] as core.List)
+    if (_json.containsKey('headers')) {
+      headers = (_json['headers'] as core.List)
           .map<AdsenseReportsGenerateResponseHeaders>(
               (value) => AdsenseReportsGenerateResponseHeaders.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("rows")) {
-      rows = (_json["rows"] as core.List)
+    if (_json.containsKey('rows')) {
+      rows = (_json['rows'] as core.List)
           .map<core.List<core.String>>(
               (value) => (value as core.List).cast<core.String>())
           .toList();
     }
-    if (_json.containsKey("startDate")) {
-      startDate = _json["startDate"];
+    if (_json.containsKey('startDate')) {
+      startDate = _json['startDate'];
     }
-    if (_json.containsKey("totalMatchedRows")) {
-      totalMatchedRows = _json["totalMatchedRows"];
+    if (_json.containsKey('totalMatchedRows')) {
+      totalMatchedRows = _json['totalMatchedRows'];
     }
-    if (_json.containsKey("totals")) {
-      totals = (_json["totals"] as core.List).cast<core.String>();
+    if (_json.containsKey('totals')) {
+      totals = (_json['totals'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("warnings")) {
-      warnings = (_json["warnings"] as core.List).cast<core.String>();
+    if (_json.containsKey('warnings')) {
+      warnings = (_json['warnings'] as core.List).cast<core.String>();
     }
   }
 
@@ -3820,31 +3819,31 @@ class AdsenseReportsGenerateResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (averages != null) {
-      _json["averages"] = averages;
+      _json['averages'] = averages;
     }
     if (endDate != null) {
-      _json["endDate"] = endDate;
+      _json['endDate'] = endDate;
     }
     if (headers != null) {
-      _json["headers"] = headers.map((value) => value.toJson()).toList();
+      _json['headers'] = headers.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (rows != null) {
-      _json["rows"] = rows;
+      _json['rows'] = rows;
     }
     if (startDate != null) {
-      _json["startDate"] = startDate;
+      _json['startDate'] = startDate;
     }
     if (totalMatchedRows != null) {
-      _json["totalMatchedRows"] = totalMatchedRows;
+      _json['totalMatchedRows'] = totalMatchedRows;
     }
     if (totals != null) {
-      _json["totals"] = totals;
+      _json['totals'] = totals;
     }
     if (warnings != null) {
-      _json["warnings"] = warnings;
+      _json['warnings'] = warnings;
     }
     return _json;
   }
@@ -3875,23 +3874,23 @@ class Alert {
   Alert();
 
   Alert.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("isDismissible")) {
-      isDismissible = _json["isDismissible"];
+    if (_json.containsKey('isDismissible')) {
+      isDismissible = _json['isDismissible'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
+    if (_json.containsKey('message')) {
+      message = _json['message'];
     }
-    if (_json.containsKey("severity")) {
-      severity = _json["severity"];
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -3899,22 +3898,22 @@ class Alert {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (isDismissible != null) {
-      _json["isDismissible"] = isDismissible;
+      _json['isDismissible'] = isDismissible;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (message != null) {
-      _json["message"] = message;
+      _json['message'] = message;
     }
     if (severity != null) {
-      _json["severity"] = severity;
+      _json['severity'] = severity;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -3930,13 +3929,13 @@ class Alerts {
   Alerts();
 
   Alerts.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Alert>((value) => Alert.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -3944,10 +3943,10 @@ class Alerts {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -3975,17 +3974,17 @@ class CustomChannelTargetingInfo {
   CustomChannelTargetingInfo();
 
   CustomChannelTargetingInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("adsAppearOn")) {
-      adsAppearOn = _json["adsAppearOn"];
+    if (_json.containsKey('adsAppearOn')) {
+      adsAppearOn = _json['adsAppearOn'];
     }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
+    if (_json.containsKey('description')) {
+      description = _json['description'];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey('location')) {
+      location = _json['location'];
     }
-    if (_json.containsKey("siteLanguage")) {
-      siteLanguage = _json["siteLanguage"];
+    if (_json.containsKey('siteLanguage')) {
+      siteLanguage = _json['siteLanguage'];
     }
   }
 
@@ -3993,16 +3992,16 @@ class CustomChannelTargetingInfo {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adsAppearOn != null) {
-      _json["adsAppearOn"] = adsAppearOn;
+      _json['adsAppearOn'] = adsAppearOn;
     }
     if (description != null) {
-      _json["description"] = description;
+      _json['description'] = description;
     }
     if (location != null) {
-      _json["location"] = location;
+      _json['location'] = location;
     }
     if (siteLanguage != null) {
-      _json["siteLanguage"] = siteLanguage;
+      _json['siteLanguage'] = siteLanguage;
     }
     return _json;
   }
@@ -4029,21 +4028,21 @@ class CustomChannel {
   CustomChannel();
 
   CustomChannel.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
+    if (_json.containsKey('code')) {
+      code = _json['code'];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("targetingInfo")) {
+    if (_json.containsKey('targetingInfo')) {
       targetingInfo =
-          CustomChannelTargetingInfo.fromJson(_json["targetingInfo"]);
+          CustomChannelTargetingInfo.fromJson(_json['targetingInfo']);
     }
   }
 
@@ -4051,19 +4050,19 @@ class CustomChannel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (code != null) {
-      _json["code"] = code;
+      _json['code'] = code;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (targetingInfo != null) {
-      _json["targetingInfo"] = targetingInfo.toJson();
+      _json['targetingInfo'] = targetingInfo.toJson();
     }
     return _json;
   }
@@ -4086,19 +4085,19 @@ class CustomChannels {
   CustomChannels();
 
   CustomChannels.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<CustomChannel>((value) => CustomChannel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4106,16 +4105,16 @@ class CustomChannels {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4130,14 +4129,14 @@ class Metadata {
   Metadata();
 
   Metadata.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<ReportingMetadataEntry>(
               (value) => ReportingMetadataEntry.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -4145,10 +4144,10 @@ class Metadata {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -4174,20 +4173,20 @@ class Payment {
   Payment();
 
   Payment.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("paymentAmount")) {
-      paymentAmount = _json["paymentAmount"];
+    if (_json.containsKey('paymentAmount')) {
+      paymentAmount = _json['paymentAmount'];
     }
-    if (_json.containsKey("paymentAmountCurrencyCode")) {
-      paymentAmountCurrencyCode = _json["paymentAmountCurrencyCode"];
+    if (_json.containsKey('paymentAmountCurrencyCode')) {
+      paymentAmountCurrencyCode = _json['paymentAmountCurrencyCode'];
     }
-    if (_json.containsKey("paymentDate")) {
-      paymentDate = _json["paymentDate"];
+    if (_json.containsKey('paymentDate')) {
+      paymentDate = _json['paymentDate'];
     }
   }
 
@@ -4195,19 +4194,19 @@ class Payment {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (paymentAmount != null) {
-      _json["paymentAmount"] = paymentAmount;
+      _json['paymentAmount'] = paymentAmount;
     }
     if (paymentAmountCurrencyCode != null) {
-      _json["paymentAmountCurrencyCode"] = paymentAmountCurrencyCode;
+      _json['paymentAmountCurrencyCode'] = paymentAmountCurrencyCode;
     }
     if (paymentDate != null) {
-      _json["paymentDate"] = paymentDate;
+      _json['paymentDate'] = paymentDate;
     }
     return _json;
   }
@@ -4224,13 +4223,13 @@ class Payments {
   Payments();
 
   Payments.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<Payment>((value) => Payment.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
   }
 
@@ -4238,10 +4237,10 @@ class Payments {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     return _json;
   }
@@ -4283,31 +4282,31 @@ class ReportingMetadataEntry {
   ReportingMetadataEntry();
 
   ReportingMetadataEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("compatibleDimensions")) {
+    if (_json.containsKey('compatibleDimensions')) {
       compatibleDimensions =
-          (_json["compatibleDimensions"] as core.List).cast<core.String>();
+          (_json['compatibleDimensions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("compatibleMetrics")) {
+    if (_json.containsKey('compatibleMetrics')) {
       compatibleMetrics =
-          (_json["compatibleMetrics"] as core.List).cast<core.String>();
+          (_json['compatibleMetrics'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("requiredDimensions")) {
+    if (_json.containsKey('requiredDimensions')) {
       requiredDimensions =
-          (_json["requiredDimensions"] as core.List).cast<core.String>();
+          (_json['requiredDimensions'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("requiredMetrics")) {
+    if (_json.containsKey('requiredMetrics')) {
       requiredMetrics =
-          (_json["requiredMetrics"] as core.List).cast<core.String>();
+          (_json['requiredMetrics'] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("supportedProducts")) {
+    if (_json.containsKey('supportedProducts')) {
       supportedProducts =
-          (_json["supportedProducts"] as core.List).cast<core.String>();
+          (_json['supportedProducts'] as core.List).cast<core.String>();
     }
   }
 
@@ -4315,25 +4314,25 @@ class ReportingMetadataEntry {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (compatibleDimensions != null) {
-      _json["compatibleDimensions"] = compatibleDimensions;
+      _json['compatibleDimensions'] = compatibleDimensions;
     }
     if (compatibleMetrics != null) {
-      _json["compatibleMetrics"] = compatibleMetrics;
+      _json['compatibleMetrics'] = compatibleMetrics;
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (requiredDimensions != null) {
-      _json["requiredDimensions"] = requiredDimensions;
+      _json['requiredDimensions'] = requiredDimensions;
     }
     if (requiredMetrics != null) {
-      _json["requiredMetrics"] = requiredMetrics;
+      _json['requiredMetrics'] = requiredMetrics;
     }
     if (supportedProducts != null) {
-      _json["supportedProducts"] = supportedProducts;
+      _json['supportedProducts'] = supportedProducts;
     }
     return _json;
   }
@@ -4357,17 +4356,17 @@ class SavedAdStyle {
   SavedAdStyle();
 
   SavedAdStyle.fromJson(core.Map _json) {
-    if (_json.containsKey("adStyle")) {
-      adStyle = AdStyle.fromJson(_json["adStyle"]);
+    if (_json.containsKey('adStyle')) {
+      adStyle = AdStyle.fromJson(_json['adStyle']);
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4375,16 +4374,16 @@ class SavedAdStyle {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (adStyle != null) {
-      _json["adStyle"] = adStyle.toJson();
+      _json['adStyle'] = adStyle.toJson();
     }
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4407,19 +4406,19 @@ class SavedAdStyles {
   SavedAdStyles();
 
   SavedAdStyles.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<SavedAdStyle>((value) => SavedAdStyle.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4427,16 +4426,16 @@ class SavedAdStyles {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4455,14 +4454,14 @@ class SavedReport {
   SavedReport();
 
   SavedReport.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
   }
 
@@ -4470,13 +4469,13 @@ class SavedReport {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     return _json;
   }
@@ -4499,19 +4498,19 @@ class SavedReports {
   SavedReports();
 
   SavedReports.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<SavedReport>((value) => SavedReport.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4519,16 +4518,16 @@ class SavedReports {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -4549,14 +4548,14 @@ class UrlChannel {
   UrlChannel();
 
   UrlChannel.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey('id')) {
+      id = _json['id'];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("urlPattern")) {
-      urlPattern = _json["urlPattern"];
+    if (_json.containsKey('urlPattern')) {
+      urlPattern = _json['urlPattern'];
     }
   }
 
@@ -4564,13 +4563,13 @@ class UrlChannel {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (id != null) {
-      _json["id"] = id;
+      _json['id'] = id;
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (urlPattern != null) {
-      _json["urlPattern"] = urlPattern;
+      _json['urlPattern'] = urlPattern;
     }
     return _json;
   }
@@ -4593,19 +4592,19 @@ class UrlChannels {
   UrlChannels();
 
   UrlChannels.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'];
     }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
           .map<UrlChannel>((value) => UrlChannel.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'];
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -4613,16 +4612,16 @@ class UrlChannels {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (etag != null) {
-      _json["etag"] = etag;
+      _json['etag'] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => value.toJson()).toList();
+      _json['items'] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
-      _json["kind"] = kind;
+      _json['kind'] = kind;
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }

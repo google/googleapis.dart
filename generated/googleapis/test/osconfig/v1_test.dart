@@ -10,7 +10,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -19,6 +18,7 @@
 // ignore_for_file: unused_import
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
@@ -72,8 +72,8 @@ http.StreamedResponse stringResponse(core.int status,
 
 core.List<core.String> buildUnnamed2469() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -85,8 +85,8 @@ void checkUnnamed2469(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2470() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -103,7 +103,7 @@ api.AptSettings buildAptSettings() {
   if (buildCounterAptSettings < 3) {
     o.excludes = buildUnnamed2469();
     o.exclusivePackages = buildUnnamed2470();
-    o.type = "foo";
+    o.type = 'foo';
   }
   buildCounterAptSettings--;
   return o;
@@ -190,8 +190,8 @@ api.ExecStepConfig buildExecStepConfig() {
   if (buildCounterExecStepConfig < 3) {
     o.allowedSuccessCodes = buildUnnamed2471();
     o.gcsObject = buildGcsObject();
-    o.interpreter = "foo";
-    o.localPath = "foo";
+    o.interpreter = 'foo';
+    o.localPath = 'foo';
   }
   buildCounterExecStepConfig--;
   return o;
@@ -213,10 +213,10 @@ api.ExecutePatchJobRequest buildExecutePatchJobRequest() {
   var o = api.ExecutePatchJobRequest();
   buildCounterExecutePatchJobRequest++;
   if (buildCounterExecutePatchJobRequest < 3) {
-    o.description = "foo";
-    o.displayName = "foo";
+    o.description = 'foo';
+    o.displayName = 'foo';
     o.dryRun = true;
-    o.duration = "foo";
+    o.duration = 'foo';
     o.instanceFilter = buildPatchInstanceFilter();
     o.patchConfig = buildPatchConfig();
     o.rollout = buildPatchRollout();
@@ -265,9 +265,9 @@ api.GcsObject buildGcsObject() {
   var o = api.GcsObject();
   buildCounterGcsObject++;
   if (buildCounterGcsObject < 3) {
-    o.bucket = "foo";
-    o.generationNumber = "foo";
-    o.object = "foo";
+    o.bucket = 'foo';
+    o.generationNumber = 'foo';
+    o.object = 'foo';
   }
   buildCounterGcsObject--;
   return o;
@@ -316,7 +316,7 @@ api.ListPatchDeploymentsResponse buildListPatchDeploymentsResponse() {
   var o = api.ListPatchDeploymentsResponse();
   buildCounterListPatchDeploymentsResponse++;
   if (buildCounterListPatchDeploymentsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.patchDeployments = buildUnnamed2472();
   }
   buildCounterListPatchDeploymentsResponse--;
@@ -351,7 +351,7 @@ api.ListPatchJobInstanceDetailsResponse
   var o = api.ListPatchJobInstanceDetailsResponse();
   buildCounterListPatchJobInstanceDetailsResponse++;
   if (buildCounterListPatchJobInstanceDetailsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.patchJobInstanceDetails = buildUnnamed2473();
   }
   buildCounterListPatchJobInstanceDetailsResponse--;
@@ -386,7 +386,7 @@ api.ListPatchJobsResponse buildListPatchJobsResponse() {
   var o = api.ListPatchJobsResponse();
   buildCounterListPatchJobsResponse++;
   if (buildCounterListPatchJobsResponse < 3) {
-    o.nextPageToken = "foo";
+    o.nextPageToken = 'foo';
     o.patchJobs = buildUnnamed2474();
   }
   buildCounterListPatchJobsResponse--;
@@ -428,7 +428,7 @@ api.OneTimeSchedule buildOneTimeSchedule() {
   var o = api.OneTimeSchedule();
   buildCounterOneTimeSchedule++;
   if (buildCounterOneTimeSchedule < 3) {
-    o.executeTime = "foo";
+    o.executeTime = 'foo';
   }
   buildCounterOneTimeSchedule--;
   return o;
@@ -451,7 +451,7 @@ api.PatchConfig buildPatchConfig() {
     o.goo = buildGooSettings();
     o.postStep = buildExecStep();
     o.preStep = buildExecStep();
-    o.rebootConfig = "foo";
+    o.rebootConfig = 'foo';
     o.windowsUpdate = buildWindowsUpdateSettings();
     o.yum = buildYumSettings();
     o.zypper = buildZypperSettings();
@@ -480,17 +480,17 @@ api.PatchDeployment buildPatchDeployment() {
   var o = api.PatchDeployment();
   buildCounterPatchDeployment++;
   if (buildCounterPatchDeployment < 3) {
-    o.createTime = "foo";
-    o.description = "foo";
-    o.duration = "foo";
+    o.createTime = 'foo';
+    o.description = 'foo';
+    o.duration = 'foo';
     o.instanceFilter = buildPatchInstanceFilter();
-    o.lastExecuteTime = "foo";
-    o.name = "foo";
+    o.lastExecuteTime = 'foo';
+    o.name = 'foo';
     o.oneTimeSchedule = buildOneTimeSchedule();
     o.patchConfig = buildPatchConfig();
     o.recurringSchedule = buildRecurringSchedule();
     o.rollout = buildPatchRollout();
-    o.updateTime = "foo";
+    o.updateTime = 'foo';
   }
   buildCounterPatchDeployment--;
   return o;
@@ -529,8 +529,8 @@ void checkUnnamed2475(core.List<api.PatchInstanceFilterGroupLabel> o) {
 
 core.List<core.String> buildUnnamed2476() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -542,8 +542,8 @@ void checkUnnamed2476(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2477() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -555,8 +555,8 @@ void checkUnnamed2477(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2478() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -595,15 +595,15 @@ void checkPatchInstanceFilter(api.PatchInstanceFilter o) {
 
 core.Map<core.String, core.String> buildUnnamed2479() {
   var o = <core.String, core.String>{};
-  o["x"] = "foo";
-  o["y"] = "foo";
+  o['x'] = 'foo';
+  o['y'] = 'foo';
   return o;
 }
 
 void checkUnnamed2479(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
+  unittest.expect(o['x'], unittest.equals('foo'));
+  unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.int buildCounterPatchInstanceFilterGroupLabel = 0;
@@ -630,21 +630,21 @@ api.PatchJob buildPatchJob() {
   var o = api.PatchJob();
   buildCounterPatchJob++;
   if (buildCounterPatchJob < 3) {
-    o.createTime = "foo";
-    o.description = "foo";
-    o.displayName = "foo";
+    o.createTime = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
     o.dryRun = true;
-    o.duration = "foo";
-    o.errorMessage = "foo";
+    o.duration = 'foo';
+    o.errorMessage = 'foo';
     o.instanceDetailsSummary = buildPatchJobInstanceDetailsSummary();
     o.instanceFilter = buildPatchInstanceFilter();
-    o.name = "foo";
+    o.name = 'foo';
     o.patchConfig = buildPatchConfig();
-    o.patchDeployment = "foo";
+    o.patchDeployment = 'foo';
     o.percentComplete = 42.0;
     o.rollout = buildPatchRollout();
-    o.state = "foo";
-    o.updateTime = "foo";
+    o.state = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterPatchJob--;
   return o;
@@ -677,11 +677,11 @@ api.PatchJobInstanceDetails buildPatchJobInstanceDetails() {
   var o = api.PatchJobInstanceDetails();
   buildCounterPatchJobInstanceDetails++;
   if (buildCounterPatchJobInstanceDetails < 3) {
-    o.attemptCount = "foo";
-    o.failureReason = "foo";
-    o.instanceSystemId = "foo";
-    o.name = "foo";
-    o.state = "foo";
+    o.attemptCount = 'foo';
+    o.failureReason = 'foo';
+    o.instanceSystemId = 'foo';
+    o.name = 'foo';
+    o.state = 'foo';
   }
   buildCounterPatchJobInstanceDetails--;
   return o;
@@ -704,21 +704,21 @@ api.PatchJobInstanceDetailsSummary buildPatchJobInstanceDetailsSummary() {
   var o = api.PatchJobInstanceDetailsSummary();
   buildCounterPatchJobInstanceDetailsSummary++;
   if (buildCounterPatchJobInstanceDetailsSummary < 3) {
-    o.ackedInstanceCount = "foo";
-    o.applyingPatchesInstanceCount = "foo";
-    o.downloadingPatchesInstanceCount = "foo";
-    o.failedInstanceCount = "foo";
-    o.inactiveInstanceCount = "foo";
-    o.noAgentDetectedInstanceCount = "foo";
-    o.notifiedInstanceCount = "foo";
-    o.pendingInstanceCount = "foo";
-    o.postPatchStepInstanceCount = "foo";
-    o.prePatchStepInstanceCount = "foo";
-    o.rebootingInstanceCount = "foo";
-    o.startedInstanceCount = "foo";
-    o.succeededInstanceCount = "foo";
-    o.succeededRebootRequiredInstanceCount = "foo";
-    o.timedOutInstanceCount = "foo";
+    o.ackedInstanceCount = 'foo';
+    o.applyingPatchesInstanceCount = 'foo';
+    o.downloadingPatchesInstanceCount = 'foo';
+    o.failedInstanceCount = 'foo';
+    o.inactiveInstanceCount = 'foo';
+    o.noAgentDetectedInstanceCount = 'foo';
+    o.notifiedInstanceCount = 'foo';
+    o.pendingInstanceCount = 'foo';
+    o.postPatchStepInstanceCount = 'foo';
+    o.prePatchStepInstanceCount = 'foo';
+    o.rebootingInstanceCount = 'foo';
+    o.startedInstanceCount = 'foo';
+    o.succeededInstanceCount = 'foo';
+    o.succeededRebootRequiredInstanceCount = 'foo';
+    o.timedOutInstanceCount = 'foo';
   }
   buildCounterPatchJobInstanceDetailsSummary--;
   return o;
@@ -753,7 +753,7 @@ api.PatchRollout buildPatchRollout() {
   buildCounterPatchRollout++;
   if (buildCounterPatchRollout < 3) {
     o.disruptionBudget = buildFixedOrPercent();
-    o.mode = "foo";
+    o.mode = 'foo';
   }
   buildCounterPatchRollout--;
   return o;
@@ -773,12 +773,12 @@ api.RecurringSchedule buildRecurringSchedule() {
   var o = api.RecurringSchedule();
   buildCounterRecurringSchedule++;
   if (buildCounterRecurringSchedule < 3) {
-    o.endTime = "foo";
-    o.frequency = "foo";
-    o.lastExecuteTime = "foo";
+    o.endTime = 'foo';
+    o.frequency = 'foo';
+    o.lastExecuteTime = 'foo';
     o.monthly = buildMonthlySchedule();
-    o.nextExecuteTime = "foo";
-    o.startTime = "foo";
+    o.nextExecuteTime = 'foo';
+    o.startTime = 'foo';
     o.timeOfDay = buildTimeOfDay();
     o.timeZone = buildTimeZone();
     o.weekly = buildWeeklySchedule();
@@ -833,8 +833,8 @@ api.TimeZone buildTimeZone() {
   var o = api.TimeZone();
   buildCounterTimeZone++;
   if (buildCounterTimeZone < 3) {
-    o.id = "foo";
-    o.version = "foo";
+    o.id = 'foo';
+    o.version = 'foo';
   }
   buildCounterTimeZone--;
   return o;
@@ -854,7 +854,7 @@ api.WeekDayOfMonth buildWeekDayOfMonth() {
   var o = api.WeekDayOfMonth();
   buildCounterWeekDayOfMonth++;
   if (buildCounterWeekDayOfMonth < 3) {
-    o.dayOfWeek = "foo";
+    o.dayOfWeek = 'foo';
     o.weekOrdinal = 42;
   }
   buildCounterWeekDayOfMonth--;
@@ -875,7 +875,7 @@ api.WeeklySchedule buildWeeklySchedule() {
   var o = api.WeeklySchedule();
   buildCounterWeeklySchedule++;
   if (buildCounterWeeklySchedule < 3) {
-    o.dayOfWeek = "foo";
+    o.dayOfWeek = 'foo';
   }
   buildCounterWeeklySchedule--;
   return o;
@@ -891,8 +891,8 @@ void checkWeeklySchedule(api.WeeklySchedule o) {
 
 core.List<core.String> buildUnnamed2480() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -904,8 +904,8 @@ void checkUnnamed2480(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2481() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -917,8 +917,8 @@ void checkUnnamed2481(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2482() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -953,8 +953,8 @@ void checkWindowsUpdateSettings(api.WindowsUpdateSettings o) {
 
 core.List<core.String> buildUnnamed2483() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -966,8 +966,8 @@ void checkUnnamed2483(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2484() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1004,8 +1004,8 @@ void checkYumSettings(api.YumSettings o) {
 
 core.List<core.String> buildUnnamed2485() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1017,8 +1017,8 @@ void checkUnnamed2485(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2486() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1030,8 +1030,8 @@ void checkUnnamed2486(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2487() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1043,8 +1043,8 @@ void checkUnnamed2487(core.List<core.String> o) {
 
 core.List<core.String> buildUnnamed2488() {
   var o = <core.String>[];
-  o.add("foo");
-  o.add("foo");
+  o.add('foo');
+  o.add('foo');
   return o;
 }
 
@@ -1084,255 +1084,255 @@ void checkZypperSettings(api.ZypperSettings o) {
 }
 
 void main() {
-  unittest.group("obj-schema-AptSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-AptSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildAptSettings();
       var od = api.AptSettings.fromJson(o.toJson());
       checkAptSettings(od);
     });
   });
 
-  unittest.group("obj-schema-CancelPatchJobRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-CancelPatchJobRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildCancelPatchJobRequest();
       var od = api.CancelPatchJobRequest.fromJson(o.toJson());
       checkCancelPatchJobRequest(od);
     });
   });
 
-  unittest.group("obj-schema-Empty", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
 
-  unittest.group("obj-schema-ExecStep", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExecStep', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExecStep();
       var od = api.ExecStep.fromJson(o.toJson());
       checkExecStep(od);
     });
   });
 
-  unittest.group("obj-schema-ExecStepConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExecStepConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExecStepConfig();
       var od = api.ExecStepConfig.fromJson(o.toJson());
       checkExecStepConfig(od);
     });
   });
 
-  unittest.group("obj-schema-ExecutePatchJobRequest", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ExecutePatchJobRequest', () {
+    unittest.test('to-json--from-json', () {
       var o = buildExecutePatchJobRequest();
       var od = api.ExecutePatchJobRequest.fromJson(o.toJson());
       checkExecutePatchJobRequest(od);
     });
   });
 
-  unittest.group("obj-schema-FixedOrPercent", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-FixedOrPercent', () {
+    unittest.test('to-json--from-json', () {
       var o = buildFixedOrPercent();
       var od = api.FixedOrPercent.fromJson(o.toJson());
       checkFixedOrPercent(od);
     });
   });
 
-  unittest.group("obj-schema-GcsObject", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GcsObject', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGcsObject();
       var od = api.GcsObject.fromJson(o.toJson());
       checkGcsObject(od);
     });
   });
 
-  unittest.group("obj-schema-GooSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-GooSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildGooSettings();
       var od = api.GooSettings.fromJson(o.toJson());
       checkGooSettings(od);
     });
   });
 
-  unittest.group("obj-schema-ListPatchDeploymentsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListPatchDeploymentsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListPatchDeploymentsResponse();
       var od = api.ListPatchDeploymentsResponse.fromJson(o.toJson());
       checkListPatchDeploymentsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListPatchJobInstanceDetailsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListPatchJobInstanceDetailsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListPatchJobInstanceDetailsResponse();
       var od = api.ListPatchJobInstanceDetailsResponse.fromJson(o.toJson());
       checkListPatchJobInstanceDetailsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-ListPatchJobsResponse", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ListPatchJobsResponse', () {
+    unittest.test('to-json--from-json', () {
       var o = buildListPatchJobsResponse();
       var od = api.ListPatchJobsResponse.fromJson(o.toJson());
       checkListPatchJobsResponse(od);
     });
   });
 
-  unittest.group("obj-schema-MonthlySchedule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-MonthlySchedule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildMonthlySchedule();
       var od = api.MonthlySchedule.fromJson(o.toJson());
       checkMonthlySchedule(od);
     });
   });
 
-  unittest.group("obj-schema-OneTimeSchedule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-OneTimeSchedule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildOneTimeSchedule();
       var od = api.OneTimeSchedule.fromJson(o.toJson());
       checkOneTimeSchedule(od);
     });
   });
 
-  unittest.group("obj-schema-PatchConfig", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PatchConfig', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPatchConfig();
       var od = api.PatchConfig.fromJson(o.toJson());
       checkPatchConfig(od);
     });
   });
 
-  unittest.group("obj-schema-PatchDeployment", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PatchDeployment', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPatchDeployment();
       var od = api.PatchDeployment.fromJson(o.toJson());
       checkPatchDeployment(od);
     });
   });
 
-  unittest.group("obj-schema-PatchInstanceFilter", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PatchInstanceFilter', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPatchInstanceFilter();
       var od = api.PatchInstanceFilter.fromJson(o.toJson());
       checkPatchInstanceFilter(od);
     });
   });
 
-  unittest.group("obj-schema-PatchInstanceFilterGroupLabel", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PatchInstanceFilterGroupLabel', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPatchInstanceFilterGroupLabel();
       var od = api.PatchInstanceFilterGroupLabel.fromJson(o.toJson());
       checkPatchInstanceFilterGroupLabel(od);
     });
   });
 
-  unittest.group("obj-schema-PatchJob", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PatchJob', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPatchJob();
       var od = api.PatchJob.fromJson(o.toJson());
       checkPatchJob(od);
     });
   });
 
-  unittest.group("obj-schema-PatchJobInstanceDetails", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PatchJobInstanceDetails', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPatchJobInstanceDetails();
       var od = api.PatchJobInstanceDetails.fromJson(o.toJson());
       checkPatchJobInstanceDetails(od);
     });
   });
 
-  unittest.group("obj-schema-PatchJobInstanceDetailsSummary", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PatchJobInstanceDetailsSummary', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPatchJobInstanceDetailsSummary();
       var od = api.PatchJobInstanceDetailsSummary.fromJson(o.toJson());
       checkPatchJobInstanceDetailsSummary(od);
     });
   });
 
-  unittest.group("obj-schema-PatchRollout", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-PatchRollout', () {
+    unittest.test('to-json--from-json', () {
       var o = buildPatchRollout();
       var od = api.PatchRollout.fromJson(o.toJson());
       checkPatchRollout(od);
     });
   });
 
-  unittest.group("obj-schema-RecurringSchedule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-RecurringSchedule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildRecurringSchedule();
       var od = api.RecurringSchedule.fromJson(o.toJson());
       checkRecurringSchedule(od);
     });
   });
 
-  unittest.group("obj-schema-TimeOfDay", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TimeOfDay', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTimeOfDay();
       var od = api.TimeOfDay.fromJson(o.toJson());
       checkTimeOfDay(od);
     });
   });
 
-  unittest.group("obj-schema-TimeZone", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-TimeZone', () {
+    unittest.test('to-json--from-json', () {
       var o = buildTimeZone();
       var od = api.TimeZone.fromJson(o.toJson());
       checkTimeZone(od);
     });
   });
 
-  unittest.group("obj-schema-WeekDayOfMonth", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WeekDayOfMonth', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWeekDayOfMonth();
       var od = api.WeekDayOfMonth.fromJson(o.toJson());
       checkWeekDayOfMonth(od);
     });
   });
 
-  unittest.group("obj-schema-WeeklySchedule", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WeeklySchedule', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWeeklySchedule();
       var od = api.WeeklySchedule.fromJson(o.toJson());
       checkWeeklySchedule(od);
     });
   });
 
-  unittest.group("obj-schema-WindowsUpdateSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-WindowsUpdateSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildWindowsUpdateSettings();
       var od = api.WindowsUpdateSettings.fromJson(o.toJson());
       checkWindowsUpdateSettings(od);
     });
   });
 
-  unittest.group("obj-schema-YumSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-YumSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildYumSettings();
       var od = api.YumSettings.fromJson(o.toJson());
       checkYumSettings(od);
     });
   });
 
-  unittest.group("obj-schema-ZypperSettings", () {
-    unittest.test("to-json--from-json", () {
+  unittest.group('obj-schema-ZypperSettings', () {
+    unittest.test('to-json--from-json', () {
       var o = buildZypperSettings();
       var od = api.ZypperSettings.fromJson(o.toJson());
       checkZypperSettings(od);
     });
   });
 
-  unittest.group("resource-ProjectsPatchDeploymentsResourceApi", () {
-    unittest.test("method--create", () {
+  unittest.group('resource-ProjectsPatchDeploymentsResourceApi', () {
+    unittest.test('method--create', () {
       var mock = HttpServerMock();
       api.ProjectsPatchDeploymentsResourceApi res =
           api.OsconfigApi(mock).projects.patchDeployments;
       var arg_request = buildPatchDeployment();
-      var arg_parent = "foo";
-      var arg_patchDeploymentId = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_patchDeploymentId = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.PatchDeployment.fromJson(json);
         checkPatchDeployment(obj);
@@ -1355,8 +1355,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1368,7 +1368,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPatchDeployment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1381,12 +1381,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--delete", () {
+    unittest.test('method--delete', () {
       var mock = HttpServerMock();
       api.ProjectsPatchDeploymentsResourceApi res =
           api.OsconfigApi(mock).projects.patchDeployments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1406,8 +1406,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1417,7 +1417,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1429,12 +1429,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsPatchDeploymentsResourceApi res =
           api.OsconfigApi(mock).projects.patchDeployments;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1454,8 +1454,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1465,7 +1465,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPatchDeployment());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1477,14 +1477,14 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsPatchDeploymentsResourceApi res =
           api.OsconfigApi(mock).projects.patchDeployments;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1504,8 +1504,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1519,7 +1519,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListPatchDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1535,14 +1535,14 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsPatchJobsResourceApi", () {
-    unittest.test("method--cancel", () {
+  unittest.group('resource-ProjectsPatchJobsResourceApi', () {
+    unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       api.ProjectsPatchJobsResourceApi res =
           api.OsconfigApi(mock).projects.patchJobs;
       var arg_request = buildCancelPatchJobRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.CancelPatchJobRequest.fromJson(json);
         checkCancelPatchJobRequest(obj);
@@ -1565,8 +1565,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1576,7 +1576,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPatchJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1588,13 +1588,13 @@ void main() {
       })));
     });
 
-    unittest.test("method--execute", () {
+    unittest.test('method--execute', () {
       var mock = HttpServerMock();
       api.ProjectsPatchJobsResourceApi res =
           api.OsconfigApi(mock).projects.patchJobs;
       var arg_request = buildExecutePatchJobRequest();
-      var arg_parent = "foo";
-      var arg_$fields = "foo";
+      var arg_parent = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.ExecutePatchJobRequest.fromJson(json);
         checkExecutePatchJobRequest(obj);
@@ -1617,8 +1617,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1628,7 +1628,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPatchJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1640,12 +1640,12 @@ void main() {
       })));
     });
 
-    unittest.test("method--get", () {
+    unittest.test('method--get', () {
       var mock = HttpServerMock();
       api.ProjectsPatchJobsResourceApi res =
           api.OsconfigApi(mock).projects.patchJobs;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1665,8 +1665,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1676,7 +1676,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildPatchJob());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1688,15 +1688,15 @@ void main() {
       })));
     });
 
-    unittest.test("method--list", () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsPatchJobsResourceApi res =
           api.OsconfigApi(mock).projects.patchJobs;
-      var arg_parent = "foo";
+      var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_filter = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1716,8 +1716,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1732,7 +1732,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp = convert.json.encode(buildListPatchJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
@@ -1749,16 +1749,16 @@ void main() {
     });
   });
 
-  unittest.group("resource-ProjectsPatchJobsInstanceDetailsResourceApi", () {
-    unittest.test("method--list", () {
+  unittest.group('resource-ProjectsPatchJobsInstanceDetailsResourceApi', () {
+    unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsPatchJobsInstanceDetailsResourceApi res =
           api.OsconfigApi(mock).projects.patchJobs.instanceDetails;
-      var arg_parent = "foo";
-      var arg_filter = "foo";
+      var arg_parent = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_$fields = "foo";
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1778,8 +1778,8 @@ void main() {
         void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
-          for (var part in query.split("&")) {
-            var keyValue = part.split("=");
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1794,7 +1794,7 @@ void main() {
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
-          "content-type": "application/json; charset=utf-8",
+          'content-type': 'application/json; charset=utf-8',
         };
         var resp =
             convert.json.encode(buildListPatchJobInstanceDetailsResponse());

@@ -12,7 +12,6 @@
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
@@ -38,7 +37,7 @@ const core.String USER_AGENT = 'dart-api-client accessapproval/v1';
 class AccessapprovalApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
-      "https://www.googleapis.com/auth/cloud-platform";
+      'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
@@ -48,8 +47,8 @@ class AccessapprovalApi {
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   AccessapprovalApi(http.Client client,
-      {core.String rootUrl = "https://accessapproval.googleapis.com/",
-      core.String servicePath = ""})
+      {core.String rootUrl = 'https://accessapproval.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -96,17 +95,17 @@ class FoldersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -145,17 +144,17 @@ class FoldersResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -214,20 +213,20 @@ class FoldersResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -281,17 +280,17 @@ class FoldersApprovalRequestsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -340,17 +339,17 @@ class FoldersApprovalRequestsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':dismiss';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -389,17 +388,17 @@ class FoldersApprovalRequestsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -455,19 +454,19 @@ class FoldersApprovalRequestsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -476,7 +475,7 @@ class FoldersApprovalRequestsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -530,17 +529,17 @@ class OrganizationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -579,17 +578,17 @@ class OrganizationsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -648,20 +647,20 @@ class OrganizationsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -715,17 +714,17 @@ class OrganizationsApprovalRequestsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -774,17 +773,17 @@ class OrganizationsApprovalRequestsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':dismiss';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -823,17 +822,17 @@ class OrganizationsApprovalRequestsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -889,19 +888,19 @@ class OrganizationsApprovalRequestsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -910,7 +909,7 @@ class OrganizationsApprovalRequestsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -964,17 +963,17 @@ class ProjectsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "DELETE",
+      'DELETE',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1013,17 +1012,17 @@ class ProjectsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1082,20 +1081,20 @@ class ProjectsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "PATCH",
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1149,17 +1148,17 @@ class ProjectsApprovalRequestsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1208,17 +1207,17 @@ class ProjectsApprovalRequestsResourceApi {
       _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':dismiss';
 
     final _response = _requester.request(
       _url,
-      "POST",
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1257,17 +1256,17 @@ class ProjectsApprovalRequestsResourceApi {
     core.String _body;
 
     if (name == null) {
-      throw core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError('Parameter name is required.');
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1323,19 +1322,19 @@ class ProjectsApprovalRequestsResourceApi {
     core.String _body;
 
     if (parent == null) {
-      throw core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError('Parameter parent is required.');
     }
     if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (filter != null) {
-      _queryParams["filter"] = [filter];
+      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
-      _queryParams["fields"] = [$fields];
+      _queryParams['fields'] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1344,7 +1343,7 @@ class ProjectsApprovalRequestsResourceApi {
 
     final _response = _requester.request(
       _url,
-      "GET",
+      'GET',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -1391,20 +1390,20 @@ class AccessApprovalSettings {
   AccessApprovalSettings();
 
   AccessApprovalSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("enrolledAncestor")) {
-      enrolledAncestor = _json["enrolledAncestor"];
+    if (_json.containsKey('enrolledAncestor')) {
+      enrolledAncestor = _json['enrolledAncestor'];
     }
-    if (_json.containsKey("enrolledServices")) {
-      enrolledServices = (_json["enrolledServices"] as core.List)
+    if (_json.containsKey('enrolledServices')) {
+      enrolledServices = (_json['enrolledServices'] as core.List)
           .map<EnrolledService>((value) => EnrolledService.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("notificationEmails")) {
+    if (_json.containsKey('notificationEmails')) {
       notificationEmails =
-          (_json["notificationEmails"] as core.List).cast<core.String>();
+          (_json['notificationEmails'] as core.List).cast<core.String>();
     }
   }
 
@@ -1412,17 +1411,17 @@ class AccessApprovalSettings {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (enrolledAncestor != null) {
-      _json["enrolledAncestor"] = enrolledAncestor;
+      _json['enrolledAncestor'] = enrolledAncestor;
     }
     if (enrolledServices != null) {
-      _json["enrolledServices"] =
+      _json['enrolledServices'] =
           enrolledServices.map((value) => value.toJson()).toList();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (notificationEmails != null) {
-      _json["notificationEmails"] = notificationEmails;
+      _json['notificationEmails'] = notificationEmails;
     }
     return _json;
   }
@@ -1449,12 +1448,12 @@ class AccessLocations {
   AccessLocations();
 
   AccessLocations.fromJson(core.Map _json) {
-    if (_json.containsKey("principalOfficeCountry")) {
-      principalOfficeCountry = _json["principalOfficeCountry"];
+    if (_json.containsKey('principalOfficeCountry')) {
+      principalOfficeCountry = _json['principalOfficeCountry'];
     }
-    if (_json.containsKey("principalPhysicalLocationCountry")) {
+    if (_json.containsKey('principalPhysicalLocationCountry')) {
       principalPhysicalLocationCountry =
-          _json["principalPhysicalLocationCountry"];
+          _json['principalPhysicalLocationCountry'];
     }
   }
 
@@ -1462,10 +1461,10 @@ class AccessLocations {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (principalOfficeCountry != null) {
-      _json["principalOfficeCountry"] = principalOfficeCountry;
+      _json['principalOfficeCountry'] = principalOfficeCountry;
     }
     if (principalPhysicalLocationCountry != null) {
-      _json["principalPhysicalLocationCountry"] =
+      _json['principalPhysicalLocationCountry'] =
           principalPhysicalLocationCountry;
     }
     return _json;
@@ -1496,11 +1495,11 @@ class AccessReason {
   AccessReason();
 
   AccessReason.fromJson(core.Map _json) {
-    if (_json.containsKey("detail")) {
-      detail = _json["detail"];
+    if (_json.containsKey('detail')) {
+      detail = _json['detail'];
     }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+    if (_json.containsKey('type')) {
+      type = _json['type'];
     }
   }
 
@@ -1508,10 +1507,10 @@ class AccessReason {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (detail != null) {
-      _json["detail"] = detail;
+      _json['detail'] = detail;
     }
     if (type != null) {
-      _json["type"] = type;
+      _json['type'] = type;
     }
     return _json;
   }
@@ -1558,34 +1557,34 @@ class ApprovalRequest {
   ApprovalRequest();
 
   ApprovalRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("approve")) {
-      approve = ApproveDecision.fromJson(_json["approve"]);
+    if (_json.containsKey('approve')) {
+      approve = ApproveDecision.fromJson(_json['approve']);
     }
-    if (_json.containsKey("dismiss")) {
-      dismiss = DismissDecision.fromJson(_json["dismiss"]);
+    if (_json.containsKey('dismiss')) {
+      dismiss = DismissDecision.fromJson(_json['dismiss']);
     }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
+    if (_json.containsKey('name')) {
+      name = _json['name'];
     }
-    if (_json.containsKey("requestTime")) {
-      requestTime = _json["requestTime"];
+    if (_json.containsKey('requestTime')) {
+      requestTime = _json['requestTime'];
     }
-    if (_json.containsKey("requestedExpiration")) {
-      requestedExpiration = _json["requestedExpiration"];
+    if (_json.containsKey('requestedExpiration')) {
+      requestedExpiration = _json['requestedExpiration'];
     }
-    if (_json.containsKey("requestedLocations")) {
+    if (_json.containsKey('requestedLocations')) {
       requestedLocations =
-          AccessLocations.fromJson(_json["requestedLocations"]);
+          AccessLocations.fromJson(_json['requestedLocations']);
     }
-    if (_json.containsKey("requestedReason")) {
-      requestedReason = AccessReason.fromJson(_json["requestedReason"]);
+    if (_json.containsKey('requestedReason')) {
+      requestedReason = AccessReason.fromJson(_json['requestedReason']);
     }
-    if (_json.containsKey("requestedResourceName")) {
-      requestedResourceName = _json["requestedResourceName"];
+    if (_json.containsKey('requestedResourceName')) {
+      requestedResourceName = _json['requestedResourceName'];
     }
-    if (_json.containsKey("requestedResourceProperties")) {
+    if (_json.containsKey('requestedResourceProperties')) {
       requestedResourceProperties =
-          ResourceProperties.fromJson(_json["requestedResourceProperties"]);
+          ResourceProperties.fromJson(_json['requestedResourceProperties']);
     }
   }
 
@@ -1593,31 +1592,31 @@ class ApprovalRequest {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (approve != null) {
-      _json["approve"] = approve.toJson();
+      _json['approve'] = approve.toJson();
     }
     if (dismiss != null) {
-      _json["dismiss"] = dismiss.toJson();
+      _json['dismiss'] = dismiss.toJson();
     }
     if (name != null) {
-      _json["name"] = name;
+      _json['name'] = name;
     }
     if (requestTime != null) {
-      _json["requestTime"] = requestTime;
+      _json['requestTime'] = requestTime;
     }
     if (requestedExpiration != null) {
-      _json["requestedExpiration"] = requestedExpiration;
+      _json['requestedExpiration'] = requestedExpiration;
     }
     if (requestedLocations != null) {
-      _json["requestedLocations"] = requestedLocations.toJson();
+      _json['requestedLocations'] = requestedLocations.toJson();
     }
     if (requestedReason != null) {
-      _json["requestedReason"] = requestedReason.toJson();
+      _json['requestedReason'] = requestedReason.toJson();
     }
     if (requestedResourceName != null) {
-      _json["requestedResourceName"] = requestedResourceName;
+      _json['requestedResourceName'] = requestedResourceName;
     }
     if (requestedResourceProperties != null) {
-      _json["requestedResourceProperties"] =
+      _json['requestedResourceProperties'] =
           requestedResourceProperties.toJson();
     }
     return _json;
@@ -1632,8 +1631,8 @@ class ApproveApprovalRequestMessage {
   ApproveApprovalRequestMessage();
 
   ApproveApprovalRequestMessage.fromJson(core.Map _json) {
-    if (_json.containsKey("expireTime")) {
-      expireTime = _json["expireTime"];
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'];
     }
   }
 
@@ -1641,7 +1640,7 @@ class ApproveApprovalRequestMessage {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (expireTime != null) {
-      _json["expireTime"] = expireTime;
+      _json['expireTime'] = expireTime;
     }
     return _json;
   }
@@ -1658,11 +1657,11 @@ class ApproveDecision {
   ApproveDecision();
 
   ApproveDecision.fromJson(core.Map _json) {
-    if (_json.containsKey("approveTime")) {
-      approveTime = _json["approveTime"];
+    if (_json.containsKey('approveTime')) {
+      approveTime = _json['approveTime'];
     }
-    if (_json.containsKey("expireTime")) {
-      expireTime = _json["expireTime"];
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'];
     }
   }
 
@@ -1670,10 +1669,10 @@ class ApproveDecision {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (approveTime != null) {
-      _json["approveTime"] = approveTime;
+      _json['approveTime'] = approveTime;
     }
     if (expireTime != null) {
-      _json["expireTime"] = expireTime;
+      _json['expireTime'] = expireTime;
     }
     return _json;
   }
@@ -1705,11 +1704,11 @@ class DismissDecision {
   DismissDecision();
 
   DismissDecision.fromJson(core.Map _json) {
-    if (_json.containsKey("dismissTime")) {
-      dismissTime = _json["dismissTime"];
+    if (_json.containsKey('dismissTime')) {
+      dismissTime = _json['dismissTime'];
     }
-    if (_json.containsKey("implicit")) {
-      implicit = _json["implicit"];
+    if (_json.containsKey('implicit')) {
+      implicit = _json['implicit'];
     }
   }
 
@@ -1717,10 +1716,10 @@ class DismissDecision {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (dismissTime != null) {
-      _json["dismissTime"] = dismissTime;
+      _json['dismissTime'] = dismissTime;
     }
     if (implicit != null) {
-      _json["implicit"] = implicit;
+      _json['implicit'] = implicit;
     }
     return _json;
   }
@@ -1774,11 +1773,11 @@ class EnrolledService {
   EnrolledService();
 
   EnrolledService.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudProduct")) {
-      cloudProduct = _json["cloudProduct"];
+    if (_json.containsKey('cloudProduct')) {
+      cloudProduct = _json['cloudProduct'];
     }
-    if (_json.containsKey("enrollmentLevel")) {
-      enrollmentLevel = _json["enrollmentLevel"];
+    if (_json.containsKey('enrollmentLevel')) {
+      enrollmentLevel = _json['enrollmentLevel'];
     }
   }
 
@@ -1786,10 +1785,10 @@ class EnrolledService {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (cloudProduct != null) {
-      _json["cloudProduct"] = cloudProduct;
+      _json['cloudProduct'] = cloudProduct;
     }
     if (enrollmentLevel != null) {
-      _json["enrollmentLevel"] = enrollmentLevel;
+      _json['enrollmentLevel'] = enrollmentLevel;
     }
     return _json;
   }
@@ -1806,13 +1805,13 @@ class ListApprovalRequestsResponse {
   ListApprovalRequestsResponse();
 
   ListApprovalRequestsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("approvalRequests")) {
-      approvalRequests = (_json["approvalRequests"] as core.List)
+    if (_json.containsKey('approvalRequests')) {
+      approvalRequests = (_json['approvalRequests'] as core.List)
           .map<ApprovalRequest>((value) => ApprovalRequest.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'];
     }
   }
 
@@ -1820,11 +1819,11 @@ class ListApprovalRequestsResponse {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (approvalRequests != null) {
-      _json["approvalRequests"] =
+      _json['approvalRequests'] =
           approvalRequests.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+      _json['nextPageToken'] = nextPageToken;
     }
     return _json;
   }
@@ -1839,8 +1838,8 @@ class ResourceProperties {
   ResourceProperties();
 
   ResourceProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("excludesDescendants")) {
-      excludesDescendants = _json["excludesDescendants"];
+    if (_json.containsKey('excludesDescendants')) {
+      excludesDescendants = _json['excludesDescendants'];
     }
   }
 
@@ -1848,7 +1847,7 @@ class ResourceProperties {
     final core.Map<core.String, core.Object> _json =
         <core.String, core.Object>{};
     if (excludesDescendants != null) {
-      _json["excludesDescendants"] = excludesDescendants;
+      _json['excludesDescendants'] = excludesDescendants;
     }
     return _json;
   }
